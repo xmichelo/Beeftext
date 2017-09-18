@@ -33,10 +33,24 @@
   </widget>
   <action name="actionExit">
    <property name="text">
-    <string>E&amp;xit</string>
+    <string notr="true">E&amp;xit &lt;insertAppNameHere&gt;</string>
    </property>
-   <property name="shortcut">
-    <string>Alt+F4</string>
+   <property name="iconText">
+    <string notr="true">Exit &lt;insertAppNameHere&gt;</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Exit &lt;insertAppNameHere&gt;</string>
+   </property>
+  </action>
+  <action name="actionShowMainWindow">
+   <property name="text">
+    <string notr="true">&amp;Open &lt;insertAppNameHere&gt;</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">&amp;Open &lt;insertAppNameHere&gt;</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">&amp;Open &lt;insertAppNameHere&gt;</string>
    </property>
   </action>
  </widget>
@@ -49,7 +63,7 @@
    <sender>actionExit</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
-   <slot>close()</slot>
+   <slot>onActionExit()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -61,5 +75,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionShowMainWindow</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowMainWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>onActionExit()</slot>
+  <slot>onActionShowMainWindow()</slot>
+ </slots>
 </ui>

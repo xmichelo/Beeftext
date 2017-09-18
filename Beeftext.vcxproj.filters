@@ -41,6 +41,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="BeeftextConstants.cpp" />
+    <ClCompile Include="BeeftextGlobals.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -48,6 +49,7 @@
     </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="BeeftextConstants.h" />
+    <ClInclude Include="BeeftextGlobals.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">

@@ -21,10 +21,10 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setQuitOnLastWindowClosed(false);
     app.setOrganizationName(constants::kOrganizationName);
     app.setApplicationName(constants::kApplicationName);
     app.setApplicationDisplayName(constants::kApplicationName);
-    MainWindow w;
-    w.show();
+    MainWindow window;
     return app.exec();
 }
