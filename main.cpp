@@ -10,6 +10,12 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
+#include <XMiLib/SystemUtils.h>
+#include <XMiLib/Exception.h>
+
+
+using namespace xmilib;
 
 
 //**********************************************************************************************************************
@@ -20,11 +26,35 @@
 //**********************************************************************************************************************
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    app.setQuitOnLastWindowClosed(false);
-    app.setOrganizationName(constants::kOrganizationName);
-    app.setApplicationName(constants::kApplicationName);
-    app.setApplicationDisplayName(constants::kApplicationName);
-    MainWindow window;
-    return app.exec();
+   QString const kUnhandledException = QObject::tr("Unhandled Exception");
+   DebugLog& debugLog = globals::debugLog();
+   try
+   {
+      debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
+      QApplication app(argc, argv);
+      app.setQuitOnLastWindowClosed(false);
+      app.setOrganizationName(constants::kOrganizationName);
+      app.setApplicationName(constants::kApplicationName);
+      app.setApplicationDisplayName(constants::kApplicationName);
+      MainWindow window;
+      qint32 returnCode = app.exec();
+      debugLog.addInfo(QObject::tr("Application exited with return code %1").arg(returnCode));
+      return returnCode;
+   }
+   catch (xmilib::Exception const& e)
+   {
+      debugLog.addError(QObject::tr("Application crashed because of an unhandled exception: %1").arg(e.qwhat()));
+      displaySystemErrorDialog(kUnhandledException, e.qwhat());
+   }
+   catch (std::exception const& e)
+   {
+      debugLog.addError(QObject::tr("Application crashed because of an unhandled exception: %1").arg(e.what()));
+      displaySystemErrorDialog(kUnhandledException, e.what());
+   }
+   catch (...)
+   {
+      debugLog.addError(QObject::tr("Application crashed because of an unhandled exception."));
+      displaySystemErrorDialog(kUnhandledException, QObject::tr("An unhandled exception occurred."));
+   }
+   return 1;
 }

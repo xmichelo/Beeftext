@@ -12,6 +12,8 @@
 
 
 #include "ui_MainWindow.h"
+#include <XMiLib/DebugLog/DebugLogWindow.h>
+#include <memory>
 
 
 //**********************************************************************************************************************
@@ -22,24 +24,26 @@ class MainWindow: public QMainWindow
    Q_OBJECT
 public: // member functions
    MainWindow(); ///< Default constructor
-	~MainWindow() = default; ///< Default destructor
+   ~MainWindow() = default; ///< Default destructor
 	
 private: // member functions
    MainWindow(MainWindow const&) = delete; ///< Disabled copy constructor
    MainWindow(MainWindow const&&) = delete; ///< Disabled move constructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow const&&) = delete; ///< Disabled move assignment operator
-   void setupActions(); ///< Setup the actions for the main window
+   void setupActions(); ///< Setup the Qt actions for the main window
    void setupSystemTrayIcon(); ///< Setup the system tray icon
 
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
    void onActionExit(); ///< Slot for the 'Exit' action
+   void onActionShowDebugLog(); ///< Slot for the 'Show Debug Log' action
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window
    QSystemTrayIcon systemTrayIcon_; ///< The system tray icon
+   std::unique_ptr<xmilib::DebugLogWindow> debugLogWindow_; ///< The debug log window
 };
 
 

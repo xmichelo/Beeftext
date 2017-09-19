@@ -10,13 +10,18 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
+
+
+using namespace xmilib;
 
 
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 MainWindow::MainWindow()
-    : QMainWindow(nullptr)
+   : QMainWindow()
+   , debugLogWindow_(std::make_unique<DebugLogWindow>(&globals::debugLog()))
 {
     ui_.setupUi(this);
     this->setupActions();
@@ -63,6 +68,7 @@ void MainWindow::setupSystemTrayIcon()
 
 
 //**********************************************************************************************************************
+/// An 'activation' in an action performed on the system tray icon.
 /// \param[in] reason The reason for the activation
 //**********************************************************************************************************************
 void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason)
@@ -72,10 +78,9 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
    case QSystemTrayIcon::DoubleClick:
       this->onActionShowMainWindow();
       break;
-   case QSystemTrayIcon::Trigger:
+   case QSystemTrayIcon::Trigger: // a.k.a single click
       systemTrayIcon_.contextMenu()->popup(QCursor::pos());
       break;
-   // we do nothing in all other cases
    }
 }
 
@@ -98,4 +103,15 @@ void MainWindow::onActionExit()
 {
    qApp->quit();
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionShowDebugLog()
+{
+   Q_ASSERT(debugLogWindow_);
+   debugLogWindow_->show();
+}
+
 

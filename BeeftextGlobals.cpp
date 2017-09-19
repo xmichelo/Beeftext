@@ -1,8 +1,8 @@
 /// \file
 /// \author Xavier Michelon
 ///
-/// \brief Implementation of global variables
-///  
+/// \brief Implementation of project global variables
+///
 /// Copyright (c) Xavier Michelon. All rights reserved.  
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
@@ -11,14 +11,17 @@
 #include "BeeftextGlobals.h"
 
 
+namespace globals {
+
+
 //**********************************************************************************************************************
-/// Making MainWindow a singleton class would be better, but Qt memory management does not allow it (random crashes on
-/// exit).
-///
-/// \return The main window instance
+/// \return The application debug log
 //**********************************************************************************************************************
-MainWindow& globals::mainWindow()
+xmilib::DebugLog& debugLog()
 {
-   static MainWindow window;
-   return window;
+   static xmilib::DebugLog log;
+   return log;
 }
+
+
+} // namespace globals

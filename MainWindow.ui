@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>630</width>
+    <height>402</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
+     <width>630</width>
      <height>21</height>
     </rect>
    </property>
@@ -29,7 +29,14 @@
     </property>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menu_Debug">
+    <property name="title">
+     <string>&amp;Debug</string>
+    </property>
+    <addaction name="actionShowLog"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menu_Debug"/>
   </widget>
   <action name="actionExit">
    <property name="text">
@@ -51,6 +58,14 @@
    </property>
    <property name="toolTip">
     <string notr="true">&amp;Open &lt;insertAppNameHere&gt;</string>
+   </property>
+  </action>
+  <action name="actionShowLog">
+   <property name="text">
+    <string>Show &amp;Log</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
    </property>
   </action>
  </widget>
@@ -82,8 +97,8 @@
    <slot>onActionShowMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>299</x>
-     <y>199</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>299</x>
@@ -91,9 +106,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionShowLog</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowDebugLog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
   <slot>onActionShowMainWindow()</slot>
+  <slot>onActionShowDebugLog()</slot>
  </slots>
 </ui>

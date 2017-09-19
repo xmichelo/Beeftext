@@ -1,8 +1,8 @@
 /// \file
 /// \author Xavier Michelon
 ///
-/// \brief Declaration of global variables
-///  
+/// \brief Implementation of project global variables
+///
 /// Copyright (c) Xavier Michelon. All rights reserved.  
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
@@ -11,13 +11,13 @@
 #define BEEFTEXT__GLOBALS__H
 
 
-#include "MainWindow.h"
+#include <XMiLib/DebugLog/DebugLogWindow.h>
 
 
 namespace globals {
 
 
-MainWindow& mainWindow(); ///< Retrieve the main window instance
+xmilib::DebugLog& debugLog(); ///< Returns a reference to the debug log
 
 
 } // namespace globals
