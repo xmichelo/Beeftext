@@ -26,6 +26,8 @@ MainWindow::MainWindow()
     ui_.setupUi(this);
     this->setupActions();
     this->setupSystemTrayIcon();
+    if (constants::kShowLogOnStartup)
+       debugLogWindow_->show();
 }
 
 

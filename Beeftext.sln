@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Beeftext", "Beeftext.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMiLib", "..\XMiLib\XMiLib.vcxproj", "{DB933785-6AA2-4F38-8422-3052FEE1C5C0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMiLib", "..\XMiLib\XMiLib.vcxproj", "{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x86.Build.0 = Debug|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x86.ActiveCfg = Release|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x86.Build.0 = Release|Win32
-		{DB933785-6AA2-4F38-8422-3052FEE1C5C0}.Debug|x86.ActiveCfg = Debug|Win32
-		{DB933785-6AA2-4F38-8422-3052FEE1C5C0}.Debug|x86.Build.0 = Debug|Win32
-		{DB933785-6AA2-4F38-8422-3052FEE1C5C0}.Release|x86.ActiveCfg = Release|Win32
-		{DB933785-6AA2-4F38-8422-3052FEE1C5C0}.Release|x86.Build.0 = Release|Win32
+		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Debug|x86.ActiveCfg = Debug|Win32
+		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Debug|x86.Build.0 = Debug|Win32
+		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Release|x86.ActiveCfg = Release|Win32
+		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

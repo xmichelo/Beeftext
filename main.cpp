@@ -11,6 +11,7 @@
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
+#include "InputManager.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
 
@@ -31,12 +32,14 @@ int main(int argc, char *argv[])
    try
    {
       debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
+      InputManager& inputManager = InputManager::instance(); // we make sure the input manager is instanciated
       QApplication app(argc, argv);
       app.setQuitOnLastWindowClosed(false);
       app.setOrganizationName(constants::kOrganizationName);
       app.setApplicationName(constants::kApplicationName);
       app.setApplicationDisplayName(constants::kApplicationName);
       MainWindow window;
+
       qint32 returnCode = app.exec();
       debugLog.addInfo(QObject::tr("Application exited with return code %1").arg(returnCode));
       return returnCode;
