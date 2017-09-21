@@ -20,7 +20,6 @@ class InputManager : public QObject
 public: // data types
    enum { 
       kKeyboardStateSize = 256, ///< The size of the keyboard state array
-      kTextBufferSize = 10 ///< The size of the buffer that will receive the text resulting from the processing of the key stroke
    }; 
    struct KeyStroke {
       quint32 virtualKey; ///< The virtual keyCode
@@ -34,7 +33,6 @@ public: // member functions
    ~InputManager(); ///< Default destructor
 
 signals:
-   void keyboard(int nCode, WPARAM wParam, LPARAM lParam);
    void info(QString const& message);
 
 private: // member functions
@@ -42,14 +40,17 @@ private: // member functions
    InputManager(InputManager const&) = delete; ///< Disabled copy constructor
    InputManager(InputManager const&&) = delete; ///< Disabled move constructor
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
+   InputManager& operator=(InputManager const&&) = delete; ///< Disabled move assignment operator
    void onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
    QString processKey(KeyStroke const& keystroke); ///< Process a key stroke and return the generated characters 
-
+   void onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam); ///< Process a mouse click event
 private: // static member functions
-   static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam);
+   static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The keyboard event callback
+   static LRESULT CALLBACK mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The mouse event callback
 
 private: // data members
    HHOOK keyboardHook_; ///< The handle to the keyboard hook used to be notified of keyboard events
+   HHOOK mouseHook_; ///< The handle to the mouse hook used to be notified of mouse event
    KeyStroke deadKey_; ///< The currently active dead key
 };
 

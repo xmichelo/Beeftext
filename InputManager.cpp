@@ -11,6 +11,7 @@
 #include "InputManager.h"
 #include "MainWindow.h"
 #include "Beeftext/BeeftextGlobals.h"
+#include <XMiLib/Exception.h>
 #include <XMiLib/SystemUtils.h>
 
 
@@ -19,6 +20,7 @@ using namespace xmilib;
 
 namespace {
    InputManager::KeyStroke const kNullKeyStroke = {0, 0, {0}}; ///< A null keystroke
+   qint32 const kTextBufferSize = 10; ///< The size of the buffer that will receive the text resulting from the processing of the key stroke
 }
 
 
@@ -51,6 +53,20 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
 
 
 //**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+LRESULT CALLBACK InputManager::mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam)
+{
+   if ((WM_LBUTTONDOWN == wParam) || (WM_RBUTTONDOWN == wParam) || (WM_MOUSEWHEEL == wParam) 
+      || (WM_MOUSEWHEEL == wParam) || (WM_MBUTTONDOWN == wParam))
+   {
+      InputManager::instance().onMouseClickEvent(nCode, wParam, lParam);
+   }
+   return CallNextHookEx(nullptr, nCode, wParam, lParam);
+}
+
+
+//**********************************************************************************************************************
 /// \return The only allowed instance of the class
 //**********************************************************************************************************************
 InputManager& InputManager::instance()
@@ -68,7 +84,11 @@ InputManager::InputManager()
    , deadKey_(kNullKeyStroke)
 {
    connect(this, &InputManager::info, &globals::debugLog(), &DebugLog::addInfo);
-   keyboardHook_ = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProcedure, GetModuleHandle(nullptr), 0);
+   HMODULE moduleHandle = GetModuleHandle(nullptr);
+   keyboardHook_ = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProcedure, moduleHandle, 0);
+   if (!keyboardHook_)
+      throw xmilib::Exception("Could not register a keyboard hook.");
+   mouseHook_ = SetWindowsHookEx(WH_MOUSE_LL, mouseProcedure, moduleHandle, 0);
 }
 
 
@@ -79,6 +99,8 @@ InputManager::~InputManager()
 {
    if (keyboardHook_) 
       UnhookWindowsHookEx(keyboardHook_);
+   if (mouseHook_)
+      UnhookWindowsHookEx(mouseHook_);
 }
 
 
@@ -136,4 +158,14 @@ QString InputManager::processKey(KeyStroke const& keyStroke)
    // values of size < -1 also lead here but should not happen according to the documentation for ToUnicode()
    return QString();
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void InputManager::onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam)
+{
+   emit info("Mouse clicked.");
+}
+
 
