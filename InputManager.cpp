@@ -53,12 +53,14 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
 
 
 //**********************************************************************************************************************
-// 
+/// \param[in] nCode A code the hook procedure uses to determine how to process the message
+/// \param[in] wParam The identifier of the mouse message
+/// \param[in] lParam A pointer to a M structure.
 //**********************************************************************************************************************
 LRESULT CALLBACK InputManager::mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam)
 {
    if ((WM_LBUTTONDOWN == wParam) || (WM_RBUTTONDOWN == wParam) || (WM_MOUSEWHEEL == wParam) 
-      || (WM_MOUSEWHEEL == wParam) || (WM_MBUTTONDOWN == wParam))
+      || (WM_MOUSEWHEEL == wParam) || (WM_MBUTTONDOWN == wParam)) // note we consider mouse wheel moves as clicks
    {
       InputManager::instance().onMouseClickEvent(nCode, wParam, lParam);
    }
@@ -89,6 +91,8 @@ InputManager::InputManager()
    if (!keyboardHook_)
       throw xmilib::Exception("Could not register a keyboard hook.");
    mouseHook_ = SetWindowsHookEx(WH_MOUSE_LL, mouseProcedure, moduleHandle, 0);
+   if (!mouseHook_)
+      throw xmilib::Exception("Could not register a mouse hook.");
 }
 
 
@@ -104,7 +108,6 @@ InputManager::~InputManager()
 }
 
 
-
 //**********************************************************************************************************************
 /// \param[in] keyStroke The key stroke
 //**********************************************************************************************************************
@@ -113,6 +116,8 @@ void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
    QString text = this->processKey(keyStroke);
    emit info(QString("A Key was pressed. vkCode = 0x%1 - scanCode = %2 - size = %3 - text = %4")
       .arg(keyStroke.virtualKey, 2, 16, QChar('0')).arg(keyStroke.scanCode).arg(text.size()).arg(text));
+   if (!text.isEmpty())
+      emit textTyped(text);
 }
 
 
@@ -165,7 +170,5 @@ QString InputManager::processKey(KeyStroke const& keyStroke)
 //**********************************************************************************************************************
 void InputManager::onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam)
 {
-   emit info("Mouse clicked.");
+   emit info("Mouse Interaction");
 }
-
-
