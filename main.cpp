@@ -11,7 +11,7 @@
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
-#include "InputManager.h"
+#include "ComboManager.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
 
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
    try
    {
       debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
-      InputManager& inputManager = InputManager::instance(); // we make sure the input manager is instanciated
+      ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       QApplication app(argc, argv);
       app.setQuitOnLastWindowClosed(false);
       app.setOrganizationName(constants::kOrganizationName);

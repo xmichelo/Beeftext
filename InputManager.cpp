@@ -37,6 +37,9 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
    {
       KeyStroke keyStroke = kNullKeyStroke;
       KBDLLHOOKSTRUCT *keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
+      // we ignore shift / caps lock key events
+      if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
+         return CallNextHookEx(nullptr, nCode, wParam, lParam);
       keyStroke.virtualKey = keyEvent->vkCode;
       keyStroke.scanCode = keyEvent->scanCode;
       // GetKeyboardState() do not properly report state for modifier keys if the key event in a window other that one
@@ -53,6 +56,8 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
 
 
 //**********************************************************************************************************************
+/// This static member function is registered to be called whenever a mouse event occurs.
+/// 
 /// \param[in] nCode A code the hook procedure uses to determine how to process the message
 /// \param[in] wParam The identifier of the mouse message
 /// \param[in] lParam A pointer to a M structure.
@@ -85,7 +90,6 @@ InputManager::InputManager()
    : QObject(nullptr)
    , deadKey_(kNullKeyStroke)
 {
-   connect(this, &InputManager::info, &globals::debugLog(), &DebugLog::addInfo);
    HMODULE moduleHandle = GetModuleHandle(nullptr);
    keyboardHook_ = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProcedure, moduleHandle, 0);
    if (!keyboardHook_)
@@ -107,17 +111,26 @@ InputManager::~InputManager()
       UnhookWindowsHookEx(mouseHook_);
 }
 
-
 //**********************************************************************************************************************
 /// \param[in] keyStroke The key stroke
 //**********************************************************************************************************************
 void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
-   QString text = this->processKey(keyStroke);
-   emit info(QString("A Key was pressed. vkCode = 0x%1 - scanCode = %2 - size = %3 - text = %4")
-      .arg(keyStroke.virtualKey, 2, 16, QChar('0')).arg(keyStroke.scanCode).arg(text.size()).arg(text));
-   if (!text.isEmpty())
-      emit textTyped(text);
+   bool isDeadKey = false;
+   QString text = this->processKey(keyStroke, isDeadKey);
+   if (text.isEmpty())
+   {
+      if (!isDeadKey)
+         emit comboBreakerTyped();
+      return;
+   }
+   for (QChar c: text)
+   {  
+      if (c.isSpace() || (!c.isPrint()))
+         emit comboBreakerTyped();
+      else
+         emit characterTyped(c);
+   }
 }
 
 
@@ -128,10 +141,11 @@ void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 /// \param[in] keyStroke The key stroke
 /// \return The text resulting of the keystroke
 //**********************************************************************************************************************
-QString InputManager::processKey(KeyStroke const& keyStroke)
+QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
 {
    // now the tricky part: ToUnicode() "consumes" the dead key that may be stored in the kernel-mode keyboard buffer
    // so we need to manually restore the dead key by calling ToUnicode() again
+   outIsDeadKey = false;
    WCHAR textBuffer[kTextBufferSize];
    qint32 size = ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, 
       kTextBufferSize, 0);
@@ -143,6 +157,7 @@ QString InputManager::processKey(KeyStroke const& keyStroke)
       // 2 - Save the key because we will need to apply it again before the next 'normal' keystroke
       ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, kTextBufferSize, 0);
       deadKey_ = keyStroke;
+      outIsDeadKey = true;
       return QString();
    }
 
@@ -150,7 +165,7 @@ QString InputManager::processKey(KeyStroke const& keyStroke)
    {
       // The key is a normal key that will result in text output.
       // if the previous key was a dead key, we have already consumed the dead key so we must restore it 
-      QString result = QString::fromWCharArray(textBuffer, kTextBufferSize);
+      QString result = QString::fromWCharArray(textBuffer, size);
       if (0 != deadKey_.virtualKey)
       {
          ToUnicode(deadKey_.virtualKey, deadKey_.scanCode, deadKey_.keyboardState, textBuffer, kTextBufferSize, 0);
@@ -170,5 +185,5 @@ QString InputManager::processKey(KeyStroke const& keyStroke)
 //**********************************************************************************************************************
 void InputManager::onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam)
 {
-   emit info("Mouse Interaction");
+   emit comboBreakerTyped();
 }

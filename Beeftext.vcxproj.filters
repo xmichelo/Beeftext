@@ -50,6 +50,13 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Combo.cpp" />
+    <ClCompile Include="ComboManager.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_ComboManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ComboManager.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -67,6 +74,7 @@
     <CustomBuild Include="MainWindow.ui" />
     <CustomBuild Include="MainWindow.h" />
     <CustomBuild Include="InputManager.h" />
+    <CustomBuild Include="ComboManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

@@ -33,8 +33,8 @@ public: // member functions
    ~InputManager(); ///< Default destructor
 
 signals:
-   void info(QString message);
-   void textTyped(QString text);
+   void comboBreakerTyped();
+   void characterTyped(QChar c);
 
 private: // member functions
    InputManager(); ///< Default constructor
@@ -43,7 +43,7 @@ private: // member functions
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
    InputManager& operator=(InputManager const&&) = delete; ///< Disabled move assignment operator
    void onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
-   QString processKey(KeyStroke const& keystroke); ///< Process a key stroke and return the generated characters 
+   QString processKey(KeyStroke const& keystroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
    void onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam); ///< Process a mouse click event
 
 private: // static member functions

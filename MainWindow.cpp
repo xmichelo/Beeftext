@@ -61,6 +61,7 @@ void MainWindow::setupSystemTrayIcon()
 
    QMenu* menu = new QMenu(this);
    menu->addAction(ui_.actionShowMainWindow);
+   menu->addAction(ui_.actionShowLog);
    menu->addSeparator();
    menu->addAction(ui_.actionExit);
    menu->setActiveAction(ui_.actionShowMainWindow);

@@ -11,6 +11,10 @@
 #define BEEFTEXT__COMBO__H
 
 
+#include <memory>
+#include <vector>
+
+
 //**********************************************************************************************************************
 /// \brief The combo class that link a combo (a.k.a. snippet, or abbreviation), to it substitution text
 //**********************************************************************************************************************
@@ -34,6 +38,10 @@ public: // data member
    QString comboText_; ///< The combo text
    QString substitutionText_; ///< The substitution text that will replace the combo text when
 };
+
+
+typedef std::shared_ptr<Combo> SPCombo; ///< Type definition for shared pointer to Combo
+typedef std::vector<SPCombo> VecSPCombo; ///< Type definition for vector of SPCombo
 
 
 #endif // #ifndef BEEFTEXT__COMBO__H
