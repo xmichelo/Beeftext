@@ -37,6 +37,9 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
    {
       KeyStroke keyStroke = kNullKeyStroke;
       KBDLLHOOKSTRUCT *keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
+      qDebug() << QString("vkCode = %1 - scanCode = %2").arg(keyEvent->vkCode, 2, 16, QChar('0'))
+         .arg(keyEvent->scanCode, 2, 16, QChar('0'));
+
       // we ignore shift / caps lock key events
       if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
          return CallNextHookEx(nullptr, nCode, wParam, lParam);
@@ -121,15 +124,20 @@ void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
    if (text.isEmpty())
    {
       if (!isDeadKey)
-         emit comboBreakerTyped();
+         QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
       return;
    }
    for (QChar c: text)
    {  
+      if (QChar('\b') == c)
+      {
+         QTimer::singleShot(0, [this]() { emit backspaceTyped(); });
+         continue;
+      }
       if (c.isSpace() || (!c.isPrint()))
-         emit comboBreakerTyped();
+         QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
       else
-         emit characterTyped(c);
+         QTimer::singleShot(0,  [c, this]() { emit characterTyped(c); });
    }
 }
 
@@ -139,6 +147,7 @@ void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 /// the US-International keyboard require a special treatment.
 ///
 /// \param[in] keyStroke The key stroke
+/// \param[out] outIsDeadKey Is the key a dead key
 /// \return The text resulting of the keystroke
 //**********************************************************************************************************************
 QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
@@ -185,5 +194,5 @@ QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
 //**********************************************************************************************************************
 void InputManager::onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam)
 {
-   emit comboBreakerTyped();
+   QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
 }

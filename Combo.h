@@ -27,6 +27,7 @@ public: // member functions
    void setComboText(QString const& comboText); ///< Set the combo text
    QString substitutionText() const; ///< Retrieve the substitution text
    void setSubstitutionText(QString const& substitutionText); ///< Set the substitution text
+   void performSubstitution(); ///< perform the combo substitution
 
 private: // member functions
 	Combo(Combo const&) = delete; ///< Disabled copy constructor

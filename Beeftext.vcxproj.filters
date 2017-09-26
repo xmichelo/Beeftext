@@ -65,7 +65,6 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="BeeftextConstants.h" />
     <ClInclude Include="BeeftextGlobals.h" />
-    <ClInclude Include="Combo.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -75,6 +74,7 @@
     <CustomBuild Include="MainWindow.h" />
     <CustomBuild Include="InputManager.h" />
     <CustomBuild Include="ComboManager.h" />
+    <CustomBuild Include="Combo.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

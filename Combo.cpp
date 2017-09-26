@@ -9,10 +9,15 @@
 
 #include "stdafx.h"
 #include "Combo.h"
+#include <XMiLib/SystemUtils.h>
+
+
+using namespace xmilib;
 
 
 //**********************************************************************************************************************
 /// \param[in] comboText The combo text
+/// \param[in] substitutionText The text that will replace the combo
 //**********************************************************************************************************************
 Combo::Combo(QString const& comboText, QString const& substitutionText)
    : comboText_(comboText)
@@ -32,7 +37,7 @@ QString Combo::comboText() const
 
 
 //**********************************************************************************************************************
-// \param[in] comboText The combo text
+/// \param[in] comboText The combo text
 //**********************************************************************************************************************
 void Combo::setComboText(QString const& comboText)
 {
@@ -58,3 +63,26 @@ void Combo::setSubstitutionText(QString const& substitutionText)
 }
 
 
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void Combo::performSubstitution()
+{
+   // select the typed combo by pressing Shift + Left n times (n being the number of characters in the combo)
+   synthesizeKeystroke(VK_LSHIFT, true);
+   for (qint32 i = 0; i < comboText_.size(); ++i)
+   {
+      synthesizeKeystroke(VK_LEFT, true);
+      synthesizeKeystroke(VK_LEFT, false);
+   }
+   synthesizeKeystroke(VK_LSHIFT, false);
+
+   // put the substitution text in the clipboard
+   qApp->clipboard()->setText(substitutionText_);
+
+   // send a paste command (Ctrl+V)
+   synthesizeKeystroke(VK_LCONTROL, true);
+   synthesizeKeystroke('V', true);
+   synthesizeKeystroke('V', false);
+   synthesizeKeystroke(VK_LCONTROL, false);
+}

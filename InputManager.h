@@ -35,6 +35,7 @@ public: // member functions
 signals:
    void comboBreakerTyped();
    void characterTyped(QChar c);
+   void backspaceTyped();
 
 private: // member functions
    InputManager(); ///< Default constructor

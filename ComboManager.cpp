@@ -32,6 +32,10 @@ ComboManager::ComboManager()
    InputManager& inputManager = InputManager::instance();
    connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped);
    connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped);
+   connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped);
+   comboList_.push_back(std::make_shared<Combo>("xxem", "johndoe@gmail.com"));
+   comboList_.push_back(std::make_shared<Combo>("xxsig", "Regards.\n\n-- \nJohn Doe\n<johndoe@gmail.com>\n"));
+   comboList_.push_back(std::make_shared<Combo>("xxname", "John Doe"));
 }
 
 
@@ -52,6 +56,22 @@ void ComboManager::onCharacterTyped(QChar c)
 {
    currentText_.append(c);
    globals::debugLog().addInfo(QString("Character %1 was type. Combo text is now %2").arg(c).arg(currentText_));
+   VecSPCombo::const_iterator it = std::find_if(comboList_.begin(), comboList_.end(),
+      [&](SPCombo const combo) -> bool { return combo->comboText() == currentText_; });
+   if (comboList_.end() == it)
+      return;
+   (*it)->performSubstitution();
+   this->onComboBreakerTyped();
 }
 
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboManager::onBackspaceTyped()
+{
+   currentText_.chop(1);
+   globals::debugLog().addInfo(QString("Backspace was typed. Combo text is now %1").arg(currentText_));
+
+}
 
