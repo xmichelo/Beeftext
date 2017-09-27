@@ -21,13 +21,16 @@
 class Combo
 {
 public: // member functions
-	Combo(QString const& aComboText = QString(), QString const& aSubstitutionText = QString()); ///< Default constructor
+	Combo(QString const& name, QString const& aComboText, QString const& aSubstitutionText); ///< Default constructor
 	~Combo() = default; ///< Default destructor
+   QString name() const; ///< Get the name of the combo
+   void setName(QString const& name); ///< Set the name of the combo
 	QString comboText() const; ///< retrieve the combo text
    void setComboText(QString const& comboText); ///< Set the combo text
    QString substitutionText() const; ///< Retrieve the substitution text
    void setSubstitutionText(QString const& substitutionText); ///< Set the substitution text
    void performSubstitution(); ///< perform the combo substitution
+   QJsonObject toJsonObject(); ///< Serialize the combo in a JSon object
 
 private: // member functions
 	Combo(Combo const&) = delete; ///< Disabled copy constructor
@@ -36,6 +39,7 @@ private: // member functions
 	Combo& operator=(Combo const&&) = delete; ///< Disabled move assignment operator
 
 public: // data member
+   QString name_; ///< The display name of the combo
    QString comboText_; ///< The combo text
    QString substitutionText_; ///< The substitution text that will replace the combo text when
 };

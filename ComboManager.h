@@ -25,7 +25,8 @@ public: // static member functions
 
 public: // member functions
 	~ComboManager() = default; ///< Default destructor
-	
+	QJsonDocument serializeComboListToJSonDocument() const; ///< Serialize the combo list to a JSON document
+
 private: // member functions
    ComboManager(); ///< Default constructor
    ComboManager(ComboManager const&) = delete; ///< Disabled copy constructor
