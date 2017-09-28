@@ -37,8 +37,8 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
    {
       KeyStroke keyStroke = kNullKeyStroke;
       KBDLLHOOKSTRUCT *keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
-      qDebug() << QString("vkCode = %1 - scanCode = %2").arg(keyEvent->vkCode, 2, 16, QChar('0'))
-         .arg(keyEvent->scanCode, 2, 16, QChar('0'));
+      //qDebug() << QString("vkCode = %1 - scanCode = %2").arg(keyEvent->vkCode, 2, 16, QChar('0'))
+      //   .arg(keyEvent->scanCode, 2, 16, QChar('0'));
 
       // we ignore shift / caps lock key events
       if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))

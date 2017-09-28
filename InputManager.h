@@ -40,9 +40,9 @@ signals:
 private: // member functions
    InputManager(); ///< Default constructor
    InputManager(InputManager const&) = delete; ///< Disabled copy constructor
-   InputManager(InputManager const&&) = delete; ///< Disabled move constructor
+   InputManager(InputManager&&) = delete; ///< Disabled move constructor
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
-   InputManager& operator=(InputManager const&&) = delete; ///< Disabled move assignment operator
+   InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
    void onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
    QString processKey(KeyStroke const& keystroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
    void onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam); ///< Process a mouse click event

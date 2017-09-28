@@ -14,12 +14,6 @@
 #include "BeeftextGlobals.h"
 
 
-namespace {
-   qint32 const kJsonComboListFileFormatVersionNumber = 1; ///< The version number for the combo list file format
-   QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for the file format version
-   QString const kComboGroups = "comboGroups"; ///< The JSon key for combo groups
-}
-
 //**********************************************************************************************************************
 /// \return A reference to the only allowed instance of the class
 //**********************************************************************************************************************
@@ -27,18 +21,6 @@ ComboManager& ComboManager::instance()
 {
    static ComboManager instance;
    return instance;
-}
-
-
-//**********************************************************************************************************************
-/// \return The JSon document containing the combo list
-//**********************************************************************************************************************
-QJsonDocument ComboManager::serializeComboListToJSonDocument() const
-{
-   QJsonObject rootObject;
-   rootObject.insert(kKeyFileFormatVersion, kJsonComboListFileFormatVersionNumber);
-   rootObject.insert(kComboGroups, comboListToJSonArray(comboList_));
-   return QJsonDocument(rootObject);
 }
 
 
@@ -52,18 +34,30 @@ ComboManager::ComboManager()
    connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped);
    connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped);
    connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped);
-   
+
+   //{
+   //   QFile file(QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath("test.json"));
+   //   if (!file.open(QIODevice::ReadOnly))
+   //      globals::debugLog().addError("failed opening combo list file");
+   //   QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+   //   if (doc.isNull())
+   //      globals::debugLog().addError("The combo list file is invalid");
+   //   jsonDocumentToComboList(doc, comboList_);
+   //} 
    /// \todo replace the hard coded combos
-   comboList_.push_back(std::make_shared<Combo>("Personal Email", "xxem", "johndoe@gmail.com"));
-   comboList_.push_back(std::make_shared<Combo>("Personal Signature","xxsig", 
-      "Regards.\n\n-- \nJohn Doe\n\"johndoe@gmail.com\"\n"));
-   comboList_.push_back(std::make_shared<Combo>("Personal Name" ,"xxname", "John Doe"));
+   //comboList_.push_back(std::make_shared<Combo>("Personal Email", "xxem", "johndoe@gmail.com"));
+   //comboList_.push_back(std::make_shared<Combo>("Personal Signature","xxsig", 
+   //   "Regards.\n\n-- \nJohn Doe\n\"johndoe@gmail.com\"\n"));
+   //comboList_.push_back(std::make_shared<Combo>("Personal Name" ,"xxname", "John Doe"));
    
    /// \todo remove this debug code
-   //QJsonDocument document = this->serializeComboListToJSonDocument();
-   //QFile file(QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath("test.json"));
-   //if (file.open(QIODevice::WriteOnly))
-   //   file.write(document.toJson());
+   //{
+   //   QJsonDocument doc; 
+   //   comboListToJSonDocument(comboList_, doc);
+   //   QFile file(QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath("test.json"));
+   //   if (file.open(QIODevice::WriteOnly))
+   //      file.write(doc.toJson());
+   //}
 }
 
 
@@ -73,7 +67,6 @@ ComboManager::ComboManager()
 void ComboManager::onComboBreakerTyped()
 {
    currentText_ = QString();
-   globals::debugLog().addInfo("Combo was broken.");
 }
 
 
@@ -99,6 +92,4 @@ void ComboManager::onCharacterTyped(QChar c)
 void ComboManager::onBackspaceTyped()
 {
    currentText_.chop(1);
-   globals::debugLog().addInfo(QString("Backspace was typed. Combo text is now %1").arg(currentText_));
-
 }

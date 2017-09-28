@@ -28,9 +28,9 @@ public: // member functions
 	
 private: // member functions
    MainWindow(MainWindow const&) = delete; ///< Disabled copy constructor
-   MainWindow(MainWindow const&&) = delete; ///< Disabled move constructor
+   MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
-   MainWindow& operator=(MainWindow const&&) = delete; ///< Disabled move assignment operator
+   MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
    void setupActions(); ///< Setup the Qt actions for the main window
    void setupSystemTrayIcon(); ///< Setup the system tray icon
 

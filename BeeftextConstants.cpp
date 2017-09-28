@@ -15,10 +15,5 @@ namespace constants {
 
    QString const kApplicationName = "Beeftext";
    QString const kOrganizationName = "x-mi.com";
-#ifdef NDEBUG
-   bool const kShowLogOnStartup = false;
-#else 
-   bool const kShowLogOnStartup = true;
-#endif
 
 } // namespace constants

@@ -14,9 +14,8 @@
 #include "Combo.h"
 
 
-
-QJsonArray comboListToJSonArray(VecSPCombo const& comboList); ///< Serialize a combo list to a JSon array
-
+void comboListToJSonDocument(VecSPCombo const& comboList, QJsonDocument& outDoc); ///< Serialize a combo list to a JSon document
+bool jsonDocumentToComboList(QJsonDocument const& doc, VecSPCombo& outComboList); ///< Unserialize a combo from a JSon document
 
 
 #endif // #ifndef BEEFTEXT__COMBO__UTILS__H

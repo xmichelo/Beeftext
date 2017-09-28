@@ -37,6 +37,27 @@ Combo::Combo(QString const& name, QString const& comboText, QString const& subst
 
 
 //**********************************************************************************************************************
+/// If the JSon object is not a valid combo, the constructed combo will be invalid
+/// \param[in] object The object to read from
+//**********************************************************************************************************************
+Combo::Combo(QJsonObject const& object)
+   : name_(object[kKeyName].toString())
+   , comboText_(object[kKeyComboText].toString())
+   , substitutionText_(object[kKeySubstitutionText].toString())
+{      
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if the combo is valid
+//**********************************************************************************************************************
+bool Combo::isValid() const
+{
+   return (!name_.isEmpty()) && (!comboText_.isEmpty()) && (!substitutionText_.isEmpty());
+}
+
+
+//**********************************************************************************************************************
 /// \return The display name of the combo
 //**********************************************************************************************************************
 QString Combo::name() const

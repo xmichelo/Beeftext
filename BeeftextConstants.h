@@ -16,7 +16,6 @@ namespace constants {
 
 extern QString const kApplicationName; ///< The application name
 extern QString const kOrganizationName; ///< The organization name
-extern bool const kShowLogOnStartup; ///< Should the log be displayed on startup
 
 } // namespace constants
 
