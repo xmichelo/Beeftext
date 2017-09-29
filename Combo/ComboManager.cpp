@@ -35,6 +35,7 @@ ComboManager::ComboManager()
    connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped);
    connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped);
 
+
    //{
    //   QFile file(QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath("test.json"));
    //   if (!file.open(QIODevice::ReadOnly))

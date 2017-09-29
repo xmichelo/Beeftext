@@ -24,4 +24,13 @@ xmilib::DebugLog& debugLog()
 }
 
 
+//**********************************************************************************************************************
+/// \return The location of the local storage folder for the application
+//**********************************************************************************************************************
+QString getAppDataDir()
+{
+   return QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+}
+
+
 } // namespace globals

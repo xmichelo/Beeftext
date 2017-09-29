@@ -26,6 +26,9 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Combo">
+      <UniqueIdentifier>{ff7ca901-94f9-4a2f-95e9-cd3694d1306b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
@@ -49,15 +52,27 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Combo.cpp" />
-    <ClCompile Include="ComboManager.cpp" />
+    <ClCompile Include="Combo\Combo.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Combo\ComboList.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Combo\ComboManager.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_ComboManager.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_ComboManager.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="ComboUtils.cpp" />
+    <ClCompile Include="Combo\ComboUtils.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Combo\ComboGroup.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -66,7 +81,18 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="BeeftextConstants.h" />
     <ClInclude Include="BeeftextGlobals.h" />
-    <ClInclude Include="ComboUtils.h" />
+    <ClInclude Include="Combo\Combo.h">
+      <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo\ComboList.h">
+      <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo\ComboUtils.h">
+      <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo\ComboGroup.h">
+      <Filter>Combo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -75,8 +101,9 @@
     <CustomBuild Include="MainWindow.ui" />
     <CustomBuild Include="MainWindow.h" />
     <CustomBuild Include="InputManager.h" />
-    <CustomBuild Include="ComboManager.h" />
-    <CustomBuild Include="Combo.h" />
+    <CustomBuild Include="Combo\ComboManager.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

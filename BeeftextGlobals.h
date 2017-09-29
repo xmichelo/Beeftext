@@ -18,6 +18,7 @@ namespace globals {
 
 
 xmilib::DebugLog& debugLog(); ///< Returns a reference to the debug log
+QString getAppDataDir(); ///< Returns the location of the local storage folder for the application
 
 
 } // namespace globals

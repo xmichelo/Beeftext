@@ -11,7 +11,7 @@
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
-#include "ComboManager.h"
+#include "Combo/ComboManager.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
 

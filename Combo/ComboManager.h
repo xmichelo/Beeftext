@@ -34,7 +34,7 @@ private: // member functions
 	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
 
 private: // slots
-   void onComboBreakerTyped(); ///< Slot for the "Combo Breaker Type" signal
+   void onComboBreakerTyped(); ///< Slot for the "Combo Breaker Typed" signal
    void onCharacterTyped(QChar c); ///< Slot for the "Character Typed" signal
    void onBackspaceTyped(); ///< Slot for the 'Backspace typed" signal
 
