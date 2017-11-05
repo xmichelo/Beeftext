@@ -9,10 +9,14 @@
 
 #include "stdafx.h"
 #include "ComboManager.h"
-#include "ComboUtils.h"
 #include "InputManager.h"
 #include "BeeftextGlobals.h"
+#include <XMiLib/Exception.h>
 
+
+namespace {
+   QString const kComboListFileName = "comboList.json"; ///< The name of the default combo list file
+}
 
 //**********************************************************************************************************************
 /// \return A reference to the only allowed instance of the class
@@ -27,6 +31,14 @@ ComboManager& ComboManager::instance()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
+ComboManager::~ComboManager()
+{
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
 ComboManager::ComboManager()
    : QObject()
 {
@@ -35,30 +47,44 @@ ComboManager::ComboManager()
    connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped);
    connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped);
 
-
-   //{
-   //   QFile file(QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath("test.json"));
-   //   if (!file.open(QIODevice::ReadOnly))
-   //      globals::debugLog().addError("failed opening combo list file");
-   //   QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
-   //   if (doc.isNull())
-   //      globals::debugLog().addError("The combo list file is invalid");
-   //   jsonDocumentToComboList(doc, comboList_);
-   //} 
-   /// \todo replace the hard coded combos
-   //comboList_.push_back(std::make_shared<Combo>("Personal Email", "xxem", "johndoe@gmail.com"));
-   //comboList_.push_back(std::make_shared<Combo>("Personal Signature","xxsig", 
-   //   "Regards.\n\n-- \nJohn Doe\n\"johndoe@gmail.com\"\n"));
-   //comboList_.push_back(std::make_shared<Combo>("Personal Name" ,"xxname", "John Doe"));
+   QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(kComboListFileName));
+   if (!file.open(QIODevice::ReadOnly))
+      globals::debugLog().addWarning("No combo list file could be found.");
+   else
+   {
+      QString errMsg;
+      if (!comboList_.readFromJsonDocument(QJsonDocument::fromJson(file.readAll()), &errMsg))
+         globals::debugLog().addError("The combo list file is invalid.");
+   }
    
    /// \todo remove this debug code
-   //{
-   //   QJsonDocument doc; 
-   //   comboListToJSonDocument(comboList_, doc);
-   //   QFile file(QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath("test.json"));
-   //   if (file.open(QIODevice::WriteOnly))
-   //      file.write(doc.toJson());
-   //}
+   QString errMsg;
+   if (!this->saveComboListToFile(&errMsg))
+      QMessageBox::critical(nullptr, tr("Error"), errMsg);
+}
+
+
+//**********************************************************************************************************************
+/// \param[out] outErrorMessage If not null the function returns false, this variable will contain a description 
+/// of the error.
+/// \return true if and only if the operation completed successfully
+//**********************************************************************************************************************
+bool ComboManager::saveComboListToFile(QString* outErrorMsg)
+{
+   try
+   {
+      QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(kComboListFileName));
+      if (!file.open(QIODevice::WriteOnly))
+         throw xmilib::Exception("The combo list could not be saved.");
+      file.write(comboList_.toJsonDocument().toJson());
+      return true;
+   }
+   catch (xmilib::Exception const& e)
+   {
+      if (outErrorMsg)
+         *outErrorMsg = e.qwhat();
+      return false;
+   }
 }
 
 

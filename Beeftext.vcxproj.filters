@@ -67,12 +67,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboManager.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboUtils.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
-    <ClCompile Include="Combo\ComboGroup.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -85,12 +79,6 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="Combo\ComboList.h">
-      <Filter>Combo</Filter>
-    </ClInclude>
-    <ClInclude Include="Combo\ComboUtils.h">
-      <Filter>Combo</Filter>
-    </ClInclude>
-    <ClInclude Include="Combo\ComboGroup.h">
       <Filter>Combo</Filter>
     </ClInclude>
   </ItemGroup>

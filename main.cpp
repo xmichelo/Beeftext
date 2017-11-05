@@ -19,6 +19,9 @@
 using namespace xmilib;
 
 
+void ensureAppDataDirExists(); ///< Make sure the application data folder exists
+
+
 //**********************************************************************************************************************
 /// \brief Application entry point
 ///
@@ -31,15 +34,16 @@ int main(int argc, char *argv[])
    DebugLog& debugLog = globals::debugLog();
    try
    {
-      debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
-      ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       QApplication app(argc, argv);
       app.setQuitOnLastWindowClosed(false);
       app.setOrganizationName(constants::kOrganizationName);
       app.setApplicationName(constants::kApplicationName);
       app.setApplicationDisplayName(constants::kApplicationName);
-      MainWindow window;
+      ensureAppDataDirExists();
+      debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
 
+      ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
+      MainWindow window;
       qint32 returnCode = app.exec();
       debugLog.addInfo(QObject::tr("Application exited with return code %1").arg(returnCode));
       return returnCode;
@@ -60,4 +64,21 @@ int main(int argc, char *argv[])
       displaySystemErrorDialog(kUnhandledException, QObject::tr("An unhandled exception occurred."));
    }
    return 1;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ensureAppDataDirExists()
+{
+   QString const path = globals::getAppDataDir();
+   qDebug() << path;
+   QDir dir(path);
+   if (dir.exists())
+      return;
+   QDir().mkpath(path);
+   if (!dir.exists())
+      throw xmilib::Exception(QObject::tr("The application data folder '%1' could not be created")
+         .arg(QDir::toNativeSeparators(path)));
 }

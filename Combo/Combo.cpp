@@ -13,9 +13,11 @@
 
 
 namespace {
-   QString const kKeyName = "name"; ///< The JSon property name for the name
-   QString const kKeyComboText = "comboText"; ///< The JSon property for the combo text
-   QString const kKeySubstitutionText = "substitutionText"; ///< The JSon property name for the substitution text
+   QString const kPropName = "name"; ///< The JSon property name for the name
+   QString const kPropComboText = "comboText"; ///< The JSon property for the combo text
+   QString const kPropSubstitutionText = "substitutionText"; ///< The JSon property name for the substitution text
+   QString const kPropLastModified = "lastModified"; ///< The JSon property name for the modification date/time
+   Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs; ///< The date/time export format used for JSon docs
 }
 
 
@@ -28,11 +30,12 @@ using namespace xmilib;
 /// \param[in] substitutionText The text that will replace the combo
 //**********************************************************************************************************************
 Combo::Combo(QString const& name, QString const& comboText, QString const& substitutionText)
-   : name_(name)
+   : uuid_(QUuid::createUuid())
+   , name_(name)
    , comboText_(comboText)
    , substitutionText_(substitutionText)
+   , lastModified_(QDateTime::currentDateTime())
 {
-
 }
 
 
@@ -41,9 +44,10 @@ Combo::Combo(QString const& name, QString const& comboText, QString const& subst
 /// \param[in] object The object to read from
 //**********************************************************************************************************************
 Combo::Combo(QJsonObject const& object)
-   : name_(object[kKeyName].toString())
-   , comboText_(object[kKeyComboText].toString())
-   , substitutionText_(object[kKeySubstitutionText].toString())
+   : name_(object[kPropName].toString())
+   , comboText_(object[kPropComboText].toString())
+   , substitutionText_(object[kPropSubstitutionText].toString())
+   , lastModified_(QDateTime::fromString(object[kPropLastModified].toString(), kJsonExportDateFormat))
 {      
 }
 
@@ -72,6 +76,7 @@ QString Combo::name() const
 void Combo::setName(QString const& name)
 {
    name_ = name;
+   this->touch();
 }
 
 
@@ -90,6 +95,7 @@ QString Combo::comboText() const
 void Combo::setComboText(QString const& comboText)
 {
    comboText_ = comboText;
+   this->touch();
 }
 
 
@@ -108,6 +114,7 @@ QString Combo::substitutionText() const
 void Combo::setSubstitutionText(QString const& substitutionText)
 {
    substitutionText_ = substitutionText;
+   this->touch();
 }
 
 
@@ -117,22 +124,22 @@ void Combo::setSubstitutionText(QString const& substitutionText)
 void Combo::performSubstitution()
 {
    // select the typed combo by pressing Shift + Left n times (n being the number of characters in the combo)
-   synthesizeKeystroke(VK_LSHIFT, true);
+   synthesizeKeyDown(VK_LSHIFT);
    for (qint32 i = 0; i < comboText_.size(); ++i)
    {
-      synthesizeKeystroke(VK_LEFT, true);
-      synthesizeKeystroke(VK_LEFT, false);
+      synthesizeKeyDown(VK_LEFT);
+      synthesizeKeyUp(VK_LEFT);
    }
-   synthesizeKeystroke(VK_LSHIFT, false);
+   synthesizeKeyUp(VK_LSHIFT);
 
    // put the substitution text in the clipboard
    qApp->clipboard()->setText(substitutionText_);
 
    // send a paste command (Ctrl+V)
-   synthesizeKeystroke(VK_LCONTROL, true);
-   synthesizeKeystroke('V', true);
-   synthesizeKeystroke('V', false);
-   synthesizeKeystroke(VK_LCONTROL, false);
+   synthesizeKeyDown(VK_LCONTROL);
+   synthesizeKeyDown('V');
+   synthesizeKeyUp('V');
+   synthesizeKeyUp(VK_LCONTROL);
 }
 
 
@@ -142,9 +149,20 @@ void Combo::performSubstitution()
 QJsonObject Combo::toJsonObject()
 {
    QJsonObject result;
-   result.insert(kKeyName, name_);
-   result.insert(kKeyComboText, comboText_);
-   result.insert(kKeySubstitutionText, substitutionText_);
+   result.insert(kPropName, name_);
+   result.insert(kPropComboText, comboText_);
+   result.insert(kPropSubstitutionText, substitutionText_);
+   result.insert(kPropLastModified, lastModified_.toString(kJsonExportDateFormat));
    return result;
 }
+
+
+//**********************************************************************************************************************
+/// This function is named after the UNIX touch command.
+//**********************************************************************************************************************
+void Combo::touch()
+{
+   lastModified_ = QDateTime::currentDateTime();
+}
+
 

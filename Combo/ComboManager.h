@@ -11,7 +11,7 @@
 #define BEEFTEXT__COMBO__MANAGER
 
 
-#include "Combo.h"
+#include "ComboList.h"
 
 
 //**********************************************************************************************************************
@@ -24,7 +24,7 @@ public: // static member functions
    static ComboManager& instance(); ///< Returns a reference to the only allowed instance of the class
 
 public: // member functions
-	~ComboManager() = default; ///< Default destructor
+	~ComboManager(); ///< Default destructor
 
 private: // member functions
    ComboManager(); ///< Default constructor
@@ -32,6 +32,7 @@ private: // member functions
 	ComboManager(ComboManager const&&) = delete; ///< Disabled move constructor
 	ComboManager& operator=(ComboManager const&) = delete; ///< Disabled assignment operator
 	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
+   bool saveComboListToFile(QString* outErrorMsg = nullptr); /// param[in] Save the combo list to the default location
 
 private: // slots
    void onComboBreakerTyped(); ///< Slot for the "Combo Breaker Typed" signal
@@ -40,7 +41,7 @@ private: // slots
 
 private: // data member
    QString currentText_; ///< The current string
-   VecSPCombo comboList_; ///< The list of combos
+   ComboList comboList_; ///< The list of combos
 };
 
 

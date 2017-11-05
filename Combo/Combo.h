@@ -40,11 +40,14 @@ private: // member functions
 	Combo(Combo&&) = delete; ///< Disabled move constructor
 	Combo& operator=(Combo const&) = delete; ///< Disabled assignment operator
 	Combo& operator=(Combo&&) = delete; ///< Disabled move assignment operator
+   void touch(); ///< set the modification date/time to now
 
-public: // data member
+private: // data member
+   QUuid uuid_; ///< The UUID of the combo
    QString name_; ///< The display name of the combo
    QString comboText_; ///< The combo text
    QString substitutionText_; ///< The substitution text that will replace the combo text when
+   QDateTime lastModified_; ///< The date/time of the last modification of the combo
 };
 
 
