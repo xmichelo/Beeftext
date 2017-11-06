@@ -1,5 +1,6 @@
 <RCC>
-    <qresource prefix="/MainWindow">
-        <file>Resources/BeeftextIcon.ico</file>
-    </qresource>
+  <qresource prefix="/MainWindow">
+    <file>Resources/BeeftextLogo.svg</file>
+    <file>Resources/BeeftextIcon.ico</file>
+  </qresource>
 </RCC>

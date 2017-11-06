@@ -73,7 +73,6 @@ int main(int argc, char *argv[])
 void ensureAppDataDirExists()
 {
    QString const path = globals::getAppDataDir();
-   qDebug() << path;
    QDir dir(path);
    if (dir.exists())
       return;

@@ -24,6 +24,7 @@ MainWindow::MainWindow()
    , debugLogWindow_(std::make_unique<DebugLogWindow>(&globals::debugLog()))
 {
     ui_.setupUi(this);
+    ui_.tabWidget->setCurrentIndex(0);
     this->setupActions();
     this->setupSystemTrayIcon();
 }
