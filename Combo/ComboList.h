@@ -17,15 +17,17 @@
 //**********************************************************************************************************************
 /// \brief A class for combo lists
 //**********************************************************************************************************************
-class ComboList
+class ComboList: public QAbstractTableModel
 {
+   Q_OBJECT
+
    typedef VecSPCombo::iterator iterator; ///< Type definition for iterator
    typedef VecSPCombo::const_iterator const_iterator; ///< Type definition for const_iterator
    typedef VecSPCombo::reverse_iterator reverse_iterator; ///< Type definition for iterator
    typedef VecSPCombo::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
 
 public: // member functions
-	ComboList() = default; ///< Default constructor
+	ComboList(QObject* parent = nullptr); ///< Default constructor
 	~ComboList() = default; ///< Default destructor
 	qint32 size() const; ///< Return the size of the combo list
    bool isEmpty() const;  ///< Test if the combo list is empty
@@ -43,6 +45,14 @@ public: // member functions
    const_reverse_iterator rend() const; ///< Returns a constant reverse iterator to the end of the list
    QJsonDocument toJsonDocument() const; ///< Export the Combo list to a JSon document
    bool readFromJsonDocument(QJsonDocument const& doc, QString* outErrorMsg = nullptr); ///< Read a combo list from a JSON document
+
+   /// \name Table model member functions
+   ///\{
+   int rowCount(QModelIndex const& = QModelIndex()) const override; ///< Retrieve the number of row in the table model
+   int columnCount(QModelIndex const & = QModelIndex()) const override; ///< Retrieve the number of row in the table model
+   QVariant data(QModelIndex const& index = QModelIndex(), int role = Qt::DisplayRole) const override; ///< Retrieve the data from the table model
+   QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override; ///< Retrieve header data from the table model
+   ///\}
 
 private: // member functions
 	ComboList(ComboList const&) = delete; ///< Disabled copy constructor

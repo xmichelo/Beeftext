@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
+#include "Combo/ComboManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 
@@ -25,6 +26,13 @@ MainWindow::MainWindow()
 {
     ui_.setupUi(this);
     ui_.tabWidget->setCurrentIndex(0);
+    
+    ui_.tableComboList->setModel(&ComboManager::instance().getComboListRef());
+    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
+    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
+    ui_.tableComboList->setStyleSheet("QHeaderView:section { background: rgb(240, 240, 240); border: none; "
+       "padding: 5px;}");
+
     this->setupActions();
     this->setupSystemTrayIcon();
 }

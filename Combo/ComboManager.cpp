@@ -37,6 +37,24 @@ ComboManager::~ComboManager()
 
 
 //**********************************************************************************************************************
+/// \return A mutable reference to the combo list
+//**********************************************************************************************************************
+ComboList& ComboManager::getComboListRef()
+{
+   return comboList_;
+}
+
+
+//**********************************************************************************************************************
+/// \return A constant reference to the combo list
+//**********************************************************************************************************************
+ComboList const& ComboManager::getComboListRef() const
+{
+   return comboList_;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 ComboManager::ComboManager()
@@ -61,7 +79,7 @@ ComboManager::ComboManager()
 /// \param[out] outErrorMsg If not null the function returns false, this variable will contain a description 
 /// of the error.
 //**********************************************************************************************************************
-bool ComboManager::loadComboListFromFile(QString* outErrMsg)
+bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 {
    comboList_.clear();
    QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(kComboListFileName));
@@ -81,8 +99,8 @@ bool ComboManager::loadComboListFromFile(QString* outErrMsg)
    }
    catch (xmilib::Exception const& e)
    {
-   	if (outErrMsg)
-         *outErrMsg = e.qwhat();
+   	if (outErrorMsg)
+         *outErrorMsg = e.qwhat();
       return false;
    }
 }

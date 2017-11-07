@@ -25,6 +25,8 @@ public: // static member functions
 
 public: // member functions
 	~ComboManager(); ///< Default destructor
+   ComboList& getComboListRef(); ///< Return a mutable reference to the combo list
+   ComboList const& getComboListRef() const; ///< Return a constant reference to the combo list
 
 private: // member functions
    ComboManager(); ///< Default constructor

@@ -21,6 +21,16 @@ QString const kKeyCombos = "combos"; ///< The JSon key for combos
 
 
 //**********************************************************************************************************************
+/// \param[in] parent The parent object of the model
+//**********************************************************************************************************************
+ComboList::ComboList(QObject* parent)
+   : QAbstractTableModel(parent)
+{
+
+}
+
+
+//**********************************************************************************************************************
 /// \return The number of combos in the combo list
 //**********************************************************************************************************************
 qint32 ComboList::size() const
@@ -43,7 +53,9 @@ bool ComboList::isEmpty() const
 //**********************************************************************************************************************
 void ComboList::clear()
 {
+   this->beginResetModel();
    combos_.clear();
+   this->endResetModel();
 }
 
 
@@ -54,7 +66,9 @@ void ComboList::append(SPCombo const& combo)
 {
    /// \todo Check if the combo is already in the list (UUID check)
    /// \todo Check if the combo text is not already used
+   this->beginInsertRows(QModelIndex(), combos_.size(), combos_.size());
    combos_.push_back(combo);
+   this->endInsertRows();
 }
 
 
@@ -214,6 +228,83 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
          *outErrorMsg = QObject::tr("An error occurred while parsing the combo list file: %1").arg(e.qwhat());
       return false;
    }
+}
+
+
+//**********************************************************************************************************************
+/// \return The number of rows in the table model
+//**********************************************************************************************************************
+int ComboList::rowCount(QModelIndex const&) const
+{
+   return combos_.size();
+}
+
+
+//**********************************************************************************************************************
+/// \return The number of columns in the table model
+//**********************************************************************************************************************
+int ComboList::columnCount(QModelIndex const&) const
+{
+   return 3;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] index The model index of the of the data to retrieve
+/// \param[in] role The role of the data to retrieve
+/// \return The retrieved data
+//**********************************************************************************************************************
+QVariant ComboList::data(QModelIndex const& index, int role) const
+{
+   qint32 const row = index.row();
+   if ((row < 0) || (row >= combos_.size()))
+      return QVariant();
+
+   SPCombo combo = combos_[row];
+
+   if (Qt::DisplayRole == role)   
+      switch (index.column())
+      {
+      case 0: return combo->name();
+      case 1: return combo->comboText();
+      case 2: return combo->substitutionText().trimmed().simplified();
+      default: return QVariant();
+      }
+
+   return QVariant();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] section The index of the section
+/// \param[in] orientation the orientation of the header
+/// \param[in] role The role of the header data
+/// \return The retrieved header data
+//**********************************************************************************************************************
+QVariant ComboList::headerData(int section, Qt::Orientation orientation, int role) const
+{
+   if (Qt::Horizontal != orientation)
+      return QVariant();
+
+   if (Qt::DisplayRole == role)
+      switch (section)
+      {
+         case 0: return tr("Name");
+         case 1: return tr("Combo");
+         case 2: return tr("Substitution text");
+         default: return QVariant();
+      }
+
+   if (Qt::BackgroundRole == role)
+      return QBrush(Qt::red, Qt::SolidPattern);
+
+   if (Qt::FontRole == role)
+   {
+      QFont font;
+      font.setBold(true);
+      return font;
+   }
+   return QVariant();
 }
 
 
