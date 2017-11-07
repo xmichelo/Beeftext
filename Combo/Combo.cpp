@@ -13,10 +13,11 @@
 
 
 namespace {
-   QString const kPropName = "name"; ///< The JSon property name for the name
-   QString const kPropComboText = "comboText"; ///< The JSon property for the combo text
-   QString const kPropSubstitutionText = "substitutionText"; ///< The JSon property name for the substitution text
-   QString const kPropLastModified = "lastModified"; ///< The JSon property name for the modification date/time
+   QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
+   QString const kPropName = "name"; ///< The JSON property name for the name
+   QString const kPropComboText = "comboText"; ///< The JSON property for the combo text
+   QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text
+   QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time
    Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs; ///< The date/time export format used for JSon docs
 }
 
@@ -44,7 +45,8 @@ Combo::Combo(QString const& name, QString const& comboText, QString const& subst
 /// \param[in] object The object to read from
 //**********************************************************************************************************************
 Combo::Combo(QJsonObject const& object)
-   : name_(object[kPropName].toString())
+   : uuid_(QUuid(object[kPropUuid].toString()))
+   , name_(object[kPropName].toString())
    , comboText_(object[kPropComboText].toString())
    , substitutionText_(object[kPropSubstitutionText].toString())
    , lastModified_(QDateTime::fromString(object[kPropLastModified].toString(), kJsonExportDateFormat))
@@ -57,7 +59,7 @@ Combo::Combo(QJsonObject const& object)
 //**********************************************************************************************************************
 bool Combo::isValid() const
 {
-   return (!name_.isEmpty()) && (!comboText_.isEmpty()) && (!substitutionText_.isEmpty());
+   return (!uuid_.isNull()) && (!name_.isEmpty()) && (!comboText_.isEmpty()) && (!substitutionText_.isEmpty());
 }
 
 
@@ -149,6 +151,7 @@ void Combo::performSubstitution()
 QJsonObject Combo::toJsonObject()
 {
    QJsonObject result;
+   result.insert(kPropUuid, uuid_.toString());
    result.insert(kPropName, name_);
    result.insert(kPropComboText, comboText_);
    result.insert(kPropSubstitutionText, substitutionText_);

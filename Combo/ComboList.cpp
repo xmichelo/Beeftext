@@ -211,7 +211,7 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
    catch (xmilib::Exception const& e)
    {
       if (outErrorMsg)
-      *outErrorMsg = QObject::tr("An error occurred while parsing the combo list file: %1").arg(e.qwhat());
+         *outErrorMsg = QObject::tr("An error occurred while parsing the combo list file: %1").arg(e.qwhat());
       return false;
    }
 }

@@ -47,25 +47,48 @@ ComboManager::ComboManager()
    connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped);
    connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped);
 
-   QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(kComboListFileName));
-   if (!file.open(QIODevice::ReadOnly))
-      globals::debugLog().addWarning("No combo list file could be found.");
-   else
-   {
-      QString errMsg;
-      if (!comboList_.readFromJsonDocument(QJsonDocument::fromJson(file.readAll()), &errMsg))
-         globals::debugLog().addError("The combo list file is invalid.");
-   }
-   
-   /// \todo remove this debug code
    QString errMsg;
+   if (!this->loadComboListFromFile(&errMsg))
+      QMessageBox::critical(nullptr, tr("Error"), errMsg);
+
+   /// \todo remove this debug code
    if (!this->saveComboListToFile(&errMsg))
       QMessageBox::critical(nullptr, tr("Error"), errMsg);
 }
 
 
 //**********************************************************************************************************************
-/// \param[out] outErrorMessage If not null the function returns false, this variable will contain a description 
+/// \param[out] outErrorMsg If not null the function returns false, this variable will contain a description 
+/// of the error.
+//**********************************************************************************************************************
+bool ComboManager::loadComboListFromFile(QString* outErrMsg)
+{
+   comboList_.clear();
+   QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(kComboListFileName));
+   if (!file.exists())
+   {
+      globals::debugLog().addWarning(tr("No combo list file could be found."));
+      return true;
+   }
+   try
+   {
+      if (!file.open(QIODevice::ReadOnly))
+         throw xmilib::Exception(tr("A combo file exists but it cannot be opened."));
+      QString errMsg;
+      if (!comboList_.readFromJsonDocument(QJsonDocument::fromJson(file.readAll()), &errMsg))
+         throw xmilib::Exception(tr("The content of the combo list file is invalid:\n%1.").arg(errMsg));
+      return true;
+   }
+   catch (xmilib::Exception const& e)
+   {
+   	if (outErrMsg)
+         *outErrMsg = e.qwhat();
+      return false;
+   }
+}
+
+//**********************************************************************************************************************
+/// \param[out] outErrorMsg If not null the function returns false, this variable will contain a description 
 /// of the error.
 /// \return true if and only if the operation completed successfully
 //**********************************************************************************************************************
@@ -75,7 +98,7 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg)
    {
       QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(kComboListFileName));
       if (!file.open(QIODevice::WriteOnly))
-         throw xmilib::Exception("The combo list could not be saved.");
+         throw xmilib::Exception(tr("The combo list could not be saved."));
       file.write(comboList_.toJsonDocument().toJson());
       return true;
    }
@@ -85,6 +108,18 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg)
          *outErrorMsg = e.qwhat();
       return false;
    }
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboManager::tempAddTestCombos()
+{
+   comboList_.append(std::make_shared<Combo>("Personal Email", "xxem", "johndoe@gmail.com"));
+   comboList_.append(std::make_shared<Combo>("Personal Signature","xxsig", 
+      "Regards.\n\n-- \nJohn Doe\n\"johndoe@gmail.com\"\n"));
+   comboList_.append(std::make_shared<Combo>("Personal Name" ,"xxname", "John Doe"));
 }
 
 
@@ -103,7 +138,7 @@ void ComboManager::onComboBreakerTyped()
 void ComboManager::onCharacterTyped(QChar c)
 {
    currentText_.append(c);
-   globals::debugLog().addInfo(QString("Character %1 was type. Combo text is now %2").arg(c).arg(currentText_));
+   globals::debugLog().addInfo(tr("Character %1 was type. Combo text is now %2").arg(c).arg(currentText_));
    VecSPCombo::const_iterator it = std::find_if(comboList_.begin(), comboList_.end(),
       [&](SPCombo const combo) -> bool { return combo->comboText() == currentText_; });
    if (comboList_.end() == it)

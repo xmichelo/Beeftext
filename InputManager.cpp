@@ -97,9 +97,14 @@ InputManager::InputManager()
    keyboardHook_ = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProcedure, moduleHandle, 0);
    if (!keyboardHook_)
       throw xmilib::Exception("Could not register a keyboard hook.");
+
+#ifdef NDEBUG
+   // to avoid being locked with all input unresponsive when in debug (because one forgot that breakpoints should be
+   // avoided, for instance), we only enable the low level mouse hook in release configuration
    mouseHook_ = SetWindowsHookEx(WH_MOUSE_LL, mouseProcedure, moduleHandle, 0);
    if (!mouseHook_)
       throw xmilib::Exception("Could not register a mouse hook.");
+#endif
 }
 
 

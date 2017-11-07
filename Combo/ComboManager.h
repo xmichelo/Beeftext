@@ -32,7 +32,9 @@ private: // member functions
 	ComboManager(ComboManager const&&) = delete; ///< Disabled move constructor
 	ComboManager& operator=(ComboManager const&) = delete; ///< Disabled assignment operator
 	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
-   bool saveComboListToFile(QString* outErrorMsg = nullptr); /// param[in] Save the combo list to the default location
+   bool loadComboListFromFile(QString* outErrorMsg = nullptr); ///< Load the combo list from the default file
+   bool saveComboListToFile(QString* outErrorMsg = nullptr); /// Save the combo list to the default location
+   void tempAddTestCombos(); ///< Add a few test combos
 
 private: // slots
    void onComboBreakerTyped(); ///< Slot for the "Combo Breaker Typed" signal
