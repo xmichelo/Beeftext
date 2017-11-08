@@ -39,6 +39,9 @@ private slots:
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
    void onActionExit(); ///< Slot for the 'Exit' action
    void onActionShowDebugLog(); ///< Slot for the 'Show Debug Log' action
+   void onActionAddCombo(); ///< Slot for the 'Add Combo' action
+   void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
+   void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window

@@ -16,6 +16,8 @@ namespace constants {
 
 extern QString const kApplicationName; ///< The application name
 extern QString const kOrganizationName; ///< The organization name
+extern Qt::WindowFlags const kDefaultDialogFlags; ///< The default dialog class
+
 
 } // namespace constants
 

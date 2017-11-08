@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 #include "Combo/ComboManager.h"
+#include "Combo/ComboDialog.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 
@@ -122,6 +123,36 @@ void MainWindow::onActionShowDebugLog()
 {
    Q_ASSERT(debugLogWindow_);
    debugLogWindow_->show();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionAddCombo()
+{
+   ComboDialog dlg;
+   if (QDialog::Accepted != dlg.exec())
+      return;
+   
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionDeleteCombo()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionEditCombo()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
 }
 
 

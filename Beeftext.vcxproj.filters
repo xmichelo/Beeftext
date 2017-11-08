@@ -73,6 +73,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboList.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboDialog.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ComboDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ComboDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -83,6 +92,9 @@
     <ClInclude Include="BeeftextGlobals.h" />
     <ClInclude Include="Combo\Combo.h">
       <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_ComboDialog.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +108,12 @@
       <Filter>Combo</Filter>
     </CustomBuild>
     <CustomBuild Include="Combo\ComboList.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboDialog.ui">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboDialog.h">
       <Filter>Combo</Filter>
     </CustomBuild>
   </ItemGroup>
