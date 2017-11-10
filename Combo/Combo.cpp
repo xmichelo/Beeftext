@@ -17,6 +17,7 @@ namespace {
    QString const kPropName = "name"; ///< The JSON property name for the name
    QString const kPropComboText = "comboText"; ///< The JSON property for the combo text
    QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text
+   QString const kPropCreated = "created"; ///< The JSON property name for the created date/time
    QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time
    Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs; ///< The date/time export format used for JSon docs
 }
@@ -35,8 +36,8 @@ Combo::Combo(QString const& name, QString const& comboText, QString const& subst
    , name_(name)
    , comboText_(comboText)
    , substitutionText_(substitutionText)
-   , lastModified_(QDateTime::currentDateTime())
 {
+   lastModified_ = created_ = QDateTime::currentDateTime();
 }
 
 
@@ -49,6 +50,7 @@ Combo::Combo(QJsonObject const& object)
    , name_(object[kPropName].toString())
    , comboText_(object[kPropComboText].toString())
    , substitutionText_(object[kPropSubstitutionText].toString())
+   , created_(QDateTime::fromString(object[kPropCreated].toString(), kJsonExportDateFormat))
    , lastModified_(QDateTime::fromString(object[kPropLastModified].toString(), kJsonExportDateFormat))
 {      
 }
@@ -59,7 +61,8 @@ Combo::Combo(QJsonObject const& object)
 //**********************************************************************************************************************
 bool Combo::isValid() const
 {
-   return (!uuid_.isNull()) && (!name_.isEmpty()) && (!comboText_.isEmpty()) && (!substitutionText_.isEmpty());
+   return (!created_.isNull()) && (!lastModified_.isNull()) && (!uuid_.isNull()) && (!name_.isEmpty()) 
+      && (!comboText_.isEmpty()) && (!substitutionText_.isEmpty());
 }
 
 
@@ -77,8 +80,11 @@ QString Combo::name() const
 //**********************************************************************************************************************
 void Combo::setName(QString const& name)
 {
-   name_ = name;
-   this->touch();
+   if (name_ != name)
+   {
+      name_ = name;
+      this->touch();
+   }
 }
 
 
@@ -96,8 +102,11 @@ QString Combo::comboText() const
 //**********************************************************************************************************************
 void Combo::setComboText(QString const& comboText)
 {
-   comboText_ = comboText;
-   this->touch();
+   if (comboText_ != comboText)
+   {
+      comboText_ = comboText;
+      this->touch();
+   }
 }
 
 
@@ -115,8 +124,11 @@ QString Combo::substitutionText() const
 //**********************************************************************************************************************
 void Combo::setSubstitutionText(QString const& substitutionText)
 {
-   substitutionText_ = substitutionText;
-   this->touch();
+   if (substitutionText_ != substitutionText)
+   {
+      substitutionText_ = substitutionText;
+      this->touch();
+   }
 }
 
 
@@ -155,6 +167,7 @@ QJsonObject Combo::toJsonObject()
    result.insert(kPropName, name_);
    result.insert(kPropComboText, comboText_);
    result.insert(kPropSubstitutionText, substitutionText_);
+   result.insert(kPropCreated, created_.toString(kJsonExportDateFormat));
    result.insert(kPropLastModified, lastModified_.toString(kJsonExportDateFormat));
    return result;
 }

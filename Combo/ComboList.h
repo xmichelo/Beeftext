@@ -33,6 +33,7 @@ public: // member functions
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list
    void append(SPCombo const& combo); ///< Append a combo at the end of the list
+   void erase(qint32 index); ///< Erase a combo from the list
    SPCombo& operator[](qint32 index); ///< Get a mutable reference to the combo at a given position in the list
    SPCombo const& operator[](qint32 index) const; ///< Get a mutable reference to the combo at a given position in the list
    iterator begin(); ///< Returns an iterator to the beginning of the list

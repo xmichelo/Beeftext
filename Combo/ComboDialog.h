@@ -2,7 +2,9 @@
 /// \author Xavier Michelon
 ///
 /// \brief Declaration of dialog for creating/editing a combo
-
+///  
+/// Copyright (c) Xavier Michelon. All rights reserved.  
+/// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 #ifndef BEEFTEXT__COMBO__DIALOG__H
 #define BEEFTEXT__COMBO__DIALOG__H

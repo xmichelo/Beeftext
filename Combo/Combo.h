@@ -47,6 +47,7 @@ private: // data member
    QString name_; ///< The display name of the combo
    QString comboText_; ///< The combo text
    QString substitutionText_; ///< The substitution text that will replace the combo text when
+   QDateTime created_; ///< The date/time of creation of the combo
    QDateTime lastModified_; ///< The date/time of the last modification of the combo
 };
 

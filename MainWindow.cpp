@@ -205,7 +205,23 @@ void MainWindow::onActionAddCombo()
 //**********************************************************************************************************************
 void MainWindow::onActionDeleteCombo()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
+   qint32 const count = this->getSelectedComboCount();
+   if (count < 1)
+      return;
+   QString question = count > 1 ? tr("Are you sure you want to delete the selected combos?") 
+      : tr("Are you sure you want to delete the selected combo?");
+   if (QMessageBox::Yes != QMessageBox::question(nullptr, tr("Delete Combo?"), question, 
+      QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
+      return;
+
+   ComboManager& comboManager = ComboManager::instance();
+   QList<qint32> indexes = this->getSelectedComboIndexes();
+   std::sort(indexes.begin(), indexes.end(), [](qint32 first, qint32 second) -> bool { return first > second; });
+   for (qint32 index: indexes)
+      comboManager.getComboListRef().erase(index);
+   QString errorMessage;
+   if (!comboManager.saveComboListToFile(&errorMessage))
+      QMessageBox::critical(this, tr("Error"), errorMessage);
 }
 
 
