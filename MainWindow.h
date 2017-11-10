@@ -31,10 +31,14 @@ private: // member functions
    MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
+   void setupComboTable(); ///< Setup the combo table
    void setupActions(); ///< Setup the Qt actions for the main window
    void setupSystemTrayIcon(); ///< Setup the system tray icon
+   qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
+   QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
 
 private slots: 
+   void updateGui(); ///< Slot for the changing of the selected combo
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
    void onActionExit(); ///< Slot for the 'Exit' action
@@ -47,6 +51,7 @@ private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window
    QSystemTrayIcon systemTrayIcon_; ///< The system tray icon
    std::unique_ptr<xmilib::DebugLogWindow> debugLogWindow_; ///< The debug log window
+   QSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
 };
 
 

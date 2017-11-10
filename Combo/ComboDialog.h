@@ -9,6 +9,7 @@
 
 
 #include "ui_ComboDialog.h"
+#include "Combo/Combo.h"
 
 
 //**********************************************************************************************************************
@@ -19,17 +20,22 @@ class ComboDialog: public QDialog
    Q_OBJECT
 
 public: // member functions
-	ComboDialog(QWidget* parent = nullptr); ///< Default constructor
+	ComboDialog(SPCombo combo, QWidget* parent = nullptr); ///< Default constructor
 	~ComboDialog() = default; ///< Default destructor
-	
+	SPCombo combo() const; ///< Get the combo
+
 private: // member functions
 	ComboDialog(ComboDialog const&) = delete; ///< Disabled copy constructor
 	ComboDialog(ComboDialog&&) = delete; ///< Disabled move constructor
 	ComboDialog& operator=(ComboDialog const&) = delete; ///< Disabled assignment operator
 	ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
 
+private slots:
+   void onActionOk(); ///< Slot for the 'OK' action
+
 private: // data members
    Ui::ComboDialog ui_; ///< The GUI for the dialog
+   SPCombo combo_; ///< The combo
 };
 
 

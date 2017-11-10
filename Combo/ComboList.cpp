@@ -232,6 +232,16 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
 
 
 //**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboList::markComboAsEdited(qint32 index)
+{
+   Q_ASSERT((index >= 0) && (index < combos_.size()));
+   emit dataChanged(this->index(0, 0), this->index(0, this->rowCount() - 1), QVector<int>() << Qt::DisplayRole);
+}
+
+
+//**********************************************************************************************************************
 /// \return The number of rows in the table model
 //**********************************************************************************************************************
 int ComboList::rowCount(QModelIndex const&) const

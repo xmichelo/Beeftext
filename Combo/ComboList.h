@@ -45,7 +45,7 @@ public: // member functions
    const_reverse_iterator rend() const; ///< Returns a constant reverse iterator to the end of the list
    QJsonDocument toJsonDocument() const; ///< Export the Combo list to a JSon document
    bool readFromJsonDocument(QJsonDocument const& doc, QString* outErrorMsg = nullptr); ///< Read a combo list from a JSON document
-
+   void markComboAsEdited(qint32 index); ///< Mark a combo as edited
    /// \name Table model member functions
    ///\{
    int rowCount(QModelIndex const& = QModelIndex()) const override; ///< Retrieve the number of row in the table model

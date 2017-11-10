@@ -28,14 +28,29 @@ MainWindow::MainWindow()
     ui_.setupUi(this);
     ui_.tabWidget->setCurrentIndex(0);
     
-    ui_.tableComboList->setModel(&ComboManager::instance().getComboListRef());
-    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
-    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
-    ui_.tableComboList->setStyleSheet("QHeaderView:section { background: rgb(240, 240, 240); border: none; "
-       "padding: 5px;}");
-
+    this->setupComboTable(); 
     this->setupActions();
     this->setupSystemTrayIcon();
+    this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::setupComboTable()
+{
+   proxyModel_.setSourceModel(&ComboManager::instance().getComboListRef());
+   proxyModel_.setFilterCaseSensitivity(Qt::CaseInsensitive);
+   ui_.tableComboList->setModel(&proxyModel_);
+   proxyModel_.sort(0, Qt::AscendingOrder);
+   connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::updateGui);
+   connect(ui_.tableComboList, &QTableView::doubleClicked, this, &MainWindow::onActionEditCombo);
+
+   QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
+   verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
+   ui_.tableComboList->setStyleSheet("QHeaderView:section { background: rgb(240, 240, 240); border: none; "
+      "padding: 5px;}");
 }
 
 
@@ -75,6 +90,47 @@ void MainWindow::setupSystemTrayIcon()
    menu->setActiveAction(ui_.actionShowMainWindow);
 
    systemTrayIcon_.setContextMenu(menu);
+}
+
+
+//**********************************************************************************************************************
+/// \return The number of selected combos
+//**********************************************************************************************************************
+qint32 MainWindow::getSelectedComboCount() const
+{
+   return ui_.tableComboList->selectionModel()->selectedRows().size();
+}
+
+
+//**********************************************************************************************************************
+/// The returned indexes are based on the internal order of the list, not the display order in the table (that can be
+/// modified by sorting by columns).
+///
+/// \return The list of indexes of the selected combos 
+//**********************************************************************************************************************
+QList<qint32> MainWindow::getSelectedComboIndexes() const
+{
+   QList<qint32> result;
+   ComboList& comboList = ComboManager::instance().getComboListRef();
+   QModelIndexList selectedRows = ui_.tableComboList->selectionModel()->selectedRows();
+   for (QModelIndex const& modelIndex : selectedRows)
+   {
+      qint32 const index = proxyModel_.mapToSource(modelIndex).row();
+      if ((index >= 0) && (index < comboList.size()))
+         result.push_back(index);
+   }
+   return result;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void MainWindow::updateGui()
+{
+   qint32 const selectedCount = this->getSelectedComboCount();
+   ui_.buttonEditCombo->setEnabled(1 == selectedCount);
+   ui_.buttonDeleteCombo->setEnabled(selectedCount > 0);
 }
 
 
@@ -131,10 +187,16 @@ void MainWindow::onActionShowDebugLog()
 //**********************************************************************************************************************
 void MainWindow::onActionAddCombo()
 {
-   ComboDialog dlg;
+   SPCombo combo = std::make_shared<Combo>();
+   ComboDialog dlg(combo);
    if (QDialog::Accepted != dlg.exec())
       return;
-   
+   ComboManager& comboManager = ComboManager::instance();
+   ComboList& comboList = ComboManager::instance().getComboListRef();
+   comboList.append(combo);
+   QString errorMessage;
+   if (!comboManager.saveComboListToFile(&errorMessage))
+      QMessageBox::critical(this, tr("Error"), errorMessage);
 }
 
 
@@ -152,7 +214,23 @@ void MainWindow::onActionDeleteCombo()
 //**********************************************************************************************************************
 void MainWindow::onActionEditCombo()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
+   QList<qint32> const selectedIndex = this->getSelectedComboIndexes();
+   if (1 != selectedIndex.size())
+      return;
+
+   ComboManager& comboManager = ComboManager::instance();
+   ComboList& comboList = comboManager.getComboListRef();
+   qint32 index = selectedIndex[0];
+   Q_ASSERT((index >= 0) && (index < comboList.size()));
+   SPCombo combo = comboList[index];
+   ComboDialog dlg(combo);
+   if (QDialog::Accepted != dlg.exec())
+      return;
+   comboList.markComboAsEdited(index);
+   QString errorMessage;
+   if (!comboManager.saveComboListToFile(&errorMessage))
+      QMessageBox::critical(this, tr("Error"), errorMessage);
 }
+
 
 
