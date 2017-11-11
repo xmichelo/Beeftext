@@ -12,7 +12,6 @@
 
 
 #include "ui_MainWindow.h"
-#include <XMiLib/DebugLog/DebugLogWindow.h>
 #include <memory>
 
 
@@ -39,12 +38,10 @@ private slots:
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
    void onActionExit(); ///< Slot for the 'Exit' action
-   void onActionShowDebugLog(); ///< Slot for the 'Show Debug Log' action
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window
    QSystemTrayIcon systemTrayIcon_; ///< The system tray icon
-   std::unique_ptr<xmilib::DebugLogWindow> debugLogWindow_; ///< The debug log window
 };
 
 

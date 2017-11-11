@@ -18,6 +18,7 @@
 
 namespace {
    QString const kSharedMemoryKey = "Beeftext";
+   QString const kLogFileName = "Log.txt";
 }
 
 using namespace xmilib;
@@ -36,7 +37,7 @@ int main(int argc, char *argv[])
 {
    QString const kUnhandledException = QObject::tr("Unhandled Exception");
    DebugLog& debugLog = globals::debugLog();
-   try
+      try
    {
       QApplication app(argc, argv);
 
@@ -54,6 +55,8 @@ int main(int argc, char *argv[])
       app.setApplicationName(constants::kApplicationName);
       app.setApplicationDisplayName(constants::kApplicationName);
       ensureAppDataDirExists();
+      debugLog.enableLoggingToFile(QDir(globals::getAppDataDir()).absoluteFilePath(kLogFileName));
+      debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
 
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated

@@ -23,7 +23,6 @@ using namespace xmilib;
 //**********************************************************************************************************************
 MainWindow::MainWindow()
    : QMainWindow()
-   , debugLogWindow_(std::make_unique<DebugLogWindow>(&globals::debugLog()))
 {
     ui_.setupUi(this);
     ui_.tabWidget->setCurrentIndex(0);
@@ -73,7 +72,6 @@ void MainWindow::setupSystemTrayIcon()
 
    QMenu* menu = new QMenu(this);
    menu->addAction(ui_.actionShowMainWindow);
-   menu->addAction(ui_.actionShowLog);
    menu->addSeparator();
    menu->addAction(ui_.actionExit);
    menu->setActiveAction(ui_.actionShowMainWindow);
@@ -117,14 +115,4 @@ void MainWindow::onActionShowMainWindow()
 void MainWindow::onActionExit()
 {
    qApp->quit();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void MainWindow::onActionShowDebugLog()
-{
-   Q_ASSERT(debugLogWindow_);
-   debugLogWindow_->show();
 }
