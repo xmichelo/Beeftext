@@ -292,6 +292,17 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       default: return QVariant();
       }
 
+   if (Qt::ToolTipRole == role)
+   {
+      switch (index.column())
+      {
+      case 0: return combo->name();
+      case 1: return combo->comboText();
+      case 2: return combo->substitutionText();
+      default: return QVariant();
+      }
+   }
+
    return QVariant();
 }
 
@@ -325,6 +336,7 @@ QVariant ComboList::headerData(int section, Qt::Orientation orientation, int rol
       font.setBold(true);
       return font;
    }
+
    return QVariant();
 }
 

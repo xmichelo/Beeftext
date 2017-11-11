@@ -82,6 +82,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboTableFrame.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ComboTableFrame.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ComboTableFrame.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -94,6 +103,9 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_ComboDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_ComboTableFrame.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -114,6 +126,12 @@
       <Filter>Combo</Filter>
     </CustomBuild>
     <CustomBuild Include="Combo\ComboDialog.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboTableFrame.ui">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboTableFrame.h">
       <Filter>Combo</Filter>
     </CustomBuild>
   </ItemGroup>
