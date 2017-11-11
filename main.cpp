@@ -16,6 +16,10 @@
 #include <XMiLib/Exception.h>
 
 
+namespace {
+   QString const kSharedMemoryKey = "Beeftext";
+}
+
 using namespace xmilib;
 
 
@@ -35,6 +39,16 @@ int main(int argc, char *argv[])
    try
    {
       QApplication app(argc, argv);
+
+      // check for an existing instance of the application
+      QSharedMemory sharedMem(kSharedMemoryKey);
+      if (!sharedMem.create(1))
+      {
+         QMessageBox::information(nullptr, QObject::tr("Already running"), 
+            QObject::tr("Another instance of the application is already running."));
+         return 1;
+      }
+
       app.setQuitOnLastWindowClosed(false);
       app.setOrganizationName(constants::kOrganizationName);
       app.setApplicationName(constants::kApplicationName);
