@@ -168,11 +168,11 @@
   </action>
  </widget>
  <tabstops>
+  <tabstop>editSearch</tabstop>
   <tabstop>tableComboList</tabstop>
   <tabstop>buttonAddCombo</tabstop>
   <tabstop>buttonDeleteCombo</tabstop>
   <tabstop>buttonEditCombo</tabstop>
-  <tabstop>editSearch</tabstop>
  </tabstops>
  <resources/>
  <connections>

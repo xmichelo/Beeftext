@@ -24,7 +24,7 @@ public: // member functions
    ~ComboSortFilterProxyModel() = default; ///< Default destructor
 
 protected: // member functions
-   bool filterAcceptsRow(int sourceRow, QModelIndex const& sourceParent) const override; ///< Check if a row should be sorted
+   bool filterAcceptsRow(int sourceRow, QModelIndex const&) const override; ///< Check if a row should be sorted
 
 private: // member functions
    ComboSortFilterProxyModel(ComboSortFilterProxyModel const&) = delete; ///< Disabled copy constructor

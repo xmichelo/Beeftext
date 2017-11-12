@@ -37,5 +37,3 @@ bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex cons
    }
    return false;
 }
-
-
