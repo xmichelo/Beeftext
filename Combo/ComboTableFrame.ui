@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>496</width>
-    <height>483</height>
+    <width>494</width>
+    <height>495</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,6 +20,52 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="editSearch">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+   border-radius: 4px;
+   border: 1px solid #ccc; 
+   padding: 2px;
+}</string>
+       </property>
+       <property name="placeholderText">
+        <string>Search (Ctrl+F)</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item>
     <widget class="QTableView" name="tableComboList">
      <property name="editTriggers">
@@ -121,6 +167,13 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>tableComboList</tabstop>
+  <tabstop>buttonAddCombo</tabstop>
+  <tabstop>buttonDeleteCombo</tabstop>
+  <tabstop>buttonEditCombo</tabstop>
+  <tabstop>editSearch</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -219,10 +272,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>editSearch</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>ComboTableFrame</receiver>
+   <slot>onSearchFilterChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>382</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionAddCombo()</slot>
   <slot>onActionDeleteCombo()</slot>
   <slot>onActionEditCombo()</slot>
+  <slot>onSearchFilterChanged(QString)</slot>
  </slots>
 </ui>

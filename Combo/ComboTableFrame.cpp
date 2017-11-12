@@ -22,6 +22,10 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
    ui_.setupUi(this);
    this->setupTable();
    this->updateGui();
+   connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated,
+      this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->selectAll(); });
+   connect(new QShortcut(QKeySequence("Escape"), this), &QShortcut::activated,
+      this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->clear(); });
 }
 
 
@@ -31,7 +35,6 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
 void ComboTableFrame::setupTable()
 {
    proxyModel_.setSourceModel(&ComboManager::instance().getComboListRef());
-   proxyModel_.setFilterCaseSensitivity(Qt::CaseInsensitive);
    ui_.tableComboList->setModel(&proxyModel_);
    proxyModel_.sort(0, Qt::AscendingOrder);
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this, 
@@ -151,5 +154,16 @@ void ComboTableFrame::onActionEditCombo()
       QMessageBox::critical(this, tr("Error"), errorMessage);
 }
 
+
+//**********************************************************************************************************************
+/// \param[in] text The text to search
+//**********************************************************************************************************************
+void ComboTableFrame::onSearchFilterChanged(QString const& text)
+{
+   qDebug() << QString("%1(%2)").arg(__FUNCTION__).arg(text);
+   QString const searchStr = text.trimmed();
+   proxyModel_.setFilterFixedString(searchStr);
+
+}
 
 

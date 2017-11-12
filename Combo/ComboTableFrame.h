@@ -12,6 +12,7 @@
 
 
 #include "ui_ComboTableFrame.h"
+#include "ComboSortFilterProxyModel.h"
 
 
 //**********************************************************************************************************************
@@ -38,10 +39,11 @@ private slots:
    void onActionAddCombo(); ///< Slot for the 'Add Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
+   void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
 
 private: // data members
    Ui::ComboTableFrame ui_; ///< The GUI for the frame
-   QSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
+   ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
 
 };
 
