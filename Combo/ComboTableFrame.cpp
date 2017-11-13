@@ -37,6 +37,7 @@ void ComboTableFrame::setupTable()
    proxyModel_.setSourceModel(&ComboManager::instance().getComboListRef());
    ui_.tableComboList->setModel(&proxyModel_);
    proxyModel_.sort(0, Qt::AscendingOrder);
+   ui_.tableComboList->horizontalHeader()->setSortIndicator(0, Qt::AscendingOrder);  //< required, otherwise the indicator is first displayed in the wrong direction
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this, 
       &ComboTableFrame::updateGui);
    connect(ui_.tableComboList, &QTableView::doubleClicked, this, &ComboTableFrame::onActionEditCombo);
