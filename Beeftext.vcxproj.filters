@@ -100,6 +100,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboSortFilterProxyModel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="PreferenceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -117,6 +118,7 @@
     <ClInclude Include="GeneratedFiles\ui_ComboTableFrame.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="PreferenceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">

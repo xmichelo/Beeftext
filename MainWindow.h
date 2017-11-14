@@ -39,6 +39,9 @@ private slots:
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
    void onActionExit(); ///< Slot for the 'Exit' action
 
+protected:
+   void closeEvent(QCloseEvent *event) override; ///< Window close event handler
+
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window
    QSystemTrayIcon systemTrayIcon_; ///< The system tray icon
