@@ -166,5 +166,3 @@ void ComboTableFrame::onSearchFilterChanged(QString const& text)
    proxyModel_.setFilterFixedString(searchStr);
 
 }
-
-

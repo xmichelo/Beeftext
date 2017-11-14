@@ -16,14 +16,14 @@
 !define REGISTRY_UNINSTALLER_FOLDER Software\Microsoft\Windows\CurrentVersion\Uninstall
 !define OUTPUT_DIR _build
 !define RESOURCES_FOLDER_PATH "..\Resources"
-!define VS_DEVENV_PATH "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com"
-!define VC_REDIST_RUNTIME_FILE "vc_redist.x86.exe"
+!define VS_DEVENV_PATH "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com"
+!define VC_REDIST_RUNTIME_FILE "VC_redist.x86.exe"
 !define VC_REDIST_RUNTIME_FILE_PATH "${RESOURCES_FOLDER_PATH}\Vendor\VCRuntime\${VC_REDIST_RUNTIME_FILE}"
 !define LICENSE_FILE_NAME "LICENSE"
 !define LICENSE_FILE_PATH "..\${LICENSE_FILE_NAME}"
-!define WEBSITE "https://x-mi.com"
+!define WEBSITE "https://beeftext.org"
 !define AUTHOR "Xavier Michelon"
-!define COMPANY "x-mi.com"
+!define COMPANY "beeftext.org"
 !define VERSION_MAJOR 0
 !define VERSION_MINOR 1
 !define APP_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}"
