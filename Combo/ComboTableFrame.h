@@ -13,6 +13,7 @@
 
 #include "ui_ComboTableFrame.h"
 #include "ComboSortFilterProxyModel.h"
+#include <memory>
 
 
 //**********************************************************************************************************************
@@ -44,6 +45,7 @@ private slots:
 private: // data members
    Ui::ComboTableFrame ui_; ///< The GUI for the frame
    ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
+   std::unique_ptr<class ComboTableProxyStyle> proxyStyle_; ///< The proxy style to tweak appearance of the table view
 
 };
 

@@ -14,10 +14,26 @@
 
 
 //**********************************************************************************************************************
+/// brief A class overriding the default style only to remove the focus rectangle around items in a table view
+//**********************************************************************************************************************
+class ComboTableProxyStyle : public QProxyStyle
+{
+public:
+   virtual void drawPrimitive(PrimitiveElement element, const QStyleOption * option,
+      QPainter * painter, const QWidget * widget = 0) const
+   {
+      if (PE_FrameFocusRect != element)
+         QProxyStyle::drawPrimitive(element, option, painter, widget);
+   }
+};
+
+
+//**********************************************************************************************************************
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
 ComboTableFrame::ComboTableFrame(QWidget* parent)
    : QFrame(parent)
+   , proxyStyle_(std::make_unique<ComboTableProxyStyle>())
 {
    ui_.setupUi(this);
    this->setupTable();
@@ -37,15 +53,15 @@ void ComboTableFrame::setupTable()
    proxyModel_.setSourceModel(&ComboManager::instance().getComboListRef());
    ui_.tableComboList->setModel(&proxyModel_);
    proxyModel_.sort(0, Qt::AscendingOrder);
-   ui_.tableComboList->horizontalHeader()->setSortIndicator(0, Qt::AscendingOrder);  //< required, otherwise the indicator is first displayed in the wrong direction
-   connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this, 
+   QHeaderView* header = ui_.tableComboList->horizontalHeader();
+   header->setSortIndicator(0, Qt::AscendingOrder);  //< required, otherwise the indicator is first displayed in the wrong direction
+   header->setDefaultAlignment(Qt::AlignLeft);
+   connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this,
       &ComboTableFrame::updateGui);
    connect(ui_.tableComboList, &QTableView::doubleClicked, this, &ComboTableFrame::onActionEditCombo);
-
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
-   ui_.tableComboList->setStyleSheet("QHeaderView:section { background: rgb(240, 240, 240); border: none; "
-      "padding: 5px;}");
+   ui_.tableComboList->setStyle(proxyStyle_.get());
 }
 
 
