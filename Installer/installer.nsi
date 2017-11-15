@@ -157,6 +157,8 @@ file "$%QTDIR%\bin\Qt5Gui.dll"
 file "$%QTDIR%\bin\Qt5Widgets.dll"
 setOutPath $INSTDIR\platforms
 file "$%QTDIR%\plugins\platforms\qwindows.dll"
+setOutPath $INSTDIR\imageformats
+file "$%QTDIR%\plugins\imageformats\qico.dll"
 
 # Create uninstall
 WriteUninstaller "${UNINSTALLER_FILE_NAME}"
@@ -166,9 +168,9 @@ WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "DisplayName" "${A
 WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "UninstallString" '"$INSTDIR\${UNINSTALLER_FILE_NAME}"'
 WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "InstallLocation" "$INSTDIR"
 WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "DisplayIcon" "$INSTDIR\${APP_NAME}.exe"
-WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "Publisher" "${COMPANY} AG"
+WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "Publisher" "${COMPANY}"
 WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "RegOwner" "${AUTHOR}"
-WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "RegCompany" "${COMPANY} AG"
+WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "RegCompany" "${COMPANY}"
 WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "URLUpdateInfo" "${WEBSITE}"
 WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "URLInfoAbout" "${WEBSITE}"
 WriteRegStr HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "DisplayVersion" "${APP_VERSION}"
@@ -221,8 +223,10 @@ Section "Uninstall"
 SetShellVarContext all
 Delete "$INSTDIR\*.exe"
 Delete "$INSTDIR\*.dll"
-Delete "$INSTDIR\platforms\*.*"
+Delete "$INSTDIR\platforms\*.dll"
 RMDir  "$INSTDIR\platforms"
+Delete "$INSTDIR\imageformats\*.dll"
+RMDir  "$INSTDIR\imageformats"
 Delete "$INSTDIR\${UNINSTALLER_FILE_NAME}"
 RMDir  "$INSTDIR"
 
