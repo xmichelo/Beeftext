@@ -153,6 +153,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="buttonDuplicateCombo">
+       <property name="text">
+        <string>&amp;Duplicate</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="buttonDeleteCombo">
        <property name="text">
         <string>&amp;Delete</string>
@@ -171,17 +178,46 @@
   </layout>
   <action name="actionAddCombo">
    <property name="text">
-    <string>&amp;Add Combo</string>
+    <string>&amp;Add</string>
+   </property>
+   <property name="iconText">
+    <string>Add Combo</string>
+   </property>
+   <property name="toolTip">
+    <string>Add Combo</string>
    </property>
   </action>
   <action name="actionDeleteCombo">
    <property name="text">
-    <string>&amp;Delete Combo</string>
+    <string>&amp;Delete</string>
+   </property>
+   <property name="iconText">
+    <string>Delete Combo</string>
+   </property>
+   <property name="toolTip">
+    <string>Delete Combo</string>
    </property>
   </action>
   <action name="actionEditCombo">
    <property name="text">
-    <string>&amp;Edit Combo</string>
+    <string>&amp;Edit</string>
+   </property>
+   <property name="iconText">
+    <string>Edit Combo</string>
+   </property>
+   <property name="toolTip">
+    <string>Edit Combo</string>
+   </property>
+  </action>
+  <action name="actionDuplicateCombo">
+   <property name="text">
+    <string>&amp;Duplicate</string>
+   </property>
+   <property name="iconText">
+    <string>Duplicate Combo</string>
+   </property>
+   <property name="toolTip">
+    <string>Duplicate Combo</string>
    </property>
   </action>
  </widget>
@@ -306,11 +342,44 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionDuplicateCombo</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableFrame</receiver>
+   <slot>onActionDuplicateCombo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonDuplicateCombo</sender>
+   <signal>clicked()</signal>
+   <receiver>actionDuplicateCombo</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>283</x>
+     <y>472</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionAddCombo()</slot>
   <slot>onActionDeleteCombo()</slot>
   <slot>onActionEditCombo()</slot>
   <slot>onSearchFilterChanged(QString)</slot>
+  <slot>onActionDuplicateCombo()</slot>
  </slots>
 </ui>

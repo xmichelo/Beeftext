@@ -134,10 +134,10 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg)
 //**********************************************************************************************************************
 void ComboManager::tempAddTestCombos()
 {
-   comboList_.append(std::make_shared<Combo>("Personal Email", "xxem", "johndoe@gmail.com"));
-   comboList_.append(std::make_shared<Combo>("Personal Signature","xxsig", 
+   comboList_.append(Combo::create("Personal Email", "xxem", "johndoe@gmail.com"));
+   comboList_.append(Combo::create("Personal Signature","xxsig", 
       "Regards.\n\n-- \nJohn Doe\n\"johndoe@gmail.com\"\n"));
-   comboList_.append(std::make_shared<Combo>("Personal Name" ,"xxname", "John Doe"));
+   comboList_.append(Combo::create("Personal Name" ,"xxname", "John Doe"));
 }
 
 

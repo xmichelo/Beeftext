@@ -25,7 +25,7 @@ class ComboTableFrame: public QFrame
 public: // member functions
 	ComboTableFrame(QWidget* parent = nullptr); ///< Default constructor
 	~ComboTableFrame() = default; ///< Default destructor
-	
+
 private: // member functions
 	ComboTableFrame(ComboTableFrame const&) = delete; ///< Disabled copy constructor
 	ComboTableFrame(ComboTableFrame&&) = delete; ///< Disabled move constructor
@@ -38,6 +38,7 @@ private: // member functions
 private slots:
    void updateGui(); ///< Update the GUI state
    void onActionAddCombo(); ///< Slot for the 'Add Combo' action
+   void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field

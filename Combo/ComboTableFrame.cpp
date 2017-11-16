@@ -28,6 +28,7 @@ public:
 };
 
 
+
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
@@ -42,7 +43,16 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
       this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->selectAll(); });
    connect(new QShortcut(QKeySequence("Escape"), this), &QShortcut::activated,
       this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->clear(); });
+   connect(new QShortcut(QKeySequence("Ctrl+N"), this), &QShortcut::activated,
+      this, &ComboTableFrame::onActionAddCombo);
+   connect(new QShortcut(QKeySequence("Delete"), this), &QShortcut::activated, 
+      this, &ComboTableFrame::onActionDeleteCombo);
+   connect(new QShortcut(QKeySequence("Ctrl+D"), this), &QShortcut::activated,
+      this, &ComboTableFrame::onActionDuplicateCombo);
+   connect(new QShortcut(QKeySequence(Qt::Key_Return), this), &QShortcut::activated,
+      this, &ComboTableFrame::onActionEditCombo);
 }
+
 
 
 //**********************************************************************************************************************
@@ -62,6 +72,7 @@ void ComboTableFrame::setupTable()
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
    ui_.tableComboList->setStyle(proxyStyle_.get());
+   //ui_.tableComboList->installEventFilter(this);
 }
 
 
@@ -102,6 +113,7 @@ void ComboTableFrame::updateGui()
    qint32 const selectedCount = this->getSelectedComboCount();
    ui_.buttonEditCombo->setEnabled(1 == selectedCount);
    ui_.buttonDeleteCombo->setEnabled(selectedCount > 0);
+   ui_.buttonDuplicateCombo->setEnabled(1 == selectedCount);
 }
 
 
@@ -110,7 +122,7 @@ void ComboTableFrame::updateGui()
 //**********************************************************************************************************************
 void ComboTableFrame::onActionAddCombo()
 {
-   SPCombo combo = std::make_shared<Combo>();
+   SPCombo combo = Combo::create();
    ComboDialog dlg(combo);
    if (QDialog::Accepted != dlg.exec())
       return;
@@ -122,6 +134,26 @@ void ComboTableFrame::onActionAddCombo()
       QMessageBox::critical(this, tr("Error"), errorMessage);
 }
 
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::onActionDuplicateCombo()
+{
+   QList<qint32> const selectedIndex = this->getSelectedComboIndexes();
+   if (1 != selectedIndex.size())
+      return;
+   ComboManager& comboManager = ComboManager::instance();
+   ComboList& comboList = comboManager.getComboListRef();
+   qint32 index = selectedIndex[0];
+   Q_ASSERT((index >= 0) && (index < comboList.size()));
+   SPCombo combo = Combo::duplicate(*comboList[index]);
+
+   ComboDialog dlg(combo);
+   if (QDialog::Accepted != dlg.exec())
+      return;
+   comboList.append(combo);
+}
 
 //**********************************************************************************************************************
 // 

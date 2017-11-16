@@ -226,7 +226,7 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
       {
          if (!comboGroupValue.isObject())
             throw xmilib::Exception(QObject::tr("The combo list array contains an invalid combo."));
-         SPCombo combo = std::make_shared<Combo>(comboGroupValue.toObject());
+         SPCombo combo = Combo::create(comboGroupValue.toObject());
          if ((!combo) || (!combo->isValid()))
             throw xmilib::Exception(QObject::tr("One of the combo in the list is invalid"));
          this->append(combo);

@@ -15,16 +15,22 @@
 #include <vector>
 
 
+class Combo;
+
+
+typedef std::shared_ptr<Combo> SPCombo; ///< Type definition for shared pointer to Combo
+typedef std::vector<SPCombo> VecSPCombo; ///< Type definition for vector of SPCombo
+
+
 //**********************************************************************************************************************
 /// \brief The combo class that link a combo (a.k.a. snippet, or abbreviation), to it substitution text
 //**********************************************************************************************************************
 class Combo
 {
 public: // member functions
-	Combo(QString const& name = QString(), QString const& aComboText = QString(), 
-      QString const& aSubstitutionText = QString()); ///< Default constructor
+   Combo(QString const& name, QString const& aComboText, QString const& aSubstitutionText); ///< Default constructor
    Combo(QJsonObject const& object); ///< Constructor from JSon object
-	~Combo() = default; ///< Default destructor
+   ~Combo() = default; ///< Default destructor
    bool isValid() const; ///< Is the combo valid
    QString name() const; ///< Get the name of the combo
    void setName(QString const& name); ///< Set the name of the combo
@@ -32,11 +38,17 @@ public: // member functions
    void setComboText(QString const& comboText); ///< Set the combo text
    QString substitutionText() const; ///< Retrieve the substitution text
    void setSubstitutionText(QString const& substitutionText); ///< Set the substitution text
-   void performSubstitution(); ///< perform the combo substitution
+   void performSubstitution(); ///< Perform the combo substitution
    QJsonObject toJsonObject(); ///< Serialize the combo in a JSon object
 
+public: // static functions
+   static SPCombo create(QString const& name = QString(), QString const& aComboText = QString(),
+      QString const& aSubstitutionText = QString());
+   static SPCombo create(QJsonObject const& object); ///< create a Combo from a JSON object
+   static SPCombo duplicate(Combo const& combo); ///< Duplicate
+
 private: // member functions
-	Combo(Combo const&) = delete; ///< Disabled copy constructor
+   Combo(Combo const&) = delete; ///< Disabled copy constructor
 	Combo(Combo&&) = delete; ///< Disabled move constructor
 	Combo& operator=(Combo const&) = delete; ///< Disabled assignment operator
 	Combo& operator=(Combo&&) = delete; ///< Disabled move assignment operator
@@ -50,10 +62,6 @@ private: // data member
    QDateTime created_; ///< The date/time of creation of the combo
    QDateTime lastModified_; ///< The date/time of the last modification of the combo
 };
-
-
-typedef std::shared_ptr<Combo> SPCombo; ///< Type definition for shared pointer to Combo
-typedef std::vector<SPCombo> VecSPCombo; ///< Type definition for vector of SPCombo
 
 
 #endif // #ifndef BEEFTEXT__COMBO__H
