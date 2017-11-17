@@ -32,6 +32,7 @@ private: // member functions
 	ComboTableFrame& operator=(ComboTableFrame const&) = delete; ///< Disabled assignment operator
 	ComboTableFrame& operator=(ComboTableFrame&&) = delete; ///< Disabled move assignment operator
    void setupTable(); ///< Setup the combo table
+   void setupContextMenu(); ///< Setup the context menu
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
 
@@ -41,11 +42,15 @@ private slots:
    void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
+   void onActionSelectAll(); ///< Slot for the 'Select All' action
+   void onActionDeselectAll(); ///< Slot for the 'Deselect All' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
+   void onContextMenuRequested(); ///< Slot for the combo table context menu
 
 private: // data members
    Ui::ComboTableFrame ui_; ///< The GUI for the frame
    ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
+   QMenu contextMenu_; ///< The context menu for the combo table
    std::unique_ptr<class ComboTableProxyStyle> proxyStyle_; ///< The proxy style to tweak appearance of the table view
 
 };

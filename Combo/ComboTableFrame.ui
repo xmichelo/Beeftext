@@ -155,7 +155,7 @@
      <item>
       <widget class="QPushButton" name="buttonDuplicateCombo">
        <property name="text">
-        <string>&amp;Duplicate</string>
+        <string>Du&amp;plicate</string>
        </property>
       </widget>
      </item>
@@ -186,6 +186,9 @@
    <property name="toolTip">
     <string>Add Combo</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="actionDeleteCombo">
    <property name="text">
@@ -196,6 +199,9 @@
    </property>
    <property name="toolTip">
     <string>Delete Combo</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
    </property>
   </action>
   <action name="actionEditCombo">
@@ -208,6 +214,9 @@
    <property name="toolTip">
     <string>Edit Combo</string>
    </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
   </action>
   <action name="actionDuplicateCombo">
    <property name="text">
@@ -218,6 +227,25 @@
    </property>
    <property name="toolTip">
     <string>Duplicate Combo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+N</string>
+   </property>
+  </action>
+  <action name="actionSelectAll">
+   <property name="text">
+    <string>Select &amp;All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionDeselectAll">
+   <property name="text">
+    <string>&amp;Deselect All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
    </property>
   </action>
  </widget>
@@ -374,6 +402,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionSelectAll</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableFrame</receiver>
+   <slot>onActionSelectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDeselectAll</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableFrame</receiver>
+   <slot>onActionDeselectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionAddCombo()</slot>
@@ -381,5 +441,7 @@
   <slot>onActionEditCombo()</slot>
   <slot>onSearchFilterChanged(QString)</slot>
   <slot>onActionDuplicateCombo()</slot>
+  <slot>onActionSelectAll()</slot>
+  <slot>onActionDeselectAll()</slot>
  </slots>
 </ui>

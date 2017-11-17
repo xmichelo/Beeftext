@@ -76,7 +76,8 @@ void MainWindow::setupSystemTrayIcon()
    menu->addAction(ui_.actionShowMainWindow);
    menu->addSeparator();
    menu->addAction(ui_.actionExit);
-   menu->setActiveAction(ui_.actionShowMainWindow);
+   menu->setDefaultAction(ui_.actionShowMainWindow);
+   menu->addSeparator();
 
    systemTrayIcon_.setContextMenu(menu);
 }

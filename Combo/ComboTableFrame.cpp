@@ -38,6 +38,7 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
 {
    ui_.setupUi(this);
    this->setupTable();
+   this->setupContextMenu();
    this->updateGui();
    connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated,
       this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->selectAll(); });
@@ -47,10 +48,14 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
       this, &ComboTableFrame::onActionAddCombo);
    connect(new QShortcut(QKeySequence("Delete"), this), &QShortcut::activated, 
       this, &ComboTableFrame::onActionDeleteCombo);
-   connect(new QShortcut(QKeySequence("Ctrl+D"), this), &QShortcut::activated,
+   connect(new QShortcut(QKeySequence("Ctrl+Shift+N"), this), &QShortcut::activated,
       this, &ComboTableFrame::onActionDuplicateCombo);
    connect(new QShortcut(QKeySequence(Qt::Key_Return), this), &QShortcut::activated,
       this, &ComboTableFrame::onActionEditCombo);
+   connect(new QShortcut(QKeySequence("Ctrl+A"), this), &QShortcut::activated,
+      this, &ComboTableFrame::onActionSelectAll);
+   connect(new QShortcut(QKeySequence("Ctrl+D"), this), &QShortcut::activated,
+      this, &ComboTableFrame::onActionDeselectAll);
 }
 
 
@@ -72,9 +77,25 @@ void ComboTableFrame::setupTable()
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
    ui_.tableComboList->setStyle(proxyStyle_.get());
-   //ui_.tableComboList->installEventFilter(this);
 }
 
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::setupContextMenu()
+{
+   contextMenu_.clear();
+   contextMenu_.addAction(ui_.actionAddCombo);
+   contextMenu_.addAction(ui_.actionDuplicateCombo);
+   contextMenu_.addAction(ui_.actionDeleteCombo);
+   contextMenu_.addAction(ui_.actionEditCombo);
+   contextMenu_.addSeparator();
+   contextMenu_.addAction(ui_.actionSelectAll);
+   contextMenu_.addAction(ui_.actionDeselectAll);
+   ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
+   connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableFrame::onContextMenuRequested);
+}
 
 //**********************************************************************************************************************
 /// \return The number of selected combos
@@ -111,9 +132,16 @@ QList<qint32> ComboTableFrame::getSelectedComboIndexes() const
 void ComboTableFrame::updateGui()
 {
    qint32 const selectedCount = this->getSelectedComboCount();
-   ui_.buttonEditCombo->setEnabled(1 == selectedCount);
-   ui_.buttonDeleteCombo->setEnabled(selectedCount > 0);
-   ui_.buttonDuplicateCombo->setEnabled(1 == selectedCount);
+   bool const hasOneSelected = (1 == selectedCount);
+   bool const hasOneOrMoreSelected = (selectedCount > 0);
+   ui_.buttonDuplicateCombo->setEnabled(hasOneSelected);
+   ui_.actionDuplicateCombo->setEnabled(hasOneSelected);
+   ui_.buttonDeleteCombo->setEnabled(hasOneOrMoreSelected);
+   ui_.actionDeleteCombo->setEnabled(hasOneOrMoreSelected);
+   ui_.buttonEditCombo->setEnabled(hasOneSelected);
+   ui_.actionEditCombo->setEnabled(hasOneSelected);
+
+   bool const hasItem = !(ComboManager::instance().getComboListRef().rowCount() > 0);
 }
 
 
@@ -205,12 +233,36 @@ void ComboTableFrame::onActionEditCombo()
 
 
 //**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::onActionSelectAll()
+{
+   ui_.tableComboList->selectAll();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::onActionDeselectAll()
+{
+   ui_.tableComboList->clearSelection();
+}
+
+//**********************************************************************************************************************
 /// \param[in] text The text to search
 //**********************************************************************************************************************
 void ComboTableFrame::onSearchFilterChanged(QString const& text)
 {
-   qDebug() << QString("%1(%2)").arg(__FUNCTION__).arg(text);
    QString const searchStr = text.trimmed();
    proxyModel_.setFilterFixedString(searchStr);
 
+}
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::onContextMenuRequested()
+{
+   contextMenu_.exec(QCursor::pos());
 }
