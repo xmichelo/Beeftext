@@ -151,8 +151,7 @@ void ComboTableFrame::updateGui()
 void ComboTableFrame::onActionAddCombo()
 {
    SPCombo combo = Combo::create();
-   ComboDialog dlg(combo);
-   if (QDialog::Accepted != dlg.exec())
+   if (!ComboDialog::run(combo, tr("Add Combo")))
       return;
    ComboManager& comboManager = ComboManager::instance();
    ComboList& comboList = ComboManager::instance().getComboListRef();
@@ -177,8 +176,7 @@ void ComboTableFrame::onActionDuplicateCombo()
    Q_ASSERT((index >= 0) && (index < comboList.size()));
    SPCombo combo = Combo::duplicate(*comboList[index]);
 
-   ComboDialog dlg(combo);
-   if (QDialog::Accepted != dlg.exec())
+   if (!ComboDialog::run(combo, tr("Duplicate Combo")))
       return;
    comboList.append(combo);
 }
@@ -222,8 +220,7 @@ void ComboTableFrame::onActionEditCombo()
    qint32 index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
    SPCombo combo = comboList[index];
-   ComboDialog dlg(combo);
-   if (QDialog::Accepted != dlg.exec())
+   if (!ComboDialog::run(combo, tr("Edit Combo")))
       return;
    comboList.markComboAsEdited(index);
    QString errorMessage;

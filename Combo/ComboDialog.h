@@ -20,9 +20,11 @@
 class ComboDialog: public QDialog
 {
    Q_OBJECT
+public:
+   static bool run(SPCombo combo, QString const& title = QString(), QWidget* parent = nullptr);
 
 public: // member functions
-	ComboDialog(SPCombo combo, QWidget* parent = nullptr); ///< Default constructor
+	ComboDialog(SPCombo combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
 	~ComboDialog() = default; ///< Default destructor
 	SPCombo combo() const; ///< Get the combo
 
