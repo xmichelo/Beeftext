@@ -59,6 +59,7 @@ ComboList const& ComboManager::getComboListRef() const
 //**********************************************************************************************************************
 ComboManager::ComboManager()
    : QObject()
+   , sound_(std::make_unique<QSound>(":/MainWindow/Resources/Notification.wav"))
 {
    InputManager& inputManager = InputManager::instance();
    connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped);
@@ -161,6 +162,7 @@ void ComboManager::onCharacterTyped(QChar c)
    if (comboList_.end() == it)
       return;
    (*it)->performSubstitution();
+   sound_->play();
    this->onComboBreakerTyped();
 }
 

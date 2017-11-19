@@ -12,6 +12,7 @@
 
 
 #include "ComboList.h"
+#include <memory>
 
 
 //**********************************************************************************************************************
@@ -46,6 +47,7 @@ private: // slots
 private: // data member
    QString currentText_; ///< The current string
    ComboList comboList_; ///< The list of combos
+   std::unique_ptr<QSound> sound_; ///< The sound to play when a combo is executed
 };
 
 

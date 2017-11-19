@@ -7,6 +7,7 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.    
 
 
+#include <QtMultimedia>
 #include <QtWidgets>
 #include <QtGui>
 #include <QtCore>
