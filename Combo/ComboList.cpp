@@ -303,6 +303,9 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       }
    }
 
+   if (Qt::ForegroundRole == role)
+      return combo->isEnabled() ? QVariant() : QColor(160, 160, 160);
+
    return QVariant();
 }
 

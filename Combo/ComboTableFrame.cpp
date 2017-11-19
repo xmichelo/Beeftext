@@ -52,6 +52,8 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
       this, &ComboTableFrame::onActionDuplicateCombo);
    connect(new QShortcut(QKeySequence(Qt::Key_Return), this), &QShortcut::activated,
       this, &ComboTableFrame::onActionEditCombo);
+   connect(new QShortcut(QKeySequence("Ctrl+E"), this), &QShortcut::activated,
+      this, &ComboTableFrame::onActionEnableDisableCombo);
    connect(new QShortcut(QKeySequence("Ctrl+A"), this), &QShortcut::activated,
       this, &ComboTableFrame::onActionSelectAll);
    connect(new QShortcut(QKeySequence("Ctrl+D"), this), &QShortcut::activated,
@@ -90,6 +92,7 @@ void ComboTableFrame::setupContextMenu()
    contextMenu_.addAction(ui_.actionDuplicateCombo);
    contextMenu_.addAction(ui_.actionDeleteCombo);
    contextMenu_.addAction(ui_.actionEditCombo);
+   contextMenu_.addAction(ui_.actionEnableDisableCombo);
    contextMenu_.addSeparator();
    contextMenu_.addAction(ui_.actionSelectAll);
    contextMenu_.addAction(ui_.actionDeselectAll);
@@ -140,8 +143,21 @@ void ComboTableFrame::updateGui()
    ui_.actionDeleteCombo->setEnabled(hasOneOrMoreSelected);
    ui_.buttonEditCombo->setEnabled(hasOneSelected);
    ui_.actionEditCombo->setEnabled(hasOneSelected);
+   ui_.buttonEnableDisableCombo->setEnabled(hasOneSelected);
 
-   bool const hasItem = !(ComboManager::instance().getComboListRef().rowCount() > 0);
+   QString enableDisableText = tr("Ena&ble");
+   QString enableDisableToolTip = tr("Enable combo");
+   if ((hasOneSelected) 
+      && (ComboManager::instance().getComboListRef()[this->getSelectedComboIndexes().front()]->isEnabled()))
+   {
+      enableDisableText = "Disa&ble";
+      enableDisableToolTip = "Disable combo";
+   }
+   ui_.actionEnableDisableCombo->setText(enableDisableText);
+   ui_.actionEnableDisableCombo->setToolTip(enableDisableToolTip);
+   ui_.actionEnableDisableCombo->setIconText(enableDisableToolTip);
+   ui_.buttonEnableDisableCombo->setText(enableDisableText);
+   ui_.buttonEnableDisableCombo->setToolTip(enableDisableToolTip);
 }
 
 
@@ -245,6 +261,30 @@ void ComboTableFrame::onActionDeselectAll()
 {
    ui_.tableComboList->clearSelection();
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::onActionEnableDisableCombo()
+{
+   QList<qint32> const selectedIndex = this->getSelectedComboIndexes();
+   if (1 != selectedIndex.size())
+      return;
+
+   ComboManager& comboManager = ComboManager::instance();
+   ComboList& comboList = comboManager.getComboListRef();
+   qint32 index = selectedIndex[0];
+   Q_ASSERT((index >= 0) && (index < comboList.size()));
+   SPCombo combo = comboList[index];
+   combo->setEnabled(!combo->isEnabled());
+   comboList.markComboAsEdited(index);
+   QString errorMessage;
+   if (!comboManager.saveComboListToFile(&errorMessage))
+      QMessageBox::critical(this, tr("Error"), errorMessage);
+   this->updateGui();
+}
+
 
 //**********************************************************************************************************************
 /// \param[in] text The text to search

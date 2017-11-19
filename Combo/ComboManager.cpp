@@ -154,7 +154,7 @@ void ComboManager::onCharacterTyped(QChar c)
 {
    currentText_.append(c);
    VecSPCombo::const_iterator it = std::find_if(comboList_.begin(), comboList_.end(),
-      [&](SPCombo const combo) -> bool { return combo->comboText() == currentText_; });
+      [&](SPCombo const combo) -> bool { return combo->isEnabled() && (combo->comboText() == currentText_); });
    if (comboList_.end() == it)
       return;
    (*it)->performSubstitution();

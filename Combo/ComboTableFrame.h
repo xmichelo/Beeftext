@@ -44,6 +44,7 @@ private slots:
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
    void onActionSelectAll(); ///< Slot for the 'Select All' action
    void onActionDeselectAll(); ///< Slot for the 'Deselect All' action
+   void onActionEnableDisableCombo(); ///< Slot for the 'Enable/Disable' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
    void onContextMenuRequested(); ///< Slot for the combo table context menu
 

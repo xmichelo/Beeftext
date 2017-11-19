@@ -147,6 +147,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="buttonAddCombo">
+       <property name="toolTip">
+        <string>Add combo</string>
+       </property>
        <property name="text">
         <string>&amp;Add</string>
        </property>
@@ -154,6 +157,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="buttonDuplicateCombo">
+       <property name="toolTip">
+        <string>Duplicate combo</string>
+       </property>
        <property name="text">
         <string>Du&amp;plicate</string>
        </property>
@@ -161,6 +167,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="buttonDeleteCombo">
+       <property name="toolTip">
+        <string>Delete combo</string>
+       </property>
        <property name="text">
         <string>&amp;Delete</string>
        </property>
@@ -168,8 +177,21 @@
      </item>
      <item>
       <widget class="QPushButton" name="buttonEditCombo">
+       <property name="toolTip">
+        <string>Edit combo</string>
+       </property>
        <property name="text">
         <string>&amp;Edit</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonEnableDisableCombo">
+       <property name="toolTip">
+        <string>Enable combo</string>
+       </property>
+       <property name="text">
+        <string>Ena&amp;ble</string>
        </property>
       </widget>
      </item>
@@ -246,6 +268,17 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionEnableDisableCombo">
+   <property name="text">
+    <string>&amp;Enable</string>
+   </property>
+   <property name="toolTip">
+    <string>Enable Cobmo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
    </property>
   </action>
  </widget>
@@ -434,6 +467,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionEnableDisableCombo</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableFrame</receiver>
+   <slot>onActionEnableDisableCombo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonEnableDisableCombo</sender>
+   <signal>clicked()</signal>
+   <receiver>actionEnableDisableCombo</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>472</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionAddCombo()</slot>
@@ -443,5 +508,6 @@
   <slot>onActionDuplicateCombo()</slot>
   <slot>onActionSelectAll()</slot>
   <slot>onActionDeselectAll()</slot>
+  <slot>onActionEnableDisableCombo()</slot>
  </slots>
 </ui>

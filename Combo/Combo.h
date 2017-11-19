@@ -28,7 +28,7 @@ typedef std::vector<SPCombo> VecSPCombo; ///< Type definition for vector of SPCo
 class Combo
 {
 public: // member functions
-   Combo(QString const& name, QString const& aComboText, QString const& aSubstitutionText); ///< Default constructor
+   Combo(QString const& name, QString const& aComboText, QString const& aSubstitutionText, bool enabled = true); ///< Default constructor
    Combo(QJsonObject const& object); ///< Constructor from JSon object
    ~Combo() = default; ///< Default destructor
    bool isValid() const; ///< Is the combo valid
@@ -38,12 +38,14 @@ public: // member functions
    void setComboText(QString const& comboText); ///< Set the combo text
    QString substitutionText() const; ///< Retrieve the substitution text
    void setSubstitutionText(QString const& substitutionText); ///< Set the substitution text
+   void setEnabled(bool enabled); ///< Set the combo as enabled or not
+   bool isEnabled() const; ///< Check whether the combo is enabled
    void performSubstitution(); ///< Perform the combo substitution
    QJsonObject toJsonObject(); ///< Serialize the combo in a JSon object
 
 public: // static functions
    static SPCombo create(QString const& name = QString(), QString const& aComboText = QString(),
-      QString const& aSubstitutionText = QString());
+      QString const& aSubstitutionText = QString(), bool enabled = true);
    static SPCombo create(QJsonObject const& object); ///< create a Combo from a JSON object
    static SPCombo duplicate(Combo const& combo); ///< Duplicate
 
@@ -61,6 +63,7 @@ private: // data member
    QString substitutionText_; ///< The substitution text that will replace the combo text when
    QDateTime created_; ///< The date/time of creation of the combo
    QDateTime lastModified_; ///< The date/time of the last modification of the combo
+   bool enabled_; ///< Is the combo enabled
 };
 
 

@@ -19,6 +19,7 @@ namespace {
    QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text
    QString const kPropCreated = "created"; ///< The JSON property name for the created date/time
    QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time
+   QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
    Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs; ///< The date/time export format used for JSon docs
 }
 
@@ -30,12 +31,14 @@ using namespace xmilib;
 /// \param[in] name The display name of the combo
 /// \param[in] comboText The combo text
 /// \param[in] substitutionText The text that will replace the combo
+/// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString const& name, QString const& comboText, QString const& substitutionText)
+Combo::Combo(QString const& name, QString const& comboText, QString const& substitutionText, bool enabled)
    : uuid_(QUuid::createUuid())
    , name_(name)
    , comboText_(comboText)
    , substitutionText_(substitutionText)
+   , enabled_(enabled)
 {
    lastModified_ = created_ = QDateTime::currentDateTime();
 }
@@ -52,7 +55,8 @@ Combo::Combo(QJsonObject const& object)
    , substitutionText_(object[kPropSubstitutionText].toString())
    , created_(QDateTime::fromString(object[kPropCreated].toString(), kJsonExportDateFormat))
    , lastModified_(QDateTime::fromString(object[kPropLastModified].toString(), kJsonExportDateFormat))
-{      
+   , enabled_(object[kPropEnabled].toBool(true))
+{
 }
 
 
@@ -133,6 +137,25 @@ void Combo::setSubstitutionText(QString const& substitutionText)
 
 
 //**********************************************************************************************************************
+/// \param[in] The value for the enabled parameter
+//**********************************************************************************************************************
+void Combo::setEnabled(bool enabled)
+{
+   // Note that enabling / disabling an item does not change its last modification date/time
+   enabled_ = enabled;
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if the combo is enabled
+//**********************************************************************************************************************
+bool Combo::isEnabled() const
+{
+   return enabled_;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void Combo::performSubstitution()
@@ -169,6 +192,7 @@ QJsonObject Combo::toJsonObject()
    result.insert(kPropSubstitutionText, substitutionText_);
    result.insert(kPropCreated, created_.toString(kJsonExportDateFormat));
    result.insert(kPropLastModified, lastModified_.toString(kJsonExportDateFormat));
+   result.insert(kPropEnabled, enabled_);
    return result;
 }
 
@@ -177,11 +201,12 @@ QJsonObject Combo::toJsonObject()
 /// \param[in] name The display name of the combo
 /// \param[in] comboText The combo text
 /// \param[in] substitutionText The text that will replace the combo
+/// \param[in] enabled Is the combo enabled
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SPCombo Combo::create(QString const& name, QString const& comboText, QString const& substitutionText)
+SPCombo Combo::create(QString const& name, QString const& comboText, QString const& substitutionText, bool enabled)
 {
-   return std::make_shared<Combo>(name, comboText, substitutionText);
+   return std::make_shared<Combo>(name, comboText, substitutionText, enabled);
 }
 
 
@@ -208,6 +233,7 @@ SPCombo Combo::create(QJsonObject const& object)
 //**********************************************************************************************************************
 SPCombo Combo::duplicate(Combo const& combo)
 {
+   // note that the duplicate is enabled even if the source is not.
    return std::make_shared<Combo>(combo.name(), QString(), combo.substitutionText());
 }
 
