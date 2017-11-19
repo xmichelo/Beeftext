@@ -204,19 +204,6 @@ CreateShortCut "$SMPROGRAMS\${APP_FANCY_NAME}\Uninstall ${APP_FANCY_NAME}.lnk" "
 SectionEnd
 
 
-##########################
-# Desktop shortcut section
-##########################
-Section "Desktop Shortcut" secDesktopShortcut
-
-SectionIn 1 # This section is enabled for the Full installation type only
-SetShellVarContext current # The shortcut will be created for the current user only
-
-CreateShortCut "$DESKTOP\${APP_FANCY_NAME}.lnk" "$INSTDIR\${APP_NAME}.exe" "" "$INSTDIR\${APP_NAME}.exe" 0
-
-SectionEnd
-
-
 #####################################
 # Uninstaller
 #####################################

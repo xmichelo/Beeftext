@@ -69,10 +69,6 @@ ComboManager::ComboManager()
    QString errMsg;
    if (!this->loadComboListFromFile(&errMsg))
       QMessageBox::critical(nullptr, tr("Error"), errMsg);
-
-   /// \todo remove this debug code
-   if (!this->saveComboListToFile(&errMsg))
-      QMessageBox::critical(nullptr, tr("Error"), errMsg);
 }
 
 
