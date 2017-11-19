@@ -155,10 +155,14 @@ file "${EXE_SRC_DIR}\${APP_NAME}.exe"
 file "$%QTDIR%\bin\Qt5Core.dll"
 file "$%QTDIR%\bin\Qt5Gui.dll"
 file "$%QTDIR%\bin\Qt5Widgets.dll"
+file "$%QTDIR%\bin\Qt5Multimedia.dll"
+file "$%QTDIR%\bin\Qt5Network.dll"
 setOutPath $INSTDIR\platforms
 file "$%QTDIR%\plugins\platforms\qwindows.dll"
 setOutPath $INSTDIR\imageformats
 file "$%QTDIR%\plugins\imageformats\qico.dll"
+setOutPath $INSTDIR\audio
+file "$%QTDIR%\plugins\audio\qtaudio_windows.dll"
 
 # Create uninstall
 WriteUninstaller "${UNINSTALLER_FILE_NAME}"
@@ -227,6 +231,8 @@ Delete "$INSTDIR\platforms\*.dll"
 RMDir  "$INSTDIR\platforms"
 Delete "$INSTDIR\imageformats\*.dll"
 RMDir  "$INSTDIR\imageformats"
+Delete "$INSTDIR\audio\*.dll"
+RMDir  "$INSTDIR\audio"
 Delete "$INSTDIR\${UNINSTALLER_FILE_NAME}"
 RMDir  "$INSTDIR"
 
