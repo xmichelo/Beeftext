@@ -20,7 +20,19 @@
    border: none;
    padding: 5px;
 }
-</string>
+
+
+QTableView::item {
+   border: 0px; /* required in order for the padding to work. Don't ask why */
+   padding-right: 10px;
+}
+
+
+QTableView::item:selected {
+   border: 0px; /* required in order for the padding to work. Don't ask why */
+   padding-right: 10px;
+   background-color: #0078d7;
+}</string>
   </property>
   <property name="frameShape">
    <enum>QFrame::StyledPanel</enum>
@@ -111,13 +123,13 @@
       <bool>false</bool>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>120</number>
+      <number>50</number>
      </attribute>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>true</bool>
      </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>100</number>
+      <number>50</number>
      </attribute>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

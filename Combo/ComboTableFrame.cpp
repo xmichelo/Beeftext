@@ -13,6 +13,10 @@
 #include "ComboDialog.h"
 
 
+namespace {
+   qint32 const kMaxNameColumnDefaultWidth = 300; ///< The maximum default width in pixels of the name column
+}
+
 //**********************************************************************************************************************
 /// brief A class overriding the default style only to remove the focus rectangle around items in a table view
 //**********************************************************************************************************************
@@ -89,6 +93,10 @@ void ComboTableFrame::setupTable()
       &ComboTableFrame::updateGui);
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
+   for (qint32 i = 0; i < 2; ++i)
+      ui_.tableComboList->resizeColumnToContents(i);
+   if (ui_.tableComboList->horizontalHeader()->sectionSize(0) > kMaxNameColumnDefaultWidth)
+      ui_.tableComboList->horizontalHeader()->resizeSection(0, kMaxNameColumnDefaultWidth);
    ui_.tableComboList->setStyle(proxyStyle_.get());
    ui_.tableComboList->viewport()->installEventFilter(this); // we install an event filter that override the default double-click behavior
 }
@@ -333,4 +341,3 @@ void ComboTableFrame::onDoubleClick()
       break;
    }
 }
-
