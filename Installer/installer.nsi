@@ -89,12 +89,12 @@ FunctionEnd
 
 
 ###################################################
-# install the VC Redistributable Runtime for VS2013
+# install the VC Redistributable Runtime for VS2017
 ###################################################
 Function InstallVCRedistributableRuntime
    SetOutPath $TEMP
    ${Unless} ${FileExists} "$TEMP\${VC_REDIST_RUNTIME_FILE}"         
-       DetailPrint "Installing VC++ 2015 Redistributable Runtime"         
+       DetailPrint "Installing VC++ 2017 Redistributable Runtime"         
        File ${VC_REDIST_RUNTIME_FILE_PATH}
        ExecWait "$TEMP\${VC_REDIST_RUNTIME_FILE} /q"         
        DetailPrint "Cleaning up"         

@@ -137,7 +137,7 @@ void Combo::setSubstitutionText(QString const& substitutionText)
 
 
 //**********************************************************************************************************************
-/// \param[in] The value for the enabled parameter
+/// \param[in] enabled The value for the enabled parameter
 //**********************************************************************************************************************
 void Combo::setEnabled(bool enabled)
 {

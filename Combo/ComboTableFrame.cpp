@@ -61,6 +61,18 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
 }
 
 
+//**********************************************************************************************************************
+/// This event filter override the default mouse double click behavior of the table view to respond also 
+/// when the user double click on an empty area
+//**********************************************************************************************************************
+bool ComboTableFrame::eventFilter(QObject *object, QEvent *event)
+{
+   if (event->type() != QEvent::MouseButtonDblClick)
+      return QObject::eventFilter(object, event);
+   this->onDoubleClick();
+   return true;
+}
+
 
 //**********************************************************************************************************************
 // 
@@ -75,10 +87,10 @@ void ComboTableFrame::setupTable()
    header->setDefaultAlignment(Qt::AlignLeft);
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this,
       &ComboTableFrame::updateGui);
-   connect(ui_.tableComboList, &QTableView::doubleClicked, this, &ComboTableFrame::onActionEditCombo);
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
    ui_.tableComboList->setStyle(proxyStyle_.get());
+   ui_.tableComboList->viewport()->installEventFilter(this); // we install an event filter that override the default double-click behavior
 }
 
 
@@ -303,3 +315,22 @@ void ComboTableFrame::onContextMenuRequested()
 {
    contextMenu_.exec(QCursor::pos());
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::onDoubleClick()
+{
+   switch (this->getSelectedComboCount())
+   {
+   case 0:
+      this->onActionAddCombo();
+      break;
+   case 1:
+      this->onActionEditCombo();
+   default:
+      break;
+   }
+}
+

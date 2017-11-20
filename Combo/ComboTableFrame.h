@@ -26,6 +26,9 @@ public: // member functions
 	ComboTableFrame(QWidget* parent = nullptr); ///< Default constructor
 	~ComboTableFrame() = default; ///< Default destructor
 
+protected: // member functions
+   bool eventFilter(QObject *object, QEvent *event); ///< Event filter to override the default behavior of double-click in the table view
+
 private: // member functions
 	ComboTableFrame(ComboTableFrame const&) = delete; ///< Disabled copy constructor
 	ComboTableFrame(ComboTableFrame&&) = delete; ///< Disabled move constructor
@@ -47,6 +50,7 @@ private slots:
    void onActionEnableDisableCombo(); ///< Slot for the 'Enable/Disable' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
    void onContextMenuRequested(); ///< Slot for the combo table context menu
+   void onDoubleClick(); ///< Slot for the double clicking in the table view
 
 private: // data members
    Ui::ComboTableFrame ui_; ///< The GUI for the frame
