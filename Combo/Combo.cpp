@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "Combo.h"
 #include <XMiLib/SystemUtils.h>
+#include <XMiLib/Exception.h>
 
 
 namespace {
@@ -160,23 +161,18 @@ bool Combo::isEnabled() const
 //**********************************************************************************************************************
 void Combo::performSubstitution()
 {
-   // select the typed combo by pressing Shift + Left n times (n being the number of characters in the combo)
-   synthesizeKeyDown(VK_LSHIFT);
-   for (qint32 i = 0; i < comboText_.size(); ++i)
+   // we erase the combo
+   synthesizeBackspaces(comboText_.size());
+
+   // we simulate the typing of the substitution text
+   for (QChar c : substitutionText_)
    {
-      synthesizeKeyDown(VK_LEFT);
-      synthesizeKeyUp(VK_LEFT);
+      if (c == QChar::LineFeed) // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
+         synthesizeKeyDownAndUp(VK_RETURN);
+      if (!c.isPrint())
+         continue;
+      synthesizeUnicodeKeyDownAndUp(c.unicode());
    }
-   synthesizeKeyUp(VK_LSHIFT);
-
-   // put the substitution text in the clipboard
-   qApp->clipboard()->setText(substitutionText_);
-
-   // send a paste command (Ctrl+V)
-   synthesizeKeyDown(VK_LCONTROL);
-   synthesizeKeyDown('V');
-   synthesizeKeyUp('V');
-   synthesizeKeyUp(VK_LCONTROL);
 }
 
 
@@ -195,7 +191,6 @@ QJsonObject Combo::toJsonObject()
    result.insert(kPropEnabled, enabled_);
    return result;
 }
-
 
 //**********************************************************************************************************************
 /// \param[in] name The display name of the combo
