@@ -91,17 +91,11 @@ InputManager::InputManager()
    : QObject(nullptr)
    , deadKey_(kNullKeyStroke)
 {
-   HMODULE moduleHandle = GetModuleHandle(nullptr);
-   keyboardHook_ = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProcedure, moduleHandle, 0);
-   if (!keyboardHook_)
-      throw xmilib::Exception("Could not register a keyboard hook.");
-
+   this->enableKeyboardHook();
 #ifdef NDEBUG
    // to avoid being locked with all input unresponsive when in debug (because one forgot that breakpoints should be
    // avoided, for instance), we only enable the low level mouse hook in release configuration
-   mouseHook_ = SetWindowsHookEx(WH_MOUSE_LL, mouseProcedure, moduleHandle, 0);
-   if (!mouseHook_)
-      throw xmilib::Exception("Could not register a mouse hook.");
+   this->enableMouseHook();
 #endif
 }
 
@@ -111,10 +105,8 @@ InputManager::InputManager()
 //**********************************************************************************************************************
 InputManager::~InputManager()
 {
-   if (keyboardHook_) 
-      UnhookWindowsHookEx(keyboardHook_);
-   if (mouseHook_)
-      UnhookWindowsHookEx(mouseHook_);
+   this->disableKeyboardHook();
+   this->disableMouseHook();
 }
 
 //**********************************************************************************************************************
@@ -199,3 +191,108 @@ void InputManager::onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam)
 {
    QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
 }
+
+
+//**********************************************************************************************************************
+/// \return true if and only if the keyboard hook is enabled
+//**********************************************************************************************************************
+bool InputManager::isKeyboardHookEnable() const
+{
+   return keyboardHook_;
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if the hook was enabled b
+//**********************************************************************************************************************
+void InputManager::enableKeyboardHook()
+{
+
+   if (keyboardHook_)
+      return;
+   HMODULE moduleHandle = GetModuleHandle(nullptr);
+   keyboardHook_ = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProcedure, moduleHandle, 0);
+   if (!keyboardHook_)
+      throw xmilib::Exception("Could not register a keyboard hook.");
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void InputManager::disableKeyboardHook()
+{
+   if (keyboardHook_)
+   {
+      UnhookWindowsHookEx(keyboardHook_);
+      keyboardHook_ = nullptr;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enabled The new state of the keyboard hook
+/// \return true if and only if the keyboard hook was enabled before the call
+//**********************************************************************************************************************
+bool InputManager::setKeyboardHookEnabled(bool enabled)
+{
+   bool const result = keyboardHook_;
+   if (enabled)
+      this->enableKeyboardHook();
+   else
+      this->disableKeyboardHook();
+   return result;
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if the mouse hook is enabled
+//**********************************************************************************************************************
+bool InputManager::isMouseHookEnabled() const
+{
+   return mouseHook_;
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void InputManager::enableMouseHook()
+{
+   if (mouseHook_)
+      return;
+   HMODULE moduleHandle = GetModuleHandle(nullptr);
+   mouseHook_ = SetWindowsHookEx(WH_MOUSE_LL, mouseProcedure, moduleHandle, 0);
+   if (!mouseHook_)
+      throw xmilib::Exception("Could not register a mouse hook.");
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void InputManager::disableMouseHook()
+{
+   if (mouseHook_)
+   {
+      UnhookWindowsHookEx(mouseHook_);
+      mouseHook_ = nullptr;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enabled The new state of the mouse hook
+/// \return true if and only if the mouse hook was enabled before the call 
+//**********************************************************************************************************************
+bool InputManager::setMouseHookEnabled(bool enabled)
+{
+   bool const result = mouseHook_;
+   if (enabled)
+      this->enableMouseHook();
+   else
+      this->disableMouseHook();
+   return result;
+}
+
+

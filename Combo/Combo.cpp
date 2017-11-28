@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "Combo.h"
+#include "InputManager.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
 
@@ -158,20 +159,31 @@ bool Combo::isEnabled() const
 
 //**********************************************************************************************************************
 // 
-//**********************************************************************************************************************
+//*********************************************************************************************************************
 void Combo::performSubstitution()
 {
-   // we erase the combo
-   synthesizeBackspaces(comboText_.size());
-
-   // we simulate the typing of the substitution text
-   for (QChar c : substitutionText_)
+   InputManager& inputManager = InputManager::instance();
+   bool const wasKeyboardHookWasEnabled = inputManager.setKeyboardHookEnabled(false); // we disable the hook to prevent endless recursive substitution
+   try
    {
-      if (c == QChar::LineFeed) // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
-         synthesizeKeyDownAndUp(VK_RETURN);
-      if (!c.isPrint())
-         continue;
-      synthesizeUnicodeKeyDownAndUp(c.unicode());
+      // we erase the combo
+      synthesizeBackspaces(comboText_.size());
+
+      // we simulate the typing of the substitution text
+      for (QChar c : substitutionText_)
+      {
+         if (c == QChar::LineFeed) // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
+            synthesizeKeyDownAndUp(VK_RETURN);
+         if (!c.isPrint())
+            continue;
+         synthesizeUnicodeKeyDownAndUp(c.unicode());
+      }
+      inputManager.setKeyboardHookEnabled(wasKeyboardHookWasEnabled);
+   }
+   catch (xmilib::Exception const& e)
+   {
+      inputManager.setKeyboardHookEnabled(wasKeyboardHookWasEnabled);
+      throw e;
    }
 }
 

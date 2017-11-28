@@ -28,6 +28,14 @@ public: // data types
    };
 public: // static member functions
    static InputManager& instance(); ///< Return the only allowed instance of the class
+   bool isKeyboardHookEnable() const; ///< Is the keyboard hook enabled
+   void enableKeyboardHook(); ///< Enable the keyboard hook
+   void disableKeyboardHook(); ///< Disable the keyboard hook
+   bool setKeyboardHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
+   bool isMouseHookEnabled() const; ///< Is the mouse hook enabled
+   void enableMouseHook(); ///< Enable the mouse hook
+   void disableMouseHook(); ///< Disable the mouse hook
+   bool setMouseHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
 
 public: // member functions
    ~InputManager(); ///< Default destructor
