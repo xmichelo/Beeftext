@@ -86,9 +86,10 @@ void ComboTableFrame::setupTable()
    proxyModel_.setSourceModel(&ComboManager::instance().getComboListRef());
    ui_.tableComboList->setModel(&proxyModel_);
    proxyModel_.sort(0, Qt::AscendingOrder);
-   QHeaderView* header = ui_.tableComboList->horizontalHeader();
-   header->setSortIndicator(0, Qt::AscendingOrder);  //< required, otherwise the indicator is first displayed in the wrong direction
-   header->setDefaultAlignment(Qt::AlignLeft);
+   QHeaderView* horizontalHeader = ui_.tableComboList->horizontalHeader();
+   horizontalHeader->setFixedHeight(horizontalHeader->fontMetrics().height() + 10);
+   horizontalHeader->setSortIndicator(0, Qt::AscendingOrder);  //< required, otherwise the indicator is first displayed in the wrong direction
+   horizontalHeader->setDefaultAlignment(Qt::AlignLeft);
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this,
       &ComboTableFrame::updateGui);
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();

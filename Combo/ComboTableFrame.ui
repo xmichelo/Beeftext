@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>494</width>
+    <width>635</width>
     <height>495</height>
    </rect>
   </property>
@@ -123,13 +123,13 @@ QTableView::item:selected {
       <bool>false</bool>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>50</number>
+      <number>70</number>
      </attribute>
      <attribute name="horizontalHeaderHighlightSections">
       <bool>true</bool>
      </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>50</number>
+      <number>70</number>
      </attribute>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
