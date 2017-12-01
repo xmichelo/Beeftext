@@ -24,6 +24,24 @@ namespace {
 }
 
 
+bool getForegroundWindorwInputLocale(HKL &outHkl); ///< Retrieve the Input local of the currently focused window
+
+
+//**********************************************************************************************************************
+/// \param[out] outHkl If the function returns true, this variable holds the input local of the foreground window. If
+/// the function returns false, the value of this variable is undetermined on function exit.
+/// \return true if and only if the input local of the foreground window could be determined
+//**********************************************************************************************************************
+bool getForegroundWindowInputLocale(HKL &outHkl)
+{
+   HWND hwnd = GetForegroundWindow();
+   if (!hwnd)
+      return false;
+   outHkl = GetKeyboardLayout(GetWindowThreadProcessId(hwnd, nullptr));
+   return true;
+}
+
+
 //**********************************************************************************************************************
 /// This static member function is registered to be called whenever a key event occurs.
 /// 
@@ -147,12 +165,20 @@ void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 //**********************************************************************************************************************
 QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
 {
+   // The core of this function is the call to ToUnicodeEx() - or ToUnicode() - who transforms a keystroke into 
+   // an actual text output, taking into account the current input locale (a.k.a. keyboard layout).
    // now the tricky part: ToUnicode() "consumes" the dead key that may be stored in the kernel-mode keyboard buffer
    // so we need to manually restore the dead key by calling ToUnicode() again
-   outIsDeadKey = false;
    WCHAR textBuffer[kTextBufferSize];
-   qint32 size = ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, 
-      kTextBufferSize, 0);
+   outIsDeadKey = false;
+   HKL hkl = nullptr;
+   
+   // Windows allow each window to have its own input locale, so we try to obtain the locale (HKL) of the active window
+   // andpass it to ToUnicodeEx(). If we fail to do so we call ToUnicode instead, which use the system-wide locale
+   qint32 size = getForegroundWindowInputLocale(hkl)
+      ? ToUnicodeEx(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, kTextBufferSize, 0
+      , hkl) : ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer
+      , kTextBufferSize, 0);
 
    if (-1 == size)
    {
@@ -187,7 +213,7 @@ QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void InputManager::onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam)
+void InputManager::onMouseClickEvent(int, WPARAM, LPARAM)
 {
    QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
 }

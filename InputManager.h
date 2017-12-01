@@ -53,7 +53,7 @@ private: // member functions
    InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
    void onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
    QString processKey(KeyStroke const& keystroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
-   void onMouseClickEvent(int nCode, WPARAM wParam, LPARAM lParam); ///< Process a mouse click event
+   void onMouseClickEvent(int, WPARAM, LPARAM); ///< Process a mouse click event
 
 private: // static member functions
    static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The keyboard event callback
