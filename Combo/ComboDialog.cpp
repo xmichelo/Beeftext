@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboDialog.h"
+#include "ComboManager.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
 
@@ -56,11 +57,42 @@ SPCombo ComboDialog::combo() const
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the combo is valid
+//**********************************************************************************************************************
+bool ComboDialog::checkAndReportInvalidCombo()
+{
+   if (ui_.editSubstitution->toPlainText().isEmpty())
+   {
+      QMessageBox::critical(this, tr("Error"), tr("The substitution text is empty."));
+      return false;
+   }
+   if (QValidator::Acceptable != validator_.validate(ui_.editCombo->text()))
+   {
+      QMessageBox::critical(this, tr("Error"), tr("The combo text is invalid."));
+      return false;
+   }
+   ComboList const& comboList = ComboManager::instance().getComboListRef();
+   for (SPCombo const& combo : comboList)
+   {
+      if ((combo != combo_) && (ui_.editCombo->text().startsWith(combo->comboText(), Qt::CaseSensitive)))
+      {
+         QMessageBox::critical(this, tr("Error"), tr("An existing combo, triggered by '%1', is creating a conflict "
+            "with this combo.").arg(combo->comboText()));
+         return false;
+      }
+   }
+   return true;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboDialog::onActionOk()
 {
    Q_ASSERT(combo_);
+   if (!checkAndReportInvalidCombo())
+      return;
    combo_->setName(ui_.editName->text().trimmed());
    combo_->setComboText(ui_.editCombo->text().trimmed());
    combo_->setSubstitutionText(ui_.editSubstitution->toPlainText());
@@ -73,10 +105,10 @@ void ComboDialog::onActionOk()
 //**********************************************************************************************************************
 void ComboDialog::updateGui()
 {
-   qint32 pos = 0; // not used, but required by QValidator::validate
-   bool const canAccept = (QValidator::Acceptable == validator_.validate(ui_.editCombo->text(), pos)) &&
+   bool const canAccept = (QValidator::Acceptable == validator_.validate(ui_.editCombo->text())) &&
       (!ui_.editSubstitution->toPlainText().isEmpty());
    ui_.actionOk->setEnabled(canAccept);
    ui_.buttonOk->setEnabled(canAccept);
 }
+
 

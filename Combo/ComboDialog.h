@@ -28,6 +28,7 @@ public: // member functions
 	ComboDialog(SPCombo combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
 	~ComboDialog() = default; ///< Default destructor
 	SPCombo combo() const; ///< Get the combo
+   bool checkAndReportInvalidCombo(); ///< Check the combo text against existing combos and report conflicts
 
 private: // member functions
 	ComboDialog(ComboDialog const&) = delete; ///< Disabled copy constructor

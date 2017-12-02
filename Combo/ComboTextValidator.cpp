@@ -65,4 +65,16 @@ QValidator::State ComboTextValidator::validate(QString& input, int&) const
 }
 
 
+//**********************************************************************************************************************
+/// This convenience function is the same as its variant with pos
+///
+/// \param[in] input The input text to validate
+/// \return The validation state of the text
+//**********************************************************************************************************************
+QValidator::State ComboTextValidator::validate(QString& input) const
+{
+   int unused = 0;
+   return validate(input, unused);
+}
+
 

@@ -24,6 +24,7 @@ public: // member functions
 	~ComboTextValidator() = default; ///< Default destructor
    void fixup(QString& input) const override; ///< Attempt to change the input to be valid according to the validator rules
    State validate(QString& input, int& pos) const override; ///< Validate the combo text
+   State validate(QString& input) const; ///< Validate the combo text
 
 private: // member functions
 	ComboTextValidator(ComboTextValidator const&) = delete; ///< Disabled copy constructor
