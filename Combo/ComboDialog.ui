@@ -140,8 +140,8 @@
      <y>334</y>
     </hint>
     <hint type="destinationlabel">
-     <x>96</x>
-     <y>254</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -177,8 +177,41 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>editCombo</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>ComboDialog</receiver>
+   <slot>updateGui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>302</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>280</x>
+     <y>183</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editSubstitution</sender>
+   <signal>textChanged()</signal>
+   <receiver>ComboDialog</receiver>
+   <slot>updateGui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>280</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>280</x>
+     <y>183</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionOk()</slot>
+  <slot>updateGui()</slot>
  </slots>
 </ui>

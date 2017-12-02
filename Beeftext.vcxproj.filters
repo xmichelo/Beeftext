@@ -101,6 +101,9 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="PreferenceManager.cpp" />
+    <ClCompile Include="Combo\ComboTextValidator.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -146,6 +149,9 @@
       <Filter>Combo</Filter>
     </CustomBuild>
     <CustomBuild Include="Combo\ComboSortFilterProxyModel.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboTextValidator.h">
       <Filter>Combo</Filter>
     </CustomBuild>
   </ItemGroup>

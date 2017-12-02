@@ -24,7 +24,7 @@ namespace {
 }
 
 
-bool getForegroundWindorwInputLocale(HKL &outHkl); ///< Retrieve the Input local of the currently focused window
+bool getForegroundWindorwInputLocale(HKL& outHkl); ///< Retrieve the Input local of the currently focused window
 
 
 //**********************************************************************************************************************
@@ -32,7 +32,7 @@ bool getForegroundWindorwInputLocale(HKL &outHkl); ///< Retrieve the Input local
 /// the function returns false, the value of this variable is undetermined on function exit.
 /// \return true if and only if the input local of the foreground window could be determined
 //**********************************************************************************************************************
-bool getForegroundWindowInputLocale(HKL &outHkl)
+bool getForegroundWindowInputLocale(HKL& outHkl)
 {
    HWND hwnd = GetForegroundWindow();
    if (!hwnd)

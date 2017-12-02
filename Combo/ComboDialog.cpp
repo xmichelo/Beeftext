@@ -6,6 +6,7 @@
 /// Copyright (c) Xavier Michelon. All rights reserved.  
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
+
 #include "stdafx.h"
 #include "ComboDialog.h"
 #include "BeeftextConstants.h"
@@ -31,6 +32,7 @@ bool ComboDialog::run(SPCombo combo, QString const& title, QWidget* parent)
 ComboDialog::ComboDialog(SPCombo combo, QString const& title, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
    , combo_(combo)
+   , validator_()
 {
    if (!combo)
       throw xmilib::Exception("%1(): combo is null.");
@@ -38,7 +40,9 @@ ComboDialog::ComboDialog(SPCombo combo, QString const& title, QWidget* parent)
    this->setWindowTitle(title);
    ui_.editName->setText(combo->name());
    ui_.editCombo->setText(combo->comboText());
+   ui_.editCombo->setValidator(&validator_); 
    ui_.editSubstitution->setPlainText(combo->substitutionText());
+   this->updateGui();
 }
 
 
@@ -62,3 +66,17 @@ void ComboDialog::onActionOk()
    combo_->setSubstitutionText(ui_.editSubstitution->toPlainText());
    this->accept();
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboDialog::updateGui()
+{
+   qint32 pos = 0; // not used, but required by QValidator::validate
+   bool const canAccept = (QValidator::Acceptable == validator_.validate(ui_.editCombo->text(), pos)) &&
+      (!ui_.editSubstitution->toPlainText().isEmpty());
+   ui_.actionOk->setEnabled(canAccept);
+   ui_.buttonOk->setEnabled(canAccept);
+}
+

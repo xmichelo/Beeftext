@@ -11,6 +11,7 @@
 
 
 #include "ui_ComboDialog.h"
+#include "ComboTextValidator.h"
 #include "Combo/Combo.h"
 
 
@@ -36,10 +37,12 @@ private: // member functions
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
+   void updateGui(); ///< Update the GUI state
 
 private: // data members
    Ui::ComboDialog ui_; ///< The GUI for the dialog
    SPCombo combo_; ///< The combo
+   ComboTextValidator validator_; ///< The validator for the combo text
 };
 
 
