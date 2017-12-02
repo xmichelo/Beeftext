@@ -37,7 +37,6 @@ private: // member functions
 	ComboManager(ComboManager const&&) = delete; ///< Disabled move constructor
 	ComboManager& operator=(ComboManager const&) = delete; ///< Disabled assignment operator
 	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
-   void tempAddTestCombos(); ///< Add a few test combos
 
 private: // slots
    void onComboBreakerTyped(); ///< Slot for the "Combo Breaker Typed" signal

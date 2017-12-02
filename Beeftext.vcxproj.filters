@@ -100,10 +100,17 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboSortFilterProxyModel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="PreferenceManager.cpp" />
     <ClCompile Include="Combo\ComboTextValidator.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
+    <ClCompile Include="PreferencesFrame.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_PreferencesFrame.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_PreferencesFrame.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="PreferencesManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -121,7 +128,10 @@
     <ClInclude Include="GeneratedFiles\ui_ComboTableFrame.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="PreferenceManager.h" />
+    <ClInclude Include="GeneratedFiles\ui_PreferencesFrame.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PreferencesManager.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -154,6 +164,8 @@
     <CustomBuild Include="Combo\ComboTextValidator.h">
       <Filter>Combo</Filter>
     </CustomBuild>
+    <CustomBuild Include="PreferencesFrame.ui" />
+    <CustomBuild Include="PreferencesFrame.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

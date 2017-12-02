@@ -44,7 +44,39 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="ComboTableFrame" name="frame">
+         <widget class="ComboTableFrame" name="frameCombos">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabPreferences">
+       <attribute name="title">
+        <string>Preferences</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="PreferencesFrame" name="framePreferences">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -195,7 +227,15 @@
     <string notr="true">&amp;Open &lt;insertAppNameHere&gt;</string>
    </property>
    <property name="toolTip">
-    <string notr="true">&amp;Open &lt;insertAppNameHere&gt;</string>
+    <string>Open &lt;insertAppNameHere&gt;</string>
+   </property>
+  </action>
+  <action name="actionShowPreferences">
+   <property name="text">
+    <string>&amp;Preferences</string>
+   </property>
+   <property name="toolTip">
+    <string>Show the application preferences.</string>
    </property>
   </action>
  </widget>
@@ -205,6 +245,12 @@
    <class>ComboTableFrame</class>
    <extends>QFrame</extends>
    <header>Combo/ComboTableFrame.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PreferencesFrame</class>
+   <extends>QFrame</extends>
+   <header>PreferencesFrame.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
@@ -244,13 +290,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionShowPreferences</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowPreferences()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
   <slot>onActionShowMainWindow()</slot>
-  <slot>onActionShowDebugLog()</slot>
-  <slot>onActionAddCombo()</slot>
-  <slot>onActionDeleteCombo()</slot>
-  <slot>onActionEditCombo()</slot>
+  <slot>onActionShowPreferences()</slot>
  </slots>
 </ui>

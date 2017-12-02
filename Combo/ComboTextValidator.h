@@ -23,7 +23,7 @@ public: // member functions
 	ComboTextValidator(QObject* parent = nullptr); ///< Default constructor
 	~ComboTextValidator() = default; ///< Default destructor
    void fixup(QString& input) const override; ///< Attempt to change the input to be valid according to the validator rules
-   State validate(QString& input, int& pos) const override; ///< Validate the combo text
+   State validate(QString& input, int&) const override; ///< Validate the combo text
    State validate(QString& input) const; ///< Validate the combo text
 
 private: // member functions

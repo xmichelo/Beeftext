@@ -1,57 +1,55 @@
 /// \file
 /// \author Xavier Michelon
 ///
-/// \brief Implementation of preference manager
+/// \brief Declaration of preferences frame
 ///  
 /// Copyright (c) Xavier Michelon. All rights reserved.  
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
 #include "stdafx.h"
-#include "PreferenceManager.h"
-#include "BeeftextConstants.h"
+#include "PreferencesFrame.h"
 
 
-namespace {
-   QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
+//**********************************************************************************************************************
+/// \param[in] parent The parent widget of the frame
+//**********************************************************************************************************************
+PreferencesFrame::PreferencesFrame(QWidget* parent)
+   : QFrame(parent)
+   , prefs_(PreferencesManager::instance())
+{
+   ui_.setupUi(this);
+   loadPreferences();
 }
 
 
 //**********************************************************************************************************************
-/// \return The only allowed instance of the class
+// 
 //**********************************************************************************************************************
-PreferenceManager& PreferenceManager::instance()
+void PreferencesFrame::loadPreferences()
 {
-   static PreferenceManager prefManager;
-   return prefManager;
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   ui_.checkPlaySoundOnCombo->setChecked(prefs_.getPlaySoundOnCombo());
 }
 
 
 //**********************************************************************************************************************
-/// \note We set the organization and application names manually in case we want to use the preferences before the call 
-/// to QApplication::SetOrganizationName() and QApplication::SetApplicationName()
+// 
 //**********************************************************************************************************************
-PreferenceManager::PreferenceManager()
-   : settings_(constants::kOrganizationName, constants::kApplicationName)
+void PreferencesFrame::onActionResetToDefaultValues()
 {
-
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   prefs_.reset();
+   this->loadPreferences();
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] array The geometry as a byte array
+// 
 //**********************************************************************************************************************
-void PreferenceManager::setMainWindowGeometry(QByteArray const& array)
+void PreferencesFrame::onPlaySoundOnComboCheckChanged()
 {
-   settings_.setValue(kKeyGeometry, array);
-}
-
-
-//**********************************************************************************************************************
-/// \return The geometry of the main window as a byte array
-//**********************************************************************************************************************
-QByteArray PreferenceManager::mainWindowGeometry() const
-{
-   return settings_.value(kKeyGeometry).toByteArray();
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
 }
 

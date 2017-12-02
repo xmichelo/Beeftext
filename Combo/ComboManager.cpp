@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "ComboManager.h"
 #include "InputManager.h"
+#include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 
@@ -145,18 +146,6 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboManager::tempAddTestCombos()
-{
-   comboList_.append(Combo::create("Personal Email", "xxem", "johndoe@gmail.com"));
-   comboList_.append(Combo::create("Personal Signature","xxsig", 
-      "Regards.\n\n-- \nJohn Doe\n\"johndoe@gmail.com\"\n"));
-   comboList_.append(Combo::create("Personal Name" ,"xxname", "John Doe"));
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
 void ComboManager::onComboBreakerTyped()
 {
    currentText_ = QString();
@@ -177,7 +166,8 @@ void ComboManager::onCharacterTyped(QChar c)
    if (!isBeeftextTheForegroundApplication()) // in Beeftext windows, substitution is disabled
    {
       (*it)->performSubstitution();
-      sound_->play();
+      if (PreferencesManager::instance().getPlaySoundOnCombo())
+         sound_->play();
    }
    this->onComboBreakerTyped();
 }

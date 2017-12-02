@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
-#include "PreferenceManager.h"
+#include "PreferencesManager.h"
 #include "Combo/ComboManager.h"
 #include "Combo/ComboDialog.h"
 #include "BeeftextConstants.h"
@@ -28,19 +28,9 @@ MainWindow::MainWindow()
     ui_.setupUi(this);
     ui_.tabWidget->setCurrentIndex(0);
     
-    this->setupComboTable(); 
     this->setupActions();
     this->setupSystemTrayIcon();
-    this->restoreGeometry(PreferenceManager::instance().mainWindowGeometry());
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void MainWindow::setupComboTable()
-{
-
+    this->restoreGeometry(PreferencesManager::instance().mainWindowGeometry());
 }
 
 
@@ -74,6 +64,7 @@ void MainWindow::setupSystemTrayIcon()
 
    QMenu* menu = new QMenu(this);
    menu->addAction(ui_.actionShowMainWindow);
+   menu->addAction(ui_.actionShowPreferences);
    menu->addSeparator();
    menu->addAction(ui_.actionExit);
    menu->setDefaultAction(ui_.actionShowMainWindow);
@@ -106,6 +97,19 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
 //**********************************************************************************************************************
 void MainWindow::onActionShowMainWindow()
 {
+   ui_.tabWidget->setCurrentIndex(0);
+   this->show();
+   this->raise();
+   this->activateWindow();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionShowPreferences()
+{
+   ui_.tabWidget->setCurrentIndex(1);
    this->show();
    this->raise();
    this->activateWindow();
@@ -129,5 +133,5 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
    // note that we save the geometry every time we close the window, not the app, simply because otherwise we would
    // have to do it in the destructor, where the state of the window may be uncertain.
-   PreferenceManager::instance().setMainWindowGeometry(this->saveGeometry());
+   PreferencesManager::instance().setMainWindowGeometry(this->saveGeometry());
 }

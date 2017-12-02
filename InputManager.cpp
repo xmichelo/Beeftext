@@ -24,7 +24,7 @@ namespace {
 }
 
 
-bool getForegroundWindorwInputLocale(HKL& outHkl); ///< Retrieve the Input local of the currently focused window
+bool getForegroundWindowInputLocale(HKL& outHkl); ///< Retrieve the Input local of the currently focused window
 
 
 //**********************************************************************************************************************
@@ -229,7 +229,7 @@ bool InputManager::isKeyboardHookEnable() const
 
 
 //**********************************************************************************************************************
-/// \return true if and only if the hook was enabled b
+/// \return true if and only if the hook was enabled
 //**********************************************************************************************************************
 void InputManager::enableKeyboardHook()
 {

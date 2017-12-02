@@ -30,13 +30,13 @@ private: // member functions
    MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
-   void setupComboTable(); ///< Setup the combo table
    void setupActions(); ///< Setup the Qt actions for the main window
    void setupSystemTrayIcon(); ///< Setup the system tray icon
 
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
+   void onActionShowPreferences(); ///< Slot for the 'Preferences' action
    void onActionExit(); ///< Slot for the 'Exit' action
 
 protected:
