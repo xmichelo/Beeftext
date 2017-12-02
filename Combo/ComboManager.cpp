@@ -18,6 +18,22 @@ namespace {
    QString const kComboListFileName = "comboList.json"; ///< The name of the default combo list file
 }
 
+
+bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
+
+
+//**********************************************************************************************************************
+/// \return true if and only if Beeftext is the application currently in the foreground
+//**********************************************************************************************************************
+bool isBeeftextTheForegroundApplication()
+{
+   DWORD processId = 0;
+   GetWindowThreadProcessId(GetForegroundWindow(), &processId);
+   return  qApp->applicationPid() == processId;
+}
+
+
+
 //**********************************************************************************************************************
 /// \return A reference to the only allowed instance of the class
 //**********************************************************************************************************************
@@ -157,8 +173,12 @@ void ComboManager::onCharacterTyped(QChar c)
       [&](SPCombo const combo) -> bool { return combo->isEnabled() && (combo->comboText() == currentText_); });
    if (comboList_.end() == it)
       return;
-   (*it)->performSubstitution();
-   sound_->play();
+
+   if (!isBeeftextTheForegroundApplication()) // in Beeftext windows, substitution is disabled
+   {
+      (*it)->performSubstitution();
+      sound_->play();
+   }
    this->onComboBreakerTyped();
 }
 
