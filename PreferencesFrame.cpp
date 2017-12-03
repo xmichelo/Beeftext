@@ -9,6 +9,9 @@
 
 #include "stdafx.h"
 #include "PreferencesFrame.h"
+#include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
+#include "BeeftextUtils.h"
 
 
 //**********************************************************************************************************************
@@ -19,6 +22,7 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    , prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
+   ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
    loadPreferences();
 }
 
@@ -28,8 +32,27 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
 //**********************************************************************************************************************
 void PreferencesFrame::loadPreferences()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.getPlaySoundOnCombo());
+
+   ui_.checkAutoStart->blockSignals(true);
+   ui_.checkAutoStart->setChecked(prefs_.getAutoStartAtLogin());
+   ui_.checkAutoStart->blockSignals(false);
+   this->applyAutoStartPreference(); // we ensure autostart is properly setup
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::applyAutoStartPreference()
+{
+   if (prefs_.getAutoStartAtLogin())
+   {
+      if (!registerApplicationForAutoStart())
+         globals::debugLog().addWarning("Could not register the application for automatic startup on login.");
+   }
+   else
+      unregisterApplicationFromAutoStart();
 }
 
 
@@ -38,9 +61,9 @@ void PreferencesFrame::loadPreferences()
 //**********************************************************************************************************************
 void PreferencesFrame::onActionResetToDefaultValues()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    prefs_.reset();
    this->loadPreferences();
+   this->applyAutoStartPreference();
 }
 
 
@@ -49,7 +72,16 @@ void PreferencesFrame::onActionResetToDefaultValues()
 //**********************************************************************************************************************
 void PreferencesFrame::onPlaySoundOnComboCheckChanged()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onAutoStartCheckChanged()
+{
+   prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
+   this->applyAutoStartPreference();
 }
 

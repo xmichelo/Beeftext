@@ -22,8 +22,11 @@ public: // static member functions
 public: // member functions
 	~PreferencesManager() = default; ///< Default destructor
    void reset(); ///< Reset the preferences to their default values
+   QString getInstalledApplicationPath() const; ///< Retrieve the path of the installed application
    void setMainWindowGeometry(QByteArray const& array); ///< Set the geometry of the main window
    QByteArray mainWindowGeometry() const; ///< Get the geometry of the main window
+   void setAutoStartAtLogin(bool value); ///< Set the value for the 'Autostart at login' preference
+   bool getAutoStartAtLogin() const; ///< Get the value for the 'Autostart at login' preference
    void setPlaySoundOnCombo(bool value); ///< Set the value for the 'Play sound on combo' preference
    bool getPlaySoundOnCombo() const; ///< Set the value for the 'Play sound on combo' preference
 

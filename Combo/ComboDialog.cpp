@@ -71,6 +71,8 @@ bool ComboDialog::checkAndReportInvalidCombo()
       QMessageBox::critical(this, tr("Error"), tr("The combo text is invalid."));
       return false;
    }
+
+   // we check for conflicts that would make some combo 'unreachable'
    ComboList const& comboList = ComboManager::instance().getComboListRef();
    for (SPCombo const& combo : comboList)
    {

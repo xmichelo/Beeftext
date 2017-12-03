@@ -164,6 +164,9 @@ file "$%QTDIR%\plugins\imageformats\qico.dll"
 setOutPath $INSTDIR\audio
 file "$%QTDIR%\plugins\audio\qtaudio_windows.dll"
 
+# Add registry key for application path
+WriteRegStr HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" "AppExePath" "$INSTDIR\${APP_NAME}.exe"
+
 # Create uninstall
 WriteUninstaller "${UNINSTALLER_FILE_NAME}"
 
@@ -225,6 +228,10 @@ RMDir  "$INSTDIR"
 
 # Remove registry keys that are used for the uninstaller
 DeleteRegKey HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}"
+DeleteRegValue HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" "AppExePath"
+DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\Run" "${APP_FANCY_NAME}" # this autostart key may have been created by the application itself
+
+DeleteRegKey /ifempty HKCU "Software\${COMPANY}\${APP_FANCY_NAME}"
 
 # Remove Start menu entries, if any
 Delete "$SMPROGRAMS\${APP_fANCY_NAME}\*.*"

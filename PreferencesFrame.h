@@ -31,11 +31,12 @@ private: // member functions
 	PreferencesFrame& operator=(PreferencesFrame const&) = delete; ///< Disabled assignment operator
 	PreferencesFrame& operator=(PreferencesFrame&&) = delete; ///< Disabled move assignment operator
    void loadPreferences(); ///< Load the preferences
+   void applyAutoStartPreference(); ///< Apply the 'Autostart at login' preference
 
 private slots:
    void onActionResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
-   void onPlaySoundOnComboCheckChanged(); ///< Slot for the changing of the 'Play sound on combo' preference value
-
+   void onPlaySoundOnComboCheckChanged(); ///< Slot for the changing of the 'Play sound on combo' check box
+   void onAutoStartCheckChanged(); ///< Slot for the changing of the 'Autostart at login' check box
 private: // data members
    Ui::PreferencesFrame ui_; ///< The GUI for the frame
    PreferencesManager& prefs_; ///< The preferences manager

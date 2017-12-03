@@ -111,6 +111,7 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="PreferencesManager.cpp" />
+    <ClCompile Include="BeeftextUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -132,6 +133,7 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="PreferencesManager.h" />
+    <ClInclude Include="BeeftextUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">

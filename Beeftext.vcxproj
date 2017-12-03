@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClCompile Include="BeeftextConstants.cpp" />
     <ClCompile Include="BeeftextGlobals.cpp" />
+    <ClCompile Include="BeeftextUtils.cpp" />
     <ClCompile Include="Combo\Combo.cpp" />
     <ClCompile Include="Combo\ComboDialog.cpp" />
     <ClCompile Include="Combo\ComboList.cpp" />
@@ -157,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="BeeftextConstants.h" />
     <ClInclude Include="BeeftextGlobals.h" />
+    <ClInclude Include="BeeftextUtils.h" />
     <ClInclude Include="Combo\Combo.h" />
     <CustomBuild Include="Combo\ComboList.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
