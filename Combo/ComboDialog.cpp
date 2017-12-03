@@ -74,7 +74,9 @@ bool ComboDialog::checkAndReportInvalidCombo()
    ComboList const& comboList = ComboManager::instance().getComboListRef();
    for (SPCombo const& combo : comboList)
    {
-      if ((combo != combo_) && (ui_.editCombo->text().startsWith(combo->comboText(), Qt::CaseSensitive)))
+      QString const newCombo = ui_.editCombo->text();
+      QString const existing = combo->comboText();
+      if ((combo != combo_) && (existing.startsWith(newCombo) || newCombo.startsWith(existing)))
       {
          QMessageBox::critical(this, tr("Error"), tr("An existing combo, triggered by '%1', is creating a conflict "
             "with this combo.").arg(combo->comboText()));
