@@ -25,6 +25,7 @@ using namespace xmilib;
 
 
 void ensureAppDataDirExists(); ///< Make sure the application data folder exists
+void ensureMainWindowHasAHandle(MainWindow& window); ///< Ensure that the main window has a Win32 handle
 
 
 //**********************************************************************************************************************
@@ -61,6 +62,7 @@ int main(int argc, char *argv[])
 
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       MainWindow window;
+      ensureMainWindowHasAHandle(window);
       qint32 returnCode = app.exec();
       debugLog.addInfo(QObject::tr("Application exited with return code %1").arg(returnCode));
       return returnCode;
@@ -97,4 +99,19 @@ void ensureAppDataDirExists()
    if (!dir.exists())
       throw xmilib::Exception(QObject::tr("The application data folder '%1' could not be created")
          .arg(QDir::toNativeSeparators(path)));
+}
+
+
+//**********************************************************************************************************************
+/// The application only get a findable window handle (HWND) only if we show it. The uninstaller needs this handle
+/// to request a shutdown of the application.
+/// 
+/// \param[in] mainWindow The main window
+//**********************************************************************************************************************
+void ensureMainWindowHasAHandle(MainWindow& mainWindow)
+{
+   mainWindow.setWindowOpacity(0);
+   mainWindow.show();
+   mainWindow.hide();
+   mainWindow.setWindowOpacity(1);
 }

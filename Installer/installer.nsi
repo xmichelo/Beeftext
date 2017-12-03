@@ -6,7 +6,7 @@
 !include "LogicLib.nsh" # we use the logic lib for easy conditional statements
 !include "nsDialogs.nsh" # used for custom dialog pages
 !include "FileFunc.nsh" # file functions (used for GetSize)
-
+!include WinMessages.nsh # windows messages (used for finding and killing running instance)
 
 #global defines ( basically compile time constants)
 !define APP_FANCY_NAME "Beeftext"
@@ -207,6 +207,26 @@ CreateShortCut "$SMPROGRAMS\${APP_FANCY_NAME}\Uninstall ${APP_FANCY_NAME}.lnk" "
 SectionEnd
 
 
+####################################################
+# Find and close running instance of the application
+####################################################
+Function un.closeRunningInstance
+    # this function was found in the NSIS wiki: http://nsis.sourceforge.net/Find_and_Close_or_Terminate
+    Push $0 ; window handle
+    Push $1
+    Push $2 ; process handle
+    DetailPrint "Checking for and stopping running instance."
+    FindWindow $0 "" "${APP_NAME}"
+    IntCmp $0 0 done
+    System::Call 'user32.dll::GetWindowThreadProcessId(i r0, *i .r1) i .r2'
+    System::Call 'user32.dll::PostThreadMessage(i r2, i ${WM_QUIT}, i 0, i 0) b .r0'
+    Sleep 2000
+  done:
+    Pop $2
+    Pop $1
+    Pop $0
+FunctionEnd
+
 #####################################
 # Uninstaller
 #####################################
@@ -215,6 +235,9 @@ Section "Uninstall"
 
 # Remove application files and folders
 SetShellVarContext all
+
+call un.closeRunningInstance
+
 Delete "$INSTDIR\*.exe"
 Delete "$INSTDIR\*.dll"
 Delete "$INSTDIR\platforms\*.dll"
@@ -234,7 +257,7 @@ DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\Run" "${APP_FANCY
 #DeleteRegKey /ifempty HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" # The following registry key should be clean if the user check a box in the uninstaller
 
 # Remove Start menu entries, if any
-Delete "$SMPROGRAMS\${APP_fANCY_NAME}\*.*"
+Delete "$SMPROGRAMS\${APP_FANCY_NAME}\*.*"
 RMDir "$SMPROGRAMS\${APP_FANCY_NAME}"
 
 # Remove Desktop shortcut, if any
