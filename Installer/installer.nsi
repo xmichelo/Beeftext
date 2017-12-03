@@ -231,7 +231,7 @@ DeleteRegKey HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}"
 DeleteRegValue HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" "AppExePath"
 DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\Run" "${APP_FANCY_NAME}" # this autostart key may have been created by the application itself
 
-DeleteRegKey /ifempty HKCU "Software\${COMPANY}\${APP_FANCY_NAME}"
+#DeleteRegKey /ifempty HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" # The following registry key should be clean if the user check a box in the uninstaller
 
 # Remove Start menu entries, if any
 Delete "$SMPROGRAMS\${APP_fANCY_NAME}\*.*"
