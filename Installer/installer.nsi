@@ -49,7 +49,7 @@
 # General attributes for the installer/uninstaller
 Name  "${APP_FANCY_NAME} v${VERSION_MAJOR}.${VERSION_MINOR}"
 !system "mkdir ${OUTPUT_DIR}" # create the directory where the installer file will be created, if it does not exist yet
-OutFile "${OUTPUT_DIR}\${APP_NAME}Installer.exe"
+OutFile "${OUTPUT_DIR}\${APP_NAME}-${VERSION_MAJOR}.${VERSION_MINOR}-Installer.exe"
 SetCompressor lzma # better result than default zlib, but slower
 RequestExecutionLevel none
 InstallDir "$PROGRAMFILES32\${APP_FANCY_NAME}"

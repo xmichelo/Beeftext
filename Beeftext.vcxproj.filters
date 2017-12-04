@@ -112,6 +112,13 @@
     </ClCompile>
     <ClCompile Include="PreferencesManager.cpp" />
     <ClCompile Include="BeeftextUtils.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_AboutFrame.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AboutFrame.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -134,6 +141,9 @@
     </ClInclude>
     <ClInclude Include="PreferencesManager.h" />
     <ClInclude Include="BeeftextUtils.h" />
+    <ClInclude Include="GeneratedFiles\ui_AboutFrame.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -168,6 +178,8 @@
     </CustomBuild>
     <CustomBuild Include="PreferencesFrame.ui" />
     <CustomBuild Include="PreferencesFrame.h" />
+    <CustomBuild Include="AboutFrame.h" />
+    <CustomBuild Include="AboutFrame.ui" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">
