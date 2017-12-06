@@ -10,10 +10,12 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 #include "PreferencesManager.h"
+#include "UpdateCheckWorker.h"
 #include "Combo/ComboManager.h"
 #include "Combo/ComboDialog.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
+#include <XMiLib/Exception.h>
 
 
 using namespace xmilib;
@@ -31,6 +33,8 @@ MainWindow::MainWindow()
     this->setupActions();
     this->setupSystemTrayIcon();
     this->restoreGeometry(PreferencesManager::instance().mainWindowGeometry());
+
+    QTimer::singleShot(1000, this, &MainWindow::onLaunchLatestVersionCheck);
 }
 
 
@@ -123,6 +127,36 @@ void MainWindow::onActionExit()
 {
    this->close(); // ensure the close event handler is called
    qApp->quit();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onLaunchLatestVersionCheck()
+{
+   QThread *thread = new QThread;
+   UpdateCheckWorker* worker = new UpdateCheckWorker;
+   worker->moveToThread(thread);
+   connect(thread, &QThread::started, worker, &UpdateCheckWorker::run);
+   connect(worker, &UpdateCheckWorker::finished, this, &MainWindow::onUpdateCheckWorkerFinished);
+   thread->start();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onUpdateCheckWorkerFinished()
+{
+   UpdateCheckWorker *worker = dynamic_cast<UpdateCheckWorker*>(this->sender());
+   if (!worker)
+      throw xmilib::Exception(tr("An Internal error occurred while checking for updates."));
+   QThread *thread = worker->thread();
+   thread->quit();
+   thread->wait();
+   worker->deleteLater();
+   thread->deleteLater();
 }
 
 

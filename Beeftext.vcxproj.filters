@@ -119,6 +119,14 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="AboutFrame.cpp" />
+    <ClCompile Include="UpdateCheckWorker.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_UpdateCheckWorker.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_UpdateCheckWorker.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="LatestVersionInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -144,6 +152,7 @@
     <ClInclude Include="GeneratedFiles\ui_AboutFrame.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="LatestVersionInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -180,6 +189,7 @@
     <CustomBuild Include="PreferencesFrame.h" />
     <CustomBuild Include="AboutFrame.h" />
     <CustomBuild Include="AboutFrame.ui" />
+    <CustomBuild Include="UpdateCheckWorker.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

@@ -9,5 +9,6 @@
 
 #include <QtMultimedia>
 #include <QtWidgets>
+#include <QtNetwork>
 #include <QtGui>
 #include <QtCore>
