@@ -14,6 +14,9 @@
 #include <memory>
 
 
+class LatestVersionInfo;
+
+
 //**********************************************************************************************************************
 /// \brief A class holding information about the latest version of the application
 //**********************************************************************************************************************
@@ -36,9 +39,9 @@ public: // member functions
    void setReleaseNotes(QString const& releaseNotes); ///< Set the release notes
 
 private: // member functions
-	LatestVersionInfo(LatestVersionInfo const&) = delete; ///< Disabled copy constructor
-	LatestVersionInfo(LatestVersionInfo&&) = delete; ///< Disabled move constructor
-	LatestVersionInfo& operator=(LatestVersionInfo const&) = delete; ///< Disabled assignment operator
+   LatestVersionInfo(LatestVersionInfo const&) = delete; ///< Disabled copy constructor
+   LatestVersionInfo(LatestVersionInfo&&) = delete; ///< Disabled move constructor
+   LatestVersionInfo& operator=(LatestVersionInfo const&) = delete; ///< Disabled assignment operator
 	LatestVersionInfo& operator=(LatestVersionInfo&&) = delete; ///< Disabled move assignment operator
    void parseFromJsonObject(QJsonObject const& object); ///< Parse the latest version info from a JSON object
 
@@ -51,7 +54,8 @@ private: // data members
 };
 
 
-typedef std::shared_ptr<LatestVersionInfo>  SPLatestVersionInfo; ///< Type declaration for shared pointer to LatestVersionInfo
+typedef std::shared_ptr<LatestVersionInfo> SPLatestVersionInfo; ///< Type declaration for shared pointer to LatestVersionInfo
+Q_DECLARE_METATYPE(SPLatestVersionInfo)
 
 
 #endif // #ifndef BEEFTEXT__LATEST__VERSION__INFO__H

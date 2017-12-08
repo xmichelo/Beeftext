@@ -11,6 +11,7 @@
 #include "MainWindow.h"
 #include "PreferencesManager.h"
 #include "UpdateCheckWorker.h"
+#include "UpdateDialog.h"
 #include "Combo/ComboManager.h"
 #include "Combo/ComboDialog.h"
 #include "BeeftextConstants.h"
@@ -140,6 +141,7 @@ void MainWindow::onLaunchLatestVersionCheck()
    worker->moveToThread(thread);
    connect(thread, &QThread::started, worker, &UpdateCheckWorker::run);
    connect(worker, &UpdateCheckWorker::finished, this, &MainWindow::onUpdateCheckWorkerFinished);
+   connect(worker, &UpdateCheckWorker::newVersionIsAvailable, this, &MainWindow::onNewVersionAvailable);
    thread->start();
 }
 
@@ -157,6 +159,20 @@ void MainWindow::onUpdateCheckWorkerFinished()
    thread->wait();
    worker->deleteLater();
    thread->deleteLater();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] latestVersionInfo The latest version information
+//**********************************************************************************************************************
+void MainWindow::onNewVersionAvailable(SPLatestVersionInfo latestVersionInfo)
+{
+   if (!latestVersionInfo)
+   {
+      globals::debugLog().addError("New version notifier sent a null latest version information instance.");
+      return;
+   }
+   UpdateDialog(latestVersionInfo, this).exec();
 }
 
 

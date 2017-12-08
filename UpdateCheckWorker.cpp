@@ -10,6 +10,8 @@
 #include "stdafx.h"
 #include "UpdateCheckWorker.h"
 #include "BeeftextGlobals.h"
+#include "BeeftextConstants.h"
+
 
 namespace {
    QString const kVersionFileUrl = "https://beeftext.org/LatestVersionInfo.json"; ///< The URL of the file containing the version number of Beeftext
@@ -44,14 +46,18 @@ void UpdateCheckWorker::performUpdateCheck()
    QByteArray jsonData = this->downloadLatestVersionInformation();
    if (jsonData.isEmpty())
       return;
-   SPLatestVersionInfo lastestVersionInfo = this->parseJsonData(jsonData);
-   if ((!lastestVersionInfo) || (!lastestVersionInfo->isValid()))
+   SPLatestVersionInfo latestVersionInfo = this->parseJsonData(jsonData);
+   if ((!latestVersionInfo) || (!latestVersionInfo->isValid()))
       return;
-   qDebug() << QString("versionMajor = %1").arg(lastestVersionInfo->versionMajor());
-   qDebug() << QString("versionMinor = %1").arg(lastestVersionInfo->versionMinor());
-   qDebug() << QString("releaseNotes = %1").arg(lastestVersionInfo->releaseNotes());
-   qDebug() << QString("sha256Hash = %1").arg(QString::fromLocal8Bit(lastestVersionInfo->sha256Hash().toHex()));
-   qDebug() << QString("downloadUrl = %1").arg(lastestVersionInfo->downloadUrl());
+   if (this->isNewVersionAvailable(latestVersionInfo))
+   {
+      emit newVersionIsAvailable(latestVersionInfo);
+      qDebug() << QString("versionMajor = %1").arg(latestVersionInfo->versionMajor());
+      qDebug() << QString("versionMinor = %1").arg(latestVersionInfo->versionMinor());
+      qDebug() << QString("releaseNotes = %1").arg(latestVersionInfo->releaseNotes());
+      qDebug() << QString("sha256Hash = %1").arg(QString::fromLocal8Bit(latestVersionInfo->sha256Hash().toHex()));
+      qDebug() << QString("downloadUrl = %1").arg(latestVersionInfo->downloadUrl());
+   }
 }
 
 
@@ -103,6 +109,24 @@ SPLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) co
    globals::debugLog().addError(QString("Could not retrieve version information. The downloaded JSON file is "
       "invalid."));
    return SPLatestVersionInfo();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] latestVersionInfo The latest version information
+//**********************************************************************************************************************
+bool UpdateCheckWorker::isNewVersionAvailable(SPLatestVersionInfo latestVersionInfo) const
+{
+   if (!latestVersionInfo)
+   {
+      globals::debugLog().addError("Could not check for new version: the retrieved latest version information is "
+         "null.");
+      return false;
+   }
+   qint32 const major = latestVersionInfo->versionMajor();
+   qint32 const minor = latestVersionInfo->versionMinor();
+   return (major > constants::kVersionMajor) 
+      || ((major == constants::kVersionMajor) && (minor > constants::kVersionMinor));
 }
 
 

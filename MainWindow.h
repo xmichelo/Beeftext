@@ -12,6 +12,7 @@
 
 
 #include "ui_MainWindow.h"
+#include "LatestVersionInfo.h"
 #include <memory>
 
 
@@ -40,7 +41,9 @@ private slots:
    void onActionExit(); ///< Slot for the 'Exit' action
    void onLaunchLatestVersionCheck(); ///< Slot for the checking of the latest version information
    void onUpdateCheckWorkerFinished(); ///< Slot for the finishing of the update check worker
-protected:
+   void onNewVersionAvailable(SPLatestVersionInfo latestVersionInfo); ///< Slot for the existence of a new version of the application
+
+protected: // member functions
    void closeEvent(QCloseEvent *event) override; ///< Window close event handler
 
 private: // data members

@@ -119,14 +119,21 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="AboutFrame.cpp" />
-    <ClCompile Include="UpdateCheckWorker.cpp" />
+    <ClCompile Include="LatestVersionInfo.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_UpdateCheckWorker.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_UpdateCheckWorker.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="LatestVersionInfo.cpp" />
+    <ClCompile Include="UpdateCheckWorker.cpp" />
+    <ClCompile Include="UpdateDialog.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_UpdateDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_UpdateDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -152,7 +159,9 @@
     <ClInclude Include="GeneratedFiles\ui_AboutFrame.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="LatestVersionInfo.h" />
+    <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -189,7 +198,10 @@
     <CustomBuild Include="PreferencesFrame.h" />
     <CustomBuild Include="AboutFrame.h" />
     <CustomBuild Include="AboutFrame.ui" />
+    <CustomBuild Include="LatestVersionInfo.h" />
     <CustomBuild Include="UpdateCheckWorker.h" />
+    <CustomBuild Include="UpdateDialog.h" />
+    <CustomBuild Include="UpdateDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

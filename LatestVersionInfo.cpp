@@ -20,6 +20,7 @@ namespace {
    QString const kPropReleaseNotes = "releaseNotes"; ///< The JSON property name for the release notes
 }
 
+
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
@@ -30,7 +31,6 @@ LatestVersionInfo::LatestVersionInfo()
    ,  sha256Hash_()
    , releaseNotes_()
 {
-
 }
 
 

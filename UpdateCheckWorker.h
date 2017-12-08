@@ -28,7 +28,8 @@ public slots:
    void run(); // run the worker
 signals:
    void finished(); ///< Signal for the finishing of the worker
-
+   void newVersionIsAvailable(SPLatestVersionInfo lastestVersionInfo); ///< Signal for the existence of a newer version of the application
+   
 private: // member functions
 	UpdateCheckWorker(UpdateCheckWorker const&) = delete; ///< Disabled copy constructor
 	UpdateCheckWorker(UpdateCheckWorker&&) = delete; ///< Disabled move constructor
@@ -37,6 +38,7 @@ private: // member functions
    void performUpdateCheck(); ///< perform the update check
    QByteArray downloadLatestVersionInformation() const; ///< Download the latest version information from the Beeftext website
    SPLatestVersionInfo parseJsonData(QString const& jsonData) const; ///< Parse the JSon data
+   bool isNewVersionAvailable(SPLatestVersionInfo latestVersionInfo) const; ///< Check if the installed version of the application is outdated
 };
 
 

@@ -11,6 +11,7 @@
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
+#include "LatestVersionInfo.h"
 #include "Combo/ComboManager.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
@@ -36,6 +37,7 @@ void ensureMainWindowHasAHandle(MainWindow& window); ///< Ensure that the main w
 //**********************************************************************************************************************
 int main(int argc, char *argv[])
 {
+   qRegisterMetaType <SPLatestVersionInfo>(); // required to use SPLatestVersionInfo in a queued signal/slot connection
    QString const kUnhandledException = QObject::tr("Unhandled Exception");
    DebugLog& debugLog = globals::debugLog();
       try
