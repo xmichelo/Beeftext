@@ -47,6 +47,8 @@ private: // data members
    QCryptographicHash hashCalculator_; ///< The hash calculator
    QNetworkAccessManager nam_; ///< The network access manager
    QNetworkReply* reply_; ///< Reply the network reply
+   QFile file_; ///< The file for storing the downloaded data
+   QString installerPath_; /// The path of the installer path
    bool downloadErrorOccurred_; ///< Did a download error occur
 };
 

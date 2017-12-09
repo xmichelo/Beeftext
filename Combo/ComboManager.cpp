@@ -157,7 +157,6 @@ void ComboManager::onComboBreakerTyped()
 //**********************************************************************************************************************
 void ComboManager::onCharacterTyped(QChar c)
 {
-   qDebug() << QString("Character Typed: '%1'").arg(c);
    currentText_.append(c);
    VecSPCombo::const_iterator it = std::find_if(comboList_.begin(), comboList_.end(),
       [&](SPCombo const combo) -> bool { return combo->isEnabled() && (combo->comboText() == currentText_); });

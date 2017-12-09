@@ -11,7 +11,11 @@
 #include "UpdateDialog.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
+#include <XMiLib/FileUtils.h>
 #include <XMiLib/Exception.h>
+
+
+using namespace xmilib;
 
 
 //**********************************************************************************************************************
@@ -24,6 +28,8 @@ UpdateDialog::UpdateDialog(SPLatestVersionInfo latestVersionInfo, QWidget* paren
    , hashCalculator_(QCryptographicHash::Sha256)
    , nam_()
    , reply_(nullptr)
+   , file_()
+   , installerPath_()
    , downloadErrorOccurred_(false)
 {
    ui_.setupUi(this);
@@ -43,6 +49,9 @@ void UpdateDialog::startDownload()
 {
    if (reply_)
       throw xmilib::Exception("Error during software update: an ongoing download task already exists.");
+   installerPath_ = createTempFile(file_, "exe");
+   if (installerPath_.isEmpty() || !file_.isOpen())
+      throw xmilib::Exception("Error during software update: could save installer file.");
    QNetworkRequest request(latestVersionInfo_->downloadUrl());
    reply_ = nam_.get(request);
    connect(reply_, &QNetworkReply::finished, this, &UpdateDialog::onDownloadFinished);
@@ -68,6 +77,8 @@ void UpdateDialog::processDownloadedData(QByteArray const& data)
    if (!data.size())
       return;
    hashCalculator_.addData(data);
+   if (data.size() != file_.write(data))
+      throw xmilib::Exception("An error occurred while trying to save the update installation file.");
 }
 
 
@@ -97,7 +108,6 @@ void UpdateDialog::onActionSkip()
 //**********************************************************************************************************************
 void UpdateDialog::onDownloadFinished()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    if (!reply_)
       throw xmilib::Exception("Internal casting error during download finish callback.");
    if (!downloadErrorOccurred_) // note that error include user cancellation
@@ -105,6 +115,12 @@ void UpdateDialog::onDownloadFinished()
       this->processDownloadedData(reply_->readAll());
       if (hashCalculator_.result() != latestVersionInfo_->sha256Hash())
          QMessageBox::critical(this, tr("Error"), tr("The update cannot be installed: the checksum does not match."));
+      else
+      {
+         file_.close();
+         QDesktopServices::openUrl(QUrl::fromLocalFile(installerPath_));
+         qApp->exit(0);
+      }
    }
    reply_->deleteLater();
    reply_ = nullptr;
@@ -117,7 +133,6 @@ void UpdateDialog::onDownloadFinished()
 //**********************************************************************************************************************
 void UpdateDialog::onDownloadError(QNetworkReply::NetworkError error)
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    if (!reply_)
       throw xmilib::Exception("Internal casting error during download error callback.");
    downloadErrorOccurred_ = true;
