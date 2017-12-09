@@ -14,7 +14,7 @@
 
 
 namespace {
-   QString const kVersionFileUrl = "https://beeftext.org/LatestVersionInfo.json"; ///< The URL of the file containing the version number of Beeftext
+   QString const kVersionFileUrl = "https://beeftext.org/latestVersionInfo.json"; ///< The URL of the file containing the version number of Beeftext
 }
 
 
@@ -50,14 +50,7 @@ void UpdateCheckWorker::performUpdateCheck()
    if ((!latestVersionInfo) || (!latestVersionInfo->isValid()))
       return;
    if (this->isNewVersionAvailable(latestVersionInfo))
-   {
       emit newVersionIsAvailable(latestVersionInfo);
-      qDebug() << QString("versionMajor = %1").arg(latestVersionInfo->versionMajor());
-      qDebug() << QString("versionMinor = %1").arg(latestVersionInfo->versionMinor());
-      qDebug() << QString("releaseNotes = %1").arg(latestVersionInfo->releaseNotes());
-      qDebug() << QString("sha256Hash = %1").arg(QString::fromLocal8Bit(latestVersionInfo->sha256Hash().toHex()));
-      qDebug() << QString("downloadUrl = %1").arg(latestVersionInfo->downloadUrl());
-   }
 }
 
 
