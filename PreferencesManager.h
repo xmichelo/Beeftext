@@ -23,6 +23,9 @@ public: // member functions
 	~PreferencesManager() = default; ///< Default destructor
    void reset(); ///< Reset the preferences to their default values
    QString getInstalledApplicationPath() const; ///< Retrieve the path of the installed application
+   void setFileMarkedForDeletionOnStartup(QString const& path); ///< Get the path of the file marked for deletion on startup
+   QString getFileMarkedForDeletionOnStartup() const; ///< Set the path of the file marked for deletion on startup
+   void clearFileMarkedForDeletionOnStartup(); ///< Reset the file marked for deletion on startup
    void setMainWindowGeometry(QByteArray const& array); ///< Set the geometry of the main window
    QByteArray mainWindowGeometry() const; ///< Get the geometry of the main window
    void setAutoStartAtLogin(bool value); ///< Set the value for the 'Autostart at login' preference

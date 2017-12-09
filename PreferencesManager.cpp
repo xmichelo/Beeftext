@@ -13,6 +13,7 @@
 
 
 namespace {
+   QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
    QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
    QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
    QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
@@ -61,6 +62,33 @@ QString PreferencesManager::getInstalledApplicationPath() const
    if (!settings_.contains(kKeyAppExePath))
       return QString();
    return QDir::fromNativeSeparators(settings_.value(kKeyAppExePath).toString());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the file to delete on next application startup
+//**********************************************************************************************************************
+void PreferencesManager::setFileMarkedForDeletionOnStartup(QString const& path)
+{
+   settings_.setValue(kKeyFileMarkedForDeletion, path);
+}
+
+
+//**********************************************************************************************************************
+/// \return The path of the file marked for deletion on next application startup
+//**********************************************************************************************************************
+QString PreferencesManager::getFileMarkedForDeletionOnStartup() const
+{
+   return settings_.value(kKeyFileMarkedForDeletion).toString();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesManager::clearFileMarkedForDeletionOnStartup()
+{
+   settings_.remove(kKeyFileMarkedForDeletion);
 }
 
 

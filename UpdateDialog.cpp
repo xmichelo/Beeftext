@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "UpdateDialog.h"
+#include "PreferencesManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/FileUtils.h>
@@ -119,8 +120,14 @@ void UpdateDialog::onDownloadFinished()
       {
          file_.close();
          QDesktopServices::openUrl(QUrl::fromLocalFile(installerPath_));
+         PreferencesManager::instance().setFileMarkedForDeletionOnStartup(installerPath_);
          qApp->exit(0);
       }
+   }
+   else // an error or cancellation occurred, we clean up
+   {
+      file_.close();
+      file_.remove();
    }
    reply_->deleteLater();
    reply_ = nullptr;

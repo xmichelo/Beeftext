@@ -19,7 +19,7 @@
 
 namespace {
    QString const kSharedMemoryKey = "Beeftext";
-   QString const kLogFileName = "Log.txt";
+   QString const kLogFileName = "log.txt";
 }
 
 using namespace xmilib;
@@ -27,6 +27,7 @@ using namespace xmilib;
 
 void ensureAppDataDirExists(); ///< Make sure the application data folder exists
 void ensureMainWindowHasAHandle(MainWindow& window); ///< Ensure that the main window has a Win32 handle
+void removeFileMarkedForDeletion(); ///< Remove the software update file that may have been marker for deletion
 
 
 //**********************************************************************************************************************
@@ -61,7 +62,7 @@ int main(int argc, char *argv[])
       debugLog.enableLoggingToFile(QDir(globals::getAppDataDir()).absoluteFilePath(kLogFileName));
       debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
-
+      removeFileMarkedForDeletion();
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       MainWindow window;
       ensureMainWindowHasAHandle(window);
@@ -117,3 +118,32 @@ void ensureMainWindowHasAHandle(MainWindow& mainWindow)
    mainWindow.hide();
    mainWindow.setWindowOpacity(1);
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void removeFileMarkedForDeletion()
+{
+   PreferencesManager& prefs = PreferencesManager::instance();
+   DebugLog& debugLog = globals::debugLog();
+   QString const path = prefs.getFileMarkedForDeletionOnStartup();
+   if (path.isEmpty())
+      return;
+   prefs.clearFileMarkedForDeletionOnStartup();
+   QFile file(path);
+   QString const nativePath = QDir::toNativeSeparators(path);
+   if (!file.exists())
+   {
+      debugLog.addWarning(QString("The following file was marked for deletion but does not exist: %1")
+         .arg(nativePath));
+      return;
+   }
+   if (file.remove())
+      debugLog.addInfo(QString("The following file was successfully removed: %1").arg(nativePath));
+   else
+      debugLog.addWarning(QString("The following file was marked for deletion but could not be removed: %1")
+         .arg(nativePath));
+}
+
+
