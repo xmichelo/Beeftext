@@ -72,6 +72,9 @@ void PreferencesFrame::applyAutoStartPreference()
 //**********************************************************************************************************************
 void PreferencesFrame::onActionResetToDefaultValues()
 {
+   if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Preferences"), tr("Are you sure you want to reset "
+      "the preferences to their default values."), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
+      return;
    prefs_.reset();
    this->loadPreferences();
    this->applyAutoStartPreference();
