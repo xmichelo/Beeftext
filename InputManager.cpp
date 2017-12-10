@@ -127,11 +127,22 @@ InputManager::~InputManager()
    this->disableMouseHook();
 }
 
+
 //**********************************************************************************************************************
 /// \param[in] keyStroke The key stroke
 //**********************************************************************************************************************
 void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
+   // on some layout (e.g. US International, direction key + alt lead to garbage char if ToUnicode is pressed, so
+   // we bypass normal processing for those keys(note this is different for the dead key issue described in
+   // processKey().
+   if ((VK_UP == keyStroke.virtualKey) || (VK_RIGHT == keyStroke.virtualKey) || (VK_DOWN == keyStroke.virtualKey) ||
+      (VK_LEFT == keyStroke.virtualKey))
+   {
+      QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
+      return;
+   }
+
    bool isDeadKey = false;
    QString text = this->processKey(keyStroke, isDeadKey);
    if (text.isEmpty())
