@@ -33,6 +33,7 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
 void PreferencesFrame::loadPreferences()
 {
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.getPlaySoundOnCombo());
+   ui_.checkAutoCheckForUpdates->setChecked(prefs_.getAutoCheckForUpdates());
 
    ui_.checkAutoStart->blockSignals(true);
    ui_.checkAutoStart->setChecked(prefs_.getAutoStartAtLogin());
@@ -84,4 +85,15 @@ void PreferencesFrame::onAutoStartCheckChanged()
    prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
    this->applyAutoStartPreference();
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onAutoCheckForUpdatesCheckChanged()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   prefs_.setAutoCheckForUpdates(ui_.checkAutoCheckForUpdates->isChecked());
+}
+
 

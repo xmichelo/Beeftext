@@ -33,9 +33,11 @@ MainWindow::MainWindow()
     
     this->setupActions();
     this->setupSystemTrayIcon();
-    this->restoreGeometry(PreferencesManager::instance().mainWindowGeometry());
 
-    QTimer::singleShot(1000, this, &MainWindow::onLaunchLatestVersionCheck);
+    PreferencesManager& prefs = PreferencesManager::instance();
+    this->restoreGeometry(prefs.mainWindowGeometry());
+    if (prefs.getAutoCheckForUpdates())
+      QTimer::singleShot(1000, this, &MainWindow::launchLatestVersionCheck);
 }
 
 
@@ -134,7 +136,7 @@ void MainWindow::onActionExit()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void MainWindow::onLaunchLatestVersionCheck()
+void MainWindow::launchLatestVersionCheck()
 {
    QThread *thread = new QThread;
    UpdateCheckWorker* worker = new UpdateCheckWorker;

@@ -18,8 +18,11 @@ namespace {
    QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
    QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
    QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
+   QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
+  
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
-   bool const kDefaultvalueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
+   bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
+   bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
 }
 
 
@@ -50,7 +53,8 @@ PreferencesManager::PreferencesManager()
 void PreferencesManager::reset()
 {
    this->setPlaySoundOnCombo(kDefaultValuePlaySoundOnCombo);
-   this->setAutoStartAtLogin(kDefaultvalueAutoStartAtLogin); // we do not actually touch the registry here
+   this->setAutoCheckForUpdates(kDefaultValueAutoCheckForUpdates);
+   this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
 }
 
 
@@ -124,7 +128,7 @@ void PreferencesManager::setAutoStartAtLogin(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::getAutoStartAtLogin() const
 {
-   return qvariant_cast<bool>(settings_.value(kKeyAutoStartAtLogin, kDefaultvalueAutoStartAtLogin));
+   return qvariant_cast<bool>(settings_.value(kKeyAutoStartAtLogin, kDefaultValueAutoStartAtLogin));
 }
 
 
@@ -143,6 +147,24 @@ void PreferencesManager::setPlaySoundOnCombo(bool value)
 bool PreferencesManager::getPlaySoundOnCombo() const
 {
    return qvariant_cast<bool>(settings_.value(kKeyPlaySoundOnCombo, kDefaultValuePlaySoundOnCombo));
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setAutoCheckForUpdates(bool value)
+{
+   settings_.setValue(kKeyAutoCheckForUpdates, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::getAutoCheckForUpdates() const
+{
+   return qvariant_cast<bool>(settings_.value(kKeyAutoCheckForUpdates, kDefaultValueAutoCheckForUpdates));
 }
 
 

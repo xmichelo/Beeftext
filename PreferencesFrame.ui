@@ -21,9 +21,16 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QCheckBox" name="checkAutoCheckForUpdates">
+     <property name="text">
+      <string>Automatically check for &amp;updates</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QCheckBox" name="checkAutoStart">
      <property name="text">
-      <string notr="true">&amp;Automatically start &lt;AppName&gt; at login</string>
+      <string notr="true">Automatically &amp;start &lt;AppName&gt; at login</string>
      </property>
     </widget>
    </item>
@@ -150,10 +157,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkAutoCheckForUpdates</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onAutoCheckForUpdatesCheckChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>18</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
   <slot>onPlaySoundOnComboCheckChanged()</slot>
   <slot>onAutoStartCheckChanged()</slot>
+  <slot>onAutoCheckForUpdatesCheckChanged()</slot>
  </slots>
 </ui>

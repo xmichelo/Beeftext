@@ -39,7 +39,7 @@ private slots:
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
    void onActionShowPreferences(); ///< Slot for the 'Preferences' action
    void onActionExit(); ///< Slot for the 'Exit' action
-   void onLaunchLatestVersionCheck(); ///< Slot for the checking of the latest version information
+   void launchLatestVersionCheck(); ///< Slot for the checking of the latest version information
    void onUpdateCheckWorkerFinished(); ///< Slot for the finishing of the update check worker
    void onNewVersionAvailable(SPLatestVersionInfo latestVersionInfo); ///< Slot for the existence of a new version of the application
 

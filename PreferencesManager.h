@@ -32,6 +32,8 @@ public: // member functions
    bool getAutoStartAtLogin() const; ///< Get the value for the 'Autostart at login' preference
    void setPlaySoundOnCombo(bool value); ///< Set the value for the 'Play sound on combo' preference
    bool getPlaySoundOnCombo() const; ///< Set the value for the 'Play sound on combo' preference
+   void setAutoCheckForUpdates(bool value); ///< Set the value for the 'Auto check for updates preference
+   bool getAutoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
 
 private: // member functions
    PreferencesManager(); ///< Default constructor
