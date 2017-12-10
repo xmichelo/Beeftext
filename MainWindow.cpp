@@ -37,7 +37,7 @@ MainWindow::MainWindow()
     PreferencesManager& prefs = PreferencesManager::instance();
     this->restoreGeometry(prefs.mainWindowGeometry());
     if (prefs.getAutoCheckForUpdates())
-      QTimer::singleShot(1000, this, &MainWindow::launchLatestVersionCheck);
+      QTimer::singleShot(1000, this, &MainWindow::launchCheckForUpdate);
 }
 
 
@@ -136,8 +136,9 @@ void MainWindow::onActionExit()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void MainWindow::launchLatestVersionCheck()
+void MainWindow::launchCheckForUpdate()
 {
+   emit startedCheckingForUpdate();
    QThread *thread = new QThread;
    UpdateCheckWorker* worker = new UpdateCheckWorker;
    worker->moveToThread(thread);
@@ -161,6 +162,7 @@ void MainWindow::onUpdateCheckWorkerFinished()
    thread->wait();
    worker->deleteLater();
    thread->deleteLater();
+   emit finishedCheckingForUpdate();
 }
 
 

@@ -118,8 +118,14 @@ bool UpdateCheckWorker::isNewVersionAvailable(SPLatestVersionInfo latestVersionI
    }
    qint32 const major = latestVersionInfo->versionMajor();
    qint32 const minor = latestVersionInfo->versionMinor();
-   return (major > constants::kVersionMajor) 
+   bool const hasNewVersion = (major > constants::kVersionMajor)
       || ((major == constants::kVersionMajor) && (minor > constants::kVersionMinor));
+   if (hasNewVersion)
+      globals::debugLog().addInfo(QString("%1 v%2.%3 is available for download.").arg(constants::kApplicationName)
+         .arg(major).arg(minor));
+   else
+      globals::debugLog().addInfo("The application is up to date.");
+   return hasNewVersion;
 }
 
 

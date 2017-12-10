@@ -25,7 +25,10 @@ class MainWindow: public QMainWindow
 public: // member functions
    MainWindow(); ///< Default constructor
    ~MainWindow() = default; ///< Default destructor
-	
+
+public: 
+   void launchCheckForUpdate(); ///< Slot for the checking of the latest version information
+
 private: // member functions
    MainWindow(MainWindow const&) = delete; ///< Disabled copy constructor
    MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
@@ -34,14 +37,17 @@ private: // member functions
    void setupActions(); ///< Setup the Qt actions for the main window
    void setupSystemTrayIcon(); ///< Setup the system tray icon
 
+signals:
+   void startedCheckingForUpdate(); ///< Signal for the start of the update check
+   void finishedCheckingForUpdate(); ///< Signal for the start of the update check (this signal is emitted BEFORE displaying the software update dialog)
+
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
    void onActionShowPreferences(); ///< Slot for the 'Preferences' action
    void onActionExit(); ///< Slot for the 'Exit' action
-   void launchLatestVersionCheck(); ///< Slot for the checking of the latest version information
-   void onUpdateCheckWorkerFinished(); ///< Slot for the finishing of the update check worker
    void onNewVersionAvailable(SPLatestVersionInfo latestVersionInfo); ///< Slot for the existence of a new version of the application
+   void onUpdateCheckWorkerFinished(); ///< Slot for the finishing of the update check worker
 
 protected: // member functions
    void closeEvent(QCloseEvent *event) override; ///< Window close event handler

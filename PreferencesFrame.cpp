@@ -12,6 +12,11 @@
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
+#include "MainWindow.h"
+#include <XMiLib/Exception.h>
+
+
+using namespace xmilib;
 
 
 //**********************************************************************************************************************
@@ -24,6 +29,11 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    ui_.setupUi(this);
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
    loadPreferences();
+
+   MainWindow* mainWindow = static_cast<MainWindow*>(this->window());
+   connect(ui_.buttonCheckNow, &QPushButton::clicked, mainWindow, &MainWindow::launchCheckForUpdate);
+   connect(mainWindow, &MainWindow::startedCheckingForUpdate, [&]() { ui_.buttonCheckNow->setEnabled(false); });
+   connect(mainWindow, &MainWindow::finishedCheckingForUpdate, [&]() { ui_.buttonCheckNow->setEnabled(true); });
 }
 
 
@@ -97,3 +107,10 @@ void PreferencesFrame::onAutoCheckForUpdatesCheckChanged()
 }
 
 
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onActionCheckForUpdates()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+}

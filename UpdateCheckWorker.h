@@ -26,10 +26,11 @@ public: // member functions
 	
 public slots:
    void run(); // run the worker
+
 signals:
    void finished(); ///< Signal for the finishing of the worker
    void newVersionIsAvailable(SPLatestVersionInfo lastestVersionInfo); ///< Signal for the existence of a newer version of the application
-   
+
 private: // member functions
 	UpdateCheckWorker(UpdateCheckWorker const&) = delete; ///< Disabled copy constructor
 	UpdateCheckWorker(UpdateCheckWorker&&) = delete; ///< Disabled move constructor
