@@ -89,11 +89,8 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
 {
    switch (reason)
    {
-   case QSystemTrayIcon::DoubleClick:
-      this->onActionShowMainWindow();
-      break;
    case QSystemTrayIcon::Trigger: // a.k.a single click
-      systemTrayIcon_.contextMenu()->popup(QCursor::pos());
+      this->onActionShowMainWindow();
       break;
    }
 }
