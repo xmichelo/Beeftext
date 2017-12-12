@@ -159,6 +159,8 @@ file "$%QTDIR%\bin\Qt5Multimedia.dll"
 file "$%QTDIR%\bin\Qt5Network.dll"
 setOutPath $INSTDIR\platforms
 file "$%QTDIR%\plugins\platforms\qwindows.dll"
+setOutPath $INSTDIR\styles
+file "$%QTDIR%\plugins\styles\qwindowsvistastyle.dll"
 setOutPath $INSTDIR\imageformats
 file "$%QTDIR%\plugins\imageformats\qico.dll"
 setOutPath $INSTDIR\audio
@@ -242,6 +244,8 @@ Delete "$INSTDIR\*.exe"
 Delete "$INSTDIR\*.dll"
 Delete "$INSTDIR\platforms\*.dll"
 RMDir  "$INSTDIR\platforms"
+Delete "$INSTDIR\styles\*.dll"
+RMDir  "$INSTDIR\styles"
 Delete "$INSTDIR\imageformats\*.dll"
 RMDir  "$INSTDIR\imageformats"
 Delete "$INSTDIR\audio\*.dll"
