@@ -105,15 +105,5 @@ void PreferencesFrame::onAutoStartCheckChanged()
 //**********************************************************************************************************************
 void PreferencesFrame::onAutoCheckForUpdatesCheckChanged()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    prefs_.setAutoCheckForUpdates(ui_.checkAutoCheckForUpdates->isChecked());
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesFrame::onActionCheckForUpdates()
-{
-   qDebug() << QString("%1()").arg(__FUNCTION__);
 }

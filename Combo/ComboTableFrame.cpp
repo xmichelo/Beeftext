@@ -164,6 +164,7 @@ void ComboTableFrame::updateGui()
    ui_.actionDeleteCombo->setEnabled(hasOneOrMoreSelected);
    ui_.buttonEditCombo->setEnabled(hasOneSelected);
    ui_.actionEditCombo->setEnabled(hasOneSelected);
+   ui_.actionEnableDisableCombo->setEnabled(hasOneSelected);
    ui_.buttonEnableDisableCombo->setEnabled(hasOneSelected);
 
    QString enableDisableText = tr("Ena&ble");
