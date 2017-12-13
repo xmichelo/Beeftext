@@ -36,7 +36,7 @@ MainWindow::MainWindow()
 
     PreferencesManager& prefs = PreferencesManager::instance();
     this->restoreGeometry(prefs.mainWindowGeometry());
-    if (prefs.getAutoCheckForUpdates())
+    if (prefs.autoCheckForUpdates())
       QTimer::singleShot(1000, this, &MainWindow::launchCheckForUpdate);
 }
 

@@ -20,6 +20,9 @@ QString const kKeyCombos = "combos"; ///< The JSon key for combos
 }
 
 
+QString const ComboList::defaultFileName = "comboList.json";
+
+
 //**********************************************************************************************************************
 /// \param[in] parent The parent object of the model
 //**********************************************************************************************************************

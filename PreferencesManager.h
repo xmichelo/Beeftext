@@ -23,17 +23,19 @@ public: // member functions
 	~PreferencesManager() = default; ///< Default destructor
    void reset(); ///< Reset the preferences to their default values
    QString getInstalledApplicationPath() const; ///< Retrieve the path of the installed application
+   void setAlreadyLaunched(); ///< Set the value for the 'First Launch' preference to false
+   bool alreadyLaunched() const; ///< Test whether this is the first time the application is launched
    void setFileMarkedForDeletionOnStartup(QString const& path); ///< Get the path of the file marked for deletion on startup
-   QString getFileMarkedForDeletionOnStartup() const; ///< Set the path of the file marked for deletion on startup
+   QString fileMarkedForDeletionOnStartup() const; ///< Set the path of the file marked for deletion on startup
    void clearFileMarkedForDeletionOnStartup(); ///< Reset the file marked for deletion on startup
    void setMainWindowGeometry(QByteArray const& array); ///< Set the geometry of the main window
    QByteArray mainWindowGeometry() const; ///< Get the geometry of the main window
    void setAutoStartAtLogin(bool value); ///< Set the value for the 'Autostart at login' preference
-   bool getAutoStartAtLogin() const; ///< Get the value for the 'Autostart at login' preference
+   bool autoStartAtLogin() const; ///< Get the value for the 'Autostart at login' preference
    void setPlaySoundOnCombo(bool value); ///< Set the value for the 'Play sound on combo' preference
-   bool getPlaySoundOnCombo() const; ///< Set the value for the 'Play sound on combo' preference
+   bool playSoundOnCombo() const; ///< Set the value for the 'Play sound on combo' preference
    void setAutoCheckForUpdates(bool value); ///< Set the value for the 'Auto check for updates preference
-   bool getAutoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
+   bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
 
 private: // member functions
    PreferencesManager(); ///< Default constructor

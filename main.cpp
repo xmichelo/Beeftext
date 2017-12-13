@@ -66,6 +66,10 @@ int main(int argc, char *argv[])
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       MainWindow window;
       ensureMainWindowHasAHandle(window);
+      PreferencesManager& prefs = PreferencesManager::instance();
+      if (!prefs.alreadyLaunched())
+         window.show();
+      prefs.setAlreadyLaunched();
       qint32 returnCode = app.exec();
       debugLog.addInfo(QObject::tr("Application exited with return code %1").arg(returnCode));
       return returnCode;
@@ -127,7 +131,7 @@ void removeFileMarkedForDeletion()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    DebugLog& debugLog = globals::debugLog();
-   QString const path = prefs.getFileMarkedForDeletionOnStartup();
+   QString const path = prefs.fileMarkedForDeletionOnStartup();
    if (path.isEmpty())
       return;
    prefs.clearFileMarkedForDeletionOnStartup();

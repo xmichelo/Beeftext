@@ -13,13 +13,13 @@
 
 
 namespace {
+   QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for the "Already launched" indicator
    QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
    QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
    QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
    QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
    QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
    QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
-  
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
@@ -70,6 +70,24 @@ QString PreferencesManager::getInstalledApplicationPath() const
 
 
 //**********************************************************************************************************************
+/// Set the settings value indicating that the application has been launched in the past
+//**********************************************************************************************************************
+void PreferencesManager::setAlreadyLaunched()
+{
+   settings_.setValue(kKeyAlreadyLaunched, 1);
+}
+
+
+//**********************************************************************************************************************
+/// Check whether the application has ever been launched or not
+//**********************************************************************************************************************
+bool PreferencesManager::alreadyLaunched() const
+{
+   return qvariant_cast<bool>(settings_.value(kKeyAlreadyLaunched, false));
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] path The path of the file to delete on next application startup
 //**********************************************************************************************************************
 void PreferencesManager::setFileMarkedForDeletionOnStartup(QString const& path)
@@ -81,7 +99,7 @@ void PreferencesManager::setFileMarkedForDeletionOnStartup(QString const& path)
 //**********************************************************************************************************************
 /// \return The path of the file marked for deletion on next application startup
 //**********************************************************************************************************************
-QString PreferencesManager::getFileMarkedForDeletionOnStartup() const
+QString PreferencesManager::fileMarkedForDeletionOnStartup() const
 {
    return settings_.value(kKeyFileMarkedForDeletion).toString();
 }
@@ -126,7 +144,7 @@ void PreferencesManager::setAutoStartAtLogin(bool value)
 //**********************************************************************************************************************
 /// \return The value for the preference
 //**********************************************************************************************************************
-bool PreferencesManager::getAutoStartAtLogin() const
+bool PreferencesManager::autoStartAtLogin() const
 {
    return qvariant_cast<bool>(settings_.value(kKeyAutoStartAtLogin, kDefaultValueAutoStartAtLogin));
 }
@@ -144,7 +162,7 @@ void PreferencesManager::setPlaySoundOnCombo(bool value)
 //**********************************************************************************************************************
 /// \return The value for the preference
 //**********************************************************************************************************************
-bool PreferencesManager::getPlaySoundOnCombo() const
+bool PreferencesManager::playSoundOnCombo() const
 {
    return qvariant_cast<bool>(settings_.value(kKeyPlaySoundOnCombo, kDefaultValuePlaySoundOnCombo));
 }
@@ -162,9 +180,8 @@ void PreferencesManager::setAutoCheckForUpdates(bool value)
 //**********************************************************************************************************************
 /// \return The value for the preference
 //**********************************************************************************************************************
-bool PreferencesManager::getAutoCheckForUpdates() const
+bool PreferencesManager::autoCheckForUpdates() const
 {
    return qvariant_cast<bool>(settings_.value(kKeyAutoCheckForUpdates, kDefaultValueAutoCheckForUpdates));
 }
-
 

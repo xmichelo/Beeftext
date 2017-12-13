@@ -42,11 +42,11 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
 //**********************************************************************************************************************
 void PreferencesFrame::loadPreferences()
 {
-   ui_.checkPlaySoundOnCombo->setChecked(prefs_.getPlaySoundOnCombo());
-   ui_.checkAutoCheckForUpdates->setChecked(prefs_.getAutoCheckForUpdates());
+   ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
+   ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
 
    ui_.checkAutoStart->blockSignals(true);
-   ui_.checkAutoStart->setChecked(prefs_.getAutoStartAtLogin());
+   ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    ui_.checkAutoStart->blockSignals(false);
    this->applyAutoStartPreference(); // we ensure autostart is properly setup
 }
@@ -57,7 +57,7 @@ void PreferencesFrame::loadPreferences()
 //**********************************************************************************************************************
 void PreferencesFrame::applyAutoStartPreference()
 {
-   if (prefs_.getAutoStartAtLogin())
+   if (prefs_.autoStartAtLogin())
    {
       if (!registerApplicationForAutoStart())
          globals::debugLog().addWarning("Could not register the application for automatic startup on login.");

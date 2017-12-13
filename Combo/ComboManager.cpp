@@ -15,11 +15,6 @@
 #include <XMiLib/Exception.h>
 
 
-namespace {
-   QString const kComboListFileName = "comboList.json"; ///< The name of the default combo list file
-}
-
-
 bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
 
 
@@ -96,7 +91,7 @@ ComboManager::ComboManager()
 bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 {
    comboList_.clear();
-   QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(kComboListFileName));
+   QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(ComboList::defaultFileName));
    if (!file.exists())
    {
       globals::debugLog().addWarning(tr("No combo list file could be found."));
@@ -128,7 +123,7 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg)
 {
    try
    {
-      QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(kComboListFileName));
+      QFile file(QDir(globals::getAppDataDir()).absoluteFilePath(ComboList::defaultFileName));
       if (!file.open(QIODevice::WriteOnly))
          throw xmilib::Exception(tr("The combo list could not be saved."));
       file.write(comboList_.toJsonDocument().toJson());
@@ -166,7 +161,7 @@ void ComboManager::onCharacterTyped(QChar c)
    if (!isBeeftextTheForegroundApplication()) // in Beeftext windows, substitution is disabled
    {
       (*it)->performSubstitution();
-      if (PreferencesManager::instance().getPlaySoundOnCombo())
+      if (PreferencesManager::instance().playSoundOnCombo())
          sound_->play();
    }
    this->onComboBreakerTyped();

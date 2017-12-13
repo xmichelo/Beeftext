@@ -26,6 +26,9 @@ class ComboList: public QAbstractTableModel
    typedef VecSPCombo::reverse_iterator reverse_iterator; ///< Type definition for iterator
    typedef VecSPCombo::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
 
+public: // static data members
+   static QString const defaultFileName; ///< The default name for combo list files
+
 public: // member functions
 	ComboList(QObject* parent = nullptr); ///< Default constructor
 	~ComboList() = default; ///< Default destructor
