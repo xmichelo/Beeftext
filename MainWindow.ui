@@ -21,7 +21,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="CombosTab">
        <attribute name="title">
@@ -57,7 +57,7 @@
       </widget>
       <widget class="QWidget" name="tabPreferences">
        <attribute name="title">
-        <string>Preferences</string>
+        <string>&amp;Preferences</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <property name="spacing">

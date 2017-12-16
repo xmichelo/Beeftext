@@ -33,7 +33,7 @@ namespace {
 /// expected data type.
 ///
 /// \param[in] key The key to read from
-/// \param[in] default value The default value to use if the key does not exist or its value is not of the right type
+/// \param[in] defaultValue The default value to use if the key does not exist or its value is not of the right type
 /// \return The read value
 //**********************************************************************************************************************
 template <typename T> T PreferencesManager::readSettings(QString const& key, T const& defaultValue) const

@@ -73,10 +73,14 @@ ComboManager::ComboManager()
    : QObject()
    , sound_(std::make_unique<QSound>(":/MainWindow/Resources/Notification.wav"))
 {
+   // We used queued connections to minimize the type spent in the keyboard hook
    InputManager& inputManager = InputManager::instance();
-   connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped);
-   connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped);
-   connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped);
+   connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped, 
+      Qt::QueuedConnection);
+   connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped, 
+      Qt::QueuedConnection);
+   connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped, 
+      Qt::QueuedConnection);
 
    QString errMsg;
    if (!this->loadComboListFromFile(&errMsg))

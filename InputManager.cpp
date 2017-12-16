@@ -139,7 +139,7 @@ void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
    if ((VK_UP == keyStroke.virtualKey) || (VK_RIGHT == keyStroke.virtualKey) || (VK_DOWN == keyStroke.virtualKey) ||
       (VK_LEFT == keyStroke.virtualKey))
    {
-      QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
+      emit comboBreakerTyped();
       return;
    }
 
@@ -148,20 +148,20 @@ void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
    if (text.isEmpty())
    {
       if (!isDeadKey)
-         QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
+         emit comboBreakerTyped();
       return;
    }
    for (QChar c: text)
    {  
       if (QChar('\b') == c)
       {
-         QTimer::singleShot(0, [this]() { emit backspaceTyped(); });
+         emit backspaceTyped();
          continue;
       }
       if (c.isSpace() || (!c.isPrint()))
-         QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
+         emit comboBreakerTyped();
       else
-         QTimer::singleShot(0,  [c, this]() { emit characterTyped(c); });
+         emit characterTyped(c);
    }
 }
 
@@ -226,7 +226,7 @@ QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
 //**********************************************************************************************************************
 void InputManager::onMouseClickEvent(int, WPARAM, LPARAM)
 {
-   QTimer::singleShot(0, [this]() { emit comboBreakerTyped(); });
+   emit comboBreakerTyped();
 }
 
 
