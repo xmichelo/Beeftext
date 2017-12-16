@@ -29,7 +29,9 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    ui_.setupUi(this);
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
    loadPreferences();
+   this->applyAutoStartPreference(); // we ensure autostart is properly setup
 
+   // signal mappings for the 'Check now' button
    MainWindow* mainWindow = static_cast<MainWindow*>(this->window());
    connect(ui_.buttonCheckNow, &QPushButton::clicked, mainWindow, &MainWindow::launchCheckForUpdate);
    connect(mainWindow, &MainWindow::startedCheckingForUpdate, [&]() { ui_.buttonCheckNow->setEnabled(false); });
@@ -42,13 +44,13 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
 //**********************************************************************************************************************
 void PreferencesFrame::loadPreferences()
 {
+   QSignalBlocker blockers[] =  { QSignalBlocker(ui_.checkPlaySoundOnCombo),
+      QSignalBlocker(ui_.checkAutoCheckForUpdates), QSignalBlocker(ui_.checkUseClipboardForComboSubstitution),
+      QSignalBlocker(ui_.checkAutoStart) }; // Temporarily Block signals emission by the controls
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
-
-   ui_.checkAutoStart->blockSignals(true);
+   ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
-   ui_.checkAutoStart->blockSignals(false);
-   this->applyAutoStartPreference(); // we ensure autostart is properly setup
 }
 
 
@@ -107,3 +109,13 @@ void PreferencesFrame::onAutoCheckForUpdatesCheckChanged()
 {
    prefs_.setAutoCheckForUpdates(ui_.checkAutoCheckForUpdates->isChecked());
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged()
+{
+   prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
+}
+

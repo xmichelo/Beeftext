@@ -20,10 +20,30 @@ namespace {
    QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
    QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
    QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
+   QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
+   bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
 }
+
+
+//**********************************************************************************************************************
+/// This function returns the default value if the key does not exist in the settings OR if the value is not of the
+/// expected data type.
+///
+/// \param[in] key The key to read from
+/// \param[in] default value The default value to use if the key does not exist or its value is not of the right type
+/// \return The read value
+//**********************************************************************************************************************
+template <typename T> T PreferencesManager::readSettings(QString const& key, T const& defaultValue) const
+{
+   if (!settings_.contains(key))
+      return defaultValue;
+   QVariant v = settings_.value(key, defaultValue);
+   return v.canConvert<T>() ? qvariant_cast<T>(v) : defaultValue;
+}
+
 
 
 //**********************************************************************************************************************
@@ -55,6 +75,7 @@ void PreferencesManager::reset()
    this->setPlaySoundOnCombo(kDefaultValuePlaySoundOnCombo);
    this->setAutoCheckForUpdates(kDefaultValueAutoCheckForUpdates);
    this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
+   this->setUseClipboardForComboSubstitution(kDefaultvalueUseClipboardForComboSubstitution);
 }
 
 
@@ -65,7 +86,7 @@ QString PreferencesManager::getInstalledApplicationPath() const
 {
    if (!settings_.contains(kKeyAppExePath))
       return QString();
-   return QDir::fromNativeSeparators(settings_.value(kKeyAppExePath).toString());
+   return QDir::fromNativeSeparators(this->readSettings<QString>(kKeyAppExePath));
 }
 
 
@@ -83,7 +104,7 @@ void PreferencesManager::setAlreadyLaunched()
 //**********************************************************************************************************************
 bool PreferencesManager::alreadyLaunched() const
 {
-   return qvariant_cast<bool>(settings_.value(kKeyAlreadyLaunched, false));
+   return this->readSettings<bool>(kKeyAlreadyLaunched, false);
 }
 
 
@@ -101,7 +122,7 @@ void PreferencesManager::setFileMarkedForDeletionOnStartup(QString const& path)
 //**********************************************************************************************************************
 QString PreferencesManager::fileMarkedForDeletionOnStartup() const
 {
-   return settings_.value(kKeyFileMarkedForDeletion).toString();
+   return readSettings<QString>(kKeyFileMarkedForDeletion);
 }
 
 
@@ -146,7 +167,7 @@ void PreferencesManager::setAutoStartAtLogin(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::autoStartAtLogin() const
 {
-   return qvariant_cast<bool>(settings_.value(kKeyAutoStartAtLogin, kDefaultValueAutoStartAtLogin));
+   return this->readSettings<bool>(kKeyAutoStartAtLogin, kDefaultValueAutoStartAtLogin);
 }
 
 
@@ -164,7 +185,7 @@ void PreferencesManager::setPlaySoundOnCombo(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::playSoundOnCombo() const
 {
-   return qvariant_cast<bool>(settings_.value(kKeyPlaySoundOnCombo, kDefaultValuePlaySoundOnCombo));
+   return this->readSettings<bool>(kKeyPlaySoundOnCombo, kDefaultValuePlaySoundOnCombo);
 }
 
 
@@ -182,6 +203,26 @@ void PreferencesManager::setAutoCheckForUpdates(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::autoCheckForUpdates() const
 {
-   return qvariant_cast<bool>(settings_.value(kKeyAutoCheckForUpdates, kDefaultValueAutoCheckForUpdates));
+   return this->readSettings<bool>(kKeyAutoCheckForUpdates, kDefaultValueAutoCheckForUpdates);
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setUseClipboardForComboSubstitution(bool value)
+{
+   settings_.setValue(kKeyUseClipboardForComboSubstitution, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::useClipboardForComboSubstitution() const
+{
+   return this->readSettings<bool>(kKeyUseClipboardForComboSubstitution, kDefaultvalueUseClipboardForComboSubstitution);
+}
+
+
 

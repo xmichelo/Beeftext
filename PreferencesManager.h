@@ -36,6 +36,8 @@ public: // member functions
    bool playSoundOnCombo() const; ///< Set the value for the 'Play sound on combo' preference
    void setAutoCheckForUpdates(bool value); ///< Set the value for the 'Auto check for updates preference
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
+   void setUseClipboardForComboSubstitution(bool value); ///< Set the value for the 'Use clipboard for combo substitution' preference
+   bool useClipboardForComboSubstitution() const; ///< Get the value for the 'Use clipboard for combo substitution' preference
 
 private: // member functions
    PreferencesManager(); ///< Default constructor
@@ -43,7 +45,8 @@ private: // member functions
 	PreferencesManager(PreferencesManager&&) = delete; ///< Disabled move constructor
 	PreferencesManager& operator=(PreferencesManager const&) = delete; ///< Disabled assignment operator
 	PreferencesManager& operator=(PreferencesManager&&) = delete; ///< Disabled move assignment operator
-
+   template <typename T> T readSettings(QString const& key, T const& defaultValue = T()) const; ///< Read a value of a given type read from the settings
+   
 private: // data members
    QSettings settings_; ///< The Qt settings instance
 };

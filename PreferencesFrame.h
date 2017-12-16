@@ -38,6 +38,7 @@ private slots:
    void onPlaySoundOnComboCheckChanged(); ///< Slot for the changing of the 'Play sound on combo' check box
    void onAutoStartCheckChanged(); ///< Slot for the changing of the 'Autostart at login' check box
    void onAutoCheckForUpdatesCheckChanged(); ///< Slot for the changing of the 'Auto check for updates' check box
+   void onUseClipboardForComboSubstitutionCheckChanged(); ///< Slot for the changing of the 'Use clipboard for combo substitution' check box
 
 private: // data members
    Ui::PreferencesFrame ui_; ///< The GUI for the frame
