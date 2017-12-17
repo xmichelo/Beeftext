@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "Combo.h"
 #include "PreferencesManager.h"
+#include "ClipboardManager.h"
 #include "InputManager.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
@@ -172,11 +173,13 @@ void Combo::performSubstitution()
 
       if (PreferencesManager::instance().useClipboardForComboSubstitution())
       {
+         ClipboardManager::instance().backupClipboard();
          // we use the clipboard to and copy/paste the substitution
          QApplication::clipboard()->setText(substitutionText());
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
+         QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); }); ///< We need to delay clipboard restoration to avoid unexpected behaviours
       }
       else
       {

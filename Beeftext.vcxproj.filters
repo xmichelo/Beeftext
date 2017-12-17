@@ -134,6 +134,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_UpdateDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="ClipboardManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -162,6 +163,7 @@
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClipboardManager.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
