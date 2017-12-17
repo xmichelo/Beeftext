@@ -35,7 +35,7 @@ UpdateCheckWorker::UpdateCheckWorker(QObject* parent)
 void UpdateCheckWorker::run()
 {
    this->performUpdateCheck();
-   emit finished();
+   emit finished(); // note that finished is emitted even in case of error
 }
 
 

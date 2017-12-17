@@ -14,8 +14,9 @@
 //**********************************************************************************************************************
 /// \brief Preferences manager class
 //**********************************************************************************************************************
-class PreferencesManager
+class PreferencesManager: public QObject
 {
+   Q_OBJECT
 public: // static member functions
    static PreferencesManager& instance(); ///< Return the only allowed instance of the class
 
@@ -40,6 +41,9 @@ public: // member functions
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
    void setUseClipboardForComboSubstitution(bool value); ///< Set the value for the 'Use clipboard for combo substitution' preference
    bool useClipboardForComboSubstitution() const; ///< Get the value for the 'Use clipboard for combo substitution' preference
+
+signals:
+   void autoCheckForUpdatesChanged(bool value); // Signal emitted when the 'Auto check for updates' preference value changed
 
 private: // member functions
    PreferencesManager(); ///< Default constructor

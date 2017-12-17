@@ -18,7 +18,7 @@
 
 
 namespace {
-   qint64 const kLaunchCheckDelayMs = 3000; ///< Delay for check for update at launch in milliseconds
+   qint64 const kLaunchCheckDelayMs = 1000; ///< Delay for check for update at launch in milliseconds
    qint64 const kUpdateCheckIntervalMs = 1000 * 60 * 60 * 24; ///< The interval for checking for updates in milliseconds
 }
 
@@ -40,13 +40,11 @@ UpdateManager::UpdateManager()
    : QObject()
    , timer_()
 {
+   PreferencesManager& prefs = PreferencesManager::instance();
    timer_.setSingleShot(true);
    connect(&timer_, &QTimer::timeout, this, &UpdateManager::checkForUpdate);
-   QDateTime lastCheckDateTime = PreferencesManager::instance().lastUpdateCheckDateTime();
-   qint64 msSecsToNextCheck = lastCheckDateTime.isNull() ? kLaunchCheckDelayMs :
-      qMax<qint64>(kLaunchCheckDelayMs, 
-         QDateTime::currentDateTime().msecsTo(lastCheckDateTime.addMSecs(kUpdateCheckIntervalMs)));
-   QTimer::singleShot(msSecsToNextCheck, this, &UpdateManager::checkForUpdate);
+   connect(&prefs, &PreferencesManager::autoCheckForUpdatesChanged, this, &UpdateManager::onAutoCheckForUpdateChanged);
+   this->onAutoCheckForUpdateChanged(prefs.autoCheckForUpdates());
 }
 
 
@@ -57,6 +55,22 @@ void UpdateManager::checkForUpdate()
 {
    timer_.stop();
    startUpdateCheckWorker();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enabled Is the auto check for update enabled
+//**********************************************************************************************************************
+void UpdateManager::onAutoCheckForUpdateChanged(bool enabled)
+{
+   timer_.stop();
+   if (!enabled)
+      return;
+   
+   QDateTime lastCheckDateTime = PreferencesManager::instance().lastUpdateCheckDateTime();
+   qint64 msSecsToNextCheck = lastCheckDateTime.isNull() ? kLaunchCheckDelayMs : qMax<qint64>(kLaunchCheckDelayMs, 
+      QDateTime::currentDateTime().msecsTo(lastCheckDateTime.addMSecs(kUpdateCheckIntervalMs)));
+   timer_.start(msSecsToNextCheck);
 }
 
 

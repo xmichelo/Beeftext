@@ -214,7 +214,10 @@ bool PreferencesManager::playSoundOnCombo() const
 //**********************************************************************************************************************
 void PreferencesManager::setAutoCheckForUpdates(bool value)
 {
+   if (this->autoCheckForUpdates() == value)
+      return;
    settings_.setValue(kKeyAutoCheckForUpdates, value);
+   emit autoCheckForUpdatesChanged(value);
 }
 
 

@@ -151,6 +151,12 @@
     <ClCompile Include="GeneratedFiles\Release\moc_UpdateManager.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_PreferencesManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_PreferencesManager.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -171,7 +177,6 @@
     <ClInclude Include="GeneratedFiles\ui_PreferencesFrame.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="PreferencesManager.h" />
     <ClInclude Include="BeeftextUtils.h" />
     <ClInclude Include="GeneratedFiles\ui_AboutFrame.h">
       <Filter>Generated Files</Filter>
@@ -229,6 +234,7 @@
     <CustomBuild Include="UpdateManager.h">
       <Filter>Update</Filter>
     </CustomBuild>
+    <CustomBuild Include="PreferencesManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

@@ -33,6 +33,7 @@ signals:
 
 public slots:
    void checkForUpdate(); ///< Force a check for update
+   void onAutoCheckForUpdateChanged(bool enabled); ///< Signal for the changing of the 'Auto check for update
 
 private: // member functions
    UpdateManager(); ///< Default constructor
