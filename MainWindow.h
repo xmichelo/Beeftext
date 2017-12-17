@@ -26,9 +26,6 @@ public: // member functions
    MainWindow(); ///< Default constructor
    ~MainWindow() = default; ///< Default destructor
 
-public: 
-   void launchCheckForUpdate(); ///< Slot for the checking of the latest version information
-
 private: // member functions
    MainWindow(MainWindow const&) = delete; ///< Disabled copy constructor
    MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
@@ -46,8 +43,6 @@ private slots:
    void onActionShowMainWindow(); ///< Slot for the  'Show Main Window' action
    void onActionShowPreferences(); ///< Slot for the 'Preferences' action
    void onActionExit(); ///< Slot for the 'Exit' action
-   void onNewVersionAvailable(SPLatestVersionInfo latestVersionInfo); ///< Slot for the existence of a new version of the application
-   void onUpdateCheckWorkerFinished(); ///< Slot for the finishing of the update check worker
 
 protected: // member functions
    void closeEvent(QCloseEvent *event) override; ///< Window close event handler

@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "PreferencesFrame.h"
+#include "UpdateManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
@@ -19,6 +20,10 @@
 using namespace xmilib;
 
 
+namespace {
+   qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the update check status label is cleared
+}
+
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
@@ -27,15 +32,21 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    , prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
+   this->updateCheckStatusTimer_.setSingleShot(true);
+   connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
+   ui_.labelUpdateCheckStatus->setText(QString());
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
    loadPreferences();
    this->applyAutoStartPreference(); // we ensure autostart is properly setup
 
    // signal mappings for the 'Check now' button
-   MainWindow* mainWindow = static_cast<MainWindow*>(this->window());
-   connect(ui_.buttonCheckNow, &QPushButton::clicked, mainWindow, &MainWindow::launchCheckForUpdate);
-   connect(mainWindow, &MainWindow::startedCheckingForUpdate, [&]() { ui_.buttonCheckNow->setEnabled(false); });
-   connect(mainWindow, &MainWindow::finishedCheckingForUpdate, [&]() { ui_.buttonCheckNow->setEnabled(true); });
+   UpdateManager& updateManager = UpdateManager::instance();
+   connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);;
+   connect(&updateManager, &UpdateManager::startedUpdateCheck, [&]() { ui_.buttonCheckNow->setEnabled(false); });
+   connect(&updateManager, &UpdateManager::finishedUpdateCheck, [&]() { ui_.buttonCheckNow->setEnabled(true); });
+   connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PreferencesFrame::onUpdateIsAvailable);
+   connect(&updateManager, &UpdateManager::noUpdateIsAvailable, this, &PreferencesFrame::onNoUpdateIsAvailable);
+   connect(&updateManager, &UpdateManager::updateCheckFailed, this, &PreferencesFrame::onUpdateCheckFailed);
 }
 
 
@@ -66,6 +77,17 @@ void PreferencesFrame::applyAutoStartPreference()
    }
    else
       unregisterApplicationFromAutoStart();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::setUpdateCheckStatus(QString const& status)
+{
+   updateCheckStatusTimer_.stop();
+   ui_.labelUpdateCheckStatus->setText(status);
+   updateCheckStatusTimer_.start(kUpdateCheckStatusLabelTimeoutMs);
 }
 
 
@@ -117,5 +139,34 @@ void PreferencesFrame::onAutoCheckForUpdatesCheckChanged()
 void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged()
 {
    prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onUpdateIsAvailable(SPLatestVersionInfo latestVersionInfo)
+{
+   this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2.%3 is available.").arg(constants::kApplicationName)
+      .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor()) 
+      : tr("A new version is available."));
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onNoUpdateIsAvailable()
+{
+   this->setUpdateCheckStatus(tr("The software is up to date."));
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onUpdateCheckFailed()
+{
+   this->setUpdateCheckStatus(tr("Update check failed."));
 }
 

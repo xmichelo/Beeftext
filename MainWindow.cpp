@@ -10,8 +10,8 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 #include "PreferencesManager.h"
-#include "UpdateCheckWorker.h"
-#include "UpdateDialog.h"
+#include "Update/UpdateCheckWorker.h"
+#include "Update/UpdateDialog.h"
 #include "Combo/ComboManager.h"
 #include "Combo/ComboDialog.h"
 #include "BeeftextConstants.h"
@@ -28,18 +28,15 @@ using namespace xmilib;
 MainWindow::MainWindow()
    : QMainWindow()
 {
-    ui_.setupUi(this);
-    ui_.tabWidget->setCurrentIndex(0);
-    
-    this->setupActions();
-    this->setupSystemTrayIcon();
+   ui_.setupUi(this);
+   ui_.tabWidget->setCurrentIndex(0);
 
-    PreferencesManager& prefs = PreferencesManager::instance();
-    this->restoreGeometry(prefs.mainWindowGeometry());
-    if (prefs.autoCheckForUpdates())
-      QTimer::singleShot(1000, this, &MainWindow::launchCheckForUpdate);
+   this->setupActions();
+   this->setupSystemTrayIcon();
+
+   PreferencesManager& prefs = PreferencesManager::instance();
+   this->restoreGeometry(prefs.mainWindowGeometry());
 }
-
 
 //**********************************************************************************************************************
 // 
@@ -127,53 +124,6 @@ void MainWindow::onActionExit()
 {
    this->close(); // ensure the close event handler is called
    qApp->quit();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void MainWindow::launchCheckForUpdate()
-{
-   emit startedCheckingForUpdate();
-   QThread *thread = new QThread;
-   UpdateCheckWorker* worker = new UpdateCheckWorker;
-   worker->moveToThread(thread);
-   connect(thread, &QThread::started, worker, &UpdateCheckWorker::run);
-   connect(worker, &UpdateCheckWorker::finished, this, &MainWindow::onUpdateCheckWorkerFinished);
-   connect(worker, &UpdateCheckWorker::newVersionIsAvailable, this, &MainWindow::onNewVersionAvailable);
-   thread->start();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void MainWindow::onUpdateCheckWorkerFinished()
-{
-   UpdateCheckWorker *worker = dynamic_cast<UpdateCheckWorker*>(this->sender());
-   if (!worker)
-      throw xmilib::Exception(tr("An Internal error occurred while checking for updates."));
-   QThread *thread = worker->thread();
-   thread->quit();
-   thread->wait();
-   worker->deleteLater();
-   thread->deleteLater();
-   emit finishedCheckingForUpdate();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] latestVersionInfo The latest version information
-//**********************************************************************************************************************
-void MainWindow::onNewVersionAvailable(SPLatestVersionInfo latestVersionInfo)
-{
-   if (!latestVersionInfo)
-   {
-      globals::debugLog().addError("New version notifier sent a null latest version information instance.");
-      return;
-   }
-   UpdateDialog(latestVersionInfo, this).exec();
 }
 
 

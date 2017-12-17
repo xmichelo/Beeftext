@@ -30,6 +30,8 @@ public: // member functions
    void clearFileMarkedForDeletionOnStartup(); ///< Reset the file marked for deletion on startup
    void setMainWindowGeometry(QByteArray const& array); ///< Set the geometry of the main window
    QByteArray mainWindowGeometry() const; ///< Get the geometry of the main window
+   void setLastUpdateCheckDateTime(QDateTime const& dateTime); ///< Set the last time the application checked for update
+   QDateTime lastUpdateCheckDateTime() const; ///< Get the date time of the last update check
    void setAutoStartAtLogin(bool value); ///< Set the value for the 'Autostart at login' preference
    bool autoStartAtLogin() const; ///< Get the value for the 'Autostart at login' preference
    void setPlaySoundOnCombo(bool value); ///< Set the value for the 'Play sound on combo' preference

@@ -21,6 +21,7 @@ namespace {
    QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
    QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
    QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
+   QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
@@ -154,6 +155,25 @@ QByteArray PreferencesManager::mainWindowGeometry() const
 
 
 //**********************************************************************************************************************
+/// \param[in] date Time the date/time of the last update check
+//**********************************************************************************************************************
+void PreferencesManager::setLastUpdateCheckDateTime(QDateTime const& dateTime)
+{
+   settings_.setValue(kKeyLastUpdateCheckDateTime, dateTime);
+}
+
+
+//**********************************************************************************************************************
+/// \return The date/time of the last update check
+//**********************************************************************************************************************
+QDateTime PreferencesManager::lastUpdateCheckDateTime() const
+{
+   QVariant v = settings_.value(kKeyLastUpdateCheckDateTime);
+   return (v.isNull() || !v.canConvert<QDateTime>()) ? QDateTime(): v.toDateTime();
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
 void PreferencesManager::setAutoStartAtLogin(bool value)
@@ -223,6 +243,4 @@ bool PreferencesManager::useClipboardForComboSubstitution() const
 {
    return this->readSettings<bool>(kKeyUseClipboardForComboSubstitution, kDefaultvalueUseClipboardForComboSubstitution);
 }
-
-
 

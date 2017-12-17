@@ -29,6 +29,9 @@
     <Filter Include="Combo">
       <UniqueIdentifier>{ff7ca901-94f9-4a2f-95e9-cd3694d1306b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Update">
+      <UniqueIdentifier>{e6738d10-39d8-4924-972b-d553bd9fac42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
@@ -120,21 +123,34 @@
     </ClCompile>
     <ClCompile Include="AboutFrame.cpp" />
     <ClCompile Include="LatestVersionInfo.cpp" />
+    <ClCompile Include="ClipboardManager.cpp" />
+    <ClCompile Include="Update\UpdateCheckWorker.cpp">
+      <Filter>Update</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_UpdateCheckWorker.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_UpdateCheckWorker.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateCheckWorker.cpp" />
-    <ClCompile Include="UpdateDialog.cpp" />
+    <ClCompile Include="Update\UpdateDialog.cpp">
+      <Filter>Update</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_UpdateDialog.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_UpdateDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="ClipboardManager.cpp" />
+    <ClCompile Include="Update\UpdateManager.cpp">
+      <Filter>Update</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_UpdateManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_UpdateManager.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -160,10 +176,10 @@
     <ClInclude Include="GeneratedFiles\ui_AboutFrame.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClipboardManager.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="ClipboardManager.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -201,9 +217,18 @@
     <CustomBuild Include="AboutFrame.h" />
     <CustomBuild Include="AboutFrame.ui" />
     <CustomBuild Include="LatestVersionInfo.h" />
-    <CustomBuild Include="UpdateCheckWorker.h" />
-    <CustomBuild Include="UpdateDialog.h" />
-    <CustomBuild Include="UpdateDialog.ui" />
+    <CustomBuild Include="Update\UpdateCheckWorker.h">
+      <Filter>Update</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Update\UpdateDialog.h">
+      <Filter>Update</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Update\UpdateDialog.ui">
+      <Filter>Update</Filter>
+    </CustomBuild>
+    <CustomBuild Include="UpdateManager.h">
+      <Filter>Update</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

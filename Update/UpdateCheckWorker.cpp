@@ -11,6 +11,7 @@
 #include "UpdateCheckWorker.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
+#include <XMiLib/Exception.h>
 
 
 namespace {
@@ -43,14 +44,19 @@ void UpdateCheckWorker::run()
 //**********************************************************************************************************************
 void UpdateCheckWorker::performUpdateCheck()
 {
-   QByteArray jsonData = this->downloadLatestVersionInformation();
-   if (jsonData.isEmpty())
-      return;
-   SPLatestVersionInfo latestVersionInfo = this->parseJsonData(jsonData);
-   if ((!latestVersionInfo) || (!latestVersionInfo->isValid()))
-      return;
-   if (this->isNewVersionAvailable(latestVersionInfo))
-      emit newVersionIsAvailable(latestVersionInfo);
+   try
+   {
+      QByteArray jsonData = this->downloadLatestVersionInformation();
+      SPLatestVersionInfo latestVersionInfo = this->parseJsonData(jsonData);
+      if (this->isNewVersionAvailable(latestVersionInfo))
+         emit updateIsAvailable(latestVersionInfo);
+      else
+         emit noUpdateIsAvailable();
+   }
+   catch (xmilib::Exception const& e)
+   {
+      emit error(e.qwhat());
+   }
 }
 
 
@@ -70,11 +76,8 @@ QByteArray UpdateCheckWorker::downloadLatestVersionInformation() const
       errorMessage = QString("Error %1: %2").arg(code).arg(reply->errorString()); });
    loop.exec();
    if (!errorMessage.isEmpty())
-   {
-      globals::debugLog().addError(QString("Could not retrieve version information file from the Beeftext "
-         "website: %1").arg(errorMessage));
-      return QByteArray();
-   }
+      throw xmilib::Exception(QString("Could not retrieve version information file from the Beeftext website: %1")
+         .arg(errorMessage));
    QByteArray const result = reply->readAll();
    reply->deleteLater();
    return result;
@@ -83,7 +86,7 @@ QByteArray UpdateCheckWorker::downloadLatestVersionInformation() const
 
 //**********************************************************************************************************************
 /// \param[in] jsonData the JSON data
-/// \return A shared pointer to the parsed 
+/// \return A shared pointer to the parsed data. 
 //**********************************************************************************************************************
 SPLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) const
 {
@@ -91,17 +94,13 @@ SPLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) co
    QJsonParseError error;
    QJsonDocument doc = QJsonDocument::fromJson(jsonData.toUtf8(), &error);
    if (error.error != QJsonParseError::NoError)
-   {
-      globals::debugLog().addError(QString("Could not retrieve version information. The downloaded JSON file is "
+      throw xmilib::Exception(QString("Could not retrieve version information. The downloaded JSON file is "
          "invalid: %1").arg(error.errorString()));
-      return SPLatestVersionInfo();
-   }
    SPLatestVersionInfo result = std::make_shared<LatestVersionInfo>(doc.object());
-   if (result->isValid())
-      return result;
-   globals::debugLog().addError(QString("Could not retrieve version information. The downloaded JSON file is "
+   if (!result->isValid())
+      throw xmilib::Exception(QString("Could not retrieve version information. The downloaded JSON file is "
       "invalid."));
-   return SPLatestVersionInfo();
+   return result;
 }
 
 
@@ -111,21 +110,12 @@ SPLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) co
 bool UpdateCheckWorker::isNewVersionAvailable(SPLatestVersionInfo latestVersionInfo) const
 {
    if (!latestVersionInfo)
-   {
-      globals::debugLog().addError("Could not check for new version: the retrieved latest version information is "
+      throw xmilib::Exception("Could not check for new version: the retrieved latest version information is "
          "null.");
-      return false;
-   }
    qint32 const major = latestVersionInfo->versionMajor();
    qint32 const minor = latestVersionInfo->versionMinor();
-   bool const hasNewVersion = (major > constants::kVersionMajor)
+   return (major > constants::kVersionMajor)
       || ((major == constants::kVersionMajor) && (minor > constants::kVersionMinor));
-   if (hasNewVersion)
-      globals::debugLog().addInfo(QString("%1 v%2.%3 is available for download.").arg(constants::kApplicationName)
-         .arg(major).arg(minor));
-   else
-      globals::debugLog().addInfo("The application is up to date.");
-   return hasNewVersion;
 }
 
 

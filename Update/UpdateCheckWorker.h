@@ -29,7 +29,9 @@ public slots:
 
 signals:
    void finished(); ///< Signal for the finishing of the worker
-   void newVersionIsAvailable(SPLatestVersionInfo lastestVersionInfo); ///< Signal for the existence of a newer version of the application
+   void updateIsAvailable(SPLatestVersionInfo lastestVersionInfo); ///< Signal for the existence of a newer version of the application
+   void noUpdateIsAvailable(); ///< Signal for no update available
+   void error(QString const& error); ///< Signal for error
 
 private: // member functions
 	UpdateCheckWorker(UpdateCheckWorker const&) = delete; ///< Disabled copy constructor

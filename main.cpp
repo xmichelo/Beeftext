@@ -11,7 +11,7 @@
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
-#include "LatestVersionInfo.h"
+#include "UpdateManager.h"
 #include "Combo/ComboManager.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
@@ -64,6 +64,7 @@ int main(int argc, char *argv[])
       debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
+      UpdateManager& updateManager = UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       MainWindow window;
       ensureMainWindowHasAHandle(window);
       PreferencesManager& prefs = PreferencesManager::instance();

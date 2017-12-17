@@ -13,6 +13,7 @@
 
 #include "ui_PreferencesFrame.h"
 #include "PreferencesManager.h"
+#include "LatestVersionInfo.h"
 
 
 //**********************************************************************************************************************
@@ -32,6 +33,7 @@ private: // member functions
 	PreferencesFrame& operator=(PreferencesFrame&&) = delete; ///< Disabled move assignment operator
    void loadPreferences(); ///< Load the preferences
    void applyAutoStartPreference(); ///< Apply the 'Autostart at login' preference
+   void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
 
 private slots:
    void onActionResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
@@ -39,10 +41,14 @@ private slots:
    void onAutoStartCheckChanged(); ///< Slot for the changing of the 'Autostart at login' check box
    void onAutoCheckForUpdatesCheckChanged(); ///< Slot for the changing of the 'Auto check for updates' check box
    void onUseClipboardForComboSubstitutionCheckChanged(); ///< Slot for the changing of the 'Use clipboard for combo substitution' check box
+   void onUpdateIsAvailable(SPLatestVersionInfo latestVersionInfo); ///< Slot for the availability of an update
+   void onNoUpdateIsAvailable(); ///< Slot for the lack of availability of an update
+   void onUpdateCheckFailed(); ///< Slot update check failure
 
 private: // data members
    Ui::PreferencesFrame ui_; ///< The GUI for the frame
    PreferencesManager& prefs_; ///< The preferences manager
+   QTimer updateCheckStatusTimer_; ///< The timer for clearing the update check status label
 };
 
 
