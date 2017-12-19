@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "UpdateDialog.h"
+#include "UpdateManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
@@ -40,6 +41,8 @@ UpdateDialog::UpdateDialog(SPLatestVersionInfo latestVersionInfo, QWidget* paren
          .arg(latestVersionInfo_->versionMajor()).arg(latestVersionInfo_->versionMinor()));
       ui_.editReleaseNotes->setHtml(latestVersionInfo_->releaseNotes());
    }
+   // If you're AFK for days, we want to ensure we display only one notification windows, for the latest release, so:
+   connect(&UpdateManager::instance(), &UpdateManager::updateIsAvailable, this, &UpdateDialog::reject); 
 }
 
 
