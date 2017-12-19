@@ -155,7 +155,7 @@ QByteArray PreferencesManager::mainWindowGeometry() const
 
 
 //**********************************************************************************************************************
-/// \param[in] date Time the date/time of the last update check
+/// \param[in] dateTime The date/time of the last update check
 //**********************************************************************************************************************
 void PreferencesManager::setLastUpdateCheckDateTime(QDateTime const& dateTime)
 {
