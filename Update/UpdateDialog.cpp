@@ -57,6 +57,8 @@ void UpdateDialog::startDownload()
    if (installerPath_.isEmpty() || !file_.isOpen())
       throw xmilib::Exception("Error during software update: could save installer file.");
    QNetworkRequest request(latestVersionInfo_->downloadUrl());
+   request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+   request.setMaximumRedirectsAllowed(10);
    reply_ = nam_.get(request);
    connect(reply_, &QNetworkReply::finished, this, &UpdateDialog::onDownloadFinished);
    connect(reply_, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), this, 
