@@ -27,7 +27,9 @@ using namespace xmilib;
 //**********************************************************************************************************************
 MainWindow::MainWindow()
    : QMainWindow()
+#ifndef NDEBUG
    , styleSheetEditor_(nullptr)
+#endif
 {
    ui_.setupUi(this);
    ui_.tabWidget->setCurrentIndex(0);

@@ -27,7 +27,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="groupBoxBehavior">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -35,7 +35,7 @@
       </size>
      </property>
      <property name="title">
-      <string>Behaviour</string>
+      <string>Behavior</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
@@ -81,6 +81,38 @@
     </widget>
    </item>
    <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBoxAppeareance">
+     <property name="title">
+      <string>Appearance</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <widget class="QCheckBox" name="checkUseCustomTheme">
+        <property name="text">
+         <string>Use custom theme</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <spacer name="verticalSpacer_2">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -97,7 +129,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="groupBoxAdvanced">
      <property name="title">
       <string>Advanced</string>
      </property>
@@ -260,6 +292,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkUseCustomTheme</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onUseCustomThemeCheckChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
@@ -268,5 +316,6 @@
   <slot>onAutoCheckForUpdatesCheckChanged()</slot>
   <slot>onActionCheckForUpdates()</slot>
   <slot>onUseClipboardForComboSubstitutionCheckChanged()</slot>
+  <slot>onUseCustomThemeCheckChanged()</slot>
  </slots>
 </ui>

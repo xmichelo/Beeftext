@@ -41,7 +41,8 @@ public: // member functions
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
    void setUseClipboardForComboSubstitution(bool value); ///< Set the value for the 'Use clipboard for combo substitution' preference
    bool useClipboardForComboSubstitution() const; ///< Get the value for the 'Use clipboard for combo substitution' preference
-
+   void setUseCustomTheme(bool value); ///< Get the value for the 'Use custom theme' preference
+   bool useCustomTheme() const; ///< Set the value for the 'Use custom theme' preference
 signals:
    void autoCheckForUpdatesChanged(bool value); // Signal emitted when the 'Auto check for updates' preference value changed
 

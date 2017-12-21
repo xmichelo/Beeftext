@@ -21,11 +21,13 @@ namespace {
    QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
    QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
    QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
+   QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
    QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
    bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
+   bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
 }
 
 
@@ -77,6 +79,7 @@ void PreferencesManager::reset()
    this->setAutoCheckForUpdates(kDefaultValueAutoCheckForUpdates);
    this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
    this->setUseClipboardForComboSubstitution(kDefaultvalueUseClipboardForComboSubstitution);
+   this->setUseCustomTheme(kDefaultValueUseCustomTheme);
 }
 
 
@@ -246,4 +249,23 @@ bool PreferencesManager::useClipboardForComboSubstitution() const
 {
    return this->readSettings<bool>(kKeyUseClipboardForComboSubstitution, kDefaultvalueUseClipboardForComboSubstitution);
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setUseCustomTheme(bool value)
+{
+   settings_.setValue(kKeyUseCustomTheme, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::useCustomTheme() const
+{
+   return this->readSettings<bool>(kKeyUseCustomTheme, kDefaultValueUseCustomTheme);
+}
+
 

@@ -58,7 +58,6 @@ int main(int argc, char *argv[])
       app.setOrganizationName(constants::kOrganizationName);
       app.setApplicationName(constants::kApplicationName);
       app.setApplicationDisplayName(constants::kApplicationName);
-      app.setStyleSheet(constants::kStyleSheet);
       ensureAppDataDirExists();
       debugLog.enableLoggingToFile(QDir(globals::getAppDataDir()).absoluteFilePath(kLogFileName));
       debugLog.setMaxEntryCount(1);
@@ -66,9 +65,11 @@ int main(int argc, char *argv[])
       removeFileMarkedForDeletion();
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       UpdateManager& updateManager = UpdateManager::instance(); // we make sure the update manager singleton is instanciated
+      PreferencesManager& prefs = PreferencesManager::instance();
+      if (prefs.useCustomTheme())
+         qApp->setStyleSheet(constants::kStyleSheet); // some style on table view do not apply properly if applied before window creation
       MainWindow window;
       ensureMainWindowHasAHandle(window);
-      PreferencesManager& prefs = PreferencesManager::instance();
       if (!prefs.alreadyLaunched())
          window.show();
       prefs.setAlreadyLaunched();

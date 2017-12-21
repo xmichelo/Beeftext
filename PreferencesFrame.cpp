@@ -38,6 +38,7 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
    loadPreferences();
    this->applyAutoStartPreference(); // we ensure autostart is properly setup
+   this->applyThemePreference(); // we apply the custom theme if the user selected it
 
    // signal mappings for the 'Check now' button
    UpdateManager& updateManager = UpdateManager::instance();
@@ -62,6 +63,7 @@ void PreferencesFrame::loadPreferences()
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
+   ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
 }
 
 
@@ -77,6 +79,15 @@ void PreferencesFrame::applyAutoStartPreference()
    }
    else
       unregisterApplicationFromAutoStart();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::applyThemePreference()
+{
+   qApp->setStyleSheet(prefs_.useCustomTheme() ? constants::kStyleSheet : QString());
 }
 
 
@@ -102,6 +113,7 @@ void PreferencesFrame::onActionResetToDefaultValues()
    prefs_.reset();
    this->loadPreferences();
    this->applyAutoStartPreference();
+   this->applyThemePreference();
 }
 
 
@@ -130,6 +142,16 @@ void PreferencesFrame::onAutoStartCheckChanged()
 void PreferencesFrame::onAutoCheckForUpdatesCheckChanged()
 {
    prefs_.setAutoCheckForUpdates(ui_.checkAutoCheckForUpdates->isChecked());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onUseCustomThemeCheckChanged()
+{
+   prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
+   this->applyThemePreference();
 }
 
 
