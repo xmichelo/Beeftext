@@ -40,6 +40,9 @@
    </item>
    <item>
     <widget class="QTextEdit" name="editReleaseNotes">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -110,6 +113,11 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>buttonInstall</tabstop>
+  <tabstop>buttonSkip</tabstop>
+  <tabstop>editReleaseNotes</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

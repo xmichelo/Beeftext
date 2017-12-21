@@ -13,6 +13,9 @@
 
 #include "ui_MainWindow.h"
 #include "LatestVersionInfo.h"
+#ifndef NDEBUG
+#include <XMiLib/StyleSheetEditor/StyleSheetEditor.h>
+#endif // #ifndef NDEBUG
 #include <memory>
 
 
@@ -50,6 +53,9 @@ protected: // member functions
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window
    QSystemTrayIcon systemTrayIcon_; ///< The system tray icon
+#ifndef NDEBUG
+   xmilib::StyleSheetEditor styleSheetEditor_; ///< The style sheet editor window
+#endif // #ifndef NDEBUG
 };
 
 

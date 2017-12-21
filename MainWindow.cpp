@@ -27,6 +27,7 @@ using namespace xmilib;
 //**********************************************************************************************************************
 MainWindow::MainWindow()
    : QMainWindow()
+   , styleSheetEditor_(nullptr)
 {
    ui_.setupUi(this);
    ui_.tabWidget->setCurrentIndex(0);
@@ -69,6 +70,12 @@ void MainWindow::setupSystemTrayIcon()
    QMenu* menu = new QMenu(this);
    menu->addAction(ui_.actionShowMainWindow);
    menu->addAction(ui_.actionShowPreferences);
+#ifndef NDEBUG
+   QAction* actionShowStyleSheet = new QAction(this);
+   actionShowStyleSheet->setText(tr("Show Stylesheet Editor"));
+   connect(actionShowStyleSheet, &QAction::triggered, &styleSheetEditor_, &StyleSheetEditor::show);
+   menu->addAction(actionShowStyleSheet);
+#endif // #ifndef NDEBUG
    menu->addSeparator();
    menu->addAction(ui_.actionExit);
    menu->setDefaultAction(ui_.actionShowMainWindow);

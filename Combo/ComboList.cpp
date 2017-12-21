@@ -333,16 +333,6 @@ QVariant ComboList::headerData(int section, Qt::Orientation orientation, int rol
          default: return QVariant();
       }
 
-   if (Qt::BackgroundRole == role)
-      return QBrush(Qt::red, Qt::SolidPattern);
-
-   if (Qt::FontRole == role)
-   {
-      QFont font;
-      font.setBold(true);
-      return font;
-   }
-
    return QVariant();
 }
 

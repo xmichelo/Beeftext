@@ -14,25 +14,7 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QHeaderView:section { 
-   background: #aaa; 
-   color: #fff;  
-   border: none;
-   padding: 5px;
-}
-
-
-QTableView::item {
-   border: 0px; /* required in order for the padding to work. Don't ask why */
-   padding-right: 10px;
-}
-
-
-QTableView::item:selected {
-   border: 0px; /* required in order for the padding to work. Don't ask why */
-   padding-right: 10px;
-   background-color: #0078d7;
-}</string>
+   <string notr="true"/>
   </property>
   <property name="frameShape">
    <enum>QFrame::StyledPanel</enum>
@@ -71,11 +53,7 @@ QTableView::item:selected {
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QLineEdit {
-   border-radius: 4px;
-   border: 1px solid #888; 
-   padding: 2px;
-}</string>
+        <string notr="true"/>
        </property>
        <property name="placeholderText">
         <string>Search (Ctrl+F)</string>
@@ -126,7 +104,7 @@ QTableView::item:selected {
       <number>70</number>
      </attribute>
      <attribute name="horizontalHeaderHighlightSections">
-      <bool>true</bool>
+      <bool>false</bool>
      </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>70</number>
@@ -298,8 +276,10 @@ QTableView::item:selected {
   <tabstop>editSearch</tabstop>
   <tabstop>tableComboList</tabstop>
   <tabstop>buttonAddCombo</tabstop>
+  <tabstop>buttonDuplicateCombo</tabstop>
   <tabstop>buttonDeleteCombo</tabstop>
   <tabstop>buttonEditCombo</tabstop>
+  <tabstop>buttonEnableDisableCombo</tabstop>
  </tabstops>
  <resources/>
  <connections>

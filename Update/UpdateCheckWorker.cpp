@@ -15,7 +15,11 @@
 
 
 namespace {
+#ifdef NDEBUG
    QString const kVersionFileUrl = "https://beeftext.org/latestVersionInfo.json"; ///< The URL of the file containing the version number of Beeftext
+#else
+   QString const kVersionFileUrl = "https://beta.beeftext.org/latestVersionInfo.json"; ///< The URL of the file containing the version number of Beeftext
+#endif
 }
 
 

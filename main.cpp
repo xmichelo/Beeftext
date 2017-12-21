@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
       app.setOrganizationName(constants::kOrganizationName);
       app.setApplicationName(constants::kApplicationName);
       app.setApplicationDisplayName(constants::kApplicationName);
+      app.setStyleSheet(constants::kStyleSheet);
       ensureAppDataDirExists();
       debugLog.enableLoggingToFile(QDir(globals::getAppDataDir()).absoluteFilePath(kLogFileName));
       debugLog.setMaxEntryCount(1);
