@@ -1,8 +1,8 @@
 {
    "versionMajor": 0,
-   "versionMinor": 1,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.1/Beeftext-0.1-Installer.exe",
-   "sha256Sum": "6af5f04da30fe5c75e1b7a36882b779279f4865a2b925f8677d602e6da2cabdd",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>First beta release.</li><ul></span></p></body></html>"
+   "versionMinor": 2,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.2/Beeftext-0.2-Installer.exe",
+   "sha256Sum": "6721bb4f901b5d0a1cbe5b067801e3af0132f06b1e76e61415bd03a96cde1e47",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Added custom theme.</li><li>The user can switch to the default Windows theme from the preferences.</li></ul></span></p></body></html>"
 }
 
