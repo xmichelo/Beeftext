@@ -6,6 +6,7 @@
 
 #include "stdafx.h"
 #include "BeeftextUtils.h"
+#include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include "PreferencesManager.h"
 
@@ -40,6 +41,15 @@ bool registerApplicationForAutoStart()
 void unregisterApplicationFromAutoStart()
 {
    QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void openLogFile()
+{
+   QDesktopServices::openUrl(QUrl::fromLocalFile(globals::logFilePath()));
 }
 
 

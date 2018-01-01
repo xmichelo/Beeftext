@@ -42,7 +42,7 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
 
    // signal mappings for the 'Check now' button
    UpdateManager& updateManager = UpdateManager::instance();
-   connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);;
+   connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);
    connect(&updateManager, &UpdateManager::startedUpdateCheck, [&]() { ui_.buttonCheckNow->setEnabled(false); });
    connect(&updateManager, &UpdateManager::finishedUpdateCheck, [&]() { ui_.buttonCheckNow->setEnabled(true); });
    connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PreferencesFrame::onUpdateIsAvailable);
@@ -114,6 +114,15 @@ void PreferencesFrame::onActionResetToDefaultValues()
    this->loadPreferences();
    this->applyAutoStartPreference();
    this->applyThemePreference();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onActionOpenLogFile()
+{
+   openLogFile();
 }
 
 

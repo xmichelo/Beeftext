@@ -38,6 +38,7 @@ private: // member functions
 
 private slots:
    void onActionResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
+   void onActionOpenLogFile(); ///< Slot for the 'Open log file' action
    void onPlaySoundOnComboCheckChanged(); ///< Slot for the changing of the 'Play sound on combo' check box
    void onAutoStartCheckChanged(); ///< Slot for the changing of the 'Autostart at login' check box
    void onAutoCheckForUpdatesCheckChanged(); ///< Slot for the changing of the 'Auto check for updates' check box

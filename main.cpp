@@ -19,7 +19,6 @@
 
 namespace {
    QString const kSharedMemoryKey = "Beeftext";
-   QString const kLogFileName = "log.txt";
 }
 
 using namespace xmilib;
@@ -59,7 +58,7 @@ int main(int argc, char *argv[])
       app.setApplicationName(constants::kApplicationName);
       app.setApplicationDisplayName(constants::kApplicationName);
       ensureAppDataDirExists();
-      debugLog.enableLoggingToFile(QDir(globals::getAppDataDir()).absoluteFilePath(kLogFileName));
+      debugLog.enableLoggingToFile(globals::logFilePath());
       debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
@@ -101,7 +100,7 @@ int main(int argc, char *argv[])
 //**********************************************************************************************************************
 void ensureAppDataDirExists()
 {
-   QString const path = globals::getAppDataDir();
+   QString const path = globals::appDataDir();
    QDir dir(path);
    if (dir.exists())
       return;

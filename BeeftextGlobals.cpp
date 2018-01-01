@@ -11,6 +11,11 @@
 #include "BeeftextGlobals.h"
 
 
+namespace {
+   QString const kLogFileName = "log.txt"; ///< The name of the log file. Note keep .txt extension for easier opening by the system
+}
+
+
 namespace globals {
 
 
@@ -27,9 +32,18 @@ xmilib::DebugLog& debugLog()
 //**********************************************************************************************************************
 /// \return The location of the local storage folder for the application
 //**********************************************************************************************************************
-QString getAppDataDir()
+QString appDataDir()
 {
    return QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+}
+
+
+//**********************************************************************************************************************
+/// \return The absolute path of the log file
+//**********************************************************************************************************************
+QString logFilePath()
+{
+   return QDir(globals::appDataDir()).absoluteFilePath(kLogFileName);
 }
 
 

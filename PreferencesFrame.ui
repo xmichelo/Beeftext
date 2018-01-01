@@ -141,6 +141,30 @@
         </property>
        </widget>
       </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QPushButton" name="buttonOpenLogFile">
+          <property name="text">
+           <string>Open &amp;Log File</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </item>
@@ -191,6 +215,14 @@
    </property>
    <property name="toolTip">
     <string>Reset the preferences to their default values.</string>
+   </property>
+  </action>
+  <action name="actionOpenLogFile">
+   <property name="text">
+    <string>Open &amp;Log File</string>
+   </property>
+   <property name="toolTip">
+    <string>Open the log file</string>
    </property>
   </action>
  </widget>
@@ -308,6 +340,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonOpenLogFile</sender>
+   <signal>clicked()</signal>
+   <receiver>actionOpenLogFile</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>266</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpenLogFile</sender>
+   <signal>triggered()</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onActionOpenLogFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
@@ -317,5 +381,6 @@
   <slot>onActionCheckForUpdates()</slot>
   <slot>onUseClipboardForComboSubstitutionCheckChanged()</slot>
   <slot>onUseCustomThemeCheckChanged()</slot>
+  <slot>onActionOpenLogFile()</slot>
  </slots>
 </ui>

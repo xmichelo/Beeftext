@@ -14,6 +14,7 @@
 #include "Update/UpdateDialog.h"
 #include "Combo/ComboManager.h"
 #include "Combo/ComboDialog.h"
+#include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
@@ -73,8 +74,11 @@ void MainWindow::setupSystemTrayIcon()
    menu->addAction(ui_.actionShowMainWindow);
    menu->addAction(ui_.actionShowPreferences);
 #ifndef NDEBUG
-   QAction* actionShowStyleSheet = new QAction(this);
-   actionShowStyleSheet->setText(tr("Show Stylesheet Editor"));
+   menu->addSeparator();
+   QAction* actionShowLog = new QAction(tr("Open Log File"), this);
+   connect(actionShowLog, &QAction::triggered, []() { openLogFile(); });
+   menu->addAction(actionShowLog);
+   QAction* actionShowStyleSheet = new QAction(tr("Show Stylesheet Editor"), this);
    connect(actionShowStyleSheet, &QAction::triggered, &styleSheetEditor_, &StyleSheetEditor::show);
    menu->addAction(actionShowStyleSheet);
 #endif // #ifndef NDEBUG
