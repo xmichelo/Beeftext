@@ -19,6 +19,7 @@ AboutFrame::AboutFrame(QWidget* parent)
    :  QFrame(parent)
 {
    ui_.setupUi(this);
-   ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor));
+   ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor).
+      arg(QString(__DATE__).right(4))); // we extract the year from the __DATE__ macro
 }
 
