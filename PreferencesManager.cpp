@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "PreferencesManager.h"
 #include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
 
 
 namespace {
@@ -23,6 +24,7 @@ namespace {
    QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
    QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
    QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
+   QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
@@ -80,6 +82,7 @@ void PreferencesManager::reset()
    this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
    this->setUseClipboardForComboSubstitution(kDefaultvalueUseClipboardForComboSubstitution);
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
+   this->setComboListFolderPath(globals::appDataDir());
 }
 
 
@@ -266,6 +269,33 @@ void PreferencesManager::setUseCustomTheme(bool value)
 bool PreferencesManager::useCustomTheme() const
 {
    return this->readSettings<bool>(kKeyUseCustomTheme, kDefaultValueUseCustomTheme);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setComboListFolderPath(QString const value)
+{
+   settings_.setValue(kKeyComboListFolderPath, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+QString PreferencesManager::comboListFolderPath() const
+{
+   return this->readSettings<QString>(kKeyComboListFolderPath, this->defaultComboListFolderPath());
+}
+
+
+//**********************************************************************************************************************
+//// \return The path of the default combo list folder
+//**********************************************************************************************************************
+QString PreferencesManager::defaultComboListFolderPath() const
+{
+   return globals::appDataDir();
 }
 
 

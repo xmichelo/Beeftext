@@ -142,6 +142,38 @@
        </widget>
       </item>
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,0,0,0">
+        <item>
+         <widget class="QLabel" name="labelComboListFolder">
+          <property name="text">
+           <string>Combo list folder: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="editComboListFolder">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonChangeComboListFolder">
+          <property name="text">
+           <string>&amp;Change</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonResetComboListFolder">
+          <property name="text">
+           <string>D&amp;efault</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QPushButton" name="buttonOpenLogFile">
@@ -223,6 +255,16 @@
    </property>
    <property name="toolTip">
     <string>Open the log file</string>
+   </property>
+  </action>
+  <action name="actionChangeComboListFolder">
+   <property name="text">
+    <string>Change combo list folder</string>
+   </property>
+  </action>
+  <action name="actionResetComboListFolder">
+   <property name="text">
+    <string>Reset combo list folder</string>
    </property>
   </action>
  </widget>
@@ -351,8 +393,8 @@
      <y>266</y>
     </hint>
     <hint type="destinationlabel">
-     <x>319</x>
-     <y>239</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -372,6 +414,70 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionChangeComboListFolder</sender>
+   <signal>triggered()</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onActionChangeComboListFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeComboListFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>actionChangeComboListFolder</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>266</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionResetComboListFolder</sender>
+   <signal>triggered()</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onActionResetComboListFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetComboListFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>actionResetComboListFolder</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>266</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
@@ -382,5 +488,7 @@
   <slot>onUseClipboardForComboSubstitutionCheckChanged()</slot>
   <slot>onUseCustomThemeCheckChanged()</slot>
   <slot>onActionOpenLogFile()</slot>
+  <slot>onActionChangeComboListFolder()</slot>
+  <slot>onActionResetComboListFolder()</slot>
  </slots>
 </ui>

@@ -74,7 +74,7 @@ QPushButton:focus:pressed {
 /*****************************
 * All Edits
 *****************************/	
-QLineEdit, QPlainTextEdit, QTextEdit{
+QLineEdit, QPlainTextEdit, QTextEdit {
    background-color: #fff;
    border: 1px solid #ccc;
    selection-color: #fff;
@@ -88,6 +88,10 @@ background-color: #fff;
 
 QPlainTextEdit {
    font-family: Consolas;
+}
+
+QLineEdit:read-only {
+   background-color: #eee;
 }
 
 /*****************************

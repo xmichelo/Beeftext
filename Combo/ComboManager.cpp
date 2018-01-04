@@ -95,7 +95,7 @@ ComboManager::ComboManager()
 bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 {
    comboList_.clear();
-   QFile file(QDir(globals::appDataDir()).absoluteFilePath(ComboList::defaultFileName));
+   QFile file(QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(ComboList::defaultFileName));
    if (!file.exists())
    {
       globals::debugLog().addWarning(tr("No combo list file could be found."));
@@ -127,7 +127,8 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg)
 {
    try
    {
-      QFile file(QDir(globals::appDataDir()).absoluteFilePath(ComboList::defaultFileName));
+      QFile file(QDir(PreferencesManager::instance().comboListFolderPath())
+         .absoluteFilePath(ComboList::defaultFileName));
       if (!file.open(QIODevice::WriteOnly))
          throw xmilib::Exception(tr("The combo list could not be saved."));
       file.write(comboList_.toJsonDocument().toJson());

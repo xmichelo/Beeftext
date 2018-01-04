@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "PreferencesFrame.h"
 #include "UpdateManager.h"
+#include "Combo/ComboManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
@@ -64,6 +65,7 @@ void PreferencesFrame::loadPreferences()
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
+   ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
 }
 
 
@@ -92,6 +94,25 @@ void PreferencesFrame::applyThemePreference()
 
 
 //**********************************************************************************************************************
+/// \param[in] folderPath The new path of the folder
+//**********************************************************************************************************************
+void PreferencesFrame::applyComboListFolderPreference(QString const& folderPath, QString const& previousPath)
+{
+   PreferencesManager& prefs = PreferencesManager::instance();
+   prefs.setComboListFolderPath(folderPath);
+   QString err;
+   if (!ComboManager::instance().saveComboListToFile(&err))
+   {
+      prefs.setComboListFolderPath(previousPath);
+      globals::debugLog().addError(QString("The combo list folder could not be changed to '%1'").arg(folderPath));
+      QMessageBox::critical(this, tr("Error"), tr("The combo list folder could not be changed."));
+      return;
+   }
+   ui_.editComboListFolder->setText(QDir::toNativeSeparators(folderPath));
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void PreferencesFrame::setUpdateCheckStatus(QString const& status)
@@ -110,10 +131,13 @@ void PreferencesFrame::onActionResetToDefaultValues()
    if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Preferences"), tr("Are you sure you want to reset "
       "the preferences to their default values."), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
       return;
+   PreferencesManager& prefs = PreferencesManager::instance();
+   QString oldComboListFolderPath = prefs.comboListFolderPath();
    prefs_.reset();
    this->loadPreferences();
    this->applyAutoStartPreference();
    this->applyThemePreference();
+   this->applyComboListFolderPreference(prefs.comboListFolderPath(), oldComboListFolderPath);
 }
 
 
@@ -123,6 +147,29 @@ void PreferencesFrame::onActionResetToDefaultValues()
 void PreferencesFrame::onActionOpenLogFile()
 {
    openLogFile();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onActionChangeComboListFolder()
+{
+   QString const path = QFileDialog::getExistingDirectory(this, "Select folder", 
+      QDir::fromNativeSeparators(ui_.editComboListFolder->text()));
+   if (path.trimmed().isEmpty())
+      return;
+   this->applyComboListFolderPreference(path, PreferencesManager::instance().comboListFolderPath());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onActionResetComboListFolder()
+{
+   PreferencesManager& prefs = PreferencesManager::instance();
+   this->applyComboListFolderPreference(prefs.defaultComboListFolderPath(), prefs. comboListFolderPath());
 }
 
 

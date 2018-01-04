@@ -34,11 +34,14 @@ private: // member functions
    void loadPreferences(); ///< Load the preferences
    void applyAutoStartPreference(); ///< Apply the 'Autostart at login' preference
    void applyThemePreference(); ///< Apply the 'theme' preference
+   void applyComboListFolderPreference(QString const& folderPath, QString const& previousPath); ///< Apply the combo list folder preference
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
 
 private slots:
    void onActionResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
    void onActionOpenLogFile(); ///< Slot for the 'Open log file' action
+   void onActionChangeComboListFolder(); ///< Slot for the 'Change combo list folder' action
+   void onActionResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action
    void onPlaySoundOnComboCheckChanged(); ///< Slot for the changing of the 'Play sound on combo' check box
    void onAutoStartCheckChanged(); ///< Slot for the changing of the 'Autostart at login' check box
    void onAutoCheckForUpdatesCheckChanged(); ///< Slot for the changing of the 'Auto check for updates' check box
