@@ -157,6 +157,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_PreferencesManager.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="I18nManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -185,6 +186,7 @@
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="I18nManager.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
