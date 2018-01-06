@@ -8,6 +8,7 @@
 
 
 #include "stdafx.h"
+#include "I18nManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
@@ -17,6 +18,7 @@ namespace {
    QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for the "Already launched" indicator
    QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
    QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
+   QString const kKeyLocale = "Locale"; ///< The settings key for the locale
    QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
    QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
    QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
@@ -157,6 +159,24 @@ void PreferencesManager::setMainWindowGeometry(QByteArray const& array)
 QByteArray PreferencesManager::mainWindowGeometry() const
 {
    return settings_.value(kKeyGeometry).toByteArray();
+}
+
+
+//**********************************************************************************************************************
+/// \return the locale
+//**********************************************************************************************************************
+QLocale PreferencesManager::locale() const
+{
+   return I18nManager::instance().validateLocale(this->readSettings<QLocale>(kKeyLocale, QLocale()));
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] locale The locale
+//**********************************************************************************************************************
+void PreferencesManager::setLocale(QLocale const& locale)
+{
+   settings_.setValue(kKeyLocale, locale);
 }
 
 

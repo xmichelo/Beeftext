@@ -3,5 +3,11 @@
         <file>Resources/BeeftextLogo128.png</file>
         <file>Resources/BeeftextIcon.ico</file>
         <file>Resources/Notification.wav</file>
+        <file>Resources/ArrowDown.png</file>
+    </qresource>
+    <qresource prefix="/Translations">
+        <file alias="beeftext_fr.qm">Translations/beeftext_fr.qm</file>
+        <file alias="qtbase_fr.qm">Translations/qtbase_fr.qm</file>
+        <file alias="xmilib_fr.qm">Translations/xmilib_fr.qm</file>
     </qresource>
 </RCC>

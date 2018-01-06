@@ -23,3 +23,4 @@ sh.exe.stackdump
 *.VC.VC.opendb
 *.vahashtags
 .vs
+*.qm

@@ -12,6 +12,7 @@
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "UpdateManager.h"
+#include "I18nManager.h"
 #include "Combo/ComboManager.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
@@ -38,7 +39,7 @@ void removeFileMarkedForDeletion(); ///< Remove the software update file that ma
 int main(int argc, char *argv[])
 {
    qRegisterMetaType <SPLatestVersionInfo>(); // required to use SPLatestVersionInfo in a queued signal/slot connection
-   QString const kUnhandledException = QObject::tr("Unhandled Exception");
+   QString const kUnhandledException = "Unhandled Exception";
    DebugLog& debugLog = globals::debugLog();
       try
    {
@@ -48,7 +49,7 @@ int main(int argc, char *argv[])
       QSharedMemory sharedMem(kSharedMemoryKey);
       if (!sharedMem.create(1))
       {
-         QMessageBox::information(nullptr, QObject::tr("Already running"), 
+         QMessageBox::information(nullptr, QObject::tr("Already Running"), 
             QObject::tr("Another instance of the application is already running."));
          return 1;
       }
@@ -57,14 +58,17 @@ int main(int argc, char *argv[])
       app.setOrganizationName(constants::kOrganizationName);
       app.setApplicationName(constants::kApplicationName);
       app.setApplicationDisplayName(constants::kApplicationName);
+
       ensureAppDataDirExists();
       debugLog.enableLoggingToFile(globals::logFilePath());
       debugLog.setMaxEntryCount(1);
-      debugLog.addInfo(QObject::tr("%1 started.").arg(constants::kApplicationName));
+      debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       UpdateManager& updateManager = UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       PreferencesManager& prefs = PreferencesManager::instance();
+      I18nManager& i18nManager = I18nManager::instance();
+      i18nManager.setLocale(prefs.locale());
       if (prefs.useCustomTheme())
          qApp->setStyleSheet(constants::kStyleSheet); // some style on table view do not apply properly if applied before window creation
       MainWindow window;
@@ -73,22 +77,23 @@ int main(int argc, char *argv[])
          window.show();
       prefs.setAlreadyLaunched();
       qint32 returnCode = app.exec();
-      debugLog.addInfo(QObject::tr("Application exited with return code %1").arg(returnCode));
+      debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
+      i18nManager.unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
       return returnCode;
    }
    catch (xmilib::Exception const& e)
    {
-      debugLog.addError(QObject::tr("Application crashed because of an unhandled exception: %1").arg(e.qwhat()));
+      debugLog.addError(QString("Application crashed because of an unhandled exception: %1").arg(e.qwhat()));
       displaySystemErrorDialog(kUnhandledException, e.qwhat());
    }
    catch (std::exception const& e)
    {
-      debugLog.addError(QObject::tr("Application crashed because of an unhandled exception: %1").arg(e.what()));
+      debugLog.addError(QString("Application crashed because of an unhandled exception: %1").arg(e.what()));
       displaySystemErrorDialog(kUnhandledException, e.what());
    }
    catch (...)
    {
-      debugLog.addError(QObject::tr("Application crashed because of an unhandled exception."));
+      debugLog.addError(QString("Application crashed because of an unhandled exception."));
       displaySystemErrorDialog(kUnhandledException, QObject::tr("An unhandled exception occurred."));
    }
    return 1;
@@ -106,7 +111,7 @@ void ensureAppDataDirExists()
       return;
    QDir().mkpath(path);
    if (!dir.exists())
-      throw xmilib::Exception(QObject::tr("The application data folder '%1' could not be created")
+      throw xmilib::Exception(QString("The application data folder '%1' could not be created")
          .arg(QDir::toNativeSeparators(path)));
 }
 

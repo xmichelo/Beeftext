@@ -209,29 +209,28 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
    {
       this->clear();
       if (!doc.isObject())
-         throw xmilib::Exception(QObject::tr("The combo list file is invalid."));
+         throw xmilib::Exception("The combo list file is invalid.");
       QJsonObject const rootObject = doc.object();
 
       // check the file format version number
       QJsonValue const versionValue = rootObject[kKeyFileFormatVersion];
       if (!versionValue.isDouble()) // the JSon format consider all numbers as double
-         throw xmilib::Exception(QObject::tr("The combo list file does not specify its version number."));
+         throw xmilib::Exception("The combo list file does not specify its version number.");
       qint32 const version = versionValue.toInt();
       if (version > kKeyFileFormatVersion)
-         throw xmilib::Exception(QObject::tr("The combo list file was created by a newer version of the "
-            "application."));
+         throw xmilib::Exception("The combo list file was created by a newer version of the application.");
 
       // parse the combos
       QJsonValue const combosListValue = rootObject[kKeyCombos];
       if (!combosListValue.isArray())
-         throw xmilib::Exception(QObject::tr("The list of combos is not a valid array"));
+         throw xmilib::Exception("The list of combos is not a valid array");
       for (QJsonValue const& comboGroupValue : combosListValue.toArray())
       {
          if (!comboGroupValue.isObject())
-            throw xmilib::Exception(QObject::tr("The combo list array contains an invalid combo."));
+            throw xmilib::Exception("The combo list array contains an invalid combo.");
          SPCombo combo = Combo::create(comboGroupValue.toObject());
          if ((!combo) || (!combo->isValid()))
-            throw xmilib::Exception(QObject::tr("One of the combo in the list is invalid"));
+            throw xmilib::Exception("One of the combo in the list is invalid");
          this->append(combo);
       }
       return true;
@@ -239,7 +238,7 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
    catch (xmilib::Exception const& e)
    {
       if (outErrorMsg)
-         *outErrorMsg = QObject::tr("An error occurred while parsing the combo list file: %1").arg(e.qwhat());
+         *outErrorMsg = QString("An error occurred while parsing the combo list file: %1").arg(e.qwhat());
       return false;
    }
 }

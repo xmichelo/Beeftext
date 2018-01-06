@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">#Frame</string>
   </property>
   <property name="frameShape">
    <enum>QFrame::StyledPanel</enum>
@@ -103,6 +103,42 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="labelLocale">
+          <property name="text">
+           <string>Language</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboLocale">
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+          <item>
+           <property name="text">
+            <string notr="true">#English</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>10</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
        <widget class="QCheckBox" name="checkUseCustomTheme">
         <property name="text">
          <string>Use custom theme</string>
@@ -146,7 +182,7 @@
         <item>
          <widget class="QLabel" name="labelComboListFolder">
           <property name="text">
-           <string>Combo list folder: </string>
+           <string>Combo list folder</string>
           </property>
          </widget>
         </item>
@@ -234,7 +270,7 @@
         <string>Reset the preferences to their default values.</string>
        </property>
        <property name="text">
-        <string>&amp;Default </string>
+        <string>&amp;Default</string>
        </property>
       </widget>
      </item>
@@ -478,6 +514,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboLocale</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onLocaleChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>107</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
@@ -490,5 +542,6 @@
   <slot>onActionOpenLogFile()</slot>
   <slot>onActionChangeComboListFolder()</slot>
   <slot>onActionResetComboListFolder()</slot>
+  <slot>onLocaleChanged()</slot>
  </slots>
 </ui>

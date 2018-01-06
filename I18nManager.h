@@ -14,17 +14,25 @@
 #include <memory>
 
 
+
 //**********************************************************************************************************************
 /// \brief Internationalization (i18n) manager class
 //**********************************************************************************************************************
 class I18nManager
 {
-public: // member functions
+public: // static functions
    static I18nManager& instance(); ///< Return the only allowed instance of the class
+   static QLocale validateLocale(QLocale const& locale); ///< Validate the specified locale
+   static void fillLocaleCombo(QComboBox& combo); ///< Fill a combo box with the available locale
+   static void selectLocaleInCombo(QLocale const& locale, QComboBox& combo); ///< Select a locale in a locale combo
+   static QLocale getSelectedLocaleInCombo(QComboBox const& combo); ///< Return the currently selected locale in a locale combo
+
+public: // member functions
 	~I18nManager() = default; ///< Default destructor
    QLocale locale() const; ///< Get the current locale
    void setLocale(QLocale const& locale); ///< Set the current locale
    void loadTranslation(); ///< Load the translation
+   void unloadTranslation(); ///< Unload the translation
 
 private: // member functions
    I18nManager() = default; ///< Default constructor

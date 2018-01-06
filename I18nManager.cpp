@@ -13,7 +13,7 @@
 
 
 namespace {
-   QList<QLocale> const kSupportedLocales = { QLocale::English }; ///< The list of locales supported by the application
+   QList<QLocale> const kSupportedLocales = { QLocale::English, QLocale::French }; ///< The list of locales supported by the application
 }
 
 
@@ -43,6 +43,65 @@ I18nManager& I18nManager::instance()
 
 
 //**********************************************************************************************************************
+/// \param[in] locale The locale to validate
+/// \return if locale is supported, it is returned, otherwise the default locale (English) is returned instead
+//**********************************************************************************************************************
+QLocale I18nManager::validateLocale(QLocale const& locale)
+{
+   Q_ASSERT(!kSupportedLocales.isEmpty());
+   return kSupportedLocales.contains(locale) ? locale : kSupportedLocales.front();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] combo The combo box
+//**********************************************************************************************************************
+void I18nManager::fillLocaleCombo(QComboBox& combo)
+{
+   QSignalBlocker blocker(&combo);
+   combo.clear();
+   for (QLocale locale : kSupportedLocales)
+   {
+      QString languageName = locale == QLocale::English ? "English" : locale.nativeLanguageName();
+      if (!languageName.isEmpty())
+         languageName[0] = languageName[0].toUpper();
+      combo.addItem(languageName, locale);
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] locale The combo
+/// \param[in] combo The combo containing the locale
+//**********************************************************************************************************************
+void I18nManager::selectLocaleInCombo(QLocale const& locale, QComboBox& combo)
+{
+   for (qint32 i = 0; i < combo.count(); ++i)
+   {
+      QVariant data = combo.itemData(i);
+      if (!data.canConvert<QLocale>())
+         continue;
+      QLocale itemLocale = data.toLocale();
+      if (itemLocale != locale)
+         continue;
+      if (i == combo.currentIndex())
+         return;
+      combo.setCurrentIndex(i);
+   }
+}
+
+
+
+//**********************************************************************************************************************
+/// \param[in] combo The combo box
+//**********************************************************************************************************************
+QLocale I18nManager::getSelectedLocaleInCombo(QComboBox const& combo)
+{
+   return validateLocale(combo.currentData().toLocale());
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void I18nManager::loadTranslation()
@@ -56,7 +115,7 @@ void I18nManager::loadTranslation()
 
    // load and install qt translations (containing all translations for Qt internal strings)
    qtTranslator_ = std::make_unique<QTranslator>(qApp);
-   QString qtTransFile = QString(":/translations/qtbase_%1.qm").arg(langStr);
+   QString qtTransFile = QString(":/Translations/qtbase_%1.qm").arg(langStr);
    if (!qtTranslator_->load(qtTransFile))
    {
       qtTranslator_.reset();
@@ -66,8 +125,7 @@ void I18nManager::loadTranslation()
 
    // load and install application translations
    appTranslator_ = std::make_unique<QTranslator>(qApp);
-   QString fileName = QString(":/translations/beeftext_%2.qm").arg(langStr);
-   if (!appTranslator_->load(fileName))
+   if (!appTranslator_->load(QString(":/Translations/beeftext_%1.qm").arg(langStr)))
    {
       appTranslator_.reset();
       QMessageBox::critical(nullptr, "Translation File Missing", "Could not find application translation file.");
@@ -76,16 +134,25 @@ void I18nManager::loadTranslation()
 
    // load and install xmilib translations
    xmilibTranslator_ = std::make_unique<QTranslator>(qApp);
-   if (!xmilibTranslator_->load(QString(":/translations/xmilib_%1.qm").arg(langStr)))
+   if (!xmilibTranslator_->load(QString(":/Translations/xmilib_%1.qm").arg(langStr)))
    {
       xmilibTranslator_.reset();
-      QMessageBox::critical(nullptr, "Translation File Missing", "Could not find kitrisLib translation file.");
+      QMessageBox::critical(nullptr, "Translation File Missing", "Could not find XMiLib translation file.");
       return;
    }
 
    qApp->installTranslator(qtTranslator_.get());
    qApp->installTranslator(appTranslator_.get());
    qApp->installTranslator(xmilibTranslator_.get());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void I18nManager::unloadTranslation()
+{
+   this->removeAllTranslators();
 }
 
 

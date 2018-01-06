@@ -31,6 +31,8 @@ public: // member functions
    void clearFileMarkedForDeletionOnStartup(); ///< Reset the file marked for deletion on startup
    void setMainWindowGeometry(QByteArray const& array); ///< Set the geometry of the main window
    QByteArray mainWindowGeometry() const; ///< Get the geometry of the main window
+   QLocale locale() const; ///< Get the locale
+   void setLocale(QLocale const& locale); ///< Set the locale
    void setLastUpdateCheckDateTime(QDateTime const& dateTime); ///< Set the last time the application checked for update
    QDateTime lastUpdateCheckDateTime() const; ///< Get the date time of the last update check
    void setAutoStartAtLogin(bool value); ///< Set the value for the 'Autostart at login' preference
@@ -46,7 +48,6 @@ public: // member functions
    void setComboListFolderPath(QString const value); ///< Set the path of the folder for saving the combo list
    QString comboListFolderPath() const; ///< Get the path of the folder for saving the combo list
    QString defaultComboListFolderPath() const; ///< Get the default combo list folder path
-
 signals:
    void autoCheckForUpdatesChanged(bool value); // Signal emitted when the 'Auto check for updates' preference value changed
 

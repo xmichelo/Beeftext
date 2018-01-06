@@ -36,6 +36,7 @@ private: // member functions
    void applyThemePreference(); ///< Apply the 'theme' preference
    void applyComboListFolderPreference(QString const& folderPath, QString const& previousPath); ///< Apply the combo list folder preference
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
+   void changeEvent(QEvent *event); ///< Change event handler
 
 private slots:
    void onActionResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
@@ -47,6 +48,7 @@ private slots:
    void onAutoCheckForUpdatesCheckChanged(); ///< Slot for the changing of the 'Auto check for updates' check box
    void onUseCustomThemeCheckChanged(); ///< Slot for the changing of the 'Use custom theme' check box
    void onUseClipboardForComboSubstitutionCheckChanged(); ///< Slot for the changing of the 'Use clipboard for combo substitution' check box
+   void onLocaleChanged(); ///< Slot for the change of the locale
    void onUpdateIsAvailable(SPLatestVersionInfo latestVersionInfo); ///< Slot for the availability of an update
    void onNoUpdateIsAvailable(); ///< Slot for the lack of availability of an update
    void onUpdateCheckFailed(); ///< Slot update check failure

@@ -95,6 +95,32 @@ QLineEdit:read-only {
 }
 
 /*****************************
+* QComboBox
+*****************************/
+QComboBox {
+   background-color: #fff;
+   border: 1px solid #ccc;
+   padding: 1px 5px 1px 5px;
+}
+
+QComboBox::drop-down {
+   width: 24px;
+   background-color: #eee;
+   border: none;
+   border-left: 1px solid #ccc;
+}
+
+QComboBox QAbstractItemView {
+    border: 1px solid #ccc;
+    selection-color: #fff;
+    selection-background-color: #258fc0;
+}
+
+QComboBox::down-arrow {
+image: url(:/MainWindow/Resources/ArrowDown.png);
+}
+
+/*****************************
 * QTableView
 *****************************/
 QTableView {

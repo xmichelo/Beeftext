@@ -38,6 +38,7 @@ private: // member functions
    void setupContextMenu(); ///< Setup the context menu
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
+   void changeEvent(QEvent *event); ///< Change event handler
 
 private slots:
    void updateGui(); ///< Update the GUI state

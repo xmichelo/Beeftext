@@ -29,6 +29,8 @@ private: // member functions
 	AboutFrame(AboutFrame&&) = delete; ///< Disabled move constructor
 	AboutFrame& operator=(AboutFrame const&) = delete; ///< Disabled assignment operator
 	AboutFrame& operator=(AboutFrame&&) = delete; ///< Disabled move assignment operator
+   void completeText(); ///< Complete the about box text with app name and version number
+   void changeEvent(QEvent *event); ///< Event change handler
 
 private: // data members
    Ui::AboutFrame ui_; ///< The GUI for the frame

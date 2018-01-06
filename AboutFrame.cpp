@@ -19,7 +19,31 @@ AboutFrame::AboutFrame(QWidget* parent)
    :  QFrame(parent)
 {
    ui_.setupUi(this);
+   this->completeText();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void AboutFrame::completeText()
+{
    ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor).
       arg(QString(__DATE__).right(4))); // we extract the year from the __DATE__ macro
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void AboutFrame::changeEvent(QEvent *event)
+{
+   if (QEvent::LanguageChange == event->type())
+   {
+      ui_.retranslateUi(this);
+      this->completeText();
+   }
+   QFrame::changeEvent(event);
+}
+
 

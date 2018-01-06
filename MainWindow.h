@@ -36,6 +36,7 @@ private: // member functions
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
    void setupActions(); ///< Setup the Qt actions for the main window
    void setupSystemTrayIcon(); ///< Setup the system tray icon
+   void changeEvent(QEvent *event); ///< Change event handler
 
 signals:
    void startedCheckingForUpdate(); ///< Signal for the start of the update check

@@ -56,8 +56,6 @@ void MainWindow::setupActions()
    ui_.actionShowMainWindow->setText(showActionText);
    ui_.actionShowMainWindow->setToolTip(showActionText);
    ui_.actionShowMainWindow->setIconText(showActionText);
-
-   connect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
 }
 
 
@@ -66,6 +64,9 @@ void MainWindow::setupActions()
 //**********************************************************************************************************************
 void MainWindow::setupSystemTrayIcon()
 {
+   disconnect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
+   connect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
+
    systemTrayIcon_.setIcon(QIcon(":/MainWindow/Resources/BeeftextIcon.ico"));
    systemTrayIcon_.setToolTip(constants::kApplicationName);
    systemTrayIcon_.show();
@@ -87,7 +88,25 @@ void MainWindow::setupSystemTrayIcon()
    menu->setDefaultAction(ui_.actionShowMainWindow);
    menu->addSeparator();
 
+   QMenu* oldMenu = systemTrayIcon_.contextMenu();
    systemTrayIcon_.setContextMenu(menu);
+   if (oldMenu)
+      oldMenu->deleteLater();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void MainWindow::changeEvent(QEvent *event)
+{
+   if (QEvent::LanguageChange == event->type())
+   {
+      ui_.retranslateUi(this);
+      this->setupActions();
+      this->setupSystemTrayIcon();
+   }
+   QMainWindow::changeEvent(event);
 }
 
 

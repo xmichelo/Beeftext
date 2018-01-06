@@ -60,6 +60,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;Qt5Multimediad.lib;Qt5Networkd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>copy /Y $(QTDIR)\translations\qtbase_fr.qm $(ProjectDir)Translations\ &amp;&amp; copy /Y $(ProjectDir)..\XMiLib\Translations\xmilib_fr.qm $(ProjectDir)Translations\ &amp;&amp; $(QTDIR)\bin\lrelease.exe -silent $(ProjectDir)Translations\beeftext_fr.ts</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copying kitrisLib and Qt built-in  translation files</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -79,6 +85,12 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5Multimedia.lib;Qt5Network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>copy /Y $(QTDIR)\translations\qtbase_fr.qm $(ProjectDir)Translations\ &amp;&amp; copy /Y $(ProjectDir)..\XMiLib\Translations\xmilib_fr.qm $(ProjectDir)Translations\ &amp;&amp; $(QTDIR)\bin\lrelease.exe -silent $(ProjectDir)Translations\beeftext_fr.ts</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copying kitrisLib and Qt built-in  translation files</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AboutFrame.cpp" />
@@ -457,12 +469,15 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Translations\beeftext_fr.ts" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="$(DefaultQtVersion)" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="1" lreleaseOptions="" Qt5Version_x0020_Win32="$(DefaultQtVersion)" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

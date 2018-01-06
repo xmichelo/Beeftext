@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "PreferencesFrame.h"
 #include "UpdateManager.h"
+#include "I18nManager.h"
 #include "Combo/ComboManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
@@ -40,7 +41,8 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    loadPreferences();
    this->applyAutoStartPreference(); // we ensure autostart is properly setup
    this->applyThemePreference(); // we apply the custom theme if the user selected it
-
+   I18nManager::fillLocaleCombo(*ui_.comboLocale);
+   I18nManager::selectLocaleInCombo(I18nManager::instance().locale(), *ui_.comboLocale);
    // signal mappings for the 'Check now' button
    UpdateManager& updateManager = UpdateManager::instance();
    connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);
@@ -124,12 +126,23 @@ void PreferencesFrame::setUpdateCheckStatus(QString const& status)
 
 
 //**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void PreferencesFrame::changeEvent(QEvent *event)
+{
+   if (QEvent::LanguageChange == event->type())
+      ui_.retranslateUi(this);
+   QFrame::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void PreferencesFrame::onActionResetToDefaultValues()
 {
    if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Preferences"), tr("Are you sure you want to reset "
-      "the preferences to their default values."), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
+      "the preferences to their default values?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
       return;
    PreferencesManager& prefs = PreferencesManager::instance();
    QString oldComboListFolderPath = prefs.comboListFolderPath();
@@ -155,7 +168,7 @@ void PreferencesFrame::onActionOpenLogFile()
 //**********************************************************************************************************************
 void PreferencesFrame::onActionChangeComboListFolder()
 {
-   QString const path = QFileDialog::getExistingDirectory(this, "Select folder", 
+   QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), 
       QDir::fromNativeSeparators(ui_.editComboListFolder->text()));
    if (path.trimmed().isEmpty())
       return;
@@ -217,6 +230,17 @@ void PreferencesFrame::onUseCustomThemeCheckChanged()
 void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged()
 {
    prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] the index of the new locale
+//**********************************************************************************************************************
+void PreferencesFrame::onLocaleChanged()
+{
+   QLocale locale = I18nManager::getSelectedLocaleInCombo(*ui_.comboLocale);
+   prefs_.setLocale(locale);
+   I18nManager::instance().setLocale(locale);
 }
 
 

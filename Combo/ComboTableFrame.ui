@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
+   <string notr="true">#Frame</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -265,7 +265,7 @@
     <string>&amp;Enable</string>
    </property>
    <property name="toolTip">
-    <string>Enable Cobmo</string>
+    <string>Enable Combo</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>

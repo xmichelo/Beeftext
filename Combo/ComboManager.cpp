@@ -98,7 +98,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
    QFile file(QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(ComboList::defaultFileName));
    if (!file.exists())
    {
-      globals::debugLog().addWarning(tr("No combo list file could be found."));
+      globals::debugLog().addWarning("No combo list file could be found.");
       return true;
    }
    try
