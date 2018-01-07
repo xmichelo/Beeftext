@@ -1,8 +1,8 @@
 {
    "versionMajor": 0,
-   "versionMinor": 3,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.3/Beeftext-0.3-Installer.exe",
-   "sha256Sum": "9db9037bf91908d0331871ed4772a3bd187cb9f8c3f8533e900fd9bf82366ddd",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Added French localization.</li><li>The user can now change the location of the folder containing the combo list file.</li><li>A button has been added to open the log file.</li></ul></span></p></body></html>"
+   "versionMinor": 4,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.4/Beeftext-0.4-Installer.exe",
+   "sha256Sum": "3484ec1393dc7061ffdb7fb8f6473bd6b380c6daecfb73b1359a2d404f64e7cf",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>This release fixes a bug where the automatic update would fail because the OpenSLL DLL files are not in the user's path.</li></ul></span></p></body></html>"
 }
 
