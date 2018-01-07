@@ -97,6 +97,7 @@ void PreferencesFrame::applyThemePreference()
 
 //**********************************************************************************************************************
 /// \param[in] folderPath The new path of the folder
+/// \param[in] previousPath The path of the previous folder, to restore in case the new one does not work
 //**********************************************************************************************************************
 void PreferencesFrame::applyComboListFolderPreference(QString const& folderPath, QString const& previousPath)
 {
@@ -234,7 +235,7 @@ void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged()
 
 
 //**********************************************************************************************************************
-/// \param[in] the index of the new locale
+//
 //**********************************************************************************************************************
 void PreferencesFrame::onLocaleChanged()
 {

@@ -46,4 +46,3 @@ void AboutFrame::changeEvent(QEvent *event)
    QFrame::changeEvent(event);
 }
 
-

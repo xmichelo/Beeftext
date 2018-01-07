@@ -17,7 +17,7 @@ namespace constants {
 QString const kApplicationName = "Beeftext";
 QString const kOrganizationName = "beeftext.org";
 qint32 const kVersionMajor = 0;
-qint32 const kVersionMinor = 3;
+qint32 const kVersionMinor = 4;
 Qt::WindowFlags const kDefaultDialogFlags = Qt::WindowCloseButtonHint | Qt::WindowTitleHint;
 QString const kStyleSheet = R"(
 

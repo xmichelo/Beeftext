@@ -9,13 +9,19 @@ basic features of TextExpander, the monthly price is way too high.
 Beeftext aims to be the best possible alternative to TextExpander. Beeftext is an open-source project 
 written in C++ using the [Qt] framework.
 
-## Author
+## Contributors
 
 The project is developed and managed by [Xavier Michelon].
 
+The [beeftext.org] website uses a template provided by [HTML5 UP].
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE] file for details.
+This project is licensed under the [MIT License].
+
+Beeftext uses the [Qt] framework under the [GNU Lesser General Public License v3].
+
+Beeftext uses the [OpenSSL] library under [OpenSSL and SSLeay licenses].
 
 ## Documentation
 ### End User
@@ -43,7 +49,12 @@ Detailed build instructions are not available at the moment.
 [Smile]: https://smilesoftware.com/
 [Qt]: https://www.qt.io/developers/
 [Xavier Michelon]: https://x-mi.com
-[LICENSE]:LICENSE
+[beeftext.org]: https://beeftext.org
+[HTML5 UP]: https://html5up.net/
+[MIT License]: https://opensource.org/licenses/MIT
+[GNU Lesser General Public License v3]: https://www.gnu.org/licenses/lgpl-3.0.txt
+[OpenSSL]: https://www.openssl.org
+[OpenSSL and SSLeay licenses]:https://www.openssl.org/source/license.html
 [Doxygen]: http://www.stack.nl/~dimitri/doxygen/
 [Beeftext]: https://github.com/xmichelo/Beeftext
 [Visual Studio 2017]: https://www.visualstudio.com/vs/community/

@@ -25,7 +25,7 @@
 !define AUTHOR "Xavier Michelon"
 !define COMPANY "beeftext.org"
 !define VERSION_MAJOR 0
-!define VERSION_MINOR 3
+!define VERSION_MINOR 4
 !define APP_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}"
 !define LEFT_IMAGE_PATH "${RESOURCES_FOLDER_PATH}\installerLeftImage.bmp"
 !define TOP_IMAGE_PATH "${RESOURCES_FOLDER_PATH}\installerTopImage.bmp"
@@ -152,6 +152,9 @@ call InstallVCRedistributableRuntime
 setOutPath $INSTDIR
 # copy file
 file "${EXE_SRC_DIR}\${APP_NAME}.exe"
+file "..\README.md"
+file "..\Vendor\OpenSSL\libeay32.dll"
+file "..\Vendor\OpenSSL\ssleay32.dll"
 file "$%QTDIR%\bin\Qt5Core.dll"
 file "$%QTDIR%\bin\Qt5Gui.dll"
 file "$%QTDIR%\bin\Qt5Widgets.dll"
@@ -242,6 +245,7 @@ call un.closeRunningInstance
 
 Delete "$INSTDIR\*.exe"
 Delete "$INSTDIR\*.dll"
+Delete "$INSTDIR\README.md"
 Delete "$INSTDIR\platforms\*.dll"
 RMDir  "$INSTDIR\platforms"
 Delete "$INSTDIR\styles\*.dll"
