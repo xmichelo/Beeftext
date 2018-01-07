@@ -167,7 +167,7 @@ QByteArray PreferencesManager::mainWindowGeometry() const
 //**********************************************************************************************************************
 QLocale PreferencesManager::locale() const
 {
-   return I18nManager::instance().validateLocale(this->readSettings<QLocale>(kKeyLocale, QLocale()));
+   return I18nManager::instance().validateLocale(this->readSettings<QLocale>(kKeyLocale, QLocale::system()));
 }
 
 

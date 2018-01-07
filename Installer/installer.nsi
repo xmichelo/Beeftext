@@ -25,7 +25,7 @@
 !define AUTHOR "Xavier Michelon"
 !define COMPANY "beeftext.org"
 !define VERSION_MAJOR 0
-!define VERSION_MINOR 2
+!define VERSION_MINOR 3
 !define APP_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}"
 !define LEFT_IMAGE_PATH "${RESOURCES_FOLDER_PATH}\installerLeftImage.bmp"
 !define TOP_IMAGE_PATH "${RESOURCES_FOLDER_PATH}\installerTopImage.bmp"
