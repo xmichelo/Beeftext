@@ -68,7 +68,11 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
          VK_RCONTROL, VK_MENU, VK_LMENU, VK_RMENU, VK_RWIN, VK_LWIN, VK_CAPITAL };
       for (qint32 key : keyList)
          keyStroke.keyboardState[key] = GetKeyState(key);
-      InputManager::instance().onKeyboardEvent(keyStroke);
+
+      // our event handler will return false if we want to 'intercept' the keystroke and not pass it to the next hook,
+      // but the MSDN documentation says we MUST do it if nCode < 0
+      if ((!InputManager::instance().onKeyboardEvent(keyStroke)) && (nCode >= 0))
+         return 0; 
    }
    return CallNextHookEx(nullptr, nCode, wParam, lParam);
 }
@@ -130,27 +134,32 @@ InputManager::~InputManager()
 
 //**********************************************************************************************************************
 /// \param[in] keyStroke The key stroke
+/// \return true if the event can be passed down to the keyboard hooked chain, and false it it should be removed
 //**********************************************************************************************************************
-void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
+bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
+   if ((!PreferencesManager::instance().useAutomaticSubstitution()) && isSubstitutionShortcut(keyStroke))
+   {
+      emit substitutionShortcutTriggered();
+      return false;
+   }
+
    // on some layout (e.g. US International, direction key + alt lead to garbage char if ToUnicode is pressed, so
    // we bypass normal processing for those keys(note this is different for the dead key issue described in
    // processKey().
+
    if ((VK_UP == keyStroke.virtualKey) || (VK_RIGHT == keyStroke.virtualKey) || (VK_DOWN == keyStroke.virtualKey) ||
       (VK_LEFT == keyStroke.virtualKey))
    {
       emit comboBreakerTyped();
-      return;
+      return true;
    }
 
    bool isDeadKey = false;
    QString text = this->processKey(keyStroke, isDeadKey);
    if (text.isEmpty())
-   {
-      if (!isDeadKey)
-         emit comboBreakerTyped();
-      return;
-   }
+      return true;
+
    for (QChar c: text)
    {  
       if (QChar('\b') == c)
@@ -163,6 +172,7 @@ void InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
       else
          emit characterTyped(c);
    }
+   return true;
 }
 
 
@@ -227,6 +237,21 @@ QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
 void InputManager::onMouseClickEvent(int, WPARAM, LPARAM)
 {
    emit comboBreakerTyped();
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if keystroke correspond to the shortcut
+//**********************************************************************************************************************
+bool InputManager::isSubstitutionShortcut(KeyStroke const& keyStroke) const
+{
+   if (keyStroke.virtualKey != 'B')
+      return false;
+   return (keyStroke.virtualKey == 'B')
+      && (((keyStroke.keyboardState[VK_LCONTROL] & 0x80) || (keyStroke.keyboardState[VK_RCONTROL] & 0x80)))
+      && (((keyStroke.keyboardState[VK_LMENU] & 0x80) || (keyStroke.keyboardState[VK_RMENU] & 0x80)))
+      && (!((keyStroke.keyboardState[VK_LSHIFT] & 0x80) || (keyStroke.keyboardState[VK_RSHIFT] & 0x80)))
+      && (!((keyStroke.keyboardState[VK_LWIN] & 0x80) || (keyStroke.keyboardState[VK_RWIN] & 0x80)));
 }
 
 

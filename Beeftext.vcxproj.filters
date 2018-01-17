@@ -59,7 +59,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_InputManager.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Combo\Combo.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -163,6 +162,7 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="I18nManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">

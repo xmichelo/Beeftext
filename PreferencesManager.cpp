@@ -25,6 +25,7 @@ namespace {
    QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
    QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
    QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
+   QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
    QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
    QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
@@ -32,6 +33,7 @@ namespace {
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
    bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
    bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
+   bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
 }
 
 
@@ -69,8 +71,10 @@ PreferencesManager& PreferencesManager::instance()
 //**********************************************************************************************************************
 PreferencesManager::PreferencesManager()
    : settings_(constants::kOrganizationName, constants::kApplicationName)
+   , cachedUseAutomaticSubstitution_(this->readSettings<bool>(kKeyUseAutomaticSubstitution, 
+      kDefaultValueUseAutomaticSubstitution)) // this preference is cached because it is used frequently
 {
-
+   
 }
 
 
@@ -84,6 +88,7 @@ void PreferencesManager::reset()
    this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
    this->setUseClipboardForComboSubstitution(kDefaultvalueUseClipboardForComboSubstitution);
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
+   this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setComboListFolderPath(globals::appDataDir());
 }
 
@@ -289,6 +294,26 @@ void PreferencesManager::setUseCustomTheme(bool value)
 bool PreferencesManager::useCustomTheme() const
 {
    return this->readSettings<bool>(kKeyUseCustomTheme, kDefaultValueUseCustomTheme);
+}
+
+
+//**********************************************************************************************************************
+/// As the getter for this value is polled frequently (at every keystroke), it is cached
+/// \param[in] value The new value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setUseAutomaticSubstitution(bool value)
+{
+   cachedUseAutomaticSubstitution_ = value;
+   settings_.setValue(kKeyUseAutomaticSubstitution, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::useAutomaticSubstitution()
+{
+   return cachedUseAutomaticSubstitution_;
 }
 
 

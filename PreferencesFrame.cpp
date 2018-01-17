@@ -38,11 +38,12 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
    ui_.labelUpdateCheckStatus->setText(QString());
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
-   loadPreferences();
+   this->loadPreferences();
    this->applyAutoStartPreference(); // we ensure autostart is properly setup
    this->applyThemePreference(); // we apply the custom theme if the user selected it
    I18nManager::fillLocaleCombo(*ui_.comboLocale);
    I18nManager::selectLocaleInCombo(I18nManager::instance().locale(), *ui_.comboLocale);
+
    // signal mappings for the 'Check now' button
    UpdateManager& updateManager = UpdateManager::instance();
    connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);
@@ -61,12 +62,13 @@ void PreferencesFrame::loadPreferences()
 {
    QSignalBlocker blockers[] =  { QSignalBlocker(ui_.checkPlaySoundOnCombo),
       QSignalBlocker(ui_.checkAutoCheckForUpdates), QSignalBlocker(ui_.checkUseClipboardForComboSubstitution),
-      QSignalBlocker(ui_.checkAutoStart) }; // Temporarily Block signals emission by the controls
+      QSignalBlocker(ui_.checkAutoStart), QSignalBlocker(ui_.checkUseAutomaticSubstitution) }; // Temporarily Block signals emission by the controls
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
+   ui_.checkUseAutomaticSubstitution->setChecked(prefs_.useAutomaticSubstitution());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
 }
 
@@ -222,6 +224,15 @@ void PreferencesFrame::onUseCustomThemeCheckChanged()
 {
    prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
    this->applyThemePreference();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onUseAutomaticSubstitutionCheckChanged()
+{
+   prefs_.setUseAutomaticSubstitution(ui_.checkUseAutomaticSubstitution->isChecked());
 }
 
 

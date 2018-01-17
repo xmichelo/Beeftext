@@ -29,7 +29,6 @@ bool isBeeftextTheForegroundApplication()
 }
 
 
-
 //**********************************************************************************************************************
 /// \return A reference to the only allowed instance of the class
 //**********************************************************************************************************************
@@ -73,7 +72,7 @@ ComboManager::ComboManager()
    : QObject()
    , sound_(std::make_unique<QSound>(":/MainWindow/Resources/Notification.wav"))
 {
-   // We used queued connections to minimize the type spent in the keyboard hook
+   // We used queued connections to minimize the time spent in the keyboard hook
    InputManager& inputManager = InputManager::instance();
    connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped, 
       Qt::QueuedConnection);
@@ -81,7 +80,8 @@ ComboManager::ComboManager()
       Qt::QueuedConnection);
    connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped, 
       Qt::QueuedConnection);
-
+   connect(&inputManager, &InputManager::substitutionShortcutTriggered, this, 
+      &ComboManager::onSubstitutionTriggerShortcut, Qt::QueuedConnection);
    QString errMsg;
    if (!this->loadComboListFromFile(&errMsg))
       QMessageBox::critical(nullptr, tr("Error"), errMsg);
@@ -146,18 +146,8 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboManager::onComboBreakerTyped()
+void ComboManager::checkAndPerformSubstitution()
 {
-   currentText_ = QString();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] c The character that was typed
-//**********************************************************************************************************************
-void ComboManager::onCharacterTyped(QChar c)
-{
-   currentText_.append(c);
    VecSPCombo::const_iterator it = std::find_if(comboList_.begin(), comboList_.end(),
       [&](SPCombo const combo) -> bool { return combo->isEnabled() && (combo->comboText() == currentText_); });
    if (comboList_.end() == it)
@@ -176,7 +166,39 @@ void ComboManager::onCharacterTyped(QChar c)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
+void ComboManager::onComboBreakerTyped()
+{
+   currentText_ = QString();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] c The character that was typed
+//**********************************************************************************************************************
+void ComboManager::onCharacterTyped(QChar c)
+{
+   currentText_.append(c);
+   if (!PreferencesManager::instance().useAutomaticSubstitution())
+      return;
+   this->checkAndPerformSubstitution();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
 void ComboManager::onBackspaceTyped()
 {
    currentText_.chop(1);
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboManager::onSubstitutionTriggerShortcut()
+{
+   if (!PreferencesManager::instance().useAutomaticSubstitution())
+      this->checkAndPerformSubstitution();
+}
+

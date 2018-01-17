@@ -41,9 +41,10 @@ public: // member functions
    ~InputManager(); ///< Default destructor
 
 signals:
-   void comboBreakerTyped();
-   void characterTyped(QChar c);
-   void backspaceTyped();
+   void comboBreakerTyped(); ///< Signal for combo breaking events
+   void characterTyped(QChar c); ///< Signal for character typed
+   void backspaceTyped(); ///< Signal for backspace typed
+   void substitutionShortcutTriggered();  ///< Signal emitted when the manual substitution shortcut is triggered
 
 private: // member functions
    InputManager(); ///< Default constructor
@@ -51,9 +52,10 @@ private: // member functions
    InputManager(InputManager&&) = delete; ///< Disabled move constructor
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
    InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
-   void onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
+   bool onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
    QString processKey(KeyStroke const& keystroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
    void onMouseClickEvent(int, WPARAM, LPARAM); ///< Process a mouse click event
+   bool isSubstitutionShortcut(KeyStroke const& keyStroke) const; ///< Check if a keystroke is the manual substitution shortcut
 
 private: // static member functions
    static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The keyboard event callback

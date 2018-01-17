@@ -77,6 +77,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="checkUseAutomaticSubstitution">
+        <property name="text">
+         <string>Automatically detect and trigger combos</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -530,6 +537,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkUseAutomaticSubstitution</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onUseAutomaticSubstitutionCheckChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
@@ -543,5 +566,6 @@
   <slot>onActionChangeComboListFolder()</slot>
   <slot>onActionResetComboListFolder()</slot>
   <slot>onLocaleChanged()</slot>
+  <slot>onUseAutomaticSubstitutionCheckChanged()</slot>
  </slots>
 </ui>

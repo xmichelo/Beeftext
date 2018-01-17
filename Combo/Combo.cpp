@@ -25,10 +25,44 @@ namespace {
    QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time
    QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
    Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs; ///< The date/time export format used for JSon docs
+   QList<quint16> const modifierKeys = { VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
+      VK_RWIN };
 }
 
 
 using namespace xmilib;
+
+
+QList<quint16> backupAndReleaseModifierKeys(); ///< Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
+void restoreModifierKeys(QList<quint16> const& keys); ///< Restore the specified modifier keys state by generating a key press event for each of them
+
+
+//**********************************************************************************************************************
+/// \return The list of modifier keys that are pressed
+//**********************************************************************************************************************
+QList<quint16> backupAndReleaseModifierKeys()
+{
+   QList<quint16> result;
+   for (quint16 key: modifierKeys)
+      if (GetKeyState(key) < 0)
+      {
+         result.append(key);
+         synthesizeKeyUp(key);
+      }
+   return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] key The list of modifiers key to restore by generating a key press event
+//**********************************************************************************************************************
+void restoreModifierKeys(QList<quint16> const& keys)
+{
+   for (quint16 key: keys)
+      synthesizeKeyDown(key);
+}
+
+
 
 
 //**********************************************************************************************************************
@@ -168,6 +202,8 @@ void Combo::performSubstitution()
    bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false); // we disable the hook to prevent endless recursive substitution
    try
    {
+      QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
+
       // we erase the combo
       synthesizeBackspaces(comboText_.size());
 
@@ -193,6 +229,8 @@ void Combo::performSubstitution()
             synthesizeUnicodeKeyDownAndUp(c.unicode());
          }
       }
+      
+      restoreModifierKeys(pressedModifiers); ///< We restore the modifiers that we desactivated at the beginning of the function
    }
    catch (xmilib::Exception const& e)
    {

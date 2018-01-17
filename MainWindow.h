@@ -40,7 +40,7 @@ private: // member functions
 
 signals:
    void startedCheckingForUpdate(); ///< Signal for the start of the update check
-   void finishedCheckingForUpdate(); ///< Signal for the start of the update check (this signal is emitted BEFORE displaying the software update dialog)
+   void finishedCheckingForUpdate(); ///< Signal for the end of the update check (this signal is emitted BEFORE displaying the software update dialog)
 
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon

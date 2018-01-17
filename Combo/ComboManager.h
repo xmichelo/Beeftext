@@ -37,11 +37,13 @@ private: // member functions
 	ComboManager(ComboManager const&&) = delete; ///< Disabled move constructor
 	ComboManager& operator=(ComboManager const&) = delete; ///< Disabled assignment operator
 	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
+   void checkAndPerformSubstitution(); ///< check if a substitution is possible and if so performs it
 
-private: // slots
+public slots:
    void onComboBreakerTyped(); ///< Slot for the "Combo Breaker Typed" signal
    void onCharacterTyped(QChar c); ///< Slot for the "Character Typed" signal
    void onBackspaceTyped(); ///< Slot for the 'Backspace typed" signal
+   void onSubstitutionTriggerShortcut(); ///< Slot for the triggering of the substitution shortcut
 
 private: // data member
    QString currentText_; ///< The current string
