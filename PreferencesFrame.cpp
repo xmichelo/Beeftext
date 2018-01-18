@@ -52,6 +52,8 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PreferencesFrame::onUpdateIsAvailable);
    connect(&updateManager, &UpdateManager::noUpdateIsAvailable, this, &PreferencesFrame::onNoUpdateIsAvailable);
    connect(&updateManager, &UpdateManager::updateCheckFailed, this, &PreferencesFrame::onUpdateCheckFailed);
+
+   this->updateGuiState();
 }
 
 
@@ -62,13 +64,17 @@ void PreferencesFrame::loadPreferences()
 {
    QSignalBlocker blockers[] =  { QSignalBlocker(ui_.checkPlaySoundOnCombo),
       QSignalBlocker(ui_.checkAutoCheckForUpdates), QSignalBlocker(ui_.checkUseClipboardForComboSubstitution),
-      QSignalBlocker(ui_.checkAutoStart), QSignalBlocker(ui_.checkUseAutomaticSubstitution) }; // Temporarily Block signals emission by the controls
+      QSignalBlocker(ui_.checkAutoStart), QSignalBlocker(ui_.radioComboTriggerAuto), 
+      QSignalBlocker(ui_.radioComboTriggerManual) }; // Temporarily Block signals emission by the controls
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
-   ui_.checkUseAutomaticSubstitution->setChecked(prefs_.useAutomaticSubstitution());
+   if (prefs_.useAutomaticSubstitution())
+      ui_.radioComboTriggerAuto->setChecked(true);
+   else
+      ui_.radioComboTriggerManual->setChecked(true);
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
 }
 
@@ -136,6 +142,17 @@ void PreferencesFrame::changeEvent(QEvent *event)
    if (QEvent::LanguageChange == event->type())
       ui_.retranslateUi(this);
    QFrame::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::updateGuiState()
+{
+   bool const manualTrigger = !prefs_.useAutomaticSubstitution();
+   ui_.editShortcut->setEnabled(manualTrigger);
+   ui_.buttonChangeShortcut->setEnabled(manualTrigger);
 }
 
 
@@ -230,9 +247,10 @@ void PreferencesFrame::onUseCustomThemeCheckChanged()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onUseAutomaticSubstitutionCheckChanged()
+void PreferencesFrame::onRadioAutomaticComboTriggerChecked(bool checked)
 {
-   prefs_.setUseAutomaticSubstitution(ui_.checkUseAutomaticSubstitution->isChecked());
+   prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
+   this->updateGuiState();
 }
 
 

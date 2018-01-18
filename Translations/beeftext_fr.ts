@@ -356,80 +356,95 @@
         <translation>&amp;Emettre un son pendant les combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="83"/>
-        <source>Automatically detect and trigger combos</source>
+        <location filename="../PreferencesFrame.ui" line="102"/>
+        <source>Combo triggering</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="109"/>
+        <location filename="../PreferencesFrame.ui" line="108"/>
+        <source>Automatic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesFrame.ui" line="115"/>
+        <source>Manual, using the shortcut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesFrame.ui" line="122"/>
+        <source>C&amp;hange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesFrame.ui" line="195"/>
         <source>Appearance</source>
         <translation>Apparence</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="117"/>
+        <location filename="../PreferencesFrame.ui" line="203"/>
         <source>Language</source>
         <translation>Langue</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="151"/>
+        <location filename="../PreferencesFrame.ui" line="237"/>
         <source>Use custom theme</source>
         <translation>Utiliser un thème personnalisé</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="177"/>
+        <location filename="../PreferencesFrame.ui" line="263"/>
         <source>Advanced</source>
         <translation>Avancé</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="183"/>
+        <location filename="../PreferencesFrame.ui" line="269"/>
         <source>Use clipboard for combo substitution</source>
         <translation>Utiliser le presse-papier pour la substitution des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="192"/>
+        <location filename="../PreferencesFrame.ui" line="278"/>
         <source>Combo list folder</source>
         <translation>Dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="206"/>
+        <location filename="../PreferencesFrame.ui" line="292"/>
         <source>&amp;Change</source>
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="213"/>
+        <location filename="../PreferencesFrame.ui" line="299"/>
         <source>D&amp;efault</source>
         <translation>Par D&amp;efault</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="224"/>
-        <location filename="../PreferencesFrame.ui" line="297"/>
+        <location filename="../PreferencesFrame.ui" line="326"/>
+        <location filename="../PreferencesFrame.ui" line="366"/>
         <source>Open &amp;Log File</source>
         <translation>Ouvrir le &amp;Journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="277"/>
-        <location filename="../PreferencesFrame.ui" line="292"/>
+        <location filename="../PreferencesFrame.ui" line="346"/>
+        <location filename="../PreferencesFrame.ui" line="361"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="280"/>
-        <location filename="../PreferencesFrame.ui" line="289"/>
+        <location filename="../PreferencesFrame.ui" line="349"/>
+        <location filename="../PreferencesFrame.ui" line="358"/>
         <source>&amp;Default</source>
         <translation>Par &amp;Défault</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="300"/>
+        <location filename="../PreferencesFrame.ui" line="369"/>
         <source>Open the log file</source>
         <translation>Ouvrir le journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="305"/>
+        <location filename="../PreferencesFrame.ui" line="374"/>
         <source>Change combo list folder</source>
         <translation>Changer le dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="310"/>
+        <location filename="../PreferencesFrame.ui" line="379"/>
         <source>Reset combo list folder</source>
         <translation>Reinitialiser le dossier de la liste de combos</translation>
     </message>
@@ -439,47 +454,47 @@
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="113"/>
+        <location filename="../PreferencesFrame.cpp" line="119"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="113"/>
+        <location filename="../PreferencesFrame.cpp" line="119"/>
         <source>The combo list folder could not be changed.</source>
         <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="147"/>
+        <location filename="../PreferencesFrame.cpp" line="164"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="147"/>
+        <location filename="../PreferencesFrame.cpp" line="164"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="174"/>
+        <location filename="../PreferencesFrame.cpp" line="191"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="264"/>
+        <location filename="../PreferencesFrame.cpp" line="282"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="266"/>
+        <location filename="../PreferencesFrame.cpp" line="284"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="275"/>
+        <location filename="../PreferencesFrame.cpp" line="293"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="284"/>
+        <location filename="../PreferencesFrame.cpp" line="302"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>

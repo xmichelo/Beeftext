@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>480</height>
+    <height>552</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -77,12 +77,98 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QCheckBox" name="checkUseAutomaticSubstitution">
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Combo triggering</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="radioComboTriggerAuto">
         <property name="text">
-         <string>Automatically detect and trigger combos</string>
+         <string>Automatic</string>
         </property>
        </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="radioComboTriggerManual">
+        <property name="text">
+         <string>Manual, using the shortcut</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="buttonChangeShortcut">
+        <property name="text">
+         <string>C&amp;hange</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="editShortcut">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maxLength">
+         <number>50</number>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -216,30 +302,6 @@
         </item>
        </layout>
       </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QPushButton" name="buttonOpenLogFile">
-          <property name="text">
-           <string>Open &amp;Log File</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
      </layout>
     </widget>
    </item>
@@ -258,6 +320,13 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="buttonOpenLogFile">
+       <property name="text">
+        <string>Open &amp;Log File</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
@@ -538,18 +607,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkUseAutomaticSubstitution</sender>
-   <signal>stateChanged(int)</signal>
+   <sender>radioComboTriggerAuto</sender>
+   <signal>toggled(bool)</signal>
    <receiver>PreferencesFrame</receiver>
-   <slot>onUseAutomaticSubstitutionCheckChanged()</slot>
+   <slot>onRadioAutomaticComboTriggerChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>319</x>
-     <y>118</y>
+     <x>95</x>
+     <y>167</y>
     </hint>
     <hint type="destinationlabel">
      <x>319</x>
-     <y>239</y>
+     <y>275</y>
     </hint>
    </hints>
   </connection>
@@ -566,6 +635,6 @@
   <slot>onActionChangeComboListFolder()</slot>
   <slot>onActionResetComboListFolder()</slot>
   <slot>onLocaleChanged()</slot>
-  <slot>onUseAutomaticSubstitutionCheckChanged()</slot>
+  <slot>onRadioAutomaticComboTriggerChecked(bool)</slot>
  </slots>
 </ui>
