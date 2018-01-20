@@ -379,6 +379,17 @@
     <string>Reset combo list folder</string>
    </property>
   </action>
+  <action name="actionChangeShortcut">
+   <property name="text">
+    <string notr="true">Change &amp;Shortcut</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Change Shortcut</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Change Shortcut</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -622,6 +633,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionChangeShortcut</sender>
+   <signal>triggered()</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onActionChangeShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>actionChangeShortcut</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>320</x>
+     <y>193</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
@@ -636,5 +679,6 @@
   <slot>onActionResetComboListFolder()</slot>
   <slot>onLocaleChanged()</slot>
   <slot>onRadioAutomaticComboTriggerChecked(bool)</slot>
+  <slot>onActionChangeShortcut()</slot>
  </slots>
 </ui>

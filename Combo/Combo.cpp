@@ -54,7 +54,7 @@ QList<quint16> backupAndReleaseModifierKeys()
 
 
 //**********************************************************************************************************************
-/// \param[in] key The list of modifiers key to restore by generating a key press event
+/// \param[in] keys The list of modifiers key to restore by generating a key press event
 //**********************************************************************************************************************
 void restoreModifierKeys(QList<quint16> const& keys)
 {

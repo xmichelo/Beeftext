@@ -163,6 +163,16 @@
     </ClCompile>
     <ClCompile Include="I18nManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="ShortcutDialog.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_ShortcutDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ShortcutDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Shortcut.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -192,6 +202,12 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="I18nManager.h" />
+    <ClInclude Include="GeneratedFiles\ui_ShortcutDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shortcut.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -242,6 +258,8 @@
       <Filter>Update</Filter>
     </CustomBuild>
     <CustomBuild Include="PreferencesManager.h" />
+    <CustomBuild Include="ShortcutDialog.ui" />
+    <CustomBuild Include="ShortcutDialog.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

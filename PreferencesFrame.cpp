@@ -12,6 +12,7 @@
 #include "UpdateManager.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
+#include "ShortcutDialog.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
@@ -203,6 +204,15 @@ void PreferencesFrame::onActionResetComboListFolder()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    this->applyComboListFolderPreference(prefs.defaultComboListFolderPath(), prefs. comboListFolderPath());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onActionChangeShortcut()
+{
+   ShortcutDialog().exec();
 }
 
 

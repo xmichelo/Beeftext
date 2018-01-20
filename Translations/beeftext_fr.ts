@@ -449,52 +449,52 @@
         <translation>Reinitialiser le dossier de la liste de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="40"/>
+        <location filename="../PreferencesFrame.cpp" line="41"/>
         <source>&amp;Automatically start %1 at login</source>
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="119"/>
+        <location filename="../PreferencesFrame.cpp" line="120"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="119"/>
+        <location filename="../PreferencesFrame.cpp" line="120"/>
         <source>The combo list folder could not be changed.</source>
         <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="164"/>
+        <location filename="../PreferencesFrame.cpp" line="165"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="164"/>
+        <location filename="../PreferencesFrame.cpp" line="165"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="191"/>
+        <location filename="../PreferencesFrame.cpp" line="192"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="282"/>
+        <location filename="../PreferencesFrame.cpp" line="292"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="284"/>
+        <location filename="../PreferencesFrame.cpp" line="294"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="293"/>
+        <location filename="../PreferencesFrame.cpp" line="303"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="302"/>
+        <location filename="../PreferencesFrame.cpp" line="312"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>
@@ -515,6 +515,29 @@
         <location filename="../main.cpp" line="97"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
+    </message>
+</context>
+<context>
+    <name>ShortcutDialog</name>
+    <message>
+        <location filename="../ShortcutDialog.ui" line="26"/>
+        <source>Type the new shortcut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ShortcutDialog.ui" line="36"/>
+        <source>The shortcut must contain at least one modifier key (Control, Alt, Shift or Windows).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ShortcutDialog.ui" line="145"/>
+        <source>&amp;OK</source>
+        <translation type="unfinished">&amp;OK</translation>
+    </message>
+    <message>
+        <location filename="../ShortcutDialog.ui" line="155"/>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished">&amp;Annuler</translation>
     </message>
 </context>
 <context>
