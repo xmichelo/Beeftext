@@ -112,6 +112,7 @@ InputManager& InputManager::instance()
 InputManager::InputManager() 
    : QObject(nullptr)
    , deadKey_(kNullKeyStroke)
+   , comboTriggerShortcut_(PreferencesManager::instance().comboTriggerShortcut())
 {
    this->enableKeyboardHook();
 #ifdef NDEBUG
@@ -138,7 +139,7 @@ InputManager::~InputManager()
 //**********************************************************************************************************************
 bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
-   if ((!PreferencesManager::instance().useAutomaticSubstitution()) && isSubstitutionShortcut(keyStroke))
+   if ((!PreferencesManager::instance().useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
    {
       emit substitutionShortcutTriggered();
       return false;
@@ -243,15 +244,18 @@ void InputManager::onMouseClickEvent(int, WPARAM, LPARAM)
 //**********************************************************************************************************************
 /// \return true if and only if keystroke correspond to the shortcut
 //**********************************************************************************************************************
-bool InputManager::isSubstitutionShortcut(KeyStroke const& keyStroke) const
+bool InputManager::isComboTriggerShortcut(KeyStroke const& keyStroke) const
 {
-   if (keyStroke.virtualKey != 'B')
+   if (!comboTriggerShortcut_)
       return false;
-   return (keyStroke.virtualKey == 'B')
-      && (((keyStroke.keyboardState[VK_LCONTROL] & 0x80) || (keyStroke.keyboardState[VK_RCONTROL] & 0x80)))
-      && (((keyStroke.keyboardState[VK_LMENU] & 0x80) || (keyStroke.keyboardState[VK_RMENU] & 0x80)))
-      && (!((keyStroke.keyboardState[VK_LSHIFT] & 0x80) || (keyStroke.keyboardState[VK_RSHIFT] & 0x80)))
-      && (!((keyStroke.keyboardState[VK_LWIN] & 0x80) || (keyStroke.keyboardState[VK_RWIN] & 0x80)));
+   if (keyStroke.virtualKey != comboTriggerShortcut_->nativeVirtualKey())
+      return false;
+   Qt::KeyboardModifiers modifiers = comboTriggerShortcut_->nativeModifiers();
+   quint8 const* ks = keyStroke.keyboardState;
+   return bool((ks[VK_LCONTROL] & 0x80) || (ks[VK_RCONTROL] & 0x80)) == modifiers.testFlag(Qt::ControlModifier)
+      && bool((ks[VK_LMENU] & 0x80) || (ks[VK_RMENU] & 0x80)) == modifiers.testFlag(Qt::AltModifier)
+      && bool((ks[VK_LWIN] & 0x80) || (ks[VK_RWIN] & 0x80)) == modifiers.testFlag(Qt::MetaModifier)
+      && bool((ks[VK_LSHIFT] & 0x80) || (ks[VK_RSHIFT] & 0x80)) == modifiers.testFlag(Qt::ShiftModifier);
 }
 
 
@@ -355,6 +359,25 @@ bool InputManager::setMouseHookEnabled(bool enabled)
    else
       this->disableMouseHook();
    return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shortcut the trigger shortcut
+//**********************************************************************************************************************
+void InputManager::setComboTriggerShortcut(SPShortcut shortcut)
+{
+   comboTriggerShortcut_ = shortcut;
+   PreferencesManager::instance().setComboTriggerShortcut(comboTriggerShortcut_);
+}
+
+
+//**********************************************************************************************************************
+/// \return The combo trigger shortcut
+//**********************************************************************************************************************
+SPShortcut InputManager::comboTriggerShortcut() const
+{
+   return comboTriggerShortcut_;
 }
 
 

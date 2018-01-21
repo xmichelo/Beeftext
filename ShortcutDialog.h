@@ -22,9 +22,10 @@ class ShortcutDialog: public QDialog
 {
    Q_OBJECT
 public: // member functions
-	ShortcutDialog(QWidget* parent = nullptr); ///< Default constructor
+	ShortcutDialog(SPShortcut shortcut, QWidget* parent = nullptr); ///< Default constructor
 	~ShortcutDialog() = default; ///< Default destructor
-	
+   SPShortcut shortcut() const; ///< Get the shortcut
+
 private: // member functions
 	ShortcutDialog(ShortcutDialog const&) = delete; ///< Disabled copy constructor
 	ShortcutDialog(ShortcutDialog&&) = delete; ///< Disabled move constructor

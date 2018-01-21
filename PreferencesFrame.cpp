@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "PreferencesFrame.h"
 #include "UpdateManager.h"
+#include "InputManager.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
 #include "ShortcutDialog.h"
@@ -76,6 +77,8 @@ void PreferencesFrame::loadPreferences()
       ui_.radioComboTriggerAuto->setChecked(true);
    else
       ui_.radioComboTriggerManual->setChecked(true);
+   SPShortcut shortcut = InputManager::instance().comboTriggerShortcut();
+   ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
 }
 
@@ -125,7 +128,7 @@ void PreferencesFrame::applyComboListFolderPreference(QString const& folderPath,
 
 
 //**********************************************************************************************************************
-// 
+/// \param[in] status The status message
 //**********************************************************************************************************************
 void PreferencesFrame::setUpdateCheckStatus(QString const& status)
 {
@@ -141,7 +144,11 @@ void PreferencesFrame::setUpdateCheckStatus(QString const& status)
 void PreferencesFrame::changeEvent(QEvent *event)
 {
    if (QEvent::LanguageChange == event->type())
+   {
       ui_.retranslateUi(this);
+      SPShortcut shortcut = InputManager::instance().comboTriggerShortcut();
+      ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
+   }
    QFrame::changeEvent(event);
 }
 
@@ -154,6 +161,7 @@ void PreferencesFrame::updateGuiState()
    bool const manualTrigger = !prefs_.useAutomaticSubstitution();
    ui_.editShortcut->setEnabled(manualTrigger);
    ui_.buttonChangeShortcut->setEnabled(manualTrigger);
+   ui_.buttonResetComboTriggerShortcut->setEnabled(manualTrigger);
 }
 
 
@@ -168,10 +176,12 @@ void PreferencesFrame::onActionResetToDefaultValues()
    PreferencesManager& prefs = PreferencesManager::instance();
    QString oldComboListFolderPath = prefs.comboListFolderPath();
    prefs_.reset();
+   InputManager::instance().setComboTriggerShortcut(prefs_.comboTriggerShortcut());
    this->loadPreferences();
    this->applyAutoStartPreference();
    this->applyThemePreference();
    this->applyComboListFolderPreference(prefs.comboListFolderPath(), oldComboListFolderPath);
+   InputManager::instance().setComboTriggerShortcut(prefs_.defaultComboTriggerShortcut());
 }
 
 
@@ -212,7 +222,23 @@ void PreferencesFrame::onActionResetComboListFolder()
 //**********************************************************************************************************************
 void PreferencesFrame::onActionChangeShortcut()
 {
-   ShortcutDialog().exec();
+   ShortcutDialog dlg(InputManager::instance().comboTriggerShortcut());
+   if (QDialog::Accepted != dlg.exec())
+      return;
+   SPShortcut shortcut = dlg.shortcut();
+   ui_.editShortcut->setText(shortcut->toString());
+   InputManager::instance().setComboTriggerShortcut(shortcut);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onActionResetComboTriggerShortcut()
+{
+   SPShortcut shortcut = prefs_.defaultComboTriggerShortcut();
+   InputManager::instance().setComboTriggerShortcut(shortcut);
+   ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
 }
 
 

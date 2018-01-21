@@ -358,143 +358,148 @@
     <message>
         <location filename="../PreferencesFrame.ui" line="102"/>
         <source>Combo triggering</source>
-        <translation type="unfinished"></translation>
+        <translation>Déclenchement des combos</translation>
     </message>
     <message>
         <location filename="../PreferencesFrame.ui" line="108"/>
         <source>Automatic</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatique</translation>
     </message>
     <message>
         <location filename="../PreferencesFrame.ui" line="115"/>
         <source>Manual, using the shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuel, avec le raccourci</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="122"/>
+        <location filename="../PreferencesFrame.ui" line="169"/>
         <source>C&amp;hange</source>
-        <translation type="unfinished"></translation>
+        <translation>C&amp;hanger</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="195"/>
+        <location filename="../PreferencesFrame.ui" line="176"/>
+        <source>De&amp;fault</source>
+        <translation>Par Dé&amp;faut</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesFrame.ui" line="202"/>
         <source>Appearance</source>
         <translation>Apparence</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="203"/>
+        <location filename="../PreferencesFrame.ui" line="210"/>
         <source>Language</source>
         <translation>Langue</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="237"/>
+        <location filename="../PreferencesFrame.ui" line="244"/>
         <source>Use custom theme</source>
         <translation>Utiliser un thème personnalisé</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="263"/>
+        <location filename="../PreferencesFrame.ui" line="270"/>
         <source>Advanced</source>
         <translation>Avancé</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="269"/>
+        <location filename="../PreferencesFrame.ui" line="276"/>
         <source>Use clipboard for combo substitution</source>
         <translation>Utiliser le presse-papier pour la substitution des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="278"/>
+        <location filename="../PreferencesFrame.ui" line="285"/>
         <source>Combo list folder</source>
         <translation>Dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="292"/>
+        <location filename="../PreferencesFrame.ui" line="299"/>
         <source>&amp;Change</source>
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="299"/>
+        <location filename="../PreferencesFrame.ui" line="306"/>
         <source>D&amp;efault</source>
         <translation>Par D&amp;efault</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="326"/>
-        <location filename="../PreferencesFrame.ui" line="366"/>
+        <location filename="../PreferencesFrame.ui" line="333"/>
+        <location filename="../PreferencesFrame.ui" line="373"/>
         <source>Open &amp;Log File</source>
         <translation>Ouvrir le &amp;Journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="346"/>
-        <location filename="../PreferencesFrame.ui" line="361"/>
+        <location filename="../PreferencesFrame.ui" line="353"/>
+        <location filename="../PreferencesFrame.ui" line="368"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="349"/>
-        <location filename="../PreferencesFrame.ui" line="358"/>
+        <location filename="../PreferencesFrame.ui" line="356"/>
+        <location filename="../PreferencesFrame.ui" line="365"/>
         <source>&amp;Default</source>
         <translation>Par &amp;Défault</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="369"/>
+        <location filename="../PreferencesFrame.ui" line="376"/>
         <source>Open the log file</source>
         <translation>Ouvrir le journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="374"/>
+        <location filename="../PreferencesFrame.ui" line="381"/>
         <source>Change combo list folder</source>
         <translation>Changer le dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="379"/>
+        <location filename="../PreferencesFrame.ui" line="386"/>
         <source>Reset combo list folder</source>
         <translation>Reinitialiser le dossier de la liste de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="41"/>
+        <location filename="../PreferencesFrame.cpp" line="42"/>
         <source>&amp;Automatically start %1 at login</source>
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="120"/>
+        <location filename="../PreferencesFrame.cpp" line="123"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="120"/>
+        <location filename="../PreferencesFrame.cpp" line="123"/>
         <source>The combo list folder could not be changed.</source>
         <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="165"/>
+        <location filename="../PreferencesFrame.cpp" line="173"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="165"/>
+        <location filename="../PreferencesFrame.cpp" line="173"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="192"/>
+        <location filename="../PreferencesFrame.cpp" line="202"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="292"/>
+        <location filename="../PreferencesFrame.cpp" line="318"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="294"/>
+        <location filename="../PreferencesFrame.cpp" line="320"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="303"/>
+        <location filename="../PreferencesFrame.cpp" line="329"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="312"/>
+        <location filename="../PreferencesFrame.cpp" line="338"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>
@@ -502,19 +507,39 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="53"/>
         <source>Already Running</source>
         <translation>En Cours d&apos;Exécution</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="53"/>
+        <location filename="../main.cpp" line="54"/>
         <source>Another instance of the application is already running.</source>
         <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="97"/>
+        <location filename="../main.cpp" line="98"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
+    </message>
+    <message>
+        <location filename="../Shortcut.cpp" line="63"/>
+        <source>Ctrl</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../Shortcut.cpp" line="65"/>
+        <source>Alt</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../Shortcut.cpp" line="67"/>
+        <source>Shift</source>
+        <translation>Maj</translation>
+    </message>
+    <message>
+        <location filename="../Shortcut.cpp" line="69"/>
+        <source>Win</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -522,22 +547,24 @@
     <message>
         <location filename="../ShortcutDialog.ui" line="26"/>
         <source>Type the new shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Saisir le nouveau raccourci</translation>
     </message>
     <message>
         <location filename="../ShortcutDialog.ui" line="36"/>
-        <source>The shortcut must contain at least one modifier key (Control, Alt, Shift or Windows).</source>
-        <translation type="unfinished"></translation>
+        <source>The shortcut must contain at least one of the following modifier keys:
+Control, Alt or Windows.</source>
+        <translation>La racourci doit contenir au moins une des touches suivante:
+Control, Alt ou Windows.</translation>
     </message>
     <message>
-        <location filename="../ShortcutDialog.ui" line="145"/>
+        <location filename="../ShortcutDialog.ui" line="149"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../ShortcutDialog.ui" line="155"/>
+        <location filename="../ShortcutDialog.ui" line="159"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Annuler</translation>
+        <translation>&amp;Annuler</translation>
     </message>
 </context>
 <context>

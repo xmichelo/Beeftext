@@ -170,9 +170,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ShortcutDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Shortcut.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
+    <ClCompile Include="Shortcut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -205,9 +203,7 @@
     <ClInclude Include="GeneratedFiles\ui_ShortcutDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shortcut.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
+    <ClInclude Include="Shortcut.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">

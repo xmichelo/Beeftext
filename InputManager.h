@@ -11,6 +11,9 @@
 #define BEEFTEXT__INPUT__MANAGER__H
 
 
+#include "Shortcut.h"
+
+
 //**********************************************************************************************************************
 /// \brief An input manager capture input by keyboard and mouse and process the events 
 //**********************************************************************************************************************
@@ -36,6 +39,8 @@ public: // static member functions
    void enableMouseHook(); ///< Enable the mouse hook
    void disableMouseHook(); ///< Disable the mouse hook
    bool setMouseHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
+   void setComboTriggerShortcut(SPShortcut shortcut); ///< Set the combo trigger shortcut
+   SPShortcut comboTriggerShortcut() const; ///< Get the combo trigger shortcut
 
 public: // member functions
    ~InputManager(); ///< Default destructor
@@ -55,13 +60,14 @@ private: // member functions
    bool onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
    QString processKey(KeyStroke const& keystroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
    void onMouseClickEvent(int, WPARAM, LPARAM); ///< Process a mouse click event
-   bool isSubstitutionShortcut(KeyStroke const& keyStroke) const; ///< Check if a keystroke is the manual substitution shortcut
+   bool isComboTriggerShortcut(KeyStroke const& keyStroke) const; ///< Check if a keystroke is the manual substitution shortcut
 
 private: // static member functions
    static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The keyboard event callback
    static LRESULT CALLBACK mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The mouse event callback
 
 private: // data members
+   SPShortcut comboTriggerShortcut_; ///< The combo trigger shortcut
    HHOOK keyboardHook_; ///< The handle to the keyboard hook used to be notified of keyboard events
    HHOOK mouseHook_; ///< The handle to the mouse hook used to be notified of mouse event
    KeyStroke deadKey_; ///< The currently active dead key

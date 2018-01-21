@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>309</width>
-    <height>155</height>
+    <width>416</width>
+    <height>154</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,11 @@
    <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>The shortcut must contain at least one modifier key (Control, Alt, Shift or Windows).</string>
+      <string>The shortcut must contain at least one of the following modifier keys:
+Control, Alt or Windows.</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

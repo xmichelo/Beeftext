@@ -11,6 +11,9 @@
 #define BEEFTEXT__PREFERENCES__MANAGER__H
 
 
+#include "Shortcut.h"
+
+
 //**********************************************************************************************************************
 /// \brief Preferences manager class
 //**********************************************************************************************************************
@@ -50,6 +53,10 @@ public: // member functions
    void setComboListFolderPath(QString const value); ///< Set the path of the folder for saving the combo list
    QString comboListFolderPath() const; ///< Get the path of the folder for saving the combo list
    QString defaultComboListFolderPath() const; ///< Get the default combo list folder path
+   void setComboTriggerShortcut(SPShortcut const& shortcut); ///< Set the combo trigger shortcut
+   SPShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
+   SPShortcut defaultComboTriggerShortcut() const; ///< Reset the combo trigger shortcut to its default value
+
 signals:
    void autoCheckForUpdatesChanged(bool value); // Signal emitted when the 'Auto check for updates' preference value changed
 

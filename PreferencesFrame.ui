@@ -116,13 +116,6 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="buttonChangeShortcut">
-        <property name="text">
-         <string>C&amp;hange</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="editShortcut">
         <property name="sizePolicy">
@@ -133,7 +126,7 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
+          <width>200</width>
           <height>0</height>
          </size>
         </property>
@@ -157,7 +150,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
+      <item row="1" column="4">
        <spacer name="horizontalSpacer_5">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -169,6 +162,20 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="buttonChangeShortcut">
+        <property name="text">
+         <string>C&amp;hange</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QPushButton" name="buttonResetComboTriggerShortcut">
+        <property name="text">
+         <string>De&amp;fault</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -388,6 +395,17 @@
    </property>
    <property name="toolTip">
     <string notr="true">Change Shortcut</string>
+   </property>
+  </action>
+  <action name="actionResetComboTriggerShortcut">
+   <property name="text">
+    <string notr="true">Reset Combo trigger shortcut</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Reset Combo trigger shortcut</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Reset Combo trigger shortcut</string>
    </property>
   </action>
  </widget>
@@ -660,6 +678,38 @@
      <y>193</y>
     </hint>
     <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionResetComboTriggerShortcut</sender>
+   <signal>triggered()</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onActionResetComboTriggerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetComboTriggerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>actionResetComboTriggerShortcut</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>501</x>
+     <y>193</y>
+    </hint>
+    <hint type="destinationlabel">
      <x>319</x>
      <y>275</y>
     </hint>
@@ -680,5 +730,6 @@
   <slot>onLocaleChanged()</slot>
   <slot>onRadioAutomaticComboTriggerChecked(bool)</slot>
   <slot>onActionChangeShortcut()</slot>
+  <slot>onActionResetComboTriggerShortcut()</slot>
  </slots>
 </ui>

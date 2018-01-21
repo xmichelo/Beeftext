@@ -28,12 +28,17 @@ namespace {
    QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
    QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
    QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
+   QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
+   QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
+   QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
    bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
    bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
    bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+   SPShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
+      | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
 }
 
 
@@ -49,10 +54,9 @@ template <typename T> T PreferencesManager::readSettings(QString const& key, T c
 {
    if (!settings_.contains(key))
       return defaultValue;
-   QVariant v = settings_.value(key, defaultValue);
+   QVariant v = settings_.value(key, QVariant::fromValue<T>(defaultValue));
    return v.canConvert<T>() ? qvariant_cast<T>(v) : defaultValue;
 }
-
 
 
 //**********************************************************************************************************************
@@ -90,6 +94,7 @@ void PreferencesManager::reset()
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setComboListFolderPath(globals::appDataDir());
+   this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
 }
 
 
@@ -344,3 +349,45 @@ QString PreferencesManager::defaultComboListFolderPath() const
 }
 
 
+//**********************************************************************************************************************
+/// \param[in] value The value
+//**********************************************************************************************************************
+void PreferencesManager::setComboTriggerShortcut(SPShortcut const& value)
+{
+   if (!value)
+   {
+      settings_.remove(kKeyComboTriggerShortcutModifiers);
+      settings_.remove(kKeyComboTriggerShortcutKeyCode);
+      settings_.remove(kKeyComboTriggerShortcutScanCode);
+   }
+   else
+   {
+      settings_.setValue(kKeyComboTriggerShortcutModifiers, int(value->nativeModifiers()));
+      settings_.setValue(kKeyComboTriggerShortcutKeyCode, value->nativeVirtualKey());
+      settings_.setValue(kKeyComboTriggerShortcutScanCode, value->nativeScanCode());
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \return The trigger shortcut
+//**********************************************************************************************************************
+SPShortcut PreferencesManager::comboTriggerShortcut() const
+{
+   int intMods = this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0);
+   quint32 vKey = this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCode, 0);
+   quint32 scanCode = this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0);
+   if ((!intMods) || (!vKey) || (!scanCode))
+      return kDefaultValueComboTriggerShortcut;
+   SPShortcut result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
+   return result->isValid() ? result: kDefaultValueComboTriggerShortcut;
+}
+
+
+//**********************************************************************************************************************
+/// \return The default combo trigger shortcut
+//**********************************************************************************************************************
+SPShortcut PreferencesManager::defaultComboTriggerShortcut() const
+{
+   return kDefaultValueComboTriggerShortcut;
+}

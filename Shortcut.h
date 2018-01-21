@@ -20,6 +20,10 @@ public: // member functions
 	Shortcut(Qt::KeyboardModifiers const& modifiers, quint32 nativeKey, quint32 nativeScanCode); ///< Default constructor
 	~Shortcut() = default; ///< Default destructor
    QString toString(); ///< Return a string representation of the shortcut
+   bool isValid() const; ///< Check whether a shortcut is valid
+   Qt::KeyboardModifiers nativeModifiers() const; ///< Return the native modifiers field of the shortcut
+   quint32 nativeVirtualKey() const; ///< Return the native virtual key of the shortcut
+   quint32 nativeScanCode() const; ///< Return the native scan code of the shortcut
 
 private: // member functions
 	Shortcut(Shortcut const&) = delete; ///< Disabled copy constructor
