@@ -17,7 +17,7 @@ namespace constants {
 QString const kApplicationName = "Beeftext";
 QString const kOrganizationName = "beeftext.org";
 qint32 const kVersionMajor = 0;
-qint32 const kVersionMinor = 4;
+qint32 const kVersionMinor = 5;
 Qt::WindowFlags const kDefaultDialogFlags = Qt::WindowCloseButtonHint | Qt::WindowTitleHint;
 QString const kStyleSheet = R"(
 
@@ -81,6 +81,9 @@ QLineEdit, QPlainTextEdit, QTextEdit {
    selection-background-color: #258fc0; 
 }
 
+QLineEdit:disabled {
+   color: #aaa;
+}
 
 QAbstractScrollArea {
 background-color: #fff;
