@@ -1,8 +1,8 @@
 {
    "versionMajor": 0,
-   "versionMinor": 4,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.4/Beeftext-0.4-Installer.exe",
-   "sha256Sum": "3484ec1393dc7061ffdb7fb8f6473bd6b380c6daecfb73b1359a2d404f64e7cf",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>This release fixes a bug where the automatic update would fail because the OpenSLL DLL files are not in the user's path.</li></ul></span></p></body></html>"
+   "versionMinor": 5,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.5/Beeftext-0.5-Installer.exe",
+   "sha256Sum": "2e696dcfeadebf5eca848db206cc5162212163675c6ef8e02f0b7f34202aeaee",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>This release adds support for manual combo triggering, using a customizable keyboard shortcut.</li></ul></span></p></body></html>"
 }
 
