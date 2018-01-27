@@ -35,6 +35,7 @@ using namespace xmilib;
 
 QList<quint16> backupAndReleaseModifierKeys(); ///< Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
 void restoreModifierKeys(QList<quint16> const& keys); ///< Restore the specified modifier keys state by generating a key press event for each of them
+QString evaluatePlaceholder(QString const& placeholder); ///< Compute the contents of a placeholder
 
 
 //**********************************************************************************************************************
@@ -211,7 +212,7 @@ void Combo::performSubstitution()
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
          // we use the clipboard to and copy/paste the substitution
-         QApplication::clipboard()->setText(evaluatedSubstitutionText(clipboardManager.text()));
+         QApplication::clipboard()->setText(evaluatedSubstitutionText());
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
@@ -220,7 +221,7 @@ void Combo::performSubstitution()
       else
       {
          // we simulate the typing of the substitution text
-         for (QChar c : this->evaluatedSubstitutionText(qApp->clipboard()->text()))
+         for (QChar c : this->evaluatedSubstitutionText())
          {
             if (c == QChar::LineFeed) // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
                synthesizeKeyDownAndUp(VK_RETURN);
@@ -230,7 +231,7 @@ void Combo::performSubstitution()
          }
       }
       
-      restoreModifierKeys(pressedModifiers); ///< We restore the modifiers that we desactivated at the beginning of the function
+      restoreModifierKeys(pressedModifiers); ///< We restore the modifiers that we deactivated at the beginning of the function
    }
    catch (xmilib::Exception const&)
    {
@@ -309,14 +310,51 @@ void Combo::touch()
 
 
 //**********************************************************************************************************************
-/// \param[in] currentClipboardText The text contained in the clipboard
 /// \return The substitution text once it has been evaluated
 //**********************************************************************************************************************
-QString Combo::evaluatedSubstitutionText(QString const& currentClipboardText) const
+QString Combo::evaluatedSubstitutionText() const
 {
-   QString result = substitutionText_;
-   result.replace("#{clipboard}", currentClipboardText, Qt::CaseSensitive);
-   return result;
+   QString remainingText = substitutionText_;
+   QString result;
+
+   // The following regular expression detects the first placeholder #{}, ensuring the closing } is not preceded by a \.
+   // Lazy (a.k.a. non-greedy) operators are used to match the first placeholder with the smallest possible contents
+   // inside the #{}.
+   QRegularExpression const regexp(R"((#\{(.*?)(?<!\\)}))"); 
+   
+   while (true)
+   {
+      QRegularExpressionMatch match = regexp.match(remainingText);
+      if (!match.hasMatch())
+         return result + remainingText;
+      
+      // we add the text before the placeholder and the evaluated placeholder contents to the result
+      result += remainingText.left(match.capturedStart(1)) + evaluatePlaceholder(match.captured(2));
+      
+      // we still need to evaluate the text that was at the right of the placeholder
+      remainingText = remainingText.right(remainingText.size() - match.capturedEnd(1));
+   }
 }
 
+
+//**********************************************************************************************************************
+/// \param[in] placeholder The placeholder, without the enclosing #{}
+/// \return The result of evaluating the placeholder
+//**********************************************************************************************************************
+QString evaluatePlaceholder(QString const& placeholder)
+{
+
+   if (placeholder == "clipboard")
+   {
+      QClipboard const* clipboard = qApp->clipboard();
+      return clipboard ? clipboard->text() : QString();
+   }
+   if (placeholder == "date")
+      return QDate::currentDate().toString();
+   if (placeholder == "time")
+      return QTime::currentTime().toString();
+   if (placeholder == "dateTime")
+      return QDateTime::currentDateTime().toString();
+   return QString("#{%1}").arg(placeholder); // we could not recognize the placeholder, so we put is as is back in the result
+}
 

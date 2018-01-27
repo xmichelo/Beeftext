@@ -83,24 +83,6 @@ bool ClipboardManager::hasBackup() const
 
 
 //**********************************************************************************************************************
-/// \return The plain text of the backup
-//**********************************************************************************************************************
-QString ClipboardManager::text() const
-{
-   if (!backup_)
-      return QString();
-   if (!backup_->text.isEmpty())
-      return backup_->text;
-   QString const html = backup_->html;
-   if (html.isEmpty())
-      return QString();
-   QTextDocument doc;
-   doc.setHtml(html);
-   return doc.toPlainText();
-}
-
-
-//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 QMimeData* ClipboardManager::mimeDataFromBackup() const

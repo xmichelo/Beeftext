@@ -55,7 +55,7 @@ private: // member functions
 	Combo& operator=(Combo const&) = delete; ///< Disabled assignment operator
 	Combo& operator=(Combo&&) = delete; ///< Disabled move assignment operator
    void touch(); ///< set the modification date/time to now
-   QString Combo::evaluatedSubstitutionText(QString const& currentClipboardText) const; ///< Retrieve the the substitution text after having evaluated it
+   QString Combo::evaluatedSubstitutionText() const; ///< Retrieve the the substitution text after having evaluated it
 
 private: // data member
    QUuid uuid_; ///< The UUID of the combo
