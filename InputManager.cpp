@@ -10,9 +10,7 @@
 #include "stdafx.h"
 #include "InputManager.h"
 #include "MainWindow.h"
-#include "Beeftext/BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
-#include <XMiLib/SystemUtils.h>
 
 
 using namespace xmilib;
@@ -34,7 +32,7 @@ bool getForegroundWindowInputLocale(HKL& outHkl); ///< Retrieve the Input local 
 //**********************************************************************************************************************
 bool getForegroundWindowInputLocale(HKL& outHkl)
 {
-   HWND hwnd = GetForegroundWindow();
+   HWND const hwnd = GetForegroundWindow();
    if (!hwnd)
       return false;
    outHkl = GetKeyboardLayout(GetWindowThreadProcessId(hwnd, nullptr));
@@ -111,8 +109,8 @@ InputManager& InputManager::instance()
 //**********************************************************************************************************************
 InputManager::InputManager() 
    : QObject(nullptr)
-   , deadKey_(kNullKeyStroke)
    , comboTriggerShortcut_(PreferencesManager::instance().comboTriggerShortcut())
+   , deadKey_(kNullKeyStroke)
 {
    this->enableKeyboardHook();
 #ifdef NDEBUG
@@ -197,7 +195,7 @@ QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
    
    // Windows allow each window to have its own input locale, so we try to obtain the locale (HKL) of the active window
    // andpass it to ToUnicodeEx(). If we fail to do so we call ToUnicode instead, which use the system-wide locale
-   qint32 size = getForegroundWindowInputLocale(hkl)
+   qint32 const size = getForegroundWindowInputLocale(hkl)
       ? ToUnicodeEx(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, kTextBufferSize, 0
       , hkl) : ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer
       , kTextBufferSize, 0);
@@ -276,7 +274,7 @@ void InputManager::enableKeyboardHook()
 
    if (keyboardHook_)
       return;
-   HMODULE moduleHandle = GetModuleHandle(nullptr);
+   HMODULE const moduleHandle = GetModuleHandle(nullptr);
    keyboardHook_ = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProcedure, moduleHandle, 0);
    if (!keyboardHook_)
       throw xmilib::Exception("Could not register a keyboard hook.");
@@ -327,7 +325,7 @@ void InputManager::enableMouseHook()
 {
    if (mouseHook_)
       return;
-   HMODULE moduleHandle = GetModuleHandle(nullptr);
+   HMODULE const moduleHandle = GetModuleHandle(nullptr);
    mouseHook_ = SetWindowsHookEx(WH_MOUSE_LL, mouseProcedure, moduleHandle, 0);
    if (!mouseHook_)
       throw xmilib::Exception("Could not register a mouse hook.");
@@ -365,7 +363,7 @@ bool InputManager::setMouseHookEnabled(bool enabled)
 //**********************************************************************************************************************
 /// \param[in] shortcut the trigger shortcut
 //**********************************************************************************************************************
-void InputManager::setComboTriggerShortcut(SPShortcut shortcut)
+void InputManager::setComboTriggerShortcut(SPShortcut const& shortcut)
 {
    comboTriggerShortcut_ = shortcut;
    PreferencesManager::instance().setComboTriggerShortcut(comboTriggerShortcut_);

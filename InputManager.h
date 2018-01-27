@@ -39,7 +39,7 @@ public: // static member functions
    void enableMouseHook(); ///< Enable the mouse hook
    void disableMouseHook(); ///< Disable the mouse hook
    bool setMouseHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
-   void setComboTriggerShortcut(SPShortcut shortcut); ///< Set the combo trigger shortcut
+   void setComboTriggerShortcut(SPShortcut const& shortcut); ///< Set the combo trigger shortcut
    SPShortcut comboTriggerShortcut() const; ///< Get the combo trigger shortcut
 
 public: // member functions

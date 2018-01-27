@@ -316,7 +316,7 @@ void PreferencesManager::setUseAutomaticSubstitution(bool value)
 //**********************************************************************************************************************
 /// \return The value for the preference
 //**********************************************************************************************************************
-bool PreferencesManager::useAutomaticSubstitution()
+bool PreferencesManager::useAutomaticSubstitution() const
 {
    return cachedUseAutomaticSubstitution_;
 }
@@ -325,7 +325,7 @@ bool PreferencesManager::useAutomaticSubstitution()
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setComboListFolderPath(QString const value)
+void PreferencesManager::setComboListFolderPath(QString const& value)
 {
    settings_.setValue(kKeyComboListFolderPath, value);
 }
@@ -336,14 +336,14 @@ void PreferencesManager::setComboListFolderPath(QString const value)
 //**********************************************************************************************************************
 QString PreferencesManager::comboListFolderPath() const
 {
-   return this->readSettings<QString>(kKeyComboListFolderPath, this->defaultComboListFolderPath());
+   return this->readSettings<QString>(kKeyComboListFolderPath, defaultComboListFolderPath());
 }
 
 
 //**********************************************************************************************************************
 //// \return The path of the default combo list folder
 //**********************************************************************************************************************
-QString PreferencesManager::defaultComboListFolderPath() const
+QString PreferencesManager::defaultComboListFolderPath()
 {
    return globals::appDataDir();
 }
@@ -374,12 +374,12 @@ void PreferencesManager::setComboTriggerShortcut(SPShortcut const& value)
 //**********************************************************************************************************************
 SPShortcut PreferencesManager::comboTriggerShortcut() const
 {
-   int intMods = this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0);
+   int const intMods = this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0);
    quint32 vKey = this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCode, 0);
    quint32 scanCode = this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0);
    if ((!intMods) || (!vKey) || (!scanCode))
       return kDefaultValueComboTriggerShortcut;
-   SPShortcut result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
+   SPShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
    return result->isValid() ? result: kDefaultValueComboTriggerShortcut;
 }
 
@@ -387,7 +387,7 @@ SPShortcut PreferencesManager::comboTriggerShortcut() const
 //**********************************************************************************************************************
 /// \return The default combo trigger shortcut
 //**********************************************************************************************************************
-SPShortcut PreferencesManager::defaultComboTriggerShortcut() const
+SPShortcut PreferencesManager::defaultComboTriggerShortcut()
 {
    return kDefaultValueComboTriggerShortcut;
 }

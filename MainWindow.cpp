@@ -10,14 +10,9 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 #include "PreferencesManager.h"
-#include "Update/UpdateCheckWorker.h"
-#include "Update/UpdateDialog.h"
-#include "Combo/ComboManager.h"
-#include "Combo/ComboDialog.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
-#include <XMiLib/Exception.h>
 
 
 using namespace xmilib;
@@ -45,7 +40,7 @@ MainWindow::MainWindow()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void MainWindow::setupActions()
+void MainWindow::setupActions() const
 {
    QString const exitActionText = tr("E&xit %1").arg(constants::kApplicationName);
    ui_.actionExit->setText(exitActionText);
@@ -120,6 +115,8 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
    {
    case QSystemTrayIcon::Trigger: // a.k.a single click
       this->onActionShowMainWindow();
+      break;
+   default:
       break;
    }
 }

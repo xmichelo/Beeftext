@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "UpdateCheckWorker.h"
-#include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
 
@@ -50,8 +49,8 @@ void UpdateCheckWorker::performUpdateCheck()
 {
    try
    {
-      QByteArray jsonData = this->downloadLatestVersionInformation();
-      SPLatestVersionInfo latestVersionInfo = this->parseJsonData(jsonData);
+      QByteArray const jsonData = this->downloadLatestVersionInformation();
+      SPLatestVersionInfo const latestVersionInfo = this->parseJsonData(jsonData);
       if (this->isNewVersionAvailable(latestVersionInfo))
          emit updateIsAvailable(latestVersionInfo);
       else
@@ -71,7 +70,7 @@ QByteArray UpdateCheckWorker::downloadLatestVersionInformation() const
 {
    QNetworkAccessManager nam;
    QEventLoop loop;
-   QNetworkRequest request(kVersionFileUrl);
+   QNetworkRequest const request(kVersionFileUrl);
    QNetworkReply* reply = nam.get(request);
    QString errorMessage;
    connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
@@ -111,7 +110,7 @@ SPLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) co
 //**********************************************************************************************************************
 /// \param[in] latestVersionInfo The latest version information
 //**********************************************************************************************************************
-bool UpdateCheckWorker::isNewVersionAvailable(SPLatestVersionInfo latestVersionInfo) const
+bool UpdateCheckWorker::isNewVersionAvailable(SPLatestVersionInfo const& latestVersionInfo)
 {
    if (!latestVersionInfo)
       throw xmilib::Exception("Could not check for new version: the retrieved latest version information is "

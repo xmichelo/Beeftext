@@ -37,8 +37,6 @@ UpdateManager& UpdateManager::instance()
 //
 //**********************************************************************************************************************
 UpdateManager::UpdateManager()
-   : QObject()
-   , timer_()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    timer_.setSingleShot(true);
@@ -68,7 +66,7 @@ void UpdateManager::onAutoCheckForUpdateChanged(bool enabled)
       return;
    
    QDateTime lastCheckDateTime = PreferencesManager::instance().lastUpdateCheckDateTime();
-   qint64 msSecsToNextCheck = lastCheckDateTime.isNull() ? kLaunchCheckDelayMs : qMax<qint64>(kLaunchCheckDelayMs, 
+   qint64 const msSecsToNextCheck = lastCheckDateTime.isNull() ? kLaunchCheckDelayMs : qMax<qint64>(kLaunchCheckDelayMs, 
       QDateTime::currentDateTime().msecsTo(lastCheckDateTime.addMSecs(kUpdateCheckIntervalMs)));
    timer_.start(msSecsToNextCheck);
 }
@@ -89,7 +87,6 @@ void UpdateManager::startUpdateCheckWorker()
    connect(worker, &UpdateCheckWorker::noUpdateIsAvailable, this, &UpdateManager::onWorkerNoUpdateIsAvailable);
    connect(worker, &UpdateCheckWorker::error, this, &UpdateManager::onWorkerError);
    thread->start();
-
 }
 
 
@@ -115,7 +112,7 @@ void UpdateManager::onWorkerFinished()
 //**********************************************************************************************************************
 /// \param[in] latestVersionInfo The latest version information
 //**********************************************************************************************************************
-void UpdateManager::onWorkerUpdateIsAvailable(SPLatestVersionInfo latestVersionInfo)
+void UpdateManager::onWorkerUpdateIsAvailable(SPLatestVersionInfo const& latestVersionInfo)
 {
    if (!latestVersionInfo)
       throw xmilib::Exception(QString("%1(): latestVersionInfo parameter is null.").arg(__FUNCTION__));

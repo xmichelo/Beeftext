@@ -41,7 +41,7 @@ private: // member functions
    void performUpdateCheck(); ///< perform the update check
    QByteArray downloadLatestVersionInformation() const; ///< Download the latest version information from the Beeftext website
    SPLatestVersionInfo parseJsonData(QString const& jsonData) const; ///< Parse the JSon data
-   bool isNewVersionAvailable(SPLatestVersionInfo latestVersionInfo) const; ///< Check if the installed version of the application is outdated
+   static bool isNewVersionAvailable(SPLatestVersionInfo const& latestVersionInfo); ///< Check if the installed version of the application is outdated
 };
 
 

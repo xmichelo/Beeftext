@@ -47,8 +47,8 @@
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="66"/>
-        <location filename="../Combo/ComboDialog.cpp" line="71"/>
-        <location filename="../Combo/ComboDialog.cpp" line="83"/>
+        <location filename="../Combo/ComboDialog.cpp" line="72"/>
+        <location filename="../Combo/ComboDialog.cpp" line="84"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -58,12 +58,12 @@
         <translation>Le texte de substitution est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="71"/>
+        <location filename="../Combo/ComboDialog.cpp" line="72"/>
         <source>The combo text is invalid.</source>
         <translation>Le combo est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="83"/>
+        <location filename="../Combo/ComboDialog.cpp" line="84"/>
         <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
         <translation>Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
     </message>
@@ -71,17 +71,17 @@
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="329"/>
+        <location filename="../Combo/ComboList.cpp" line="328"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="330"/>
+        <location filename="../Combo/ComboList.cpp" line="329"/>
         <source>Combo</source>
         <translation>Combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="331"/>
+        <location filename="../Combo/ComboList.cpp" line="330"/>
         <source>Substitution text</source>
         <translation>Texte de substitution</translation>
     </message>
@@ -317,22 +317,22 @@
         <translation>Afficher les préférences.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="50"/>
+        <location filename="../MainWindow.cpp" line="45"/>
         <source>E&amp;xit %1</source>
         <translation>&amp;Quitter %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="55"/>
+        <location filename="../MainWindow.cpp" line="50"/>
         <source>&amp;Open %1</source>
         <translation>&amp;Ouvrir %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="79"/>
+        <location filename="../MainWindow.cpp" line="74"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="82"/>
+        <location filename="../MainWindow.cpp" line="77"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>
@@ -458,52 +458,52 @@
         <translation>Reinitialiser le dossier de la liste de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="42"/>
+        <location filename="../PreferencesFrame.cpp" line="41"/>
         <source>&amp;Automatically start %1 at login</source>
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="123"/>
+        <location filename="../PreferencesFrame.cpp" line="122"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="123"/>
+        <location filename="../PreferencesFrame.cpp" line="122"/>
         <source>The combo list folder could not be changed.</source>
         <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="173"/>
+        <location filename="../PreferencesFrame.cpp" line="172"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="173"/>
+        <location filename="../PreferencesFrame.cpp" line="172"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="202"/>
+        <location filename="../PreferencesFrame.cpp" line="201"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="318"/>
+        <location filename="../PreferencesFrame.cpp" line="317"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="320"/>
+        <location filename="../PreferencesFrame.cpp" line="319"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="329"/>
+        <location filename="../PreferencesFrame.cpp" line="328"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="338"/>
+        <location filename="../PreferencesFrame.cpp" line="337"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>
@@ -521,7 +521,7 @@
         <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="98"/>
+        <location filename="../main.cpp" line="100"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>

@@ -16,7 +16,8 @@
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
 AboutFrame::AboutFrame(QWidget* parent)
-   :  QFrame(parent)
+   : QFrame(parent)
+   , ui_()
 {
    ui_.setupUi(this);
    this->completeText();
@@ -26,7 +27,7 @@ AboutFrame::AboutFrame(QWidget* parent)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void AboutFrame::completeText()
+void AboutFrame::completeText() const
 {
    ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor).
       arg(QString(__DATE__).right(4))); // we extract the year from the __DATE__ macro

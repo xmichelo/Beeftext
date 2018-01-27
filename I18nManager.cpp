@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "I18nManager.h"
-#include "BeeftextConstants.h"
 
 
 namespace {
@@ -60,7 +59,7 @@ void I18nManager::fillLocaleCombo(QComboBox& combo)
 {
    QSignalBlocker blocker(&combo);
    combo.clear();
-   for (QLocale locale : kSupportedLocales)
+   for (QLocale const& locale : kSupportedLocales)
    {
       QString languageName = locale == QLocale::English ? "English" : locale.nativeLanguageName();
       if (!languageName.isEmpty())
@@ -81,7 +80,7 @@ void I18nManager::selectLocaleInCombo(QLocale const& locale, QComboBox& combo)
       QVariant data = combo.itemData(i);
       if (!data.canConvert<QLocale>())
          continue;
-      QLocale itemLocale = data.toLocale();
+      QLocale const itemLocale = data.toLocale();
       if (itemLocale != locale)
          continue;
       if (i == combo.currentIndex())
@@ -115,7 +114,7 @@ void I18nManager::loadTranslation()
 
    // load and install qt translations (containing all translations for Qt internal strings)
    qtTranslator_ = std::make_unique<QTranslator>(qApp);
-   QString qtTransFile = QString(":/Translations/qtbase_%1.qm").arg(langStr);
+   QString const qtTransFile = QString(":/Translations/qtbase_%1.qm").arg(langStr);
    if (!qtTranslator_->load(qtTransFile))
    {
       qtTranslator_.reset();
@@ -159,7 +158,7 @@ void I18nManager::unloadTranslation()
 //**********************************************************************************************************************
 /// \return The current locale
 //**********************************************************************************************************************
-QLocale I18nManager::locale() const
+QLocale I18nManager::locale()
 {
    return QLocale();
 }

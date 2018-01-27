@@ -24,8 +24,9 @@ ComboSortFilterProxyModel::ComboSortFilterProxyModel(QObject* parent)
 
 //**********************************************************************************************************************
 /// \param[in] sourceRow The row index in the source model
+/// \param[in] index Unused
 //**********************************************************************************************************************
-bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex const&) const
+bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex const& index) const
 {
    QAbstractItemModel* model = sourceModel();
    Q_ASSERT(model);

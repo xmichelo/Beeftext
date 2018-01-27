@@ -12,11 +12,9 @@
 
 
 #include "ui_MainWindow.h"
-#include "LatestVersionInfo.h"
 #ifndef NDEBUG
 #include <XMiLib/StyleSheetEditor/StyleSheetEditor.h>
 #endif // #ifndef NDEBUG
-#include <memory>
 
 
 //**********************************************************************************************************************
@@ -34,9 +32,9 @@ private: // member functions
    MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
-   void setupActions(); ///< Setup the Qt actions for the main window
+   void setupActions() const; ///< Setup the Qt actions for the main window
    void setupSystemTrayIcon(); ///< Setup the system tray icon
-   void changeEvent(QEvent *event); ///< Change event handler
+   void changeEvent(QEvent *event) override; ///< Change event handler
 
 signals:
    void startedCheckingForUpdate(); ///< Signal for the start of the update check

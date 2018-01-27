@@ -123,7 +123,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 /// of the error.
 /// \return true if and only if the operation completed successfully
 //**********************************************************************************************************************
-bool ComboManager::saveComboListToFile(QString* outErrorMsg)
+bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
 {
    try
    {
@@ -148,7 +148,7 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg)
 //**********************************************************************************************************************
 void ComboManager::checkAndPerformSubstitution()
 {
-   VecSPCombo::const_iterator it = std::find_if(comboList_.begin(), comboList_.end(),
+   VecSPCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(),
       [&](SPCombo const combo) -> bool { return combo->isEnabled() && (combo->comboText() == currentText_); });
    if (comboList_.end() == it)
       return;

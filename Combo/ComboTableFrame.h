@@ -27,7 +27,7 @@ public: // member functions
 	~ComboTableFrame() = default; ///< Default destructor
 
 protected: // member functions
-   bool eventFilter(QObject *object, QEvent *event); ///< Event filter to override the default behavior of double-click in the table view
+   bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
 
 private: // member functions
 	ComboTableFrame(ComboTableFrame const&) = delete; ///< Disabled copy constructor
@@ -38,16 +38,16 @@ private: // member functions
    void setupContextMenu(); ///< Setup the context menu
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
-   void changeEvent(QEvent *event); ///< Change event handler
+   void changeEvent(QEvent *event) override; ///< Change event handler
 
 private slots:
-   void updateGui(); ///< Update the GUI state
+   void updateGui() const; ///< Update the GUI state
    void onActionAddCombo(); ///< Slot for the 'Add Combo' action
-   void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
+   void onActionDuplicateCombo() const; ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
-   void onActionSelectAll(); ///< Slot for the 'Select All' action
-   void onActionDeselectAll(); ///< Slot for the 'Deselect All' action
+   void onActionSelectAll() const; ///< Slot for the 'Select All' action
+   void onActionDeselectAll() const; ///< Slot for the 'Deselect All' action
    void onActionEnableDisableCombo(); ///< Slot for the 'Enable/Disable' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
    void onContextMenuRequested(); ///< Slot for the combo table context menu

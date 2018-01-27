@@ -20,7 +20,7 @@
 /// \param[in] parent The parent widget of the dialog
 /// \return true if and only if the user validated the dialog
 //**********************************************************************************************************************
-bool ComboDialog::run(SPCombo combo, QString const& title, QWidget* parent)
+bool ComboDialog::run(SPCombo const& combo, QString const& title, QWidget* parent)
 {
    return QDialog::Accepted == ComboDialog(combo, title, parent).exec();
 }
@@ -30,7 +30,7 @@ bool ComboDialog::run(SPCombo combo, QString const& title, QWidget* parent)
 /// \param[in] title The title to display in the dialog's title bar
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ComboDialog::ComboDialog(SPCombo combo, QString const& title, QWidget* parent)
+ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
    , combo_(combo)
    , validator_()
@@ -66,7 +66,8 @@ bool ComboDialog::checkAndReportInvalidCombo()
       QMessageBox::critical(this, tr("Error"), tr("The substitution text is empty."));
       return false;
    }
-   if (QValidator::Acceptable != validator_.validate(ui_.editCombo->text()))
+   QString text = ui_.editCombo->text();
+   if (QValidator::Acceptable != validator_.validate(text))
    {
       QMessageBox::critical(this, tr("Error"), tr("The combo text is invalid."));
       return false;
@@ -107,9 +108,10 @@ void ComboDialog::onActionOk()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboDialog::updateGui()
+void ComboDialog::updateGui() const
 {
-   bool const canAccept = (QValidator::Acceptable == validator_.validate(ui_.editCombo->text())) &&
+   QString text = ui_.editCombo->text();
+   bool const canAccept = (QValidator::Acceptable == validator_.validate(text)) &&
       (!ui_.editSubstitution->toPlainText().isEmpty());
    ui_.actionOk->setEnabled(canAccept);
    ui_.buttonOk->setEnabled(canAccept);

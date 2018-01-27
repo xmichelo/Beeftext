@@ -45,7 +45,7 @@ private: // member functions
 
 private slots:
    void onWorkerFinished(); ///< Slot for the finishing of the worker
-   void onWorkerUpdateIsAvailable(SPLatestVersionInfo latestVersionInfo); ///< Slot for the reporting of new version
+   void onWorkerUpdateIsAvailable(SPLatestVersionInfo const& latestVersionInfo); ///< Slot for the reporting of new version
    void onWorkerNoUpdateIsAvailable(); ///< Slot for the notification that no update is available
    void onWorkerError(QString const& error); ///< Slot for worker errors
 

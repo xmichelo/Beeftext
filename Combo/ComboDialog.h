@@ -22,10 +22,10 @@ class ComboDialog: public QDialog
 {
    Q_OBJECT
 public:
-   static bool run(SPCombo combo, QString const& title = QString(), QWidget* parent = nullptr);
+   static bool run(SPCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr);
 
 public: // member functions
-	ComboDialog(SPCombo combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
+	ComboDialog(SPCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
 	~ComboDialog() = default; ///< Default destructor
 	SPCombo combo() const; ///< Get the combo
    bool checkAndReportInvalidCombo(); ///< Check the combo text against existing combos and report conflicts
@@ -38,7 +38,7 @@ private: // member functions
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
-   void updateGui(); ///< Update the GUI state
+   void updateGui() const; ///< Update the GUI state
 
 private: // data members
    Ui::ComboDialog ui_; ///< The GUI for the dialog

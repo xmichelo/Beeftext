@@ -23,8 +23,8 @@ namespace {
 class ComboTableProxyStyle : public QProxyStyle
 {
 public:
-   virtual void drawPrimitive(PrimitiveElement element, const QStyleOption * option,
-      QPainter * painter, const QWidget * widget = 0) const
+   void drawPrimitive(PrimitiveElement element, const QStyleOption * option,
+      QPainter * painter, const QWidget * widget = nullptr) const override
    {
       if (PE_FrameFocusRect != element)
          QProxyStyle::drawPrimitive(element, option, painter, widget);
@@ -165,7 +165,7 @@ void ComboTableFrame::changeEvent(QEvent *event)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::updateGui()
+void ComboTableFrame::updateGui() const
 {
    qint32 const selectedCount = this->getSelectedComboCount();
    bool const hasOneSelected = (1 == selectedCount);
@@ -200,7 +200,7 @@ void ComboTableFrame::updateGui()
 //**********************************************************************************************************************
 void ComboTableFrame::onActionAddCombo()
 {
-   SPCombo combo = Combo::create();
+   SPCombo const combo = Combo::create();
    if (!ComboDialog::run(combo, tr("Add Combo")))
       return;
    ComboManager& comboManager = ComboManager::instance();
@@ -215,16 +215,16 @@ void ComboTableFrame::onActionAddCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionDuplicateCombo()
+void ComboTableFrame::onActionDuplicateCombo() const
 {
    QList<qint32> const selectedIndex = this->getSelectedComboIndexes();
    if (1 != selectedIndex.size())
       return;
    ComboManager& comboManager = ComboManager::instance();
    ComboList& comboList = comboManager.getComboListRef();
-   qint32 index = selectedIndex[0];
+   qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
-   SPCombo combo = Combo::duplicate(*comboList[index]);
+   SPCombo const combo = Combo::duplicate(*comboList[index]);
 
    if (!ComboDialog::run(combo, tr("Duplicate Combo")))
       return;
@@ -239,7 +239,7 @@ void ComboTableFrame::onActionDeleteCombo()
    qint32 const count = this->getSelectedComboCount();
    if (count < 1)
       return;
-   QString question = count > 1 ? tr("Are you sure you want to delete the selected combos?")
+   QString const question = count > 1 ? tr("Are you sure you want to delete the selected combos?")
       : tr("Are you sure you want to delete the selected combo?");
    if (QMessageBox::Yes != QMessageBox::question(nullptr, tr("Delete Combo?"), question,
       QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
@@ -267,9 +267,9 @@ void ComboTableFrame::onActionEditCombo()
 
    ComboManager& comboManager = ComboManager::instance();
    ComboList& comboList = comboManager.getComboListRef();
-   qint32 index = selectedIndex[0];
+   qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
-   SPCombo combo = comboList[index];
+   SPCombo const combo = comboList[index];
    if (!ComboDialog::run(combo, tr("Edit Combo")))
       return;
    comboList.markComboAsEdited(index);
@@ -282,7 +282,7 @@ void ComboTableFrame::onActionEditCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionSelectAll()
+void ComboTableFrame::onActionSelectAll() const
 {
    ui_.tableComboList->selectAll();
 }
@@ -291,7 +291,7 @@ void ComboTableFrame::onActionSelectAll()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionDeselectAll()
+void ComboTableFrame::onActionDeselectAll() const
 {
    ui_.tableComboList->clearSelection();
 }
@@ -308,7 +308,7 @@ void ComboTableFrame::onActionEnableDisableCombo()
 
    ComboManager& comboManager = ComboManager::instance();
    ComboList& comboList = comboManager.getComboListRef();
-   qint32 index = selectedIndex[0];
+   qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
    SPCombo combo = comboList[index];
    combo->setEnabled(!combo->isEnabled());

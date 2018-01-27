@@ -16,7 +16,7 @@
 /// \param[in] shortcut The shortcut
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ShortcutDialog::ShortcutDialog(SPShortcut shortcut, QWidget* parent)
+ShortcutDialog::ShortcutDialog(SPShortcut const& shortcut, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
    , shortcut_(shortcut)
 {
@@ -40,7 +40,7 @@ SPShortcut ShortcutDialog::shortcut() const
 void ShortcutDialog::keyPressEvent(QKeyEvent *event)
 {
    event->ignore(); // we intercept all key events
-   SPShortcut shortcut = std::make_shared<Shortcut>(event->modifiers(), event->nativeVirtualKey(),
+   SPShortcut const shortcut = std::make_shared<Shortcut>(event->modifiers(), event->nativeVirtualKey(),
       event->nativeScanCode());
    if (!shortcut->isValid())
       return;
@@ -52,7 +52,7 @@ void ShortcutDialog::keyPressEvent(QKeyEvent *event)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ShortcutDialog::updateGui()
+void ShortcutDialog::updateGui() const
 {
    ui_.editShortcut->setText(shortcut_ ? shortcut_->toString() : "");
    ui_.buttonOK->setEnabled(shortcut_.get());

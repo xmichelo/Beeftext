@@ -29,7 +29,7 @@ public: // static functions
 
 public: // member functions
 	~I18nManager() = default; ///< Default destructor
-   QLocale locale() const; ///< Get the current locale
+   static QLocale locale(); ///< Get the current locale
    void setLocale(QLocale const& locale); ///< Set the current locale
    void loadTranslation(); ///< Load the translation
    void unloadTranslation(); ///< Unload the translation

@@ -14,7 +14,6 @@
 
 namespace {
 qint32 const kJsonComboListFileFormatVersionNumber = 1; ///< The version number for the combo list file format
-QString const kDefaultGroupName = "Default"; ///< The default combo group name
 QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for the file format version
 QString const kKeyCombos = "combos"; ///< The JSon key for combos
 }
@@ -224,11 +223,11 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
       QJsonValue const combosListValue = rootObject[kKeyCombos];
       if (!combosListValue.isArray())
          throw xmilib::Exception("The list of combos is not a valid array");
-      for (QJsonValue const& comboGroupValue : combosListValue.toArray())
+      for (QJsonValueRef const& comboGroupValue : combosListValue.toArray())
       {
          if (!comboGroupValue.isObject())
             throw xmilib::Exception("The combo list array contains an invalid combo.");
-         SPCombo combo = Combo::create(comboGroupValue.toObject());
+         SPCombo const combo = Combo::create(comboGroupValue.toObject());
          if ((!combo) || (!combo->isValid()))
             throw xmilib::Exception("One of the combo in the list is invalid");
          this->append(combo);
@@ -249,7 +248,7 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
 //**********************************************************************************************************************
 void ComboList::markComboAsEdited(qint32 index)
 {
-   Q_ASSERT((index >= 0) && (index < combos_.size()));
+   Q_ASSERT((index >= 0) && (index < qint32(combos_.size())));
    emit dataChanged(this->index(0, 0), this->index(0, this->rowCount() - 1), QVector<int>() << Qt::DisplayRole);
 }
 
@@ -280,10 +279,10 @@ int ComboList::columnCount(QModelIndex const&) const
 QVariant ComboList::data(QModelIndex const& index, int role) const
 {
    qint32 const row = index.row();
-   if ((row < 0) || (row >= combos_.size()))
+   if ((row < 0) || (row >= qint32(combos_.size())))
       return QVariant();
 
-   SPCombo combo = combos_[row];
+   SPCombo const combo = combos_[row];
 
    if (Qt::DisplayRole == role)   
       switch (index.column())

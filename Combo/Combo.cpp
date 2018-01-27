@@ -232,10 +232,10 @@ void Combo::performSubstitution()
       
       restoreModifierKeys(pressedModifiers); ///< We restore the modifiers that we desactivated at the beginning of the function
    }
-   catch (xmilib::Exception const& e)
+   catch (xmilib::Exception const&)
    {
       inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
-      throw e;
+      throw;
    }
    inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
 }
@@ -244,7 +244,7 @@ void Combo::performSubstitution()
 //**********************************************************************************************************************
 /// \return A JSon object representing this Combo instance
 //**********************************************************************************************************************
-QJsonObject Combo::toJsonObject()
+QJsonObject Combo::toJsonObject() const
 {
    QJsonObject result;
    result.insert(kPropUuid, uuid_.toString());

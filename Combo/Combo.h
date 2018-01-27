@@ -41,7 +41,7 @@ public: // member functions
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
    void performSubstitution(); ///< Perform the combo substitution
-   QJsonObject toJsonObject(); ///< Serialize the combo in a JSon object
+   QJsonObject toJsonObject() const; ///< Serialize the combo in a JSon object
 
 public: // static functions
    static SPCombo create(QString const& name = QString(), QString const& aComboText = QString(),

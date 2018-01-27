@@ -18,7 +18,6 @@
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
 #include "MainWindow.h"
-#include <XMiLib/Exception.h>
 
 
 using namespace xmilib;
@@ -62,7 +61,7 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::loadPreferences()
+void PreferencesFrame::loadPreferences() const
 {
    QSignalBlocker blockers[] =  { QSignalBlocker(ui_.checkPlaySoundOnCombo),
       QSignalBlocker(ui_.checkAutoCheckForUpdates), QSignalBlocker(ui_.checkUseClipboardForComboSubstitution),
@@ -77,7 +76,7 @@ void PreferencesFrame::loadPreferences()
       ui_.radioComboTriggerAuto->setChecked(true);
    else
       ui_.radioComboTriggerManual->setChecked(true);
-   SPShortcut shortcut = InputManager::instance().comboTriggerShortcut();
+   SPShortcut const shortcut = InputManager::instance().comboTriggerShortcut();
    ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
 }
@@ -86,7 +85,7 @@ void PreferencesFrame::loadPreferences()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::applyAutoStartPreference()
+void PreferencesFrame::applyAutoStartPreference() const
 {
    if (prefs_.autoStartAtLogin())
    {
@@ -101,7 +100,7 @@ void PreferencesFrame::applyAutoStartPreference()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::applyThemePreference()
+void PreferencesFrame::applyThemePreference() const
 {
    qApp->setStyleSheet(prefs_.useCustomTheme() ? constants::kStyleSheet : QString());
 }
@@ -146,7 +145,7 @@ void PreferencesFrame::changeEvent(QEvent *event)
    if (QEvent::LanguageChange == event->type())
    {
       ui_.retranslateUi(this);
-      SPShortcut shortcut = InputManager::instance().comboTriggerShortcut();
+      SPShortcut const shortcut = InputManager::instance().comboTriggerShortcut();
       ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
    }
    QFrame::changeEvent(event);
@@ -156,7 +155,7 @@ void PreferencesFrame::changeEvent(QEvent *event)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::updateGuiState()
+void PreferencesFrame::updateGuiState() const
 {
    bool const manualTrigger = !prefs_.useAutomaticSubstitution();
    ui_.editShortcut->setEnabled(manualTrigger);
@@ -174,14 +173,14 @@ void PreferencesFrame::onActionResetToDefaultValues()
       "the preferences to their default values?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
       return;
    PreferencesManager& prefs = PreferencesManager::instance();
-   QString oldComboListFolderPath = prefs.comboListFolderPath();
+   QString const oldComboListFolderPath = prefs.comboListFolderPath();
    prefs_.reset();
    InputManager::instance().setComboTriggerShortcut(prefs_.comboTriggerShortcut());
    this->loadPreferences();
    this->applyAutoStartPreference();
    this->applyThemePreference();
    this->applyComboListFolderPreference(prefs.comboListFolderPath(), oldComboListFolderPath);
-   InputManager::instance().setComboTriggerShortcut(prefs_.defaultComboTriggerShortcut());
+   InputManager::instance().setComboTriggerShortcut(PreferencesManager::defaultComboTriggerShortcut());
 }
 
 
@@ -213,19 +212,19 @@ void PreferencesFrame::onActionChangeComboListFolder()
 void PreferencesFrame::onActionResetComboListFolder()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
-   this->applyComboListFolderPreference(prefs.defaultComboListFolderPath(), prefs. comboListFolderPath());
+   this->applyComboListFolderPreference(PreferencesManager::defaultComboListFolderPath(), prefs. comboListFolderPath());
 }
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onActionChangeShortcut()
+void PreferencesFrame::onActionChangeShortcut() const
 {
    ShortcutDialog dlg(InputManager::instance().comboTriggerShortcut());
    if (QDialog::Accepted != dlg.exec())
       return;
-   SPShortcut shortcut = dlg.shortcut();
+   SPShortcut const shortcut = dlg.shortcut();
    ui_.editShortcut->setText(shortcut->toString());
    InputManager::instance().setComboTriggerShortcut(shortcut);
 }
@@ -234,9 +233,9 @@ void PreferencesFrame::onActionChangeShortcut()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onActionResetComboTriggerShortcut()
+void PreferencesFrame::onActionResetComboTriggerShortcut() const
 {
-   SPShortcut shortcut = prefs_.defaultComboTriggerShortcut();
+   SPShortcut const shortcut = PreferencesManager::defaultComboTriggerShortcut();
    InputManager::instance().setComboTriggerShortcut(shortcut);
    ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
 }
@@ -245,7 +244,7 @@ void PreferencesFrame::onActionResetComboTriggerShortcut()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onPlaySoundOnComboCheckChanged()
+void PreferencesFrame::onPlaySoundOnComboCheckChanged() const
 {
    prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
 }
@@ -254,7 +253,7 @@ void PreferencesFrame::onPlaySoundOnComboCheckChanged()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onAutoStartCheckChanged()
+void PreferencesFrame::onAutoStartCheckChanged() const
 {
    prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
    this->applyAutoStartPreference();
@@ -264,7 +263,7 @@ void PreferencesFrame::onAutoStartCheckChanged()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onAutoCheckForUpdatesCheckChanged()
+void PreferencesFrame::onAutoCheckForUpdatesCheckChanged() const
 {
    prefs_.setAutoCheckForUpdates(ui_.checkAutoCheckForUpdates->isChecked());
 }
@@ -273,7 +272,7 @@ void PreferencesFrame::onAutoCheckForUpdatesCheckChanged()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onUseCustomThemeCheckChanged()
+void PreferencesFrame::onUseCustomThemeCheckChanged() const
 {
    prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
    this->applyThemePreference();
@@ -283,7 +282,7 @@ void PreferencesFrame::onUseCustomThemeCheckChanged()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onRadioAutomaticComboTriggerChecked(bool checked)
+void PreferencesFrame::onRadioAutomaticComboTriggerChecked(bool checked) const
 {
    prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
    this->updateGuiState();
@@ -293,7 +292,7 @@ void PreferencesFrame::onRadioAutomaticComboTriggerChecked(bool checked)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged()
+void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged() const
 {
    prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
 }
@@ -302,18 +301,18 @@ void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PreferencesFrame::onLocaleChanged()
+void PreferencesFrame::onLocaleChanged() const
 {
-   QLocale locale = I18nManager::getSelectedLocaleInCombo(*ui_.comboLocale);
+   QLocale const locale = I18nManager::getSelectedLocaleInCombo(*ui_.comboLocale);
    prefs_.setLocale(locale);
    I18nManager::instance().setLocale(locale);
 }
 
 
 //**********************************************************************************************************************
-// 
+/// \param[in] latestVersionInfo The latest version information
 //**********************************************************************************************************************
-void PreferencesFrame::onUpdateIsAvailable(SPLatestVersionInfo latestVersionInfo)
+void PreferencesFrame::onUpdateIsAvailable(SPLatestVersionInfo const& latestVersionInfo)
 {
    this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2.%3 is available.").arg(constants::kApplicationName)
       .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor()) 

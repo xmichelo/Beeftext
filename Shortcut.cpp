@@ -56,7 +56,7 @@ Shortcut::Shortcut(Qt::KeyboardModifiers const& modifiers, quint32 nativeVirtual
 //**********************************************************************************************************************
 /// \return A string describing the shortcut
 //**********************************************************************************************************************
-QString Shortcut::toString()
+QString Shortcut::toString() const
 {
    QString result;
    if (modifiers_ & Qt::ControlModifier)

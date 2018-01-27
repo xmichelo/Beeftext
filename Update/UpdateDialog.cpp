@@ -24,7 +24,7 @@ using namespace xmilib;
 /// \param[in] latestVersionInfo The latest version information
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-UpdateDialog::UpdateDialog(SPLatestVersionInfo latestVersionInfo, QWidget* parent)
+UpdateDialog::UpdateDialog(SPLatestVersionInfo const& latestVersionInfo, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
    , latestVersionInfo_(latestVersionInfo)
    , hashCalculator_(QCryptographicHash::Sha256)
@@ -163,7 +163,7 @@ void UpdateDialog::onDownloadError(QNetworkReply::NetworkError error)
 /// \param[in] bytesReceived The number of bytes already received
 /// \param[in] bytesTotal The total number of bytes to download
 //**********************************************************************************************************************
-void UpdateDialog::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
+void UpdateDialog::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) const
 {
    if (!reply_)
       throw xmilib::Exception("Internal casting error during download progress callback.");

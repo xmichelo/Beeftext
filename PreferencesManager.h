@@ -49,13 +49,13 @@ public: // member functions
    void setUseCustomTheme(bool value); ///< Set the value for the 'Use custom theme' preference
    bool useCustomTheme() const; ///< Get the value for the 'Use custom theme' preference
    void setUseAutomaticSubstitution(bool value); ///< Set the value for the 'Use automatic substitution' preference
-   bool useAutomaticSubstitution(); ///< Get the value for the 'Use automatic substitution' preference
-   void setComboListFolderPath(QString const value); ///< Set the path of the folder for saving the combo list
+   bool useAutomaticSubstitution() const; ///< Get the value for the 'Use automatic substitution' preference
+   void setComboListFolderPath(QString const& value); ///< Set the path of the folder for saving the combo list
    QString comboListFolderPath() const; ///< Get the path of the folder for saving the combo list
-   QString defaultComboListFolderPath() const; ///< Get the default combo list folder path
+   static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
    void setComboTriggerShortcut(SPShortcut const& shortcut); ///< Set the combo trigger shortcut
    SPShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
-   SPShortcut defaultComboTriggerShortcut() const; ///< Reset the combo trigger shortcut to its default value
+   static SPShortcut defaultComboTriggerShortcut(); ///< Reset the combo trigger shortcut to its default value
 
 signals:
    void autoCheckForUpdatesChanged(bool value); // Signal emitted when the 'Auto check for updates' preference value changed

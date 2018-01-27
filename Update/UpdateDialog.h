@@ -22,7 +22,7 @@ class UpdateDialog: public QDialog
 {
    Q_OBJECT
 public: // member functions
-	UpdateDialog(SPLatestVersionInfo lastestVersionInfo, QWidget* parent = nullptr); ///< Default constructor
+	UpdateDialog(SPLatestVersionInfo const& lastestVersionInfo, QWidget* parent = nullptr); ///< Default constructor
 	~UpdateDialog() = default; ///< Default destructor
 	
 private slots:
@@ -30,7 +30,7 @@ private slots:
    void onActionSkip(); ///< Callback for the 'Skip' action
    void onDownloadFinished(); ///< Slot for the finishing of the download operation
    void onDownloadError(QNetworkReply::NetworkError error); ///< Slot 
-   void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal); ///< Slot for download progress reports
+   void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) const; ///< Slot for download progress reports
    void onDownloadDataAvailable(); ///< Slot for the availability of downloaded data
 
 private: // member functions

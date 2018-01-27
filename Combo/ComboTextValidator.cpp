@@ -43,7 +43,7 @@ ComboTextValidator::ComboTextValidator(QObject* parent)
 void ComboTextValidator::fixup(QString& input) const
 {
    QString result;
-   for (QChar c : input)
+   for (QChar const c : input)
       if (isCharacterAcceptable(c))
          result.append(c);
    input.swap(result);
@@ -52,9 +52,10 @@ void ComboTextValidator::fixup(QString& input) const
 
 //**********************************************************************************************************************
 /// \param[in] input The input text to validate
+/// \param[in] pos unused
 /// \return The validation state of the text
 //**********************************************************************************************************************
-QValidator::State ComboTextValidator::validate(QString& input, int&) const
+QValidator::State ComboTextValidator::validate(QString& input, int& pos) const
 {
    if (input.isEmpty())
       return QValidator::Intermediate;

@@ -19,7 +19,7 @@ class Shortcut
 public: // member functions
 	Shortcut(Qt::KeyboardModifiers const& modifiers, quint32 nativeKey, quint32 nativeScanCode); ///< Default constructor
 	~Shortcut() = default; ///< Default destructor
-   QString toString(); ///< Return a string representation of the shortcut
+   QString toString() const; ///< Return a string representation of the shortcut
    bool isValid() const; ///< Check whether a shortcut is valid
    Qt::KeyboardModifiers nativeModifiers() const; ///< Return the native modifiers field of the shortcut
    quint32 nativeVirtualKey() const; ///< Return the native virtual key of the shortcut

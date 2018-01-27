@@ -65,8 +65,10 @@ int main(int argc, char *argv[])
       debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
+      // ReSharper disable CppDeclaratorNeverUsed
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       UpdateManager& updateManager = UpdateManager::instance(); // we make sure the update manager singleton is instanciated
+      // ReSharper restore CppDeclaratorNeverUsed
       PreferencesManager& prefs = PreferencesManager::instance();
       I18nManager& i18nManager = I18nManager::instance();
       i18nManager.setLocale(prefs.locale());
@@ -77,7 +79,7 @@ int main(int argc, char *argv[])
       if (!prefs.alreadyLaunched())
          window.show();
       prefs.setAlreadyLaunched();
-      qint32 returnCode = app.exec();
+      qint32 const returnCode = app.exec();
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
       i18nManager.unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
       return returnCode;
