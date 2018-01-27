@@ -206,12 +206,12 @@ void Combo::performSubstitution()
 
       // we erase the combo
       synthesizeBackspaces(comboText_.size());
-
       if (PreferencesManager::instance().useClipboardForComboSubstitution())
       {
-         ClipboardManager::instance().backupClipboard();
+         ClipboardManager& clipboardManager = ClipboardManager::instance();
+         clipboardManager.backupClipboard();
          // we use the clipboard to and copy/paste the substitution
-         QApplication::clipboard()->setText(substitutionText());
+         QApplication::clipboard()->setText(evaluatedSubstitutionText(clipboardManager.text()));
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
@@ -220,7 +220,7 @@ void Combo::performSubstitution()
       else
       {
          // we simulate the typing of the substitution text
-         for (QChar c : substitutionText_)
+         for (QChar c : this->evaluatedSubstitutionText(qApp->clipboard()->text()))
          {
             if (c == QChar::LineFeed) // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
                synthesizeKeyDownAndUp(VK_RETURN);
@@ -239,6 +239,7 @@ void Combo::performSubstitution()
    }
    inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
 }
+
 
 
 //**********************************************************************************************************************
@@ -304,6 +305,18 @@ SPCombo Combo::duplicate(Combo const& combo)
 void Combo::touch()
 {
    lastModified_ = QDateTime::currentDateTime();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] currentClipboardText The text contained in the clipboard
+/// \return The substitution text once it has been evaluated
+//**********************************************************************************************************************
+QString Combo::evaluatedSubstitutionText(QString const& currentClipboardText) const
+{
+   QString result = substitutionText_;
+   result.replace("#{clipboard}", currentClipboardText, Qt::CaseSensitive);
+   return result;
 }
 
 

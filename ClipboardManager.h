@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT_CLIPBOARD__MANAGER__H
-#define BEEFTEXT_CLIPBOARD__MANAGER__H
+#ifndef BEEFTEXT__CLIPBOARD__MANAGER__H
+#define BEEFTEXT__CLIPBOARD__MANAGER__H
 
 
 //**********************************************************************************************************************
@@ -22,6 +22,7 @@ public: // member functions
    void backupClipboard(); ///< backup the clipboard
    void restoreClipboard(); ///< Restore the clipboard and delete the current backup
    bool hasBackup() const; ///< Test if the clipboard is empty
+   QString text() const; ///< Retrieve the plain text stored in the clipboard backup
 
 private: // member functions
    ClipboardManager() = default; ///< Default constructor
@@ -45,4 +46,4 @@ private: // data members
 };
 
 
-#endif // #ifndef BEEFTEXT_CLIPBOARD__MANAGER__H
+#endif // #ifndef BEEFTEXT__CLIPBOARD__MANAGER__H
