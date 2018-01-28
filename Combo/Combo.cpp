@@ -207,12 +207,14 @@ void Combo::performSubstitution()
 
       // we erase the combo
       synthesizeBackspaces(comboText_.size());
+      int cursorPos = -1;
+      QString const evaluatedText = evaluatedSubstitutionText(&cursorPos);
       if (PreferencesManager::instance().useClipboardForComboSubstitution())
       {
+         // we use the clipboard to and copy/paste the substitution
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
-         // we use the clipboard to and copy/paste the substitution
-         QApplication::clipboard()->setText(evaluatedSubstitutionText());
+         QApplication::clipboard()->setText(evaluatedText);
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
@@ -221,7 +223,7 @@ void Combo::performSubstitution()
       else
       {
          // we simulate the typing of the substitution text
-         for (QChar c : this->evaluatedSubstitutionText())
+         for (QChar c : evaluatedText)
          {
             if (c == QChar::LineFeed) // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
                synthesizeKeyDownAndUp(VK_RETURN);
@@ -230,8 +232,16 @@ void Combo::performSubstitution()
             synthesizeUnicodeKeyDownAndUp(c.unicode());
          }
       }
-      
-      restoreModifierKeys(pressedModifiers); ///< We restore the modifiers that we deactivated at the beginning of the function
+
+      // position the cursor if needed by typing the right amount of left key strokes
+      if (cursorPos > 0)
+      {
+         for (qint32 i = 0; i < qMax<qint32>(0, evaluatedText.size() - cursorPos); ++i)
+            synthesizeKeyDownAndUp(VK_LEFT);
+      }
+
+      ///< We restore the modifiers that we deactivated at the beginning of the function
+      restoreModifierKeys(pressedModifiers); 
    }
    catch (xmilib::Exception const&)
    {
@@ -240,7 +250,6 @@ void Combo::performSubstitution()
    }
    inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
 }
-
 
 
 //**********************************************************************************************************************
@@ -310,10 +319,12 @@ void Combo::touch()
 
 
 //**********************************************************************************************************************
+/// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
 /// \return The substitution text once it has been evaluated
 //**********************************************************************************************************************
-QString Combo::evaluatedSubstitutionText() const
+QString Combo::evaluatedSubstitutionText(qint32* outCursorPos) const
 {
+
    QString remainingText = substitutionText_;
    QString result;
 
@@ -328,9 +339,22 @@ QString Combo::evaluatedSubstitutionText() const
       if (!match.hasMatch())
          return result + remainingText;
       
-      // we add the text before the placeholder and the evaluated placeholder contents to the result
-      result += remainingText.left(match.capturedStart(1)) + evaluatePlaceholder(match.captured(2));
-      
+      // we add the text before the placeholder
+      result += remainingText.left(match.capturedStart(1));
+
+      QString const placeholder = match.captured(2);
+      if ("cursor" == placeholder)
+      {
+         // we compute the position of the cursor
+         if (outCursorPos)
+            *outCursorPos = result.size();
+      }
+      else
+      {
+         // we add the text before the placeholder and the evaluated placeholder contents to the result
+         result += evaluatePlaceholder(match.captured(2));
+      }
+
       // we still need to evaluate the text that was at the right of the placeholder
       remainingText = remainingText.right(remainingText.size() - match.capturedEnd(1));
    }

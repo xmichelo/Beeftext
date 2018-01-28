@@ -37,6 +37,7 @@ public: // member functions
 	QString comboText() const; ///< retrieve the combo text
    void setComboText(QString const& comboText); ///< Set the combo text
    QString substitutionText() const; ///< Retrieve the substitution text
+   QString evaluatedSubstitutionText(qint32* outCursorPos = nullptr) const; ///< Retrieve the the substitution text after having evaluated it
    void setSubstitutionText(QString const& substitutionText); ///< Set the substitution text
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
@@ -55,7 +56,6 @@ private: // member functions
 	Combo& operator=(Combo const&) = delete; ///< Disabled assignment operator
 	Combo& operator=(Combo&&) = delete; ///< Disabled move assignment operator
    void touch(); ///< set the modification date/time to now
-   QString Combo::evaluatedSubstitutionText() const; ///< Retrieve the the substitution text after having evaluated it
 
 private: // data member
    QUuid uuid_; ///< The UUID of the combo
