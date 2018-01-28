@@ -34,6 +34,7 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
    : QDialog(parent, constants::kDefaultDialogFlags)
    , combo_(combo)
    , validator_()
+   , substitutionEditMenu_(nullptr)
 {
    if (!combo)
       throw xmilib::Exception("%1(): combo is null.");
@@ -43,7 +44,63 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
    ui_.editCombo->setText(combo->comboText());
    ui_.editCombo->setValidator(&validator_); 
    ui_.editSubstitution->setPlainText(combo->substitutionText());
+   this->setupSubstitutionEditMenu();
    this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboDialog::setupSubstitutionEditMenu()
+{
+   connect(ui_.editSubstitution, &QPlainTextEdit::customContextMenuRequested,
+      this, &ComboDialog::onEditorContextMenuRequested);
+   substitutionEditMenu_ = ui_.editSubstitution->createStandardContextMenu();
+   QMenu* phMenu = new QMenu(tr("&Insert Placeholder"), this);
+
+   QAction *action = new QAction(tr("&Clipboard"), this);
+   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{clipboard}");});
+   phMenu->addAction(action);
+
+   QMenu* dtMenu = new QMenu(tr("&Date/Time"));
+   action = new QAction(tr("&Date"), this);
+   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{date}"); });
+   dtMenu->addAction(action);
+   action = new QAction(tr("&Time"), this);
+   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{time}"); });
+   dtMenu->addAction(action);   
+   action = new QAction(tr("D&ate && Time"), this);
+   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{dateTime}"); });
+   dtMenu->addAction(action);
+   action = new QAction(tr("&Custom Date && Time"), this);
+   connect(action, &QAction::triggered, [&]() { 
+      QTextCursor cursor = ui_.editSubstitution->textCursor();
+      cursor.beginEditBlock(); 
+      cursor.insertText("#{dateTime:}"); 
+      cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor); 
+      cursor.endEditBlock();
+      ui_.editSubstitution->setTextCursor(cursor);
+   });
+   dtMenu->addAction(action);
+   phMenu->addMenu(dtMenu);
+
+   action = new QAction(tr("C&ursor"), this);
+   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{cursor}"); });
+   phMenu->addAction(action);
+   action = new QAction(tr("Co&mbo"), this);
+   connect(action, &QAction::triggered, [&]() { 
+      QTextCursor cursor = ui_.editSubstitution->textCursor();
+      cursor.beginEditBlock();
+      cursor.insertText("#{combo:}");
+      cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor);
+      cursor.endEditBlock();
+      ui_.editSubstitution->setTextCursor(cursor);   
+   });
+   phMenu->addAction(action);
+
+   substitutionEditMenu_->addSeparator();
+   substitutionEditMenu_->addMenu(phMenu);
 }
 
 
@@ -102,6 +159,15 @@ void ComboDialog::onActionOk()
    combo_->setComboText(ui_.editCombo->text().trimmed());
    combo_->setSubstitutionText(ui_.editSubstitution->toPlainText());
    this->accept();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] pos The position of the cursor
+//**********************************************************************************************************************
+void ComboDialog::onEditorContextMenuRequested(QPoint const& pos)
+{
+   substitutionEditMenu_->popup(ui_.editSubstitution->viewport()->mapToGlobal(pos));
 }
 
 

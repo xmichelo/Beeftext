@@ -292,7 +292,11 @@ QMenu {
 }
 
 QMenu::item {
-   padding: 4px 10px 4px 10px;
+   padding: 4px 20px 4px 10px;
+}
+
+QMenuItem::item::right-arrow {
+   background-color: #f00;
 }
 
 QMenu::item:selected {

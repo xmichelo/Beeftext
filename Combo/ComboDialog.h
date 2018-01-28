@@ -35,15 +35,18 @@ private: // member functions
 	ComboDialog(ComboDialog&&) = delete; ///< Disabled move constructor
 	ComboDialog& operator=(ComboDialog const&) = delete; ///< Disabled assignment operator
 	ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
+   void setupSubstitutionEditMenu(); /// Setup the editor menus
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
+   void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu
    void updateGui() const; ///< Update the GUI state
 
 private: // data members
    Ui::ComboDialog ui_; ///< The GUI for the dialog
    SPCombo combo_; ///< The combo
    ComboTextValidator validator_; ///< The validator for the combo text
+   QMenu* substitutionEditMenu_; ///< The context menu for the substitution text editor
 };
 
 

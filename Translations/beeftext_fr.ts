@@ -30,40 +30,85 @@
         <translation>Nom:</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="45"/>
+        <location filename="../Combo/ComboDialog.ui" line="49"/>
         <source>Substitution Text:</source>
         <translation>Texte de Substitution:</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="100"/>
-        <location filename="../Combo/ComboDialog.ui" line="119"/>
+        <location filename="../Combo/ComboDialog.ui" line="104"/>
+        <location filename="../Combo/ComboDialog.ui" line="123"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="110"/>
+        <location filename="../Combo/ComboDialog.ui" line="114"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
+        <location filename="../Combo/ComboDialog.cpp" line="60"/>
+        <source>&amp;Insert Placeholder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="62"/>
+        <source>&amp;Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Combo/ComboDialog.cpp" line="66"/>
-        <location filename="../Combo/ComboDialog.cpp" line="72"/>
-        <location filename="../Combo/ComboDialog.cpp" line="84"/>
+        <source>&amp;Date/Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="67"/>
+        <source>&amp;Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="70"/>
+        <source>&amp;Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="73"/>
+        <source>D&amp;ate &amp;&amp; Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="76"/>
+        <source>&amp;Custom Date &amp;&amp; Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="88"/>
+        <source>C&amp;ursor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="91"/>
+        <source>Co&amp;mbo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="123"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="141"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="66"/>
+        <location filename="../Combo/ComboDialog.cpp" line="123"/>
         <source>The substitution text is empty.</source>
         <translation>Le texte de substitution est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="72"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
         <source>The combo text is invalid.</source>
         <translation>Le combo est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="84"/>
+        <location filename="../Combo/ComboDialog.cpp" line="141"/>
         <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
         <translation>Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
     </message>

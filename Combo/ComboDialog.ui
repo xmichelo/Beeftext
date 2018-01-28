@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>562</width>
-    <height>368</height>
+    <height>367</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,7 +37,11 @@
       </widget>
      </item>
      <item row="4" column="0" colspan="2">
-      <widget class="QPlainTextEdit" name="editSubstitution"/>
+      <widget class="QPlainTextEdit" name="editSubstitution">
+       <property name="contextMenuPolicy">
+        <enum>Qt::CustomContextMenu</enum>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0" colspan="2">
       <widget class="QLabel" name="labelSubstitution">
