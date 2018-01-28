@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "Combo.h"
 #include "PreferencesManager.h"
+#include "ComboManager.h"
 #include "ClipboardManager.h"
 #include "InputManager.h"
 #include <XMiLib/SystemUtils.h>
@@ -367,6 +368,7 @@ QString Combo::evaluatedSubstitutionText(qint32* outCursorPos) const
 //**********************************************************************************************************************
 QString evaluatePlaceholder(QString const& placeholder)
 {
+   QString const fallbackResult = QString("#{%1}").arg(placeholder);
    QLocale const systemLocale = QLocale::system();
    if (placeholder == "clipboard")
    {
@@ -390,6 +392,16 @@ QString evaluatePlaceholder(QString const& placeholder)
       return formatString.isEmpty() ? QString() : systemLocale.toString(QDateTime::currentDateTime(), formatString);
    }
 
-   return QString("#{%1}").arg(placeholder); // we could not recognize the placeholder, so we put it back in the result
+   QString const kComboPlaceholder = "combo:";
+   if (placeholder.startsWith(kComboPlaceholder))
+   {
+      QString const comboName = placeholder.right(placeholder.size() - kComboPlaceholder.size());
+      ComboList const& combos = ComboManager::instance().getComboListRef();
+      ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(), 
+         [&comboName](SPCombo const& combo) -> bool { return combo->comboText() == comboName; });
+      return combos.end() == it ? fallbackResult : (*it)->substitutionText();
+   }
+
+   return fallbackResult ; // we could not recognize the placeholder, so we put it back in the result
 }
 

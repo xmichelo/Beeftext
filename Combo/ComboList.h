@@ -20,7 +20,7 @@
 class ComboList: public QAbstractTableModel
 {
    Q_OBJECT
-
+public: // type definitions
    typedef VecSPCombo::iterator iterator; ///< Type definition for iterator
    typedef VecSPCombo::const_iterator const_iterator; ///< Type definition for const_iterator
    typedef VecSPCombo::reverse_iterator reverse_iterator; ///< Type definition for iterator
