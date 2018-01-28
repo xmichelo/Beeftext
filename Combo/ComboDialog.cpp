@@ -57,20 +57,20 @@ void ComboDialog::setupSubstitutionEditMenu()
    connect(ui_.editSubstitution, &QPlainTextEdit::customContextMenuRequested,
       this, &ComboDialog::onEditorContextMenuRequested);
    substitutionEditMenu_ = ui_.editSubstitution->createStandardContextMenu();
-   QMenu* phMenu = new QMenu(tr("&Insert Placeholder"), this);
+   QMenu* phMenu = new QMenu(tr("&Insert Variable"), this);
 
-   QAction *action = new QAction(tr("&Clipboard"), this);
+   QAction *action = new QAction(tr("Clip&board Content"), this);
    connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{clipboard}");});
    phMenu->addAction(action);
 
    QMenu* dtMenu = new QMenu(tr("&Date/Time"));
-   action = new QAction(tr("&Date"), this);
+   action = new QAction(tr("D&ate"), this);
    connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{date}"); });
    dtMenu->addAction(action);
    action = new QAction(tr("&Time"), this);
    connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{time}"); });
    dtMenu->addAction(action);   
-   action = new QAction(tr("D&ate && Time"), this);
+   action = new QAction(tr("Dat&e && Time"), this);
    connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{dateTime}"); });
    dtMenu->addAction(action);
    action = new QAction(tr("&Custom Date && Time"), this);
@@ -85,7 +85,7 @@ void ComboDialog::setupSubstitutionEditMenu()
    dtMenu->addAction(action);
    phMenu->addMenu(dtMenu);
 
-   action = new QAction(tr("C&ursor"), this);
+   action = new QAction(tr("C&ursor Position"), this);
    connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{cursor}"); });
    phMenu->addAction(action);
    action = new QAction(tr("Co&mbo"), this);

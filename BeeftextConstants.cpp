@@ -295,10 +295,6 @@ QMenu::item {
    padding: 4px 20px 4px 10px;
 }
 
-QMenuItem::item::right-arrow {
-   background-color: #f00;
-}
-
 QMenu::item:selected {
    border: none;
    background-color: #258fc0;
@@ -307,6 +303,20 @@ QMenu::item:selected {
 
 QMenu::item:default {
    font-weight: bold;
+}
+
+QMenu::right-arrow {
+   width: 6px;
+   height: 6px;
+   top: 2px;
+   right: 2px;
+}
+
+QMenu::left-arrow {
+   width: 6px;
+   height: 6px;
+   top: 2px;
+   left: 2px;
 }
 
 QMenu::separator {

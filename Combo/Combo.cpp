@@ -36,7 +36,7 @@ using namespace xmilib;
 
 QList<quint16> backupAndReleaseModifierKeys(); ///< Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
 void restoreModifierKeys(QList<quint16> const& keys); ///< Restore the specified modifier keys state by generating a key press event for each of them
-QString evaluatePlaceholder(QString const& placeholder, QSet<QString> forbiddenSubCombos = QSet<QString>()); ///< Compute the contents of a placeholder
+QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubCombos = QSet<QString>()); ///< Compute the value of a variable
 
 
 //**********************************************************************************************************************
@@ -331,8 +331,8 @@ QString Combo::evaluatedSubstitutionText(qint32* outCursorPos, QSet<QString> for
    QString remainingText = substitutionText_;
    QString result;
 
-   // The following regular expression detects the first placeholder #{}, ensuring the closing } is not preceded by a \.
-   // Lazy (a.k.a. non-greedy) operators are used to match the first placeholder with the smallest possible contents
+   // The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \.
+   // Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents
    // inside the #{}.
    QRegularExpression const regexp(R"((#\{(.*?)(?<!\\)}))"); 
    
@@ -342,11 +342,11 @@ QString Combo::evaluatedSubstitutionText(qint32* outCursorPos, QSet<QString> for
       if (!match.hasMatch())
          return result + remainingText;
       
-      // we add the text before the placeholder
+      // we add the text before the variable
       result += remainingText.left(match.capturedStart(1));
 
-      QString const placeholder = match.captured(2);
-      if ("cursor" == placeholder)
+      QString const variable = match.captured(2);
+      if ("cursor" == variable)
       {
          // we compute the position of the cursor
          if (outCursorPos)
@@ -354,52 +354,52 @@ QString Combo::evaluatedSubstitutionText(qint32* outCursorPos, QSet<QString> for
       }
       else
       {
-         // we add the text before the placeholder and the evaluated placeholder contents to the result
-         result += evaluatePlaceholder(match.captured(2), forbiddenSubCombos);
+         // we add the text before the variable and the evaluated variable contents to the result
+         result += evaluateVariable(match.captured(2), forbiddenSubCombos);
       }
 
-      // we still need to evaluate the text that was at the right of the placeholder
+      // we still need to evaluate the text that was at the right of the variable
       remainingText = remainingText.right(remainingText.size() - match.capturedEnd(1));
    }
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] placeholder The placeholder, without the enclosing #{}
+/// \param[in] variable The variable, without the enclosing #{}
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion
-/// \return The result of evaluating the placeholder
+/// \return The result of evaluating the variable
 //**********************************************************************************************************************
-QString evaluatePlaceholder(QString const& placeholder, QSet<QString> forbiddenSubCombos)
+QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubCombos)
 {
-   QString const fallbackResult = QString("#{%1}").arg(placeholder);
+   QString const fallbackResult = QString("#{%1}").arg(variable);
    QLocale const systemLocale = QLocale::system();
-   if (placeholder == "clipboard")
+   if (variable == "clipboard")
    {
       QClipboard const* clipboard = qApp->clipboard();
       return clipboard ? clipboard->text() : QString();
    }
 
-   if (placeholder == "date")
+   if (variable == "date")
       return systemLocale.toString(QDate::currentDate());
 
-   if (placeholder == "time")
+   if (variable == "time")
       return systemLocale.toString(QTime::currentTime());
 
-   if (placeholder == "dateTime")
+   if (variable == "dateTime")
       return systemLocale.toString(QDateTime::currentDateTime());
 
-   QString const kCustomDateTimePlaceholder = "dateTime:";
-   if (placeholder.startsWith(kCustomDateTimePlaceholder))
+   QString const kCustomDateTimeVariable = "dateTime:";
+   if (variable.startsWith(kCustomDateTimeVariable))
    {
-      QString const formatString = placeholder.right(placeholder.size() - kCustomDateTimePlaceholder.size());
+      QString const formatString = variable.right(variable.size() - kCustomDateTimeVariable.size());
       return formatString.isEmpty() ? QString() : systemLocale.toString(QDateTime::currentDateTime(), formatString);
    }
 
-   QString const kComboPlaceholder = "combo:";
-   if (placeholder.startsWith(kComboPlaceholder))
+   QString const kComboVariable = "combo:";
+   if (variable.startsWith(kComboVariable))
    {
-      QString const comboName = placeholder.right(placeholder.size() - kComboPlaceholder.size());
+      QString const comboName = variable.right(variable.size() - kComboVariable.size());
       if (forbiddenSubCombos.contains(comboName))
          return fallbackResult;
       ComboList const& combos = ComboManager::instance().getComboListRef();
@@ -410,6 +410,6 @@ QString evaluatePlaceholder(QString const& placeholder, QSet<QString> forbiddenS
           : (*it)->evaluatedSubstitutionText(nullptr, forbiddenSubCombos << comboName);// forbiddenSubcombos is intended at avoiding endless recursion
    }
 
-   return fallbackResult ; // we could not recognize the placeholder, so we put it back in the result
+   return fallbackResult ; // we could not recognize the variable, so we put it back in the result
 }
 

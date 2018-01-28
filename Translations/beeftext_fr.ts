@@ -47,48 +47,60 @@
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="60"/>
-        <source>&amp;Insert Placeholder</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Insert Variable</source>
+        <translation>&amp;Insérer une Variable</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="62"/>
         <source>&amp;Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">&amp;Presse-Papier</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="66"/>
         <source>&amp;Date/Time</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Date/Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="67"/>
         <source>&amp;Date</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">D&amp;ate</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="70"/>
         <source>&amp;Time</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="73"/>
         <source>D&amp;ate &amp;&amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Da&amp;te &amp;&amp; Heure</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="76"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Date &amp;&amp; Heure &amp;Personnalisée</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="67"/>
+        <source>D&amp;ate</source>
+        <translation>D&amp;ate</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="62"/>
+        <source>Clip&amp;board Content</source>
+        <translation>&amp;Contenu du Presse-Papier</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="73"/>
+        <source>Dat&amp;e &amp;&amp; Time</source>
+        <translation>Dat&amp;e &amp;&amp; Heure</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="88"/>
-        <source>C&amp;ursor</source>
-        <translation type="unfinished"></translation>
+        <source>C&amp;ursor Position</source>
+        <translation>Position du C&amp;urseur</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="91"/>
         <source>Co&amp;mbo</source>
-        <translation type="unfinished"></translation>
+        <translation>Co&amp;mbo</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="123"/>
