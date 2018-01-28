@@ -37,7 +37,8 @@ public: // member functions
 	QString comboText() const; ///< retrieve the combo text
    void setComboText(QString const& comboText); ///< Set the combo text
    QString substitutionText() const; ///< Retrieve the substitution text
-   QString evaluatedSubstitutionText(qint32* outCursorPos = nullptr) const; ///< Retrieve the the substitution text after having evaluated it
+   QString evaluatedSubstitutionText(qint32* outCursorPos = nullptr, 
+      QSet<QString> forbiddenSubcombos = QSet<QString>()) const; ///< Retrieve the the substitution text after having evaluated it
    void setSubstitutionText(QString const& substitutionText); ///< Set the substitution text
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled

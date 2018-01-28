@@ -36,7 +36,7 @@ using namespace xmilib;
 
 QList<quint16> backupAndReleaseModifierKeys(); ///< Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
 void restoreModifierKeys(QList<quint16> const& keys); ///< Restore the specified modifier keys state by generating a key press event for each of them
-QString evaluatePlaceholder(QString const& placeholder); ///< Compute the contents of a placeholder
+QString evaluatePlaceholder(QString const& placeholder, QSet<QString> forbiddenSubCombos = QSet<QString>()); ///< Compute the contents of a placeholder
 
 
 //**********************************************************************************************************************
@@ -321,11 +321,13 @@ void Combo::touch()
 
 //**********************************************************************************************************************
 /// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
+/// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
+/// avoid endless recursion
 /// \return The substitution text once it has been evaluated
 //**********************************************************************************************************************
-QString Combo::evaluatedSubstitutionText(qint32* outCursorPos) const
+QString Combo::evaluatedSubstitutionText(qint32* outCursorPos, QSet<QString> forbiddenSubCombos) const
 {
-
+   forbiddenSubCombos += this->comboText();
    QString remainingText = substitutionText_;
    QString result;
 
@@ -353,7 +355,7 @@ QString Combo::evaluatedSubstitutionText(qint32* outCursorPos) const
       else
       {
          // we add the text before the placeholder and the evaluated placeholder contents to the result
-         result += evaluatePlaceholder(match.captured(2));
+         result += evaluatePlaceholder(match.captured(2), forbiddenSubCombos);
       }
 
       // we still need to evaluate the text that was at the right of the placeholder
@@ -364,9 +366,11 @@ QString Combo::evaluatedSubstitutionText(qint32* outCursorPos) const
 
 //**********************************************************************************************************************
 /// \param[in] placeholder The placeholder, without the enclosing #{}
+/// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
+/// avoid endless recursion
 /// \return The result of evaluating the placeholder
 //**********************************************************************************************************************
-QString evaluatePlaceholder(QString const& placeholder)
+QString evaluatePlaceholder(QString const& placeholder, QSet<QString> forbiddenSubCombos)
 {
    QString const fallbackResult = QString("#{%1}").arg(placeholder);
    QLocale const systemLocale = QLocale::system();
@@ -396,10 +400,14 @@ QString evaluatePlaceholder(QString const& placeholder)
    if (placeholder.startsWith(kComboPlaceholder))
    {
       QString const comboName = placeholder.right(placeholder.size() - kComboPlaceholder.size());
+      if (forbiddenSubCombos.contains(comboName))
+         return fallbackResult;
       ComboList const& combos = ComboManager::instance().getComboListRef();
       ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(), 
          [&comboName](SPCombo const& combo) -> bool { return combo->comboText() == comboName; });
-      return combos.end() == it ? fallbackResult : (*it)->substitutionText();
+      
+      return combos.end() == it ? fallbackResult 
+          : (*it)->evaluatedSubstitutionText(nullptr, forbiddenSubCombos << comboName);// forbiddenSubcombos is intended at avoiding endless recursion
    }
 
    return fallbackResult ; // we could not recognize the placeholder, so we put it back in the result
