@@ -46,7 +46,7 @@
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="60"/>
+        <location filename="../Combo/ComboDialog.cpp" line="71"/>
         <source>&amp;Insert Variable</source>
         <translation>&amp;Insérer une Variable</translation>
     </message>
@@ -55,7 +55,7 @@
         <translation type="vanished">&amp;Presse-Papier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="66"/>
+        <location filename="../Combo/ComboDialog.cpp" line="77"/>
         <source>&amp;Date/Time</source>
         <translation>&amp;Date/Heure</translation>
     </message>
@@ -64,7 +64,7 @@
         <translation type="vanished">D&amp;ate</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="70"/>
+        <location filename="../Combo/ComboDialog.cpp" line="81"/>
         <source>&amp;Time</source>
         <translation>&amp;Heure</translation>
     </message>
@@ -73,54 +73,54 @@
         <translation type="vanished">Da&amp;te &amp;&amp; Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="76"/>
+        <location filename="../Combo/ComboDialog.cpp" line="87"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation>Date &amp;&amp; Heure &amp;Personnalisée</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="67"/>
+        <location filename="../Combo/ComboDialog.cpp" line="78"/>
         <source>D&amp;ate</source>
         <translation>D&amp;ate</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="62"/>
+        <location filename="../Combo/ComboDialog.cpp" line="73"/>
         <source>Clip&amp;board Content</source>
         <translation>&amp;Contenu du Presse-Papier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="73"/>
+        <location filename="../Combo/ComboDialog.cpp" line="84"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation>Dat&amp;e &amp;&amp; Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="88"/>
+        <location filename="../Combo/ComboDialog.cpp" line="92"/>
         <source>C&amp;ursor Position</source>
         <translation>Position du C&amp;urseur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="91"/>
+        <location filename="../Combo/ComboDialog.cpp" line="95"/>
         <source>Co&amp;mbo</source>
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
-        <location filename="../Combo/ComboDialog.cpp" line="129"/>
-        <location filename="../Combo/ComboDialog.cpp" line="141"/>
+        <location filename="../Combo/ComboDialog.cpp" line="138"/>
+        <location filename="../Combo/ComboDialog.cpp" line="144"/>
+        <location filename="../Combo/ComboDialog.cpp" line="156"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
+        <location filename="../Combo/ComboDialog.cpp" line="138"/>
         <source>The substitution text is empty.</source>
         <translation>Le texte de substitution est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="144"/>
         <source>The combo text is invalid.</source>
         <translation>Le combo est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="141"/>
+        <location filename="../Combo/ComboDialog.cpp" line="156"/>
         <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
         <translation>Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
     </message>

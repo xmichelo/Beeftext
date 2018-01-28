@@ -57,50 +57,65 @@ void ComboDialog::setupSubstitutionEditMenu()
    connect(ui_.editSubstitution, &QPlainTextEdit::customContextMenuRequested,
       this, &ComboDialog::onEditorContextMenuRequested);
    substitutionEditMenu_ = ui_.editSubstitution->createStandardContextMenu();
-   QMenu* phMenu = new QMenu(tr("&Insert Variable"), this);
+
+   substitutionEditMenu_->addSeparator();
+   substitutionEditMenu_->addMenu(this->createComboVariableMenu());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+QMenu* ComboDialog::createComboVariableMenu()
+{
+   QMenu* menu = new QMenu(tr("&Insert Variable"), this);
 
    QAction *action = new QAction(tr("Clip&board Content"), this);
-   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{clipboard}");});
-   phMenu->addAction(action);
+   connect(action, &QAction::triggered, [&]() { this->insertTextInSubstitutionEdit("#{clipboard}", false); });
+   menu->addAction(action);
 
    QMenu* dtMenu = new QMenu(tr("&Date/Time"));
    action = new QAction(tr("D&ate"), this);
-   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{date}"); });
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{date}", false); });
    dtMenu->addAction(action);
    action = new QAction(tr("&Time"), this);
-   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{time}"); });
-   dtMenu->addAction(action);   
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{time}", false); });
+   dtMenu->addAction(action);
    action = new QAction(tr("Dat&e && Time"), this);
-   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{dateTime}"); });
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{dateTime}", false); });
    dtMenu->addAction(action);
    action = new QAction(tr("&Custom Date && Time"), this);
-   connect(action, &QAction::triggered, [&]() { 
-      QTextCursor cursor = ui_.editSubstitution->textCursor();
-      cursor.beginEditBlock(); 
-      cursor.insertText("#{dateTime:}"); 
-      cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor); 
-      cursor.endEditBlock();
-      ui_.editSubstitution->setTextCursor(cursor);
-   });
+   connect(action, &QAction::triggered, [this]() {this->insertTextInSubstitutionEdit("#{dateTime:}", true); });
    dtMenu->addAction(action);
-   phMenu->addMenu(dtMenu);
+   menu->addMenu(dtMenu);
 
    action = new QAction(tr("C&ursor Position"), this);
-   connect(action, &QAction::triggered, [&]() { ui_.editSubstitution->textCursor().insertText("#{cursor}"); });
-   phMenu->addAction(action);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{cursor}", false); });
+   menu->addAction(action);
    action = new QAction(tr("Co&mbo"), this);
-   connect(action, &QAction::triggered, [&]() { 
-      QTextCursor cursor = ui_.editSubstitution->textCursor();
-      cursor.beginEditBlock();
-      cursor.insertText("#{combo:}");
-      cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor);
-      cursor.endEditBlock();
-      ui_.editSubstitution->setTextCursor(cursor);   
-   });
-   phMenu->addAction(action);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{combo:}", true); });
+   menu->addAction(action);
+   return menu;
+}
 
-   substitutionEditMenu_->addSeparator();
-   substitutionEditMenu_->addMenu(phMenu);
+
+//**********************************************************************************************************************
+/// \param[in] text The text to insert
+/// \param[in] move1CharLeft Should the cursor be moved by one character to the left after insertion
+//**********************************************************************************************************************
+void ComboDialog::insertTextInSubstitutionEdit(QString const& text, bool move1CharLeft)
+{
+   QTextCursor cursor = ui_.editSubstitution->textCursor();
+   cursor.beginEditBlock();
+   cursor.insertText(text);
+   if (move1CharLeft)
+   {
+      cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
+      cursor.endEditBlock();
+      ui_.editSubstitution->setTextCursor(cursor); ///< Required to the cursor position change to take effect
+   }
+   else
+      cursor.endEditBlock();
 }
 
 

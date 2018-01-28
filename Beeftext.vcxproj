@@ -105,6 +105,7 @@
     <ClCompile Include="Combo\ComboSortFilterProxyModel.cpp" />
     <ClCompile Include="Combo\ComboTableFrame.cpp" />
     <ClCompile Include="Combo\ComboTextValidator.cpp" />
+    <ClCompile Include="Combo\ComboVariable.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_AboutFrame.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -322,6 +323,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </Command>
     </CustomBuild>
+    <ClInclude Include="Combo\ComboVariable.h" />
     <ClInclude Include="GeneratedFiles\ui_AboutFrame.h" />
     <ClInclude Include="GeneratedFiles\ui_ComboDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_ComboTableFrame.h" />

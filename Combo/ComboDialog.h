@@ -36,6 +36,8 @@ private: // member functions
 	ComboDialog& operator=(ComboDialog const&) = delete; ///< Disabled assignment operator
 	ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
    void setupSubstitutionEditMenu(); /// Setup the editor menus
+   QMenu* createComboVariableMenu(); ///< Create the combo variable menu
+   void insertTextInSubstitutionEdit(QString const& text, bool move1CharLeft = false); ///< Insert some text at the current cursor position in the substitution text edit control
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action

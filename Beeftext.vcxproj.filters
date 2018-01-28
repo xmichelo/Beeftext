@@ -171,6 +171,9 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Shortcut.cpp" />
+    <ClCompile Include="Combo\ComboVariable.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -204,6 +207,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Shortcut.h" />
+    <ClInclude Include="Combo\ComboVariable.h">
+      <Filter>Combo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
