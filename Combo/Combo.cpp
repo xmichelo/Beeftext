@@ -343,18 +343,29 @@ QString Combo::evaluatedSubstitutionText() const
 //**********************************************************************************************************************
 QString evaluatePlaceholder(QString const& placeholder)
 {
-
+   QLocale const systemLocale = QLocale::system();
    if (placeholder == "clipboard")
    {
       QClipboard const* clipboard = qApp->clipboard();
       return clipboard ? clipboard->text() : QString();
    }
+
    if (placeholder == "date")
-      return QDate::currentDate().toString();
+      return systemLocale.toString(QDate::currentDate());
+
    if (placeholder == "time")
-      return QTime::currentTime().toString();
+      return systemLocale.toString(QTime::currentTime());
+
    if (placeholder == "dateTime")
-      return QDateTime::currentDateTime().toString();
-   return QString("#{%1}").arg(placeholder); // we could not recognize the placeholder, so we put is as is back in the result
+      return systemLocale.toString(QDateTime::currentDateTime());
+
+   QString const kCustomDateTimePlaceholder = "dateTime:";
+   if (placeholder.startsWith(kCustomDateTimePlaceholder))
+   {
+      QString const formatString = placeholder.right(placeholder.size() - kCustomDateTimePlaceholder.size());
+      return formatString.isEmpty() ? QString() : systemLocale.toString(QDateTime::currentDateTime(), formatString);
+   }
+
+   return QString("#{%1}").arg(placeholder); // we could not recognize the placeholder, so we put it back in the result
 }
 
