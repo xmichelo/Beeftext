@@ -9,6 +9,21 @@
 #include "ComboManager.h"
 
 
+QString resolveEscapingInVariableParameter(QString paramStr); ///< Resolve the escaped characters ( \} and \\ in a variable parameter
+
+
+//**********************************************************************************************************************
+/// \param[in] The variable parameter
+/// \return The parameter where the escaped characters have been resolved
+//**********************************************************************************************************************
+QString resolveEscapingInVariableParameter(QString paramStr)
+{
+   paramStr.replace(R"(\\)", R"(\)");
+   paramStr.replace(R"(\})", R"(})");
+   return paramStr;
+}
+
+
 //**********************************************************************************************************************
 /// \param[in] variable The variable, without the enclosing #{}
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
@@ -37,14 +52,16 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
    QString const kCustomDateTimeVariable = "dateTime:";
    if (variable.startsWith(kCustomDateTimeVariable))
    {
-      QString const formatString = variable.right(variable.size() - kCustomDateTimeVariable.size());
+      QString const formatString = resolveEscapingInVariableParameter(variable.right(variable.size() 
+         - kCustomDateTimeVariable.size()));
       return formatString.isEmpty() ? QString() : systemLocale.toString(QDateTime::currentDateTime(), formatString);
    }
 
    QString const kComboVariable = "combo:";
    if (variable.startsWith(kComboVariable))
    {
-      QString const comboName = variable.right(variable.size() - kComboVariable.size());
+      QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() - 
+         kComboVariable.size()));
       if (forbiddenSubCombos.contains(comboName))
          return fallbackResult;
       ComboList const& combos = ComboManager::instance().getComboListRef();

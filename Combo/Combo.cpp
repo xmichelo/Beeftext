@@ -334,7 +334,7 @@ QString Combo::evaluatedSubstitutionText(qint32* outCursorPos, QSet<QString> for
    // The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \.
    // Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents
    // inside the #{}.
-   QRegularExpression const regexp(R"((#\{(.*?)(?<!\\)}))"); 
+   QRegularExpression const regexp(R"((#\{(.*?)(?<!\\)\}))"); 
    
    while (true)
    {
