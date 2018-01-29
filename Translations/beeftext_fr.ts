@@ -103,24 +103,29 @@
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="138"/>
-        <location filename="../Combo/ComboDialog.cpp" line="144"/>
-        <location filename="../Combo/ComboDialog.cpp" line="156"/>
+        <location filename="../Combo/ComboDialog.cpp" line="99"/>
+        <source>&amp;About Variables</source>
+        <translation>À Propos des Variables</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="148"/>
+        <location filename="../Combo/ComboDialog.cpp" line="160"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="138"/>
+        <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>The substitution text is empty.</source>
         <translation>Le texte de substitution est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="144"/>
+        <location filename="../Combo/ComboDialog.cpp" line="148"/>
         <source>The combo text is invalid.</source>
         <translation>Le combo est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="156"/>
+        <location filename="../Combo/ComboDialog.cpp" line="160"/>
         <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
         <translation>Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
     </message>
@@ -349,7 +354,6 @@
     </message>
     <message>
         <location filename="../MainWindow.ui" line="60"/>
-        <location filename="../MainWindow.ui" line="167"/>
         <source>&amp;Preferences</source>
         <translation>&amp;Préférences</translation>
     </message>
@@ -364,32 +368,53 @@
         <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="162"/>
-        <source>Open &lt;insertAppNameHere&gt;</source>
-        <translation>Afficher &lt;insertAppNameHere&gt;</translation>
+        <location filename="../MainWindow.ui" line="143"/>
+        <source>&amp;Help</source>
+        <translation>&amp;Aide</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="154"/>
+        <source>E&amp;xit Beeftext</source>
+        <translation>&amp;Quitter Beeftext</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="160"/>
+        <source>Exit Beeftext</source>
+        <translation>Quitter Beeftext</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="165"/>
+        <source>&amp;Beeftext Wiki</source>
+        <translation>&amp;Wiki Beeftext</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="170"/>
+        <source>&amp;About Beeftext</source>
+        <translation>&amp;À Propos de Beeftext</translation>
+    </message>
+    <message>
+        <source>Open &lt;insertAppNameHere&gt;</source>
+        <translation type="vanished">Afficher &lt;insertAppNameHere&gt;</translation>
+    </message>
+    <message>
         <source>Show the application preferences.</source>
-        <translation>Afficher les préférences.</translation>
+        <translation type="vanished">Afficher les préférences.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="45"/>
         <source>E&amp;xit %1</source>
-        <translation>&amp;Quitter %1</translation>
+        <translation type="vanished">&amp;Quitter %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="50"/>
         <source>&amp;Open %1</source>
-        <translation>&amp;Ouvrir %1</translation>
+        <translation type="vanished">&amp;Ouvrir %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="74"/>
+        <location filename="../MainWindow.cpp" line="64"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="77"/>
+        <location filename="../MainWindow.cpp" line="67"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>

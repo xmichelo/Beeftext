@@ -95,6 +95,10 @@ QMenu* ComboDialog::createComboVariableMenu()
    action = new QAction(tr("Co&mbo"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{combo:}", true); });
    menu->addAction(action);
+   menu->addSeparator();
+   action = new QAction(tr("&About Variables"), this);
+   connect(action, &QAction::triggered, []() { QDesktopServices::openUrl(constants::kBeeftextWikiVariablesUrl); });
+   menu->addAction(action);
    return menu;
 }
 

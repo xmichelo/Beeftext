@@ -30,27 +30,12 @@ MainWindow::MainWindow()
    ui_.setupUi(this);
    ui_.tabWidget->setCurrentIndex(0);
 
-   this->setupActions();
    this->setupSystemTrayIcon();
-
    PreferencesManager& prefs = PreferencesManager::instance();
    this->restoreGeometry(prefs.mainWindowGeometry());
-}
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void MainWindow::setupActions() const
-{
-   QString const exitActionText = tr("E&xit %1").arg(constants::kApplicationName);
-   ui_.actionExit->setText(exitActionText);
-   ui_.actionExit->setToolTip(exitActionText);
-   ui_.actionExit->setIconText(exitActionText);
-
-   QString const showActionText = tr("&Open %1").arg(constants::kApplicationName);
-   ui_.actionShowMainWindow->setText(showActionText);
-   ui_.actionShowMainWindow->setToolTip(showActionText);
-   ui_.actionShowMainWindow->setIconText(showActionText);
+   connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []() 
+      { QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl)); });
+   connect(ui_.actionShowAboutTab, &QAction::triggered, [this]() { this->showTab(2); });
 }
 
 
@@ -67,8 +52,13 @@ void MainWindow::setupSystemTrayIcon()
    systemTrayIcon_.show();
 
    QMenu* menu = new QMenu(this);
-   menu->addAction(ui_.actionShowMainWindow);
-   menu->addAction(ui_.actionShowPreferences);
+   QAction* action = new QAction("Open Beeftext", this);
+   connect(action, &QAction::triggered, [this]() { this->showTab(0); });
+   menu->addAction(action);
+   menu->setDefaultAction(action);
+   action = new QAction("Preferences", this);
+   connect(action, &QAction::triggered, [this]() { this->showTab(1); });
+   menu->addAction(action);
 #ifndef NDEBUG
    menu->addSeparator();
    QAction* actionShowLog = new QAction(tr("Open Log File"), this);
@@ -80,7 +70,6 @@ void MainWindow::setupSystemTrayIcon()
 #endif // #ifndef NDEBUG
    menu->addSeparator();
    menu->addAction(ui_.actionExit);
-   menu->setDefaultAction(ui_.actionShowMainWindow);
    menu->addSeparator();
 
    QMenu* oldMenu = systemTrayIcon_.contextMenu();
@@ -98,10 +87,21 @@ void MainWindow::changeEvent(QEvent *event)
    if (QEvent::LanguageChange == event->type())
    {
       ui_.retranslateUi(this);
-      this->setupActions();
       this->setupSystemTrayIcon();
    }
    QMainWindow::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] index the index of the tab to show
+//**********************************************************************************************************************
+void MainWindow::showTab(qint32 index)
+{
+   ui_.tabWidget->setCurrentIndex(index);
+   this->show();
+   this->raise();
+   this->activateWindow();
 }
 
 
@@ -114,35 +114,11 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
    switch (reason)
    {
    case QSystemTrayIcon::Trigger: // a.k.a single click
-      this->onActionShowMainWindow();
+      this->showTab(0);
       break;
    default:
       break;
    }
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void MainWindow::onActionShowMainWindow()
-{
-   ui_.tabWidget->setCurrentIndex(0);
-   this->show();
-   this->raise();
-   this->activateWindow();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void MainWindow::onActionShowPreferences()
-{
-   ui_.tabWidget->setCurrentIndex(1);
-   this->show();
-   this->raise();
-   this->activateWindow();
 }
 
 
