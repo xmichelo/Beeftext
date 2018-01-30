@@ -39,11 +39,14 @@
     </widget>
    </item>
    <item>
-    <widget class="QTextEdit" name="editReleaseNotes">
+    <widget class="QTextBrowser" name="editReleaseNotes">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="openExternalLinks">
       <bool>true</bool>
      </property>
     </widget>
