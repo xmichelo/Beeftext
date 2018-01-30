@@ -1,8 +1,8 @@
 {
    "versionMajor": 0,
-   "versionMinor": 5,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.5/Beeftext-0.5-Installer.exe",
-   "sha256Sum": "2e696dcfeadebf5eca848db206cc5162212163675c6ef8e02f0b7f34202aeaee",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>This release adds support for manual combo triggering, using a customizable keyboard shortcut.</li></ul></span></p></body></html>"
+   "versionMinor": 6,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.6/Beeftext-0.6-Installer.exe",
+   "sha256Sum": "86b8a0db5708be0a84958a192ee9c921c66affe642b520db1553461c9816a461",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Beeftext v0.6 adds support for variables.</li></ul></span></p></body></html>"
 }
 
