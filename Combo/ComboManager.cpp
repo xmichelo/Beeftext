@@ -118,17 +118,18 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
    }
 }
 
+
 //**********************************************************************************************************************
+/// \param[in] path The path of the file to write to
 /// \param[out] outErrorMsg If not null the function returns false, this variable will contain a description 
 /// of the error.
 /// \return true if and only if the operation completed successfully
 //**********************************************************************************************************************
-bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
+bool ComboManager::saveComboListToFile(QString const& path, QString* outErrorMsg) const
 {
    try
    {
-      QFile file(QDir(PreferencesManager::instance().comboListFolderPath())
-         .absoluteFilePath(ComboList::defaultFileName));
+      QFile file(path);
       if (!file.open(QIODevice::WriteOnly))
          throw xmilib::Exception(tr("The combo list could not be saved."));
       file.write(comboList_.toJsonDocument().toJson());
@@ -140,6 +141,18 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
          *outErrorMsg = e.qwhat();
       return false;
    }
+}
+
+
+//**********************************************************************************************************************
+/// \param[out] outErrorMsg If not null the function returns false, this variable will contain a description 
+/// of the error.
+/// \return true if and only if the operation completed successfully
+//**********************************************************************************************************************
+bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
+{
+   return saveComboListToFile(QDir(PreferencesManager::instance().comboListFolderPath())
+      .absoluteFilePath(ComboList::defaultFileName));
 }
 
 

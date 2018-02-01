@@ -136,6 +136,8 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
+    <addaction name="actionExportAllCombos"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -168,6 +170,17 @@
   <action name="actionShowAboutTab">
    <property name="text">
     <string>&amp;About Beeftext</string>
+   </property>
+  </action>
+  <action name="actionExportAllCombos">
+   <property name="text">
+    <string>Ex&amp;port All Combos</string>
+   </property>
+   <property name="toolTip">
+    <string>Export All Combos</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
    </property>
   </action>
  </widget>
@@ -212,10 +225,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionExportAllCombos</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionExportAllCombos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
   <slot>onActionShowMainWindow()</slot>
   <slot>onActionShowPreferences()</slot>
+  <slot>onActionExportAllCombos()</slot>
  </slots>
 </ui>

@@ -167,7 +167,7 @@
         <translation>The contenu du fichier contenant la liste de combos est invalide:\n%1.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboManager.cpp" line="133"/>
+        <location filename="../Combo/ComboManager.cpp" line="134"/>
         <source>The combo list could not be saved.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>
@@ -368,29 +368,45 @@
         <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="143"/>
+        <location filename="../MainWindow.ui" line="145"/>
         <source>&amp;Help</source>
         <translation>&amp;Aide</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="154"/>
+        <location filename="../MainWindow.ui" line="156"/>
         <source>E&amp;xit Beeftext</source>
         <translation>&amp;Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="160"/>
+        <location filename="../MainWindow.ui" line="162"/>
         <source>Exit Beeftext</source>
         <translation>Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="165"/>
+        <location filename="../MainWindow.ui" line="167"/>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Wiki Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="170"/>
+        <location filename="../MainWindow.ui" line="172"/>
         <source>&amp;About Beeftext</source>
         <translation>&amp;À Propos de Beeftext</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="177"/>
+        <source>Ex&amp;port All Combos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="180"/>
+        <location filename="../MainWindow.cpp" line="131"/>
+        <source>Export All Combos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="183"/>
+        <source>Ctrl+Shift+E</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open &lt;insertAppNameHere&gt;</source>
@@ -409,14 +425,29 @@
         <translation type="vanished">&amp;Ouvrir %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="64"/>
+        <location filename="../MainWindow.cpp" line="65"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="67"/>
+        <location filename="../MainWindow.cpp" line="68"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="132"/>
+        <source>JSON Files(*.json);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="136"/>
+        <source>Error</source>
+        <translation type="unfinished">Erreur</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="136"/>
+        <source>Could not save the combo list file.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -671,14 +702,14 @@ Control, Alt ou Windows.</translation>
         <translation>Notes de Version:</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="79"/>
-        <location filename="../Update/UpdateDialog.ui" line="95"/>
+        <location filename="../Update/UpdateDialog.ui" line="82"/>
+        <location filename="../Update/UpdateDialog.ui" line="98"/>
         <source>&amp;Install</source>
         <translation>&amp;Installer</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="86"/>
-        <location filename="../Update/UpdateDialog.ui" line="106"/>
+        <location filename="../Update/UpdateDialog.ui" line="89"/>
+        <location filename="../Update/UpdateDialog.ui" line="109"/>
         <source>&amp;Skip</source>
         <translation>&amp;Ignorer</translation>
     </message>

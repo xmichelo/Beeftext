@@ -9,11 +9,11 @@
 #include "ComboManager.h"
 
 
-QString resolveEscapingInVariableParameter(QString paramStr); ///< Resolve the escaped characters ( \} and \\ in a variable parameter
+QString resolveEscapingInVariableParameter(QString paramStr); ///< Resolve the escaped characters ( \\} and \\\\ in a variable parameter
 
 
 //**********************************************************************************************************************
-/// \param[in] The variable parameter
+/// \param[in] paramStr The variable parameter
 /// \return The parameter where the escaped characters have been resolved
 //**********************************************************************************************************************
 QString resolveEscapingInVariableParameter(QString paramStr)

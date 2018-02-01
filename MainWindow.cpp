@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
+#include "Combo/ComboManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
@@ -119,6 +120,20 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
    default:
       break;
    }
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionExportAllCombos()
+{
+   QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), QString(),
+      tr("JSON Files(*.json);;All files (*.*)"));
+   if (path.isEmpty())
+      return;
+   if (!ComboManager::instance().saveComboListToFile(path))
+      QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
 }
 
 
