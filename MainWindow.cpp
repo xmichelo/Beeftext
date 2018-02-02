@@ -132,8 +132,12 @@ void MainWindow::onActionExportAllCombos()
       constants::kJsonFileDialogFilter);
    if (path.isEmpty())
       return;
-   if (!ComboManager::instance().saveComboListToFile(path))
+   QString errorMessage;
+   if (!ComboManager::instance().getComboListRef().save(path, &errorMessage))
+   {
+      globals::debugLog().addError(errorMessage);
       QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
+   }
 }
 
 

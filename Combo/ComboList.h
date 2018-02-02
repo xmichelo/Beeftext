@@ -37,6 +37,7 @@ public: // member functions
    void clear(); ///< Clear the combo list
    void append(SPCombo const& combo); ///< Append a combo at the end of the list
    void erase(qint32 index); ///< Erase a combo from the list
+   SPCombo findByComboText(QString const& comboText) const; ///< Find a combo by its combo text
    SPCombo& operator[](qint32 index); ///< Get a mutable reference to the combo at a given position in the list
    SPCombo const& operator[](qint32 index) const; ///< Get a mutable reference to the combo at a given position in the list
    iterator begin(); ///< Returns an iterator to the beginning of the list
@@ -49,6 +50,8 @@ public: // member functions
    const_reverse_iterator rend() const; ///< Returns a constant reverse iterator to the end of the list
    QJsonDocument toJsonDocument() const; ///< Export the Combo list to a JSon document
    bool readFromJsonDocument(QJsonDocument const& doc, QString* outErrorMsg = nullptr); ///< Read a combo list from a JSON document
+   bool save(QString const& path, QString* outErrorMessage) const; ///< Save a combo list to a JSON file
+   bool load(QString const& path, QString* outErrorMessage); /// Load a combo list from a JSON file
    void markComboAsEdited(qint32 index); ///< Mark a combo as edited
    /// \name Table model member functions
    ///\{

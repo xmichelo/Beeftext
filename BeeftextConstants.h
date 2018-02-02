@@ -28,5 +28,4 @@ extern QString const kStyleSheet; // The application stylesheet
 } // namespace constants
 
 
-
 #endif // #ifndef BEEFTEXT__CONSTANTS__H

@@ -12,6 +12,7 @@
 #include "ComboManager.h"
 #include "ComboDialog.h"
 #include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 
 
@@ -32,7 +33,6 @@ public:
          QProxyStyle::drawPrimitive(element, option, painter, widget);
    }
 };
-
 
 
 //**********************************************************************************************************************
@@ -116,6 +116,8 @@ void ComboTableFrame::setupContextMenu()
    contextMenu_.addAction(ui_.actionDeleteCombo);
    contextMenu_.addAction(ui_.actionEditCombo);
    contextMenu_.addAction(ui_.actionEnableDisableCombo);
+   contextMenu_.addSeparator();
+   contextMenu_.addAction(ui_.actionImportCombos);
    contextMenu_.addAction(ui_.actionExportCombo);
    contextMenu_.addSeparator();
    contextMenu_.addAction(ui_.actionSelectAll);
@@ -123,6 +125,7 @@ void ComboTableFrame::setupContextMenu()
    ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
    connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableFrame::onContextMenuRequested);
 }
+
 
 //**********************************************************************************************************************
 /// \return The number of selected combos
@@ -347,17 +350,50 @@ void ComboTableFrame::onActionExportCombo()
       exportList.append(comboList[index]);
    }
 
-   try
+   QString errorMsg;
+   if (!exportList.save(path, &errorMsg))
    {
-      QFile file(path);
-      if (!file.open(QIODevice::WriteOnly))
-         throw xmilib::Exception(tr("The combo list could not be saved."));
-      file.write(exportList.toJsonDocument().toJson());
-   }
-   catch (xmilib::Exception const&)
-   {
+      globals::debugLog().addError(errorMsg);
       QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
    }
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::onActionImportCombos()
+{
+   QString const path = QFileDialog::getOpenFileName(this, tr("Import Combos"), QString(),
+      constants::kJsonFileDialogFilter);
+   if (path.isEmpty())
+      return;
+   ComboList importList;
+   QString errorMessage;
+   if (!importList.load(path, &errorMessage))
+   {
+      globals::debugLog().addError(errorMessage);
+      QMessageBox::critical(this, tr("Error"), tr("Could not load the combo list from file."));
+      return;
+   }
+   qint32 successCount = 0,failureCount = 0;
+   ComboList& comboList = ComboManager::instance().getComboListRef();
+   for (SPCombo const& combo : importList)
+      if (comboList.findByComboText(combo->comboText()))
+         ++failureCount;
+      else
+      {
+         comboList.append(combo);
+         ++successCount;
+      }
+   if (failureCount)
+      QMessageBox::warning(this, tr("Import Combos"), tr("Combos successfully imported: %1\n\nCombos skipped to avoid "
+         "duplicates: %2").arg(successCount).arg(failureCount));
+
+   else
+      QMessageBox::information(this, tr("Import Combos"), tr("Combos successfully imported: %1").arg(successCount));
+   if ((successCount > 0) && (!ComboManager::instance().saveComboListToFile(&errorMessage)))
+      QMessageBox::critical(this, tr("Error"), errorMessage);
 }
 
 

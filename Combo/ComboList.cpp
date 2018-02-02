@@ -86,6 +86,19 @@ void ComboList::erase(qint32 index)
 
 
 //**********************************************************************************************************************
+/// \param[in] comboText The combo text
+/// \return A shared pointer to to the combo with the specified combo text
+/// \return A null shared pointer if the combo list contains no combo with the specified combo text
+//**********************************************************************************************************************
+SPCombo ComboList::findByComboText(QString const& comboText) const
+{
+   ComboList::const_iterator it = std::find_if(this->begin(), this->end(),
+      [&](SPCombo const& combo) -> bool { return combo->comboText() == comboText; });
+   return (this->end() == it) ? SPCombo() : *it;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] index The index of the combo to retrieve
 /// \return A reference to the combo at the given index
 //**********************************************************************************************************************
@@ -238,6 +251,58 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
    {
       if (outErrorMsg)
          *outErrorMsg = QString("An error occurred while parsing the combo list file: %1").arg(e.qwhat());
+      return false;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the file to read from
+/// \param[out] outErrorMessage If the function return false and this parameter is not null, the string pointed to 
+/// contains a description of the error
+/// \return true if and only if the combo list was successfully loaded from file
+//**********************************************************************************************************************
+bool ComboList::load(QString const& path, QString* outErrorMessage)
+{
+   try
+   {
+      this->clear();
+      QFile file(path);
+      if ((!file.exists()) || (!file.open(QIODevice::ReadOnly)))
+         throw xmilib::Exception(tr("Could not open file for reading: '%1'").arg(QDir::toNativeSeparators(path)));
+      return this->readFromJsonDocument(QJsonDocument::fromJson(file.readAll()), outErrorMessage);
+   }
+   catch (xmilib::Exception const& e)
+   {
+      if (outErrorMessage)
+         *outErrorMessage = e.qwhat();
+      return false;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the file to save to
+/// \param[out] outErrorMessage If the function return false and this parameter is not null, the string pointed to 
+/// contains a description of the error
+/// \return true if and only if the combo list was successfully saved to file
+//**********************************************************************************************************************
+bool ComboList::save(QString const& path, QString* outErrorMessage) const
+{
+   try
+   {
+      QFile file(path);
+      if (!file.open(QIODevice::WriteOnly))
+         throw xmilib::Exception(tr("Could not open file for writing: '%1'").arg(QDir::toNativeSeparators(path)));
+      QByteArray const data = this->toJsonDocument().toJson();
+      if (data.size() != file.write(data))
+         throw xmilib::Exception(tr("Error writing to file: %1").arg(QDir::toNativeSeparators(path)));
+      return true;
+   }
+   catch (xmilib::Exception const& e)
+   {
+      if (outErrorMessage)
+         *outErrorMessage = e.qwhat();
       return false;
    }
 }

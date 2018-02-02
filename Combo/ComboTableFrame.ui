@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>635</width>
+    <width>701</width>
     <height>495</height>
    </rect>
   </property>
@@ -192,6 +192,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="buttonImportCombos">
+       <property name="text">
+        <string>&amp;Import</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -287,6 +294,17 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+E</string>
+   </property>
+  </action>
+  <action name="actionImportCombos">
+   <property name="text">
+    <string>I&amp;mport</string>
+   </property>
+   <property name="toolTip">
+    <string>Import Combos</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
    </property>
   </action>
  </widget>
@@ -541,6 +559,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonImportCombos</sender>
+   <signal>clicked()</signal>
+   <receiver>actionImportCombos</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>652</x>
+     <y>472</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionImportCombos</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableFrame</receiver>
+   <slot>onActionImportCombos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>350</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionAddCombo()</slot>
@@ -552,5 +602,6 @@
   <slot>onActionDeselectAll()</slot>
   <slot>onActionEnableDisableCombo()</slot>
   <slot>onActionExportCombo()</slot>
+  <slot>onActionImportCombos()</slot>
  </slots>
 </ui>

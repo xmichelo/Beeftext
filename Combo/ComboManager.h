@@ -29,7 +29,6 @@ public: // member functions
    ComboList& getComboListRef(); ///< Return a mutable reference to the combo list
    ComboList const& getComboListRef() const; ///< Return a constant reference to the combo list
    bool loadComboListFromFile(QString* outErrorMsg = nullptr); ///< Load the combo list from the default file
-   bool saveComboListToFile(QString const& path, QString* outErrorMsg = nullptr) const; /// Save the combo list
    bool saveComboListToFile(QString* outErrorMsg = nullptr) const; /// Save the combo list to the default location
 
 private: // member functions

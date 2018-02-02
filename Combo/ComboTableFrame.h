@@ -50,6 +50,7 @@ private slots:
    void onActionDeselectAll() const; ///< Slot for the 'Deselect All' action
    void onActionEnableDisableCombo(); ///< Slot for the 'Enable/Disable' action
    void onActionExportCombo(); ///< Slot for the 'Export Combo' action
+   void onActionImportCombos(); ///< Slot for the 'Import Combos' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
    void onContextMenuRequested(); ///< Slot for the combo table context menu
    void onDoubleClick(); ///< Slot for the double clicking in the table view
