@@ -11,6 +11,8 @@
 #include "ComboTableFrame.h"
 #include "ComboManager.h"
 #include "ComboDialog.h"
+#include "BeeftextConstants.h"
+#include <XMiLib/Exception.h>
 
 
 namespace {
@@ -114,6 +116,7 @@ void ComboTableFrame::setupContextMenu()
    contextMenu_.addAction(ui_.actionDeleteCombo);
    contextMenu_.addAction(ui_.actionEditCombo);
    contextMenu_.addAction(ui_.actionEnableDisableCombo);
+   contextMenu_.addAction(ui_.actionExportCombo);
    contextMenu_.addSeparator();
    contextMenu_.addAction(ui_.actionSelectAll);
    contextMenu_.addAction(ui_.actionDeselectAll);
@@ -178,6 +181,8 @@ void ComboTableFrame::updateGui() const
    ui_.actionEditCombo->setEnabled(hasOneSelected);
    ui_.actionEnableDisableCombo->setEnabled(hasOneSelected);
    ui_.buttonEnableDisableCombo->setEnabled(hasOneSelected);
+   ui_.actionExportCombo->setEnabled(hasOneOrMoreSelected);
+   ui_.buttonExportCombo->setEnabled(hasOneOrMoreSelected);
 
    QString enableDisableText = tr("Ena&ble");
    QString enableDisableToolTip = tr("Enable combo");
@@ -317,6 +322,42 @@ void ComboTableFrame::onActionEnableDisableCombo()
    if (!comboManager.saveComboListToFile(&errorMessage))
       QMessageBox::critical(this, tr("Error"), errorMessage);
    this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::onActionExportCombo()
+{
+   QList<qint32> const indexes = this->getSelectedComboIndexes();
+   if (indexes.size() < 1)
+      return;
+
+   QString const path = QFileDialog::getSaveFileName(this, tr("Export Combos"), QString(), 
+      constants::kJsonFileDialogFilter);
+   if (path.isEmpty())
+      return;
+
+   ComboList const& comboList = ComboManager::instance().getComboListRef();
+   ComboList exportList;
+   for (qint32 const index : indexes)
+   {
+      Q_ASSERT((index >= 0) && (index < comboList.size()));
+      exportList.append(comboList[index]);
+   }
+
+   try
+   {
+      QFile file(path);
+      if (!file.open(QIODevice::WriteOnly))
+         throw xmilib::Exception(tr("The combo list could not be saved."));
+      file.write(exportList.toJsonDocument().toJson());
+   }
+   catch (xmilib::Exception const&)
+   {
+      QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
+   }
 }
 
 

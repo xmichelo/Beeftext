@@ -185,6 +185,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="buttonExportCombo">
+       <property name="text">
+        <string>E&amp;xport</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -269,6 +276,17 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionExportCombo">
+   <property name="text">
+    <string>&amp;Export</string>
+   </property>
+   <property name="toolTip">
+    <string>Export Combo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
    </property>
   </action>
  </widget>
@@ -491,6 +509,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionExportCombo</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableFrame</receiver>
+   <slot>onActionExportCombo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonExportCombo</sender>
+   <signal>clicked()</signal>
+   <receiver>actionExportCombo</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>586</x>
+     <y>472</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionAddCombo()</slot>
@@ -501,5 +551,6 @@
   <slot>onActionSelectAll()</slot>
   <slot>onActionDeselectAll()</slot>
   <slot>onActionEnableDisableCombo()</slot>
+  <slot>onActionExportCombo()</slot>
  </slots>
 </ui>

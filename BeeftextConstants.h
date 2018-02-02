@@ -21,6 +21,7 @@ extern qint32 const kVersionMinor; ///< The minor version number of the applicat
 extern Qt::WindowFlags const kDefaultDialogFlags; ///< The default dialog class
 extern QString const kBeeftextWikiHomeUrl; ///< The URL of the Beeftext wiki
 extern QString const kBeeftextWikiVariablesUrl; ///< The URL of the page about variables in the Beeftext wiki
+extern QString const kJsonFileDialogFilter; ///< The Open/Save file dialog filter
 extern QString const kStyleSheet; // The application stylesheet
 
 

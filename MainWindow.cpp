@@ -129,7 +129,7 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
 void MainWindow::onActionExportAllCombos()
 {
    QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), QString(),
-      tr("JSON Files(*.json);;All files (*.*)"));
+      constants::kJsonFileDialogFilter);
    if (path.isEmpty())
       return;
    if (!ComboManager::instance().saveComboListToFile(path))
