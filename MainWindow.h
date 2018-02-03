@@ -42,7 +42,6 @@ signals:
 
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
-   void onActionExportAllCombos(); ///< Slot for the 'Export all combos' action
    void onActionExit(); ///< Slot for the 'Exit' action
 
 protected: // member functions

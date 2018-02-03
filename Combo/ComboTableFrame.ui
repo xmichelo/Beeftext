@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>701</width>
-    <height>495</height>
+    <width>681</width>
+    <height>548</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -123,6 +123,13 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
+      <widget class="QPushButton" name="buttonImportExport">
+       <property name="text">
+        <string>Import/Export</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -142,6 +149,9 @@
        </property>
        <property name="text">
         <string>&amp;Add</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -182,20 +192,6 @@
        </property>
        <property name="text">
         <string>Ena&amp;ble</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonExportCombo">
-       <property name="text">
-        <string>E&amp;xport</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonImportCombos">
-       <property name="text">
-        <string>&amp;Import</string>
        </property>
       </widget>
      </item>
@@ -287,10 +283,10 @@
   </action>
   <action name="actionExportCombo">
    <property name="text">
-    <string>&amp;Export</string>
+    <string>&amp;Export Selected Combos</string>
    </property>
    <property name="toolTip">
-    <string>Export Combo</string>
+    <string>Export Selected Combos</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+E</string>
@@ -298,13 +294,24 @@
   </action>
   <action name="actionImportCombos">
    <property name="text">
-    <string>I&amp;mport</string>
+    <string>I&amp;mport Combos</string>
    </property>
    <property name="toolTip">
     <string>Import Combos</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionExportAllCombos">
+   <property name="text">
+    <string>Export A&amp;ll Combos</string>
+   </property>
+   <property name="toolTip">
+    <string>Export All Combos</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+A</string>
    </property>
   </action>
  </widget>
@@ -316,6 +323,7 @@
   <tabstop>buttonDeleteCombo</tabstop>
   <tabstop>buttonEditCombo</tabstop>
   <tabstop>buttonEnableDisableCombo</tabstop>
+  <tabstop>buttonImportExport</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -544,38 +552,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonExportCombo</sender>
-   <signal>clicked()</signal>
-   <receiver>actionExportCombo</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>586</x>
-     <y>472</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonImportCombos</sender>
-   <signal>clicked()</signal>
-   <receiver>actionImportCombos</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>652</x>
-     <y>472</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>actionImportCombos</sender>
    <signal>triggered()</signal>
    <receiver>ComboTableFrame</receiver>
@@ -591,6 +567,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionExportAllCombos</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableFrame</receiver>
+   <slot>onActionExportAllCombos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>340</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionAddCombo()</slot>
@@ -603,5 +595,6 @@
   <slot>onActionEnableDisableCombo()</slot>
   <slot>onActionExportCombo()</slot>
   <slot>onActionImportCombos()</slot>
+  <slot>onActionExportAllCombos()</slot>
  </slots>
 </ui>

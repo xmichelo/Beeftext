@@ -74,6 +74,14 @@ QPushButton:focus:pressed {
    background-color: #3783b4;
 } 
 
+QPushButton::menu-indicator {
+   width: 8px;
+   height: 8px;
+   top: 2px;
+   subcontrol-position: right center;
+   padding-right: 8px;
+}
+
 /*****************************
 * All Edits
 *****************************/	
@@ -292,6 +300,7 @@ QMenuBar::item:selected {
 
 QMenu {
    border: 1px solid #ccc;
+   min-width: 150px;
 }
 
 QMenu::item {

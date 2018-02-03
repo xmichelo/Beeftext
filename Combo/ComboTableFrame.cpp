@@ -41,10 +41,12 @@ public:
 ComboTableFrame::ComboTableFrame(QWidget* parent)
    : QFrame(parent)
    , proxyStyle_(std::make_unique<ComboTableProxyStyle>())
+   , contextMenu_(nullptr)
 {
    ui_.setupUi(this);
    this->setupTable();
    this->setupContextMenu();
+   this->setupImportExportMenu();
    this->updateGui();
    connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated,
       this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->selectAll(); });
@@ -117,13 +119,24 @@ void ComboTableFrame::setupContextMenu()
    contextMenu_.addAction(ui_.actionEditCombo);
    contextMenu_.addAction(ui_.actionEnableDisableCombo);
    contextMenu_.addSeparator();
-   contextMenu_.addAction(ui_.actionImportCombos);
-   contextMenu_.addAction(ui_.actionExportCombo);
-   contextMenu_.addSeparator();
    contextMenu_.addAction(ui_.actionSelectAll);
    contextMenu_.addAction(ui_.actionDeselectAll);
    ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
    connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableFrame::onContextMenuRequested);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableFrame::setupImportExportMenu()
+{
+   QMenu* menu = new QMenu(this);
+   menu->addAction(ui_.actionImportCombos);
+   menu->addSeparator();
+   menu->addAction(ui_.actionExportCombo);
+   menu->addAction(ui_.actionExportAllCombos);
+   ui_.buttonImportExport->setMenu(menu);
 }
 
 
@@ -174,6 +187,7 @@ void ComboTableFrame::changeEvent(QEvent *event)
 void ComboTableFrame::updateGui() const
 {
    qint32 const selectedCount = this->getSelectedComboCount();
+   bool const listIsEmpty = (ComboManager::instance().getComboListRef().size() == 0);
    bool const hasOneSelected = (1 == selectedCount);
    bool const hasOneOrMoreSelected = (selectedCount > 0);
    ui_.buttonDuplicateCombo->setEnabled(hasOneSelected);
@@ -185,7 +199,7 @@ void ComboTableFrame::updateGui() const
    ui_.actionEnableDisableCombo->setEnabled(hasOneSelected);
    ui_.buttonEnableDisableCombo->setEnabled(hasOneSelected);
    ui_.actionExportCombo->setEnabled(hasOneOrMoreSelected);
-   ui_.buttonExportCombo->setEnabled(hasOneOrMoreSelected);
+   ui_.actionExportAllCombos->setEnabled(!listIsEmpty);
 
    QString enableDisableText = tr("Ena&ble");
    QString enableDisableToolTip = tr("Enable combo");
@@ -279,6 +293,7 @@ void ComboTableFrame::onActionDeleteCombo()
    QString errorMessage;
    if (!comboManager.saveComboListToFile(&errorMessage))
       QMessageBox::critical(this, tr("Error"), errorMessage);
+   this->updateGui();
 }
 
 
@@ -380,6 +395,24 @@ void ComboTableFrame::onActionExportCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
+void ComboTableFrame::onActionExportAllCombos()
+{
+   QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), QString(),
+      constants::kJsonFileDialogFilter);
+   if (path.isEmpty())
+      return;
+   QString errorMessage;
+   if (!ComboManager::instance().getComboListRef().save(path, &errorMessage))
+   {
+      globals::debugLog().addError(errorMessage);
+      QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
+   }
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
 void ComboTableFrame::onActionImportCombos()
 {
    QString const path = QFileDialog::getOpenFileName(this, tr("Import Combos"), QString(),
@@ -409,6 +442,7 @@ void ComboTableFrame::onActionImportCombos()
       QMessageBox::information(this, tr("Import Combos"), tr("Combos successfully imported: %1").arg(successCount));
    if ((successCount > 0) && (!ComboManager::instance().saveComboListToFile(&errorMessage)))
       QMessageBox::critical(this, tr("Error"), errorMessage);
+   this->updateGui();
 }
 
 

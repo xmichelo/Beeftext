@@ -36,6 +36,7 @@ private: // member functions
 	ComboTableFrame& operator=(ComboTableFrame&&) = delete; ///< Disabled move assignment operator
    void setupTable(); ///< Setup the combo table
    void setupContextMenu(); ///< Setup the context menu
+   void setupImportExportMenu(); ///< Setup the import export menu
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
    void changeEvent(QEvent *event) override; ///< Change event handler
@@ -50,6 +51,7 @@ private slots:
    void onActionDeselectAll() const; ///< Slot for the 'Deselect All' action
    void onActionEnableDisableCombo(); ///< Slot for the 'Enable/Disable' action
    void onActionExportCombo(); ///< Slot for the 'Export Combo' action
+   void onActionExportAllCombos(); ///< Slot for the 'Export All Combos' action
    void onActionImportCombos(); ///< Slot for the 'Import Combos' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
    void onContextMenuRequested(); ///< Slot for the combo table context menu

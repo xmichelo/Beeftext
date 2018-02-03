@@ -126,24 +126,6 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void MainWindow::onActionExportAllCombos()
-{
-   QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), QString(),
-      constants::kJsonFileDialogFilter);
-   if (path.isEmpty())
-      return;
-   QString errorMessage;
-   if (!ComboManager::instance().getComboListRef().save(path, &errorMessage))
-   {
-      globals::debugLog().addError(errorMessage);
-      QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
-   }
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
 void MainWindow::onActionExit()
 {
    this->close(); // ensure the close event handler is called

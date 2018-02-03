@@ -315,7 +315,7 @@ bool ComboList::load(QString const& path, QString* outErrorMessage)
       this->clear();
       QFile file(path);
       if ((!file.exists()) || (!file.open(QIODevice::ReadOnly)))
-         throw xmilib::Exception(tr("Could not open file for reading: '%1'").arg(QDir::toNativeSeparators(path)));
+         throw xmilib::Exception(QString("Could not open file for reading: '%1'").arg(QDir::toNativeSeparators(path)));
       return this->readFromJsonDocument(QJsonDocument::fromJson(file.readAll()), outErrorMessage);
    }
    catch (xmilib::Exception const& e)
@@ -339,10 +339,10 @@ bool ComboList::save(QString const& path, QString* outErrorMessage) const
    {
       QFile file(path);
       if (!file.open(QIODevice::WriteOnly))
-         throw xmilib::Exception(tr("Could not open file for writing: '%1'").arg(QDir::toNativeSeparators(path)));
+         throw xmilib::Exception(QString("Could not open file for writing: '%1'").arg(QDir::toNativeSeparators(path)));
       QByteArray const data = this->toJsonDocument().toJson();
       if (data.size() != file.write(data))
-         throw xmilib::Exception(tr("Error writing to file: %1").arg(QDir::toNativeSeparators(path)));
+         throw xmilib::Exception(QString("Error writing to file: %1").arg(QDir::toNativeSeparators(path)));
       return true;
    }
    catch (xmilib::Exception const& e)
