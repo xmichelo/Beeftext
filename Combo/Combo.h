@@ -32,6 +32,7 @@ public: // member functions
    Combo(QJsonObject const& object); ///< Constructor from JSon object
    ~Combo() = default; ///< Default destructor
    bool isValid() const; ///< Is the combo valid
+   QUuid uuid() const; ///< Get the UUID of the combo
    QString name() const; ///< Get the name of the combo
    void setName(QString const& name); ///< Set the name of the combo
 	QString comboText() const; ///< retrieve the combo text

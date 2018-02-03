@@ -43,7 +43,7 @@ private: // member functions
 private slots:
    void updateGui() const; ///< Update the GUI state
    void onActionAddCombo(); ///< Slot for the 'Add Combo' action
-   void onActionDuplicateCombo() const; ///< Slot for the 'Duplicate Combo' action
+   void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
    void onActionSelectAll() const; ///< Slot for the 'Select All' action

@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboList.h"
+#include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 
 
@@ -63,14 +64,24 @@ void ComboList::clear()
 
 //**********************************************************************************************************************
 /// \param[in] combo The combo to append
+/// \return true if and only if the combo was successfully added to the list
 //**********************************************************************************************************************
-void ComboList::append(SPCombo const& combo)
+bool ComboList::append(SPCombo const& combo)
 {
-   /// \todo Check if the combo is already in the list (UUID check)
-   /// \todo Check if the combo text is not already used
+   if (!combo)
+   {
+      globals::debugLog().addError("Trying to add a null combo to a combo list.");
+      return false;
+   }
+   if (this->end() != this->findByComboText(combo->comboText()) || this->end() != this->findByUuid(combo->uuid()))
+   {
+      globals::debugLog().addError("Trying to add a combo whose text already exists to the list.");
+      return false;
+   }
    this->beginInsertRows(QModelIndex(), combos_.size(), combos_.size());
    combos_.push_back(combo);
    this->endInsertRows();
+   return true;
 }
 
 
@@ -87,14 +98,49 @@ void ComboList::erase(qint32 index)
 
 //**********************************************************************************************************************
 /// \param[in] comboText The combo text
-/// \return A shared pointer to to the combo with the specified combo text
+/// \return A constant iterator to to the combo with the specified combo text
 /// \return A null shared pointer if the combo list contains no combo with the specified combo text
 //**********************************************************************************************************************
-SPCombo ComboList::findByComboText(QString const& comboText) const
+ComboList::const_iterator ComboList::findByComboText(QString const& comboText) const
 {
-   ComboList::const_iterator it = std::find_if(this->begin(), this->end(),
+   return std::find_if(this->begin(), this->end(),
       [&](SPCombo const& combo) -> bool { return combo->comboText() == comboText; });
-   return (this->end() == it) ? SPCombo() : *it;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] comboText The combo text
+/// \return An iterator to to the combo with the specified combo text
+/// \return A null shared pointer if the combo list contains no combo with the specified combo text
+//**********************************************************************************************************************
+ComboList::iterator ComboList::findByComboText(QString const& comboText)
+{
+   return std::find_if(this->begin(), this->end(),
+      [&](SPCombo const& combo) -> bool { return combo->comboText() == comboText; });
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] uuid The UUID
+/// \return An iterator to to the combo with the specified UUID
+/// \return A null shared pointer if the combo list contains no combo with the specified UUID
+//**********************************************************************************************************************
+ComboList::iterator ComboList::findByUuid(QUuid const& uuid)
+{
+   return std::find_if(this->begin(), this->end(),
+      [&](SPCombo const& combo) -> bool { return combo->uuid() == uuid; });
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] uuid The UUID
+/// \return A constant iterator to to the combo with the specified UUID
+/// \return A null shared pointer if the combo list contains no combo with the specified UUID
+//**********************************************************************************************************************
+ComboList::const_iterator ComboList::findByUuid(QUuid const& uuid) const
+{
+   return std::find_if(this->begin(), this->end(),
+      [&](SPCombo const& combo) -> bool { return combo->uuid() == uuid; });
 }
 
 

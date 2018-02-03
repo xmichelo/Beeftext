@@ -35,9 +35,12 @@ public: // member functions
 	qint32 size() const; ///< Return the size of the combo list
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list
-   void append(SPCombo const& combo); ///< Append a combo at the end of the list
+   bool append(SPCombo const& combo); ///< Append a combo at the end of the list
    void erase(qint32 index); ///< Erase a combo from the list
-   SPCombo findByComboText(QString const& comboText) const; ///< Find a combo by its combo text
+   ComboList::const_iterator findByComboText(QString const& comboText) const; ///< Find a combo by its combo text
+   ComboList::iterator findByComboText(QString const& comboText); ///< Find a combo by its combo text
+   ComboList::const_iterator findByUuid(QUuid const& uuid) const; ///< Find a combo by its combo text
+   ComboList::iterator findByUuid(QUuid const& uuid); ///< Find a combo by its combo text
    SPCombo& operator[](qint32 index); ///< Get a mutable reference to the combo at a given position in the list
    SPCombo const& operator[](qint32 index) const; ///< Get a mutable reference to the combo at a given position in the list
    iterator begin(); ///< Returns an iterator to the beginning of the list

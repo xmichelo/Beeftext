@@ -208,36 +208,54 @@ void ComboTableFrame::updateGui() const
 //**********************************************************************************************************************
 void ComboTableFrame::onActionAddCombo()
 {
-   SPCombo const combo = Combo::create();
-   if (!ComboDialog::run(combo, tr("Add Combo")))
-      return;
-   ComboManager& comboManager = ComboManager::instance();
-   ComboList& comboList = ComboManager::instance().getComboListRef();
-   comboList.append(combo);
-   QString errorMessage;
-   if (!comboManager.saveComboListToFile(&errorMessage))
-      QMessageBox::critical(this, tr("Error"), errorMessage);
+   try
+   {
+      SPCombo const combo = Combo::create();
+      if (!ComboDialog::run(combo, tr("Add Combo")))
+         return;
+      ComboManager& comboManager = ComboManager::instance();
+      ComboList& comboList = ComboManager::instance().getComboListRef();
+      if (!comboList.append(combo))
+         throw xmilib::Exception(tr("The combo could not be added to the list."));
+      QString errorMessage;
+      if (!comboManager.saveComboListToFile(&errorMessage))
+         throw xmilib::Exception(errorMessage);
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   }
 }
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionDuplicateCombo() const
+void ComboTableFrame::onActionDuplicateCombo()
 {
-   QList<qint32> const selectedIndex = this->getSelectedComboIndexes();
-   if (1 != selectedIndex.size())
-      return;
-   ComboManager& comboManager = ComboManager::instance();
-   ComboList& comboList = comboManager.getComboListRef();
-   qint32 const index = selectedIndex[0];
-   Q_ASSERT((index >= 0) && (index < comboList.size()));
-   SPCombo const combo = Combo::duplicate(*comboList[index]);
-
-   if (!ComboDialog::run(combo, tr("Duplicate Combo")))
-      return;
-   comboList.append(combo);
+   try
+   {
+      QList<qint32> const selectedIndex = this->getSelectedComboIndexes();
+      if (1 != selectedIndex.size())
+         return;
+      ComboManager& comboManager = ComboManager::instance();
+      ComboList& comboList = comboManager.getComboListRef();
+      qint32 const index = selectedIndex[0];
+      Q_ASSERT((index >= 0) && (index < comboList.size()));
+      if ((index < 0) || (index >= comboList.size()))
+         throw xmilib::Exception(tr("The combo could not be duplicated: invalid index."));
+      SPCombo const combo = Combo::duplicate(*comboList[index]);
+      if (!ComboDialog::run(combo, tr("Duplicate Combo")))
+         return;
+      if (!comboList.append(combo))
+         throw xmilib::Exception(tr("The duplicated combo could not added to the list."));
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   }
 }
+
 
 //**********************************************************************************************************************
 // 
@@ -379,17 +397,14 @@ void ComboTableFrame::onActionImportCombos()
    qint32 successCount = 0,failureCount = 0;
    ComboList& comboList = ComboManager::instance().getComboListRef();
    for (SPCombo const& combo : importList)
-      if (comboList.findByComboText(combo->comboText()))
-         ++failureCount;
-      else
-      {
-         comboList.append(combo);
+      if (comboList.append(combo))
          ++successCount;
-      }
+      else
+         ++failureCount;
+
    if (failureCount)
       QMessageBox::warning(this, tr("Import Combos"), tr("Combos successfully imported: %1\n\nCombos skipped to avoid "
          "duplicates: %2").arg(successCount).arg(failureCount));
-
    else
       QMessageBox::information(this, tr("Import Combos"), tr("Combos successfully imported: %1").arg(successCount));
    if ((successCount > 0) && (!ComboManager::instance().saveComboListToFile(&errorMessage)))
