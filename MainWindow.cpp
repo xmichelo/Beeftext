@@ -41,6 +41,64 @@ MainWindow::MainWindow()
 
 
 //**********************************************************************************************************************
+/// \param[in] event The event 
+//**********************************************************************************************************************
+void MainWindow::dragEnterEvent(QDragEnterEvent* event)
+{
+   if (event->mimeData()->hasUrls())
+      event->acceptProposedAction();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event 
+//**********************************************************************************************************************
+void MainWindow::dragMoveEvent(QDragMoveEvent* event)
+{
+   if (event->mimeData()->hasUrls())
+      event->acceptProposedAction();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event 
+//**********************************************************************************************************************
+void MainWindow::dragLeaveEvent(QDragLeaveEvent* event)
+{
+   event->accept();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event 
+//**********************************************************************************************************************
+void MainWindow::dropEvent(QDropEvent* event)
+{
+   QMimeData const* mimeData = event->mimeData();
+   if (!mimeData->hasUrls())
+      return;
+   QList<QUrl> urls = mimeData->urls();
+   if (urls.size() > 0) // should always be the case
+   {
+      event->acceptProposedAction();
+      this->showTab(0);
+      ui_.frameCombos->runComboImportDialog(urls[0].toLocalFile());
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+   // note that we save the geometry every time we close the window, not the app, simply because otherwise we would
+   // have to do it in the destructor, where the state of the window may be uncertain.
+   PreferencesManager::instance().setMainWindowGeometry(this->saveGeometry());
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void MainWindow::setupSystemTrayIcon()
@@ -132,13 +190,3 @@ void MainWindow::onActionExit()
    qApp->quit();
 }
 
-
-//**********************************************************************************************************************
-/// \param[in] event The event
-//**********************************************************************************************************************
-void MainWindow::closeEvent(QCloseEvent *event)
-{
-   // note that we save the geometry every time we close the window, not the app, simply because otherwise we would
-   // have to do it in the destructor, where the state of the window may be uncertain.
-   PreferencesManager::instance().setMainWindowGeometry(this->saveGeometry());
-}

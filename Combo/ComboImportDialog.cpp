@@ -14,13 +14,17 @@
 
 
 //**********************************************************************************************************************
+/// \param[in] filePath The path of the file to import. Can be null
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ComboImportDialog::ComboImportDialog(QWidget* parent)
+ComboImportDialog::ComboImportDialog(QString const& filePath, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
 {
    ui_.setupUi(this);
-   this->updateGui();
+   if (!filePath.isEmpty())
+      ui_.editPath->setText(QDir::toNativeSeparators(filePath));
+   else
+      this->updateGui();
 }
 
 
@@ -58,7 +62,6 @@ void ComboImportDialog::dragLeaveEvent(QDragLeaveEvent* event)
 //**********************************************************************************************************************
 void ComboImportDialog::dropEvent(QDropEvent* event)
 {
-   event->accept();
    QMimeData const* mimeData = event->mimeData();
    if (!mimeData->hasUrls())
       return;
@@ -74,6 +77,7 @@ void ComboImportDialog::dropEvent(QDropEvent* event)
 //**********************************************************************************************************************
 void ComboImportDialog::updateGui()
 {
+   qDebug() << QString("%1()").arg(__FUNCTION__);
    ui_.buttonImport->setEnabled(comboList_.size() > 0);
 }
 

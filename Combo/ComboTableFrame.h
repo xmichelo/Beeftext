@@ -25,6 +25,7 @@ class ComboTableFrame: public QFrame
 public: // member functions
 	ComboTableFrame(QWidget* parent = nullptr); ///< Default constructor
 	~ComboTableFrame() = default; ///< Default destructor
+   void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
 
 protected: // member functions
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view

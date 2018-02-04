@@ -22,7 +22,7 @@ class ComboImportDialog: public QDialog
 {
    Q_OBJECT
 public: // member functions
-	ComboImportDialog(QWidget* parent = nullptr); ///< Default constructor
+	ComboImportDialog(QString const& filePath = QString(), QWidget* parent = nullptr); ///< Default constructor
 	ComboImportDialog(ComboImportDialog const&) = delete; ///< Disabled copy constructor
 	ComboImportDialog(ComboImportDialog&&) = delete; ///< Disabled move constructor
 	~ComboImportDialog() = default; ///< Default destructor

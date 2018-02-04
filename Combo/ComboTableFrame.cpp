@@ -71,6 +71,16 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
 
 
 //**********************************************************************************************************************
+/// \param[in] filePath The path of the combo file to import. This value can be null
+//**********************************************************************************************************************
+void ComboTableFrame::runComboImportDialog(QString const& filePath)
+{
+   if (QDialog::Accepted == ComboImportDialog(filePath, this).exec())
+      this->updateGui();
+}
+
+
+//**********************************************************************************************************************
 /// This event filter override the default mouse double click behavior of the table view to respond also 
 /// when the user double click on an empty area
 //**********************************************************************************************************************
@@ -416,8 +426,7 @@ void ComboTableFrame::onActionExportAllCombos()
 //**********************************************************************************************************************
 void ComboTableFrame::onActionImportCombos()
 {
-   if (QDialog::Accepted == ComboImportDialog(this).exec())
-      this->updateGui();
+   this->runComboImportDialog();
 }
 
 

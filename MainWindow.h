@@ -25,13 +25,23 @@ class MainWindow: public QMainWindow
    Q_OBJECT
 public: // member functions
    MainWindow(); ///< Default constructor
-   ~MainWindow() = default; ///< Default destructor
-
-private: // member functions
    MainWindow(MainWindow const&) = delete; ///< Disabled copy constructor
    MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
+   ~MainWindow() = default; ///< Default destructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
+
+protected: // member functions
+   /// \name Drag and drop functions
+   ///\{
+   void dragEnterEvent(QDragEnterEvent* event); ///< Drag enter event handler
+   void dragMoveEvent(QDragMoveEvent* event); ///< Drag move event handler
+   void dragLeaveEvent(QDragLeaveEvent* event); ///< Drag leave event handler
+   void dropEvent(QDropEvent* event); ///< Drop event handler
+   ///\}
+   void closeEvent(QCloseEvent *event) override; ///< Window close event handler
+
+private: // member functions
    void setupSystemTrayIcon(); ///< Setup the system tray icon
    void changeEvent(QEvent *event) override; ///< Change event handler
    void showTab(qint32 index); ///< Show a tab and ensure the window is visible, active and on top
@@ -44,8 +54,6 @@ private slots:
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionExit(); ///< Slot for the 'Exit' action
 
-protected: // member functions
-   void closeEvent(QCloseEvent *event) override; ///< Window close event handler
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window
