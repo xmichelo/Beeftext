@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboTableFrame.h"
+#include "ComboImportDialog.h"
 #include "ComboManager.h"
 #include "ComboDialog.h"
 #include "BeeftextConstants.h"
@@ -415,34 +416,8 @@ void ComboTableFrame::onActionExportAllCombos()
 //**********************************************************************************************************************
 void ComboTableFrame::onActionImportCombos()
 {
-   QString const path = QFileDialog::getOpenFileName(this, tr("Import Combos"), QString(),
-      constants::kJsonFileDialogFilter);
-   if (path.isEmpty())
-      return;
-   ComboList importList;
-   QString errorMessage;
-   if (!importList.load(path, &errorMessage))
-   {
-      globals::debugLog().addError(errorMessage);
-      QMessageBox::critical(this, tr("Error"), tr("Could not load the combo list from file."));
-      return;
-   }
-   qint32 successCount = 0,failureCount = 0;
-   ComboList& comboList = ComboManager::instance().getComboListRef();
-   for (SPCombo const& combo : importList)
-      if (comboList.append(combo))
-         ++successCount;
-      else
-         ++failureCount;
-
-   if (failureCount)
-      QMessageBox::warning(this, tr("Import Combos"), tr("Combos successfully imported: %1\n\nCombos skipped to avoid "
-         "duplicates: %2").arg(successCount).arg(failureCount));
-   else
-      QMessageBox::information(this, tr("Import Combos"), tr("Combos successfully imported: %1").arg(successCount));
-   if ((successCount > 0) && (!ComboManager::instance().saveComboListToFile(&errorMessage)))
-      QMessageBox::critical(this, tr("Error"), errorMessage);
-   this->updateGui();
+   if (QDialog::Accepted == ComboImportDialog(this).exec())
+      this->updateGui();
 }
 
 

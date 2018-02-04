@@ -53,8 +53,8 @@ public: // member functions
    const_reverse_iterator rend() const; ///< Returns a constant reverse iterator to the end of the list
    QJsonDocument toJsonDocument() const; ///< Export the Combo list to a JSon document
    bool readFromJsonDocument(QJsonDocument const& doc, QString* outErrorMsg = nullptr); ///< Read a combo list from a JSON document
-   bool save(QString const& path, QString* outErrorMessage) const; ///< Save a combo list to a JSON file
-   bool load(QString const& path, QString* outErrorMessage); /// Load a combo list from a JSON file
+   bool save(QString const& path, QString* outErrorMessage = nullptr) const; ///< Save a combo list to a JSON file
+   bool load(QString const& path, QString* outErrorMessage = nullptr); /// Load a combo list from a JSON file
    void markComboAsEdited(qint32 index); ///< Mark a combo as edited
    /// \name Table model member functions
    ///\{
