@@ -82,7 +82,9 @@ void MainWindow::dropEvent(QDropEvent* event)
    {
       event->acceptProposedAction();
       this->showTab(0);
-      ui_.frameCombos->runComboImportDialog(urls[0].toLocalFile());
+      // note we need to postpone the launch of the dialog to end the event handler ASAP, otherwise the application
+      // that the file was dropped from will like be frozen until we complete the import dialog
+      QTimer::singleShot(0, [urls, this]() {ui_.frameCombos->runComboImportDialog(urls[0].toLocalFile()); });
    }
 }
 

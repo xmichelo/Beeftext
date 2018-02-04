@@ -63,19 +63,43 @@ void ComboList::clear()
 
 
 //**********************************************************************************************************************
+/// \param[in] combo The combo
+/// \return if a combo with the same UUID is already in the list
+//**********************************************************************************************************************
+bool ComboList::contains(SPCombo const& combo) const
+{
+   return combo ? this->end() != this->findByUuid(combo->uuid()) : false;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] comboText The combo Text
+/// \return true if the combo text is used by a combo in the list
+//**********************************************************************************************************************
+bool ComboList::isComboTextUsed(QString const& comboText) const
+{
+   return this->end() != this->findByComboText(comboText);
+}
+
+
+//**********************************************************************************************************************
+/// \return 
+//**********************************************************************************************************************
+bool ComboList::canComboBeAdded(SPCombo const& combo) const
+{
+   return combo ? !(this->contains(combo) || this->isComboTextUsed(combo->comboText())) : false;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] combo The combo to append
 /// \return true if and only if the combo was successfully added to the list
 //**********************************************************************************************************************
 bool ComboList::append(SPCombo const& combo)
 {
-   if (!combo)
+   if (!this->canComboBeAdded(combo))
    {
-      globals::debugLog().addError("Trying to add a null combo to a combo list.");
-      return false;
-   }
-   if (this->end() != this->findByComboText(combo->comboText()) || this->end() != this->findByUuid(combo->uuid()))
-   {
-      globals::debugLog().addError("Trying to add a combo whose text already exists to the list.");
+      globals::debugLog().addError("Cannot add combo (duplicate or combo text conflict).");
       return false;
    }
    this->beginInsertRows(QModelIndex(), combos_.size(), combos_.size());

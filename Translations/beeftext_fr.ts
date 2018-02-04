@@ -131,19 +131,139 @@
     </message>
 </context>
 <context>
+    <name>ComboImportDialog</name>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="23"/>
+        <source>Combo File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="36"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="127"/>
+        <source>&amp;Browse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="52"/>
+        <source># Status Label line 1#
+# Status Label line 2#
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="92"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="114"/>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="102"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="119"/>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished">&amp;Annuler</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="111"/>
+        <source>&amp;Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="122"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="130"/>
+        <source>Browse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Combos</source>
+        <translation type="obsolete">Importer des Combos</translation>
+    </message>
+    <message>
+        <source>Combos successfully imported: %1
+
+Combos skipped to avoid duplicates: %2</source>
+        <translation type="obsolete">Combos importés: %1
+Combos ignorés pour éviter les doublons: %2</translation>
+    </message>
+    <message>
+        <source>Combos successfully imported: %1</source>
+        <translation type="obsolete">Combos importés: %1</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="87"/>
+        <source>The file is not a valid combo list file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="96"/>
+        <source>The combo in the file cannot be imported (duplicate or conflict).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="100"/>
+        <source>1 combo will be imported.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="99"/>
+        <source>%1 combos will be imported.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="103"/>
+        <source>1 combo will be skipped (duplicate or conflict).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="102"/>
+        <source>%1 combos will be skipped (duplicates or conflicts).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="93"/>
+        <source>None of the %1 combos in this file can be imported (duplicates or conflicts).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="122"/>
+        <source>error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="122"/>
+        <source>%1 combo(s) could not be imported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="125"/>
+        <source>Error</source>
+        <translation type="unfinished">Erreur</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="144"/>
+        <source>Select Combo File</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="439"/>
+        <location filename="../Combo/ComboList.cpp" line="463"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="440"/>
+        <location filename="../Combo/ComboList.cpp" line="464"/>
         <source>Combo</source>
         <translation>Combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="441"/>
+        <location filename="../Combo/ComboList.cpp" line="465"/>
         <source>Substitution text</source>
         <translation>Texte de substitution</translation>
     </message>
@@ -226,20 +346,20 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="191"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="205"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="216"/>
         <source>Enable combo</source>
         <translation>Activer le combo</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="194"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="204"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="215"/>
         <source>Ena&amp;ble</source>
         <translation>Ac&amp;tiver</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="206"/>
         <location filename="../Combo/ComboTableFrame.ui" line="209"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="228"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="239"/>
         <source>Add Combo</source>
         <translation>Ajouter un Combo</translation>
     </message>
@@ -262,7 +382,7 @@
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="234"/>
         <location filename="../Combo/ComboTableFrame.ui" line="237"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="314"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="325"/>
         <source>Edit Combo</source>
         <translation>Editer le Combo</translation>
     </message>
@@ -279,7 +399,7 @@
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="248"/>
         <location filename="../Combo/ComboTableFrame.ui" line="251"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="262"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="273"/>
         <source>Duplicate Combo</source>
         <translation>Dupliquer le Combo</translation>
     </message>
@@ -355,7 +475,7 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="311"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="400"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="411"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -365,86 +485,78 @@
         <translation>Ctrl+Maj+A</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="233"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="244"/>
         <source>The combo could not be added to the list.</source>
         <translation>Le combo n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="240"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="269"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="295"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="319"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="359"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="390"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="408"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="427"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="444"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="251"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="280"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="306"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="330"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="370"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="401"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="419"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="260"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="271"/>
         <source>The combo could not be duplicated: invalid index.</source>
         <translation>Le combo n&apos;a pas pu être dupliqué.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="265"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="276"/>
         <source>The duplicated combo could not added to the list.</source>
         <translation>Le combo dupliqué n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="282"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="293"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>Êtes-vous sûr de vouloir effacer les combos selectionnés?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="283"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="294"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>Êtes-vous sûr de vouloir effacer le combo selectionné?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="284"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="295"/>
         <source>Delete Combo?</source>
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="373"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="384"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="427"/>
         <source>Could not load the combo list from file.</source>
-        <translation>Impossible de charge la liste de combos.</translation>
+        <translation type="vanished">Impossible de charge la liste de combos.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="439"/>
         <source>Combos successfully imported: %1
 
 Combos skipped to avoid duplicates: %2</source>
-        <translation>Combos importés: %1
+        <translation type="vanished">Combos importés: %1
 Combos ignorés pour éviter les doublons: %2</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="442"/>
         <source>Combos successfully imported: %1</source>
-        <translation>Combos importés: %1</translation>
+        <translation type="vanished">Combos importés: %1</translation>
     </message>
     <message>
         <source>The combo list could not be saved.</source>
         <translation type="obsolete">Impossible de sauver la liste de combos.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="390"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="408"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="401"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="419"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="300"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="418"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="439"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="442"/>
         <source>Import Combos</source>
         <translation>Importer des Combos</translation>
     </message>
@@ -452,62 +564,62 @@ Combos ignorés pour éviter les doublons: %2</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../MainWindow.ui" line="28"/>
+        <location filename="../MainWindow.ui" line="34"/>
         <source>&amp;Combos</source>
         <translation>&amp;Combos</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="60"/>
+        <location filename="../MainWindow.ui" line="66"/>
         <source>&amp;Preferences</source>
         <translation>&amp;Préférences</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="92"/>
+        <location filename="../MainWindow.ui" line="98"/>
         <source>A&amp;bout</source>
         <translation>À &amp;Propos</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="137"/>
+        <location filename="../MainWindow.ui" line="143"/>
         <source>&amp;File</source>
         <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="143"/>
+        <location filename="../MainWindow.ui" line="149"/>
         <source>&amp;Help</source>
         <translation>&amp;Aide</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="154"/>
+        <location filename="../MainWindow.ui" line="160"/>
         <source>E&amp;xit Beeftext</source>
         <translation>&amp;Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="160"/>
+        <location filename="../MainWindow.ui" line="166"/>
         <source>Exit Beeftext</source>
         <translation>Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="163"/>
+        <location filename="../MainWindow.ui" line="169"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="168"/>
+        <location filename="../MainWindow.ui" line="174"/>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Wiki Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="171"/>
+        <location filename="../MainWindow.ui" line="177"/>
         <source>Shift+F1</source>
         <translation>Maj+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="176"/>
+        <location filename="../MainWindow.ui" line="182"/>
         <source>&amp;About Beeftext</source>
         <translation>&amp;À Propos de Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="179"/>
+        <location filename="../MainWindow.ui" line="185"/>
         <source>F1</source>
         <translation></translation>
     </message>
@@ -528,12 +640,12 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation type="vanished">&amp;Ouvrir %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="65"/>
+        <location filename="../MainWindow.cpp" line="125"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="68"/>
+        <location filename="../MainWindow.cpp" line="128"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>
@@ -751,9 +863,13 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../BeeftextConstants.cpp" line="24"/>
         <source>JSON Files (*.json);;All files (*.*)</source>
-        <translation>Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
+        <translation type="vanished">Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
+    </message>
+    <message>
+        <location filename="../BeeftextConstants.cpp" line="24"/>
+        <source>JSON files (*.json);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

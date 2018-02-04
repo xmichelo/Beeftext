@@ -35,6 +35,9 @@ public: // member functions
 	qint32 size() const; ///< Return the size of the combo list
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list
+   bool contains(SPCombo const& combo) const; ///< Check whether a combo is already in the list, based on its UUID
+   bool isComboTextUsed(QString const& comboText) const; ///< Check whether a combo text is already used in the list
+   bool canComboBeAdded(SPCombo const& combo) const; ///< Check whether a combo can be added
    bool append(SPCombo const& combo); ///< Append a combo at the end of the list
    void erase(qint32 index); ///< Erase a combo from the list
    ComboList::const_iterator findByComboText(QString const& comboText) const; ///< Find a combo by its combo text

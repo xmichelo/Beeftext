@@ -49,7 +49,8 @@ private slots:
 
 private: // data members
    Ui::ComboImportDialog ui_; ///< The GUI for the dialog
-   ComboList comboList_; ///< The list of combos to import
+   ComboList importableCombos_; ///< The list of combos that can be imported as is
+   quint32 skippedComboCount_; ///< The list of combos that cannot be imported (duplicates or conflict)
 };
 
 

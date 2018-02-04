@@ -77,8 +77,32 @@ void ComboImportDialog::dropEvent(QDropEvent* event)
 //**********************************************************************************************************************
 void ComboImportDialog::updateGui()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
-   ui_.buttonImport->setEnabled(comboList_.size() > 0);
+   ui_.buttonImport->setEnabled(importableCombos_.size() > 0);
+   qint32 const importableCount = importableCombos_.size();
+   if ((!importableCount) && (!skippedComboCount_))
+   {
+      if (ui_.editPath->text().isEmpty())
+         ui_.labelStatus->setText("\n");
+      else
+         ui_.labelStatus->setText(tr("This file is not a valid combo list file."));
+      return;
+   }
+   if (!importableCount)
+   {
+      if (skippedComboCount_ > 1)
+         ui_.labelStatus->setText(tr("None of the %1 combos in this file can be imported (duplicates or conflicts).")
+            .arg(skippedComboCount_));
+      else
+         ui_.labelStatus->setText(tr("The combo in this file cannot be imported (duplicate or conflict)."));
+      return;
+   }
+   QString label = (importableCount > 1) ? tr("%1 combos will be imported.\n").arg(importableCount) : 
+      tr("1 combo will be imported.\n");
+   if (skippedComboCount_)
+      label += (skippedComboCount_ > 1) ? tr("%1 combos will be skipped (duplicates or conflicts).")
+         .arg(skippedComboCount_)  : tr("1 combo will be skipped (duplicate or conflict).")
+         ;
+   ui_.labelStatus->setText(label);
 }
 
 
@@ -87,24 +111,17 @@ void ComboImportDialog::updateGui()
 //**********************************************************************************************************************
 void ComboImportDialog::onActionImport()
 {
-   if (comboList_.isEmpty())
+   if (importableCombos_.isEmpty())
       return;
    qint32 successCount = 0,failureCount = 0;
    ComboList& comboList = ComboManager::instance().getComboListRef();
-   for (SPCombo const& combo : comboList_)
-      if (comboList.append(combo))
-         ++successCount;
-      else
+   for (SPCombo const& combo : importableCombos_)
+      if (!comboList.append(combo))
          ++failureCount;
-
-   if (failureCount)
-      QMessageBox::warning(this, tr("Import Combos"), tr("Combos successfully imported: %1\n\nCombos skipped to avoid "
-         "duplicates: %2").arg(successCount).arg(failureCount));
-   else
-      QMessageBox::information(this, tr("Import Combos"), tr("Combos successfully imported: %1").arg(successCount));
-
+   if (failureCount > 0)
+      QMessageBox::critical(this, tr("error"), tr("%1 combo(s) could not be imported."));
    QString errorMsg;
-   if ((successCount > 0) && (!ComboManager::instance().saveComboListToFile(&errorMsg)))
+   if ((!ComboManager::instance().saveComboListToFile(&errorMsg)))
       QMessageBox::critical(this, tr("Error"), errorMsg);
    this->accept();
 }
@@ -137,8 +154,20 @@ void ComboImportDialog::onActionBrowse()
 //**********************************************************************************************************************
 void ComboImportDialog::onEditPathTextChanged(QString const& text)
 {
-   comboList_.clear();
-   comboList_.load(text);
+   importableCombos_.clear();
+   skippedComboCount_ = 0;
+   ComboList candidateList;
+   ComboList& comboList = ComboManager::instance().getComboListRef();
+   if (!candidateList.load(text))
+   {
+      this->updateGui();
+      return;
+   }
+   for (SPCombo const& combo : candidateList)
+   {
+      if ((!comboList.canComboBeAdded(combo)) || (!importableCombos_.append(combo)))
+         ++skippedComboCount_;
+   }
    this->updateGui();
 }
 
