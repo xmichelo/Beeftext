@@ -49,7 +49,7 @@
       </font>
      </property>
      <property name="text">
-      <string># Status Label line 1#
+      <string notr="true"># Status Label line 1#
 # Status Label line 2#
 </string>
      </property>

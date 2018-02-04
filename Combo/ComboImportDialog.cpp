@@ -119,7 +119,7 @@ void ComboImportDialog::onActionImport()
       if (!comboList.append(combo))
          ++failureCount;
    if (failureCount > 0)
-      QMessageBox::critical(this, tr("error"), tr("%1 combo(s) could not be imported."));
+      QMessageBox::critical(this, tr("Error"), tr("%1 combo(s) could not be imported."));
    QString errorMsg;
    if ((!ComboManager::instance().saveComboListToFile(&errorMsg)))
       QMessageBox::critical(this, tr("Error"), errorMsg);

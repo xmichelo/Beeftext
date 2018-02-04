@@ -105,7 +105,7 @@
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="99"/>
         <source>&amp;About Variables</source>
-        <translation>À Propos des Variables</translation>
+        <translation>&amp;À Propos des Variables</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="142"/>
@@ -135,47 +135,40 @@
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="23"/>
         <source>Combo File</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier de Combos</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="36"/>
         <location filename="../Combo/ComboImportDialog.ui" line="127"/>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="52"/>
-        <source># Status Label line 1#
-# Status Label line 2#
-</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Parcourir</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="92"/>
         <location filename="../Combo/ComboImportDialog.ui" line="114"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="102"/>
         <location filename="../Combo/ComboImportDialog.ui" line="119"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Annuler</translation>
+        <translation>&amp;Annuler</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="111"/>
         <source>&amp;Import</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Importer</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="122"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="130"/>
         <source>Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>Parcourir</translation>
     </message>
     <message>
         <source>Import Combos</source>
@@ -193,61 +186,59 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation type="obsolete">Combos importés: %1</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="87"/>
-        <source>The file is not a valid combo list file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="96"/>
-        <source>The combo in the file cannot be imported (duplicate or conflict).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="100"/>
         <source>1 combo will be imported.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>1 combo sera importé.
+</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="99"/>
         <source>%1 combos will be imported.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>%1 combos seront importés.
+</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="103"/>
         <source>1 combo will be skipped (duplicate or conflict).</source>
-        <translation type="unfinished"></translation>
+        <translation>1 combo sera ignoré (doublon ou conflit).</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="102"/>
         <source>%1 combos will be skipped (duplicates or conflicts).</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 combos seront ignorés (doublons ou conflits).</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="87"/>
+        <source>This file is not a valid combo list file.</source>
+        <translation>Ce fichier ne contient pas une liste de combos valide.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="93"/>
         <source>None of the %1 combos in this file can be imported (duplicates or conflicts).</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun des %1 combos contenus dans ce fichier ne peut être importé (doublons ou conflits).</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="122"/>
-        <source>error</source>
-        <translation type="unfinished"></translation>
+        <location filename="../Combo/ComboImportDialog.cpp" line="96"/>
+        <source>The combo in this file cannot be imported (duplicate or conflict).</source>
+        <translation>Le combo contenu dans ce fichier ne peut pas être importé (doublon ou conflit).</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="122"/>
         <source>%1 combo(s) could not be imported.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 combo(s) n&apos;ont pu être importés.</translation>
     </message>
     <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="122"/>
         <location filename="../Combo/ComboImportDialog.cpp" line="125"/>
         <source>Error</source>
-        <translation type="unfinished">Erreur</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="144"/>
         <source>Select Combo File</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection le Fichier de Combos</translation>
     </message>
 </context>
 <context>
@@ -451,7 +442,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="289"/>
         <source>Export Selected Combos</source>
-        <translation>&amp;Exporter les Combos Sélectionnés</translation>
+        <translation>Exporter les Combos Sélectionnés</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="297"/>
@@ -471,7 +462,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="308"/>
         <source>Export A&amp;ll Combos</source>
-        <translation>Exporter Tous les Combos</translation>
+        <translation>Exporter &amp;Tous les Combos</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="311"/>
@@ -553,7 +544,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <location filename="../Combo/ComboTableFrame.cpp" line="401"/>
         <location filename="../Combo/ComboTableFrame.cpp" line="419"/>
         <source>Could not save the combo list file.</source>
-        <translation>Impossible de sauver la liste de combos</translation>
+        <translation>Impossible de sauver la liste de combos.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="300"/>
@@ -869,7 +860,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     <message>
         <location filename="../BeeftextConstants.cpp" line="24"/>
         <source>JSON files (*.json);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
     </message>
 </context>
 <context>
