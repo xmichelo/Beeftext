@@ -29,6 +29,15 @@ public: // member functions
 	ComboImportDialog& operator=(ComboImportDialog const&) = delete; ///< Disabled assignment operator
 	ComboImportDialog& operator=(ComboImportDialog&&) = delete; ///< Disabled move assignment operator
 
+protected: // member functions
+   /// \name Drag and drop functions
+   ///\{
+   void dragEnterEvent(QDragEnterEvent* event); ///< Drag enter event handler
+   void dragMoveEvent(QDragMoveEvent* event); ///< Drag move event handler
+   void dragLeaveEvent(QDragLeaveEvent* event); ///< Drag leave event handler
+   void dropEvent(QDropEvent* event); ///< Drop event handler
+   ///\}
+
 private: // data members
    void updateGui(); ///< Update the GUI state
 

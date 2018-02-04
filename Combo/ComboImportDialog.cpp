@@ -25,6 +25,51 @@ ComboImportDialog::ComboImportDialog(QWidget* parent)
 
 
 //**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void ComboImportDialog::dragEnterEvent(QDragEnterEvent* event)
+{
+   if (event->mimeData()->hasUrls()) // we only accept files
+      event->acceptProposedAction();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void ComboImportDialog::dragMoveEvent(QDragMoveEvent* event)
+{
+   if (event->mimeData()->hasUrls()) // we only accept files
+      event->acceptProposedAction();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void ComboImportDialog::dragLeaveEvent(QDragLeaveEvent* event)
+{
+   event->accept();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void ComboImportDialog::dropEvent(QDropEvent* event)
+{
+   event->accept();
+   QMimeData const* mimeData = event->mimeData();
+   if (!mimeData->hasUrls())
+      return;
+   QList<QUrl> urls = mimeData->urls();
+   if (urls.size() > 0) // should always be the case
+      ui_.editPath->setText(QDir::toNativeSeparators(urls[0].toLocalFile()));
+   event->acceptProposedAction();
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboImportDialog::updateGui()
