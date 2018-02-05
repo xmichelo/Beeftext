@@ -19,6 +19,7 @@
 //**********************************************************************************************************************
 ComboImportDialog::ComboImportDialog(QString const& filePath, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
+   , skippedComboCount_(0)
 {
    ui_.setupUi(this);
    if (!filePath.isEmpty())
