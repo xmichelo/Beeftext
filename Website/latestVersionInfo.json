@@ -1,8 +1,8 @@
 {
    "versionMajor": 0,
-   "versionMinor": 6,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.6/Beeftext-0.6-Installer.exe",
-   "sha256Sum": "86b8a0db5708be0a84958a192ee9c921c66affe642b520db1553461c9816a461",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Beeftext v0.6 adds support for variables.</li></ul></span></p></body></html>"
+   "versionMinor": 7,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.7/Beeftext-0.7-Installer.exe",
+   "sha256Sum": "b714150948b644fd05fe76cbe76ac3721ce6e437f75c17dace3f62c136573414",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Beeftext v0.7 adds support for combo import and export.</li></ul></span></p></body></html>"
 }
 
