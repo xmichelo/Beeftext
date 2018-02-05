@@ -1,8 +1,8 @@
 {
    "versionMajor": 0,
-   "versionMinor": 7,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.7/Beeftext-0.7-Installer.exe",
-   "sha256Sum": "b714150948b644fd05fe76cbe76ac3721ce6e437f75c17dace3f62c136573414",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Beeftext v0.7 adds support for combo import and export.</li></ul></span></p></body></html>"
+   "versionMinor": 8,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.8/Beeftext-0.8-Installer.exe",
+   "sha256Sum": "7de04f0861be875b3fed8448b9487e849f0cb9a9ac526471d375d9b1dbcb1d5b",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>This release fixes a minor bug in the combo import dialog.</li></ul></span></p></body></html>"
 }
 
