@@ -1,8 +1,8 @@
 {
    "versionMajor": 0,
-   "versionMinor": 8,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.8/Beeftext-0.8-Installer.exe",
-   "sha256Sum": "7de04f0861be875b3fed8448b9487e849f0cb9a9ac526471d375d9b1dbcb1d5b",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>This release fixes a minor bug in the combo import dialog.</li></ul></span></p></body></html>"
+   "versionMinor": 9,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.9/Beeftext-0.9-Installer.exe",
+   "sha256Sum": "3fa6541e4346ab2af3b679a57f732f3767a8a1a25e3d73b2dcf543037b0b8ebf",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Beeftext v0.9 fixes a bug that causes an error message to be displayed when the program is launched for the first time.</li></ul></span></p></body></html>"
 }
 
