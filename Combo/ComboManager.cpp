@@ -83,6 +83,10 @@ ComboManager::ComboManager()
    connect(&inputManager, &InputManager::substitutionShortcutTriggered, this, 
       &ComboManager::onSubstitutionTriggerShortcut, Qt::QueuedConnection);
    QString errMsg;
+
+   if (!QFileInfo(QDir(PreferencesManager::instance().comboListFolderPath())
+      .absoluteFilePath(ComboList::defaultFileName)).exists()) // we avoid displaying an error on first launch
+      return;
    if (!this->loadComboListFromFile(&errMsg))
       QMessageBox::critical(nullptr, tr("Error"), errMsg);
 }
