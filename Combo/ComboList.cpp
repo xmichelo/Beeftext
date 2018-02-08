@@ -24,12 +24,63 @@ QString const ComboList::defaultFileName = "comboList.json";
 
 
 //**********************************************************************************************************************
+/// \param[in] first The first combo
+/// \param[in] second The second combo
+//**********************************************************************************************************************
+void swap(ComboList& first, ComboList& second)
+{
+   std::swap(first.combos_, second.combos_);
+}
+
+//**********************************************************************************************************************
 /// \param[in] parent The parent object of the model
 //**********************************************************************************************************************
 ComboList::ComboList(QObject* parent)
    : QAbstractTableModel(parent)
 {
 
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] ref The combo list to copy from
+//**********************************************************************************************************************
+ComboList::ComboList(ComboList const& ref)
+   : combos_(ref.combos_)
+{
+
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] ref The combo list to copy from
+//**********************************************************************************************************************
+ComboList::ComboList(ComboList&& ref)
+   : combos_(std::move(ref.combos_))
+{
+
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] ref The combo list to copy fromS
+//**********************************************************************************************************************
+ComboList& ComboList::operator=(ComboList const& ref)
+{
+   if (&ref != this)
+      combos_ = ref.combos_;
+   return *this;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] ref The combo list to copy from
+//**********************************************************************************************************************
+ComboList& ComboList::operator=(ComboList&& ref)
+{
+   if (&ref != this)
+      combos_ = std::move(ref.combos_);
+   return *this;
 }
 
 
@@ -106,6 +157,17 @@ bool ComboList::append(SPCombo const& combo)
    combos_.push_back(combo);
    this->endInsertRows();
    return true;
+}
+
+
+//**********************************************************************************************************************
+/// \note Unlike ComboList::append() this variant does not perform any check on combo prior to adding
+///
+/// \param[in] combo the combo to add
+//**********************************************************************************************************************
+void ComboList::push_back(SPCombo const& combo)
+{
+   combos_.push_back(combo);
 }
 
 

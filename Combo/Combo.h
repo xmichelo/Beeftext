@@ -38,6 +38,9 @@ public: // member functions
 	QString comboText() const; ///< retrieve the combo text
    void setComboText(QString const& comboText); ///< Set the combo text
    QString substitutionText() const; ///< Retrieve the substitution text
+   QDateTime lastModificationDate() const; ///< Retrieve the last modification date of the combo
+   QDateTime creationDate() const; ///< Retrieve the creation date of the combo
+
    QString evaluatedSubstitutionText(qint32* outCursorPos = nullptr, 
       QSet<QString> forbiddenSubcombos = QSet<QString>()) const; ///< Retrieve the the substitution text after having evaluated it
    void setSubstitutionText(QString const& substitutionText); ///< Set the substitution text
@@ -45,6 +48,7 @@ public: // member functions
    bool isEnabled() const; ///< Check whether the combo is enabled
    void performSubstitution(); ///< Perform the combo substitution
    QJsonObject toJsonObject() const; ///< Serialize the combo in a JSon object
+   void changeUuid(); ///< Get a new Uuid for the combo
 
 public: // static functions
    static SPCombo create(QString const& name = QString(), QString const& aComboText = QString(),

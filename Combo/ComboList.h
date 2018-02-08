@@ -25,20 +25,29 @@ public: // type definitions
    typedef VecSPCombo::const_iterator const_iterator; ///< Type definition for const_iterator
    typedef VecSPCombo::reverse_iterator reverse_iterator; ///< Type definition for iterator
    typedef VecSPCombo::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
+   typedef SPCombo value_type;
 
 public: // static data members
    static QString const defaultFileName; ///< The default name for combo list files
 
+public: // friends
+   friend void swap(ComboList& first, ComboList& second); ///< Swap two combo lists
+
 public: // member functions
 	ComboList(QObject* parent = nullptr); ///< Default constructor
-	~ComboList() = default; ///< Default destructor
-	qint32 size() const; ///< Return the size of the combo list
+   ComboList(ComboList const& ref); ///< Copy constructor
+   ComboList(ComboList&& ref); ///< Move constructor
+   ~ComboList() = default; ///< Default destructor
+   ComboList& operator=(ComboList const& ref); ///< Assignment operator
+   ComboList& operator=(ComboList&& ref); ///< Move assignment operator
+   qint32 size() const; ///< Return the size of the combo list
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list
    bool contains(SPCombo const& combo) const; ///< Check whether a combo is already in the list, based on its UUID
    bool isComboTextUsed(QString const& comboText) const; ///< Check whether a combo text is already used in the list
    bool canComboBeAdded(SPCombo const& combo) const; ///< Check whether a combo can be added
    bool append(SPCombo const& combo); ///< Append a combo at the end of the list
+   void push_back(SPCombo const& combo); ///< Append a combo at the end of the list
    void erase(qint32 index); ///< Erase a combo from the list
    ComboList::const_iterator findByComboText(QString const& comboText) const; ///< Find a combo by its combo text
    ComboList::iterator findByComboText(QString const& comboText); ///< Find a combo by its combo text
@@ -66,12 +75,6 @@ public: // member functions
    QVariant data(QModelIndex const& index = QModelIndex(), int role = Qt::DisplayRole) const override; ///< Retrieve the data from the table model
    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override; ///< Retrieve header data from the table model
    ///\}
-
-private: // member functions
-	ComboList(ComboList const&) = delete; ///< Disabled copy constructor
-	ComboList(ComboList&&) = delete; ///< Disabled move constructor
-	ComboList& operator=(ComboList const&) = delete; ///< Disabled assignment operator
-	ComboList& operator=(ComboList&&) = delete; ///< Disabled move assignment operator
 
 private: // data members
    VecSPCombo combos_; ///< The list of combos

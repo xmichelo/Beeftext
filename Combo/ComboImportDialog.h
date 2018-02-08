@@ -40,17 +40,20 @@ protected: // member functions
 
 private: // data members
    void updateGui(); ///< Update the GUI state
-
+   qint32 computeTotalImportCount() const; ///< Return the number of combos to be imported according to the user selection in the dialog
+   void performFinalImport(qint32& outFailureCount); ///< Perform the final import of combos
 private slots:
    void onActionImport(); ///< Slot for the 'Import' action
    void onActionCancel(); ///< Slot for the 'Cancel' action
    void onActionBrowse(); ///< Slot for the 'Browse' action
    void onEditPathTextChanged(QString const& text); ///< Slot for the changing of the content of the path edit control
+   void onConflictRadioToggled(bool state); ///< Slot for the toggling of a conflict resolution radio button
 
 private: // data members
    Ui::ComboImportDialog ui_; ///< The GUI for the dialog
    ComboList importableCombos_; ///< The list of combos that can be imported as is
-   quint32 skippedComboCount_; ///< The list of combos that cannot be imported (duplicates or conflict)
+   ComboList conflictingNewerCombos_; ///< The list of conflicting combos with a newer modification date than the current one
+   ComboList conflictingOlderCombos_; ///< The list of conflicting combos with an older modification date than the current one
 };
 
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>162</height>
+    <width>521</width>
+    <height>213</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -19,8 +19,14 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
+     <property name="minimumSize">
+      <size>
+       <width>503</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="title">
-      <string>Combo File</string>
+      <string>Combo file</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
@@ -41,21 +47,45 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="labelStatus">
+    <widget class="QGroupBox" name="groupBoxConflicts">
      <property name="font">
       <font>
-       <weight>75</weight>
-       <bold>true</bold>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
-     <property name="text">
-      <string notr="true"># Status Label line 1#
-# Status Label line 2#
-</string>
+     <property name="title">
+      <string notr="true">Conflict resolution</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QRadioButton" name="radioSkipConflicts">
+        <property name="text">
+         <string>Do not import conflicting combos.</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioImportNewer">
+        <property name="text">
+         <string>Keep the most recently modified combo.</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioOverwrite">
+        <property name="text">
+         <string>Overwrite existing combos</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
@@ -66,7 +96,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>9</height>
+       <height>0</height>
       </size>
      </property>
     </spacer>
@@ -251,11 +281,60 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>radioImportNewer</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboImportDialog</receiver>
+   <slot>onConflictRadioToggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioOverwrite</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboImportDialog</receiver>
+   <slot>onConflictRadioToggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioSkipConflicts</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboImportDialog</receiver>
+   <slot>onConflictRadioToggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionImport()</slot>
   <slot>onActionCancel()</slot>
   <slot>onActionBrowse()</slot>
   <slot>onEditPathTextChanged(QString)</slot>
+  <slot>onConflictRadioToggled(bool)</slot>
  </slots>
 </ui>

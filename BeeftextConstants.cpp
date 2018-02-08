@@ -82,6 +82,15 @@ QPushButton::menu-indicator {
    padding-right: 8px;
 }
 
+
+/*****************************
+* All Edits
+*****************************/	
+QRadioButton:disabled {
+   color: #aaa;
+}
+
+
 /*****************************
 * All Edits
 *****************************/	
