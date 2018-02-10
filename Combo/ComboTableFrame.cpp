@@ -12,6 +12,7 @@
 #include "ComboImportDialog.h"
 #include "ComboManager.h"
 #include "ComboDialog.h"
+#include "PreferencesManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
@@ -381,10 +382,12 @@ void ComboTableFrame::onActionExportCombo()
    if (indexes.size() < 1)
       return;
 
-   QString const path = QFileDialog::getSaveFileName(this, tr("Export Combos"), QString(), 
+   PreferencesManager& prefs = PreferencesManager::instance();
+   QString const path = QFileDialog::getSaveFileName(this, tr("Export Combos"), prefs.lastComboImportExportPath(), 
       constants::kJsonFileDialogFilter);
    if (path.isEmpty())
       return;
+   prefs.setLastComboImportExportPath(path);
 
    ComboList const& comboList = ComboManager::instance().getComboListRef();
    ComboList exportList;
@@ -408,10 +411,12 @@ void ComboTableFrame::onActionExportCombo()
 //**********************************************************************************************************************
 void ComboTableFrame::onActionExportAllCombos()
 {
-   QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), QString(),
+   PreferencesManager& prefs = PreferencesManager::instance();
+   QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), prefs.lastComboImportExportPath(),
       constants::kJsonFileDialogFilter);
    if (path.isEmpty())
       return;
+   prefs.setLastComboImportExportPath(path);
    QString errorMessage;
    if (!ComboManager::instance().getComboListRef().save(path, &errorMessage))
    {

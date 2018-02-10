@@ -145,22 +145,26 @@
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="29"/>
         <source>Combo file</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficher de combos</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="74"/>
         <source>Keep the most recently modified combo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Garder la version la plus récente.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="64"/>
         <source>Do not import conflicting combos.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne pas importer les combos causant un conflit.</translation>
+    </message>
+    <message>
+        <source>Overwrite existing combos</source>
+        <translation type="vanished">Toujours remplacer les combos existants.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="84"/>
-        <source>Overwrite existing combos</source>
-        <translation type="unfinished"></translation>
+        <source>Overwrite existing combos.</source>
+        <translation>Toujours remplacer les combos existants.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="122"/>
@@ -237,22 +241,18 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation type="vanished">Le combo contenu dans ce fichier ne peut pas être importé (doublon ou conflit).</translation>
     </message>
     <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="171"/>
         <source>%1 combo(s) could not be imported.</source>
-        <translation type="vanished">%1 combo(s) n&apos;ont pu être importés.</translation>
+        <translation>%1 combo(s) n&apos;ont pu être importés.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="161"/>
         <location filename="../Combo/ComboImportDialog.cpp" line="166"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="171"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="166"/>
-        <source>%1 could not be imported.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="187"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="193"/>
         <source>Select Combo File</source>
         <translation>Sélection le Fichier de Combos</translation>
     </message>
@@ -353,20 +353,20 @@ Combos ignorés pour éviter les doublons: %2</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="191"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="216"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="217"/>
         <source>Enable combo</source>
         <translation>Activer le combo</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="194"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="215"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="216"/>
         <source>Ena&amp;ble</source>
         <translation>Ac&amp;tiver</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="206"/>
         <location filename="../Combo/ComboTableFrame.ui" line="209"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="239"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="240"/>
         <source>Add Combo</source>
         <translation>Ajouter un Combo</translation>
     </message>
@@ -389,7 +389,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="234"/>
         <location filename="../Combo/ComboTableFrame.ui" line="237"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="325"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="326"/>
         <source>Edit Combo</source>
         <translation>Editer le Combo</translation>
     </message>
@@ -406,7 +406,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="248"/>
         <location filename="../Combo/ComboTableFrame.ui" line="251"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="273"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="274"/>
         <source>Duplicate Combo</source>
         <translation>Dupliquer le Combo</translation>
     </message>
@@ -482,7 +482,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="311"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="411"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="415"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -492,48 +492,48 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation>Ctrl+Maj+A</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="244"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="245"/>
         <source>The combo could not be added to the list.</source>
         <translation>Le combo n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="251"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="280"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="306"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="330"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="370"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="401"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="419"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="252"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="281"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="307"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="331"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="371"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="404"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="424"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="271"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="272"/>
         <source>The combo could not be duplicated: invalid index.</source>
         <translation>Le combo n&apos;a pas pu être dupliqué.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="276"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="277"/>
         <source>The duplicated combo could not added to the list.</source>
         <translation>Le combo dupliqué n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="293"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="294"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>Êtes-vous sûr de vouloir effacer les combos selectionnés?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="294"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="295"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>Êtes-vous sûr de vouloir effacer le combo selectionné?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="295"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="296"/>
         <source>Delete Combo?</source>
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="384"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="386"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
@@ -557,8 +557,8 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation type="obsolete">Impossible de sauver la liste de combos.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="401"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="419"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="404"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="424"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>

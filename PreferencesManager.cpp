@@ -31,12 +31,15 @@ namespace {
    QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
    QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
    QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+   QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
    bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
    bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
    bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+   QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
+      QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
    SPShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
       | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
 }
@@ -381,6 +384,24 @@ SPShortcut PreferencesManager::comboTriggerShortcut() const
       return kDefaultValueComboTriggerShortcut;
    SPShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
    return result->isValid() ? result: kDefaultValueComboTriggerShortcut;
+}
+
+
+//**********************************************************************************************************************
+/// \return The preference value
+//**********************************************************************************************************************
+QString PreferencesManager::lastComboImportExportPath() const
+{
+   return this->readSettings<QString>(kKeyLastComboImportExportPath, kDefaultValueLastComboImportExportPath);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The preference value
+//**********************************************************************************************************************
+void PreferencesManager::setLastComboImportExportPath(QString const& path)
+{
+   settings_.setValue(kKeyLastComboImportExportPath, path);
 }
 
 

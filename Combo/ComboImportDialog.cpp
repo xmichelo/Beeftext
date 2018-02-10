@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "ComboImportDialog.h"
 #include "ComboManager.h"
+#include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 
@@ -23,7 +24,11 @@ ComboImportDialog::ComboImportDialog(QString const& filePath, QWidget* parent)
 {
    ui_.setupUi(this);
    if (!filePath.isEmpty())
+   {
       ui_.editPath->setText(QDir::toNativeSeparators(filePath));
+      if (!filePath.isEmpty())
+         PreferencesManager::instance().setLastComboImportExportPath(filePath);
+   }
    else
       this->updateGui();
 }
@@ -163,7 +168,7 @@ void ComboImportDialog::onActionImport()
    if (failureCount)
    {
       globals::debugLog().addError(QString("%1 supposedly possible combo import failed").arg(failureCount));
-      QMessageBox::critical(this, tr("Error"), tr("%1 could not be imported.").arg(failureCount));
+      QMessageBox::critical(this, tr("Error"), tr("%1 combo(s) could not be imported.").arg(failureCount));
    }
 
    this->accept();
@@ -184,10 +189,12 @@ void ComboImportDialog::onActionCancel()
 //**********************************************************************************************************************
 void ComboImportDialog::onActionBrowse()
 {
-   QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), QString(),
+   PreferencesManager& prefs = PreferencesManager::instance();
+   QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), prefs.lastComboImportExportPath(),
       constants::kJsonFileDialogFilter);
    if (path.isEmpty())
       return;
+   prefs.setLastComboImportExportPath(path);
    ui_.editPath->setText(QDir::toNativeSeparators(path));
 }
 

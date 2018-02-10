@@ -81,7 +81,7 @@
       <item>
        <widget class="QRadioButton" name="radioOverwrite">
         <property name="text">
-         <string>Overwrite existing combos</string>
+         <string>Overwrite existing combos.</string>
         </property>
        </widget>
       </item>
