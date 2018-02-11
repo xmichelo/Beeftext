@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>521</width>
-    <height>213</height>
+    <height>226</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -17,6 +17,9 @@
    <string/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetFixedSize</enum>
+   </property>
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="minimumSize">
@@ -57,11 +60,11 @@
      <property name="title">
       <string notr="true">Conflict resolution</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <layout class="QVBoxLayout" name="groupBoxConflictsLayout">
       <item>
        <widget class="QRadioButton" name="radioSkipConflicts">
         <property name="text">
-         <string>Do not import conflicting combos.</string>
+         <string notr="true">#Skip#</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -71,7 +74,7 @@
       <item>
        <widget class="QRadioButton" name="radioImportNewer">
         <property name="text">
-         <string>Keep the most recently modified combo.</string>
+         <string notr="true">#Overwrite if newer#</string>
         </property>
         <property name="checked">
          <bool>false</bool>
@@ -81,7 +84,7 @@
       <item>
        <widget class="QRadioButton" name="radioOverwrite">
         <property name="text">
-         <string>Overwrite existing combos.</string>
+         <string notr="true">#Overwrite#</string>
         </property>
        </widget>
       </item>
@@ -89,17 +92,20 @@
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+    <widget class="QLabel" name="labelImportCount">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>0</height>
-      </size>
+     <property name="text">
+      <string notr="true">#importCount</string>
      </property>
-    </spacer>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">

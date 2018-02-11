@@ -87,11 +87,17 @@ void ComboImportDialog::updateGui()
    quint32 const conflictingTotalCount = conflictingNewerCount + conflictingOlderCombos_.size();
 
    ui_.groupBoxConflicts->setVisible(conflictingTotalCount > 0);
-   this->resize(this->sizeHint());
 
    if (conflictingTotalCount)
    {
-      ui_.radioImportNewer->setEnabled(conflictingNewerCount);
+      ui_.radioSkipConflicts->setText(conflictingTotalCount > 1 ? tr("Skip %1 conflicting combos.")
+         .arg(conflictingTotalCount) : tr("Skip 1 conflicting combo."));
+      ui_.radioOverwrite->setText(conflictingTotalCount > 1 ? tr("Overwrite %1 conflicting combos.")
+         .arg(conflictingTotalCount) : tr("Overwrite 1 conflicting combo."));
+      ui_.radioImportNewer->setVisible(conflictingNewerCount);
+      if (conflictingNewerCount)
+         ui_.radioImportNewer->setText(conflictingNewerCount > 1 ? tr("Overwrite %1 newer conflicting combos.")
+            .arg(conflictingNewerCount) : tr("Overwrite 1 newer conflicting combo.")); 
       if ((!conflictingNewerCombos_.size()) && ui_.radioImportNewer->isChecked())
       {
          QSignalBlocker b1(ui_.radioImportNewer), b2(ui_.radioSkipConflicts);
@@ -100,7 +106,11 @@ void ComboImportDialog::updateGui()
    }
 
    quint32 const importCount = this->computeTotalImportCount();
-   ui_.buttonImport->setEnabled(importCount > 0);
+   ui_.buttonImport->setEnabled(importCount);
+   ui_.labelImportCount->setVisible(importCount);
+   if (importCount)
+      ui_.labelImportCount->setText(importCount > 1 ? tr("%1 combos will be imported.").arg(importCount) :
+         tr("1 combo will be imported."));
 }
 
 

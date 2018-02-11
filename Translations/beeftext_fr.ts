@@ -137,59 +137,56 @@
         <translation type="vanished">Fichier de Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="42"/>
-        <location filename="../Combo/ComboImportDialog.ui" line="157"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="45"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="163"/>
         <source>&amp;Browse</source>
         <translation>&amp;Parcourir</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="29"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="32"/>
         <source>Combo file</source>
         <translation>Ficher de combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="74"/>
         <source>Keep the most recently modified combo.</source>
-        <translation>Garder la version la plus récente.</translation>
+        <translation type="vanished">Garder la version la plus récente.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="64"/>
         <source>Do not import conflicting combos.</source>
-        <translation>Ne pas importer les combos causant un conflit.</translation>
+        <translation type="vanished">Ne pas importer les combos causant un conflit.</translation>
     </message>
     <message>
         <source>Overwrite existing combos</source>
         <translation type="vanished">Toujours remplacer les combos existants.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="84"/>
         <source>Overwrite existing combos.</source>
-        <translation>Toujours remplacer les combos existants.</translation>
+        <translation type="vanished">Toujours remplacer les combos existants.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="122"/>
-        <location filename="../Combo/ComboImportDialog.ui" line="144"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="128"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="150"/>
         <source>Import</source>
         <translation>Importer</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="132"/>
-        <location filename="../Combo/ComboImportDialog.ui" line="149"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="138"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="155"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="141"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="147"/>
         <source>&amp;Import</source>
         <translation>&amp;Importer</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="152"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="158"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="160"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="166"/>
         <source>Browse</source>
         <translation>Parcourir</translation>
     </message>
@@ -241,18 +238,58 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation type="vanished">Le combo contenu dans ce fichier ne peut pas être importé (doublon ou conflit).</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="171"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="181"/>
         <source>%1 combo(s) could not be imported.</source>
         <translation>%1 combo(s) n&apos;ont pu être importés.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="166"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="171"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="176"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="181"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="193"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="93"/>
+        <source>Skip %1 conflicting combos.</source>
+        <translation>Ignorer %1 combos conflictuels.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="94"/>
+        <source>Skip 1 conflicting combo.</source>
+        <translation>Ignorer 1 combo conflictuel.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="95"/>
+        <source>Overwrite %1 conflicting combos.</source>
+        <translation>Remplacer %1 combos conflictuels.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="96"/>
+        <source>Overwrite 1 conflicting combo.</source>
+        <translation>Remplacer 1 combo conflictuel.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="99"/>
+        <source>Overwrite %1 newer conflicting combos.</source>
+        <translation>Remplacer %1 combos conflictuels plus récent.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="100"/>
+        <source>Overwrite 1 newer conflicting combo.</source>
+        <translation>Remplacer 1 combo conflictuel plus récent.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="112"/>
+        <source>%1 combos will be imported.</source>
+        <translation>%1 combos seront importés.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="113"/>
+        <source>1 combo will be imported.</source>
+        <translation>1 combo sera importé.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="203"/>
         <source>Select Combo File</source>
         <translation>Sélection le Fichier de Combos</translation>
     </message>
