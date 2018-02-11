@@ -18,7 +18,7 @@
 !define RESOURCES_FOLDER_PATH "..\Resources"
 !define VS_DEVENV_PATH "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com"
 !define VC_REDIST_RUNTIME_FILE "VC_redist.x86.exe"
-!define VC_REDIST_RUNTIME_FILE_PATH "${RESOURCES_FOLDER_PATH}\Vendor\VCRuntime\${VC_REDIST_RUNTIME_FILE}"
+!define VC_REDIST_RUNTIME_FILE_PATH "..\Vendor\VCRuntime\Installer\${VC_REDIST_RUNTIME_FILE}"
 !define LICENSE_FILE_NAME "LICENSE"
 !define LICENSE_FILE_PATH "..\${LICENSE_FILE_NAME}"
 !define WEBSITE "https://beeftext.org"
