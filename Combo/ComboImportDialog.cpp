@@ -89,16 +89,16 @@ void ComboImportDialog::updateGui()
    ui_.groupBoxConflicts->setVisible(conflictingTotalCount > 0);
    this->resize(this->sizeHint());
 
-   if (!conflictingTotalCount)
-      return;
-
-   ui_.radioImportNewer->setEnabled(conflictingNewerCount);
-   if ((!conflictingNewerCombos_.size()) && ui_.radioImportNewer->isChecked())
+   if (conflictingTotalCount)
    {
-      QSignalBlocker b1(ui_.radioImportNewer), b2(ui_.radioSkipConflicts);
-      ui_.radioSkipConflicts->setChecked(true);
+      ui_.radioImportNewer->setEnabled(conflictingNewerCount);
+      if ((!conflictingNewerCombos_.size()) && ui_.radioImportNewer->isChecked())
+      {
+         QSignalBlocker b1(ui_.radioImportNewer), b2(ui_.radioSkipConflicts);
+         ui_.radioSkipConflicts->setChecked(true);
+      }
    }
-   
+
    quint32 const importCount = this->computeTotalImportCount();
    ui_.buttonImport->setEnabled(importCount > 0);
 }
