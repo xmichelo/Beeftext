@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "AboutFrame.h"
 #include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
 
 
 //**********************************************************************************************************************
@@ -29,8 +30,8 @@ AboutFrame::AboutFrame(QWidget* parent)
 //**********************************************************************************************************************
 void AboutFrame::completeText() const
 {
-   ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor).
-      arg(QString(__DATE__).right(4))); // we extract the year from the __DATE__ macro
+   ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor)
+      .arg(globals::isInPortableMode() ? tr("Portable Edition") : "").arg(QString(__DATE__).right(4))); // we extract the year from the __DATE__ macro
 }
 
 

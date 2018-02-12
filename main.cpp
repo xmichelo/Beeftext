@@ -58,7 +58,6 @@ int main(int argc, char *argv[])
       app.setQuitOnLastWindowClosed(false);
       app.setOrganizationName(constants::kOrganizationName);
       app.setApplicationName(constants::kApplicationName);
-      app.setApplicationDisplayName(constants::kApplicationName);
 
       ensureAppDataDirExists();
       debugLog.enableLoggingToFile(globals::logFilePath());
