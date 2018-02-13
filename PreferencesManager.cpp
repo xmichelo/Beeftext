@@ -10,8 +10,9 @@
 #include "stdafx.h"
 #include "I18nManager.h"
 #include "PreferencesManager.h"
-#include "BeeftextConstants.h"
+#include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
+#include "BeeftextConstants.h"
 
 
 namespace {
@@ -55,9 +56,9 @@ namespace {
 //**********************************************************************************************************************
 template <typename T> T PreferencesManager::readSettings(QString const& key, T const& defaultValue) const
 {
-   if (!settings_.contains(key))
+   if (!settings_->contains(key))
       return defaultValue;
-   QVariant v = settings_.value(key, QVariant::fromValue<T>(defaultValue));
+   QVariant v = settings_->value(key, QVariant::fromValue<T>(defaultValue));
    return v.canConvert<T>() ? qvariant_cast<T>(v) : defaultValue;
 }
 
@@ -77,11 +78,15 @@ PreferencesManager& PreferencesManager::instance()
 /// to QApplication::SetOrganizationName() and QApplication::SetApplicationName()
 //**********************************************************************************************************************
 PreferencesManager::PreferencesManager()
-   : settings_(constants::kOrganizationName, constants::kApplicationName)
-   , cachedUseAutomaticSubstitution_(this->readSettings<bool>(kKeyUseAutomaticSubstitution, 
-      kDefaultValueUseAutomaticSubstitution)) // this preference is cached because it is used frequently
+   : settings_(nullptr)
 {
-   
+   if (isInPortableMode())
+      settings_ = std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat);
+   else   
+      settings_ = std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
+   cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
+      kDefaultValueUseAutomaticSubstitution); // this preference is cached because it is used frequently
+
 }
 
 
@@ -92,12 +97,15 @@ void PreferencesManager::reset()
 {
    this->setPlaySoundOnCombo(kDefaultValuePlaySoundOnCombo);
    this->setAutoCheckForUpdates(kDefaultValueAutoCheckForUpdates);
-   this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
    this->setUseClipboardForComboSubstitution(kDefaultvalueUseClipboardForComboSubstitution);
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
-   this->setComboListFolderPath(globals::appDataDir());
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
+   if (isInPortableMode())
+   {
+      this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
+      this->setComboListFolderPath(globals::appDataDir());
+   }
 }
 
 
@@ -106,7 +114,7 @@ void PreferencesManager::reset()
 //**********************************************************************************************************************
 QString PreferencesManager::getInstalledApplicationPath() const
 {
-   if (!settings_.contains(kKeyAppExePath))
+   if (!settings_->contains(kKeyAppExePath))
       return QString();
    return QDir::fromNativeSeparators(this->readSettings<QString>(kKeyAppExePath));
 }
@@ -117,7 +125,7 @@ QString PreferencesManager::getInstalledApplicationPath() const
 //**********************************************************************************************************************
 void PreferencesManager::setAlreadyLaunched()
 {
-   settings_.setValue(kKeyAlreadyLaunched, 1);
+   settings_->setValue(kKeyAlreadyLaunched, 1);
 }
 
 
@@ -135,7 +143,7 @@ bool PreferencesManager::alreadyLaunched() const
 //**********************************************************************************************************************
 void PreferencesManager::setFileMarkedForDeletionOnStartup(QString const& path)
 {
-   settings_.setValue(kKeyFileMarkedForDeletion, path);
+   settings_->setValue(kKeyFileMarkedForDeletion, path);
 }
 
 
@@ -153,7 +161,7 @@ QString PreferencesManager::fileMarkedForDeletionOnStartup() const
 //**********************************************************************************************************************
 void PreferencesManager::clearFileMarkedForDeletionOnStartup()
 {
-   settings_.remove(kKeyFileMarkedForDeletion);
+   settings_->remove(kKeyFileMarkedForDeletion);
 }
 
 
@@ -162,7 +170,7 @@ void PreferencesManager::clearFileMarkedForDeletionOnStartup()
 //**********************************************************************************************************************
 void PreferencesManager::setMainWindowGeometry(QByteArray const& array)
 {
-   settings_.setValue(kKeyGeometry, array);
+   settings_->setValue(kKeyGeometry, array);
 }
 
 
@@ -171,7 +179,7 @@ void PreferencesManager::setMainWindowGeometry(QByteArray const& array)
 //**********************************************************************************************************************
 QByteArray PreferencesManager::mainWindowGeometry() const
 {
-   return settings_.value(kKeyGeometry).toByteArray();
+   return settings_->value(kKeyGeometry).toByteArray();
 }
 
 
@@ -189,7 +197,7 @@ QLocale PreferencesManager::locale() const
 //**********************************************************************************************************************
 void PreferencesManager::setLocale(QLocale const& locale)
 {
-   settings_.setValue(kKeyLocale, locale);
+   settings_->setValue(kKeyLocale, locale);
 }
 
 
@@ -198,7 +206,7 @@ void PreferencesManager::setLocale(QLocale const& locale)
 //**********************************************************************************************************************
 void PreferencesManager::setLastUpdateCheckDateTime(QDateTime const& dateTime)
 {
-   settings_.setValue(kKeyLastUpdateCheckDateTime, dateTime);
+   settings_->setValue(kKeyLastUpdateCheckDateTime, dateTime);
 }
 
 
@@ -207,7 +215,7 @@ void PreferencesManager::setLastUpdateCheckDateTime(QDateTime const& dateTime)
 //**********************************************************************************************************************
 QDateTime PreferencesManager::lastUpdateCheckDateTime() const
 {
-   QVariant v = settings_.value(kKeyLastUpdateCheckDateTime);
+   QVariant v = settings_->value(kKeyLastUpdateCheckDateTime);
    return (v.isNull() || !v.canConvert<QDateTime>()) ? QDateTime(): v.toDateTime();
 }
 
@@ -217,7 +225,10 @@ QDateTime PreferencesManager::lastUpdateCheckDateTime() const
 //**********************************************************************************************************************
 void PreferencesManager::setAutoStartAtLogin(bool value)
 {
-   settings_.setValue(kKeyAutoStartAtLogin, value);
+   if (isInPortableMode())
+      globals::debugLog().addWarning("Trying to the set the 'auto start at login' preference while running "
+         "in portable mode");
+   settings_->setValue(kKeyAutoStartAtLogin, value);
 }
 
 
@@ -226,7 +237,7 @@ void PreferencesManager::setAutoStartAtLogin(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::autoStartAtLogin() const
 {
-   return this->readSettings<bool>(kKeyAutoStartAtLogin, kDefaultValueAutoStartAtLogin);
+   return isInPortableMode() ? false : this->readSettings<bool>(kKeyAutoStartAtLogin, kDefaultValueAutoStartAtLogin);
 }
 
 
@@ -235,7 +246,7 @@ bool PreferencesManager::autoStartAtLogin() const
 //**********************************************************************************************************************
 void PreferencesManager::setPlaySoundOnCombo(bool value)
 {
-   settings_.setValue(kKeyPlaySoundOnCombo, value);
+   settings_->setValue(kKeyPlaySoundOnCombo, value);
 }
 
 
@@ -255,7 +266,7 @@ void PreferencesManager::setAutoCheckForUpdates(bool value)
 {
    if (this->autoCheckForUpdates() == value)
       return;
-   settings_.setValue(kKeyAutoCheckForUpdates, value);
+   settings_->setValue(kKeyAutoCheckForUpdates, value);
    emit autoCheckForUpdatesChanged(value);
 }
 
@@ -274,7 +285,7 @@ bool PreferencesManager::autoCheckForUpdates() const
 //**********************************************************************************************************************
 void PreferencesManager::setUseClipboardForComboSubstitution(bool value)
 {
-   settings_.setValue(kKeyUseClipboardForComboSubstitution, value);
+   settings_->setValue(kKeyUseClipboardForComboSubstitution, value);
 }
 
 
@@ -292,7 +303,7 @@ bool PreferencesManager::useClipboardForComboSubstitution() const
 //**********************************************************************************************************************
 void PreferencesManager::setUseCustomTheme(bool value)
 {
-   settings_.setValue(kKeyUseCustomTheme, value);
+   settings_->setValue(kKeyUseCustomTheme, value);
 }
 
 
@@ -312,7 +323,7 @@ bool PreferencesManager::useCustomTheme() const
 void PreferencesManager::setUseAutomaticSubstitution(bool value)
 {
    cachedUseAutomaticSubstitution_ = value;
-   settings_.setValue(kKeyUseAutomaticSubstitution, value);
+   settings_->setValue(kKeyUseAutomaticSubstitution, value);
 }
 
 
@@ -330,7 +341,11 @@ bool PreferencesManager::useAutomaticSubstitution() const
 //**********************************************************************************************************************
 void PreferencesManager::setComboListFolderPath(QString const& value)
 {
-   settings_.setValue(kKeyComboListFolderPath, value);
+   if (isInPortableMode())
+      globals::debugLog().addWarning("Trying to the set the 'combo list folder path' preference while running "
+         "in portable mode");
+   else
+      settings_->setValue(kKeyComboListFolderPath, value);
 }
 
 
@@ -339,7 +354,8 @@ void PreferencesManager::setComboListFolderPath(QString const& value)
 //**********************************************************************************************************************
 QString PreferencesManager::comboListFolderPath() const
 {
-   return this->readSettings<QString>(kKeyComboListFolderPath, defaultComboListFolderPath());
+   return isInPortableMode() ? globals::portableModeDataFolderPath() : 
+      this->readSettings<QString>(kKeyComboListFolderPath, defaultComboListFolderPath());
 }
 
 
@@ -348,7 +364,7 @@ QString PreferencesManager::comboListFolderPath() const
 //**********************************************************************************************************************
 QString PreferencesManager::defaultComboListFolderPath()
 {
-   return globals::appDataDir();
+   return isInPortableMode() ? globals::portableModeDataFolderPath() :globals::appDataDir();
 }
 
 
@@ -359,15 +375,15 @@ void PreferencesManager::setComboTriggerShortcut(SPShortcut const& value)
 {
    if (!value)
    {
-      settings_.remove(kKeyComboTriggerShortcutModifiers);
-      settings_.remove(kKeyComboTriggerShortcutKeyCode);
-      settings_.remove(kKeyComboTriggerShortcutScanCode);
+      settings_->remove(kKeyComboTriggerShortcutModifiers);
+      settings_->remove(kKeyComboTriggerShortcutKeyCode);
+      settings_->remove(kKeyComboTriggerShortcutScanCode);
    }
    else
    {
-      settings_.setValue(kKeyComboTriggerShortcutModifiers, int(value->nativeModifiers()));
-      settings_.setValue(kKeyComboTriggerShortcutKeyCode, value->nativeVirtualKey());
-      settings_.setValue(kKeyComboTriggerShortcutScanCode, value->nativeScanCode());
+      settings_->setValue(kKeyComboTriggerShortcutModifiers, int(value->nativeModifiers()));
+      settings_->setValue(kKeyComboTriggerShortcutKeyCode, value->nativeVirtualKey());
+      settings_->setValue(kKeyComboTriggerShortcutScanCode, value->nativeScanCode());
    }
 }
 
@@ -401,7 +417,7 @@ QString PreferencesManager::lastComboImportExportPath() const
 //**********************************************************************************************************************
 void PreferencesManager::setLastComboImportExportPath(QString const& path)
 {
-   settings_.setValue(kKeyLastComboImportExportPath, path);
+   settings_->setValue(kKeyLastComboImportExportPath, path);
 }
 
 

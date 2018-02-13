@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "I18nManager.h"
 #include "BeeftextConstants.h"
-#include "BeeftextGlobals.h"
+#include "BeeftextUtils.h"
 #include "I18nManager.h"
 
 
@@ -176,7 +176,7 @@ void I18nManager::setLocale(QLocale const& locale)
       return; // already set
    QLocale::setDefault(locale);
    this->loadTranslation();
-   qApp->setApplicationDisplayName(constants::kApplicationName + (globals::isInPortableMode() ?
+   qApp->setApplicationDisplayName(constants::kApplicationName + (isInPortableMode() ?
       QObject::tr(" - Portable Edition") : ""));
 }
 

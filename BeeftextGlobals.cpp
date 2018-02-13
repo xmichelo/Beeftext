@@ -9,31 +9,13 @@
 
 #include "stdafx.h"
 #include "BeeftextGlobals.h"
+#include "BeeftextUtils.h"
 
 
 namespace {
 
 QString const kLogFileName = "log.txt"; ///< The name of the log file. Note keep .txt extension for easier opening by the system
-
-
-//**********************************************************************************************************************
-/// \brief Test if the application is running in portable mode
-/// 
-/// The application is considered as running in portable mode if and only there is a writable folder named Data in
-/// the parent folder of the executable folder.
-///  
-/// This criterion is motivated by the folder hierarchy dictated by the 
-/// [PortableApps.com format](https://portableapps.com/development/portableapps.com_format)
-/// 
-/// \return true if and only if the application is running in portable mode
-//**********************************************************************************************************************
-bool isInPortableMode_()
-{
-   QFileInfo fi(QDir(QCoreApplication::applicationDirPath() + "/../Data").absolutePath());
-   qDebug() << QDir::toNativeSeparators(QString("portable data folder: %1").arg(fi.absoluteFilePath()));
-   return fi.exists() && fi.isWritable();
-}
-
+QString const kPortableModeSettingsFileName = "Settings.ini"; ///< The name of the settings file when the application runs in portable mode
 
 } // anonymous namespace
 
@@ -56,7 +38,8 @@ xmilib::DebugLog& debugLog()
 //**********************************************************************************************************************
 QString appDataDir()
 {
-   return QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+   return isInPortableMode() ? portableModeDataFolderPath() :
+      QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
 }
 
 
@@ -69,22 +52,22 @@ QString logFilePath()
 }
 
 
-//**********************************************************************************************************************
-/// \brief Test if the application is running in portable mode
-///
-/// \return true if and only if the application is running in portable mode
-//**********************************************************************************************************************
-
 
 //**********************************************************************************************************************
-/// \return true if and only if the application is in portable mode
+/// \return The absolute path of the folder where the user data is stored when the that is used when the application is 
+/// in portable mode
 //**********************************************************************************************************************
-bool isInPortableMode()
+QString portableModeDataFolderPath()
 {
-   // portable mode state cannot change during the execution of an instance of the application, so we 'cache' the
-   // value using a static variable
-   static bool result = isInPortableMode_();
-   return result;
+   return QDir(QCoreApplication::applicationDirPath()).absoluteFilePath("Data");
+}
+
+//**********************************************************************************************************************
+/// \return The path of the settings file that is used when the application is in portable mode
+//**********************************************************************************************************************
+QString portableModeSettingsFilePath()
+{
+   return QDir(portableModeDataFolderPath()).absoluteFilePath(kPortableModeSettingsFileName);
 }
 
 

@@ -20,7 +20,8 @@ namespace globals {
 xmilib::DebugLog& debugLog(); ///< Returns a reference to the debug log
 QString appDataDir(); ///< Returns the location of the local storage folder for the application
 QString logFilePath(); ///< Returns the path of the log file
-bool isInPortableMode(); ///< Test whether the application is running in portable mode
+QString portableModeDataFolderPath(); ///< Returns the path of the user data folder when the application is run in portable mode
+QString portableModeSettingsFilePath(); ///< Returns the path of the settings file when the application is run in portable mode
 
 
 } // namespace globals

@@ -71,7 +71,7 @@ private: // member functions
    template <typename T> T readSettings(QString const& key, T const& defaultValue = T()) const; ///< Read a value of a given type read from the settings
    
 private: // data members
-   QSettings settings_; ///< The Qt settings instance
+   std::unique_ptr<QSettings> settings_; ///< The Qt settings instance
    bool cachedUseAutomaticSubstitution_; ///< Cached value for the 'use automatic substitution' preference value
 
 };

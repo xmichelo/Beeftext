@@ -44,6 +44,12 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    this->applyThemePreference(); // we apply the custom theme if the user selected it
    I18nManager::fillLocaleCombo(*ui_.comboLocale);
    I18nManager::selectLocaleInCombo(I18nManager::instance().locale(), *ui_.comboLocale);
+   if (isInPortableMode())
+   {
+      QWidgetList widgets = { ui_.checkAutoStart, ui_.frameComboListFolder };
+      for (QWidget* widget : widgets)
+         widget->setVisible(false);
+   }
 
    // signal mappings for the 'Check now' button
    UpdateManager& updateManager = UpdateManager::instance();
@@ -112,6 +118,8 @@ void PreferencesFrame::applyThemePreference() const
 //**********************************************************************************************************************
 void PreferencesFrame::applyComboListFolderPreference(QString const& folderPath, QString const& previousPath)
 {
+   if (isInPortableMode())
+      return;
    PreferencesManager& prefs = PreferencesManager::instance();
    prefs.setComboListFolderPath(folderPath);
    QString err;
@@ -255,6 +263,8 @@ void PreferencesFrame::onPlaySoundOnComboCheckChanged() const
 //**********************************************************************************************************************
 void PreferencesFrame::onAutoStartCheckChanged() const
 {
+   if (isInPortableMode())
+      return;
    prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
    this->applyAutoStartPreference();
 }
