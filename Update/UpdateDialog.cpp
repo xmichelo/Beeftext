@@ -13,6 +13,7 @@
 #include "PreferencesManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
+#include "BeeftextUtils.h"
 #include <XMiLib/FileUtils.h>
 #include <XMiLib/Exception.h>
 
@@ -34,13 +35,17 @@ UpdateDialog::UpdateDialog(SPLatestVersionInfo const& latestVersionInfo, QWidget
    , installerPath_()
    , downloadErrorOccurred_(false)
 {
+   bool const portableMode = isInPortableMode();
    ui_.setupUi(this);
+   ui_.progressBar->setVisible(!portableMode);
    if (latestVersionInfo_)
    {
       ui_.labelHeader->setText(ui_.labelHeader->text().arg(constants::kApplicationName)
          .arg(latestVersionInfo_->versionMajor()).arg(latestVersionInfo_->versionMinor()));
       ui_.editReleaseNotes->setHtml(latestVersionInfo_->releaseNotes());
    }
+   ui_.buttonInstall->setText(portableMode ? tr("&Download Page") : tr("&Install"));
+
    // If you're AFK for days, we want to ensure we display only one notification windows, for the latest release, so:
    connect(&UpdateManager::instance(), &UpdateManager::updateIsAvailable, this, &UpdateDialog::reject); 
 }
@@ -93,7 +98,13 @@ void UpdateDialog::processDownloadedData(QByteArray const& data)
 //**********************************************************************************************************************
 void UpdateDialog::onActionInstall()
 {
-   this->startDownload();
+   if (isInPortableMode())
+   {
+      QDesktopServices::openUrl(QUrl(latestVersionInfo_->releaseUrl()));
+      this->accept();
+   }
+   else
+      this->startDownload();
 }
 
 

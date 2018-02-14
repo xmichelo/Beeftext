@@ -15,7 +15,8 @@ namespace {
    qint32 const kHashLength = 32; /// The length in bytes of the checksum
    QString const kPropVersionMajor = "versionMajor"; ///< The JSON property name for the major version number
    QString const kPropVersionMinor = "versionMinor"; ///< The JSON property name for the minor version number
-   QString const kPropVersionDownloadUrl = "downloadUrl"; ///< The JSON property name for the download URL
+   QString const kPropDownloadUrl = "downloadUrl"; ///< The JSON property name for the download URL
+   QString const kPropReleaseUrl = "releaseUrl"; ///< The JSON property name for the release URL
    QString const kPropSha256Sum = "sha256Sum"; ///< The JSON property name for the SHA256 sum
    QString const kPropReleaseNotes = "releaseNotes"; ///< The JSON property name for the release notes
 }
@@ -28,6 +29,7 @@ LatestVersionInfo::LatestVersionInfo()
    : versionMajor_(-1)
    , versionMinor_(-1)
    , downloadUrl_()
+   , releaseUrl_()
    ,  sha256Hash_()
    , releaseNotes_()
 {
@@ -51,7 +53,7 @@ LatestVersionInfo::LatestVersionInfo(QJsonObject const& object)
 //**********************************************************************************************************************
 bool LatestVersionInfo::isValid() const
 {
-   return (versionMajor_ >= 0) && (versionMinor_ >= 0) && (!downloadUrl_.isEmpty()) 
+   return (versionMajor_ >= 0) && (versionMinor_ >= 0) && (!downloadUrl_.isEmpty()) && (!releaseNotes_.isEmpty()) 
       && (sha256Hash_.size() == kHashLength);
 }
 
@@ -111,6 +113,24 @@ void LatestVersionInfo::setDownloadUrl(QString const& downloadUrl)
 
 
 //**********************************************************************************************************************
+/// \return The release URL
+//**********************************************************************************************************************
+QString LatestVersionInfo::releaseUrl() const
+{
+   return releaseUrl_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] url The release url
+//**********************************************************************************************************************
+void LatestVersionInfo::setReleaseUrl(QString const& url)
+{
+   releaseUrl_ = url;
+}
+
+
+//**********************************************************************************************************************
 /// \return the SHA256 has for the installer
 //**********************************************************************************************************************
 QByteArray LatestVersionInfo::sha256Hash() const
@@ -155,7 +175,8 @@ void LatestVersionInfo::parseFromJsonObject(QJsonObject const& object)
 {
    versionMajor_ = object[kPropVersionMajor].toInt(-1);
    versionMinor_ = object[kPropVersionMinor].toInt(-1);
-   downloadUrl_ = object[kPropVersionDownloadUrl].toString();
+   downloadUrl_ = object[kPropDownloadUrl].toString();
+   releaseUrl_ = object[kPropReleaseUrl].toString();
    sha256Hash_ = QByteArray::fromHex(object[kPropSha256Sum].toString().toLocal8Bit());
    releaseNotes_ = object[kPropReleaseNotes].toString();
 }

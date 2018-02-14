@@ -47,7 +47,7 @@ bool registerApplicationForAutoStart()
    QString const installedPath = PreferencesManager::instance().getInstalledApplicationPath();
    if (installedPath.isEmpty() || (!QFileInfo(installedPath).exists()))
       return false;
-   ;
+   
    QSettings(kRegKeyAutoStart, QSettings::NativeFormat).setValue(constants::kApplicationName, 
       QDir::toNativeSeparators(installedPath));
    return true;
@@ -83,6 +83,4 @@ bool isInPortableMode()
    static bool result = isInPortableMode_();
    return result;
 }
-
-
 

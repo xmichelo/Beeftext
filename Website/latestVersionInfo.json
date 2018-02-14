@@ -2,6 +2,7 @@
    "versionMajor": 0,
    "versionMinor": 10,
    "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.10/Beeftext-0.10-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v0.10",
    "sha256Sum": "ac949bd068388b6c33bf64c0a6ee2103c31ae9eea870aa2e620435e745579d02",
    "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Improved combo import dialog.</li><li>Minor bug fixes.</li></ul></span></p></body></html>"
 }

@@ -33,6 +33,8 @@ public: // member functions
    void setVersionMinor(qint32 versionMinor); ///< Get he minor version number
    QString downloadUrl() const; ///< Get the download URL
    void setDownloadUrl(QString const& url); ///< Set the download URL
+   QString releaseUrl() const; ///< Get the release URL
+   void setReleaseUrl(QString const& url); ///< Set the release url
    QByteArray sha256Hash() const; ///< Get the SHA256 hash for the installer
    void setSha256Hash(QByteArray const& sha256Hash); ///< Set the SHA256 hash for the installer
    QString releaseNotes() const; ///< Get the release notes
@@ -49,6 +51,7 @@ private: // data members
    qint32 versionMajor_; ///< The major version number
    qint32 versionMinor_; ///< The minor version number
    QString downloadUrl_; ///< The download url of the installer file
+   QString releaseUrl_; ///< The URL of the release page on GitHub
    QByteArray sha256Hash_; ///< The SHA256 hash for the installer 
    QString releaseNotes_; ///< The release notes for the version
 };

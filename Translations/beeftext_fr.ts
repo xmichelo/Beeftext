@@ -697,12 +697,12 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation type="vanished">&amp;Ouvrir %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="124"/>
+        <location filename="../MainWindow.cpp" line="125"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="127"/>
+        <location filename="../MainWindow.cpp" line="128"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>
@@ -784,50 +784,50 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation>Utiliser le presse-papier pour la substitution des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="285"/>
+        <location filename="../PreferencesFrame.ui" line="310"/>
         <source>Combo list folder</source>
         <translation>Dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="299"/>
+        <location filename="../PreferencesFrame.ui" line="324"/>
         <source>&amp;Change</source>
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="306"/>
+        <location filename="../PreferencesFrame.ui" line="331"/>
         <source>D&amp;efault</source>
         <translation>Par D&amp;efault</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="333"/>
-        <location filename="../PreferencesFrame.ui" line="373"/>
+        <location filename="../PreferencesFrame.ui" line="359"/>
+        <location filename="../PreferencesFrame.ui" line="399"/>
         <source>Open &amp;Log File</source>
         <translation>Ouvrir le &amp;Journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="353"/>
-        <location filename="../PreferencesFrame.ui" line="368"/>
+        <location filename="../PreferencesFrame.ui" line="379"/>
+        <location filename="../PreferencesFrame.ui" line="394"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="356"/>
-        <location filename="../PreferencesFrame.ui" line="365"/>
+        <location filename="../PreferencesFrame.ui" line="382"/>
+        <location filename="../PreferencesFrame.ui" line="391"/>
         <source>&amp;Default</source>
         <translation>Par &amp;Défault</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="376"/>
+        <location filename="../PreferencesFrame.ui" line="402"/>
         <source>Open the log file</source>
         <translation>Ouvrir le journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="381"/>
+        <location filename="../PreferencesFrame.ui" line="407"/>
         <source>Change combo list folder</source>
         <translation>Changer le dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="386"/>
+        <location filename="../PreferencesFrame.ui" line="412"/>
         <source>Reset combo list folder</source>
         <translation>Reinitialiser le dossier de la liste de combos</translation>
     </message>
@@ -837,47 +837,47 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="122"/>
+        <location filename="../PreferencesFrame.cpp" line="130"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="122"/>
+        <location filename="../PreferencesFrame.cpp" line="130"/>
         <source>The combo list folder could not be changed.</source>
         <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="172"/>
+        <location filename="../PreferencesFrame.cpp" line="180"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="172"/>
+        <location filename="../PreferencesFrame.cpp" line="180"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="201"/>
+        <location filename="../PreferencesFrame.cpp" line="209"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="317"/>
+        <location filename="../PreferencesFrame.cpp" line="327"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="319"/>
+        <location filename="../PreferencesFrame.cpp" line="329"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="328"/>
+        <location filename="../PreferencesFrame.cpp" line="338"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="337"/>
+        <location filename="../PreferencesFrame.cpp" line="347"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>
@@ -977,8 +977,8 @@ Control, Alt ou Windows.</translation>
         <translation>Notes de Version:</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="82"/>
         <location filename="../Update/UpdateDialog.ui" line="98"/>
+        <location filename="../Update/UpdateDialog.cpp" line="47"/>
         <source>&amp;Install</source>
         <translation>&amp;Installer</translation>
     </message>
@@ -989,23 +989,28 @@ Control, Alt ou Windows.</translation>
         <translation>&amp;Ignorer</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="71"/>
+        <location filename="../Update/UpdateDialog.cpp" line="47"/>
+        <source>&amp;Download Page</source>
+        <translation>Page de &amp;Téléchargement</translation>
+    </message>
+    <message>
+        <location filename="../Update/UpdateDialog.cpp" line="76"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="123"/>
-        <location filename="../Update/UpdateDialog.cpp" line="156"/>
+        <location filename="../Update/UpdateDialog.cpp" line="134"/>
+        <location filename="../Update/UpdateDialog.cpp" line="167"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="123"/>
+        <location filename="../Update/UpdateDialog.cpp" line="134"/>
         <source>The update cannot be installed: the checksum does not match.</source>
         <translation>La mise à jour ne peut pas être installée: la somme de contrôle est incorrecte.</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="156"/>
+        <location filename="../Update/UpdateDialog.cpp" line="167"/>
         <source>An error occurred while downloading the software update:
 %1</source>
         <translation>Une erreur est survenue pendant le téléchargement de la mise à jour:

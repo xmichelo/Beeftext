@@ -85,8 +85,8 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
 //**********************************************************************************************************************
 LRESULT CALLBACK InputManager::mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam)
 {
-   if ((WM_LBUTTONDOWN == wParam) || (WM_RBUTTONDOWN == wParam) || (WM_MOUSEWHEEL == wParam) 
-      || (WM_MOUSEWHEEL == wParam) || (WM_MBUTTONDOWN == wParam)) // note we consider mouse wheel moves as clicks
+   if ((WM_LBUTTONDOWN == wParam) || (WM_RBUTTONDOWN == wParam) || (WM_MOUSEWHEEL == wParam) || 
+      (WM_MBUTTONDOWN == wParam)) // note we consider mouse wheel moves as clicks
    {
       InputManager::instance().onMouseClickEvent(nCode, wParam, lParam);
    }
