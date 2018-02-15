@@ -246,6 +246,7 @@ void ComboTableFrame::onActionAddCombo()
       QString errorMessage;
       if (!comboManager.saveComboListToFile(&errorMessage))
          throw xmilib::Exception(errorMessage);
+      this->updateGui();
    }
    catch (xmilib::Exception const& e)
    {
@@ -275,6 +276,7 @@ void ComboTableFrame::onActionDuplicateCombo()
          return;
       if (!comboList.append(combo))
          throw xmilib::Exception(tr("The duplicated combo could not added to the list."));
+      this->updateGui();
    }
    catch (xmilib::Exception const& e)
    {
@@ -329,6 +331,7 @@ void ComboTableFrame::onActionEditCombo()
    QString errorMessage;
    if (!comboManager.saveComboListToFile(&errorMessage))
       QMessageBox::critical(this, tr("Error"), errorMessage);
+   this->updateGui();
 }
 
 
