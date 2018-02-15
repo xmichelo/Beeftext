@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Beeftext", "Beeftext.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMiLib", "..\XMiLib\XMiLib.vcxproj", "{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XMiLib", "Submodules\XMiLib\XMiLib.vcxproj", "{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
