@@ -1,0 +1,3 @@
+[submodule "Submodules/XMiLib"]
+	path = Submodules/XMiLib
+	url = https://github.com/xmichelo/XMiLib
