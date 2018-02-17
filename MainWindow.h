@@ -53,7 +53,7 @@ signals:
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionExit(); ///< Slot for the 'Exit' action
-
+   void onActionEnableDisableBeeftext(); ///< Slot for the Enable/Disable Beeftext
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window

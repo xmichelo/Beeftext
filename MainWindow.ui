@@ -142,6 +142,8 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
+    <addaction name="actionEnableDisableBeeftext"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -183,6 +185,17 @@
    </property>
    <property name="shortcut">
     <string>F1</string>
+   </property>
+  </action>
+  <action name="actionEnableDisableBeeftext">
+   <property name="text">
+    <string notr="true">#EnableDisableBeeftext#</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">#EnableDisableBeeftext#</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">#EnableDisableBeeftext#</string>
    </property>
   </action>
  </widget>
@@ -227,10 +240,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionEnableDisableBeeftext</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionEnableDisableBeeftext()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
   <slot>onActionShowMainWindow()</slot>
   <slot>onActionShowPreferences()</slot>
+  <slot>onActionEnableDisableBeeftext()</slot>
  </slots>
 </ui>

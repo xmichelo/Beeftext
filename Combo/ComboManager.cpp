@@ -116,6 +116,55 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the combo manager is enabled
+//**********************************************************************************************************************
+bool ComboManager::isEnabled() const
+{
+   return InputManager::instance().isKeyboardHookEnable();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboManager::enable()
+{
+   InputManager& inputManager = InputManager::instance();
+   inputManager.enableKeyboardHook();
+#ifdef NDEBUG
+   inputManager.enableMouseHook();
+#endif
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboManager::disable()
+{
+   InputManager& inputManager = InputManager::instance();
+   inputManager.disableKeyboardHook();
+#ifdef NDEBUG
+   inputManager.disableMouseHook();
+#endif
+}
+
+
+//**********************************************************************************************************************
+/// return The previous state if the combo manager
+//**********************************************************************************************************************
+bool ComboManager::setEnabled(bool enable)
+{
+   bool result = this->isEnabled();
+   if (enable)
+      this->enable();
+   else
+      this->disable();
+   return result;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboManager::checkAndPerformSubstitution()

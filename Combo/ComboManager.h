@@ -30,6 +30,10 @@ public: // member functions
    ComboList const& getComboListRef() const; ///< Return a constant reference to the combo list
    bool loadComboListFromFile(QString* outErrorMsg = nullptr); ///< Load the combo list from the default file
    bool saveComboListToFile(QString* outErrorMsg = nullptr) const; /// Save the combo list to the default location
+   bool isEnabled() const; ///< Check whether the combo manager is enabled
+   void enable(); ///< Enable the combo manager manager
+   void disable(); ///< Disable the combo manager
+   bool setEnabled(bool enabled); ///< Set the combo manager state
 
 private: // member functions
    ComboManager(); ///< Default constructor

@@ -4,6 +4,7 @@
         <file>Resources/BeeftextIcon.ico</file>
         <file>Resources/Notification.wav</file>
         <file>Resources/ArrowDown.png</file>
+        <file>Resources/BeeftextIconGrayscale.ico</file>
     </qresource>
     <qresource prefix="/Translations">
         <file alias="beeftext_fr.qm">Translations/beeftext_fr.qm</file>

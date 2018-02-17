@@ -108,14 +108,28 @@ void MainWindow::setupSystemTrayIcon()
    disconnect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
    connect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
 
-   systemTrayIcon_.setIcon(QIcon(":/MainWindow/Resources/BeeftextIcon.ico"));
+   bool enabled = ComboManager::instance().isEnabled();
+   qApp->setApplicationDisplayName(constants::kApplicationName 
+      + (isInPortableMode() ? tr(" - Portable Edition") : QString())
+      + (enabled ? QString() : tr(" - PAUSED")));
+   this->setWindowTitle(QString()); // force refresh of the title bar
+
+   QIcon const icon(enabled ? ":/MainWindow/Resources/BeeftextIcon.ico" 
+      : ":/MainWindow/Resources/BeeftextIconGrayscale.ico");
+   systemTrayIcon_.setIcon(icon);
    systemTrayIcon_.setToolTip(constants::kApplicationName);
    systemTrayIcon_.show();
+   qApp->setWindowIcon(icon);
 
    QMenu* menu = new QMenu(this);
    QAction* action = new QAction("Open Beeftext", this);
    connect(action, &QAction::triggered, [this]() { this->showTab(0); });
    menu->addAction(action);
+   menu->addSeparator();
+   ui_.actionEnableDisableBeeftext->setText(enabled ? tr("&Pause Beeftext"): tr("&Resume Beeftext"));
+   menu->addAction(ui_.actionEnableDisableBeeftext);
+   menu->addSeparator();
+
    menu->setDefaultAction(action);
    action = new QAction("Preferences", this);
    connect(action, &QAction::triggered, [this]() { this->showTab(1); });
@@ -192,3 +206,13 @@ void MainWindow::onActionExit()
    qApp->quit();
 }
 
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionEnableDisableBeeftext()
+{
+   ComboManager& comboManager = ComboManager::instance();
+   comboManager.setEnabled(!comboManager.isEnabled());
+   this->setupSystemTrayIcon();
+}

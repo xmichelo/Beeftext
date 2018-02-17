@@ -439,7 +439,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="234"/>
         <location filename="../Combo/ComboTableFrame.ui" line="237"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="326"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="328"/>
         <source>Edit Combo</source>
         <translation>Editer le Combo</translation>
     </message>
@@ -456,7 +456,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="248"/>
         <location filename="../Combo/ComboTableFrame.ui" line="251"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="274"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="275"/>
         <source>Duplicate Combo</source>
         <translation>Dupliquer le Combo</translation>
     </message>
@@ -532,7 +532,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableFrame.ui" line="311"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="415"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="418"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -547,43 +547,43 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation>Le combo n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="252"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="281"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="307"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="331"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="371"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="404"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="424"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="253"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="283"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="309"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="333"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="374"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="407"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="427"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="272"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="273"/>
         <source>The combo could not be duplicated: invalid index.</source>
         <translation>Le combo n&apos;a pas pu être dupliqué.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="277"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="278"/>
         <source>The duplicated combo could not added to the list.</source>
         <translation>Le combo dupliqué n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="294"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="296"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>Êtes-vous sûr de vouloir effacer les combos selectionnés?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="295"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="297"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>Êtes-vous sûr de vouloir effacer le combo selectionné?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="296"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="298"/>
         <source>Delete Combo?</source>
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="386"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="389"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
@@ -607,8 +607,8 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation type="obsolete">Impossible de sauver la liste de combos.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableFrame.cpp" line="404"/>
-        <location filename="../Combo/ComboTableFrame.cpp" line="424"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="407"/>
+        <location filename="../Combo/ComboTableFrame.cpp" line="427"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>
@@ -641,42 +641,42 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="149"/>
+        <location filename="../MainWindow.ui" line="151"/>
         <source>&amp;Help</source>
         <translation>&amp;Aide</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="160"/>
+        <location filename="../MainWindow.ui" line="162"/>
         <source>E&amp;xit Beeftext</source>
         <translation>&amp;Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="166"/>
+        <location filename="../MainWindow.ui" line="168"/>
         <source>Exit Beeftext</source>
         <translation>Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="169"/>
+        <location filename="../MainWindow.ui" line="171"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="174"/>
+        <location filename="../MainWindow.ui" line="176"/>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Wiki Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="177"/>
+        <location filename="../MainWindow.ui" line="179"/>
         <source>Shift+F1</source>
         <translation>Maj+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="182"/>
+        <location filename="../MainWindow.ui" line="184"/>
         <source>&amp;About Beeftext</source>
         <translation>&amp;À Propos de Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="185"/>
+        <location filename="../MainWindow.ui" line="187"/>
         <source>F1</source>
         <translation></translation>
     </message>
@@ -697,12 +697,36 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation type="vanished">&amp;Ouvrir %1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="125"/>
+        <source>Portable Edition</source>
+        <translation type="obsolete">Edition Portable</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="113"/>
+        <source> - Portable Edition</source>
+        <translation> - Edition Portable</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="114"/>
+        <source> - PAUSED</source>
+        <translation> - EN PAUSE</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="129"/>
+        <source>&amp;Pause Beeftext</source>
+        <translation>&amp;Désactiver Beeftext</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="129"/>
+        <source>&amp;Resume Beeftext</source>
+        <translation>&amp;Réactiver Beeftext</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="139"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="128"/>
+        <location filename="../MainWindow.cpp" line="142"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>
