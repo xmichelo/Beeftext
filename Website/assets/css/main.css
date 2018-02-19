@@ -1615,7 +1615,7 @@
 		outline: 0;
 		border: 0;
 		cursor: pointer;
-		font-size: 1.35em;
+		font-size: 1.19em;
 		padding: 0.6em 1.5em;
 	}
 
@@ -1625,8 +1625,9 @@
 		button.icon:before,
 		.button.icon:before {
 			position: relative;
-			margin-right: 0.5em;
+			margin-right: 0.1em;
 			top: 0.05em;
+			font-size: 1.6em;
 		}
 
 		input[type="button"]:hover,
@@ -1673,15 +1674,15 @@
 				background: rgba(0, 0, 0, 0.15);
 			}
 
-		input[type="button"].big,
-		input[type="submit"].big,
-		input[type="reset"].big,
-		button.big,
-		.button.big {
-			font-size: 2.25em;
-			padding: 0.8em 0.9em;
-		}
-
+			input[type="button"].big,
+			input[type="submit"].big,
+			input[type="reset"].big,
+			button.big,
+			.button.big {
+				font-size: 2.25em;
+				padding: 0.8em 0.9em;
+			}
+		
 /* List */
 
 	ul.default {
