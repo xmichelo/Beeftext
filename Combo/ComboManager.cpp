@@ -98,8 +98,17 @@ ComboManager::ComboManager()
 //**********************************************************************************************************************
 bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 {
-   return comboList_.load(QDir(PreferencesManager::instance().comboListFolderPath())
-      .absoluteFilePath(ComboList::defaultFileName), outErrorMsg);
+   bool inOlderFormat = false;
+   QString const& path = QDir(PreferencesManager::instance().comboListFolderPath())
+      .absoluteFilePath(ComboList::defaultFileName);
+   if (!comboList_.load(path, &inOlderFormat, outErrorMsg))
+      return false;
+   if (inOlderFormat)
+      if (!comboList_.save(path))
+         globals::debugLog().addWarning("Could not upgrade the combo list file to the newest format version.");
+      else
+         globals::debugLog().addInfo("The combo list file was upgraded to the latest format version.");
+   return true;
 }
 
 

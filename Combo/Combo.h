@@ -13,7 +13,7 @@
 
 #include <memory>
 #include <vector>
-
+ 
 
 class Combo;
 
@@ -29,7 +29,7 @@ class Combo
 {
 public: // member functions
    Combo(QString const& name, QString const& aComboText, QString const& aSubstitutionText, bool enabled = true); ///< Default constructor
-   Combo(QJsonObject const& object); ///< Constructor from JSon object
+   Combo(QJsonObject const& object, qint32 formatVersion); ///< Constructor from JSon object
    ~Combo() = default; ///< Default destructor
    bool isValid() const; ///< Is the combo valid
    QUuid uuid() const; ///< Get the UUID of the combo
@@ -53,7 +53,7 @@ public: // member functions
 public: // static functions
    static SPCombo create(QString const& name = QString(), QString const& aComboText = QString(),
       QString const& aSubstitutionText = QString(), bool enabled = true);
-   static SPCombo create(QJsonObject const& object); ///< create a Combo from a JSON object
+   static SPCombo create(QJsonObject const& object, qint32 formatVersion); ///< create a Combo from a JSON object
    static SPCombo duplicate(Combo const& combo); ///< Duplicate
 
 private: // member functions

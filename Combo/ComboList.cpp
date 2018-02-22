@@ -14,7 +14,7 @@
 
 
 namespace {
-qint32 const kJsonComboListFileFormatVersionNumber = 1; ///< The version number for the combo list file format
+qint32 const kJsonComboListFileFormatVersionNumber = 2; ///< The version number for the combo list file format
 QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for the file format version
 QString const kKeyCombos = "combos"; ///< The JSon key for combos
 }
@@ -343,11 +343,13 @@ QJsonDocument ComboList::toJsonDocument() const
 /// \note The existing contents of the combo list is erased
 ///
 /// \param[in] doc The JSON document
+/// \param[out] outErrorMessage If the function return false and this parameter is not null, the string pointed to 
+/// contains a description of the error
 /// \param[out] outErrorMsg If the function return false and this parameter is not null, this variable contains a
 /// description of the error when the function returns
 /// \return true if and only if the parsing completed successfully
 //**********************************************************************************************************************
-bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outErrorMsg)
+bool ComboList::readFromJsonDocument(QJsonDocument const& doc, bool* outInOlderFileFormat, QString* outErrorMsg)
 {
    try
    {
@@ -361,7 +363,7 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
       if (!versionValue.isDouble()) // the JSon format consider all numbers as double
          throw xmilib::Exception("The combo list file does not specify its version number.");
       qint32 const version = versionValue.toInt();
-      if (version > kKeyFileFormatVersion)
+      if (version > kJsonComboListFileFormatVersionNumber)
          throw xmilib::Exception("The combo list file was created by a newer version of the application.");
 
       // parse the combos
@@ -372,11 +374,13 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
       {
          if (!comboGroupValue.isObject())
             throw xmilib::Exception("The combo list array contains an invalid combo.");
-         SPCombo const combo = Combo::create(comboGroupValue.toObject());
+         SPCombo const combo = Combo::create(comboGroupValue.toObject(), version);
          if ((!combo) || (!combo->isValid()))
             throw xmilib::Exception("One of the combo in the list is invalid");
          this->append(combo);
       }
+      if (outInOlderFileFormat)
+         *outInOlderFileFormat = (version < kJsonComboListFileFormatVersionNumber);
       return true;
    }
    catch (xmilib::Exception const& e)
@@ -390,11 +394,13 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, QString* outError
 
 //**********************************************************************************************************************
 /// \param[in] path The path of the file to read from
+/// \param[out] outInOlderFileFormat If the function return true and this parameter is not null, this variable is
+/// true on exit if the loaded file is in a file format that is not the latest one
 /// \param[out] outErrorMessage If the function return false and this parameter is not null, the string pointed to 
 /// contains a description of the error
 /// \return true if and only if the combo list was successfully loaded from file
 //**********************************************************************************************************************
-bool ComboList::load(QString const& path, QString* outErrorMessage)
+bool ComboList::load(QString const& path, bool* outInOlderFileFormat, QString* outErrorMessage)
 {
    try
    {
@@ -402,7 +408,7 @@ bool ComboList::load(QString const& path, QString* outErrorMessage)
       QFile file(path);
       if ((!file.exists()) || (!file.open(QIODevice::ReadOnly)))
          throw xmilib::Exception(QString("Could not open file for reading: '%1'").arg(QDir::toNativeSeparators(path)));
-      return this->readFromJsonDocument(QJsonDocument::fromJson(file.readAll()), outErrorMessage);
+      return this->readFromJsonDocument(QJsonDocument::fromJson(file.readAll()), outInOlderFileFormat, outErrorMessage);
    }
    catch (xmilib::Exception const& e)
    {

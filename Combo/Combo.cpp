@@ -21,7 +21,8 @@
 namespace {
    QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
    QString const kPropName = "name"; ///< The JSON property name for the name
-   QString const kPropComboText = "comboText"; ///< The JSON property for the combo text
+   QString const kPropComboText = "comboText"; ///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by keyword
+   QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
    QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text
    QString const kPropCreated = "created"; ///< The JSON property name for the created date/time
    QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time
@@ -87,11 +88,12 @@ Combo::Combo(QString const& name, QString const& comboText, QString const& subst
 //**********************************************************************************************************************
 /// If the JSon object is not a valid combo, the constructed combo will be invalid
 /// \param[in] object The object to read from
+/// \param[in] formatVersion The version number of the combo list file format
 //**********************************************************************************************************************
-Combo::Combo(QJsonObject const& object)
+Combo::Combo(QJsonObject const& object, qint32 formatVersion)
    : uuid_(QUuid(object[kPropUuid].toString()))
    , name_(object[kPropName].toString())
-   , comboText_(object[kPropComboText].toString())
+   , comboText_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
    , substitutionText_(object[kPropSubstitutionText].toString())
    , created_(QDateTime::fromString(object[kPropCreated].toString(), kJsonExportDateFormat))
    , lastModified_(QDateTime::fromString(object[kPropLastModified].toString(), kJsonExportDateFormat))
@@ -288,7 +290,7 @@ QJsonObject Combo::toJsonObject() const
    QJsonObject result;
    result.insert(kPropUuid, uuid_.toString());
    result.insert(kPropName, name_);
-   result.insert(kPropComboText, comboText_);
+   result.insert(kPropKeyword, comboText_);
    result.insert(kPropSubstitutionText, substitutionText_);
    result.insert(kPropCreated, created_.toString(kJsonExportDateFormat));
    result.insert(kPropLastModified, lastModified_.toString(kJsonExportDateFormat));
@@ -323,11 +325,12 @@ SPCombo Combo::create(QString const& name, QString const& comboText, QString con
 /// If the JSon object is not a valid combo, the constructed combo will be invalid
 ///
 /// \param[in] object The object to read from
+/// \param[in] formatVersion The combo list file format version
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SPCombo Combo::create(QJsonObject const& object)
+SPCombo Combo::create(QJsonObject const& object, qint32 formatVersion)
 {
-   return std::make_shared<Combo>(object);
+   return std::make_shared<Combo>(object, formatVersion);
 }
 
 
