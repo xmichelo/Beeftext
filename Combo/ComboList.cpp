@@ -343,8 +343,8 @@ QJsonDocument ComboList::toJsonDocument() const
 /// \note The existing contents of the combo list is erased
 ///
 /// \param[in] doc The JSON document
-/// \param[out] outErrorMessage If the function return false and this parameter is not null, the string pointed to 
-/// contains a description of the error
+/// \param[out] outInOlderFileFormat If the function returns true and this parameter is not null, this variable
+/// is true if the loaded file format version is not the latest
 /// \param[out] outErrorMsg If the function return false and this parameter is not null, this variable contains a
 /// description of the error when the function returns
 /// \return true if and only if the parsing completed successfully
