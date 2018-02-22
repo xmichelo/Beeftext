@@ -39,7 +39,7 @@
     <message>
         <location filename="../Combo/ComboDialog.ui" line="28"/>
         <source>Keyword:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mot-clé:</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="35"/>
@@ -138,8 +138,12 @@
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="148"/>
+        <source>The keyword is invalid.</source>
+        <translation>Le mot-clé est invalide.</translation>
+    </message>
+    <message>
         <source>The combo text is invalid.</source>
-        <translation>Le combo est invalide.</translation>
+        <translation type="vanished">Le combo est invalide.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="160"/>
@@ -320,8 +324,12 @@ Combos ignorés pour éviter les doublons: %2</translation>
     </message>
     <message>
         <location filename="../Combo/ComboList.cpp" line="532"/>
+        <source>Keyword</source>
+        <translation>Mot-clé</translation>
+    </message>
+    <message>
         <source>Combo</source>
-        <translation>Combo</translation>
+        <translation type="vanished">Combo</translation>
     </message>
     <message>
         <location filename="../Combo/ComboList.cpp" line="533"/>
