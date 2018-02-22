@@ -44,15 +44,15 @@ public: // member functions
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list
    bool contains(SPCombo const& combo) const; ///< Check whether a combo is already in the list, based on its UUID
-   bool isComboTextUsed(QString const& comboText) const; ///< Check whether a combo text is already used in the list
+   bool isKeywordUsed(QString const& keyword) const; ///< Check whether a keyword is already used in the list
    bool canComboBeAdded(SPCombo const& combo) const; ///< Check whether a combo can be added
    bool append(SPCombo const& combo); ///< Append a combo at the end of the list
    void push_back(SPCombo const& combo); ///< Append a combo at the end of the list
    void erase(qint32 index); ///< Erase a combo from the list
-   ComboList::const_iterator findByComboText(QString const& comboText) const; ///< Find a combo by its combo text
-   ComboList::iterator findByComboText(QString const& comboText); ///< Find a combo by its combo text
-   ComboList::const_iterator findByUuid(QUuid const& uuid) const; ///< Find a combo by its combo text
-   ComboList::iterator findByUuid(QUuid const& uuid); ///< Find a combo by its combo text
+   ComboList::const_iterator findByKeyword(QString const& keyword) const; ///< Find a combo by its keyword
+   ComboList::iterator findByKeyword(QString const& keyword); ///< Find a combo by its keyword
+   ComboList::const_iterator findByUuid(QUuid const& uuid) const; ///< Find a combo by its UUID
+   ComboList::iterator findByUuid(QUuid const& uuid); ///< Find a combo by its UUID
    SPCombo& operator[](qint32 index); ///< Get a mutable reference to the combo at a given position in the list
    SPCombo const& operator[](qint32 index) const; ///< Get a mutable reference to the combo at a given position in the list
    iterator begin(); ///< Returns an iterator to the beginning of the list

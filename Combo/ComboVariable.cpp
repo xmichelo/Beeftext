@@ -66,7 +66,7 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
          return fallbackResult;
       ComboList const& combos = ComboManager::instance().getComboListRef();
       ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(), 
-         [&comboName](SPCombo const& combo) -> bool { return combo->comboText() == comboName; });
+         [&comboName](SPCombo const& combo) -> bool { return combo->keyword() == comboName; });
       
       return combos.end() == it ? fallbackResult 
           : (*it)->evaluatedSubstitutionText(nullptr, forbiddenSubCombos << comboName);// forbiddenSubcombos is intended at avoiding endless recursion

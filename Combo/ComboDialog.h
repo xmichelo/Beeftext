@@ -11,7 +11,7 @@
 
 
 #include "ui_ComboDialog.h"
-#include "ComboTextValidator.h"
+#include "ComboKeywordValidator.h"
 #include "Combo/Combo.h"
 
 
@@ -28,7 +28,7 @@ public: // member functions
 	ComboDialog(SPCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
 	~ComboDialog() = default; ///< Default destructor
 	SPCombo combo() const; ///< Get the combo
-   bool checkAndReportInvalidCombo(); ///< Check the combo text against existing combos and report conflicts
+   bool checkAndReportInvalidCombo(); ///< Check the keyword against existing combos and report conflicts
 
 private: // member functions
 	ComboDialog(ComboDialog const&) = delete; ///< Disabled copy constructor
@@ -47,7 +47,7 @@ private slots:
 private: // data members
    Ui::ComboDialog ui_; ///< The GUI for the dialog
    SPCombo combo_; ///< The combo
-   ComboTextValidator validator_; ///< The validator for the combo text
+   ComboKeywordValidator validator_; ///< The validator for the keyword
    QMenu* substitutionEditMenu_; ///< The context menu for the substitution text editor
 };
 

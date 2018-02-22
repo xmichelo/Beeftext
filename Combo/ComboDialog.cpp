@@ -41,8 +41,8 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
    ui_.setupUi(this);
    this->setWindowTitle(title);
    ui_.editName->setText(combo->name());
-   ui_.editCombo->setText(combo->comboText());
-   ui_.editCombo->setValidator(&validator_); 
+   ui_.editKeyword->setText(combo->keyword());
+   ui_.editKeyword->setValidator(&validator_); 
    ui_.editSubstitution->setPlainText(combo->substitutionText());
    this->setupSubstitutionEditMenu();
    this->updateGui();
@@ -142,10 +142,10 @@ bool ComboDialog::checkAndReportInvalidCombo()
       QMessageBox::critical(this, tr("Error"), tr("The substitution text is empty."));
       return false;
    }
-   QString text = ui_.editCombo->text();
+   QString text = ui_.editKeyword->text();
    if (QValidator::Acceptable != validator_.validate(text))
    {
-      QMessageBox::critical(this, tr("Error"), tr("The combo text is invalid."));
+      QMessageBox::critical(this, tr("Error"), tr("The keyword is invalid."));
       return false;
    }
 
@@ -153,12 +153,12 @@ bool ComboDialog::checkAndReportInvalidCombo()
    ComboList const& comboList = ComboManager::instance().getComboListRef();
    for (SPCombo const& combo : comboList)
    {
-      QString const newCombo = ui_.editCombo->text();
-      QString const existing = combo->comboText();
+      QString const newCombo = ui_.editKeyword->text();
+      QString const existing = combo->keyword();
       if ((combo != combo_) && (existing.startsWith(newCombo) || newCombo.startsWith(existing)))
       {
          QMessageBox::critical(this, tr("Error"), tr("An existing combo, triggered by '%1', is creating a conflict "
-            "with this combo.").arg(combo->comboText()));
+            "with this combo.").arg(combo->keyword()));
          return false;
       }
    }
@@ -175,7 +175,7 @@ void ComboDialog::onActionOk()
    if (!checkAndReportInvalidCombo())
       return;
    combo_->setName(ui_.editName->text().trimmed());
-   combo_->setComboText(ui_.editCombo->text().trimmed());
+   combo_->setKeyword(ui_.editKeyword->text().trimmed());
    combo_->setSubstitutionText(ui_.editSubstitution->toPlainText());
    this->accept();
 }
@@ -195,8 +195,8 @@ void ComboDialog::onEditorContextMenuRequested(QPoint const& pos)
 //**********************************************************************************************************************
 void ComboDialog::updateGui() const
 {
-   QString text = ui_.editCombo->text();
-   bool const canAccept = (QValidator::Acceptable == validator_.validate(text)) &&
+   QString keyword = ui_.editKeyword->text();
+   bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
       (!ui_.editSubstitution->toPlainText().isEmpty());
    ui_.actionOk->setEnabled(canAccept);
    ui_.buttonOk->setEnabled(canAccept);

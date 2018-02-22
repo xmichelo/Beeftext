@@ -17,15 +17,15 @@
    <item>
     <layout class="QGridLayout" name="gridLayout">
      <item row="1" column="1">
-      <widget class="QLineEdit" name="editCombo"/>
+      <widget class="QLineEdit" name="editKeyword"/>
      </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="editName"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="labelCombo">
+      <widget class="QLabel" name="labelKeyword">
        <property name="text">
-        <string>Combo:</string>
+        <string>Keyword:</string>
        </property>
       </widget>
      </item>
@@ -126,7 +126,7 @@
  </widget>
  <tabstops>
   <tabstop>editName</tabstop>
-  <tabstop>editCombo</tabstop>
+  <tabstop>editKeyword</tabstop>
   <tabstop>editSubstitution</tabstop>
   <tabstop>buttonOk</tabstop>
   <tabstop>buttonCancel</tabstop>
@@ -182,7 +182,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>editCombo</sender>
+   <sender>editKeyword</sender>
    <signal>textChanged(QString)</signal>
    <receiver>ComboDialog</receiver>
    <slot>updateGui()</slot>

@@ -1,17 +1,17 @@
 /// \file
 /// \author Xavier Michelon
 ///
-/// \brief Implementation of validator for combo text
+/// \brief Implementation of validator for combo keyword
 ///  
 /// Copyright (c) Xavier Michelon. All rights reserved.  
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
 #include "stdafx.h"
-#include "ComboTextValidator.h"
+#include "ComboKeywordValidator.h"
 
 
-bool isCharacterAcceptable(QChar const& c); ///< Is the char acceptable in a combo text
+bool isCharacterAcceptable(QChar const& c); ///< Is the char acceptable in a combo keyword
 
 
 
@@ -30,7 +30,7 @@ bool isCharacterAcceptable(QChar const& c)
 //**********************************************************************************************************************
 /// \param[in] parent The parent object of the validator
 //**********************************************************************************************************************
-ComboTextValidator::ComboTextValidator(QObject* parent)
+ComboKeywordValidator::ComboKeywordValidator(QObject* parent)
    : QValidator(parent)
 {
 
@@ -40,7 +40,7 @@ ComboTextValidator::ComboTextValidator(QObject* parent)
 //**********************************************************************************************************************
 /// \param[in,out] input The input to fix
 //**********************************************************************************************************************
-void ComboTextValidator::fixup(QString& input) const
+void ComboKeywordValidator::fixup(QString& input) const
 {
    QString result;
    for (QChar const c : input)
@@ -55,7 +55,7 @@ void ComboTextValidator::fixup(QString& input) const
 /// \param[in] pos unused
 /// \return The validation state of the text
 //**********************************************************************************************************************
-QValidator::State ComboTextValidator::validate(QString& input, int& pos) const
+QValidator::State ComboKeywordValidator::validate(QString& input, int& pos) const
 {
    if (input.isEmpty())
       return QValidator::Intermediate;
@@ -72,7 +72,7 @@ QValidator::State ComboTextValidator::validate(QString& input, int& pos) const
 /// \param[in] input The input text to validate
 /// \return The validation state of the text
 //**********************************************************************************************************************
-QValidator::State ComboTextValidator::validate(QString& input) const
+QValidator::State ComboKeywordValidator::validate(QString& input) const
 {
    int unused = 0;
    return validate(input, unused);

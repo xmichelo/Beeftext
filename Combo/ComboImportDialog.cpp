@@ -149,7 +149,7 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
 
    for (SPCombo combo : conflictingNewerCombos_)
    {
-      ComboList::iterator it = comboList.findByComboText(combo->comboText());
+      ComboList::iterator it = comboList.findByKeyword(combo->keyword());
       if (it == comboList.end())
       {
          ++failureCount;
@@ -228,7 +228,7 @@ void ComboImportDialog::onEditPathTextChanged(QString const& text)
    for (SPCombo const& combo : candidateList)
    {
       combo->changeUuid(); // we get new a new UUID for imported combo. UUID are intended for synchronization purposes, not import/export
-      ComboList::const_iterator it = comboList.findByComboText(combo->comboText());
+      ComboList::const_iterator it = comboList.findByKeyword(combo->keyword());
       if (comboList.end() == it)
       {
          importableCombos_.append(combo);

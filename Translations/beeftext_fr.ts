@@ -33,9 +33,13 @@
 <context>
     <name>ComboDialog</name>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="28"/>
         <source>Combo:</source>
-        <translation>Combo:</translation>
+        <translation type="vanished">Combo:</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="28"/>
+        <source>Keyword:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="35"/>
@@ -310,17 +314,17 @@ Combos ignorés pour éviter les doublons: %2</translation>
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="525"/>
+        <location filename="../Combo/ComboList.cpp" line="531"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="526"/>
+        <location filename="../Combo/ComboList.cpp" line="532"/>
         <source>Combo</source>
         <translation>Combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="527"/>
+        <location filename="../Combo/ComboList.cpp" line="533"/>
         <source>Substitution text</source>
         <translation>Texte de substitution</translation>
     </message>

@@ -107,9 +107,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboSortFilterProxyModel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboTextValidator.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
     <ClCompile Include="PreferencesFrame.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_PreferencesFrame.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -183,6 +180,9 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboImportDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboKeywordValidator.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -251,9 +251,6 @@
     <CustomBuild Include="Combo\ComboSortFilterProxyModel.h">
       <Filter>Combo</Filter>
     </CustomBuild>
-    <CustomBuild Include="Combo\ComboTextValidator.h">
-      <Filter>Combo</Filter>
-    </CustomBuild>
     <CustomBuild Include="PreferencesFrame.ui" />
     <CustomBuild Include="PreferencesFrame.h" />
     <CustomBuild Include="AboutFrame.h" />
@@ -278,6 +275,9 @@
       <Filter>Combo</Filter>
     </CustomBuild>
     <CustomBuild Include="Combo\ComboImportDialog.ui">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboKeywordValidator.h">
       <Filter>Combo</Filter>
     </CustomBuild>
   </ItemGroup>

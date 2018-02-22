@@ -124,12 +124,12 @@ bool ComboList::contains(SPCombo const& combo) const
 
 
 //**********************************************************************************************************************
-/// \param[in] comboText The combo Text
-/// \return true if the combo text is used by a combo in the list
+/// \param[in] keyword The keyword
+/// \return true if the keyword is used by a combo in the list
 //**********************************************************************************************************************
-bool ComboList::isComboTextUsed(QString const& comboText) const
+bool ComboList::isKeywordUsed(QString const& keyword) const
 {
-   return this->end() != this->findByComboText(comboText);
+   return this->end() != this->findByKeyword(keyword);
 }
 
 
@@ -138,7 +138,7 @@ bool ComboList::isComboTextUsed(QString const& comboText) const
 //**********************************************************************************************************************
 bool ComboList::canComboBeAdded(SPCombo const& combo) const
 {
-   return combo ? !(this->contains(combo) || this->isComboTextUsed(combo->comboText())) : false;
+   return combo ? !(this->contains(combo) || this->isKeywordUsed(combo->keyword())) : false;
 }
 
 
@@ -150,7 +150,7 @@ bool ComboList::append(SPCombo const& combo)
 {
    if (!this->canComboBeAdded(combo))
    {
-      globals::debugLog().addError("Cannot add combo (duplicate or combo text conflict).");
+      globals::debugLog().addError("Cannot add combo (duplicate or keyword conflict).");
       return false;
    }
    this->beginInsertRows(QModelIndex(), combos_.size(), combos_.size());
@@ -183,26 +183,26 @@ void ComboList::erase(qint32 index)
 
 
 //**********************************************************************************************************************
-/// \param[in] comboText The combo text
-/// \return A constant iterator to to the combo with the specified combo text
-/// \return A null shared pointer if the combo list contains no combo with the specified combo text
+/// \param[in] keyword The keyword
+/// \return A constant iterator to to the combo with the specified keyword
+/// \return A null shared pointer if the combo list contains no combo with the specified keyword
 //**********************************************************************************************************************
-ComboList::const_iterator ComboList::findByComboText(QString const& comboText) const
+ComboList::const_iterator ComboList::findByKeyword(QString const& keyword) const
 {
    return std::find_if(this->begin(), this->end(),
-      [&](SPCombo const& combo) -> bool { return combo->comboText() == comboText; });
+      [&](SPCombo const& combo) -> bool { return combo->keyword() == keyword; });
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] comboText The combo text
-/// \return An iterator to to the combo with the specified combo text
-/// \return A null shared pointer if the combo list contains no combo with the specified combo text
+/// \param[in] keyword The keyword
+/// \return An iterator to to the combo with the specified keyword
+/// \return A null shared pointer if the combo list contains no combo with the specified keyword
 //**********************************************************************************************************************
-ComboList::iterator ComboList::findByComboText(QString const& comboText)
+ComboList::iterator ComboList::findByKeyword(QString const& keyword)
 {
    return std::find_if(this->begin(), this->end(),
-      [&](SPCombo const& combo) -> bool { return combo->comboText() == comboText; });
+      [&](SPCombo const& combo) -> bool { return combo->keyword() == keyword; });
 }
 
 
@@ -491,7 +491,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       switch (index.column())
       {
       case 0: return combo->name();
-      case 1: return combo->comboText();
+      case 1: return combo->keyword();
       case 2: return combo->substitutionText().trimmed().simplified();
       default: return QVariant();
       }
@@ -501,7 +501,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       switch (index.column())
       {
       case 0: return combo->name();
-      case 1: return combo->comboText();
+      case 1: return combo->keyword();
       case 2: return combo->substitutionText();
       default: return QVariant();
       }
@@ -529,12 +529,10 @@ QVariant ComboList::headerData(int section, Qt::Orientation orientation, int rol
       switch (section)
       {
          case 0: return tr("Name");
-         case 1: return tr("Combo");
+         case 1: return tr("Keyword");
          case 2: return tr("Substitution text");
          default: return QVariant();
       }
 
    return QVariant();
 }
-
-
