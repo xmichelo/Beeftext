@@ -59,7 +59,9 @@ QString logFilePath()
 //**********************************************************************************************************************
 QString portableModeDataFolderPath()
 {
-   return QDir(QCoreApplication::applicationDirPath()).absoluteFilePath("Data");
+   QDir const appDir(QCoreApplication::applicationDirPath());
+   return usePortableAppsFolderLayout() ? appDir.absoluteFilePath("../../Data/settings") 
+      : appDir.absoluteFilePath("Data");
 }
 
 //**********************************************************************************************************************

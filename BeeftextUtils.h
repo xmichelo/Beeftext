@@ -12,6 +12,7 @@ bool registerApplicationForAutoStart(); ///< Register the application to be auto
 void unregisterApplicationFromAutoStart(); ///< Unregister the application to be automatically started at login
 void openLogFile(); ///< Open the log file with the default text editor
 bool isInPortableMode(); ///< Test whether the application is running in portable mode
+bool usePortableAppsFolderLayout(); ///< Test if the application is using the PortableApps.com layout
 
 
 #endif // #ifndef BEEFTEXT__UTILS__H

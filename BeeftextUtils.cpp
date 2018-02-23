@@ -16,6 +16,7 @@ namespace {
 
 QString const kRegKeyAutoStart = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 QString const kPortableModeBeaconFileName = "Portable.bin"; ///< The name of the 'beacon' file used to detect if the application should run in portable mode
+QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The name of the 'beacon file used to detect if the app is in PortableApps mode
 
 
 //**********************************************************************************************************************
@@ -25,8 +26,21 @@ QString const kPortableModeBeaconFileName = "Portable.bin"; ///< The name of the
 //**********************************************************************************************************************
 bool isInPortableMode_()
 {
+   QDir const appDir(QCoreApplication::applicationDirPath());
+   return QFileInfo(appDir.absoluteFilePath(kPortableModeBeaconFileName)).exists() ||
+      QFileInfo(appDir.absoluteFilePath(kPortableAppsModeBeaconFileName)).exists();
+}
+
+
+//**********************************************************************************************************************
+/// \brief Test if the application is using the PortableApps layout
+///
+/// \return true if the application is running as part of the PortableApps
+//**********************************************************************************************************************
+bool usePortableAppsFolderLayout_()
+{
    return QFileInfo(QDir(QCoreApplication::applicationDirPath())
-      .absoluteFilePath(kPortableModeBeaconFileName)).exists();
+      .absoluteFilePath(kPortableAppsModeBeaconFileName)).exists();
 }
 
 
@@ -84,3 +98,12 @@ bool isInPortableMode()
    return result;
 }
 
+
+//**********************************************************************************************************************
+/// \return true if the application is running as part of the PortableApps.com distribution
+//**********************************************************************************************************************
+bool usePortableAppsFolderLayout()
+{
+   return QFileInfo(QDir(QCoreApplication::applicationDirPath())
+      .absoluteFilePath(kPortableAppsModeBeaconFileName)).exists();
+}
