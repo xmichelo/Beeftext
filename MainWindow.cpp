@@ -122,7 +122,7 @@ void MainWindow::setupSystemTrayIcon()
    qApp->setWindowIcon(icon);
 
    QMenu* menu = new QMenu(this);
-   QAction* action = new QAction("Open Beeftext", this);
+   QAction* action = new QAction(tr("Open Beeftext"), this);
    connect(action, &QAction::triggered, [this]() { this->showTab(0); });
    menu->addAction(action);
    menu->addSeparator();
@@ -131,7 +131,7 @@ void MainWindow::setupSystemTrayIcon()
    menu->addSeparator();
 
    menu->setDefaultAction(action);
-   action = new QAction("Preferences", this);
+   action = new QAction(tr("Preferences"), this);
    connect(action, &QAction::triggered, [this]() { this->showTab(1); });
    menu->addAction(action);
 #ifndef NDEBUG

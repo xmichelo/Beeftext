@@ -723,6 +723,11 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation> - EN PAUSE</translation>
     </message>
     <message>
+        <location filename="../MainWindow.cpp" line="125"/>
+        <source>Open Beeftext</source>
+        <translation>Ouvrir Beeftext</translation>
+    </message>
+    <message>
         <location filename="../MainWindow.cpp" line="129"/>
         <source>&amp;Pause Beeftext</source>
         <translation>&amp;Désactiver Beeftext</translation>
@@ -731,6 +736,11 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <location filename="../MainWindow.cpp" line="129"/>
         <source>&amp;Resume Beeftext</source>
         <translation>&amp;Réactiver Beeftext</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="134"/>
+        <source>Preferences</source>
+        <translation>Préférences</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="139"/>
@@ -931,7 +941,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="180"/>
+        <location filename="../I18nManager.cpp" line="194"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
