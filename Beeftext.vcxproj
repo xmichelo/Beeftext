@@ -32,12 +32,12 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)_build\$(PlatformName)\$(Configuration)\</OutDir>
+    <OutDir>C:\Users\michelon\Desktop\BeeftextPortable\App\Beeftext\</OutDir>
     <IntDir>$(ProjectDir)_temp\$(PlatformName)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)_build\$(PlatformName)\$(Configuration)\</OutDir>
+    <OutDir>C:\Users\michelon\Desktop\BeeftextPortable\App\Beeftext\</OutDir>
     <IntDir>$(ProjectDir)_temp\$(PlatformName)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
