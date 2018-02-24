@@ -28,7 +28,11 @@ public: // static functions
    static QLocale getSelectedLocaleInCombo(QComboBox const& combo); ///< Return the currently selected locale in a locale combo
 
 public: // member functions
+   I18nManager(I18nManager const&) = delete; ///< Disabled copy constructor
+   I18nManager(I18nManager&&) = delete; ///< Disabled move constructor
 	~I18nManager() = default; ///< Default destructor
+   I18nManager& operator=(I18nManager const&) = delete; ///< Disabled assignment operator
+   I18nManager& operator=(I18nManager&&) = delete; ///< Disabled move assignment operator
    static QLocale locale(); ///< Get the current locale
    void setLocale(QLocale const& locale); ///< Set the current locale
    void loadTranslation(); ///< Load the translation
@@ -36,10 +40,6 @@ public: // member functions
 
 private: // member functions
    I18nManager() = default; ///< Default constructor
-   I18nManager(I18nManager const&) = delete; ///< Disabled copy constructor
-	I18nManager(I18nManager&&) = delete; ///< Disabled move constructor
-	I18nManager& operator=(I18nManager const&) = delete; ///< Disabled assignment operator
-	I18nManager& operator=(I18nManager&&) = delete; ///< Disabled move assignment operator
    void removeAllTranslators(); ///< Remove and free all translators used by the application
 
 private: // data members

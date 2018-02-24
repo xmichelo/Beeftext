@@ -12,6 +12,7 @@
 #include "BeeftextConstants.h"
 #include "BeeftextUtils.h"
 #include "I18nManager.h"
+#include <XMiLib/Exception.h>
 
 
 namespace {
@@ -50,8 +51,21 @@ I18nManager& I18nManager::instance()
 //**********************************************************************************************************************
 QLocale I18nManager::validateLocale(QLocale const& locale)
 {
-   Q_ASSERT(!kSupportedLocales.isEmpty());
-   return kSupportedLocales.contains(locale) ? locale : kSupportedLocales.front();
+   if (kSupportedLocales.isEmpty())
+      throw xmilib::Exception("No locale is supported.");
+   
+   // first we look for a perfect match (language AND country)
+   QList<QLocale>::const_iterator it = std::find_if(kSupportedLocales.begin(), kSupportedLocales.end(),
+      [&locale](QLocale const& l) -> bool
+      { return locale.language() == l.language() && locale.country() == l.country(); });
+   if (it != kSupportedLocales.end())
+      return (*it);
+
+   // if not found we try to fall back to a locale with the same language, and if not found we default to the first 
+   // supported language
+   it = std::find_if(kSupportedLocales.begin(), kSupportedLocales.end(),
+      [&locale](QLocale const& l) -> bool { return locale.language() == l.language(); });
+   return (it != kSupportedLocales.end()) ? *it : kSupportedLocales.front();
 }
 
 
