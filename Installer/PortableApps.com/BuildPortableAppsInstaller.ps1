@@ -27,11 +27,13 @@ $beaconFileName = "PortableApps.bin"
 #***********************************************************************************************************************
 # The actual script
 #***********************************************************************************************************************
+"Cleaning destination folder"
+if (Test-Path -PathType Container $dstParentDir) { Remove-Item -Path $dstParentDir -Recurse -Force }
+
 "Compiling Beeftext"
 compileVisualStudioSolution $solutionPath
 
-"Cleaning destination folder"
-if (Test-Path -PathType Container $dstParentDir) { Remove-Item -Path $dstParentDir -Recurse -Force }
+"Creating destination folder"
 New-Item -ItemType Directory -Force -Path $dstParentDir | Out-Null
 
 "Copying template to the destination folder"
