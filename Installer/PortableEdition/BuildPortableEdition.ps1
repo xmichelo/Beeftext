@@ -11,7 +11,7 @@ $ErrorActionPreference = "Stop"
 #***********************************************************************************************************************
 # Variable definitions
 #***********************************************************************************************************************
-$dstDir = absolutePath $solutionDir "_build\BeeftextPortableEdition"
+$dstDir = absolutePath $solutionDir "Installer\_build\BeeftextPortableEdition"
 $solutionPath = absolutePath $solutionDir "Beeftext.sln"
 $exePath = absolutePath $solutionDir "_build\Win32\Release\Beeftext.exe"
 $beaconFileName = "Portable.bin"

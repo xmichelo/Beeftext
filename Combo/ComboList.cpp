@@ -492,7 +492,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       {
       case 0: return combo->name();
       case 1: return combo->keyword();
-      case 2: return combo->substitutionText().trimmed().simplified();
+      case 2: return combo->snippet().trimmed().simplified();
       default: return QVariant();
       }
 
@@ -502,7 +502,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       {
       case 0: return combo->name();
       case 1: return combo->keyword();
-      case 2: return combo->substitutionText();
+      case 2: return combo->snippet();
       default: return QVariant();
       }
    }
@@ -530,7 +530,7 @@ QVariant ComboList::headerData(int section, Qt::Orientation orientation, int rol
       {
          case 0: return tr("Name");
          case 1: return tr("Keyword");
-         case 2: return tr("Substitution text");
+         case 2: return tr("Snippet");
          default: return QVariant();
       }
 

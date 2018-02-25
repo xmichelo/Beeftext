@@ -34,7 +34,7 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
    : QDialog(parent, constants::kDefaultDialogFlags)
    , combo_(combo)
    , validator_()
-   , substitutionEditMenu_(nullptr)
+   , snippetEditMenu_(nullptr)
 {
    if (!combo)
       throw xmilib::Exception("%1(): combo is null.");
@@ -43,8 +43,8 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
    ui_.editName->setText(combo->name());
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_); 
-   ui_.editSubstitution->setPlainText(combo->substitutionText());
-   this->setupSubstitutionEditMenu();
+   ui_.editSnippet->setPlainText(combo->snippet());
+   this->setupSnipperEditMenu();
    this->updateGui();
 }
 
@@ -52,14 +52,14 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboDialog::setupSubstitutionEditMenu()
+void ComboDialog::setupSnipperEditMenu()
 {
-   connect(ui_.editSubstitution, &QPlainTextEdit::customContextMenuRequested,
+   connect(ui_.editSnippet, &QPlainTextEdit::customContextMenuRequested,
       this, &ComboDialog::onEditorContextMenuRequested);
-   substitutionEditMenu_ = ui_.editSubstitution->createStandardContextMenu();
+   snippetEditMenu_ = ui_.editSnippet->createStandardContextMenu();
 
-   substitutionEditMenu_->addSeparator();
-   substitutionEditMenu_->addMenu(this->createComboVariableMenu());
+   snippetEditMenu_->addSeparator();
+   snippetEditMenu_->addMenu(this->createComboVariableMenu());
 }
 
 
@@ -71,29 +71,29 @@ QMenu* ComboDialog::createComboVariableMenu()
    QMenu* menu = new QMenu(tr("&Insert Variable"), this);
 
    QAction *action = new QAction(tr("Clip&board Content"), this);
-   connect(action, &QAction::triggered, [&]() { this->insertTextInSubstitutionEdit("#{clipboard}", false); });
+   connect(action, &QAction::triggered, [&]() { this->insertTextInSnippetEdit("#{clipboard}", false); });
    menu->addAction(action);
 
    QMenu* dtMenu = new QMenu(tr("&Date/Time"));
    action = new QAction(tr("D&ate"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{date}", false); });
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{date}", false); });
    dtMenu->addAction(action);
    action = new QAction(tr("&Time"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{time}", false); });
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{time}", false); });
    dtMenu->addAction(action);
    action = new QAction(tr("Dat&e && Time"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{dateTime}", false); });
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{dateTime}", false); });
    dtMenu->addAction(action);
    action = new QAction(tr("&Custom Date && Time"), this);
-   connect(action, &QAction::triggered, [this]() {this->insertTextInSubstitutionEdit("#{dateTime:}", true); });
+   connect(action, &QAction::triggered, [this]() {this->insertTextInSnippetEdit("#{dateTime:}", true); });
    dtMenu->addAction(action);
    menu->addMenu(dtMenu);
 
    action = new QAction(tr("C&ursor Position"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{cursor}", false); });
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{cursor}", false); });
    menu->addAction(action);
    action = new QAction(tr("Co&mbo"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSubstitutionEdit("#{combo:}", true); });
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{combo:}", true); });
    menu->addAction(action);
    menu->addSeparator();
    action = new QAction(tr("&About Variables"), this);
@@ -107,16 +107,16 @@ QMenu* ComboDialog::createComboVariableMenu()
 /// \param[in] text The text to insert
 /// \param[in] move1CharLeft Should the cursor be moved by one character to the left after insertion
 //**********************************************************************************************************************
-void ComboDialog::insertTextInSubstitutionEdit(QString const& text, bool move1CharLeft)
+void ComboDialog::insertTextInSnippetEdit(QString const& text, bool move1CharLeft)
 {
-   QTextCursor cursor = ui_.editSubstitution->textCursor();
+   QTextCursor cursor = ui_.editSnippet->textCursor();
    cursor.beginEditBlock();
    cursor.insertText(text);
    if (move1CharLeft)
    {
       cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
       cursor.endEditBlock();
-      ui_.editSubstitution->setTextCursor(cursor); ///< Required to the cursor position change to take effect
+      ui_.editSnippet->setTextCursor(cursor); ///< Required to the cursor position change to take effect
    }
    else
       cursor.endEditBlock();
@@ -137,9 +137,9 @@ SPCombo ComboDialog::combo() const
 //**********************************************************************************************************************
 bool ComboDialog::checkAndReportInvalidCombo()
 {
-   if (ui_.editSubstitution->toPlainText().isEmpty())
+   if (ui_.editSnippet->toPlainText().isEmpty())
    {
-      QMessageBox::critical(this, tr("Error"), tr("The substitution text is empty."));
+      QMessageBox::critical(this, tr("Error"), tr("The snippet text is empty."));
       return false;
    }
    QString text = ui_.editKeyword->text();
@@ -176,7 +176,7 @@ void ComboDialog::onActionOk()
       return;
    combo_->setName(ui_.editName->text().trimmed());
    combo_->setKeyword(ui_.editKeyword->text().trimmed());
-   combo_->setSubstitutionText(ui_.editSubstitution->toPlainText());
+   combo_->setSnippet(ui_.editSnippet->toPlainText());
    this->accept();
 }
 
@@ -186,7 +186,7 @@ void ComboDialog::onActionOk()
 //**********************************************************************************************************************
 void ComboDialog::onEditorContextMenuRequested(QPoint const& pos)
 {
-   substitutionEditMenu_->popup(ui_.editSubstitution->viewport()->mapToGlobal(pos));
+   snippetEditMenu_->popup(ui_.editSnippet->viewport()->mapToGlobal(pos));
 }
 
 
@@ -197,7 +197,7 @@ void ComboDialog::updateGui() const
 {
    QString keyword = ui_.editKeyword->text();
    bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
-      (!ui_.editSubstitution->toPlainText().isEmpty());
+      (!ui_.editSnippet->toPlainText().isEmpty());
    ui_.actionOk->setEnabled(canAccept);
    ui_.buttonOk->setEnabled(canAccept);
 }

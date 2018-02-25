@@ -11,7 +11,7 @@ $ErrorActionPreference = "Stop"
 #***********************************************************************************************************************
 # Variable definitions
 #***********************************************************************************************************************
-$dstParentDir = absolutePath $solutionDir "_build\PortableApps.com"
+$dstParentDir = absolutePath $solutionDir "Installer\_build\PortableApps.com"
 $dstDir = absolutePath $dstParentDir "BeeftextPortable"
 $dstBinPath = absolutePath $dstDir "App\Beeftext"
 $dstDataDir = absolutePath $dstDir "Data"
@@ -37,6 +37,10 @@ New-Item -ItemType Directory -Force -Path $dstParentDir | Out-Null
 
 "Copying template to the destination folder"
 Copy-Item -Path $templateDir -Destination $dstParentDir -Recurse -Force
+
+"Creating binary folder"
+if (Test-Path -PathType Container $dstBinPath) { Remove-Item -Path $dstBinPath -Recurse -Force }
+New-Item -ItemType Directory -Force -Path $dstBinPath | Out-Null
 
 "Deleting Data folder"
 if (Test-Path -PathType Container $dstDataDir) { Remove-Item -Path $dstDataDir -Recurse -Force }

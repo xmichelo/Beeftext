@@ -37,16 +37,16 @@
       </widget>
      </item>
      <item row="4" column="0" colspan="2">
-      <widget class="QPlainTextEdit" name="editSubstitution">
+      <widget class="QPlainTextEdit" name="editSnippet">
        <property name="contextMenuPolicy">
         <enum>Qt::CustomContextMenu</enum>
        </property>
       </widget>
      </item>
      <item row="3" column="0" colspan="2">
-      <widget class="QLabel" name="labelSubstitution">
+      <widget class="QLabel" name="labelSnippet">
        <property name="text">
-        <string>Substitution Text:</string>
+        <string>Snippet:</string>
        </property>
       </widget>
      </item>
@@ -127,7 +127,7 @@
  <tabstops>
   <tabstop>editName</tabstop>
   <tabstop>editKeyword</tabstop>
-  <tabstop>editSubstitution</tabstop>
+  <tabstop>editSnippet</tabstop>
   <tabstop>buttonOk</tabstop>
   <tabstop>buttonCancel</tabstop>
  </tabstops>
@@ -198,7 +198,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>editSubstitution</sender>
+   <sender>editSnippet</sender>
    <signal>textChanged()</signal>
    <receiver>ComboDialog</receiver>
    <slot>updateGui()</slot>

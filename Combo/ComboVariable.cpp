@@ -69,7 +69,7 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
          [&comboName](SPCombo const& combo) -> bool { return combo->keyword() == comboName; });
       
       return combos.end() == it ? fallbackResult 
-          : (*it)->evaluatedSubstitutionText(nullptr, forbiddenSubCombos << comboName);// forbiddenSubcombos is intended at avoiding endless recursion
+          : (*it)->evaluatedSnippet(nullptr, forbiddenSubCombos << comboName);// forbiddenSubcombos is intended at avoiding endless recursion
    }
 
    return fallbackResult ; // we could not recognize the variable, so we put it back in the result

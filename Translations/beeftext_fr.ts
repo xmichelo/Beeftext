@@ -48,8 +48,12 @@
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="49"/>
+        <source>Snippet:</source>
+        <translation>Snippet:</translation>
+    </message>
+    <message>
         <source>Substitution Text:</source>
-        <translation>Texte de Substitution:</translation>
+        <translation type="vanished">Texte de Substitution:</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="104"/>
@@ -133,8 +137,12 @@
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <source>The snippet text is empty.</source>
+        <translation>Le snippet est vide.</translation>
+    </message>
+    <message>
         <source>The substitution text is empty.</source>
-        <translation>Le texte de substitution est vide.</translation>
+        <translation type="vanished">Le texte de substitution est vide.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="148"/>
@@ -328,13 +336,17 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <translation>Mot-clé</translation>
     </message>
     <message>
+        <location filename="../Combo/ComboList.cpp" line="533"/>
+        <source>Snippet</source>
+        <translation>Snippet</translation>
+    </message>
+    <message>
         <source>Combo</source>
         <translation type="vanished">Combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="533"/>
         <source>Substitution text</source>
-        <translation>Texte de substitution</translation>
+        <translation type="vanished">Texte de substitution</translation>
     </message>
 </context>
 <context>

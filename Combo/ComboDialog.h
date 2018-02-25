@@ -35,9 +35,9 @@ private: // member functions
 	ComboDialog(ComboDialog&&) = delete; ///< Disabled move constructor
 	ComboDialog& operator=(ComboDialog const&) = delete; ///< Disabled assignment operator
 	ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
-   void setupSubstitutionEditMenu(); /// Setup the editor menus
+   void setupSnipperEditMenu(); /// Setup the editor menus
    QMenu* createComboVariableMenu(); ///< Create the combo variable menu
-   void insertTextInSubstitutionEdit(QString const& text, bool move1CharLeft = false); ///< Insert some text at the current cursor position in the substitution text edit control
+   void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false); ///< Insert some text at the current cursor position in the snippet text edit control
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
@@ -48,7 +48,7 @@ private: // data members
    Ui::ComboDialog ui_; ///< The GUI for the dialog
    SPCombo combo_; ///< The combo
    ComboKeywordValidator validator_; ///< The validator for the keyword
-   QMenu* substitutionEditMenu_; ///< The context menu for the substitution text editor
+   QMenu* snippetEditMenu_; ///< The context menu for the snippet text editor
 };
 
 

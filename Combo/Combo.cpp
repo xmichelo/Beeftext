@@ -1,7 +1,7 @@
 /// \file
 /// \author Xavier Michelon
 ///
-/// \brief Implementation of Combo class that associate a keyword and its substitution text
+/// \brief Implementation of Combo class that associate a keyword and a snippet
 ///  
 /// Copyright (c) Xavier Michelon. All rights reserved.  
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
@@ -21,9 +21,10 @@
 namespace {
    QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
    QString const kPropName = "name"; ///< The JSON property name for the name
-   QString const kPropComboText = "comboText"; ///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by keyword
+   QString const kPropComboText = "comboText"; ///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by "keyword"
    QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
-   QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text
+   QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
+   QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
    QString const kPropCreated = "created"; ///< The JSON property name for the created date/time
    QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time
    QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
@@ -71,14 +72,14 @@ void restoreModifierKeys(QList<quint16> const& keys)
 //**********************************************************************************************************************
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
-/// \param[in] substitutionText The text that will replace the combo
+/// \param[in] snippet The text that will replace the combo
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString const& name, QString const& keyword, QString const& substitutionText, bool enabled)
+Combo::Combo(QString const& name, QString const& keyword, QString const& snippet, bool enabled)
    : uuid_(QUuid::createUuid())
    , name_(name)
    , keyword_(keyword)
-   , substitutionText_(substitutionText)
+   , snippet_(snippet)
    , enabled_(enabled)
 {
    lastModified_ = created_ = QDateTime::currentDateTime();
@@ -94,7 +95,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion)
    : uuid_(QUuid(object[kPropUuid].toString()))
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
-   , substitutionText_(object[kPropSubstitutionText].toString())
+   , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
    , created_(QDateTime::fromString(object[kPropCreated].toString(), kJsonExportDateFormat))
    , lastModified_(QDateTime::fromString(object[kPropLastModified].toString(), kJsonExportDateFormat))
    , enabled_(object[kPropEnabled].toBool(true))
@@ -108,7 +109,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion)
 bool Combo::isValid() const
 {
    return (!created_.isNull()) && (!lastModified_.isNull()) && (!uuid_.isNull()) && (!name_.isEmpty()) 
-      && (!keyword_.isEmpty()) && (!substitutionText_.isEmpty());
+      && (!keyword_.isEmpty()) && (!snippet_.isEmpty());
 }
 
 
@@ -166,11 +167,11 @@ void Combo::setKeyword(QString const& keyword)
 
 
 //**********************************************************************************************************************
-/// \return The substitution text
+/// \return The snippet
 //**********************************************************************************************************************
-QString Combo::substitutionText() const
+QString Combo::snippet() const
 {
-   return substitutionText_;
+   return snippet_;
 }
 
 
@@ -193,13 +194,13 @@ QDateTime Combo::creationDate() const
 
 
 //**********************************************************************************************************************
-/// \param[in] substitutionText the substitution text
+/// \param[in] snippet The snippet
 //**********************************************************************************************************************
-void Combo::setSubstitutionText(QString const& substitutionText)
+void Combo::setSnippet(QString const& snippet)
 {
-   if (substitutionText_ != substitutionText)
+   if (snippet_ != snippet)
    {
-      substitutionText_ = substitutionText;
+      snippet_ = snippet;
       this->touch();
    }
 }
@@ -238,10 +239,10 @@ void Combo::performSubstitution()
       // we erase the combo
       synthesizeBackspaces(keyword_.size());
       int cursorPos = -1;
-      QString const evaluatedText = evaluatedSubstitutionText(&cursorPos);
+      QString const evaluatedText = evaluatedSnippet(&cursorPos);
       if (PreferencesManager::instance().useClipboardForComboSubstitution())
       {
-         // we use the clipboard to and copy/paste the substitution
+         // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
          QApplication::clipboard()->setText(evaluatedText);
@@ -252,7 +253,7 @@ void Combo::performSubstitution()
       }
       else
       {
-         // we simulate the typing of the substitution text
+         // we simulate the typing of the snippet text
          for (QChar c : evaluatedText)
          {
             if (c == QChar::LineFeed) // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
@@ -291,7 +292,7 @@ QJsonObject Combo::toJsonObject() const
    result.insert(kPropUuid, uuid_.toString());
    result.insert(kPropName, name_);
    result.insert(kPropKeyword, keyword_);
-   result.insert(kPropSubstitutionText, substitutionText_);
+   result.insert(kPropSnippet, snippet_);
    result.insert(kPropCreated, created_.toString(kJsonExportDateFormat));
    result.insert(kPropLastModified, lastModified_.toString(kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
@@ -311,13 +312,13 @@ void Combo::changeUuid()
 //**********************************************************************************************************************
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
-/// \param[in] substitutionText The text that will replace the combo
+/// \param[in] snippet The text that will replace the combo
 /// \param[in] enabled Is the combo enabled
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SPCombo Combo::create(QString const& name, QString const& keyword, QString const& substitutionText, bool enabled)
+SPCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool enabled)
 {
-   return std::make_shared<Combo>(name, keyword, substitutionText, enabled);
+   return std::make_shared<Combo>(name, keyword, snippet, enabled);
 }
 
 
@@ -346,7 +347,7 @@ SPCombo Combo::create(QJsonObject const& object, qint32 formatVersion)
 SPCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   return std::make_shared<Combo>(combo.name(), QString(), combo.substitutionText());
+   return std::make_shared<Combo>(combo.name(), QString(), combo.snippet());
 }
 
 
@@ -363,12 +364,12 @@ void Combo::touch()
 /// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion
-/// \return The substitution text once it has been evaluated
+/// \return The snippet text once it has been evaluated
 //**********************************************************************************************************************
-QString Combo::evaluatedSubstitutionText(qint32* outCursorPos, QSet<QString> forbiddenSubCombos) const
+QString Combo::evaluatedSnippet(qint32* outCursorPos, QSet<QString> forbiddenSubCombos) const
 {
    forbiddenSubCombos += this->keyword();
-   QString remainingText = substitutionText_;
+   QString remainingText = snippet_;
    QString result;
 
    // The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \.
