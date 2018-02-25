@@ -8,7 +8,6 @@
 
 $vsPath = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com"
 
-
 #***********************************************************************************************************************
 # Returns the absolute path obtain by merging path1 and path2
 #***********************************************************************************************************************
@@ -33,7 +32,8 @@ function absolutePath([String]$path1, [String]$path2)
 $solutionDir = absolutePath $PSScriptRoot "..\.."
 $sslDir =  absolutePath $solutionDir "Vendor\OpenSSL"
 $vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\Dlls"
-
+$nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
+$portableAppsConfigPath = absolutePath $solutionDir "Installer\PortableApps.com\Template\BeeftextPortable\App\AppInfo\appinfo.ini"
 
 #***********************************************************************************************************************
 # Compiles a solution using Visual Studio
@@ -77,3 +77,48 @@ function copyVcppDlls([String]$dstPath)
    foreach ($dll in $vcDlls) { Copy-Item -Path (absolutePath $vcDllDir $dll) -Destination $dstPath }
 }
 
+
+#***********************************************************************************************************************
+# Retrieve the major and minor version number of Beeftext from its source socde
+#***********************************************************************************************************************
+function getBeeftextVersion
+{
+   $srcFile = absolutePath $solutionDir "BeeftextConstants.cpp"
+   $regexMinor = 'kVersionMinor\s*=\s*(\d+)\s*;' 
+   $regexMajor = 'kVersionMajor\s*=\s*(\d+)\s*;' 
+   $major = Select-String -Path $srcFile -Pattern $regexMajor | ForEach-Object {$_.Matches} | 
+      ForEach-Object { $_.Groups[1].Value }
+   $minor = Select-String -Path $srcFile -Pattern $regexMinor | ForEach-Object {$_.Matches} |
+       ForEach-Object { $_.Groups[1].Value }
+   if ([string]::IsNullOrEmpty($major) -Or [string]::IsNullOrEmpty($minor)) 
+   {  
+      Write-Error "Could not parse version number"
+   }
+   @($major, $minor)
+}
+
+
+#***********************************************************************************************************************
+# Update the version number in the installer file
+#***********************************************************************************************************************
+function updateVersionNumberInInstaller
+{
+    $major, $minor = getBeeftextVersion
+    (Get-Content $nsisInstallerPath) `
+        -replace '(!define\s*VERSION_MAJOR)\s*\d+', ('$1 ' + $major) `
+        -replace '(!define\s*VERSION_MINOR)\s*\d+', ('$1 ' + $minor) |
+        Out-File $nsisInstallerPath -Encoding "UTF8"
+}
+
+
+#***********************************************************************************************************************
+# Update the version number in the installer file
+#***********************************************************************************************************************
+function updateVersionNumberInPortableAppsConfiguration
+{
+    $major, $minor = getBeeftextVersion
+    (Get-Content $portableAppsConfigPath) `
+        -replace '(PackageVersion)=\d+.\d+.\d+.\d+', ('$1=' + "$major.$minor.0.0") `
+        -replace '(DisplayVersion)=\d+.\d+', ('$1=' + "$major.$minor") |
+        Out-File $portableAppsConfigPath -Encoding "UTF8"
+}

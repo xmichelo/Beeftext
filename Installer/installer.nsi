@@ -1,4 +1,4 @@
-# This files contains the NSIS script for building the installer for the Beeftext application
+﻿# This files contains the NSIS script for building the installer for the Beeftext application
 # Xavier Michelon
 # 2017-11-12
 
