@@ -41,6 +41,10 @@ $portableAppsConfigPath = absolutePath $solutionDir "Installer\PortableApps.com\
 function compileVisualStudioSolution([String]$solutionPath, [String]$configuration = "Release|x86")
 {
    Invoke-Expression '& "$vsPath" "$solutionPath" /rebuild "$configuration"' | Out-Null
+   if (0 -ne $LASTEXITCODE)
+   {
+       Write-Error "Compilation of the application failed."
+   }
 }
 
 
