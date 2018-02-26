@@ -1,9 +1,9 @@
 {
    "versionMajor": 0,
-   "versionMinor": 11,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.11/Beeftext-0.11-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v0.11",
-   "sha256Sum": "05366ff747df21c4457d45962026c27be085c29ef113538d745f99b52bea31ff",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Added Portable Edition.</li><li>Beeftext can now be paused.</li><li>Minor bug fixes.</li></ul></span></p></body></html>"
+   "versionMinor": 12,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.12/Beeftext-0.12-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v0.12",
+   "sha256Sum": "575956346db14837fc7cc507a758da4e69923a38da31f83602043a24520cf565",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Renamed 'combo text' to 'keyword'.</li><li>Renamed 'substitution text' to 'snippet'.</li><li>Fixed a bug causing the default language to always be English.</li><li>Minor bug fixes.</li></ul></span></p></body></html>"
 }
 
