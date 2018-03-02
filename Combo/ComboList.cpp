@@ -14,7 +14,7 @@
 
 
 namespace {
-qint32 const kJsonComboListFileFormatVersionNumber = 2; ///< The version number for the combo list file format
+qint32 const kJsonComboListFileFormatVersionNumber = 3; ///< The version number for the combo list file format
 QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for the file format version
 QString const kKeyCombos = "combos"; ///< The JSon key for combos
 }

@@ -23,6 +23,7 @@ extern QString const kBeeftextWikiHomeUrl; ///< The URL of the Beeftext wiki
 extern QString const kBeeftextWikiVariablesUrl; ///< The URL of the page about variables in the Beeftext wiki
 extern QString const kJsonFileDialogFilter; ///< The Open/Save file dialog filter
 extern QString const kStyleSheet; // The application stylesheet
+extern Qt::DateFormat const kJsonExportDateFormat; ///< The date/time export format used for JSon docs
 
 
 } // namespace constants

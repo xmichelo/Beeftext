@@ -22,6 +22,8 @@ Qt::WindowFlags const kDefaultDialogFlags = Qt::WindowCloseButtonHint | Qt::Wind
 QString const kBeeftextWikiHomeUrl = "https://github.com/xmichelo/Beeftext/wiki";
 QString const kBeeftextWikiVariablesUrl = "https://github.com/xmichelo/Beeftext/wiki/Variables";
 QString const kJsonFileDialogFilter = QObject::tr("JSON files (*.json);;All files (*.*)");
+Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs;
+
 QString const kStyleSheet = R"(
 
 * {

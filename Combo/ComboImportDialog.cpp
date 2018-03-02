@@ -235,7 +235,7 @@ void ComboImportDialog::onEditPathTextChanged(QString const& text)
          continue;
       }
       Combo const& existingCombo = **it;
-      if (combo->lastModificationDate() > existingCombo.lastModificationDate())
+      if (combo->modificationDateTime() > existingCombo.modificationDateTime())
          conflictingNewerCombos_.append(combo);
       else
          conflictingOlderCombos_.append(combo);

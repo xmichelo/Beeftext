@@ -14,6 +14,7 @@
 #include "ComboManager.h"
 #include "ClipboardManager.h"
 #include "InputManager.h"
+#include "BeeftextConstants.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
 
@@ -25,10 +26,11 @@ namespace {
    QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
    QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
    QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
-   QString const kPropCreated = "created"; ///< The JSON property name for the created date/time
-   QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time
+   QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
+   QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
+   QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
+   QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
    QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
-   Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs; ///< The date/time export format used for JSon docs
    QList<quint16> const modifierKeys = { VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
       VK_RWIN };
 }
@@ -82,7 +84,7 @@ Combo::Combo(QString const& name, QString const& keyword, QString const& snippet
    , snippet_(snippet)
    , enabled_(enabled)
 {
-   lastModified_ = created_ = QDateTime::currentDateTime();
+   modificationDateTime_ = creationDateTime_ = QDateTime::currentDateTime();
 }
 
 
@@ -96,8 +98,10 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion)
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
    , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
-   , created_(QDateTime::fromString(object[kPropCreated].toString(), kJsonExportDateFormat))
-   , lastModified_(QDateTime::fromString(object[kPropLastModified].toString(), kJsonExportDateFormat))
+   , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime : kPropCreated].toString(), 
+      constants::kJsonExportDateFormat))
+   , modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime : 
+      kPropLastModified].toString(), constants::kJsonExportDateFormat))
    , enabled_(object[kPropEnabled].toBool(true))
 {
 }
@@ -108,7 +112,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion)
 //**********************************************************************************************************************
 bool Combo::isValid() const
 {
-   return (!created_.isNull()) && (!lastModified_.isNull()) && (!uuid_.isNull()) && (!name_.isEmpty()) 
+   return (!creationDateTime_.isNull()) && (!modificationDateTime_.isNull()) && (!uuid_.isNull()) && (!name_.isEmpty()) 
       && (!keyword_.isEmpty()) && (!snippet_.isEmpty());
 }
 
@@ -178,18 +182,18 @@ QString Combo::snippet() const
 //**********************************************************************************************************************
 /// \return The last modification date of the combo
 //**********************************************************************************************************************
-QDateTime Combo::lastModificationDate() const
+QDateTime Combo::modificationDateTime() const
 {
-   return lastModified_;
+   return modificationDateTime_;
 }
 
 
 //**********************************************************************************************************************
 /// \return The creation date of the combo
 //**********************************************************************************************************************
-QDateTime Combo::creationDate() const
+QDateTime Combo::creationDateTime() const
 {
-   return created_;
+   return creationDateTime_;
 }
 
 
@@ -293,8 +297,8 @@ QJsonObject Combo::toJsonObject() const
    result.insert(kPropName, name_);
    result.insert(kPropKeyword, keyword_);
    result.insert(kPropSnippet, snippet_);
-   result.insert(kPropCreated, created_.toString(kJsonExportDateFormat));
-   result.insert(kPropLastModified, lastModified_.toString(kJsonExportDateFormat));
+   result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
+   result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
    return result;
 }
@@ -356,7 +360,7 @@ SPCombo Combo::duplicate(Combo const& combo)
 //**********************************************************************************************************************
 void Combo::touch()
 {
-   lastModified_ = QDateTime::currentDateTime();
+   modificationDateTime_ = QDateTime::currentDateTime();
 }
 
 

@@ -38,8 +38,8 @@ public: // member functions
 	QString keyword() const; ///< retrieve the keyword
    void setKeyword(QString const& keyword); ///< Set the keyword
    QString snippet() const; ///< Retrieve the snippet
-   QDateTime lastModificationDate() const; ///< Retrieve the last modification date of the combo
-   QDateTime creationDate() const; ///< Retrieve the creation date of the combo
+   QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
+   QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
 
    QString evaluatedSnippet(qint32* outCursorPos = nullptr, 
       QSet<QString> forbiddenSubcombos = QSet<QString>()) const; ///< Retrieve the the snippet after having evaluated it
@@ -68,8 +68,8 @@ private: // data member
    QString name_; ///< The display name of the combo
    QString keyword_; ///< The keyword
    QString snippet_; ///< The snippet
-   QDateTime created_; ///< The date/time of creation of the combo
-   QDateTime lastModified_; ///< The date/time of the last modification of the combo
+   QDateTime creationDateTime_; ///< The date/time of creation of the combo
+   QDateTime modificationDateTime_; ///< The date/time of the last modification of the combo
    bool enabled_; ///< Is the combo enabled
 };
 
