@@ -100,6 +100,7 @@
     <ClCompile Include="ClipboardManager.cpp" />
     <ClCompile Include="Combo\Combo.cpp" />
     <ClCompile Include="Combo\ComboDialog.cpp" />
+    <ClCompile Include="Combo\ComboGroup.cpp" />
     <ClCompile Include="Combo\ComboImportDialog.cpp" />
     <ClCompile Include="Combo\ComboList.cpp" />
     <ClCompile Include="Combo\ComboManager.cpp" />
@@ -340,6 +341,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -D_UNICODE  "-I.\Submodules" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtMultimedia" "-I$(QTDIR)\include\QtNetwork" "-fstdafx.h" "-f../../Combo/ComboImportDialog.h"</Command>
     </CustomBuild>
+    <ClInclude Include="Combo\ComboGroup.h" />
     <ClInclude Include="Combo\ComboVariable.h" />
     <ClInclude Include="GeneratedFiles\ui_AboutFrame.h" />
     <ClInclude Include="GeneratedFiles\ui_ComboDialog.h" />

@@ -183,6 +183,9 @@
     <ClCompile Include="Combo\ComboKeywordValidator.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboGroup.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -220,6 +223,9 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_ComboImportDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo\ComboGroup.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
