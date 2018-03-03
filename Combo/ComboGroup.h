@@ -15,7 +15,7 @@ class ComboGroup;
 
 
 typedef std::shared_ptr<ComboGroup> SPComboGroup; ///< Type definition for shared pointer to SPComboGroup
-typedef std::vector<ComboGroup> VecSPComboGroup; ///< Type definition for vector of SPComboGroup
+typedef std::vector<SPComboGroup> VecSPComboGroup; ///< Type definition for vector of SPComboGroup
 
 
 //**********************************************************************************************************************

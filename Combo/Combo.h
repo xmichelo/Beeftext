@@ -11,6 +11,7 @@
 #define BEEFTEXT__COMBO__H
 
 
+#include "ComboGroup.h"
 #include <memory>
 #include <vector>
  
@@ -40,7 +41,8 @@ public: // member functions
    QString snippet() const; ///< Retrieve the snippet
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
-
+   SPComboGroup group() const; ///< Get the combo group the combo belongs to
+   void setGroup(SPComboGroup const& group); ///< Set the group this combo belongs to
    QString evaluatedSnippet(qint32* outCursorPos = nullptr, 
       QSet<QString> forbiddenSubcombos = QSet<QString>()) const; ///< Retrieve the the snippet after having evaluated it
    void setSnippet(QString const& snippet); ///< Set the snippet
@@ -68,6 +70,7 @@ private: // data member
    QString name_; ///< The display name of the combo
    QString keyword_; ///< The keyword
    QString snippet_; ///< The snippet
+   SPComboGroup group_; ///< The combo group this combo belongs to (may be null)
    QDateTime creationDateTime_; ///< The date/time of creation of the combo
    QDateTime modificationDateTime_; ///< The date/time of the last modification of the combo
    bool enabled_; ///< Is the combo enabled

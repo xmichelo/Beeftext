@@ -167,7 +167,9 @@ bool ComboList::append(SPCombo const& combo)
 //**********************************************************************************************************************
 void ComboList::push_back(SPCombo const& combo)
 {
+   this->beginInsertRows(QModelIndex(), combos_.size(), combos_.size());
    combos_.push_back(combo);
+   this->endInsertRows();
 }
 
 

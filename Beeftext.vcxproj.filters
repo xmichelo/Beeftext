@@ -186,6 +186,15 @@
     <ClCompile Include="Combo\ComboGroup.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboGroupList.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ComboGroupList.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ComboGroupList.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -284,6 +293,9 @@
       <Filter>Combo</Filter>
     </CustomBuild>
     <CustomBuild Include="Combo\ComboKeywordValidator.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboGroupList.h">
       <Filter>Combo</Filter>
     </CustomBuild>
   </ItemGroup>

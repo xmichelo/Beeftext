@@ -198,6 +198,29 @@ QDateTime Combo::creationDateTime() const
 
 
 //**********************************************************************************************************************
+/// \return The group this combo belongs to
+/// \return A null pointer if the combo does not belong to any group
+//**********************************************************************************************************************
+SPComboGroup Combo::group() const
+{
+   return group_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] group The new group this combo belongs to. If null, the combo is removed from its current group
+//**********************************************************************************************************************
+void Combo::setGroup(SPComboGroup const& group)
+{
+   if (group != group_)
+   {
+      group_ = group;
+      this->touch();
+   }
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] snippet The snippet
 //**********************************************************************************************************************
 void Combo::setSnippet(QString const& snippet)
