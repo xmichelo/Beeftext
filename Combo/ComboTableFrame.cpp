@@ -22,6 +22,7 @@ namespace {
    qint32 const kMaxNameColumnDefaultWidth = 300; ///< The maximum default width in pixels of the name column
 }
 
+
 //**********************************************************************************************************************
 /// brief A class overriding the default style only to remove the focus rectangle around items in a table view
 //**********************************************************************************************************************
@@ -46,6 +47,7 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
    , contextMenu_(nullptr)
 {
    ui_.setupUi(this);
+   ui_.listGroup->setModel(&ComboManager::instance().getComboGroupListRef());
    this->setupTable();
    this->setupContextMenu();
    this->setupImportExportMenu();

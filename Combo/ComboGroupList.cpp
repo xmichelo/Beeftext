@@ -17,7 +17,7 @@
 /// \param[in] parent The parent object of the instance
 //**********************************************************************************************************************
 ComboGroupList::ComboGroupList(QObject* parent)
-   : QAbstractTableModel(parent)
+   : QAbstractListModel(parent)
 {
 
 }
@@ -247,5 +247,35 @@ bool ComboGroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVer
 }
 
 
+//**********************************************************************************************************************
+/// \param[in] parent The parent model index
+//**********************************************************************************************************************
+int ComboGroupList::rowCount(const QModelIndex &parent) const
+{
+   return groups_.size() + 2;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] index The model index
+/// \param[in] role The role
+/// \return the model data for the given role at the given index
+//**********************************************************************************************************************
+QVariant ComboGroupList::data(QModelIndex const& index, int role) const
+{
+   qint32 const groupCount = groups_.size();
+   qint32 const row = index.row();
+   if ((row < 0) || (row >= groupCount + 2))
+      return QVariant();
+   if ((Qt::DisplayRole != role) && (Qt::ToolTipRole != role))
+      return QVariant();
+   bool const toolTipRole = (Qt::ToolTipRole == role);
+   if (groupCount == row) 
+      return toolTipRole ? tr("The combos that not assigned to any group."): tr("<No group>");
+   if (groupCount + 1 == row)
+      return toolTipRole ? tr("All combos, regardless of their group.") : tr("<All groups>");
+   SPComboGroup group = groups_[row];
+   return group ? (toolTipRole ? group->name() : group->description()): QString();
+}
 
 

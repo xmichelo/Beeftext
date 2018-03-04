@@ -17,7 +17,7 @@
 //**********************************************************************************************************************
 /// \brief A class for combo group list
 //**********************************************************************************************************************
-class ComboGroupList: public QAbstractTableModel
+class ComboGroupList: public QAbstractListModel
 {
    Q_OBJECT
 public: // type definitions
@@ -54,6 +54,12 @@ public: // member functions
    const_reverse_iterator rend() const; ///< Returns a constant reverse iterator to the end of the list
    QJsonArray toJsonArray() const; ///< Export the combo list to a JSON array
    bool readFromJsonArray(QJsonArray const& array, qint32 formatVersion, QString* outErrorMessage); ///< Read the combo list from a JSON array
+
+   /// \name List model member functions
+   /// \{
+   int rowCount(QModelIndex const& parent = QModelIndex()) const override; ///< Returns the number of rows in the model
+   QVariant data(QModelIndex const& index, int role = Qt::DisplayRole) const override; ///< Returns the model data at the given index for the given role
+   /// /}
 
 private: // data members
    VecSPComboGroup groups_; ///< The list of combo groups
