@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "ComboGroupList.h"
 #include "BeeftextGlobals.h"
+#include <XMiLib/Exception.h>
 
 
 //**********************************************************************************************************************
@@ -199,5 +200,52 @@ ComboGroupList::const_reverse_iterator ComboGroupList::rend() const
 {
    return groups_.rend();
 }
+
+
+//**********************************************************************************************************************
+/// \return A JSON array containing the combo list
+//**********************************************************************************************************************
+QJsonArray ComboGroupList::toJsonArray() const
+{
+   QJsonArray result;
+   for (SPComboGroup const& group: groups_)
+      result.append(group->toJsonObject());
+   return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] array The JSON array to parse
+/// \param[in] formatVersion The JSON file format version
+/// \param[out] outErrorMessage if not null and the function returns false, this variable hold a description of the
+/// error on exit
+/// \return true if and only if the array was parsed successfully
+//**********************************************************************************************************************
+bool ComboGroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVersion, QString* outErrorMessage)
+{
+   try
+   {
+      this->clear();
+      for (QJsonValue const& value : array)
+      {
+         if (!value.isObject())
+            throw xmilib::Exception("The combo group list is invalid.");
+         SPComboGroup group = ComboGroup::create(value.toObject(), formatVersion);
+         if ((!group) || (!group->isValid()))
+            throw xmilib::Exception("The combo group list contains an invalid group.");
+         if (!this->append(group))
+            throw xmilib::Exception("Could not append one of the combo groups to the group list.");
+      }
+      return true;
+   }
+   catch (xmilib::Exception const& e)
+   {
+      if (outErrorMessage)
+         *outErrorMessage = e.qwhat();
+      return false;
+   }
+}
+
+
 
 

@@ -52,7 +52,8 @@ public: // member functions
    const_reverse_iterator rbegin() const; ///< Returns a constant reverse iterator to the beginning of the list
    reverse_iterator rend(); ///< Returns a reverse iterator to the end of the list
    const_reverse_iterator rend() const; ///< Returns a constant reverse iterator to the end of the list
-
+   QJsonArray toJsonArray() const; ///< Export the combo list to a JSON array
+   bool readFromJsonArray(QJsonArray const& array, qint32 formatVersion, QString* outErrorMessage); ///< Read the combo list from a JSON array
 
 private: // data members
    VecSPComboGroup groups_; ///< The list of combo groups
