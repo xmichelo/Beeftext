@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ComboFrame</class>
+ <widget class="QFrame" name="ComboFrame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
+    <number>9</number>
+   </property>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="handleWidth">
+      <number>6</number>
+     </property>
+     <widget class="ComboGroupListWidget" name="comboGroupListWidget" native="true"/>
+     <widget class="ComboTableWidget" name="comboTableWidget" native="true"/>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ComboGroupListWidget</class>
+   <extends>QWidget</extends>
+   <header>Combo/ComboGroupListWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ComboTableWidget</class>
+   <extends>QWidget</extends>
+   <header>Combo/ComboTableWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

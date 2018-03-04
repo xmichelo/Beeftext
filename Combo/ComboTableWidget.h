@@ -11,7 +11,7 @@
 #define BEEFTEXT__COMBO__TABLE__FRAME__H
 
 
-#include "ui_ComboTableFrame.h"
+#include "ui_ComboTableWidget.h"
 #include "ComboSortFilterProxyModel.h"
 #include <memory>
 
@@ -19,22 +19,22 @@
 //**********************************************************************************************************************
 /// \brief A class for the frame containing the combo table and associated controls
 //**********************************************************************************************************************
-class ComboTableFrame: public QFrame
+class ComboTableWidget: public QWidget
 {
    Q_OBJECT
 public: // member functions
-	ComboTableFrame(QWidget* parent = nullptr); ///< Default constructor
-	~ComboTableFrame() = default; ///< Default destructor
+	ComboTableWidget(QWidget* parent = nullptr); ///< Default constructor
+	~ComboTableWidget() = default; ///< Default destructor
    void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
 
 protected: // member functions
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
 
 private: // member functions
-	ComboTableFrame(ComboTableFrame const&) = delete; ///< Disabled copy constructor
-	ComboTableFrame(ComboTableFrame&&) = delete; ///< Disabled move constructor
-	ComboTableFrame& operator=(ComboTableFrame const&) = delete; ///< Disabled assignment operator
-	ComboTableFrame& operator=(ComboTableFrame&&) = delete; ///< Disabled move assignment operator
+	ComboTableWidget(ComboTableWidget const&) = delete; ///< Disabled copy constructor
+	ComboTableWidget(ComboTableWidget&&) = delete; ///< Disabled move constructor
+	ComboTableWidget& operator=(ComboTableWidget const&) = delete; ///< Disabled assignment operator
+	ComboTableWidget& operator=(ComboTableWidget&&) = delete; ///< Disabled move assignment operator
    void setupTable(); ///< Setup the combo table
    void setupContextMenu(); ///< Setup the context menu
    void setupImportExportMenu(); ///< Setup the import export menu
@@ -59,7 +59,7 @@ private slots:
    void onDoubleClick(); ///< Slot for the double clicking in the table view
 
 private: // data members
-   Ui::ComboTableFrame ui_; ///< The GUI for the frame
+   Ui::ComboTableWidget ui_; ///< The GUI for the frame
    ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
    QMenu contextMenu_; ///< The context menu for the combo table
    std::unique_ptr<class ComboTableProxyStyle> proxyStyle_; ///< The proxy style to tweak appearance of the table view

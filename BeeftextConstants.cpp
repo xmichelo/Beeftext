@@ -173,6 +173,29 @@ QTableView::item:selected {
    color: #fff;
 }
 
+
+/*****************************
+* QTableView
+*****************************/
+QListView {
+   border: 1px solid #ccc;
+}
+
+
+QListView::item {
+   border: 0px; /* required in order for the padding to work. Don't ask why */
+   padding-right: 10px;
+   padding: 3px 5px 3px 5px;
+}
+
+QListView::item:selected {
+   background-color: #258fc0;
+   color: #fff;
+}
+
+/*****************************
+* QLineEdit
+*****************************/
 QLineEdit#editSearch {
    border-radius: 3px;
    border: 1px solid #ccc;

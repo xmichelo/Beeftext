@@ -50,7 +50,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="ComboTableFrame" name="frameCombos">
+         <widget class="ComboFrame" name="frameCombos">
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -202,12 +202,6 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>ComboTableFrame</class>
-   <extends>QFrame</extends>
-   <header>Combo/ComboTableFrame.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>PreferencesFrame</class>
    <extends>QFrame</extends>
    <header>PreferencesFrame.h</header>
@@ -217,6 +211,12 @@
    <class>AboutFrame</class>
    <extends>QFrame</extends>
    <header>AboutFrame.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ComboFrame</class>
+   <extends>QFrame</extends>
+   <header>Combo/ComboFrame.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

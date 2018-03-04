@@ -8,7 +8,7 @@
 
 
 #include "stdafx.h"
-#include "ComboTableFrame.h"
+#include "ComboTableWidget.h"
 #include "ComboImportDialog.h"
 #include "ComboManager.h"
 #include "ComboDialog.h"
@@ -41,13 +41,12 @@ public:
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
-ComboTableFrame::ComboTableFrame(QWidget* parent)
-   : QFrame(parent)
+ComboTableWidget::ComboTableWidget(QWidget* parent)
+   : QWidget(parent)
    , proxyStyle_(std::make_unique<ComboTableProxyStyle>())
    , contextMenu_(nullptr)
 {
    ui_.setupUi(this);
-   ui_.listGroup->setModel(&ComboManager::instance().getComboGroupListRef());
    this->setupTable();
    this->setupContextMenu();
    this->setupImportExportMenu();
@@ -57,26 +56,26 @@ ComboTableFrame::ComboTableFrame(QWidget* parent)
    connect(new QShortcut(QKeySequence("Escape"), this), &QShortcut::activated,
       this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->clear(); });
    connect(new QShortcut(QKeySequence("Ctrl+N"), this), &QShortcut::activated,
-      this, &ComboTableFrame::onActionAddCombo);
+      this, &ComboTableWidget::onActionAddCombo);
    connect(new QShortcut(QKeySequence("Delete"), this), &QShortcut::activated, 
-      this, &ComboTableFrame::onActionDeleteCombo);
+      this, &ComboTableWidget::onActionDeleteCombo);
    connect(new QShortcut(QKeySequence("Ctrl+Shift+N"), this), &QShortcut::activated,
-      this, &ComboTableFrame::onActionDuplicateCombo);
+      this, &ComboTableWidget::onActionDuplicateCombo);
    connect(new QShortcut(QKeySequence(Qt::Key_Return), this), &QShortcut::activated,
-      this, &ComboTableFrame::onActionEditCombo);
+      this, &ComboTableWidget::onActionEditCombo);
    connect(new QShortcut(QKeySequence("Ctrl+E"), this), &QShortcut::activated,
-      this, &ComboTableFrame::onActionEnableDisableCombo);
+      this, &ComboTableWidget::onActionEnableDisableCombo);
    connect(new QShortcut(QKeySequence("Ctrl+A"), this), &QShortcut::activated,
-      this, &ComboTableFrame::onActionSelectAll);
+      this, &ComboTableWidget::onActionSelectAll);
    connect(new QShortcut(QKeySequence("Ctrl+D"), this), &QShortcut::activated,
-      this, &ComboTableFrame::onActionDeselectAll);
+      this, &ComboTableWidget::onActionDeselectAll);
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] filePath The path of the combo file to import. This value can be null
 //**********************************************************************************************************************
-void ComboTableFrame::runComboImportDialog(QString const& filePath)
+void ComboTableWidget::runComboImportDialog(QString const& filePath)
 {
    if (QDialog::Accepted == ComboImportDialog(filePath, this).exec())
       this->updateGui();
@@ -87,7 +86,7 @@ void ComboTableFrame::runComboImportDialog(QString const& filePath)
 /// This event filter override the default mouse double click behavior of the table view to respond also 
 /// when the user double click on an empty area
 //**********************************************************************************************************************
-bool ComboTableFrame::eventFilter(QObject *object, QEvent *event)
+bool ComboTableWidget::eventFilter(QObject *object, QEvent *event)
 {
    if (event->type() != QEvent::MouseButtonDblClick)
       return QObject::eventFilter(object, event);
@@ -99,7 +98,7 @@ bool ComboTableFrame::eventFilter(QObject *object, QEvent *event)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::setupTable()
+void ComboTableWidget::setupTable()
 {
    proxyModel_.setSourceModel(&ComboManager::instance().getComboListRef());
    ui_.tableComboList->setModel(&proxyModel_);
@@ -109,7 +108,7 @@ void ComboTableFrame::setupTable()
    horizontalHeader->setSortIndicator(0, Qt::AscendingOrder);  //< required, otherwise the indicator is first displayed in the wrong direction
    horizontalHeader->setDefaultAlignment(Qt::AlignLeft);
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this,
-      &ComboTableFrame::updateGui);
+      &ComboTableWidget::updateGui);
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
    for (qint32 i = 0; i < 2; ++i)
@@ -124,7 +123,7 @@ void ComboTableFrame::setupTable()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::setupContextMenu()
+void ComboTableWidget::setupContextMenu()
 {
    contextMenu_.clear();
    contextMenu_.addAction(ui_.actionAddCombo);
@@ -136,14 +135,14 @@ void ComboTableFrame::setupContextMenu()
    contextMenu_.addAction(ui_.actionSelectAll);
    contextMenu_.addAction(ui_.actionDeselectAll);
    ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
-   connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableFrame::onContextMenuRequested);
+   connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableWidget::onContextMenuRequested);
 }
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::setupImportExportMenu()
+void ComboTableWidget::setupImportExportMenu()
 {
    QMenu* menu = new QMenu(this);
    menu->addAction(ui_.actionImportCombos);
@@ -157,7 +156,7 @@ void ComboTableFrame::setupImportExportMenu()
 //**********************************************************************************************************************
 /// \return The number of selected combos
 //**********************************************************************************************************************
-qint32 ComboTableFrame::getSelectedComboCount() const
+qint32 ComboTableWidget::getSelectedComboCount() const
 {
    return ui_.tableComboList->selectionModel()->selectedRows().size();
 }
@@ -169,7 +168,7 @@ qint32 ComboTableFrame::getSelectedComboCount() const
 ///
 /// \return The list of indexes of the selected combos 
 //**********************************************************************************************************************
-QList<qint32> ComboTableFrame::getSelectedComboIndexes() const
+QList<qint32> ComboTableWidget::getSelectedComboIndexes() const
 {
    QList<qint32> result;
    ComboList& comboList = ComboManager::instance().getComboListRef();
@@ -187,18 +186,18 @@ QList<qint32> ComboTableFrame::getSelectedComboIndexes() const
 //**********************************************************************************************************************
 /// \param[in] event The event
 //**********************************************************************************************************************
-void ComboTableFrame::changeEvent(QEvent *event)
+void ComboTableWidget::changeEvent(QEvent *event)
 {
    if (QEvent::LanguageChange == event->type())
       ui_.retranslateUi(this);
-   QFrame::changeEvent(event);
+   QWidget::changeEvent(event);
 }
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::updateGui() const
+void ComboTableWidget::updateGui() const
 {
    qint32 const selectedCount = this->getSelectedComboCount();
    bool const listIsEmpty = (ComboManager::instance().getComboListRef().size() == 0);
@@ -234,7 +233,7 @@ void ComboTableFrame::updateGui() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionAddCombo()
+void ComboTableWidget::onActionAddCombo()
 {
    try
    {
@@ -260,7 +259,7 @@ void ComboTableFrame::onActionAddCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionDuplicateCombo()
+void ComboTableWidget::onActionDuplicateCombo()
 {
    try
    {
@@ -290,7 +289,7 @@ void ComboTableFrame::onActionDuplicateCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionDeleteCombo()
+void ComboTableWidget::onActionDeleteCombo()
 {
    qint32 const count = this->getSelectedComboCount();
    if (count < 1)
@@ -316,7 +315,7 @@ void ComboTableFrame::onActionDeleteCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionEditCombo()
+void ComboTableWidget::onActionEditCombo()
 {
    QList<qint32> const selectedIndex = this->getSelectedComboIndexes();
    if (1 != selectedIndex.size())
@@ -340,7 +339,7 @@ void ComboTableFrame::onActionEditCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionSelectAll() const
+void ComboTableWidget::onActionSelectAll() const
 {
    ui_.tableComboList->selectAll();
 }
@@ -349,7 +348,7 @@ void ComboTableFrame::onActionSelectAll() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionDeselectAll() const
+void ComboTableWidget::onActionDeselectAll() const
 {
    ui_.tableComboList->clearSelection();
 }
@@ -358,7 +357,7 @@ void ComboTableFrame::onActionDeselectAll() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionEnableDisableCombo()
+void ComboTableWidget::onActionEnableDisableCombo()
 {
    QList<qint32> const selectedIndex = this->getSelectedComboIndexes();
    if (1 != selectedIndex.size())
@@ -381,7 +380,7 @@ void ComboTableFrame::onActionEnableDisableCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionExportCombo()
+void ComboTableWidget::onActionExportCombo()
 {
    QList<qint32> const indexes = this->getSelectedComboIndexes();
    if (indexes.size() < 1)
@@ -414,7 +413,7 @@ void ComboTableFrame::onActionExportCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionExportAllCombos()
+void ComboTableWidget::onActionExportAllCombos()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), prefs.lastComboImportExportPath(),
@@ -434,7 +433,7 @@ void ComboTableFrame::onActionExportAllCombos()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onActionImportCombos()
+void ComboTableWidget::onActionImportCombos()
 {
    this->runComboImportDialog();
 }
@@ -443,7 +442,7 @@ void ComboTableFrame::onActionImportCombos()
 //**********************************************************************************************************************
 /// \param[in] text The text to search
 //**********************************************************************************************************************
-void ComboTableFrame::onSearchFilterChanged(QString const& text)
+void ComboTableWidget::onSearchFilterChanged(QString const& text)
 {
    QString const searchStr = text.trimmed();
    proxyModel_.setFilterFixedString(searchStr);
@@ -453,7 +452,7 @@ void ComboTableFrame::onSearchFilterChanged(QString const& text)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onContextMenuRequested()
+void ComboTableWidget::onContextMenuRequested()
 {
    contextMenu_.exec(QCursor::pos());
 }
@@ -462,7 +461,7 @@ void ComboTableFrame::onContextMenuRequested()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableFrame::onDoubleClick()
+void ComboTableWidget::onDoubleClick()
 {
    switch (this->getSelectedComboCount())
    {

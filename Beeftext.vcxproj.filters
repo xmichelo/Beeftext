@@ -89,15 +89,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboTableFrame.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboTableFrame.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboTableFrame.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="Combo\ComboSortFilterProxyModel.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -195,6 +186,33 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboGroupList.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboGroupListWidget.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ComboGroupListWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ComboGroupListWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Combo\ComboFrame.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ComboFrame.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ComboFrame.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ComboTableWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ComboTableWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Combo\ComboTableWidget.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -207,9 +225,6 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_ComboDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_ComboTableFrame.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_PreferencesFrame.h">
@@ -234,7 +249,16 @@
     <ClInclude Include="GeneratedFiles\ui_ComboImportDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_ComboGroupListWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_ComboFrame.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="Combo\ComboGroup.h">
+      <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_ComboTableWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -255,12 +279,6 @@
       <Filter>Combo</Filter>
     </CustomBuild>
     <CustomBuild Include="Combo\ComboDialog.h">
-      <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboTableFrame.ui">
-      <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboTableFrame.h">
       <Filter>Combo</Filter>
     </CustomBuild>
     <CustomBuild Include="Combo\ComboSortFilterProxyModel.h">
@@ -296,6 +314,24 @@
       <Filter>Combo</Filter>
     </CustomBuild>
     <CustomBuild Include="Combo\ComboGroupList.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboGroupListWidget.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboGroupListWidget.ui">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboFrame.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboFrame.ui">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboTableWidget.h">
+      <Filter>Combo</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Combo\ComboTableWidget.ui">
       <Filter>Combo</Filter>
     </CustomBuild>
   </ItemGroup>
