@@ -36,15 +36,15 @@ private: // member functions
 	ComboTableWidget& operator=(ComboTableWidget const&) = delete; ///< Disabled assignment operator
 	ComboTableWidget& operator=(ComboTableWidget&&) = delete; ///< Disabled move assignment operator
    void setupTable(); ///< Setup the combo table
+   void setupCombosMenu(); ///< Setup the 'Combos' menu
    void setupContextMenu(); ///< Setup the context menu
-   void setupImportExportMenu(); ///< Setup the import export menu
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
    void changeEvent(QEvent *event) override; ///< Change event handler
 
 private slots:
    void updateGui() const; ///< Update the GUI state
-   void onActionAddCombo(); ///< Slot for the 'Add Combo' action
+   void onActionNewCombo(); ///< Slot for the 'Add Combo' action
    void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action

@@ -204,14 +204,14 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboFrame.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboTableWidget.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_ComboTableWidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_ComboTableWidget.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="Combo\ComboTableWidget.cpp">
-      <Filter>Combo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -20,5 +20,38 @@ ComboGroupListWidget::ComboGroupListWidget(QWidget* parent)
 {
    ui_.setupUi(this);
    ui_.listGroup->setModel(&ComboManager::instance().getComboGroupListRef());
+   this->setupGroupsMenu();
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboGroupListWidget::setupGroupsMenu()
+{
+   QMenu* menu = new QMenu(this);
+   menu->addAction(ui_.actionNewGroup);
+   menu->addSeparator();
+   menu->addAction(ui_.actionDeleteGroup);
+   ui_.buttonGroups->setMenu(menu);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboGroupListWidget::onActionNewGroup()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboGroupListWidget::onActionDeleteGroup()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+}
+
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>207</width>
-    <height>480</height>
+    <height>724</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,18 +29,12 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QLabel" name="labelGroups">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+      <widget class="QPushButton" name="buttonGroups">
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
        </property>
        <property name="text">
         <string>Groups</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
        </property>
       </widget>
      </item>
@@ -63,7 +57,54 @@
     <widget class="QListView" name="listGroup"/>
    </item>
   </layout>
+  <action name="actionNewGroup">
+   <property name="text">
+    <string>&amp;New Group</string>
+   </property>
+  </action>
+  <action name="actionDeleteGroup">
+   <property name="text">
+    <string>&amp;Delete Group</string>
+   </property>
+  </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionDeleteGroup</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboGroupListWidget</receiver>
+   <slot>onActionDeleteGroup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>361</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionNewGroup</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboGroupListWidget</receiver>
+   <slot>onActionNewGroup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>361</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onActionNewGroup()</slot>
+  <slot>onActionDeleteGroup()</slot>
+ </slots>
 </ui>

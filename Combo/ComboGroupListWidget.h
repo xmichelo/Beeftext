@@ -28,6 +28,13 @@ public: // member functions
    ComboGroupListWidget& operator=(ComboGroupListWidget const&) = delete; ///< Disabled assignment operator
    ComboGroupListWidget& operator=(ComboGroupListWidget&&) = delete; ///< Disabled move assignment operator
 
+private: // member functions
+   void setupGroupsMenu(); ///< setup the 'groups' menu
+
+private slots: 
+   void onActionNewGroup(); ///< Slot for the 'new group' action
+   void onActionDeleteGroup(); ///< Slot for the 'delete group' action
+
 private: // data members
    Ui::ComboGroupListWidget ui_; ///< The GUI for the dialog
 };

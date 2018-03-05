@@ -32,18 +32,9 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="label_2">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
+      <widget class="QPushButton" name="buttonCombos">
        <property name="text">
         <string>Combos</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
        </property>
       </widget>
      </item>
@@ -142,93 +133,16 @@
      </attribute>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="buttonImportExport">
-       <property name="text">
-        <string>Import/Export</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonAddCombo">
-       <property name="toolTip">
-        <string>Add combo</string>
-       </property>
-       <property name="text">
-        <string>&amp;Add</string>
-       </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonDuplicateCombo">
-       <property name="toolTip">
-        <string>Duplicate combo</string>
-       </property>
-       <property name="text">
-        <string>Du&amp;plicate</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonDeleteCombo">
-       <property name="toolTip">
-        <string>Delete combo</string>
-       </property>
-       <property name="text">
-        <string>&amp;Delete</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonEditCombo">
-       <property name="toolTip">
-        <string>Edit combo</string>
-       </property>
-       <property name="text">
-        <string>&amp;Edit</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonEnableDisableCombo">
-       <property name="toolTip">
-        <string>Enable combo</string>
-       </property>
-       <property name="text">
-        <string>Ena&amp;ble</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
-  <action name="actionAddCombo">
+  <action name="actionNewCombo">
    <property name="text">
-    <string>&amp;Add</string>
+    <string>&amp;New</string>
    </property>
    <property name="iconText">
     <string>Add Combo</string>
    </property>
    <property name="toolTip">
-    <string>Add Combo</string>
+    <string>New Combo</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -305,7 +219,7 @@
   </action>
   <action name="actionExportCombo">
    <property name="text">
-    <string>&amp;Export Selected Combos</string>
+    <string>&amp;Export</string>
    </property>
    <property name="toolTip">
     <string>Export Selected Combos</string>
@@ -316,7 +230,7 @@
   </action>
   <action name="actionImportCombos">
    <property name="text">
-    <string>I&amp;mport Combos</string>
+    <string>I&amp;mport</string>
    </property>
    <property name="toolTip">
     <string>Import Combos</string>
@@ -327,7 +241,7 @@
   </action>
   <action name="actionExportAllCombos">
    <property name="text">
-    <string>Export A&amp;ll Combos</string>
+    <string>Export A&amp;ll</string>
    </property>
    <property name="toolTip">
     <string>Export All Combos</string>
@@ -340,20 +254,14 @@
  <tabstops>
   <tabstop>editSearch</tabstop>
   <tabstop>tableComboList</tabstop>
-  <tabstop>buttonAddCombo</tabstop>
-  <tabstop>buttonDuplicateCombo</tabstop>
-  <tabstop>buttonDeleteCombo</tabstop>
-  <tabstop>buttonEditCombo</tabstop>
-  <tabstop>buttonEnableDisableCombo</tabstop>
-  <tabstop>buttonImportExport</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>actionAddCombo</sender>
+   <sender>actionNewCombo</sender>
    <signal>triggered()</signal>
    <receiver>ComboTableWidget</receiver>
-   <slot>onActionAddCombo()</slot>
+   <slot>onActionNewCombo()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -398,54 +306,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonAddCombo</sender>
-   <signal>clicked()</signal>
-   <receiver>actionAddCombo</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>285</x>
-     <y>460</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonDeleteCombo</sender>
-   <signal>clicked()</signal>
-   <receiver>actionDeleteCombo</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>366</x>
-     <y>460</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonEditCombo</sender>
-   <signal>clicked()</signal>
-   <receiver>actionEditCombo</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>447</x>
-     <y>460</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>editSearch</sender>
    <signal>textChanged(QString)</signal>
    <receiver>ComboTableWidget</receiver>
@@ -474,22 +334,6 @@
     <hint type="destinationlabel">
      <x>246</x>
      <y>247</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonDuplicateCombo</sender>
-   <signal>clicked()</signal>
-   <receiver>actionDuplicateCombo</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>283</x>
-     <y>472</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -538,22 +382,6 @@
     <hint type="destinationlabel">
      <x>246</x>
      <y>247</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonEnableDisableCombo</sender>
-   <signal>clicked()</signal>
-   <receiver>actionEnableDisableCombo</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>445</x>
-     <y>472</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -607,7 +435,7 @@
   </connection>
  </connections>
  <slots>
-  <slot>onActionAddCombo()</slot>
+  <slot>onActionNewCombo()</slot>
   <slot>onActionDeleteCombo()</slot>
   <slot>onActionEditCombo()</slot>
   <slot>onSearchFilterChanged(QString)</slot>

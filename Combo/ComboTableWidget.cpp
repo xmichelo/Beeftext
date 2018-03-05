@@ -48,15 +48,15 @@ ComboTableWidget::ComboTableWidget(QWidget* parent)
 {
    ui_.setupUi(this);
    this->setupTable();
+   this->setupCombosMenu();
    this->setupContextMenu();
-   this->setupImportExportMenu();
    this->updateGui();
    connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated,
       this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->selectAll(); });
    connect(new QShortcut(QKeySequence("Escape"), this), &QShortcut::activated,
       this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->clear(); });
    connect(new QShortcut(QKeySequence("Ctrl+N"), this), &QShortcut::activated,
-      this, &ComboTableWidget::onActionAddCombo);
+      this, &ComboTableWidget::onActionNewCombo);
    connect(new QShortcut(QKeySequence("Delete"), this), &QShortcut::activated, 
       this, &ComboTableWidget::onActionDeleteCombo);
    connect(new QShortcut(QKeySequence("Ctrl+Shift+N"), this), &QShortcut::activated,
@@ -123,10 +123,35 @@ void ComboTableWidget::setupTable()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
+void ComboTableWidget::setupCombosMenu()
+{
+   QMenu* menu = new QMenu(this);
+   menu->addAction(ui_.actionNewCombo);
+   menu->addAction(ui_.actionDuplicateCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionEditCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionEnableDisableCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionSelectAll);
+   menu->addAction(ui_.actionDeselectAll);
+   menu->addSeparator();
+   menu->addAction(ui_.actionDeleteCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionImportCombos);
+   menu->addAction(ui_.actionExportCombo);
+   menu->addAction(ui_.actionExportAllCombos);
+   ui_.buttonCombos->setMenu(menu);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
 void ComboTableWidget::setupContextMenu()
 {
    contextMenu_.clear();
-   contextMenu_.addAction(ui_.actionAddCombo);
+   contextMenu_.addAction(ui_.actionNewCombo);
    contextMenu_.addAction(ui_.actionDuplicateCombo);
    contextMenu_.addAction(ui_.actionDeleteCombo);
    contextMenu_.addAction(ui_.actionEditCombo);
@@ -136,20 +161,6 @@ void ComboTableWidget::setupContextMenu()
    contextMenu_.addAction(ui_.actionDeselectAll);
    ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
    connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableWidget::onContextMenuRequested);
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void ComboTableWidget::setupImportExportMenu()
-{
-   QMenu* menu = new QMenu(this);
-   menu->addAction(ui_.actionImportCombos);
-   menu->addSeparator();
-   menu->addAction(ui_.actionExportCombo);
-   menu->addAction(ui_.actionExportAllCombos);
-   ui_.buttonImportExport->setMenu(menu);
 }
 
 
@@ -203,14 +214,10 @@ void ComboTableWidget::updateGui() const
    bool const listIsEmpty = (ComboManager::instance().getComboListRef().size() == 0);
    bool const hasOneSelected = (1 == selectedCount);
    bool const hasOneOrMoreSelected = (selectedCount > 0);
-   ui_.buttonDuplicateCombo->setEnabled(hasOneSelected);
    ui_.actionDuplicateCombo->setEnabled(hasOneSelected);
-   ui_.buttonDeleteCombo->setEnabled(hasOneOrMoreSelected);
    ui_.actionDeleteCombo->setEnabled(hasOneOrMoreSelected);
-   ui_.buttonEditCombo->setEnabled(hasOneSelected);
    ui_.actionEditCombo->setEnabled(hasOneSelected);
    ui_.actionEnableDisableCombo->setEnabled(hasOneSelected);
-   ui_.buttonEnableDisableCombo->setEnabled(hasOneSelected);
    ui_.actionExportCombo->setEnabled(hasOneOrMoreSelected);
    ui_.actionExportAllCombos->setEnabled(!listIsEmpty);
 
@@ -225,15 +232,13 @@ void ComboTableWidget::updateGui() const
    ui_.actionEnableDisableCombo->setText(enableDisableText);
    ui_.actionEnableDisableCombo->setToolTip(enableDisableToolTip);
    ui_.actionEnableDisableCombo->setIconText(enableDisableToolTip);
-   ui_.buttonEnableDisableCombo->setText(enableDisableText);
-   ui_.buttonEnableDisableCombo->setToolTip(enableDisableToolTip);
 }
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onActionAddCombo()
+void ComboTableWidget::onActionNewCombo()
 {
    try
    {
@@ -466,7 +471,7 @@ void ComboTableWidget::onDoubleClick()
    switch (this->getSelectedComboCount())
    {
    case 0:
-      this->onActionAddCombo();
+      this->onActionNewCombo();
       break;
    case 1:
       this->onActionEditCombo();
