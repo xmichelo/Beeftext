@@ -64,7 +64,7 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
          kComboVariable.size()));
       if (forbiddenSubCombos.contains(comboName))
          return fallbackResult;
-      ComboList const& combos = ComboManager::instance().getComboListRef();
+      ComboList const& combos = ComboManager::instance().comboListRef();
       ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(), 
          [&comboName](SPCombo const& combo) -> bool { return combo->keyword() == comboName; });
       

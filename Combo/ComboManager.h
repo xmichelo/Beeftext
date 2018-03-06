@@ -27,10 +27,8 @@ public: // static member functions
 
 public: // member functions
 	~ComboManager(); ///< Default destructor
-   ComboList& getComboListRef(); ///< Return a mutable reference to the combo list
-   ComboList const& getComboListRef() const; ///< Return a constant reference to the combo list
-   ComboGroupList& getComboGroupListRef(); ///< Return a mutable reference to the group list
-   ComboGroupList const& getComboGroupListRef() const; ///< Return a constant reference to the group list
+   ComboList& comboListRef(); ///< Return a mutable reference to the combo list
+   ComboList const& comboListRef() const; ///< Return a constant reference to the combo list
    bool loadComboListFromFile(QString* outErrorMsg = nullptr); ///< Load the combo list from the default file
    bool saveComboListToFile(QString* outErrorMsg = nullptr) const; /// Save the combo list to the default location
    bool isEnabled() const; ///< Check whether the combo manager is enabled
@@ -55,7 +53,6 @@ public slots:
 private: // data member
    QString currentText_; ///< The current string
    ComboList comboList_; ///< The list of combos
-   ComboGroupList groupList_; ///< The list of combo groups
    std::unique_ptr<QSound> sound_; ///< The sound to play when a combo is executed
 };
 

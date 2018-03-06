@@ -150,7 +150,7 @@ bool ComboDialog::checkAndReportInvalidCombo()
    }
 
    // we check for conflicts that would make some combo 'unreachable'
-   ComboList const& comboList = ComboManager::instance().getComboListRef();
+   ComboList const& comboList = ComboManager::instance().comboListRef();
    for (SPCombo const& combo : comboList)
    {
       QString const newCombo = ui_.editKeyword->text();

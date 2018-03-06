@@ -100,7 +100,7 @@ bool ComboTableWidget::eventFilter(QObject *object, QEvent *event)
 //**********************************************************************************************************************
 void ComboTableWidget::setupTable()
 {
-   proxyModel_.setSourceModel(&ComboManager::instance().getComboListRef());
+   proxyModel_.setSourceModel(&ComboManager::instance().comboListRef());
    ui_.tableComboList->setModel(&proxyModel_);
    proxyModel_.sort(0, Qt::AscendingOrder);
    QHeaderView* horizontalHeader = ui_.tableComboList->horizontalHeader();
@@ -182,7 +182,7 @@ qint32 ComboTableWidget::getSelectedComboCount() const
 QList<qint32> ComboTableWidget::getSelectedComboIndexes() const
 {
    QList<qint32> result;
-   ComboList& comboList = ComboManager::instance().getComboListRef();
+   ComboList& comboList = ComboManager::instance().comboListRef();
    QModelIndexList selectedRows = ui_.tableComboList->selectionModel()->selectedRows();
    for (QModelIndex const& modelIndex : selectedRows)
    {
@@ -211,7 +211,7 @@ void ComboTableWidget::changeEvent(QEvent *event)
 void ComboTableWidget::updateGui() const
 {
    qint32 const selectedCount = this->getSelectedComboCount();
-   bool const listIsEmpty = (ComboManager::instance().getComboListRef().size() == 0);
+   bool const listIsEmpty = (ComboManager::instance().comboListRef().size() == 0);
    bool const hasOneSelected = (1 == selectedCount);
    bool const hasOneOrMoreSelected = (selectedCount > 0);
    ui_.actionDuplicateCombo->setEnabled(hasOneSelected);
@@ -224,7 +224,7 @@ void ComboTableWidget::updateGui() const
    QString enableDisableText = tr("Ena&ble");
    QString enableDisableToolTip = tr("Enable combo");
    if ((hasOneSelected) 
-      && (ComboManager::instance().getComboListRef()[this->getSelectedComboIndexes().front()]->isEnabled()))
+      && (ComboManager::instance().comboListRef()[this->getSelectedComboIndexes().front()]->isEnabled()))
    {
       enableDisableText = "Disa&ble";
       enableDisableToolTip = "Disable combo";
@@ -246,7 +246,7 @@ void ComboTableWidget::onActionNewCombo()
       if (!ComboDialog::run(combo, tr("Add Combo")))
          return;
       ComboManager& comboManager = ComboManager::instance();
-      ComboList& comboList = ComboManager::instance().getComboListRef();
+      ComboList& comboList = ComboManager::instance().comboListRef();
       if (!comboList.append(combo))
          throw xmilib::Exception(tr("The combo could not be added to the list."));
       QString errorMessage;
@@ -272,7 +272,7 @@ void ComboTableWidget::onActionDuplicateCombo()
       if (1 != selectedIndex.size())
          return;
       ComboManager& comboManager = ComboManager::instance();
-      ComboList& comboList = comboManager.getComboListRef();
+      ComboList& comboList = comboManager.comboListRef();
       qint32 const index = selectedIndex[0];
       Q_ASSERT((index >= 0) && (index < comboList.size()));
       if ((index < 0) || (index >= comboList.size()))
@@ -309,7 +309,7 @@ void ComboTableWidget::onActionDeleteCombo()
    QList<qint32> indexes = this->getSelectedComboIndexes();
    std::sort(indexes.begin(), indexes.end(), [](qint32 first, qint32 second) -> bool { return first > second; });
    for (qint32 index : indexes)
-      comboManager.getComboListRef().erase(index);
+      comboManager.comboListRef().erase(index);
    QString errorMessage;
    if (!comboManager.saveComboListToFile(&errorMessage))
       QMessageBox::critical(this, tr("Error"), errorMessage);
@@ -327,7 +327,7 @@ void ComboTableWidget::onActionEditCombo()
       return;
 
    ComboManager& comboManager = ComboManager::instance();
-   ComboList& comboList = comboManager.getComboListRef();
+   ComboList& comboList = comboManager.comboListRef();
    qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
    SPCombo const combo = comboList[index];
@@ -369,7 +369,7 @@ void ComboTableWidget::onActionEnableDisableCombo()
       return;
 
    ComboManager& comboManager = ComboManager::instance();
-   ComboList& comboList = comboManager.getComboListRef();
+   ComboList& comboList = comboManager.comboListRef();
    qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
    SPCombo combo = comboList[index];
@@ -398,7 +398,7 @@ void ComboTableWidget::onActionExportCombo()
       return;
    prefs.setLastComboImportExportPath(path);
 
-   ComboList const& comboList = ComboManager::instance().getComboListRef();
+   ComboList const& comboList = ComboManager::instance().comboListRef();
    ComboList exportList;
    for (qint32 const index : indexes)
    {
@@ -427,7 +427,7 @@ void ComboTableWidget::onActionExportAllCombos()
       return;
    prefs.setLastComboImportExportPath(path);
    QString errorMessage;
-   if (!ComboManager::instance().getComboListRef().save(path, &errorMessage))
+   if (!ComboManager::instance().comboListRef().save(path, &errorMessage))
    {
       globals::debugLog().addError(errorMessage);
       QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));

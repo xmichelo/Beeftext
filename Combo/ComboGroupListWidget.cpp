@@ -19,7 +19,7 @@ ComboGroupListWidget::ComboGroupListWidget(QWidget* parent)
    : QWidget(nullptr)
 {
    ui_.setupUi(this);
-   ui_.listGroup->setModel(&ComboManager::instance().getComboGroupListRef());
+   ui_.listGroup->setModel(&ComboManager::instance().comboListRef().groupListRef());
    this->setupGroupsMenu();
 }
 

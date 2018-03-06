@@ -384,17 +384,17 @@ Combos ignorés pour éviter les doublons: %2</translation>
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="533"/>
+        <location filename="../Combo/ComboList.cpp" line="550"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="534"/>
+        <location filename="../Combo/ComboList.cpp" line="551"/>
         <source>Keyword</source>
         <translation>Mot-clé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="535"/>
+        <location filename="../Combo/ComboList.cpp" line="552"/>
         <source>Snippet</source>
         <translation>Snippet</translation>
     </message>

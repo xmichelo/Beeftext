@@ -134,7 +134,7 @@ qint32 ComboImportDialog::computeTotalImportCount() const
 void ComboImportDialog::performFinalImport(qint32& outFailureCount)
 {
    outFailureCount = 0;
-   ComboList& comboList = ComboManager::instance().getComboListRef();
+   ComboList& comboList = ComboManager::instance().comboListRef();
    qint32 failureCount = 0;
    for (SPCombo combo : importableCombos_)
       if (!comboList.append(combo))
@@ -219,7 +219,7 @@ void ComboImportDialog::onEditPathTextChanged(QString const& text)
    conflictingNewerCombos_.clear();
 
    ComboList candidateList;
-   ComboList& comboList = ComboManager::instance().getComboListRef();
+   ComboList& comboList = ComboManager::instance().comboListRef();
    if (!candidateList.load(text))
    {
       this->updateGui();

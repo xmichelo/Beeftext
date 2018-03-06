@@ -50,7 +50,7 @@ ComboManager::~ComboManager()
 //**********************************************************************************************************************
 /// \return A mutable reference to the combo list
 //**********************************************************************************************************************
-ComboList& ComboManager::getComboListRef()
+ComboList& ComboManager::comboListRef()
 {
    return comboList_;
 }
@@ -59,7 +59,7 @@ ComboList& ComboManager::getComboListRef()
 //**********************************************************************************************************************
 /// \return A constant reference to the combo list
 //**********************************************************************************************************************
-ComboList const& ComboManager::getComboListRef() const
+ComboList const& ComboManager::comboListRef() const
 {
    return comboList_;
 }
@@ -89,24 +89,6 @@ ComboManager::ComboManager()
       return;
    if (!this->loadComboListFromFile(&errMsg))
       QMessageBox::critical(nullptr, tr("Error"), errMsg);
-}
-
-
-//**********************************************************************************************************************
-/// \return A reference to the group list
-//**********************************************************************************************************************
-ComboGroupList& ComboManager::getComboGroupListRef()
-{
-   return groupList_;
-}
-
-
-//**********************************************************************************************************************
-/// \return A constant reference to the group list
-//**********************************************************************************************************************
-ComboGroupList const& ComboManager::getComboGroupListRef() const
-{
-   return groupList_;
 }
 
 
