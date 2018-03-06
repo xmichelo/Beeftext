@@ -29,6 +29,8 @@ public: // member functions
 	~ComboManager(); ///< Default destructor
    ComboList& comboListRef(); ///< Return a mutable reference to the combo list
    ComboList const& comboListRef() const; ///< Return a constant reference to the combo list
+   ComboGroupList& groupListRef(); ///< Return a mutable reference to the gropu list
+   ComboGroupList const& groupListRef() const; ///< Return a constant reference to the group list
    bool loadComboListFromFile(QString* outErrorMsg = nullptr); ///< Load the combo list from the default file
    bool saveComboListToFile(QString* outErrorMsg = nullptr) const; /// Save the combo list to the default location
    bool isEnabled() const; ///< Check whether the combo manager is enabled

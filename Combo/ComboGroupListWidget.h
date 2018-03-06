@@ -30,6 +30,8 @@ public: // member functions
 
 private: // member functions
    void setupGroupsMenu(); ///< setup the 'groups' menu
+   void changeEvent(QEvent *event) override; ///< Change event handler
+   qint32 getSelectedGroupIndex() const; ///< Retrieve the index of the selected combo
 
 private slots: 
    void onActionNewGroup(); ///< Slot for the 'new group' action

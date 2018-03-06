@@ -170,23 +170,13 @@
 <context>
     <name>ComboGroupList</name>
     <message>
-        <location filename="../Combo/ComboGroupList.cpp" line="274"/>
-        <source>The combos that not assigned to any group.</source>
+        <location filename="../Combo/ComboGroupList.cpp" line="328"/>
+        <source>The default group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboGroupList.cpp" line="274"/>
-        <source>&lt;No group&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboGroupList.cpp" line="276"/>
-        <source>All combos, regardless of their group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboGroupList.cpp" line="276"/>
-        <source>&lt;All groups&gt;</source>
+        <location filename="../Combo/ComboGroupList.cpp" line="328"/>
+        <source>Default Group</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,17 +374,17 @@ Combos ignorés pour éviter les doublons: %2</translation>
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="550"/>
+        <location filename="../Combo/ComboList.cpp" line="573"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="551"/>
+        <location filename="../Combo/ComboList.cpp" line="574"/>
         <source>Keyword</source>
         <translation>Mot-clé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="552"/>
+        <location filename="../Combo/ComboList.cpp" line="575"/>
         <source>Snippet</source>
         <translation>Snippet</translation>
     </message>

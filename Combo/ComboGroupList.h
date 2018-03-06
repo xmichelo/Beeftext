@@ -27,13 +27,16 @@ public: // type definitions
    typedef VecSPComboGroup::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
    typedef SPComboGroup value_type; ///< The value-type for group
 
+public: // friends
+   friend void swap(ComboGroupList& first, ComboGroupList& second); ///< Swap two combo group lists
+
 public: // member functions
    ComboGroupList(QObject* parent = nullptr); ///< Default constructor
-   ComboGroupList(ComboGroupList const&) = delete; ///< Disabled copy-constructor
-   ComboGroupList(ComboGroupList&&) = delete; ///< Disabled assignment copy-constructor
+   ComboGroupList(ComboGroupList const& ref); ///< copy-constructor
+   ComboGroupList(ComboGroupList&& ref); ///< assignment copy-constructor
    ~ComboGroupList() = default; ///< Destructor
-   ComboGroupList& operator=(ComboGroupList const&) = delete; ///< Disabled assignment operator
-   ComboGroupList& operator=(ComboGroupList&&) = delete; ///< Disabled move assignment operator
+   ComboGroupList& operator=(ComboGroupList const& ref); ///< Assignment operator
+   ComboGroupList& operator=(ComboGroupList&& ref); ///< Move assignment operator
    qint32 size() const; ///< Return the size of the combo list
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list

@@ -14,12 +14,66 @@
 
 
 //**********************************************************************************************************************
+/// \param[in] first The first combo group
+/// \param[in] second The second combo group
+//**********************************************************************************************************************
+void swap(ComboGroupList& first, ComboGroupList& second)
+{
+   first.groups_.swap(second.groups_);
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] parent The parent object of the instance
 //**********************************************************************************************************************
 ComboGroupList::ComboGroupList(QObject* parent)
    : QAbstractListModel(parent)
 {
 
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] ref The reference group to copy
+//**********************************************************************************************************************
+ComboGroupList::ComboGroupList(ComboGroupList const& ref)
+   : groups_(ref.groups_)
+{
+
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] ref The reference group to copy
+//**********************************************************************************************************************
+ComboGroupList::ComboGroupList(ComboGroupList&& ref)
+   : groups_(std::move(ref.groups_))
+{
+
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] ref The reference group to copy
+/// \return A reference to the instance
+//**********************************************************************************************************************
+ComboGroupList& ComboGroupList::operator=(ComboGroupList const& ref)
+{
+   if (&ref != this)
+      groups_ = ref.groups_;
+   return *this;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] ref The reference group to copy
+/// \return A reference to the instance
+//**********************************************************************************************************************
+ComboGroupList& ComboGroupList::operator=(ComboGroupList&& ref)
+{
+   if (&ref != this)
+      groups_ = std::move(ref.groups_);
+   return *this;
 }
 
 
@@ -252,7 +306,7 @@ bool ComboGroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVer
 //**********************************************************************************************************************
 int ComboGroupList::rowCount(const QModelIndex &parent) const
 {
-   return groups_.size() + 2;
+   return groups_.size() + 1;
 }
 
 
@@ -271,9 +325,7 @@ QVariant ComboGroupList::data(QModelIndex const& index, int role) const
       return QVariant();
    bool const toolTipRole = (Qt::ToolTipRole == role);
    if (groupCount == row) 
-      return toolTipRole ? tr("The combos that not assigned to any group."): tr("<No group>");
-   if (groupCount + 1 == row)
-      return toolTipRole ? tr("All combos, regardless of their group.") : tr("<All groups>");
+      return toolTipRole ? tr("The default group."): tr("Default Group");
    SPComboGroup group = groups_[row];
    return group ? (toolTipRole ? group->name() : group->description()): QString();
 }

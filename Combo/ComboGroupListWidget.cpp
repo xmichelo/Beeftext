@@ -38,11 +38,37 @@ void ComboGroupListWidget::setupGroupsMenu()
 
 
 //**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void ComboGroupListWidget::changeEvent(QEvent *event)
+{
+   if (QEvent::LanguageChange == event->type())
+      ui_.retranslateUi(this);
+   QWidget::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
+/// \return The index of the selected group
+/// \return -1 if no group is selected
+//**********************************************************************************************************************
+qint32 ComboGroupListWidget::getSelectedGroupIndex() const
+{
+   QModelIndex const index = ui_.listGroup->currentIndex();
+   return index.isValid() ? index.row() : -1;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboGroupListWidget::onActionNewGroup()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
+   ComboManager& comboManager = ComboManager::instance();
+   ComboGroupList& groups = comboManager.groupListRef();
+   SPComboGroup group = ComboGroup::create("My Group", "A test group");
+   groups.append(group);
+   ComboManager::instance().saveComboListToFile();
 }
 
 
@@ -51,7 +77,12 @@ void ComboGroupListWidget::onActionNewGroup()
 //**********************************************************************************************************************
 void ComboGroupListWidget::onActionDeleteGroup()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
+   ComboGroupList& groups = ComboManager::instance().groupListRef();
+   qint32 const index = this->getSelectedGroupIndex();
+   if ((index < 0) || (index >= groups.size()))
+      return;
+   groups.erase(index);
+   ComboManager::instance().saveComboListToFile();
 }
 
 

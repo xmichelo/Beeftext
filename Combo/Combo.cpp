@@ -14,6 +14,7 @@
 #include "ComboManager.h"
 #include "ClipboardManager.h"
 #include "InputManager.h"
+#include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
@@ -26,6 +27,7 @@ namespace {
    QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
    QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
    QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
+   QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
    QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
    QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
    QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
@@ -83,6 +85,7 @@ Combo::Combo(QString const& name, QString const& keyword, QString const& snippet
    , keyword_(keyword)
    , snippet_(snippet)
    , enabled_(enabled)
+   , group_(nullptr)
 {
    modificationDateTime_ = creationDateTime_ = QDateTime::currentDateTime();
 }
@@ -92,18 +95,29 @@ Combo::Combo(QString const& name, QString const& keyword, QString const& snippet
 /// If the JSon object is not a valid combo, the constructed combo will be invalid
 /// \param[in] object The object to read from
 /// \param[in] formatVersion The version number of the combo list file format
+/// \param[in] groups The list of combo groups
 //**********************************************************************************************************************
-Combo::Combo(QJsonObject const& object, qint32 formatVersion)
+Combo::Combo(QJsonObject const& object, qint32 formatVersion, ComboGroupList const& groups)
    : uuid_(QUuid(object[kPropUuid].toString()))
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
    , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
-   , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime : kPropCreated].toString(), 
-      constants::kJsonExportDateFormat))
-   , modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime : 
+   , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime : 
+      kPropCreated].toString(), constants::kJsonExportDateFormat))
+   , modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
       kPropLastModified].toString(), constants::kJsonExportDateFormat))
    , enabled_(object[kPropEnabled].toBool(true))
+   , group_(nullptr)
 {
+   if (object.contains(kPropGroup))
+   {
+      QUuid const uuid(object[kPropGroup].toString());
+      ComboGroupList::const_iterator it = groups.findByUuid(uuid);
+      if (it != groups.end())
+         group_ = *it;
+      else
+         globals::debugLog().addWarning("While parsing combo file, a combo with an invalid group was found.");
+   }
 }
 
 
@@ -323,6 +337,8 @@ QJsonObject Combo::toJsonObject() const
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
+   if (group_)
+      result.insert(kPropGroup, group_->uuid().toString());
    return result;
 }
 
@@ -354,11 +370,12 @@ SPCombo Combo::create(QString const& name, QString const& keyword, QString const
 ///
 /// \param[in] object The object to read from
 /// \param[in] formatVersion The combo list file format version
+/// \param[in] groups The list of combo groups
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SPCombo Combo::create(QJsonObject const& object, qint32 formatVersion)
+SPCombo Combo::create(QJsonObject const& object, qint32 formatVersion, ComboGroupList const& groups)
 {
-   return std::make_shared<Combo>(object, formatVersion);
+   return std::make_shared<Combo>(object, formatVersion, groups);
 }
 
 

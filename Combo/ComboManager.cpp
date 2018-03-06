@@ -93,6 +93,24 @@ ComboManager::ComboManager()
 
 
 //**********************************************************************************************************************
+/// \return A reference to the combo group attached to the combo list
+//**********************************************************************************************************************
+ComboGroupList& ComboManager::groupListRef()
+{
+   return comboList_.groupListRef();
+}
+
+
+//**********************************************************************************************************************
+/// \return A constant reference to the combo group attached to the combo list
+//**********************************************************************************************************************
+ComboGroupList const& ComboManager::groupListRef() const
+{
+   return comboList_.groupListRef();
+}
+
+
+//**********************************************************************************************************************
 /// \param[out] outErrorMsg If not null the function returns false, this variable will contain a description 
 /// of the error.
 //**********************************************************************************************************************

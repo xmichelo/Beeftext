@@ -17,6 +17,7 @@ namespace {
 qint32 const kJsonComboListFileFormatVersionNumber = 3; ///< The version number for the combo list file format
 QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for the file format version
 QString const kKeyCombos = "combos"; ///< The JSon key for combos
+QString const kKeyGroups = "groups"; ///< The JSon key for groups
 }
 
 
@@ -29,7 +30,8 @@ QString const ComboList::defaultFileName = "comboList.json";
 //**********************************************************************************************************************
 void swap(ComboList& first, ComboList& second)
 {
-   std::swap(first.combos_, second.combos_);
+   first.combos_.swap(second.combos_);
+   swap(first.groups_, second.groups_);
 }
 
 //**********************************************************************************************************************
@@ -47,6 +49,7 @@ ComboList::ComboList(QObject* parent)
 //**********************************************************************************************************************
 ComboList::ComboList(ComboList const& ref)
    : combos_(ref.combos_)
+   , groups_(ref.groups_)
 {
 
 }
@@ -57,6 +60,7 @@ ComboList::ComboList(ComboList const& ref)
 //**********************************************************************************************************************
 ComboList::ComboList(ComboList&& ref)
    : combos_(std::move(ref.combos_))
+   , groups_(std::move(ref.groups_))
 {
 
 }
@@ -68,7 +72,10 @@ ComboList::ComboList(ComboList&& ref)
 ComboList& ComboList::operator=(ComboList const& ref)
 {
    if (&ref != this)
+   {
       combos_ = ref.combos_;
+      groups_ = ref.groups_;
+   }
    return *this;
 }
 
@@ -79,7 +86,10 @@ ComboList& ComboList::operator=(ComboList const& ref)
 ComboList& ComboList::operator=(ComboList&& ref)
 {
    if (&ref != this)
+   {
       combos_ = std::move(ref.combos_);
+      groups_ = std::move(ref.groups_);
+   }
    return *this;
 }
 
@@ -126,6 +136,7 @@ void ComboList::clear()
 {
    this->beginResetModel();
    combos_.clear();
+   groups_.clear();
    this->endResetModel();
 }
 
@@ -352,6 +363,7 @@ QJsonDocument ComboList::toJsonDocument() const
    for (SPCombo const& combo : combos_)
       comboArray.append(combo->toJsonObject());
    rootObject.insert(kKeyCombos, comboArray);
+   rootObject.insert(kKeyGroups, groups_.toJsonArray());
    return QJsonDocument(rootObject);
 }
 
@@ -385,15 +397,26 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, bool* outInOlderF
       if (version > kJsonComboListFileFormatVersionNumber)
          throw xmilib::Exception("The combo list file was created by a newer version of the application.");
 
+      // parse the groups
+      if (version >= 3)
+      {
+         QJsonValue const groupListValue = rootObject[kKeyGroups];
+         if (!groupListValue.isArray())
+            throw xmilib::Exception("The list of groups is not a valid array");
+         QString errorMsg;
+         if (!groups_.readFromJsonArray(groupListValue.toArray(), version, &errorMsg))
+            throw xmilib::Exception(errorMsg);
+      }
+
       // parse the combos
       QJsonValue const combosListValue = rootObject[kKeyCombos];
       if (!combosListValue.isArray())
          throw xmilib::Exception("The list of combos is not a valid array");
-      for (QJsonValueRef const& comboGroupValue : combosListValue.toArray())
+      for (QJsonValueRef const& comboValue : combosListValue.toArray())
       {
-         if (!comboGroupValue.isObject())
+         if (!comboValue.isObject())
             throw xmilib::Exception("The combo list array contains an invalid combo.");
-         SPCombo const combo = Combo::create(comboGroupValue.toObject(), version);
+         SPCombo const combo = Combo::create(comboValue.toObject(), version, groups_);
          if ((!combo) || (!combo->isValid()))
             throw xmilib::Exception("One of the combo in the list is invalid");
          this->append(combo);

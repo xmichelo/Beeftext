@@ -12,6 +12,7 @@
 
 
 #include "ComboGroup.h"
+#include "ComboGroupList.h"
 #include <memory>
 #include <vector>
  
@@ -30,7 +31,7 @@ class Combo
 {
 public: // member functions
    Combo(QString const& name, QString const& aKeyword, QString const& aSnippet, bool enabled = true); ///< Default constructor
-   Combo(QJsonObject const& object, qint32 formatVersion); ///< Constructor from JSon object
+   Combo(QJsonObject const& object, qint32 formatVersion, ComboGroupList const& groups = ComboGroupList()); ///< Constructor from JSon object
    ~Combo() = default; ///< Default destructor
    bool isValid() const; ///< Is the combo valid
    QUuid uuid() const; ///< Get the UUID of the combo
@@ -55,7 +56,8 @@ public: // member functions
 public: // static functions
    static SPCombo create(QString const& name = QString(), QString const& aKeyword = QString(),
       QString const& aSnippet = QString(), bool enabled = true);
-   static SPCombo create(QJsonObject const& object, qint32 formatVersion); ///< create a Combo from a JSON object
+   static SPCombo create(QJsonObject const& object, qint32 formatVersion, 
+      ComboGroupList const& groups = ComboGroupList()); ///< create a Combo from a JSON object
    static SPCombo duplicate(Combo const& combo); ///< Duplicate
 
 private: // member functions
