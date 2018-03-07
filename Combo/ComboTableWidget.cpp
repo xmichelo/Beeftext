@@ -479,3 +479,13 @@ void ComboTableWidget::onDoubleClick()
       break;
    }
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::onSelectedGroupChanged(SPComboGroup const& group)
+{
+   qDebug() << (group ? QString("Selected group '%1'").arg(group->name()) : QString("Selected default group"));
+}
+

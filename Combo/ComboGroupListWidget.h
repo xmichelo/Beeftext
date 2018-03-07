@@ -12,6 +12,7 @@
 
 
 #include "ui_ComboGroupListWidget.h"
+#include "ComboGroup.h"
 
 
 //**********************************************************************************************************************
@@ -28,6 +29,9 @@ public: // member functions
    ComboGroupListWidget& operator=(ComboGroupListWidget const&) = delete; ///< Disabled assignment operator
    ComboGroupListWidget& operator=(ComboGroupListWidget&&) = delete; ///< Disabled move assignment operator
 
+signals: 
+   void selectedGroupChanged(SPComboGroup const& group); /// Signal emitted when the selected group changes
+
 private: // member functions
    void setupGroupsMenu(); ///< setup the 'groups' menu
    void changeEvent(QEvent *event) override; ///< Change event handler
@@ -36,7 +40,7 @@ private: // member functions
 private slots: 
    void onActionNewGroup(); ///< Slot for the 'new group' action
    void onActionDeleteGroup(); ///< Slot for the 'delete group' action
-
+   void onCurrentChanged(QModelIndex const& current, QModelIndex const& previous);
 private: // data members
    Ui::ComboGroupListWidget ui_; ///< The GUI for the dialog
 };

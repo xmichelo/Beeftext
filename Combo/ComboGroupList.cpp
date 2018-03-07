@@ -78,6 +78,26 @@ ComboGroupList& ComboGroupList::operator=(ComboGroupList&& ref)
 
 
 //**********************************************************************************************************************
+/// \param[in] index The index of the group
+/// \return The group a the specified index
+//**********************************************************************************************************************
+SPComboGroup& ComboGroupList::operator[](qint32 index)
+{
+   return groups_[index];
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] index The index of the group
+/// \return The group a the specified index
+//**********************************************************************************************************************
+SPComboGroup const& ComboGroupList::operator[](qint32 index) const
+{
+   return groups_[index];
+}
+
+
+//**********************************************************************************************************************
 /// \return The number of groups in the list
 //**********************************************************************************************************************
 qint32 ComboGroupList::size() const
@@ -327,7 +347,7 @@ QVariant ComboGroupList::data(QModelIndex const& index, int role) const
    if (groupCount == row) 
       return toolTipRole ? tr("The default group."): tr("Default Group");
    SPComboGroup group = groups_[row];
-   return group ? (toolTipRole ? group->name() : group->description()): QString();
+   return group ? (toolTipRole ? group->description() : group->name()): QString();
 }
 
 

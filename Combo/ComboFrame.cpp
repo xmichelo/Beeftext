@@ -18,6 +18,8 @@ ComboFrame::ComboFrame(QWidget* parent)
    : QFrame(parent)
 {
    ui_.setupUi(this);
+   connect(ui_.comboGroupListWidget, &ComboGroupListWidget::selectedGroupChanged, ui_.comboTableWidget,
+      &ComboTableWidget::onSelectedGroupChanged);
 }
 
 

@@ -37,6 +37,8 @@ public: // member functions
    ~ComboGroupList() = default; ///< Destructor
    ComboGroupList& operator=(ComboGroupList const& ref); ///< Assignment operator
    ComboGroupList& operator=(ComboGroupList&& ref); ///< Move assignment operator
+   SPComboGroup& operator[](qint32 index); ///< Get a reference to the group at a given position in the list
+   SPComboGroup const& operator[](qint32 index) const; ///< Get a constant reference to the group at a given position in the list
    qint32 size() const; ///< Return the size of the combo list
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list

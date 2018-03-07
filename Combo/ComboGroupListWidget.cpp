@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "ComboManager.h"
 #include "ComboGroupListWidget.h"
+#include <XMiLib/Exception.h>
 
 
 //**********************************************************************************************************************
@@ -21,6 +22,10 @@ ComboGroupListWidget::ComboGroupListWidget(QWidget* parent)
    ui_.setupUi(this);
    ui_.listGroup->setModel(&ComboManager::instance().comboListRef().groupListRef());
    this->setupGroupsMenu();
+   QItemSelectionModel* selectionModel = ui_.listGroup->selectionModel();
+   if (!selectionModel)
+      throw xmilib::Exception("The Combo group list selection model is null");
+   connect(selectionModel, &QItemSelectionModel::currentChanged, this, &ComboGroupListWidget::onCurrentChanged);
 }
 
 
@@ -83,6 +88,18 @@ void ComboGroupListWidget::onActionDeleteGroup()
       return;
    groups.erase(index);
    ComboManager::instance().saveComboListToFile();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] current The new current item
+/// \param[in] previous The previous current item
+//**********************************************************************************************************************
+void ComboGroupListWidget::onCurrentChanged(QModelIndex const& current, QModelIndex const& previous)
+{
+   qint32 const row = current.row();
+   ComboGroupList& groups = ComboManager::instance().groupListRef();
+   emit selectedGroupChanged(((row < 0) || (row >= groups.size())) ? nullptr : groups[row]);
 }
 
 
