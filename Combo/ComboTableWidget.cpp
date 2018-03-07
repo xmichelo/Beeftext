@@ -242,8 +242,8 @@ void ComboTableWidget::onActionNewCombo()
 {
    try
    {
-      SPCombo const combo = Combo::create();
-      if (!ComboDialog::run(combo, tr("Add Combo")))
+      SPCombo combo = Combo::create();
+      if (!ComboDialog::run(combo, tr("New Combo")))
          return;
       ComboManager& comboManager = ComboManager::instance();
       ComboList& comboList = ComboManager::instance().comboListRef();
@@ -277,7 +277,7 @@ void ComboTableWidget::onActionDuplicateCombo()
       Q_ASSERT((index >= 0) && (index < comboList.size()));
       if ((index < 0) || (index >= comboList.size()))
          throw xmilib::Exception(tr("The combo could not be duplicated: invalid index."));
-      SPCombo const combo = Combo::duplicate(*comboList[index]);
+      SPCombo combo = Combo::duplicate(*comboList[index]);
       if (!ComboDialog::run(combo, tr("Duplicate Combo")))
          return;
       if (!comboList.append(combo))
@@ -330,7 +330,7 @@ void ComboTableWidget::onActionEditCombo()
    ComboList& comboList = comboManager.comboListRef();
    qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
-   SPCombo const combo = comboList[index];
+   SPCombo combo = comboList[index];
    if (!ComboDialog::run(combo, tr("Edit Combo")))
       return;
    comboList.markComboAsEdited(index);

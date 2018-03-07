@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -59,12 +59,18 @@
   </layout>
   <action name="actionNewGroup">
    <property name="text">
-    <string>&amp;New Group</string>
+    <string>&amp;New</string>
+   </property>
+   <property name="toolTip">
+    <string>New</string>
    </property>
   </action>
   <action name="actionDeleteGroup">
    <property name="text">
-    <string>&amp;Delete Group</string>
+    <string>&amp;Delete</string>
+   </property>
+   <property name="toolTip">
+    <string>Delete</string>
    </property>
   </action>
  </widget>

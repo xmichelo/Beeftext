@@ -22,22 +22,21 @@ class ComboDialog: public QDialog
 {
    Q_OBJECT
 public:
-   static bool run(SPCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr);
+   static bool run(SPCombo& combo, QString const& title = QString(), QWidget* parent = nullptr);
 
 public: // member functions
-	ComboDialog(SPCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
+   ComboDialog(SPCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
+   ComboDialog(ComboDialog const&) = delete; ///< Disabled copy constructor
+   ComboDialog(ComboDialog&&) = delete; ///< Disabled move constructor
 	~ComboDialog() = default; ///< Default destructor
-	SPCombo combo() const; ///< Get the combo
-   bool checkAndReportInvalidCombo(); ///< Check the keyword against existing combos and report conflicts
+   ComboDialog& operator=(ComboDialog const&) = delete; ///< Disabled assignment operator
+   ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
 
 private: // member functions
-	ComboDialog(ComboDialog const&) = delete; ///< Disabled copy constructor
-	ComboDialog(ComboDialog&&) = delete; ///< Disabled move constructor
-	ComboDialog& operator=(ComboDialog const&) = delete; ///< Disabled assignment operator
-	ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
    void setupSnipperEditMenu(); /// Setup the editor menus
    QMenu* createComboVariableMenu(); ///< Create the combo variable menu
    void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false); ///< Insert some text at the current cursor position in the snippet text edit control
+   bool checkAndReportInvalidCombo(); ///< Check the keyword against existing combos and report conflicts
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action

@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboManager.h"
+#include "ComboGroupDialog.h"
 #include "ComboGroupListWidget.h"
 #include <XMiLib/Exception.h>
 
@@ -69,11 +70,23 @@ qint32 ComboGroupListWidget::getSelectedGroupIndex() const
 //**********************************************************************************************************************
 void ComboGroupListWidget::onActionNewGroup()
 {
-   ComboManager& comboManager = ComboManager::instance();
-   ComboGroupList& groups = comboManager.groupListRef();
-   SPComboGroup group = ComboGroup::create("My Group", "A test group");
-   groups.append(group);
-   ComboManager::instance().saveComboListToFile();
+   try
+   {
+      SPComboGroup group = ComboGroup::create(QString());
+      if (!ComboGroupDialog::run(group, tr("New Group")))
+         return;
+      ComboManager& comboManager = ComboManager::instance();
+      ComboGroupList& groups = comboManager.groupListRef();
+      if (!groups.append(group))
+         throw xmilib::Exception(tr("The group could not be added to the list."));
+      QString errorMessage;
+      if (!comboManager.saveComboListToFile(&errorMessage))
+         throw xmilib::Exception(errorMessage);
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   }
 }
 
 

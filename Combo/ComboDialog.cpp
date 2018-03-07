@@ -20,7 +20,7 @@
 /// \param[in] parent The parent widget of the dialog
 /// \return true if and only if the user validated the dialog
 //**********************************************************************************************************************
-bool ComboDialog::run(SPCombo const& combo, QString const& title, QWidget* parent)
+bool ComboDialog::run(SPCombo& combo, QString const& title, QWidget* parent)
 {
    return QDialog::Accepted == ComboDialog(combo, title, parent).exec();
 }
@@ -120,15 +120,6 @@ void ComboDialog::insertTextInSnippetEdit(QString const& text, bool move1CharLef
    }
    else
       cursor.endEditBlock();
-}
-
-
-//**********************************************************************************************************************
-/// \return The combo
-//**********************************************************************************************************************
-SPCombo ComboDialog::combo() const
-{
-   return combo_;
 }
 
 
