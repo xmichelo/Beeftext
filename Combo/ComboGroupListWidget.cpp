@@ -27,6 +27,19 @@ ComboGroupListWidget::ComboGroupListWidget(QWidget* parent)
    if (!selectionModel)
       throw xmilib::Exception("The Combo group list selection model is null");
    connect(selectionModel, &QItemSelectionModel::currentChanged, this, &ComboGroupListWidget::onCurrentChanged);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboGroupListWidget::updateGui()
+{
+   qint32 const index = this->selectedGroupIndex();
+   bool const hasSelection = (index >= 0) && (index < ComboManager::instance().groupListRef().size());
+   ui_.actionDeleteGroup->setEnabled(hasSelection);
+   ui_.actionEditGroup->setEnabled(hasSelection);
 }
 
 
@@ -37,6 +50,7 @@ void ComboGroupListWidget::setupGroupsMenu()
 {
    QMenu* menu = new QMenu(this);
    menu->addAction(ui_.actionNewGroup);
+   menu->addAction(ui_.actionEditGroup);
    menu->addSeparator();
    menu->addAction(ui_.actionDeleteGroup);
    ui_.buttonGroups->setMenu(menu);
@@ -58,7 +72,7 @@ void ComboGroupListWidget::changeEvent(QEvent *event)
 /// \return The index of the selected group
 /// \return -1 if no group is selected
 //**********************************************************************************************************************
-qint32 ComboGroupListWidget::getSelectedGroupIndex() const
+qint32 ComboGroupListWidget::selectedGroupIndex() const
 {
    QModelIndex const index = ui_.listGroup->currentIndex();
    return index.isValid() ? index.row() : -1;
@@ -93,10 +107,36 @@ void ComboGroupListWidget::onActionNewGroup()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
+void ComboGroupListWidget::onActionEditGroup()
+{
+   try
+   {
+      ComboManager& comboManager = ComboManager::instance();
+      ComboGroupList& groups = comboManager.groupListRef();
+      quint32 const index = this->selectedGroupIndex();
+      if ((index < 0) || (index >= groups.size()))
+         return;
+      SPComboGroup group = groups[index];
+      if (!ComboGroupDialog::run(group, tr("Edit Group")))
+         return;
+      QString errorMessage;
+      if (!comboManager.saveComboListToFile(&errorMessage))
+         throw xmilib::Exception(errorMessage);
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   }
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
 void ComboGroupListWidget::onActionDeleteGroup()
 {
    ComboGroupList& groups = ComboManager::instance().groupListRef();
-   qint32 const index = this->getSelectedGroupIndex();
+   qint32 const index = this->selectedGroupIndex();
    if ((index < 0) || (index >= groups.size()))
       return;
    groups.erase(index);
@@ -112,7 +152,9 @@ void ComboGroupListWidget::onCurrentChanged(QModelIndex const& current, QModelIn
 {
    qint32 const row = current.row();
    ComboGroupList& groups = ComboManager::instance().groupListRef();
+   this->updateGui();
    emit selectedGroupChanged(((row < 0) || (row >= groups.size())) ? nullptr : groups[row]);
 }
+
 
 

@@ -33,14 +33,16 @@ signals:
    void selectedGroupChanged(SPComboGroup const& group); /// Signal emitted when the selected group changes
 
 private: // member functions
+   void updateGui(); ///< update the GUI state
    void setupGroupsMenu(); ///< setup the 'groups' menu
    void changeEvent(QEvent *event) override; ///< Change event handler
-   qint32 getSelectedGroupIndex() const; ///< Retrieve the index of the selected combo
-
+   qint32 selectedGroupIndex() const; ///< Retrieve the index of the selected combo
 private slots: 
    void onActionNewGroup(); ///< Slot for the 'new group' action
+   void onActionEditGroup(); ///< Slot for the 'edit group' action
    void onActionDeleteGroup(); ///< Slot for the 'delete group' action
-   void onCurrentChanged(QModelIndex const& current, QModelIndex const& previous);
+   void onCurrentChanged(QModelIndex const& current, QModelIndex const& previous); ///< Slot for selection change
+
 private: // data members
    Ui::ComboGroupListWidget ui_; ///< The GUI for the dialog
 };

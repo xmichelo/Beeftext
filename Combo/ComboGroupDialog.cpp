@@ -36,6 +36,8 @@ ComboGroupDialog::ComboGroupDialog(SPComboGroup& group, QString const& title, QW
    if (!group_)
       throw xmilib::Exception("%1(): combo is null.");
    ui_.setupUi(this);
+   ui_.editName->setText(group->name());
+   ui_.editDescription->setPlainText(group->description());
    this->setWindowTitle(title);
    this->updateGui();
 }

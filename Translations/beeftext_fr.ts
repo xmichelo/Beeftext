@@ -219,6 +219,11 @@
         <translation>Effacer</translation>
     </message>
     <message>
+        <location filename="../Combo/ComboGroupListWidget.ui" line="78"/>
+        <source>&amp;Edit</source>
+        <translation>&amp;Editer</translation>
+    </message>
+    <message>
         <source>&amp;New Group</source>
         <translation type="obsolete">&amp;Nouveau Groupe</translation>
     </message>
@@ -232,21 +237,27 @@
         <translation type="obsolete">Ajouter un Combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboGroupListWidget.cpp" line="76"/>
+        <location filename="../Combo/ComboGroupListWidget.cpp" line="90"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboGroupListWidget.cpp" line="81"/>
+        <location filename="../Combo/ComboGroupListWidget.cpp" line="95"/>
         <source>The group could not be added to the list.</source>
         <translation>Le groupe n&apos;a pas pu être ajouté à la liste.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboGroupListWidget.cpp" line="120"/>
+        <source>Edit Group</source>
+        <translation>Modifier le Groupe</translation>
     </message>
     <message>
         <source>The combo could not be added to the list.</source>
         <translation type="obsolete">Le combo n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboGroupListWidget.cpp" line="88"/>
+        <location filename="../Combo/ComboGroupListWidget.cpp" line="102"/>
+        <location filename="../Combo/ComboGroupListWidget.cpp" line="128"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -684,7 +695,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="167"/>
         <source>&amp;Edit</source>
-        <translation>&amp;Editer</translation>
+        <translation>&amp;Modifier</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="225"/>
@@ -748,7 +759,7 @@ Combos ignorés pour éviter les doublons: %2</translation>
         <location filename="../Combo/ComboTableWidget.ui" line="173"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="334"/>
         <source>Edit Combo</source>
-        <translation>Editer le Combo</translation>
+        <translation>Modifier le Combo</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="176"/>
