@@ -337,6 +337,7 @@ void ComboTableWidget::onActionEditCombo()
    QString errorMessage;
    if (!comboManager.saveComboListToFile(&errorMessage))
       QMessageBox::critical(this, tr("Error"), errorMessage);
+   proxyModel_.invalidate();
    this->updateGui();
 }
 
@@ -451,7 +452,6 @@ void ComboTableWidget::onSearchFilterChanged(QString const& text)
 {
    QString const searchStr = text.trimmed();
    proxyModel_.setFilterFixedString(searchStr);
-
 }
 
 //**********************************************************************************************************************
@@ -487,5 +487,6 @@ void ComboTableWidget::onDoubleClick()
 void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
 {
    qDebug() << (group ? QString("Selected group '%1'").arg(group->name()) : QString("Selected default group"));
+   proxyModel_.setGroup(group);
 }
 

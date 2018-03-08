@@ -21,13 +21,15 @@ GroupListWidget::GroupListWidget(QWidget* parent)
    : QWidget(nullptr)
 {
    ui_.setupUi(this);
-   ui_.listGroup->setModel(&ComboManager::instance().comboListRef().groupListRef());
+   GroupList& groups = ComboManager::instance().comboListRef().groupListRef();
+   ui_.listGroup->setModel(&groups);
    this->setupGroupsMenu();
    QItemSelectionModel* selectionModel = ui_.listGroup->selectionModel();
    if (!selectionModel)
       throw xmilib::Exception("The group list selection model is null");
    connect(selectionModel, &QItemSelectionModel::currentChanged, this, &GroupListWidget::onCurrentChanged);
    this->updateGui();
+   QTimer::singleShot(0, [&]() {ui_.listGroup->setCurrentIndex(groups.index(groups.rowCount() - 1)); }); // delayed to be sure the signal/slot mechanism work
 }
 
 

@@ -13,6 +13,9 @@
 #define BEEFTEXT__COMOBO__SORT__FILTER__PROXY__MODEL__H
 
 
+#include "Group/Group.h"
+
+
 //**********************************************************************************************************************
 /// \brief A sort and filter proxy model class for combos
 //**********************************************************************************************************************
@@ -22,7 +25,8 @@ class ComboSortFilterProxyModel: public QSortFilterProxyModel
 public: // member functions
    ComboSortFilterProxyModel(QObject* parent = nullptr); ///< Default constructor
    ~ComboSortFilterProxyModel() = default; ///< Default destructor
-
+   void setGroup(SPGroup const& group); ///< Set the group to display
+    
 protected: // member functions
    bool filterAcceptsRow(int sourceRow, QModelIndex const& index) const override; ///< Check if a row should be sorted
 
@@ -31,6 +35,9 @@ private: // member functions
    ComboSortFilterProxyModel(ComboSortFilterProxyModel&&) = delete; ///< Disabled move constructor
    ComboSortFilterProxyModel& operator=(ComboSortFilterProxyModel const&) = delete; ///< Disabled assignment operator
    ComboSortFilterProxyModel& operator=(ComboSortFilterProxyModel&&) = delete; ///< Disabled move assignment operator
+
+private: // data members
+   SPGroup group_; ///< The group to display
 };
 
 
