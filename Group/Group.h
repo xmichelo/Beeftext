@@ -1,0 +1,58 @@
+/// \file
+/// \author Xavier Michelon
+///
+/// \brief Declaration of combo group class
+///
+/// Copyright (c) Xavier Michelon. All rights reserved.  
+/// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
+
+
+#ifndef BEEFTEXT__GROUP__H
+#define BEEFTEXT__GROUP__H
+
+
+class Group;
+
+
+typedef std::shared_ptr<Group> SPGroup; ///< Type definition for shared pointer to SPComboGroup
+typedef std::vector<SPGroup> VecSPGroup; ///< Type definition for vector of SPComboGroup
+
+
+//**********************************************************************************************************************
+/// \brief Combo group class
+//**********************************************************************************************************************
+class Group
+{
+public: // member functions
+   Group(QString const& name, QString const& description = QString()); ///< Default constructor
+   Group(QJsonObject const& object, qint32 formatVersion); ///< Constructor from JSON object
+   Group(Group const&) = delete; ///< Disabled copy-constructor
+   Group(Group&&) = delete; ///< Disabled assignment copy-constructor
+   ~Group() = default; ///< Destructor
+   Group& operator=(Group const&) = delete; ///< Disabled assignment operator
+   Group& operator=(Group&&) = delete; ///< Disabled move assignment operator
+   bool isValid() const; ///< Check if the group is valid
+   QUuid uuid() const; ///< Get the UUID of the group
+   QString name() const; ///< Get the name of the group
+   void setName(QString const& name); ///< Set the name of the group
+   QString description() const; ///< Get the description of the group
+   void setDescription(QString const& description); ///< Set the description of the group
+   QJsonObject toJsonObject() const; ///< Serialize the group in a JSon object
+
+public: // static functions
+   static SPGroup create(QString const& name, QString const& description = QString()); ///< Create a SPGroup
+   static SPGroup create(QJsonObject const& object, qint32 formatVersion); ///< Create a SPGroup from a JSON object
+
+private: // member functions
+   void touch(); ///< Set the modification date/time to the current date/time
+
+private: // data members
+   QUuid uuid_; ///< The UUID for the group
+   QString name_; ///< The name of the group
+   QString description_; ///< The description of the group
+   QDateTime creationDateTime_; ///< The creation date/time of the group
+   QDateTime modificationDateTime_; ///< The last modification date/time of the group
+};
+
+
+#endif // #ifndef BEEFTEXT__GROUP__H

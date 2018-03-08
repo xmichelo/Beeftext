@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ComboGroupListWidget</class>
- <widget class="QWidget" name="ComboGroupListWidget">
+ <class>GroupListWidget</class>
+ <widget class="QWidget" name="GroupListWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -84,7 +84,7 @@
   <connection>
    <sender>actionDeleteGroup</sender>
    <signal>triggered()</signal>
-   <receiver>ComboGroupListWidget</receiver>
+   <receiver>GroupListWidget</receiver>
    <slot>onActionDeleteGroup()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -100,7 +100,7 @@
   <connection>
    <sender>actionNewGroup</sender>
    <signal>triggered()</signal>
-   <receiver>ComboGroupListWidget</receiver>
+   <receiver>GroupListWidget</receiver>
    <slot>onActionNewGroup()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -116,7 +116,7 @@
   <connection>
    <sender>actionEditGroup</sender>
    <signal>triggered()</signal>
-   <receiver>ComboGroupListWidget</receiver>
+   <receiver>GroupListWidget</receiver>
    <slot>onActionEditGroup()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -132,7 +132,7 @@
   <connection>
    <sender>listGroup</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>ComboGroupListWidget</receiver>
+   <receiver>GroupListWidget</receiver>
    <slot>onActionEditGroup()</slot>
    <hints>
     <hint type="sourcelabel">

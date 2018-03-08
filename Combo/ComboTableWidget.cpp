@@ -484,7 +484,7 @@ void ComboTableWidget::onDoubleClick()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onSelectedGroupChanged(SPComboGroup const& group)
+void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
 {
    qDebug() << (group ? QString("Selected group '%1'").arg(group->name()) : QString("Selected default group"));
 }

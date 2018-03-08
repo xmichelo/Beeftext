@@ -11,26 +11,26 @@
 #define BEEFTEXT__COMBO__GROUP__LIST__WIDGET__H
 
 
-#include "ui_ComboGroupListWidget.h"
-#include "ComboGroup.h"
+#include "ui_GroupListWidget.h"
+#include "Group.h"
 
 
 //**********************************************************************************************************************
 /// \brief ComboGroup list widget class
 //**********************************************************************************************************************
-class ComboGroupListWidget: public QWidget
+class GroupListWidget: public QWidget
 {
    Q_OBJECT
 public: // member functions
-   ComboGroupListWidget(QWidget* parent = nullptr); ///< Default constructor
-   ComboGroupListWidget(ComboGroupListWidget const&) = delete; ///< Disabled copy-constructor
-   ComboGroupListWidget(ComboGroupListWidget&&) = delete; ///< Disabled assignment copy-constructor
-   ~ComboGroupListWidget() = default; ///< Destructor
-   ComboGroupListWidget& operator=(ComboGroupListWidget const&) = delete; ///< Disabled assignment operator
-   ComboGroupListWidget& operator=(ComboGroupListWidget&&) = delete; ///< Disabled move assignment operator
+   GroupListWidget(QWidget* parent = nullptr); ///< Default constructor
+   GroupListWidget(GroupListWidget const&) = delete; ///< Disabled copy-constructor
+   GroupListWidget(GroupListWidget&&) = delete; ///< Disabled assignment copy-constructor
+   ~GroupListWidget() = default; ///< Destructor
+   GroupListWidget& operator=(GroupListWidget const&) = delete; ///< Disabled assignment operator
+   GroupListWidget& operator=(GroupListWidget&&) = delete; ///< Disabled move assignment operator
 
 signals: 
-   void selectedGroupChanged(SPComboGroup const& group); /// Signal emitted when the selected group changes
+   void selectedGroupChanged(SPGroup const& group); /// Signal emitted when the selected group changes
 
 private: // member functions
    void updateGui(); ///< update the GUI state
@@ -44,7 +44,7 @@ private slots:
    void onCurrentChanged(QModelIndex const& current, QModelIndex const& previous); ///< Slot for selection change
 
 private: // data members
-   Ui::ComboGroupListWidget ui_; ///< The GUI for the dialog
+   Ui::GroupListWidget ui_; ///< The GUI for the dialog
 };
 
 

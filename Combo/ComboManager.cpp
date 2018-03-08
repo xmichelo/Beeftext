@@ -95,7 +95,7 @@ ComboManager::ComboManager()
 //**********************************************************************************************************************
 /// \return A reference to the combo group attached to the combo list
 //**********************************************************************************************************************
-ComboGroupList& ComboManager::groupListRef()
+GroupList& ComboManager::groupListRef()
 {
    return comboList_.groupListRef();
 }
@@ -104,7 +104,7 @@ ComboGroupList& ComboManager::groupListRef()
 //**********************************************************************************************************************
 /// \return A constant reference to the combo group attached to the combo list
 //**********************************************************************************************************************
-ComboGroupList const& ComboManager::groupListRef() const
+GroupList const& ComboManager::groupListRef() const
 {
    return comboList_.groupListRef();
 }

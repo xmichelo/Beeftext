@@ -8,16 +8,16 @@
 
 
 #include "stdafx.h"
-#include "ComboGroupList.h"
+#include "GroupList.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 
 
 //**********************************************************************************************************************
-/// \param[in] first The first combo group
-/// \param[in] second The second combo group
+/// \param[in] first The first group
+/// \param[in] second The second group
 //**********************************************************************************************************************
-void swap(ComboGroupList& first, ComboGroupList& second)
+void swap(GroupList& first, GroupList& second)
 {
    first.groups_.swap(second.groups_);
 }
@@ -26,7 +26,7 @@ void swap(ComboGroupList& first, ComboGroupList& second)
 //**********************************************************************************************************************
 /// \param[in] parent The parent object of the instance
 //**********************************************************************************************************************
-ComboGroupList::ComboGroupList(QObject* parent)
+GroupList::GroupList(QObject* parent)
    : QAbstractListModel(parent)
 {
 
@@ -36,7 +36,7 @@ ComboGroupList::ComboGroupList(QObject* parent)
 //**********************************************************************************************************************
 /// \param[in] ref The reference group to copy
 //**********************************************************************************************************************
-ComboGroupList::ComboGroupList(ComboGroupList const& ref)
+GroupList::GroupList(GroupList const& ref)
    : groups_(ref.groups_)
 {
 
@@ -46,7 +46,7 @@ ComboGroupList::ComboGroupList(ComboGroupList const& ref)
 //**********************************************************************************************************************
 /// \param[in] ref The reference group to copy
 //**********************************************************************************************************************
-ComboGroupList::ComboGroupList(ComboGroupList&& ref)
+GroupList::GroupList(GroupList&& ref)
    : groups_(std::move(ref.groups_))
 {
 
@@ -57,7 +57,7 @@ ComboGroupList::ComboGroupList(ComboGroupList&& ref)
 /// \param[in] ref The reference group to copy
 /// \return A reference to the instance
 //**********************************************************************************************************************
-ComboGroupList& ComboGroupList::operator=(ComboGroupList const& ref)
+GroupList& GroupList::operator=(GroupList const& ref)
 {
    if (&ref != this)
       groups_ = ref.groups_;
@@ -69,7 +69,7 @@ ComboGroupList& ComboGroupList::operator=(ComboGroupList const& ref)
 /// \param[in] ref The reference group to copy
 /// \return A reference to the instance
 //**********************************************************************************************************************
-ComboGroupList& ComboGroupList::operator=(ComboGroupList&& ref)
+GroupList& GroupList::operator=(GroupList&& ref)
 {
    if (&ref != this)
       groups_ = std::move(ref.groups_);
@@ -81,7 +81,7 @@ ComboGroupList& ComboGroupList::operator=(ComboGroupList&& ref)
 /// \param[in] index The index of the group
 /// \return The group a the specified index
 //**********************************************************************************************************************
-SPComboGroup& ComboGroupList::operator[](qint32 index)
+SPGroup& GroupList::operator[](qint32 index)
 {
    return groups_[index];
 }
@@ -91,7 +91,7 @@ SPComboGroup& ComboGroupList::operator[](qint32 index)
 /// \param[in] index The index of the group
 /// \return The group a the specified index
 //**********************************************************************************************************************
-SPComboGroup const& ComboGroupList::operator[](qint32 index) const
+SPGroup const& GroupList::operator[](qint32 index) const
 {
    return groups_[index];
 }
@@ -100,7 +100,7 @@ SPComboGroup const& ComboGroupList::operator[](qint32 index) const
 //**********************************************************************************************************************
 /// \return The number of groups in the list
 //**********************************************************************************************************************
-qint32 ComboGroupList::size() const
+qint32 GroupList::size() const
 {
    return groups_.size();
 }
@@ -109,7 +109,7 @@ qint32 ComboGroupList::size() const
 //**********************************************************************************************************************
 /// \return true if and only if the list is empty
 //**********************************************************************************************************************
-bool ComboGroupList::isEmpty() const
+bool GroupList::isEmpty() const
 {
    return groups_.empty();
 }
@@ -118,7 +118,7 @@ bool ComboGroupList::isEmpty() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupList::clear()
+void GroupList::clear()
 {
    groups_.clear();
 }
@@ -127,7 +127,7 @@ void ComboGroupList::clear()
 //**********************************************************************************************************************
 /// return true if and only if a group with this UUID is already in the list
 //**********************************************************************************************************************
-bool ComboGroupList::contains(SPComboGroup const& group) const
+bool GroupList::contains(SPGroup const& group) const
 {
    return group ? this->end() != this->findByUuid(group->uuid()) : false;
 }
@@ -136,7 +136,7 @@ bool ComboGroupList::contains(SPComboGroup const& group) const
 //**********************************************************************************************************************
 /// \return true if the group is valid and not already in the list
 //**********************************************************************************************************************
-bool ComboGroupList::canGroupBeAdded(SPComboGroup const& group) const
+bool GroupList::canGroupBeAdded(SPGroup const& group) const
 {
    return group && group->isValid() && !this->contains(group);
 }
@@ -146,7 +146,7 @@ bool ComboGroupList::canGroupBeAdded(SPComboGroup const& group) const
 /// \param[in] group The group to add
 /// \return true if the group has been successfully added
 //**********************************************************************************************************************
-bool ComboGroupList::append(SPComboGroup const& group)
+bool GroupList::append(SPGroup const& group)
 {
    if (!canGroupBeAdded(group))
    {
@@ -163,7 +163,7 @@ bool ComboGroupList::append(SPComboGroup const& group)
 //**********************************************************************************************************************
 /// \param[in] group The group to add
 //**********************************************************************************************************************
-void ComboGroupList::push_back(SPComboGroup const& group)
+void GroupList::push_back(SPGroup const& group)
 {
    this->beginInsertRows(QModelIndex(), groups_.size(), groups_.size());
    groups_.push_back(group);
@@ -174,7 +174,7 @@ void ComboGroupList::push_back(SPComboGroup const& group)
 //**********************************************************************************************************************
 /// \param[in] index the index of the group to erase
 //**********************************************************************************************************************
-void ComboGroupList::erase(qint32 index)
+void GroupList::erase(qint32 index)
 {
    this->beginRemoveRows(QModelIndex(), index, index);
    groups_.erase(groups_.begin() + index);
@@ -186,9 +186,9 @@ void ComboGroupList::erase(qint32 index)
 /// \param[in] uuid The UUID of the combo to find
 /// \return An iterator to the found group or end() if not found
 //**********************************************************************************************************************
-ComboGroupList::iterator ComboGroupList::findByUuid(QUuid const& uuid)
+GroupList::iterator GroupList::findByUuid(QUuid const& uuid)
 {
-   return std::find_if(this->begin(), this->end(), [&](SPComboGroup const& group) -> bool
+   return std::find_if(this->begin(), this->end(), [&](SPGroup const& group) -> bool
       { return group && uuid == group->uuid(); });
 }
 
@@ -197,9 +197,9 @@ ComboGroupList::iterator ComboGroupList::findByUuid(QUuid const& uuid)
 /// \param[in] uuid The UUID of the combo to find
 /// \return A constant iterator to the found group or end() if not found
 //**********************************************************************************************************************
-ComboGroupList::const_iterator ComboGroupList::findByUuid(QUuid const& uuid) const
+GroupList::const_iterator GroupList::findByUuid(QUuid const& uuid) const
 {
-   return std::find_if(this->begin(), this->end(), [&](SPComboGroup const& group) -> bool
+   return std::find_if(this->begin(), this->end(), [&](SPGroup const& group) -> bool
    { return group && uuid == group->uuid(); });
 }
 
@@ -207,7 +207,7 @@ ComboGroupList::const_iterator ComboGroupList::findByUuid(QUuid const& uuid) con
 //**********************************************************************************************************************
 /// \return An iterator to the beginning of the list
 //**********************************************************************************************************************
-ComboGroupList::iterator ComboGroupList::begin()
+GroupList::iterator GroupList::begin()
 {
    return groups_.begin();
 }
@@ -216,7 +216,7 @@ ComboGroupList::iterator ComboGroupList::begin()
 //**********************************************************************************************************************
 /// \return A constant iterator to the beginning of the list
 //**********************************************************************************************************************
-ComboGroupList::const_iterator ComboGroupList::begin() const
+GroupList::const_iterator GroupList::begin() const
 {
    return groups_.begin();
 }
@@ -225,7 +225,7 @@ ComboGroupList::const_iterator ComboGroupList::begin() const
 //**********************************************************************************************************************
 /// \return An iterator to the end of the list
 //**********************************************************************************************************************
-ComboGroupList::iterator ComboGroupList::end()
+GroupList::iterator GroupList::end()
 {
    return groups_.end();
 }
@@ -234,7 +234,7 @@ ComboGroupList::iterator ComboGroupList::end()
 //**********************************************************************************************************************
 /// \return A constant iterator to the end of the list
 //**********************************************************************************************************************
-ComboGroupList::const_iterator ComboGroupList::end() const
+GroupList::const_iterator GroupList::end() const
 {
    return groups_.end();
 }
@@ -243,7 +243,7 @@ ComboGroupList::const_iterator ComboGroupList::end() const
 //**********************************************************************************************************************
 /// \return An iterator to the reverse beginning of the list
 //**********************************************************************************************************************
-ComboGroupList::reverse_iterator ComboGroupList::rbegin()
+GroupList::reverse_iterator GroupList::rbegin()
 {
    return groups_.rbegin();
 }
@@ -252,7 +252,7 @@ ComboGroupList::reverse_iterator ComboGroupList::rbegin()
 //**********************************************************************************************************************
 /// \return A constant iterator to the reverse beginning of the list
 //**********************************************************************************************************************
-ComboGroupList::const_reverse_iterator ComboGroupList::rbegin() const
+GroupList::const_reverse_iterator GroupList::rbegin() const
 {
    return groups_.rbegin();
 }
@@ -261,7 +261,7 @@ ComboGroupList::const_reverse_iterator ComboGroupList::rbegin() const
 //**********************************************************************************************************************
 /// \return An iterator to the reverse end of the list
 //**********************************************************************************************************************
-ComboGroupList::reverse_iterator ComboGroupList::rend()
+GroupList::reverse_iterator GroupList::rend()
 {
    return groups_.rend();
 }
@@ -270,7 +270,7 @@ ComboGroupList::reverse_iterator ComboGroupList::rend()
 //**********************************************************************************************************************
 /// \return A constant iterator to the reverse end of the list
 //**********************************************************************************************************************
-ComboGroupList::const_reverse_iterator ComboGroupList::rend() const
+GroupList::const_reverse_iterator GroupList::rend() const
 {
    return groups_.rend();
 }
@@ -279,10 +279,10 @@ ComboGroupList::const_reverse_iterator ComboGroupList::rend() const
 //**********************************************************************************************************************
 /// \return A JSON array containing the combo list
 //**********************************************************************************************************************
-QJsonArray ComboGroupList::toJsonArray() const
+QJsonArray GroupList::toJsonArray() const
 {
    QJsonArray result;
-   for (SPComboGroup const& group: groups_)
+   for (SPGroup const& group: groups_)
       result.append(group->toJsonObject());
    return result;
 }
@@ -295,7 +295,7 @@ QJsonArray ComboGroupList::toJsonArray() const
 /// error on exit
 /// \return true if and only if the array was parsed successfully
 //**********************************************************************************************************************
-bool ComboGroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVersion, QString* outErrorMessage)
+bool GroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVersion, QString* outErrorMessage)
 {
    try
    {
@@ -303,12 +303,12 @@ bool ComboGroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVer
       for (QJsonValue const& value : array)
       {
          if (!value.isObject())
-            throw xmilib::Exception("The combo group list is invalid.");
-         SPComboGroup group = ComboGroup::create(value.toObject(), formatVersion);
+            throw xmilib::Exception("The group list is invalid.");
+         SPGroup group = Group::create(value.toObject(), formatVersion);
          if ((!group) || (!group->isValid()))
-            throw xmilib::Exception("The combo group list contains an invalid group.");
+            throw xmilib::Exception("The group list contains an invalid group.");
          if (!this->append(group))
-            throw xmilib::Exception("Could not append one of the combo groups to the group list.");
+            throw xmilib::Exception("Could not append one of the groups to the group list.");
       }
       return true;
    }
@@ -324,7 +324,7 @@ bool ComboGroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVer
 //**********************************************************************************************************************
 /// \param[in] parent The parent model index
 //**********************************************************************************************************************
-int ComboGroupList::rowCount(const QModelIndex &parent) const
+int GroupList::rowCount(const QModelIndex &parent) const
 {
    return groups_.size() + 1;
 }
@@ -335,7 +335,7 @@ int ComboGroupList::rowCount(const QModelIndex &parent) const
 /// \param[in] role The role
 /// \return the model data for the given role at the given index
 //**********************************************************************************************************************
-QVariant ComboGroupList::data(QModelIndex const& index, int role) const
+QVariant GroupList::data(QModelIndex const& index, int role) const
 {
    qint32 const groupCount = groups_.size();
    qint32 const row = index.row();
@@ -346,7 +346,7 @@ QVariant ComboGroupList::data(QModelIndex const& index, int role) const
    bool const toolTipRole = (Qt::ToolTipRole == role);
    if (groupCount == row) 
       return toolTipRole ? tr("The default group."): tr("Default Group");
-   SPComboGroup group = groups_[row];
+   SPGroup group = groups_[row];
    return group ? (toolTipRole ? group->description() : group->name()): QString();
 }
 

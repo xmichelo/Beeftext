@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ComboGroupDialog</class>
- <widget class="QDialog" name="ComboGroupDialog">
+ <class>GroupDialog</class>
+ <widget class="QDialog" name="GroupDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -107,7 +107,7 @@
   <connection>
    <sender>actionOk</sender>
    <signal>triggered()</signal>
-   <receiver>ComboGroupDialog</receiver>
+   <receiver>GroupDialog</receiver>
    <slot>onActionOk()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -139,7 +139,7 @@
   <connection>
    <sender>buttonCancel</sender>
    <signal>clicked()</signal>
-   <receiver>ComboGroupDialog</receiver>
+   <receiver>GroupDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -155,7 +155,7 @@
   <connection>
    <sender>editName</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>ComboGroupDialog</receiver>
+   <receiver>GroupDialog</receiver>
    <slot>onNameChanged()</slot>
    <hints>
     <hint type="sourcelabel">

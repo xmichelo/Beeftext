@@ -12,7 +12,7 @@
 
 
 #include "Combo.h"
-#include "ComboGroupList.h"
+#include "Group/GroupList.h"
 
 
 //**********************************************************************************************************************
@@ -41,8 +41,8 @@ public: // member functions
    ~ComboList() = default; ///< Default destructor
    ComboList& operator=(ComboList const& ref); ///< Assignment operator
    ComboList& operator=(ComboList&& ref); ///< Move assignment operator
-   ComboGroupList& groupListRef(); ///< Return a mutable reference to the group list
-   ComboGroupList const& groupListRef() const; ///< Return a constant reference to the group list
+   GroupList& groupListRef(); ///< Return a mutable reference to the group list
+   GroupList const& groupListRef() const; ///< Return a constant reference to the group list
    qint32 size() const; ///< Return the size of the combo list
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list
@@ -82,7 +82,7 @@ public: // member functions
 
 private: // data members
    VecSPCombo combos_; ///< The list of combos
-   ComboGroupList groups_; ///< The list of groups
+   GroupList groups_; ///< The list of groups
 };
 
 

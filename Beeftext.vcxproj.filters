@@ -37,6 +37,9 @@
       <Extensions>ts</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Group">
+      <UniqueIdentifier>{22e92035-dcca-49b6-bd93-f8de9411a7e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
@@ -174,27 +177,6 @@
     <ClCompile Include="Combo\ComboKeywordValidator.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboGroup.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
-    <ClCompile Include="Combo\ComboGroupList.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboGroupList.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboGroupList.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="Combo\ComboGroupListWidget.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboGroupListWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboGroupListWidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="Combo\ComboFrame.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -213,13 +195,34 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ComboTableWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboGroupDialog.cpp">
-      <Filter>Combo</Filter>
+    <ClCompile Include="Group\Group.cpp">
+      <Filter>Group</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboGroupDialog.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_GroupList.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboGroupDialog.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_GroupList.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Group\GroupList.cpp">
+      <Filter>Group</Filter>
+    </ClCompile>
+    <ClCompile Include="Group\GroupDialog.cpp">
+      <Filter>Group</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_GroupDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_GroupDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Group\GroupListWidget.cpp">
+      <Filter>Group</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_GroupListWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_GroupListWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
@@ -258,19 +261,19 @@
     <ClInclude Include="GeneratedFiles\ui_ComboImportDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_ComboGroupListWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_ComboFrame.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Combo\ComboGroup.h">
-      <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_ComboTableWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_ComboGroupDialog.h">
+    <ClInclude Include="Group\Group.h">
+      <Filter>Group</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_GroupDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_GroupListWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -325,15 +328,6 @@
     <CustomBuild Include="Combo\ComboKeywordValidator.h">
       <Filter>Combo</Filter>
     </CustomBuild>
-    <CustomBuild Include="Combo\ComboGroupList.h">
-      <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboGroupListWidget.h">
-      <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboGroupListWidget.ui">
-      <Filter>Combo</Filter>
-    </CustomBuild>
     <CustomBuild Include="Combo\ComboFrame.h">
       <Filter>Combo</Filter>
     </CustomBuild>
@@ -346,11 +340,20 @@
     <CustomBuild Include="Combo\ComboTableWidget.ui">
       <Filter>Combo</Filter>
     </CustomBuild>
-    <CustomBuild Include="Combo\ComboGroupDialog.ui">
-      <Filter>Combo</Filter>
+    <CustomBuild Include="Group\GroupList.h">
+      <Filter>Group</Filter>
     </CustomBuild>
-    <CustomBuild Include="Combo\ComboGroupDialog.h">
-      <Filter>Combo</Filter>
+    <CustomBuild Include="Group\GroupDialog.h">
+      <Filter>Group</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Group\GroupDialog.ui">
+      <Filter>Group</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Group\GroupListWidget.h">
+      <Filter>Group</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Group\GroupListWidget.ui">
+      <Filter>Group</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

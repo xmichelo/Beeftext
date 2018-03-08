@@ -8,7 +8,7 @@
 
 
 #include "stdafx.h"
-#include "ComboGroupDialog.h"
+#include "GroupDialog.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
 
@@ -18,9 +18,9 @@
 /// \param[in] title The title for the dialog
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-bool ComboGroupDialog::run(SPComboGroup& group, QString const& title, QWidget* parent)
+bool GroupDialog::run(SPGroup& group, QString const& title, QWidget* parent)
 {
-   return QDialog::Accepted == ComboGroupDialog(group, title, parent).exec();
+   return QDialog::Accepted == GroupDialog(group, title, parent).exec();
 }
 
 
@@ -29,7 +29,7 @@ bool ComboGroupDialog::run(SPComboGroup& group, QString const& title, QWidget* p
 /// \param[in] title The title for the dialog
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ComboGroupDialog::ComboGroupDialog(SPComboGroup& group, QString const& title, QWidget* parent)
+GroupDialog::GroupDialog(SPGroup& group, QString const& title, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
    , group_(group)
 {
@@ -46,7 +46,7 @@ ComboGroupDialog::ComboGroupDialog(SPComboGroup& group, QString const& title, QW
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupDialog::onActionOk()
+void GroupDialog::onActionOk()
 {
    if (!this->isInputValid())
       return;
@@ -59,7 +59,7 @@ void ComboGroupDialog::onActionOk()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupDialog::onNameChanged()
+void GroupDialog::onNameChanged()
 {
    this->updateGui();
 }
@@ -68,7 +68,7 @@ void ComboGroupDialog::onNameChanged()
 //**********************************************************************************************************************
 /// \return true if and only if the user input is acceptable
 //**********************************************************************************************************************
-bool ComboGroupDialog::isInputValid()
+bool GroupDialog::isInputValid()
 {
    return (!ui_.editName->text().trimmed().isEmpty());
 }
@@ -77,7 +77,7 @@ bool ComboGroupDialog::isInputValid()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupDialog::updateGui()
+void GroupDialog::updateGui()
 {
    bool const valid = this->isInputValid();
    ui_.actionOk->setEnabled(valid);

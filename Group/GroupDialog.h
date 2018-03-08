@@ -11,26 +11,26 @@
 #define BEEFTEXT__COMBO__GROUP__DIALOG__H
 
 
-#include "ui_ComboGroupDialog.h"
-#include "ComboGroup.h"
+#include "ui_GroupDialog.h"
+#include "Group.h"
 
 
 //**********************************************************************************************************************
 /// \brief Combo groups dialog class
 //**********************************************************************************************************************
-class ComboGroupDialog: public QDialog
+class GroupDialog: public QDialog
 {
    Q_OBJECT
 public: // static functions
-   static bool run(SPComboGroup& group, QString const& title, QWidget* parent = nullptr); ///< Run the dialog
+   static bool run(SPGroup& group, QString const& title, QWidget* parent = nullptr); ///< Run the dialog
 
 public: // member functions
-   ComboGroupDialog(SPComboGroup& group, QString const& title, QWidget* parent = nullptr); ///< Default constructor
-   ComboGroupDialog(ComboGroupDialog const&) = delete; ///< Disabled copy-constructor
-   ComboGroupDialog(ComboGroupDialog&&) = delete; ///< Disabled assignment copy-constructor
-   ~ComboGroupDialog() = default; ///< Destructor
-   ComboGroupDialog& operator=(ComboGroupDialog const&) = delete; ///< Disabled assignment operator
-   ComboGroupDialog& operator=(ComboGroupDialog&&) = delete; ///< Disabled move assignment operator
+   GroupDialog(SPGroup& group, QString const& title, QWidget* parent = nullptr); ///< Default constructor
+   GroupDialog(GroupDialog const&) = delete; ///< Disabled copy-constructor
+   GroupDialog(GroupDialog&&) = delete; ///< Disabled assignment copy-constructor
+   ~GroupDialog() = default; ///< Destructor
+   GroupDialog& operator=(GroupDialog const&) = delete; ///< Disabled assignment operator
+   GroupDialog& operator=(GroupDialog&&) = delete; ///< Disabled move assignment operator
 
 private slots:
    void onActionOk(); ///< Slot for the OK action
@@ -41,8 +41,8 @@ private:  // member functions
    void updateGui(); ///< Update the GUI state
 
 private: // data members
-   Ui::ComboGroupDialog ui_; ///< The GUI for the dialog
-   SPComboGroup group_; ///< The group
+   Ui::GroupDialog ui_; ///< The GUI for the dialog
+   SPGroup group_; ///< The group
 };
 
 

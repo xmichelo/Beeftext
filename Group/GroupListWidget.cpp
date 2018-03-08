@@ -8,16 +8,16 @@
 
 
 #include "stdafx.h"
-#include "ComboManager.h"
-#include "ComboGroupDialog.h"
-#include "ComboGroupListWidget.h"
+#include "GroupDialog.h"
+#include "GroupListWidget.h"
+#include "Combo/ComboManager.h"
 #include <XMiLib/Exception.h>
 
 
 //**********************************************************************************************************************
 /// \param[in] parent The parent of the widget
 //**********************************************************************************************************************
-ComboGroupListWidget::ComboGroupListWidget(QWidget* parent)
+GroupListWidget::GroupListWidget(QWidget* parent)
    : QWidget(nullptr)
 {
    ui_.setupUi(this);
@@ -25,8 +25,8 @@ ComboGroupListWidget::ComboGroupListWidget(QWidget* parent)
    this->setupGroupsMenu();
    QItemSelectionModel* selectionModel = ui_.listGroup->selectionModel();
    if (!selectionModel)
-      throw xmilib::Exception("The Combo group list selection model is null");
-   connect(selectionModel, &QItemSelectionModel::currentChanged, this, &ComboGroupListWidget::onCurrentChanged);
+      throw xmilib::Exception("The group list selection model is null");
+   connect(selectionModel, &QItemSelectionModel::currentChanged, this, &GroupListWidget::onCurrentChanged);
    this->updateGui();
 }
 
@@ -34,7 +34,7 @@ ComboGroupListWidget::ComboGroupListWidget(QWidget* parent)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupListWidget::updateGui()
+void GroupListWidget::updateGui()
 {
    qint32 const index = this->selectedGroupIndex();
    bool const hasSelection = (index >= 0) && (index < ComboManager::instance().groupListRef().size());
@@ -46,7 +46,7 @@ void ComboGroupListWidget::updateGui()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupListWidget::setupGroupsMenu()
+void GroupListWidget::setupGroupsMenu()
 {
    QMenu* menu = new QMenu(this);
    menu->addAction(ui_.actionNewGroup);
@@ -60,7 +60,7 @@ void ComboGroupListWidget::setupGroupsMenu()
 //**********************************************************************************************************************
 /// \param[in] event The event
 //**********************************************************************************************************************
-void ComboGroupListWidget::changeEvent(QEvent *event)
+void GroupListWidget::changeEvent(QEvent *event)
 {
    if (QEvent::LanguageChange == event->type())
       ui_.retranslateUi(this);
@@ -72,7 +72,7 @@ void ComboGroupListWidget::changeEvent(QEvent *event)
 /// \return The index of the selected group
 /// \return -1 if no group is selected
 //**********************************************************************************************************************
-qint32 ComboGroupListWidget::selectedGroupIndex() const
+qint32 GroupListWidget::selectedGroupIndex() const
 {
    QModelIndex const index = ui_.listGroup->currentIndex();
    return index.isValid() ? index.row() : -1;
@@ -82,15 +82,15 @@ qint32 ComboGroupListWidget::selectedGroupIndex() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupListWidget::onActionNewGroup()
+void GroupListWidget::onActionNewGroup()
 {
    try
    {
-      SPComboGroup group = ComboGroup::create(QString());
-      if (!ComboGroupDialog::run(group, tr("New Group")))
+      SPGroup group = Group::create(QString());
+      if (!GroupDialog::run(group, tr("New Group")))
          return;
       ComboManager& comboManager = ComboManager::instance();
-      ComboGroupList& groups = comboManager.groupListRef();
+      GroupList& groups = comboManager.groupListRef();
       if (!groups.append(group))
          throw xmilib::Exception(tr("The group could not be added to the list."));
       QString errorMessage;
@@ -107,17 +107,17 @@ void ComboGroupListWidget::onActionNewGroup()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupListWidget::onActionEditGroup()
+void GroupListWidget::onActionEditGroup()
 {
    try
    {
       ComboManager& comboManager = ComboManager::instance();
-      ComboGroupList& groups = comboManager.groupListRef();
+      GroupList& groups = comboManager.groupListRef();
       quint32 const index = this->selectedGroupIndex();
       if ((index < 0) || (index >= groups.size()))
          return;
-      SPComboGroup group = groups[index];
-      if (!ComboGroupDialog::run(group, tr("Edit Group")))
+      SPGroup group = groups[index];
+      if (!GroupDialog::run(group, tr("Edit Group")))
          return;
       QString errorMessage;
       if (!comboManager.saveComboListToFile(&errorMessage))
@@ -133,9 +133,9 @@ void ComboGroupListWidget::onActionEditGroup()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroupListWidget::onActionDeleteGroup()
+void GroupListWidget::onActionDeleteGroup()
 {
-   ComboGroupList& groups = ComboManager::instance().groupListRef();
+   GroupList& groups = ComboManager::instance().groupListRef();
    qint32 const index = this->selectedGroupIndex();
    if ((index < 0) || (index >= groups.size()))
       return;
@@ -148,10 +148,10 @@ void ComboGroupListWidget::onActionDeleteGroup()
 /// \param[in] current The new current item
 /// \param[in] previous The previous current item
 //**********************************************************************************************************************
-void ComboGroupListWidget::onCurrentChanged(QModelIndex const& current, QModelIndex const& previous)
+void GroupListWidget::onCurrentChanged(QModelIndex const& current, QModelIndex const& previous)
 {
    qint32 const row = current.row();
-   ComboGroupList& groups = ComboManager::instance().groupListRef();
+   GroupList& groups = ComboManager::instance().groupListRef();
    this->updateGui();
    emit selectedGroupChanged(((row < 0) || (row >= groups.size())) ? nullptr : groups[row]);
 }

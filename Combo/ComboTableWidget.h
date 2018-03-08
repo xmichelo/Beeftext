@@ -13,7 +13,7 @@
 
 #include "ui_ComboTableWidget.h"
 #include "ComboSortFilterProxyModel.h"
-#include "ComboGroup.h"
+#include "Group/Group.h"
 #include <memory>
 
 
@@ -29,7 +29,7 @@ public: // member functions
    void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
 
 public slots:
-   void onSelectedGroupChanged(SPComboGroup const& group); ///< Slot for the changing of the selected group
+   void onSelectedGroupChanged(SPGroup const& group); ///< Slot for the changing of the selected group
 
 protected: // member functions
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view

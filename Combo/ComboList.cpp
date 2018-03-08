@@ -97,7 +97,7 @@ ComboList& ComboList::operator=(ComboList&& ref)
 //**********************************************************************************************************************
 /// \return A reference to the group list
 //**********************************************************************************************************************
-ComboGroupList& ComboList::groupListRef()
+GroupList& ComboList::groupListRef()
 {
    return groups_;
 }
@@ -106,7 +106,7 @@ ComboGroupList& ComboList::groupListRef()
 //**********************************************************************************************************************
 /// \return A constant reference to the group list
 //**********************************************************************************************************************
-ComboGroupList const& ComboList::groupListRef() const
+GroupList const& ComboList::groupListRef() const
 {
    return groups_;
 }

@@ -11,8 +11,7 @@
 #define BEEFTEXT__COMBO__H
 
 
-#include "ComboGroup.h"
-#include "ComboGroupList.h"
+#include "Group/GroupList.h"
 #include <memory>
 #include <vector>
  
@@ -31,7 +30,7 @@ class Combo
 {
 public: // member functions
    Combo(QString const& name, QString const& aKeyword, QString const& aSnippet, bool enabled = true); ///< Default constructor
-   Combo(QJsonObject const& object, qint32 formatVersion, ComboGroupList const& groups = ComboGroupList()); ///< Constructor from JSon object
+   Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups = GroupList()); ///< Constructor from JSon object
    ~Combo() = default; ///< Default destructor
    bool isValid() const; ///< Is the combo valid
    QUuid uuid() const; ///< Get the UUID of the combo
@@ -42,8 +41,8 @@ public: // member functions
    QString snippet() const; ///< Retrieve the snippet
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
-   SPComboGroup group() const; ///< Get the combo group the combo belongs to
-   void setGroup(SPComboGroup const& group); ///< Set the group this combo belongs to
+   SPGroup group() const; ///< Get the combo group the combo belongs to
+   void setGroup(SPGroup const& group); ///< Set the group this combo belongs to
    QString evaluatedSnippet(qint32* outCursorPos = nullptr, 
       QSet<QString> forbiddenSubcombos = QSet<QString>()) const; ///< Retrieve the the snippet after having evaluated it
    void setSnippet(QString const& snippet); ///< Set the snippet
@@ -57,7 +56,7 @@ public: // static functions
    static SPCombo create(QString const& name = QString(), QString const& aKeyword = QString(),
       QString const& aSnippet = QString(), bool enabled = true);
    static SPCombo create(QJsonObject const& object, qint32 formatVersion, 
-      ComboGroupList const& groups = ComboGroupList()); ///< create a Combo from a JSON object
+      GroupList const& groups = GroupList()); ///< create a Combo from a JSON object
    static SPCombo duplicate(Combo const& combo); ///< Duplicate
 
 private: // member functions
@@ -72,7 +71,7 @@ private: // data member
    QString name_; ///< The display name of the combo
    QString keyword_; ///< The keyword
    QString snippet_; ///< The snippet
-   SPComboGroup group_; ///< The combo group this combo belongs to (may be null)
+   SPGroup group_; ///< The combo group this combo belongs to (may be null)
    QDateTime creationDateTime_; ///< The date/time of creation of the combo
    QDateTime modificationDateTime_; ///< The date/time of the last modification of the combo
    bool enabled_; ///< Is the combo enabled

@@ -34,7 +34,7 @@
      <property name="handleWidth">
       <number>6</number>
      </property>
-     <widget class="ComboGroupListWidget" name="comboGroupListWidget" native="true"/>
+     <widget class="GroupListWidget" name="comboGroupListWidget" native="true"/>
      <widget class="ComboTableWidget" name="comboTableWidget" native="true"/>
     </widget>
    </item>
@@ -42,9 +42,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboGroupListWidget</class>
+   <class>GroupListWidget</class>
    <extends>QWidget</extends>
-   <header>Combo/ComboGroupListWidget.h</header>
+   <header>Group/GroupListWidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

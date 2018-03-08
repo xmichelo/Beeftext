@@ -8,7 +8,7 @@
 
 
 #include "stdafx.h"
-#include "ComboGroup.h"
+#include "Group.h"
 #include "BeeftextConstants.h"
 
 
@@ -25,7 +25,7 @@ QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON 
 /// \param[in] name The name of the group
 /// \param[in] description The description of the group
 //**********************************************************************************************************************
-ComboGroup::ComboGroup(QString const& name, QString const& description)
+Group::Group(QString const& name, QString const& description)
    : uuid_(QUuid::createUuid())
    , name_(name)
    , description_(description)
@@ -38,7 +38,7 @@ ComboGroup::ComboGroup(QString const& name, QString const& description)
 /// \param[in] object The JSON object
 /// \param[in] formatVersion The version number of the JSON file format
 //**********************************************************************************************************************
-ComboGroup::ComboGroup(QJsonObject const& object, qint32 formatVersion)
+Group::Group(QJsonObject const& object, qint32 formatVersion)
    : uuid_(QUuid(object[kPropUuid].toString()))
    , name_(object[kPropName].toString())
    , description_(object[kPropDescription].toString())
@@ -54,7 +54,7 @@ ComboGroup::ComboGroup(QJsonObject const& object, qint32 formatVersion)
 //**********************************************************************************************************************
 /// \return true if and only if the group is valid
 //**********************************************************************************************************************
-bool ComboGroup::isValid() const
+bool Group::isValid() const
 {
    return (!creationDateTime_.isNull()) && (!modificationDateTime_.isNull()) && (!uuid_.isNull()) && (!name_.isEmpty());
 }
@@ -63,7 +63,7 @@ bool ComboGroup::isValid() const
 //**********************************************************************************************************************
 /// \return The UUID of the combo group
 //**********************************************************************************************************************
-QUuid ComboGroup::uuid() const
+QUuid Group::uuid() const
 {
    return uuid_;
 }
@@ -72,7 +72,7 @@ QUuid ComboGroup::uuid() const
 //**********************************************************************************************************************
 /// \return The name of the group
 //**********************************************************************************************************************
-QString ComboGroup::name() const
+QString Group::name() const
 {
    return name_;
 }
@@ -81,7 +81,7 @@ QString ComboGroup::name() const
 //**********************************************************************************************************************
 /// \param[in] name The name of the group
 //**********************************************************************************************************************
-void ComboGroup::setName(QString const& name)
+void Group::setName(QString const& name)
 {
    if (name_ != name)
    {
@@ -94,7 +94,7 @@ void ComboGroup::setName(QString const& name)
 //**********************************************************************************************************************
 /// \return The description of the group
 //**********************************************************************************************************************
-QString ComboGroup::description() const
+QString Group::description() const
 {
    return description_;
 }
@@ -103,7 +103,7 @@ QString ComboGroup::description() const
 //**********************************************************************************************************************
 /// \param[in] description The description of the group
 //**********************************************************************************************************************
-void ComboGroup::setDescription(QString const& description)
+void Group::setDescription(QString const& description)
 {
    if (description_ != description)
    {
@@ -116,7 +116,7 @@ void ComboGroup::setDescription(QString const& description)
 //**********************************************************************************************************************
 /// \return A JSON object representing the group
 //**********************************************************************************************************************
-QJsonObject ComboGroup::toJsonObject() const
+QJsonObject Group::toJsonObject() const
 {
    QJsonObject result;
    result.insert(kPropUuid, uuid_.toString());
@@ -132,9 +132,9 @@ QJsonObject ComboGroup::toJsonObject() const
 /// \param[in] name The name of the group
 /// \param[in] description The description of the group
 //**********************************************************************************************************************
-SPComboGroup ComboGroup::create(QString const& name, QString const& description)
+SPGroup Group::create(QString const& name, QString const& description)
 {
-   return std::make_shared<ComboGroup>(name, description);
+   return std::make_shared<Group>(name, description);
 }
 
 
@@ -142,16 +142,16 @@ SPComboGroup ComboGroup::create(QString const& name, QString const& description)
 /// \param[in] object The JSON object
 /// \param[in] formatVersion The version number of the JSON file format
 //**********************************************************************************************************************
-SPComboGroup ComboGroup::create(QJsonObject const& object, qint32 formatVersion)
+SPGroup Group::create(QJsonObject const& object, qint32 formatVersion)
 {
-   return std::make_shared<ComboGroup>(object, formatVersion);
+   return std::make_shared<Group>(object, formatVersion);
 }
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboGroup::touch()
+void Group::touch()
 {
    modificationDateTime_ = QDateTime::currentDateTime();
 }

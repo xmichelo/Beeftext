@@ -97,7 +97,7 @@ Combo::Combo(QString const& name, QString const& keyword, QString const& snippet
 /// \param[in] formatVersion The version number of the combo list file format
 /// \param[in] groups The list of combo groups
 //**********************************************************************************************************************
-Combo::Combo(QJsonObject const& object, qint32 formatVersion, ComboGroupList const& groups)
+Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups)
    : uuid_(QUuid(object[kPropUuid].toString()))
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
@@ -112,7 +112,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, ComboGroupList con
    if (object.contains(kPropGroup))
    {
       QUuid const uuid(object[kPropGroup].toString());
-      ComboGroupList::const_iterator it = groups.findByUuid(uuid);
+      GroupList::const_iterator it = groups.findByUuid(uuid);
       if (it != groups.end())
          group_ = *it;
       else
@@ -215,7 +215,7 @@ QDateTime Combo::creationDateTime() const
 /// \return The group this combo belongs to
 /// \return A null pointer if the combo does not belong to any group
 //**********************************************************************************************************************
-SPComboGroup Combo::group() const
+SPGroup Combo::group() const
 {
    return group_;
 }
@@ -224,7 +224,7 @@ SPComboGroup Combo::group() const
 //**********************************************************************************************************************
 /// \param[in] group The new group this combo belongs to. If null, the combo is removed from its current group
 //**********************************************************************************************************************
-void Combo::setGroup(SPComboGroup const& group)
+void Combo::setGroup(SPGroup const& group)
 {
    if (group != group_)
    {
@@ -373,7 +373,7 @@ SPCombo Combo::create(QString const& name, QString const& keyword, QString const
 /// \param[in] groups The list of combo groups
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SPCombo Combo::create(QJsonObject const& object, qint32 formatVersion, ComboGroupList const& groups)
+SPCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList const& groups)
 {
    return std::make_shared<Combo>(object, formatVersion, groups);
 }

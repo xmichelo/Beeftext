@@ -18,7 +18,7 @@ ComboFrame::ComboFrame(QWidget* parent)
    : QFrame(parent)
 {
    ui_.setupUi(this);
-   connect(ui_.comboGroupListWidget, &ComboGroupListWidget::selectedGroupChanged, ui_.comboTableWidget,
+   connect(ui_.comboGroupListWidget, &GroupListWidget::selectedGroupChanged, ui_.comboTableWidget,
       &ComboTableWidget::onSelectedGroupChanged);
 }
 
@@ -26,7 +26,7 @@ ComboFrame::ComboFrame(QWidget* parent)
 //**********************************************************************************************************************
 /// \return The combo group list widget
 //**********************************************************************************************************************
-ComboGroupListWidget* ComboFrame::comboGroupListWidget()
+GroupListWidget* ComboFrame::comboGroupListWidget()
 {
    return ui_.comboGroupListWidget;
 }

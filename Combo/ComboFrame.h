@@ -27,7 +27,7 @@ public: // member functions
    ~ComboFrame() = default; ///< Destructor
    ComboFrame& operator=(ComboFrame const&) = delete; ///< Disabled assignment operator
    ComboFrame& operator=(ComboFrame&&) = delete; ///< Disabled move assignment operator
-   ComboGroupListWidget* comboGroupListWidget(); ///< Return the combo group list widget
+   GroupListWidget* comboGroupListWidget(); ///< Return the combo group list widget
    ComboTableWidget* comboTableWidget(); ///< Return the combo table widget
 
 private: // data members
