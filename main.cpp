@@ -38,8 +38,8 @@ void removeFileMarkedForDeletion(); ///< Remove the software update file that ma
 //**********************************************************************************************************************
 int main(int argc, char *argv[])
 {
-   qRegisterMetaType <SPLatestVersionInfo>(); // required to use SPLatestVersionInfo in a queued signal/slot connection
-
+   qRegisterMetaType<SPLatestVersionInfo>(); // required to use SPLatestVersionInfo in a queued signal/slot connection
+   qRegisterMetaType<SPGroup>(); // required to use SPGroup in a queued signal/slot connection
    QString const kUnhandledException = "Unhandled Exception";
    DebugLog& debugLog = globals::debugLog();
       try

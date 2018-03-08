@@ -41,6 +41,8 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
    ui_.setupUi(this);
    this->setWindowTitle(title);
    ui_.editName->setText(combo->name());
+   ui_.comboGroup->setContent(ComboManager::instance().groupListRef());
+   ui_.comboGroup->setCurrentGroup(combo_->group());
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_); 
    ui_.editSnippet->setPlainText(combo->snippet());
@@ -166,6 +168,7 @@ void ComboDialog::onActionOk()
    if (!checkAndReportInvalidCombo())
       return;
    combo_->setName(ui_.editName->text().trimmed());
+   combo_->setGroup(ui_.comboGroup->currentGroup());
    combo_->setKeyword(ui_.editKeyword->text().trimmed());
    combo_->setSnippet(ui_.editSnippet->toPlainText());
    this->accept();

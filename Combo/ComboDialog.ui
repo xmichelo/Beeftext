@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>562</width>
-    <height>367</height>
+    <height>365</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,19 +16,6 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="editKeyword"/>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="editName"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="labelKeyword">
-       <property name="text">
-        <string>Keyword:</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="labelName">
        <property name="text">
@@ -36,7 +23,54 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="0" colspan="2">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="editName"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelGroup">
+       <property name="text">
+        <string>Group:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="GroupComboBox" name="comboGroup">
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>13</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelKeyword">
+       <property name="text">
+        <string>Keyword:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="editKeyword"/>
+     </item>
+     <item row="5" column="0" colspan="2">
       <widget class="QPlainTextEdit" name="editSnippet">
        <property name="contextMenuPolicy">
         <enum>Qt::CustomContextMenu</enum>
@@ -44,13 +78,6 @@
       </widget>
      </item>
      <item row="3" column="0" colspan="2">
-      <widget class="QLabel" name="labelSnippet">
-       <property name="text">
-        <string>Snippet:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0" colspan="2">
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -60,16 +87,23 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>5</width>
-         <height>10</height>
+         <width>13</width>
+         <height>13</height>
         </size>
        </property>
       </spacer>
      </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="QLabel" name="labelSnippet">
+       <property name="text">
+        <string>Snippet:</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout">
+    <layout class="QHBoxLayout" name="spacer_2">
      <property name="spacing">
       <number>6</number>
      </property>
@@ -86,14 +120,14 @@
       <number>0</number>
      </property>
      <item>
-      <spacer>
+      <spacer name="spacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
          <width>131</width>
-         <height>31</height>
+         <height>5</height>
         </size>
        </property>
       </spacer>
@@ -124,6 +158,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GroupComboBox</class>
+   <extends>QComboBox</extends>
+   <header>Group/GroupComboBox.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>editName</tabstop>
   <tabstop>editKeyword</tabstop>

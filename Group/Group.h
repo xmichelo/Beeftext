@@ -55,4 +55,7 @@ private: // data members
 };
 
 
+Q_DECLARE_METATYPE(SPGroup)
+
+
 #endif // #ifndef BEEFTEXT__GROUP__H
