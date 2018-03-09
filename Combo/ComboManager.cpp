@@ -124,7 +124,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
    bool wasInvalid = false;
    comboList_.ensureCorrectGrouping(&wasInvalid);
    if (inOlderFormat || wasInvalid)
-      if (!comboList_.save(path))
+      if (!comboList_.save(path, true))
          globals::debugLog().addWarning(inOlderFormat ?
             "Could not upgrade the combo list file to the newest format version." :
             "Could not save the combo list file after fixing the grouping of combos.");

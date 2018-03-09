@@ -49,7 +49,7 @@ public: // member functions
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
    void performSubstitution(); ///< Perform the combo substitution
-   QJsonObject toJsonObject() const; ///< Serialize the combo in a JSon object
+   QJsonObject toJsonObject(bool includeGroup) const; ///< Serialize the combo in a JSon object
    void changeUuid(); ///< Get a new Uuid for the combo
 
 public: // static functions

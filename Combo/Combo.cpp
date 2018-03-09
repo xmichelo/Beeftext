@@ -325,9 +325,10 @@ void Combo::performSubstitution()
 
 
 //**********************************************************************************************************************
+/// \param[in] includeGroup Should the group be included in the export
 /// \return A JSon object representing this Combo instance
 //**********************************************************************************************************************
-QJsonObject Combo::toJsonObject() const
+QJsonObject Combo::toJsonObject(bool includeGroup) const
 {
    QJsonObject result;
    result.insert(kPropUuid, uuid_.toString());
@@ -337,7 +338,7 @@ QJsonObject Combo::toJsonObject() const
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
-   if (group_)
+   if (includeGroup && group_)
       result.insert(kPropGroup, group_->uuid().toString());
    return result;
 }

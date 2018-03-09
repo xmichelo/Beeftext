@@ -67,13 +67,12 @@ public: // member functions
    const_reverse_iterator rbegin() const; ///< Returns a constant reverse iterator to the beginning of the list
    reverse_iterator rend(); ///< Returns a reverse iterator to the end of the list
    const_reverse_iterator rend() const; ///< Returns a constant reverse iterator to the end of the list
-   QJsonDocument toJsonDocument() const; ///< Export the Combo list to a JSon document
+   QJsonDocument toJsonDocument(bool includeGroups) const; ///< Export the Combo list to a JSon document
    bool readFromJsonDocument(QJsonDocument const& doc, bool* outInOlderFileFormat = nullptr, 
       QString* outErrorMsg = nullptr); ///< Read a combo list from a JSON document
-   bool save(QString const& path, QString* outErrorMessage = nullptr) const; ///< Save a combo list to a JSON file
+   bool save(QString const& path, bool saveGroups, QString* outErrorMessage = nullptr) const; ///< Save a combo list to a JSON file
    bool load(QString const& path, bool* outInOlderFileFormat = nullptr, QString* outErrorMessage = nullptr); /// Load a combo list from a JSON file
    void markComboAsEdited(qint32 index); ///< Mark a combo as edited
-   void ungroup(); ///< remove all combos from all groups and delete the groups list (useful for export)
    void ensureCorrectGrouping(bool *outWasInvalid = false); ///< make sure every combo is affected to a group (and that there is at least one group
 
    /// \name Table model member functions

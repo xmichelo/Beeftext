@@ -131,6 +131,8 @@ void ComboTableWidget::setupCombosMenu()
    menu->addSeparator();
    menu->addAction(ui_.actionEditCombo);
    menu->addSeparator();
+   menu->addAction(ui_.actionDeleteCombo);
+   menu->addSeparator();
    menu->addAction(ui_.actionEnableDisableCombo);
    menu->addSeparator();
    menu->addAction(ui_.actionSelectAll);
@@ -153,12 +155,19 @@ void ComboTableWidget::setupContextMenu()
    contextMenu_.clear();
    contextMenu_.addAction(ui_.actionNewCombo);
    contextMenu_.addAction(ui_.actionDuplicateCombo);
-   contextMenu_.addAction(ui_.actionDeleteCombo);
+   contextMenu_.addSeparator();
    contextMenu_.addAction(ui_.actionEditCombo);
+   contextMenu_.addSeparator();
+   contextMenu_.addAction(ui_.actionDeleteCombo);
+   contextMenu_.addSeparator();
    contextMenu_.addAction(ui_.actionEnableDisableCombo);
    contextMenu_.addSeparator();
    contextMenu_.addAction(ui_.actionSelectAll);
    contextMenu_.addAction(ui_.actionDeselectAll);
+   contextMenu_.addSeparator();
+   contextMenu_.addAction(ui_.actionImportCombos);
+   contextMenu_.addAction(ui_.actionExportCombo);
+   contextMenu_.addAction(ui_.actionExportAllCombos);
    ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
    connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableWidget::onContextMenuRequested);
 }
@@ -406,9 +415,8 @@ void ComboTableWidget::onActionExportCombo()
       Q_ASSERT((index >= 0) && (index < comboList.size()));
       exportList.append(comboList[index]);
    }
-   exportList.ungroup(); // we remove group assignments for export
    QString errorMsg;
-   if (!exportList.save(path, &errorMsg))
+   if (!exportList.save(path, false, &errorMsg))
    {
       globals::debugLog().addError(errorMsg);
       QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
@@ -442,6 +450,8 @@ void ComboTableWidget::onActionExportAllCombos()
 void ComboTableWidget::onActionImportCombos()
 {
    this->runComboImportDialog();
+   for (qint32 i = 0; i < 2; ++i)
+      ui_.tableComboList->resizeColumnToContents(i);
 }
 
 
@@ -488,5 +498,7 @@ void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
 {
    qDebug() << (group ? QString("Selected group '%1'").arg(group->name()) : QString("Selected default group"));
    proxyModel_.setGroup(group);
+   for (qint32 i = 0; i < 2; ++i)
+      ui_.tableComboList->resizeColumnToContents(i);
 }
 

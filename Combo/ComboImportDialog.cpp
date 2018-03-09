@@ -13,6 +13,7 @@
 #include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
+#include "XMiLib/Exception.h"
 
 
 //**********************************************************************************************************************
@@ -23,6 +24,9 @@ ComboImportDialog::ComboImportDialog(QString const& filePath, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
 {
    ui_.setupUi(this);
+   GroupList& groupList = ComboManager::instance().groupListRef();
+   groupList.ensureNotEmpty();
+   ui_.comboGroup->setContent(groupList);
    if (!filePath.isEmpty())
    {
       ui_.editPath->setText(QDir::toNativeSeparators(filePath));
@@ -136,10 +140,15 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
    outFailureCount = 0;
    ComboList& comboList = ComboManager::instance().comboListRef();
    qint32 failureCount = 0;
+   SPGroup group = ui_.comboGroup->currentGroup();
+   if (!group)
+      throw xmilib::Exception(tr("Please select a valid group."));
    for (SPCombo combo : importableCombos_)
+   {
+      combo->setGroup(group);
       if (!comboList.append(combo))
          ++failureCount;
-
+   }
    if (ui_.radioSkipConflicts->isChecked())
       return;
 
@@ -165,23 +174,30 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
 //**********************************************************************************************************************
 void ComboImportDialog::onActionImport()
 {
-   if (!this->computeTotalImportCount())
-      return;
-
-   qint32 failureCount = 0;
-   this->performFinalImport(failureCount);
-   
-   QString errorMsg;
-   if ((!ComboManager::instance().saveComboListToFile(&errorMsg)))
-      QMessageBox::critical(this, tr("Error"), errorMsg);
-   
-   if (failureCount)
+   try
    {
-      globals::debugLog().addError(QString("%1 supposedly possible combo import failed").arg(failureCount));
-      QMessageBox::critical(this, tr("Error"), tr("%1 combo(s) could not be imported.").arg(failureCount));
-   }
+      if (!this->computeTotalImportCount())
+         return;
 
-   this->accept();
+      qint32 failureCount = 0;
+      this->performFinalImport(failureCount);
+
+      QString errorMsg;
+      if ((!ComboManager::instance().saveComboListToFile(&errorMsg)))
+         QMessageBox::critical(this, tr("Error"), errorMsg);
+
+      if (failureCount)
+      {
+         globals::debugLog().addError(QString("%1 supposedly possible combo import failed").arg(failureCount));
+         QMessageBox::critical(this, tr("Error"), tr("%1 combo(s) could not be imported.").arg(failureCount));
+      }
+
+      this->accept();
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("&Error"), e.qwhat());
+   }
 }
 
 

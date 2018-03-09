@@ -374,17 +374,18 @@ ComboList::const_reverse_iterator ComboList::rend() const
 
 
 //**********************************************************************************************************************
+/// \param[in] includeGroups Should the groups be saved 
 /// Return a JSon document containing the combo list
 //**********************************************************************************************************************
-QJsonDocument ComboList::toJsonDocument() const
+QJsonDocument ComboList::toJsonDocument(bool includeGroups) const
 {
    QJsonObject rootObject;
    rootObject.insert(kKeyFileFormatVersion, kJsonComboListFileFormatVersionNumber);
    QJsonArray comboArray;
    for (SPCombo const& combo : combos_)
-      comboArray.append(combo->toJsonObject());
+      comboArray.append(combo->toJsonObject(includeGroups));
    rootObject.insert(kKeyCombos, comboArray);
-   rootObject.insert(kKeyGroups, groups_.toJsonArray());
+   rootObject.insert(kKeyGroups, includeGroups ? groups_.toJsonArray() : QJsonArray());
    return QJsonDocument(rootObject);
 }
 
@@ -484,18 +485,19 @@ bool ComboList::load(QString const& path, bool* outInOlderFileFormat, QString* o
 
 //**********************************************************************************************************************
 /// \param[in] path The path of the file to save to
+/// \param[in] saveGroups Should the groups be saved
 /// \param[out] outErrorMessage If the function return false and this parameter is not null, the string pointed to 
 /// contains a description of the error
 /// \return true if and only if the combo list was successfully saved to file
 //**********************************************************************************************************************
-bool ComboList::save(QString const& path, QString* outErrorMessage) const
+bool ComboList::save(QString const& path, bool saveGroups, QString* outErrorMessage) const
 {
    try
    {
       QFile file(path);
       if (!file.open(QIODevice::WriteOnly))
          throw xmilib::Exception(QString("Could not open file for writing: '%1'").arg(QDir::toNativeSeparators(path)));
-      QByteArray const data = this->toJsonDocument().toJson();
+      QByteArray const data = this->toJsonDocument(saveGroups).toJson();
       if (data.size() != file.write(data))
          throw xmilib::Exception(QString("Error writing to file: %1").arg(QDir::toNativeSeparators(path)));
       return true;
@@ -516,18 +518,6 @@ void ComboList::markComboAsEdited(qint32 index)
 {
    Q_ASSERT((index >= 0) && (index < qint32(combos_.size())));
    emit dataChanged(this->index(0, 0), this->index(0, this->rowCount() - 1), QVector<int>() << Qt::DisplayRole);
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void ComboList::ungroup()
-{
-   for (SPCombo& combo : combos_)
-      if (combo)
-         combo->setGroup(SPGroup());
-   groups_.clear();
 }
 
 
