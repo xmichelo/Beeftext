@@ -140,6 +140,9 @@ void GroupListWidget::onActionDeleteGroup()
 {
    try
    {
+      if (QMessageBox::Yes != QMessageBox::question(this, tr("Delete Group?"), tr("Are you sure you want to delete "
+         "the selected group and all its combos?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
+         return;
       ComboManager& comboManager = ComboManager::instance();
       GroupList& groups = comboManager.groupListRef();
       qint32 const index = this->selectedGroupIndex();

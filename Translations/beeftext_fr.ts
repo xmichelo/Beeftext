@@ -29,7 +29,7 @@
     <message>
         <location filename="../Combo/ComboDialog.ui" line="32"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Groupe:</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="99"/>
@@ -495,17 +495,6 @@
     </message>
 </context>
 <context>
-    <name>GroupList</name>
-    <message>
-        <source>The default group.</source>
-        <translation type="vanished">Le groupe par défaut.</translation>
-    </message>
-    <message>
-        <source>Default Group</source>
-        <translation type="vanished">Groupe Par Défaut</translation>
-    </message>
-</context>
-<context>
     <name>GroupListWidget</name>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="37"/>
@@ -550,7 +539,7 @@
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="104"/>
         <location filename="../Group/GroupListWidget.cpp" line="131"/>
-        <location filename="../Group/GroupListWidget.cpp" line="155"/>
+        <location filename="../Group/GroupListWidget.cpp" line="158"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -558,6 +547,16 @@
         <location filename="../Group/GroupListWidget.cpp" line="122"/>
         <source>Edit Group</source>
         <translation>Modifier le Groupe</translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="143"/>
+        <source>Delete Group?</source>
+        <translation>Effacer le Groupe?</translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="143"/>
+        <source>Are you sure you want to delete the selected group and all its combos?</source>
+        <translation>Êtes-vous sur de vouloir effacer ce groupe et tous les combos qu&apos;il contient?</translation>
     </message>
 </context>
 <context>
@@ -884,12 +883,12 @@
     <message>
         <location filename="../Group/GroupList.cpp" line="17"/>
         <source>Default Group</source>
-        <translation type="unfinished">Groupe Par Défaut</translation>
+        <translation>Groupe Par Défaut</translation>
     </message>
     <message>
         <location filename="../Group/GroupList.cpp" line="18"/>
         <source>The default group.</source>
-        <translation type="unfinished">Le groupe par défaut.</translation>
+        <translation>Le groupe par défaut.</translation>
     </message>
 </context>
 <context>
