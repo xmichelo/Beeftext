@@ -213,6 +213,27 @@ void ComboList::erase(qint32 index)
 
 
 //**********************************************************************************************************************
+/// \param[in] group The group
+//**********************************************************************************************************************
+void ComboList::eraseCombosOfGroup(SPGroup const& group)
+{
+   if (!group)
+      return;
+   QUuid const uuid = group->uuid();
+   for (qint32 index = combos_.size() - 1; index >= 0; --index)
+   {
+      SPCombo combo = combos_[index];
+      if (!combo)
+         continue;
+      SPGroup group = combo->group();
+      if (group && (uuid == group->uuid()))
+         this->erase(index);
+
+   }
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] keyword The keyword
 /// \return A constant iterator to to the combo with the specified keyword
 /// \return A null shared pointer if the combo list contains no combo with the specified keyword
@@ -495,6 +516,40 @@ void ComboList::markComboAsEdited(qint32 index)
 {
    Q_ASSERT((index >= 0) && (index < qint32(combos_.size())));
    emit dataChanged(this->index(0, 0), this->index(0, this->rowCount() - 1), QVector<int>() << Qt::DisplayRole);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboList::ungroup()
+{
+   for (SPCombo& combo : combos_)
+      if (combo)
+         combo->setGroup(SPGroup());
+   groups_.clear();
+}
+
+
+//**********************************************************************************************************************
+/// \return false if and only if the grouping was incorrect and had to be fixed
+//**********************************************************************************************************************
+void ComboList::ensureCorrectGrouping(bool *outWasInvalid)
+{
+   bool wasInvalid = groups_.ensureNotEmpty();
+   for (SPCombo combo : combos_)
+   {
+      if (!combo)
+         continue;
+      SPGroup group = combo->group();
+      if ((!group) || (groups_.end() == groups_.findByUuid(group->uuid())))
+      {
+         combo->setGroup(groups_[0]);
+         wasInvalid = true;
+      }
+   }
+   if (outWasInvalid)
+      *outWasInvalid = wasInvalid;
 }
 
 

@@ -52,6 +52,7 @@ public: // member functions
    bool append(SPCombo const& combo); ///< Append a combo at the end of the list
    void push_back(SPCombo const& combo); ///< Append a combo at the end of the list
    void erase(qint32 index); ///< Erase a combo from the list
+   void eraseCombosOfGroup(SPGroup const& group); ///< Erase all the combos of a given group
    ComboList::const_iterator findByKeyword(QString const& keyword) const; ///< Find a combo by its keyword
    ComboList::iterator findByKeyword(QString const& keyword); ///< Find a combo by its keyword
    ComboList::const_iterator findByUuid(QUuid const& uuid) const; ///< Find a combo by its UUID
@@ -72,6 +73,9 @@ public: // member functions
    bool save(QString const& path, QString* outErrorMessage = nullptr) const; ///< Save a combo list to a JSON file
    bool load(QString const& path, bool* outInOlderFileFormat = nullptr, QString* outErrorMessage = nullptr); /// Load a combo list from a JSON file
    void markComboAsEdited(qint32 index); ///< Mark a combo as edited
+   void ungroup(); ///< remove all combos from all groups and delete the groups list (useful for export)
+   void ensureCorrectGrouping(bool *outWasInvalid = false); ///< make sure every combo is affected to a group (and that there is at least one group
+
    /// \name Table model member functions
    ///\{
    int rowCount(QModelIndex const& = QModelIndex()) const override; ///< Retrieve the number of row in the table model

@@ -28,7 +28,6 @@ void GroupComboBox::setContent(GroupList const& groups)
    for (SPGroup const& group : groups)
       if (group)
          this->addItem(group->name(), QVariant::fromValue<SPGroup>(group));
-   this->addItem(tr("<Default group>"), QVariant::fromValue<SPGroup>(SPGroup()));
 }
 
 
@@ -38,11 +37,7 @@ void GroupComboBox::setContent(GroupList const& groups)
 void GroupComboBox::setCurrentGroup(SPGroup const& group)
 {
    qint32 const index = this->findData(QVariant::fromValue<SPGroup>(group));
-   qint32 const itemCount = this->count();
-   if ((index >= 0) || (index < itemCount))
-      this->setCurrentIndex(index);
-   else
-      this->setCurrentIndex(itemCount - 1);
+   this->setCurrentIndex(((index >= 0) || (index < this->count())) ? index : 0);
 }
 
 

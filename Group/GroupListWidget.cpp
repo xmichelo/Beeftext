@@ -38,10 +38,10 @@ GroupListWidget::GroupListWidget(QWidget* parent)
 //**********************************************************************************************************************
 void GroupListWidget::updateGui()
 {
+   qint32 const groupCount = ComboManager::instance().groupListRef().size();
    qint32 const index = this->selectedGroupIndex();
-   bool const hasSelection = (index >= 0) && (index < ComboManager::instance().groupListRef().size());
-   ui_.actionDeleteGroup->setEnabled(hasSelection);
-   ui_.actionEditGroup->setEnabled(hasSelection);
+   ui_.actionDeleteGroup->setEnabled(groupCount > 1);
+   ui_.actionEditGroup->setEnabled((index >= 0) && (index < groupCount));
 }
 
 
@@ -124,6 +124,7 @@ void GroupListWidget::onActionEditGroup()
       QString errorMessage;
       if (!comboManager.saveComboListToFile(&errorMessage))
          throw xmilib::Exception(errorMessage);
+      this->updateGui();
    }
    catch (xmilib::Exception const& e)
    {
@@ -137,12 +138,22 @@ void GroupListWidget::onActionEditGroup()
 //**********************************************************************************************************************
 void GroupListWidget::onActionDeleteGroup()
 {
-   GroupList& groups = ComboManager::instance().groupListRef();
-   qint32 const index = this->selectedGroupIndex();
-   if ((index < 0) || (index >= groups.size()))
-      return;
-   groups.erase(index);
-   ComboManager::instance().saveComboListToFile();
+   try
+   {
+      ComboManager& comboManager = ComboManager::instance();
+      GroupList& groups = comboManager.groupListRef();
+      qint32 const index = this->selectedGroupIndex();
+      if ((groups.size() <= 1) ||(index < 0) || (index >= groups.size()))
+         return;
+      comboManager.comboListRef().eraseCombosOfGroup(groups[index]);
+      groups.erase(index);
+      comboManager.saveComboListToFile();
+      this->updateGui();
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   }
 }
 
 

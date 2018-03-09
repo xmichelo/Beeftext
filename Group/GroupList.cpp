@@ -13,6 +13,11 @@
 #include <XMiLib/Exception.h>
 
 
+namespace {
+   QString kDefaultGroupName() { return QObject::tr("Default Group"); } ///< The default group name
+   QString kDefaultGroupDescription() { return QObject::tr("The default group."); } ///< The default group description
+}
+
 //**********************************************************************************************************************
 /// \param[in] first The first group
 /// \param[in] second The second group
@@ -322,11 +327,23 @@ bool GroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVersion,
 
 
 //**********************************************************************************************************************
+/// \return true if the group list was empty and had to be filled with a default group
+//**********************************************************************************************************************
+bool GroupList::ensureNotEmpty()
+{
+   bool const empty = groups_.empty();
+   if (empty)
+      groups_.push_back(Group::create(kDefaultGroupName(), kDefaultGroupDescription()));
+   return empty;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] parent The parent model index
 //**********************************************************************************************************************
 int GroupList::rowCount(const QModelIndex &parent) const
 {
-   return groups_.size() + 1;
+   return groups_.size();
 }
 
 
@@ -339,15 +356,12 @@ QVariant GroupList::data(QModelIndex const& index, int role) const
 {
    qint32 const groupCount = groups_.size();
    qint32 const row = index.row();
-   if ((row < 0) || (row >= groupCount + 2))
+   if ((row < 0) || (row >= groupCount))
       return QVariant();
    if ((Qt::DisplayRole != role) && (Qt::ToolTipRole != role))
       return QVariant();
-   bool const toolTipRole = (Qt::ToolTipRole == role);
-   if (groupCount == row) 
-      return toolTipRole ? tr("The default group."): tr("Default Group");
    SPGroup group = groups_[row];
-   return group ? (toolTipRole ? group->description() : group->name()): QString();
+   return group ? ((Qt::ToolTipRole == role) ? group->description() : group->name()): QString();
 }
 
 

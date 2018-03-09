@@ -59,6 +59,7 @@ public: // member functions
    const_reverse_iterator rend() const; ///< Returns a constant reverse iterator to the end of the list
    QJsonArray toJsonArray() const; ///< Export the group list to a JSON array
    bool readFromJsonArray(QJsonArray const& array, qint32 formatVersion, QString* outErrorMessage); ///< Read the group list from a JSON array
+   bool ensureNotEmpty(); ///< make sure that the group list is not empty, creating one if necessary
 
    /// \name List model member functions
    /// \{

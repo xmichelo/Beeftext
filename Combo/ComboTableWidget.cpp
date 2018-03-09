@@ -406,7 +406,7 @@ void ComboTableWidget::onActionExportCombo()
       Q_ASSERT((index >= 0) && (index < comboList.size()));
       exportList.append(comboList[index]);
    }
-
+   exportList.ungroup(); // we remove group assignments for export
    QString errorMsg;
    if (!exportList.save(path, &errorMsg))
    {

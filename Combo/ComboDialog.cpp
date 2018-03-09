@@ -36,6 +36,7 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
    , validator_()
    , snippetEditMenu_(nullptr)
 {
+   ComboManager::instance().groupListRef().ensureNotEmpty();
    if (!combo)
       throw xmilib::Exception("%1(): combo is null.");
    ui_.setupUi(this);

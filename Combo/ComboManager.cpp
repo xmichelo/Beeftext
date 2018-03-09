@@ -121,11 +121,16 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
       .absoluteFilePath(ComboList::defaultFileName);
    if (!comboList_.load(path, &inOlderFormat, outErrorMsg))
       return false;
-   if (inOlderFormat)
+   bool wasInvalid = false;
+   comboList_.ensureCorrectGrouping(&wasInvalid);
+   if (inOlderFormat || wasInvalid)
       if (!comboList_.save(path))
-         globals::debugLog().addWarning("Could not upgrade the combo list file to the newest format version.");
+         globals::debugLog().addWarning(inOlderFormat ?
+            "Could not upgrade the combo list file to the newest format version." :
+            "Could not save the combo list file after fixing the grouping of combos.");
       else
-         globals::debugLog().addInfo("The combo list file was upgraded to the latest format version.");
+         globals::debugLog().addInfo(inOlderFormat ? "The combo list file was upgraded to the latest format version." :
+         "The combo list file was successfully saved after fixing the the grouping of combos.");
    return true;
 }
 
