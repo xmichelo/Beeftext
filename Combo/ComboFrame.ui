@@ -34,7 +34,7 @@
      <property name="handleWidth">
       <number>6</number>
      </property>
-     <widget class="GroupListWidget" name="comboGroupListWidget" native="true"/>
+     <widget class="GroupListWidget" name="groupListWidget" native="true"/>
      <widget class="ComboTableWidget" name="comboTableWidget" native="true"/>
     </widget>
    </item>

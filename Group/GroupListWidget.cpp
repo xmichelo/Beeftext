@@ -34,6 +34,18 @@ GroupListWidget::GroupListWidget(QWidget* parent)
 
 
 //**********************************************************************************************************************
+/// \return the selected group
+/// \return a null pointer if nor group is selected
+//**********************************************************************************************************************
+SPGroup GroupListWidget::selectedGroup() const
+{
+   GroupList const& list = ComboManager::instance().groupListRef();
+   qint32 const index = this->selectedGroupIndex();
+   return ((index >= 0) && (index < list.size())) ? list[index] : SPGroup();
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void GroupListWidget::updateGui()

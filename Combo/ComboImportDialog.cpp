@@ -17,16 +17,19 @@
 
 
 //**********************************************************************************************************************
-/// \param[in] filePath The path of the file to import. Can be null
+/// \param[in] filePath The path of the file to import. Can be null.
+/// \param[in] group The group to select in the group combo. Can be null.
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ComboImportDialog::ComboImportDialog(QString const& filePath, QWidget* parent)
+ComboImportDialog::ComboImportDialog(QString const& filePath, SPGroup const& group, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
 {
    ui_.setupUi(this);
    GroupList& groupList = ComboManager::instance().groupListRef();
    groupList.ensureNotEmpty();
    ui_.comboGroup->setContent(groupList);
+   if (group)
+      ui_.comboGroup->setCurrentGroup(group);
    if (!filePath.isEmpty())
    {
       ui_.editPath->setText(QDir::toNativeSeparators(filePath));

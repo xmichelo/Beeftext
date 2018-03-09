@@ -13,6 +13,7 @@
 
 #include "ui_ComboImportDialog.h"
 #include "ComboList.h"
+#include "Group/Group.h"
 
 
 //**********************************************************************************************************************
@@ -22,7 +23,7 @@ class ComboImportDialog: public QDialog
 {
    Q_OBJECT
 public: // member functions
-	ComboImportDialog(QString const& filePath = QString(), QWidget* parent = nullptr); ///< Default constructor
+	ComboImportDialog(QString const& filePath = QString(), SPGroup const& group = SPGroup(), QWidget* parent = nullptr); ///< Default constructor
 	ComboImportDialog(ComboImportDialog const&) = delete; ///< Disabled copy constructor
 	ComboImportDialog(ComboImportDialog&&) = delete; ///< Disabled move constructor
 	~ComboImportDialog() = default; ///< Default destructor
@@ -42,6 +43,7 @@ private: // data members
    void updateGui(); ///< Update the GUI state
    qint32 computeTotalImportCount() const; ///< Return the number of combos to be imported according to the user selection in the dialog
    void performFinalImport(qint32& outFailureCount); ///< Perform the final import of combos
+
 private slots:
    void onActionImport(); ///< Slot for the 'Import' action
    void onActionCancel(); ///< Slot for the 'Cancel' action

@@ -13,6 +13,7 @@
 
 #include "ui_ComboTableWidget.h"
 #include "ComboSortFilterProxyModel.h"
+#include "Group/GroupListWidget.h"
 #include "Group/Group.h"
 #include <memory>
 
@@ -26,6 +27,7 @@ class ComboTableWidget: public QWidget
 public: // member functions
 	ComboTableWidget(QWidget* parent = nullptr); ///< Default constructor
 	~ComboTableWidget() = default; ///< Default destructor
+   void setGroupListWidget(GroupListWidget* groupListWidget); ///< Set the group list widget associated with this combo
    void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
 
 public slots:
@@ -66,6 +68,7 @@ private: // data members
    Ui::ComboTableWidget ui_; ///< The GUI for the frame
    ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
    QMenu contextMenu_; ///< The context menu for the combo table
+   GroupListWidget* groupListWidget_; ///< The group list wiget associated with this combo table
    std::unique_ptr<class ComboTableProxyStyle> proxyStyle_; ///< The proxy style to tweak appearance of the table view
 
 };

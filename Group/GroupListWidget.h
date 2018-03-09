@@ -28,7 +28,7 @@ public: // member functions
    ~GroupListWidget() = default; ///< Destructor
    GroupListWidget& operator=(GroupListWidget const&) = delete; ///< Disabled assignment operator
    GroupListWidget& operator=(GroupListWidget&&) = delete; ///< Disabled move assignment operator
-
+   SPGroup selectedGroup() const; ///< Get the selected group
 signals: 
    void selectedGroupChanged(SPGroup const& group); /// Signal emitted when the selected group changes
 
@@ -37,6 +37,7 @@ private: // member functions
    void setupGroupsMenu(); ///< setup the 'groups' menu
    void changeEvent(QEvent *event) override; ///< Change event handler
    qint32 selectedGroupIndex() const; ///< Retrieve the index of the selected combo
+
 private slots: 
    void onActionNewGroup(); ///< Slot for the 'new group' action
    void onActionEditGroup(); ///< Slot for the 'edit group' action

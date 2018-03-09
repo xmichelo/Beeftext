@@ -45,6 +45,7 @@ ComboTableWidget::ComboTableWidget(QWidget* parent)
    : QWidget(parent)
    , proxyStyle_(std::make_unique<ComboTableProxyStyle>())
    , contextMenu_(nullptr)
+   , groupListWidget_(nullptr)
 {
    ui_.setupUi(this);
    this->setupTable();
@@ -73,11 +74,21 @@ ComboTableWidget::ComboTableWidget(QWidget* parent)
 
 
 //**********************************************************************************************************************
+/// \param[in] groupListWidget The group list widget
+//**********************************************************************************************************************
+void ComboTableWidget::setGroupListWidget(GroupListWidget* groupListWidget)
+{
+   groupListWidget_ = groupListWidget;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] filePath The path of the combo file to import. This value can be null
 //**********************************************************************************************************************
 void ComboTableWidget::runComboImportDialog(QString const& filePath)
 {
-   if (QDialog::Accepted == ComboImportDialog(filePath, this).exec())
+   if (QDialog::Accepted == ComboImportDialog(filePath, 
+         (groupListWidget_ ? groupListWidget_->selectedGroup() : SPGroup()), this).exec())
       this->updateGui();
 }
 
