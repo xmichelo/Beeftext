@@ -136,12 +136,12 @@
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="55"/>
         <source>Import options</source>
-        <translation type="unfinished"></translation>
+        <translation>Options d&apos;import</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="61"/>
         <source>Import into group</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer dans le groupe</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="180"/>
@@ -224,12 +224,12 @@
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="148"/>
         <source>Please select a valid group.</source>
-        <translation type="unfinished"></translation>
+        <translation>Veuillez sélectionner un group valide.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="202"/>
         <source>&amp;Error</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Erreur</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="222"/>
@@ -547,34 +547,34 @@
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="141"/>
+        <location filename="../Group/GroupListWidget.cpp" line="144"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="146"/>
+        <location filename="../Group/GroupListWidget.cpp" line="149"/>
         <source>The group could not be added to the list.</source>
         <translation>Le groupe n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="153"/>
-        <location filename="../Group/GroupListWidget.cpp" line="180"/>
-        <location filename="../Group/GroupListWidget.cpp" line="207"/>
+        <location filename="../Group/GroupListWidget.cpp" line="156"/>
+        <location filename="../Group/GroupListWidget.cpp" line="183"/>
+        <location filename="../Group/GroupListWidget.cpp" line="210"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="171"/>
+        <location filename="../Group/GroupListWidget.cpp" line="174"/>
         <source>Edit Group</source>
         <translation>Modifier le Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="192"/>
+        <location filename="../Group/GroupListWidget.cpp" line="195"/>
         <source>Delete Group?</source>
         <translation>Effacer le Groupe?</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="192"/>
+        <location filename="../Group/GroupListWidget.cpp" line="195"/>
         <source>Are you sure you want to delete the selected group and all its combos?</source>
         <translation>Êtes-vous sur de vouloir effacer ce groupe et tous les combos qu&apos;il contient?</translation>
     </message>
