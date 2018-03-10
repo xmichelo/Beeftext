@@ -29,8 +29,9 @@ GroupListWidget::GroupListWidget(QWidget* parent)
    if (!selectionModel)
       throw xmilib::Exception("The group list selection model is null");
    connect(selectionModel, &QItemSelectionModel::selectionChanged, this, &GroupListWidget::onSelectionChanged);
+   connect(&groups, &GroupList::groupMoved, this, &GroupListWidget::onGroupMoved);
    this->updateGui();
-   QTimer::singleShot(0, [&]() {ui_.listGroup->setCurrentIndex(groups.index(groups.rowCount() - 1)); }); // delayed to be sure the signal/slot mechanism work
+   QTimer::singleShot(0, [&]() {ui_.listGroup->setCurrentIndex(groups.index(0)); }); // delayed to be sure the signal/slot mechanism work
 }
 
 
@@ -115,7 +116,6 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
 {
    if (event->type() != QEvent::MouseButtonPress)
       return QObject::eventFilter(object, event);
-   qDebug() << "Button pressed";
    QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
    if (!mouseEvent)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve mouse event.").arg(__FUNCTION__));
@@ -124,7 +124,7 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve selection model.").arg(__FUNCTION__));
    QPoint const mousePos = mouseEvent->pos();
    QModelIndex const item = ui_.listGroup->indexAt(mousePos);
-   if (!item.isValid() || selectionModel->isSelected(ui_.listGroup->indexAt(mousePos)))
+   if (!item.isValid())
    {
       clearSelection();
       return true;
@@ -213,7 +213,8 @@ void GroupListWidget::onActionDeleteGroup()
 
 
 //**********************************************************************************************************************
-// 
+/// \param[in] selected The items that got selected
+/// \param[in] deselected The items that got deselected
 //**********************************************************************************************************************
 void GroupListWidget::onSelectionChanged(QItemSelection const& selected, QItemSelection const& deselected)
 {
@@ -233,5 +234,18 @@ void GroupListWidget::onSelectionChanged(QItemSelection const& selected, QItemSe
 
 }
 
+
+//**********************************************************************************************************************
+/// \param[in] group The group
+/// \param[in] newIndex The new index of the group in the list
+//**********************************************************************************************************************
+void GroupListWidget::onGroupMoved(SPGroup group, qint32 newIndex)
+{
+   if (!group)
+      return;
+   ComboManager& comboManager = ComboManager::instance();
+   ui_.listGroup->setCurrentIndex(comboManager.groupListRef().index(newIndex));
+   comboManager.saveComboListToFile();
+}
 
 

@@ -143,7 +143,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
 {
    return comboList_.save(QDir(PreferencesManager::instance().comboListFolderPath())
-      .absoluteFilePath(ComboList::defaultFileName), outErrorMsg);
+      .absoluteFilePath(ComboList::defaultFileName), true, outErrorMsg);
 }
 
 

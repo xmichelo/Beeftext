@@ -65,7 +65,15 @@ public: // member functions
    /// \{
    int rowCount(QModelIndex const& parent = QModelIndex()) const override; ///< Returns the number of rows in the model
    QVariant data(QModelIndex const& index, int role = Qt::DisplayRole) const override; ///< Returns the model data at the given index for the given role
+   Qt::DropActions supportedDropActions() const override; ///< Retrieve the supported drop actions
+   Qt::ItemFlags flags(QModelIndex const& index) const override; ///< Retrieve the item flags
+   QStringList mimeTypes() const; ///< Get the MIME type that are supported for dropping
+   QMimeData* mimeData(const QModelIndexList &indexes) const override; ///< Get the MIME data for a given index
+   bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent); ///< process the dropping of MIME data
    /// /}
+
+signals:
+   void groupMoved(SPGroup group, qint32 newIndex); ///< Signal for the moving of a group in the list.
 
 private: // data members
    VecSPGroup groups_; ///< The list of groups

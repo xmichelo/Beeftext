@@ -46,6 +46,7 @@ private slots:
    void onActionEditGroup(); ///< Slot for the 'edit group' action
    void onActionDeleteGroup(); ///< Slot for the 'delete group' action
    void onSelectionChanged(QItemSelection const& selected, QItemSelection const& deselected); ///< Slot for selection change
+   void onGroupMoved(SPGroup group, qint32 newIndex); ///< Slot for the moving of a group in the list
 
 private: // data members
    Ui::GroupListWidget ui_; ///< The GUI for the dialog

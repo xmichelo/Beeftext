@@ -381,6 +381,7 @@ void ComboTableWidget::onActionEditCombo()
       QMessageBox::critical(this, tr("Error"), errorMessage);
    proxyModel_.invalidate();
    this->updateGui();
+   this->resizeColumnsToContents();
 }
 
 
@@ -469,7 +470,7 @@ void ComboTableWidget::onActionExportAllCombos()
       return;
    prefs.setLastComboImportExportPath(path);
    QString errorMessage;
-   if (!ComboManager::instance().comboListRef().save(path, &errorMessage))
+   if (!ComboManager::instance().comboListRef().save(path, false, &errorMessage))
    {
       globals::debugLog().addError(errorMessage);
       QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));

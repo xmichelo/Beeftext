@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>207</width>
+    <width>249</width>
     <height>724</height>
    </rect>
   </property>
@@ -54,7 +54,29 @@
     </layout>
    </item>
    <item>
-    <widget class="QListView" name="listGroup"/>
+    <widget class="QListView" name="listGroup">
+     <property name="acceptDrops">
+      <bool>true</bool>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>true</bool>
+     </property>
+     <property name="dragEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="dragDropOverwriteMode">
+      <bool>false</bool>
+     </property>
+     <property name="dragDropMode">
+      <enum>QAbstractItemView::InternalMove</enum>
+     </property>
+     <property name="defaultDropAction">
+      <enum>Qt::MoveAction</enum>
+     </property>
+     <property name="movement">
+      <enum>QListView::Snap</enum>
+     </property>
+    </widget>
    </item>
   </layout>
   <action name="actionNewGroup">

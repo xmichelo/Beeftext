@@ -428,7 +428,7 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="247"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="466"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="467"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -447,9 +447,9 @@
         <location filename="../Combo/ComboTableWidget.cpp" line="331"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="357"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="381"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="423"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="455"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="475"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="424"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="456"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="476"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -479,13 +479,13 @@
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="438"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="439"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="455"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="475"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="456"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="476"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>
@@ -522,27 +522,27 @@
         <translation>Groupes</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="62"/>
+        <location filename="../Group/GroupListWidget.ui" line="84"/>
         <source>&amp;New</source>
         <translation>&amp;Nouveau</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="65"/>
+        <location filename="../Group/GroupListWidget.ui" line="87"/>
         <source>New</source>
         <translation>Nouveau</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="70"/>
+        <location filename="../Group/GroupListWidget.ui" line="92"/>
         <source>&amp;Delete</source>
         <translation>E&amp;ffacer</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="73"/>
+        <location filename="../Group/GroupListWidget.ui" line="95"/>
         <source>Delete</source>
         <translation>Effacer</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="78"/>
+        <location filename="../Group/GroupListWidget.ui" line="100"/>
         <source>&amp;Edit</source>
         <translation>&amp;Modifier</translation>
     </message>
