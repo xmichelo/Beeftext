@@ -286,12 +286,12 @@
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="245"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="267"/>
         <source>Enable combo</source>
         <translation>Activer le combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="244"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="266"/>
         <source>Ena&amp;ble</source>
         <translation>Ac&amp;tiver</translation>
     </message>
@@ -322,7 +322,7 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="145"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="266"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="288"/>
         <source>New Combo</source>
         <translation>Nouveau Combo</translation>
     </message>
@@ -345,7 +345,7 @@
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="170"/>
         <location filename="../Combo/ComboTableWidget.ui" line="173"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="354"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="376"/>
         <source>Edit Combo</source>
         <translation>Modifier le Combo</translation>
     </message>
@@ -362,7 +362,7 @@
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="184"/>
         <location filename="../Combo/ComboTableWidget.ui" line="187"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="301"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="323"/>
         <source>Duplicate Combo</source>
         <translation>Dupliquer le Combo</translation>
     </message>
@@ -428,7 +428,7 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="247"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="444"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="466"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -438,54 +438,54 @@
         <translation>Ctrl+Maj+A</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="271"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="293"/>
         <source>The combo could not be added to the list.</source>
         <translation>Le combo n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="279"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="309"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="335"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="359"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="401"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="433"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="453"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="301"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="331"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="357"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="381"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="423"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="455"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="475"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="299"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="321"/>
         <source>The combo could not be duplicated: invalid index.</source>
         <translation>Le combo n&apos;a pas pu être dupliqué.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="304"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="326"/>
         <source>The duplicated combo could not added to the list.</source>
         <translation>Le combo dupliqué n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="322"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="344"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>Êtes-vous sûr de vouloir effacer les combos selectionnés?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="323"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="345"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>Êtes-vous sûr de vouloir effacer le combo selectionné?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="324"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="346"/>
         <source>Delete Combo?</source>
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="416"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="438"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="433"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="453"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="455"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="475"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>
@@ -547,34 +547,34 @@
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="104"/>
+        <location filename="../Group/GroupListWidget.cpp" line="141"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="109"/>
+        <location filename="../Group/GroupListWidget.cpp" line="146"/>
         <source>The group could not be added to the list.</source>
         <translation>Le groupe n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="116"/>
-        <location filename="../Group/GroupListWidget.cpp" line="143"/>
-        <location filename="../Group/GroupListWidget.cpp" line="170"/>
+        <location filename="../Group/GroupListWidget.cpp" line="153"/>
+        <location filename="../Group/GroupListWidget.cpp" line="180"/>
+        <location filename="../Group/GroupListWidget.cpp" line="207"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="134"/>
+        <location filename="../Group/GroupListWidget.cpp" line="171"/>
         <source>Edit Group</source>
         <translation>Modifier le Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="155"/>
+        <location filename="../Group/GroupListWidget.cpp" line="192"/>
         <source>Delete Group?</source>
         <translation>Effacer le Groupe?</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="155"/>
+        <location filename="../Group/GroupListWidget.cpp" line="192"/>
         <source>Are you sure you want to delete the selected group and all its combos?</source>
         <translation>Êtes-vous sur de vouloir effacer ce groupe et tous les combos qu&apos;il contient?</translation>
     </message>

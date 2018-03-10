@@ -47,6 +47,7 @@ private: // member functions
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
    void changeEvent(QEvent *event) override; ///< Change event handler
+   void resizeColumnsToContents(); ///< Resize the columns to fit the content
 
 private slots:
    void updateGui() const; ///< Update the GUI state

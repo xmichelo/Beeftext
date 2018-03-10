@@ -19,7 +19,8 @@
 
 
 namespace {
-   qint32 const kMaxNameColumnDefaultWidth = 300; ///< The maximum default width in pixels of the name column
+   qint32 const kMinNameColumnDefaultWidth = 200; ///< The maximum default width in pixels of the name column
+   qint32 const kMaxNameColumnDefaultWidth = 500; ///< The maximum default width in pixels of the name column
 }
 
 
@@ -115,17 +116,22 @@ void ComboTableWidget::setupTable()
    ui_.tableComboList->setModel(&proxyModel_);
    proxyModel_.sort(0, Qt::AscendingOrder);
    QHeaderView* horizontalHeader = ui_.tableComboList->horizontalHeader();
+   if (!horizontalHeader)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve horizontal header.")
+         .arg(__FUNCTION__));
    horizontalHeader->setFixedHeight(horizontalHeader->fontMetrics().height() + 10);
    horizontalHeader->setSortIndicator(0, Qt::AscendingOrder);  //< required, otherwise the indicator is first displayed in the wrong direction
    horizontalHeader->setDefaultAlignment(Qt::AlignLeft);
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this,
       &ComboTableWidget::updateGui);
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
+
+   if (!verticalHeader)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve vertical header.")
+         .arg(__FUNCTION__));
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
-   for (qint32 i = 0; i < 2; ++i)
-      ui_.tableComboList->resizeColumnToContents(i);
-   if (ui_.tableComboList->horizontalHeader()->sectionSize(0) > kMaxNameColumnDefaultWidth)
-      ui_.tableComboList->horizontalHeader()->resizeSection(0, kMaxNameColumnDefaultWidth);
+
+   this->resizeColumnsToContents();
    ui_.tableComboList->setStyle(proxyStyle_.get());
    ui_.tableComboList->viewport()->installEventFilter(this); // we install an event filter that override the default double-click behavior
 }
@@ -222,6 +228,22 @@ void ComboTableWidget::changeEvent(QEvent *event)
    if (QEvent::LanguageChange == event->type())
       ui_.retranslateUi(this);
    QWidget::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::resizeColumnsToContents()
+{
+   QHeaderView* horizontalHeader = ui_.tableComboList->horizontalHeader();
+   if (!horizontalHeader)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve horizontal header").arg(__FUNCTION__));
+
+   for (qint32 i = 0; i < 2; ++i)
+      ui_.tableComboList->resizeColumnToContents(i);
+   horizontalHeader->resizeSection(0, qBound<qint32>(kMinNameColumnDefaultWidth, horizontalHeader->sectionSize(0),
+      kMaxNameColumnDefaultWidth));
 }
 
 
@@ -461,8 +483,7 @@ void ComboTableWidget::onActionExportAllCombos()
 void ComboTableWidget::onActionImportCombos()
 {
    this->runComboImportDialog();
-   for (qint32 i = 0; i < 2; ++i)
-      ui_.tableComboList->resizeColumnToContents(i);
+   this->resizeColumnsToContents();
 }
 
 
@@ -507,9 +528,7 @@ void ComboTableWidget::onDoubleClick()
 //**********************************************************************************************************************
 void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
 {
-   qDebug() << (group ? QString("Selected group '%1'").arg(group->name()) : QString("Selected default group"));
    proxyModel_.setGroup(group);
-   for (qint32 i = 0; i < 2; ++i)
-      ui_.tableComboList->resizeColumnToContents(i);
+   this->resizeColumnsToContents();
 }
 

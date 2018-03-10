@@ -23,11 +23,12 @@ GroupListWidget::GroupListWidget(QWidget* parent)
    ui_.setupUi(this);
    GroupList& groups = ComboManager::instance().comboListRef().groupListRef();
    ui_.listGroup->setModel(&groups);
+   ui_.listGroup->viewport()->installEventFilter(this);
    this->setupGroupsMenu();
    QItemSelectionModel* selectionModel = ui_.listGroup->selectionModel();
    if (!selectionModel)
       throw xmilib::Exception("The group list selection model is null");
-   connect(selectionModel, &QItemSelectionModel::currentChanged, this, &GroupListWidget::onCurrentChanged);
+   connect(selectionModel, &QItemSelectionModel::selectionChanged, this, &GroupListWidget::onSelectionChanged);
    this->updateGui();
    QTimer::singleShot(0, [&]() {ui_.listGroup->setCurrentIndex(groups.index(groups.rowCount() - 1)); }); // delayed to be sure the signal/slot mechanism work
 }
@@ -42,6 +43,16 @@ SPGroup GroupListWidget::selectedGroup() const
    GroupList const& list = ComboManager::instance().groupListRef();
    qint32 const index = this->selectedGroupIndex();
    return ((index >= 0) && (index < list.size())) ? list[index] : SPGroup();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void GroupListWidget::clearSelection() const
+{
+   if (this->selectedGroup())
+      ui_.listGroup->clearSelection();
 }
 
 
@@ -90,6 +101,35 @@ qint32 GroupListWidget::selectedGroupIndex() const
 {
    QModelIndex const index = ui_.listGroup->currentIndex();
    return index.isValid() ? index.row() : -1;
+}
+
+
+//**********************************************************************************************************************
+/// This event filter implement a non default behavior for the Qt QListView single selection system. When clicking
+/// on a selected item or an empty area, the selection is cleared.
+/// 
+/// \param[in] object The object
+/// \param[in] event The event
+//**********************************************************************************************************************
+bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
+{
+   if (event->type() != QEvent::MouseButtonPress)
+      return QObject::eventFilter(object, event);
+   qDebug() << "Button pressed";
+   QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
+   if (!mouseEvent)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve mouse event.").arg(__FUNCTION__));
+   QItemSelectionModel* selectionModel = ui_.listGroup->selectionModel();
+   if (!selectionModel)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve selection model.").arg(__FUNCTION__));
+   QPoint const mousePos = mouseEvent->pos();
+   QModelIndex const item = ui_.listGroup->indexAt(mousePos);
+   if (!item.isValid() || selectionModel->isSelected(ui_.listGroup->indexAt(mousePos)))
+   {
+      clearSelection();
+      return true;
+   }
+   return QObject::eventFilter(object, event);
 }
 
 
@@ -173,15 +213,24 @@ void GroupListWidget::onActionDeleteGroup()
 
 
 //**********************************************************************************************************************
-/// \param[in] current The new current item
-/// \param[in] previous The previous current item
+// 
 //**********************************************************************************************************************
-void GroupListWidget::onCurrentChanged(QModelIndex const& current, QModelIndex const& previous)
+void GroupListWidget::onSelectionChanged(QItemSelection const& selected, QItemSelection const& deselected)
 {
-   qint32 const row = current.row();
+   QItemSelectionModel* model = ui_.listGroup->selectionModel();
+   if (!model)
+      return;
+   QModelIndexList const selectedIndexes = model->selectedIndexes();
+   if (selectedIndexes.isEmpty())
+   {
+      emit selectedGroupChanged(SPGroup());
+      return;
+   }
+   qint32 const row = selectedIndexes.front().row();
    GroupList& groups = ComboManager::instance().groupListRef();
    this->updateGui();
    emit selectedGroupChanged(((row < 0) || (row >= groups.size())) ? nullptr : groups[row]);
+
 }
 
 
