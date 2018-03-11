@@ -234,6 +234,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_GroupComboBox.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="MimeDataUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -285,6 +286,7 @@
     <ClInclude Include="GeneratedFiles\ui_GroupListWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="MimeDataUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">

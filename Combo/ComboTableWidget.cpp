@@ -124,6 +124,8 @@ void ComboTableWidget::setupTable()
    horizontalHeader->setDefaultAlignment(Qt::AlignLeft);
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this,
       &ComboTableWidget::updateGui);
+   connect(&ComboManager::instance().groupListRef(), &GroupList::combosChangedGroup, this,
+      &ComboTableWidget::onComboChangedGroup);
    QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
 
    if (!verticalHeader)
@@ -521,6 +523,17 @@ void ComboTableWidget::onDoubleClick()
    default:
       break;
    }
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::onComboChangedGroup()
+{
+   proxyModel_.invalidate();
+   ComboManager::instance().saveComboListToFile();
+   this->resizeColumnsToContents();
 }
 
 

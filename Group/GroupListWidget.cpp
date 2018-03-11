@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "GroupDialog.h"
 #include "GroupListWidget.h"
+#include "MimeDataUtils.h"
 #include "Combo/ComboManager.h"
 #include <XMiLib/Exception.h>
 
@@ -114,6 +115,16 @@ qint32 GroupListWidget::selectedGroupIndex() const
 //**********************************************************************************************************************
 bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
 {
+   if (event->type() == QEvent::DragEnter)
+   {
+      QDropEvent* dropEvent = dynamic_cast<QDropEvent*>(event);
+      if (dropEvent)
+      {
+         QMimeData const* mimeData = dropEvent->mimeData();
+         ComboManager::instance().groupListRef().setDropType(mimeData && mimeData->hasFormat(kUuuidListMimeType) ? 
+            GroupList::ComboDrop : GroupList::GroupDrop);
+      }
+   }
    if (event->type() != QEvent::MouseButtonPress)
       return QObject::eventFilter(object, event);
    QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);

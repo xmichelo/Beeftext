@@ -9,16 +9,19 @@
 
 #include "stdafx.h"
 #include "ComboList.h"
+#include "MimeDataUtils.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 
 
 namespace {
+
 qint32 const kJsonComboListFileFormatVersionNumber = 3; ///< The version number for the combo list file format
-QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for the file format version
-QString const kKeyCombos = "combos"; ///< The JSon key for combos
-QString const kKeyGroups = "groups"; ///< The JSon key for groups
-}
+   QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for the file format version
+   QString const kKeyCombos = "combos"; ///< The JSon key for combos
+   QString const kKeyGroups = "groups"; ///< The JSon key for groups
+
+} // anonymous namespace
 
 
 QString const ComboList::defaultFileName = "comboList.json";
@@ -623,3 +626,58 @@ QVariant ComboList::headerData(int section, Qt::Orientation orientation, int rol
 
    return QVariant();
 }
+
+
+//**********************************************************************************************************************
+/// \return The supported drop actions
+//**********************************************************************************************************************
+Qt::DropActions ComboList::supportedDropActions() const
+{
+   return Qt::MoveAction;
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+Qt::ItemFlags ComboList::flags(QModelIndex const& index) const
+{
+   Qt::ItemFlags defaultFlags = QAbstractTableModel::flags(index);
+   if (index.isValid())
+      return Qt::ItemIsDragEnabled | defaultFlags;
+   else
+      return defaultFlags;
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+QStringList ComboList::mimeTypes() const
+{
+   return QStringList() << kUuuidListMimeType;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] indexes The indexes
+/// \return The MIME data for the indexes
+//**********************************************************************************************************************
+QMimeData* ComboList::mimeData(const QModelIndexList &indexes) const
+{
+   QList<QUuid> uuids;
+   for (QModelIndex const& index : indexes)
+   {
+      if (index.column() != 0) /// we want only one notif per row
+         continue;
+      qint32 const row = index.row();
+      if ((row < 0) || (row >= qint32(combos_.size())))
+         continue;
+      uuids.append(combos_[row]->uuid());
+   }
+   if (uuids.isEmpty())
+      return nullptr;
+   return uuidListToMimeData(uuids);
+}
+
+

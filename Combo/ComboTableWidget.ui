@@ -83,6 +83,9 @@
      <property name="focusPolicy">
       <enum>Qt::StrongFocus</enum>
      </property>
+     <property name="acceptDrops">
+      <bool>false</bool>
+     </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
@@ -91,6 +94,18 @@
      </property>
      <property name="showDropIndicator" stdset="0">
       <bool>false</bool>
+     </property>
+     <property name="dragEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="dragDropOverwriteMode">
+      <bool>false</bool>
+     </property>
+     <property name="dragDropMode">
+      <enum>QAbstractItemView::DragOnly</enum>
+     </property>
+     <property name="defaultDropAction">
+      <enum>Qt::MoveAction</enum>
      </property>
      <property name="alternatingRowColors">
       <bool>false</bool>

@@ -19,6 +19,7 @@
 //**********************************************************************************************************************
 class GroupList: public QAbstractListModel
 {
+
    Q_OBJECT
 public: // type definitions
    typedef VecSPGroup::iterator iterator; ///< Type definition for iterator
@@ -26,6 +27,11 @@ public: // type definitions
    typedef VecSPGroup::reverse_iterator reverse_iterator; ///< Type definition for iterator
    typedef VecSPGroup::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
    typedef SPGroup value_type; ///< The value-type for group
+
+   enum EDropType {
+      GroupDrop = 0, ///< Group drop mode
+      ComboDrop = 1, ///< Combo drop mode
+   };
 
 public: // friends
    friend void swap(GroupList& first, GroupList& second); ///< Swap two group lists
@@ -60,7 +66,9 @@ public: // member functions
    QJsonArray toJsonArray() const; ///< Export the group list to a JSON array
    bool readFromJsonArray(QJsonArray const& array, qint32 formatVersion, QString* outErrorMessage); ///< Read the group list from a JSON array
    bool ensureNotEmpty(); ///< make sure that the group list is not empty, creating one if necessary
-
+   void setDropType(EDropType dropType); ///< Set the drop type
+   bool processComboListDrop(QList<QUuid> const& uuids, qint32 index); ///< Process the dropping of a combo list
+   bool processGroupDrop(qint32 groupIndex, qint32 newPosition); ///< Process the dropping of a combo list
    /// \name List model member functions
    /// \{
    int rowCount(QModelIndex const& parent = QModelIndex()) const override; ///< Returns the number of rows in the model
@@ -74,9 +82,11 @@ public: // member functions
 
 signals:
    void groupMoved(SPGroup group, qint32 newIndex); ///< Signal for the moving of a group in the list.
+   void combosChangedGroup(); ///< Signal for the changing of combo groups.
 
 private: // data members
    VecSPGroup groups_; ///< The list of groups
+   EDropType dropType_; ///< The type of data the user is about to drop
 };
 
 

@@ -9,53 +9,15 @@
 
 #include "stdafx.h"
 #include "GroupList.h"
+#include "Combo/ComboManager.h"
+#include "MimeDataUtils.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 
 
 namespace {
-
 QString kDefaultGroupName() { return QObject::tr("Default Group"); } ///< The default group name
 QString kDefaultGroupDescription() { return QObject::tr("The default group."); } ///< The default group description
-QString const kGroupIndexMimeType = "application/x-beeftextgroupindex"; ///< the mime type for a serialized group index
-QMimeData* groupIndexToMimeData(qint32 index); ///< Create a QMimeData instance() of a specific MIME type containing a group index
-qint32 mimeDataToGroupIndex(QMimeData const& mimeData); ///< Parse a group index from a MIME data of time
-
-
-//**********************************************************************************************************************
-/// \param[in] index
-/// \return A newly allocated QMimeData instance() containing the index of a group in a Beeftext specific MIME type
-//**********************************************************************************************************************
-QMimeData* groupIndexToMimeData(qint32 index)
-{
-   QMimeData *data = new QMimeData();
-   QByteArray array;
-   QDataStream stream(&array, QIODevice::WriteOnly);
-   stream << index;
-   data->setData(kGroupIndexMimeType, array);
-   return data;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] mimeData The MIME data
-/// \return The index contained in the MIME data
-/// \return -1 if a problem occurs
-//**********************************************************************************************************************
-qint32 mimeDataToGroupIndex(QMimeData const& mimeData)
-{
-   if (!mimeData.hasFormat(kGroupIndexMimeType))
-      return -1;
-   QByteArray array = mimeData.data(kGroupIndexMimeType);
-   if (array.size() != sizeof(qint32))
-      return -1;
-   QDataStream stream(&array, QIODevice::ReadOnly);
-   qint32 result;
-   stream >> result;
-   return result;
-}
-
-
 }
 
 
@@ -67,6 +29,7 @@ qint32 mimeDataToGroupIndex(QMimeData const& mimeData)
 void swap(GroupList& first, GroupList& second)
 {
    first.groups_.swap(second.groups_);
+   std::swap(first.dropType_, second.dropType_);
 }
 
 
@@ -75,6 +38,7 @@ void swap(GroupList& first, GroupList& second)
 //**********************************************************************************************************************
 GroupList::GroupList(QObject* parent)
    : QAbstractListModel(parent)
+   , dropType_(EDropType::GroupDrop)
 {
 
 }
@@ -85,6 +49,7 @@ GroupList::GroupList(QObject* parent)
 //**********************************************************************************************************************
 GroupList::GroupList(GroupList const& ref)
    : groups_(ref.groups_)
+   , dropType_(ref.dropType_)
 {
 
 }
@@ -95,6 +60,7 @@ GroupList::GroupList(GroupList const& ref)
 //**********************************************************************************************************************
 GroupList::GroupList(GroupList&& ref)
    : groups_(std::move(ref.groups_))
+   , dropType_(std::move(ref.dropType_))
 {
 
 }
@@ -107,7 +73,10 @@ GroupList::GroupList(GroupList&& ref)
 GroupList& GroupList::operator=(GroupList const& ref)
 {
    if (&ref != this)
+   {
       groups_ = ref.groups_;
+      dropType_ = ref.dropType_;
+   }
    return *this;
 }
 
@@ -119,7 +88,10 @@ GroupList& GroupList::operator=(GroupList const& ref)
 GroupList& GroupList::operator=(GroupList&& ref)
 {
    if (&ref != this)
+   {
       groups_ = std::move(ref.groups_);
+      dropType_ = std::move(ref.dropType_);
+   }
    return *this;
 }
 
@@ -381,6 +353,81 @@ bool GroupList::ensureNotEmpty()
 
 
 //**********************************************************************************************************************
+/// The drop type is a bit of a hack. The flags() model function determines if an item should accept a drop, 
+/// but it should return a different value depending on what is dragged (combo or group)
+//**********************************************************************************************************************
+void GroupList::setDropType(EDropType dropType)
+{
+   dropType_ = dropType;
+   qDebug() << QString("Drop type: %1").arg(ComboDrop == dropType ? "Combo" : "Group");
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] uuids The list of UUID of the dropped combos
+/// \param[in] index the index of the group the combos were dropped on
+//**********************************************************************************************************************
+bool GroupList::processComboListDrop(QList<QUuid> const& uuids, qint32 index)
+{
+   if ((index < 0) || (index >= groups_.size()) || (!groups_[index]) ||uuids.isEmpty())
+      return false;
+   SPGroup group = groups_[index];
+   ComboList& comboList = ComboManager::instance().comboListRef();
+   bool changed = false;
+   for (QUuid const& uuid : uuids)
+   {
+      ComboList::iterator it = comboList.findByUuid(uuid);
+      if ((it == comboList.end()) || ((*it)->group() == group))
+         continue;
+      (*it)->setGroup(group);
+      changed = true;
+   }
+
+   if (changed)
+      emit combosChangedGroup();
+   return changed;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] groupIndex The index of the dropped group in the list
+/// \param[in] dropIndex The index at which the group has been drop
+//**********************************************************************************************************************
+bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
+{
+   qint32 const listSize = groups_.size();
+   if ((dropIndex < 0) || (groupIndex < 0) || (groupIndex >= listSize))
+      return false;
+   SPGroup group = groups_[groupIndex];
+   if (!group)
+      return false;
+
+   // phase 1: copy the group to it news location
+   if ((dropIndex == groupIndex) || (dropIndex == groupIndex + 1)) // no effect
+      return false;
+   this->beginInsertRows(QModelIndex(), dropIndex, dropIndex);
+   groups_.insert(groups_.begin() + dropIndex, group);
+   this->endInsertRows();
+
+   // phase 2: remove the old item
+   qint32 const removeIndex = groupIndex + ((dropIndex >= 0) && (dropIndex < groupIndex) ? 1 : 0); // the srcIndex may have been shifted by the insertion of the copy
+   this->beginRemoveRows(QModelIndex(), removeIndex, removeIndex);
+   groups_.erase(groups_.begin() + removeIndex);
+   this->endRemoveRows();
+   this->beginResetModel();
+   this->endResetModel();
+
+   // emit a notification signal
+   GroupList::const_iterator newPosIt = this->findByUuid(group->uuid());
+   if (newPosIt == this->end())
+      throw xmilib::Exception("Internal error: %1(): could not located moved group.");
+   emit groupMoved(group, newPosIt - this->begin());
+   return true;
+
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] parent The parent model index
 //**********************************************************************************************************************
 int GroupList::rowCount(const QModelIndex &parent) const
@@ -423,10 +470,22 @@ Qt::DropActions GroupList::supportedDropActions() const
 Qt::ItemFlags GroupList::flags(QModelIndex const& index) const
 {
    Qt::ItemFlags defaultFlags = QAbstractListModel::flags(index);
-   if (index.isValid())
-      return Qt::ItemIsDragEnabled | defaultFlags;
-   else
-      return Qt::ItemIsDropEnabled | defaultFlags;
+   // The drop behavior is dictated by the validity of the index, an invalid index means the dropping target is
+   // between two valid items
+   if (dropType_ == GroupDrop) /// user is dragging a group
+   {
+      if (index.isValid()) // group cannot be drop onto other items
+         return Qt::ItemIsDragEnabled | defaultFlags;
+      else // group can be dropped in between items
+         return Qt::ItemIsDropEnabled | defaultFlags;
+   }
+   else // user is dragging combos
+   {
+      if (index.isValid()) // combos can be dropped onto other items
+         return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | defaultFlags;
+      else // combos cannot be dropped between item
+         return defaultFlags;
+   }
 }
 
 
@@ -435,7 +494,7 @@ Qt::ItemFlags GroupList::flags(QModelIndex const& index) const
 //**********************************************************************************************************************
 QStringList GroupList::mimeTypes() const
 {
-   return QStringList() << kGroupIndexMimeType;
+   return QStringList() << kGroupIndexMimeType << kUuuidListMimeType;
 }
 
 
@@ -460,36 +519,13 @@ QMimeData* GroupList::mimeData(const QModelIndexList &indexes) const
 bool GroupList::dropMimeData(QMimeData const*data, Qt::DropAction action, int row, int column,
    QModelIndex const& parent)
 {
-
-   if ((!data) || (row < 0))
-      return false;
-   qint32 srcIndex = mimeDataToGroupIndex(*data);
-   qint32 const listSize = groups_.size();
-   if ((srcIndex < 0) || (srcIndex >= groups_.size()))
-      return false;
-   SPGroup group = groups_[srcIndex];
-   if (!group)
+   if (!data)
       return false;
 
-   // phase 1: copy the group to it news location
-   if ((row == srcIndex) || (row == srcIndex + 1)) // no effect
-      return false;
-   this->beginInsertRows(QModelIndex(), row, row);
-   groups_.insert(groups_.begin() + row, group);
-   this->endInsertRows();
-   
-   // phase 2: remove the old item
-   qint32 const removeIndex = srcIndex + ((row >= 0) && (row < srcIndex) ? 1 : 0); // the srcIndex may have been shifted by the insertion of the copy
-   this->beginRemoveRows(QModelIndex(), removeIndex, removeIndex);
-   groups_.erase(groups_.begin() + removeIndex);
-   this->endRemoveRows();
-   this->beginResetModel();
-   this->endResetModel();
+   if (data->hasFormat(kUuuidListMimeType))
+      return processComboListDrop(mimeDataToUuidList(*data), parent.row());
 
-   // emit a notification signal
-   GroupList::const_iterator newPosIt = this->findByUuid(group->uuid());
-   if (newPosIt == this->end())
-      throw xmilib::Exception("Internal error: %1(): could not located moved group.");
-   emit groupMoved(group, newPosIt - this->begin());
-   return true;
+   return processGroupDrop(mimeDataToGroupIndex(*data), row);
 }
+
+

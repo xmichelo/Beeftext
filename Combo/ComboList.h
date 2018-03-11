@@ -81,7 +81,12 @@ public: // member functions
    int columnCount(QModelIndex const & = QModelIndex()) const override; ///< Retrieve the number of row in the table model
    QVariant data(QModelIndex const& index = QModelIndex(), int role = Qt::DisplayRole) const override; ///< Retrieve the data from the table model
    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override; ///< Retrieve header data from the table model
-   ///\}
+   Qt::DropActions supportedDropActions() const override; ///< Retrieve the supported drop actions
+   Qt::ItemFlags flags(QModelIndex const& index) const override; ///< Retrieve the item flags
+   QStringList mimeTypes() const; ///< Get the MIME type that are supported for dropping
+   QMimeData* mimeData(const QModelIndexList &indexes) const override; ///< Get the MIME data for some indexes
+   //bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent); ///< process the dropping of MIME data
+                                                                                                                    ///\}
 
 private: // data members
    VecSPCombo combos_; ///< The list of combos

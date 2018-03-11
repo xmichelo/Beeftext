@@ -64,6 +64,7 @@ private slots:
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
    void onContextMenuRequested(); ///< Slot for the combo table context menu
    void onDoubleClick(); ///< Slot for the double clicking in the table view
+   void onComboChangedGroup(); ///< Slot for when some combos groups have been changed
 
 private: // data members
    Ui::ComboTableWidget ui_; ///< The GUI for the frame
