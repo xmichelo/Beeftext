@@ -14,10 +14,51 @@
 
 
 namespace {
-   QString kDefaultGroupName() { return QObject::tr("Default Group"); } ///< The default group name
-   QString kDefaultGroupDescription() { return QObject::tr("The default group."); } ///< The default group description
-   QString const kGroupIndexMimeType = "application/x-beeftextgroupindex"; ///< the mime type for a serialized group index
+
+QString kDefaultGroupName() { return QObject::tr("Default Group"); } ///< The default group name
+QString kDefaultGroupDescription() { return QObject::tr("The default group."); } ///< The default group description
+QString const kGroupIndexMimeType = "application/x-beeftextgroupindex"; ///< the mime type for a serialized group index
+QMimeData* groupIndexToMimeData(qint32 index); ///< Create a QMimeData instance() of a specific MIME type containing a group index
+qint32 mimeDataToGroupIndex(QMimeData const& mimeData); ///< Parse a group index from a MIME data of time
+
+
+//**********************************************************************************************************************
+/// \param[in] index
+/// \return A newly allocated QMimeData instance() containing the index of a group in a Beeftext specific MIME type
+//**********************************************************************************************************************
+QMimeData* groupIndexToMimeData(qint32 index)
+{
+   QMimeData *data = new QMimeData();
+   QByteArray array;
+   QDataStream stream(&array, QIODevice::WriteOnly);
+   stream << index;
+   data->setData(kGroupIndexMimeType, array);
+   return data;
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] mimeData The MIME data
+/// \return The index contained in the MIME data
+/// \return -1 if a problem occurs
+//**********************************************************************************************************************
+qint32 mimeDataToGroupIndex(QMimeData const& mimeData)
+{
+   if (!mimeData.hasFormat(kGroupIndexMimeType))
+      return -1;
+   QByteArray array = mimeData.data(kGroupIndexMimeType);
+   if (array.size() != sizeof(qint32))
+      return -1;
+   QDataStream stream(&array, QIODevice::ReadOnly);
+   qint32 result;
+   stream >> result;
+   return result;
+}
+
+
+}
+
+
 
 //**********************************************************************************************************************
 /// \param[in] first The first group
@@ -404,13 +445,7 @@ QStringList GroupList::mimeTypes() const
 //**********************************************************************************************************************
 QMimeData* GroupList::mimeData(const QModelIndexList &indexes) const
 {
-   QMimeData *data = new QMimeData();
-   QByteArray array;
-   QDataStream stream(&array, QIODevice::WriteOnly);
-   if (indexes.size() > 0)
-      stream << indexes[0].row();
-   data->setData(kGroupIndexMimeType, array);
-   return data;
+   return ::groupIndexToMimeData(indexes.size() > 0 ? indexes[0].row() : -1);
 }
 
 
@@ -425,43 +460,26 @@ QMimeData* GroupList::mimeData(const QModelIndexList &indexes) const
 bool GroupList::dropMimeData(QMimeData const*data, Qt::DropAction action, int row, int column,
    QModelIndex const& parent)
 {
-   if (!data || (!data->hasFormat(kGroupIndexMimeType)))
-      return false;
-   QByteArray array = data->data(kGroupIndexMimeType);
-   if (array.size() != sizeof(qint32))
-      return false;
-   QDataStream stream(&array, QIODevice::ReadOnly);
-   qint32 srcIndex;
-   stream >> srcIndex;
 
+   if ((!data) || (row < 0))
+      return false;
+   qint32 srcIndex = mimeDataToGroupIndex(*data);
    qint32 const listSize = groups_.size();
    if ((srcIndex < 0) || (srcIndex >= groups_.size()))
       return false;
    SPGroup group = groups_[srcIndex];
    if (!group)
       return false;
-   qint32 const dstIndex = row;
 
    // phase 1: copy the group to it news location
-   if (dstIndex < 0) // Dropped in an empty area after the last item
-   {
-      if (srcIndex >= listSize - 1)
-         return false;
-      this->beginInsertRows(QModelIndex(), listSize, listSize);
-      groups_.push_back(group);
-      this->endInsertRows();
-   }
-   else
-   {
-      if ((dstIndex == srcIndex) || (dstIndex == srcIndex + 1)) // no effect
-         return false;
-      this->beginInsertRows(QModelIndex(), dstIndex, dstIndex);
-      groups_.insert(groups_.begin() + dstIndex, group);
-      this->endInsertRows();
-   }
+   if ((row == srcIndex) || (row == srcIndex + 1)) // no effect
+      return false;
+   this->beginInsertRows(QModelIndex(), row, row);
+   groups_.insert(groups_.begin() + row, group);
+   this->endInsertRows();
    
    // phase 2: remove the old item
-   qint32 const removeIndex = srcIndex + ((dstIndex >= 0) && (dstIndex < srcIndex) ? 1 : 0); // the srcIndex may have been shifted by the insertion of the copy
+   qint32 const removeIndex = srcIndex + ((row >= 0) && (row < srcIndex) ? 1 : 0); // the srcIndex may have been shifted by the insertion of the copy
    this->beginRemoveRows(QModelIndex(), removeIndex, removeIndex);
    groups_.erase(groups_.begin() + removeIndex);
    this->endRemoveRows();

@@ -901,12 +901,12 @@
         <translation>Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
     </message>
     <message>
-        <location filename="../Group/GroupList.cpp" line="17"/>
+        <location filename="../Group/GroupList.cpp" line="18"/>
         <source>Default Group</source>
         <translation>Groupe Par Défaut</translation>
     </message>
     <message>
-        <location filename="../Group/GroupList.cpp" line="18"/>
+        <location filename="../Group/GroupList.cpp" line="19"/>
         <source>The default group.</source>
         <translation>Le groupe par défaut.</translation>
     </message>
