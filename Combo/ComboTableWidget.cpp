@@ -287,6 +287,7 @@ void ComboTableWidget::onActionNewCombo()
    try
    {
       SPCombo combo = Combo::create();
+      combo->setGroup(groupListWidget_->selectedGroup());
       if (!ComboDialog::run(combo, tr("New Combo")))
          return;
       ComboManager& comboManager = ComboManager::instance();

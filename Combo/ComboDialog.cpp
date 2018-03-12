@@ -143,6 +143,13 @@ bool ComboDialog::checkAndReportInvalidCombo()
       return false;
    }
 
+   SPGroup const group = ui_.comboGroup->currentGroup();
+   if (!group)
+   {
+      QMessageBox::critical(this, tr("Error"), tr("The group is invalid."));
+      return false;
+   }
+
    // we check for conflicts that would make some combo 'unreachable'
    ComboList const& comboList = ComboManager::instance().comboListRef();
    for (SPCombo const& combo : comboList)
@@ -192,7 +199,7 @@ void ComboDialog::updateGui() const
 {
    QString keyword = ui_.editKeyword->text();
    bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
-      (!ui_.editSnippet->toPlainText().isEmpty());
+      (!ui_.editSnippet->toPlainText().isEmpty()) && ui_.comboGroup->currentGroup();
    ui_.actionOk->setEnabled(canAccept);
    ui_.buttonOk->setEnabled(canAccept);
 }
