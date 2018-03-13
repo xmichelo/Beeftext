@@ -42,6 +42,7 @@ private: // member functions
 	ComboTableWidget& operator=(ComboTableWidget const&) = delete; ///< Disabled assignment operator
 	ComboTableWidget& operator=(ComboTableWidget&&) = delete; ///< Disabled move assignment operator
    void setupTable(); ///< Setup the combo table
+   void setupKeyboadShortcuts(); ///< Setup the keyboard shortcuts
    void setupCombosMenu(); ///< Setup the 'Combos' menu
    void setupContextMenu(); ///< Setup the context menu
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
@@ -51,6 +52,8 @@ private: // member functions
 
 private slots:
    void updateGui() const; ///< Update the GUI state
+   void onActionStartSearch(); ///< Slot for the start of the search
+   void onActionClearSearch(); ///< Slot for the clearing of the search box
    void onActionNewCombo(); ///< Slot for the 'Add Combo' action
    void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action

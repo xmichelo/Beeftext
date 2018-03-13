@@ -50,27 +50,10 @@ ComboTableWidget::ComboTableWidget(QWidget* parent)
 {
    ui_.setupUi(this);
    this->setupTable();
+   this->setupKeyboadShortcuts();
    this->setupCombosMenu();
    this->setupContextMenu();
    this->updateGui();
-   connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated,
-      this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->selectAll(); });
-   connect(new QShortcut(QKeySequence("Escape"), this), &QShortcut::activated,
-      this, [&]() { this->ui_.editSearch->setFocus(); this->ui_.editSearch->clear(); });
-   connect(new QShortcut(QKeySequence("Ctrl+N"), this), &QShortcut::activated,
-      this, &ComboTableWidget::onActionNewCombo);
-   connect(new QShortcut(QKeySequence("Delete"), this), &QShortcut::activated, 
-      this, &ComboTableWidget::onActionDeleteCombo);
-   connect(new QShortcut(QKeySequence("Ctrl+Shift+N"), this), &QShortcut::activated,
-      this, &ComboTableWidget::onActionDuplicateCombo);
-   connect(new QShortcut(QKeySequence(Qt::Key_Return), this), &QShortcut::activated,
-      this, &ComboTableWidget::onActionEditCombo);
-   connect(new QShortcut(QKeySequence("Ctrl+E"), this), &QShortcut::activated,
-      this, &ComboTableWidget::onActionEnableDisableCombo);
-   connect(new QShortcut(QKeySequence("Ctrl+A"), this), &QShortcut::activated,
-      this, &ComboTableWidget::onActionSelectAll);
-   connect(new QShortcut(QKeySequence("Ctrl+D"), this), &QShortcut::activated,
-      this, &ComboTableWidget::onActionDeselectAll);
 }
 
 
@@ -91,6 +74,16 @@ void ComboTableWidget::runComboImportDialog(QString const& filePath)
    if (QDialog::Accepted == ComboImportDialog(filePath, 
          (groupListWidget_ ? groupListWidget_->selectedGroup() : SPGroup()), this).exec())
       this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
+{
+   proxyModel_.setGroup(group);
+   this->resizeColumnsToContents();
 }
 
 
@@ -136,6 +129,22 @@ void ComboTableWidget::setupTable()
    this->resizeColumnsToContents();
    ui_.tableComboList->setStyle(proxyStyle_.get());
    ui_.tableComboList->viewport()->installEventFilter(this); // we install an event filter that override the default double-click behavior
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::setupKeyboadShortcuts()
+{
+   // Most shortcuts are set via the actions in the widget UI form. However, shortcuts work only if the action are
+   // used. Although actions are not used in the form itself, they are used in the menu, instead for the ones that are
+   // defined below
+
+   connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated, this, 
+      &ComboTableWidget::onActionStartSearch);
+   connect(new QShortcut(QKeySequence("Escape"), this), &QShortcut::activated, this,
+      &ComboTableWidget::onActionClearSearch);
 }
 
 
@@ -276,6 +285,27 @@ void ComboTableWidget::updateGui() const
    ui_.actionEnableDisableCombo->setText(enableDisableText);
    ui_.actionEnableDisableCombo->setToolTip(enableDisableToolTip);
    ui_.actionEnableDisableCombo->setIconText(enableDisableToolTip);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::onActionStartSearch()
+{
+   this->ui_.editSearch->setFocus(); 
+   this->ui_.editSearch->selectAll();
+}
+
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::onActionClearSearch()
+{
+   this->ui_.editSearch->setFocus(); 
+   this->ui_.editSearch->clear();
 }
 
 
@@ -534,16 +564,6 @@ void ComboTableWidget::onComboChangedGroup()
 {
    proxyModel_.invalidate();
    ComboManager::instance().saveComboListToFile();
-   this->resizeColumnsToContents();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
-{
-   proxyModel_.setGroup(group);
    this->resizeColumnsToContents();
 }
 

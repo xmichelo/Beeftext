@@ -86,6 +86,9 @@
    <property name="toolTip">
     <string>New</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+N</string>
+   </property>
   </action>
   <action name="actionDeleteGroup">
    <property name="text">
@@ -94,10 +97,16 @@
    <property name="toolTip">
     <string>Delete</string>
    </property>
+   <property name="shortcut">
+    <string>Shift+Del</string>
+   </property>
   </action>
   <action name="actionEditGroup">
    <property name="text">
     <string>&amp;Edit</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+Return</string>
    </property>
   </action>
  </widget>

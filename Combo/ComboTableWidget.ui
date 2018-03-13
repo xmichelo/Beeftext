@@ -202,7 +202,7 @@
     <string>Duplicate Combo</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+N</string>
+    <string>Ctrl+U</string>
    </property>
   </action>
   <action name="actionSelectAll">
@@ -240,7 +240,7 @@
     <string>Export Selected Combos</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+E</string>
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionImportCombos">
@@ -262,7 +262,7 @@
     <string>Export All Combos</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+A</string>
+    <string>Ctrl+Shift+O</string>
    </property>
   </action>
  </widget>
