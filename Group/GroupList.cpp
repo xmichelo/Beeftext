@@ -359,7 +359,6 @@ bool GroupList::ensureNotEmpty()
 void GroupList::setDropType(EDropType dropType)
 {
    dropType_ = dropType;
-   qDebug() << QString("Drop type: %1").arg(ComboDrop == dropType ? "Combo" : "Group");
 }
 
 

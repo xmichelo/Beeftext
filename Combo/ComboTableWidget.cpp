@@ -84,6 +84,10 @@ void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
 {
    proxyModel_.setGroup(group);
    this->resizeColumnsToContents();
+   QItemSelectionModel *model = ui_.tableComboList->selectionModel();
+   if (model)
+      model->clear();
+   this->updateGui();
 }
 
 

@@ -36,10 +36,12 @@ signals:
 
 private: // member functions
    void updateGui(); ///< update the GUI state
-   void setupGroupsMenu(); ///< setup the 'groups' menu
+   void setupGroupsMenu(); ///< Setup the 'groups' menu
+   void setupContextMenu(); ///< Setup the context menu
    void changeEvent(QEvent *event) override; ///< Change event handler
    qint32 selectedGroupIndex() const; ///< Retrieve the index of the selected combo
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
+   QMenu* createMenu(); ///< Create the menu used for the group button and context menu
 
 private slots: 
    void onActionNewGroup(); ///< Slot for the 'new group' action
@@ -47,9 +49,11 @@ private slots:
    void onActionDeleteGroup(); ///< Slot for the 'delete group' action
    void onSelectionChanged(QItemSelection const& selected, QItemSelection const& deselected); ///< Slot for selection change
    void onGroupMoved(SPGroup group, qint32 newIndex); ///< Slot for the moving of a group in the list
+   void onContextMenuRequested(); ///< Slot for the context menu
 
 private: // data members
    Ui::GroupListWidget ui_; ///< The GUI for the dialog
+   QMenu* contextMenu_; ///< The context menu for the list view
 };
 
 

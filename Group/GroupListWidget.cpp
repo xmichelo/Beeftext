@@ -20,11 +20,13 @@
 //**********************************************************************************************************************
 GroupListWidget::GroupListWidget(QWidget* parent)
    : QWidget(nullptr)
+   , contextMenu_(nullptr)
 {
    ui_.setupUi(this);
    GroupList& groups = ComboManager::instance().comboListRef().groupListRef();
    ui_.listGroup->setModel(&groups);
    ui_.listGroup->viewport()->installEventFilter(this);
+   this->setupContextMenu();
    this->setupGroupsMenu();
    QItemSelectionModel* selectionModel = ui_.listGroup->selectionModel();
    if (!selectionModel)
@@ -63,10 +65,10 @@ void GroupListWidget::clearSelection() const
 //**********************************************************************************************************************
 void GroupListWidget::updateGui()
 {
-   qint32 const groupCount = ComboManager::instance().groupListRef().size();
    qint32 const index = this->selectedGroupIndex();
-   ui_.actionDeleteGroup->setEnabled(groupCount > 1);
-   ui_.actionEditGroup->setEnabled((index >= 0) && (index < groupCount));
+   bool const validIndex = (index >= 0) && (index < ComboManager::instance().groupListRef().size());
+   ui_.actionDeleteGroup->setEnabled(validIndex);
+   ui_.actionEditGroup->setEnabled(validIndex);
 }
 
 
@@ -75,12 +77,20 @@ void GroupListWidget::updateGui()
 //**********************************************************************************************************************
 void GroupListWidget::setupGroupsMenu()
 {
-   QMenu* menu = new QMenu(this);
-   menu->addAction(ui_.actionNewGroup);
-   menu->addAction(ui_.actionEditGroup);
-   menu->addSeparator();
-   menu->addAction(ui_.actionDeleteGroup);
-   ui_.buttonGroups->setMenu(menu);
+   ui_.buttonGroups->setMenu(this->createMenu());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void GroupListWidget::setupContextMenu()
+{
+   if (contextMenu_)
+      contextMenu_->deleteLater();
+   contextMenu_ = createMenu();
+   ui_.listGroup->setContextMenuPolicy(Qt::CustomContextMenu);
+   connect(ui_.listGroup, &QListView::customContextMenuRequested, this, &GroupListWidget::onContextMenuRequested);
 }
 
 
@@ -101,8 +111,11 @@ void GroupListWidget::changeEvent(QEvent *event)
 //**********************************************************************************************************************
 qint32 GroupListWidget::selectedGroupIndex() const
 {
-   QModelIndex const index = ui_.listGroup->currentIndex();
-   return index.isValid() ? index.row() : -1;
+   QItemSelectionModel* model = ui_.listGroup->selectionModel();
+   if (!model)
+      return -1;
+   QModelIndexList const selectedIndexes = model->selectedIndexes();
+   return selectedIndexes.isEmpty() ? -1 : selectedIndexes.front().row();
 }
 
 
@@ -141,6 +154,20 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
       return true;
    }
    return QObject::eventFilter(object, event);
+}
+
+
+//**********************************************************************************************************************
+/// \return The menu
+//**********************************************************************************************************************
+QMenu* GroupListWidget::createMenu()
+{
+   QMenu* menu = new QMenu(this);
+   menu->addAction(ui_.actionNewGroup);
+   menu->addAction(ui_.actionEditGroup);
+   menu->addSeparator();
+   menu->addAction(ui_.actionDeleteGroup);
+   return menu;
 }
 
 
@@ -229,19 +256,10 @@ void GroupListWidget::onActionDeleteGroup()
 //**********************************************************************************************************************
 void GroupListWidget::onSelectionChanged(QItemSelection const& selected, QItemSelection const& deselected)
 {
-   QItemSelectionModel* model = ui_.listGroup->selectionModel();
-   if (!model)
-      return;
-   QModelIndexList const selectedIndexes = model->selectedIndexes();
-   if (selectedIndexes.isEmpty())
-   {
-      emit selectedGroupChanged(SPGroup());
-      return;
-   }
-   qint32 const row = selectedIndexes.front().row();
-   GroupList& groups = ComboManager::instance().groupListRef();
    this->updateGui();
-   emit selectedGroupChanged(((row < 0) || (row >= groups.size())) ? nullptr : groups[row]);
+   GroupList& groups = ComboManager::instance().groupListRef();
+   qint32 index = this->selectedGroupIndex();
+   emit selectedGroupChanged(((index < 0) || (index >= groups.size())) ? nullptr : groups[index]);
 
 }
 
@@ -257,6 +275,16 @@ void GroupListWidget::onGroupMoved(SPGroup group, qint32 newIndex)
    ComboManager& comboManager = ComboManager::instance();
    ui_.listGroup->setCurrentIndex(comboManager.groupListRef().index(newIndex));
    comboManager.saveComboListToFile();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void GroupListWidget::onContextMenuRequested()
+{
+   if (contextMenu_)
+      contextMenu_->exec(QCursor::pos());
 }
 
 
