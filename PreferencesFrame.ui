@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>662</height>
+    <height>488</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -335,6 +335,13 @@
         </layout>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="checkAutoBackup">
+        <property name="text">
+         <string>Automatically backup combo list files</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -346,7 +353,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>403</height>
+       <height>0</height>
       </size>
      </property>
     </spacer>
@@ -741,6 +748,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkAutoBackup</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onAutoBackupCheckChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>422</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
@@ -757,5 +780,6 @@
   <slot>onRadioAutomaticComboTriggerChecked(bool)</slot>
   <slot>onActionChangeShortcut()</slot>
   <slot>onActionResetComboTriggerShortcut()</slot>
+  <slot>onAutoBackupCheckChanged()</slot>
  </slots>
 </ui>

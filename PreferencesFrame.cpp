@@ -72,7 +72,7 @@ void PreferencesFrame::loadPreferences() const
    QSignalBlocker blockers[] =  { QSignalBlocker(ui_.checkPlaySoundOnCombo),
       QSignalBlocker(ui_.checkAutoCheckForUpdates), QSignalBlocker(ui_.checkUseClipboardForComboSubstitution),
       QSignalBlocker(ui_.checkAutoStart), QSignalBlocker(ui_.radioComboTriggerAuto), 
-      QSignalBlocker(ui_.radioComboTriggerManual) }; // Temporarily Block signals emission by the controls
+      QSignalBlocker(ui_.radioComboTriggerManual), QSignalBlocker(ui_.checkAutoBackup) }; // Temporarily Block signals emission by the controls
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
@@ -85,6 +85,7 @@ void PreferencesFrame::loadPreferences() const
    SPShortcut const shortcut = InputManager::instance().comboTriggerShortcut();
    ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
+   ui_.checkAutoBackup->setChecked(prefs_.autoBackup());
 }
 
 
@@ -305,6 +306,16 @@ void PreferencesFrame::onRadioAutomaticComboTriggerChecked(bool checked) const
 void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged() const
 {
    prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesFrame::onAutoBackupCheckChanged() const
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   prefs_.setAutoBackup(ui_.checkAutoBackup->isChecked());
 }
 
 

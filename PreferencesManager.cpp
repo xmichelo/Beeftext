@@ -32,6 +32,7 @@ namespace {
    QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
    QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
    QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+   QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
    QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
@@ -39,6 +40,7 @@ namespace {
    bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
    bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
    bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+   bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
    QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
       QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
    SPShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
@@ -86,7 +88,6 @@ PreferencesManager::PreferencesManager()
       settings_ = std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
       kDefaultValueUseAutomaticSubstitution); // this preference is cached because it is used frequently
-
 }
 
 
@@ -101,6 +102,7 @@ void PreferencesManager::reset()
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
+   this->setAutoBackup(kDefaultValueAutoBackup);
    if (isInPortableMode())
    {
       this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
@@ -400,6 +402,24 @@ SPShortcut PreferencesManager::comboTriggerShortcut() const
       return kDefaultValueComboTriggerShortcut;
    SPShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
    return result->isValid() ? result: kDefaultValueComboTriggerShortcut;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setAutoBackup(bool value)
+{
+   settings_->setValue(kKeyAutoBackup, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::autoBackup() const
+{
+   return this->readSettings<bool>(kKeyAutoBackup, kDefaultValueAutoBackup);
 }
 
 

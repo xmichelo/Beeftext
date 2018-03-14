@@ -55,6 +55,8 @@ public: // member functions
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
    void setComboTriggerShortcut(SPShortcut const& shortcut); ///< Set the combo trigger shortcut
    SPShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
+   void setAutoBackup(bool value); ///< Set the value for the 'Auto backup' preference
+   bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
    QString lastComboImportExportPath() const; ///< Retrieve the path of the last imported and exported path
    void setLastComboImportExportPath(QString const& path); ///< Retrieve the path of the last imported and exported path
    static SPShortcut defaultComboTriggerShortcut(); ///< Reset the combo trigger shortcut to its default value
