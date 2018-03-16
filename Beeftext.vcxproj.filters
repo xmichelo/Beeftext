@@ -235,6 +235,9 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="MimeDataUtils.cpp" />
+    <ClCompile Include="BackupManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -287,6 +290,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="MimeDataUtils.h" />
+    <ClInclude Include="BackupManager.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">

@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "ComboManager.h"
 #include "InputManager.h"
+#include "BackupManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
@@ -116,6 +117,7 @@ GroupList const& ComboManager::groupListRef() const
 //**********************************************************************************************************************
 bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 {
+   BackupManager::instance().cleanup();
    bool inOlderFormat = false;
    QString const& path = QDir(PreferencesManager::instance().comboListFolderPath())
       .absoluteFilePath(ComboList::defaultFileName);
@@ -142,8 +144,11 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 //**********************************************************************************************************************
 bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
 {
-   return comboList_.save(QDir(PreferencesManager::instance().comboListFolderPath())
-      .absoluteFilePath(ComboList::defaultFileName), true, outErrorMsg);
+   PreferencesManager& prefs = PreferencesManager::instance();
+   QString const filePath = QDir(prefs.comboListFolderPath()).absoluteFilePath(ComboList::defaultFileName);
+   if (prefs.autoBackup())
+      BackupManager::instance().archive(filePath);
+   return comboList_.save(filePath, true, outErrorMsg);
 }
 
 

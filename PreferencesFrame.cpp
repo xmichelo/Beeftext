@@ -314,7 +314,6 @@ void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged() const
 //**********************************************************************************************************************
 void PreferencesFrame::onAutoBackupCheckChanged() const
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    prefs_.setAutoBackup(ui_.checkAutoBackup->isChecked());
 }
 

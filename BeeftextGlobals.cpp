@@ -16,7 +16,7 @@ namespace {
 
 QString const kLogFileName = "log.txt"; ///< The name of the log file. Note keep .txt extension for easier opening by the system
 QString const kPortableModeSettingsFileName = "Settings.ini"; ///< The name of the settings file when the application runs in portable mode
-
+QString const kBackupFolderName = "Backup"; ///< The name of the backup folder
 } // anonymous namespace
 
 
@@ -51,6 +51,15 @@ QString logFilePath()
    return QDir(globals::appDataDir()).absoluteFilePath(kLogFileName);
 }
 
+
+
+//**********************************************************************************************************************
+/// \return The path of the backup folder
+//**********************************************************************************************************************
+QString backupFolderPath()
+{
+   return QDir(globals::appDataDir()).absoluteFilePath(kBackupFolderName);
+}
 
 
 //**********************************************************************************************************************
