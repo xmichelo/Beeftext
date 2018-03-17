@@ -52,7 +52,7 @@ private slots:
    void onUseCustomThemeCheckChanged() const; ///< Slot for the changing of the 'Use custom theme' check box
    void onRadioAutomaticComboTriggerChecked(bool checked) const; ///< Slot for the changing of the 'Use automatic substitution' radio button
    void onUseClipboardForComboSubstitutionCheckChanged() const; ///< Slot for the changing of the 'Use clipboard for combo substitution' check box
-   void onAutoBackupCheckChanged() const; ///< Slot for the changing of the 'Auto backup' check box
+   void onAutoBackupCheckChanged(); ///< Slot for the changing of the 'Auto backup' check box
    void onLocaleChanged() const; ///< Slot for the change of the locale
    void onUpdateIsAvailable(SPLatestVersionInfo const& latestVersionInfo); ///< Slot for the availability of an update
    void onNoUpdateIsAvailable(); ///< Slot for the lack of availability of an update

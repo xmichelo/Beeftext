@@ -805,7 +805,7 @@
     <message>
         <location filename="../PreferencesFrame.ui" line="341"/>
         <source>Automatically backup combo list files</source>
-        <translation type="unfinished"></translation>
+        <translation>Faire des copies de sauvegarde automatique de la liste des combos</translation>
     </message>
     <message>
         <location filename="../PreferencesFrame.ui" line="366"/>
@@ -841,52 +841,62 @@
         <translation>Reinitialiser le dossier de la liste de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="41"/>
+        <location filename="../PreferencesFrame.cpp" line="42"/>
         <source>&amp;Automatically start %1 at login</source>
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="131"/>
+        <location filename="../PreferencesFrame.cpp" line="132"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="131"/>
+        <location filename="../PreferencesFrame.cpp" line="132"/>
         <source>The combo list folder could not be changed.</source>
         <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="181"/>
+        <location filename="../PreferencesFrame.cpp" line="182"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="181"/>
+        <location filename="../PreferencesFrame.cpp" line="182"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="210"/>
+        <location filename="../PreferencesFrame.cpp" line="211"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="338"/>
+        <location filename="../PreferencesFrame.cpp" line="327"/>
+        <source>Delete Backup Files?</source>
+        <translation>Effacer les Sauvegardes?</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesFrame.cpp" line="327"/>
+        <source>Do you want to delete all the backup files?</source>
+        <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesFrame.cpp" line="363"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="340"/>
+        <location filename="../PreferencesFrame.cpp" line="365"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="349"/>
+        <location filename="../PreferencesFrame.cpp" line="374"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="358"/>
+        <location filename="../PreferencesFrame.cpp" line="383"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>

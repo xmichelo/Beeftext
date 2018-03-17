@@ -12,7 +12,7 @@
 
 namespace {
    QRegularExpression const kBackupFileRegExp(R"(^\d{8}_\d{9}_backup\.json$)");
-   qint32 kMaxBackupFileCount = 30;
+   qint32 kMaxBackupFileCount = 50;
 }
 
 
@@ -35,12 +35,37 @@ BackupManager::BackupManager()
 
 
 //**********************************************************************************************************************
+/// \return the number of backup files in the backup folder
+//**********************************************************************************************************************
+qint32 BackupManager::backupFileCount() const
+{
+   return this->orderedBackupFilePaths().size();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void BackupManager::removeAllBackups()
+{
+   xmilib::DebugLog& log = globals::debugLog();
+   for (QString const& path : this->orderedBackupFilePaths())
+   {
+      if (QFile(path).remove())
+         log.addInfo(QString("Removed backup file %1").arg(QDir::toNativeSeparators(path)));
+      else
+         log.addWarning(QString("Could not remove %1").arg(QDir::toNativeSeparators(path)));
+   }
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void BackupManager::cleanup()
 {
    xmilib::DebugLog& log = globals::debugLog();
-   QStringList paths = this->getOrderedBackupFilePaths();
+   QStringList paths = this->orderedBackupFilePaths();
    qint32 const count = paths.size();
    for (int i = 0; i < count - kMaxBackupFileCount; ++i)
    {
@@ -75,7 +100,7 @@ void BackupManager::archive(QString const& filePath)
 //**********************************************************************************************************************
 /// \return The chronologically ordered list of backup file paths
 //**********************************************************************************************************************
-QStringList BackupManager::getOrderedBackupFilePaths() const
+QStringList BackupManager::orderedBackupFilePaths() const
 {
    QString const path = globals::backupFolderPath();
    QFileInfo folderInfo(path);

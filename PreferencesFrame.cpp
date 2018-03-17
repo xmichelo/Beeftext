@@ -12,6 +12,7 @@
 #include "UpdateManager.h"
 #include "InputManager.h"
 #include "I18nManager.h"
+#include "BackupManager.h"
 #include "Combo/ComboManager.h"
 #include "ShortcutDialog.h"
 #include "BeeftextConstants.h"
@@ -312,9 +313,34 @@ void PreferencesFrame::onUseClipboardForComboSubstitutionCheckChanged() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::onAutoBackupCheckChanged() const
+void PreferencesFrame::onAutoBackupCheckChanged()
 {
-   prefs_.setAutoBackup(ui_.checkAutoBackup->isChecked());
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   BackupManager& backupManager = BackupManager::instance();
+   bool const isChecked = ui_.checkAutoBackup->isChecked();
+   if ( isChecked || (0 == backupManager.backupFileCount()))
+   {
+      prefs_.setAutoBackup(isChecked);
+      return;
+   }
+
+   switch (QMessageBox::question(this, tr("Delete Backup Files?"), tr("Do you want to delete all the "
+      "backup files?"), QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel),
+      QMessageBox::No))
+   {
+   case QMessageBox::Yes:
+      backupManager.removeAllBackups();
+      // no break on purpose
+   case QMessageBox::No:
+      prefs_.setAutoBackup(false);
+      break;
+   case QMessageBox::Cancel:
+   default:
+      // Changing the state of the check box inside this slot cause the next event to be missed so we delay it using a timer
+      QTimer::singleShot(0,
+         [&]() { QSignalBlocker blocker(ui_.checkAutoBackup); ui_.checkAutoBackup->setChecked(true); }); 
+      break;
+   }
 }
 
 

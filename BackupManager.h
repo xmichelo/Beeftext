@@ -25,12 +25,14 @@ public: // member functions
    ~BackupManager() = default; ///< Destructor
    BackupManager& operator=(BackupManager const&) = delete; ///< Disabled assignment operator
    BackupManager& operator=(BackupManager&&) = delete; ///< Disabled move assignment operator
+   qint32 backupFileCount() const; ///< Return the number of backup files
+   void removeAllBackups(); ///< Remove all backup files
    void cleanup(); ///< Perform backup cleanup
    void archive(QString const& filePath); ///< Move the given file to the backup folder.
 
 private: // member functions
    BackupManager(); ///< Default constructor
-   QStringList getOrderedBackupFilePaths() const; ///< Return the chronologically ordered list of backup file paths
+   QStringList orderedBackupFilePaths() const; ///< Return the chronologically ordered list of backup file paths
    void ensureBackupFolderExists() const; ///< Ensure the backup folder exists
 };
 
