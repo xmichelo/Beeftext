@@ -37,7 +37,7 @@ private: // member functions
    void applyComboListFolderPreference(QString const& folderPath, QString const& previousPath); ///< Apply the combo list folder preference
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
    void changeEvent(QEvent *event) override; ///< Change event handler
-   void updateGuiState() const; ///< Update the GUI state
+   void updateGui() const; ///< Update the GUI state
 
 private slots:
    void onActionResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
@@ -46,6 +46,7 @@ private slots:
    void onActionResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action
    void onActionChangeShortcut() const; ///< Slot for the 'Change shortcut' action
    void onActionResetComboTriggerShortcut() const; ///< slot for the 'Reset combo trigger shortcut'
+   void onActionRestoreBackup(); ///< Slot for the 'Restore backup action
    void onPlaySoundOnComboCheckChanged() const; ///< Slot for the changing of the 'Play sound on combo' check box
    void onAutoStartCheckChanged() const; ///< Slot for the changing of the 'Autostart at login' check box
    void onAutoCheckForUpdatesCheckChanged() const; ///< Slot for the changing of the 'Auto check for updates' check box

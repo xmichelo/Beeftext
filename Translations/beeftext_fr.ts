@@ -15,6 +15,34 @@
     </message>
 </context>
 <context>
+    <name>BackupRestoreDialog</name>
+    <message>
+        <location filename="../Backup/BackupRestoreDialog.ui" line="22"/>
+        <source>Backup</source>
+        <translation>Sauvegarde</translation>
+    </message>
+    <message>
+        <location filename="../Backup/BackupRestoreDialog.ui" line="66"/>
+        <source>&amp;Restore</source>
+        <translation>&amp;Restaurer</translation>
+    </message>
+    <message>
+        <location filename="../Backup/BackupRestoreDialog.ui" line="73"/>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Annuler</translation>
+    </message>
+    <message>
+        <location filename="../Backup/BackupRestoreDialog.cpp" line="60"/>
+        <source>Error</source>
+        <translation>Erreur</translation>
+    </message>
+    <message>
+        <location filename="../Backup/BackupRestoreDialog.cpp" line="60"/>
+        <source>The backup could not be restored.</source>
+        <translation>La sauvegarde n&apos;a pas pu être restaurée.</translation>
+    </message>
+</context>
+<context>
     <name>ComboDialog</name>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="66"/>
@@ -580,34 +608,34 @@
         <translation>Maj+Entrée</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="182"/>
+        <location filename="../Group/GroupListWidget.cpp" line="184"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="187"/>
+        <location filename="../Group/GroupListWidget.cpp" line="189"/>
         <source>The group could not be added to the list.</source>
         <translation>Le groupe n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="194"/>
-        <location filename="../Group/GroupListWidget.cpp" line="221"/>
-        <location filename="../Group/GroupListWidget.cpp" line="248"/>
+        <location filename="../Group/GroupListWidget.cpp" line="196"/>
+        <location filename="../Group/GroupListWidget.cpp" line="223"/>
+        <location filename="../Group/GroupListWidget.cpp" line="250"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="212"/>
+        <location filename="../Group/GroupListWidget.cpp" line="214"/>
         <source>Edit Group</source>
         <translation>Modifier le Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="233"/>
+        <location filename="../Group/GroupListWidget.cpp" line="235"/>
         <source>Delete Group?</source>
         <translation>Effacer le Groupe?</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="233"/>
+        <location filename="../Group/GroupListWidget.cpp" line="235"/>
         <source>Are you sure you want to delete the selected group and all its combos?</source>
         <translation>Êtes-vous sur de vouloir effacer ce groupe et tous les combos qu&apos;il contient?</translation>
     </message>
@@ -803,100 +831,110 @@
         <translation>Par D&amp;efault</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="341"/>
+        <location filename="../PreferencesFrame.ui" line="343"/>
         <source>Automatically backup combo list files</source>
         <translation>Faire des copies de sauvegarde automatique de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="366"/>
-        <location filename="../PreferencesFrame.ui" line="406"/>
+        <location filename="../PreferencesFrame.ui" line="350"/>
+        <source>Restore a backup.</source>
+        <translation>Restaurer une sauvegarde.</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesFrame.ui" line="353"/>
+        <source>&amp;Restore</source>
+        <translation>&amp;Restaurer</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesFrame.ui" line="393"/>
+        <location filename="../PreferencesFrame.ui" line="433"/>
         <source>Open &amp;Log File</source>
         <translation>Ouvrir le &amp;Journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="386"/>
-        <location filename="../PreferencesFrame.ui" line="401"/>
+        <location filename="../PreferencesFrame.ui" line="413"/>
+        <location filename="../PreferencesFrame.ui" line="428"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="389"/>
-        <location filename="../PreferencesFrame.ui" line="398"/>
+        <location filename="../PreferencesFrame.ui" line="416"/>
+        <location filename="../PreferencesFrame.ui" line="425"/>
         <source>&amp;Default</source>
         <translation>Par &amp;Défault</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="409"/>
+        <location filename="../PreferencesFrame.ui" line="436"/>
         <source>Open the log file</source>
         <translation>Ouvrir le journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="414"/>
+        <location filename="../PreferencesFrame.ui" line="441"/>
         <source>Change combo list folder</source>
         <translation>Changer le dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.ui" line="419"/>
+        <location filename="../PreferencesFrame.ui" line="446"/>
         <source>Reset combo list folder</source>
         <translation>Reinitialiser le dossier de la liste de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="42"/>
+        <location filename="../PreferencesFrame.cpp" line="43"/>
         <source>&amp;Automatically start %1 at login</source>
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="132"/>
+        <location filename="../PreferencesFrame.cpp" line="136"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="132"/>
+        <location filename="../PreferencesFrame.cpp" line="136"/>
         <source>The combo list folder could not be changed.</source>
         <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="182"/>
+        <location filename="../PreferencesFrame.cpp" line="187"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="182"/>
+        <location filename="../PreferencesFrame.cpp" line="187"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="211"/>
+        <location filename="../PreferencesFrame.cpp" line="216"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="327"/>
+        <location filename="../PreferencesFrame.cpp" line="342"/>
         <source>Delete Backup Files?</source>
         <translation>Effacer les Sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="327"/>
+        <location filename="../PreferencesFrame.cpp" line="342"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="363"/>
+        <location filename="../PreferencesFrame.cpp" line="379"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="365"/>
+        <location filename="../PreferencesFrame.cpp" line="381"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="374"/>
+        <location filename="../PreferencesFrame.cpp" line="390"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesFrame.cpp" line="383"/>
+        <location filename="../PreferencesFrame.cpp" line="399"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>

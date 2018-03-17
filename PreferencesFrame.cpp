@@ -12,7 +12,8 @@
 #include "UpdateManager.h"
 #include "InputManager.h"
 #include "I18nManager.h"
-#include "BackupManager.h"
+#include "Backup/BackupRestoreDialog.h"
+#include "Backup/BackupManager.h"
 #include "Combo/ComboManager.h"
 #include "ShortcutDialog.h"
 #include "BeeftextConstants.h"
@@ -61,7 +62,10 @@ PreferencesFrame::PreferencesFrame(QWidget* parent)
    connect(&updateManager, &UpdateManager::noUpdateIsAvailable, this, &PreferencesFrame::onNoUpdateIsAvailable);
    connect(&updateManager, &UpdateManager::updateCheckFailed, this, &PreferencesFrame::onUpdateCheckFailed);
 
-   this->updateGuiState();
+   // We update the GUI when the combo list is saved to proper enable/disable the 'Restore Backup' button
+   connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PreferencesFrame::updateGui);
+
+   this->updateGui();
 }
 
 
@@ -165,12 +169,13 @@ void PreferencesFrame::changeEvent(QEvent *event)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesFrame::updateGuiState() const
+void PreferencesFrame::updateGui() const
 {
    bool const manualTrigger = !prefs_.useAutomaticSubstitution();
    ui_.editShortcut->setEnabled(manualTrigger);
    ui_.buttonChangeShortcut->setEnabled(manualTrigger);
    ui_.buttonResetComboTriggerShortcut->setEnabled(manualTrigger);
+   ui_.buttonRestoreBackup->setEnabled(prefs_.autoBackup() && BackupManager::instance().backupFileCount());
 }
 
 
@@ -254,6 +259,15 @@ void PreferencesFrame::onActionResetComboTriggerShortcut() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
+void PreferencesFrame::onActionRestoreBackup()
+{
+   BackupRestoreDialog::run(this);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
 void PreferencesFrame::onPlaySoundOnComboCheckChanged() const
 {
    prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
@@ -297,7 +311,7 @@ void PreferencesFrame::onUseCustomThemeCheckChanged() const
 void PreferencesFrame::onRadioAutomaticComboTriggerChecked(bool checked) const
 {
    prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
-   this->updateGuiState();
+   this->updateGui();
 }
 
 
@@ -321,6 +335,7 @@ void PreferencesFrame::onAutoBackupCheckChanged()
    if ( isChecked || (0 == backupManager.backupFileCount()))
    {
       prefs_.setAutoBackup(isChecked);
+      this->updateGui();
       return;
    }
 
@@ -341,6 +356,7 @@ void PreferencesFrame::onAutoBackupCheckChanged()
          [&]() { QSignalBlocker blocker(ui_.checkAutoBackup); ui_.checkAutoBackup->setChecked(true); }); 
       break;
    }
+   this->updateGui();
 }
 
 

@@ -10,9 +10,9 @@
 #include "stdafx.h"
 #include "ComboManager.h"
 #include "InputManager.h"
-#include "BackupManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
+#include "Backup/BackupManager.h"
 #include <XMiLib/Exception.h>
 
 
@@ -126,13 +126,14 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
    bool wasInvalid = false;
    comboList_.ensureCorrectGrouping(&wasInvalid);
    if (inOlderFormat || wasInvalid)
-      if (!comboList_.save(path, true))
+      if (!this->saveComboListToFile(outErrorMsg))
          globals::debugLog().addWarning(inOlderFormat ?
             "Could not upgrade the combo list file to the newest format version." :
             "Could not save the combo list file after fixing the grouping of combos.");
       else
          globals::debugLog().addInfo(inOlderFormat ? "The combo list file was upgraded to the latest format version." :
          "The combo list file was successfully saved after fixing the the grouping of combos.");
+   emit comboListWasLoaded();
    return true;
 }
 
@@ -148,7 +149,26 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
    QString const filePath = QDir(prefs.comboListFolderPath()).absoluteFilePath(ComboList::defaultFileName);
    if (prefs.autoBackup())
       BackupManager::instance().archive(filePath);
-   return comboList_.save(filePath, true, outErrorMsg);
+   bool const result = comboList_.save(filePath, true, outErrorMsg);
+   if (result)
+      emit comboListWasSaved();
+   return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] backupFilePath The path of the backup file
+/// \return true if the backup was correctly restored
+//**********************************************************************************************************************
+bool ComboManager::restoreBackup(QString const& backupFilePath)
+{
+   bool inOlderFormat = false;
+   QString outErrorMsg;
+   if (!comboList_.load(backupFilePath, &inOlderFormat, &outErrorMsg))
+      return false;
+   comboList_.ensureCorrectGrouping();
+   emit backupWasRestored();
+   return this->saveComboListToFile();
 }
 
 

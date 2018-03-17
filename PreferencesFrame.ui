@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>488</height>
+    <height>496</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -336,11 +336,38 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="checkAutoBackup">
-        <property name="text">
-         <string>Automatically backup combo list files</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QCheckBox" name="checkAutoBackup">
+          <property name="text">
+           <string>Automatically backup combo list files</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonRestoreBackup">
+          <property name="toolTip">
+           <string>Restore a backup.</string>
+          </property>
+          <property name="text">
+           <string>&amp;Restore</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>5</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -439,6 +466,17 @@
    </property>
    <property name="toolTip">
     <string notr="true">Reset Combo trigger shortcut</string>
+   </property>
+  </action>
+  <action name="actionRestoreBackup">
+   <property name="text">
+    <string notr="true">Res&amp;tore Backup</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Restore Backup</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Restore Backup</string>
    </property>
   </action>
  </widget>
@@ -764,6 +802,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonRestoreBackup</sender>
+   <signal>clicked()</signal>
+   <receiver>actionRestoreBackup</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>260</x>
+     <y>426</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRestoreBackup</sender>
+   <signal>triggered()</signal>
+   <receiver>PreferencesFrame</receiver>
+   <slot>onActionRestoreBackup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionResetToDefaultValues()</slot>
@@ -781,5 +851,6 @@
   <slot>onActionChangeShortcut()</slot>
   <slot>onActionResetComboTriggerShortcut()</slot>
   <slot>onAutoBackupCheckChanged()</slot>
+  <slot>onActionRestoreBackup()</slot>
  </slots>
 </ui>

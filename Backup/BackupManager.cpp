@@ -35,6 +35,23 @@ BackupManager::BackupManager()
 
 
 //**********************************************************************************************************************
+/// \return The chronologically ordered list of backup file paths
+//**********************************************************************************************************************
+QStringList BackupManager::orderedBackupFilePaths() const
+{
+   QString const path = globals::backupFolderPath();
+   QFileInfo folderInfo(path);
+   if (!folderInfo.exists() || (!folderInfo.isDir()))
+      return QStringList();
+   QStringList result;
+   for (QFileInfo fileInfo : QDir(path).entryInfoList(QDir::Files, QDir::Name))
+      if (kBackupFileRegExp.match(fileInfo.fileName()).hasMatch())
+         result.push_back(fileInfo.absoluteFilePath());
+   return result;
+}
+
+
+//**********************************************************************************************************************
 /// \return the number of backup files in the backup folder
 //**********************************************************************************************************************
 qint32 BackupManager::backupFileCount() const
@@ -94,23 +111,6 @@ void BackupManager::archive(QString const& filePath)
    else
       log.addInfo(QString("Backed up combo file to %1").arg(QDir::toNativeSeparators(dstPath)));
    this->cleanup();
-}
-
-
-//**********************************************************************************************************************
-/// \return The chronologically ordered list of backup file paths
-//**********************************************************************************************************************
-QStringList BackupManager::orderedBackupFilePaths() const
-{
-   QString const path = globals::backupFolderPath();
-   QFileInfo folderInfo(path);
-   if (!folderInfo.exists() || (!folderInfo.isDir()))
-      return QStringList();
-   QStringList result;
-   for (QFileInfo fileInfo : QDir(path).entryInfoList(QDir::Files, QDir::Name))
-      if (kBackupFileRegExp.match(fileInfo.fileName()).hasMatch())
-         result.push_back(fileInfo.absoluteFilePath());
-   return result;
 }
 
 

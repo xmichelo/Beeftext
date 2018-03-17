@@ -25,6 +25,7 @@ public: // member functions
    ~BackupManager() = default; ///< Destructor
    BackupManager& operator=(BackupManager const&) = delete; ///< Disabled assignment operator
    BackupManager& operator=(BackupManager&&) = delete; ///< Disabled move assignment operator
+   QStringList orderedBackupFilePaths() const; ///< Return the chronologically ordered list of backup file paths
    qint32 backupFileCount() const; ///< Return the number of backup files
    void removeAllBackups(); ///< Remove all backup files
    void cleanup(); ///< Perform backup cleanup
@@ -32,7 +33,6 @@ public: // member functions
 
 private: // member functions
    BackupManager(); ///< Default constructor
-   QStringList orderedBackupFilePaths() const; ///< Return the chronologically ordered list of backup file paths
    void ensureBackupFolderExists() const; ///< Ensure the backup folder exists
 };
 

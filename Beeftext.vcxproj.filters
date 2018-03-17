@@ -40,6 +40,9 @@
     <Filter Include="Group">
       <UniqueIdentifier>{22e92035-dcca-49b6-bd93-f8de9411a7e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Backup">
+      <UniqueIdentifier>{c61e6d78-c214-49e9-9722-51e8f91c7da4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
@@ -219,12 +222,6 @@
     <ClCompile Include="Group\GroupListWidget.cpp">
       <Filter>Group</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GroupListWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GroupListWidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="Group\GroupComboBox.cpp">
       <Filter>Group</Filter>
     </ClCompile>
@@ -235,7 +232,24 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="MimeDataUtils.cpp" />
-    <ClCompile Include="BackupManager.cpp" />
+    <ClCompile Include="Backup\BackupManager.cpp">
+      <Filter>Backup</Filter>
+    </ClCompile>
+    <ClCompile Include="Backup\BackupRestoreDialog.cpp">
+      <Filter>Backup</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_BackupRestoreDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_BackupRestoreDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_GroupListWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_GroupListWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -288,7 +302,12 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="MimeDataUtils.h" />
-    <ClInclude Include="BackupManager.h" />
+    <ClInclude Include="Backup\BackupManager.h">
+      <Filter>Backup</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_BackupRestoreDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -362,14 +381,20 @@
     <CustomBuild Include="Group\GroupDialog.ui">
       <Filter>Group</Filter>
     </CustomBuild>
-    <CustomBuild Include="Group\GroupListWidget.h">
-      <Filter>Group</Filter>
-    </CustomBuild>
     <CustomBuild Include="Group\GroupListWidget.ui">
       <Filter>Group</Filter>
     </CustomBuild>
     <CustomBuild Include="Group\GroupComboBox.h">
       <Filter>Group</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Backup\BackupRestoreDialog.ui">
+      <Filter>Backup</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Backup\BackupRestoreDialog.h">
+      <Filter>Backup</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Group\GroupListWidget.h">
+      <Filter>Generated Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

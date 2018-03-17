@@ -33,6 +33,8 @@ GroupListWidget::GroupListWidget(QWidget* parent)
       throw xmilib::Exception("The group list selection model is null");
    connect(selectionModel, &QItemSelectionModel::selectionChanged, this, &GroupListWidget::onSelectionChanged);
    connect(&groups, &GroupList::groupMoved, this, &GroupListWidget::onGroupMoved);
+   connect(&ComboManager::instance(), &ComboManager::backupWasRestored, this, &GroupListWidget::onBackupRestored);
+
    this->updateGui();
    QTimer::singleShot(0, [&]() {ui_.listGroup->setCurrentIndex(groups.index(0)); }); // delayed to be sure the signal/slot mechanism work
 }
@@ -285,6 +287,18 @@ void GroupListWidget::onContextMenuRequested()
 {
    if (contextMenu_)
       contextMenu_->exec(QCursor::pos());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void GroupListWidget::onBackupRestored()
+{
+   this->clearSelection(); 
+   GroupList& groups = ComboManager::instance().comboListRef().groupListRef();
+   if (groups.size()) 
+      ui_.listGroup->setCurrentIndex(groups.index(0));
 }
 
 

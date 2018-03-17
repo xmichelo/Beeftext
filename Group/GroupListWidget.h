@@ -50,6 +50,7 @@ private slots:
    void onSelectionChanged(QItemSelection const& selected, QItemSelection const& deselected); ///< Slot for selection change
    void onGroupMoved(SPGroup group, qint32 newIndex); ///< Slot for the moving of a group in the list
    void onContextMenuRequested(); ///< Slot for the context menu
+   void onBackupRestored(); ///< Slot triggered when a backup is restored
 
 private: // data members
    Ui::GroupListWidget ui_; ///< The GUI for the dialog

@@ -33,10 +33,16 @@ public: // member functions
    GroupList const& groupListRef() const; ///< Return a constant reference to the group list
    bool loadComboListFromFile(QString* outErrorMsg = nullptr); ///< Load the combo list from the default file
    bool saveComboListToFile(QString* outErrorMsg = nullptr) const; /// Save the combo list to the default location
+   bool restoreBackup(QString const& backupFilePath); /// Restore the combo list from a backup file
    bool isEnabled() const; ///< Check whether the combo manager is enabled
    void enable(); ///< Enable the combo manager manager
    void disable(); ///< Disable the combo manager
    bool setEnabled(bool enabled); ///< Set the combo manager state
+
+signals:
+   void comboListWasLoaded() const; ///< Signal emitted when the combo list has been loaded
+   void comboListWasSaved() const;  ///< Signal emitted when the combo list has been saved
+   void backupWasRestored() const; ///< Signal emitted when a backup has been restored
 
 private: // member functions
    ComboManager(); ///< Default constructor
@@ -46,7 +52,7 @@ private: // member functions
 	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
    void checkAndPerformSubstitution(); ///< check if a substitution is possible and if so performs it
 
-public slots:
+private slots:
    void onComboBreakerTyped(); ///< Slot for the "Combo Breaker Typed" signal
    void onCharacterTyped(QChar c); ///< Slot for the "Character Typed" signal
    void onBackspaceTyped(); ///< Slot for the 'Backspace typed" signal
