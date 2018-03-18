@@ -1,9 +1,8 @@
 {
    "versionMajor": 0,
-   "versionMinor": 12,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.12/Beeftext-0.12-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v0.12",
-   "sha256Sum": "575956346db14837fc7cc507a758da4e69923a38da31f83602043a24520cf565",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Renamed 'combo text' to 'keyword'.</li><li>Renamed 'substitution text' to 'snippet'.</li><li>Fixed a bug causing the default language to always be English.</li><li>Minor bug fixes.</li></ul></span></p></body></html>"
+   "versionMinor": 13,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.13/Beeftext-0.13-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v0.13",
+   "sha256Sum": "12a0c9423c4bf871400883efb1a3f79ccb80216cf36104b28eaa16f90e0280d3",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Combos can now be organized in groups.</li><li>An automatic backup of the combo list file has been implemented.</li><li>Minor bug fixes.</li></ul></span></p></body></html>"
 }
-
