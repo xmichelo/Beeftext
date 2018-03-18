@@ -87,7 +87,10 @@ ComboManager::ComboManager()
 
    if (!QFileInfo(QDir(PreferencesManager::instance().comboListFolderPath())
       .absoluteFilePath(ComboList::defaultFileName)).exists()) // we avoid displaying an error on first launch
+   {
+      comboList_.ensureCorrectGrouping();
       return;
+   }
    if (!this->loadComboListFromFile(&errMsg))
       QMessageBox::critical(nullptr, tr("Error"), errMsg);
 }
