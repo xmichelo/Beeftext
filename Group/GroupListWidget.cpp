@@ -67,9 +67,10 @@ void GroupListWidget::clearSelection() const
 //**********************************************************************************************************************
 void GroupListWidget::updateGui()
 {
+   qint32 const groupCount = ComboManager::instance().groupListRef().size();
    qint32 const index = this->selectedGroupIndex();
-   bool const validIndex = (index >= 0) && (index < ComboManager::instance().groupListRef().size());
-   ui_.actionDeleteGroup->setEnabled(validIndex);
+   bool const validIndex = (index >= 0) && (index < groupCount);
+   ui_.actionDeleteGroup->setEnabled(validIndex && (groupCount > 1));
    ui_.actionEditGroup->setEnabled(validIndex);
 }
 
