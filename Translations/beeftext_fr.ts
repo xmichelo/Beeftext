@@ -292,7 +292,7 @@
 <context>
     <name>ComboManager</name>
     <message>
-        <location filename="../Combo/ComboManager.cpp" line="92"/>
+        <location filename="../Combo/ComboManager.cpp" line="95"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -608,34 +608,34 @@
         <translation>Maj+Entrée</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="184"/>
+        <location filename="../Group/GroupListWidget.cpp" line="185"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="189"/>
+        <location filename="../Group/GroupListWidget.cpp" line="190"/>
         <source>The group could not be added to the list.</source>
         <translation>Le groupe n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="196"/>
-        <location filename="../Group/GroupListWidget.cpp" line="223"/>
-        <location filename="../Group/GroupListWidget.cpp" line="250"/>
+        <location filename="../Group/GroupListWidget.cpp" line="197"/>
+        <location filename="../Group/GroupListWidget.cpp" line="224"/>
+        <location filename="../Group/GroupListWidget.cpp" line="251"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="214"/>
+        <location filename="../Group/GroupListWidget.cpp" line="215"/>
         <source>Edit Group</source>
         <translation>Modifier le Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="235"/>
+        <location filename="../Group/GroupListWidget.cpp" line="236"/>
         <source>Delete Group?</source>
         <translation>Effacer le Groupe?</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="235"/>
+        <location filename="../Group/GroupListWidget.cpp" line="236"/>
         <source>Are you sure you want to delete the selected group and all its combos?</source>
         <translation>Êtes-vous sur de vouloir effacer ce groupe et tous les combos qu&apos;il contient?</translation>
     </message>
