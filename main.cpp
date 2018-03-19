@@ -64,13 +64,13 @@ int main(int argc, char *argv[])
       debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
+      PreferencesManager& prefs = PreferencesManager::instance();
+      I18nManager& i18nManager = I18nManager::instance();
+      i18nManager.setLocale(prefs.locale());
       // ReSharper disable CppDeclaratorNeverUsed
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       UpdateManager& updateManager = UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       // ReSharper restore CppDeclaratorNeverUsed
-      PreferencesManager& prefs = PreferencesManager::instance();
-      I18nManager& i18nManager = I18nManager::instance();
-      i18nManager.setLocale(prefs.locale());
       if (prefs.useCustomTheme())
          qApp->setStyleSheet(constants::kStyleSheet); // some style on table view do not apply properly if applied before window creation
       MainWindow window;
