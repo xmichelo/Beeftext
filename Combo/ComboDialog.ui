@@ -167,6 +167,7 @@
  </customwidgets>
  <tabstops>
   <tabstop>editName</tabstop>
+  <tabstop>comboGroup</tabstop>
   <tabstop>editKeyword</tabstop>
   <tabstop>editSnippet</tabstop>
   <tabstop>buttonOk</tabstop>
