@@ -394,7 +394,7 @@
       <Filter>Backup</Filter>
     </CustomBuild>
     <CustomBuild Include="Group\GroupListWidget.h">
-      <Filter>Generated Files</Filter>
+      <Filter>Group</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -406,5 +406,10 @@
     <None Include="Translations\beeftext_fr.ts">
       <Filter>Translation Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\BeeftextIcon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
