@@ -34,6 +34,7 @@ $sslDir =  absolutePath $solutionDir "Vendor\OpenSSL"
 $vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\Dlls"
 $nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
 $portableAppsConfigPath = absolutePath $solutionDir "Installer\PortableApps.com\Template\BeeftextPortable\App\AppInfo\appinfo.ini"
+$rcFilePath = absolutePath $solutionDir "Beeftext.rc"
 
 #***********************************************************************************************************************
 # Compiles a solution using Visual Studio
@@ -125,4 +126,17 @@ function updateVersionNumberInPortableAppsConfiguration
         -replace '(PackageVersion)=\d+.\d+.\d+.\d+', ('$1=' + "$major.$minor.0.0") `
         -replace '(DisplayVersion)=\d+.\d+', ('$1=' + "$major.$minor") |
         Out-File $portableAppsConfigPath -Encoding "UTF8"
+}
+
+
+#***********************************************************************************************************************
+# Update the version number in the RC file
+#***********************************************************************************************************************
+function updateVersionNumberInRcFile
+{
+    $major, $minor = getBeeftextVersion
+    (Get-Content $rcFilePath) `
+        -replace '^(#define\s+VERSION_NUMBER)\s+(\d+)\s*,\s*(\d+)(\s*,\s*0\s*,\s*0\s*$)', ('$1 ' + $major + ',' + $minor + ',0,0') `
+        -replace '^(#define\s+VERSION_STRING)\s+"(\d+)\.(\d+)\\0"\s*$', ('$1 "' + $major + '.' + $minor + '\0"') |
+        Out-File $rcFilePath -Encoding "UTF8"
 }

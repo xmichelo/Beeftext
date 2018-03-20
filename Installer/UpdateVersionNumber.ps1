@@ -11,3 +11,4 @@ $ErrorActionPreference = "Stop"
 
 updateVersionNumberInInstaller
 updateVersionNumberInPortableAppsConfiguration
+updateVersionNumberInRcFile
