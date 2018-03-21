@@ -24,27 +24,12 @@ namespace {
 }
 
 
-//**********************************************************************************************************************
-/// brief A class overriding the default style only to remove the focus rectangle around items in a table view
-//**********************************************************************************************************************
-class ComboTableProxyStyle : public QProxyStyle
-{
-public:
-   void drawPrimitive(PrimitiveElement element, const QStyleOption * option,
-      QPainter * painter, const QWidget * widget = nullptr) const override
-   {
-      if (PE_FrameFocusRect != element)
-         QProxyStyle::drawPrimitive(element, option, painter, widget);
-   }
-};
-
 
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
 ComboTableWidget::ComboTableWidget(QWidget* parent)
    : QWidget(parent)
-   , proxyStyle_(std::make_unique<ComboTableProxyStyle>())
    , contextMenu_(nullptr)
    , groupListWidget_(nullptr)
 {
@@ -131,7 +116,6 @@ void ComboTableWidget::setupTable()
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
 
    this->resizeColumnsToContents();
-   ui_.tableComboList->setStyle(proxyStyle_.get());
    ui_.tableComboList->viewport()->installEventFilter(this); // we install an event filter that override the default double-click behavior
 }
 

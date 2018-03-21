@@ -74,8 +74,6 @@ private: // data members
    ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
    QMenu contextMenu_; ///< The context menu for the combo table
    GroupListWidget* groupListWidget_; ///< The group list wiget associated with this combo table
-   std::unique_ptr<class ComboTableProxyStyle> proxyStyle_; ///< The proxy style to tweak appearance of the table view
-
 };
 
 #endif // #ifndef BEEFTEXT__COMBO__TABLE__FRAME__H

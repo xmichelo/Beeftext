@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string notr="true">#Frame</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -64,9 +61,6 @@
          <width>200</width>
          <height>16777215</height>
         </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
        </property>
        <property name="placeholderText">
         <string>Search (Ctrl+F)</string>

@@ -11,7 +11,6 @@
 #include "I18nManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextUtils.h"
-#include "I18nManager.h"
 #include <XMiLib/Exception.h>
 
 
@@ -59,7 +58,7 @@ QLocale I18nManager::validateLocale(QLocale const& locale)
       [&locale](QLocale const& l) -> bool
       { return locale.language() == l.language() && locale.country() == l.country(); });
    if (it != kSupportedLocales.end())
-      return (*it);
+      return *it;
 
    // if not found we try to fall back to a locale with the same language, and if not found we default to the first 
    // supported language
