@@ -58,7 +58,7 @@ void UpdateDialog::startDownload()
 {
    if (reply_)
       throw xmilib::Exception("Error during software update: an ongoing download task already exists.");
-   installerPath_ = createTempFile(file_, "exe");
+   installerPath_ = createTempFile(file_, "BeeftextUpdater_", "exe");
    if (installerPath_.isEmpty() || !file_.isOpen())
       throw xmilib::Exception("Error during software update: could save installer file.");
    QNetworkRequest request(latestVersionInfo_->downloadUrl());
