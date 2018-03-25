@@ -3,8 +3,8 @@
 #include <windows.h>
 
 // Do not modify the two following macros, they're auto-updated by the version number update PowerShell script
-#define VERSION_NUMBER 0,13,0,0
-#define VERSION_STRING "0.13\0"
+#define VERSION_NUMBER 1,0,0,0
+#define VERSION_STRING "1.0\0"
 
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION VERSION_NUMBER
