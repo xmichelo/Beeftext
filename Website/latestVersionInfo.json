@@ -1,8 +1,8 @@
 {
-   "versionMajor": 0,
-   "versionMinor": 13,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v0.13/Beeftext-0.13-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v0.13",
-   "sha256Sum": "12a0c9423c4bf871400883efb1a3f79ccb80216cf36104b28eaa16f90e0280d3",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Combos can now be organized in groups.</li><li>An automatic backup of the combo list file has been implemented.</li><li>Minor bug fixes.</li></ul></span></p></body></html>"
+   "versionMajor": 1,
+   "versionMinor": 0,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.0/Beeftext-1.0-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.0",
+   "sha256Sum": "6dae08dd12e52e6475069539ca7457ef0cda52e28840141e26a72dbf874eefe0",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>This is the first stable release of Beeftext.</li><li>The automatic updater displays a more friendly name when the user has UAC enabled.</li><li>Fixed an display issue when enabling/disabled custom appearance.</li><li>Fixed the tab order in the new/edit combo dialog.</li><li>Added application information in the RC file.</li><li>Fixed an issue with the translation of the default combo group.</li></ul></span></p></body></html>"
 }
