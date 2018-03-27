@@ -14,6 +14,7 @@
 #include "ComboManager.h"
 #include "ClipboardManager.h"
 #include "InputManager.h"
+#include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/SystemUtils.h>
@@ -281,7 +282,8 @@ void Combo::performSubstitution()
       synthesizeBackspaces(keyword_.size());
       int cursorPos = -1;
       QString const evaluatedText = evaluatedSnippet(&cursorPos);
-      if (PreferencesManager::instance().useClipboardForComboSubstitution())
+      if (PreferencesManager::instance().useClipboardForComboSubstitution() 
+         && doesApplicationSupportCtrlVShortcut(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();
