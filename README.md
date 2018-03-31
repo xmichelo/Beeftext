@@ -2,7 +2,7 @@
 
 Beeftext is a text snippet management tool for Windows, inspired by [TextExpander].
 
-TextExpander is a great program, packed with features. To to keep the company profitable, 
+TextExpander is a great program, packed with features. To keep the company profitable, 
 [Smile] had to switch to a subscription-based model in 2016. And for people who only need the
 basic features of TextExpander, the monthly price is way too high.
 
