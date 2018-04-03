@@ -1,8 +1,8 @@
 {
    "versionMajor": 1,
-   "versionMinor": 0,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.0/Beeftext-1.0-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.0",
-   "sha256Sum": "6dae08dd12e52e6475069539ca7457ef0cda52e28840141e26a72dbf874eefe0",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>This is the first stable release of Beeftext.</li><li>The automatic updater displays a more friendly name when the user has UAC enabled.</li><li>Fixed an display issue when enabling/disabled custom appearance.</li><li>Fixed the tab order in the new/edit combo dialog.</li><li>Added application information in the RC file.</li><li>Fixed an issue with the translation of the default combo group.</li></ul></span></p></body></html>"
+   "versionMinor": 1,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.1/Beeftext-1.1-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.1",
+   "sha256Sum": "a4b0252b9adce1a6a2027c171deff1fb281853b28b9be3305221f246e59dc278",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Improved support for applications that do not support Ctrl+V for pasting.</li></ul></span></p></body></html>"
 }
