@@ -138,5 +138,7 @@ function updateVersionNumberInRcFile
     (Get-Content $rcFilePath) `
         -replace '^(#define\s+VERSION_NUMBER)\s+(\d+)\s*,\s*(\d+)(\s*,\s*0\s*,\s*0\s*$)', ('$1 ' + $major + ',' + $minor + ',0,0') `
         -replace '^(#define\s+VERSION_STRING)\s+"(\d+)\.(\d+)\\0"\s*$', ('$1 "' + $major + '.' + $minor + '\0"') |
-        Out-File $rcFilePath -Encoding "UTF8"
+        Out-File $rcFilePath -Encoding "ASCII" 
+        # Note we use ASCII for output  as UTF8 would cause the insertion of a 3-bytes BOM at the beginning of the file
+        # that will screw the RC file for VS.
 }
