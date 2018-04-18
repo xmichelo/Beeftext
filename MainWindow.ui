@@ -27,7 +27,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="CombosTab">
        <attribute name="title">
@@ -93,38 +93,6 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="aboutTab">
-       <attribute name="title">
-        <string>A&amp;bout</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="AboutFrame" name="frame">
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -152,7 +120,7 @@
     </property>
     <addaction name="actionVisitBeeftextWiki"/>
     <addaction name="separator"/>
-    <addaction name="actionShowAboutTab"/>
+    <addaction name="actionShowAboutDialog"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_Help"/>
@@ -179,7 +147,7 @@
     <string>Shift+F1</string>
    </property>
   </action>
-  <action name="actionShowAboutTab">
+  <action name="actionShowAboutDialog">
    <property name="text">
     <string>&amp;About Beeftext</string>
    </property>
@@ -205,12 +173,6 @@
    <class>PreferencesFrame</class>
    <extends>QFrame</extends>
    <header>PreferencesFrame.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>AboutFrame</class>
-   <extends>QFrame</extends>
-   <header>AboutFrame.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -256,11 +218,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionShowAboutDialog</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowAboutDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
   <slot>onActionShowMainWindow()</slot>
   <slot>onActionShowPreferences()</slot>
   <slot>onActionEnableDisableBeeftext()</slot>
+  <slot>onActionShowAboutDialog()</slot>
  </slots>
 </ui>

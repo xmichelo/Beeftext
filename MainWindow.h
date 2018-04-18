@@ -24,9 +24,9 @@ class MainWindow: public QMainWindow
 {
    Q_OBJECT
 public: // member functions
-   MainWindow(); ///< Default constructor
    MainWindow(MainWindow const&) = delete; ///< Disabled copy constructor
    MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
+   MainWindow(); ///< Default constructor
    ~MainWindow() = default; ///< Default destructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
@@ -54,6 +54,7 @@ private slots:
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionExit(); ///< Slot for the 'Exit' action
    void onActionEnableDisableBeeftext(); ///< Slot for the Enable/Disable Beeftext
+   void onActionShowAboutDialog(); ///< Slot for the 'Show About dialog' action
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window

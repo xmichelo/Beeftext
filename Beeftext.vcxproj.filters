@@ -113,13 +113,6 @@
     </ClCompile>
     <ClCompile Include="PreferencesManager.cpp" />
     <ClCompile Include="BeeftextUtils.cpp" />
-    <ClCompile Include="GeneratedFiles\Debug\moc_AboutFrame.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_AboutFrame.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="AboutFrame.cpp" />
     <ClCompile Include="LatestVersionInfo.cpp" />
     <ClCompile Include="ClipboardManager.cpp" />
     <ClCompile Include="Update\UpdateCheckWorker.cpp">
@@ -250,6 +243,13 @@
     <ClCompile Include="GeneratedFiles\Release\moc_GroupListWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AboutDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AboutDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -268,9 +268,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="BeeftextUtils.h" />
-    <ClInclude Include="GeneratedFiles\ui_AboutFrame.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="ClipboardManager.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h">
       <Filter>Generated Files</Filter>
@@ -308,6 +305,9 @@
     <ClInclude Include="GeneratedFiles\ui_BackupRestoreDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_AboutDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Beeftext.qrc">
@@ -333,8 +333,6 @@
     </CustomBuild>
     <CustomBuild Include="PreferencesFrame.ui" />
     <CustomBuild Include="PreferencesFrame.h" />
-    <CustomBuild Include="AboutFrame.h" />
-    <CustomBuild Include="AboutFrame.ui" />
     <CustomBuild Include="LatestVersionInfo.h" />
     <CustomBuild Include="Update\UpdateCheckWorker.h">
       <Filter>Update</Filter>
@@ -396,6 +394,8 @@
     <CustomBuild Include="Group\GroupListWidget.h">
       <Filter>Group</Filter>
     </CustomBuild>
+    <CustomBuild Include="AboutDialog.ui" />
+    <CustomBuild Include="AboutDialog.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
+#include "AboutDialog.h"
 #include "Combo/ComboManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextUtils.h"
@@ -36,7 +37,6 @@ MainWindow::MainWindow()
    this->restoreGeometry(prefs.mainWindowGeometry());
    connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []() 
       { QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl)); });
-   connect(ui_.actionShowAboutTab, &QAction::triggered, [this]() { this->showTab(2); });
 }
 
 
@@ -217,3 +217,13 @@ void MainWindow::onActionEnableDisableBeeftext()
    comboManager.setEnabled(!comboManager.isEnabled());
    this->setupSystemTrayIcon();
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionShowAboutDialog()
+{
+   AboutDialog().exec();
+}
+
