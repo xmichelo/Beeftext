@@ -250,6 +250,13 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="AboutDialog.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_PreferencesDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_PreferencesDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="PreferencesDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -306,6 +313,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_AboutDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_PreferencesDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -396,6 +406,8 @@
     </CustomBuild>
     <CustomBuild Include="AboutDialog.ui" />
     <CustomBuild Include="AboutDialog.h" />
+    <CustomBuild Include="PreferencesDialog.h" />
+    <CustomBuild Include="PreferencesDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">

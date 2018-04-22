@@ -55,6 +55,7 @@ private slots:
    void onActionExit(); ///< Slot for the 'Exit' action
    void onActionEnableDisableBeeftext(); ///< Slot for the Enable/Disable Beeftext
    void onActionShowAboutDialog(); ///< Slot for the 'Show About dialog' action
+   void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog action
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window

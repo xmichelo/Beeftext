@@ -141,6 +141,7 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
             GroupList::ComboDrop : GroupList::GroupDrop);
       }
    }
+
    if (event->type() != QEvent::MouseButtonPress)
       return QObject::eventFilter(object, event);
    QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);

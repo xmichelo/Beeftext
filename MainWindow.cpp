@@ -10,8 +10,9 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 #include "AboutDialog.h"
-#include "Combo/ComboManager.h"
+#include "PreferencesDialog.h"
 #include "PreferencesManager.h"
+#include "Combo/ComboManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
@@ -226,4 +227,14 @@ void MainWindow::onActionShowAboutDialog()
 {
    AboutDialog().exec();
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionShowPreferencesDialog()
+{
+   PreferencesDialog().exec();
+}
+
 

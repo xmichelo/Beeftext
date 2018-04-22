@@ -112,6 +112,8 @@
     </property>
     <addaction name="actionEnableDisableBeeftext"/>
     <addaction name="separator"/>
+    <addaction name="actionShowPreferencesDialog"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -164,6 +166,14 @@
    </property>
    <property name="toolTip">
     <string notr="true">#EnableDisableBeeftext#</string>
+   </property>
+  </action>
+  <action name="actionShowPreferencesDialog">
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+,</string>
    </property>
   </action>
  </widget>
@@ -234,6 +244,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionShowPreferencesDialog</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowPreferencesDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
@@ -241,5 +267,6 @@
   <slot>onActionShowPreferences()</slot>
   <slot>onActionEnableDisableBeeftext()</slot>
   <slot>onActionShowAboutDialog()</slot>
+  <slot>onActionShowPreferencesDialog()</slot>
  </slots>
 </ui>
