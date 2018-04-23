@@ -31,8 +31,6 @@ MainWindow::MainWindow()
 #endif
 {
    ui_.setupUi(this);
-   ui_.tabWidget->setCurrentIndex(0);
-
    this->setupSystemTrayIcon();
    PreferencesManager& prefs = PreferencesManager::instance();
    this->restoreGeometry(prefs.mainWindowGeometry());
@@ -82,7 +80,7 @@ void MainWindow::dropEvent(QDropEvent* event)
    if (urls.size() > 0) // should always be the case
    {
       event->acceptProposedAction();
-      this->showTab(0);
+      this->showWindow();
       // note we need to postpone the launch of the dialog to end the event handler ASAP, otherwise the application
       // that the file was dropped from will like be frozen until we complete the import dialog
       QTimer::singleShot(0, [urls, this]() {ui_.frameCombos->comboTableWidget()->
@@ -125,7 +123,7 @@ void MainWindow::setupSystemTrayIcon()
 
    QMenu* menu = new QMenu(this);
    QAction* action = new QAction(tr("Open Beeftext"), this);
-   connect(action, &QAction::triggered, [this]() { this->showTab(0); });
+   connect(action, &QAction::triggered, [this]() { this->showWindow(); });
    menu->addAction(action);
    menu->addSeparator();
    ui_.actionEnableDisableBeeftext->setText(enabled ? tr("&Pause Beeftext"): tr("&Resume Beeftext"));
@@ -134,7 +132,7 @@ void MainWindow::setupSystemTrayIcon()
 
    menu->setDefaultAction(action);
    action = new QAction(tr("Preferences"), this);
-   connect(action, &QAction::triggered, [this]() { this->showTab(1); });
+   connect(action, &QAction::triggered, [this]() { this->showWindow(); });
    menu->addAction(action);
 #ifndef NDEBUG
    menu->addSeparator();
@@ -171,11 +169,10 @@ void MainWindow::changeEvent(QEvent *event)
 
 
 //**********************************************************************************************************************
-/// \param[in] index the index of the tab to show
+//
 //**********************************************************************************************************************
-void MainWindow::showTab(qint32 index)
+void MainWindow::showWindow()
 {
-   ui_.tabWidget->setCurrentIndex(index);
    this->show();
    this->raise();
    this->activateWindow();
@@ -191,7 +188,7 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
    switch (reason)
    {
    case QSystemTrayIcon::Trigger: // a.k.a single click
-      this->showTab(0);
+      this->showWindow();
       break;
    default:
       break;
@@ -238,3 +235,10 @@ void MainWindow::onActionShowPreferencesDialog()
 }
 
 
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void MainWindow::onActionOpenLogFile()
+{
+   openLogFile();
+}

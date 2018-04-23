@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "InputManager.h"
+#include "PreferencesManager.h"
 #include "MainWindow.h"
 #include <XMiLib/Exception.h>
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>694</width>
-    <height>581</height>
+    <width>843</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -19,80 +19,13 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="acceptDrops">
-       <bool>true</bool>
+     <widget class="ComboFrame" name="frameCombos">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
-      <property name="tabShape">
-       <enum>QTabWidget::Rounded</enum>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
       </property>
-      <property name="currentIndex">
-       <number>1</number>
-      </property>
-      <widget class="QWidget" name="CombosTab">
-       <attribute name="title">
-        <string>&amp;Combos</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="ComboFrame" name="frameCombos">
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tabPreferences">
-       <attribute name="title">
-        <string>&amp;Preferences</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="PreferencesFrame" name="framePreferences">
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -102,7 +35,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>694</width>
+     <width>843</width>
      <height>21</height>
     </rect>
    </property>
@@ -124,7 +57,14 @@
     <addaction name="separator"/>
     <addaction name="actionShowAboutDialog"/>
    </widget>
+   <widget class="QMenu" name="menu_Advanced">
+    <property name="title">
+     <string>&amp;Advanced</string>
+    </property>
+    <addaction name="actionOpenLogFile"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menu_Advanced"/>
    <addaction name="menu_Help"/>
   </widget>
   <action name="actionExit">
@@ -176,15 +116,20 @@
     <string>Ctrl+,</string>
    </property>
   </action>
+  <action name="actionOpenLogFile">
+   <property name="text">
+    <string>Open &amp;Log File</string>
+   </property>
+   <property name="toolTip">
+    <string>Open the log file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+L</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
-  <customwidget>
-   <class>PreferencesFrame</class>
-   <extends>QFrame</extends>
-   <header>PreferencesFrame.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>ComboFrame</class>
    <extends>QFrame</extends>
@@ -260,13 +205,29 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionOpenLogFile</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionOpenLogFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
   <slot>onActionShowMainWindow()</slot>
-  <slot>onActionShowPreferences()</slot>
   <slot>onActionEnableDisableBeeftext()</slot>
   <slot>onActionShowAboutDialog()</slot>
   <slot>onActionShowPreferencesDialog()</slot>
+  <slot>onActionOpenLogFile()</slot>
  </slots>
 </ui>

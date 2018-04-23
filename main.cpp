@@ -12,6 +12,7 @@
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "UpdateManager.h"
+#include "PreferencesManager.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
 #include <XMiLib/SystemUtils.h>

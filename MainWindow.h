@@ -44,7 +44,7 @@ protected: // member functions
 private: // member functions
    void setupSystemTrayIcon(); ///< Setup the system tray icon
    void changeEvent(QEvent *event) override; ///< Change event handler
-   void showTab(qint32 index); ///< Show a tab and ensure the window is visible, active and on top
+   void showWindow(); ///< Ensure the window is visible, active and on top
 
 signals:
    void startedCheckingForUpdate(); ///< Signal for the start of the update check
@@ -55,7 +55,8 @@ private slots:
    void onActionExit(); ///< Slot for the 'Exit' action
    void onActionEnableDisableBeeftext(); ///< Slot for the Enable/Disable Beeftext
    void onActionShowAboutDialog(); ///< Slot for the 'Show About dialog' action
-   void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog action
+   void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog' action
+   void onActionOpenLogFile(); ///< Slot for the 'Open Log File' action
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window
