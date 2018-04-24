@@ -919,62 +919,67 @@
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="40"/>
+        <location filename="../PreferencesDialog.ui" line="437"/>
+        <source>&amp;Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="42"/>
         <source>&amp;Automatically start %1 at login</source>
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="133"/>
+        <location filename="../PreferencesDialog.cpp" line="179"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="133"/>
+        <location filename="../PreferencesDialog.cpp" line="179"/>
         <source>The combo list folder could not be changed.</source>
         <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="185"/>
+        <location filename="../PreferencesDialog.cpp" line="235"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="185"/>
+        <location filename="../PreferencesDialog.cpp" line="235"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="205"/>
+        <location filename="../PreferencesDialog.cpp" line="253"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="330"/>
+        <location filename="../PreferencesDialog.cpp" line="204"/>
         <source>Delete Backup Files?</source>
         <translation>Effacer les Sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="330"/>
+        <location filename="../PreferencesDialog.cpp" line="204"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="367"/>
+        <location filename="../PreferencesDialog.cpp" line="331"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="369"/>
+        <location filename="../PreferencesDialog.cpp" line="333"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="378"/>
+        <location filename="../PreferencesDialog.cpp" line="342"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="387"/>
+        <location filename="../PreferencesDialog.cpp" line="351"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>

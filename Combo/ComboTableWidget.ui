@@ -261,8 +261,9 @@
   </action>
  </widget>
  <tabstops>
-  <tabstop>editSearch</tabstop>
   <tabstop>tableComboList</tabstop>
+  <tabstop>editSearch</tabstop>
+  <tabstop>buttonCombos</tabstop>
  </tabstops>
  <resources/>
  <connections>

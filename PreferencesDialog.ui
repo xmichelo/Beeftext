@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>642</width>
+    <width>717</width>
     <height>510</height>
    </rect>
   </property>
@@ -431,6 +431,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="buttonApply">
+       <property name="text">
+        <string>&amp;Apply</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -566,114 +573,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkAutoBackup</sender>
-   <signal>stateChanged(int)</signal>
+   <sender>buttonApply</sender>
+   <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onAutoBackupCheckChanged()</slot>
+   <slot>onActionApply()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>117</x>
-     <y>377</y>
+     <x>594</x>
+     <y>488</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
-     <y>255</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkAutoCheckForUpdates</sender>
-   <signal>stateChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onAutoCheckForUpdatesCheckChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>107</x>
-     <y>44</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkAutoStart</sender>
-   <signal>stateChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onAutoStartCheckChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>320</x>
-     <y>71</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkPlaySoundOnCombo</sender>
-   <signal>stateChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onPlaySoundOnComboCheckChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>320</x>
-     <y>94</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkUseClipboardForComboSubstitution</sender>
-   <signal>stateChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onUseClipboardForComboSubstitutionCheckChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>320</x>
-     <y>319</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkUseCustomTheme</sender>
-   <signal>stateChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onUseCustomThemeCheckChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>320</x>
-     <y>263</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>comboLocale</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onLocaleChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>106</x>
-     <y>237</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
+     <y>254</y>
     </hint>
    </hints>
   </connection>
@@ -681,15 +592,15 @@
    <sender>radioComboTriggerAuto</sender>
    <signal>toggled(bool)</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onRadioAutomaticComboTriggerChecked(bool)</slot>
+   <slot>updateGui()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>94</x>
-     <y>150</y>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
+     <x>358</x>
+     <y>254</y>
     </hint>
    </hints>
   </connection>
@@ -711,5 +622,7 @@
   <slot>onActionResetComboTriggerShortcut()</slot>
   <slot>onAutoBackupCheckChanged()</slot>
   <slot>onActionRestoreBackup()</slot>
+  <slot>onActionApply()</slot>
+  <slot>updateGui()</slot>
  </slots>
 </ui>

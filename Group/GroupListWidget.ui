@@ -110,6 +110,10 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>listGroup</tabstop>
+  <tabstop>buttonGroups</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

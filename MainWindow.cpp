@@ -132,7 +132,7 @@ void MainWindow::setupSystemTrayIcon()
 
    menu->setDefaultAction(action);
    action = new QAction(tr("Preferences"), this);
-   connect(action, &QAction::triggered, [this]() { this->showWindow(); });
+   connect(action, &QAction::triggered, [this]() { this->onActionShowPreferencesDialog(); });
    menu->addAction(action);
 #ifndef NDEBUG
    menu->addSeparator();
