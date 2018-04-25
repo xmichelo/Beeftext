@@ -70,12 +70,16 @@ private: // member functions
 	PreferencesManager(PreferencesManager&&) = delete; ///< Disabled move constructor
 	PreferencesManager& operator=(PreferencesManager const&) = delete; ///< Disabled assignment operator
 	PreferencesManager& operator=(PreferencesManager&&) = delete; ///< Disabled move assignment operator
+   void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
+   void applyCustomThemePreference() const; ///< Apply the preference for the custom theme
+   void applyAutoStartPreference() const; ///< Apply the preference for the auto-start
+   void applyLocalePreference() const; ///< Apply the preference for the locale
    template <typename T> T readSettings(QString const& key, T const& defaultValue = T()) const; ///< Read a value of a given type read from the settings
    
 private: // data members
    std::unique_ptr<QSettings> settings_; ///< The Qt settings instance
    bool cachedUseAutomaticSubstitution_; ///< Cached value for the 'use automatic substitution' preference value
-
+   SPShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
 };
 
 

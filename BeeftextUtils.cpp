@@ -78,8 +78,8 @@ bool registerApplicationForAutoStart()
 //**********************************************************************************************************************
 void unregisterApplicationFromAutoStart()
 {
-   if (isInPortableMode())
-   QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
+   if (!isInPortableMode())
+      QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
 }
 
 

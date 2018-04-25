@@ -39,8 +39,6 @@ public: // static member functions
    void enableMouseHook(); ///< Enable the mouse hook
    void disableMouseHook(); ///< Disable the mouse hook
    bool setMouseHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
-   void setComboTriggerShortcut(SPShortcut const& shortcut); ///< Set the combo trigger shortcut
-   SPShortcut comboTriggerShortcut() const; ///< Get the combo trigger shortcut
 
 public: // member functions
    ~InputManager(); ///< Default destructor
@@ -67,7 +65,6 @@ private: // static member functions
    static LRESULT CALLBACK mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The mouse event callback
 
 private: // data members
-   SPShortcut comboTriggerShortcut_; ///< The combo trigger shortcut
    HHOOK keyboardHook_; ///< The handle to the keyboard hook used to be notified of keyboard events
    HHOOK mouseHook_; ///< The handle to the mouse hook used to be notified of mouse event
    KeyStroke deadKey_; ///< The currently active dead key

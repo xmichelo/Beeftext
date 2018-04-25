@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ShortcutDialog.h"
+#include "PreferencesManager.h"
 #include "BeeftextConstants.h"
 
 
@@ -18,7 +19,7 @@
 //**********************************************************************************************************************
 ShortcutDialog::ShortcutDialog(SPShortcut const& shortcut, QWidget* parent)
    : QDialog(parent, constants::kDefaultDialogFlags)
-   , shortcut_(shortcut)
+   , shortcut_(shortcut ? shortcut : PreferencesManager::defaultComboTriggerShortcut())
 {
    ui_.setupUi(this);
    this->updateGui();

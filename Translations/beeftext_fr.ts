@@ -929,57 +929,61 @@
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="179"/>
+        <location filename="../PreferencesDialog.cpp" line="133"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="179"/>
         <source>The combo list folder could not be changed.</source>
-        <translation>Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
+        <translation type="vanished">Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="235"/>
+        <location filename="../PreferencesDialog.cpp" line="190"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="235"/>
+        <location filename="../PreferencesDialog.cpp" line="190"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="253"/>
+        <location filename="../PreferencesDialog.cpp" line="207"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="204"/>
+        <location filename="../PreferencesDialog.cpp" line="159"/>
         <source>Delete Backup Files?</source>
         <translation>Effacer les Sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="204"/>
+        <location filename="../PreferencesDialog.cpp" line="133"/>
+        <source>The combo list folder could not be changed. The other settings were saved successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="159"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="331"/>
+        <location filename="../PreferencesDialog.cpp" line="282"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="333"/>
+        <location filename="../PreferencesDialog.cpp" line="284"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="342"/>
+        <location filename="../PreferencesDialog.cpp" line="293"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="351"/>
+        <location filename="../PreferencesDialog.cpp" line="302"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>
@@ -1157,27 +1161,27 @@
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="100"/>
+        <location filename="../main.cpp" line="94"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>
     <message>
-        <location filename="../Shortcut.cpp" line="63"/>
+        <location filename="../Shortcut.cpp" line="82"/>
         <source>Ctrl</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Shortcut.cpp" line="65"/>
+        <location filename="../Shortcut.cpp" line="84"/>
         <source>Alt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Shortcut.cpp" line="67"/>
+        <location filename="../Shortcut.cpp" line="86"/>
         <source>Shift</source>
         <translation>Maj</translation>
     </message>
     <message>
-        <location filename="../Shortcut.cpp" line="69"/>
+        <location filename="../Shortcut.cpp" line="88"/>
         <source>Win</source>
         <translation></translation>
     </message>

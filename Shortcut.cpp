@@ -54,6 +54,25 @@ Shortcut::Shortcut(Qt::KeyboardModifiers const& modifiers, quint32 nativeVirtual
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the other other shortcut is identical to this
+//**********************************************************************************************************************
+bool Shortcut::operator==(Shortcut const& other) const
+{
+   return (modifiers_ == other.modifiers_) && (nativeScanCode_ == other.nativeScanCode_)
+      && (nativeVirtualKey_ == other.nativeVirtualKey_);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+bool Shortcut::operator!=(Shortcut const& other) const
+{
+   return !(*this == other);
+}
+
+
+//**********************************************************************************************************************
 /// \return A string describing the shortcut
 //**********************************************************************************************************************
 QString Shortcut::toString() const

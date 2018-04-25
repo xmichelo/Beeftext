@@ -66,14 +66,8 @@ int main(int argc, char *argv[])
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
       PreferencesManager& prefs = PreferencesManager::instance();
-      I18nManager& i18nManager = I18nManager::instance();
-      i18nManager.setLocale(prefs.locale());
-      // ReSharper disable CppDeclaratorNeverUsed
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       UpdateManager& updateManager = UpdateManager::instance(); // we make sure the update manager singleton is instanciated
-      // ReSharper restore CppDeclaratorNeverUsed
-      if (prefs.useCustomTheme())
-         qApp->setStyleSheet(constants::kStyleSheet); // some style on table view do not apply properly if applied before window creation
       MainWindow window;
       ensureMainWindowHasAHandle(window);
       if (!prefs.alreadyLaunched())
@@ -81,7 +75,7 @@ int main(int argc, char *argv[])
       prefs.setAlreadyLaunched();
       qint32 const returnCode = app.exec();
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
-      i18nManager.unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
+      I18nManager::instance().unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
       return returnCode;
    }
    catch (xmilib::Exception const& e)

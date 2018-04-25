@@ -110,7 +110,6 @@ InputManager& InputManager::instance()
 //**********************************************************************************************************************
 InputManager::InputManager() 
    : QObject(nullptr)
-   , comboTriggerShortcut_(PreferencesManager::instance().comboTriggerShortcut())
    , deadKey_(kNullKeyStroke)
 {
    this->enableKeyboardHook();
@@ -245,11 +244,12 @@ void InputManager::onMouseClickEvent(int, WPARAM, LPARAM)
 //**********************************************************************************************************************
 bool InputManager::isComboTriggerShortcut(KeyStroke const& keyStroke) const
 {
-   if (!comboTriggerShortcut_)
+   SPShortcut shortcut = PreferencesManager::instance().comboTriggerShortcut();
+   if (!shortcut)
       return false;
-   if (keyStroke.virtualKey != comboTriggerShortcut_->nativeVirtualKey())
+   if (keyStroke.virtualKey != shortcut->nativeVirtualKey())
       return false;
-   Qt::KeyboardModifiers modifiers = comboTriggerShortcut_->nativeModifiers();
+   Qt::KeyboardModifiers modifiers = shortcut->nativeModifiers();
    quint8 const* ks = keyStroke.keyboardState;
    return bool((ks[VK_LCONTROL] & 0x80) || (ks[VK_RCONTROL] & 0x80)) == modifiers.testFlag(Qt::ControlModifier)
       && bool((ks[VK_LMENU] & 0x80) || (ks[VK_RMENU] & 0x80)) == modifiers.testFlag(Qt::AltModifier)
@@ -359,24 +359,3 @@ bool InputManager::setMouseHookEnabled(bool enabled)
       this->disableMouseHook();
    return result;
 }
-
-
-//**********************************************************************************************************************
-/// \param[in] shortcut the trigger shortcut
-//**********************************************************************************************************************
-void InputManager::setComboTriggerShortcut(SPShortcut const& shortcut)
-{
-   comboTriggerShortcut_ = shortcut;
-   PreferencesManager::instance().setComboTriggerShortcut(comboTriggerShortcut_);
-}
-
-
-//**********************************************************************************************************************
-/// \return The combo trigger shortcut
-//**********************************************************************************************************************
-SPShortcut InputManager::comboTriggerShortcut() const
-{
-   return comboTriggerShortcut_;
-}
-
-

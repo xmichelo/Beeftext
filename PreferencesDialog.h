@@ -34,10 +34,7 @@ public: // member functions
 private: // member functions
    void loadPreferences(); ///< Load the preferences
    void savePreferences(); ///< Save the preferences
-   void applyPreferences(); ///< Apply the preferences
-   void applyAutoStartPreference() const; ///< Apply the 'Autostart at login' preference
-   void applyThemePreference() const; ///< Apply the 'theme' preference
-   void applyComboListFolderPreference(); ///< Apply the combo list folder preference
+   bool validateComboListFolderPath(); ///< Validate the selected combo list folder path
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
    bool promptForAndRemoveAutoBackups(); ///< Ask the user if automatic backups should be deleted and if so, performs the operation
    void changeEvent(QEvent *event) override; ///< Change event handler

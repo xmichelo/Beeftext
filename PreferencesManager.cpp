@@ -8,8 +8,9 @@
 
 
 #include "stdafx.h"
-#include "I18nManager.h"
 #include "PreferencesManager.h"
+#include "I18nManager.h"
+#include "InputManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -82,12 +83,20 @@ PreferencesManager& PreferencesManager::instance()
 PreferencesManager::PreferencesManager()
    : settings_(nullptr)
 {
-   if (isInPortableMode())
-      settings_ = std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat);
-   else   
-      settings_ = std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
+   // portable edition use a different storage method for preferences
+      settings_ = isInPortableMode()
+         ? std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat) 
+         : std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
+
+   // Cache often accessed values
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
-      kDefaultValueUseAutomaticSubstitution); // this preference is cached because it is used frequently
+      kDefaultValueUseAutomaticSubstitution);
+   this->cacheComboTriggerShortcut(); 
+
+   // Some preferences setting need initialization
+   this->applyCustomThemePreference();
+   this->applyAutoStartPreference();
+   this->applyLocalePreference();
 }
 
 
@@ -103,6 +112,7 @@ void PreferencesManager::reset()
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
+   this->setLocale(I18nManager::instance().validateLocale(QLocale()));
    if (isInPortableMode())
    {
       this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
@@ -199,7 +209,11 @@ QLocale PreferencesManager::locale() const
 //**********************************************************************************************************************
 void PreferencesManager::setLocale(QLocale const& locale)
 {
-   settings_->setValue(kKeyLocale, locale);
+   if (this->locale() != locale)
+   {
+      settings_->setValue(kKeyLocale, locale);
+      this->applyLocalePreference();
+   }
 }
 
 
@@ -228,9 +242,16 @@ QDateTime PreferencesManager::lastUpdateCheckDateTime() const
 void PreferencesManager::setAutoStartAtLogin(bool value)
 {
    if (isInPortableMode())
+   {
       globals::debugLog().addWarning("Trying to the set the 'auto start at login' preference while running "
          "in portable mode");
-   settings_->setValue(kKeyAutoStartAtLogin, value);
+      return;
+   }
+   if (this->autoStartAtLogin() != value)
+   {
+      settings_->setValue(kKeyAutoStartAtLogin, value);
+      this->applyAutoStartPreference();
+   }
 }
 
 
@@ -305,7 +326,11 @@ bool PreferencesManager::useClipboardForComboSubstitution() const
 //**********************************************************************************************************************
 void PreferencesManager::setUseCustomTheme(bool value)
 {
-   settings_->setValue(kKeyUseCustomTheme, value);
+   if (this->useCustomTheme() != value)
+   {
+      settings_->setValue(kKeyUseCustomTheme, value);
+      this->applyCustomThemePreference();
+   }
 }
 
 
@@ -375,17 +400,16 @@ QString PreferencesManager::defaultComboListFolderPath()
 //**********************************************************************************************************************
 void PreferencesManager::setComboTriggerShortcut(SPShortcut const& value)
 {
-   if (!value)
-   {
-      settings_->remove(kKeyComboTriggerShortcutModifiers);
-      settings_->remove(kKeyComboTriggerShortcutKeyCode);
-      settings_->remove(kKeyComboTriggerShortcutScanCode);
-   }
-   else
+   SPShortcut newShortcut = value ? value : kDefaultValueComboTriggerShortcut;
+   SPShortcut currentShortcut = comboTriggerShortcut();
+   if (!currentShortcut)
+      currentShortcut = kDefaultValueComboTriggerShortcut;
+   if (*newShortcut != *currentShortcut)
    {
       settings_->setValue(kKeyComboTriggerShortcutModifiers, int(value->nativeModifiers()));
       settings_->setValue(kKeyComboTriggerShortcutKeyCode, value->nativeVirtualKey());
       settings_->setValue(kKeyComboTriggerShortcutScanCode, value->nativeScanCode());
+      cachedComboTriggerShortcut_ = newShortcut;
    }
 }
 
@@ -395,13 +419,7 @@ void PreferencesManager::setComboTriggerShortcut(SPShortcut const& value)
 //**********************************************************************************************************************
 SPShortcut PreferencesManager::comboTriggerShortcut() const
 {
-   int const intMods = this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0);
-   quint32 vKey = this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCode, 0);
-   quint32 scanCode = this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0);
-   if ((!intMods) || (!vKey) || (!scanCode))
-      return kDefaultValueComboTriggerShortcut;
-   SPShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
-   return result->isValid() ? result: kDefaultValueComboTriggerShortcut;
+   return cachedComboTriggerShortcut_;
 }
 
 
@@ -448,3 +466,58 @@ SPShortcut PreferencesManager::defaultComboTriggerShortcut()
 {
    return kDefaultValueComboTriggerShortcut;
 }
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesManager::cacheComboTriggerShortcut()
+{
+   int const intMods = this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0);
+   quint32 vKey = this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCode, 0);
+   quint32 scanCode = this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0);
+   if ((!intMods) || (!vKey) || (!scanCode))
+      cachedComboTriggerShortcut_ =  kDefaultValueComboTriggerShortcut;
+   else
+   cachedComboTriggerShortcut_ = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
+   if (!cachedComboTriggerShortcut_->isValid())
+      cachedComboTriggerShortcut_ = kDefaultValueComboTriggerShortcut;
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesManager::applyCustomThemePreference() const
+{
+   qApp->setStyleSheet(this->useCustomTheme() ? constants::kStyleSheet : QString());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesManager::applyAutoStartPreference() const
+{
+   if (isInPortableMode())
+      return;
+   if (this->autoStartAtLogin())
+   {
+      if (!registerApplicationForAutoStart())
+         globals::debugLog().addWarning("Could not register the application for automatic startup on login.");
+   }
+   else
+      unregisterApplicationFromAutoStart();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesManager::applyLocalePreference() const
+{
+   I18nManager::instance().setLocale(this->locale());
+}
+
+
+

@@ -41,8 +41,6 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    ui_.labelUpdateCheckStatus->setText(QString());
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
    this->loadPreferences();
-   this->applyAutoStartPreference(); // we ensure autostart is properly setup
-   this->applyThemePreference(); // we apply the custom theme if the user selected it
    I18nManager::fillLocaleCombo(*ui_.comboLocale);
    I18nManager::selectLocaleInCombo(I18nManager::instance().locale(), *ui_.comboLocale);
    if (isInPortableMode())
@@ -73,9 +71,6 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
 //**********************************************************************************************************************
 void PreferencesDialog::loadPreferences()
 {
-   QSignalBlocker blockers[] = { QSignalBlocker(ui_.checkUseClipboardForComboSubstitution),
-      QSignalBlocker(ui_.radioComboTriggerAuto),
-      QSignalBlocker(ui_.radioComboTriggerManual), QSignalBlocker(ui_.checkAutoBackup) }; // Temporarily Block signals emission by the controls
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
@@ -85,7 +80,7 @@ void PreferencesDialog::loadPreferences()
       ui_.radioComboTriggerManual->setChecked(true);
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
-   triggerShortcut_ = InputManager::instance().comboTriggerShortcut();
+   triggerShortcut_ = prefs_.comboTriggerShortcut();
    ui_.editShortcut->setText(triggerShortcut_ ? triggerShortcut_->toString() : "");
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
    ui_.checkAutoBackup->setChecked(prefs_.autoBackup());
@@ -107,78 +102,38 @@ void PreferencesDialog::savePreferences()
       prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
    prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
    prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
-   InputManager::instance().setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ : 
+   prefs_.setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ : 
       PreferencesManager::defaultComboTriggerShortcut());
    prefs_.setLocale(I18nManager::getSelectedLocaleInCombo(*ui_.comboLocale));
    prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
    prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
    if (!isInPortableMode())
-      prefs_.setComboListFolderPath(QDir::fromNativeSeparators(ui_.editComboListFolder->text()));
+   {
+      if (this->validateComboListFolderPath())
+         prefs_.setComboListFolderPath(QDir::fromNativeSeparators(ui_.editComboListFolder->text()));
+   }
    prefs_.setAutoBackup(autoBackup);
 }
 
 
 //**********************************************************************************************************************
-// 
+/// \return true if and only if the combo list folder is valid (i.e. it exists and we could save the combo list there)
 //**********************************************************************************************************************
-void PreferencesDialog::applyPreferences()
-{
-   this->applyAutoStartPreference();
-   I18nManager::instance().setLocale(I18nManager::getSelectedLocaleInCombo(*ui_.comboLocale));
-   this->applyThemePreference();
-   this->applyComboListFolderPreference();
-   if (triggerShortcut_)
-      InputManager::instance().setComboTriggerShortcut(triggerShortcut_);
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::applyAutoStartPreference() const
-{
-   if (prefs_.autoStartAtLogin())
-   {
-      if (!registerApplicationForAutoStart())
-         globals::debugLog().addWarning("Could not register the application for automatic startup on login.");
-   }
-   else
-      unregisterApplicationFromAutoStart();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::applyThemePreference() const
-{
-   qApp->setStyleSheet(prefs_.useCustomTheme() ? constants::kStyleSheet : QString());
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] folderPath The new path of the folder
-/// \param[in] previousPath The path of the previous folder, to restore in case the new one does not work
-//**********************************************************************************************************************
-void PreferencesDialog::applyComboListFolderPreference()
+bool PreferencesDialog::validateComboListFolderPath()
 {
    if (isInPortableMode())
-      return;
-   PreferencesManager& prefs = PreferencesManager::instance();
-   QString err;
-   if (!ComboManager::instance().saveComboListToFile(&err))
+      return true;
+   QString const& path = QDir(QDir::fromNativeSeparators(ui_.editComboListFolder->text()))
+      .absoluteFilePath(ComboList::defaultFileName);
+   bool const result = ComboManager::instance().comboListRef().save(path, true);
+   if (!result)
    {
-      QString const failedPath = prefs_.comboListFolderPath();
-      if (!previousComboListPath_.isEmpty())
-         prefs.setComboListFolderPath(previousComboListPath_);
-      prefs_.setComboListFolderPath(previousComboListPath_);
-      ui_.editComboListFolder->setText(QDir::toNativeSeparators(previousComboListPath_));
       globals::debugLog().addError(QString("The combo list folder could not be changed to '%1'")
-         .arg(QDir::toNativeSeparators(failedPath)));
-      QMessageBox::critical(this, tr("Error"), tr("The combo list folder could not be changed."));
-      return;
+         .arg(QDir::toNativeSeparators(path)));
+      QMessageBox::critical(this, tr("Error"), tr("The combo list folder could not be changed. "
+         "The other settings were saved successfully."));
    }
+   return result;
 }
 
 
@@ -220,7 +175,7 @@ void PreferencesDialog::changeEvent(QEvent *event)
    if (QEvent::LanguageChange == event->type())
    {
       ui_.retranslateUi(this);
-      SPShortcut const shortcut = InputManager::instance().comboTriggerShortcut();
+      SPShortcut const shortcut = prefs_.comboTriggerShortcut();
       ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
    }
    QDialog::changeEvent(event);
@@ -238,9 +193,8 @@ void PreferencesDialog::onActionResetToDefaultValues()
 
    previousComboListPath_ = prefs_.comboListFolderPath();
    prefs_.reset();
-   InputManager::instance().setComboTriggerShortcut(prefs_.comboTriggerShortcut());
    this->loadPreferences();
-   this->applyPreferences();
+   this->updateGui();
 }
 
 
@@ -273,8 +227,6 @@ void PreferencesDialog::onActionResetComboListFolder()
 //**********************************************************************************************************************
 void PreferencesDialog::onActionChangeShortcut()
 {
-   if (!triggerShortcut_)
-      triggerShortcut_ = PreferencesManager::defaultComboTriggerShortcut();
    ShortcutDialog dlg(triggerShortcut_);
    if (QDialog::Accepted != dlg.exec())
       return;
@@ -308,7 +260,6 @@ void PreferencesDialog::onActionRestoreBackup()
 void PreferencesDialog::onActionOk()
 {
    this->savePreferences();
-   this->applyPreferences();
    this->accept();
 }
 
@@ -319,7 +270,7 @@ void PreferencesDialog::onActionOk()
 void PreferencesDialog::onActionApply()
 {
    this->savePreferences();
-   this->applyPreferences();
+   this->updateGui();
 }
 
 
