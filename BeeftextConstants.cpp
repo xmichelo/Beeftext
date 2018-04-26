@@ -78,11 +78,10 @@ QPushButton:focus:pressed {
 } 
 
 QPushButton::menu-indicator {
-   width: 8px;
-   height: 8px;
-   top: 2px;
-   subcontrol-position: right center;
-   padding-right: 8px;
+   width: 0px;
+   height: 0px;
+   padding: 0px;
+   margin: 0px;
 }
 
 

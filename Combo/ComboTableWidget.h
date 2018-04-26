@@ -29,6 +29,7 @@ public: // member functions
 	~ComboTableWidget() = default; ///< Default destructor
    void setGroupListWidget(GroupListWidget* groupListWidget); ///< Set the group list widget associated with this combo
    void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
+   QMenu* menu(QWidget* parent) const; ///< Get the menu
 
 public slots:
    void onSelectedGroupChanged(SPGroup const& group); ///< Slot for the changing of the selected group
@@ -72,8 +73,8 @@ private slots:
 private: // data members
    Ui::ComboTableWidget ui_; ///< The GUI for the frame
    ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
-   QMenu contextMenu_; ///< The context menu for the combo table
-   GroupListWidget* groupListWidget_; ///< The group list wiget associated with this combo table
+   QMenu* contextMenu_; ///< The context menu for the combo table
+   GroupListWidget* groupListWidget_; ///< The group list widget associated with this combo table
 };
 
 #endif // #ifndef BEEFTEXT__COMBO__TABLE__FRAME__H

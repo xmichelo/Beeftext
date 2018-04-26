@@ -63,6 +63,20 @@ void GroupListWidget::clearSelection() const
 
 
 //**********************************************************************************************************************
+/// \param[in] parent The parent widget of the menu
+//**********************************************************************************************************************
+QMenu* GroupListWidget::menu(QWidget* parent) const
+{
+   QMenu* menu = new QMenu(tr("&Groups"), parent);
+   menu->addAction(ui_.actionNewGroup);
+   menu->addAction(ui_.actionEditGroup);
+   menu->addSeparator();
+   menu->addAction(ui_.actionDeleteGroup);
+   return menu;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void GroupListWidget::updateGui()
@@ -80,7 +94,7 @@ void GroupListWidget::updateGui()
 //**********************************************************************************************************************
 void GroupListWidget::setupGroupsMenu()
 {
-   ui_.buttonGroups->setMenu(this->createMenu());
+   ui_.buttonGroups->setMenu(this->menu(this));
 }
 
 
@@ -91,7 +105,7 @@ void GroupListWidget::setupContextMenu()
 {
    if (contextMenu_)
       contextMenu_->deleteLater();
-   contextMenu_ = createMenu();
+   contextMenu_ = this->menu(this);
    ui_.listGroup->setContextMenuPolicy(Qt::CustomContextMenu);
    connect(ui_.listGroup, &QListView::customContextMenuRequested, this, &GroupListWidget::onContextMenuRequested);
 }
@@ -158,20 +172,6 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
       return true;
    }
    return QObject::eventFilter(object, event);
-}
-
-
-//**********************************************************************************************************************
-/// \return The menu
-//**********************************************************************************************************************
-QMenu* GroupListWidget::createMenu()
-{
-   QMenu* menu = new QMenu(this);
-   menu->addAction(ui_.actionNewGroup);
-   menu->addAction(ui_.actionEditGroup);
-   menu->addSeparator();
-   menu->addAction(ui_.actionDeleteGroup);
-   return menu;
 }
 
 

@@ -32,6 +32,9 @@ MainWindow::MainWindow()
 {
    ui_.setupUi(this);
    this->setupSystemTrayIcon();
+   this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), ui_.frameCombos->groupListWidget()->menu(this));
+   this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), ui_.frameCombos->comboTableWidget()->menu(this));
+
    PreferencesManager& prefs = PreferencesManager::instance();
    this->restoreGeometry(prefs.mainWindowGeometry());
    connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []() 

@@ -63,6 +63,33 @@ void ComboTableWidget::runComboImportDialog(QString const& filePath)
 
 
 //**********************************************************************************************************************
+/// \param[in] parent The parent widget of the menu
+//**********************************************************************************************************************
+QMenu* ComboTableWidget::menu(QWidget* parent) const
+{
+   QMenu* menu = new QMenu(tr("&Combos"), parent);
+   menu->addAction(ui_.actionNewCombo);
+   menu->addAction(ui_.actionDuplicateCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionEditCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionDeleteCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionEnableDisableCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionSelectAll);
+   menu->addAction(ui_.actionDeselectAll);
+   menu->addSeparator();
+   menu->addAction(ui_.actionDeleteCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionImportCombos);
+   menu->addAction(ui_.actionExportCombo);
+   menu->addAction(ui_.actionExportAllCombos);
+   return menu;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
@@ -141,25 +168,7 @@ void ComboTableWidget::setupKeyboadShortcuts()
 //**********************************************************************************************************************
 void ComboTableWidget::setupCombosMenu()
 {
-   QMenu* menu = new QMenu(this);
-   menu->addAction(ui_.actionNewCombo);
-   menu->addAction(ui_.actionDuplicateCombo);
-   menu->addSeparator();
-   menu->addAction(ui_.actionEditCombo);
-   menu->addSeparator();
-   menu->addAction(ui_.actionDeleteCombo);
-   menu->addSeparator();
-   menu->addAction(ui_.actionEnableDisableCombo);
-   menu->addSeparator();
-   menu->addAction(ui_.actionSelectAll);
-   menu->addAction(ui_.actionDeselectAll);
-   menu->addSeparator();
-   menu->addAction(ui_.actionDeleteCombo);
-   menu->addSeparator();
-   menu->addAction(ui_.actionImportCombos);
-   menu->addAction(ui_.actionExportCombo);
-   menu->addAction(ui_.actionExportAllCombos);
-   ui_.buttonCombos->setMenu(menu);
+   ui_.buttonCombos->setMenu(this->menu(this));
 }
 
 
@@ -168,22 +177,9 @@ void ComboTableWidget::setupCombosMenu()
 //**********************************************************************************************************************
 void ComboTableWidget::setupContextMenu()
 {
-   contextMenu_.clear();
-   contextMenu_.addAction(ui_.actionNewCombo);
-   contextMenu_.addAction(ui_.actionDuplicateCombo);
-   contextMenu_.addSeparator();
-   contextMenu_.addAction(ui_.actionEditCombo);
-   contextMenu_.addSeparator();
-   contextMenu_.addAction(ui_.actionDeleteCombo);
-   contextMenu_.addSeparator();
-   contextMenu_.addAction(ui_.actionEnableDisableCombo);
-   contextMenu_.addSeparator();
-   contextMenu_.addAction(ui_.actionSelectAll);
-   contextMenu_.addAction(ui_.actionDeselectAll);
-   contextMenu_.addSeparator();
-   contextMenu_.addAction(ui_.actionImportCombos);
-   contextMenu_.addAction(ui_.actionExportCombo);
-   contextMenu_.addAction(ui_.actionExportAllCombos);
+   if (contextMenu_)
+      contextMenu_->deleteLater();
+   contextMenu_ = this->menu(this);
    ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
    connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableWidget::onContextMenuRequested);
 }
@@ -523,7 +519,7 @@ void ComboTableWidget::onSearchFilterChanged(QString const& text)
 //**********************************************************************************************************************
 void ComboTableWidget::onContextMenuRequested()
 {
-   contextMenu_.exec(QCursor::pos());
+   contextMenu_->exec(QCursor::pos());
 }
 
 

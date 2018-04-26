@@ -30,6 +30,7 @@ public: // member functions
    GroupListWidget& operator=(GroupListWidget&&) = delete; ///< Disabled move assignment operator
    SPGroup selectedGroup() const; ///< Get the selected group
    void clearSelection() const; ///< Deselect the currently selected item
+   QMenu* menu(QWidget* parent) const; ///< Get the menu for the widget
 
 signals: 
    void selectedGroupChanged(SPGroup const& group); /// Signal emitted when the selected group changes
@@ -41,7 +42,6 @@ private: // member functions
    void changeEvent(QEvent *event) override; ///< Change event handler
    qint32 selectedGroupIndex() const; ///< Retrieve the index of the selected combo
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
-   QMenu* createMenu(); ///< Create the menu used for the group button and context menu
 
 private slots: 
    void onActionNewGroup(); ///< Slot for the 'new group' action
