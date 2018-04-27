@@ -50,6 +50,8 @@ private slots:
    void onActionApply(); ///< Slot for the Apply button
    void onUpdateIsAvailable(SPLatestVersionInfo const& latestVersionInfo); ///< Slot for the availability of an update
    void onNoUpdateIsAvailable(); ///< Slot for the lack of availability of an update
+   void onUpdateCheckStarted(); ///< Slot for the starting of an update check
+   void onUpdateCheckFinished(); ///< Slot for the finishing of an update check
    void onUpdateCheckFailed(); ///< Slot update check failure
    void updateGui() const; ///< Update the GUI state
 

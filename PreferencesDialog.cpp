@@ -53,8 +53,8 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    // signal mappings for the 'Check now' button
    UpdateManager& updateManager = UpdateManager::instance();
    connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);
-   connect(&updateManager, &UpdateManager::startedUpdateCheck, [&]() { ui_.buttonCheckNow->setEnabled(false); });
-   connect(&updateManager, &UpdateManager::finishedUpdateCheck, [&]() { ui_.buttonCheckNow->setEnabled(true); });
+   connect(&updateManager, &UpdateManager::startedUpdateCheck, this, &PreferencesDialog::onUpdateCheckStarted);
+   connect(&updateManager, &UpdateManager::finishedUpdateCheck, this, &PreferencesDialog::onUpdateCheckFinished);
    connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PreferencesDialog::onUpdateIsAvailable);
    connect(&updateManager, &UpdateManager::noUpdateIsAvailable, this, &PreferencesDialog::onNoUpdateIsAvailable);
    connect(&updateManager, &UpdateManager::updateCheckFailed, this, &PreferencesDialog::onUpdateCheckFailed);
@@ -291,6 +291,24 @@ void PreferencesDialog::onUpdateIsAvailable(SPLatestVersionInfo const& latestVer
 void PreferencesDialog::onNoUpdateIsAvailable()
 {
    this->setUpdateCheckStatus(tr("The software is up to date."));
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesDialog::onUpdateCheckStarted()
+{
+   ui_.buttonCheckNow->setEnabled(false);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesDialog::onUpdateCheckFinished()
+{
+   ui_.buttonCheckNow->setEnabled(true);
 }
 
 
