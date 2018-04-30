@@ -993,7 +993,7 @@
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="302"/>
+        <location filename="../PreferencesDialog.cpp" line="320"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>

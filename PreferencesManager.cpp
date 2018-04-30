@@ -95,7 +95,6 @@ PreferencesManager::PreferencesManager()
 
    // Some preferences setting need initialization
    this->applyCustomThemePreference();
-   this->applyAutoStartPreference();
    this->applyLocalePreference();
 }
 
