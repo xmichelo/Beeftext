@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
    qRegisterMetaType<SPGroup>(); // required to use SPGroup in a queued signal/slot connection
    QString const kUnhandledException = "Unhandled Exception";
    DebugLog& debugLog = globals::debugLog();
-      try
+   try
    {
       QApplication app(argc, argv);
 

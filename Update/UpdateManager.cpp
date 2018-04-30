@@ -101,7 +101,7 @@ void UpdateManager::onWorkerFinished()
    QThread *thread = worker->thread();
    thread->quit();
    thread->wait();
-   worker->deleteLater();
+   delete worker;
    thread->deleteLater();
    emit finishedUpdateCheck();
    PreferencesManager::instance().setLastUpdateCheckDateTime(QDateTime::currentDateTime());
