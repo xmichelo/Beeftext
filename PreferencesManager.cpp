@@ -111,10 +111,10 @@ void PreferencesManager::reset()
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
-   this->setLocale(I18nManager::instance().validateLocale(QLocale()));
-   if (isInPortableMode())
+   this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
+   if (!isInPortableMode())
    {
-      this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin); // we do not actually touch the registry here
+      this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin);
       this->setComboListFolderPath(globals::appDataDir());
    }
 }
