@@ -45,26 +45,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_Beeftext.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
+    
+    
+    
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="BeeftextConstants.cpp" />
     <ClCompile Include="BeeftextGlobals.cpp" />
-    <ClCompile Include="GeneratedFiles\Debug\moc_InputManager.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_InputManager.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Combo\Combo.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -74,36 +64,20 @@
     <ClCompile Include="Combo\ComboManager.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboManager.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboManager.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboList.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboList.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
+    
+    
     <ClCompile Include="Combo\ComboDialog.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Combo\ComboSortFilterProxyModel.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboSortFilterProxyModel.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboSortFilterProxyModel.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="PreferencesManager.cpp" />
     <ClCompile Include="BeeftextUtils.cpp" />
     <ClCompile Include="LatestVersionInfo.cpp" />
@@ -111,45 +85,25 @@
     <ClCompile Include="Update\UpdateCheckWorker.cpp">
       <Filter>Update</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_UpdateCheckWorker.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_UpdateCheckWorker.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Update\UpdateDialog.cpp">
       <Filter>Update</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_UpdateDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_UpdateDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Update\UpdateManager.cpp">
       <Filter>Update</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_UpdateManager.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_UpdateManager.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_PreferencesManager.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_PreferencesManager.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
+    
+    
     <ClCompile Include="I18nManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ShortcutDialog.cpp" />
-    <ClCompile Include="GeneratedFiles\Debug\moc_ShortcutDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ShortcutDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Shortcut.cpp" />
     <ClCompile Include="Combo\ComboVariable.cpp">
       <Filter>Combo</Filter>
@@ -157,66 +111,42 @@
     <ClCompile Include="Combo\ComboImportDialog.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboImportDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboImportDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Combo\ComboKeywordValidator.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
     <ClCompile Include="Combo\ComboFrame.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboFrame.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboFrame.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Combo\ComboTableWidget.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ComboTableWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ComboTableWidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Group\Group.cpp">
       <Filter>Group</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GroupList.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GroupList.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Group\GroupList.cpp">
       <Filter>Group</Filter>
     </ClCompile>
     <ClCompile Include="Group\GroupDialog.cpp">
       <Filter>Group</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GroupDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GroupDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="Group\GroupListWidget.cpp">
       <Filter>Group</Filter>
     </ClCompile>
     <ClCompile Include="Group\GroupComboBox.cpp">
       <Filter>Group</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GroupComboBox.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GroupComboBox.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="MimeDataUtils.cpp" />
     <ClCompile Include="Backup\BackupManager.cpp">
       <Filter>Backup</Filter>
@@ -224,31 +154,15 @@
     <ClCompile Include="Backup\BackupRestoreDialog.cpp">
       <Filter>Backup</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_BackupRestoreDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_BackupRestoreDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GroupListWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GroupListWidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_AboutDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_AboutDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
+    
+    
+    
+    
     <ClCompile Include="AboutDialog.cpp" />
-    <ClCompile Include="GeneratedFiles\Debug\moc_PreferencesDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_PreferencesDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
+    
+    
     <ClCompile Include="PreferencesDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -310,92 +224,92 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Beeftext.qrc">
+    <QtRcc Include="Beeftext.qrc">
       <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="MainWindow.ui" />
-    <CustomBuild Include="MainWindow.h" />
-    <CustomBuild Include="InputManager.h" />
-    <CustomBuild Include="Combo\ComboManager.h">
+    </QtRcc>
+    <QtUic Include="MainWindow.ui" />
+    <QtMoc Include="MainWindow.h" />
+    <QtMoc Include="InputManager.h" />
+    <QtMoc Include="Combo\ComboManager.h">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboList.h">
+    </QtMoc>
+    <QtMoc Include="Combo\ComboList.h">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboDialog.ui">
+    </QtMoc>
+    <QtUic Include="Combo\ComboDialog.ui">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboDialog.h">
+    </QtUic>
+    <QtMoc Include="Combo\ComboDialog.h">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboSortFilterProxyModel.h">
+    </QtMoc>
+    <QtMoc Include="Combo\ComboSortFilterProxyModel.h">
       <Filter>Combo</Filter>
-    </CustomBuild>
+    </QtMoc>
     <CustomBuild Include="LatestVersionInfo.h" />
-    <CustomBuild Include="Update\UpdateCheckWorker.h">
+    <QtMoc Include="Update\UpdateCheckWorker.h">
       <Filter>Update</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Update\UpdateDialog.h">
+    </QtMoc>
+    <QtMoc Include="Update\UpdateDialog.h">
       <Filter>Update</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Update\UpdateDialog.ui">
+    </QtMoc>
+    <QtUic Include="Update\UpdateDialog.ui">
       <Filter>Update</Filter>
-    </CustomBuild>
-    <CustomBuild Include="UpdateManager.h">
+    </QtUic>
+    <QtMoc Include="UpdateManager.h">
       <Filter>Update</Filter>
-    </CustomBuild>
-    <CustomBuild Include="PreferencesManager.h" />
-    <CustomBuild Include="ShortcutDialog.ui" />
-    <CustomBuild Include="ShortcutDialog.h" />
-    <CustomBuild Include="Combo\ComboImportDialog.h">
+    </QtMoc>
+    <QtMoc Include="PreferencesManager.h" />
+    <QtUic Include="ShortcutDialog.ui" />
+    <QtMoc Include="ShortcutDialog.h" />
+    <QtMoc Include="Combo\ComboImportDialog.h">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboImportDialog.ui">
+    </QtMoc>
+    <QtUic Include="Combo\ComboImportDialog.ui">
       <Filter>Combo</Filter>
-    </CustomBuild>
+    </QtUic>
     <CustomBuild Include="Combo\ComboKeywordValidator.h">
       <Filter>Combo</Filter>
     </CustomBuild>
-    <CustomBuild Include="Combo\ComboFrame.h">
+    <QtMoc Include="Combo\ComboFrame.h">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboFrame.ui">
+    </QtMoc>
+    <QtUic Include="Combo\ComboFrame.ui">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboTableWidget.h">
+    </QtUic>
+    <QtMoc Include="Combo\ComboTableWidget.h">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Combo\ComboTableWidget.ui">
+    </QtMoc>
+    <QtUic Include="Combo\ComboTableWidget.ui">
       <Filter>Combo</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Group\GroupList.h">
+    </QtUic>
+    <QtMoc Include="Group\GroupList.h">
       <Filter>Group</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Group\GroupDialog.h">
+    </QtMoc>
+    <QtMoc Include="Group\GroupDialog.h">
       <Filter>Group</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Group\GroupDialog.ui">
+    </QtMoc>
+    <QtUic Include="Group\GroupDialog.ui">
       <Filter>Group</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Group\GroupListWidget.ui">
+    </QtUic>
+    <QtUic Include="Group\GroupListWidget.ui">
       <Filter>Group</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Group\GroupComboBox.h">
+    </QtUic>
+    <QtMoc Include="Group\GroupComboBox.h">
       <Filter>Group</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Backup\BackupRestoreDialog.ui">
+    </QtMoc>
+    <QtUic Include="Backup\BackupRestoreDialog.ui">
       <Filter>Backup</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Backup\BackupRestoreDialog.h">
+    </QtUic>
+    <QtMoc Include="Backup\BackupRestoreDialog.h">
       <Filter>Backup</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Group\GroupListWidget.h">
+    </QtMoc>
+    <QtMoc Include="Group\GroupListWidget.h">
       <Filter>Group</Filter>
-    </CustomBuild>
-    <CustomBuild Include="AboutDialog.ui" />
-    <CustomBuild Include="AboutDialog.h" />
-    <CustomBuild Include="PreferencesDialog.h" />
-    <CustomBuild Include="PreferencesDialog.ui" />
+    </QtMoc>
+    <QtUic Include="AboutDialog.ui" />
+    <QtMoc Include="AboutDialog.h" />
+    <QtMoc Include="PreferencesDialog.h" />
+    <QtUic Include="PreferencesDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">
