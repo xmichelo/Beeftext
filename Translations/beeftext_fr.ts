@@ -25,21 +25,6 @@
     </message>
 </context>
 <context>
-    <name>AboutFrame</name>
-    <message>
-        <source>Portable Edition</source>
-        <translation type="vanished">Edition Portable</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licences&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Ce logiciel est publié sous la &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licence MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; selon les termes de la licence &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; selon les termes des &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licences OpenSSL and SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Ce logiciel est publié sous la &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licence MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; selon les termes de la licence &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; selon les termes des &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licences OpenSSL and SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-</context>
-<context>
     <name>BackupRestoreDialog</name>
     <message>
         <location filename="../Backup/BackupRestoreDialog.ui" line="22"/>
@@ -441,10 +426,6 @@
         <translation>Ctrl+Maj+O</translation>
     </message>
     <message>
-        <source>Ctrl+Shift+N</source>
-        <translation type="vanished">Ctrl+Maj+N</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.ui" line="204"/>
         <source>Select &amp;All</source>
         <translation>&amp;Tout Selectionner</translation>
@@ -485,10 +466,6 @@
         <translation>Exporter les Combos Sélectionnés</translation>
     </message>
     <message>
-        <source>Ctrl+Shift+E</source>
-        <translation type="vanished">Ctrl+Maj+E</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.ui" line="245"/>
         <source>Import Combos</source>
         <translation>Importer des Combos</translation>
@@ -505,13 +482,9 @@
         <translation>Exporter Tous les Combos</translation>
     </message>
     <message>
-        <source>Ctrl+Shift+A</source>
-        <translation type="vanished">Ctrl+Maj+A</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="70"/>
         <source>&amp;Combos</source>
-        <translation type="unfinished">&amp;Combos</translation>
+        <translation>&amp;Combos</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="310"/>
@@ -640,7 +613,7 @@
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="70"/>
         <source>&amp;Groups</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Groupes</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="186"/>
@@ -677,18 +650,6 @@
 </context>
 <context>
     <name>MainWindow</name>
-    <message>
-        <source>&amp;Combos</source>
-        <translation type="vanished">&amp;Combos</translation>
-    </message>
-    <message>
-        <source>&amp;Preferences</source>
-        <translation type="vanished">&amp;Préférences</translation>
-    </message>
-    <message>
-        <source>A&amp;bout</source>
-        <translation type="vanished">À &amp;Propos</translation>
-    </message>
     <message>
         <location filename="../MainWindow.ui" line="44"/>
         <source>&amp;File</source>
@@ -891,7 +852,7 @@
     <message>
         <location filename="../PreferencesDialog.ui" line="319"/>
         <source>D&amp;efault</source>
-        <translation>Par D&amp;efault</translation>
+        <translation>Par D&amp;éfaut</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="331"/>
@@ -916,7 +877,7 @@
     <message>
         <location filename="../PreferencesDialog.ui" line="400"/>
         <source>&amp;Default</source>
-        <translation>Par &amp;Défault</translation>
+        <translation>Par &amp;Défaut</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="423"/>
@@ -931,7 +892,7 @@
     <message>
         <location filename="../PreferencesDialog.ui" line="437"/>
         <source>&amp;Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;ppliquer</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="42"/>
@@ -942,10 +903,6 @@
         <location filename="../PreferencesDialog.cpp" line="133"/>
         <source>Error</source>
         <translation>Erreur</translation>
-    </message>
-    <message>
-        <source>The combo list folder could not be changed.</source>
-        <translation type="vanished">Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="190"/>
@@ -970,7 +927,7 @@
     <message>
         <location filename="../PreferencesDialog.cpp" line="133"/>
         <source>The combo list folder could not be changed. The other settings were saved successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le dossier de liste des combos n&apos;a pas pu être modifié. Les autres réglages ont bien été sauvegardés.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="159"/>
@@ -996,161 +953,6 @@
         <location filename="../PreferencesDialog.cpp" line="320"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
-    </message>
-</context>
-<context>
-    <name>PreferencesFrame</name>
-    <message>
-        <source>Behavior</source>
-        <translation type="vanished">Comportement</translation>
-    </message>
-    <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation type="vanished">Vérifier automatiquement les &amp;mises à jour</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation type="vanished">&amp;Vérifier Maintenant</translation>
-    </message>
-    <message>
-        <source>&amp;Play sound on combo</source>
-        <translation type="vanished">&amp;Emettre un son pendant les combos</translation>
-    </message>
-    <message>
-        <source>Combo triggering</source>
-        <translation type="vanished">Déclenchement des combos</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="vanished">Automatique</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation type="vanished">Manuel, avec le raccourci</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation type="vanished">C&amp;hanger</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translation type="vanished">Par Dé&amp;faut</translation>
-    </message>
-    <message>
-        <source>Appearance</source>
-        <translation type="vanished">Apparence</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation type="vanished">Langue</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Utiliser un thème personnalisé</translation>
-    </message>
-    <message>
-        <source>Advanced</source>
-        <translation type="vanished">Avancé</translation>
-    </message>
-    <message>
-        <source>Use clipboard for combo substitution</source>
-        <translation type="vanished">Utiliser le presse-papier pour la substitution des combos</translation>
-    </message>
-    <message>
-        <source>Combo list folder</source>
-        <translation type="vanished">Dossier de la liste des combos</translation>
-    </message>
-    <message>
-        <source>&amp;Change</source>
-        <translation type="vanished">&amp;Modifier</translation>
-    </message>
-    <message>
-        <source>D&amp;efault</source>
-        <translation type="vanished">Par D&amp;efault</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="vanished">Faire des copies de sauvegarde automatique de la liste des combos</translation>
-    </message>
-    <message>
-        <source>Restore a backup.</source>
-        <translation type="vanished">Restaurer une sauvegarde.</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation type="vanished">&amp;Restaurer</translation>
-    </message>
-    <message>
-        <source>Open &amp;Log File</source>
-        <translation type="vanished">Ouvrir le &amp;Journal</translation>
-    </message>
-    <message>
-        <source>Reset the preferences to their default values.</source>
-        <translation type="vanished">Réinitialiser les préférences à leurs valeurs par défaut.</translation>
-    </message>
-    <message>
-        <source>&amp;Default</source>
-        <translation type="vanished">Par &amp;Défault</translation>
-    </message>
-    <message>
-        <source>Open the log file</source>
-        <translation type="vanished">Ouvrir le journal</translation>
-    </message>
-    <message>
-        <source>Change combo list folder</source>
-        <translation type="vanished">Changer le dossier de la liste des combos</translation>
-    </message>
-    <message>
-        <source>Reset combo list folder</source>
-        <translation type="vanished">Reinitialiser le dossier de la liste de combos</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start %1 at login</source>
-        <translation type="vanished">&amp;Démarrer %1 automatiquement à la connexion</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="vanished">Erreur</translation>
-    </message>
-    <message>
-        <source>The combo list folder could not be changed.</source>
-        <translation type="vanished">Le dossier de la liste de combos n&apos;a pas pu être modifié.</translation>
-    </message>
-    <message>
-        <source>Reset Preferences</source>
-        <translation type="vanished">Réinitialiser les Préférences</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset the preferences to their default values?</source>
-        <translation type="vanished">Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
-    </message>
-    <message>
-        <source>Select folder</source>
-        <translation type="vanished">Sélectionner le dossier</translation>
-    </message>
-    <message>
-        <source>Delete Backup Files?</source>
-        <translation type="vanished">Effacer les Sauvegardes?</translation>
-    </message>
-    <message>
-        <source>Do you want to delete all the backup files?</source>
-        <translation type="vanished">Voulez-vous effacer toutes les sauvegardes?</translation>
-    </message>
-    <message>
-        <source>%1 v%2.%3 is available.</source>
-        <translation type="vanished">%1 v%2.%3 est disponible.</translation>
-    </message>
-    <message>
-        <source>A new version is available.</source>
-        <translation type="vanished">Une nouvelle version est disponible.</translation>
-    </message>
-    <message>
-        <source>The software is up to date.</source>
-        <translation type="vanished">Le logiciel est à jour.</translation>
-    </message>
-    <message>
-        <source>Update check failed.</source>
-        <translation type="vanished">La vérification de mise à jour a échoué.</translation>
     </message>
 </context>
 <context>
