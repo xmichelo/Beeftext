@@ -45,16 +45,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    
-    
-    
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="BeeftextConstants.cpp" />
     <ClCompile Include="BeeftextGlobals.cpp" />
-    
-    
     <ClCompile Include="Combo\Combo.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -64,46 +59,22 @@
     <ClCompile Include="Combo\ComboManager.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    
-    
-    
-    
     <ClCompile Include="Combo\ComboDialog.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    
-    
     <ClCompile Include="Combo\ComboSortFilterProxyModel.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    
-    
     <ClCompile Include="PreferencesManager.cpp" />
     <ClCompile Include="BeeftextUtils.cpp" />
     <ClCompile Include="LatestVersionInfo.cpp" />
     <ClCompile Include="ClipboardManager.cpp" />
-    <ClCompile Include="Update\UpdateCheckWorker.cpp">
-      <Filter>Update</Filter>
-    </ClCompile>
-    
-    
     <ClCompile Include="Update\UpdateDialog.cpp">
       <Filter>Update</Filter>
     </ClCompile>
-    
-    
-    <ClCompile Include="Update\UpdateManager.cpp">
-      <Filter>Update</Filter>
-    </ClCompile>
-    
-    
-    
-    
     <ClCompile Include="I18nManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ShortcutDialog.cpp" />
-    
-    
     <ClCompile Include="Shortcut.cpp" />
     <ClCompile Include="Combo\ComboVariable.cpp">
       <Filter>Combo</Filter>
@@ -111,42 +82,30 @@
     <ClCompile Include="Combo\ComboImportDialog.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    
-    
     <ClCompile Include="Combo\ComboKeywordValidator.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
     <ClCompile Include="Combo\ComboFrame.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    
-    
     <ClCompile Include="Combo\ComboTableWidget.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    
-    
     <ClCompile Include="Group\Group.cpp">
       <Filter>Group</Filter>
     </ClCompile>
-    
-    
     <ClCompile Include="Group\GroupList.cpp">
       <Filter>Group</Filter>
     </ClCompile>
     <ClCompile Include="Group\GroupDialog.cpp">
       <Filter>Group</Filter>
     </ClCompile>
-    
-    
     <ClCompile Include="Group\GroupListWidget.cpp">
       <Filter>Group</Filter>
     </ClCompile>
     <ClCompile Include="Group\GroupComboBox.cpp">
       <Filter>Group</Filter>
     </ClCompile>
-    
-    
     <ClCompile Include="MimeDataUtils.cpp" />
     <ClCompile Include="Backup\BackupManager.cpp">
       <Filter>Backup</Filter>
@@ -154,16 +113,14 @@
     <ClCompile Include="Backup\BackupRestoreDialog.cpp">
       <Filter>Backup</Filter>
     </ClCompile>
-    
-    
-    
-    
-    
-    
     <ClCompile Include="AboutDialog.cpp" />
-    
-    
     <ClCompile Include="PreferencesDialog.cpp" />
+    <ClCompile Include="Update\UpdateManager.cpp">
+      <Filter>Update</Filter>
+    </ClCompile>
+    <ClCompile Include="Update\UpdateCheckWorker.cpp">
+      <Filter>Update</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -246,18 +203,12 @@
       <Filter>Combo</Filter>
     </QtMoc>
     <CustomBuild Include="LatestVersionInfo.h" />
-    <QtMoc Include="Update\UpdateCheckWorker.h">
-      <Filter>Update</Filter>
-    </QtMoc>
     <QtMoc Include="Update\UpdateDialog.h">
       <Filter>Update</Filter>
     </QtMoc>
     <QtUic Include="Update\UpdateDialog.ui">
       <Filter>Update</Filter>
     </QtUic>
-    <QtMoc Include="UpdateManager.h">
-      <Filter>Update</Filter>
-    </QtMoc>
     <QtMoc Include="PreferencesManager.h" />
     <QtUic Include="ShortcutDialog.ui" />
     <QtMoc Include="ShortcutDialog.h" />
@@ -325,5 +276,13 @@
     <Image Include="Resources\BeeftextIcon.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Update\UpdateManager.h">
+      <Filter>Update</Filter>
+    </QtMoc>
+    <QtMoc Include="Update\UpdateCheckWorker.h">
+      <Filter>Update</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

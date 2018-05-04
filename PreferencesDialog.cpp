@@ -15,7 +15,7 @@
 #include "I18nManager.h"
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
-#include "UpdateManager.h"
+#include "Update/UpdateManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
