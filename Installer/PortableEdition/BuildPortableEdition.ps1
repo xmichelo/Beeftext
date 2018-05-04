@@ -6,7 +6,7 @@
 # Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 $ErrorActionPreference = "Stop"
-. (Join-Path $PSScriptRoot "..\..\Resources\Powershell\Beeftext.ps1")
+. (Join-Path $PSScriptRoot "..\Resources\Powershell\Beeftext.ps1")
 
 #***********************************************************************************************************************
 # Variable definitions

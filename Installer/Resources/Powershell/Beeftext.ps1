@@ -29,12 +29,12 @@ function absolutePath([String]$path1, [String]$path2)
 #***********************************************************************************************************************
 # useful variable declarations
 #***********************************************************************************************************************
-$solutionDir = absolutePath $PSScriptRoot "..\.."
+$solutionDir = absolutePath $PSScriptRoot "..\..\.."
 $sslDir =  absolutePath $solutionDir "Vendor\OpenSSL"
 $vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\Dlls"
 $nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
 $portableAppsConfigPath = absolutePath $solutionDir "Installer\PortableApps.com\Template\BeeftextPortable\App\AppInfo\appinfo.ini"
-$rcFilePath = absolutePath $solutionDir "Beeftext.rc"
+$rcFilePath = absolutePath $solutionDir "Beeftext\Beeftext.rc"
 
 #***********************************************************************************************************************
 # Compiles a solution using Visual Studio
@@ -88,7 +88,7 @@ function copyVcppDlls([String]$dstPath)
 #***********************************************************************************************************************
 function getBeeftextVersion
 {
-   $srcFile = absolutePath $solutionDir "BeeftextConstants.cpp"
+   $srcFile = absolutePath $solutionDir "Beeftext\BeeftextConstants.cpp"
    $regexMinor = 'kVersionMinor\s*=\s*(\d+)\s*;' 
    $regexMajor = 'kVersionMajor\s*=\s*(\d+)\s*;' 
    $major = Select-String -Path $srcFile -Pattern $regexMajor | ForEach-Object {$_.Matches} | 
