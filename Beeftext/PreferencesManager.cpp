@@ -35,6 +35,7 @@ namespace {
    QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
    QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
    QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
+   QString const kRegKeyAutoStart = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"; ///< The registry key for autostart
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
@@ -96,6 +97,7 @@ PreferencesManager::PreferencesManager()
    // Some preferences setting need initialization
    this->applyCustomThemePreference();
    this->applyLocalePreference();
+   this->applyAutoStartPreference();
 }
 
 
@@ -519,4 +521,32 @@ void PreferencesManager::applyLocalePreference() const
 }
 
 
+//**********************************************************************************************************************
+/// To register the application for auto start at login, we use a registry key that contains the path of the installed
+/// application. This key is written by the NSIS installer script. As a consequence, if the application has not be
+/// installed using the installer (for example on a development system), this function will fail
+///
+/// \return true if the operation was successful
+//**********************************************************************************************************************
+bool PreferencesManager::registerApplicationForAutoStart() const
+{
+   if (isInPortableMode())
+      return false;
+   QString const installedPath = this->getInstalledApplicationPath();
+   if (installedPath.isEmpty() || (!QFileInfo(installedPath).exists()))
+      return false;
 
+   QSettings(kRegKeyAutoStart, QSettings::NativeFormat).setValue(constants::kApplicationName,
+      QDir::toNativeSeparators(installedPath));
+   return true;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::unregisterApplicationFromAutoStart() const
+{
+   if (!isInPortableMode())
+      QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
+}

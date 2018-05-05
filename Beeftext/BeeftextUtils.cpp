@@ -18,7 +18,6 @@
 namespace {
 
 
-QString const kRegKeyAutoStart = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 QString const kPortableModeBeaconFileName = "Portable.bin"; ///< The name of the 'beacon' file used to detect if the application should run in portable mode
 QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The name of the 'beacon file used to detect if the app is in PortableApps mode
 QStringList const kShiftInsertPasteAppNames{ "mintty.exe", "putty.exe", "powershell.exe" }; ///< The list of application executables name that support only pasting using the Shift+Insert shortcut
@@ -37,37 +36,6 @@ bool isInPortableMode_()
 }
 
 
-}
-
-
-//**********************************************************************************************************************
-/// To register the application for auto start at login, we use a registry key that contains the path of the installed
-/// application. This key is written by the NSIS installer script. As a consequence, if the application has not be
-/// installed using the installer (for example on a development system), this function will fail
-///
-/// \return true if the operation was successful
-//**********************************************************************************************************************
-bool registerApplicationForAutoStart()
-{
-   if (isInPortableMode())
-      return false;
-   QString const installedPath = PreferencesManager::instance().getInstalledApplicationPath();
-   if (installedPath.isEmpty() || (!QFileInfo(installedPath).exists()))
-      return false;
-   
-   QSettings(kRegKeyAutoStart, QSettings::NativeFormat).setValue(constants::kApplicationName, 
-      QDir::toNativeSeparators(installedPath));
-   return true;
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void unregisterApplicationFromAutoStart()
-{
-   if (!isInPortableMode())
-      QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
 }
 
 

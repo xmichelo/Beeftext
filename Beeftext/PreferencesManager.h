@@ -74,6 +74,9 @@ private: // member functions
    void applyCustomThemePreference() const; ///< Apply the preference for the custom theme
    void applyAutoStartPreference() const; ///< Apply the preference for the auto-start
    void applyLocalePreference() const; ///< Apply the preference for the locale
+   bool registerApplicationForAutoStart() const; ///< Register the application to be automatically started at login
+   void unregisterApplicationFromAutoStart() const; ///< Unregister the application to be automatically started at login
+
    template <typename T> T readSettings(QString const& key, T const& defaultValue = T()) const; ///< Read a value of a given type read from the settings
    
 private: // data members
