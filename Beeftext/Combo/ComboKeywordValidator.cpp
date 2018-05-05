@@ -52,10 +52,9 @@ void ComboKeywordValidator::fixup(QString& input) const
 
 //**********************************************************************************************************************
 /// \param[in] input The input text to validate
-/// \param[in] pos unused
 /// \return The validation state of the text
 //**********************************************************************************************************************
-QValidator::State ComboKeywordValidator::validate(QString& input, int& pos) const
+QValidator::State ComboKeywordValidator::validate(QString& input, int&) const
 {
    if (input.isEmpty())
       return QValidator::Intermediate;

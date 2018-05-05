@@ -71,13 +71,13 @@ public: // member functions
    bool processGroupDrop(qint32 groupIndex, qint32 newPosition); ///< Process the dropping of a combo list
    /// \name List model member functions
    /// \{
-   int rowCount(QModelIndex const& parent = QModelIndex()) const override; ///< Returns the number of rows in the model
+   int rowCount(QModelIndex const& = QModelIndex()) const override; ///< Returns the number of rows in the model
    QVariant data(QModelIndex const& index, int role = Qt::DisplayRole) const override; ///< Returns the model data at the given index for the given role
    Qt::DropActions supportedDropActions() const override; ///< Retrieve the supported drop actions
    Qt::ItemFlags flags(QModelIndex const& index) const override; ///< Retrieve the item flags
    QStringList mimeTypes() const; ///< Get the MIME type that are supported for dropping
    QMimeData* mimeData(const QModelIndexList &indexes) const override; ///< Get the MIME data for a given index
-   bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent); ///< process the dropping of MIME data
+   bool dropMimeData(const QMimeData *data, Qt::DropAction, int row, int, const QModelIndex &parent); ///< process the dropping of MIME data
    /// /}
 
 signals:

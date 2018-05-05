@@ -67,7 +67,9 @@ int main(int argc, char *argv[])
       removeFileMarkedForDeletion();
       PreferencesManager& prefs = PreferencesManager::instance();
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
+      (void)comboManager; // avoid warning with MinGW
       UpdateManager& updateManager = UpdateManager::instance(); // we make sure the update manager singleton is instanciated
+      (void)updateManager; // avoir warning with MinGW
       MainWindow window;
       ensureMainWindowHasAHandle(window);
       if (!prefs.alreadyLaunched())

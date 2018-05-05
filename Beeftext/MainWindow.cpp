@@ -93,9 +93,9 @@ void MainWindow::dropEvent(QDropEvent* event)
 
 
 //**********************************************************************************************************************
-/// \param[in] event The event
+//
 //**********************************************************************************************************************
-void MainWindow::closeEvent(QCloseEvent *event)
+void MainWindow::closeEvent(QCloseEvent*)
 {
    // note that we save the geometry every time we close the window, not the app, simply because otherwise we would
    // have to do it in the destructor, where the state of the window may be uncertain.

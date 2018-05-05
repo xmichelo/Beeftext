@@ -47,7 +47,7 @@ Group::Group(QJsonObject const& object, qint32 formatVersion)
    , modificationDateTime_(QDateTime::fromString(object[kPropModificationDateTime].toString(), 
       constants::kJsonExportDateFormat))
 {
-
+    (void)formatVersion; // avoid warning in MinGW. We will for sure use this variable later
 }
 
 

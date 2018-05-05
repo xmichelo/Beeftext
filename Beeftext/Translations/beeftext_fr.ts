@@ -284,17 +284,17 @@
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="621"/>
+        <location filename="../Combo/ComboList.cpp" line="623"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="622"/>
+        <location filename="../Combo/ComboList.cpp" line="624"/>
         <source>Keyword</source>
         <translation>Mot-clé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="623"/>
+        <location filename="../Combo/ComboList.cpp" line="625"/>
         <source>Snippet</source>
         <translation>Snippet</translation>
     </message>
@@ -973,7 +973,7 @@
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="94"/>
+        <location filename="../main.cpp" line="96"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>

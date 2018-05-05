@@ -129,6 +129,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
    bool wasInvalid = false;
    comboList_.ensureCorrectGrouping(&wasInvalid);
    if (inOlderFormat || wasInvalid)
+   {
       if (!this->saveComboListToFile(outErrorMsg))
          globals::debugLog().addWarning(inOlderFormat ?
             "Could not upgrade the combo list file to the newest format version." :
@@ -136,6 +137,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
       else
          globals::debugLog().addInfo(inOlderFormat ? "The combo list file was upgraded to the latest format version." :
          "The combo list file was successfully saved after fixing the the grouping of combos.");
+   }
    emit comboListWasLoaded();
    return true;
 }

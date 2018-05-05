@@ -37,18 +37,6 @@ bool isInPortableMode_()
 }
 
 
-//**********************************************************************************************************************
-/// \brief Test if the application is using the PortableApps layout
-///
-/// \return true if the application is running as part of the PortableApps
-//**********************************************************************************************************************
-bool usePortableAppsFolderLayout_()
-{
-   return QFileInfo(QDir(QCoreApplication::applicationDirPath())
-      .absoluteFilePath(kPortableAppsModeBeaconFileName)).exists();
-}
-
-
 }
 
 

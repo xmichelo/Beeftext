@@ -51,7 +51,8 @@ ComboList::ComboList(QObject* parent)
 /// \param[in] ref The combo list to copy from
 //**********************************************************************************************************************
 ComboList::ComboList(ComboList const& ref)
-   : combos_(ref.combos_)
+   : QAbstractTableModel(ref.parent())
+   , combos_(ref.combos_)
    , groups_(ref.groups_)
 {
 
@@ -62,7 +63,8 @@ ComboList::ComboList(ComboList const& ref)
 /// \param[in] ref The combo list to copy from
 //**********************************************************************************************************************
 ComboList::ComboList(ComboList&& ref)
-   : combos_(std::move(ref.combos_))
+   : QAbstractTableModel(ref.parent())
+   , combos_(std::move(ref.combos_))
    , groups_(std::move(ref.groups_))
 {
 

@@ -19,7 +19,7 @@
 /// \param[in] parent The parent of the widget
 //**********************************************************************************************************************
 GroupListWidget::GroupListWidget(QWidget* parent)
-   : QWidget(nullptr)
+   : QWidget(parent)
    , contextMenu_(nullptr)
 {
    ui_.setupUi(this);
@@ -209,7 +209,7 @@ void GroupListWidget::onActionEditGroup()
    {
       ComboManager& comboManager = ComboManager::instance();
       GroupList& groups = comboManager.groupListRef();
-      quint32 const index = this->selectedGroupIndex();
+      qint32 const index = this->selectedGroupIndex();
       if ((index < 0) || (index >= groups.size()))
          return;
       SPGroup group = groups[index];
@@ -255,10 +255,9 @@ void GroupListWidget::onActionDeleteGroup()
 
 
 //**********************************************************************************************************************
-/// \param[in] selected The items that got selected
-/// \param[in] deselected The items that got deselected
+//
 //**********************************************************************************************************************
-void GroupListWidget::onSelectionChanged(QItemSelection const& selected, QItemSelection const& deselected)
+void GroupListWidget::onSelectionChanged(QItemSelection const&, QItemSelection const&)
 {
    this->updateGui();
    GroupList& groups = ComboManager::instance().groupListRef();

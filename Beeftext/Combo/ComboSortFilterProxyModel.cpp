@@ -36,9 +36,8 @@ void ComboSortFilterProxyModel::setGroup(SPGroup const& group)
 
 //**********************************************************************************************************************
 /// \param[in] sourceRow The row index in the source model
-/// \param[in] index Unused
 //**********************************************************************************************************************
-bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex const& index) const
+bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex const&) const
 {
    ComboList* combos = dynamic_cast<ComboList*>(sourceModel());
    if (!combos)

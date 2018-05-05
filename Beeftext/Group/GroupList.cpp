@@ -48,7 +48,8 @@ GroupList::GroupList(QObject* parent)
 /// \param[in] ref The reference group to copy
 //**********************************************************************************************************************
 GroupList::GroupList(GroupList const& ref)
-   : groups_(ref.groups_)
+   : QAbstractListModel(ref.parent())
+   , groups_(ref.groups_)
    , dropType_(ref.dropType_)
 {
 
@@ -59,7 +60,8 @@ GroupList::GroupList(GroupList const& ref)
 /// \param[in] ref The reference group to copy
 //**********************************************************************************************************************
 GroupList::GroupList(GroupList&& ref)
-   : groups_(std::move(ref.groups_))
+   : QAbstractListModel(ref.parent())
+   , groups_(std::move(ref.groups_))
    , dropType_(std::move(ref.dropType_))
 {
 
@@ -368,7 +370,7 @@ void GroupList::setDropType(EDropType dropType)
 //**********************************************************************************************************************
 bool GroupList::processComboListDrop(QList<QUuid> const& uuids, qint32 index)
 {
-   if ((index < 0) || (index >= groups_.size()) || (!groups_[index]) ||uuids.isEmpty())
+   if ((index < 0) || (index >= qint32(groups_.size())) || (!groups_[index]) ||uuids.isEmpty())
       return false;
    SPGroup group = groups_[index];
    ComboList& comboList = ComboManager::instance().comboListRef();
@@ -429,7 +431,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
 //**********************************************************************************************************************
 /// \param[in] parent The parent model index
 //**********************************************************************************************************************
-int GroupList::rowCount(const QModelIndex &parent) const
+int GroupList::rowCount(const QModelIndex &) const
 {
    return groups_.size();
 }
@@ -509,13 +511,11 @@ QMimeData* GroupList::mimeData(const QModelIndexList &indexes) const
 
 //**********************************************************************************************************************
 /// \param[in] data The MIME data
-/// \param[in] action The drop action
 /// \param[in] row The row 
-/// \param[in] column The column
 /// \param[in] parent The parent index
 /// \return true if and only if the drop was successfully processed
 //**********************************************************************************************************************
-bool GroupList::dropMimeData(QMimeData const*data, Qt::DropAction action, int row, int column,
+bool GroupList::dropMimeData(QMimeData const*data, Qt::DropAction, int row, int,
    QModelIndex const& parent)
 {
    if (!data)

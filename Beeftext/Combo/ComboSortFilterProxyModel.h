@@ -28,7 +28,7 @@ public: // member functions
    void setGroup(SPGroup const& group); ///< Set the group to display
     
 protected: // member functions
-   bool filterAcceptsRow(int sourceRow, QModelIndex const& index) const override; ///< Check if a row should be sorted
+   bool filterAcceptsRow(int sourceRow, QModelIndex const&) const override; ///< Check if a row should be sorted
 
 private: // member functions
    ComboSortFilterProxyModel(ComboSortFilterProxyModel const&) = delete; ///< Disabled copy constructor

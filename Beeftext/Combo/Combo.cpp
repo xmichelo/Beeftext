@@ -85,8 +85,8 @@ Combo::Combo(QString const& name, QString const& keyword, QString const& snippet
    , name_(name)
    , keyword_(keyword)
    , snippet_(snippet)
-   , enabled_(enabled)
    , group_(nullptr)
+   , enabled_(enabled)
 {
    modificationDateTime_ = creationDateTime_ = QDateTime::currentDateTime();
 }
@@ -103,12 +103,12 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
    , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
-   , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime : 
+   , group_(nullptr)
+   , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
       kPropCreated].toString(), constants::kJsonExportDateFormat))
    , modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
       kPropLastModified].toString(), constants::kJsonExportDateFormat))
    , enabled_(object[kPropEnabled].toBool(true))
-   , group_(nullptr)
 {
    if (object.contains(kPropGroup))
    {
