@@ -1,8 +1,8 @@
 {
    "versionMajor": 1,
-   "versionMinor": 1,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.1/Beeftext-1.1-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.1",
-   "sha256Sum": "a4b0252b9adce1a6a2027c171deff1fb281853b28b9be3305221f246e59dc278",
-   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>Improved support for applications that do not support Ctrl+V for pasting.</li></ul></span></p></body></html>"
+   "versionMinor": 2,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.2/Beeftext-1.2-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.2",
+   "sha256Sum": "7e96b6ae0b4471825ae7de37518a261277b6bd5479680b5bf0ccc10a402a034e",
+   "releaseNotes": "<html><head/><body><p><span style=\"font-size:10pt;\"><ul><li>The tabbed interface has been dropped. The Preferences and About tabs have been moved to separate modal dialogs.</li><li>Minor bug fixes.</li></ul></span></p></body></html>"
 }
