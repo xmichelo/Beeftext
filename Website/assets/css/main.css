@@ -1324,7 +1324,7 @@
 		background-size: 100% 100%, auto;
 */
 		font-family: 'Open Sans', sans-serif;
-		font-size: 13pt;
+		font-size: 16px;
 		color: #696969;
 		font-weight: 300;
 		line-height: 2.25em;
@@ -1343,7 +1343,7 @@
 
 	input, select, textarea {
 		font-family: 'Open Sans', sans-serif;
-		font-size: 13pt;
+		font-size: 16px;
 		color: #696969;
 		font-weight: 300;
 		line-height: 2.25em;
@@ -2060,7 +2060,7 @@
 		/* Basic */
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 16px;
 			}
 
 	}
@@ -2072,7 +2072,7 @@
 		/* Basic */
 
 			body, input, select, textarea {
-				font-size: 11pt;
+				font-size: 16px;
 			}
 
 	}
@@ -2092,7 +2092,7 @@
 			}
 
 			body, input, select, textarea {
-				font-size: 11pt;
+				font-size: 16px;
 			}
 
 		/* Section/Article */
