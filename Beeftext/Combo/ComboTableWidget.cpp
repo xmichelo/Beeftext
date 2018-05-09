@@ -69,18 +69,16 @@ QMenu* ComboTableWidget::menu(QWidget* parent) const
 {
    QMenu* menu = new QMenu(tr("&Combos"), parent);
    menu->addAction(ui_.actionNewCombo);
-   menu->addAction(ui_.actionDuplicateCombo);
-   menu->addSeparator();
    menu->addAction(ui_.actionEditCombo);
-   menu->addSeparator();
+   menu->addAction(ui_.actionDuplicateCombo);
    menu->addAction(ui_.actionDeleteCombo);
+   menu->addSeparator();
+   menu->addAction(ui_.actionCopySnippet);
    menu->addSeparator();
    menu->addAction(ui_.actionEnableDisableCombo);
    menu->addSeparator();
    menu->addAction(ui_.actionSelectAll);
    menu->addAction(ui_.actionDeselectAll);
-   menu->addSeparator();
-   menu->addAction(ui_.actionDeleteCombo);
    menu->addSeparator();
    menu->addAction(ui_.actionImportCombos);
    menu->addAction(ui_.actionExportCombo);
@@ -195,6 +193,21 @@ qint32 ComboTableWidget::getSelectedComboCount() const
 
 
 //**********************************************************************************************************************
+/// \return The first selected combo
+/// \return a null combo if none is selected
+//**********************************************************************************************************************
+SPCombo ComboTableWidget::getSelectedCombo() const
+{
+   QList<qint32> const selectedIndexes = this->getSelectedComboIndexes();
+   if (selectedIndexes.isEmpty())
+      return SPCombo();
+   ComboList& comboList = ComboManager::instance().comboListRef();
+   qint32 const index = selectedIndexes[0];
+   return (index >= 0) && (index < comboList.size()) ? comboList[index] : nullptr;
+}
+
+
+//**********************************************************************************************************************
 /// The returned indexes are based on the internal order of the list, not the display order in the table (that can be
 /// modified by sorting by columns).
 ///
@@ -254,6 +267,7 @@ void ComboTableWidget::updateGui() const
    ui_.actionDuplicateCombo->setEnabled(hasOneSelected);
    ui_.actionDeleteCombo->setEnabled(hasOneOrMoreSelected);
    ui_.actionEditCombo->setEnabled(hasOneSelected);
+   ui_.actionCopySnippet->setEnabled(hasOneSelected);
    ui_.actionEnableDisableCombo->setEnabled(hasOneSelected);
    ui_.actionExportCombo->setEnabled(hasOneOrMoreSelected);
    ui_.actionExportAllCombos->setEnabled(!listIsEmpty);
@@ -399,6 +413,17 @@ void ComboTableWidget::onActionEditCombo()
    proxyModel_.invalidate();
    this->updateGui();
    this->resizeColumnsToContents();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::onActionCopySnippet()
+{
+   SPCombo combo = this->getSelectedCombo();
+   if (combo)
+      qApp->clipboard()->setText(combo->evaluatedSnippet());
 }
 
 

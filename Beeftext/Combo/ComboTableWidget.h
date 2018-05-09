@@ -13,6 +13,7 @@
 
 #include "ui_ComboTableWidget.h"
 #include "ComboSortFilterProxyModel.h"
+#include "Combo.h"
 #include "Group/GroupListWidget.h"
 #include "Group/Group.h"
 #include <memory>
@@ -47,6 +48,7 @@ private: // member functions
    void setupCombosMenu(); ///< Setup the 'Combos' menu
    void setupContextMenu(); ///< Setup the context menu
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
+   SPCombo getSelectedCombo() const; ///< Get the first selected combo
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
    void changeEvent(QEvent *event) override; ///< Change event handler
    void resizeColumnsToContents(); ///< Resize the columns to fit the content
@@ -59,6 +61,7 @@ private slots:
    void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
+   void onActionCopySnippet(); ///< Slot for the 'Copy Snippet' action
    void onActionSelectAll() const; ///< Slot for the 'Select All' action
    void onActionDeselectAll() const; ///< Slot for the 'Deselect All' action
    void onActionEnableDisableCombo(); ///< Slot for the 'Enable/Disable' action

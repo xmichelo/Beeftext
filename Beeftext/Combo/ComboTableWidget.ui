@@ -259,6 +259,17 @@
     <string>Ctrl+Shift+O</string>
    </property>
   </action>
+  <action name="actionCopySnippet">
+   <property name="text">
+    <string>&amp;Copy Snippet</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy Snippet</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>tableComboList</tabstop>
@@ -443,6 +454,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionCopySnippet</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableWidget</receiver>
+   <slot>onActionCopySnippet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>393</x>
+     <y>296</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionNewCombo()</slot>
@@ -456,5 +483,6 @@
   <slot>onActionExportCombo()</slot>
   <slot>onActionImportCombos()</slot>
   <slot>onActionExportAllCombos()</slot>
+  <slot>onActionCopySnippet()</slot>
  </slots>
 </ui>
