@@ -1350,7 +1350,7 @@
 	}
 
 	a {
-		color: #0090c5;
+		color: #006da0;
 		text-decoration: underline;
 	}
 
@@ -1854,6 +1854,7 @@
 
 	#footer-wrapper {
 		padding: 6em 0 8em 0;
+		background-color: #eaeaea;
 	}
 
 /* Header */
