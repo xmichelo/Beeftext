@@ -53,6 +53,22 @@ SPGroup GroupListWidget::selectedGroup() const
 
 
 //**********************************************************************************************************************
+/// \return The selected group or the first group if no group is selected
+//**********************************************************************************************************************
+SPGroup GroupListWidget::selectedOrFirstGroup() const
+{
+   SPGroup group = selectedGroup();
+   if (!group)
+   {
+      GroupList& groupList = ComboManager::instance().comboListRef().groupListRef();
+      if (!groupList.isEmpty())
+         group = groupList[0];
+   }
+   return group;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void GroupListWidget::clearSelection() const

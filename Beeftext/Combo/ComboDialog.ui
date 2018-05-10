@@ -230,8 +230,8 @@
    <slot>updateGui()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>302</x>
-     <y>45</y>
+     <x>364</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>280</x>
@@ -252,6 +252,22 @@
     <hint type="destinationlabel">
      <x>280</x>
      <y>183</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboGroup</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>ComboDialog</receiver>
+   <slot>updateGui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>107</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>551</x>
+     <y>45</y>
     </hint>
    </hints>
   </connection>

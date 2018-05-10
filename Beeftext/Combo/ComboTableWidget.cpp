@@ -24,7 +24,6 @@ namespace {
 }
 
 
-
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
@@ -315,7 +314,8 @@ void ComboTableWidget::onActionNewCombo()
    try
    {
       SPCombo combo = Combo::create();
-      combo->setGroup(groupListWidget_->selectedGroup());
+      combo->setGroup(groupListWidget_->selectedOrFirstGroup());
+
       if (!ComboDialog::run(combo, tr("New Combo")))
          return;
       ComboManager& comboManager = ComboManager::instance();
