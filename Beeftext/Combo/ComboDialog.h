@@ -40,6 +40,7 @@ private: // member functions
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
+   void onActionNewGroup(); ///< Slot for the 'New Group' action
    void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu
    void updateGui() const; ///< Update the GUI state
 

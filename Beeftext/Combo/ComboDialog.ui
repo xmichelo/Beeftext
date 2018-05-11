@@ -46,12 +46,19 @@
      <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">
-        <number>0</number>
+        <number>9</number>
        </property>
        <item>
         <widget class="GroupComboBox" name="comboGroup">
          <property name="sizeAdjustPolicy">
           <enum>QComboBox::AdjustToContents</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="buttonNewGroup">
+         <property name="text">
+          <string>&amp;New</string>
          </property>
         </widget>
        </item>
@@ -63,7 +70,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>40</width>
-           <height>13</height>
+           <height>5</height>
           </size>
          </property>
         </spacer>
@@ -162,11 +169,6 @@
     </layout>
    </item>
   </layout>
-  <action name="actionOk">
-   <property name="text">
-    <string>&amp;OK</string>
-   </property>
-  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -178,28 +180,14 @@
  <tabstops>
   <tabstop>editName</tabstop>
   <tabstop>comboGroup</tabstop>
+  <tabstop>buttonNewGroup</tabstop>
   <tabstop>editKeyword</tabstop>
+  <tabstop>editSnippet</tabstop>
   <tabstop>buttonOk</tabstop>
   <tabstop>buttonCancel</tabstop>
  </tabstops>
  <resources/>
  <connections>
-  <connection>
-   <sender>buttonOk</sender>
-   <signal>clicked()</signal>
-   <receiver>actionOk</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>470</x>
-     <y>334</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>buttonCancel</sender>
    <signal>clicked()</signal>
@@ -213,22 +201,6 @@
     <hint type="destinationlabel">
      <x>179</x>
      <y>282</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionOk</sender>
-   <signal>triggered()</signal>
-   <receiver>ComboDialog</receiver>
-   <slot>onActionOk()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>280</x>
-     <y>183</y>
     </hint>
    </hints>
   </connection>
@@ -280,9 +252,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonNewGroup</sender>
+   <signal>clicked()</signal>
+   <receiver>ComboDialog</receiver>
+   <slot>onActionNewGroup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>182</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>280</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonOk</sender>
+   <signal>clicked()</signal>
+   <receiver>ComboDialog</receiver>
+   <slot>onActionOk()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>433</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>280</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionOk()</slot>
   <slot>updateGui()</slot>
+  <slot>onActionNewGroup()</slot>
  </slots>
 </ui>

@@ -87,6 +87,29 @@ QMenu* ComboTableWidget::menu(QWidget* parent) const
 
 
 //**********************************************************************************************************************
+/// \param[in] combo The combo to select
+//**********************************************************************************************************************
+void ComboTableWidget::selectCombo(SPCombo const& combo)
+{
+   if (!combo)
+      return;
+   // first, we ensure that the current group is <all Combos> or we select the combo's group
+   if (groupListWidget_)
+      groupListWidget_->selectGroup(combo->group());
+   ComboList& comboList = ComboManager::instance().comboListRef();
+   for (qint32 i = 0; i < comboList.size(); ++i)
+   {
+      SPCombo const& c = comboList[i];
+      if (c && (c->uuid() == combo->uuid()))
+      {
+         ui_.tableComboList->selectRow(proxyModel_.mapFromSource(comboList.index(i,0)).row());
+         return;
+      }
+   }
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
@@ -325,6 +348,7 @@ void ComboTableWidget::onActionNewCombo()
       QString errorMessage;
       if (!comboManager.saveComboListToFile(&errorMessage))
          throw xmilib::Exception(errorMessage);
+      this->selectCombo(combo);
       this->updateGui();
    }
    catch (xmilib::Exception const& e)
@@ -355,6 +379,7 @@ void ComboTableWidget::onActionDuplicateCombo()
          return;
       if (!comboList.append(combo))
          throw xmilib::Exception(tr("The duplicated combo could not added to the list."));
+      this->selectCombo(combo);
       this->updateGui();
    }
    catch (xmilib::Exception const& e)
@@ -411,6 +436,7 @@ void ComboTableWidget::onActionEditCombo()
    if (!comboManager.saveComboListToFile(&errorMessage))
       QMessageBox::critical(this, tr("Error"), errorMessage);
    proxyModel_.invalidate();
+   this->selectCombo(combo);
    this->updateGui();
    this->resizeColumnsToContents();
 }

@@ -69,6 +69,26 @@ SPGroup GroupListWidget::selectedOrFirstGroup() const
 
 
 //**********************************************************************************************************************
+/// \param[in] group The group
+//**********************************************************************************************************************
+void GroupListWidget::selectGroup(SPGroup const& group)
+{
+   if (!group)
+      return;
+   GroupList& groupList = ComboManager::instance().comboListRef().groupListRef();
+   for (qint32 i = 0; i < groupList.size(); ++i)
+   {
+      SPGroup const g = groupList[i];
+      if (g && (g->uuid() == group->uuid()))
+      {
+         ui_.listGroup->setCurrentIndex(groupList.index(i + 1)); /// + 1 because entry 0 is <All combos>
+         return;
+      }
+   }
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void GroupListWidget::selectAllCombosEntry() const

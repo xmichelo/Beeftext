@@ -8,6 +8,7 @@
 
 
 #include "stdafx.h"
+#include "../Group/GroupDialog.h"
 #include "ComboDialog.h"
 #include "ComboManager.h"
 #include "BeeftextConstants.h"
@@ -184,6 +185,20 @@ void ComboDialog::onActionOk()
 
 
 //**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboDialog::onActionNewGroup()
+{
+   SPGroup group = std::make_shared<Group>(QString());
+   if ((!GroupDialog::run(group, tr("New Group"), this)) || !group)
+      return;
+   ComboManager::instance().comboListRef().groupListRef().append(group);
+   ui_.comboGroup->setContent(ComboManager::instance().groupListRef());
+   ui_.comboGroup->setCurrentGroup(group);
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] pos The position of the cursor
 //**********************************************************************************************************************
 void ComboDialog::onEditorContextMenuRequested(QPoint const& pos)
@@ -200,7 +215,6 @@ void ComboDialog::updateGui() const
    QString keyword = ui_.editKeyword->text();
    bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
       (!ui_.editSnippet->toPlainText().isEmpty()) && ui_.comboGroup->currentGroup();
-   ui_.actionOk->setEnabled(canAccept);
    ui_.buttonOk->setEnabled(canAccept);
 }
 

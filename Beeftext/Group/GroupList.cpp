@@ -543,7 +543,6 @@ QMimeData* GroupList::mimeData(const QModelIndexList &indexes) const
 bool GroupList::dropMimeData(QMimeData const*data, Qt::DropAction, int row, int,
    QModelIndex const& parent)
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    if (!data)
       return false;
 

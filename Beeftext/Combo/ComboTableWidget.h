@@ -31,6 +31,7 @@ public: // member functions
    void setGroupListWidget(GroupListWidget* groupListWidget); ///< Set the group list widget associated with this combo
    void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
    QMenu* menu(QWidget* parent) const; ///< Get the menu
+   void selectCombo(SPCombo const& combo); ///< Select a given combo
 
 public slots:
    void onSelectedGroupChanged(SPGroup const& group); ///< Slot for the changing of the selected group
