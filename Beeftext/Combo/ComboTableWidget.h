@@ -57,6 +57,7 @@ private: // member functions
 private slots:
    void updateGui() const; ///< Update the GUI state
    void onActionStartSearch(); ///< Slot for the start of the search
+   void onActionStartSearchInAllGroups(); ///< Slot for the start of the search in all groups
    void onActionClearSearch(); ///< Slot for the clearing of the search box
    void onActionNewCombo(); ///< Slot for the 'Add Combo' action
    void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action

@@ -178,6 +178,8 @@ void ComboTableWidget::setupKeyboadShortcuts()
 
    connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated, this, 
       &ComboTableWidget::onActionStartSearch);
+   connect(new QShortcut(QKeySequence("Ctrl+Shift+F"), this), &QShortcut::activated, this,
+      &ComboTableWidget::onActionStartSearchInAllGroups);
    connect(new QShortcut(QKeySequence("Escape"), this), &QShortcut::activated, this,
       &ComboTableWidget::onActionClearSearch);
 }
@@ -317,6 +319,17 @@ void ComboTableWidget::onActionStartSearch()
    this->ui_.editSearch->selectAll();
 }
 
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void ComboTableWidget::onActionStartSearchInAllGroups()
+{
+   if (groupListWidget_)
+      groupListWidget_->selectAllCombosEntry();
+   this->onActionStartSearch();
+}
 
 
 //**********************************************************************************************************************

@@ -175,7 +175,7 @@ qint32 GroupListWidget::selectedGroupIndex() const
 
 //**********************************************************************************************************************
 /// This event filter implement a non default behavior for the Qt QListView single selection system. When clicking
-/// on a selected item or an empty area, the selection is cleared.
+/// on a selected item or an empty area, the 'New Group' action is triggered.
 /// 
 /// \param[in] object The object
 /// \param[in] event The event
@@ -193,7 +193,7 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
       }
    }
 
-   if (event->type() != QEvent::MouseButtonPress)
+   if (event->type() != QEvent::MouseButtonDblClick)
       return QObject::eventFilter(object, event);
    QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
    if (!mouseEvent)
@@ -205,7 +205,7 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
    QModelIndex const item = ui_.listGroup->indexAt(mousePos);
    if (!item.isValid())
    {
-      this->selectAllCombosEntry();
+      QTimer::singleShot(0, this, &GroupListWidget::onActionNewGroup);
       return true;
    }
    return QObject::eventFilter(object, event);
@@ -229,6 +229,7 @@ void GroupListWidget::onActionNewGroup()
       QString errorMessage;
       if (!comboManager.saveComboListToFile(&errorMessage))
          throw xmilib::Exception(errorMessage);
+      this->selectGroup(group);
    }
    catch (xmilib::Exception const& e)
    {
@@ -282,6 +283,8 @@ void GroupListWidget::onActionDeleteGroup()
       comboManager.comboListRef().eraseCombosOfGroup(groups[index]);
       groups.erase(index);
       comboManager.saveComboListToFile();
+      // we force the emission of a selectedGroupChange event, because the system will no do it in that case
+      this->onSelectionChanged(QItemSelection(), QItemSelection()); 
       this->updateGui();
    }
    catch (xmilib::Exception const& e)
@@ -296,13 +299,13 @@ void GroupListWidget::onActionDeleteGroup()
 //**********************************************************************************************************************
 void GroupListWidget::onSelectionChanged(QItemSelection const&, QItemSelection const&)
 {
+   qDebug() << QString("%1()").arg(__FUNCTION__);
    this->updateGui();
    GroupList& groups = ComboManager::instance().groupListRef();
    qint32 index = this->selectedGroupIndex();
    if (index < 0)
       this->selectAllCombosEntry();
    emit selectedGroupChanged(((index < 0) || (index >= groups.size())) ? nullptr : groups[index]);
-
 }
 
 
