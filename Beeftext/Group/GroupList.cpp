@@ -433,7 +433,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
 //**********************************************************************************************************************
 int GroupList::rowCount(const QModelIndex &) const
 {
-   return groups_.size();
+   return groups_.size() + 1;
 }
 
 
@@ -444,14 +444,39 @@ int GroupList::rowCount(const QModelIndex &) const
 //**********************************************************************************************************************
 QVariant GroupList::data(QModelIndex const& index, int role) const
 {
+   // note entry at index 0 is special entry "<All combos>"
+   QString allCombosStr = tr("<All combos>");
    qint32 const groupCount = groups_.size();
    qint32 const row = index.row();
-   if ((row < 0) || (row >= groupCount))
+   if ((row < 0) || (row > groupCount))
       return QVariant();
-   if ((Qt::DisplayRole != role) && (Qt::ToolTipRole != role))
-      return QVariant();
-   SPGroup group = groups_[row];
-   return group ? ((Qt::ToolTipRole == role) ? group->description() : group->name()): QString();
+   switch (role)
+   {
+   case Qt::DisplayRole:
+   {
+      if (0 == row)
+         return allCombosStr;
+      SPGroup group = groups_[row - 1];
+      return group ? group->name() : QString();
+   }
+   case Qt::ToolTipRole:
+   {
+      if (0 == row)
+         return allCombosStr; 
+      SPGroup group = groups_[row - 1];
+      return group ? group->description() : QString();
+   }
+   case Qt::FontRole:
+   {
+      if (0 != row)
+         return QVariant();
+      // we use italic to hight special <All combos> entry
+      QFont font;
+      font.setItalic(true);
+      return font;
+   }
+   default: return QVariant();
+   }
 }
 
 
@@ -482,7 +507,7 @@ Qt::ItemFlags GroupList::flags(QModelIndex const& index) const
    }
    else // user is dragging combos
    {
-      if (index.isValid()) // combos can be dropped onto other items
+      if (index.isValid() && index.row() > 0) // combos can be dropped onto other items but not on the first ("all combos")
          return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | defaultFlags;
       else // combos cannot be dropped between item
          return defaultFlags;
@@ -505,7 +530,7 @@ QStringList GroupList::mimeTypes() const
 //**********************************************************************************************************************
 QMimeData* GroupList::mimeData(const QModelIndexList &indexes) const
 {
-   return ::groupIndexToMimeData(indexes.size() > 0 ? indexes[0].row() : -1);
+   return groupIndexToMimeData(indexes.isEmpty() ? -1 : qMax<qint32>(-1, indexes[0].row() - 1)); // row - 1 because entry at index 0 is special entry "<All combos>"
 }
 
 
@@ -518,13 +543,14 @@ QMimeData* GroupList::mimeData(const QModelIndexList &indexes) const
 bool GroupList::dropMimeData(QMimeData const*data, Qt::DropAction, int row, int,
    QModelIndex const& parent)
 {
+   qDebug() << QString("%1()").arg(__FUNCTION__);
    if (!data)
       return false;
 
    if (data->hasFormat(kUuuidListMimeType))
-      return processComboListDrop(mimeDataToUuidList(*data), parent.row());
+      return processComboListDrop(mimeDataToUuidList(*data), parent.row() - 1); // row - 1 because entry at index 0 is special entry "<All combos>"
 
-   return processGroupDrop(mimeDataToGroupIndex(*data), row);
+   return processGroupDrop(mimeDataToGroupIndex(*data), row - 1); // row - 1 because entry at index 0 is special entry "<All combos>"
 }
 
 

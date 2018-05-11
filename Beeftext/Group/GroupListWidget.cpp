@@ -71,10 +71,9 @@ SPGroup GroupListWidget::selectedOrFirstGroup() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void GroupListWidget::clearSelection() const
+void GroupListWidget::selectAllCombosEntry() const
 {
-   if (this->selectedGroup())
-      ui_.listGroup->clearSelection();
+   ui_.listGroup->setCurrentIndex(ComboManager::instance().comboListRef().groupListRef().index(0));
 }
 
 
@@ -148,7 +147,9 @@ qint32 GroupListWidget::selectedGroupIndex() const
    if (!model)
       return -1;
    QModelIndexList const selectedIndexes = model->selectedIndexes();
-   return selectedIndexes.isEmpty() ? -1 : selectedIndexes.front().row();
+   if (selectedIndexes.isEmpty() || (0 == selectedIndexes.front().row()))
+      return -1;
+   return selectedIndexes.front().row() - 1; // -1 because entry at index 0 is '<All combos>'
 }
 
 
@@ -184,7 +185,7 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
    QModelIndex const item = ui_.listGroup->indexAt(mousePos);
    if (!item.isValid())
    {
-      clearSelection();
+      this->selectAllCombosEntry();
       return true;
    }
    return QObject::eventFilter(object, event);
@@ -278,6 +279,8 @@ void GroupListWidget::onSelectionChanged(QItemSelection const&, QItemSelection c
    this->updateGui();
    GroupList& groups = ComboManager::instance().groupListRef();
    qint32 index = this->selectedGroupIndex();
+   if (index < 0)
+      this->selectAllCombosEntry();
    emit selectedGroupChanged(((index < 0) || (index >= groups.size())) ? nullptr : groups[index]);
 
 }
@@ -292,7 +295,7 @@ void GroupListWidget::onGroupMoved(SPGroup group, qint32 newIndex)
    if (!group)
       return;
    ComboManager& comboManager = ComboManager::instance();
-   ui_.listGroup->setCurrentIndex(comboManager.groupListRef().index(newIndex));
+   ui_.listGroup->setCurrentIndex(comboManager.groupListRef().index(newIndex + 1)); //+1 because entry at index 0 is '<All combos>'
    comboManager.saveComboListToFile();
 }
 
@@ -312,10 +315,7 @@ void GroupListWidget::onContextMenuRequested()
 //**********************************************************************************************************************
 void GroupListWidget::onBackupRestored()
 {
-   this->clearSelection(); 
-   GroupList& groups = ComboManager::instance().comboListRef().groupListRef();
-   if (groups.size()) 
-      ui_.listGroup->setCurrentIndex(groups.index(0));
+   this->selectAllCombosEntry(); 
 }
 
 

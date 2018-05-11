@@ -30,7 +30,7 @@ public: // member functions
    GroupListWidget& operator=(GroupListWidget&&) = delete; ///< Disabled move assignment operator
    SPGroup selectedGroup() const; ///< Get the selected group
    SPGroup selectedOrFirstGroup() const; ///< Get the selected group, or the first group if no group is selected
-   void clearSelection() const; ///< Deselect the currently selected item
+   void selectAllCombosEntry() const; ///< select the special "All combos entry" in the list
    QMenu* menu(QWidget* parent) const; ///< Get the menu for the widget
 
 signals: 
