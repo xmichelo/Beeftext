@@ -299,7 +299,6 @@ void GroupListWidget::onActionDeleteGroup()
 //**********************************************************************************************************************
 void GroupListWidget::onSelectionChanged(QItemSelection const&, QItemSelection const&)
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    this->updateGui();
    GroupList& groups = ComboManager::instance().groupListRef();
    qint32 index = this->selectedGroupIndex();

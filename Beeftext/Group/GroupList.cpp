@@ -174,7 +174,7 @@ bool GroupList::append(SPGroup const& group)
       globals::debugLog().addError("Cannot add group (null or duplicate).");
       return false;
    }
-   this->beginInsertRows(QModelIndex(), groups_.size(), groups_.size());
+   this->beginInsertRows(QModelIndex(), groups_.size() + 1, groups_.size() + 1);
    groups_.push_back(group);
    this->endInsertRows();
    return true;
@@ -186,7 +186,7 @@ bool GroupList::append(SPGroup const& group)
 //**********************************************************************************************************************
 void GroupList::push_back(SPGroup const& group)
 {
-   this->beginInsertRows(QModelIndex(), groups_.size(), groups_.size());
+   this->beginInsertRows(QModelIndex(), groups_.size() + 1, groups_.size() + 1);
    groups_.push_back(group);
    this->endInsertRows();
 }
@@ -197,7 +197,7 @@ void GroupList::push_back(SPGroup const& group)
 //**********************************************************************************************************************
 void GroupList::erase(qint32 index)
 {
-   this->beginRemoveRows(QModelIndex(), index, index);
+   this->beginRemoveRows(QModelIndex(), index + 1, index + 1);
    groups_.erase(groups_.begin() + index);
    this->endRemoveRows();
 }
@@ -412,7 +412,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
 
    // phase 2: remove the old item
    qint32 const removeIndex = groupIndex + ((dropIndex >= 0) && (dropIndex < groupIndex) ? 1 : 0); // the srcIndex may have been shifted by the insertion of the copy
-   this->beginRemoveRows(QModelIndex(), removeIndex, removeIndex);
+   this->beginRemoveRows(QModelIndex(), removeIndex + 1, removeIndex + 1);
    groups_.erase(groups_.begin() + removeIndex);
    this->endRemoveRows();
    this->beginResetModel();
