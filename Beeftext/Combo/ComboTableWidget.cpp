@@ -301,8 +301,8 @@ void ComboTableWidget::updateGui() const
    if ((hasOneSelected) 
       && (ComboManager::instance().comboListRef()[this->getSelectedComboIndexes().front()]->isEnabled()))
    {
-      enableDisableText = "Disa&ble";
-      enableDisableToolTip = "Disable combo";
+      enableDisableText = tr("Disa&ble");
+      enableDisableToolTip = tr("Disable combo");
    }
    ui_.actionEnableDisableCombo->setText(enableDisableText);
    ui_.actionEnableDisableCombo->setToolTip(enableDisableToolTip);

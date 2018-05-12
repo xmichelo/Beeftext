@@ -55,113 +55,143 @@
 <context>
     <name>ComboDialog</name>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="66"/>
         <source>Keyword:</source>
-        <translation>Mot-clé:</translation>
+        <translation type="vanished">Mot-clé:</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation type="vanished">Nom:</translation>
+    </message>
+    <message>
+        <source>Group:</source>
+        <translation type="vanished">Groupe:</translation>
+    </message>
+    <message>
+        <source>Snippet:</source>
+        <translation type="vanished">Snippet:</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="22"/>
-        <source>Name:</source>
-        <translation>Nom:</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Nom&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="32"/>
-        <source>Group:</source>
-        <translation>Groupe:</translation>
+        <location filename="../Combo/ComboDialog.ui" line="61"/>
+        <source>&amp;New</source>
+        <translation>&amp;Nouveau</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="99"/>
-        <source>Snippet:</source>
-        <translation>Snippet:</translation>
+        <location filename="../Combo/ComboDialog.ui" line="83"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Mot-clé&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="138"/>
-        <location filename="../Combo/ComboDialog.ui" line="157"/>
+        <location filename="../Combo/ComboDialog.ui" line="90"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Groupe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="100"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="135"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Champs requis&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="155"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="148"/>
+        <location filename="../Combo/ComboDialog.ui" line="165"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="74"/>
+        <location filename="../Combo/ComboDialog.cpp" line="75"/>
         <source>&amp;Insert Variable</source>
         <translation>&amp;Insérer une Variable</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="80"/>
+        <location filename="../Combo/ComboDialog.cpp" line="81"/>
         <source>&amp;Date/Time</source>
         <translation>&amp;Date/Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="84"/>
+        <location filename="../Combo/ComboDialog.cpp" line="85"/>
         <source>&amp;Time</source>
         <translation>&amp;Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="90"/>
+        <location filename="../Combo/ComboDialog.cpp" line="91"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation>Date &amp;&amp; Heure &amp;Personnalisée</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="81"/>
+        <location filename="../Combo/ComboDialog.cpp" line="82"/>
         <source>D&amp;ate</source>
         <translation>D&amp;ate</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="76"/>
+        <location filename="../Combo/ComboDialog.cpp" line="77"/>
         <source>Clip&amp;board Content</source>
         <translation>&amp;Contenu du Presse-Papier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="87"/>
+        <location filename="../Combo/ComboDialog.cpp" line="88"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation>Dat&amp;e &amp;&amp; Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="95"/>
+        <location filename="../Combo/ComboDialog.cpp" line="96"/>
         <source>C&amp;ursor Position</source>
         <translation>Position du C&amp;urseur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="98"/>
+        <location filename="../Combo/ComboDialog.cpp" line="99"/>
         <source>Co&amp;mbo</source>
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="102"/>
+        <location filename="../Combo/ComboDialog.cpp" line="103"/>
         <source>&amp;About Variables</source>
         <translation>&amp;À Propos des Variables</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="136"/>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
-        <location filename="../Combo/ComboDialog.cpp" line="149"/>
-        <location filename="../Combo/ComboDialog.cpp" line="161"/>
+        <location filename="../Combo/ComboDialog.cpp" line="137"/>
+        <location filename="../Combo/ComboDialog.cpp" line="143"/>
+        <location filename="../Combo/ComboDialog.cpp" line="150"/>
+        <location filename="../Combo/ComboDialog.cpp" line="162"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="136"/>
+        <location filename="../Combo/ComboDialog.cpp" line="137"/>
         <source>The snippet text is empty.</source>
         <translation>Le snippet est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="143"/>
         <source>The keyword is invalid.</source>
         <translation>Le mot-clé est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="149"/>
+        <location filename="../Combo/ComboDialog.cpp" line="150"/>
         <source>The group is invalid.</source>
         <translation>Le groupe est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="161"/>
+        <location filename="../Combo/ComboDialog.cpp" line="162"/>
         <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
         <translation>Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="193"/>
+        <source>New Group</source>
+        <translation>Nouveau Groupe</translation>
     </message>
 </context>
 <context>
@@ -330,12 +360,12 @@
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="276"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="300"/>
         <source>Enable combo</source>
         <translation>Activer le combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="275"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="299"/>
         <source>Ena&amp;ble</source>
         <translation>Ac&amp;tiver</translation>
     </message>
@@ -376,7 +406,7 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="154"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="320"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="355"/>
         <source>New Combo</source>
         <translation>Nouveau Combo</translation>
     </message>
@@ -399,7 +429,7 @@
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="179"/>
         <location filename="../Combo/ComboTableWidget.ui" line="182"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="408"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="445"/>
         <source>Edit Combo</source>
         <translation>Modifier le Combo</translation>
     </message>
@@ -416,7 +446,7 @@
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="193"/>
         <location filename="../Combo/ComboTableWidget.ui" line="196"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="355"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="391"/>
         <source>Duplicate Combo</source>
         <translation>Dupliquer le Combo</translation>
     </message>
@@ -477,7 +507,7 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="256"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="510"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="548"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -497,59 +527,69 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="70"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="69"/>
         <source>&amp;Combos</source>
         <translation>&amp;Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="325"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="304"/>
+        <source>Disa&amp;ble</source>
+        <translation>Désa&amp;ctiver</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="305"/>
+        <source>Disable combo</source>
+        <translation>Désactiver le combo</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="360"/>
         <source>The combo could not be added to the list.</source>
         <translation>Le combo n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="333"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="363"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="389"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="413"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="467"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="499"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="519"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="369"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="400"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="426"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="450"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="505"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="537"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="557"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="353"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="389"/>
         <source>The combo could not be duplicated: invalid index.</source>
         <translation>Le combo n&apos;a pas pu être dupliqué.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="358"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="394"/>
         <source>The duplicated combo could not added to the list.</source>
         <translation>Le combo dupliqué n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="376"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="413"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>Êtes-vous sûr de vouloir effacer les combos selectionnés?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="377"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="414"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>Êtes-vous sûr de vouloir effacer le combo selectionné?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="378"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="415"/>
         <source>Delete Combo?</source>
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="482"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="520"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="499"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="519"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="537"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="557"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>
@@ -557,25 +597,46 @@
 <context>
     <name>GroupDialog</name>
     <message>
-        <location filename="../Group/GroupDialog.ui" line="29"/>
         <source>Name:</source>
-        <translation>Nom:</translation>
+        <translation type="vanished">Nom:</translation>
     </message>
     <message>
-        <location filename="../Group/GroupDialog.ui" line="39"/>
         <source>Description:</source>
-        <translation>Description:</translation>
+        <translation type="vanished">Description:</translation>
     </message>
     <message>
-        <location filename="../Group/GroupDialog.ui" line="76"/>
-        <location filename="../Group/GroupDialog.ui" line="95"/>
+        <location filename="../Group/GroupDialog.ui" line="22"/>
+        <source>Description</source>
+        <translation>Description</translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupDialog.ui" line="42"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Nom&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupDialog.ui" line="69"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Champs requis&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupDialog.ui" line="89"/>
+        <location filename="../Group/GroupDialog.ui" line="108"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Group/GroupDialog.ui" line="86"/>
+        <location filename="../Group/GroupDialog.ui" line="99"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
+    </message>
+</context>
+<context>
+    <name>GroupList</name>
+    <message>
+        <location filename="../Group/GroupList.cpp" line="448"/>
+        <source>&lt;All combos&gt;</source>
+        <translation>&lt;Tous les combos&gt;</translation>
     </message>
 </context>
 <context>
@@ -626,39 +687,39 @@
         <translation>Maj+Entrée</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="86"/>
+        <location filename="../Group/GroupListWidget.cpp" line="105"/>
         <source>&amp;Groups</source>
         <translation>&amp;Groupes</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="202"/>
+        <location filename="../Group/GroupListWidget.cpp" line="223"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="207"/>
+        <location filename="../Group/GroupListWidget.cpp" line="228"/>
         <source>The group could not be added to the list.</source>
         <translation>Le groupe n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="214"/>
-        <location filename="../Group/GroupListWidget.cpp" line="241"/>
-        <location filename="../Group/GroupListWidget.cpp" line="268"/>
+        <location filename="../Group/GroupListWidget.cpp" line="236"/>
+        <location filename="../Group/GroupListWidget.cpp" line="263"/>
+        <location filename="../Group/GroupListWidget.cpp" line="292"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="232"/>
+        <location filename="../Group/GroupListWidget.cpp" line="254"/>
         <source>Edit Group</source>
         <translation>Modifier le Groupe</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="253"/>
+        <location filename="../Group/GroupListWidget.cpp" line="275"/>
         <source>Delete Group?</source>
         <translation>Effacer le Groupe?</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="253"/>
+        <location filename="../Group/GroupListWidget.cpp" line="275"/>
         <source>Are you sure you want to delete the selected group and all its combos?</source>
         <translation>Êtes-vous sur de vouloir effacer ce groupe et tous les combos qu&apos;il contient?</translation>
     </message>
