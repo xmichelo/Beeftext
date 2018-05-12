@@ -127,7 +127,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
 //**********************************************************************************************************************
 bool Combo::isValid() const
 {
-   return (!creationDateTime_.isNull()) && (!modificationDateTime_.isNull()) && (!uuid_.isNull()) && (!name_.isEmpty()) 
+   return (!creationDateTime_.isNull()) && (!modificationDateTime_.isNull()) && (!uuid_.isNull()) 
       && (!keyword_.isEmpty()) && (!snippet_.isEmpty());
 }
 
