@@ -12,6 +12,7 @@
 
 
 #include "Group.h"
+#include <set>
 
 
 //**********************************************************************************************************************
@@ -66,6 +67,8 @@ public: // member functions
    QJsonArray toJsonArray() const; ///< Export the group list to a JSON array
    bool readFromJsonArray(QJsonArray const& array, qint32 formatVersion, QString* outErrorMessage); ///< Read the group list from a JSON array
    bool ensureNotEmpty(); ///< make sure that the group list is not empty, creating one if necessary
+   QMenu* createMenu(QString const& title, std::set<SPGroup> const& disabledGroups, QWidget* parent = nullptr); ///< Create a containing the list of groups
+   void fillMenu(QMenu* menu, std::set<SPGroup> const& disabledGroups); ///< Clear the menu and fill it with the list of groups
    void setDropType(EDropType dropType); ///< Set the drop type
    bool processComboListDrop(QList<QUuid> const& uuids, qint32 index); ///< Process the dropping of a combo list
    bool processGroupDrop(qint32 groupIndex, qint32 newPosition); ///< Process the dropping of a combo list

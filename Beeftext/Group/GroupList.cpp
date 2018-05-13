@@ -355,6 +355,39 @@ bool GroupList::ensureNotEmpty()
 
 
 //**********************************************************************************************************************
+/// \param[in] title The title of the menu
+/// \param[in] disabledGroups The list of groups that should be disabled
+/// \param[in] parent The parent widget of the menu
+/// \return A menu containing the list of groups
+//**********************************************************************************************************************
+QMenu* GroupList::createMenu(QString const& title, std::set<SPGroup> const& disabledGroups, QWidget* parent)
+{
+   QMenu* menu = new QMenu(title, parent);
+   this->fillMenu(menu, disabledGroups);
+   return menu;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] menu The menu
+/// \param[in] disabledGroups The list of groups that should be disabled
+//**********************************************************************************************************************
+void GroupList::fillMenu(QMenu* menu, std::set<SPGroup> const& disabledGroups)
+{
+   menu->clear();
+   for (SPGroup const& group : groups_)
+   {
+      if (!group)
+         continue;
+      QAction* action = new QAction(group->name(), menu);
+      action->setData(QVariant::fromValue(group));
+      action->setEnabled(!disabledGroups.count(group));
+      menu->addAction(action);
+   }
+}
+
+
+//**********************************************************************************************************************
 /// The drop type is a bit of a hack. The flags() model function determines if an item should accept a drop, 
 /// but it should return a different value depending on what is dragged (combo or group)
 //**********************************************************************************************************************
@@ -429,7 +462,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
 
 
 //**********************************************************************************************************************
-/// \param[in] parent The parent model index
+//
 //**********************************************************************************************************************
 int GroupList::rowCount(const QModelIndex &) const
 {

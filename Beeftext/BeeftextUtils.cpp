@@ -91,7 +91,7 @@ QString getActiveExecutableFileName()
 //**********************************************************************************************************************
 /// We consider that by default, applications support Ctrl+V, except a few that are individually listed
 ///
-/// \param[in] The name of the executable, including its extension (e.g. "putty.exe")
+/// \param[in] appExeName The name of the executable, including its extension (e.g. "putty.exe")
 /// \return true if and only if the application support pasting using the Ctrl+V shortcut
 //**********************************************************************************************************************
 bool doesApplicationSupportCtrlVShortcut(QString const& appExeName)

@@ -16,6 +16,7 @@
 #include "Combo.h"
 #include "Group/GroupListWidget.h"
 #include "Group/Group.h"
+#include <set>
 #include <memory>
 
 
@@ -30,7 +31,7 @@ public: // member functions
 	~ComboTableWidget() = default; ///< Default destructor
    void setGroupListWidget(GroupListWidget* groupListWidget); ///< Set the group list widget associated with this combo
    void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
-   QMenu* menu(QWidget* parent) const; ///< Get the menu
+   QMenu* createMenu(QWidget* parent) const; ///< Get the menu
    void selectCombo(SPCombo const& combo); ///< Select a given combo
 
 public slots:
@@ -51,8 +52,10 @@ private: // member functions
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
    SPCombo getSelectedCombo() const; ///< Get the first selected combo
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
+   QList<SPCombo> getSelectedCombos() const; ///< Retrieve the list of the selected combos
    void changeEvent(QEvent *event) override; ///< Change event handler
    void resizeColumnsToContents(); ///< Resize the columns to fit the content
+   std::set<SPGroup> groupsOfSelectedCombos() const; ///< Return a set containing the groups of the selected combos
 
 private slots:
    void updateGui() const; ///< Update the GUI state
@@ -74,6 +77,8 @@ private slots:
    void onContextMenuRequested(); ///< Slot for the combo table context menu
    void onDoubleClick(); ///< Slot for the double clicking in the table view
    void onComboChangedGroup(); ///< Slot for when some combos groups have been changed
+   void onMoveToGroupMenuAboutToShow(); ///< Slot called when a combo menu is about to show
+   void onMoveToGroupMenuTriggered(QAction* action); ///< slot for the triggering of a action in the 'move' menu
 
 private: // data members
    Ui::ComboTableWidget ui_; ///< The GUI for the frame

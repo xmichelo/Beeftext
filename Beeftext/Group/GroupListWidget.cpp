@@ -81,7 +81,7 @@ void GroupListWidget::selectGroup(SPGroup const& group)
       SPGroup const g = groupList[i];
       if (g && (g->uuid() == group->uuid()))
       {
-         ui_.listGroup->setCurrentIndex(groupList.index(i + 1)); /// + 1 because entry 0 is <All combos>
+         ui_.listGroup->setCurrentIndex(groupList.index(i + 1)); /// + 1 because entry 0 is \<All combos\>
          return;
       }
    }
