@@ -15,7 +15,8 @@
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
 ComboFrame::ComboFrame(QWidget* parent)
-   : QFrame(parent)
+   : QFrame(parent),
+     ui_()
 {
    ui_.setupUi(this);
    ui_.comboTableWidget->setGroupListWidget(ui_.groupListWidget);
@@ -27,7 +28,7 @@ ComboFrame::ComboFrame(QWidget* parent)
 //**********************************************************************************************************************
 /// \return The combo group list widget
 //**********************************************************************************************************************
-GroupListWidget* ComboFrame::groupListWidget()
+GroupListWidget* ComboFrame::groupListWidget() const
 {
    return ui_.groupListWidget;
 }
@@ -36,7 +37,7 @@ GroupListWidget* ComboFrame::groupListWidget()
 //**********************************************************************************************************************
 /// \return The combo table widget
 //**********************************************************************************************************************
-ComboTableWidget* ComboFrame::comboTableWidget()
+ComboTableWidget* ComboFrame::comboTableWidget() const
 {
    return ui_.comboTableWidget;
 }

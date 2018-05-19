@@ -57,11 +57,11 @@ void ComboKeywordValidator::fixup(QString& input) const
 QValidator::State ComboKeywordValidator::validate(QString& input, int&) const
 {
    if (input.isEmpty())
-      return QValidator::Intermediate;
+      return Intermediate;
    for (QChar const& c : input)
       if (!isCharacterAcceptable(c))
-         return QValidator::Invalid;
-   return QValidator::Acceptable;
+         return Invalid;
+   return Acceptable;
 }
 
 

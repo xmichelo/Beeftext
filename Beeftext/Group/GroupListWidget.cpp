@@ -19,8 +19,9 @@
 /// \param[in] parent The parent of the widget
 //**********************************************************************************************************************
 GroupListWidget::GroupListWidget(QWidget* parent)
-   : QWidget(parent)
-   , contextMenu_(nullptr)
+   : QWidget(parent),
+     ui_(),
+     contextMenu_(nullptr)
 {
    ui_.setupUi(this);
    GroupList& groups = ComboManager::instance().comboListRef().groupListRef();
@@ -36,7 +37,8 @@ GroupListWidget::GroupListWidget(QWidget* parent)
    connect(&ComboManager::instance(), &ComboManager::backupWasRestored, this, &GroupListWidget::onBackupRestored);
 
    this->updateGui();
-   QTimer::singleShot(0, [&]() {ui_.listGroup->setCurrentIndex(groups.index(0)); }); // delayed to be sure the signal/slot mechanism work
+   QTimer::singleShot(0, [&]() { ui_.listGroup->setCurrentIndex(groups.index(0)); });
+   // delayed to be sure the signal/slot mechanism work
 }
 
 
@@ -44,20 +46,20 @@ GroupListWidget::GroupListWidget(QWidget* parent)
 /// \return the selected group
 /// \return a null pointer if nor group is selected
 //**********************************************************************************************************************
-SPGroup GroupListWidget::selectedGroup() const
+SpGroup GroupListWidget::selectedGroup() const
 {
    GroupList const& list = ComboManager::instance().groupListRef();
    qint32 const index = this->selectedGroupIndex();
-   return ((index >= 0) && (index < list.size())) ? list[index] : SPGroup();
+   return ((index >= 0) && (index < list.size())) ? list[index] : SpGroup();
 }
 
 
 //**********************************************************************************************************************
 /// \return The selected group or the first group if no group is selected
 //**********************************************************************************************************************
-SPGroup GroupListWidget::selectedOrFirstGroup() const
+SpGroup GroupListWidget::selectedOrFirstGroup() const
 {
-   SPGroup group = selectedGroup();
+   SpGroup group = selectedGroup();
    if (!group)
    {
       GroupList& groupList = ComboManager::instance().comboListRef().groupListRef();
@@ -71,14 +73,14 @@ SPGroup GroupListWidget::selectedOrFirstGroup() const
 //**********************************************************************************************************************
 /// \param[in] group The group
 //**********************************************************************************************************************
-void GroupListWidget::selectGroup(SPGroup const& group)
+void GroupListWidget::selectGroup(SpGroup const& group) const
 {
    if (!group)
       return;
    GroupList& groupList = ComboManager::instance().comboListRef().groupListRef();
    for (qint32 i = 0; i < groupList.size(); ++i)
    {
-      SPGroup const g = groupList[i];
+      SpGroup const g = groupList[i];
       if (g && (g->uuid() == group->uuid()))
       {
          ui_.listGroup->setCurrentIndex(groupList.index(i + 1)); /// + 1 because entry 0 is \<All combos\>
@@ -114,7 +116,7 @@ QMenu* GroupListWidget::menu(QWidget* parent) const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void GroupListWidget::updateGui()
+void GroupListWidget::updateGui() const
 {
    qint32 const groupCount = ComboManager::instance().groupListRef().size();
    qint32 const index = this->selectedGroupIndex();
@@ -149,7 +151,7 @@ void GroupListWidget::setupContextMenu()
 //**********************************************************************************************************************
 /// \param[in] event The event
 //**********************************************************************************************************************
-void GroupListWidget::changeEvent(QEvent *event)
+void GroupListWidget::changeEvent(QEvent* event)
 {
    if (QEvent::LanguageChange == event->type())
       ui_.retranslateUi(this);
@@ -180,7 +182,7 @@ qint32 GroupListWidget::selectedGroupIndex() const
 /// \param[in] object The object
 /// \param[in] event The event
 //**********************************************************************************************************************
-bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
+bool GroupListWidget::eventFilter(QObject* object, QEvent* event)
 {
    if (event->type() == QEvent::DragEnter)
    {
@@ -188,7 +190,7 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event)
       if (dropEvent)
       {
          QMimeData const* mimeData = dropEvent->mimeData();
-         ComboManager::instance().groupListRef().setDropType(mimeData && mimeData->hasFormat(kUuuidListMimeType) ? 
+         ComboManager::instance().groupListRef().setDropType(mimeData && mimeData->hasFormat(kUuuidListMimeType) ?
             GroupList::ComboDrop : GroupList::GroupDrop);
       }
    }
@@ -219,7 +221,7 @@ void GroupListWidget::onActionNewGroup()
 {
    try
    {
-      SPGroup group = Group::create(QString());
+      SpGroup group = Group::create(QString());
       if (!GroupDialog::run(group, tr("New Group")))
          return;
       ComboManager& comboManager = ComboManager::instance();
@@ -250,7 +252,7 @@ void GroupListWidget::onActionEditGroup()
       qint32 const index = this->selectedGroupIndex();
       if ((index < 0) || (index >= groups.size()))
          return;
-      SPGroup group = groups[index];
+      SpGroup group = groups[index];
       if (!GroupDialog::run(group, tr("Edit Group")))
          return;
       QString errorMessage;
@@ -278,13 +280,14 @@ void GroupListWidget::onActionDeleteGroup()
       ComboManager& comboManager = ComboManager::instance();
       GroupList& groups = comboManager.groupListRef();
       qint32 const index = this->selectedGroupIndex();
-      if ((groups.size() <= 1) ||(index < 0) || (index >= groups.size()))
+      if ((groups.size() <= 1) || (index < 0) || (index >= groups.size()))
          return;
       comboManager.comboListRef().eraseCombosOfGroup(groups[index]);
       groups.erase(index);
-      comboManager.saveComboListToFile();
+      if (!comboManager.saveComboListToFile())
+         throw xmilib::Exception("Could not save combo list.");
       // we force the emission of a selectedGroupChange event, because the system will no do it in that case
-      this->onSelectionChanged(QItemSelection(), QItemSelection()); 
+      this->onSelectionChanged(QItemSelection(), QItemSelection());
       this->updateGui();
    }
    catch (xmilib::Exception const& e)
@@ -301,7 +304,7 @@ void GroupListWidget::onSelectionChanged(QItemSelection const&, QItemSelection c
 {
    this->updateGui();
    GroupList& groups = ComboManager::instance().groupListRef();
-   qint32 index = this->selectedGroupIndex();
+   qint32 const index = this->selectedGroupIndex();
    if (index < 0)
       this->selectAllCombosEntry();
    emit selectedGroupChanged(((index < 0) || (index >= groups.size())) ? nullptr : groups[index]);
@@ -312,20 +315,22 @@ void GroupListWidget::onSelectionChanged(QItemSelection const&, QItemSelection c
 /// \param[in] group The group
 /// \param[in] newIndex The new index of the group in the list
 //**********************************************************************************************************************
-void GroupListWidget::onGroupMoved(SPGroup group, qint32 newIndex)
+void GroupListWidget::onGroupMoved(SpGroup const& group, qint32 newIndex) const
 {
    if (!group)
       return;
    ComboManager& comboManager = ComboManager::instance();
-   ui_.listGroup->setCurrentIndex(comboManager.groupListRef().index(newIndex + 1)); //+1 because entry at index 0 is '<All combos>'
-   comboManager.saveComboListToFile();
+   ui_.listGroup->setCurrentIndex(comboManager.groupListRef().index(newIndex + 1));
+   //+1 because entry at index 0 is '<All combos>'
+   if (!comboManager.saveComboListToFile())
+      throw xmilib::Exception("Could not save combo list.");
 }
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void GroupListWidget::onContextMenuRequested()
+void GroupListWidget::onContextMenuRequested() const
 {
    if (contextMenu_)
       contextMenu_->exec(QCursor::pos());
@@ -335,9 +340,7 @@ void GroupListWidget::onContextMenuRequested()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void GroupListWidget::onBackupRestored()
+void GroupListWidget::onBackupRestored() const
 {
-   this->selectAllCombosEntry(); 
+   this->selectAllCombosEntry();
 }
-
-

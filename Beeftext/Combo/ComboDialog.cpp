@@ -21,21 +21,22 @@
 /// \param[in] parent The parent widget of the dialog
 /// \return true if and only if the user validated the dialog
 //**********************************************************************************************************************
-bool ComboDialog::run(SPCombo& combo, QString const& title, QWidget* parent)
+bool ComboDialog::run(SpCombo& combo, QString const& title, QWidget* parent)
 {
-   return QDialog::Accepted == ComboDialog(combo, title, parent).exec();
+   return Accepted == ComboDialog(combo, title, parent).exec();
 }
+
 
 //**********************************************************************************************************************
 /// \param[in] combo The combo
 /// \param[in] title The title to display in the dialog's title bar
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags)
-   , combo_(combo)
-   , validator_()
-   , snippetEditMenu_(nullptr)
+ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* parent)
+   : QDialog(parent, constants::kDefaultDialogFlags),
+     ui_(),
+     combo_(combo),
+     snippetEditMenu_(nullptr)
 {
    ComboManager::instance().groupListRef().ensureNotEmpty();
    if (!combo)
@@ -46,7 +47,7 @@ ComboDialog::ComboDialog(SPCombo const& combo, QString const& title, QWidget* pa
    ui_.comboGroup->setContent(ComboManager::instance().groupListRef());
    ui_.comboGroup->setCurrentGroup(combo_->group());
    ui_.editKeyword->setText(combo->keyword());
-   ui_.editKeyword->setValidator(&validator_); 
+   ui_.editKeyword->setValidator(&validator_);
    ui_.editSnippet->setPlainText(combo->snippet());
    this->setupSnipperEditMenu();
    this->updateGui();
@@ -74,7 +75,7 @@ QMenu* ComboDialog::createComboVariableMenu()
 {
    QMenu* menu = new QMenu(tr("&Insert Variable"), this);
 
-   QAction *action = new QAction(tr("Clip&board Content"), this);
+   QAction* action = new QAction(tr("Clip&board Content"), this);
    connect(action, &QAction::triggered, [&]() { this->insertTextInSnippetEdit("#{clipboard}", false); });
    menu->addAction(action);
 
@@ -89,7 +90,7 @@ QMenu* ComboDialog::createComboVariableMenu()
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{dateTime}", false); });
    dtMenu->addAction(action);
    action = new QAction(tr("&Custom Date && Time"), this);
-   connect(action, &QAction::triggered, [this]() {this->insertTextInSnippetEdit("#{dateTime:}", true); });
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{dateTime:}", true); });
    dtMenu->addAction(action);
    menu->addMenu(dtMenu);
 
@@ -111,7 +112,7 @@ QMenu* ComboDialog::createComboVariableMenu()
 /// \param[in] text The text to insert
 /// \param[in] move1CharLeft Should the cursor be moved by one character to the left after insertion
 //**********************************************************************************************************************
-void ComboDialog::insertTextInSnippetEdit(QString const& text, bool move1CharLeft)
+void ComboDialog::insertTextInSnippetEdit(QString const& text, bool move1CharLeft) const
 {
    QTextCursor cursor = ui_.editSnippet->textCursor();
    cursor.beginEditBlock();
@@ -144,7 +145,7 @@ bool ComboDialog::checkAndReportInvalidCombo()
       return false;
    }
 
-   SPGroup const group = ui_.comboGroup->currentGroup();
+   SpGroup const group = ui_.comboGroup->currentGroup();
    if (!group)
    {
       QMessageBox::critical(this, tr("Error"), tr("The group is invalid."));
@@ -153,7 +154,7 @@ bool ComboDialog::checkAndReportInvalidCombo()
 
    // we check for conflicts that would make some combo 'unreachable'
    ComboList const& comboList = ComboManager::instance().comboListRef();
-   for (SPCombo const& combo : comboList)
+   for (SpCombo const& combo: comboList)
    {
       QString const newCombo = ui_.editKeyword->text();
       QString const existing = combo->keyword();
@@ -189,7 +190,7 @@ void ComboDialog::onActionOk()
 //**********************************************************************************************************************
 void ComboDialog::onActionNewGroup()
 {
-   SPGroup group = std::make_shared<Group>(QString());
+   SpGroup group = std::make_shared<Group>(QString());
    if ((!GroupDialog::run(group, tr("New Group"), this)) || !group)
       return;
    ComboManager::instance().comboListRef().groupListRef().append(group);
@@ -201,7 +202,7 @@ void ComboDialog::onActionNewGroup()
 //**********************************************************************************************************************
 /// \param[in] pos The position of the cursor
 //**********************************************************************************************************************
-void ComboDialog::onEditorContextMenuRequested(QPoint const& pos)
+void ComboDialog::onEditorContextMenuRequested(QPoint const& pos) const
 {
    snippetEditMenu_->popup(ui_.editSnippet->viewport()->mapToGlobal(pos));
 }

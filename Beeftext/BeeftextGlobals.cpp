@@ -48,7 +48,7 @@ QString appDataDir()
 //**********************************************************************************************************************
 QString logFilePath()
 {
-   return QDir(globals::appDataDir()).absoluteFilePath(kLogFileName);
+   return QDir(appDataDir()).absoluteFilePath(kLogFileName);
 }
 
 
@@ -58,7 +58,7 @@ QString logFilePath()
 //**********************************************************************************************************************
 QString backupFolderPath()
 {
-   return QDir(globals::appDataDir()).absoluteFilePath(kBackupFolderName);
+   return QDir(appDataDir()).absoluteFilePath(kBackupFolderName);
 }
 
 

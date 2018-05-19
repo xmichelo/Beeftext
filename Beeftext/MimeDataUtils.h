@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__MIME__DATA__UTILS__H
-#define BEEFTEXT__MIME__DATA__UTILS__H
+#ifndef BEEFTEXT_MIME_DATA_UTILS_H
+#define BEEFTEXT_MIME_DATA_UTILS_H
 
 
 extern QString const kUuuidListMimeType; ///< The mime type for a serialized uuid list
@@ -22,4 +22,4 @@ qint32 mimeDataToGroupIndex(QMimeData const& mimeData); ///< Parse a group index
 
 
 
-#endif // #ifndef BEEFTEXT__MIME__DATA__UTILS__H
+#endif // #ifndef BEEFTEXT_MIME_DATA_UTILS_H

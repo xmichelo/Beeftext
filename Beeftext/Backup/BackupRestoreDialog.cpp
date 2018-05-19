@@ -22,7 +22,7 @@
 //**********************************************************************************************************************
 bool BackupRestoreDialog::run(QWidget* parent)
 {
-   return QDialog::Accepted == BackupRestoreDialog(parent).exec();
+   return Accepted == BackupRestoreDialog(parent).exec();
 }
 
 
@@ -30,7 +30,8 @@ bool BackupRestoreDialog::run(QWidget* parent)
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 BackupRestoreDialog::BackupRestoreDialog(QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags)
+   : QDialog(parent, constants::kDefaultDialogFlags),
+     ui_()
 {
    ui_.setupUi(this);
    this->fillCombo();
@@ -65,15 +66,13 @@ void BackupRestoreDialog::onButtonRestore()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void BackupRestoreDialog::fillCombo()
+void BackupRestoreDialog::fillCombo() const
 {
    ui_.comboBackup->clear();
-   QStringList backups = BackupManager::instance().orderedBackupFilePaths();
-   std::sort(backups.begin(), backups.end(), [](QString const& lhs, QString const& rhs) ->bool { return lhs > rhs; });
-   for (QString const& path : backups)
+   QStringList backups = BackupManager::orderedBackupFilePaths();
+   std::sort(backups.begin(), backups.end(), [](QString const& lhs, QString const& rhs) -> bool { return lhs > rhs; });
+   for (QString const& path: backups)
       ui_.comboBackup->addItem(QDateTime::fromString(QFileInfo(path).fileName().left(18), "yyyyMMdd'_'HHmmsszzz")
          .toString("yyyy-MM-dd, HH:mm:ss"), path);
    ui_.comboBackup->setCurrentIndex(0);
 }
-
-

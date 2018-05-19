@@ -11,7 +11,6 @@
 #include "PreferencesDialog.h"
 #include "ShortcutDialog.h"
 #include "Combo/ComboManager.h"
-#include "InputManager.h"
 #include "I18nManager.h"
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
@@ -30,10 +29,10 @@ qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the u
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 PreferencesDialog::PreferencesDialog(QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags)
-   , prefs_(PreferencesManager::instance())
-   , triggerShortcut_(nullptr)
-   , previousComboListPath_()
+   : QDialog(parent, constants::kDefaultDialogFlags),
+     ui_(),
+     prefs_(PreferencesManager::instance()),
+     triggerShortcut_(nullptr)
 {
    ui_.setupUi(this);
    this->updateCheckStatusTimer_.setSingleShot(true);
@@ -44,8 +43,8 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    this->loadPreferences();
    if (isInPortableMode())
    {
-      QWidgetList widgets = { ui_.checkAutoStart, ui_.frameComboListFolder };
-      for (QWidget* widget : widgets)
+      QWidgetList widgets = {ui_.checkAutoStart, ui_.frameComboListFolder};
+      for (QWidget* widget: widgets)
          widget->setVisible(false);
    }
 
@@ -102,7 +101,7 @@ void PreferencesDialog::savePreferences()
       prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
    prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
    prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
-   prefs_.setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ : 
+   prefs_.setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ :
       PreferencesManager::defaultComboTriggerShortcut());
    prefs_.setLocale(I18nManager::getSelectedLocaleInCombo(*ui_.comboLocale));
    prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
@@ -137,7 +136,6 @@ bool PreferencesDialog::validateComboListFolderPath()
 }
 
 
-
 //**********************************************************************************************************************
 /// \param[in] status The status message
 //**********************************************************************************************************************
@@ -156,8 +154,8 @@ void PreferencesDialog::setUpdateCheckStatus(QString const& status)
 bool PreferencesDialog::promptForAndRemoveAutoBackups()
 {
    BackupManager& backupManager = BackupManager::instance();
-   qint32 reply = QMessageBox::question(this, tr("Delete Backup Files?"), tr("Do you want to delete all the "
-      "backup files?"), QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel),
+   qint32 const reply = QMessageBox::question(this, tr("Delete Backup Files?"), tr("Do you want to delete all the "
+         "backup files?"), QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel),
       QMessageBox::No);
    if (QMessageBox::Cancel == reply)
       return false;
@@ -170,12 +168,12 @@ bool PreferencesDialog::promptForAndRemoveAutoBackups()
 //**********************************************************************************************************************
 /// \param[in] event The event
 //**********************************************************************************************************************
-void PreferencesDialog::changeEvent(QEvent *event)
+void PreferencesDialog::changeEvent(QEvent* event)
 {
    if (QEvent::LanguageChange == event->type())
    {
       ui_.retranslateUi(this);
-      SPShortcut const shortcut = prefs_.comboTriggerShortcut();
+      SpShortcut const shortcut = prefs_.comboTriggerShortcut();
       ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
    }
    QDialog::changeEvent(event);
@@ -228,7 +226,7 @@ void PreferencesDialog::onActionResetComboListFolder()
 void PreferencesDialog::onActionChangeShortcut()
 {
    ShortcutDialog dlg(triggerShortcut_);
-   if (QDialog::Accepted != dlg.exec())
+   if (Accepted != dlg.exec())
       return;
    triggerShortcut_ = dlg.shortcut();
    ui_.editShortcut->setText(triggerShortcut_->toString());
@@ -277,7 +275,7 @@ void PreferencesDialog::onActionApply()
 //**********************************************************************************************************************
 /// \param[in] latestVersionInfo The latest version information
 //**********************************************************************************************************************
-void PreferencesDialog::onUpdateIsAvailable(SPLatestVersionInfo const& latestVersionInfo)
+void PreferencesDialog::onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo)
 {
    this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2.%3 is available.").arg(constants::kApplicationName)
       .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor())
@@ -297,7 +295,7 @@ void PreferencesDialog::onNoUpdateIsAvailable()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onUpdateCheckStarted()
+void PreferencesDialog::onUpdateCheckStarted() const
 {
    ui_.buttonCheckNow->setEnabled(false);
 }
@@ -306,7 +304,7 @@ void PreferencesDialog::onUpdateCheckStarted()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onUpdateCheckFinished()
+void PreferencesDialog::onUpdateCheckFinished() const
 {
    ui_.buttonCheckNow->setEnabled(true);
 }
@@ -332,4 +330,3 @@ void PreferencesDialog::updateGui() const
    ui_.buttonResetComboTriggerShortcut->setEnabled(manualTrigger);
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
 }
-

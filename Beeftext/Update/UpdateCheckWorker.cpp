@@ -50,8 +50,8 @@ void UpdateCheckWorker::performUpdateCheck()
    try
    {
       QByteArray const jsonData = this->downloadLatestVersionInformation();
-      SPLatestVersionInfo const latestVersionInfo = this->parseJsonData(jsonData);
-      if (this->isNewVersionAvailable(latestVersionInfo))
+      SpLatestVersionInfo const latestVersionInfo = this->parseJsonData(jsonData);
+      if (isNewVersionAvailable(latestVersionInfo))
          emit updateIsAvailable(latestVersionInfo);
       else
          emit noUpdateIsAvailable();
@@ -91,15 +91,15 @@ QByteArray UpdateCheckWorker::downloadLatestVersionInformation() const
 /// \param[in] jsonData the JSON data
 /// \return A shared pointer to the parsed data. 
 //**********************************************************************************************************************
-SPLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) const
+SpLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) const
 {
    QString errMsg;
-   QJsonParseError error;
+   QJsonParseError error{};
    QJsonDocument doc = QJsonDocument::fromJson(jsonData.toUtf8(), &error);
    if (error.error != QJsonParseError::NoError)
       throw xmilib::Exception(QString("Could not retrieve version information. The downloaded JSON file is "
          "invalid: %1").arg(error.errorString()));
-   SPLatestVersionInfo result = std::make_shared<LatestVersionInfo>(doc.object());
+   SpLatestVersionInfo result = std::make_shared<LatestVersionInfo>(doc.object());
    if (!result->isValid())
       throw xmilib::Exception(QString("Could not retrieve version information. The downloaded JSON file is "
       "invalid."));
@@ -110,7 +110,7 @@ SPLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) co
 //**********************************************************************************************************************
 /// \param[in] latestVersionInfo The latest version information
 //**********************************************************************************************************************
-bool UpdateCheckWorker::isNewVersionAvailable(SPLatestVersionInfo const& latestVersionInfo)
+bool UpdateCheckWorker::isNewVersionAvailable(SpLatestVersionInfo const& latestVersionInfo)
 {
    if (!latestVersionInfo)
       throw xmilib::Exception("Could not check for new version: the retrieved latest version information is "

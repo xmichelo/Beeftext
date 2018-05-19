@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEETTEXT__COMBO__LIST__H
-#define BEETTEXT__COMBO__LIST__H
+#ifndef BEETTEXT_COMBO_LIST_H
+#define BEETTEXT_COMBO_LIST_H
 
 
 #include "Combo.h"
@@ -22,43 +22,46 @@ class ComboList: public QAbstractTableModel
 {
    Q_OBJECT
 public: // type definitions
-   typedef VecSPCombo::iterator iterator; ///< Type definition for iterator
-   typedef VecSPCombo::const_iterator const_iterator; ///< Type definition for const_iterator
-   typedef VecSPCombo::reverse_iterator reverse_iterator; ///< Type definition for iterator
-   typedef VecSPCombo::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
-   typedef SPCombo value_type;
+   // ReSharper disable CppInconsistentNaming
+   typedef VecSpCombo::iterator iterator; ///< Type definition for iterator
+   typedef VecSpCombo::const_iterator const_iterator; ///< Type definition for const_iterator
+   typedef VecSpCombo::reverse_iterator reverse_iterator; ///< Type definition for iterator
+   typedef VecSpCombo::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
+   typedef SpCombo value_type;
+   // ReSharper restore CppInconsistentNaming
 
 public: // static data members
    static QString const defaultFileName; ///< The default name for combo list files
 
 public: // friends
-   friend void swap(ComboList& first, ComboList& second); ///< Swap two combo lists
+   friend void swap(ComboList& first, ComboList& second) noexcept; ///< Swap two combo lists
 
 public: // member functions
-	ComboList(QObject* parent = nullptr); ///< Default constructor
+   explicit ComboList(QObject* parent = nullptr); ///< Default constructor
    ComboList(ComboList const& ref); ///< Copy constructor
-   ComboList(ComboList&& ref); ///< Move constructor
+   ComboList(ComboList&& ref) noexcept; ///< Move constructor
    ~ComboList() = default; ///< Default destructor
    ComboList& operator=(ComboList const& ref); ///< Assignment operator
-   ComboList& operator=(ComboList&& ref); ///< Move assignment operator
+   ComboList& operator=(ComboList&& ref) noexcept; ///< Move assignment operator
    GroupList& groupListRef(); ///< Return a mutable reference to the group list
    GroupList const& groupListRef() const; ///< Return a constant reference to the group list
    qint32 size() const; ///< Return the size of the combo list
    bool isEmpty() const;  ///< Test if the combo list is empty
    void clear(); ///< Clear the combo list
-   bool contains(SPCombo const& combo) const; ///< Check whether a combo is already in the list, based on its UUID
+   bool contains(SpCombo const& combo) const; ///< Check whether a combo is already in the list, based on its UUID
    bool isKeywordUsed(QString const& keyword) const; ///< Check whether a keyword is already used in the list
-   bool canComboBeAdded(SPCombo const& combo) const; ///< Check whether a combo can be added
-   bool append(SPCombo const& combo); ///< Append a combo at the end of the list
-   void push_back(SPCombo const& combo); ///< Append a combo at the end of the list
+   bool canComboBeAdded(SpCombo const& combo) const; ///< Check whether a combo can be added
+   bool append(SpCombo const& combo); ///< Append a combo at the end of the list
+   // ReSharper disable once CppInconsistentNaming
+   void push_back(SpCombo const& combo); ///< Append a combo at the end of the list
    void erase(qint32 index); ///< Erase a combo from the list
-   void eraseCombosOfGroup(SPGroup const& group); ///< Erase all the combos of a given group
-   ComboList::const_iterator findByKeyword(QString const& keyword) const; ///< Find a combo by its keyword
-   ComboList::iterator findByKeyword(QString const& keyword); ///< Find a combo by its keyword
-   ComboList::const_iterator findByUuid(QUuid const& uuid) const; ///< Find a combo by its UUID
-   ComboList::iterator findByUuid(QUuid const& uuid); ///< Find a combo by its UUID
-   SPCombo& operator[](qint32 index); ///< Get a mutable reference to the combo at a given position in the list
-   SPCombo const& operator[](qint32 index) const; ///< Get a mutable reference to the combo at a given position in the list
+   void eraseCombosOfGroup(SpGroup const& group); ///< Erase all the combos of a given group
+   const_iterator findByKeyword(QString const& keyword) const; ///< Find a combo by its keyword
+   iterator findByKeyword(QString const& keyword); ///< Find a combo by its keyword
+   const_iterator findByUuid(QUuid const& uuid) const; ///< Find a combo by its UUID
+   iterator findByUuid(QUuid const& uuid); ///< Find a combo by its UUID
+   SpCombo& operator[](qint32 index); ///< Get a mutable reference to the combo at a given position in the list
+   SpCombo const& operator[](qint32 index) const; ///< Get a mutable reference to the combo at a given position in the list
    iterator begin(); ///< Returns an iterator to the beginning of the list
    const_iterator begin() const; ///< Returns a constant iterator to the beginning of the list
    iterator end(); ///< Returns an iterator to the end of the list
@@ -77,21 +80,21 @@ public: // member functions
 
    /// \name Table model member functions
    ///\{
-   int rowCount(QModelIndex const& = QModelIndex()) const override; ///< Retrieve the number of row in the table model
-   int columnCount(QModelIndex const & = QModelIndex()) const override; ///< Retrieve the number of row in the table model
-   QVariant data(QModelIndex const& index = QModelIndex(), int role = Qt::DisplayRole) const override; ///< Retrieve the data from the table model
-   QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override; ///< Retrieve header data from the table model
+   int rowCount(QModelIndex const&) const override; ///< Retrieve the number of row in the table model
+   int columnCount(QModelIndex const&) const override; ///< Retrieve the number of row in the table model
+   QVariant data(QModelIndex const& index, int role) const override; ///< Retrieve the data from the table model
+   QVariant headerData(int section, Qt::Orientation orientation, int role) const override; ///< Retrieve header data from the table model
    Qt::DropActions supportedDropActions() const override; ///< Retrieve the supported drop actions
    Qt::ItemFlags flags(QModelIndex const& index) const override; ///< Retrieve the item flags
-   QStringList mimeTypes() const; ///< Get the MIME type that are supported for dropping
+   QStringList mimeTypes() const override; ///< Get the MIME type that are supported for dropping
    QMimeData* mimeData(const QModelIndexList &indexes) const override; ///< Get the MIME data for some indexes
    //bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent); ///< process the dropping of MIME data
                                                                                                                     ///\}
 
 private: // data members
-   VecSPCombo combos_; ///< The list of combos
+   VecSpCombo combos_; ///< The list of combos
    GroupList groups_; ///< The list of groups
 };
 
 
-#endif // #ifndef BEETTEXT__COMBO__LIST__H
+#endif // #ifndef BEETTEXT_COMBO_LIST_H

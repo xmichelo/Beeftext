@@ -21,8 +21,9 @@
 /// \param[in] group The group to select in the group combo. Can be null.
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ComboImportDialog::ComboImportDialog(QString const& filePath, SPGroup const& group, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags)
+ComboImportDialog::ComboImportDialog(QString const& filePath, SpGroup const& group, QWidget* parent)
+   : QDialog(parent, constants::kDefaultDialogFlags),
+   ui_()
 {
    ui_.setupUi(this);
    GroupList& groupList = ComboManager::instance().groupListRef();
@@ -79,7 +80,7 @@ void ComboImportDialog::dropEvent(QDropEvent* event)
    if (!mimeData->hasUrls())
       return;
    QList<QUrl> urls = mimeData->urls();
-   if (urls.size() > 0) // should always be the case
+   if (!urls.empty()) // should always be the case
       ui_.editPath->setText(QDir::toNativeSeparators(urls[0].toLocalFile()));
    event->acceptProposedAction();
 }
@@ -88,7 +89,7 @@ void ComboImportDialog::dropEvent(QDropEvent* event)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboImportDialog::updateGui()
+void ComboImportDialog::updateGui() const
 {
    quint32 const conflictingNewerCount = conflictingNewerCombos_.size();
    quint32 const conflictingTotalCount = conflictingNewerCount + conflictingOlderCombos_.size();
@@ -126,7 +127,7 @@ void ComboImportDialog::updateGui()
 //**********************************************************************************************************************
 qint32 ComboImportDialog::computeTotalImportCount() const
 {
-   qint32 result = importableCombos_.size();
+   qint32 const result = importableCombos_.size();
    if (ui_.radioImportNewer->isChecked())
       return result + conflictingNewerCombos_.size();
    if (ui_.radioOverwrite->isChecked())
@@ -143,10 +144,10 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
    outFailureCount = 0;
    ComboList& comboList = ComboManager::instance().comboListRef();
    qint32 failureCount = 0;
-   SPGroup group = ui_.comboGroup->currentGroup();
+   SpGroup const group = ui_.comboGroup->currentGroup();
    if (!group)
       throw xmilib::Exception(tr("Please select a valid group."));
-   for (SPCombo combo : importableCombos_)
+   for (SpCombo const& combo : importableCombos_)
    {
       combo->setGroup(group);
       if (!comboList.append(combo))
@@ -159,9 +160,9 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
       std::copy(conflictingOlderCombos_.begin(), conflictingOlderCombos_.end(),
          std::back_inserter(conflictingNewerCombos_));
 
-   for (SPCombo combo : conflictingNewerCombos_)
+   for (SpCombo const& combo : conflictingNewerCombos_)
    {
-      ComboList::iterator it = comboList.findByKeyword(combo->keyword());
+      ComboList::iterator const it = comboList.findByKeyword(combo->keyword());
       if (it == comboList.end())
       {
          ++failureCount;
@@ -244,10 +245,10 @@ void ComboImportDialog::onEditPathTextChanged(QString const& text)
       this->updateGui();
       return;
    }
-   for (SPCombo const& combo : candidateList)
+   for (SpCombo const& combo : candidateList)
    {
       combo->changeUuid(); // we get new a new UUID for imported combo. UUID are intended for synchronization purposes, not import/export
-      ComboList::const_iterator it = comboList.findByKeyword(combo->keyword());
+      ComboList::const_iterator const it = comboList.findByKeyword(combo->keyword());
       if (comboList.end() == it)
       {
          importableCombos_.append(combo);
@@ -266,7 +267,7 @@ void ComboImportDialog::onEditPathTextChanged(QString const& text)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboImportDialog::onConflictRadioToggled(bool state)
+void ComboImportDialog::onConflictRadioToggled(bool state) const
 {
    if (!state)
       return; // we are only interested in signals from the radio being checked

@@ -7,11 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__INPUT__MANAGER__H
-#define BEEFTEXT__INPUT__MANAGER__H
-
-
-#include "Shortcut.h"
+#ifndef BEEFTEXT_INPUT_MANAGER_H
+#define BEEFTEXT_INPUT_MANAGER_H
 
 
 //**********************************************************************************************************************
@@ -22,15 +19,22 @@ class InputManager : public QObject
    Q_OBJECT
 public: // data types
    enum { 
-      kKeyboardStateSize = 256, ///< The size of the keyboard state array
+      KeyboardStateSize = 256, ///< The size of the keyboard state array
    }; 
    struct KeyStroke {
       quint32 virtualKey; ///< The virtual keyCode
       quint32 scanCode; ///< The scanCode
-      quint8 keyboardState[kKeyboardStateSize]; ///< The state of the keyboard at the moment the keystroke occurred
+      quint8 keyboardState[KeyboardStateSize]; ///< The state of the keyboard at the moment the keystroke occurred
    };
 public: // static member functions
    static InputManager& instance(); ///< Return the only allowed instance of the class
+
+public: // member functions
+   InputManager(InputManager const&) = delete; ///< Disabled copy constructor
+   InputManager(InputManager&&) = delete; ///< Disabled move constructor
+   ~InputManager(); ///< Default destructor
+   InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
+   InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
    bool isKeyboardHookEnable() const; ///< Is the keyboard hook enabled
    void enableKeyboardHook(); ///< Enable the keyboard hook
    void disableKeyboardHook(); ///< Disable the keyboard hook
@@ -40,9 +44,6 @@ public: // static member functions
    void disableMouseHook(); ///< Disable the mouse hook
    bool setMouseHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
 
-public: // member functions
-   ~InputManager(); ///< Default destructor
-
 signals:
    void comboBreakerTyped(); ///< Signal for combo breaking events
    void characterTyped(QChar c); ///< Signal for character typed
@@ -51,14 +52,9 @@ signals:
 
 private: // member functions
    InputManager(); ///< Default constructor
-   InputManager(InputManager const&) = delete; ///< Disabled copy constructor
-   InputManager(InputManager&&) = delete; ///< Disabled move constructor
-   InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
-   InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
    bool onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
-   QString processKey(KeyStroke const& keystroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
+   QString processKey(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
    void onMouseClickEvent(int, WPARAM, LPARAM); ///< Process a mouse click event
-   bool isComboTriggerShortcut(KeyStroke const& keyStroke) const; ///< Check if a keystroke is the manual substitution shortcut
 
 private: // static member functions
    static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The keyboard event callback

@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__UPDATE__CHECK__WORKER__H
-#define BEEFTEXT__UPDATE__CHECK__WORKER__H
+#ifndef BEEFTEXT_UPDATE_CHECK_WORKER_H
+#define BEEFTEXT_UPDATE_CHECK_WORKER_H
 
 
 #include "LatestVersionInfo.h"
@@ -21,28 +21,28 @@ class UpdateCheckWorker: public QObject
 {
    Q_OBJECT
 public: // member functions
-	UpdateCheckWorker(QObject* parent = nullptr); ///< Default constructor
+   explicit UpdateCheckWorker(QObject* parent = nullptr); ///< Default constructor
+	UpdateCheckWorker(UpdateCheckWorker const&) = delete; ///< Disabled copy constructor
+	UpdateCheckWorker(UpdateCheckWorker&&) = delete; ///< Disabled move constructor
 	~UpdateCheckWorker() = default; ///< Default destructor
+	UpdateCheckWorker& operator=(UpdateCheckWorker const&) = delete; ///< Disabled assignment operator
+	UpdateCheckWorker& operator=(UpdateCheckWorker&&) = delete; ///< Disabled move assignment operator
 	
 public slots:
    void run(); // run the worker
 
 signals:
    void finished(); ///< Signal for the finishing of the worker
-   void updateIsAvailable(SPLatestVersionInfo lastestVersionInfo); ///< Signal for the existence of a newer version of the application
+   void updateIsAvailable(SpLatestVersionInfo lastestVersionInfo); ///< Signal for the existence of a newer version of the application
    void noUpdateIsAvailable(); ///< Signal for no update available
    void error(QString const& error); ///< Signal for error
 
 private: // member functions
-	UpdateCheckWorker(UpdateCheckWorker const&) = delete; ///< Disabled copy constructor
-	UpdateCheckWorker(UpdateCheckWorker&&) = delete; ///< Disabled move constructor
-	UpdateCheckWorker& operator=(UpdateCheckWorker const&) = delete; ///< Disabled assignment operator
-	UpdateCheckWorker& operator=(UpdateCheckWorker&&) = delete; ///< Disabled move assignment operator
    void performUpdateCheck(); ///< perform the update check
    QByteArray downloadLatestVersionInformation() const; ///< Download the latest version information from the Beeftext website
-   SPLatestVersionInfo parseJsonData(QString const& jsonData) const; ///< Parse the JSon data
-   static bool isNewVersionAvailable(SPLatestVersionInfo const& latestVersionInfo); ///< Check if the installed version of the application is outdated
+   SpLatestVersionInfo parseJsonData(QString const& jsonData) const; ///< Parse the JSon data
+   static bool isNewVersionAvailable(SpLatestVersionInfo const& latestVersionInfo); ///< Check if the installed version of the application is outdated
 };
 
 
-#endif // #ifndef BEEFTEXT__UPDATE__CHECK__WORKER__H
+#endif // #ifndef BEEFTEXT_UPDATE_CHECK_WORKER_H

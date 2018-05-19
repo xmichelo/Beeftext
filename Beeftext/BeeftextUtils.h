@@ -6,8 +6,8 @@
 /// Copyright (c) Xavier Michelon. All rights reserved.  
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
-#ifndef BEEFTEXT__UTILS__H
-#define BEEFTEXT__UTILS__H
+#ifndef BEEFTEXT_UTILS_H
+#define BEEFTEXT_UTILS_H
 
 
 void openLogFile(); ///< Open the log file with the default text editor
@@ -17,4 +17,4 @@ QString getActiveExecutableFileName(); ///< Return the name of the active applic
 bool doesApplicationSupportCtrlVShortcut(QString const& appExeName); ///< Check if the application supports the Ctrl+V shortcut for pasting
 
 
-#endif // #ifndef BEEFTEXT__UTILS__H
+#endif // #ifndef BEEFTEXT_UTILS_H

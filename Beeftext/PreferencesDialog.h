@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__PREFERENCES__DIALOG__H
-#define BEEFTEXT__PREFERENCES__DIALOG__H
+#ifndef BEEFTEXT_PREFERENCES_DIALOG_H
+#define BEEFTEXT_PREFERENCES_DIALOG_H
 
 
 #include "ui_PreferencesDialog.h"
@@ -24,7 +24,7 @@ class PreferencesDialog: public QDialog
 {
    Q_OBJECT
 public: // member functions
-   PreferencesDialog(QWidget* parent = nullptr); ///< Default constructor
+   explicit PreferencesDialog(QWidget* parent = nullptr); ///< Default constructor
    PreferencesDialog(PreferencesDialog const&) = delete; ///< Disabled copy-constructor
    PreferencesDialog(PreferencesDialog&&) = delete; ///< Disabled assignment copy-constructor
    ~PreferencesDialog() = default; ///< Destructor
@@ -48,10 +48,10 @@ private slots:
    void onActionRestoreBackup(); ///< Slot for the 'Restore backup action
    void onActionOk(); ///< Slot for the OK button
    void onActionApply(); ///< Slot for the Apply button
-   void onUpdateIsAvailable(SPLatestVersionInfo const& latestVersionInfo); ///< Slot for the availability of an update
+   void onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo); ///< Slot for the availability of an update
    void onNoUpdateIsAvailable(); ///< Slot for the lack of availability of an update
-   void onUpdateCheckStarted(); ///< Slot for the starting of an update check
-   void onUpdateCheckFinished(); ///< Slot for the finishing of an update check
+   void onUpdateCheckStarted() const; ///< Slot for the starting of an update check
+   void onUpdateCheckFinished() const; ///< Slot for the finishing of an update check
    void onUpdateCheckFailed(); ///< Slot update check failure
    void updateGui() const; ///< Update the GUI state
 
@@ -59,9 +59,9 @@ private: // data members
    Ui::PreferencesDialog ui_; ///< The GUI for the dialog
    PreferencesManager& prefs_; ///< The preferences manager
    QTimer updateCheckStatusTimer_; ///< The timer for clearing the update check status label
-   SPShortcut triggerShortcut_; ///< The keyboard shortcut for manual combo trigger
+   SpShortcut triggerShortcut_; ///< The keyboard shortcut for manual combo trigger
    QString previousComboListPath_; ///< The previous path of the combo list
 };
 
 
-#endif // #ifndef BEEFTEXT__PREFERENCES__DIALOG__H
+#endif // #ifndef BEEFTEXT_PREFERENCES_DIALOG_H

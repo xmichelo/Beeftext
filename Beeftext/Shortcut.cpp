@@ -11,7 +11,7 @@
 #include "Shortcut.h"
 
 
-QString getKeyName(qint32 virtualKeyCode); ///< Get the display name for a key
+QString getKeyName(qint32 scanCode); ///< Get the display name for a key
 
 
 //**********************************************************************************************************************
@@ -20,9 +20,9 @@ QString getKeyName(qint32 virtualKeyCode); ///< Get the display name for a key
 //**********************************************************************************************************************
 QString getKeyName(qint32 scanCode)
 {
-   qint32 const kBufferSize = 32;
-   wchar_t buffer[kBufferSize];
-   if (!GetKeyNameText(scanCode << 16, buffer, kBufferSize - 1))
+   qint32 const bufferSize = 32;
+   wchar_t buffer[bufferSize];
+   if (!GetKeyNameText(scanCode << 16, buffer, bufferSize - 1))
       return QString();
    QString raw = QString::fromWCharArray(buffer);
    QStringList words = raw.split(QRegularExpression("\\s"), QString::SkipEmptyParts);

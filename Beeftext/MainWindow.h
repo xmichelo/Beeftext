@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__MAIN__WINDOW__H
-#define BEEFTEXT__MAIN__WINDOW__H
+#ifndef BEEFTEXT_MAIN_WINDOW_H
+#define BEEFTEXT_MAIN_WINDOW_H
 
 
 #include "ui_MainWindow.h"
@@ -34,10 +34,10 @@ public: // member functions
 protected: // member functions
    /// \name Drag and drop functions
    ///\{
-   void dragEnterEvent(QDragEnterEvent* event); ///< Drag enter event handler
-   void dragMoveEvent(QDragMoveEvent* event); ///< Drag move event handler
-   void dragLeaveEvent(QDragLeaveEvent* event); ///< Drag leave event handler
-   void dropEvent(QDropEvent* event); ///< Drop event handler
+   void dragEnterEvent(QDragEnterEvent* event) override; ///< Drag enter event handler
+   void dragMoveEvent(QDragMoveEvent* event) override; ///< Drag move event handler
+   void dragLeaveEvent(QDragLeaveEvent* event) override; ///< Drag leave event handler
+   void dropEvent(QDropEvent* event) override; ///< Drop event handler
    ///\}
    void closeEvent(QCloseEvent*) override; ///< Window close event handler
 
@@ -54,9 +54,9 @@ private slots:
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionExit(); ///< Slot for the 'Exit' action
    void onActionEnableDisableBeeftext(); ///< Slot for the Enable/Disable Beeftext
-   void onActionShowAboutDialog(); ///< Slot for the 'Show About dialog' action
-   void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog' action
-   void onActionOpenLogFile(); ///< Slot for the 'Open Log File' action
+   static void onActionShowAboutDialog(); ///< Slot for the 'Show About dialog' action
+   static void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog' action
+   static void onActionOpenLogFile(); ///< Slot for the 'Open Log File' action
 
 private: // data members
    Ui::MainWindow ui_; ///< The GUI for the window
@@ -67,6 +67,6 @@ private: // data members
 };
 
 
-#endif // #ifndef BEEFTEXT__MAIN__WINDOW__H
+#endif // #ifndef BEEFTEXT_MAIN_WINDOW_H
 
 

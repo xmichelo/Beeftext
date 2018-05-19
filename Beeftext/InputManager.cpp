@@ -18,12 +18,14 @@ using namespace xmilib;
 
 
 namespace {
-   InputManager::KeyStroke const kNullKeyStroke = {0, 0, {0}}; ///< A null keystroke
-   qint32 const kTextBufferSize = 10; ///< The size of the buffer that will receive the text resulting from the processing of the key stroke
+InputManager::KeyStroke const kNullKeyStroke = {0, 0, {0}}; ///< A null keystroke
+qint32 const kTextBufferSize = 10;
+///< The size of the buffer that will receive the text resulting from the processing of the key stroke
 }
 
 
 bool getForegroundWindowInputLocale(HKL& outHkl); ///< Retrieve the Input local of the currently focused window
+bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke); ///< Check if a keystroke is the manual substitution shortcut
 
 
 //**********************************************************************************************************************
@@ -33,11 +35,31 @@ bool getForegroundWindowInputLocale(HKL& outHkl); ///< Retrieve the Input local 
 //**********************************************************************************************************************
 bool getForegroundWindowInputLocale(HKL& outHkl)
 {
-   HWND const hwnd = GetForegroundWindow();
+   // ReSharper disable once CppLocalVariableMayBeConst
+   HWND hwnd = GetForegroundWindow();
    if (!hwnd)
       return false;
    outHkl = GetKeyboardLayout(GetWindowThreadProcessId(hwnd, nullptr));
    return true;
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if keystroke correspond to the shortcut
+//**********************************************************************************************************************
+bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke)
+{
+   SpShortcut const shortcut = PreferencesManager::instance().comboTriggerShortcut();
+   if (!shortcut)
+      return false;
+   if (keyStroke.virtualKey != shortcut->nativeVirtualKey())
+      return false;
+   Qt::KeyboardModifiers modifiers = shortcut->nativeModifiers();
+   quint8 const* ks = keyStroke.keyboardState;
+   return bool((ks[VK_LCONTROL] & 0x80) || (ks[VK_RCONTROL] & 0x80)) == modifiers.testFlag(Qt::ControlModifier)
+      && bool((ks[VK_LMENU] & 0x80) || (ks[VK_RMENU] & 0x80)) == modifiers.testFlag(Qt::AltModifier)
+      && bool((ks[VK_LWIN] & 0x80) || (ks[VK_RWIN] & 0x80)) == modifiers.testFlag(Qt::MetaModifier)
+      && bool((ks[VK_LSHIFT] & 0x80) || (ks[VK_RSHIFT] & 0x80)) == modifiers.testFlag(Qt::ShiftModifier);
 }
 
 
@@ -53,7 +75,7 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
    if ((WM_KEYDOWN == wParam) || (WM_SYSKEYDOWN == wParam))
    {
       KeyStroke keyStroke = kNullKeyStroke;
-      KBDLLHOOKSTRUCT *keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
+      KBDLLHOOKSTRUCT* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
 
       // we ignore shift / caps lock key events
       if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
@@ -63,15 +85,17 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
       // GetKeyboardState() do not properly report state for modifier keys if the key event in a window other that one
       // from the current process, so we need to manually fetch the valid states manually using GetKeyState()
       // We do not actually need the state of the other key, so we do not event bother calling GetKeyboardState()
-      QList<quint32> keyList = { VK_SHIFT, VK_LSHIFT, VK_RSHIFT, VK_CONTROL, VK_LCONTROL,
-         VK_RCONTROL, VK_MENU, VK_LMENU, VK_RMENU, VK_RWIN, VK_LWIN, VK_CAPITAL };
-      for (qint32 key : keyList)
+      QList<quint32> keyList = {
+         VK_SHIFT, VK_LSHIFT, VK_RSHIFT, VK_CONTROL, VK_LCONTROL,
+         VK_RCONTROL, VK_MENU, VK_LMENU, VK_RMENU, VK_RWIN, VK_LWIN, VK_CAPITAL
+      };
+      for (qint32 key: keyList)
          keyStroke.keyboardState[key] = GetKeyState(key);
 
       // our event handler will return false if we want to 'intercept' the keystroke and not pass it to the next hook,
       // but the MSDN documentation says we MUST do it if nCode < 0
-      if ((!InputManager::instance().onKeyboardEvent(keyStroke)) && (nCode >= 0))
-         return 0; 
+      if ((!instance().onKeyboardEvent(keyStroke)) && (nCode >= 0))
+         return 0;
    }
    return CallNextHookEx(nullptr, nCode, wParam, lParam);
 }
@@ -86,10 +110,10 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
 //**********************************************************************************************************************
 LRESULT CALLBACK InputManager::mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam)
 {
-   if ((WM_LBUTTONDOWN == wParam) || (WM_RBUTTONDOWN == wParam) || (WM_MOUSEWHEEL == wParam) || 
+   if ((WM_LBUTTONDOWN == wParam) || (WM_RBUTTONDOWN == wParam) || (WM_MOUSEWHEEL == wParam) ||
       (WM_MBUTTONDOWN == wParam)) // note we consider mouse wheel moves as clicks
    {
-      InputManager::instance().onMouseClickEvent(nCode, wParam, lParam);
+      instance().onMouseClickEvent(nCode, wParam, lParam);
    }
    return CallNextHookEx(nullptr, nCode, wParam, lParam);
 }
@@ -100,7 +124,7 @@ LRESULT CALLBACK InputManager::mouseProcedure(int nCode, WPARAM wParam, LPARAM l
 //**********************************************************************************************************************
 InputManager& InputManager::instance()
 {
-   static InputManager instance; 
+   static InputManager instance;
    return instance;
 }
 
@@ -108,9 +132,11 @@ InputManager& InputManager::instance()
 //**********************************************************************************************************************
 ///
 //**********************************************************************************************************************
-InputManager::InputManager() 
-   : QObject(nullptr)
-   , deadKey_(kNullKeyStroke)
+InputManager::InputManager()
+   : QObject(nullptr),
+     keyboardHook_(nullptr),
+     mouseHook_(nullptr),
+     deadKey_(kNullKeyStroke)
 {
    this->enableKeyboardHook();
 #ifdef NDEBUG
@@ -160,16 +186,16 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
       return true;
 
    for (QChar c: text)
-   {  
+   {
       if (QChar('\b') == c)
       {
          emit backspaceTyped();
          continue;
       }
       if (c.isSpace() || (!c.isPrint()))
-         emit comboBreakerTyped();
+      emit comboBreakerTyped();
       else
-         emit characterTyped(c);
+      emit characterTyped(c);
    }
    return true;
 }
@@ -192,13 +218,13 @@ QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
    WCHAR textBuffer[kTextBufferSize];
    outIsDeadKey = false;
    HKL hkl = nullptr;
-   
+
    // Windows allow each window to have its own input locale, so we try to obtain the locale (HKL) of the active window
    // andpass it to ToUnicodeEx(). If we fail to do so we call ToUnicode instead, which use the system-wide locale
    qint32 const size = getForegroundWindowInputLocale(hkl)
       ? ToUnicodeEx(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, kTextBufferSize, 0
-      , hkl) : ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer
-      , kTextBufferSize, 0);
+         , hkl) : ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer
+         , kTextBufferSize, 0);
 
    if (-1 == size)
    {
@@ -240,25 +266,6 @@ void InputManager::onMouseClickEvent(int, WPARAM, LPARAM)
 
 
 //**********************************************************************************************************************
-/// \return true if and only if keystroke correspond to the shortcut
-//**********************************************************************************************************************
-bool InputManager::isComboTriggerShortcut(KeyStroke const& keyStroke) const
-{
-   SPShortcut shortcut = PreferencesManager::instance().comboTriggerShortcut();
-   if (!shortcut)
-      return false;
-   if (keyStroke.virtualKey != shortcut->nativeVirtualKey())
-      return false;
-   Qt::KeyboardModifiers modifiers = shortcut->nativeModifiers();
-   quint8 const* ks = keyStroke.keyboardState;
-   return bool((ks[VK_LCONTROL] & 0x80) || (ks[VK_RCONTROL] & 0x80)) == modifiers.testFlag(Qt::ControlModifier)
-      && bool((ks[VK_LMENU] & 0x80) || (ks[VK_RMENU] & 0x80)) == modifiers.testFlag(Qt::AltModifier)
-      && bool((ks[VK_LWIN] & 0x80) || (ks[VK_RWIN] & 0x80)) == modifiers.testFlag(Qt::MetaModifier)
-      && bool((ks[VK_LSHIFT] & 0x80) || (ks[VK_RSHIFT] & 0x80)) == modifiers.testFlag(Qt::ShiftModifier);
-}
-
-
-//**********************************************************************************************************************
 /// \return true if and only if the keyboard hook is enabled
 //**********************************************************************************************************************
 bool InputManager::isKeyboardHookEnable() const
@@ -272,13 +279,12 @@ bool InputManager::isKeyboardHookEnable() const
 //**********************************************************************************************************************
 void InputManager::enableKeyboardHook()
 {
-
    if (keyboardHook_)
       return;
    HMODULE const moduleHandle = GetModuleHandle(nullptr);
    keyboardHook_ = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardProcedure, moduleHandle, 0);
    if (!keyboardHook_)
-      throw xmilib::Exception("Could not register a keyboard hook.");
+      throw Exception("Could not register a keyboard hook.");
 }
 
 
@@ -329,7 +335,7 @@ void InputManager::enableMouseHook()
    HMODULE const moduleHandle = GetModuleHandle(nullptr);
    mouseHook_ = SetWindowsHookEx(WH_MOUSE_LL, mouseProcedure, moduleHandle, 0);
    if (!mouseHook_)
-      throw xmilib::Exception("Could not register a mouse hook.");
+      throw Exception("Could not register a mouse hook.");
 }
 
 

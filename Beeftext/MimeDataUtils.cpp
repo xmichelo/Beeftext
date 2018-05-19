@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "MimeDataUtils.h"
-#include <XMiLib/Exception.h>
 
 
 QString const kUuuidListMimeType = "application/x-beeftextuuidlist"; ///< the mime type for a serialized uuid list

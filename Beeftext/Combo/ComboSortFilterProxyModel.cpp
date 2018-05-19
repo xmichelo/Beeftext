@@ -27,7 +27,7 @@ ComboSortFilterProxyModel::ComboSortFilterProxyModel(QObject* parent)
 //**********************************************************************************************************************
 /// \param[in] group
 //**********************************************************************************************************************
-void ComboSortFilterProxyModel::setGroup(SPGroup const& group)
+void ComboSortFilterProxyModel::setGroup(SpGroup const& group)
 {
    group_ = group;
    this->invalidateFilter();
@@ -43,12 +43,12 @@ bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex cons
    if (!combos)
       throw xmilib::Exception(QString("Internal error: %1(): could not cast model to ComboList.").arg(__FUNCTION__));
 
-   for (int col = 0; col < combos->columnCount(); ++col)
+   for (int col = 0; col < combos->columnCount(QModelIndex()); ++col)
    {
-      SPCombo combo = (*combos)[sourceRow];
+      SpCombo const& combo = (*combos)[sourceRow];
       if (group_ && (combo->group() != group_))
          return false;
-      QString const str = combos->data(combos->index(sourceRow, col)).toString();
+      QString const str = combos->data(combos->index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString();
       if (str.contains(this->filterRegExp()))
          return true;
    }

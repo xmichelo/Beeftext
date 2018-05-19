@@ -17,9 +17,10 @@
 /// \param[in] shortcut The shortcut
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ShortcutDialog::ShortcutDialog(SPShortcut const& shortcut, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags)
-   , shortcut_(shortcut ? shortcut : PreferencesManager::defaultComboTriggerShortcut())
+ShortcutDialog::ShortcutDialog(SpShortcut const& shortcut, QWidget* parent)
+   : QDialog(parent, constants::kDefaultDialogFlags),
+     ui_(),
+     shortcut_(shortcut ? shortcut : PreferencesManager::defaultComboTriggerShortcut())
 {
    ui_.setupUi(this);
    this->updateGui();
@@ -29,7 +30,7 @@ ShortcutDialog::ShortcutDialog(SPShortcut const& shortcut, QWidget* parent)
 //**********************************************************************************************************************
 /// \return The shortcut
 //**********************************************************************************************************************
-SPShortcut ShortcutDialog::shortcut() const
+SpShortcut ShortcutDialog::shortcut() const
 {
    return shortcut_;
 }
@@ -38,10 +39,10 @@ SPShortcut ShortcutDialog::shortcut() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ShortcutDialog::keyPressEvent(QKeyEvent *event)
+void ShortcutDialog::keyPressEvent(QKeyEvent* event)
 {
    event->ignore(); // we intercept all key events
-   SPShortcut const shortcut = std::make_shared<Shortcut>(event->modifiers(), event->nativeVirtualKey(),
+   SpShortcut const shortcut = std::make_shared<Shortcut>(event->modifiers(), event->nativeVirtualKey(),
       event->nativeScanCode());
    if (!shortcut->isValid())
       return;
@@ -58,5 +59,3 @@ void ShortcutDialog::updateGui() const
    ui_.editShortcut->setText(shortcut_ ? shortcut_->toString() : "");
    ui_.buttonOK->setEnabled(shortcut_.get());
 }
-
-

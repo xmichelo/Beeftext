@@ -16,6 +16,7 @@
 #include "BeeftextUtils.h"
 #include <XMiLib/FileUtils.h>
 #include <XMiLib/Exception.h>
+#include <utility>
 
 
 using namespace xmilib;
@@ -25,15 +26,13 @@ using namespace xmilib;
 /// \param[in] latestVersionInfo The latest version information
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-UpdateDialog::UpdateDialog(SPLatestVersionInfo const& latestVersionInfo, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags)
-   , latestVersionInfo_(latestVersionInfo)
-   , hashCalculator_(QCryptographicHash::Sha256)
-   , nam_()
-   , reply_(nullptr)
-   , file_()
-   , installerPath_()
-   , downloadErrorOccurred_(false)
+UpdateDialog::UpdateDialog(SpLatestVersionInfo latestVersionInfo, QWidget* parent)
+   : QDialog(parent, constants::kDefaultDialogFlags),
+      ui_(),
+     latestVersionInfo_(std::move(latestVersionInfo)),
+     hashCalculator_(QCryptographicHash::Sha256),
+     reply_(nullptr),
+     downloadErrorOccurred_(false)
 {
    bool const portableMode = isInPortableMode();
    ui_.setupUi(this);
@@ -47,7 +46,7 @@ UpdateDialog::UpdateDialog(SPLatestVersionInfo const& latestVersionInfo, QWidget
    ui_.buttonInstall->setText(portableMode ? tr("&Download Page") : tr("&Install"));
 
    // If you're AFK for days, we want to ensure we display only one notification windows, for the latest release, so:
-   connect(&UpdateManager::instance(), &UpdateManager::updateIsAvailable, this, &UpdateDialog::reject); 
+   connect(&UpdateManager::instance(), &UpdateManager::updateIsAvailable, this, &UpdateDialog::reject);
 }
 
 
@@ -57,16 +56,16 @@ UpdateDialog::UpdateDialog(SPLatestVersionInfo const& latestVersionInfo, QWidget
 void UpdateDialog::startDownload()
 {
    if (reply_)
-      throw xmilib::Exception("Error during software update: an ongoing download task already exists.");
+      throw Exception("Error during software update: an ongoing download task already exists.");
    installerPath_ = createTempFile(file_, "BeeftextUpdater_", "exe");
    if (installerPath_.isEmpty() || !file_.isOpen())
-      throw xmilib::Exception("Error during software update: could save installer file.");
+      throw Exception("Error during software update: could save installer file.");
    QNetworkRequest request(latestVersionInfo_->downloadUrl());
    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
    request.setMaximumRedirectsAllowed(10);
    reply_ = nam_.get(request);
    connect(reply_, &QNetworkReply::finished, this, &UpdateDialog::onDownloadFinished);
-   connect(reply_, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), this, 
+   connect(reply_, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), this,
       &UpdateDialog::onDownloadError);
    connect(reply_, &QNetworkReply::downloadProgress, this, &UpdateDialog::onDownloadProgress);
    connect(reply_, &QNetworkReply::readyRead, this, &UpdateDialog::onDownloadDataAvailable);
@@ -89,7 +88,7 @@ void UpdateDialog::processDownloadedData(QByteArray const& data)
       return;
    hashCalculator_.addData(data);
    if (data.size() != file_.write(data))
-      throw xmilib::Exception("An error occurred while trying to save the update installation file.");
+      throw Exception("An error occurred while trying to save the update installation file.");
 }
 
 
@@ -126,7 +125,7 @@ void UpdateDialog::onActionSkip()
 void UpdateDialog::onDownloadFinished()
 {
    if (!reply_)
-      throw xmilib::Exception("Internal casting error during download finish callback.");
+      throw Exception("Internal casting error during download finish callback.");
    if (!downloadErrorOccurred_) // note that error include user cancellation
    {
       this->processDownloadedData(reply_->readAll());
@@ -137,7 +136,7 @@ void UpdateDialog::onDownloadFinished()
          file_.close();
          QDesktopServices::openUrl(QUrl::fromLocalFile(installerPath_));
          PreferencesManager::instance().setFileMarkedForDeletionOnStartup(installerPath_);
-         qApp->exit(0);
+         QCoreApplication::exit(0);
       }
    }
    else // an error or cancellation occurred, we clean up
@@ -157,7 +156,7 @@ void UpdateDialog::onDownloadFinished()
 void UpdateDialog::onDownloadError(QNetworkReply::NetworkError error)
 {
    if (!reply_)
-      throw xmilib::Exception("Internal casting error during download error callback.");
+      throw Exception("Internal casting error during download error callback.");
    downloadErrorOccurred_ = true;
    if (error != QNetworkReply::OperationCanceledError)
    {
@@ -177,7 +176,7 @@ void UpdateDialog::onDownloadError(QNetworkReply::NetworkError error)
 void UpdateDialog::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) const
 {
    if (!reply_)
-      throw xmilib::Exception("Internal casting error during download progress callback.");
+      throw Exception("Internal casting error during download progress callback.");
    ui_.progressBar->setValue(float(bytesReceived) / float(bytesTotal) * 100.0f);
 }
 
@@ -188,8 +187,6 @@ void UpdateDialog::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) c
 void UpdateDialog::onDownloadDataAvailable()
 {
    if (!reply_)
-      throw xmilib::Exception("Internal casting error during download data availability callback.");
+      throw Exception("Internal casting error during download data availability callback.");
    this->processDownloadedData(reply_->readAll());
 }
-
-

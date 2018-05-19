@@ -16,8 +16,8 @@
 
 
 namespace {
-QString kDefaultGroupName() { return QObject::tr("Default Group"); } ///< The default group name
-QString kDefaultGroupDescription() { return QObject::tr("The default group."); } ///< The default group description
+QString defaultGroupName() { return QObject::tr("Default Group"); } ///< The default group name
+QString defaultGroupDescription() { return QObject::tr("The default group."); } ///< The default group description
 }
 
 
@@ -26,7 +26,7 @@ QString kDefaultGroupDescription() { return QObject::tr("The default group."); }
 /// \param[in] first The first group
 /// \param[in] second The second group
 //**********************************************************************************************************************
-void swap(GroupList& first, GroupList& second)
+void swap(GroupList& first, GroupList& second) noexcept
 {
    first.groups_.swap(second.groups_);
    std::swap(first.dropType_, second.dropType_);
@@ -38,7 +38,7 @@ void swap(GroupList& first, GroupList& second)
 //**********************************************************************************************************************
 GroupList::GroupList(QObject* parent)
    : QAbstractListModel(parent)
-   , dropType_(EDropType::GroupDrop)
+   , dropType_(GroupDrop)
 {
 
 }
@@ -59,10 +59,10 @@ GroupList::GroupList(GroupList const& ref)
 //**********************************************************************************************************************
 /// \param[in] ref The reference group to copy
 //**********************************************************************************************************************
-GroupList::GroupList(GroupList&& ref)
+GroupList::GroupList(GroupList&& ref) noexcept
    : QAbstractListModel(ref.parent())
    , groups_(std::move(ref.groups_))
-   , dropType_(std::move(ref.dropType_))
+   , dropType_(ref.dropType_)
 {
 
 }
@@ -87,12 +87,12 @@ GroupList& GroupList::operator=(GroupList const& ref)
 /// \param[in] ref The reference group to copy
 /// \return A reference to the instance
 //**********************************************************************************************************************
-GroupList& GroupList::operator=(GroupList&& ref)
+GroupList& GroupList::operator=(GroupList&& ref) noexcept
 {
    if (&ref != this)
    {
       groups_ = std::move(ref.groups_);
-      dropType_ = std::move(ref.dropType_);
+      dropType_ = ref.dropType_;
    }
    return *this;
 }
@@ -102,7 +102,7 @@ GroupList& GroupList::operator=(GroupList&& ref)
 /// \param[in] index The index of the group
 /// \return The group a the specified index
 //**********************************************************************************************************************
-SPGroup& GroupList::operator[](qint32 index)
+SpGroup& GroupList::operator[](qint32 index)
 {
    return groups_[index];
 }
@@ -112,7 +112,7 @@ SPGroup& GroupList::operator[](qint32 index)
 /// \param[in] index The index of the group
 /// \return The group a the specified index
 //**********************************************************************************************************************
-SPGroup const& GroupList::operator[](qint32 index) const
+SpGroup const& GroupList::operator[](qint32 index) const
 {
    return groups_[index];
 }
@@ -148,7 +148,7 @@ void GroupList::clear()
 //**********************************************************************************************************************
 /// return true if and only if a group with this UUID is already in the list
 //**********************************************************************************************************************
-bool GroupList::contains(SPGroup const& group) const
+bool GroupList::contains(SpGroup const& group) const
 {
    return group ? this->end() != this->findByUuid(group->uuid()) : false;
 }
@@ -157,7 +157,7 @@ bool GroupList::contains(SPGroup const& group) const
 //**********************************************************************************************************************
 /// \return true if the group is valid and not already in the list
 //**********************************************************************************************************************
-bool GroupList::canGroupBeAdded(SPGroup const& group) const
+bool GroupList::canGroupBeAdded(SpGroup const& group) const
 {
    return group && group->isValid() && !this->contains(group);
 }
@@ -167,7 +167,7 @@ bool GroupList::canGroupBeAdded(SPGroup const& group) const
 /// \param[in] group The group to add
 /// \return true if the group has been successfully added
 //**********************************************************************************************************************
-bool GroupList::append(SPGroup const& group)
+bool GroupList::append(SpGroup const& group)
 {
    if (!canGroupBeAdded(group))
    {
@@ -184,7 +184,8 @@ bool GroupList::append(SPGroup const& group)
 //**********************************************************************************************************************
 /// \param[in] group The group to add
 //**********************************************************************************************************************
-void GroupList::push_back(SPGroup const& group)
+// ReSharper disable once CppInconsistentNaming
+void GroupList::push_back(SpGroup const& group)
 {
    this->beginInsertRows(QModelIndex(), groups_.size() + 1, groups_.size() + 1);
    groups_.push_back(group);
@@ -209,7 +210,7 @@ void GroupList::erase(qint32 index)
 //**********************************************************************************************************************
 GroupList::iterator GroupList::findByUuid(QUuid const& uuid)
 {
-   return std::find_if(this->begin(), this->end(), [&](SPGroup const& group) -> bool
+   return std::find_if(this->begin(), this->end(), [&](SpGroup const& group) -> bool
       { return group && uuid == group->uuid(); });
 }
 
@@ -220,7 +221,7 @@ GroupList::iterator GroupList::findByUuid(QUuid const& uuid)
 //**********************************************************************************************************************
 GroupList::const_iterator GroupList::findByUuid(QUuid const& uuid) const
 {
-   return std::find_if(this->begin(), this->end(), [&](SPGroup const& group) -> bool
+   return std::find_if(this->begin(), this->end(), [&](SpGroup const& group) -> bool
    { return group && uuid == group->uuid(); });
 }
 
@@ -303,7 +304,7 @@ GroupList::const_reverse_iterator GroupList::rend() const
 QJsonArray GroupList::toJsonArray() const
 {
    QJsonArray result;
-   for (SPGroup const& group: groups_)
+   for (SpGroup const& group: groups_)
       result.append(group->toJsonObject());
    return result;
 }
@@ -325,7 +326,7 @@ bool GroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVersion,
       {
          if (!value.isObject())
             throw xmilib::Exception("The group list is invalid.");
-         SPGroup group = Group::create(value.toObject(), formatVersion);
+         SpGroup const group = Group::create(value.toObject(), formatVersion);
          if ((!group) || (!group->isValid()))
             throw xmilib::Exception("The group list contains an invalid group.");
          if (!this->append(group))
@@ -349,7 +350,7 @@ bool GroupList::ensureNotEmpty()
 {
    bool const empty = groups_.empty();
    if (empty)
-      groups_.push_back(Group::create(kDefaultGroupName(), kDefaultGroupDescription()));
+      groups_.push_back(Group::create(defaultGroupName(), defaultGroupDescription()));
    return empty;
 }
 
@@ -360,7 +361,7 @@ bool GroupList::ensureNotEmpty()
 /// \param[in] parent The parent widget of the menu
 /// \return A menu containing the list of groups
 //**********************************************************************************************************************
-QMenu* GroupList::createMenu(QString const& title, std::set<SPGroup> const& disabledGroups, QWidget* parent)
+QMenu* GroupList::createMenu(QString const& title, std::set<SpGroup> const& disabledGroups, QWidget* parent)
 {
    QMenu* menu = new QMenu(title, parent);
    this->fillMenu(menu, disabledGroups);
@@ -372,10 +373,10 @@ QMenu* GroupList::createMenu(QString const& title, std::set<SPGroup> const& disa
 /// \param[in] menu The menu
 /// \param[in] disabledGroups The list of groups that should be disabled
 //**********************************************************************************************************************
-void GroupList::fillMenu(QMenu* menu, std::set<SPGroup> const& disabledGroups)
+void GroupList::fillMenu(QMenu* menu, std::set<SpGroup> const& disabledGroups)
 {
    menu->clear();
-   for (SPGroup const& group : groups_)
+   for (SpGroup const& group : groups_)
    {
       if (!group)
          continue;
@@ -405,12 +406,12 @@ bool GroupList::processComboListDrop(QList<QUuid> const& uuids, qint32 index)
 {
    if ((index < 0) || (index >= qint32(groups_.size())) || (!groups_[index]) ||uuids.isEmpty())
       return false;
-   SPGroup group = groups_[index];
+   SpGroup const& group = groups_[index];
    ComboList& comboList = ComboManager::instance().comboListRef();
    bool changed = false;
    for (QUuid const& uuid : uuids)
    {
-      ComboList::iterator it = comboList.findByUuid(uuid);
+      ComboList::iterator const it = comboList.findByUuid(uuid);
       if ((it == comboList.end()) || ((*it)->group() == group))
          continue;
       (*it)->setGroup(group);
@@ -432,7 +433,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
    qint32 const listSize = groups_.size();
    if ((dropIndex < 0) || (groupIndex < 0) || (groupIndex >= listSize))
       return false;
-   SPGroup group = groups_[groupIndex];
+   SpGroup const& group = groups_[groupIndex];
    if (!group)
       return false;
 
@@ -452,7 +453,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
    this->endResetModel();
 
    // emit a notification signal
-   GroupList::const_iterator newPosIt = this->findByUuid(group->uuid());
+   const_iterator const newPosIt = this->findByUuid(group->uuid());
    if (newPosIt == this->end())
       throw xmilib::Exception("Internal error: %1(): could not located moved group.");
    emit groupMoved(group, newPosIt - this->begin());
@@ -489,14 +490,14 @@ QVariant GroupList::data(QModelIndex const& index, int role) const
    {
       if (0 == row)
          return allCombosStr;
-      SPGroup group = groups_[row - 1];
+      SpGroup const& group = groups_[row - 1];
       return group ? group->name() : QString();
    }
    case Qt::ToolTipRole:
    {
       if (0 == row)
          return allCombosStr; 
-      SPGroup group = groups_[row - 1];
+      SpGroup const& group = groups_[row - 1];
       return group ? group->description() : QString();
    }
    case Qt::FontRole:
@@ -528,23 +529,19 @@ Qt::DropActions GroupList::supportedDropActions() const
 //**********************************************************************************************************************
 Qt::ItemFlags GroupList::flags(QModelIndex const& index) const
 {
-   Qt::ItemFlags defaultFlags = QAbstractListModel::flags(index);
+   Qt::ItemFlags const defaultFlags = QAbstractListModel::flags(index);
    // The drop behavior is dictated by the validity of the index, an invalid index means the dropping target is
    // between two valid items
    if (dropType_ == GroupDrop) /// user is dragging a group
    {
       if (index.isValid()) // group cannot be drop onto other items
          return Qt::ItemIsDragEnabled | defaultFlags;
-      else // group can be dropped in between items
-         return Qt::ItemIsDropEnabled | defaultFlags;
+      return Qt::ItemIsDropEnabled | defaultFlags; // group can be dropped in between items
    }
-   else // user is dragging combos
-   {
-      if (index.isValid() && index.row() > 0) // combos can be dropped onto other items but not on the first ("all combos")
-         return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | defaultFlags;
-      else // combos cannot be dropped between item
-         return defaultFlags;
-   }
+   // user is dragging combos
+   if (index.isValid() && index.row() > 0) // combos can be dropped onto other items but not on the first ("all combos")
+      return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | defaultFlags;
+   return defaultFlags; // combos cannot be dropped between item
 }
 
 

@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__COMBO__TABLE__FRAME__H
-#define BEEFTEXT__COMBO__TABLE__FRAME__H
+#ifndef BEEFTEXT_COMBO_TABLE_FRAME_H
+#define BEEFTEXT_COMBO_TABLE_FRAME_H
 
 
 #include "ui_ComboTableWidget.h"
@@ -27,46 +27,46 @@ class ComboTableWidget: public QWidget
 {
    Q_OBJECT
 public: // member functions
-	ComboTableWidget(QWidget* parent = nullptr); ///< Default constructor
+   explicit ComboTableWidget(QWidget* parent = nullptr); ///< Default constructor
+	ComboTableWidget(ComboTableWidget const&) = delete; ///< Disabled copy constructor
+	ComboTableWidget(ComboTableWidget&&) = delete; ///< Disabled move constructor
 	~ComboTableWidget() = default; ///< Default destructor
+	ComboTableWidget& operator=(ComboTableWidget const&) = delete; ///< Disabled assignment operator
+	ComboTableWidget& operator=(ComboTableWidget&&) = delete; ///< Disabled move assignment operator
    void setGroupListWidget(GroupListWidget* groupListWidget); ///< Set the group list widget associated with this combo
    void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
    QMenu* createMenu(QWidget* parent) const; ///< Get the menu
-   void selectCombo(SPCombo const& combo); ///< Select a given combo
+   void selectCombo(SpCombo const& combo) const; ///< Select a given combo
 
 public slots:
-   void onSelectedGroupChanged(SPGroup const& group); ///< Slot for the changing of the selected group
+   void onSelectedGroupChanged(SpGroup const& group); ///< Slot for the changing of the selected group
 
 protected: // member functions
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
 
 private: // member functions
-	ComboTableWidget(ComboTableWidget const&) = delete; ///< Disabled copy constructor
-	ComboTableWidget(ComboTableWidget&&) = delete; ///< Disabled move constructor
-	ComboTableWidget& operator=(ComboTableWidget const&) = delete; ///< Disabled assignment operator
-	ComboTableWidget& operator=(ComboTableWidget&&) = delete; ///< Disabled move assignment operator
    void setupTable(); ///< Setup the combo table
    void setupKeyboadShortcuts(); ///< Setup the keyboard shortcuts
    void setupCombosMenu(); ///< Setup the 'Combos' menu
    void setupContextMenu(); ///< Setup the context menu
    qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
-   SPCombo getSelectedCombo() const; ///< Get the first selected combo
+   SpCombo getSelectedCombo() const; ///< Get the first selected combo
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
-   QList<SPCombo> getSelectedCombos() const; ///< Retrieve the list of the selected combos
+   QList<SpCombo> getSelectedCombos() const; ///< Retrieve the list of the selected combos
    void changeEvent(QEvent *event) override; ///< Change event handler
-   void resizeColumnsToContents(); ///< Resize the columns to fit the content
-   std::set<SPGroup> groupsOfSelectedCombos() const; ///< Return a set containing the groups of the selected combos
+   void resizeColumnsToContents() const; ///< Resize the columns to fit the content
+   std::set<SpGroup> groupsOfSelectedCombos() const; ///< Return a set containing the groups of the selected combos
 
 private slots:
    void updateGui() const; ///< Update the GUI state
-   void onActionStartSearch(); ///< Slot for the start of the search
-   void onActionStartSearchInAllGroups(); ///< Slot for the start of the search in all groups
-   void onActionClearSearch(); ///< Slot for the clearing of the search box
+   void onActionStartSearch() const; ///< Slot for the start of the search
+   void onActionStartSearchInAllGroups() const; ///< Slot for the start of the search in all groups
+   void onActionClearSearch() const; ///< Slot for the clearing of the search box
    void onActionNewCombo(); ///< Slot for the 'Add Combo' action
    void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
-   void onActionCopySnippet(); ///< Slot for the 'Copy Snippet' action
+   void onActionCopySnippet() const; ///< Slot for the 'Copy Snippet' action
    void onActionSelectAll() const; ///< Slot for the 'Select All' action
    void onActionDeselectAll() const; ///< Slot for the 'Deselect All' action
    void onActionEnableDisableCombo(); ///< Slot for the 'Enable/Disable' action
@@ -74,10 +74,10 @@ private slots:
    void onActionExportAllCombos(); ///< Slot for the 'Export All Combos' action
    void onActionImportCombos(); ///< Slot for the 'Import Combos' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
-   void onContextMenuRequested(); ///< Slot for the combo table context menu
+   void onContextMenuRequested() const; ///< Slot for the combo table context menu
    void onDoubleClick(); ///< Slot for the double clicking in the table view
    void onComboChangedGroup(); ///< Slot for when some combos groups have been changed
-   void onMoveToGroupMenuAboutToShow(); ///< Slot called when a combo menu is about to show
+   void onMoveToGroupMenuAboutToShow() const; ///< Slot called when a combo menu is about to show
    void onMoveToGroupMenuTriggered(QAction* action); ///< slot for the triggering of a action in the 'move' menu
 
 private: // data members
@@ -87,4 +87,4 @@ private: // data members
    GroupListWidget* groupListWidget_; ///< The group list widget associated with this combo table
 };
 
-#endif // #ifndef BEEFTEXT__COMBO__TABLE__FRAME__H
+#endif // #ifndef BEEFTEXT_COMBO_TABLE_FRAME_H

@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__CONSTANTS__H
-#define BEEFTEXT__CONSTANTS__H
+#ifndef BEEFTEXT_CONSTANTS_H
+#define BEEFTEXT_CONSTANTS_H
 
 
 namespace constants {
@@ -29,4 +29,4 @@ extern Qt::DateFormat const kJsonExportDateFormat; ///< The date/time export for
 } // namespace constants
 
 
-#endif // #ifndef BEEFTEXT__CONSTANTS__H
+#endif // #ifndef BEEFTEXT_CONSTANTS_H

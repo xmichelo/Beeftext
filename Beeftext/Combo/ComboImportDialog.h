@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__COMBO__IMPORT__DIALOG
-#define BEEFTEXT__COMBO__IMPORT__DIALOG
+#ifndef BEEFTEXT_COMBO_IMPORT_DIALOG
+#define BEEFTEXT_COMBO_IMPORT_DIALOG
 
 
 #include "ui_ComboImportDialog.h"
@@ -23,7 +23,7 @@ class ComboImportDialog: public QDialog
 {
    Q_OBJECT
 public: // member functions
-	ComboImportDialog(QString const& filePath = QString(), SPGroup const& group = SPGroup(), QWidget* parent = nullptr); ///< Default constructor
+   explicit ComboImportDialog(QString const& filePath = QString(), SpGroup const& group = SpGroup(), QWidget* parent = nullptr); ///< Default constructor
 	ComboImportDialog(ComboImportDialog const&) = delete; ///< Disabled copy constructor
 	ComboImportDialog(ComboImportDialog&&) = delete; ///< Disabled move constructor
 	~ComboImportDialog() = default; ///< Default destructor
@@ -33,14 +33,14 @@ public: // member functions
 protected: // member functions
    /// \name Drag and drop functions
    ///\{
-   void dragEnterEvent(QDragEnterEvent* event); ///< Drag enter event handler
-   void dragMoveEvent(QDragMoveEvent* event); ///< Drag move event handler
-   void dragLeaveEvent(QDragLeaveEvent* event); ///< Drag leave event handler
-   void dropEvent(QDropEvent* event); ///< Drop event handler
+   void dragEnterEvent(QDragEnterEvent* event) override; ///< Drag enter event handler
+   void dragMoveEvent(QDragMoveEvent* event) override; ///< Drag move event handler
+   void dragLeaveEvent(QDragLeaveEvent* event) override; ///< Drag leave event handler
+   void dropEvent(QDropEvent* event) override; ///< Drop event handler
    ///\}
 
 private: // data members
-   void updateGui(); ///< Update the GUI state
+   void updateGui() const; ///< Update the GUI state
    qint32 computeTotalImportCount() const; ///< Return the number of combos to be imported according to the user selection in the dialog
    void performFinalImport(qint32& outFailureCount); ///< Perform the final import of combos
 
@@ -49,7 +49,7 @@ private slots:
    void onActionCancel(); ///< Slot for the 'Cancel' action
    void onActionBrowse(); ///< Slot for the 'Browse' action
    void onEditPathTextChanged(QString const& text); ///< Slot for the changing of the content of the path edit control
-   void onConflictRadioToggled(bool state); ///< Slot for the toggling of a conflict resolution radio button
+   void onConflictRadioToggled(bool state) const; ///< Slot for the toggling of a conflict resolution radio button
 
 private: // data members
    Ui::ComboImportDialog ui_; ///< The GUI for the dialog
@@ -59,4 +59,4 @@ private: // data members
 };
 
 
-#endif // #ifndef BEEFTEXT__COMBO__IMPORT__DIALOG
+#endif // #ifndef BEEFTEXT_COMBO_IMPORT_DIALOG

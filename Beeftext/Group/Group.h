@@ -7,15 +7,15 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__GROUP__H
-#define BEEFTEXT__GROUP__H
+#ifndef BEEFTEXT_GROUP_H
+#define BEEFTEXT_GROUP_H
 
 
 class Group;
 
 
-typedef std::shared_ptr<Group> SPGroup; ///< Type definition for shared pointer to SPComboGroup
-typedef std::vector<SPGroup> VecSPGroup; ///< Type definition for vector of SPComboGroup
+typedef std::shared_ptr<Group> SpGroup; ///< Type definition for shared pointer to SPComboGroup
+typedef std::vector<SpGroup> VecSpGroup; ///< Type definition for vector of SPComboGroup
 
 
 //**********************************************************************************************************************
@@ -24,7 +24,7 @@ typedef std::vector<SPGroup> VecSPGroup; ///< Type definition for vector of SPCo
 class Group
 {
 public: // member functions
-   Group(QString const& name, QString const& description = QString()); ///< Default constructor
+   explicit Group(QString name, QString description = QString()); ///< Default constructor
    Group(QJsonObject const& object, qint32 formatVersion); ///< Constructor from JSON object
    Group(Group const&) = delete; ///< Disabled copy-constructor
    Group(Group&&) = delete; ///< Disabled assignment copy-constructor
@@ -40,8 +40,8 @@ public: // member functions
    QJsonObject toJsonObject() const; ///< Serialize the group in a JSon object
 
 public: // static functions
-   static SPGroup create(QString const& name, QString const& description = QString()); ///< Create a SPGroup
-   static SPGroup create(QJsonObject const& object, qint32 formatVersion); ///< Create a SPGroup from a JSON object
+   static SpGroup create(QString const& name, QString const& description = QString()); ///< Create a SpGroup
+   static SpGroup create(QJsonObject const& object, qint32 formatVersion); ///< Create a SpGroup from a JSON object
 
 private: // member functions
    void touch(); ///< Set the modification date/time to the current date/time
@@ -55,7 +55,7 @@ private: // data members
 };
 
 
-Q_DECLARE_METATYPE(SPGroup)
+Q_DECLARE_METATYPE(SpGroup)
 
 
-#endif // #ifndef BEEFTEXT__GROUP__H
+#endif // #ifndef BEEFTEXT_GROUP_H

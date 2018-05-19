@@ -36,7 +36,7 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
    QLocale const systemLocale = QLocale::system();
    if (variable == "clipboard")
    {
-      QClipboard const* clipboard = qApp->clipboard();
+      QClipboard const* clipboard = QGuiApplication::clipboard();
       return clipboard ? clipboard->text() : QString();
    }
 
@@ -49,24 +49,24 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
    if (variable == "dateTime")
       return systemLocale.toString(QDateTime::currentDateTime());
 
-   QString const kCustomDateTimeVariable = "dateTime:";
-   if (variable.startsWith(kCustomDateTimeVariable))
+   QString const customDateTimeVariable = "dateTime:";
+   if (variable.startsWith(customDateTimeVariable))
    {
       QString const formatString = resolveEscapingInVariableParameter(variable.right(variable.size() 
-         - kCustomDateTimeVariable.size()));
+         - customDateTimeVariable.size()));
       return formatString.isEmpty() ? QString() : systemLocale.toString(QDateTime::currentDateTime(), formatString);
    }
 
-   QString const kComboVariable = "combo:";
-   if (variable.startsWith(kComboVariable))
+   QString const comboVariable = "combo:";
+   if (variable.startsWith(comboVariable))
    {
       QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() - 
-         kComboVariable.size()));
+         comboVariable.size()));
       if (forbiddenSubCombos.contains(comboName))
          return fallbackResult;
       ComboList const& combos = ComboManager::instance().comboListRef();
       ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(), 
-         [&comboName](SPCombo const& combo) -> bool { return combo->keyword() == comboName; });
+         [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
       
       return combos.end() == it ? fallbackResult 
           : (*it)->evaluatedSnippet(nullptr, forbiddenSubCombos << comboName);// forbiddenSubcombos is intended at avoiding endless recursion

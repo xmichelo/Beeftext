@@ -25,9 +25,9 @@ using namespace xmilib;
 //
 //**********************************************************************************************************************
 MainWindow::MainWindow()
-   : QMainWindow()
+   : ui_()
 #ifndef NDEBUG
-   , styleSheetEditor_(nullptr)
+     ,styleSheetEditor_(nullptr)
 #endif
 {
    ui_.setupUi(this);
@@ -37,8 +37,10 @@ MainWindow::MainWindow()
 
    PreferencesManager& prefs = PreferencesManager::instance();
    this->restoreGeometry(prefs.mainWindowGeometry());
-   connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []() 
-      { QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl)); });
+   connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []()
+   {
+      QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl));
+   });
 }
 
 
@@ -79,15 +81,18 @@ void MainWindow::dropEvent(QDropEvent* event)
    QMimeData const* mimeData = event->mimeData();
    if (!mimeData->hasUrls())
       return;
-   QList<QUrl> urls = mimeData->urls();
-   if (urls.size() > 0) // should always be the case
+   QList<QUrl> const urls = mimeData->urls();
+   if (!urls.empty()) // should always be the case
    {
       event->acceptProposedAction();
       this->showWindow();
       // note we need to postpone the launch of the dialog to end the event handler ASAP, otherwise the application
       // that the file was dropped from will like be frozen until we complete the import dialog
-      QTimer::singleShot(0, [urls, this]() {ui_.frameCombos->comboTableWidget()->
-         runComboImportDialog(urls[0].toLocalFile()); });
+      QTimer::singleShot(0, [urls, this]()
+      {
+         ui_.frameCombos->comboTableWidget()->
+            runComboImportDialog(urls[0].toLocalFile());
+      });
    }
 }
 
@@ -111,31 +116,31 @@ void MainWindow::setupSystemTrayIcon()
    disconnect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
    connect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
 
-   bool enabled = ComboManager::instance().isEnabled();
-   qApp->setApplicationDisplayName(constants::kApplicationName 
+   bool const enabled = ComboManager::isEnabled();
+   QGuiApplication::setApplicationDisplayName(constants::kApplicationName
       + (isInPortableMode() ? tr(" - Portable Edition") : QString())
       + (enabled ? QString() : tr(" - PAUSED")));
    this->setWindowTitle(QString()); // force refresh of the title bar
 
-   QIcon const icon(enabled ? ":/MainWindow/Resources/BeeftextIcon.ico" 
+   QIcon const icon(enabled ? ":/MainWindow/Resources/BeeftextIcon.ico"
       : ":/MainWindow/Resources/BeeftextIconGrayscale.ico");
    systemTrayIcon_.setIcon(icon);
    systemTrayIcon_.setToolTip(constants::kApplicationName);
    systemTrayIcon_.show();
-   qApp->setWindowIcon(icon);
+   QGuiApplication::setWindowIcon(icon);
 
    QMenu* menu = new QMenu(this);
    QAction* action = new QAction(tr("Open Beeftext"), this);
    connect(action, &QAction::triggered, [this]() { this->showWindow(); });
    menu->addAction(action);
    menu->addSeparator();
-   ui_.actionEnableDisableBeeftext->setText(enabled ? tr("&Pause Beeftext"): tr("&Resume Beeftext"));
+   ui_.actionEnableDisableBeeftext->setText(enabled ? tr("&Pause Beeftext") : tr("&Resume Beeftext"));
    menu->addAction(ui_.actionEnableDisableBeeftext);
    menu->addSeparator();
 
    menu->setDefaultAction(action);
    action = new QAction(tr("Preferences"), this);
-   connect(action, &QAction::triggered, [this]() { this->onActionShowPreferencesDialog(); });
+   connect(action, &QAction::triggered, []() { onActionShowPreferencesDialog(); });
    menu->addAction(action);
 #ifndef NDEBUG
    menu->addSeparator();
@@ -160,7 +165,7 @@ void MainWindow::setupSystemTrayIcon()
 //**********************************************************************************************************************
 /// \param[in] event The event
 //**********************************************************************************************************************
-void MainWindow::changeEvent(QEvent *event)
+void MainWindow::changeEvent(QEvent* event)
 {
    if (QEvent::LanguageChange == event->type())
    {
@@ -205,7 +210,7 @@ void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason rea
 void MainWindow::onActionExit()
 {
    this->close(); // ensure the close event handler is called
-   qApp->quit();
+   QCoreApplication::quit();
 }
 
 
@@ -214,8 +219,7 @@ void MainWindow::onActionExit()
 //**********************************************************************************************************************
 void MainWindow::onActionEnableDisableBeeftext()
 {
-   ComboManager& comboManager = ComboManager::instance();
-   comboManager.setEnabled(!comboManager.isEnabled());
+   ComboManager::setEnabled(!ComboManager::isEnabled());
    this->setupSystemTrayIcon();
 }
 

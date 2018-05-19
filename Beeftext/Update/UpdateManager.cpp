@@ -112,7 +112,7 @@ void UpdateManager::onWorkerFinished()
 //**********************************************************************************************************************
 /// \param[in] latestVersionInfo The latest version information
 //**********************************************************************************************************************
-void UpdateManager::onWorkerUpdateIsAvailable(SPLatestVersionInfo const& latestVersionInfo)
+void UpdateManager::onWorkerUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo)
 {
    if (!latestVersionInfo)
       throw xmilib::Exception(QString("%1(): latestVersionInfo parameter is null.").arg(__FUNCTION__));

@@ -25,18 +25,18 @@ GroupComboBox::GroupComboBox(QWidget* parent)
 void GroupComboBox::setContent(GroupList const& groups)
 {
    this->clear();
-   for (SPGroup const& group : groups)
+   for (SpGroup const& group : groups)
       if (group)
-         this->addItem(group->name(), QVariant::fromValue<SPGroup>(group));
+         this->addItem(group->name(), QVariant::fromValue<SpGroup>(group));
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] group The group to select
 //**********************************************************************************************************************
-void GroupComboBox::setCurrentGroup(SPGroup const& group)
+void GroupComboBox::setCurrentGroup(SpGroup const& group)
 {
-   qint32 const index = this->findData(QVariant::fromValue<SPGroup>(group));
+   qint32 const index = this->findData(QVariant::fromValue<SpGroup>(group));
    this->setCurrentIndex(((index >= 0) || (index < this->count())) ? index : 0);
 }
 
@@ -44,10 +44,10 @@ void GroupComboBox::setCurrentGroup(SPGroup const& group)
 //**********************************************************************************************************************
 /// \return The currently selected group
 //**********************************************************************************************************************
-SPGroup GroupComboBox::currentGroup()
+SpGroup GroupComboBox::currentGroup() const
 {
    QVariant const data = this->currentData();
-   return data.canConvert<SPGroup>() ? data.value<SPGroup>(): SPGroup();
+   return data.canConvert<SpGroup>() ? data.value<SpGroup>(): SpGroup();
 }
 
 

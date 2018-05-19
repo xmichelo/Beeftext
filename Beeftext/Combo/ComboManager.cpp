@@ -13,7 +13,6 @@
 #include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "Backup/BackupManager.h"
-#include <XMiLib/Exception.h>
 
 
 bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
@@ -26,7 +25,7 @@ bool isBeeftextTheForegroundApplication()
 {
    DWORD processId = 0;
    GetWindowThreadProcessId(GetForegroundWindow(), &processId);
-   return  qApp->applicationPid() == processId;
+   return  QCoreApplication::applicationPid() == processId;
 }
 
 
@@ -37,14 +36,6 @@ ComboManager& ComboManager::instance()
 {
    static ComboManager instance;
    return instance;
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-ComboManager::~ComboManager()
-{
 }
 
 
@@ -70,8 +61,7 @@ ComboList const& ComboManager::comboListRef() const
 // 
 //**********************************************************************************************************************
 ComboManager::ComboManager()
-   : QObject()
-   , sound_(std::make_unique<QSound>(":/MainWindow/Resources/Notification.wav"))
+   : sound_(std::make_unique<QSound>(":/MainWindow/Resources/Notification.wav"))
 {
    // We used queued connections to minimize the time spent in the keyboard hook
    InputManager& inputManager = InputManager::instance();
@@ -180,7 +170,7 @@ bool ComboManager::restoreBackup(QString const& backupFilePath)
 //**********************************************************************************************************************
 /// \return true if and only if the combo manager is enabled
 //**********************************************************************************************************************
-bool ComboManager::isEnabled() const
+bool ComboManager::isEnabled()
 {
    return InputManager::instance().isKeyboardHookEnable();
 }
@@ -215,13 +205,13 @@ void ComboManager::disable()
 //**********************************************************************************************************************
 /// return The previous state if the combo manager
 //**********************************************************************************************************************
-bool ComboManager::setEnabled(bool enable)
+bool ComboManager::setEnabled(bool enabled)
 {
-   bool result = this->isEnabled();
-   if (enable)
-      this->enable();
+   bool const result = isEnabled();
+   if (enabled)
+      enable();
    else
-      this->disable();
+      disable();
    return result;
 }
 
@@ -231,8 +221,8 @@ bool ComboManager::setEnabled(bool enable)
 //**********************************************************************************************************************
 void ComboManager::checkAndPerformSubstitution()
 {
-   VecSPCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(),
-      [&](SPCombo const combo) -> bool { return combo->isEnabled() && (combo->keyword() == currentText_); });
+   VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(),
+      [&](SpCombo const combo) -> bool { return combo->isEnabled() && (combo->keyword() == currentText_); });
    if (comboList_.end() == it)
       return;
 

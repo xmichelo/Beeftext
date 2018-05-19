@@ -15,11 +15,13 @@
 
 
 namespace {
-   QList<QLocale> const kSupportedLocales = { QLocale::English, QLocale::French }; ///< The list of locales supported by the application
+QList<QLocale> const kSupportedLocales = {QLocale::English, QLocale::French};
+///< The list of locales supported by the application
 }
 
 
-void removeTranslator(std::unique_ptr<QTranslator>& translator); ///< Remove a translator, free it and set the pointer that was pointing to it to zero
+void removeTranslator(std::unique_ptr<QTranslator>& translator);
+///< Remove a translator, free it and set the pointer that was pointing to it to zero
 
 
 //**********************************************************************************************************************
@@ -29,7 +31,7 @@ void removeTranslator(std::unique_ptr<QTranslator>& translator)
 {
    if (!translator)
       return;
-   qApp->removeTranslator(translator.get());
+   QCoreApplication::removeTranslator(translator.get());
    translator.reset();
 }
 
@@ -52,11 +54,13 @@ QLocale I18nManager::validateLocale(QLocale const& locale)
 {
    if (kSupportedLocales.isEmpty())
       throw xmilib::Exception("No locale is supported.");
-   
+
    // first we look for a perfect match (language AND country)
    QList<QLocale>::const_iterator it = std::find_if(kSupportedLocales.begin(), kSupportedLocales.end(),
       [&locale](QLocale const& l) -> bool
-      { return locale.language() == l.language() && locale.country() == l.country(); });
+      {
+         return locale.language() == l.language() && locale.country() == l.country();
+      });
    if (it != kSupportedLocales.end())
       return *it;
 
@@ -75,7 +79,7 @@ void I18nManager::fillLocaleCombo(QComboBox& combo)
 {
    QSignalBlocker blocker(&combo);
    combo.clear();
-   for (QLocale const& locale : kSupportedLocales)
+   for (QLocale const& locale: kSupportedLocales)
    {
       QString languageName = locale == QLocale::English ? "English" : locale.nativeLanguageName();
       if (!languageName.isEmpty())
@@ -106,7 +110,6 @@ void I18nManager::selectLocaleInCombo(QLocale const& locale, QComboBox& combo)
 }
 
 
-
 //**********************************************************************************************************************
 /// \param[in] combo The combo box
 //**********************************************************************************************************************
@@ -123,13 +126,14 @@ void I18nManager::loadTranslation()
 {
    this->removeAllTranslators();
 
-   QLocale const locale(this->locale());
-   QString const langStr(locale.name().left(2));
+   QLocale const locale = I18nManager::locale();
+   QString const langStr = locale.name().left(2);
    if (QLocale::English == locale.language())
       return; // English needs no translation
 
    // load and install qt translations (containing all translations for Qt internal strings)
-   qtTranslator_ = std::make_unique<QTranslator>(qApp);
+   QCoreApplication* app = QCoreApplication::instance();
+   qtTranslator_ = std::make_unique<QTranslator>(app);
    QString const qtTransFile = QString(":/Translations/qtbase_%1.qm").arg(langStr);
    if (!qtTranslator_->load(qtTransFile))
    {
@@ -139,7 +143,7 @@ void I18nManager::loadTranslation()
    }
 
    // load and install application translations
-   appTranslator_ = std::make_unique<QTranslator>(qApp);
+   appTranslator_ = std::make_unique<QTranslator>(app);
    if (!appTranslator_->load(QString(":/Translations/beeftext_%1.qm").arg(langStr)))
    {
       appTranslator_.reset();
@@ -148,7 +152,7 @@ void I18nManager::loadTranslation()
    }
 
    // load and install xmilib translations
-   xmilibTranslator_ = std::make_unique<QTranslator>(qApp);
+   xmilibTranslator_ = std::make_unique<QTranslator>(app);
    if (!xmilibTranslator_->load(QString(":/Translations/xmilib_%1.qm").arg(langStr)))
    {
       xmilibTranslator_.reset();
@@ -156,9 +160,9 @@ void I18nManager::loadTranslation()
       return;
    }
 
-   qApp->installTranslator(qtTranslator_.get());
-   qApp->installTranslator(appTranslator_.get());
-   qApp->installTranslator(xmilibTranslator_.get());
+   QCoreApplication::installTranslator(qtTranslator_.get());
+   QCoreApplication::installTranslator(appTranslator_.get());
+   QCoreApplication::installTranslator(xmilibTranslator_.get());
 }
 
 
@@ -189,8 +193,8 @@ void I18nManager::setLocale(QLocale const& locale)
       return; // already set
    QLocale::setDefault(locale);
    this->loadTranslation();
-   qApp->setApplicationDisplayName(constants::kApplicationName + (isInPortableMode() ?
-      QObject::tr(" - Portable Edition") : ""));
+   QGuiApplication::setApplicationDisplayName(
+      constants::kApplicationName + (isInPortableMode() ? QObject::tr(" - Portable Edition") : ""));
 }
 
 
@@ -203,5 +207,3 @@ void I18nManager::removeAllTranslators()
    removeTranslator(appTranslator_);
    removeTranslator(xmilibTranslator_);
 }
-
-

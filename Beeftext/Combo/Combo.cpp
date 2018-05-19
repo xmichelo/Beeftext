@@ -19,6 +19,7 @@
 #include "BeeftextConstants.h"
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
+#include <utility>
 
 
 namespace {
@@ -80,11 +81,11 @@ void restoreModifierKeys(QList<quint16> const& keys)
 /// \param[in] snippet The text that will replace the combo
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString const& name, QString const& keyword, QString const& snippet, bool enabled)
+Combo::Combo(QString name, QString keyword, QString snippet, bool enabled)
    : uuid_(QUuid::createUuid())
-   , name_(name)
-   , keyword_(keyword)
-   , snippet_(snippet)
+   , name_(std::move(name))
+   , keyword_(std::move(keyword))
+   , snippet_(std::move(snippet))
    , group_(nullptr)
    , enabled_(enabled)
 {
@@ -113,7 +114,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
    if (object.contains(kPropGroup))
    {
       QUuid const uuid(object[kPropGroup].toString());
-      GroupList::const_iterator it = groups.findByUuid(uuid);
+      GroupList::const_iterator const it = groups.findByUuid(uuid);
       if (it != groups.end())
          group_ = *it;
       else
@@ -216,7 +217,7 @@ QDateTime Combo::creationDateTime() const
 /// \return The group this combo belongs to
 /// \return A null pointer if the combo does not belong to any group
 //**********************************************************************************************************************
-SPGroup Combo::group() const
+SpGroup Combo::group() const
 {
    return group_;
 }
@@ -225,7 +226,7 @@ SPGroup Combo::group() const
 //**********************************************************************************************************************
 /// \param[in] group The new group this combo belongs to. If null, the combo is removed from its current group
 //**********************************************************************************************************************
-void Combo::setGroup(SPGroup const& group)
+void Combo::setGroup(SpGroup const& group)
 {
    if (group != group_)
    {
@@ -270,7 +271,7 @@ bool Combo::isEnabled() const
 //**********************************************************************************************************************
 // 
 //*********************************************************************************************************************
-void Combo::performSubstitution()
+void Combo::performSubstitution() const
 {
    InputManager& inputManager = InputManager::instance();
    bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false); // we disable the hook to prevent endless recursive substitution
@@ -317,7 +318,7 @@ void Combo::performSubstitution()
       ///< We restore the modifiers that we deactivated at the beginning of the function
       restoreModifierKeys(pressedModifiers); 
    }
-   catch (xmilib::Exception const&)
+   catch (Exception const&)
    {
       inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
       throw;
@@ -362,7 +363,7 @@ void Combo::changeUuid()
 /// \param[in] enabled Is the combo enabled
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SPCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool enabled)
+SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool enabled)
 {
    return std::make_shared<Combo>(name, keyword, snippet, enabled);
 }
@@ -376,7 +377,7 @@ SPCombo Combo::create(QString const& name, QString const& keyword, QString const
 /// \param[in] groups The list of combo groups
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SPCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList const& groups)
+SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList const& groups)
 {
    return std::make_shared<Combo>(object, formatVersion, groups);
 }
@@ -391,7 +392,7 @@ SPCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 ///
 /// \return a shared pointer pointing to a duplicate of the combo
 //**********************************************************************************************************************
-SPCombo Combo::duplicate(Combo const& combo)
+SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
    return std::make_shared<Combo>(combo.name(), QString(), combo.snippet());

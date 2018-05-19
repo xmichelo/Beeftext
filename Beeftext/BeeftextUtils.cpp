@@ -10,8 +10,6 @@
 #include "stdafx.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
-#include "BeeftextConstants.h"
-#include "PreferencesManager.h"
 #include <Psapi.h>
 
 
@@ -28,7 +26,7 @@ QStringList const kShiftInsertPasteAppNames{ "mintty.exe", "putty.exe", "powersh
 /// 
 /// \return true if and only if the application is running in portable mode
 //**********************************************************************************************************************
-bool isInPortableMode_()
+bool isInPortableModeInternal()
 {
    QDir const appDir(QCoreApplication::applicationDirPath());
    return QFileInfo(appDir.absoluteFilePath(kPortableModeBeaconFileName)).exists() ||
@@ -55,7 +53,7 @@ bool isInPortableMode()
 {
    // portable mode state cannot change during the execution of an instance of the application, so we 'cache' the
    // value using a static variable
-   static bool result = isInPortableMode_();
+   static bool result = isInPortableModeInternal();
    return result;
 }
 
@@ -79,6 +77,7 @@ QString getActiveExecutableFileName()
    WCHAR buffer[MAX_PATH + 1] = { 0 };
    DWORD processId = 0;
    GetWindowThreadProcessId(GetForegroundWindow(), &processId);
+   // ReSharper disable once CppLocalVariableMayBeConst
    HANDLE processHandle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, processId);
    if (!processHandle)
       return QString();

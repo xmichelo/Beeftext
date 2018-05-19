@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "Group.h"
+#include <utility>
 #include "BeeftextConstants.h"
 
 
@@ -25,10 +26,10 @@ QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON 
 /// \param[in] name The name of the group
 /// \param[in] description The description of the group
 //**********************************************************************************************************************
-Group::Group(QString const& name, QString const& description)
+Group::Group(QString name, QString description)
    : uuid_(QUuid::createUuid())
-   , name_(name)
-   , description_(description)
+   , name_(std::move(name))
+   , description_(std::move(description))
 {
    creationDateTime_ = modificationDateTime_ = QDateTime::currentDateTime();
 }
@@ -132,7 +133,7 @@ QJsonObject Group::toJsonObject() const
 /// \param[in] name The name of the group
 /// \param[in] description The description of the group
 //**********************************************************************************************************************
-SPGroup Group::create(QString const& name, QString const& description)
+SpGroup Group::create(QString const& name, QString const& description)
 {
    return std::make_shared<Group>(name, description);
 }
@@ -142,7 +143,7 @@ SPGroup Group::create(QString const& name, QString const& description)
 /// \param[in] object The JSON object
 /// \param[in] formatVersion The version number of the JSON file format
 //**********************************************************************************************************************
-SPGroup Group::create(QJsonObject const& object, qint32 formatVersion)
+SpGroup Group::create(QJsonObject const& object, qint32 formatVersion)
 {
    return std::make_shared<Group>(object, formatVersion);
 }

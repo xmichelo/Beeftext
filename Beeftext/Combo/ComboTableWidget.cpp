@@ -19,9 +19,9 @@
 
 
 namespace {
-   qint32 const kMinNameColumnDefaultWidth = 200; ///< The maximum default width in pixels of the name column
-   qint32 const kMaxNameColumnDefaultWidth = 500; ///< The maximum default width in pixels of the name column
-   QString kMoveMenuTitle() { return QObject::tr("Move To", "Move entry in the Combo context menu"); } ///< The title for the Move entry in the menu
+qint32 const kMinNameColumnDefaultWidth = 200; ///< The maximum default width in pixels of the name column
+qint32 const kMaxNameColumnDefaultWidth = 500; ///< The maximum default width in pixels of the name column
+QString moveMenuTitle() { return QObject::tr("Move To", "Move entry in the Combo context menu"); }///< The title for the Move entry in the menu
 }
 
 
@@ -29,9 +29,10 @@ namespace {
 /// \param[in] parent The parent widget of the frame
 //**********************************************************************************************************************
 ComboTableWidget::ComboTableWidget(QWidget* parent)
-   : QWidget(parent)
-   , contextMenu_(nullptr)
-   , groupListWidget_(nullptr)
+   : QWidget(parent),
+     ui_(),
+     contextMenu_(nullptr),
+     groupListWidget_(nullptr)
 {
    ui_.setupUi(this);
    this->setupTable();
@@ -56,8 +57,8 @@ void ComboTableWidget::setGroupListWidget(GroupListWidget* groupListWidget)
 //**********************************************************************************************************************
 void ComboTableWidget::runComboImportDialog(QString const& filePath)
 {
-   if (QDialog::Accepted == ComboImportDialog(filePath, 
-         (groupListWidget_ ? groupListWidget_->selectedGroup() : SPGroup()), this).exec())
+   if (QDialog::Accepted == ComboImportDialog(filePath,
+      (groupListWidget_ ? groupListWidget_->selectedGroup() : SpGroup()), this).exec())
       this->updateGui();
 }
 
@@ -72,7 +73,7 @@ QMenu* ComboTableWidget::createMenu(QWidget* parent) const
    menu->addAction(ui_.actionEditCombo);
    menu->addAction(ui_.actionDuplicateCombo);
    menu->addAction(ui_.actionDeleteCombo);
-   QMenu * moveToMenu = ComboManager::instance().groupListRef().createMenu(kMoveMenuTitle(), std::set<SPGroup>(), menu);
+   QMenu* moveToMenu = ComboManager::instance().groupListRef().createMenu(moveMenuTitle(), std::set<SpGroup>(), menu);
    menu->addMenu(moveToMenu);
    menu->addSeparator();
    menu->addAction(ui_.actionCopySnippet);
@@ -94,7 +95,7 @@ QMenu* ComboTableWidget::createMenu(QWidget* parent) const
 //**********************************************************************************************************************
 /// \param[in] combo The combo to select
 //**********************************************************************************************************************
-void ComboTableWidget::selectCombo(SPCombo const& combo)
+void ComboTableWidget::selectCombo(SpCombo const& combo) const
 {
    if (!combo)
       return;
@@ -104,10 +105,10 @@ void ComboTableWidget::selectCombo(SPCombo const& combo)
    ComboList& comboList = ComboManager::instance().comboListRef();
    for (qint32 i = 0; i < comboList.size(); ++i)
    {
-      SPCombo const& c = comboList[i];
+      SpCombo const& c = comboList[i];
       if (c && (c->uuid() == combo->uuid()))
       {
-         ui_.tableComboList->selectRow(proxyModel_.mapFromSource(comboList.index(i,0)).row());
+         ui_.tableComboList->selectRow(proxyModel_.mapFromSource(comboList.index(i, 0)).row());
          return;
       }
    }
@@ -117,11 +118,11 @@ void ComboTableWidget::selectCombo(SPCombo const& combo)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
+void ComboTableWidget::onSelectedGroupChanged(SpGroup const& group)
 {
    proxyModel_.setGroup(group);
    this->resizeColumnsToContents();
-   QItemSelectionModel *model = ui_.tableComboList->selectionModel();
+   QItemSelectionModel* model = ui_.tableComboList->selectionModel();
    if (model)
       model->clear();
    this->updateGui();
@@ -132,7 +133,7 @@ void ComboTableWidget::onSelectedGroupChanged(SPGroup const& group)
 /// This event filter override the default mouse double click behavior of the table view to respond also 
 /// when the user double click on an empty area
 //**********************************************************************************************************************
-bool ComboTableWidget::eventFilter(QObject *object, QEvent *event)
+bool ComboTableWidget::eventFilter(QObject* object, QEvent* event)
 {
    if (event->type() != QEvent::MouseButtonDblClick)
       return QObject::eventFilter(object, event);
@@ -154,13 +155,14 @@ void ComboTableWidget::setupTable()
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve horizontal header.")
          .arg(__FUNCTION__));
    horizontalHeader->setFixedHeight(horizontalHeader->fontMetrics().height() + 10);
-   horizontalHeader->setSortIndicator(0, Qt::AscendingOrder);  //< required, otherwise the indicator is first displayed in the wrong direction
+   horizontalHeader->setSortIndicator(0, Qt::AscendingOrder);
+   //< required, otherwise the indicator is first displayed in the wrong direction
    horizontalHeader->setDefaultAlignment(Qt::AlignLeft);
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this,
       &ComboTableWidget::updateGui);
    connect(&ComboManager::instance().groupListRef(), &GroupList::combosChangedGroup, this,
       &ComboTableWidget::onComboChangedGroup);
-   QHeaderView *verticalHeader = ui_.tableComboList->verticalHeader();
+   QHeaderView* verticalHeader = ui_.tableComboList->verticalHeader();
 
    if (!verticalHeader)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve vertical header.")
@@ -168,7 +170,8 @@ void ComboTableWidget::setupTable()
    verticalHeader->setDefaultSectionSize(verticalHeader->fontMetrics().height() + 10);
 
    this->resizeColumnsToContents();
-   ui_.tableComboList->viewport()->installEventFilter(this); // we install an event filter that override the default double-click behavior
+   ui_.tableComboList->viewport()->installEventFilter(this);
+   // we install an event filter that override the default double-click behavior
 }
 
 
@@ -181,7 +184,7 @@ void ComboTableWidget::setupKeyboadShortcuts()
    // used. Although actions are not used in the form itself, they are used in the menu, instead for the ones that are
    // defined below
 
-   connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated, this, 
+   connect(new QShortcut(QKeySequence("Ctrl+F"), this), &QShortcut::activated, this,
       &ComboTableWidget::onActionStartSearch);
    connect(new QShortcut(QKeySequence("Ctrl+Shift+F"), this), &QShortcut::activated, this,
       &ComboTableWidget::onActionStartSearchInAllGroups);
@@ -208,7 +211,8 @@ void ComboTableWidget::setupContextMenu()
       contextMenu_->deleteLater();
    contextMenu_ = this->createMenu(this);
    ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
-   connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this, &ComboTableWidget::onContextMenuRequested);
+   connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this,
+      &ComboTableWidget::onContextMenuRequested);
 }
 
 
@@ -225,11 +229,11 @@ qint32 ComboTableWidget::getSelectedComboCount() const
 /// \return The first selected combo
 /// \return a null combo if none is selected
 //**********************************************************************************************************************
-SPCombo ComboTableWidget::getSelectedCombo() const
+SpCombo ComboTableWidget::getSelectedCombo() const
 {
    QList<qint32> const selectedIndexes = this->getSelectedComboIndexes();
    if (selectedIndexes.isEmpty())
-      return SPCombo();
+      return SpCombo();
    ComboList& comboList = ComboManager::instance().comboListRef();
    qint32 const index = selectedIndexes[0];
    return (index >= 0) && (index < comboList.size()) ? comboList[index] : nullptr;
@@ -247,7 +251,7 @@ QList<qint32> ComboTableWidget::getSelectedComboIndexes() const
    QList<qint32> result;
    ComboList& comboList = ComboManager::instance().comboListRef();
    QModelIndexList selectedRows = ui_.tableComboList->selectionModel()->selectedRows();
-   for (QModelIndex const& modelIndex : selectedRows)
+   for (QModelIndex const& modelIndex: selectedRows)
    {
       qint32 const index = proxyModel_.mapToSource(modelIndex).row();
       if ((index >= 0) && (index < comboList.size()))
@@ -260,12 +264,12 @@ QList<qint32> ComboTableWidget::getSelectedComboIndexes() const
 //**********************************************************************************************************************
 /// \return The list of selected combos
 //**********************************************************************************************************************
-QList<SPCombo> ComboTableWidget::getSelectedCombos() const
+QList<SpCombo> ComboTableWidget::getSelectedCombos() const
 {
-   QList<SPCombo> result;
+   QList<SpCombo> result;
    ComboList& comboList = ComboManager::instance().comboListRef();
    QModelIndexList selectedRows = ui_.tableComboList->selectionModel()->selectedRows();
-   for (QModelIndex modelIndex: selectedRows)
+   for (QModelIndex const& modelIndex: selectedRows)
    {
       qint32 const index = proxyModel_.mapToSource(modelIndex).row();
       if ((index >= 0) && (index < comboList.size()))
@@ -278,7 +282,7 @@ QList<SPCombo> ComboTableWidget::getSelectedCombos() const
 //**********************************************************************************************************************
 /// \param[in] event The event
 //**********************************************************************************************************************
-void ComboTableWidget::changeEvent(QEvent *event)
+void ComboTableWidget::changeEvent(QEvent* event)
 {
    if (QEvent::LanguageChange == event->type())
       ui_.retranslateUi(this);
@@ -289,7 +293,7 @@ void ComboTableWidget::changeEvent(QEvent *event)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::resizeColumnsToContents()
+void ComboTableWidget::resizeColumnsToContents() const
 {
    QHeaderView* horizontalHeader = ui_.tableComboList->horizontalHeader();
    if (!horizontalHeader)
@@ -305,15 +309,15 @@ void ComboTableWidget::resizeColumnsToContents()
 //**********************************************************************************************************************
 /// \return A set containing the groups of the selected combos
 //**********************************************************************************************************************
-std::set<SPGroup> ComboTableWidget::groupsOfSelectedCombos() const
+std::set<SpGroup> ComboTableWidget::groupsOfSelectedCombos() const
 {
-   std::set<SPGroup> groups;
-   QList<SPCombo> combos = this->getSelectedCombos();
-   for (SPCombo const combo: combos)
+   std::set<SpGroup> groups;
+   QList<SpCombo> combos = this->getSelectedCombos();
+   for (SpCombo const& combo: combos)
    {
       if (!combo)
          continue;
-      SPGroup const group = combo->group();
+      SpGroup const group = combo->group();
       if (group)
          groups.insert(group);
    }
@@ -340,7 +344,7 @@ void ComboTableWidget::updateGui() const
 
    QString enableDisableText = tr("Ena&ble");
    QString enableDisableToolTip = tr("Enable combo");
-   if ((hasOneSelected) 
+   if ((hasOneSelected)
       && (ComboManager::instance().comboListRef()[this->getSelectedComboIndexes().front()]->isEnabled()))
    {
       enableDisableText = tr("Disa&ble");
@@ -355,18 +359,17 @@ void ComboTableWidget::updateGui() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onActionStartSearch()
+void ComboTableWidget::onActionStartSearch() const
 {
-   this->ui_.editSearch->setFocus(); 
+   this->ui_.editSearch->setFocus();
    this->ui_.editSearch->selectAll();
 }
-
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onActionStartSearchInAllGroups()
+void ComboTableWidget::onActionStartSearchInAllGroups() const
 {
    if (groupListWidget_)
       groupListWidget_->selectAllCombosEntry();
@@ -377,9 +380,9 @@ void ComboTableWidget::onActionStartSearchInAllGroups()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onActionClearSearch()
+void ComboTableWidget::onActionClearSearch() const
 {
-   this->ui_.editSearch->setFocus(); 
+   this->ui_.editSearch->setFocus();
    this->ui_.editSearch->clear();
 }
 
@@ -391,7 +394,7 @@ void ComboTableWidget::onActionNewCombo()
 {
    try
    {
-      SPCombo combo = Combo::create();
+      SpCombo combo = Combo::create();
       combo->setGroup(groupListWidget_->selectedOrFirstGroup());
 
       if (!ComboDialog::run(combo, tr("New Combo")))
@@ -429,7 +432,7 @@ void ComboTableWidget::onActionDuplicateCombo()
       Q_ASSERT((index >= 0) && (index < comboList.size()));
       if ((index < 0) || (index >= comboList.size()))
          throw xmilib::Exception(tr("The combo could not be duplicated: invalid index."));
-      SPCombo combo = Combo::duplicate(*comboList[index]);
+      SpCombo combo = Combo::duplicate(*comboList[index]);
       if (!ComboDialog::run(combo, tr("Duplicate Combo")))
          return;
       if (!comboList.append(combo))
@@ -461,7 +464,7 @@ void ComboTableWidget::onActionDeleteCombo()
    ComboManager& comboManager = ComboManager::instance();
    QList<qint32> indexes = this->getSelectedComboIndexes();
    std::sort(indexes.begin(), indexes.end(), [](qint32 first, qint32 second) -> bool { return first > second; });
-   for (qint32 index : indexes)
+   for (qint32 index: indexes)
       comboManager.comboListRef().erase(index);
    QString errorMessage;
    if (!comboManager.saveComboListToFile(&errorMessage))
@@ -483,7 +486,7 @@ void ComboTableWidget::onActionEditCombo()
    ComboList& comboList = comboManager.comboListRef();
    qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
-   SPCombo combo = comboList[index];
+   SpCombo combo = comboList[index];
    if (!ComboDialog::run(combo, tr("Edit Combo")))
       return;
    comboList.markComboAsEdited(index);
@@ -500,11 +503,11 @@ void ComboTableWidget::onActionEditCombo()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onActionCopySnippet()
+void ComboTableWidget::onActionCopySnippet() const
 {
-   SPCombo combo = this->getSelectedCombo();
+   SpCombo const combo = this->getSelectedCombo();
    if (combo)
-      qApp->clipboard()->setText(combo->evaluatedSnippet());
+      QGuiApplication::clipboard()->setText(combo->evaluatedSnippet());
 }
 
 
@@ -539,7 +542,7 @@ void ComboTableWidget::onActionEnableDisableCombo()
    ComboList& comboList = comboManager.comboListRef();
    qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
-   SPCombo combo = comboList[index];
+   SpCombo combo = comboList[index];
    combo->setEnabled(!combo->isEnabled());
    comboList.markComboAsEdited(index);
    QString errorMessage;
@@ -555,11 +558,11 @@ void ComboTableWidget::onActionEnableDisableCombo()
 void ComboTableWidget::onActionExportCombo()
 {
    QList<qint32> const indexes = this->getSelectedComboIndexes();
-   if (indexes.size() < 1)
+   if (indexes.empty())
       return;
 
    PreferencesManager& prefs = PreferencesManager::instance();
-   QString const path = QFileDialog::getSaveFileName(this, tr("Export Combos"), prefs.lastComboImportExportPath(), 
+   QString const path = QFileDialog::getSaveFileName(this, tr("Export Combos"), prefs.lastComboImportExportPath(),
       constants::kJsonFileDialogFilter);
    if (path.isEmpty())
       return;
@@ -567,7 +570,7 @@ void ComboTableWidget::onActionExportCombo()
 
    ComboList const& comboList = ComboManager::instance().comboListRef();
    ComboList exportList;
-   for (qint32 const index : indexes)
+   for (qint32 const index: indexes)
    {
       Q_ASSERT((index >= 0) && (index < comboList.size()));
       exportList.append(comboList[index]);
@@ -624,7 +627,7 @@ void ComboTableWidget::onSearchFilterChanged(QString const& text)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onContextMenuRequested()
+void ComboTableWidget::onContextMenuRequested() const
 {
    contextMenu_->exec(QCursor::pos());
 }
@@ -654,7 +657,8 @@ void ComboTableWidget::onDoubleClick()
 void ComboTableWidget::onComboChangedGroup()
 {
    proxyModel_.invalidate();
-   ComboManager::instance().saveComboListToFile();
+   if (!ComboManager::instance().saveComboListToFile(new QString))
+      throw xmilib::Exception("Could not save combo list.");
    this->resizeColumnsToContents();
 }
 
@@ -662,13 +666,13 @@ void ComboTableWidget::onComboChangedGroup()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::onMoveToGroupMenuAboutToShow()
+void ComboTableWidget::onMoveToGroupMenuAboutToShow() const
 {
    QMenu* menu = dynamic_cast<QMenu*>(this->sender());
    if (!menu)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve context menu.").arg(__FUNCTION__));
 
-   std::set<SPGroup> notInGroup = this->groupsOfSelectedCombos();
+   std::set<SpGroup> notInGroup = this->groupsOfSelectedCombos();
    if (notInGroup.size() > 1) ///< If the selected combos belong to more than one group, we do not disabled any
       notInGroup.clear();
    ComboManager::instance().groupListRef().fillMenu(menu, notInGroup);
@@ -682,14 +686,12 @@ void ComboTableWidget::onMoveToGroupMenuTriggered(QAction* action)
 {
    if (!action)
       return;
-   SPGroup const group = action->data().value<SPGroup>();
+   SpGroup const group = action->data().value<SpGroup>();
    if (!group)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve group.").arg(__FUNCTION__));
-   QList<SPCombo> const combos = this->getSelectedCombos();
-   for (SPCombo const combo: combos)
+   QList<SpCombo> const combos = this->getSelectedCombos();
+   for (SpCombo const& combo: combos)
       if (combo && (group != combo->group()))
          combo->setGroup(group);
    this->onComboChangedGroup();
 }
-
-

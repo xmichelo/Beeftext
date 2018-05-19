@@ -7,8 +7,10 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__I18N__MANAGER__H
-#define BEEFTEXT__I18N__MANAGER__H
+// ReSharper disable CppInconsistentNaming
+#ifndef BEEFTEXT_I18N_MANAGER_H
+#define BEEFTEXT_I18N_MANAGER_H
+// ReSharper restore CppInconsistentNaming
 
 
 #include <memory>
@@ -18,6 +20,7 @@
 //**********************************************************************************************************************
 /// \brief Internationalization (i18n) manager class
 //**********************************************************************************************************************
+// ReSharper disable once CppInconsistentNaming
 class I18nManager
 {
 public: // static functions
@@ -50,4 +53,4 @@ private: // data members
 
 
 
-#endif // #ifndef BEEFTEXT__I18N__MANAGER__H
+#endif // #ifndef BEEFTEXT_I18N_MANAGER_H

@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__UPDATE__DIALOG__H
-#define BEEFTEXT__UPDATE__DIALOG__H
+#ifndef BEEFTEXT_UPDATE_DIALOG_H
+#define BEEFTEXT_UPDATE_DIALOG_H
 
 
 #include "ui_UpdateDialog.h"
@@ -22,8 +22,12 @@ class UpdateDialog: public QDialog
 {
    Q_OBJECT
 public: // member functions
-	UpdateDialog(SPLatestVersionInfo const& lastestVersionInfo, QWidget* parent = nullptr); ///< Default constructor
+   explicit UpdateDialog(SpLatestVersionInfo latestVersionInfo, QWidget* parent = nullptr); ///< Default constructor
+	UpdateDialog(UpdateDialog const&) = delete; ///< Disabled copy constructor
+	UpdateDialog(UpdateDialog&&) = delete; ///< Disabled move constructor
 	~UpdateDialog() = default; ///< Default destructor
+	UpdateDialog& operator=(UpdateDialog const&) = delete; ///< Disabled assignment operator
+	UpdateDialog& operator=(UpdateDialog&&) = delete; ///< Disabled move assignment operator
 	
 private slots:
    void onActionInstall(); ///< Callback for the 'Install' action
@@ -34,16 +38,12 @@ private slots:
    void onDownloadDataAvailable(); ///< Slot for the availability of downloaded data
 
 private: // member functions
-	UpdateDialog(UpdateDialog const&) = delete; ///< Disabled copy constructor
-	UpdateDialog(UpdateDialog&&) = delete; ///< Disabled move constructor
-	UpdateDialog& operator=(UpdateDialog const&) = delete; ///< Disabled assignment operator
-	UpdateDialog& operator=(UpdateDialog&&) = delete; ///< Disabled move assignment operator
    void startDownload(); ///< Start the downloading of the new installer file
    void processDownloadedData(QByteArray const& data); ///< Process downloaded data
 
 private: // data members
    Ui::UpdateDialog ui_; ///< The GUI for the dialog
-   SPLatestVersionInfo latestVersionInfo_; ///< The latest version info
+   SpLatestVersionInfo latestVersionInfo_; ///< The latest version info
    QCryptographicHash hashCalculator_; ///< The hash calculator
    QNetworkAccessManager nam_; ///< The network access manager
    QNetworkReply* reply_; ///< Reply the network reply
@@ -53,5 +53,5 @@ private: // data members
 };
 
 
-#endif // #ifndef BEEFTEXT__UPDATE__DIALOG__H
+#endif // #ifndef BEEFTEXT_UPDATE_DIALOG_H
 

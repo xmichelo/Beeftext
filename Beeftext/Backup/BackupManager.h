@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__BACKUP__MANAGER__H
-#define BEEFTEXT__BACKUP__MANAGER__H
+#ifndef BEEFTEXT_BACKUP_MANAGER_H
+#define BEEFTEXT_BACKUP_MANAGER_H
 
 
 //**********************************************************************************************************************
@@ -18,6 +18,7 @@ class BackupManager
 {
 public: // static member functions
    static BackupManager& instance(); ///< Return the only allowed instance of the class
+   static QStringList orderedBackupFilePaths(); ///< Return the chronologically ordered list of backup file paths
 
 public: // member functions
    BackupManager(BackupManager const&) = delete; ///< Disabled copy-constructor
@@ -25,16 +26,14 @@ public: // member functions
    ~BackupManager() = default; ///< Destructor
    BackupManager& operator=(BackupManager const&) = delete; ///< Disabled assignment operator
    BackupManager& operator=(BackupManager&&) = delete; ///< Disabled move assignment operator
-   QStringList orderedBackupFilePaths() const; ///< Return the chronologically ordered list of backup file paths
    qint32 backupFileCount() const; ///< Return the number of backup files
-   void removeAllBackups(); ///< Remove all backup files
-   void cleanup(); ///< Perform backup cleanup
-   void archive(QString const& filePath); ///< Move the given file to the backup folder.
+   void removeAllBackups() const; ///< Remove all backup files
+   void cleanup() const; ///< Perform backup cleanup
+   void archive(QString const& filePath) const; ///< Move the given file to the backup folder.
 
 private: // member functions
-   BackupManager(); ///< Default constructor
-   void ensureBackupFolderExists() const; ///< Ensure the backup folder exists
+   BackupManager() = default; ///< Default constructor
 };
 
 
-#endif // #ifndef BEEFTEXT__BACKUP__MANAGER__H
+#endif // #ifndef BEEFTEXT_BACKUP_MANAGER_H

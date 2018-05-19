@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__BACKUP__RESTORE__DIALOG__H
-#define BEEFTEXT__BACKUP__RESTORE__DIALOG__H
+#ifndef BEEFTEXT_BACKUP_RESTORE_DIALOG_H
+#define BEEFTEXT_BACKUP_RESTORE_DIALOG_H
 
 
 #include "ui_BackupRestoreDialog.h"
@@ -24,7 +24,7 @@ public: // static member functions
    static bool run(QWidget* parent = nullptr); ///< Run the dialog
 
 public: // member functions
-   BackupRestoreDialog(QWidget* parent = nullptr); ///< Default constructor
+   explicit BackupRestoreDialog(QWidget* parent = nullptr); ///< Default constructor
    BackupRestoreDialog(BackupRestoreDialog const&) = delete; ///< Disabled copy-constructor
    BackupRestoreDialog(BackupRestoreDialog&&) = delete; ///< Disabled assignment copy-constructor
    ~BackupRestoreDialog() = default; ///< Destructor
@@ -35,11 +35,11 @@ private slots:
    void onButtonRestore(); ///< Slot for the restore button
 
 private: // member functions
-   void fillCombo(); ///< Fill the combo box
+   void fillCombo() const; ///< Fill the combo box
 
 private: // data members
    Ui::BackupRestoreDialog ui_; ///< The GUI for the dialog
 };
 
 
-#endif // #ifndef BEEFTEXT__BACKUP__RESTORE__DIALOG__H
+#endif // #ifndef BEEFTEXT_BACKUP_RESTORE_DIALOG_H

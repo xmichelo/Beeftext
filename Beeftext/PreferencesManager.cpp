@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "PreferencesManager.h"
 #include "I18nManager.h"
-#include "InputManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -35,7 +34,7 @@ namespace {
    QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
    QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
    QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
-   QString const kRegKeyAutoStart = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"; ///< The registry key for autostart
+   QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
@@ -45,7 +44,7 @@ namespace {
    bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
    QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
       QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
-   SPShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
+   SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
       | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
 }
 
@@ -113,7 +112,7 @@ void PreferencesManager::reset()
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
-   this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
+   this->setLocale(I18nManager::validateLocale(QLocale::system()));
    if (!isInPortableMode())
    {
       this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin);
@@ -136,7 +135,7 @@ QString PreferencesManager::getInstalledApplicationPath() const
 //**********************************************************************************************************************
 /// Set the settings value indicating that the application has been launched in the past
 //**********************************************************************************************************************
-void PreferencesManager::setAlreadyLaunched()
+void PreferencesManager::setAlreadyLaunched() const
 {
    settings_->setValue(kKeyAlreadyLaunched, 1);
 }
@@ -154,7 +153,7 @@ bool PreferencesManager::alreadyLaunched() const
 //**********************************************************************************************************************
 /// \param[in] path The path of the file to delete on next application startup
 //**********************************************************************************************************************
-void PreferencesManager::setFileMarkedForDeletionOnStartup(QString const& path)
+void PreferencesManager::setFileMarkedForDeletionOnStartup(QString const& path) const
 {
    settings_->setValue(kKeyFileMarkedForDeletion, path);
 }
@@ -172,7 +171,7 @@ QString PreferencesManager::fileMarkedForDeletionOnStartup() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesManager::clearFileMarkedForDeletionOnStartup()
+void PreferencesManager::clearFileMarkedForDeletionOnStartup() const
 {
    settings_->remove(kKeyFileMarkedForDeletion);
 }
@@ -181,7 +180,7 @@ void PreferencesManager::clearFileMarkedForDeletionOnStartup()
 //**********************************************************************************************************************
 /// \param[in] array The geometry as a byte array
 //**********************************************************************************************************************
-void PreferencesManager::setMainWindowGeometry(QByteArray const& array)
+void PreferencesManager::setMainWindowGeometry(QByteArray const& array) const
 {
    settings_->setValue(kKeyGeometry, array);
 }
@@ -201,14 +200,14 @@ QByteArray PreferencesManager::mainWindowGeometry() const
 //**********************************************************************************************************************
 QLocale PreferencesManager::locale() const
 {
-   return I18nManager::instance().validateLocale(this->readSettings<QLocale>(kKeyLocale, QLocale::system()));
+   return I18nManager::validateLocale(this->readSettings<QLocale>(kKeyLocale, QLocale::system()));
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] locale The locale
 //**********************************************************************************************************************
-void PreferencesManager::setLocale(QLocale const& locale)
+void PreferencesManager::setLocale(QLocale const& locale) const
 {
    if (this->locale() != locale)
    {
@@ -221,7 +220,7 @@ void PreferencesManager::setLocale(QLocale const& locale)
 //**********************************************************************************************************************
 /// \param[in] dateTime The date/time of the last update check
 //**********************************************************************************************************************
-void PreferencesManager::setLastUpdateCheckDateTime(QDateTime const& dateTime)
+void PreferencesManager::setLastUpdateCheckDateTime(QDateTime const& dateTime) const
 {
    settings_->setValue(kKeyLastUpdateCheckDateTime, dateTime);
 }
@@ -240,7 +239,7 @@ QDateTime PreferencesManager::lastUpdateCheckDateTime() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setAutoStartAtLogin(bool value)
+void PreferencesManager::setAutoStartAtLogin(bool value) const
 {
    if (isInPortableMode())
    {
@@ -268,7 +267,7 @@ bool PreferencesManager::autoStartAtLogin() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setPlaySoundOnCombo(bool value)
+void PreferencesManager::setPlaySoundOnCombo(bool value) const
 {
    settings_->setValue(kKeyPlaySoundOnCombo, value);
 }
@@ -307,7 +306,7 @@ bool PreferencesManager::autoCheckForUpdates() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setUseClipboardForComboSubstitution(bool value)
+void PreferencesManager::setUseClipboardForComboSubstitution(bool value) const
 {
    settings_->setValue(kKeyUseClipboardForComboSubstitution, value);
 }
@@ -325,7 +324,7 @@ bool PreferencesManager::useClipboardForComboSubstitution() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setUseCustomTheme(bool value)
+void PreferencesManager::setUseCustomTheme(bool value) const
 {
    if (this->useCustomTheme() != value)
    {
@@ -367,7 +366,7 @@ bool PreferencesManager::useAutomaticSubstitution() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setComboListFolderPath(QString const& value)
+void PreferencesManager::setComboListFolderPath(QString const& value) const
 {
    if (isInPortableMode())
       globals::debugLog().addWarning("Trying to the set the 'combo list folder path' preference while running "
@@ -397,19 +396,19 @@ QString PreferencesManager::defaultComboListFolderPath()
 
 
 //**********************************************************************************************************************
-/// \param[in] value The value
+/// \param[in] shortcut The shortcut
 //**********************************************************************************************************************
-void PreferencesManager::setComboTriggerShortcut(SPShortcut const& value)
+void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut)
 {
-   SPShortcut newShortcut = value ? value : kDefaultValueComboTriggerShortcut;
-   SPShortcut currentShortcut = comboTriggerShortcut();
+   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueComboTriggerShortcut;
+   SpShortcut currentShortcut = comboTriggerShortcut();
    if (!currentShortcut)
       currentShortcut = kDefaultValueComboTriggerShortcut;
    if (*newShortcut != *currentShortcut)
    {
-      settings_->setValue(kKeyComboTriggerShortcutModifiers, int(value->nativeModifiers()));
-      settings_->setValue(kKeyComboTriggerShortcutKeyCode, value->nativeVirtualKey());
-      settings_->setValue(kKeyComboTriggerShortcutScanCode, value->nativeScanCode());
+      settings_->setValue(kKeyComboTriggerShortcutModifiers, int(shortcut->nativeModifiers()));
+      settings_->setValue(kKeyComboTriggerShortcutKeyCode, shortcut->nativeVirtualKey());
+      settings_->setValue(kKeyComboTriggerShortcutScanCode, shortcut->nativeScanCode());
       cachedComboTriggerShortcut_ = newShortcut;
    }
 }
@@ -418,7 +417,7 @@ void PreferencesManager::setComboTriggerShortcut(SPShortcut const& value)
 //**********************************************************************************************************************
 /// \return The trigger shortcut
 //**********************************************************************************************************************
-SPShortcut PreferencesManager::comboTriggerShortcut() const
+SpShortcut PreferencesManager::comboTriggerShortcut() const
 {
    return cachedComboTriggerShortcut_;
 }
@@ -427,7 +426,7 @@ SPShortcut PreferencesManager::comboTriggerShortcut() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setAutoBackup(bool value)
+void PreferencesManager::setAutoBackup(bool value) const
 {
    settings_->setValue(kKeyAutoBackup, value);
 }
@@ -454,7 +453,7 @@ QString PreferencesManager::lastComboImportExportPath() const
 //**********************************************************************************************************************
 /// \param[in] path The preference value
 //**********************************************************************************************************************
-void PreferencesManager::setLastComboImportExportPath(QString const& path)
+void PreferencesManager::setLastComboImportExportPath(QString const& path) const
 {
    settings_->setValue(kKeyLastComboImportExportPath, path);
 }
@@ -463,7 +462,7 @@ void PreferencesManager::setLastComboImportExportPath(QString const& path)
 //**********************************************************************************************************************
 /// \return The default combo trigger shortcut
 //**********************************************************************************************************************
-SPShortcut PreferencesManager::defaultComboTriggerShortcut()
+SpShortcut PreferencesManager::defaultComboTriggerShortcut()
 {
    return kDefaultValueComboTriggerShortcut;
 }
@@ -480,7 +479,7 @@ void PreferencesManager::cacheComboTriggerShortcut()
    if ((!intMods) || (!vKey) || (!scanCode))
       cachedComboTriggerShortcut_ =  kDefaultValueComboTriggerShortcut;
    else
-   cachedComboTriggerShortcut_ = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
+      cachedComboTriggerShortcut_ = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
    if (!cachedComboTriggerShortcut_->isValid())
       cachedComboTriggerShortcut_ = kDefaultValueComboTriggerShortcut;
 }
@@ -491,7 +490,8 @@ void PreferencesManager::cacheComboTriggerShortcut()
 //**********************************************************************************************************************
 void PreferencesManager::applyCustomThemePreference() const
 {
-   qApp->setStyleSheet(this->useCustomTheme() ? constants::kStyleSheet : QString());
+   dynamic_cast<QApplication *>(QCoreApplication::instance())->setStyleSheet(this->useCustomTheme() 
+      ? constants::kStyleSheet : QString());
 }
 
 
@@ -545,7 +545,7 @@ bool PreferencesManager::registerApplicationForAutoStart() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PreferencesManager::unregisterApplicationFromAutoStart() const
+void PreferencesManager::unregisterApplicationFromAutoStart()
 {
    if (!isInPortableMode())
       QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);

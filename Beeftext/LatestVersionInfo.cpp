@@ -28,10 +28,6 @@ namespace {
 LatestVersionInfo::LatestVersionInfo()
    : versionMajor_(-1)
    , versionMinor_(-1)
-   , downloadUrl_()
-   , releaseUrl_()
-   ,  sha256Hash_()
-   , releaseNotes_()
 {
 }
 

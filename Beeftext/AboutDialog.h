@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__ABOUT__DIALOG__H
-#define BEEFTEXT__ABOUT__DIALOG__H
+#ifndef BEEFTEXT_ABOUT_DIALOG_H
+#define BEEFTEXT_ABOUT_DIALOG_H
 
 
 #include "ui_AboutDialog.h"
@@ -21,7 +21,7 @@ class AboutDialog: public QDialog
 {
    Q_OBJECT
 public: // member functions
-   AboutDialog(QWidget* parent = nullptr); ///< Default constructor
+   explicit AboutDialog(QWidget* parent = nullptr); ///< Default constructor
 	~AboutDialog() = default; ///< Default destructor
    AboutDialog(AboutDialog const&) = delete; ///< Disabled copy constructor
    AboutDialog(AboutDialog&&) = delete; ///< Disabled move constructor
@@ -37,4 +37,4 @@ private: // data members
 };
 
 
-#endif // #ifndef BEEFTEXT__ABOUT__DIALOG__H
+#endif // #ifndef BEEFTEXT_ABOUT_DIALOG_H

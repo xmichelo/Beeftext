@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__GLOBALS__H
-#define BEEFTEXT__GLOBALS__H
+#ifndef BEEFTEXT_GLOBALS_H
+#define BEEFTEXT_GLOBALS_H
 
 
 #include <XMiLib/DebugLog/DebugLogWindow.h>
@@ -28,4 +28,4 @@ QString portableModeSettingsFilePath(); ///< Returns the path of the settings fi
 } // namespace globals
 
 
-#endif // #ifndef BEEFTEXT__GLOBALS__H
+#endif // #ifndef BEEFTEXT_GLOBALS_H

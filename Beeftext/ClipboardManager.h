@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__CLIPBOARD__MANAGER__H
-#define BEEFTEXT__CLIPBOARD__MANAGER__H
+#ifndef BEEFTEXT_CLIPBOARD_MANAGER_H
+#define BEEFTEXT_CLIPBOARD_MANAGER_H
 
 
 //**********************************************************************************************************************
@@ -18,17 +18,17 @@ class ClipboardManager
 {
 public: // member functions
    static ClipboardManager& instance(); ///< Return the only allowed instance of the class
+   ClipboardManager(ClipboardManager const&) = delete; ///< Disabled copy constructor
+	ClipboardManager(ClipboardManager&&) = delete; ///< Disabled move constructor
 	~ClipboardManager() = default; ///< Default destructor
+	ClipboardManager& operator=(ClipboardManager const&) = delete; ///< Disabled assignment operator
+	ClipboardManager& operator=(ClipboardManager&&) = delete; ///< Disabled move assignment operator
    void backupClipboard(); ///< backup the clipboard
    void restoreClipboard(); ///< Restore the clipboard and delete the current backup
    bool hasBackup() const; ///< Test if the clipboard is empty
 
 private: // member functions
    ClipboardManager() = default; ///< Default constructor
-   ClipboardManager(ClipboardManager const&) = delete; ///< Disabled copy constructor
-	ClipboardManager(ClipboardManager&&) = delete; ///< Disabled move constructor
-	ClipboardManager& operator=(ClipboardManager const&) = delete; ///< Disabled assignment operator
-	ClipboardManager& operator=(ClipboardManager&&) = delete; ///< Disabled move assignment operator
    QMimeData* mimeDataFromBackup() const; ///< Create a MIME data instance from the current backup
 
 private: // data structures
@@ -45,4 +45,4 @@ private: // data members
 };
 
 
-#endif // #ifndef BEEFTEXT__CLIPBOARD__MANAGER__H
+#endif // #ifndef BEEFTEXT_CLIPBOARD_MANAGER_H

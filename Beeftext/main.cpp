@@ -27,7 +27,7 @@ using namespace xmilib;
 
 
 void ensureAppDataDirExists(); ///< Make sure the application data folder exists
-void ensureMainWindowHasAHandle(MainWindow& window); ///< Ensure that the main window has a Win32 handle
+void ensureMainWindowHasAHandle(MainWindow& mainWindow); ///< Ensure that the main window has a Win32 handle
 void removeFileMarkedForDeletion(); ///< Remove the software update file that may have been marker for deletion
 
 
@@ -39,9 +39,9 @@ void removeFileMarkedForDeletion(); ///< Remove the software update file that ma
 //**********************************************************************************************************************
 int main(int argc, char *argv[])
 {
-   qRegisterMetaType<SPLatestVersionInfo>(); // required to use SPLatestVersionInfo in a queued signal/slot connection
-   qRegisterMetaType<SPGroup>(); // required to use SPGroup in a queued signal/slot connection
-   QString const kUnhandledException = "Unhandled Exception";
+   qRegisterMetaType<SpLatestVersionInfo>(); // required to use SpLatestVersionInfo in a queued signal/slot connection
+   qRegisterMetaType<SpGroup>(); // required to use SpGroup in a queued signal/slot connection
+   QString const unhandledException = "Unhandled Exception";
    DebugLog& debugLog = globals::debugLog();
    try
    {
@@ -56,9 +56,9 @@ int main(int argc, char *argv[])
          return 1;
       }
 
-      app.setQuitOnLastWindowClosed(false);
-      app.setOrganizationName(constants::kOrganizationName);
-      app.setApplicationName(constants::kApplicationName);
+      QGuiApplication::setQuitOnLastWindowClosed(false);
+      QGuiApplication::setOrganizationName(constants::kOrganizationName);
+      QGuiApplication::setApplicationName(constants::kApplicationName);
 
       ensureAppDataDirExists();
       debugLog.enableLoggingToFile(globals::logFilePath());
@@ -75,25 +75,25 @@ int main(int argc, char *argv[])
       if (!prefs.alreadyLaunched())
          window.show();
       prefs.setAlreadyLaunched();
-      qint32 const returnCode = app.exec();
+      qint32 const returnCode = QApplication::exec();
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
       I18nManager::instance().unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
       return returnCode;
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       debugLog.addError(QString("Application crashed because of an unhandled exception: %1").arg(e.qwhat()));
-      displaySystemErrorDialog(kUnhandledException, e.qwhat());
+      displaySystemErrorDialog(unhandledException, e.qwhat());
    }
    catch (std::exception const& e)
    {
       debugLog.addError(QString("Application crashed because of an unhandled exception: %1").arg(e.what()));
-      displaySystemErrorDialog(kUnhandledException, e.what());
+      displaySystemErrorDialog(unhandledException, e.what());
    }
    catch (...)
    {
       debugLog.addError(QString("Application crashed because of an unhandled exception."));
-      displaySystemErrorDialog(kUnhandledException, QObject::tr("An unhandled exception occurred."));
+      displaySystemErrorDialog(unhandledException, QObject::tr("An unhandled exception occurred."));
    }
    return 1;
 }
@@ -110,7 +110,7 @@ void ensureAppDataDirExists()
       return;
    QDir().mkpath(path);
    if (!dir.exists())
-      throw xmilib::Exception(QString("The application data folder '%1' could not be created")
+      throw Exception(QString("The application data folder '%1' could not be created")
          .arg(QDir::toNativeSeparators(path)));
 }
 

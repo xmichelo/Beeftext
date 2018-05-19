@@ -7,8 +7,8 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-#ifndef BEEFTEXT__COMBO__MANAGER
-#define BEEFTEXT__COMBO__MANAGER
+#ifndef BEEFTEXT_COMBO_MANAGER_H
+#define BEEFTEXT_COMBO_MANAGER_H
 
 
 #include "ComboList.h"
@@ -24,9 +24,17 @@ class ComboManager: public QObject
    Q_OBJECT
 public: // static member functions
    static ComboManager& instance(); ///< Returns a reference to the only allowed instance of the class
+   static bool isEnabled(); ///< Check whether the combo manager is enabled
+   static void enable(); ///< Enable the combo manager manager
+   static void disable(); ///< Disable the combo manager
+   static bool setEnabled(bool enabled); ///< Set the combo manager state
 
 public: // member functions
-	~ComboManager(); ///< Default destructor
+   ComboManager(ComboManager const&) = delete; ///< Disabled copy constructor
+	ComboManager(ComboManager const&&) = delete; ///< Disabled move constructor
+	~ComboManager() = default; ///< Default destructor
+	ComboManager& operator=(ComboManager const&) = delete; ///< Disabled assignment operator
+	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
    ComboList& comboListRef(); ///< Return a mutable reference to the combo list
    ComboList const& comboListRef() const; ///< Return a constant reference to the combo list
    GroupList& groupListRef(); ///< Return a mutable reference to the group list
@@ -34,10 +42,6 @@ public: // member functions
    bool loadComboListFromFile(QString* outErrorMsg = nullptr); ///< Load the combo list from the default file
    bool saveComboListToFile(QString* outErrorMsg = nullptr) const; /// Save the combo list to the default location
    bool restoreBackup(QString const& backupFilePath); /// Restore the combo list from a backup file
-   bool isEnabled() const; ///< Check whether the combo manager is enabled
-   void enable(); ///< Enable the combo manager manager
-   void disable(); ///< Disable the combo manager
-   bool setEnabled(bool enabled); ///< Set the combo manager state
 
 signals:
    void comboListWasLoaded() const; ///< Signal emitted when the combo list has been loaded
@@ -46,10 +50,6 @@ signals:
 
 private: // member functions
    ComboManager(); ///< Default constructor
-   ComboManager(ComboManager const&) = delete; ///< Disabled copy constructor
-	ComboManager(ComboManager const&&) = delete; ///< Disabled move constructor
-	ComboManager& operator=(ComboManager const&) = delete; ///< Disabled assignment operator
-	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
    void checkAndPerformSubstitution(); ///< check if a substitution is possible and if so performs it
 
 private slots:
@@ -65,4 +65,4 @@ private: // data member
 };
 
 
-#endif // #ifndef BEEFTEXT__COMBO__MANAGER
+#endif // #ifndef BEEFTEXT_COMBO_MANAGER_H
