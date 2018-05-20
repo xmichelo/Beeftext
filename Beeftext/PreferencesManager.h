@@ -61,6 +61,8 @@ public: // member functions
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
    void setAutoBackup(bool value) const; ///< Set the value for the 'Auto backup' preference
    bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
+   void setUseLooseComboMatching(bool value); ///< Get the value for the 'Use loose combo matching' preference
+   bool useLooseComboMatching() const; ///< Set the value for the 'Use loose combo matching' preference
    QString lastComboImportExportPath() const; ///< Retrieve the path of the last imported and exported path
    void setLastComboImportExportPath(QString const& path) const; ///< Retrieve the path of the last imported and exported path
    static SpShortcut defaultComboTriggerShortcut(); ///< Reset the combo trigger shortcut to its default value
@@ -81,7 +83,8 @@ private: // member functions
    
 private: // data members
    std::unique_ptr<QSettings> settings_; ///< The Qt settings instance
-   bool cachedUseAutomaticSubstitution_; ///< Cached value for the 'use automatic substitution' preference value
+   bool cachedUseAutomaticSubstitution_; ///< Cached value for the 'use automatic substitution' preference
+   bool cachedUseLooseComboMatching_; ///< Cached value for the 'Use loose combo matching' preference
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
 };
 
