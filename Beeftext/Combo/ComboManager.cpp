@@ -221,8 +221,13 @@ bool ComboManager::setEnabled(bool enabled)
 //**********************************************************************************************************************
 void ComboManager::checkAndPerformSubstitution()
 {
-   VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(),
-      [&](SpCombo const combo) -> bool { return combo->isEnabled() && (combo->keyword() == currentText_); });
+   std::function<bool(SpCombo const&)> func = nullptr;
+   if (PreferencesManager::instance().useLooseComboMatching())
+      func = [&](SpCombo const& c) -> bool { return c->isEnabled() && (currentText_.endsWith(c->keyword())); };
+   else 
+      func = [&](SpCombo const& c) -> bool { return c->isEnabled() && (c->keyword() == currentText_); };
+
+   VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(), func );
    if (comboList_.end() == it)
       return;
 
