@@ -23,28 +23,31 @@
 
 
 namespace {
-   QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
-   QString const kPropName = "name"; ///< The JSON property name for the name
-   QString const kPropComboText = "comboText"; ///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by "keyword"
-   QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
-   QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
-   QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
-   QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
-   QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
-   QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
-   QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
-   QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
-   QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
-   QList<quint16> const modifierKeys = { VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
-      VK_RWIN };
+QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
+QString const kPropName = "name"; ///< The JSON property name for the name
+QString const kPropComboText = "comboText"; ///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by "keyword"
+QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
+QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
+QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
+QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option
+QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
+QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
+QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
+QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
+QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
+QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
+QList<quint16> const modifierKeys = { VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN, 
+   VK_RWIN };
 }
 
 
 using namespace xmilib;
 
 
-QList<quint16> backupAndReleaseModifierKeys(); ///< Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
-void restoreModifierKeys(QList<quint16> const& keys); ///< Restore the specified modifier keys state by generating a key press event for each of them
+QList<quint16> backupAndReleaseModifierKeys();
+///< Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
+void restoreModifierKeys(QList<quint16> const& keys);
+///< Restore the specified modifier keys state by generating a key press event for each of them
 
 
 //**********************************************************************************************************************
@@ -73,21 +76,21 @@ void restoreModifierKeys(QList<quint16> const& keys)
 }
 
 
-
-
 //**********************************************************************************************************************
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
+/// \param[in] useLooseMatching Should the combo use loose matching
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString name, QString keyword, QString snippet, bool enabled)
-   : uuid_(QUuid::createUuid())
-   , name_(std::move(name))
-   , keyword_(std::move(keyword))
-   , snippet_(std::move(snippet))
-   , group_(nullptr)
-   , enabled_(enabled)
+Combo::Combo(QString name, QString keyword, QString snippet, bool const useLooseMatching, bool const enabled)
+   : uuid_(QUuid::createUuid()),
+     name_(std::move(name)),
+     keyword_(std::move(keyword)),
+     snippet_(std::move(snippet)),
+     useLooseMatching_(useLooseMatching),
+     group_(nullptr),
+     enabled_(enabled)
 {
    modificationDateTime_ = creationDateTime_ = QDateTime::currentDateTime();
 }
@@ -100,16 +103,17 @@ Combo::Combo(QString name, QString keyword, QString snippet, bool enabled)
 /// \param[in] groups The list of combo groups
 //**********************************************************************************************************************
 Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups)
-   : uuid_(QUuid(object[kPropUuid].toString()))
-   , name_(object[kPropName].toString())
-   , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
-   , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
-   , group_(nullptr)
-   , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
-      kPropCreated].toString(), constants::kJsonExportDateFormat))
-   , modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
-      kPropLastModified].toString(), constants::kJsonExportDateFormat))
-   , enabled_(object[kPropEnabled].toBool(true))
+   : uuid_(QUuid(object[kPropUuid].toString())),
+     name_(object[kPropName].toString()),
+     keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString()),
+     snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString()),
+     useLooseMatching_(object[kPropUseLooseMatching].toBool(false)),
+     group_(nullptr),
+     creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
+        kPropCreated].toString(), constants::kJsonExportDateFormat)),
+     modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
+        kPropLastModified].toString(), constants::kJsonExportDateFormat)),
+     enabled_(object[kPropEnabled].toBool(true))
 {
    if (object.contains(kPropGroup))
    {
@@ -120,6 +124,11 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
       else
          globals::debugLog().addWarning("While parsing combo file, a combo with an invalid group was found.");
    }
+
+   // because we parse a older format version, we update the modification date, as the combo manager will save 
+   // the file to update it to the latest format
+   if (formatVersion < ComboList::fileFormatVersionNumber)
+      this->touch(); 
 }
 
 
@@ -128,7 +137,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
 //**********************************************************************************************************************
 bool Combo::isValid() const
 {
-   return (!creationDateTime_.isNull()) && (!modificationDateTime_.isNull()) && (!uuid_.isNull()) 
+   return (!creationDateTime_.isNull()) && (!modificationDateTime_.isNull()) && (!uuid_.isNull())
       && (!keyword_.isEmpty()) && (!snippet_.isEmpty());
 }
 
@@ -196,6 +205,37 @@ QString Combo::snippet() const
 
 
 //**********************************************************************************************************************
+/// \param[in] snippet The snippet
+//**********************************************************************************************************************
+void Combo::setSnippet(QString const& snippet)
+{
+   if (snippet_ != snippet)
+   {
+      snippet_ = snippet;
+      this->touch();
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if the combo uses loose matching
+//**********************************************************************************************************************
+bool Combo::useLooseMatching() const
+{
+   return useLooseMatching_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] useLooseMatching Should the combo use loose matching
+//**********************************************************************************************************************
+void Combo::setUseLooseMatching(bool useLooseMatching)
+{
+   useLooseMatching_ = useLooseMatching;
+}
+
+
+//**********************************************************************************************************************
 /// \return The last modification date of the combo
 //**********************************************************************************************************************
 QDateTime Combo::modificationDateTime() const
@@ -237,19 +277,6 @@ void Combo::setGroup(SpGroup const& group)
 
 
 //**********************************************************************************************************************
-/// \param[in] snippet The snippet
-//**********************************************************************************************************************
-void Combo::setSnippet(QString const& snippet)
-{
-   if (snippet_ != snippet)
-   {
-      snippet_ = snippet;
-      this->touch();
-   }
-}
-
-
-//**********************************************************************************************************************
 /// \param[in] enabled The value for the enabled parameter
 //**********************************************************************************************************************
 void Combo::setEnabled(bool enabled)
@@ -269,21 +296,33 @@ bool Combo::isEnabled() const
 
 
 //**********************************************************************************************************************
+/// \param[in] input The input to check
+/// \return true if and only if the input is a match for the combo
+//**********************************************************************************************************************
+bool Combo::matchesForInput(QString const& input) const
+{
+   return useLooseMatching_ ? input.endsWith(keyword_) : (input == keyword_);
+}
+
+
+//**********************************************************************************************************************
 // 
 //*********************************************************************************************************************
 void Combo::performSubstitution() const
 {
    InputManager& inputManager = InputManager::instance();
-   bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false); // we disable the hook to prevent endless recursive substitution
+   bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
+   // we disable the hook to prevent endless recursive substitution
    try
    {
-      QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
+      QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys();
+      ///< We artificially depress the current modifier keys
 
       // we erase the combo
       synthesizeBackspaces(keyword_.size());
       int cursorPos = -1;
       QString const evaluatedText = evaluatedSnippet(&cursorPos);
-      if (PreferencesManager::instance().useClipboardForComboSubstitution() 
+      if (PreferencesManager::instance().useClipboardForComboSubstitution()
          && doesApplicationSupportCtrlVShortcut(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet
@@ -293,14 +332,16 @@ void Combo::performSubstitution() const
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
-         QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); }); ///< We need to delay clipboard restoration to avoid unexpected behaviours
+         QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
+         ///< We need to delay clipboard restoration to avoid unexpected behaviours
       }
       else
       {
          // we simulate the typing of the snippet text
-         for (QChar c : evaluatedText)
+         for (QChar c: evaluatedText)
          {
-            if (c == QChar::LineFeed) // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
+            if (c == QChar::LineFeed)
+               // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
                synthesizeKeyDownAndUp(VK_RETURN);
             if (!c.isPrint())
                continue;
@@ -316,7 +357,7 @@ void Combo::performSubstitution() const
       }
 
       ///< We restore the modifiers that we deactivated at the beginning of the function
-      restoreModifierKeys(pressedModifiers); 
+      restoreModifierKeys(pressedModifiers);
    }
    catch (Exception const&)
    {
@@ -338,6 +379,7 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropName, name_);
    result.insert(kPropKeyword, keyword_);
    result.insert(kPropSnippet, snippet_);
+   result.insert(kPropUseLooseMatching, useLooseMatching_);
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
@@ -360,12 +402,14 @@ void Combo::changeUuid()
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
+/// \param[in] useLooseMatching Does the combo use loose matching
 /// \param[in] enabled Is the combo enabled
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool enabled)
+SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool useLooseMatching, 
+   bool enabled)
 {
-   return std::make_shared<Combo>(name, keyword, snippet, enabled);
+   return std::make_shared<Combo>(name, keyword, snippet, useLooseMatching, enabled);
 }
 
 
@@ -395,7 +439,8 @@ SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   return std::make_shared<Combo>(combo.name(), QString(), combo.snippet());
+   return std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useLooseMatching(), 
+      combo.isEnabled());
 }
 
 
@@ -423,14 +468,14 @@ QString Combo::evaluatedSnippet(qint32* outCursorPos, QSet<QString> forbiddenSub
    // The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \.
    // Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents
    // inside the #{}.
-   QRegularExpression const regexp(R"((#\{(.*?)(?<!\\)\}))"); 
-   
+   QRegularExpression const regexp(R"((#\{(.*?)(?<!\\)\}))");
+
    while (true)
    {
       QRegularExpressionMatch match = regexp.match(remainingText);
       if (!match.hasMatch())
          return result + remainingText;
-      
+
       // we add the text before the variable
       result += remainingText.left(match.capturedStart(1));
 
@@ -451,5 +496,3 @@ QString Combo::evaluatedSnippet(qint32* outCursorPos, QSet<QString> forbiddenSub
       remainingText = remainingText.right(remainingText.size() - match.capturedEnd(1));
    }
 }
-
-

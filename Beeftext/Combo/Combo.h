@@ -29,7 +29,7 @@ typedef std::vector<SpCombo> VecSpCombo; ///< Type definition for vector of SpCo
 class Combo
 {
 public: // member functions
-   Combo(QString name, QString keyword, QString snippet, bool enabled = true); ///< Default constructor
+   Combo(QString name, QString keyword, QString snippet, bool useLooseMatching, bool enabled); ///< Default constructor
    Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups = GroupList()); ///< Constructor from JSon object
    Combo(Combo const&) = delete; ///< Disabled copy constructor
 	Combo(Combo&&) = delete; ///< Disabled move constructor
@@ -43,22 +43,25 @@ public: // member functions
 	QString keyword() const; ///< retrieve the keyword
    void setKeyword(QString const& keyword); ///< Set the keyword
    QString snippet() const; ///< Retrieve the snippet
+   void setSnippet(QString const& snippet); ///< Set the snippet
+   bool useLooseMatching() const; ///< Test if the combo use loose matching
+   void setUseLooseMatching(bool useLooseMatching); ///< Set if the combo uses loose matching
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
    SpGroup group() const; ///< Get the combo group the combo belongs to
    void setGroup(SpGroup const& group); ///< Set the group this combo belongs to
    QString evaluatedSnippet(qint32* outCursorPos = nullptr, 
       QSet<QString> forbiddenSubCombos = QSet<QString>()) const; ///< Retrieve the the snippet after having evaluated it
-   void setSnippet(QString const& snippet); ///< Set the snippet
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
+   bool matchesForInput(QString const& input) const; ///< Check if the combo is a match for the given input
    void performSubstitution() const; ///< Perform the combo substitution
    QJsonObject toJsonObject(bool includeGroup) const; ///< Serialize the combo in a JSon object
    void changeUuid(); ///< Get a new Uuid for the combo
 
 public: // static functions
    static SpCombo create(QString const& name = QString(), QString const& keyword = QString(),
-      QString const& snippet = QString(), bool enabled = true);
+      QString const& snippet = QString(), bool useLooseMatching = false, bool enabled = true);
    static SpCombo create(QJsonObject const& object, qint32 formatVersion, 
       GroupList const& groups = GroupList()); ///< create a Combo from a JSON object
    static SpCombo duplicate(Combo const& combo); ///< Duplicate
@@ -71,6 +74,7 @@ private: // data member
    QString name_; ///< The display name of the combo
    QString keyword_; ///< The keyword
    QString snippet_; ///< The snippet
+   bool useLooseMatching_; ///< Should the combo use loose matching
    SpGroup group_; ///< The combo group this combo belongs to (may be null)
    QDateTime creationDateTime_; ///< The date/time of creation of the combo
    QDateTime modificationDateTime_; ///< The date/time of the last modification of the combo

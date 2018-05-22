@@ -16,7 +16,6 @@
 
 namespace {
 
-qint32 const kJsonComboListFileFormatVersionNumber = 3; ///< The version number for the combo list file format
 QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for the file format version
 QString const kKeyCombos = "combos"; ///< The JSon key for combos
 QString const kKeyGroups = "groups"; ///< The JSon key for groups
@@ -25,6 +24,7 @@ QString const kKeyGroups = "groups"; ///< The JSon key for groups
 
 
 QString const ComboList::defaultFileName = "comboList.json";
+qint32 const ComboList::fileFormatVersionNumber = 4;
 
 
 //**********************************************************************************************************************
@@ -384,7 +384,7 @@ ComboList::const_reverse_iterator ComboList::rend() const
 QJsonDocument ComboList::toJsonDocument(bool includeGroups) const
 {
    QJsonObject rootObject;
-   rootObject.insert(kKeyFileFormatVersion, kJsonComboListFileFormatVersionNumber);
+   rootObject.insert(kKeyFileFormatVersion, fileFormatVersionNumber);
    QJsonArray comboArray;
    for (SpCombo const& combo: combos_)
       comboArray.append(combo->toJsonObject(includeGroups));
@@ -420,7 +420,7 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, bool* outInOlderF
       if (!versionValue.isDouble()) // the JSon format consider all numbers as double
          throw xmilib::Exception("The combo list file does not specify its version number.");
       qint32 const version = versionValue.toInt();
-      if (version > kJsonComboListFileFormatVersionNumber)
+      if (version > fileFormatVersionNumber)
          throw xmilib::Exception("The combo list file was created by a newer version of the application.");
 
       // parse the groups
@@ -448,7 +448,7 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, bool* outInOlderF
          this->append(combo);
       }
       if (outInOlderFileFormat)
-         *outInOlderFileFormat = (version < kJsonComboListFileFormatVersionNumber);
+         *outInOlderFileFormat = (version < fileFormatVersionNumber);
       return true;
    }
    catch (xmilib::Exception const& e)
