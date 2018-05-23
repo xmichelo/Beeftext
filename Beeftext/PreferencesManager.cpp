@@ -33,10 +33,8 @@ namespace {
    QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
    QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
    QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
-   QString const kKeyUseLooseComboMatching = "UseLooseComboMatching"; ///< The settings key for the 'Use loose combo matching' preference
    QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
    QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
-
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
@@ -44,7 +42,6 @@ namespace {
    bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
    bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
    bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
-   bool const kDefaultvalueUseLooseComboMatching = false; ///< The default value for the 'Use loose combo matching' preference
    QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
       QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
    SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
@@ -94,9 +91,7 @@ PreferencesManager::PreferencesManager()
    // Cache often accessed values
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
       kDefaultValueUseAutomaticSubstitution);
-   this->cacheComboTriggerShortcut();
-   cachedUseLooseComboMatching_ = this->readSettings<bool>(kKeyUseLooseComboMatching, 
-      kDefaultvalueUseLooseComboMatching);
+   this->cacheComboTriggerShortcut(); 
 
    // Some preferences setting need initialization
    this->applyCustomThemePreference();
@@ -117,7 +112,6 @@ void PreferencesManager::reset()
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
-   this->setUseLooseComboMatching(kDefaultvalueUseLooseComboMatching);
    this->setLocale(I18nManager::validateLocale(QLocale::system()));
    if (!isInPortableMode())
    {
@@ -444,26 +438,6 @@ void PreferencesManager::setAutoBackup(bool value) const
 bool PreferencesManager::autoBackup() const
 {
    return this->readSettings<bool>(kKeyAutoBackup, kDefaultValueAutoBackup);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] value The value for the preference.
-//**********************************************************************************************************************
-void PreferencesManager::setUseLooseComboMatching(bool value)
-{
-   settings_->setValue(kKeyUseLooseComboMatching, value);
-   cachedUseLooseComboMatching_ = value;
-}
-
-
-//**********************************************************************************************************************
-/// \return The value for the preference.
-//**********************************************************************************************************************
-bool PreferencesManager::useLooseComboMatching() const
-{
-   return cachedUseLooseComboMatching_;
-   
 }
 
 

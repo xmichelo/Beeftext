@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>717</width>
-    <height>533</height>
+    <height>510</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,13 +62,6 @@
        <widget class="QCheckBox" name="checkPlaySoundOnCombo">
         <property name="text">
          <string>&amp;Play sound on combo</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="checkUseLooseComboMatching">
-        <property name="text">
-         <string>Use loose combo matching</string>
         </property>
        </widget>
       </item>
