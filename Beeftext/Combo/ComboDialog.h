@@ -33,10 +33,12 @@ public: // member functions
    ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
 
 private: // member functions
-   void setupSnipperEditMenu(); /// Setup the editor menus
+   void setupSnippetEditMenu(); /// Setup the editor menus
    QMenu* createComboVariableMenu(); ///< Create the combo variable menu
    void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false) const; ///< Insert some text at the current cursor position in the snippet text edit control
    bool checkAndReportInvalidCombo(); ///< Check the keyword against existing combos and report conflicts
+   void setMatchingComboValue(bool useLooseMatching) const; ///< Set the 'Matching' combo value
+   bool getMatchingComboValue() const; ///<  Read the matching mode from the 'Matching' combo value
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action

@@ -231,7 +231,11 @@ bool Combo::useLooseMatching() const
 //**********************************************************************************************************************
 void Combo::setUseLooseMatching(bool useLooseMatching)
 {
-   useLooseMatching_ = useLooseMatching;
+   if (useLooseMatching_ != useLooseMatching)
+   {
+      useLooseMatching_ = useLooseMatching;
+      this->touch();
+   }
 }
 
 

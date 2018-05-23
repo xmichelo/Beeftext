@@ -46,10 +46,11 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.editName->setText(combo->name());
    ui_.comboGroup->setContent(ComboManager::instance().groupListRef());
    ui_.comboGroup->setCurrentGroup(combo_->group());
+   this->setMatchingComboValue(combo->useLooseMatching());
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
    ui_.editSnippet->setPlainText(combo->snippet());
-   this->setupSnipperEditMenu();
+   this->setupSnippetEditMenu();
    this->updateGui();
 }
 
@@ -57,7 +58,7 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboDialog::setupSnipperEditMenu()
+void ComboDialog::setupSnippetEditMenu()
 {
    connect(ui_.editSnippet, &QPlainTextEdit::customContextMenuRequested,
       this, &ComboDialog::onEditorContextMenuRequested);
@@ -170,6 +171,24 @@ bool ComboDialog::checkAndReportInvalidCombo()
 
 
 //**********************************************************************************************************************
+/// \param[in] useLooseMatching true if the combo uses loose matching
+//**********************************************************************************************************************
+void ComboDialog::setMatchingComboValue(bool const useLooseMatching) const
+{
+   ui_.comboMatching->setCurrentIndex(useLooseMatching ? 1 : 0);
+}
+
+
+//**********************************************************************************************************************
+/// \return true if the 'Loose' item is selected
+//**********************************************************************************************************************
+bool ComboDialog::getMatchingComboValue() const
+{
+   return 1 == ui_.comboMatching->currentIndex();
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboDialog::onActionOk()
@@ -179,6 +198,7 @@ void ComboDialog::onActionOk()
       return;
    combo_->setName(ui_.editName->text().trimmed());
    combo_->setGroup(ui_.comboGroup->currentGroup());
+   combo_->setUseLooseMatching(this->getMatchingComboValue());
    combo_->setKeyword(ui_.editKeyword->text().trimmed());
    combo_->setSnippet(ui_.editSnippet->toPlainText());
    this->accept();
