@@ -22,35 +22,40 @@
 #include <utility>
 
 
-namespace {
-QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
-QString const kPropName = "name"; ///< The JSON property name for the name
-QString const kPropComboText = "comboText"; ///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by "keyword"
-QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
-QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
-QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
-QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option
-QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
-QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
-QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
-QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
-QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
-QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
-QList<quint16> const modifierKeys = { VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN, 
-   VK_RWIN };
-}
-
-
 using namespace xmilib;
 
 
-QList<quint16> backupAndReleaseModifierKeys();
-///< Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
-void restoreModifierKeys(QList<quint16> const& keys);
-///< Restore the specified modifier keys state by generating a key press event for each of them
+namespace {
+QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
+QString const kPropName = "name"; ///< The JSON property name for the name
+QString const kPropComboText = "comboText";
+///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by "keyword"
+QString const kPropKeyword = "keyword";
+///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
+QString const kPropSubstitutionText = "substitutionText";
+///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
+QString const kPropSnippet = "snippet";
+///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
+QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option
+QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
+QString const kPropCreated = "created";
+///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
+QString const kPropCreationDateTime = "creationDateTime";
+///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
+QString const kPropLastModified = "lastModified";
+///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
+QString const kPropModificationDateTime = "modificationDateTime";
+///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
+QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
+QList<quint16> const modifierKeys = {
+   VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
+   VK_RWIN
+};
 
 
 //**********************************************************************************************************************
+/// \brief Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
+///
 /// \return The list of modifier keys that are pressed
 //**********************************************************************************************************************
 QList<quint16> backupAndReleaseModifierKeys()
@@ -67,6 +72,8 @@ QList<quint16> backupAndReleaseModifierKeys()
 
 
 //**********************************************************************************************************************
+/// \brief Restore the specified modifier keys state by generating a key press event for each of them
+///
 /// \param[in] keys The list of modifiers key to restore by generating a key press event
 //**********************************************************************************************************************
 void restoreModifierKeys(QList<quint16> const& keys)
@@ -74,6 +81,9 @@ void restoreModifierKeys(QList<quint16> const& keys)
    for (quint16 key: keys)
       synthesizeKeyDown(key);
 }
+
+
+} // anonymous namespace
 
 
 //**********************************************************************************************************************
@@ -128,7 +138,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
    // because we parse a older format version, we update the modification date, as the combo manager will save 
    // the file to update it to the latest format
    if (formatVersion < ComboList::fileFormatVersionNumber)
-      this->touch(); 
+      this->touch();
 }
 
 
@@ -410,7 +420,7 @@ void Combo::changeUuid()
 /// \param[in] enabled Is the combo enabled
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool useLooseMatching, 
+SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool useLooseMatching,
    bool enabled)
 {
    return std::make_shared<Combo>(name, keyword, snippet, useLooseMatching, enabled);
@@ -443,7 +453,7 @@ SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   return std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useLooseMatching(), 
+   return std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useLooseMatching(),
       combo.isEnabled());
 }
 
