@@ -56,6 +56,7 @@ private: // member functions
    void changeEvent(QEvent *event) override; ///< Change event handler
    void resizeColumnsToContents() const; ///< Resize the columns to fit the content
    std::set<SpGroup> groupsOfSelectedCombos() const; ///< Return a set containing the groups of the selected combos
+   void changeMatchingModeOfSelectedCombos(bool looseMatching); ///< Change the matching mode of the selected combos
 
 private slots:
    void updateGui() const; ///< Update the GUI state
@@ -73,6 +74,8 @@ private slots:
    void onActionExportCombo(); ///< Slot for the 'Export Combo' action
    void onActionExportAllCombos(); ///< Slot for the 'Export All Combos' action
    void onActionImportCombos(); ///< Slot for the 'Import Combos' action
+   void onActionMatchingModeStrict(); ///< Slot for the 'Strict matching mode' action
+   void onActionMatchingModeLoose(); ///< Slot for the 'Loose matching mode' action
    void onSearchFilterChanged(QString const& text); ///< Slot for the changing of the search field
    void onContextMenuRequested() const; ///< Slot for the combo table context menu
    void onDoubleClick(); ///< Slot for the double clicking in the table view

@@ -334,7 +334,6 @@ QMenuBar::item:selected {
 
 QMenu {
    border: 1px solid #ccc;
-   min-width: 150px;
 }
 
 QMenu::item {

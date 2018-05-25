@@ -75,6 +75,10 @@ QMenu* ComboTableWidget::createMenu(QWidget* parent) const
    menu->addAction(ui_.actionDeleteCombo);
    QMenu* moveToMenu = ComboManager::instance().groupListRef().createMenu(moveMenuTitle(), std::set<SpGroup>(), menu);
    menu->addMenu(moveToMenu);
+   QMenu* matchingModeMenu = new QMenu(tr("Matching Mode"), menu);
+   matchingModeMenu->addAction(ui_.actionMatchingModeStrict);
+   matchingModeMenu->addAction(ui_.actionMatchingModeLoose);
+   menu->addMenu(matchingModeMenu);
    menu->addSeparator();
    menu->addAction(ui_.actionCopySnippet);
    menu->addSeparator();
@@ -322,6 +326,29 @@ std::set<SpGroup> ComboTableWidget::groupsOfSelectedCombos() const
          groups.insert(group);
    }
    return groups;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] looseMatching Should the combo use loose matching.
+//**********************************************************************************************************************
+void ComboTableWidget::changeMatchingModeOfSelectedCombos(bool const looseMatching)
+{
+   try
+   {
+      QList<SpCombo> const combos = this->getSelectedCombos();
+      for (SpCombo const& combo: combos)
+         if (combo)
+            combo->setUseLooseMatching(looseMatching);
+      QString errorMessage;
+      if (!ComboManager::instance().saveComboListToFile(&errorMessage))
+         throw xmilib::Exception(errorMessage);
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   } 
+
 }
 
 
@@ -611,6 +638,24 @@ void ComboTableWidget::onActionImportCombos()
 {
    this->runComboImportDialog();
    this->resizeColumnsToContents();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboTableWidget::onActionMatchingModeStrict()
+{
+   this->changeMatchingModeOfSelectedCombos(false);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboTableWidget::onActionMatchingModeLoose()
+{
+   this->changeMatchingModeOfSelectedCombos(true);
 }
 
 

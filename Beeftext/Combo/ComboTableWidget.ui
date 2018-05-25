@@ -270,6 +270,34 @@
     <string>Ctrl+C</string>
    </property>
   </action>
+  <action name="actionMatchingModeStrict">
+   <property name="text">
+    <string>&amp;Strict</string>
+   </property>
+   <property name="iconText">
+    <string>Add Combo</string>
+   </property>
+   <property name="toolTip">
+    <string>Use strict matching.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionMatchingModeLoose">
+   <property name="text">
+    <string>&amp;Loose</string>
+   </property>
+   <property name="iconText">
+    <string>Add Combo</string>
+   </property>
+   <property name="toolTip">
+    <string>Use loose matching.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+L</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>tableComboList</tabstop>
@@ -470,6 +498,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionMatchingModeStrict</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableWidget</receiver>
+   <slot>onActionMatchingModeStrict()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>393</x>
+     <y>296</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMatchingModeLoose</sender>
+   <signal>triggered()</signal>
+   <receiver>ComboTableWidget</receiver>
+   <slot>onActionMatchingModeLoose()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>393</x>
+     <y>296</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionNewCombo()</slot>
@@ -484,5 +544,7 @@
   <slot>onActionImportCombos()</slot>
   <slot>onActionExportAllCombos()</slot>
   <slot>onActionCopySnippet()</slot>
+  <slot>onActionMatchingModeStrict()</slot>
+  <slot>onActionMatchingModeLoose()</slot>
  </slots>
 </ui>

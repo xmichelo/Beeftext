@@ -375,12 +375,12 @@
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="346"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="373"/>
         <source>Enable combo</source>
         <translation>Activer le combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="345"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="372"/>
         <source>Ena&amp;ble</source>
         <translation>Ac&amp;tiver</translation>
     </message>
@@ -416,12 +416,14 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="151"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="278"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="292"/>
         <source>Add Combo</source>
         <translation>Ajouter un Combo</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="154"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="400"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="427"/>
         <source>New Combo</source>
         <translation>Nouveau Combo</translation>
     </message>
@@ -444,7 +446,7 @@
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="179"/>
         <location filename="../Combo/ComboTableWidget.ui" line="182"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="490"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="517"/>
         <source>Edit Combo</source>
         <translation>Modifier le Combo</translation>
     </message>
@@ -461,7 +463,7 @@
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="193"/>
         <location filename="../Combo/ComboTableWidget.ui" line="196"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="436"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="463"/>
         <source>Duplicate Combo</source>
         <translation>Dupliquer le Combo</translation>
     </message>
@@ -522,7 +524,7 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="256"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="593"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="620"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -542,69 +544,105 @@
         <translation></translation>
     </message>
     <message>
+        <location filename="../Combo/ComboTableWidget.ui" line="275"/>
+        <source>&amp;Strict</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.ui" line="281"/>
+        <source>Use strict matching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.ui" line="284"/>
+        <source>Ctrl+Shift+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.ui" line="289"/>
+        <source>&amp;Loose</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.ui" line="295"/>
+        <source>Use loose matching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.ui" line="298"/>
+        <source>Ctrl+Shift+L</source>
+        <translation type="unfinished">Ctrl+Maj+L</translation>
+    </message>
+    <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="71"/>
         <source>&amp;Combos</source>
         <translation>&amp;Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="350"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="78"/>
+        <source>Matching Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="377"/>
         <source>Disa&amp;ble</source>
         <translation>Désa&amp;ctiver</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="351"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="378"/>
         <source>Disable combo</source>
         <translation>Désactiver le combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="405"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="432"/>
         <source>The combo could not be added to the list.</source>
         <translation>Le combo n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="414"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="445"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="471"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="495"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="550"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="582"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="602"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="349"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="441"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="472"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="498"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="522"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="577"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="609"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="629"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="434"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="461"/>
         <source>The combo could not be duplicated: invalid index.</source>
         <translation>Le combo n&apos;a pas pu être dupliqué.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="439"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="466"/>
         <source>The duplicated combo could not added to the list.</source>
         <translation>Le combo dupliqué n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="458"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="485"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>Êtes-vous sûr de vouloir effacer les combos selectionnés?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="459"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="486"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>Êtes-vous sûr de vouloir effacer le combo selectionné?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="460"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="487"/>
         <source>Delete Combo?</source>
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="565"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="592"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="582"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="602"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="609"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="629"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>
