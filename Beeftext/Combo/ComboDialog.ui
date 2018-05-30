@@ -205,6 +205,8 @@
   <tabstop>editName</tabstop>
   <tabstop>comboGroup</tabstop>
   <tabstop>buttonNewGroup</tabstop>
+  <tabstop>comboMatching</tabstop>
+  <tabstop>editKeyword</tabstop>
   <tabstop>editSnippet</tabstop>
   <tabstop>buttonOk</tabstop>
   <tabstop>buttonCancel</tabstop>

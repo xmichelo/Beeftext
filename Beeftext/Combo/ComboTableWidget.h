@@ -49,7 +49,7 @@ private: // member functions
    void setupKeyboadShortcuts(); ///< Setup the keyboard shortcuts
    void setupCombosMenu(); ///< Setup the 'Combos' menu
    void setupContextMenu(); ///< Setup the context menu
-   qint32 getSelectedComboCount() const; ///< Get the number of selected combo in the combo table
+   qint32 selectedComboCount() const; ///< Get the number of selected combo in the combo table
    SpCombo getSelectedCombo() const; ///< Get the first selected combo
    QList<qint32> getSelectedComboIndexes() const; ///< Retrieve the list indexes of the selected combos
    QList<SpCombo> getSelectedCombos() const; ///< Retrieve the list of the selected combos
@@ -57,6 +57,7 @@ private: // member functions
    void resizeColumnsToContents() const; ///< Resize the columns to fit the content
    std::set<SpGroup> groupsOfSelectedCombos() const; ///< Return a set containing the groups of the selected combos
    void changeMatchingModeOfSelectedCombos(bool looseMatching); ///< Change the matching mode of the selected combos
+   bool doSelectedCombosHaveSameMathchingMode(bool *outUseLooseMatching) const; ///< Check whether the selected items all have the same 
 
 private slots:
    void updateGui() const; ///< Update the GUI state
@@ -80,6 +81,7 @@ private slots:
    void onContextMenuRequested() const; ///< Slot for the combo table context menu
    void onDoubleClick(); ///< Slot for the double clicking in the table view
    void onComboChangedGroup(); ///< Slot for when some combos groups have been changed
+   void onContextMenuAboutToShow() const; ///< Slot called when a context menu is about to be shown
    void onMoveToGroupMenuAboutToShow() const; ///< Slot called when a combo menu is about to show
    void onMoveToGroupMenuTriggered(QAction* action); ///< slot for the triggering of a action in the 'move' menu
 

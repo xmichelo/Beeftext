@@ -9,12 +9,13 @@
 #include "ComboManager.h"
 
 
-QString resolveEscapingInVariableParameter(QString paramStr); ///< Resolve the escaped characters ( \\} and \\\\ in a variable parameter
+namespace {
 
 
 //**********************************************************************************************************************
-/// \param[in] paramStr The variable parameter
-/// \return The parameter where the escaped characters have been resolved
+/// \brief Resolve the escaped characters ( \\} and \\\\ in a variable parameter.
+/// \param[in] paramStr The variable parameter.
+/// \return The parameter where the escaped characters have been resolved.
 //**********************************************************************************************************************
 QString resolveEscapingInVariableParameter(QString paramStr)
 {
@@ -24,11 +25,15 @@ QString resolveEscapingInVariableParameter(QString paramStr)
 }
 
 
+}
+
+
 //**********************************************************************************************************************
-/// \param[in] variable The variable, without the enclosing #{}
+/// \brief Compute the value of a variable.
+/// \param[in] variable The variable, without the enclosing #{}.
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
-/// avoid endless recursion
-/// \return The result of evaluating the variable
+/// avoid endless recursion.
+/// \return The result of evaluating the variable.
 //**********************************************************************************************************************
 QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubCombos)
 {
@@ -52,7 +57,7 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
    QString const customDateTimeVariable = "dateTime:";
    if (variable.startsWith(customDateTimeVariable))
    {
-      QString const formatString = resolveEscapingInVariableParameter(variable.right(variable.size() 
+      QString const formatString = resolveEscapingInVariableParameter(variable.right(variable.size()
          - customDateTimeVariable.size()));
       return formatString.isEmpty() ? QString() : systemLocale.toString(QDateTime::currentDateTime(), formatString);
    }
@@ -60,18 +65,18 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
    QString const comboVariable = "combo:";
    if (variable.startsWith(comboVariable))
    {
-      QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() - 
+      QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() -
          comboVariable.size()));
       if (forbiddenSubCombos.contains(comboName))
          return fallbackResult;
       ComboList const& combos = ComboManager::instance().comboListRef();
-      ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(), 
+      ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(),
          [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
-      
-      return combos.end() == it ? fallbackResult 
-          : (*it)->evaluatedSnippet(nullptr, forbiddenSubCombos << comboName);// forbiddenSubcombos is intended at avoiding endless recursion
+
+      return combos.end() == it ? fallbackResult
+         : (*it)->evaluatedSnippet(nullptr, forbiddenSubCombos << comboName);
+      // forbiddenSubcombos is intended at avoiding endless recursion
    }
 
-   return fallbackResult ; // we could not recognize the variable, so we put it back in the result
+   return fallbackResult; // we could not recognize the variable, so we put it back in the result
 }
-

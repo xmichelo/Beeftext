@@ -19,9 +19,16 @@
 
 
 namespace {
+
+
 qint32 const kMinNameColumnDefaultWidth = 200; ///< The maximum default width in pixels of the name column
 qint32 const kMaxNameColumnDefaultWidth = 500; ///< The maximum default width in pixels of the name column
-QString moveMenuTitle() { return QObject::tr("Move To", "Move entry in the Combo context menu"); }///< The title for the Move entry in the menu
+char const* kPropMatchingModeMenu("matchingMenu"); ///< The matching menu property
+char const* kPropMoveToMenu("moveMenu"); ///< The matching menu property
+
+QString moveMenuTitle() { return QObject::tr("Move To", "Move entry in the Combo context menu"); }
+
+
 }
 
 
@@ -90,6 +97,9 @@ QMenu* ComboTableWidget::createMenu(QWidget* parent) const
    menu->addAction(ui_.actionImportCombos);
    menu->addAction(ui_.actionExportCombo);
    menu->addAction(ui_.actionExportAllCombos);
+   menu->setProperty(kPropMoveToMenu, QVariant::fromValue(moveToMenu));
+   menu->setProperty(kPropMatchingModeMenu, QVariant::fromValue(matchingModeMenu));
+   connect(menu, &QMenu::aboutToShow, this, &ComboTableWidget::onContextMenuAboutToShow);
    connect(moveToMenu, &QMenu::triggered, this, &ComboTableWidget::onMoveToGroupMenuTriggered);
    connect(moveToMenu, &QMenu::aboutToShow, this, &ComboTableWidget::onMoveToGroupMenuAboutToShow);
    return menu;
@@ -223,7 +233,7 @@ void ComboTableWidget::setupContextMenu()
 //**********************************************************************************************************************
 /// \return The number of selected combos
 //**********************************************************************************************************************
-qint32 ComboTableWidget::getSelectedComboCount() const
+qint32 ComboTableWidget::selectedComboCount() const
 {
    return ui_.tableComboList->selectionModel()->selectedRows().size();
 }
@@ -340,6 +350,7 @@ void ComboTableWidget::changeMatchingModeOfSelectedCombos(bool const looseMatchi
       for (SpCombo const& combo: combos)
          if (combo)
             combo->setUseLooseMatching(looseMatching);
+      this->updateGui();
       QString errorMessage;
       if (!ComboManager::instance().saveComboListToFile(&errorMessage))
          throw xmilib::Exception(errorMessage);
@@ -347,8 +358,29 @@ void ComboTableWidget::changeMatchingModeOfSelectedCombos(bool const looseMatchi
    catch (xmilib::Exception const& e)
    {
       QMessageBox::critical(this, tr("Error"), e.qwhat());
-   } 
+   }
+}
 
+
+//**********************************************************************************************************************
+/// \param[out] outUseLooseMatching if not null and if the function return true, this variable is true if all
+/// combo use loose matching, false is they all use strict matching. If the function returns false, the content of
+/// this variable is undetermined
+/// \return true if and only if all selected combo have the same matching mode
+/// \return false if there is not selected combo
+//**********************************************************************************************************************
+bool ComboTableWidget::doSelectedCombosHaveSameMathchingMode(bool* outUseLooseMatching) const
+{
+   QList<SpCombo> const combos = this->getSelectedCombos();
+   if (combos.isEmpty())
+      return false;
+   bool const useLooseMatching = combos.front()->useLooseMatching();
+   for (auto it = combos.begin() + 1; it != combos.end(); ++it)
+      if (useLooseMatching != (*it)->useLooseMatching())
+         return false;
+   if (outUseLooseMatching)
+      *outUseLooseMatching = useLooseMatching;
+   return true;
 }
 
 
@@ -357,10 +389,12 @@ void ComboTableWidget::changeMatchingModeOfSelectedCombos(bool const looseMatchi
 //**********************************************************************************************************************
 void ComboTableWidget::updateGui() const
 {
-   qint32 const selectedCount = this->getSelectedComboCount();
+   qint32 const selectedCount = this->selectedComboCount();
    bool const listIsEmpty = (ComboManager::instance().comboListRef().size() == 0);
    bool const hasOneSelected = (1 == selectedCount);
    bool const hasOneOrMoreSelected = (selectedCount > 0);
+   bool allComboUseLooseMatching = false;
+   bool const combosHaveSameMatchingMode = this->doSelectedCombosHaveSameMathchingMode(&allComboUseLooseMatching);
    ui_.actionDuplicateCombo->setEnabled(hasOneSelected);
    ui_.actionDeleteCombo->setEnabled(hasOneOrMoreSelected);
    ui_.actionEditCombo->setEnabled(hasOneSelected);
@@ -368,7 +402,10 @@ void ComboTableWidget::updateGui() const
    ui_.actionEnableDisableCombo->setEnabled(hasOneSelected);
    ui_.actionExportCombo->setEnabled(hasOneOrMoreSelected);
    ui_.actionExportAllCombos->setEnabled(!listIsEmpty);
-
+   ui_.actionMatchingModeStrict->setEnabled(hasOneOrMoreSelected && ((!combosHaveSameMatchingMode) ||
+      (allComboUseLooseMatching)));
+   ui_.actionMatchingModeLoose->setEnabled(hasOneOrMoreSelected && ((!combosHaveSameMatchingMode) ||
+      (!allComboUseLooseMatching)));
    QString enableDisableText = tr("Ena&ble");
    QString enableDisableToolTip = tr("Enable combo");
    if ((hasOneSelected)
@@ -479,7 +516,7 @@ void ComboTableWidget::onActionDuplicateCombo()
 //**********************************************************************************************************************
 void ComboTableWidget::onActionDeleteCombo()
 {
-   qint32 const count = this->getSelectedComboCount();
+   qint32 const count = this->selectedComboCount();
    if (count < 1)
       return;
    QString const question = count > 1 ? tr("Are you sure you want to delete the selected combos?")
@@ -683,7 +720,7 @@ void ComboTableWidget::onContextMenuRequested() const
 //**********************************************************************************************************************
 void ComboTableWidget::onDoubleClick()
 {
-   switch (this->getSelectedComboCount())
+   switch (this->selectedComboCount())
    {
    case 0:
       this->onActionNewCombo();
@@ -709,6 +746,27 @@ void ComboTableWidget::onComboChangedGroup()
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboTableWidget::onContextMenuAboutToShow() const
+{
+   QMenu* menu = dynamic_cast<QMenu*>(this->sender());
+   if (!menu)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve context menu.").arg(__FUNCTION__));
+   QMenu* moveToMenu = qvariant_cast<QMenu*>(menu->property(kPropMoveToMenu));
+   if (!moveToMenu)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve 'Move To' menu.").arg(__FUNCTION__));
+   QMenu* matchingModeMenu = qvariant_cast<QMenu*>(menu->property(kPropMatchingModeMenu));
+   if (!matchingModeMenu)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve 'Matching Mode' menu.")
+         .arg(__FUNCTION__));
+   bool const hasOneOrMoreSelected = this->selectedComboCount() > 0;
+   moveToMenu->setEnabled(hasOneOrMoreSelected);
+   matchingModeMenu->setEnabled(hasOneOrMoreSelected);
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboTableWidget::onMoveToGroupMenuAboutToShow() const
@@ -721,6 +779,7 @@ void ComboTableWidget::onMoveToGroupMenuAboutToShow() const
    if (notInGroup.size() > 1) ///< If the selected combos belong to more than one group, we do not disabled any
       notInGroup.clear();
    ComboManager::instance().groupListRef().fillMenu(menu, notInGroup);
+   menu->setEnabled(this->selectedComboCount());
 }
 
 
