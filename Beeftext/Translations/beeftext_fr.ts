@@ -98,7 +98,7 @@
     <message>
         <location filename="../Combo/ComboDialog.ui" line="114"/>
         <source>Matching</source>
-        <translation type="unfinished">Mode de déclenchement</translation>
+        <translation>Mode de déclenchement</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="125"/>
@@ -546,32 +546,32 @@
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="275"/>
         <source>&amp;Strict</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="281"/>
         <source>Use strict matching.</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser le déclenchement strict.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="284"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Maj+S</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="289"/>
         <source>&amp;Loose</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Permissif</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="295"/>
         <source>Use loose matching.</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser le déclenchement permissif.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="298"/>
         <source>Ctrl+Shift+L</source>
-        <translation type="unfinished">Ctrl+Maj+L</translation>
+        <translation>Ctrl+Maj+L</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="78"/>
@@ -581,7 +581,7 @@
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="85"/>
         <source>Matching Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode de Déclenchement</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="414"/>
