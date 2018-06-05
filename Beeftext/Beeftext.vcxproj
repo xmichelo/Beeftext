@@ -72,10 +72,10 @@
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;Qt5Multimediad.lib;Qt5Networkd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy /Y $(QTDIR)\translations\qtbase_fr.qm $(ProjectDir)Translations\ &amp;&amp; copy /Y $(ProjectDir)..\Submodules\XMiLib\Translations\xmilib_fr.qm $(ProjectDir)Translations\ &amp;&amp; $(QTDIR)\bin\lrelease.exe -silent $(ProjectDir)Translations\beeftext_fr.ts</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -command "$(SolutionDir)Scripts\PowerShell\CompileTranslationFiles.ps1 -dstDir $(OutDir)Translations " &gt;NUL</Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>Copying XMiLib and Qt built-in  translation files</Message>
+      <Message>Compiling translation files</Message>
     </PreBuildEvent>
     <QtMoc>
       <QTDIR>$(QTDIR)</QTDIR>
@@ -123,10 +123,10 @@
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5Multimedia.lib;Qt5Network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy /Y $(QTDIR)\translations\qtbase_fr.qm $(ProjectDir)Translations\ &amp;&amp; copy /Y $(ProjectDir)..\Submodules\XMiLib\Translations\xmilib_fr.qm $(ProjectDir)Translations\ &amp;&amp; $(QTDIR)\bin\lrelease.exe -silent $(ProjectDir)Translations\beeftext_fr.ts</Command>
+      <Command>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -command "$(SolutionDir)Scripts\PowerShell\CompileTranslationFiles.ps1 -dstDir $(OutDir)Translations " &gt;NUL</Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>Copying XMiLib and Qt built-in  translation files</Message>
+      <Message>Compiling translation files</Message>
     </PreBuildEvent>
     <QtMoc>
       <QTDIR>$(QTDIR)</QTDIR>
