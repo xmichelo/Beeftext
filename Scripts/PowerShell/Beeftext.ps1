@@ -6,61 +6,17 @@
 # Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
-$vsPath = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com"
-
-#***********************************************************************************************************************
-# Returns the absolute path obtain by merging path1 and path2
-#***********************************************************************************************************************
-function absolutePath([String]$path)
-{
-   [System.IO.Path]::GetFullPath($path)
-}
-
-
-#***********************************************************************************************************************
-# Returns the absolute path obtain by merging path1 and path2
-#***********************************************************************************************************************
-function absolutePath([String]$path1, [String]$path2)
-{
-   [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($path1, $path2))
-}
-
+. (Join-Path $PSScriptRoot "..\..\Submodules\XMiLib\Scripts\PowerShell\Utils.ps1")
 
 #***********************************************************************************************************************
 # useful variable declarations
 #***********************************************************************************************************************
-$solutionDir = absolutePath $PSScriptRoot "..\..\.."
+$solutionDir = absolutePath $PSScriptRoot "..\.."
 $sslDir =  absolutePath $solutionDir "Vendor\OpenSSL"
 $vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\Dlls"
 $nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
 $portableAppsConfigPath = absolutePath $solutionDir "Installer\PortableApps.com\Template\BeeftextPortable\App\AppInfo\appinfo.ini"
 $rcFilePath = absolutePath $solutionDir "Beeftext\Beeftext.rc"
-
-#***********************************************************************************************************************
-# Compiles a solution using Visual Studio
-#***********************************************************************************************************************
-function compileVisualStudioSolution([String]$solutionPath, [String]$configuration = "Release|x86")
-{
-   Invoke-Expression '& "$vsPath" "$solutionPath" /rebuild "$configuration"' | Out-Null
-   if (0 -ne $LASTEXITCODE)
-   {
-       Write-Error "Compilation of the application failed."
-   }
-}
-
-
-#***********************************************************************************************************************
-# Copy the Qt DLLS required by Beeftext to the destination folder
-#***********************************************************************************************************************
-function copyQtDlls([String]$dstPath)
-{
-   $qtDlls = "Qt5Core.dll", "Qt5Gui.dll", "Qt5Multimedia.dll", "Qt5Network.dll", "Qt5Widgets.dll"
-   foreach ($dll in $qtDlls) { Copy-Item -Path (absolutePath $env:QTDIR  "bin\$dll") -Destination $dstPath }
-   $folders = "audio", "imageformats", "platforms", "styles"
-   foreach ($folder in $folders) { New-Item -ItemType Directory -Force -Path (absolutePath $dstPath $folder) | Out-Null }
-   $qtPlugins = "audio\qtaudio_windows.dll", "imageformats\qico.dll", "platforms\qwindows.dll", "styles\qwindowsvistastyle.dll"
-   foreach ($dll in $qtPlugins) { Copy-Item -Path (absolutePath $env:QTDIR "plugins\$dll") -Destination (absolutePath $dstPath $dll) }    
-}
 
 
 #***********************************************************************************************************************

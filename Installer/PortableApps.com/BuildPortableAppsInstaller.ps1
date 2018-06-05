@@ -6,7 +6,7 @@
 # Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 $ErrorActionPreference = "Stop"
-. (Join-Path $PSScriptRoot "..\Resources\Powershell\Beeftext.ps1")
+. (Join-Path $PSScriptRoot "..\..\Scripts\PowerShell\Beeftext.ps1")
 
 #***********************************************************************************************************************
 # Variable definitions
@@ -18,9 +18,7 @@ $dstDataDir = absolutePath $dstDir "Data"
 $solutionPath = absolutePath $solutionDir "Beeftext.sln"
 $templateDir = absolutePath $PSScriptRoot "Template\BeeftextPortable"
 $exePath = absolutePath $solutionDir "_build\Win32\Release\Beeftext.exe"
-
 $installerGeneratorPath = "C:\Program Files (x86)\PortableApps.comInstaller\PortableApps.comInstaller.exe"
-
 $beaconFileName = "PortableApps.bin"
 
 #***********************************************************************************************************************
