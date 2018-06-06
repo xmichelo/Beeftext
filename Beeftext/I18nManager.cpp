@@ -12,11 +12,14 @@
 #include "BeeftextConstants.h"
 #include "BeeftextUtils.h"
 #include <XMiLib/Exception.h>
+#include "BeeftextGlobals.h"
 
 
 namespace {
-QList<QLocale> const kSupportedLocales = {QLocale::English, QLocale::French};
-///< The list of locales supported by the application
+
+
+   QString kStrTranslationFileMissing = "Could not find the following Qt translation file:'%1'"; ///< A string indicating a missing translation file
+   QList<QLocale> const kSupportedLocales = {QLocale::English, QLocale::French}; ///< The list of locales supported by the application
 }
 
 
@@ -124,39 +127,51 @@ QLocale I18nManager::getSelectedLocaleInCombo(QComboBox const& combo)
 //**********************************************************************************************************************
 void I18nManager::loadTranslation()
 {
-   this->removeAllTranslators();
-
-   QLocale const locale = I18nManager::locale();
-   QString const langStr = locale.name().left(2);
-   if (QLocale::English == locale.language())
-      return; // English needs no translation
-
-   // load and install qt translations (containing all translations for Qt internal strings)
-   QCoreApplication* app = QCoreApplication::instance();
-   qtTranslator_ = std::make_unique<QTranslator>(app);
-   QString const qtTransFile = QString(":/Translations/qtbase_%1.qm").arg(langStr);
-   if (!qtTranslator_->load(qtTransFile))
+   try
    {
-      qtTranslator_.reset();
-      QMessageBox::critical(nullptr, "Translation File Missing", "Could not find Qt translation file.");
-      return;
+      this->removeAllTranslators();
+
+      QLocale const locale = I18nManager::locale();
+      QString const langStr = locale.name().left(2);
+      if (QLocale::English == locale.language())
+         return; // English needs no translation
+
+      // load and install qt translations (containing all translations for Qt internal strings)
+      QCoreApplication* app = QCoreApplication::instance();
+      qtTranslator_ = std::make_unique<QTranslator>(app);
+      QDir appDir = QCoreApplication::applicationDirPath();
+      QString const qtTransFile = appDir.absoluteFilePath(QString("Translations/qtbase_%1.qm").arg(langStr));
+      if (!qtTranslator_->load(qtTransFile))
+      {
+         qtTranslator_.reset();
+         throw xmilib::Exception(kStrTranslationFileMissing.arg(qtTransFile));
+      }
+
+      // load and install application translations
+      appTranslator_ = std::make_unique<QTranslator>(app);
+      QString const btTransFile = appDir.absoluteFilePath(QString("Translations/beeftext_%1.qm").arg(langStr));
+      if (!appTranslator_->load(btTransFile))
+      {
+         qtTranslator_.reset();
+         appTranslator_.reset();
+         throw xmilib::Exception(kStrTranslationFileMissing.arg(btTransFile));
+      }
+
+      // load and install xmilib translations
+      xmilibTranslator_ = std::make_unique<QTranslator>(app);
+      QString const xlTransFile = appDir.absoluteFilePath(QString("Translations/xmilib_%1.qm").arg(langStr));
+      if (!xmilibTranslator_->load(xlTransFile))
+      {
+         qtTranslator_.reset();
+         appTranslator_.reset();
+         xmilibTranslator_.reset();
+         throw xmilib::Exception(kStrTranslationFileMissing.arg(xlTransFile));
+      }
    }
-
-   // load and install application translations
-   appTranslator_ = std::make_unique<QTranslator>(app);
-   if (!appTranslator_->load(QString(":/Translations/beeftext_%1.qm").arg(langStr)))
+   catch (xmilib::Exception const& e)
    {
-      appTranslator_.reset();
-      QMessageBox::critical(nullptr, "Translation File Missing", "Could not find application translation file.");
-      return;
-   }
-
-   // load and install xmilib translations
-   xmilibTranslator_ = std::make_unique<QTranslator>(app);
-   if (!xmilibTranslator_->load(QString(":/Translations/xmilib_%1.qm").arg(langStr)))
-   {
-      xmilibTranslator_.reset();
-      QMessageBox::critical(nullptr, "Translation File Missing", "Could not find XMiLib translation file.");
+      globals::debugLog().addError(e.qwhat());
+      QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("Translation files could not be loaded."));
       return;
    }
 

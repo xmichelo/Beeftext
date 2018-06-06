@@ -1097,7 +1097,17 @@
         <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="197"/>
+        <location filename="../I18nManager.cpp" line="174"/>
+        <source>Error</source>
+        <translation type="unfinished">Erreur</translation>
+    </message>
+    <message>
+        <location filename="../I18nManager.cpp" line="174"/>
+        <source>Translation files could not be loaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../I18nManager.cpp" line="212"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
