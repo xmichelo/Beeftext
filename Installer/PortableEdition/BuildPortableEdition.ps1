@@ -13,7 +13,10 @@ $ErrorActionPreference = "Stop"
 #***********************************************************************************************************************
 $dstDir = absolutePath $solutionDir "Installer\_build\BeeftextPortableEdition"
 $solutionPath = absolutePath $solutionDir "Beeftext.sln"
-$exePath = absolutePath $solutionDir "_build\Win32\Release\Beeftext.exe"
+$exeDir = absolutePath $solutionDir "_build\Win32\Release"
+$exePath = absolutePath $exeDir "Beeftext.exe"
+$srcTransDir = absolutePath $exeDir "translations"
+$dstTransDir = absolutePath $dstDir "translations"
 $beaconFileName = "Portable.bin"
 
 #***********************************************************************************************************************
@@ -46,3 +49,5 @@ copyVcppDlls $dstDir
 "Creating Portable Edition beacon file"
 "Do not delete this file" | Set-Content -Path (absolutePath $dstDir $beaconFileName)
 
+"Copying translation files"
+Copy-Item $srcTransDir -Destination $dstTransDir -Recurse

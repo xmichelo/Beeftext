@@ -13,11 +13,14 @@ $ErrorActionPreference = "Stop"
 #***********************************************************************************************************************
 $dstParentDir = absolutePath $solutionDir "Installer\_build\PortableApps.com"
 $dstDir = absolutePath $dstParentDir "BeeftextPortable"
-$dstBinPath = absolutePath $dstDir "App\Beeftext"
+$dstBinDir = absolutePath $dstDir "App\Beeftext"
 $dstDataDir = absolutePath $dstDir "Data"
 $solutionPath = absolutePath $solutionDir "Beeftext.sln"
 $templateDir = absolutePath $PSScriptRoot "Template\BeeftextPortable"
-$exePath = absolutePath $solutionDir "_build\Win32\Release\Beeftext.exe"
+$srcBinDir = absolutePath $solutionDir "_build\Win32\Release"
+$exePath = absolutePath $srcBinDir "Beeftext.exe"
+$srcTransDir = absolutePath $srcBinDir "translations"
+$dstTransDir = absolutePath $DstBinDir "translations"
 $installerGeneratorPath = "C:\Program Files (x86)\PortableApps.comInstaller\PortableApps.comInstaller.exe"
 $beaconFileName = "PortableApps.bin"
 
@@ -37,29 +40,33 @@ New-Item -ItemType Directory -Force -Path $dstParentDir | Out-Null
 Copy-Item -Path $templateDir -Destination $dstParentDir -Recurse -Force
 
 "Creating binary folder"
-if (Test-Path -PathType Container $dstBinPath) { Remove-Item -Path $dstBinPath -Recurse -Force }
-New-Item -ItemType Directory -Force -Path $dstBinPath | Out-Null
+if (Test-Path -PathType Container $dstBinDir) { Remove-Item -Path $dstBinDir
+ -Recurse -Force }
+New-Item -ItemType Directory -Force -Path $dstBinDir | Out-Null
 
 "Deleting Data folder"
 if (Test-Path -PathType Container $dstDataDir) { Remove-Item -Path $dstDataDir -Recurse -Force }
 
 "Copying program files to the destination folder"
-Copy-Item -Path $exePath -Destination $dstBinPath
+Copy-Item -Path $exePath -Destination $dstBinDir
 
 "Copying Qt DLL files"
-copyQtDlls $dstBinPath
+copyQtDlls $dstBinDir
 
 "Copying README.md file"
-Copy-Item -Path (absolutePath $solutionDir "README.md") -Destination $dstBinPath
+Copy-Item -Path (absolutePath $solutionDir "README.md") -Destination $dstBinDir
 
 "Copy SSL DLL files"
-copySslDlls $dstBinPath
+copySslDlls $dstBinDir
 
 "Copy Visual C++ DLL files"
-copyVcppDlls $dstBinPath
+copyVcppDlls $dstBinDir
+
+"Copying translation files"
+Copy-Item $srcTransDir -Destination $dstTransDir -Recurse
 
 "Creating PortablesApps.com beacon file"
-"Do not delete this file" | Set-Content -Path (absolutePath $dstBinPath $beaconFileName)
+"Do not delete this file" | Set-Content -Path (absolutePath $dstBinDir $beaconFileName)
 
 "Generating installer executable"
 Invoke-Expression '& "$installerGeneratorPath" "$dstDir"' | Out-Null
