@@ -31,9 +31,20 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC_MOC_OPTIONS "-bstdafx.h")
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+set(POWERSHELL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../Scripts/Powershell)
 
 
 add_definitions(-DUNICODE -D_UNICODE)
+
+
+file(TO_NATIVE_PATH "${POWERSHELL_DIR}/CompileTranslationFiles.ps1" TRANS_SRC_DIR)
+file(TO_NATIVE_PATH "${CMAKE_CURRENT_BINARY_DIR}/translations" TRANS_DST_DIR)
+
+
+add_custom_target(translations
+   COMMAND
+   powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -command \"${TRANS_SRC_DIR} ${TRANS_DST_DIR}\" >NUL
+)
 
 
 add_executable(Beeftext
@@ -111,6 +122,9 @@ add_executable(Beeftext
    Beeftext.qrc
    Beeftext.rc
 )
+
+
+add_dependencies(Beeftext translations)
 
 
 target_link_libraries(Beeftext Qt5::Core)

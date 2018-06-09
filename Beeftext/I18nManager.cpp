@@ -18,8 +18,10 @@
 namespace {
 
 
-   QString kStrTranslationFileMissing = "Could not find the following Qt translation file:'%1'"; ///< A string indicating a missing translation file
-   QList<QLocale> const kSupportedLocales = {QLocale::English, QLocale::French}; ///< The list of locales supported by the application
+QString kStrTranslationFileMissing = "Could not find the following Qt translation file:'%1'"; ///< A string indicating a missing translation file
+QList<QLocale> const kSupportedLocales = {QLocale::English, QLocale::French}; ///< The list of locales supported by the application
+
+
 }
 
 

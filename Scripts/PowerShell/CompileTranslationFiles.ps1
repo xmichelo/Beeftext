@@ -12,7 +12,8 @@ $ErrorActionPreference = "Stop"
 . (Join-Path $PSScriptRoot "Beeftext.ps1")
 
 "Performing requirement checks"
-checkQtInstallation
+$qtDir = checkQtInstallation
+
 if ([String]::IsNullOrEmpty($dstDir)) { throw "Missing parameter -dstDir <outputDirectory>" }
 
 "Creating destination folder"
