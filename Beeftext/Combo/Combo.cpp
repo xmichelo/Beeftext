@@ -453,8 +453,10 @@ SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   return std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useLooseMatching(),
+   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useLooseMatching(),
       combo.isEnabled());
+   result->setGroup(combo.group());
+   return result;
 }
 
 
