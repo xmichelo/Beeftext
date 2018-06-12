@@ -501,6 +501,9 @@ void ComboTableWidget::onActionDuplicateCombo()
          return;
       if (!comboList.append(combo))
          throw xmilib::Exception(tr("The duplicated combo could not added to the list."));
+      QString errorMessage;
+      if (!comboManager.saveComboListToFile(&errorMessage))
+         throw xmilib::Exception(errorMessage);
       this->selectCombo(combo);
       this->updateGui();
    }
