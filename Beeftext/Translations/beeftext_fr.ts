@@ -446,7 +446,7 @@
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="179"/>
         <location filename="../Combo/ComboTableWidget.ui" line="182"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="554"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="557"/>
         <source>Edit Combo</source>
         <translation>Modifier le Combo</translation>
     </message>
@@ -524,7 +524,7 @@
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="256"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="657"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="660"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -601,12 +601,12 @@
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="360"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="478"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="509"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="535"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="559"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="614"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="646"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="666"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="512"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="538"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="562"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="617"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="649"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="669"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -621,28 +621,28 @@
         <translation>Le combo dupliqué n&apos;a pas pu être ajouté à la liste.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="522"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="525"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>Êtes-vous sûr de vouloir effacer les combos selectionnés?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="523"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="526"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>Êtes-vous sûr de vouloir effacer le combo selectionné?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="524"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="527"/>
         <source>Delete Combo?</source>
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="629"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="632"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="646"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="666"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="649"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="669"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>
@@ -1097,17 +1097,17 @@
         <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="174"/>
+        <location filename="../I18nManager.cpp" line="176"/>
         <source>Error</source>
-        <translation type="unfinished">Erreur</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="174"/>
+        <location filename="../I18nManager.cpp" line="176"/>
         <source>Translation files could not be loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le chargement des fichiers de traduction a échoué.</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="212"/>
+        <location filename="../I18nManager.cpp" line="214"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
