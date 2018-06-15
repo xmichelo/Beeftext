@@ -46,7 +46,7 @@ protected: // member functions
 
 private: // member functions
    void setupTable(); ///< Setup the combo table
-   void setupKeyboadShortcuts(); ///< Setup the keyboard shortcuts
+   void setupKeyboardShortcuts(); ///< Setup the keyboard shortcuts
    void setupCombosMenu(); ///< Setup the 'Combos' menu
    void setupContextMenu(); ///< Setup the context menu
    qint32 selectedComboCount() const; ///< Get the number of selected combo in the combo table

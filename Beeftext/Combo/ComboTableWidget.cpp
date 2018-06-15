@@ -43,7 +43,7 @@ ComboTableWidget::ComboTableWidget(QWidget* parent)
 {
    ui_.setupUi(this);
    this->setupTable();
-   this->setupKeyboadShortcuts();
+   this->setupKeyboardShortcuts();
    this->setupCombosMenu();
    this->setupContextMenu();
    this->updateGui();
@@ -192,7 +192,7 @@ void ComboTableWidget::setupTable()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ComboTableWidget::setupKeyboadShortcuts()
+void ComboTableWidget::setupKeyboardShortcuts()
 {
    // Most shortcuts are set via the actions in the widget UI form. However, shortcuts work only if the action are
    // used. Although actions are not used in the form itself, they are used in the menu, instead for the ones that are
