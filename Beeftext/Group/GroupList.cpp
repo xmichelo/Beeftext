@@ -433,7 +433,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
    qint32 const listSize = groups_.size();
    if ((dropIndex < 0) || (groupIndex < 0) || (groupIndex >= listSize))
       return false;
-   SpGroup const& group = groups_[groupIndex];
+   SpGroup const group = groups_[groupIndex];
    if (!group)
       return false;
 
