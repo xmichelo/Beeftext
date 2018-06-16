@@ -1,8 +1,8 @@
 {
    "versionMajor": 1,
-   "versionMinor": 4,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.4/Beeftext-1.4-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.4/Beeftext-1.4-PortableEdition.zip",
-   "sha256Sum": "dc81ea96e6563525d74a528143aced26774d4bfd575cc09bcfd440abb001d302",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v1.4 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body> <ul><li><span style=\"font-weight:600;\">Loose matching</span> is now available (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/78\">#78</a>). Check the <a href=\"https://github.com/xmichelo/Beeftext/wiki/Matching-mode:-strict-vs-loose\">dedicated wiki page</a> for details.</li><li>Some minor bugs have been fixed (including issue <a href=\"https://github.com/xmichelo/Beeftext/issues/80\">#80</a>).</li></ul></body></html>"
+   "versionMinor": 5,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.5/Beeftext-1.5-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.5",
+   "sha256Sum": "4484a811d01159fdb9069b138530ff2a0eb7cc6e67bd3a27ddea023a2b872833",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v1.5 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body> <ul><li><span style=\"font-weight:600;\">Translation files are not embedded into the executable anymore.</li><li>Duplicated combos were not saved properly (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/83\">#83</a>).</li><li>Combo group was not copied when duplicating a combo (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/84\">#84</a>).</li><li>Fixed a crash occurring when groups were moved using drag and drop (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/85\">#85</a>).</li></ul></body></html>"
 }
