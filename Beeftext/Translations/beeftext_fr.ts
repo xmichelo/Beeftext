@@ -126,85 +126,85 @@
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="77"/>
+        <location filename="../Combo/ComboDialog.cpp" line="103"/>
         <source>&amp;Insert Variable</source>
         <translation>&amp;Insérer une Variable</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="83"/>
+        <location filename="../Combo/ComboDialog.cpp" line="109"/>
         <source>&amp;Date/Time</source>
         <translation>&amp;Date/Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="87"/>
+        <location filename="../Combo/ComboDialog.cpp" line="113"/>
         <source>&amp;Time</source>
         <translation>&amp;Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="93"/>
+        <location filename="../Combo/ComboDialog.cpp" line="119"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation>Date &amp;&amp; Heure &amp;Personnalisée</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="84"/>
+        <location filename="../Combo/ComboDialog.cpp" line="110"/>
         <source>D&amp;ate</source>
         <translation>D&amp;ate</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="79"/>
+        <location filename="../Combo/ComboDialog.cpp" line="105"/>
         <source>Clip&amp;board Content</source>
         <translation>&amp;Contenu du Presse-Papier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="90"/>
+        <location filename="../Combo/ComboDialog.cpp" line="116"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation>Dat&amp;e &amp;&amp; Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="98"/>
+        <location filename="../Combo/ComboDialog.cpp" line="124"/>
         <source>C&amp;ursor Position</source>
         <translation>Position du C&amp;urseur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="101"/>
+        <location filename="../Combo/ComboDialog.cpp" line="127"/>
         <source>Co&amp;mbo</source>
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="105"/>
+        <location filename="../Combo/ComboDialog.cpp" line="131"/>
         <source>&amp;About Variables</source>
         <translation>&amp;À Propos des Variables</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="139"/>
-        <location filename="../Combo/ComboDialog.cpp" line="145"/>
-        <location filename="../Combo/ComboDialog.cpp" line="152"/>
-        <location filename="../Combo/ComboDialog.cpp" line="164"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
+        <location filename="../Combo/ComboDialog.cpp" line="171"/>
+        <location filename="../Combo/ComboDialog.cpp" line="178"/>
+        <location filename="../Combo/ComboDialog.cpp" line="190"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="139"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
         <source>The snippet text is empty.</source>
         <translation>Le snippet est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="145"/>
+        <location filename="../Combo/ComboDialog.cpp" line="171"/>
         <source>The keyword is invalid.</source>
         <translation>Le mot-clé est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="152"/>
+        <location filename="../Combo/ComboDialog.cpp" line="178"/>
         <source>The group is invalid.</source>
         <translation>Le groupe est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="164"/>
+        <location filename="../Combo/ComboDialog.cpp" line="190"/>
         <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
         <translation>Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="214"/>
+        <location filename="../Combo/ComboDialog.cpp" line="244"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
@@ -1156,6 +1156,16 @@
         <source>Move To</source>
         <comment>Move entry in the Combo context menu</comment>
         <translation>Déplacer Dans</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="29"/>
+        <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="33"/>
+        <source>Do not show this warning again.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

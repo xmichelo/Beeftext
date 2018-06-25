@@ -27,6 +27,7 @@ namespace {
    QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
    QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
    QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
+   QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
    QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
    QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
    QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
@@ -41,6 +42,7 @@ namespace {
    bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
    bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
    bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+   bool const kDefaultValueWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
    bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
    QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
       QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
@@ -110,6 +112,7 @@ void PreferencesManager::reset()
    this->setUseClipboardForComboSubstitution(kDefaultvalueUseClipboardForComboSubstitution);
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
+   this->setWarnAboutShortComboKeywords(kDefaultValueWarnAboutShortComboKeyword);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
    this->setLocale(I18nManager::validateLocale(QLocale::system()));
@@ -360,6 +363,24 @@ void PreferencesManager::setUseAutomaticSubstitution(bool value)
 bool PreferencesManager::useAutomaticSubstitution() const
 {
    return cachedUseAutomaticSubstitution_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The new value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setWarnAboutShortComboKeywords(bool value) const
+{
+   settings_->setValue(kKeyWarnAboutShortComboKeyword, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::warnAboutShortComboKeywords() const
+{
+   return this->readSettings<bool>(kKeyWarnAboutShortComboKeyword, kDefaultValueWarnAboutShortComboKeyword);
 }
 
 
