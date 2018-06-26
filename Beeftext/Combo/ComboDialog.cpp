@@ -20,13 +20,15 @@ namespace {
 
 
 //**********************************************************************************************************************
+/// \param[in] keyword The keyword.
 /// \param[in] parent The parent widget of the dialog.
 /// \return true if and only if the user decided to proceed with the short keyword.
 //**********************************************************************************************************************
-bool showShortKeywordConfirmationDialog(QWidget* parent = nullptr)
+bool showShortKeywordConfirmationDialog(QString const& keyword, QWidget* parent = nullptr)
 {
    QMessageBox msgBox(parent);
-   msgBox.setText(QObject::tr("The keyword is very short. Are you sure you want to use the keyword '%1'?"));
+   msgBox.setText(QObject::tr("The keyword is very short. Are you sure you want to use the keyword '%1'?")
+      .arg(keyword));
    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
    msgBox.setDefaultButton(QMessageBox::No);
    msgBox.setEscapeButton(QMessageBox::No);
@@ -224,7 +226,7 @@ void ComboDialog::onActionOk()
       return;
    QString const keyword = ui_.editKeyword->text().trimmed();
    if (PreferencesManager::instance().warnAboutShortComboKeywords() && (keyword.size() < 3) 
-      && (!showShortKeywordConfirmationDialog(this)))
+      && (!showShortKeywordConfirmationDialog(keyword, this)))
       return;
    combo_->setName(ui_.editName->text().trimmed());
    combo_->setGroup(ui_.comboGroup->currentGroup());
