@@ -253,6 +253,17 @@ void PreferencesDialog::onActionRestoreBackup()
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onActionResetWarnings()
+{
+   if (QMessageBox::Yes == QMessageBox::question(this, tr("Reset Warnings"), tr("Are you sure you want to reset "
+      "all warnings?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
+      prefs_.resetWarnings();
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void PreferencesDialog::onActionOk()

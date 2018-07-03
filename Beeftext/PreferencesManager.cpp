@@ -116,11 +116,21 @@ void PreferencesManager::reset()
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
    this->setLocale(I18nManager::validateLocale(QLocale::system()));
+   this->resetWarnings();
    if (!isInPortableMode())
    {
       this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin);
       this->setComboListFolderPath(globals::appDataDir());
    }
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::resetWarnings() const
+{
+   this->setWarnAboutShortComboKeywords(true);
 }
 
 

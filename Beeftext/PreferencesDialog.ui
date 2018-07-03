@@ -405,6 +405,19 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="buttonResetWarnings">
+       <property name="toolTip">
+        <string>Reset the preferences to their default values.</string>
+       </property>
+       <property name="text">
+        <string>Reset &amp;Warnings</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -451,8 +464,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>663</x>
-     <y>508</y>
+     <x>625</x>
+     <y>499</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -467,8 +480,8 @@
    <slot>onActionOk()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>582</x>
-     <y>508</y>
+     <x>544</x>
+     <y>499</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -483,8 +496,8 @@
    <slot>onActionChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>503</x>
-     <y>346</y>
+     <x>615</x>
+     <y>405</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -499,8 +512,8 @@
    <slot>onActionChangeShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>419</x>
-     <y>176</y>
+     <x>456</x>
+     <y>203</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -531,8 +544,8 @@
    <slot>onActionResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>584</x>
-     <y>346</y>
+     <x>696</x>
+     <y>405</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -547,8 +560,8 @@
    <slot>onActionResetComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>500</x>
-     <y>176</y>
+     <x>537</x>
+     <y>203</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -563,8 +576,8 @@
    <slot>onActionRestoreBackup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>259</x>
-     <y>377</y>
+     <x>296</x>
+     <y>436</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -579,8 +592,8 @@
    <slot>onActionApply()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>594</x>
-     <y>488</y>
+     <x>706</x>
+     <y>499</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -604,6 +617,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonResetWarnings</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onActionResetWarnings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>125</x>
+     <y>486</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>495</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionOk()</slot>
@@ -624,5 +653,6 @@
   <slot>onActionRestoreBackup()</slot>
   <slot>onActionApply()</slot>
   <slot>updateGui()</slot>
+  <slot>onActionResetWarnings()</slot>
  </slots>
 </ui>

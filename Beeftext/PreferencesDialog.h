@@ -45,7 +45,8 @@ private slots:
    void onActionResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action
    void onActionChangeShortcut(); ///< Slot for the 'Change shortcut' action
    void onActionResetComboTriggerShortcut(); ///< slot for the 'Reset combo trigger shortcut'
-   void onActionRestoreBackup(); ///< Slot for the 'Restore backup action
+   void onActionRestoreBackup(); ///< Slot for the 'Restore backup' action
+   void onActionResetWarnings(); ///< Slot for teh 'Reset warnings' action
    void onActionOk(); ///< Slot for the OK button
    void onActionApply(); ///< Slot for the Apply button
    void onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo); ///< Slot for the availability of an update

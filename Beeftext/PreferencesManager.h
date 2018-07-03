@@ -30,6 +30,7 @@ public: // member functions
 	PreferencesManager& operator=(PreferencesManager const&) = delete; ///< Disabled assignment operator
 	PreferencesManager& operator=(PreferencesManager&&) = delete; ///< Disabled move assignment operator
    void reset(); ///< Reset the preferences to their default values
+   void resetWarnings() const; ///< Reset the warnings
    QString getInstalledApplicationPath() const; ///< Retrieve the path of the installed application
    void setAlreadyLaunched() const; ///< Set the value for the 'First Launch' preference to false
    bool alreadyLaunched() const; ///< Test whether this is the first time the application is launched
