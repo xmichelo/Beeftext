@@ -222,7 +222,7 @@ bool ComboManager::setEnabled(bool enabled)
 void ComboManager::checkAndPerformSubstitution()
 {
    VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(), 
-      [&](SpCombo const& combo) -> bool {return combo && combo->matchesForInput(currentText_); });
+      [&](SpCombo const& combo) -> bool {return combo && combo->isEnabled() && combo->matchesForInput(currentText_); });
    if (comboList_.end() == it)
       return;
 
