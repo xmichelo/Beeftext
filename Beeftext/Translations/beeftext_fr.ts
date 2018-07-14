@@ -1113,22 +1113,27 @@
         <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="176"/>
+        <location filename="../I18nManager.cpp" line="199"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="176"/>
-        <source>Translation files could not be loaded.</source>
-        <translation>Le chargement des fichiers de traduction a échoué.</translation>
+        <location filename="../I18nManager.cpp" line="199"/>
+        <source>Cannot load translation:
+%1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="214"/>
+        <source>Translation files could not be loaded.</source>
+        <translation type="vanished">Le chargement des fichiers de traduction a échoué.</translation>
+    </message>
+    <message>
+        <location filename="../I18nManager.cpp" line="146"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="96"/>
+        <location filename="../main.cpp" line="109"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>

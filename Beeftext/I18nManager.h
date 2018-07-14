@@ -16,7 +16,6 @@
 #include <memory>
 
 
-
 //**********************************************************************************************************************
 /// \brief Internationalization (i18n) manager class
 //**********************************************************************************************************************
@@ -29,6 +28,7 @@ public: // static functions
    static void fillLocaleCombo(QComboBox& combo); ///< Fill a combo box with the available locale
    static void selectLocaleInCombo(QLocale const& locale, QComboBox& combo); ///< Select a locale in a locale combo
    static QLocale getSelectedLocaleInCombo(QComboBox const& combo); ///< Return the currently selected locale in a locale combo
+   static QLocale locale(); ///< Get the current locale
 
 public: // member functions
    I18nManager(I18nManager const&) = delete; ///< Disabled copy constructor
@@ -36,7 +36,6 @@ public: // member functions
 	~I18nManager() = default; ///< Default destructor
    I18nManager& operator=(I18nManager const&) = delete; ///< Disabled assignment operator
    I18nManager& operator=(I18nManager&&) = delete; ///< Disabled move assignment operator
-   static QLocale locale(); ///< Get the current locale
    void setLocale(QLocale const& locale); ///< Set the current locale
    void loadTranslation(); ///< Load the translation
    void unloadTranslation(); ///< Unload the translation

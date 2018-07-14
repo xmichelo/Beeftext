@@ -16,14 +16,15 @@ $qtDir = checkQtInstallation
 
 if ([String]::IsNullOrEmpty($dstDir)) { throw "Missing parameter -dstDir <outputDirectory>" }
 
-"Creating destination folder"
-New-Item -ItemType Directory -Force -Path $dstDir | Out-Null
+"Creating French translation folder"
+$frDir = absolutePath $dstDir "fr"
+New-Item -ItemType Directory -Force -Path $frDir | Out-Null
 
 "Compiling XMiLib French translation file"
-compileTranslationFiles (absolutePath $solutionDir "Submodules\XMiLib\XMiLib\Translations\xmilib_fr.ts") $dstDir
+compileTranslationFiles (absolutePath $solutionDir "Submodules\XMiLib\XMiLib\Translations\xmilib_fr.ts") $frDir
 
 "Compiling Beeftext French translation file"
-compileTranslationFiles (absolutePath $solutionDir "Beeftext\Translations\beeftext_fr.ts") $dstDir
+compileTranslationFiles (absolutePath $solutionDir "Beeftext\Translations\beeftext_fr.ts") $frDir
 
 "Copying Qt French translation"
-Copy-Item -Path (absolutePath $qtDir "translations\qtbase_fr.qm") -Destination $dstDir
+Copy-Item -Path (absolutePath $qtDir "translations\qtbase_fr.qm") -Destination $frDir

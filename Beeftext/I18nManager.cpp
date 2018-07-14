@@ -18,7 +18,7 @@
 namespace {
 
 
-QString kStrTranslationFileMissing = "Could not find the following Qt translation file:'%1'"; ///< A string indicating a missing translation file
+QString kStrTranslationFileMissing = "Could not load the following Qt translation file:'%1'"; ///< A string indicating a missing translation file
 QList<QLocale> const kSupportedLocales = {QLocale::English, QLocale::French}; ///< The list of locales supported by the application
 
 
@@ -125,74 +125,6 @@ QLocale I18nManager::getSelectedLocaleInCombo(QComboBox const& combo)
 
 
 //**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void I18nManager::loadTranslation()
-{
-   try
-   {
-      this->removeAllTranslators();
-
-      QLocale const locale = I18nManager::locale();
-      QString const langStr = locale.name().left(2);
-      if (QLocale::English == locale.language())
-         return; // English needs no translation
-
-      // load and install qt translations (containing all translations for Qt internal strings)
-      QCoreApplication* app = QCoreApplication::instance();
-      qtTranslator_ = std::make_unique<QTranslator>(app);
-      QDir appDir = QCoreApplication::applicationDirPath();
-      QString const qtTransFile = appDir.absoluteFilePath(QString("Translations/qtbase_%1.qm").arg(langStr));
-      if (!qtTranslator_->load(qtTransFile))
-      {
-         qtTranslator_.reset();
-         throw xmilib::Exception(kStrTranslationFileMissing.arg(qtTransFile));
-      }
-
-      // load and install application translations
-      appTranslator_ = std::make_unique<QTranslator>(app);
-      QString const btTransFile = appDir.absoluteFilePath(QString("Translations/beeftext_%1.qm").arg(langStr));
-      if (!appTranslator_->load(btTransFile))
-      {
-         qtTranslator_.reset();
-         appTranslator_.reset();
-         throw xmilib::Exception(kStrTranslationFileMissing.arg(btTransFile));
-      }
-
-      // load and install xmilib translations
-      xmilibTranslator_ = std::make_unique<QTranslator>(app);
-      QString const xlTransFile = appDir.absoluteFilePath(QString("Translations/xmilib_%1.qm").arg(langStr));
-      if (!xmilibTranslator_->load(xlTransFile))
-      {
-         qtTranslator_.reset();
-         appTranslator_.reset();
-         xmilibTranslator_.reset();
-         throw xmilib::Exception(kStrTranslationFileMissing.arg(xlTransFile));
-      }
-   }
-   catch (xmilib::Exception const& e)
-   {
-      globals::debugLog().addError(e.qwhat());
-      QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("Translation files could not be loaded."));
-      return;
-   }
-
-   QCoreApplication::installTranslator(qtTranslator_.get());
-   QCoreApplication::installTranslator(appTranslator_.get());
-   QCoreApplication::installTranslator(xmilibTranslator_.get());
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void I18nManager::unloadTranslation()
-{
-   this->removeAllTranslators();
-}
-
-
-//**********************************************************************************************************************
 /// \return The current locale
 //**********************************************************************************************************************
 QLocale I18nManager::locale()
@@ -212,6 +144,75 @@ void I18nManager::setLocale(QLocale const& locale)
    this->loadTranslation();
    QGuiApplication::setApplicationDisplayName(
       constants::kApplicationName + (isInPortableMode() ? QObject::tr(" - Portable Edition") : ""));
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void I18nManager::loadTranslation()
+{
+   try
+   {
+      this->removeAllTranslators();
+
+      QLocale const locale = I18nManager::locale();
+      QString const langStr = locale.name().left(2);
+      if (QLocale::English == locale.language())
+         return; // English needs no translation
+
+      // load and install qt translations (containing all translations for Qt internal strings)
+      QCoreApplication* app = QCoreApplication::instance();
+      qtTranslator_ = std::make_unique<QTranslator>(app);
+      QDir appDir = QCoreApplication::applicationDirPath();
+      QString const qtTransFile = appDir.absoluteFilePath(QString("Translations/%1/qtbase_%1.qm").arg(langStr));
+      if (!qtTranslator_->load(qtTransFile))
+      {
+         qtTranslator_.reset();
+         throw xmilib::Exception(kStrTranslationFileMissing.arg(qtTransFile));
+      }
+
+      // load and install application translations
+      appTranslator_ = std::make_unique<QTranslator>(app);
+      QString const btTransFile = appDir.absoluteFilePath(QString("Translations/%1/beeftext_%1.qm").arg(langStr));
+      if (!appTranslator_->load(btTransFile))
+      {
+         qtTranslator_.reset();
+         appTranslator_.reset();
+         throw xmilib::Exception(kStrTranslationFileMissing.arg(btTransFile));
+      }
+
+      // load and install xmilib translations
+      xmilibTranslator_ = std::make_unique<QTranslator>(app);
+      QString const xlTransFile = appDir.absoluteFilePath(QString("Translations/%1/xmilib_%1.qm").arg(langStr));
+      if (!xmilibTranslator_->load(xlTransFile))
+      {
+         qtTranslator_.reset();
+         appTranslator_.reset();
+         xmilibTranslator_.reset();
+         throw xmilib::Exception(kStrTranslationFileMissing.arg(xlTransFile));
+      }
+   }
+   catch (xmilib::Exception const& e)
+   {
+      globals::debugLog().addError(e.qwhat());
+      QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("Cannot load translation:\n%1")
+         .arg(e.qwhat()));
+      return;
+   }
+
+   QCoreApplication::installTranslator(qtTranslator_.get());
+   QCoreApplication::installTranslator(appTranslator_.get());
+   QCoreApplication::installTranslator(xmilibTranslator_.get());
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void I18nManager::unloadTranslation()
+{
+   this->removeAllTranslators();
 }
 
 
