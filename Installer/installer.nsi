@@ -168,10 +168,10 @@ setOutPath $INSTDIR\imageformats
 file "$%QTDIR%\plugins\imageformats\qico.dll"
 setOutPath $INSTDIR\audio
 file "$%QTDIR%\plugins\audio\qtaudio_windows.dll"
-setOutPath $INSTDIR\translations
-file "${EXE_SRC_DIR}\translations\beeftext_fr.qm"
-file "${EXE_SRC_DIR}\translations\qtbase_fr.qm"
-file "${EXE_SRC_DIR}\translations\xmilib_fr.qm"
+setOutPath $INSTDIR\translations\fr
+file "${EXE_SRC_DIR}\translations\fr\beeftext_fr.qm"
+file "${EXE_SRC_DIR}\translations\fr\qtbase_fr.qm"
+file "${EXE_SRC_DIR}\translations\fr\xmilib_fr.qm"
 
 # Add registry key for application path
 WriteRegStr HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" "AppExePath" "$INSTDIR\${APP_NAME}.exe"
@@ -258,7 +258,8 @@ Delete "$INSTDIR\imageformats\*.dll"
 RMDir  "$INSTDIR\imageformats"
 Delete "$INSTDIR\audio\*.dll"
 RMDir  "$INSTDIR\audio"
-Delete "$INSTDIR\translations\*.qm"
+Delete "$INSTDIR\translations\fr\*.qm"
+RMDir  "$INSTDIR\translations\fr"
 RMDir  "$INSTDIR\translations"
 Delete "$INSTDIR\${UNINSTALLER_FILE_NAME}"
 RMDir  "$INSTDIR"
