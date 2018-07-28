@@ -39,7 +39,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
    ui_.labelUpdateCheckStatus->setText(QString());
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
-   I18nManager::fillLocaleCombo(*ui_.comboLocale);
+   I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
    this->loadPreferences();
    if (isInPortableMode())
    {
@@ -103,7 +103,7 @@ void PreferencesDialog::savePreferences()
    prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
    prefs_.setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ :
       PreferencesManager::defaultComboTriggerShortcut());
-   prefs_.setLocale(I18nManager::getSelectedLocaleInCombo(*ui_.comboLocale));
+   prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
    prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
    prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
    if (!isInPortableMode())

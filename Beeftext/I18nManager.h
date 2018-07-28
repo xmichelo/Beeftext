@@ -24,10 +24,10 @@ class I18nManager
 {
 public: // static functions
    static I18nManager& instance(); ///< Return the only allowed instance of the class
-   static QLocale validateLocale(QLocale const& locale); ///< Validate the specified locale
-   static void fillLocaleCombo(QComboBox& combo); ///< Fill a combo box with the available locale
+   QLocale validateLocale(QLocale const& locale); ///< Validate the specified locale
+   void fillLocaleCombo(QComboBox& combo); ///< Fill a combo box with the available locale
    static void selectLocaleInCombo(QLocale const& locale, QComboBox& combo); ///< Select a locale in a locale combo
-   static QLocale getSelectedLocaleInCombo(QComboBox const& combo); ///< Return the currently selected locale in a locale combo
+   QLocale getSelectedLocaleInCombo(QComboBox const& combo); ///< Return the currently selected locale in a locale combo
    static QLocale locale(); ///< Get the current locale
 
 public: // member functions
@@ -41,10 +41,13 @@ public: // member functions
    void unloadTranslation(); ///< Unload the translation
 
 private: // member functions
-   I18nManager() = default; ///< Default constructor
+   I18nManager(); ///< Default constructor
+   void buildSupportedLocalesList(); ///< Build the list of supported locales
+   static bool isValidTranslationSubfolder(QString const& languageCode, QLocale& outLocale); ///< Check whether a translation subfolder contains a valid translation
    void removeAllTranslators(); ///< Remove and free all translators used by the application
 
 private: // data members
+   QList<QLocale> supportedLocales_; ///< The list of supported locales
    std::unique_ptr<QTranslator> qtTranslator_; ///< The translator for Qt built-in contents
    std::unique_ptr<QTranslator> appTranslator_; ///< The translator for the application contents
    std::unique_ptr<QTranslator> xmilibTranslator_; ///< The translator the the XMiLib contents

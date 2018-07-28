@@ -19,14 +19,12 @@ namespace {
 
 
 QString kStrTranslationFileMissing = "Could not load the following Qt translation file:'%1'"; ///< A string indicating a missing translation file
-QList<QLocale> const kSupportedLocales = {QLocale::English, QLocale::French}; ///< The list of locales supported by the application
 
 
 }
 
 
-void removeTranslator(std::unique_ptr<QTranslator>& translator);
-///< Remove a translator, free it and set the pointer that was pointing to it to zero
+void removeTranslator(std::unique_ptr<QTranslator>& translator); ///< Remove a translator, free it and set the pointer that was pointing to it to zero
 
 
 //**********************************************************************************************************************
@@ -52,28 +50,91 @@ I18nManager& I18nManager::instance()
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+I18nManager::I18nManager()
+{
+   this->buildSupportedLocalesList();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void I18nManager::buildSupportedLocalesList()
+{
+   supportedLocales_ = { QLocale::English }; ///< English is always supported, as no translation is required
+   QDir const transDir(globals::translationRootFolderPath());
+   if (!transDir.exists())
+      return;
+   for (QFileInfo const& info: transDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot | QDir::Readable, QDir::Name))
+   {
+      QString const languageCode = info.fileName();
+      QLocale locale;
+      if (isValidTranslationSubfolder(info.fileName(), locale))
+      {
+         supportedLocales_.append(locale);
+         globals::debugLog().addInfo(QString("A valid translation was found for %1.")
+            .arg(QLocale::languageToString(locale.language())));
+      }
+      else
+         globals::debugLog().addWarning(QString("An invalid or incomplete translation folder '%1' was detected.")
+            .arg(languageCode));
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] languageCode The two letter code for the language
+/// \param[out] outLocale The locale corresponding to languageCode. If the function returns false, the content of this
+/// variable is undetermined when the function returns.
+/// \returns true if and only if the translation folder contains a valid translation for the language described by
+//**********************************************************************************************************************
+bool I18nManager::isValidTranslationSubfolder(QString const& languageCode, QLocale& outLocale)
+{
+   if (2 != languageCode.size())
+      return false;
+   QDir const dir = QDir(globals::translationRootFolderPath()).absoluteFilePath(languageCode);
+   if (!dir.exists())
+      return false;
+   outLocale = QLocale(languageCode); // if languageCode is invalid the locale will be "C" 
+   if (QLocale::C == outLocale.language())
+      return false;
+   QStringList const files = { QString("beeftext_%1.qm").arg(languageCode), QString("qtbase_%1.qm").arg(languageCode), 
+      QString("xmilib_%1.qm").arg(languageCode) };
+   for (QString const& file: files)
+   {
+      QFileInfo const fileInfo(dir.absoluteFilePath(file));
+      if ((!fileInfo.exists()) || (!fileInfo.isFile()) || (!fileInfo.isReadable()))
+         return false;
+   }
+   return true;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] locale The locale to validate
 /// \return if locale is supported, it is returned, otherwise the default locale (English) is returned instead
 //**********************************************************************************************************************
 QLocale I18nManager::validateLocale(QLocale const& locale)
 {
-   if (kSupportedLocales.isEmpty())
+   if (supportedLocales_.isEmpty())
       throw xmilib::Exception("No locale is supported.");
 
    // first we look for a perfect match (language AND country)
-   QList<QLocale>::const_iterator it = std::find_if(kSupportedLocales.begin(), kSupportedLocales.end(),
+   QList<QLocale>::const_iterator it = std::find_if(supportedLocales_.begin(), supportedLocales_.end(),
       [&locale](QLocale const& l) -> bool
       {
          return locale.language() == l.language() && locale.country() == l.country();
       });
-   if (it != kSupportedLocales.end())
+   if (it != supportedLocales_.end())
       return *it;
 
    // if not found we try to fall back to a locale with the same language, and if not found we default to the first 
    // supported language
-   it = std::find_if(kSupportedLocales.begin(), kSupportedLocales.end(),
+   it = std::find_if(supportedLocales_.begin(), supportedLocales_.end(),
       [&locale](QLocale const& l) -> bool { return locale.language() == l.language(); });
-   return (it != kSupportedLocales.end()) ? *it : kSupportedLocales.front();
+   return (it != supportedLocales_.end()) ? *it : supportedLocales_.front();
 }
 
 
@@ -84,7 +145,7 @@ void I18nManager::fillLocaleCombo(QComboBox& combo)
 {
    QSignalBlocker blocker(&combo);
    combo.clear();
-   for (QLocale const& locale: kSupportedLocales)
+   for (QLocale const& locale: supportedLocales_)
    {
       QString languageName = locale == QLocale::English ? "English" : locale.nativeLanguageName();
       if (!languageName.isEmpty())
@@ -164,8 +225,8 @@ void I18nManager::loadTranslation()
       // load and install qt translations (containing all translations for Qt internal strings)
       QCoreApplication* app = QCoreApplication::instance();
       qtTranslator_ = std::make_unique<QTranslator>(app);
-      QDir appDir = QCoreApplication::applicationDirPath();
-      QString const qtTransFile = appDir.absoluteFilePath(QString("Translations/%1/qtbase_%1.qm").arg(langStr));
+      QDir const transDir = globals::translationRootFolderPath();
+      QString const qtTransFile = transDir.absoluteFilePath(QString("%1/qtbase_%1.qm").arg(langStr));
       if (!qtTranslator_->load(qtTransFile))
       {
          qtTranslator_.reset();
@@ -174,7 +235,7 @@ void I18nManager::loadTranslation()
 
       // load and install application translations
       appTranslator_ = std::make_unique<QTranslator>(app);
-      QString const btTransFile = appDir.absoluteFilePath(QString("Translations/%1/beeftext_%1.qm").arg(langStr));
+      QString const btTransFile = transDir.absoluteFilePath(QString("%1/beeftext_%1.qm").arg(langStr));
       if (!appTranslator_->load(btTransFile))
       {
          qtTranslator_.reset();
@@ -184,7 +245,7 @@ void I18nManager::loadTranslation()
 
       // load and install xmilib translations
       xmilibTranslator_ = std::make_unique<QTranslator>(app);
-      QString const xlTransFile = appDir.absoluteFilePath(QString("Translations/%1/xmilib_%1.qm").arg(langStr));
+      QString const xlTransFile = transDir.absoluteFilePath(QString("%1/xmilib_%1.qm").arg(langStr));
       if (!xmilibTranslator_->load(xlTransFile))
       {
          qtTranslator_.reset();

@@ -75,18 +75,6 @@ int main(int argc, char *argv[])
       if (!prefs.alreadyLaunched())
          window.show();
 
-      QStringList languages;
-      for (auto const& locale: QLocale::matchingLocales(QLocale::AnyLanguage, QLocale::AnyScript, QLocale::AnyCountry))
-      {
-         QString const code = locale.name().split('_').first();
-         if (("C" != code) && (!languages.contains(code)))
-            languages.push_back(code);
-      }
-      for (auto const& code: languages)
-         qDebug() << code;
-
-
-
       prefs.setAlreadyLaunched();
       qint32 const returnCode = QApplication::exec();
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));

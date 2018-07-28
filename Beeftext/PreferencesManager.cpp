@@ -115,7 +115,7 @@ void PreferencesManager::reset()
    this->setWarnAboutShortComboKeywords(kDefaultValueWarnAboutShortComboKeyword);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
-   this->setLocale(I18nManager::validateLocale(QLocale::system()));
+   this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
    this->resetWarnings();
    if (!isInPortableMode())
    {
@@ -213,7 +213,7 @@ QByteArray PreferencesManager::mainWindowGeometry() const
 //**********************************************************************************************************************
 QLocale PreferencesManager::locale() const
 {
-   return I18nManager::validateLocale(this->readSettings<QLocale>(kKeyLocale, QLocale::system()));
+   return I18nManager::instance().validateLocale(this->readSettings<QLocale>(kKeyLocale, QLocale::system()));
 }
 
 
