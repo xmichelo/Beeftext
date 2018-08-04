@@ -33,7 +33,6 @@ public: // member functions
    ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
 
 private: // member functions
-   void setupSnippetEditMenu(); /// Setup the editor menus
    QMenu* createComboVariableMenu(); ///< Create the combo variable menu
    void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false) const; ///< Insert some text at the current cursor position in the snippet text edit control
    bool checkAndReportInvalidCombo(); ///< Check the keyword against existing combos and report conflicts
@@ -43,14 +42,13 @@ private: // member functions
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
    void onActionNewGroup(); ///< Slot for the 'New Group' action
-   void onEditorContextMenuRequested(QPoint const& pos) const; ///< Slot for the display of the editor's context menu
+   void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu
    void updateGui() const; ///< Update the GUI state
 
 private: // data members
-   Ui::ComboDialog ui_; ///< The GUI for the dialog
-   SpCombo combo_; ///< The combo
+   Ui::ComboDialog ui_ {}; ///< The GUI for the dialog
+   SpCombo combo_ {nullptr}; ///< The combo
    ComboKeywordValidator validator_; ///< The validator for the keyword
-   QMenu* snippetEditMenu_; ///< The context menu for the snippet text editor
 };
 
 

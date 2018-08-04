@@ -61,10 +61,8 @@ bool ComboDialog::run(SpCombo& combo, QString const& title, QWidget* parent)
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags),
-     ui_(),
-     combo_(combo),
-     snippetEditMenu_(nullptr)
+   : QDialog(parent, constants::kDefaultDialogFlags)
+   , combo_(combo)
 {
    ComboManager::instance().groupListRef().ensureNotEmpty();
    if (!combo)
@@ -78,22 +76,9 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
    ui_.editSnippet->setPlainText(combo->snippet());
-   this->setupSnippetEditMenu();
+   connect(ui_.editSnippet, &QPlainTextEdit::customContextMenuRequested, this, 
+      &ComboDialog::onEditorContextMenuRequested);
    this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void ComboDialog::setupSnippetEditMenu()
-{
-   connect(ui_.editSnippet, &QPlainTextEdit::customContextMenuRequested,
-      this, &ComboDialog::onEditorContextMenuRequested);
-   snippetEditMenu_ = ui_.editSnippet->createStandardContextMenu();
-
-   snippetEditMenu_->addSeparator();
-   snippetEditMenu_->addMenu(this->createComboVariableMenu());
 }
 
 
@@ -150,7 +135,7 @@ void ComboDialog::insertTextInSnippetEdit(QString const& text, bool move1CharLef
    {
       cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
       cursor.endEditBlock();
-      ui_.editSnippet->setTextCursor(cursor); ///< Required to the cursor position change to take effect
+      ui_.editSnippet->setTextCursor(cursor); ///< Required for the cursor position change to take effect
    }
    else
       cursor.endEditBlock();
@@ -254,9 +239,12 @@ void ComboDialog::onActionNewGroup()
 //**********************************************************************************************************************
 /// \param[in] pos The position of the cursor
 //**********************************************************************************************************************
-void ComboDialog::onEditorContextMenuRequested(QPoint const& pos) const
+void ComboDialog::onEditorContextMenuRequested(QPoint const& pos)
 {
-   snippetEditMenu_->popup(ui_.editSnippet->viewport()->mapToGlobal(pos));
+   QScopedPointer<QMenu, QScopedPointerDeleteLater> menu(ui_.editSnippet->createStandardContextMenu(pos));
+   menu->addSeparator();
+   menu->addMenu(this->createComboVariableMenu());         
+   menu->exec(ui_.editSnippet->viewport()->mapToGlobal(pos));
 }
 
 
