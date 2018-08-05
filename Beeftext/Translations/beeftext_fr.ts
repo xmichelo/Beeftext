@@ -126,85 +126,85 @@
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="105"/>
+        <location filename="../Combo/ComboDialog.cpp" line="90"/>
         <source>&amp;Insert Variable</source>
         <translation>&amp;Insérer une Variable</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="111"/>
+        <location filename="../Combo/ComboDialog.cpp" line="96"/>
         <source>&amp;Date/Time</source>
         <translation>&amp;Date/Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="115"/>
+        <location filename="../Combo/ComboDialog.cpp" line="100"/>
         <source>&amp;Time</source>
         <translation>&amp;Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="121"/>
+        <location filename="../Combo/ComboDialog.cpp" line="106"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation>Date &amp;&amp; Heure &amp;Personnalisée</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="112"/>
+        <location filename="../Combo/ComboDialog.cpp" line="97"/>
         <source>D&amp;ate</source>
         <translation>D&amp;ate</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="107"/>
+        <location filename="../Combo/ComboDialog.cpp" line="92"/>
         <source>Clip&amp;board Content</source>
         <translation>&amp;Contenu du Presse-Papier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="118"/>
+        <location filename="../Combo/ComboDialog.cpp" line="103"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation>Dat&amp;e &amp;&amp; Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="126"/>
+        <location filename="../Combo/ComboDialog.cpp" line="111"/>
         <source>C&amp;ursor Position</source>
         <translation>Position du C&amp;urseur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="114"/>
         <source>Co&amp;mbo</source>
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="133"/>
+        <location filename="../Combo/ComboDialog.cpp" line="118"/>
         <source>&amp;About Variables</source>
         <translation>&amp;À Propos des Variables</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="167"/>
-        <location filename="../Combo/ComboDialog.cpp" line="173"/>
-        <location filename="../Combo/ComboDialog.cpp" line="180"/>
-        <location filename="../Combo/ComboDialog.cpp" line="192"/>
+        <location filename="../Combo/ComboDialog.cpp" line="152"/>
+        <location filename="../Combo/ComboDialog.cpp" line="158"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
+        <location filename="../Combo/ComboDialog.cpp" line="177"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="167"/>
+        <location filename="../Combo/ComboDialog.cpp" line="152"/>
         <source>The snippet text is empty.</source>
         <translation>Le snippet est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="173"/>
+        <location filename="../Combo/ComboDialog.cpp" line="158"/>
         <source>The keyword is invalid.</source>
         <translation>Le mot-clé est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="180"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
         <source>The group is invalid.</source>
         <translation>Le groupe est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="192"/>
+        <location filename="../Combo/ComboDialog.cpp" line="177"/>
         <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
         <translation>Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="246"/>
+        <location filename="../Combo/ComboDialog.cpp" line="231"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
@@ -1012,7 +1012,7 @@
     <message>
         <location filename="../PreferencesDialog.ui" line="413"/>
         <source>Reset &amp;Warnings</source>
-        <translation type="unfinished"></translation>
+        <translation>Réactiver les A&amp;vertissements</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="436"/>
@@ -1057,7 +1057,7 @@
     <message>
         <location filename="../PreferencesDialog.cpp" line="260"/>
         <source>Are you sure you want to reset all warnings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Êtes-vous sûr de vouloir réactiver tous les messages d&apos;avertissement?</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="157"/>
@@ -1077,7 +1077,7 @@
     <message>
         <location filename="../PreferencesDialog.cpp" line="260"/>
         <source>Reset Warnings</source>
-        <translation type="unfinished"></translation>
+        <translation>Réactiver les Avertissements</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="291"/>
@@ -1113,27 +1113,27 @@
         <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="199"/>
+        <location filename="../I18nManager.cpp" line="260"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="199"/>
+        <location filename="../I18nManager.cpp" line="260"/>
         <source>Cannot load translation:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de charger le fichier de traduction: %1</translation>
     </message>
     <message>
         <source>Translation files could not be loaded.</source>
         <translation type="vanished">Le chargement des fichiers de traduction a échoué.</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="146"/>
+        <location filename="../I18nManager.cpp" line="207"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="109"/>
+        <location filename="../main.cpp" line="97"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>
@@ -1181,12 +1181,12 @@
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="30"/>
         <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Le mot-clé est très court. Êtes-vous sûr de vouloir utliser le mot-clé &apos;%1&apos;?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="35"/>
         <source>Do not show this warning again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne plus afficher cet avertissement.</translation>
     </message>
 </context>
 <context>
