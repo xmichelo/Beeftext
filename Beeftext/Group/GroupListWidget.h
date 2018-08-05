@@ -33,7 +33,7 @@ public: // member functions
    void selectGroup(SpGroup const& group) const; ///< Select a group
    void selectAllCombosEntry() const; ///< select the special "All combos entry" in the list
    QMenu* menu(QWidget* parent) const; ///< Get the menu for the widget
-
+   static QString menuTitle(); ///< Return the translated menu title
 signals: 
    void selectedGroupChanged(SpGroup const& group); /// Signal emitted when the selected group changes
 

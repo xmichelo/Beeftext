@@ -59,10 +59,12 @@ private slots:
    static void onActionOpenLogFile(); ///< Slot for the 'Open Log File' action
 
 private: // data members
-   Ui::MainWindow ui_; ///< The GUI for the window
+   Ui::MainWindow ui_ {}; ///< The GUI for the window
    QSystemTrayIcon systemTrayIcon_; ///< The system tray icon
+   QMenu* groupsMenu_ { nullptr }; ///< The groups menu in the main menu
+   QMenu* combosMenu_ { nullptr }; ///< The combos menu in the main menu
 #ifndef NDEBUG
-   xmilib::StyleSheetEditor styleSheetEditor_; ///< The style sheet editor window
+   xmilib::StyleSheetEditor styleSheetEditor_ { nullptr }; ///< The style sheet editor window
 #endif // #ifndef NDEBUG
 };
 

@@ -73,9 +73,9 @@ void ComboTableWidget::runComboImportDialog(QString const& filePath)
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the menu
 //**********************************************************************************************************************
-QMenu* ComboTableWidget::createMenu(QWidget* parent) const
+QMenu* ComboTableWidget::menu(QWidget* parent) const
 {
-   QMenu* menu = new QMenu(tr("&Combos"), parent);
+   QMenu* menu = new QMenu(menuTitle(), parent);
    menu->addAction(ui_.actionNewCombo);
    menu->addAction(ui_.actionEditCombo);
    menu->addAction(ui_.actionDuplicateCombo);
@@ -103,6 +103,15 @@ QMenu* ComboTableWidget::createMenu(QWidget* parent) const
    connect(moveToMenu, &QMenu::triggered, this, &ComboTableWidget::onMoveToGroupMenuTriggered);
    connect(moveToMenu, &QMenu::aboutToShow, this, &ComboTableWidget::onMoveToGroupMenuAboutToShow);
    return menu;
+}
+
+
+//**********************************************************************************************************************
+/// \return The localized title fo the menu
+//**********************************************************************************************************************
+QString ComboTableWidget::menuTitle()
+{
+   return tr("&Combos");
 }
 
 
@@ -212,7 +221,7 @@ void ComboTableWidget::setupKeyboardShortcuts()
 //**********************************************************************************************************************
 void ComboTableWidget::setupCombosMenu()
 {
-   ui_.buttonCombos->setMenu(this->createMenu(this));
+   ui_.buttonCombos->setMenu(this->menu(this));
 }
 
 
@@ -223,7 +232,7 @@ void ComboTableWidget::setupContextMenu()
 {
    if (contextMenu_)
       contextMenu_->deleteLater();
-   contextMenu_ = this->createMenu(this);
+   contextMenu_ = this->menu(this);
    ui_.tableComboList->setContextMenuPolicy(Qt::CustomContextMenu);
    connect(ui_.tableComboList, &QTableView::customContextMenuRequested, this,
       &ComboTableWidget::onContextMenuRequested);

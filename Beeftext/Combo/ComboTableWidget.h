@@ -35,7 +35,8 @@ public: // member functions
 	ComboTableWidget& operator=(ComboTableWidget&&) = delete; ///< Disabled move assignment operator
    void setGroupListWidget(GroupListWidget* groupListWidget); ///< Set the group list widget associated with this combo
    void runComboImportDialog(QString const& filePath = QString()); ///< Run the combo import dialog
-   QMenu* createMenu(QWidget* parent) const; ///< Get the menu
+   QMenu* menu(QWidget* parent) const; ///< Get the menu
+   static QString menuTitle(); ///< Return the localized title of the menu
    void selectCombo(SpCombo const& combo) const; ///< Select a given combo
 
 public slots:

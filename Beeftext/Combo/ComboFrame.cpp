@@ -9,6 +9,8 @@
 
 #include "stdafx.h"
 #include "ComboFrame.h"
+#include "Group/GroupListWidget.h"
+#include "ComboTableWidget.h"
 
 
 //**********************************************************************************************************************

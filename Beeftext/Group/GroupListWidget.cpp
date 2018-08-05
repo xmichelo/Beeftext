@@ -104,12 +104,21 @@ void GroupListWidget::selectAllCombosEntry() const
 //**********************************************************************************************************************
 QMenu* GroupListWidget::menu(QWidget* parent) const
 {
-   QMenu* menu = new QMenu(tr("&Groups"), parent);
+   QMenu* menu = new QMenu(menuTitle(), parent);
    menu->addAction(ui_.actionNewGroup);
    menu->addAction(ui_.actionEditGroup);
    menu->addSeparator();
    menu->addAction(ui_.actionDeleteGroup);
    return menu;
+}
+
+
+//**********************************************************************************************************************
+/// \return The localized titl the the menu
+//**********************************************************************************************************************
+QString GroupListWidget::menuTitle()
+{
+   return tr("&Groups");
 }
 
 

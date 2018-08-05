@@ -13,6 +13,8 @@
 #include "PreferencesDialog.h"
 #include "PreferencesManager.h"
 #include "Combo/ComboManager.h"
+#include "Combo/ComboTableWidget.h"
+#include "Group/GroupListWidget.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
@@ -25,15 +27,13 @@ using namespace xmilib;
 //
 //**********************************************************************************************************************
 MainWindow::MainWindow()
-   : ui_()
-#ifndef NDEBUG
-     ,styleSheetEditor_(nullptr)
-#endif
 {
    ui_.setupUi(this);
+   groupsMenu_ = ui_.frameCombos->groupListWidget()->menu(this);
+   combosMenu_ = ui_.frameCombos->comboTableWidget()->menu(this);
    this->setupSystemTrayIcon();
-   this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), ui_.frameCombos->groupListWidget()->menu(this));
-   this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), ui_.frameCombos->comboTableWidget()->createMenu(this));
+   this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), groupsMenu_);
+   this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), combosMenu_);
 
    PreferencesManager& prefs = PreferencesManager::instance();
    this->restoreGeometry(prefs.mainWindowGeometry());
@@ -170,6 +170,8 @@ void MainWindow::changeEvent(QEvent* event)
    if (QEvent::LanguageChange == event->type())
    {
       ui_.retranslateUi(this);
+      groupsMenu_->setTitle(GroupListWidget::menuTitle());
+      combosMenu_->setTitle(ComboTableWidget::menuTitle());
       this->setupSystemTrayIcon();
    }
    QMainWindow::changeEvent(event);
