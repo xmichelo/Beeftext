@@ -18,7 +18,8 @@ namespace {
 
 QString const kPortableModeBeaconFileName = "Portable.bin"; ///< The name of the 'beacon' file used to detect if the application should run in portable mode
 QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The name of the 'beacon file used to detect if the app is in PortableApps mode
-QStringList const kShiftInsertPasteAppNames{ "mintty.exe", "putty.exe", "powershell.exe" }; ///< The list of application executables name that support only pasting using the Shift+Insert shortcut
+QStringList const kShiftInsertPasteAppNames{ "mintty.exe", "putty.exe", "powershell.exe", "kitty.exe", 
+   "kitty_portable.exe" }; ///< The list of application executables name that support only pasting using the Shift+Insert shortcut
 
 
 //**********************************************************************************************************************
