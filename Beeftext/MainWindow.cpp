@@ -115,17 +115,17 @@ void MainWindow::setupSystemTrayIcon()
 {
    disconnect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
    connect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
-
+   QString const pausedIndicator = tr(" - PAUSED");
    bool const enabled = ComboManager::isEnabled();
    QGuiApplication::setApplicationDisplayName(constants::kApplicationName
       + (isInPortableMode() ? tr(" - Portable Edition") : QString())
-      + (enabled ? QString() : tr(" - PAUSED")));
+      + (enabled ? QString() : pausedIndicator));
    this->setWindowTitle(QString()); // force refresh of the title bar
 
    QIcon const icon(enabled ? ":/MainWindow/Resources/BeeftextIcon.ico"
       : ":/MainWindow/Resources/BeeftextIconGrayscale.ico");
    systemTrayIcon_.setIcon(icon);
-   systemTrayIcon_.setToolTip(constants::kApplicationName);
+   systemTrayIcon_.setToolTip(constants::kApplicationName + (enabled ? "" : pausedIndicator));
    systemTrayIcon_.show();
    QGuiApplication::setWindowIcon(icon);
 
