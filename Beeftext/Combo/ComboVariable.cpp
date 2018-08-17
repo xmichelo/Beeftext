@@ -25,7 +25,46 @@ QString resolveEscapingInVariableParameter(QString paramStr)
 }
 
 
+//**********************************************************************************************************************
+/// \brief Converts a character to a Discord emoji. 
+///
+/// \note 'a space is added a the end of the returned emoji because Discord sometimes concatenates emoji. For instance
+/// to letter emoji corresponding to a country code are concatenated into a flag emoji
+///
+/// \param[in] c The character
+/// \return A string containing the emoji corresponding to the character
+/// \return A string containing a series of whitespaces if no matching emoji exists
+//**********************************************************************************************************************
+QString qcharToDiscordEmoji(QChar const& c)
+{
+   QChar const l = c.toLower();
+   if ((l >= 'a') && (l <= 'z'))
+      return QString(":regional_indicator_%1: ").arg(l);
+   QMap<QChar, QString> const substs = { { '0', ":zero: " }, { '1', ":one: " }, { '2', ":two: " }, { '3', ":three: " },
+   { '4', ":four: " }, { '5', ":five: " }, { '6', ":six: " }, { '7', ":seven: "}, { '8', ":eight: "}, 
+   { '9', ":nine: " }, { '!', ":exclamation: "}, { '?', ":question: " } };
+   return substs.value(c, "        ");
 }
+
+
+//**********************************************************************************************************************
+/// \brief Create a Discord emoji representation of the content of the clipboard
+///
+/// \return A Discord em
+//**********************************************************************************************************************
+QString discordEmojisFromClipboard()
+{
+   QClipboard const* clipboard = QGuiApplication::clipboard();
+   if (!clipboard)
+      return QString();
+   QString result;
+   for (QChar const& c : clipboard->text())
+      result += qcharToDiscordEmoji(c);
+   return result;
+}
+
+
+} // anonymous namespace
 
 
 //**********************************************************************************************************************
@@ -44,6 +83,9 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
       QClipboard const* clipboard = QGuiApplication::clipboard();
       return clipboard ? clipboard->text() : QString();
    }
+   
+   if (variable == "discordemoji") //secret variable that create text in Discord emoji from the clipboard text
+      return discordEmojisFromClipboard();
 
    if (variable == "date")
       return systemLocale.toString(QDate::currentDate());
