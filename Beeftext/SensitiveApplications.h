@@ -11,6 +11,7 @@
 #define BEEFTEXT_SENSITIVE_APPLICATIONS_H
 
 
+QStringList sensitiveApplications(); ///< Retrieve the list of sensitive applications executable file names
 bool isSensitiveApplication(QString const& appExeName); ///< Check wether a app exe name is the name of a sensitive application
 
 

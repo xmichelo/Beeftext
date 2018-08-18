@@ -10,6 +10,9 @@
 #include <XMiLib/Exception.h>
 
 
+using namespace xmilib;
+
+
 namespace {
 
 
@@ -19,6 +22,10 @@ QStringList kDefaultSensitiveApplications = { "mintty.exe", "putty.exe", "powers
 
 
 //**********************************************************************************************************************
+/// \brief Save the list of sensitive applications.
+///
+/// If the file could not be saved this function will throw an Exception.
+///
 /// \param[in] list The list of sensitive application exe file names
 //**********************************************************************************************************************
 void saveSensitiveApplicationsFile(QStringList const& list)
@@ -33,75 +40,89 @@ void saveSensitiveApplicationsFile(QStringList const& list)
       QJsonDocument doc(rootObject);
       QFile file(globals::sensitiveApplicationsFilePath());
       if (!file.open(QIODevice::WriteOnly))
-         throw xmilib::Exception("cannot open file.");
+         throw Exception("cannot open file.");
       QByteArray const data = doc.toJson();
       if (data.size() != file.write(data))
-         throw xmilib::Exception("error writing to file.");
+         throw Exception("error writing to file.");
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       globals::debugLog().addWarning(QString("The sensitive application list file could not be saved: %1")
          .arg(e.qwhat()));
+      throw;
    }
 }
 
 
 //**********************************************************************************************************************
-/// If the file does not exist or is invalid, this function will attempt to create a file with default values and will
-/// return it.
+/// If the file does not exist , the function will create a default one.
+/// If the file is invalid the function will throw an Exception
 ///
 /// \return The list of sensitive applications read from the JSON file
-/// \return The default list of sensitive applications 
+/// \return The default list of sensitive applications if the file did not exist
 //**********************************************************************************************************************
 QStringList loadSensitiveApplicationsFile()
 {
-   try
-   {
-      QFile file(globals::sensitiveApplicationsFilePath());
-      if (!file.exists())
-      {
-         saveSensitiveApplicationsFile(kDefaultSensitiveApplications);
-         return kDefaultSensitiveApplications;
-      }
-      if (!file.open(QIODevice::ReadOnly))
-         throw xmilib::Exception("cannot open file.");
-      QJsonDocument const doc(QJsonDocument::fromJson(file.readAll()));
-      if (doc.isNull())
-         throw xmilib::Exception("invalid JSON document.");
-      if (!doc.isObject())
-         throw xmilib::Exception("the root element is not an object.");
-      QJsonObject const rootObject = doc.object();
-      QJsonValue const arrayValue = rootObject.value(kPropSensitiveApplicationList);
-      if (arrayValue.isNull() || !arrayValue.isArray())
-         throw xmilib::Exception("invalid top level object.");
-      QJsonArray array = arrayValue.toArray();
-      QStringList result;
-      for (QJsonValueRef const& value: array)
-      {
-         if (!value.isString())
-            throw xmilib::Exception("invalid array content.");
-         result.push_back(value.toString());
-      }
-      return result;
-   }
-   catch (xmilib::Exception const& e)
+   QFile file(globals::sensitiveApplicationsFilePath());
+   if (!file.exists())
    {
       saveSensitiveApplicationsFile(kDefaultSensitiveApplications);
       return kDefaultSensitiveApplications;
    }
-}
-
-
-//**********************************************************************************************************************
-/// \brief Retrieve the list of sensitive applications executable file names
-//**********************************************************************************************************************
-QStringList sensitiveApplications()
-{
-   static QStringList result = loadSensitiveApplicationsFile();
+   if (!file.open(QIODevice::ReadOnly))
+      throw Exception("cannot open file.");
+   QJsonDocument const doc(QJsonDocument::fromJson(file.readAll()));
+   if (doc.isNull())
+      throw Exception("invalid JSON document.");
+   if (!doc.isObject())
+      throw Exception("the root element is not an object.");
+   QJsonObject const rootObject = doc.object();
+   QJsonValue const arrayValue = rootObject.value(kPropSensitiveApplicationList);
+   if (arrayValue.isNull() || !arrayValue.isArray())
+      throw Exception("invalid top level object.");
+   QJsonArray array = arrayValue.toArray();
+   QStringList result;
+   for (QJsonValueRef const& value: array)
+   {
+      if (!value.isString())
+         throw Exception("invalid array content.");
+      result.push_back(value.toString());
+   }
    return result;
 }
 
 
+}
+
+
+//**********************************************************************************************************************
+/// \return The list of sensitive applications exe file names
+//**********************************************************************************************************************
+QStringList sensitiveApplications()
+{
+   try
+   {
+      static QStringList result = loadSensitiveApplicationsFile();
+      return result;
+   }
+   catch (Exception const& e)
+   {
+   }
+   if (QMessageBox::Yes == QMessageBox::question(nullptr, QObject::tr("Invalid file"), QObject::tr("The file "
+      "containing the list of sensitive application is invalid. Do you want to replace it by the default one."),
+      QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
+   {
+      try
+      {
+         saveSensitiveApplicationsFile(kDefaultSensitiveApplications);
+      }
+      catch (Exception const& e)
+      {
+         QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("The sensitive applications file "
+            "could not be saved."));
+      }
+   }
+   return kDefaultSensitiveApplications;
 }
 
 

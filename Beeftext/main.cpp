@@ -11,6 +11,7 @@
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
+#include "SensitiveApplications.h"
 #include "Update/UpdateManager.h"
 #include "PreferencesManager.h"
 #include "I18nManager.h"
@@ -66,10 +67,9 @@ int main(int argc, char *argv[])
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
       PreferencesManager& prefs = PreferencesManager::instance();
-      ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
-      (void)comboManager; // avoid warning with MinGW
-      UpdateManager& updateManager = UpdateManager::instance(); // we make sure the update manager singleton is instanciated
-      (void)updateManager; // avoir warning with MinGW
+      (void)ComboManager::instance(); // we make sure the combo manager singleton is instanciated
+      (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
+      (void)sensitiveApplications(); ///< We load the sensitive application files
       MainWindow window;
       ensureMainWindowHasAHandle(window);
       if (!prefs.alreadyLaunched())
