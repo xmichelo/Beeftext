@@ -14,6 +14,7 @@
 #include "ComboManager.h"
 #include "ClipboardManager.h"
 #include "InputManager.h"
+#include "SensitiveApplications.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -337,7 +338,7 @@ void Combo::performSubstitution() const
       int cursorPos = -1;
       QString const evaluatedText = evaluatedSnippet(&cursorPos);
       if (PreferencesManager::instance().useClipboardForComboSubstitution()
-         && doesApplicationSupportCtrlVShortcut(getActiveExecutableFileName()))
+         && !isSensitiveApplication(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();

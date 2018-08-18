@@ -24,7 +24,7 @@ QString logFilePath(); ///< Returns the path of the log file
 QString backupFolderPath(); ///< Return the backup folder path
 QString portableModeDataFolderPath(); ///< Returns the path of the user data folder when the application is run in portable mode
 QString portableModeSettingsFilePath(); ///< Returns the path of the settings file when the application is run in portable mode
-
+QString sensitiveApplicationsFilePath(); ///< Return the path of the JSON file containing the list of sensitive applications
 
 } // namespace globals
 

@@ -12,14 +12,6 @@
 #include "BeeftextUtils.h"
 
 
-namespace {
-
-QString const kLogFileName = "log.txt"; ///< The name of the log file. Note keep .txt extension for easier opening by the system
-QString const kPortableModeSettingsFileName = "Settings.ini"; ///< The name of the settings file when the application runs in portable mode
-QString const kBackupFolderName = "Backup"; ///< The name of the backup folder
-} // anonymous namespace
-
-
 namespace globals {
 
 
@@ -57,7 +49,7 @@ QString translationRootFolderPath()
 //**********************************************************************************************************************
 QString logFilePath()
 {
-   return QDir(appDataDir()).absoluteFilePath(kLogFileName);
+   return QDir(appDataDir()).absoluteFilePath("log.txt");
 }
 
 
@@ -67,7 +59,7 @@ QString logFilePath()
 //**********************************************************************************************************************
 QString backupFolderPath()
 {
-   return QDir(appDataDir()).absoluteFilePath(kBackupFolderName);
+   return QDir(appDataDir()).absoluteFilePath("Backup");
 }
 
 
@@ -87,7 +79,17 @@ QString portableModeDataFolderPath()
 //**********************************************************************************************************************
 QString portableModeSettingsFilePath()
 {
-   return QDir(portableModeDataFolderPath()).absoluteFilePath(kPortableModeSettingsFileName);
+   return QDir(portableModeDataFolderPath()).absoluteFilePath("Settings.ini");
+}
+
+
+
+//**********************************************************************************************************************
+/// \return The path of the JSON file containing the list of sensitive applications
+//**********************************************************************************************************************
+QString sensitiveApplicationsFilePath()
+{
+   return QDir(appDataDir()).absoluteFilePath("sensitiveApplications.json");
 }
 
 

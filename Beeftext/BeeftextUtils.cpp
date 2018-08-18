@@ -18,8 +18,6 @@ namespace {
 
 QString const kPortableModeBeaconFileName = "Portable.bin"; ///< The name of the 'beacon' file used to detect if the application should run in portable mode
 QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The name of the 'beacon file used to detect if the app is in PortableApps mode
-QStringList const kNoPasteApps { "mintty.exe", "putty.exe", "powershell.exe", "kitty.exe", 
-   "kitty_portable.exe", "ConEmu*.exe" }; ///< The list of application executables name that support only pasting using the Shift+Insert shortcut. Wildcards are supported
 
 
 //**********************************************************************************************************************
@@ -85,17 +83,4 @@ QString getActiveExecutableFileName()
    bool const ok = GetModuleFileNameEx(processHandle, nullptr, buffer, MAX_PATH);
    CloseHandle(processHandle);
    return ok ? QFileInfo(QDir::fromNativeSeparators(QString::fromWCharArray(buffer))).fileName() : QString();
-}
-
-
-//**********************************************************************************************************************
-/// We consider that by default, applications support Ctrl+V, except a few that are individually listed
-///
-/// \param[in] appExeName The name of the executable, including its extension (e.g. "putty.exe")
-/// \return true if and only if the application support pasting using the Ctrl+V shortcut
-//**********************************************************************************************************************
-bool doesApplicationSupportCtrlVShortcut(QString const& appExeName)
-{
-   return kNoPasteApps.end() == std::find_if(kNoPasteApps.begin(), kNoPasteApps.end(), [&](QString const& str) -> bool 
-      { return QRegExp(str, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(appExeName); });
 }

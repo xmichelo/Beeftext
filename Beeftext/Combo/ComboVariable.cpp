@@ -50,7 +50,7 @@ QString qcharToDiscordEmoji(QChar const& c)
 //**********************************************************************************************************************
 /// \brief Create a Discord emoji representation of the content of the clipboard
 ///
-/// \return A Discord em
+/// \return A string containing the sequence of Discord emojis
 //**********************************************************************************************************************
 QString discordEmojisFromClipboard()
 {

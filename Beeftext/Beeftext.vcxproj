@@ -184,6 +184,7 @@
     <ClCompile Include="MimeDataUtils.cpp" />
     <ClCompile Include="PreferencesDialog.cpp" />
     <ClCompile Include="PreferencesManager.cpp" />
+    <ClCompile Include="SensitiveApplications.cpp" />
     <ClCompile Include="Shortcut.cpp" />
     <ClCompile Include="ShortcutDialog.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -329,6 +330,7 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
+    <ClInclude Include="SensitiveApplications.h" />
     <ClInclude Include="Shortcut.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
