@@ -73,7 +73,13 @@ int main(int argc, char *argv[])
       MainWindow window;
       ensureMainWindowHasAHandle(window);
       if (!prefs.alreadyLaunched())
+      {
          window.show();
+         if ((!PreferencesManager::instance().alreadyLaunched()) && (QMessageBox::Yes == QMessageBox::information(
+            &window, QObject::tr("Getting Started"), QObject::tr("New to Beeftext?\n\nDo you want to read a short "
+            "'Getting Started' tutorial?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes)))
+            QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl));
+      }
 
       prefs.setAlreadyLaunched();
       qint32 const returnCode = QApplication::exec();
