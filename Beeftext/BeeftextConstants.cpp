@@ -20,6 +20,7 @@ qint32 const kVersionMajor = 1;
 qint32 const kVersionMinor = 6;
 Qt::WindowFlags const kDefaultDialogFlags = Qt::WindowCloseButtonHint | Qt::WindowTitleHint;
 QString const kBeeftextWikiHomeUrl = "https://github.com/xmichelo/Beeftext/wiki";
+QString const kGettingStartedUrl = "https://github.com/xmichelo/Beeftext/wiki/Getting-started";
 QString const kBeeftextWikiVariablesUrl = "https://github.com/xmichelo/Beeftext/wiki/Variables";
 QString const kJsonFileDialogFilter = QObject::tr("JSON files (*.json);;All files (*.*)");
 Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs;

@@ -53,6 +53,7 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <addaction name="actionGettingStarted"/>
     <addaction name="actionVisitBeeftextWiki"/>
     <addaction name="separator"/>
     <addaction name="actionShowAboutDialog"/>
@@ -125,6 +126,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+L</string>
+   </property>
+  </action>
+  <action name="actionGettingStarted">
+   <property name="text">
+    <string>Getting Started</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F1</string>
    </property>
   </action>
  </widget>

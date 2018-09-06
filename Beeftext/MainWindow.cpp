@@ -38,9 +38,9 @@ MainWindow::MainWindow()
    PreferencesManager& prefs = PreferencesManager::instance();
    this->restoreGeometry(prefs.mainWindowGeometry());
    connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []()
-   {
-      QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl));
-   });
+      { QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl)); });
+   connect(ui_.actionGettingStarted, &QAction::triggered, []()
+      { QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl)); });
 }
 
 
