@@ -109,7 +109,7 @@ QStringList sensitiveApplications()
    {
    }
    if (QMessageBox::Yes == QMessageBox::question(nullptr, QObject::tr("Invalid file"), QObject::tr("The file "
-      "containing the list of sensitive application is invalid. Do you want to replace it by the default one."),
+      "containing the list of sensitive application is invalid. Do you want to replace it by the default one?"),
       QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
    {
       try

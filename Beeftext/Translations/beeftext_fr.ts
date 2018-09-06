@@ -790,103 +790,113 @@
         <translation>&amp;Aide</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="62"/>
+        <location filename="../MainWindow.ui" line="63"/>
         <source>&amp;Advanced</source>
         <translation>&amp;Avancé</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="72"/>
+        <location filename="../MainWindow.ui" line="73"/>
         <source>E&amp;xit Beeftext</source>
         <translation>&amp;Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="78"/>
+        <location filename="../MainWindow.ui" line="79"/>
         <source>Exit Beeftext</source>
         <translation>Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="81"/>
+        <location filename="../MainWindow.ui" line="82"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="86"/>
+        <location filename="../MainWindow.ui" line="87"/>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Wiki Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="89"/>
+        <location filename="../MainWindow.ui" line="90"/>
         <source>Shift+F1</source>
         <translation>Maj+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="94"/>
+        <location filename="../MainWindow.ui" line="95"/>
         <source>&amp;About Beeftext</source>
         <translation>&amp;À Propos de Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="97"/>
+        <location filename="../MainWindow.ui" line="98"/>
         <source>F1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="116"/>
+        <location filename="../MainWindow.ui" line="117"/>
         <source>Ctrl+,</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="121"/>
+        <location filename="../MainWindow.ui" line="122"/>
         <source>Open &amp;Log File</source>
         <translation>Ouvrir le &amp;Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="124"/>
+        <location filename="../MainWindow.ui" line="125"/>
         <source>Open the log file</source>
         <translation>Ouvrir le journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="127"/>
+        <location filename="../MainWindow.ui" line="128"/>
         <source>Ctrl+Shift+L</source>
         <translation>Ctrl+Maj+L</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="121"/>
+        <location filename="../MainWindow.ui" line="133"/>
+        <source>Getting Started</source>
+        <translation>Bien Débuter</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="136"/>
+        <source>Ctrl+F1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="130"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="122"/>
+        <location filename="../MainWindow.cpp" line="127"/>
         <source> - PAUSED</source>
         <translation> - EN PAUSE</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="133"/>
+        <location filename="../MainWindow.cpp" line="142"/>
         <source>Open Beeftext</source>
         <translation>Ouvrir Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="137"/>
+        <location filename="../MainWindow.cpp" line="146"/>
         <source>&amp;Pause Beeftext</source>
         <translation>&amp;Désactiver Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="137"/>
+        <location filename="../MainWindow.cpp" line="146"/>
         <source>&amp;Resume Beeftext</source>
         <translation>&amp;Réactiver Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="113"/>
-        <location filename="../MainWindow.cpp" line="142"/>
+        <location filename="../MainWindow.ui" line="114"/>
+        <location filename="../MainWindow.cpp" line="151"/>
         <source>Preferences</source>
         <translation>Préférences</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="147"/>
+        <location filename="../MainWindow.cpp" line="156"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="150"/>
+        <location filename="../MainWindow.cpp" line="159"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>
@@ -1103,17 +1113,30 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="54"/>
+        <location filename="../main.cpp" line="55"/>
         <source>Already Running</source>
         <translation>En Cours d&apos;Exécution</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="55"/>
+        <location filename="../main.cpp" line="56"/>
         <source>Another instance of the application is already running.</source>
         <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
+        <location filename="../main.cpp" line="79"/>
+        <source>Getting Started</source>
+        <translation>Bien Débuter</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="79"/>
+        <source>New to Beeftext?
+
+Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
+        <translation>Vous débutez avec Beeftext?\n\nVoulez vous consulter le guide de démarrage (en anglais)?</translation>
+    </message>
+    <message>
         <location filename="../I18nManager.cpp" line="260"/>
+        <location filename="../SensitiveApplications.cpp" line="121"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -1133,7 +1156,7 @@
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="97"/>
+        <location filename="../main.cpp" line="103"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>
@@ -1158,7 +1181,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../BeeftextConstants.cpp" line="24"/>
+        <location filename="../BeeftextConstants.cpp" line="25"/>
         <source>JSON files (*.json);;All files (*.*)</source>
         <translation>Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
     </message>
@@ -1187,6 +1210,21 @@
         <location filename="../Combo/ComboDialog.cpp" line="35"/>
         <source>Do not show this warning again.</source>
         <translation>Ne plus afficher cet avertissement.</translation>
+    </message>
+    <message>
+        <location filename="../SensitiveApplications.cpp" line="111"/>
+        <source>Invalid file</source>
+        <translation>Fichier invalide</translation>
+    </message>
+    <message>
+        <location filename="../SensitiveApplications.cpp" line="111"/>
+        <source>The file containing the list of sensitive application is invalid. Do you want to replace it by the default one?</source>
+        <translation>Le fichier contenant la liste des applications sensible est invalide. Voulez-vous le remplacer par le fichier par défaut?</translation>
+    </message>
+    <message>
+        <location filename="../SensitiveApplications.cpp" line="121"/>
+        <source>The sensitive applications file could not be saved.</source>
+        <translation>Le fichiers des applications sensibles n&apos;a pas pu être sauvegardé.</translation>
     </message>
 </context>
 <context>
