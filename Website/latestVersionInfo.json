@@ -1,8 +1,8 @@
 {
    "versionMajor": 1,
-   "versionMinor": 6,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.6/Beeftext-1.6-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.6",
-   "sha256Sum": "e02ae201509e604f82af19e34fee19f9364f7f574b9ae010797785f00ca2a470",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v1.6 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body> <ul><li>Added a warning when the user creates a combo with a very short keyword (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/87\">#87</a>).</li><li>Added a button in the Preferences dialog to reset all disabled warnings (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/88\">#88</a>).</li><li>Fixed enabling/disabling of combos (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/93\">#93</a>).</li><li>Every translation now has its own sub-folder (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/91\">#91</a>).</li><li>The list of available translations is now built at execution time (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/90\">#90</a>).</li><li>Fixed the availability of actions in the snippet editor's context menu (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/86\">#86</a>).</li><li>Fixed compatibility with <a href=\"http://www.9bis.net/kitty/\">Kitty</a> and <a href=\"https://conemu.github.io/\">ConEmu</a> (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/96\">#96</a>).</li></ul></body></html>"
+   "versionMinor": 7,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.7/Beeftext-1.7-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.7",
+   "sha256Sum": "c5665e7db93732ddcd5361879ec0718b68318afddcf860f4a4f93a455ca7d2fc",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v1.7 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body> <ul><li>The tooltip of the Beeftext icon in the notification area indicates when Beeftext is paused.</li><li>The list of sensitive applications is now stored in a JSON file (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/97\">#97</a>).</li><li>Links to the Beeftext wiki have been added to the Help menu.</li><li>On first launch, the user is asked if he wants to read a short tutorial (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/106\">#106</a>).</li></ul></body></html>"
 }
