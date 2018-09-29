@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
          if ((!PreferencesManager::instance().alreadyLaunched()) && (QMessageBox::Yes == QMessageBox::information(
             &window, QObject::tr("Getting Started"), QObject::tr("New to Beeftext?\n\nDo you want to read a short "
             "'Getting Started' tutorial?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes)))
-            QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl));
+            QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl));
       }
 
       prefs.setAlreadyLaunched();
