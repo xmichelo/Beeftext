@@ -26,7 +26,7 @@ Beeftext uses the [OpenSSL] library under [OpenSSL and SSLeay licenses].
 ## Documentation
 ### End User
 
-No end-user documentation is available at the moment.
+The end user documentation is available as a [wiki](https://github.com/xmichelo/Beeftext/wiki) on the GitHub project page.
 
 ### Developer
 
