@@ -1,3 +1,6 @@
 [submodule "Submodules/XMiLib"]
 	path = Submodules/XMiLib
 	url = https://github.com/xmichelo/XMiLib
+[submodule "Submodules/emojilib"]
+	path = Submodules/emojilib
+	url = https://github.com/muan/emojilib.git
