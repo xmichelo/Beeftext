@@ -9,8 +9,17 @@
 
 #include "stdafx.h"
 #include "BeeftextUtils.h"
+#include "SensitiveApplications.h"
+#include "InputManager.h"
+#include "ClipboardManager.h"
+#include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include <Psapi.h>
+#include <XMiLib/SystemUtils.h>
+#include <XMiLib/Exception.h>
+
+
+using namespace xmilib;
 
 
 namespace {
@@ -18,6 +27,8 @@ namespace {
 
 QString const kPortableModeBeaconFileName = "Portable.bin"; ///< The name of the 'beacon' file used to detect if the application should run in portable mode
 QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The name of the 'beacon file used to detect if the app is in PortableApps mode
+QList<quint16> const modifierKeys = {  VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
+   VK_RWIN }; ///< The modifier keys
 
 
 //**********************************************************************************************************************
@@ -30,6 +41,36 @@ bool isInPortableModeInternal()
    QDir const appDir(QCoreApplication::applicationDirPath());
    return QFileInfo(appDir.absoluteFilePath(kPortableModeBeaconFileName)).exists() ||
       QFileInfo(appDir.absoluteFilePath(kPortableAppsModeBeaconFileName)).exists();
+}
+
+
+//**********************************************************************************************************************
+/// \brief Retrieve the list of currently pressed modifier key and synthesize a key release event for each of them
+///
+/// \return The list of modifier keys that are pressed
+//**********************************************************************************************************************
+QList<quint16> backupAndReleaseModifierKeys()
+{
+   QList<quint16> result;
+   for (quint16 key: modifierKeys)
+      if (GetKeyState(key) < 0)
+      {
+         result.append(key);
+         synthesizeKeyUp(key);
+      }
+   return result;
+}
+
+
+//**********************************************************************************************************************
+/// \brief Restore the specified modifier keys state by generating a key press event for each of them
+///
+/// \param[in] keys The list of modifiers key to restore by generating a key press event
+//**********************************************************************************************************************
+void restoreModifierKeys(QList<quint16> const& keys)
+{
+   for (quint16 key: keys)
+      synthesizeKeyDown(key);
 }
 
 
@@ -83,4 +124,68 @@ QString getActiveExecutableFileName()
    bool const ok = GetModuleFileNameEx(processHandle, nullptr, buffer, MAX_PATH);
    CloseHandle(processHandle);
    return ok ? QFileInfo(QDir::fromNativeSeparators(QString::fromWCharArray(buffer))).fileName() : QString();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] charCount The number of characters to substitution
+/// \param[in] newText The new text
+/// \param[in] cursorLeftShift The number of characters to the left the cursor should be shifted by at the en of the
+/// the substitution
+//**********************************************************************************************************************
+void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorLeftShift)
+{
+   InputManager& inputManager = InputManager::instance();
+   bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
+   // we disable the hook to prevent endless recursive substitution
+   try
+   {
+      QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys();
+      ///< We artificially depress the current modifier keys
+
+      // we erase the combo
+      xmilib::synthesizeBackspaces(qMax<qint32>(charCount, 0));
+      if (PreferencesManager::instance().useClipboardForComboSubstitution()
+         && !isSensitiveApplication(getActiveExecutableFileName()))
+      {
+         // we use the clipboard to and copy/paste the snippet
+         ClipboardManager& clipboardManager = ClipboardManager::instance();
+         clipboardManager.backupClipboard();
+         QApplication::clipboard()->setText(newText);
+         synthesizeKeyDown(VK_LCONTROL);
+         synthesizeKeyDownAndUp('V');
+         synthesizeKeyUp(VK_LCONTROL);
+         QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
+         ///< We need to delay clipboard restoration to avoid unexpected behaviours
+      }
+      else
+      {
+         // we simulate the typing of the snippet text
+         for (QChar c: newText)
+         {
+            if (c == QChar::LineFeed)
+               // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
+               synthesizeKeyDownAndUp(VK_RETURN);
+            if (!c.isPrint())
+               continue;
+            synthesizeUnicodeKeyDownAndUp(c.unicode());
+         }
+      }
+
+      // position the cursor if needed by typing the right amount of left key strokes
+      if (cursorLeftShift > 0)
+      {
+         for (qint32 i = 0; i < qMax<qint32>(0, newText.size() - cursorLeftShift); ++i)
+            synthesizeKeyDownAndUp(VK_LEFT);
+      }
+
+      ///< We restore the modifiers that we deactivated at the beginning of the function
+      restoreModifierKeys(pressedModifiers);
+   }
+   catch (Exception const&)
+   {
+      inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
+      throw;
+   }
+   inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
 }

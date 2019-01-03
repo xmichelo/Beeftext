@@ -50,7 +50,9 @@ signals:
 
 private: // member functions
    ComboManager(); ///< Default constructor
-   void checkAndPerformSubstitution(); ///< check if a substitution is possible and if so performs it
+   void checkAndPerformSubstitution(); ///< Check if a combo or emoji substitution is possible and if so performs it
+   bool checkAndPerformComboSubstitution(); ///< check if a combo substitution is possible and if so performs it
+   bool checkAndPerformEmojiSubstitution(); ///< check if an emoji substitution is possible and if so performs it
 
 private slots:
    void onComboBreakerTyped(); ///< Slot for the "Combo Breaker Typed" signal

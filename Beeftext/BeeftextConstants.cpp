@@ -24,7 +24,7 @@ QString const kGettingStartedUrl = "https://github.com/xmichelo/Beeftext/wiki/Ge
 QString const kBeeftextWikiVariablesUrl = "https://github.com/xmichelo/Beeftext/wiki/Variables";
 QString const kJsonFileDialogFilter = QObject::tr("JSON files (*.json);;All files (*.*)");
 Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs;
-
+QChar const kEmojiDelimiter = ':';
 
 QString const kStyleSheet = R"(
 

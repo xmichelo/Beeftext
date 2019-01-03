@@ -11,8 +11,14 @@
 #include "ComboManager.h"
 #include "InputManager.h"
 #include "PreferencesManager.h"
+#include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
+#include "BeeftextConstants.h"
 #include "Backup/BackupManager.h"
+#include "EmojiManager.h"
+
+
+using namespace xmilib;
 
 
 bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
@@ -217,14 +223,26 @@ bool ComboManager::setEnabled(bool enabled)
 
 
 //**********************************************************************************************************************
-// 
+//
 //**********************************************************************************************************************
 void ComboManager::checkAndPerformSubstitution()
 {
+   if (!this->checkAndPerformComboSubstitution())
+      this->checkAndPerformEmojiSubstitution();
+}
+
+
+//**********************************************************************************************************************
+/// \return true if a substitution was available and it was performed or cancelled because Beeftext is the active 
+/// application.
+//**********************************************************************************************************************
+bool ComboManager::checkAndPerformComboSubstitution()
+{
    VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(), 
-      [&](SpCombo const& combo) -> bool {return combo && combo->isEnabled() && combo->matchesForInput(currentText_); });
+      [&](SpCombo const& combo) -> bool 
+   { return combo && combo->isEnabled() && combo->matchesForInput(currentText_); });
    if (comboList_.end() == it)
-      return;
+      return false;
 
    if (!isBeeftextTheForegroundApplication()) // in Beeftext windows, substitution is disabled
    {
@@ -233,6 +251,29 @@ void ComboManager::checkAndPerformSubstitution()
          sound_->play();
    }
    this->onComboBreakerTyped();
+   return true;
+}
+
+
+//**********************************************************************************************************************
+/// \return true if a substitution was available and it was performed or cancelled because Beeftext is the active 
+/// application.
+//**********************************************************************************************************************
+bool ComboManager::checkAndPerformEmojiSubstitution()
+{
+   if (!currentText_.endsWith(constants::kEmojiDelimiter))
+      return false;
+   QRegularExpressionMatch const match = QRegularExpression(R"(:(\w+):$)").match(currentText_);
+   if (!match.hasMatch())
+      return false;
+   QString const keyword = match.captured(1);
+   QString emoji = EmojiManager::instance().emoji(keyword);
+   if (emoji.isEmpty())
+      return false;
+   if (!isBeeftextTheForegroundApplication()) // in Beeftext windows, substitution is disabled
+      performTextSubstitution(keyword.size() + 2, emoji, 0);
+   this->onComboBreakerTyped();   
+   return false;
 }
 
 
@@ -274,4 +315,3 @@ void ComboManager::onSubstitutionTriggerShortcut()
    if (!PreferencesManager::instance().useAutomaticSubstitution())
       this->checkAndPerformSubstitution();
 }
-

@@ -25,6 +25,7 @@ extern QString const kBeeftextWikiVariablesUrl; ///< The URL of the page about v
 extern QString const kJsonFileDialogFilter; ///< The Open/Save file dialog filter
 extern QString const kStyleSheet; // The application stylesheet
 extern Qt::DateFormat const kJsonExportDateFormat; ///< The date/time export format used for JSon docs
+extern QChar const kEmojiDelimiter; ///< The delimiter for emojis
 
 
 } // namespace constants
