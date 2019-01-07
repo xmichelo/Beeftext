@@ -23,7 +23,8 @@ QString emojiFilePath()
    QString filePath = QDir(appDirPath).absoluteFilePath(fileName);
    if (QFile(filePath).exists())
       return filePath;
-   filePath = QDir(QDir(appDirPath).absoluteFilePath("../../../Submodules/emojilib/" + fileName)).canonicalPath();
+   filePath = QDir(QDir(appDirPath).absoluteFilePath("../../../Submodules/emojilib/" + fileName))
+      .canonicalPath();
    return QFile(filePath).exists()? filePath : QString();
 }
 
@@ -72,6 +73,16 @@ void EmojiManager::unloadEmojis()
 QString EmojiManager::emoji(QString const& keyword) const
 {
    return emojis_.contains(keyword) ? emojis_[keyword] : QString();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] exeFileName The name of the executable file for the application, including the extension
+//**********************************************************************************************************************
+bool EmojiManager::doesAppAllowEmojis(QString const& exeFileName) const
+{
+   QStringList const exeFiles = { "slack.exe", "discord.exe" };
+   return !exeFiles.contains(exeFileName, Qt::CaseInsensitive);
 }
 
 

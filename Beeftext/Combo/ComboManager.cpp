@@ -267,11 +267,16 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    if (!match.hasMatch())
       return false;
    QString const keyword = match.captured(1);
-   QString emoji = EmojiManager::instance().emoji(keyword);
+   EmojiManager& emojisManager = EmojiManager::instance();
+   QString emoji = emojisManager.emoji(keyword);
    if (emoji.isEmpty())
       return false;
-   if (!isBeeftextTheForegroundApplication()) // in Beeftext windows, substitution is disabled
+   if ((!isBeeftextTheForegroundApplication()) && emojisManager.doesAppAllowEmojis(getActiveExecutableFileName()))
+   {
       performTextSubstitution(keyword.size() + 2, emoji, 0);
+      if (PreferencesManager::instance().playSoundOnCombo())
+         sound_->play();
+   }
    this->onComboBreakerTyped();   
    return false;
 }
