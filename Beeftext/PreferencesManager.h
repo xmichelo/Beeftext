@@ -67,6 +67,8 @@ public: // member functions
    QString lastComboImportExportPath() const; ///< Retrieve the path of the last imported and exported path
    void setLastComboImportExportPath(QString const& path) const; ///< Retrieve the path of the last imported and exported path
    static SpShortcut defaultComboTriggerShortcut(); ///< Reset the combo trigger shortcut to its default value
+   bool emojiShortcodesEnabled() const; ///< Are emoji shortcodes enabled
+   void setEmojiShortcodeEnabled(bool value) const; ///< Set if the emoji shortcodes are enabled
 
 signals:
    void autoCheckForUpdatesChanged(bool value); // Signal emitted when the 'Auto check for updates' preference value changed

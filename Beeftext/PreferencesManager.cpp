@@ -36,6 +36,7 @@ namespace {
    QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
    QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
    QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
+   QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
    bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
    bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
    bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
@@ -48,6 +49,7 @@ namespace {
       QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
    SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
       | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
+   bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled'
 }
 
 
@@ -115,6 +117,7 @@ void PreferencesManager::reset()
    this->setWarnAboutShortComboKeywords(kDefaultValueWarnAboutShortComboKeyword);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
+   this->setEmojiShortcodeEnabled(kDefaultValueEmojiShortcodesEnabled);
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
    this->resetWarnings();
    if (!isInPortableMode())
@@ -496,6 +499,24 @@ void PreferencesManager::setLastComboImportExportPath(QString const& path) const
 SpShortcut PreferencesManager::defaultComboTriggerShortcut()
 {
    return kDefaultValueComboTriggerShortcut;
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::emojiShortcodesEnabled() const
+{
+   return this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled, kDefaultValueEmojiShortcodesEnabled);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setEmojiShortcodeEnabled(bool value) const
+{
+   settings_->setValue(kRegKeyEmojiShortcodesEnabled, value);
 }
 
 

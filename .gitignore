@@ -27,3 +27,4 @@ sh.exe.stackdump
 *.qm
 workspace.xml
 tasks.xml
+*.DotSettings.user
