@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>717</width>
-    <height>510</height>
+    <height>533</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,6 +62,13 @@
        <widget class="QCheckBox" name="checkPlaySoundOnCombo">
         <property name="text">
          <string>&amp;Play sound on combo</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkEnableEmoji">
+        <property name="text">
+         <string>Enable emoji shortcodes</string>
         </property>
        </widget>
       </item>
@@ -361,30 +368,17 @@
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>478</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
     <spacer name="verticalSpacer_5">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
+      <enum>QSizePolicy::MinimumExpanding</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>10</height>
+       <height>16</height>
       </size>
      </property>
     </spacer>

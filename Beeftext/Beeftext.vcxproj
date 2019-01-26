@@ -239,24 +239,6 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
-    <CustomBuild Include="Combo\ComboKeywordValidator.h">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </AdditionalInputs>
-    </CustomBuild>
     <QtMoc Include="Combo\ComboImportDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
@@ -269,6 +251,7 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
+    <ClInclude Include="Combo\ComboKeywordValidator.h" />
     <ClInclude Include="Combo\ComboVariable.h" />
     <ClInclude Include="EmojiManager.h" />
     <ClInclude Include="GeneratedFiles\ui_AboutDialog.h" />
@@ -289,24 +272,6 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="GeneratedFiles\ui_PreferencesDialog.h" />
-    <CustomBuild Include="LatestVersionInfo.h">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </AdditionalInputs>
-    </CustomBuild>
     <ClInclude Include="GeneratedFiles\ui_ShortcutDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h" />
     <QtMoc Include="PreferencesManager.h">
@@ -335,6 +300,7 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
+    <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="MimeDataUtils.h" />
     <QtMoc Include="PreferencesDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>

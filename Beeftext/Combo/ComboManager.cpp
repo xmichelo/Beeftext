@@ -261,7 +261,7 @@ bool ComboManager::checkAndPerformComboSubstitution()
 //**********************************************************************************************************************
 bool ComboManager::checkAndPerformEmojiSubstitution()
 {
-   if (!currentText_.endsWith(constants::kEmojiDelimiter))
+   if ((!currentText_.endsWith(constants::kEmojiDelimiter)) || !PreferencesManager::instance().emojiShortcodesEnabled())
       return false;
    QRegularExpressionMatch const match = QRegularExpression(R"(:(\w+):$)").match(currentText_);
    if (!match.hasMatch())

@@ -183,6 +183,10 @@
     </ClInclude>
     <ClInclude Include="SensitiveApplications.h" />
     <ClInclude Include="EmojiManager.h" />
+    <ClInclude Include="Combo\ComboKeywordValidator.h">
+      <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="LatestVersionInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">
@@ -206,7 +210,6 @@
     <QtMoc Include="Combo\ComboSortFilterProxyModel.h">
       <Filter>Combo</Filter>
     </QtMoc>
-    <CustomBuild Include="LatestVersionInfo.h" />
     <QtMoc Include="Update\UpdateDialog.h">
       <Filter>Update</Filter>
     </QtMoc>
@@ -222,9 +225,6 @@
     <QtUic Include="Combo\ComboImportDialog.ui">
       <Filter>Combo</Filter>
     </QtUic>
-    <CustomBuild Include="Combo\ComboKeywordValidator.h">
-      <Filter>Combo</Filter>
-    </CustomBuild>
     <QtMoc Include="Combo\ComboFrame.h">
       <Filter>Combo</Filter>
     </QtMoc>

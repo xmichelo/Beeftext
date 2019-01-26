@@ -72,6 +72,7 @@ void PreferencesDialog::loadPreferences()
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
+   ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
    if (prefs_.useAutomaticSubstitution())
       ui_.radioComboTriggerAuto->setChecked(true);
    else
@@ -100,6 +101,7 @@ void PreferencesDialog::savePreferences()
    if (!isInPortableMode())
       prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
    prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
+   prefs_.setEmojiShortcodeEnabled(ui_.checkEnableEmoji->isChecked());
    prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
    prefs_.setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ :
       PreferencesManager::defaultComboTriggerShortcut());
