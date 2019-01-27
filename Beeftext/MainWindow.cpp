@@ -111,15 +111,6 @@ void MainWindow::closeEvent(QCloseEvent*)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void MainWindow::showEvent(QShowEvent *event)
-{
-
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
 void MainWindow::setupSystemTrayIcon()
 {
    disconnect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
@@ -204,14 +195,8 @@ void MainWindow::showWindow()
 //**********************************************************************************************************************
 void MainWindow::onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
-   switch (reason)
-   {
-   case QSystemTrayIcon::Trigger: // a.k.a single click
+   if (QSystemTrayIcon::Trigger == reason) //  a.k.a single click
       this->showWindow();
-      break;
-   default:
-      break;
-   }
 }
 
 

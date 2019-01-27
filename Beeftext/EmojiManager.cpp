@@ -79,7 +79,7 @@ QString EmojiManager::emoji(QString const& keyword) const
 //**********************************************************************************************************************
 /// \param[in] exeFileName The name of the executable file for the application, including the extension
 //**********************************************************************************************************************
-bool EmojiManager::doesAppAllowEmojis(QString const& exeFileName) const
+bool EmojiManager::doesAppAllowEmojis(QString const& exeFileName)
 {
    QStringList const exeFiles = { "slack.exe", "discord.exe" };
    return !exeFiles.contains(exeFileName, Qt::CaseInsensitive);

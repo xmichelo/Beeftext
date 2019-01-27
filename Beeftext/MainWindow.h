@@ -40,7 +40,6 @@ protected: // member functions
    void dropEvent(QDropEvent* event) override; ///< Drop event handler
    ///\}
    void closeEvent(QCloseEvent*) override; ///< Window close event handler
-   void showEvent(QShowEvent *event); ///< Show event handler
 
 private: // member functions
    void setupSystemTrayIcon(); ///< Setup the system tray icon

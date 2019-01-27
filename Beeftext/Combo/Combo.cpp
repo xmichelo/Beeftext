@@ -10,16 +10,10 @@
 #include "stdafx.h"
 #include "Combo.h"
 #include "ComboVariable.h"
-#include "PreferencesManager.h"
 #include "ComboManager.h"
-#include "ClipboardManager.h"
-#include "InputManager.h"
-#include "SensitiveApplications.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
-#include <XMiLib/SystemUtils.h>
-#include <XMiLib/Exception.h>
 #include <utility>
 
 

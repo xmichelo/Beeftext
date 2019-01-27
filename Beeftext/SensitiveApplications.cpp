@@ -105,7 +105,7 @@ QStringList sensitiveApplications()
       static QStringList result = loadSensitiveApplicationsFile();
       return result;
    }
-   catch (Exception const& e)
+   catch (Exception const&)
    {
    }
    if (QMessageBox::Yes == QMessageBox::question(nullptr, QObject::tr("Invalid file"), QObject::tr("The file "
@@ -116,7 +116,7 @@ QStringList sensitiveApplications()
       {
          saveSensitiveApplicationsFile(kDefaultSensitiveApplications);
       }
-      catch (Exception const& e)
+      catch (Exception const&)
       {
          QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("The sensitive applications file "
             "could not be saved."));

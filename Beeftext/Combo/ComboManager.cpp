@@ -271,7 +271,7 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    QString emoji = emojisManager.emoji(keyword);
    if (emoji.isEmpty())
       return false;
-   if ((!isBeeftextTheForegroundApplication()) && emojisManager.doesAppAllowEmojis(getActiveExecutableFileName()))
+   if ((!isBeeftextTheForegroundApplication()) && EmojiManager::doesAppAllowEmojis(getActiveExecutableFileName()))
    {
       performTextSubstitution(keyword.size() + 2, emoji, 0);
       if (PreferencesManager::instance().playSoundOnCombo())

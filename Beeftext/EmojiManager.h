@@ -21,7 +21,7 @@ public: // static member functions
    void loadEmojis(); ///< Load the emoji list from file
    void unloadEmojis(); ///< Unload the emoji list
    QString emoji(QString const& keyword) const; ///< Retrieve the emoji associated to a keyword
-   bool doesAppAllowEmojis(QString const& exeFileName) const; ///< Does an application allow emojis
+   static bool doesAppAllowEmojis(QString const& exeFileName); ///< Does an application allow emojis
 
 public: // member functions
    EmojiManager(EmojiManager const&) = delete; ///< Disabled copy-constructor

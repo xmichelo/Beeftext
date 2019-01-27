@@ -177,7 +177,7 @@ void UpdateDialog::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) c
 {
    if (!reply_)
       throw Exception("Internal casting error during download progress callback.");
-   ui_.progressBar->setValue(float(bytesReceived) / float(bytesTotal) * 100.0f);
+   ui_.progressBar->setValue(qint32(float(bytesReceived) / float(bytesTotal) * 100.0f));
 }
 
 

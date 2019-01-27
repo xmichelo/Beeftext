@@ -144,7 +144,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       ///< We artificially depress the current modifier keys
 
       // we erase the combo
-      xmilib::synthesizeBackspaces(qMax<qint32>(charCount, 0));
+      synthesizeBackspaces(qMax<qint32>(charCount, 0));
       if (PreferencesManager::instance().useClipboardForComboSubstitution()
          && !isSensitiveApplication(getActiveExecutableFileName()))
       {
