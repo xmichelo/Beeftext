@@ -166,20 +166,29 @@ bool ComboDialog::checkAndReportInvalidCombo()
       return false;
    }
 
-   // we check for conflicts that would make some combo 'unreachable'
+   // we check that the keyword is not already in use
+   QString const newKeyword = ui_.editKeyword->text();
    ComboList const& comboList = ComboManager::instance().comboListRef();
-   for (SpCombo const& combo: comboList)
+   if (comboList.end() != std::find_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) -> bool
+      { return (existing != combo_) && (existing->keyword() == newKeyword);}))
    {
-      QString const newCombo = ui_.editKeyword->text();
-      QString const existing = combo->keyword();
-      if ((combo != combo_) && (existing.startsWith(newCombo) || newCombo.startsWith(existing)))
-      {
-         QMessageBox::critical(this, tr("Error"), tr("An existing combo, triggered by '%1', is creating a conflict "
-            "with this combo.").arg(combo->keyword()));
-         return false;
-      }
+      QMessageBox::critical(this, tr("Error"), tr("This keyword is already in use."));
+      return false;
    }
-   return true;
+
+   // we check for conflicts that would make some combo 'unreachable'
+   qint32 const conflictCount = std::count_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) -> bool 
+   { return (existing != combo_) && (existing->keyword().startsWith(newKeyword) || 
+      newKeyword.startsWith(existing->keyword())); });
+   if (!conflictCount)
+      return true;
+   QString const singleConflictStr = tr("An existing combo is creating a conflict with this combo.");
+   QString const multipleConflictStr = tr("%1 existing combos are creating conflicts with this combo.")
+      .arg(conflictCount);
+   return QMessageBox::Yes == QMessageBox::question(this, tr("Conflict"), tr("%1 If you use automatic substitution, "
+      "conflicts make some combos impossible to trigger.\n\nDo you want to continue anymay?")
+      .arg(conflictCount > 1 ? multipleConflictStr : singleConflictStr), QMessageBox::Yes | QMessageBox::No, 
+      QMessageBox::No);
 }
 
 
