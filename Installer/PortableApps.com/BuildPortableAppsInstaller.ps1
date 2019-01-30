@@ -23,6 +23,7 @@ $srcTransDir = absolutePath $srcBinDir "translations"
 $dstTransDir = absolutePath $DstBinDir "translations"
 $installerGeneratorPath = "C:\Program Files (x86)\PortableApps.comInstaller\PortableApps.comInstaller.exe"
 $beaconFileName = "PortableApps.bin"
+$emojiDir = absolutePath $dstBinDir "emojis" 
 
 #***********************************************************************************************************************
 # The actual script
@@ -56,14 +57,20 @@ copyQtDlls $dstBinDir
 "Copying README.md file"
 Copy-Item -Path (absolutePath $solutionDir "README.md") -Destination $dstBinDir
 
-"Copy SSL DLL files"
+"Copying SSL DLL files"
 copySslDlls $dstBinDir
 
-"Copy Visual C++ DLL files"
+"Copying Visual C++ DLL files"
 copyVcppDlls $dstBinDir
 
 "Copying translation files"
 Copy-Item $srcTransDir -Destination $dstTransDir -Recurse
+
+"Creating emojis folder"
+New-Item -ItemType Directory -Force -Path $emojiDir | Out-Null
+
+"Copying emojis file"
+Copy-Item -Path (absolutePath $solutionDir "Submodules\emojilib\emojis.json") -Destination $emojiDir
 
 "Creating PortablesApps.com beacon file"
 "Do not delete this file" | Set-Content -Path (absolutePath $dstBinDir $beaconFileName)

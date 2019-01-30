@@ -17,6 +17,7 @@ $exeDir = absolutePath $solutionDir "_build\Win32\Release"
 $exePath = absolutePath $exeDir "Beeftext.exe"
 $srcTransDir = absolutePath $exeDir "translations"
 $dstTransDir = absolutePath $dstDir "translations"
+$emojiDir = absolutePath $dstDir "emojis"
 $beaconFileName = "Portable.bin"
 
 #***********************************************************************************************************************
@@ -40,11 +41,17 @@ copyQtDlls $dstDir
 "Copying README.md file"
 Copy-Item -Path (absolutePath $solutionDir "README.md") -Destination $dstDir
 
-"Copy SSL DLL files"
+"Copying SSL DLL files"
 copySslDlls $dstDir
 
-"Copy Visual C++ DLL files"
+"Copying Visual C++ DLL files"
 copyVcppDlls $dstDir
+
+"Creating emojis folder"
+New-Item -ItemType Directory -Force -path $emojiDir | Out-Null
+
+"Copying emoji file"
+Copy-Item -Path (absolutePath $solutionDir "Submodules\emojilib\emojis.json") -Destination $emojiDir
 
 "Creating Portable Edition beacon file"
 "Do not delete this file" | Set-Content -Path (absolutePath $dstDir $beaconFileName)
