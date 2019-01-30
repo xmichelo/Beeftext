@@ -19,11 +19,11 @@
 QString emojiFilePath()
 {
    QString const fileName = "emojis.json";
-   QString const appDirPath = qApp->applicationDirPath();
-   QString filePath = QDir(appDirPath).absoluteFilePath(fileName);
+   QDir const appDir(qApp->applicationDirPath());
+   QString filePath = appDir.absoluteFilePath("emojis/" + fileName);
    if (QFile(filePath).exists())
       return filePath;
-   filePath = QDir(QDir(appDirPath).absoluteFilePath("../../../Submodules/emojilib/" + fileName))
+   filePath = QDir(appDir.absoluteFilePath("../../../Submodules/emojilib/" + fileName))
       .canonicalPath();
    return QFile(filePath).exists()? filePath : QString();
 }

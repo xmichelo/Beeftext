@@ -166,9 +166,8 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
             if (c == QChar::LineFeed)
                // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
                synthesizeKeyDownAndUp(VK_RETURN);
-            if (!c.isPrint())
-               continue;
-            synthesizeUnicodeKeyDownAndUp(c.unicode());
+            else
+               synthesizeUnicodeKeyDownAndUp(c.unicode());
          }
       }
 
