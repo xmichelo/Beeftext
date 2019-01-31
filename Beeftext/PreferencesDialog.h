@@ -54,6 +54,7 @@ private slots:
    void onUpdateCheckStarted() const; ///< Slot for the starting of an update check
    void onUpdateCheckFinished() const; ///< Slot for the finishing of an update check
    void onUpdateCheckFailed(); ///< Slot update check failure
+   void onActionEditSensitiveApplications(); ///< Slot for the 'Edit sensitive applications' action
    void updateGui() const; ///< Update the GUI state
 
 private: // data members

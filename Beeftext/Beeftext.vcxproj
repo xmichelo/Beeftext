@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug Remote|Win32">
-      <Configuration>Debug Remote</Configuration>
+    <ProjectConfiguration Include="DebugRemote|Win32">
+      <Configuration>DebugRemote</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
@@ -25,7 +25,7 @@
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -54,7 +54,7 @@
     <IntDir>$(ProjectDir)_temp\$(PlatformName)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">
     <OutDir>$(SolutionDir)_build\$(PlatformName)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)_temp\$(PlatformName)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
@@ -99,6 +99,9 @@
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <DynamicSource>output</DynamicSource>
       <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork;%(AdditionalIncludeDirectories)</IncludePath>
+      <ForceInclude>
+      </ForceInclude>
+      <PrependInclude>stdafx.h</PrependInclude>
     </QtMoc>
     <QtRcc>
       <InputFile>%(FullPath)</InputFile>
@@ -116,7 +119,7 @@
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
     </QtUic>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -151,6 +154,9 @@
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <DynamicSource>output</DynamicSource>
       <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork;%(AdditionalIncludeDirectories)</IncludePath>
+      <ForceInclude>
+      </ForceInclude>
+      <PrependInclude>stdafx.h</PrependInclude>
     </QtMoc>
     <QtRcc>
       <InputFile>%(FullPath)</InputFile>
@@ -202,6 +208,9 @@
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <DynamicSource>output</DynamicSource>
       <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork;%(AdditionalIncludeDirectories)</IncludePath>
+      <ForceInclude>
+      </ForceInclude>
+      <PrependInclude>stdafx.h</PrependInclude>
     </QtMoc>
     <QtRcc>
       <QTDIR>$(QTDIR)</QTDIR>
@@ -256,38 +265,47 @@
     <ClCompile Include="ShortcutDialog.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StringListEditorDialog.cpp" />
     <ClCompile Include="Update\UpdateCheckWorker.cpp" />
     <ClCompile Include="Update\UpdateDialog.cpp" />
     <ClCompile Include="Update\UpdateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="StringListEditorDialog.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UNICODE;WIN32;WIN64;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">UNICODE;WIN32;WIN64;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</Define>
+    </QtMoc>
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Update\UpdateManager.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Update\UpdateDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="AboutDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="Backup\BackupManager.h" />
     <QtMoc Include="Backup\BackupRestoreDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Backup/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Backup/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Backup/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Backup/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="BeeftextConstants.h" />
@@ -297,37 +315,37 @@
     <ClInclude Include="Combo\Combo.h" />
     <QtMoc Include="Combo\ComboList.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Combo\ComboManager.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Combo\ComboDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Combo\ComboSortFilterProxyModel.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Combo\ComboImportDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Combo\ComboFrame.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Combo\ComboTableWidget.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="Combo\ComboKeywordValidator.h" />
@@ -344,12 +362,12 @@
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
     <QtMoc Include="MainWindow.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="InputManager.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="GeneratedFiles\ui_PreferencesDialog.h" />
@@ -357,41 +375,41 @@
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h" />
     <QtMoc Include="PreferencesManager.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="Group\Group.h" />
     <QtMoc Include="Group\GroupList.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Group\GroupDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Group\GroupComboBox.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <QtMoc Include="Group\GroupListWidget.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="I18nManager.h" />
     <QtMoc Include="ShortcutDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="MimeDataUtils.h" />
     <QtMoc Include="PreferencesDialog.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug Remote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
+      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="SensitiveApplications.h" />
@@ -414,6 +432,7 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="StringListEditorDialog.ui" />
     <QtUic Include="Update\UpdateDialog.ui">
     </QtUic>
   </ItemGroup>

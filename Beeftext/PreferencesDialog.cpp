@@ -15,6 +15,7 @@
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
 #include "Update/UpdateManager.h"
+#include "StringListEditorDialog.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -329,6 +330,15 @@ void PreferencesDialog::onUpdateCheckFinished() const
 void PreferencesDialog::onUpdateCheckFailed()
 {
    this->setUpdateCheckStatus(tr("Update check failed."));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onActionEditSensitiveApplications()
+{
+   StringListEditorDialog::run();   
 }
 
 

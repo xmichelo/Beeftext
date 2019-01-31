@@ -113,6 +113,7 @@
     </ClCompile>
     <ClCompile Include="SensitiveApplications.cpp" />
     <ClCompile Include="EmojiManager.cpp" />
+    <ClCompile Include="StringListEditorDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -278,5 +279,9 @@
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <Filter>Update</Filter>
     </QtMoc>
+    <QtMoc Include="StringListEditorDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="StringListEditorDialog.ui" />
   </ItemGroup>
 </Project>

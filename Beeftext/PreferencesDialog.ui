@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>717</width>
-    <height>533</height>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -266,11 +266,35 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QCheckBox" name="checkUseClipboardForComboSubstitution">
-        <property name="text">
-         <string>Use clipboard for combo substitution</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QCheckBox" name="checkUseClipboardForComboSubstitution">
+          <property name="text">
+           <string>Use clipboard for combo substitution</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonsSensitiveApplications">
+          <property name="text">
+           <string>Sensitive Applications</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QFrame" name="frameComboListFolder">
@@ -627,6 +651,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonsSensitiveApplications</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onActionEditSensitiveApplications()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>278</x>
+     <y>394</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>358</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionOk()</slot>
@@ -648,5 +688,6 @@
   <slot>onActionApply()</slot>
   <slot>updateGui()</slot>
   <slot>onActionResetWarnings()</slot>
+  <slot>onActionEditSensitiveApplications()</slot>
  </slots>
 </ui>
