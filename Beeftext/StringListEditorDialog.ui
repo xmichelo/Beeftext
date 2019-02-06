@@ -6,26 +6,58 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>483</width>
-    <height>364</height>
+    <width>517</width>
+    <height>348</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string/>
+   <string>Sensitive Applications</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>312</height>
-      </size>
-     </property>
-    </spacer>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QListView" name="stringListView">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="buttonAdd">
+         <property name="text">
+          <string>&amp;Add</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="buttonRemove">
+         <property name="text">
+          <string>&amp;Remove</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -43,16 +75,16 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="buttonCancel">
+      <widget class="QPushButton" name="buttonOk">
        <property name="text">
-        <string>&amp;Cancel</string>
+        <string>&amp;OK</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="buttonOk">
+      <widget class="QPushButton" name="buttonCancel">
        <property name="text">
-        <string>&amp;OK</string>
+        <string>&amp;Cancel</string>
        </property>
       </widget>
      </item>
@@ -94,8 +126,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>StringListEditorDialog</receiver>
+   <slot>onActionRemoveString()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>468</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>StringListEditorDialog</receiver>
+   <slot>onActionAddString()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>468</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionOk()</slot>
+  <slot>onActionAddString()</slot>
+  <slot>onActionRemoveString()</slot>
  </slots>
 </ui>

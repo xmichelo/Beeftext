@@ -33,9 +33,16 @@ public: // member functions
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
+   void onActionAddString(); ///< Slot for the 'Add string' action
+   void onActionRemoveString(); ///< Slot for the 'Add string' action
+   void onSelectionChanged(); ///< Slot for changes of the selection
+
+private: // member function
+   void updateGui(); ///< Update the GUI state
 
 private: // data members
    Ui::StringListEditorDialog ui_ {}; ///< The GUI for the dialog
+   QStringListModel model_; ///< The model used by the list view
 };
 
 
