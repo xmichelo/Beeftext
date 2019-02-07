@@ -12,6 +12,7 @@
 
 
 #include "ui_StringListEditorDialog.h"
+#include "StringListEditorModel.h"
 
 
 //**********************************************************************************************************************
@@ -42,7 +43,7 @@ private: // member function
 
 private: // data members
    Ui::StringListEditorDialog ui_ {}; ///< The GUI for the dialog
-   QStringListModel model_; ///< The model used by the list view
+   StringListEditorModel model_; ///< The model used by the list view
 };
 
 

@@ -9,9 +9,7 @@
 
 #include "stdafx.h"
 #include "StringListEditorDialog.h"
-#include <XMiLib/FileUtils.h>
 #include <XMiLib/Exception.h>
-#include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
 
 

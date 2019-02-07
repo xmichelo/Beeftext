@@ -114,6 +114,9 @@
     <ClCompile Include="SensitiveApplications.cpp" />
     <ClCompile Include="EmojiManager.cpp" />
     <ClCompile Include="StringListEditorDialog.cpp" />
+    <ClCompile Include="StringListEditorModel.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -178,6 +181,9 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="LatestVersionInfo.h" />
+    <ClInclude Include="StringListEditorModel.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">
