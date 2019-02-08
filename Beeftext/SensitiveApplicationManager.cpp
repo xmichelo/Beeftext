@@ -5,7 +5,7 @@
 
 
 #include "stdafx.h"
-#include "SensitiveApplications.h"
+#include "SensitiveApplicationManager.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 
@@ -61,7 +61,7 @@ void saveSensitiveApplicationsFile(QStringList const& list)
 /// \return The list of sensitive applications read from the JSON file
 /// \return The default list of sensitive applications if the file did not exist
 //**********************************************************************************************************************
-QStringList loadSensitiveApplicationsFile()
+QStringList loadSensitiveApplicationsFromFile()
 {
    QFile file(globals::sensitiveApplicationsFilePath());
    if (!file.exists())
@@ -96,33 +96,12 @@ QStringList loadSensitiveApplicationsFile()
 
 
 //**********************************************************************************************************************
-/// \return The list of sensitive applications exe file names
+/// \return The only allowed instance of the class
 //**********************************************************************************************************************
-QStringList sensitiveApplications()
+SensitiveApplicationManager& SensitiveApplicationManager::instance()
 {
-   try
-   {
-      static QStringList result = loadSensitiveApplicationsFile();
-      return result;
-   }
-   catch (Exception const&)
-   {
-   }
-   if (QMessageBox::Yes == QMessageBox::question(nullptr, QObject::tr("Invalid file"), QObject::tr("The file "
-      "containing the list of sensitive application is invalid. Do you want to replace it by the default one?"),
-      QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
-   {
-      try
-      {
-         saveSensitiveApplicationsFile(kDefaultSensitiveApplications);
-      }
-      catch (Exception const&)
-      {
-         QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("The sensitive applications file "
-            "could not be saved."));
-      }
-   }
-   return kDefaultSensitiveApplications;
+   static SensitiveApplicationManager inst;
+   return inst;
 }
 
 
@@ -132,10 +111,36 @@ QStringList sensitiveApplications()
 /// \param[in] appExeName The name of the executable, including its extension (e.g. "putty.exe")
 /// \return true if and only if the application support pasting using the Ctrl+V shortcut
 //**********************************************************************************************************************
-bool isSensitiveApplication(QString const& appExeName)
+bool SensitiveApplicationManager::isSensitiveApplication(QString const& appExeName) const
 {
-   QStringList const sensitiveApps = sensitiveApplications();
-   return sensitiveApps.end() != std::find_if(sensitiveApps.begin(), sensitiveApps.end(), 
-      [&](QString const& str) -> bool 
-      { return QRegExp(str, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(appExeName); });
+   return sensitiveApplications_.end() != std::find_if(sensitiveApplications_.begin(), sensitiveApplications_.end(),
+      [&](QString const& str) -> bool
+      {
+         return QRegExp(str, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(appExeName);
+      });
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+SensitiveApplicationManager::SensitiveApplicationManager()
+{
+   try
+   {
+      sensitiveApplications_= loadSensitiveApplicationsFromFile();
+      return;
+   }
+   catch (Exception const&)
+   {
+   }
+   try
+   {
+      sensitiveApplications_ = kDefaultSensitiveApplications;
+      saveSensitiveApplicationsFile(sensitiveApplications_);
+   }
+   catch (Exception const&)
+   {
+      globals::debugLog().addWarning("The sensitive applications file could not be saved.");
+   }
 }

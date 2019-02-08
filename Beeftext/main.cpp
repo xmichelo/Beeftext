@@ -11,7 +11,7 @@
 #include "MainWindow.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
-#include "SensitiveApplications.h"
+#include "SensitiveApplicationManager.h"
 #include "EmojiManager.h"
 #include "Update/UpdateManager.h"
 #include "PreferencesManager.h"
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
       PreferencesManager& prefs = PreferencesManager::instance();
       (void)ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
-      (void)sensitiveApplications(); ///< We load the sensitive application files
+      (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
       EmojiManager::instance().loadEmojis();
       MainWindow window;
       ensureMainWindowHasAHandle(window);

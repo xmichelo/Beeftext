@@ -260,7 +260,7 @@
     <ClCompile Include="MimeDataUtils.cpp" />
     <ClCompile Include="PreferencesDialog.cpp" />
     <ClCompile Include="PreferencesManager.cpp" />
-    <ClCompile Include="SensitiveApplications.cpp" />
+    <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="Shortcut.cpp" />
     <ClCompile Include="ShortcutDialog.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -275,6 +275,7 @@
     <ClCompile Include="Update\UpdateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SensitiveApplicationManager.h" />
     <ClInclude Include="StringListEditorModel.h" />
     <QtMoc Include="StringListEditorDialog.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork</IncludePath>
@@ -414,7 +415,6 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
-    <ClInclude Include="SensitiveApplications.h" />
     <ClInclude Include="Shortcut.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

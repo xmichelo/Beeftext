@@ -33,6 +33,11 @@
     <Filter Include="Backup">
       <UniqueIdentifier>{c61e6d78-c214-49e9-9722-51e8f91c7da4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -111,12 +116,12 @@
     <ClCompile Include="Update\UpdateCheckWorker.cpp">
       <Filter>Update</Filter>
     </ClCompile>
-    <ClCompile Include="SensitiveApplications.cpp" />
     <ClCompile Include="EmojiManager.cpp" />
     <ClCompile Include="StringListEditorDialog.cpp" />
     <ClCompile Include="StringListEditorModel.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="SensitiveApplicationManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -175,7 +180,6 @@
     <ClInclude Include="GeneratedFiles\ui_PreferencesDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="SensitiveApplications.h" />
     <ClInclude Include="EmojiManager.h" />
     <ClInclude Include="Combo\ComboKeywordValidator.h">
       <Filter>Combo</Filter>
@@ -184,6 +188,7 @@
     <ClInclude Include="StringListEditorModel.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="SensitiveApplicationManager.h" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">

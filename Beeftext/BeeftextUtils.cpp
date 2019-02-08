@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "BeeftextUtils.h"
-#include "SensitiveApplications.h"
+#include "SensitiveApplicationManager.h"
 #include "InputManager.h"
 #include "ClipboardManager.h"
 #include "PreferencesManager.h"
@@ -146,7 +146,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       // we erase the combo
       synthesizeBackspaces(qMax<qint32>(charCount, 0));
       if (PreferencesManager::instance().useClipboardForComboSubstitution()
-         && !isSensitiveApplication(getActiveExecutableFileName()))
+         && !SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();
