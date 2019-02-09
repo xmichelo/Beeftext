@@ -6,8 +6,10 @@
 
 #include "stdafx.h"
 #include "SensitiveApplicationManager.h"
+#include "StringListEditorDialog.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
+#include "BeeftextUtils.h"
 
 
 using namespace xmilib;
@@ -118,6 +120,29 @@ bool SensitiveApplicationManager::isSensitiveApplication(QString const& appExeNa
       {
          return QRegExp(str, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(appExeName);
       });
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] parent The parent widget of the dialog
+/// \return true if and only if the user validated the dialog and the list was successfully saved to file
+//**********************************************************************************************************************
+bool SensitiveApplicationManager::runDialog(QWidget* parent)
+{
+   StringListEditorDialog dlg(sensitiveApplications_, parent);
+   if (QDialog::Accepted != dlg.exec())
+      return false;
+   try
+   {
+      sensitiveApplications_ = dlg.stringList();
+      saveSensitiveApplicationsFile(sensitiveApplications_);
+      return true;
+   }
+   catch (xmilib::Exception const& e)
+   {
+      reportInternalError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
+      return false;
+   }
 }
 
 

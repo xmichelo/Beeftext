@@ -21,16 +21,14 @@
 class StringListEditorDialog: public QDialog
 {
    Q_OBJECT
-public: // static member functions
-   static void run(QWidget* parent = nullptr); ///< Run the dialog
-
 public: // member functions
-   explicit StringListEditorDialog(QWidget* parent = nullptr); ///< Default constructor
+   explicit StringListEditorDialog(QStringList const& stringList, QWidget* parent = nullptr); ///< Default constructor
    StringListEditorDialog(StringListEditorDialog const&) = delete; ///< Disabled copy-constructor
    StringListEditorDialog(StringListEditorDialog&&) = delete; ///< Disabled assignment copy-constructor
    ~StringListEditorDialog() = default; ///< Destructor
    StringListEditorDialog& operator=(StringListEditorDialog const&) = delete; ///< Disabled assignment operator
    StringListEditorDialog& operator=(StringListEditorDialog&&) = delete; ///< Disabled move assignment operator
+   QStringList stringList() const; ///< Return the string list
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action

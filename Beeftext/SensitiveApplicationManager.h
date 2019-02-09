@@ -26,6 +26,7 @@ public: // member functions
    SensitiveApplicationManager& operator=(SensitiveApplicationManager const&) = delete; ///< Disabled assignment operator
    SensitiveApplicationManager& operator=(SensitiveApplicationManager&&) = delete; ///< Disabled move assignment operator
    bool isSensitiveApplication(QString const& appExeName) const; ///< Check wether a app exe name is the name of a sensitive application
+   bool runDialog(QWidget* parent); ///< Run the sensitive application dialog
 
 private: // member functions
    SensitiveApplicationManager(); ///< Default constructor

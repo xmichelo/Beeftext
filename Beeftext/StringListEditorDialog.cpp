@@ -19,19 +19,12 @@ namespace {
 
 
 //**********************************************************************************************************************
+/// \param[in] stringList The string list
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-void StringListEditorDialog::run(QWidget* parent)
-{
-   StringListEditorDialog(parent).exec();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] parent The parent widget of the dialog
-//**********************************************************************************************************************
-StringListEditorDialog::StringListEditorDialog(QWidget* parent)
+StringListEditorDialog::StringListEditorDialog(QStringList const& stringList, QWidget* parent)
    : QDialog(parent, kDefaultDialogFlags)
+   , model_(stringList)
 {
    ui_.setupUi(this);
    ui_.stringListView->setModel(&model_);
@@ -39,6 +32,15 @@ StringListEditorDialog::StringListEditorDialog(QWidget* parent)
    if (selModel)
       connect(selModel, &QItemSelectionModel::selectionChanged, this, &StringListEditorDialog::onSelectionChanged);
    this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+/// \return The string list
+//**********************************************************************************************************************
+QStringList StringListEditorDialog::stringList() const
+{
+   return model_.stringList();
 }
 
 

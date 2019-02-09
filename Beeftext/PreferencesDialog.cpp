@@ -15,7 +15,7 @@
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
 #include "Update/UpdateManager.h"
-#include "StringListEditorDialog.h"
+#include "SensitiveApplicationManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -338,7 +338,7 @@ void PreferencesDialog::onUpdateCheckFailed()
 //**********************************************************************************************************************
 void PreferencesDialog::onActionEditSensitiveApplications()
 {
-   StringListEditorDialog::run();   
+   SensitiveApplicationManager::instance().runDialog(this);
 }
 
 

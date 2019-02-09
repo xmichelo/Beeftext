@@ -18,6 +18,7 @@ class StringListEditorModel: public QStringListModel
 {
 public: // member functions
    explicit StringListEditorModel(QObject* parent = nullptr); ///< Default constructor
+   explicit StringListEditorModel(QStringList const& stringList, QObject* parent = nullptr); ///< Constructor with a string list
    StringListEditorModel(StringListEditorModel const&) = delete; ///< Disabled copy-constructor
    StringListEditorModel(StringListEditorModel&&) = delete; ///< Disabled assignment copy-constructor
    ~StringListEditorModel() = default; ///< Destructor
