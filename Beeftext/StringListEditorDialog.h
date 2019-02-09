@@ -29,9 +29,9 @@ public: // member functions
    StringListEditorDialog& operator=(StringListEditorDialog const&) = delete; ///< Disabled assignment operator
    StringListEditorDialog& operator=(StringListEditorDialog&&) = delete; ///< Disabled move assignment operator
    QStringList stringList() const; ///< Return the string list
+   void setHeaderText(QString const& text) const; ///< Set the text to display in the dialog's header
 
 private slots:
-   void onActionOk(); ///< Slot for the 'OK' action
    void onActionAddString(); ///< Slot for the 'Add string' action
    void onActionRemoveString(); ///< Slot for the 'Add string' action
    void onSelectionChanged(); ///< Slot for changes of the selection

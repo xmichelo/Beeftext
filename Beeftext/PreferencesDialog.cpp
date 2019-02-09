@@ -352,4 +352,5 @@ void PreferencesDialog::updateGui() const
    ui_.buttonChangeShortcut->setEnabled(manualTrigger);
    ui_.buttonResetComboTriggerShortcut->setEnabled(manualTrigger);
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
+   ui_.buttonSensitiveApplications->setEnabled(ui_.checkUseClipboardForComboSubstitution->isChecked());
 }

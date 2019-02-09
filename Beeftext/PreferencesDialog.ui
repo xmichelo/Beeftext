@@ -275,7 +275,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="buttonsSensitiveApplications">
+         <widget class="QPushButton" name="buttonSensitiveApplications">
           <property name="text">
            <string>Sensitive Applications</string>
           </property>
@@ -652,13 +652,29 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonsSensitiveApplications</sender>
+   <sender>buttonSensitiveApplications</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
    <slot>onActionEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>278</x>
+     <y>394</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>358</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseClipboardForComboSubstitution</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>updateGui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
      <y>394</y>
     </hint>
     <hint type="destinationlabel">

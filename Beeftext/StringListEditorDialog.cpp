@@ -31,6 +31,7 @@ StringListEditorDialog::StringListEditorDialog(QStringList const& stringList, QW
    QItemSelectionModel const * const selModel = ui_.stringListView->selectionModel();
    if (selModel)
       connect(selModel, &QItemSelectionModel::selectionChanged, this, &StringListEditorDialog::onSelectionChanged);
+   this->setHeaderText(QString());
    this->updateGui();
 }
 
@@ -45,12 +46,12 @@ QStringList StringListEditorDialog::stringList() const
 
 
 //**********************************************************************************************************************
-//
+/// \param[in] text The text
 //**********************************************************************************************************************
-void StringListEditorDialog::onActionOk()
+void StringListEditorDialog::setHeaderText(QString const& text) const
 {
-   qDebug () << model_.stringList();
-   this->accept();
+   ui_.labelHeader->setText(text);
+   ui_.labelHeader->setVisible(!text.isEmpty());
 }
 
 

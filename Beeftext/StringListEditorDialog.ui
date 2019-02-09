@@ -6,14 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>517</width>
-    <height>348</height>
+    <width>519</width>
+    <height>355</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Sensitive Applications</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="spacing">
+    <number>12</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="labelHeader">
+     <property name="text">
+      <string notr="true">#Title#</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
@@ -34,6 +47,9 @@
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
        <item>
         <widget class="QPushButton" name="buttonAdd">
          <property name="text">
@@ -120,7 +136,7 @@
    <sender>buttonOk</sender>
    <signal>clicked()</signal>
    <receiver>StringListEditorDialog</receiver>
-   <slot>onActionOk()</slot>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>435</x>
@@ -166,7 +182,6 @@
   </connection>
  </connections>
  <slots>
-  <slot>onActionOk()</slot>
   <slot>onActionAddString()</slot>
   <slot>onActionRemoveString()</slot>
  </slots>

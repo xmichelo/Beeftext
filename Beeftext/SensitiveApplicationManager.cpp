@@ -130,6 +130,10 @@ bool SensitiveApplicationManager::isSensitiveApplication(QString const& appExeNa
 bool SensitiveApplicationManager::runDialog(QWidget* parent)
 {
    StringListEditorDialog dlg(sensitiveApplications_, parent);
+   dlg.setHeaderText(QObject::tr(R"(<html><head/><body><p>Use this dialog to list sensitive applications 
+that does not work correctly with Beeftext because they do not support standard copy-paste using 
+Ctrl+V.</p></body></html>)"));
+
    if (QDialog::Accepted != dlg.exec())
       return false;
    try
