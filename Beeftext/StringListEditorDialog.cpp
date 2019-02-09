@@ -27,6 +27,7 @@ StringListEditorDialog::StringListEditorDialog(QStringList const& stringList, QW
    , model_(stringList)
 {
    ui_.setupUi(this);
+   lastActionButton_ = ui_.buttonRemove;
    ui_.stringListView->setModel(&model_);
    QItemSelectionModel const * const selModel = ui_.stringListView->selectionModel();
    if (selModel)
@@ -46,12 +47,33 @@ QStringList StringListEditorDialog::stringList() const
 
 
 //**********************************************************************************************************************
+/// \param[in] stringList The string list
+//**********************************************************************************************************************
+void StringListEditorDialog::setStringList(QStringList const& stringList)
+{
+   model_.setStringList(stringList);
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] text The text
 //**********************************************************************************************************************
 void StringListEditorDialog::setHeaderText(QString const& text) const
 {
    ui_.labelHeader->setText(text);
    ui_.labelHeader->setVisible(!text.isEmpty());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] button The button to add
+//**********************************************************************************************************************
+void StringListEditorDialog::addCustomButton(QPushButton* button)
+{
+   ui_.buttonLayout->addWidget(button);
+   QWidget::setTabOrder(lastActionButton_, button);
+   QWidget::setTabOrder(button, ui_.buttonOk);
+   lastActionButton_ = button;
 }
 
 

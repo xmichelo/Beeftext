@@ -29,7 +29,9 @@ public: // member functions
    StringListEditorDialog& operator=(StringListEditorDialog const&) = delete; ///< Disabled assignment operator
    StringListEditorDialog& operator=(StringListEditorDialog&&) = delete; ///< Disabled move assignment operator
    QStringList stringList() const; ///< Return the string list
+   void setStringList(QStringList const& stringList); ///< Set the dialog's string list
    void setHeaderText(QString const& text) const; ///< Set the text to display in the dialog's header
+   void addCustomButton(QPushButton* button); ///< Add a custom button to dialog
 
 private slots:
    void onActionAddString(); ///< Slot for the 'Add string' action
@@ -42,6 +44,7 @@ private: // member function
 private: // data members
    Ui::StringListEditorDialog ui_ {}; ///< The GUI for the dialog
    StringListEditorModel model_; ///< The model used by the list view
+   QPushButton* lastActionButton_ { nullptr }; ///< The last action button, used to ensure proper tab order when adding custom buttons
 };
 
 

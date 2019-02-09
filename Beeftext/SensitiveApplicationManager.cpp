@@ -134,6 +134,15 @@ bool SensitiveApplicationManager::runDialog(QWidget* parent)
 that does not work correctly with Beeftext because they do not support standard copy-paste using 
 Ctrl+V.</p></body></html>)"));
 
+   QPushButton* button = new QPushButton(QObject::tr("&Reset"), &dlg);
+   dlg.connect(button, &QPushButton::clicked, [&dlg]()
+   {
+      if (QMessageBox::Yes == QMessageBox::question(&dlg, QObject::tr("Reset List"), 
+         QObject::tr("Are you sure you want to reset the list of sensitive applications?"),
+         QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
+         dlg.setStringList(kDefaultSensitiveApplications);
+   });
+   dlg.addCustomButton(button);
    if (QDialog::Accepted != dlg.exec())
       return false;
    try
