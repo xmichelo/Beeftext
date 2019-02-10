@@ -13,6 +13,7 @@
 #include "ComboManager.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
+#include <XMiLib/XMiLibConstants.h>
 #include "PreferencesManager.h"
 
 
@@ -61,7 +62,7 @@ bool ComboDialog::run(SpCombo& combo, QString const& title, QWidget* parent)
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags)
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags)
    , combo_(combo)
 {
    ComboManager::instance().groupListRef().ensureNotEmpty();

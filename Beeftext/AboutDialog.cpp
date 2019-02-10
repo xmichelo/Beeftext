@@ -11,13 +11,14 @@
 #include "AboutDialog.h"
 #include "BeeftextConstants.h"
 #include "BeeftextUtils.h"
+#include <XMiLib/XMiLibConstants.h>
 
 
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 AboutDialog::AboutDialog(QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags)
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags)
    , ui_()
 {
    ui_.setupUi(this);

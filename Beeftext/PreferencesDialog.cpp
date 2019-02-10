@@ -19,6 +19,7 @@
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
+#include <XMiLib/XMiLibConstants.h>
 
 
 namespace {
@@ -30,7 +31,7 @@ qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the u
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 PreferencesDialog::PreferencesDialog(QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags),
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
      ui_(),
      prefs_(PreferencesManager::instance()),
      triggerShortcut_(nullptr)

@@ -194,8 +194,8 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
 /// \param[in] error The error message
 /// \param[in] parent The parent widget of the message box to display
 //**********************************************************************************************************************
-void reportInternalError(QString const& error, QWidget* parent)
+void reportInternalError(xmilib::DebugLog& debugLog, QString const& error, QWidget* parent)
 {
-   globals::debugLog().addError(error);
+   debugLog.addError(error);
    QMessageBox::critical(parent, QObject::tr("Error"), QObject::tr("Internal error. See the log file for details."));
 }

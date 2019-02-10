@@ -9,8 +9,8 @@
 
 #include "stdafx.h"
 #include "GroupDialog.h"
-#include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
+#include <XMiLib/XMiLibConstants.h>
 
 
 //**********************************************************************************************************************
@@ -30,7 +30,7 @@ bool GroupDialog::run(SpGroup& group, QString const& title, QWidget* parent)
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 GroupDialog::GroupDialog(SpGroup& group, QString const& title, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags),
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
      ui_(),
      group_(group)
 {

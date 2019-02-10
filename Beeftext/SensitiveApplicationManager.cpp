@@ -135,7 +135,7 @@ that does not work correctly with Beeftext because they do not support standard 
 Ctrl+V.</p></body></html>)"));
 
    QPushButton* button = new QPushButton(QObject::tr("&Reset"), &dlg);
-   dlg.connect(button, &QPushButton::clicked, [&dlg]()
+   QObject::connect(button, &QPushButton::clicked, [&dlg]()
    {
       if (QMessageBox::Yes == QMessageBox::question(&dlg, QObject::tr("Reset List"), 
          QObject::tr("Are you sure you want to reset the list of sensitive applications?"),
@@ -153,7 +153,7 @@ Ctrl+V.</p></body></html>)"));
    }
    catch (xmilib::Exception const& e)
    {
-      reportInternalError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
+      reportInternalError(globals::debugLog(), QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
       return false;
    }
 }

@@ -13,7 +13,8 @@
 #include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
-#include "XMiLib/Exception.h"
+#include <XMiLib/Exception.h>
+#include <XMiLib/XMiLibConstants.h>
 
 
 //**********************************************************************************************************************
@@ -22,7 +23,7 @@
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 ComboImportDialog::ComboImportDialog(QString const& filePath, SpGroup const& group, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags),
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
    ui_()
 {
    ui_.setupUi(this);

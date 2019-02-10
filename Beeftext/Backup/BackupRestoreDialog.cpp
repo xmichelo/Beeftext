@@ -9,11 +9,11 @@
 
 #include "stdafx.h"
 #include "BackupRestoreDialog.h"
-#include "BeeftextConstants.h"
 #include "BackupManager.h"
 #include "BeeftextGlobals.h"
 #include "Combo/ComboManager.h"
 #include <XMiLib/Exception.h>
+#include <XMiLib/XMiLibConstants.h>
 
 
 //**********************************************************************************************************************
@@ -30,7 +30,7 @@ bool BackupRestoreDialog::run(QWidget* parent)
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 BackupRestoreDialog::BackupRestoreDialog(QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags),
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
      ui_()
 {
    ui_.setupUi(this);

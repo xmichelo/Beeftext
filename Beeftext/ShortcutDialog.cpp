@@ -11,6 +11,7 @@
 #include "ShortcutDialog.h"
 #include "PreferencesManager.h"
 #include "BeeftextConstants.h"
+#include <XMiLib/XMiLibConstants.h>
 
 
 //**********************************************************************************************************************
@@ -18,7 +19,7 @@
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 ShortcutDialog::ShortcutDialog(SpShortcut const& shortcut, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags),
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
      ui_(),
      shortcut_(shortcut ? shortcut : PreferencesManager::defaultComboTriggerShortcut())
 {

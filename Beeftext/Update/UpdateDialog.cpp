@@ -16,6 +16,7 @@
 #include "BeeftextUtils.h"
 #include <XMiLib/FileUtils.h>
 #include <XMiLib/Exception.h>
+#include <XMiLib/XMiLibConstants.h>
 #include <utility>
 
 
@@ -27,7 +28,7 @@ using namespace xmilib;
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 UpdateDialog::UpdateDialog(SpLatestVersionInfo latestVersionInfo, QWidget* parent)
-   : QDialog(parent, constants::kDefaultDialogFlags),
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
       ui_(),
      latestVersionInfo_(std::move(latestVersionInfo)),
      hashCalculator_(QCryptographicHash::Sha256),
@@ -39,7 +40,7 @@ UpdateDialog::UpdateDialog(SpLatestVersionInfo latestVersionInfo, QWidget* paren
    ui_.progressBar->setVisible(!portableMode);
    if (latestVersionInfo_)
    {
-      ui_.labelHeader->setText(ui_.labelHeader->text().arg(constants::kApplicationName)
+      ui_.labelHeader->setText(ui_.labelHeader->text().arg(::constants::kApplicationName)
          .arg(latestVersionInfo_->versionMajor()).arg(latestVersionInfo_->versionMinor()));
       ui_.editReleaseNotes->setHtml(latestVersionInfo_->releaseNotes());
    }

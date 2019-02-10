@@ -11,11 +11,8 @@
 #include "StringListEditorDialog.h"
 #include <XMiLib/Exception.h>
 #include "BeeftextUtils.h"
-
-
-namespace {
-   Qt::WindowFlags const kDefaultDialogFlags(Qt::WindowCloseButtonHint | Qt::WindowTitleHint); ///< The default dialog flags
-}
+#include <XMiLib/XMiLibConstants.h>
+#include "BeeftextGlobals.h"
 
 
 //**********************************************************************************************************************
@@ -23,7 +20,7 @@ namespace {
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 StringListEditorDialog::StringListEditorDialog(QStringList const& stringList, QWidget* parent)
-   : QDialog(parent, kDefaultDialogFlags)
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags)
    , model_(stringList)
 {
    ui_.setupUi(this);
@@ -93,7 +90,7 @@ void StringListEditorDialog::onActionAddString()
    }
    catch (xmilib::Exception const& e)
    {
-      reportInternalError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()), this);
+      reportInternalError(globals::debugLog(), QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()), this);
    }
 }
 
@@ -117,7 +114,7 @@ void StringListEditorDialog::onActionRemoveString()
    }
    catch (xmilib::Exception const& e)
    {
-      reportInternalError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()), this);
+      reportInternalError(globals::debugLog(), QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()), this);
    }
 }
 
@@ -147,6 +144,6 @@ void StringListEditorDialog::updateGui()
    }
    catch (xmilib::Exception const& e)
    {
-      reportInternalError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()), this);
+      reportInternalError(globals::debugLog(), QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()), this);
    }
 }
