@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "ShortcutDialog.h"
 #include "PreferencesManager.h"
-#include "BeeftextConstants.h"
 #include <XMiLib/XMiLibConstants.h>
 
 

@@ -112,10 +112,6 @@
       <Filter>Update</Filter>
     </ClCompile>
     <ClCompile Include="EmojiManager.cpp" />
-    <ClCompile Include="StringListEditorDialog.cpp" />
-    <ClCompile Include="StringListEditorModel.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="SensitiveApplicationManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -180,9 +176,6 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="LatestVersionInfo.h" />
-    <ClInclude Include="StringListEditorModel.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="SensitiveApplicationManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -285,9 +278,5 @@
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <Filter>Update</Filter>
     </QtMoc>
-    <QtMoc Include="StringListEditorDialog.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="StringListEditorDialog.ui" />
   </ItemGroup>
 </Project>

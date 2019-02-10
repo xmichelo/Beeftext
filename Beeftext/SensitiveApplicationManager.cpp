@@ -6,10 +6,10 @@
 
 #include "stdafx.h"
 #include "SensitiveApplicationManager.h"
-#include "StringListEditorDialog.h"
 #include "BeeftextGlobals.h"
+#include <XMiLib/String/StringListEditorDialog.h>
+#include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
-#include "BeeftextUtils.h"
 
 
 using namespace xmilib;

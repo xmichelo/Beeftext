@@ -268,23 +268,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="StringListEditorDialog.cpp" />
-    <ClCompile Include="StringListEditorModel.cpp" />
     <ClCompile Include="Update\UpdateCheckWorker.cpp" />
     <ClCompile Include="Update\UpdateDialog.cpp" />
     <ClCompile Include="Update\UpdateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SensitiveApplicationManager.h" />
-    <ClInclude Include="StringListEditorModel.h" />
-    <QtMoc Include="StringListEditorDialog.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork</IncludePath>
-      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UNICODE;WIN32;WIN64;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</Define>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork</IncludePath>
-      <Define Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</Define>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\..\Submodules\XMiLib;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtNetwork</IncludePath>
-      <Define Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">UNICODE;WIN32;WIN64;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_NETWORK_LIB;%(PreprocessorDefinitions)</Define>
-    </QtMoc>
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
@@ -434,7 +423,6 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="StringListEditorDialog.ui" />
     <QtUic Include="Update\UpdateDialog.ui">
     </QtUic>
   </ItemGroup>

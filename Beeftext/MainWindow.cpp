@@ -17,7 +17,6 @@
 #include "Group/GroupListWidget.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
-#include "BeeftextGlobals.h"
 
 
 using namespace xmilib;
