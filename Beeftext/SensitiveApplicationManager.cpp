@@ -6,6 +6,7 @@
 
 #include "stdafx.h"
 #include "SensitiveApplicationManager.h"
+#include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/String/StringListEditorDialog.h>
 #include <XMiLib/SystemUtils.h>
@@ -19,18 +20,17 @@ namespace {
 
 
 QString const kPropSensitiveApplicationList = "sensitiveApplications"; ///< The JSON key for sensitive applications
-QStringList kDefaultSensitiveApplications = { "mintty.exe", "putty.exe", "powershell.exe", "kitty.exe",
-"kitty_portable.exe", "ConEmu*.exe" }; ///< The list of application executables name that support only pasting using the Shift+Insert shortcut. Wildcards are supported
+QStringList kBuiltInApps = { "mintty.exe", "putty.exe", "powershell.exe", "kitty.exe",
+"kitty_portable.exe", "ConEmu*.exe" }; ///< The built-in slist executables name that support only pasting using the Shift+Insert shortcut. Wildcards are supported
 
 
 //**********************************************************************************************************************
 /// \brief Save the list of sensitive applications.
 ///
-/// If the file could not be saved this function will throw an Exception.
-///
-/// \param[in] list The list of sensitive application exe file names
+/// \param[in] list The list of sensitive application exe file names.
+/// \return true if and only if the list was saved.
 //**********************************************************************************************************************
-void saveSensitiveApplicationsFile(QStringList const& list)
+bool saveSensitiveApplicationsFile(QStringList const& list)
 {
    try
    {
@@ -46,51 +46,55 @@ void saveSensitiveApplicationsFile(QStringList const& list)
       QByteArray const data = doc.toJson();
       if (data.size() != file.write(data))
          throw Exception("error writing to file.");
+      return true;
    }
    catch (Exception const& e)
    {
-      globals::debugLog().addWarning(QString("The sensitive application list file could not be saved: %1")
-         .arg(e.qwhat()));
-      throw;
+      globals::debugLog().addError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
+      return false;
    }
 }
 
 
 //**********************************************************************************************************************
-/// If the file does not exist , the function will create a default one.
-/// If the file is invalid the function will throw an Exception
+/// If the file does not exist, an empty string list is returned.
 ///
-/// \return The list of sensitive applications read from the JSON file
-/// \return The default list of sensitive applications if the file did not exist
+/// \param[out] outApps The list of sensitive applications read from the JSON file.
+/// \return true if and only if the file was loaded or there was no file.
 //**********************************************************************************************************************
-QStringList loadSensitiveApplicationsFromFile()
+bool loadSensitiveApplicationsFromFile(QStringList &outApps)
 {
-   QFile file(globals::sensitiveApplicationsFilePath());
-   if (!file.exists())
+   try
    {
-      saveSensitiveApplicationsFile(kDefaultSensitiveApplications);
-      return kDefaultSensitiveApplications;
+      outApps.clear();
+      QFile file(globals::sensitiveApplicationsFilePath());
+      if (!file.exists())
+         return true; // We do not consider the absence of file as an error
+      if (!file.open(QIODevice::ReadOnly))
+         throw Exception("cannot open file.");
+      QJsonDocument const doc(QJsonDocument::fromJson(file.readAll()));
+      if (doc.isNull())
+         throw Exception("invalid JSON document.");
+      if (!doc.isObject())
+         throw Exception("the root element is not an object.");
+      QJsonObject const rootObject = doc.object();
+      QJsonValue const arrayValue = rootObject.value(kPropSensitiveApplicationList);
+      if (arrayValue.isNull() || !arrayValue.isArray())
+         throw Exception("invalid top level object.");
+      QJsonArray array = arrayValue.toArray();
+      for (QJsonValueRef const& value: array)
+      {
+         if (!value.isString())
+            throw Exception("invalid array content.");
+         outApps.push_back(value.toString());
+      }
+      return true;
    }
-   if (!file.open(QIODevice::ReadOnly))
-      throw Exception("cannot open file.");
-   QJsonDocument const doc(QJsonDocument::fromJson(file.readAll()));
-   if (doc.isNull())
-      throw Exception("invalid JSON document.");
-   if (!doc.isObject())
-      throw Exception("the root element is not an object.");
-   QJsonObject const rootObject = doc.object();
-   QJsonValue const arrayValue = rootObject.value(kPropSensitiveApplicationList);
-   if (arrayValue.isNull() || !arrayValue.isArray())
-      throw Exception("invalid top level object.");
-   QJsonArray array = arrayValue.toArray();
-   QStringList result;
-   for (QJsonValueRef const& value: array)
+   catch (Exception const& e)
    {
-      if (!value.isString())
-         throw Exception("invalid array content.");
-      result.push_back(value.toString());
+      globals::debugLog().addError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
+      return false;
    }
-   return result;
 }
 
 
@@ -115,11 +119,12 @@ SensitiveApplicationManager& SensitiveApplicationManager::instance()
 //**********************************************************************************************************************
 bool SensitiveApplicationManager::isSensitiveApplication(QString const& appExeName) const
 {
-   return sensitiveApplications_.end() != std::find_if(sensitiveApplications_.begin(), sensitiveApplications_.end(),
-      [&](QString const& str) -> bool
-      {
-         return QRegExp(str, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(appExeName);
-      });
+   std::function<bool(QString const&)> const predicate = [&](QString const& str) -> bool
+   {
+      return QRegExp(str, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(appExeName);
+   };
+   return (kBuiltInApps.end() != std::find_if(kBuiltInApps.begin(), kBuiltInApps.end(), predicate)) ||
+      (sensitiveApps_.end() != std::find_if(sensitiveApps_.begin(), sensitiveApps_.end(), predicate));
 }
 
 
@@ -129,7 +134,7 @@ bool SensitiveApplicationManager::isSensitiveApplication(QString const& appExeNa
 //**********************************************************************************************************************
 bool SensitiveApplicationManager::runDialog(QWidget* parent)
 {
-   StringListEditorDialog dlg(sensitiveApplications_, parent);
+   StringListEditorDialog dlg(sensitiveApps_, parent);
    dlg.setHeaderText(QObject::tr(R"(<html><head/><body><p>Use this dialog to list sensitive applications 
 that does not work correctly with Beeftext because they do not support standard copy-paste using 
 Ctrl+V.</p></body></html>)"));
@@ -140,22 +145,17 @@ Ctrl+V.</p></body></html>)"));
       if (QMessageBox::Yes == QMessageBox::question(&dlg, QObject::tr("Reset List"), 
          QObject::tr("Are you sure you want to reset the list of sensitive applications?"),
          QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
-         dlg.setStringList(kDefaultSensitiveApplications);
+         dlg.setStringList(QStringList());
    });
    dlg.addCustomButton(button);
    if (QDialog::Accepted != dlg.exec())
       return false;
-   try
-   {
-      sensitiveApplications_ = dlg.stringList();
-      saveSensitiveApplicationsFile(sensitiveApplications_);
-      return true;
-   }
-   catch (xmilib::Exception const& e)
-   {
-      reportInternalError(globals::debugLog(), QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
-      return false;
-   }
+   sensitiveApps_ = dlg.stringList();
+   bool const result = saveSensitiveApplicationsFile(sensitiveApps_);
+   if (!result)
+      QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("The sensitive application file could not "
+         "be saved."));
+   return result;
 }
 
 
@@ -164,21 +164,6 @@ Ctrl+V.</p></body></html>)"));
 //**********************************************************************************************************************
 SensitiveApplicationManager::SensitiveApplicationManager()
 {
-   try
-   {
-      sensitiveApplications_= loadSensitiveApplicationsFromFile();
-      return;
-   }
-   catch (Exception const&)
-   {
-   }
-   try
-   {
-      sensitiveApplications_ = kDefaultSensitiveApplications;
-      saveSensitiveApplicationsFile(sensitiveApplications_);
-   }
-   catch (Exception const&)
-   {
-      globals::debugLog().addWarning("The sensitive applications file could not be saved.");
-   }
+   if (!loadSensitiveApplicationsFromFile(sensitiveApps_))
+      sensitiveApps_;
 }

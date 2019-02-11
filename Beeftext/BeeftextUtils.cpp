@@ -189,3 +189,13 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
    inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
 }
 
+
+//**********************************************************************************************************************
+/// \brief The report constists in writting logMessage to the debug log
+//**********************************************************************************************************************
+void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage)
+{
+   globals::debugLog().addError(logMessage);
+   QMessageBox::critical(parent, QObject::tr("Error"), userMessage);
+}
+

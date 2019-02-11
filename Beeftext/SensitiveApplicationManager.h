@@ -4,7 +4,7 @@
 /// \brief Declaration of functions related to sensitive applications
 /// 
 /// Sensitive applications are applications that does not work with the 'standard' Beeftext substitution mechanism
-/// based on the clipboard
+/// based on the clipboard.
 
 
 #ifndef BEEFTEXT_SENSITIVE_APPLICATIONS_H
@@ -32,7 +32,7 @@ private: // member functions
    SensitiveApplicationManager(); ///< Default constructor
 
 private: // data members
-   QStringList sensitiveApplications_; ///< The list of sensitive applications
+   QStringList sensitiveApps_; ///< The list of sensitive applications
 };
 
 #endif // #ifndef BEEFTEXT_SENSITIVE_APPLICATIONS_H
