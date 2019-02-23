@@ -66,11 +66,35 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="checkEnableEmoji">
-        <property name="text">
-         <string>Enable emoji shortcodes</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QCheckBox" name="checkEnableEmoji">
+          <property name="text">
+           <string>Enable emoji shortcodes</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonEmojiExceptions">
+          <property name="text">
+           <string>&amp;Exceptions</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -473,6 +497,31 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>checkAutoCheckForUpdates</tabstop>
+  <tabstop>buttonCheckNow</tabstop>
+  <tabstop>checkAutoStart</tabstop>
+  <tabstop>checkPlaySoundOnCombo</tabstop>
+  <tabstop>radioComboTriggerAuto</tabstop>
+  <tabstop>radioComboTriggerManual</tabstop>
+  <tabstop>editShortcut</tabstop>
+  <tabstop>buttonChangeShortcut</tabstop>
+  <tabstop>buttonResetComboTriggerShortcut</tabstop>
+  <tabstop>comboLocale</tabstop>
+  <tabstop>checkUseCustomTheme</tabstop>
+  <tabstop>checkUseClipboardForComboSubstitution</tabstop>
+  <tabstop>buttonSensitiveApplications</tabstop>
+  <tabstop>editComboListFolder</tabstop>
+  <tabstop>buttonChangeComboListFolder</tabstop>
+  <tabstop>buttonResetComboListFolder</tabstop>
+  <tabstop>checkAutoBackup</tabstop>
+  <tabstop>buttonRestoreBackup</tabstop>
+  <tabstop>buttonDefaults</tabstop>
+  <tabstop>buttonResetWarnings</tabstop>
+  <tabstop>buttonOk</tabstop>
+  <tabstop>buttonCancel</tabstop>
+  <tabstop>buttonApply</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

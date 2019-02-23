@@ -93,4 +93,13 @@ QString sensitiveApplicationsFilePath()
 }
 
 
+//**********************************************************************************************************************
+/// \return The path of the JSON file containing the list of application excluded from emoji substitution.
+//**********************************************************************************************************************
+QString emojiExceptionsFilePath()
+{
+   return QDir(appDataDir()).absoluteFilePath("emojiExceptions.json");
+}
+
+
 } // namespace globals

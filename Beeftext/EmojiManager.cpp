@@ -13,6 +13,72 @@
 #include "XMiLib/Exception.h"
 
 
+using namespace xmilib;
+
+
+namespace {
+
+
+QStringList const kBuiltInExceptions { "discord.exe", "slack.exe" };
+QString const kPropEmojiExceptionsList = "emojiExceptions";
+
+
+//**********************************************************************************************************************
+/// \brief Load the user-provieded emoji exceptions
+/// \param[out] outExceptions The list of exceptions loaded from file. If the file does not exist the list is empty.
+/// 
+/// \return true if and only if the user exceptions file could not be loaded or do not exists
+//**********************************************************************************************************************
+bool loadExceptionsFromFile(QStringList& outExceptions)
+{
+   try
+   {
+      outExceptions.clear();
+      QFile file(globals::emojiExceptionsFilePath());
+      if (!file.exists())
+         return true; // We do not consider the absence of file as an error
+      if (!file.open(QIODevice::ReadOnly))
+         throw Exception("cannot open file.");
+      QJsonDocument const doc(QJsonDocument::fromJson(file.readAll()));
+      if (doc.isNull())
+         throw Exception("invalid JSON document.");
+      if (!doc.isObject())
+         throw Exception("the root element is not an object.");
+      QJsonObject const rootObject = doc.object();
+      QJsonValue const arrayValue = rootObject.value(kPropEmojiExceptionsList);
+      if (arrayValue.isNull() || !arrayValue.isArray())
+         throw Exception("invalid top level object.");
+      QJsonArray array = arrayValue.toArray();
+      for (QJsonValueRef const& value: array)
+      {
+         if (!value.isString())
+            throw Exception("invalid array content.");
+         outExceptions.push_back(value.toString());
+      }
+      return true;
+   }
+   catch (Exception const& e)
+   {
+      globals::debugLog().addError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
+      return false;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \brief Load the user-provieded emoji exceptions
+/// 
+/// \param[in] exceptions The list of exceptions
+/// \return true if and only if the user exceptions file could not be loaded or do not exists
+//**********************************************************************************************************************
+bool saveExceptionsFromFile(QStringList const& exceptions)
+{
+   return true;
+}
+
+
+}
+
 //**********************************************************************************************************************
 /// \return The path of the emoji files
 //**********************************************************************************************************************

@@ -6,11 +6,10 @@
 
 #include "stdafx.h"
 #include "SensitiveApplicationManager.h"
-#include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/String/StringListEditorDialog.h>
+#include <XMiLib/String/StringUtils.h>
 #include <XMiLib/SystemUtils.h>
-#include <XMiLib/Exception.h>
 
 
 using namespace xmilib;
@@ -19,7 +18,6 @@ using namespace xmilib;
 namespace {
 
 
-QString const kPropSensitiveApplicationList = "sensitiveApplications"; ///< The JSON key for sensitive applications
 QStringList kBuiltInApps = { "mintty.exe", "putty.exe", "powershell.exe", "kitty.exe",
 "kitty_portable.exe", "ConEmu*.exe" }; ///< The built-in slist executables name that support only pasting using the Shift+Insert shortcut. Wildcards are supported
 
@@ -32,27 +30,11 @@ QStringList kBuiltInApps = { "mintty.exe", "putty.exe", "powershell.exe", "kitty
 //**********************************************************************************************************************
 bool saveSensitiveApplicationsFile(QStringList const& list)
 {
-   try
-   {
-      QJsonObject rootObject;
-      QJsonArray array;
-      for (QString const& exeName: list)
-         array.append(exeName);
-      rootObject.insert(kPropSensitiveApplicationList, array);
-      QJsonDocument doc(rootObject);
-      QFile file(globals::sensitiveApplicationsFilePath());
-      if (!file.open(QIODevice::WriteOnly))
-         throw Exception("cannot open file.");
-      QByteArray const data = doc.toJson();
-      if (data.size() != file.write(data))
-         throw Exception("error writing to file.");
-      return true;
-   }
-   catch (Exception const& e)
-   {
-      globals::debugLog().addError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
-      return false;
-   }
+   QString errorMsg;
+   bool const result = saveStringListToJsonFile(list, globals::sensitiveApplicationsFilePath(), &errorMsg);
+   if (!result)
+      globals::debugLog().addError(QString("%1(): %2").arg(__FUNCTION__).arg(errorMsg));
+   return result;
 }
 
 
@@ -64,37 +46,14 @@ bool saveSensitiveApplicationsFile(QStringList const& list)
 //**********************************************************************************************************************
 bool loadSensitiveApplicationsFromFile(QStringList &outApps)
 {
-   try
+   QString errorMsg;
+   bool const result = loadStringListFromJsonFile(globals::sensitiveApplicationsFilePath(), outApps, &errorMsg);
+   if (!result)
    {
-      outApps.clear();
-      QFile file(globals::sensitiveApplicationsFilePath());
-      if (!file.exists())
-         return true; // We do not consider the absence of file as an error
-      if (!file.open(QIODevice::ReadOnly))
-         throw Exception("cannot open file.");
-      QJsonDocument const doc(QJsonDocument::fromJson(file.readAll()));
-      if (doc.isNull())
-         throw Exception("invalid JSON document.");
-      if (!doc.isObject())
-         throw Exception("the root element is not an object.");
-      QJsonObject const rootObject = doc.object();
-      QJsonValue const arrayValue = rootObject.value(kPropSensitiveApplicationList);
-      if (arrayValue.isNull() || !arrayValue.isArray())
-         throw Exception("invalid top level object.");
-      QJsonArray array = arrayValue.toArray();
-      for (QJsonValueRef const& value: array)
-      {
-         if (!value.isString())
-            throw Exception("invalid array content.");
-         outApps.push_back(value.toString());
-      }
-      return true;
+      globals::debugLog().addError(QString("%1(): %2").arg(__FUNCTION__).arg(errorMsg));
+      outApps.clear();      
    }
-   catch (Exception const& e)
-   {
-      globals::debugLog().addError(QString("%1(): %2").arg(__FUNCTION__).arg(e.qwhat()));
-      return false;
-   }
+   return result;
 }
 
 
@@ -165,5 +124,8 @@ Ctrl+V.</p></body></html>)"));
 SensitiveApplicationManager::SensitiveApplicationManager()
 {
    if (!loadSensitiveApplicationsFromFile(sensitiveApps_))
-      sensitiveApps_;
+   {
+      sensitiveApps_.clear();
+      saveSensitiveApplicationsFile(sensitiveApps_);
+   }
 }
