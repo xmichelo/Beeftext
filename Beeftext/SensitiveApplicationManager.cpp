@@ -96,7 +96,8 @@ bool SensitiveApplicationManager::runDialog(QWidget* parent)
    StringListEditorDialog dlg(sensitiveApps_, parent);
    dlg.setHeaderText(QObject::tr(R"(<html><head/><body><p>Use this dialog to list sensitive applications 
 that does not work correctly with Beeftext because they do not support standard copy-paste using 
-Ctrl+V.</p></body></html>)"));
+Ctrl+V.</p><p>List applications using their process name (e.g, notepad.exe). 
+      Wildcards are accepted.</p></body></html>)"));
 
    QPushButton* button = new QPushButton(QObject::tr("&Reset"), &dlg);
    QObject::connect(button, &QPushButton::clicked, [&dlg]()

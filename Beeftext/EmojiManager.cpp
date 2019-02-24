@@ -147,8 +147,8 @@ bool EmojiManager::runDialog(QWidget* parent)
 {
    StringListEditorDialog dlg(excludedApps_, parent);
    dlg.setHeaderText(QObject::tr(R"(<html><head/><body><p>Use this dialog to list applications 
-      in which emoji substitution should be disabled.</p>List applications using their process name (e.g, notepad.exe). 
-      Wildcards are accepted.<p></body></html>)"));
+      in which emoji substitution should be disabled.</p><p>List applications using their process name (e.g, notepad.exe). 
+      Wildcards are accepted.</p></body></html>)"));
    QPushButton* button = new QPushButton(QObject::tr("&Reset"), &dlg);
    QObject::connect(button, &QPushButton::clicked, [&dlg]()
    {
