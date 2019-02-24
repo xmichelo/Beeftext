@@ -83,22 +83,21 @@ QString portableModeSettingsFilePath()
 }
 
 
-
 //**********************************************************************************************************************
 /// \return The path of the JSON file containing the list of sensitive applications
 //**********************************************************************************************************************
 QString sensitiveApplicationsFilePath()
 {
-   return QDir(appDataDir()).absoluteFilePath("sensitiveApplications.json");
+   return QDir(appDataDir()).absoluteFilePath("sensitiveApps.json");
 }
 
 
 //**********************************************************************************************************************
 /// \return The path of the JSON file containing the list of application excluded from emoji substitution.
 //**********************************************************************************************************************
-QString emojiExceptionsFilePath()
+QString emojiExcludedAppsFilePath()
 {
-   return QDir(appDataDir()).absoluteFilePath("emojiExceptions.json");
+   return QDir(appDataDir()).absoluteFilePath("emojiExcludedApps.json");
 }
 
 

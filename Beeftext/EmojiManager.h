@@ -21,7 +21,6 @@ public: // static member functions
    void loadEmojis(); ///< Load the emoji list from file
    void unloadEmojis(); ///< Unload the emoji list
    QString emoji(QString const& keyword) const; ///< Retrieve the emoji associated to a keyword
-   static bool doesAppAllowEmojis(QString const& exeFileName); ///< Does an application allow emojis
 
 public: // member functions
    EmojiManager(EmojiManager const&) = delete; ///< Disabled copy-constructor
@@ -29,13 +28,16 @@ public: // member functions
    ~EmojiManager() = default; ///< Destructor
    EmojiManager& operator=(EmojiManager const&) = delete; ///< Disabled assignment operator
    EmojiManager& operator=(EmojiManager&&) = delete; ///< Disabled move assignment operator
+   bool isExcludedApplication(QString const& appExeName) const; ///< Check whether the application is excluded from emoji substitution.
+   bool runDialog(QWidget* parent = nullptr); ///< Run the sensitive application dialog
 
 private: // member functions
-   EmojiManager() = default; ///< Default constructor
+   EmojiManager(); ///< Default constructor
    bool load(QString const& path); ///< Load the emoji list from file
 
 private: // data members
    QHash<QString, QString> emojis_; ///< The list of emojis
+   QStringList excludedApps_; ///< The list of applications where emoji should not be substituted
 };
 
 

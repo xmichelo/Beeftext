@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>717</width>
-    <height>541</height>
+    <height>549</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,9 +75,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="buttonEmojiExceptions">
+         <widget class="QPushButton" name="buttonEmojiExcludedApps">
           <property name="text">
-           <string>&amp;Exceptions</string>
+           <string>&amp;Excluded Applications</string>
           </property>
          </widget>
         </item>
@@ -532,7 +532,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>625</x>
-     <y>499</y>
+     <y>538</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -548,7 +548,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>544</x>
-     <y>499</y>
+     <y>538</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -564,7 +564,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>615</x>
-     <y>405</y>
+     <y>444</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -580,7 +580,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>456</x>
-     <y>203</y>
+     <y>234</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -595,8 +595,8 @@
    <slot>onActionResetToDefaultValues()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>47</x>
-     <y>489</y>
+     <x>57</x>
+     <y>538</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -612,7 +612,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>696</x>
-     <y>405</y>
+     <y>444</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -628,7 +628,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>537</x>
-     <y>203</y>
+     <y>234</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -644,7 +644,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>296</x>
-     <y>436</y>
+     <y>475</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -660,7 +660,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>706</x>
-     <y>499</y>
+     <y>538</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -675,8 +675,8 @@
    <slot>updateGui()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>166</y>
+     <x>113</x>
+     <y>205</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -691,8 +691,8 @@
    <slot>onActionResetWarnings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>125</x>
-     <y>486</y>
+     <x>174</x>
+     <y>538</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -732,6 +732,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonEmojiExcludedApps</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onActionEditEmojiExcludedApplications()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>307</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionOk()</slot>
@@ -754,5 +770,6 @@
   <slot>updateGui()</slot>
   <slot>onActionResetWarnings()</slot>
   <slot>onActionEditSensitiveApplications()</slot>
+  <slot>onActionEditEmojiExcludedApplications()</slot>
  </slots>
 </ui>
