@@ -144,7 +144,7 @@ void MainWindow::setupSystemTrayIcon()
    connect(actionShowLog, &QAction::triggered, []() { openLogFile(); });
    menu->addAction(actionShowLog);
    QAction* actionShowStyleSheet = new QAction(tr("Show Stylesheet Editor"), this);
-   connect(actionShowStyleSheet, &QAction::triggered, &styleSheetEditor_, &StyleSheetEditor::show);
+   connect(actionShowStyleSheet, &QAction::triggered, &styleSheetEditor_, &xmilib::StyleSheetEditor::show);
    menu->addAction(actionShowStyleSheet);
 #endif // #ifndef NDEBUG
    menu->addSeparator();

@@ -21,7 +21,7 @@ using namespace xmilib;
 namespace {
 
 
-QStringList const kBuiltInExcludedApps { "discord.exe", "slack.exe" };
+QStringList const kBuiltInExcludedApps { };
 
 
 //**********************************************************************************************************************

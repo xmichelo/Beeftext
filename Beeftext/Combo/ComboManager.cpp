@@ -261,13 +261,13 @@ bool ComboManager::checkAndPerformComboSubstitution()
 //**********************************************************************************************************************
 bool ComboManager::checkAndPerformEmojiSubstitution()
 {
-   if ((!PreferencesManager::instance().emojiShortcodesEnabled()) || (currentText_.size() < 3)
+   qint32 const textSize = currentText_.size();
+   if ((!PreferencesManager::instance().emojiShortcodesEnabled()) || (textSize < 3)
          || (!currentText_.endsWith(constants::kEmojiDelimiter)))
       return false;
-   QRegularExpressionMatch const match = QRegularExpression(R"(:(\w+):$)").match(currentText_);
-   if (!match.hasMatch())
+   if ((currentText_.front() != constants::kEmojiDelimiter) || (currentText_.back() != constants::kEmojiDelimiter))
       return false;
-   QString const keyword = match.captured(1);
+   QString const keyword = currentText_.mid(1, textSize - 2);
    EmojiManager& emojisManager = EmojiManager::instance();
    QString emoji = emojisManager.emoji(keyword);
    if (emoji.isEmpty())
