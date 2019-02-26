@@ -23,6 +23,8 @@ Beeftext uses the [Qt] framework under the [GNU Lesser General Public License v3
 
 Beeftext uses the [OpenSSL] library under [OpenSSL and SSLeay licenses].
 
+Beeftext uses the [emojilib](https://github.com/muan/emojilib) library under the [MIT License].
+
 ## Documentation
 ### End User
 
