@@ -17,7 +17,7 @@ namespace constants {
 QString const kApplicationName = "Beeftext";
 QString const kOrganizationName = "beeftext.org";
 qint32 const kVersionMajor = 1;
-qint32 const kVersionMinor = 7;
+qint32 const kVersionMinor = 8;
 QString const kBeeftextWikiHomeUrl = "https://github.com/xmichelo/Beeftext/wiki";
 QString const kGettingStartedUrl = "https://github.com/xmichelo/Beeftext/wiki/Getting-started";
 QString const kBeeftextWikiVariablesUrl = "https://github.com/xmichelo/Beeftext/wiki/Variables";
