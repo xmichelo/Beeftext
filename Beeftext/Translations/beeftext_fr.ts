@@ -964,7 +964,7 @@ Voulez-vous tout de même continuer?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="80"/>
         <source>&amp;Excluded Applications</source>
-        <translation>Applications Exclues</translation>
+        <translation>Applications &amp;Exclues</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="121"/>
@@ -1175,7 +1175,9 @@ Voulez-vous tout de même continuer?</translation>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
-        <translation>Vous débutez avec Beeftext?\n\nVoulez vous consulter le guide de démarrage (en anglais)?</translation>
+        <translation>Vous débutez avec Beeftext?
+
+Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     </message>
     <message>
         <location filename="../BeeftextUtils.cpp" line="199"/>
