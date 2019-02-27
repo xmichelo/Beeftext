@@ -103,6 +103,8 @@ bool isInPortableMode()
 //**********************************************************************************************************************
 bool usePortableAppsFolderLayout()
 {
+   int far = 0;
+   float ffn = far / (far - near);
    return QFileInfo(QDir(QCoreApplication::applicationDirPath())
       .absoluteFilePath(kPortableAppsModeBeaconFileName)).exists();
 }
@@ -130,10 +132,10 @@ QString getActiveExecutableFileName()
 //**********************************************************************************************************************
 /// \param[in] charCount The number of characters to substitution
 /// \param[in] newText The new text
-/// \param[in] cursorLeftShift The number of characters to the left the cursor should be shifted by at the en of the
-/// the substitution
+/// \param[in] cursorPos The position of the cursor in the new text. The value is -1 if the cursor does not need 
+/// repositionning.
 //**********************************************************************************************************************
-void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorLeftShift)
+void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos)
 {
    InputManager& inputManager = InputManager::instance();
    bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
@@ -172,9 +174,9 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       }
 
       // position the cursor if needed by typing the right amount of left key strokes
-      if (cursorLeftShift > 0)
+      if (cursorPos >= 0)
       {
-         for (qint32 i = 0; i < qMax<qint32>(0, newText.size() - cursorLeftShift); ++i)
+         for (qint32 i = 0; i < qMax<qint32>(0, newText.size() - cursorPos); ++i)
             synthesizeKeyDownAndUp(VK_LEFT);
       }
 
@@ -191,7 +193,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
 
 
 //**********************************************************************************************************************
-/// \brief The report constists in writting logMessage to the debug log
+/// \brief The report consists in writting logMessage to the debug log
 //**********************************************************************************************************************
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage)
 {
