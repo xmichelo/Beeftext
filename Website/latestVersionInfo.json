@@ -1,8 +1,8 @@
 {
    "versionMajor": 1,
-   "versionMinor": 7,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.7/Beeftext-1.7-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.7",
-   "sha256Sum": "c5665e7db93732ddcd5361879ec0718b68318afddcf860f4a4f93a455ca7d2fc",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v1.7 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body> <ul><li>The tooltip of the Beeftext icon in the notification area indicates when Beeftext is paused.</li><li>The list of sensitive applications is now stored in a JSON file (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/97\">#97</a>).</li><li>Links to the Beeftext wiki have been added to the Help menu.</li><li>On first launch, the user is asked if he wants to read a short tutorial (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/106\">#106</a>).</li></ul></body></html>"
+   "versionMinor": 8,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.8/Beeftext-1.8-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.8",
+   "sha256Sum": "ed7ad7c25e9a99f49d49cf462fdc851a1000425e540b960084af7e8af9fd162a",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v1.8 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>Basic <a href=\"https://github.com/xmichelo/Beeftext/wiki/Emojis\">emoji support</a> has been implemented.</li><li>Applications that does not properly handle copy/paste can be listed in the <em>Sensitive Applications</em> dialog.</li><li>Conflicting combos can now accepted after a confirmation message (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/117\">#117).</li><li>A bug with Alt+PageDown and Alt+PageUp causing garbage characters to be inserted has been fixed (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/120\">#120</a>).</li></ul></body></html>"
 }
