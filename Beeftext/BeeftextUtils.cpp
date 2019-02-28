@@ -103,8 +103,6 @@ bool isInPortableMode()
 //**********************************************************************************************************************
 bool usePortableAppsFolderLayout()
 {
-   int far = 0;
-   float ffn = far / (far - near);
    return QFileInfo(QDir(QCoreApplication::applicationDirPath())
       .absoluteFilePath(kPortableAppsModeBeaconFileName)).exists();
 }
@@ -193,7 +191,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
 
 
 //**********************************************************************************************************************
-/// \brief The report consists in writting logMessage to the debug log
+/// \brief The report constists in writting logMessage to the debug log
 //**********************************************************************************************************************
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage)
 {
