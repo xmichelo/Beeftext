@@ -1017,68 +1017,78 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Utiliser le presse-papier pour la substitution des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="304"/>
+        <location filename="../PreferencesDialog.ui" line="320"/>
         <source>Sensitive Applications</source>
         <translation>Applications Sensibles</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="353"/>
+        <location filename="../PreferencesDialog.ui" line="347"/>
+        <source>Delay between simulated keystrokes</source>
+        <translation>Délai entre les frappes de touches simulées</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="354"/>
+        <source>ms</source>
+        <translation>ms</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="403"/>
         <source>Combo list folder</source>
         <translation>Dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="367"/>
+        <location filename="../PreferencesDialog.ui" line="417"/>
         <source>&amp;Change</source>
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="374"/>
+        <location filename="../PreferencesDialog.ui" line="424"/>
         <source>D&amp;efault</source>
         <translation>Par D&amp;éfaut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="386"/>
+        <location filename="../PreferencesDialog.ui" line="436"/>
         <source>Automatically backup combo list files</source>
         <translation>Faire des copies de sauvegarde automatique de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="393"/>
+        <location filename="../PreferencesDialog.ui" line="443"/>
         <source>Restore a backup.</source>
         <translation>Restaurer une sauvegarde.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="396"/>
+        <location filename="../PreferencesDialog.ui" line="446"/>
         <source>&amp;Restore</source>
         <translation>&amp;Restaurer</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="439"/>
-        <location filename="../PreferencesDialog.ui" line="452"/>
+        <location filename="../PreferencesDialog.ui" line="489"/>
+        <location filename="../PreferencesDialog.ui" line="502"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="442"/>
+        <location filename="../PreferencesDialog.ui" line="492"/>
         <source>&amp;Default</source>
         <translation>Par &amp;Défaut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="455"/>
+        <location filename="../PreferencesDialog.ui" line="505"/>
         <source>Reset &amp;Warnings</source>
         <translation>Réactiver les A&amp;vertissements</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="478"/>
+        <location filename="../PreferencesDialog.ui" line="528"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="485"/>
+        <location filename="../PreferencesDialog.ui" line="535"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="492"/>
+        <location filename="../PreferencesDialog.ui" line="542"/>
         <source>&amp;Apply</source>
         <translation>A&amp;ppliquer</translation>
     </message>
@@ -1088,67 +1098,67 @@ Voulez-vous tout de même continuer?</translation>
         <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="137"/>
+        <location filename="../PreferencesDialog.cpp" line="141"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="193"/>
+        <location filename="../PreferencesDialog.cpp" line="197"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="193"/>
+        <location filename="../PreferencesDialog.cpp" line="197"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="210"/>
+        <location filename="../PreferencesDialog.cpp" line="214"/>
         <source>Select folder</source>
         <translation>Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="265"/>
+        <location filename="../PreferencesDialog.cpp" line="269"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation>Êtes-vous sûr de vouloir réactiver tous les messages d&apos;avertissement?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="162"/>
+        <location filename="../PreferencesDialog.cpp" line="166"/>
         <source>Delete Backup Files?</source>
         <translation>Effacer les Sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="137"/>
+        <location filename="../PreferencesDialog.cpp" line="141"/>
         <source>The combo list folder could not be changed. The other settings were saved successfully.</source>
         <translation>Le dossier de liste des combos n&apos;a pas pu être modifié. Les autres réglages ont bien été sauvegardés.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="162"/>
+        <location filename="../PreferencesDialog.cpp" line="166"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="265"/>
+        <location filename="../PreferencesDialog.cpp" line="269"/>
         <source>Reset Warnings</source>
         <translation>Réactiver les Avertissements</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="296"/>
+        <location filename="../PreferencesDialog.cpp" line="300"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="298"/>
+        <location filename="../PreferencesDialog.cpp" line="302"/>
         <source>A new version is available.</source>
         <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="307"/>
+        <location filename="../PreferencesDialog.cpp" line="311"/>
         <source>The software is up to date.</source>
         <translation>Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="334"/>
+        <location filename="../PreferencesDialog.cpp" line="338"/>
         <source>Update check failed.</source>
         <translation>La vérification de mise à jour a échoué.</translation>
     </message>
@@ -1180,7 +1190,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="199"/>
+        <location filename="../BeeftextUtils.cpp" line="212"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="260"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
