@@ -86,7 +86,14 @@ QPushButton::menu-indicator {
 
 
 /*****************************
-* All Edits
+* labels
+*****************************/	
+QLabel:disabled {
+   color: #aaa;
+}
+
+/*****************************
+* Radio buttons
 *****************************/	
 QRadioButton:disabled {
    color: #aaa;
@@ -144,6 +151,48 @@ QComboBox QAbstractItemView {
 QComboBox::down-arrow {
 image: url(:/MainWindow/Resources/ArrowDown.png);
 }
+
+
+/*****************************
+* QSpinBox
+*****************************/
+
+QSpinBox {
+ background-color: #fff;
+ border: 1px solid #ccc;
+ selection-color: #fff;
+ selection-background-color: #258fc0;
+}
+
+QSpinBox:disabled {
+   background-color: #eee;
+   color: #aaa;
+}
+
+QSpinBox::down-arrow {
+image: url(:/MainWindow/Resources/ArrowDown.png);
+}
+
+QSpinBox::up-arrow {
+image: url(:/MainWindow/Resources/ArrowUp.png);
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+   width: 19px;
+   heigth: 15px;
+   background-color: #eee;
+   border: none;
+   border-left: 1px solid #ccc;
+   padding:0;
+}
+
+QSpinBox::up-button {
+  padding-top: 1px;
+  margin-bottom:-1px;
+  border-bottom: 1px solid #ccc;
+}
+
+
 
 /*****************************
 * QTableView

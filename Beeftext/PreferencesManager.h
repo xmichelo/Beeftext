@@ -69,6 +69,10 @@ public: // member functions
    static SpShortcut defaultComboTriggerShortcut(); ///< Reset the combo trigger shortcut to its default value
    bool emojiShortcodesEnabled() const; ///< Are emoji shortcodes enabled
    void setEmojiShortcodeEnabled(bool value) const; ///< Set if the emoji shortcodes are enabled
+   qint32 delayBetweenKeystrokesMs() const; ///< Get the 'delay between keystrokes' when not using the clipboard for combo substitution
+   void  setDelayBetweenKeystrokesMs(qint32 value) const; ///< Set the 'delay between keystrokes'
+   static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay beetween keystrokes' preference.
+   static qint32 maxDelayBetweenKeystrokesMs(); ///< Get the maximum value for the 'delay beetween keystrokes' preference.
 
 signals:
    void autoCheckForUpdatesChanged(bool value); // Signal emitted when the 'Auto check for updates' preference value changed

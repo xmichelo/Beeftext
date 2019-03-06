@@ -16,40 +16,48 @@
 
 
 namespace {
-   QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for the "Already launched" indicator
-   QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
-   QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
-   QString const kKeyLocale = "Locale"; ///< The settings key for the locale
-   QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
-   QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
-   QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
-   QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
-   QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
-   QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
-   QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
-   QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
-   QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
-   QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
-   QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
-   QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
-   QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
-   QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
-   QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
-   QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
-   QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
-   bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
-   bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
-   bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
-   bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
-   bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
-   bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
-   bool const kDefaultValueWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
-   bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
-   QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
-      QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
-   SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
-      | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
-   bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled'
+
+
+QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for the "Already launched" indicator
+QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
+QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
+QString const kKeyLocale = "Locale"; ///< The settings key for the locale
+QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
+QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
+QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
+QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
+QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
+QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
+QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
+QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
+QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
+QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
+QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
+QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
+QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
+QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
+QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
+QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
+QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
+bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
+bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
+bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
+bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
+bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
+bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+bool const kDefaultValueWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
+bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
+QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
+   QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
+SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
+   | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
+bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
+qint32 const kDefaultValueDelayBetweenKeystrokesMs = 5; ///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kMinValueDelayBetweenKeystrokesMs = 1; ///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
+
+
 }
 
 
@@ -517,6 +525,44 @@ bool PreferencesManager::emojiShortcodesEnabled() const
 void PreferencesManager::setEmojiShortcodeEnabled(bool value) const
 {
    settings_->setValue(kRegKeyEmojiShortcodesEnabled, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+qint32 PreferencesManager::delayBetweenKeystrokesMs() const
+{
+   return qBound<qint32>(kMinValueDelayBetweenKeystrokesMs, this->readSettings<qint32>(kRegKeyDelayBetweenKeystrokes,
+      kDefaultValueDelayBetweenKeystrokesMs), kMaxValueDelayBetweenKeystrokesMs);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setDelayBetweenKeystrokesMs(qint32 value) const
+{
+   settings_->setValue(kRegKeyDelayBetweenKeystrokes, qBound<qint32>(kMinValueDelayBetweenKeystrokesMs, value, 
+      kMaxValueDelayBetweenKeystrokesMs));
+}
+
+
+//**********************************************************************************************************************
+/// \return The minimum value for the 'delay between keystrokes' preferences.
+//**********************************************************************************************************************
+qint32 PreferencesManager::minDelayBetweenKeystrokesMs()
+{
+   return kMinValueDelayBetweenKeystrokesMs;
+}
+
+
+//**********************************************************************************************************************
+/// \return The maximum value for the 'delay between keystrokes' preferences.
+//**********************************************************************************************************************
+qint32 PreferencesManager::maxDelayBetweenKeystrokesMs()
+{
+   return kMaxValueDelayBetweenKeystrokesMs;
 }
 
 

@@ -42,6 +42,8 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
    ui_.labelUpdateCheckStatus->setText(QString());
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
+   ui_.spinDelayBetweenKeystrokes->setRange(prefs_.minDelayBetweenKeystrokesMs(), 
+      prefs_.maxDelayBetweenKeystrokesMs());
    I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
    this->loadPreferences();
    if (isInPortableMode())
@@ -82,6 +84,7 @@ void PreferencesDialog::loadPreferences()
       ui_.radioComboTriggerManual->setChecked(true);
    I18nManager::selectLocaleInCombo(prefs_.locale(), *ui_.comboLocale);
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
+   ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
    triggerShortcut_ = prefs_.comboTriggerShortcut();
    ui_.editShortcut->setText(triggerShortcut_ ? triggerShortcut_->toString() : "");
@@ -111,6 +114,7 @@ void PreferencesDialog::savePreferences()
    prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
    prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
    prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
+   prefs_.setDelayBetweenKeystrokesMs(ui_.spinDelayBetweenKeystrokes->value());
    if (!isInPortableMode())
    {
       if (this->validateComboListFolderPath())
@@ -363,5 +367,8 @@ void PreferencesDialog::updateGui() const
    ui_.buttonChangeShortcut->setEnabled(manualTrigger);
    ui_.buttonResetComboTriggerShortcut->setEnabled(manualTrigger);
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
-   ui_.buttonSensitiveApplications->setEnabled(ui_.checkUseClipboardForComboSubstitution->isChecked());
+   bool const useClipboard = ui_.checkUseClipboardForComboSubstitution->isChecked();
+   ui_.buttonSensitiveApplications->setEnabled(useClipboard);
+   ui_.labelDelayBetweenKeystrokes->setEnabled(!useClipboard);
+   ui_.spinDelayBetweenKeystrokes->setEnabled(!useClipboard);
 }

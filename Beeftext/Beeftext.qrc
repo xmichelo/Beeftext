@@ -1,9 +1,10 @@
 <RCC>
-    <qresource prefix="/MainWindow">
-        <file>Resources/BeeftextLogo128.png</file>
-        <file>Resources/BeeftextIcon.ico</file>
-        <file>Resources/Notification.wav</file>
-        <file>Resources/ArrowDown.png</file>
-        <file>Resources/BeeftextIconGrayscale.ico</file>
-    </qresource>
+  <qresource prefix="/MainWindow">
+    <file>Resources/ArrowUp.png</file>
+    <file>Resources/BeeftextLogo128.png</file>
+    <file>Resources/BeeftextIcon.ico</file>
+    <file>Resources/Notification.wav</file>
+    <file>Resources/ArrowDown.png</file>
+    <file>Resources/BeeftextIconGrayscale.ico</file>
+  </qresource>
 </RCC>

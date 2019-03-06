@@ -163,11 +163,18 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
          // we simulate the typing of the snippet text
          for (QChar c: newText)
          {
+            qint32 const delayMs = PreferencesManager::instance().delayBetweenKeystrokesMs();
             if (c == QChar::LineFeed)
                // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
+            {
                synthesizeKeyDownAndUp(VK_RETURN);
+               qApp->thread()->msleep(delayMs);
+            }
             else
+            {
                synthesizeUnicodeKeyDownAndUp(c.unicode());
+               qApp->thread()->msleep(delayMs);
+            }
          }
       }
 
