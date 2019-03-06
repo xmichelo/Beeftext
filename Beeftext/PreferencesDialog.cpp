@@ -42,8 +42,8 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
    ui_.labelUpdateCheckStatus->setText(QString());
    ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
-   ui_.spinDelayBetweenKeystrokes->setRange(prefs_.minDelayBetweenKeystrokesMs(), 
-      prefs_.maxDelayBetweenKeystrokesMs());
+   ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(), 
+      PreferencesManager::maxDelayBetweenKeystrokesMs());
    I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
    this->loadPreferences();
    if (isInPortableMode())
@@ -369,6 +369,4 @@ void PreferencesDialog::updateGui() const
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
    bool const useClipboard = ui_.checkUseClipboardForComboSubstitution->isChecked();
    ui_.buttonSensitiveApplications->setEnabled(useClipboard);
-   ui_.labelDelayBetweenKeystrokes->setEnabled(!useClipboard);
-   ui_.spinDelayBetweenKeystrokes->setEnabled(!useClipboard);
 }

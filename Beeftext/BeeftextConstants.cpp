@@ -179,7 +179,6 @@ image: url(:/MainWindow/Resources/ArrowUp.png);
 
 QSpinBox::up-button, QSpinBox::down-button {
    width: 19px;
-   heigth: 15px;
    background-color: #eee;
    border: none;
    border-left: 1px solid #ccc;

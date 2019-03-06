@@ -127,6 +127,7 @@ void PreferencesManager::reset()
    this->setAutoBackup(kDefaultValueAutoBackup);
    this->setEmojiShortcodeEnabled(kDefaultValueEmojiShortcodesEnabled);
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
+   this->setDelayBetweenKeystrokesMs(kDefaultValueDelayBetweenKeystrokesMs);
    this->resetWarnings();
    if (!isInPortableMode())
    {
