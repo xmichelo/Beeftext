@@ -17,13 +17,10 @@
 #include "PreferencesManager.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
+#include <XMiLib/SingleInstanceApp.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
 
-
-namespace {
-   QString const kSharedMemoryKey = "Beeftext";
-}
 
 using namespace xmilib;
 
@@ -50,8 +47,8 @@ int main(int argc, char *argv[])
       QApplication app(argc, argv);
 
       // check for an existing instance of the application
-      QSharedMemory sharedMem(kSharedMemoryKey);
-      if (!sharedMem.create(1))
+      SingleInstanceApplication singleInstanceApp("BeeftextSingleInstanceIdentifier");
+      if (!singleInstanceApp.isFirstInstance())
       {
          QMessageBox::information(nullptr, QObject::tr("Already Running"), 
             QObject::tr("Another instance of the application is already running."));
