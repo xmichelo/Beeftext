@@ -50,8 +50,8 @@ int main(int argc, char *argv[])
       SingleInstanceApplication singleInstanceApp("BeeftextSingleInstanceIdentifier");
       if (!singleInstanceApp.isFirstInstance())
       {
-         QMessageBox::information(nullptr, QObject::tr("Already Running"), 
-            QObject::tr("Another instance of the application is already running."));
+         // SingleInstance app detected that another instance is running and 'put a flag in memory to indicate
+         // to the other instance that another one tried to be created
          return 1;
       }
 
@@ -79,7 +79,8 @@ int main(int argc, char *argv[])
             "'Getting Started' tutorial?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes)))
             QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl));
       }
-
+      QObject::connect(&singleInstanceApp, &SingleInstanceApplication::anotherInstanceWasLaunched,
+         &window, &MainWindow::onAnotherAppInstanceLaunch);
       prefs.setAlreadyLaunched();
       qint32 const returnCode = QApplication::exec();
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));

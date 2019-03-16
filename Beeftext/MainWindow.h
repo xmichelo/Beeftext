@@ -31,6 +31,9 @@ public: // member functions
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
 
+public slots:
+   void onAnotherAppInstanceLaunch(); ///< Slot for the launch of another instance of the app
+
 protected: // member functions
    /// \name Drag and drop functions
    ///\{
@@ -45,10 +48,6 @@ private: // member functions
    void setupSystemTrayIcon(); ///< Setup the system tray icon
    void changeEvent(QEvent *event) override; ///< Change event handler
    void showWindow(); ///< Ensure the window is visible, active and on top
-
-signals:
-   void startedCheckingForUpdate(); ///< Signal for the start of the update check
-   void finishedCheckingForUpdate(); ///< Signal for the end of the update check (this signal is emitted BEFORE displaying the software update dialog)
 
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
