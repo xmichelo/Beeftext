@@ -11,6 +11,7 @@
 #include "Combo.h"
 #include "ComboVariable.h"
 #include "ComboManager.h"
+#include "VariableInputDialog.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -286,7 +287,9 @@ bool Combo::matchesForInput(QString const& input) const
 void Combo::performSubstitution() const
 {
    qint32 cursorLeftShift = -1;
-   QString const& newText = this->evaluatedSnippet(&cursorLeftShift);
+   bool cancelled = false;
+   QString const& newText = this->evaluatedSnippet(cancelled, &cursorLeftShift);
+   if (!cancelled)
    performTextSubstitution(keyword_.size(), newText, cursorLeftShift);
 }
 
@@ -379,12 +382,13 @@ void Combo::touch()
 
 
 //**********************************************************************************************************************
+/// \param[out] outCancelled Did the user cancel user input
 /// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion
 /// \return The snippet text once it has been evaluated
 //**********************************************************************************************************************
-QString Combo::evaluatedSnippet(qint32* outCursorPos, QSet<QString> forbiddenSubCombos) const
+QString Combo::evaluatedSnippet(bool& outCancelled, qint32* outCursorPos, QSet<QString> forbiddenSubCombos) const
 {
    forbiddenSubCombos += this->keyword();
    QString remainingText = snippet_;
@@ -407,14 +411,15 @@ QString Combo::evaluatedSnippet(qint32* outCursorPos, QSet<QString> forbiddenSub
       QString const variable = match.captured(2);
       if ("cursor" == variable)
       {
-         // we compute the position of the cursor
          if (outCursorPos)
             *outCursorPos = result.size();
       }
       else
       {
          // we add the text before the variable and the evaluated variable contents to the result
-         result += evaluateVariable(match.captured(2), forbiddenSubCombos);
+         result += evaluateVariable(match.captured(2), outCancelled, forbiddenSubCombos);
+         if (outCancelled)
+            return QString();
       }
 
       // we still need to evaluate the text that was at the right of the variable

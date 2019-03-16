@@ -7,6 +7,7 @@
 #include "stdafx.h"
 #include "ComboVariable.h"
 #include "ComboManager.h"
+#include "VariableInputDialog.h"
 
 
 namespace {
@@ -70,12 +71,14 @@ QString discordEmojisFromClipboard()
 //**********************************************************************************************************************
 /// \brief Compute the value of a variable.
 /// \param[in] variable The variable, without the enclosing #{}.
+/// \param[out] outCancelled Was the input variable cancelled by the user.
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion.
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
-QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubCombos)
+QString evaluateVariable(QString const& variable, bool& outCancelled, QSet<QString> forbiddenSubCombos)
 {
+   outCancelled = false;
    QString const fallbackResult = QString("#{%1}").arg(variable);
    QLocale const systemLocale = QLocale::system();
    if (variable == "clipboard")
@@ -116,8 +119,21 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
          [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
 
       return combos.end() == it ? fallbackResult
-         : (*it)->evaluatedSnippet(nullptr, forbiddenSubCombos << comboName);
+         : (*it)->evaluatedSnippet(outCancelled, nullptr, forbiddenSubCombos << comboName);
       // forbiddenSubcombos is intended at avoiding endless recursion
+   }
+
+   QString const inputVariable = "input:";
+   if (variable.startsWith(inputVariable))
+   {
+      QString result;
+      if (!VariableInputDialog::run(resolveEscapingInVariableParameter(variable.right(variable.size() -
+         inputVariable.size())), result))
+      {
+         outCancelled = true;
+         return QString();
+      }
+      return result;
    }
 
    return fallbackResult; // we could not recognize the variable, so we put it back in the result

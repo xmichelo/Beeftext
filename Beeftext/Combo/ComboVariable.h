@@ -8,7 +8,8 @@
 #define BEEFTEXT_COMBO_VARIABLE_H
 
 
-QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubCombos = QSet<QString>());
+QString evaluateVariable(QString const& variable, bool& outCancelled, 
+   QSet<QString> forbiddenSubCombos = QSet<QString>());
 
 
 #endif // #ifndef BEEFTEXT_COMBO_VARIABLE_H

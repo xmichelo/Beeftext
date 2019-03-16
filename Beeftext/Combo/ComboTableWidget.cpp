@@ -582,8 +582,12 @@ void ComboTableWidget::onActionEditCombo()
 void ComboTableWidget::onActionCopySnippet() const
 {
    SpCombo const combo = this->getSelectedCombo();
-   if (combo)
-      QGuiApplication::clipboard()->setText(combo->evaluatedSnippet());
+   if (!combo)
+      return;
+   bool cancelled = false;
+   QString const text = combo->evaluatedSnippet(cancelled);
+   if (!cancelled)
+      QGuiApplication::clipboard()->setText(text);
 }
 
 
