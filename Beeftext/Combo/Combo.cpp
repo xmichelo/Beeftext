@@ -11,7 +11,6 @@
 #include "Combo.h"
 #include "ComboVariable.h"
 #include "ComboManager.h"
-#include "VariableInputDialog.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -288,7 +287,8 @@ void Combo::performSubstitution() const
 {
    qint32 cursorLeftShift = -1;
    bool cancelled = false;
-   QString const& newText = this->evaluatedSnippet(cancelled, &cursorLeftShift);
+   QMap<QString, QString> knownInputVariables;
+   QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
    performTextSubstitution(keyword_.size(), newText, cursorLeftShift);
 }
@@ -386,11 +386,12 @@ void Combo::touch()
 /// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion
+/// \param[in,out] knownInputVariables The list of know input variables.
 /// \return The snippet text once it has been evaluated
 //**********************************************************************************************************************
-QString Combo::evaluatedSnippet(bool& outCancelled, qint32* outCursorPos, QSet<QString> forbiddenSubCombos) const
+QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> forbiddenSubCombos, 
+   QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const
 {
-   forbiddenSubCombos += this->keyword();
    QString remainingText = snippet_;
    QString result;
 
@@ -417,7 +418,7 @@ QString Combo::evaluatedSnippet(bool& outCancelled, qint32* outCursorPos, QSet<Q
       else
       {
          // we add the text before the variable and the evaluated variable contents to the result
-         result += evaluateVariable(match.captured(2), outCancelled, forbiddenSubCombos);
+         result += evaluateVariable(match.captured(2), forbiddenSubCombos, knownInputVariables, outCancelled);
          if (outCancelled)
             return QString();
       }

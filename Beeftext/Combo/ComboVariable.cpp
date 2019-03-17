@@ -71,12 +71,14 @@ QString discordEmojisFromClipboard()
 //**********************************************************************************************************************
 /// \brief Compute the value of a variable.
 /// \param[in] variable The variable, without the enclosing #{}.
-/// \param[out] outCancelled Was the input variable cancelled by the user.
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion.
+/// \param[in,out] knownInputVariables The list of know input variables.
+/// \param[out] outCancelled Was the input variable cancelled by the user.
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
-QString evaluateVariable(QString const& variable, bool& outCancelled, QSet<QString> forbiddenSubCombos)
+QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubCombos, 
+   QMap<QString, QString>& knownInputVariables, bool& outCancelled)
 {
    outCancelled = false;
    QString const fallbackResult = QString("#{%1}").arg(variable);
@@ -118,21 +120,26 @@ QString evaluateVariable(QString const& variable, bool& outCancelled, QSet<QStri
       ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(),
          [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
 
-      return combos.end() == it ? fallbackResult
-         : (*it)->evaluatedSnippet(outCancelled, nullptr, forbiddenSubCombos << comboName);
+      return combos.end() == it ? fallbackResult : (*it)->evaluatedSnippet(outCancelled, 
+         forbiddenSubCombos << comboName, knownInputVariables, nullptr);
       // forbiddenSubcombos is intended at avoiding endless recursion
    }
 
    QString const inputVariable = "input:";
    if (variable.startsWith(inputVariable))
    {
+      // check if we already add the user input for the given description
+      QString const description = variable.right(variable.size() - inputVariable.size());
+      if (knownInputVariables.contains(description))
+         return knownInputVariables[description];
+
       QString result;
-      if (!VariableInputDialog::run(resolveEscapingInVariableParameter(variable.right(variable.size() -
-         inputVariable.size())), result))
+      if (!VariableInputDialog::run(resolveEscapingInVariableParameter(description), result))
       {
          outCancelled = true;
          return QString();
       }
+      knownInputVariables.insert(description, result); // add the new input to the list of known ones
       return result;
    }
 

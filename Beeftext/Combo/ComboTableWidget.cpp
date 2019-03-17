@@ -585,7 +585,8 @@ void ComboTableWidget::onActionCopySnippet() const
    if (!combo)
       return;
    bool cancelled = false;
-   QString const text = combo->evaluatedSnippet(cancelled);
+   QMap<QString, QString> knownInputVariables;
+   QString const text = combo->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, nullptr);
    if (!cancelled)
       QGuiApplication::clipboard()->setText(text);
 }
