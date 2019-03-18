@@ -143,5 +143,10 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
       return result;
    }
 
+   QString const envVarVariable = "envVar:";
+   if (variable.startsWith(envVarVariable))
+      return QProcessEnvironment::systemEnvironment().value(variable.right(variable.size() -
+         envVarVariable.size()));
+
    return fallbackResult; // we could not recognize the variable, so we put it back in the result
 }
