@@ -115,6 +115,13 @@ QMenu* ComboDialog::createComboVariableMenu()
    action = new QAction(tr("Co&mbo"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{combo:}", true); });
    menu->addAction(action);
+   action = new QAction(tr("En&vironment Variable"), this);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{envVar:}", true); });
+   menu->addAction(action);
+   action = new QAction(tr("User &Input"), this);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{input:}", true); });
+   menu->addAction(action);
+
    menu->addSeparator();
    action = new QAction(tr("&About Variables"), this);
    connect(action, &QAction::triggered, []() { QDesktopServices::openUrl(constants::kBeeftextWikiVariablesUrl); });
