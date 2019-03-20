@@ -171,55 +171,65 @@
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="119"/>
+        <location filename="../Combo/ComboDialog.cpp" line="118"/>
+        <source>En&amp;vironment Variable</source>
+        <translation>&amp;Variable d&apos;Environnement</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="121"/>
+        <source>User &amp;Input</source>
+        <translation>Saisie Ut&amp;ilisateur</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="126"/>
         <source>&amp;About Variables</source>
         <translation>&amp;À Propos des Variables</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="153"/>
-        <location filename="../Combo/ComboDialog.cpp" line="159"/>
+        <location filename="../Combo/ComboDialog.cpp" line="160"/>
         <location filename="../Combo/ComboDialog.cpp" line="166"/>
-        <location filename="../Combo/ComboDialog.cpp" line="176"/>
+        <location filename="../Combo/ComboDialog.cpp" line="173"/>
+        <location filename="../Combo/ComboDialog.cpp" line="183"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="153"/>
+        <location filename="../Combo/ComboDialog.cpp" line="160"/>
         <source>The snippet text is empty.</source>
         <translation>Le snippet est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="159"/>
+        <location filename="../Combo/ComboDialog.cpp" line="166"/>
         <source>The keyword is invalid.</source>
         <translation>Le mot-clé est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="166"/>
+        <location filename="../Combo/ComboDialog.cpp" line="173"/>
         <source>The group is invalid.</source>
         <translation>Le groupe est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="176"/>
+        <location filename="../Combo/ComboDialog.cpp" line="183"/>
         <source>This keyword is already in use.</source>
         <translation>Ce mot clé est déjà utilisé.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="186"/>
+        <location filename="../Combo/ComboDialog.cpp" line="193"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Un combo existant cause un conflit avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="187"/>
+        <location filename="../Combo/ComboDialog.cpp" line="194"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translation>%1 combos existants créent des conflits avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="189"/>
+        <location filename="../Combo/ComboDialog.cpp" line="196"/>
         <source>Conflict</source>
         <translation>Conflit</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="189"/>
+        <location filename="../Combo/ComboDialog.cpp" line="196"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anymay?</source>
@@ -232,7 +242,7 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="241"/>
+        <location filename="../Combo/ComboDialog.cpp" line="248"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
@@ -552,7 +562,7 @@ Voulez-vous tout de même continuer?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="256"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="669"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="674"/>
         <source>Export All Combos</source>
         <translation>Exporter Tous les Combos</translation>
     </message>
@@ -632,9 +642,9 @@ Voulez-vous tout de même continuer?</translation>
         <location filename="../Combo/ComboTableWidget.cpp" line="521"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="547"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="571"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="626"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="658"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="678"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="631"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="663"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="683"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -664,13 +674,13 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Effacer le Combo?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="641"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="646"/>
         <source>Export Combos</source>
         <translation>Exporter les Combos</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="658"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="678"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="663"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="683"/>
         <source>Could not save the combo list file.</source>
         <translation>Impossible de sauver la liste de combos.</translation>
     </message>
@@ -1166,22 +1176,20 @@ Voulez-vous tout de même continuer?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="56"/>
         <source>Already Running</source>
-        <translation>En Cours d&apos;Exécution</translation>
+        <translation type="vanished">En Cours d&apos;Exécution</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="57"/>
         <source>Another instance of the application is already running.</source>
-        <translation>Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
+        <translation type="vanished">Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="81"/>
+        <location filename="../main.cpp" line="78"/>
         <source>Getting Started</source>
         <translation>Bien Débuter</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="81"/>
+        <location filename="../main.cpp" line="78"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -1213,7 +1221,7 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="105"/>
+        <location filename="../main.cpp" line="103"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>
