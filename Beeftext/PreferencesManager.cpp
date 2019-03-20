@@ -53,7 +53,7 @@ QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writ
 SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
    | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
 bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
-qint32 const kDefaultValueDelayBetweenKeystrokesMs = 5; ///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMinValueDelayBetweenKeystrokesMs = 1; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
 
