@@ -10,5 +10,4 @@ $ErrorActionPreference = "Stop"
 . (Join-Path $PSScriptRoot "Beeftext.ps1")
 
 updateVersionNumberInInstaller
-updateVersionNumberInPortableAppsConfiguration
 updateVersionNumberInRcFile

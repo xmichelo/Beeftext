@@ -73,19 +73,6 @@ function updateVersionNumberInInstaller
 
 
 #***********************************************************************************************************************
-# Update the version number in the installer file
-#***********************************************************************************************************************
-function updateVersionNumberInPortableAppsConfiguration
-{
-    $major, $minor = getBeeftextVersion
-    (Get-Content $portableAppsConfigPath) `
-        -replace '(PackageVersion)=\d+.\d+.\d+.\d+', ('$1=' + "$major.$minor.0.0") `
-        -replace '(DisplayVersion)=\d+.\d+', ('$1=' + "$major.$minor") |
-        Out-File $portableAppsConfigPath -Encoding "UTF8"
-}
-
-
-#***********************************************************************************************************************
 # Update the version number in the RC file
 #***********************************************************************************************************************
 function updateVersionNumberInRcFile
