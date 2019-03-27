@@ -1289,6 +1289,11 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation type="vanished">Le fichiers des applications sensibles n&apos;a pas pu être sauvegardé.</translation>
     </message>
     <message>
+        <location filename="../EmojiManager.cpp" line="149"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list applications in which emoji substitution should be disabled.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Listez içi les applications dans lesquelles la substitution d&apos;emojis doit être désactivée.&lt;/p&gt;&lt;p&gt;Utilisez le nom des processus de chaque application (par exemple: notepad.exe). Les wildcards sont acceptées.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <location filename="../EmojiManager.cpp" line="152"/>
         <location filename="../SensitiveApplicationManager.cpp" line="102"/>
         <source>&amp;Reset</source>
@@ -1309,6 +1314,11 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <location filename="../EmojiManager.cpp" line="166"/>
         <source>The emoji excluded applications file could not be saved.</source>
         <translation>Le fichier d&apos;applications exclues n&apos;a pas pu être sauvé.</translation>
+    </message>
+    <message>
+        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Listez içi les applications qui ne supportent pas le copier-coller standard par Ctrl+V et ne fonctionnent donc pas correctement avec Beeftext.&lt;/p&gt;&lt;p&gt;Utilisez le nom des processus de chaque application (par exemple: notepad.exe). Les wildcards sont acceptées.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../SensitiveApplicationManager.cpp" line="106"/>
