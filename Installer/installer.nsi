@@ -210,7 +210,7 @@ Section "Start Menu Shortcuts" secStartMenuShortcuts
 
 SectionIn 1 # This section is enabled for the Full and Default installation types
 SetShellVarContext all # The shortcut in the start menu wil be created for all users
-
+setOutPath $INSTDIR
 CreateDirectory "$SMPROGRAMS\${APP_FANCY_NAME}"
 CreateShortCut "$SMPROGRAMS\${APP_FANCY_NAME}\${APP_FANCY_NAME}.lnk" "$INSTDIR\${APP_NAME}.exe" "" "$INSTDIR\${APP_NAME}.exe" 0
 CreateShortCut "$SMPROGRAMS\${APP_FANCY_NAME}\Uninstall ${APP_FANCY_NAME}.lnk" "$INSTDIR\${UNINSTALLER_FILE_NAME}" "" "$INSTDIR\${UNINSTALLER_FILE_NAME}" 0
