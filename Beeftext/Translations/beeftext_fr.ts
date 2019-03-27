@@ -825,116 +825,131 @@ Voulez-vous tout de même continuer?</translation>
     <message>
         <location filename="../MainWindow.ui" line="54"/>
         <source>&amp;Help</source>
-        <translation>&amp;Aide</translation>
+        <translation>A&amp;ide</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="63"/>
+        <location filename="../MainWindow.ui" line="64"/>
         <source>&amp;Advanced</source>
         <translation>&amp;Avancé</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="73"/>
+        <location filename="../MainWindow.ui" line="74"/>
         <source>E&amp;xit Beeftext</source>
         <translation>&amp;Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="79"/>
+        <location filename="../MainWindow.ui" line="80"/>
         <source>Exit Beeftext</source>
         <translation>Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="82"/>
+        <location filename="../MainWindow.ui" line="83"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="87"/>
+        <location filename="../MainWindow.ui" line="88"/>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Wiki Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="90"/>
+        <location filename="../MainWindow.ui" line="91"/>
         <source>Shift+F1</source>
         <translation>Maj+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="95"/>
+        <location filename="../MainWindow.ui" line="96"/>
         <source>&amp;About Beeftext</source>
         <translation>&amp;À Propos de Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="98"/>
+        <location filename="../MainWindow.ui" line="99"/>
         <source>F1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="117"/>
+        <location filename="../MainWindow.ui" line="118"/>
         <source>Ctrl+,</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="122"/>
+        <location filename="../MainWindow.ui" line="123"/>
         <source>Open &amp;Log File</source>
         <translation>Ouvrir le &amp;Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="125"/>
+        <location filename="../MainWindow.ui" line="126"/>
         <source>Open the log file</source>
         <translation>Ouvrir le journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="128"/>
+        <location filename="../MainWindow.ui" line="129"/>
         <source>Ctrl+Shift+L</source>
         <translation>Ctrl+Maj+L</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="133"/>
+        <location filename="../MainWindow.ui" line="134"/>
+        <source>&amp;Getting Started</source>
+        <translation>&amp;Bien Débuter</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="137"/>
         <source>Getting Started</source>
         <translation>Bien Débuter</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="136"/>
+        <location filename="../MainWindow.ui" line="140"/>
         <source>Ctrl+F1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="117"/>
+        <location filename="../MainWindow.ui" line="145"/>
+        <source>&amp;Release Notes</source>
+        <translation>&amp;Notes de Version</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="148"/>
+        <source>Ctrl+Shift+F1</source>
+        <translation>Ctrl+Maj+F1</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="119"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="114"/>
+        <location filename="../MainWindow.cpp" line="116"/>
         <source> - PAUSED</source>
         <translation> - EN PAUSE</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="129"/>
+        <location filename="../MainWindow.cpp" line="131"/>
         <source>Open Beeftext</source>
         <translation>Ouvrir Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="133"/>
+        <location filename="../MainWindow.cpp" line="135"/>
         <source>&amp;Pause Beeftext</source>
         <translation>&amp;Désactiver Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="133"/>
+        <location filename="../MainWindow.cpp" line="135"/>
         <source>&amp;Resume Beeftext</source>
         <translation>&amp;Réactiver Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="114"/>
-        <location filename="../MainWindow.cpp" line="138"/>
+        <location filename="../MainWindow.ui" line="115"/>
+        <location filename="../MainWindow.cpp" line="140"/>
         <source>Preferences</source>
         <translation>Préférences</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="143"/>
+        <location filename="../MainWindow.cpp" line="145"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="146"/>
+        <location filename="../MainWindow.cpp" line="148"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>
@@ -1246,7 +1261,7 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../BeeftextConstants.cpp" line="24"/>
+        <location filename="../BeeftextConstants.cpp" line="25"/>
         <source>JSON files (*.json);;All files (*.*)</source>
         <translation>Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
     </message>

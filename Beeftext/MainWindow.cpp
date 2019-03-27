@@ -36,7 +36,9 @@ MainWindow::MainWindow()
    connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []()
       { QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl)); });
    connect(ui_.actionGettingStarted, &QAction::triggered, []()
-      { QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl)); });
+   { QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl)); });
+   connect(ui_.actionShowReleaseNotes, &QAction::triggered, []()
+   { QDesktopServices::openUrl(QUrl(constants::kBeeftextReleasesPagesUrl)); });
 }
 
 

@@ -55,6 +55,7 @@
     </property>
     <addaction name="actionGettingStarted"/>
     <addaction name="actionVisitBeeftextWiki"/>
+    <addaction name="actionShowReleaseNotes"/>
     <addaction name="separator"/>
     <addaction name="actionShowAboutDialog"/>
    </widget>
@@ -130,10 +131,21 @@
   </action>
   <action name="actionGettingStarted">
    <property name="text">
+    <string>&amp;Getting Started</string>
+   </property>
+   <property name="toolTip">
     <string>Getting Started</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+F1</string>
+   </property>
+  </action>
+  <action name="actionShowReleaseNotes">
+   <property name="text">
+    <string>&amp;Release Notes</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F1</string>
    </property>
   </action>
  </widget>

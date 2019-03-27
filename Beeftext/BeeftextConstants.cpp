@@ -21,6 +21,7 @@ qint32 const kVersionMinor = 9;
 QString const kBeeftextWikiHomeUrl = "https://github.com/xmichelo/Beeftext/wiki";
 QString const kGettingStartedUrl = "https://github.com/xmichelo/Beeftext/wiki/Getting-started";
 QString const kBeeftextWikiVariablesUrl = "https://github.com/xmichelo/Beeftext/wiki/Variables";
+QString const kBeeftextReleasesPagesUrl = "https://github.com/xmichelo/Beeftext/releases";
 QString const kJsonFileDialogFilter = QObject::tr("JSON files (*.json);;All files (*.*)");
 Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs;
 QChar const kEmojiDelimiter = '|';
