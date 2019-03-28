@@ -2,6 +2,11 @@
 # Xavier Michelon
 # 2017-11-12
 
+# This installer relies on the following NSIS plugins (copies of the plugins are in the Resources\NsisPlugins subfolder)
+# - ShellExecAsUser ( https://nsis.sourceforge.io/ShellExecAsUser_plug-in ): Runs Beeftext as standard user at the end of the installer
+# - NsProcess (https://nsis.sourceforge.io/NsProcess_plugin): Find and kill running instances of the application
+
+
 !include "MUI2.nsh" # use the MUI2 scripts for better visual aspect
 !include "LogicLib.nsh" # we use the logic lib for easy conditional statements
 !include "nsDialogs.nsh" # used for custom dialog pages
@@ -39,7 +44,8 @@
 !define MUI_HEADERIMAGE_BITMAP ${TOP_IMAGE_PATH}
 !define MUI_HEADERIMAGE_UNBITMAP ${TOP_IMAGE_PATH}
 #!define MUI_FINISHPAGE_NOAUTOCLOSE
-!define MUI_FINISHPAGE_RUN "$INSTDIR\${APP_NAME}.exe"
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchBeeftext"
 #!define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Build the solution file and stop if the result is not 0
@@ -92,14 +98,14 @@ FunctionEnd
 # install the VC Redistributable Runtime for VS2017
 ###################################################
 Function InstallVCRedistributableRuntime
-   SetOutPath $TEMP
-   ${Unless} ${FileExists} "$TEMP\${VC_REDIST_RUNTIME_FILE}"         
-       DetailPrint "Installing VC++ 2017 Redistributable Runtime"         
-       File ${VC_REDIST_RUNTIME_FILE_PATH}
-       ExecWait "$TEMP\${VC_REDIST_RUNTIME_FILE} /q"         
-       DetailPrint "Cleaning up"         
-       Delete $TEMP\${VC_REDIST_RUNTIME_FILE}     
-   ${EndUnless}
+	SetOutPath $TEMP
+	${Unless} ${FileExists} "$TEMP\${VC_REDIST_RUNTIME_FILE}"         
+		 DetailPrint "Installing VC++ 2017 Redistributable Runtime"         
+		 File ${VC_REDIST_RUNTIME_FILE_PATH}
+		 ExecWait "$TEMP\${VC_REDIST_RUNTIME_FILE} /q"         
+		 DetailPrint "Cleaning up"         
+		 Delete $TEMP\${VC_REDIST_RUNTIME_FILE}     
+	${EndUnless}
 FunctionEnd
 
 
@@ -110,11 +116,11 @@ Function checkAlreadyInstalled
   Push $0 
   ReadRegStr $0 HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "UninstallString"
   ${If} $0 != ""
-    MessageBox MB_YESNO|MB_ICONQUESTION "Before you can install ${APP_FANCY_NAME}, you must uninstall the version that is currently installed on your computer.$\n$\nDo you want to uninstall the previous version of ${APP_FANCY_NAME} ?" /SD IDNO IDYES yes IDNO no
+	 MessageBox MB_YESNO|MB_ICONQUESTION "Before you can install ${APP_FANCY_NAME}, you must uninstall the version that is currently installed on your computer.$\n$\nDo you want to uninstall the previous version of ${APP_FANCY_NAME} ?" /SD IDNO IDYES yes IDNO no
 no:
-    Abort
+	 Abort
 yes:
-    ExecWait '"$INSTDIR\${UNINSTALLER_FILE_NAME}" _?=$INSTDIR' # the _?=$INSTDIR means that the uninstaller will not copy itself but run from the installer folder, forcing ExecWait to actually wait for the uninstaller to finish.
+	 ExecWait '"$INSTDIR\${UNINSTALLER_FILE_NAME}" _?=$INSTDIR' # the _?=$INSTDIR means that the uninstaller will not copy itself but run from the installer folder, forcing ExecWait to actually wait for the uninstaller to finish.
   ${Endif}
   Pop $0
 FunctionEnd
@@ -132,6 +138,14 @@ Function getInstallDirSize
   Pop $2
   Pop $1
   Exch $0 # Exchange the value of $0 and the top of the Stack
+FunctionEnd
+
+
+#########################################################################
+# Launch Beeftext at the end of the installer, as the standard user
+#########################################################################
+Function LaunchBeeftext
+ShellExecAsUser::ShellExecAsUser "open" '"$INSTDIR\${APP_NAME}.exe"'
 FunctionEnd
 
 
@@ -222,20 +236,20 @@ SectionEnd
 # Find and close running instance of the application
 ####################################################
 Function un.closeRunningInstance
-    # this function was found in the NSIS wiki: http://nsis.sourceforge.net/Find_and_Close_or_Terminate
-    Push $0 ; window handle
-    Push $1
-    Push $2 ; process handle
-    DetailPrint "Checking for and stopping running instance."
-    FindWindow $0 "" "${APP_NAME}"
-    IntCmp $0 0 done
-    System::Call 'user32.dll::GetWindowThreadProcessId(i r0, *i .r1) i .r2'
-    System::Call 'user32.dll::PostThreadMessage(i r2, i ${WM_QUIT}, i 0, i 0) b .r0'
-    Sleep 2000
+	 # this function was found in the NSIS wiki: http://nsis.sourceforge.net/Find_and_Close_or_Terminate
+	 Push $0 ; window handle
+	 Push $1
+	 Push $2 ; process handle
+	 DetailPrint "Checking for and stopping running instance."
+	 FindWindow $0 "" "${APP_NAME}"
+	 IntCmp $0 0 done
+	 System::Call 'user32.dll::GetWindowThreadProcessId(i r0, *i .r1) i .r2'
+	 System::Call 'user32.dll::PostThreadMessage(i r2, i ${WM_QUIT}, i 0, i 0) b .r0'
+	 Sleep 2000
   done:
-    Pop $2
-    Pop $1
-    Pop $0
+	 Pop $2
+	 Pop $1
+	 Pop $0
 FunctionEnd
 
 #####################################
