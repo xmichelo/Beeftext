@@ -436,6 +436,7 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Translations\beeftext_ru.ts" />
     <QtUic Include="ShortcutDialog.ui">
     </QtUic>
     <QtUic Include="Combo\ComboImportDialog.ui">

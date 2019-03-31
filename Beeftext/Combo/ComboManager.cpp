@@ -246,8 +246,8 @@ bool ComboManager::checkAndPerformComboSubstitution()
 
    if (!isBeeftextTheForegroundApplication()) // in Beeftext windows, substitution is disabled
    {
-      (*it)->performSubstitution();
-      if (PreferencesManager::instance().playSoundOnCombo())
+      ;
+      if ((*it)->performSubstitution() && PreferencesManager::instance().playSoundOnCombo())
          sound_->play();
    }
    this->onComboBreakerTyped();

@@ -281,16 +281,18 @@ bool Combo::matchesForInput(QString const& input) const
 
 
 //**********************************************************************************************************************
-// 
+/// \return true if the substitution was actually performed (it could a been cancelled, for instance by the user
+/// dismissing a variable input dialog.
 //*********************************************************************************************************************
-void Combo::performSubstitution() const
+bool Combo::performSubstitution() const
 {
    qint32 cursorLeftShift = -1;
    bool cancelled = false;
    QMap<QString, QString> knownInputVariables;
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
-   performTextSubstitution(keyword_.size(), newText, cursorLeftShift);
+      performTextSubstitution(keyword_.size(), newText, cursorLeftShift);
+   return !cancelled;
 }
 
 

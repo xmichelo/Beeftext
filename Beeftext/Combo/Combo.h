@@ -55,7 +55,7 @@ public: // member functions
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
    bool matchesForInput(QString const& input) const; ///< Check if the combo is a match for the given input
-   void performSubstitution() const; ///< Perform the combo substitution
+   bool performSubstitution() const; ///< Perform the combo substitution
    QJsonObject toJsonObject(bool includeGroup) const; ///< Serialize the combo in a JSon object
    void changeUuid(); ///< Get a new Uuid for the combo
 
