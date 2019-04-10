@@ -185,10 +185,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       if (cursorPos >= 0)
       {
          for (qint32 i = 0; i < qMax<qint32>(0, newText.size() - cursorPos); ++i)
-         {
             synthesizeKeyDownAndUp(VK_LEFT);
-            qApp->thread()->msleep(delayMs);
-         }
       }
 
       ///< We restore the modifiers that we deactivated at the beginning of the function
