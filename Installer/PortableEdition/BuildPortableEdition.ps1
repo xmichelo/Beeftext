@@ -11,7 +11,10 @@ $ErrorActionPreference = "Stop"
 #***********************************************************************************************************************
 # Variable definitions
 #***********************************************************************************************************************
-$dstDir = absolutePath $solutionDir "Installer\_build\BeeftextPortableEdition"
+$major, $minor = getBeeftextVersion
+$buildFolder = absolutePath $solutionDir "Installer\_build"
+$dstDir = absolutePath $buildFolder "BeeftextPortableEdition"
+$dstZipFilePath = (absolutePath $buildFolder "Beeftext-$major.$minor-PortableEdition.zip")
 $solutionPath = absolutePath $solutionDir "Beeftext.sln"
 $exeDir = absolutePath $solutionDir "_build\Win32\Release"
 $exePath = absolutePath $exeDir "Beeftext.exe"
@@ -23,8 +26,9 @@ $beaconFileName = "Portable.bin"
 #***********************************************************************************************************************
 # The actual script
 #***********************************************************************************************************************
-"Cleaning destination folder"
+"Cleaning old build files"
 if (Test-Path -PathType Container $dstDir) { Remove-Item -Path $dstDir -Recurse -Force }
+if (Test-Path -PathType Leaf $dstZipFilePath) { Remove-Item -Path $dstZipFilePath -Force }
 
 "Compiling Beeftext"
 compileVisualStudioSolution $solutionPath
@@ -58,3 +62,9 @@ Copy-Item -Path (absolutePath $solutionDir "Submodules\emojilib\emojis.json") -D
 
 "Copying translation files"
 Copy-Item $srcTransDir -Destination $dstTransDir -Recurse
+
+"Zipping destination folder"
+Compress-Archive -Path $dstDir -Force -CompressionLevel NoCompression -DestinationPath $dstZipFilePath
+
+"Removing destination folder"
+Remove-Item -Path $dstDir -Recurse -Force
