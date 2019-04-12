@@ -13,6 +13,12 @@
 namespace {
 
 
+QString const kCustomDateTimeVariable = "dateTime:"; ///< The dateTime variable.
+QString const kComboVariable = "combo:"; ///< The combo variable.
+QString const kInputVariable = "input:"; ///< The input variable.
+QString const kEnvVarVariable = "envVar:"; ///< The envVar variable.
+
+
 //**********************************************************************************************************************
 /// \brief Resolve the escaped characters ( \\} and \\\\ in a variable parameter.
 /// \param[in] paramStr The variable parameter.
@@ -65,11 +71,84 @@ QString discordEmojisFromClipboard()
 }
 
 
+//**********************************************************************************************************************
+/// \param[in] variable The variable.
+/// \return the result of the evaluation.
+//**********************************************************************************************************************
+QString evaluateDateTimeVariable(QString const& variable)
+{
+   QString const formatString = resolveEscapingInVariableParameter(variable.right(variable.size()
+      - kCustomDateTimeVariable.size()));
+   return formatString.isEmpty() ? QString() : QLocale::system().toString(QDateTime::currentDateTime(), formatString);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] variable The variable, without the enclosing #{}.
+/// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
+/// avoid endless recursion.
+/// \param[in,out] knownInputVariables The list of know input variables.
+/// \param[out] outCancelled Was the input variable cancelled by the user.
+/// \return The result of evaluating the variable.
+//**********************************************************************************************************************
+QString evaluateComboVariable(QString const& variable, QSet<QString> forbiddenSubCombos, 
+   QMap<QString, QString>& knownInputVariables, bool& outCancelled)
+{
+   QString const fallbackResult = QString("#{%1}").arg(variable);
+   QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() -
+      kComboVariable.size()));
+   if (forbiddenSubCombos.contains(comboName))
+      return fallbackResult;
+   ComboList const& combos = ComboManager::instance().comboListRef();
+   ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(),
+      [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
+
+   return combos.end() == it ? fallbackResult : (*it)->evaluatedSnippet(outCancelled, 
+      forbiddenSubCombos << comboName, knownInputVariables, nullptr);
+   // forbiddenSubcombos is intended at avoiding endless recursion
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] variable The variable, without the enclosing #{}.
+/// \param[in,out] knownInputVariables The list of know input variables.
+/// \param[out] outCancelled Was the input variable cancelled by the user.
+/// \return The result of evaluating the variable.
+//**********************************************************************************************************************
+QString evaluateInputVariable(QString const& variable, QMap<QString, QString>& knownInputVariables, bool& outCancelled)
+{
+   // check if we already add the user input for the given description
+   QString const description = variable.right(variable.size() - kInputVariable.size());
+   if (knownInputVariables.contains(description))
+      return knownInputVariables[description];
+
+   QString result;
+   if (!VariableInputDialog::run(resolveEscapingInVariableParameter(description), result))
+   {
+      outCancelled = true;
+      return QString();
+   }
+   knownInputVariables.insert(description, result); // add the new input to the list of known ones
+   return result;
+
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] variable The variable, without the enclosing #{}.
+/// \return The result of evaluating the variable.
+//**********************************************************************************************************************
+QString evaluateEnvVarVariable(QString const& variable)
+{
+   return QProcessEnvironment::systemEnvironment().value(variable.right(variable.size() -
+      kEnvVarVariable.size()));
+}
+
+
 } // anonymous namespace
 
 
 //**********************************************************************************************************************
-/// \brief Compute the value of a variable.
 /// \param[in] variable The variable, without the enclosing #{}.
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion.
@@ -81,7 +160,6 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
    QMap<QString, QString>& knownInputVariables, bool& outCancelled)
 {
    outCancelled = false;
-   QString const fallbackResult = QString("#{%1}").arg(variable);
    QLocale const systemLocale = QLocale::system();
    if (variable == "clipboard")
    {
@@ -101,52 +179,17 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
    if (variable == "dateTime")
       return systemLocale.toString(QDateTime::currentDateTime());
 
-   QString const customDateTimeVariable = "dateTime:";
-   if (variable.startsWith(customDateTimeVariable))
-   {
-      QString const formatString = resolveEscapingInVariableParameter(variable.right(variable.size()
-         - customDateTimeVariable.size()));
-      return formatString.isEmpty() ? QString() : systemLocale.toString(QDateTime::currentDateTime(), formatString);
-   }
+   if (variable.startsWith(kCustomDateTimeVariable))
+      return evaluateDateTimeVariable(variable);
 
-   QString const comboVariable = "combo:";
-   if (variable.startsWith(comboVariable))
-   {
-      QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() -
-         comboVariable.size()));
-      if (forbiddenSubCombos.contains(comboName))
-         return fallbackResult;
-      ComboList const& combos = ComboManager::instance().comboListRef();
-      ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(),
-         [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
+   if (variable.startsWith(kComboVariable))
+      return evaluateComboVariable(variable, forbiddenSubCombos, knownInputVariables, outCancelled);
 
-      return combos.end() == it ? fallbackResult : (*it)->evaluatedSnippet(outCancelled, 
-         forbiddenSubCombos << comboName, knownInputVariables, nullptr);
-      // forbiddenSubcombos is intended at avoiding endless recursion
-   }
+   if (variable.startsWith(kInputVariable))
+      return evaluateInputVariable(variable, knownInputVariables, outCancelled);
 
-   QString const inputVariable = "input:";
-   if (variable.startsWith(inputVariable))
-   {
-      // check if we already add the user input for the given description
-      QString const description = variable.right(variable.size() - inputVariable.size());
-      if (knownInputVariables.contains(description))
-         return knownInputVariables[description];
+   if (variable.startsWith(kEnvVarVariable))
+      return evaluateEnvVarVariable(variable);
 
-      QString result;
-      if (!VariableInputDialog::run(resolveEscapingInVariableParameter(description), result))
-      {
-         outCancelled = true;
-         return QString();
-      }
-      knownInputVariables.insert(description, result); // add the new input to the list of known ones
-      return result;
-   }
-
-   QString const envVarVariable = "envVar:";
-   if (variable.startsWith(envVarVariable))
-      return QProcessEnvironment::systemEnvironment().value(variable.right(variable.size() -
-         envVarVariable.size()));
-
-   return fallbackResult; // we could not recognize the variable, so we put it back in the result
+   return QString("#{%1}").arg(variable); // we could not recognize the variable, so we put it back in the result
 }

@@ -391,7 +391,7 @@ void Combo::touch()
 /// \param[in,out] knownInputVariables The list of know input variables.
 /// \return The snippet text once it has been evaluated
 //**********************************************************************************************************************
-QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> forbiddenSubCombos, 
+QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbiddenSubCombos, 
    QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const
 {
    QString remainingText = snippet_;

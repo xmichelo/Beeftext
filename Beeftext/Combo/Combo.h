@@ -50,7 +50,7 @@ public: // member functions
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
    SpGroup group() const; ///< Get the combo group the combo belongs to
    void setGroup(SpGroup const& group); ///< Set the group this combo belongs to
-   QString evaluatedSnippet(bool& outCancelled, QSet<QString> forbiddenSubCombos, 
+   QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 
       QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const; ///< Retrieve the the snippet after having evaluated it
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
