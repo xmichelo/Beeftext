@@ -13,8 +13,15 @@
 namespace {
 
 
+enum ECaseChange
+{
+   NoChange, ///< Do not change case
+   ToUpper, ///< Convert to upper case
+   ToLower ///< Conver to lower case
+}; ///< Enumeration for case change
+
+
 QString const kCustomDateTimeVariable = "dateTime:"; ///< The dateTime variable.
-QString const kComboVariable = "combo:"; ///< The combo variable.
 QString const kInputVariable = "input:"; ///< The input variable.
 QString const kEnvVarVariable = "envVar:"; ///< The envVar variable.
 
@@ -91,21 +98,28 @@ QString evaluateDateTimeVariable(QString const& variable)
 /// \param[out] outCancelled Was the input variable cancelled by the user.
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
-QString evaluateComboVariable(QString const& variable, QSet<QString> forbiddenSubCombos, 
+QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, QSet<QString> forbiddenSubCombos, 
    QMap<QString, QString>& knownInputVariables, bool& outCancelled)
 {
    QString const fallbackResult = QString("#{%1}").arg(variable);
-   QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() -
-      kComboVariable.size()));
+   qint32 const varNameLength = variable.indexOf(':');
+   if (varNameLength < 0)
+      return QString();
+   QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() - varNameLength - 1));
    if (forbiddenSubCombos.contains(comboName))
       return fallbackResult;
    ComboList const& combos = ComboManager::instance().comboListRef();
    ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(),
       [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
 
-   return combos.end() == it ? fallbackResult : (*it)->evaluatedSnippet(outCancelled, 
-      forbiddenSubCombos << comboName, knownInputVariables, nullptr);
-   // forbiddenSubcombos is intended at avoiding endless recursion
+   QString const str = combos.end() == it ? fallbackResult : (*it)->evaluatedSnippet(outCancelled, 
+      forbiddenSubCombos << comboName, knownInputVariables, nullptr); // forbiddenSubcombos is intended at avoiding endless recursion
+   switch (caseChange)
+   {
+   case ToUpper: return str.toUpper();
+   case ToLower: return str.toLower();
+   case NoChange: default: return str;
+   }
 }
 
 
@@ -182,8 +196,14 @@ QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubComb
    if (variable.startsWith(kCustomDateTimeVariable))
       return evaluateDateTimeVariable(variable);
 
-   if (variable.startsWith(kComboVariable))
-      return evaluateComboVariable(variable, forbiddenSubCombos, knownInputVariables, outCancelled);
+   if (variable.startsWith("combo:"))
+      return evaluateComboVariable(variable, NoChange, forbiddenSubCombos, knownInputVariables, outCancelled);
+
+   if (variable.startsWith("upper:"))
+      return evaluateComboVariable(variable, ToUpper, forbiddenSubCombos, knownInputVariables, outCancelled);
+
+   if (variable.startsWith("lower:"))
+      return evaluateComboVariable(variable, ToLower, forbiddenSubCombos, knownInputVariables, outCancelled);
 
    if (variable.startsWith(kInputVariable))
       return evaluateInputVariable(variable, knownInputVariables, outCancelled);
