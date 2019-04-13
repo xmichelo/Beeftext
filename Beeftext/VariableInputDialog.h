@@ -25,6 +25,9 @@ public: // member functions
    VariableInputDialog& operator=(VariableInputDialog const&) = delete; ///< Disabled assignment operator
    VariableInputDialog& operator=(VariableInputDialog&&) = delete; ///< Disabled move assignment operator
 
+protected: // member function
+   void showEvent(QShowEvent* event) override; ///< Callback for the show event
+
 public: // static member functions
    static bool run(QString const& description, QString& outUserInput); ///< Run the dialog
 

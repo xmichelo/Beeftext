@@ -21,8 +21,17 @@ VariableInputDialog::VariableInputDialog(QString const& description)
    this->setInputMode(TextInput);
    this->setLabelText(description);
    this->show();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event.
+//**********************************************************************************************************************
+void VariableInputDialog::showEvent(QShowEvent* event)
+{
    this->raise();
    this->activateWindow();
+   QDialog::showEvent(event);  
 }
 
 

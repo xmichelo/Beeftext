@@ -74,6 +74,17 @@ void restoreModifierKeys(QList<quint16> const& keys)
 }
 
 
+//**********************************************************************************************************************
+/// \brief Wait between keystroke, for an amount time defined in the preferences.
+//**********************************************************************************************************************
+void waitBetweenKeystrokes()
+{
+   qint32 const delayMs = PreferencesManager::instance().delayBetweenKeystrokesMs();
+   if (delayMs > 0)
+      qApp->thread()->msleep(delayMs);
+}
+
+
 }
 
 
@@ -140,7 +151,6 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
    // we disable the hook to prevent endless recursive substitution
    try
    {
-      qint32 const delayMs = PreferencesManager::instance().delayBetweenKeystrokesMs();
       QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys();
       ///< We artificially depress the current modifier keys
 
@@ -154,11 +164,11 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
          clipboardManager.backupClipboard();
          QApplication::clipboard()->setText(newText);
          synthesizeKeyDown(VK_LCONTROL);
-         qApp->thread()->msleep(delayMs);
+         waitBetweenKeystrokes();
          synthesizeKeyDownAndUp('V');
-         qApp->thread()->msleep(delayMs);
+         waitBetweenKeystrokes();
          synthesizeKeyUp(VK_LCONTROL);
-         qApp->thread()->msleep(delayMs);
+         waitBetweenKeystrokes();
          QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
          ///< We need to delay clipboard restoration to avoid unexpected behaviours
       }
@@ -171,12 +181,12 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
                // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
             {
                synthesizeKeyDownAndUp(VK_RETURN);
-               qApp->thread()->msleep(delayMs);
+               waitBetweenKeystrokes();
             }
             else
             {
                synthesizeUnicodeKeyDownAndUp(c.unicode());
-               qApp->thread()->msleep(delayMs);
+               waitBetweenKeystrokes();
             }
          }
       }
