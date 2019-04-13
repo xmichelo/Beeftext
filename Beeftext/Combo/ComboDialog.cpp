@@ -112,9 +112,19 @@ QMenu* ComboDialog::createComboVariableMenu()
    action = new QAction(tr("C&ursor Position"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{cursor}", false); });
    menu->addAction(action);
+   
+   QMenu* comboMenu = new QMenu(tr("Co&mbo"), this);
    action = new QAction(tr("Co&mbo"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{combo:}", true); });
-   menu->addAction(action);
+   comboMenu->addAction(action);
+   action = new QAction(tr("Combo (&uppercase)"), this);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{upper:}", true); });
+   comboMenu->addAction(action);
+   action = new QAction(tr("Combo (&lowercase)"), this);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{lower:}", true); });
+   comboMenu->addAction(action);
+   menu->addMenu(comboMenu);
+
    action = new QAction(tr("En&vironment Variable"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{envVar:}", true); });
    menu->addAction(action);
