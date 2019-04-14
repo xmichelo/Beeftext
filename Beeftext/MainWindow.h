@@ -33,6 +33,7 @@ public: // member functions
 
 public slots:
    void onAnotherAppInstanceLaunch(); ///< Slot for the launch of another instance of the app
+   void onActionEnableDisableBeeftext(); ///< Slot for the Enable/Disable Beeftext
 
 protected: // member functions
    /// \name Drag and drop functions
@@ -52,7 +53,6 @@ private: // member functions
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionExit(); ///< Slot for the 'Exit' action
-   void onActionEnableDisableBeeftext(); ///< Slot for the Enable/Disable Beeftext
    static void onActionShowAboutDialog(); ///< Slot for the 'Show About dialog' action
    static void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog' action
    static void onActionOpenLogFile(); ///< Slot for the 'Open Log File' action

@@ -170,7 +170,7 @@ QString evaluateEnvVarVariable(QString const& variable)
 /// \param[out] outCancelled Was the input variable cancelled by the user.
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
-QString evaluateVariable(QString const& variable, QSet<QString> forbiddenSubCombos, 
+QString evaluateVariable(QString const& variable, QSet<QString> const& forbiddenSubCombos, 
    QMap<QString, QString>& knownInputVariables, bool& outCancelled)
 {
    outCancelled = false;

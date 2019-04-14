@@ -20,6 +20,7 @@
 #include <XMiLib/SingleInstanceApp.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
+#include "XMiLib/GlobalShortcut/GlobalShortcutManager.h"
 
 
 using namespace xmilib;
@@ -71,6 +72,9 @@ int main(int argc, char *argv[])
       EmojiManager::instance().loadEmojis();
       MainWindow window;
       ensureMainWindowHasAHandle(window);
+      GlobalShortcutManager& shortcutManager = GlobalShortcutManager::instance();
+      GlobalShortcut const* shortcut = shortcutManager.create(MOD_CONTROL | MOD_ALT | MOD_SHIFT, 'V');
+      QObject::connect(shortcut, &GlobalShortcut::triggered, &window, &MainWindow::onActionEnableDisableBeeftext);
       if (!prefs.alreadyLaunched())
       {
          window.show();

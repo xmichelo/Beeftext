@@ -192,30 +192,30 @@ bool EmojiManager::load(QString const& path)
    {
       QFile file(path);
       if (!file.exists())
-         throw xmilib::Exception("could not find emoji list file.");
+         throw Exception("could not find emoji list file.");
       if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-         throw xmilib::Exception("could not open emoji list file.");
+         throw Exception("could not open emoji list file.");
       QJsonParseError parseError {};
       QJsonDocument const doc = QJsonDocument::fromJson(file.readAll(), &parseError);
       if (QJsonParseError::NoError != parseError.error)
-         throw xmilib::Exception(QString("Invalid emoji file at index %1: %2").arg(parseError.offset)
+         throw Exception(QString("Invalid emoji file at index %1: %2").arg(parseError.offset)
             .arg(parseError.errorString()));
       if (!doc.isObject())
-         throw xmilib::Exception("The emoji list file is invalid.");
+         throw Exception("The emoji list file is invalid.");
       QJsonObject const rootObject = doc.object();
       
       for (QJsonObject::const_iterator it = rootObject.begin(); it != rootObject.end(); ++it)
       {
          QJsonValue const value = it.value();
          if (!value.isObject())
-            throw xmilib::Exception("The emoji list file is invalid.");
+            throw Exception("The emoji list file is invalid.");
          QString const emoji = value.toObject()["char"].toString(QString());
          if (emoji.isEmpty())
-            throw xmilib::Exception("The emoji list file is invalid.");
+            throw Exception("The emoji list file is invalid.");
          emojis_[it.key()] = emoji;
       }
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       globals::debugLog().addWarning(QString("Error parsing emoji list file: %1").arg(e.qwhat()));
       return false;

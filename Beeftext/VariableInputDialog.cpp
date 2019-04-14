@@ -42,7 +42,7 @@ void VariableInputDialog::showEvent(QShowEvent* event)
 bool VariableInputDialog::run(QString const& description, QString& outUserInput)
 {
    VariableInputDialog dlg(description);
-   if (QDialog::Accepted != dlg.exec())
+   if (Accepted != dlg.exec())
       return false;
    outUserInput = dlg.textValue();
    return true;

@@ -31,7 +31,7 @@ bool isBeeftextTheForegroundApplication()
 {
    DWORD processId = 0;
    GetWindowThreadProcessId(GetForegroundWindow(), &processId);
-   return  QCoreApplication::applicationPid() == processId;
+   return QCoreApplication::applicationPid() == processId;
 }
 
 
@@ -71,13 +71,13 @@ ComboManager::ComboManager()
 {
    // We used queued connections to minimize the time spent in the keyboard hook
    InputManager& inputManager = InputManager::instance();
-   connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped, 
+   connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped,
       Qt::QueuedConnection);
-   connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped, 
+   connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped,
       Qt::QueuedConnection);
-   connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped, 
+   connect(&inputManager, &InputManager::backspaceTyped, this, &ComboManager::onBackspaceTyped,
       Qt::QueuedConnection);
-   connect(&inputManager, &InputManager::substitutionShortcutTriggered, this, 
+   connect(&inputManager, &InputManager::substitutionShortcutTriggered, this,
       &ComboManager::onSubstitutionTriggerShortcut, Qt::QueuedConnection);
    QString errMsg;
 
@@ -132,7 +132,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
             "Could not save the combo list file after fixing the grouping of combos.");
       else
          globals::debugLog().addInfo(inOlderFormat ? "The combo list file was upgraded to the latest format version." :
-         "The combo list file was successfully saved after fixing the the grouping of combos.");
+            "The combo list file was successfully saved after fixing the the grouping of combos.");
    }
    emit comboListWasLoaded();
    return true;
@@ -152,7 +152,7 @@ bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
       BackupManager::instance().archive(filePath);
    bool const result = comboList_.save(filePath, true, outErrorMsg);
    if (result)
-      emit comboListWasSaved();
+   emit comboListWasSaved();
    return result;
 }
 
@@ -238,18 +238,17 @@ void ComboManager::checkAndPerformSubstitution()
 //**********************************************************************************************************************
 bool ComboManager::checkAndPerformComboSubstitution()
 {
-   VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(), 
-      [&](SpCombo const& combo) -> bool 
-   { return combo && combo->isEnabled() && combo->matchesForInput(currentText_); });
+   VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(),
+      [&](SpCombo const& combo) -> bool
+      {
+         return combo && combo->isEnabled() && combo->matchesForInput(currentText_);
+      });
    if (comboList_.end() == it)
       return false;
 
-   if (!isBeeftextTheForegroundApplication()) // in Beeftext windows, substitution is disabled
-   {
-      ;
-      if ((*it)->performSubstitution() && PreferencesManager::instance().playSoundOnCombo())
-         sound_->play();
-   }
+   if ((!isBeeftextTheForegroundApplication()) &&
+      ((*it)->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()))
+      sound_->play(); // in Beeftext windows, substitution is disabled
    this->onComboBreakerTyped();
    return true;
 }
@@ -263,7 +262,7 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
 {
    qint32 const textSize = currentText_.size();
    if ((!PreferencesManager::instance().emojiShortcodesEnabled()) || (textSize < 3)
-         || (!currentText_.endsWith(constants::kEmojiDelimiter)))
+      || (!currentText_.endsWith(constants::kEmojiDelimiter)))
       return false;
    if ((currentText_.front() != constants::kEmojiDelimiter) || (currentText_.back() != constants::kEmojiDelimiter))
       return false;
@@ -272,14 +271,14 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    QString emoji = emojisManager.emoji(keyword);
    if (emoji.isEmpty())
       return false;
-   if ((!isBeeftextTheForegroundApplication()) && 
+   if ((!isBeeftextTheForegroundApplication()) &&
       !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
    {
       performTextSubstitution(keyword.size() + 2, emoji, 0);
       if (PreferencesManager::instance().playSoundOnCombo())
          sound_->play();
    }
-   this->onComboBreakerTyped();   
+   this->onComboBreakerTyped();
    return false;
 }
 
