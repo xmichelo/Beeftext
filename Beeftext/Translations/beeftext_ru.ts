@@ -181,6 +181,14 @@ Do you want to continue anymay?</source>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Существующий шаблон конфликтует с этим шаблоном.</translation>
     </message>
+    <message>
+        <source>Combo (&amp;uppercase)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Combo (&amp;lowercase)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ComboImportDialog</name>
@@ -630,6 +638,10 @@ Do you want to continue anymay?</source>
         <translation>&amp;Помощь</translation>
     </message>
     <message>
+        <source>&amp;Getting Started</source>
+        <translation>&amp;Начало работы</translation>
+    </message>
+    <message>
         <source>Getting Started</source>
         <translation>Начало работы</translation>
     </message>
@@ -664,6 +676,10 @@ Do you want to continue anymay?</source>
     <message>
         <source>Open Log File</source>
         <translation>Открыть файл журнала</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+F1</source>
+        <translation>Ctrl+Shift+F1</translation>
     </message>
     <message>
         <source>Ctrl+,</source>
@@ -714,16 +730,8 @@ Do you want to continue anymay?</source>
         <translation>Shift+F1</translation>
     </message>
     <message>
-        <source>&amp;Getting Started</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Release Notes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F1</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Примечания к выпуску</translation>
     </message>
 </context>
 <context>
@@ -976,6 +984,14 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>Вы уверены, что хотите сбросить список затрагиваемых приложений?</translation>
     </message>
     <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list applications in which emoji substitution should be disabled.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог, для вывода списка приложений, в которых замещение эмодзи нужно отключить.&lt;/p&gt;&lt;p&gt;Список приложений, использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог для вывода списка чувствительных приложений, некорректно работающих с Beeftext, так как они не поддерживают стандартные копирование-вставку через Ctrl+V.&lt;/p&gt;&lt;p&gt;Список приложений использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>Cannot load translation:
 %1</source>
         <translation>Невозможно загрузить перевод: %1</translation>
@@ -1011,14 +1027,6 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     <message>
         <source>The emoji excluded applications file could not be saved.</source>
         <translation>Не удалось сохранить файл эмодзи исключенных приложений.</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list applications in which emoji substitution should be disabled.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move To</source>

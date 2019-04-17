@@ -166,70 +166,81 @@
         <translation>Position du C&amp;urseur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="115"/>
+        <location filename="../Combo/ComboDialog.cpp" line="116"/>
+        <location filename="../Combo/ComboDialog.cpp" line="117"/>
         <source>Co&amp;mbo</source>
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="118"/>
+        <location filename="../Combo/ComboDialog.cpp" line="120"/>
+        <source>Combo (&amp;uppercase)</source>
+        <translation>Combo (&amp;majuscule)</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="123"/>
+        <source>Combo (&amp;lowercase)</source>
+        <translation>Combo (m&amp;inisucule)</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="128"/>
         <source>En&amp;vironment Variable</source>
         <translation>&amp;Variable d&apos;Environnement</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="121"/>
+        <location filename="../Combo/ComboDialog.cpp" line="131"/>
         <source>User &amp;Input</source>
         <translation>Saisie Ut&amp;ilisateur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="126"/>
+        <location filename="../Combo/ComboDialog.cpp" line="136"/>
         <source>&amp;About Variables</source>
         <translation>&amp;À Propos des Variables</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="160"/>
-        <location filename="../Combo/ComboDialog.cpp" line="166"/>
-        <location filename="../Combo/ComboDialog.cpp" line="173"/>
+        <location filename="../Combo/ComboDialog.cpp" line="170"/>
+        <location filename="../Combo/ComboDialog.cpp" line="176"/>
         <location filename="../Combo/ComboDialog.cpp" line="183"/>
+        <location filename="../Combo/ComboDialog.cpp" line="193"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="160"/>
+        <location filename="../Combo/ComboDialog.cpp" line="170"/>
         <source>The snippet text is empty.</source>
         <translation>Le snippet est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="166"/>
+        <location filename="../Combo/ComboDialog.cpp" line="176"/>
         <source>The keyword is invalid.</source>
         <translation>Le mot-clé est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="173"/>
+        <location filename="../Combo/ComboDialog.cpp" line="183"/>
         <source>The group is invalid.</source>
         <translation>Le groupe est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="183"/>
+        <location filename="../Combo/ComboDialog.cpp" line="193"/>
         <source>This keyword is already in use.</source>
         <translation>Ce mot clé est déjà utilisé.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="193"/>
+        <location filename="../Combo/ComboDialog.cpp" line="203"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Un combo existant cause un conflit avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="194"/>
+        <location filename="../Combo/ComboDialog.cpp" line="204"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translation>%1 combos existants créent des conflits avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="196"/>
+        <location filename="../Combo/ComboDialog.cpp" line="206"/>
         <source>Conflict</source>
         <translation>Conflit</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="196"/>
+        <location filename="../Combo/ComboDialog.cpp" line="206"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anymay?</source>
@@ -242,7 +253,7 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="248"/>
+        <location filename="../Combo/ComboDialog.cpp" line="258"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
@@ -1029,7 +1040,7 @@ Voulez-vous tout de même continuer?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="248"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Autres langues&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="273"/>
@@ -1204,12 +1215,12 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="78"/>
+        <location filename="../main.cpp" line="82"/>
         <source>Getting Started</source>
         <translation>Bien Débuter</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="78"/>
+        <location filename="../main.cpp" line="82"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -1218,7 +1229,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="212"/>
+        <location filename="../BeeftextUtils.cpp" line="219"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="260"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
@@ -1241,7 +1252,7 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="103"/>
+        <location filename="../main.cpp" line="107"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>
