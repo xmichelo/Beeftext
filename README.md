@@ -13,6 +13,8 @@ written in C++ using the [Qt] framework.
 
 The project is developed and managed by [Xavier Michelon].
 
+The Russian translation is kindly provided by Valerij Romanovskij.
+
 The [beeftext.org] website uses a template provided by [HTML5 UP].
 
 ## License
