@@ -238,16 +238,22 @@ void ComboManager::checkAndPerformSubstitution()
 //**********************************************************************************************************************
 bool ComboManager::checkAndPerformComboSubstitution()
 {
+   VecSpCombo result;
+   for (SpCombo const& combo: comboList_)
+      if (combo && combo->isEnabled() && combo->matchesForInput(currentText_))
+         result.push_back(combo);
    VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(),
       [&](SpCombo const& combo) -> bool
       {
          return combo && combo->isEnabled() && combo->matchesForInput(currentText_);
       });
-   if (comboList_.end() == it)
+
+   if (result.empty())
       return false;
 
+   SpCombo const combo = result[result.size() > 1 ? rng_.get() % result.size() : 0];
    if ((!isBeeftextTheForegroundApplication()) &&
-      ((*it)->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()))
+      (combo->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()))
       sound_->play(); // in Beeftext windows, substitution is disabled
    this->onComboBreakerTyped();
    return true;

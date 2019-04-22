@@ -170,7 +170,7 @@ bool ComboList::isKeywordUsed(QString const& keyword) const
 //**********************************************************************************************************************
 bool ComboList::canComboBeAdded(SpCombo const& combo) const
 {
-   return combo ? !(this->contains(combo) || this->isKeywordUsed(combo->keyword())) : false;
+   return combo ? !this->contains(combo) : false;
 }
 
 

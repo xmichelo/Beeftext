@@ -189,10 +189,9 @@ bool ComboDialog::checkAndReportInvalidCombo()
    ComboList const& comboList = ComboManager::instance().comboListRef();
    if (comboList.end() != std::find_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) -> bool
       { return (existing != combo_) && (existing->keyword() == newKeyword);}))
-   {
-      QMessageBox::critical(this, tr("Error"), tr("This keyword is already in use."));
-      return false;
-   }
+      return 0 == QMessageBox::information(this, tr("Duplicate keyword"), tr("This keyword is already in use. \n\n"
+         "You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos "
+         "randomly."), tr("&Continue"), tr("C&ancel"), QString());
 
    // we check for conflicts that would make some combo 'unreachable'
    qint32 const conflictCount = std::count_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) -> bool 

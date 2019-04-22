@@ -13,6 +13,7 @@
 
 #include "ComboList.h"
 #include "Group/GroupList.h"
+#include <XMiLib/RandomNumberGenerator.h>
 #include <memory>
 
 
@@ -64,6 +65,7 @@ private: // data member
    QString currentText_; ///< The current string
    ComboList comboList_; ///< The list of combos
    std::unique_ptr<QSound> sound_; ///< The sound to play when a combo is executed
+   xmilib::RandomNumberGenerator rng_; ///< The RNG used to pick combos when multiple occurences are found
 };
 
 
