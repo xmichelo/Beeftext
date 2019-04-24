@@ -17,6 +17,7 @@
 #include "Group/GroupListWidget.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
+#include "InputManager.h"
 
 
 //**********************************************************************************************************************
@@ -39,6 +40,7 @@ MainWindow::MainWindow()
    { QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl)); });
    connect(ui_.actionShowReleaseNotes, &QAction::triggered, []()
    { QDesktopServices::openUrl(QUrl(constants::kBeeftextReleasesPagesUrl)); });
+   connect(&InputManager::instance(), &InputManager::comboMenuShortcutTriggered, this, &MainWindow::onShowComboMenu);
 }
 
 
@@ -215,6 +217,19 @@ void MainWindow::onActionEnableDisableBeeftext()
 {
    ComboManager::setEnabled(!ComboManager::isEnabled());
    this->setupSystemTrayIcon();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void MainWindow::onShowComboMenu()
+{
+   QMenu* menu = new QMenu(this);
+   QAction* action = new QAction(tr("Open Beeftext"), this);
+   connect(action, &QAction::triggered, [this]() { this->showWindow(); });
+   menu->addAction(action);
+   menu->popup(QCursor::pos());
 }
 
 

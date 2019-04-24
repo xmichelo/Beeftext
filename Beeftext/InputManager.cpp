@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "InputManager.h"
 #include "PreferencesManager.h"
+#include "Combo/ComboPickerWindow.h"
 #include "MainWindow.h"
 #include <XMiLib/Exception.h>
 
@@ -18,20 +19,18 @@ using namespace xmilib;
 
 
 namespace {
+
 InputManager::KeyStroke const kNullKeyStroke = {0, 0, {0}}; ///< A null keystroke
 qint32 const kTextBufferSize = 10;
 ///< The size of the buffer that will receive the text resulting from the processing of the key stroke
-}
-
-
-bool getForegroundWindowInputLocale(HKL& outHkl); ///< Retrieve the Input local of the currently focused window
-bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke); ///< Check if a keystroke is the manual substitution shortcut
 
 
 //**********************************************************************************************************************
+/// \brief Retrieve the Input local of the currently focused window.
+///
 /// \param[out] outHkl If the function returns true, this variable holds the input local of the foreground window. If
 /// the function returns false, the value of this variable is undetermined on function exit.
-/// \return true if and only if the input local of the foreground window could be determined
+/// \return true if and only if the input local of the foreground window could be determined.
 //**********************************************************************************************************************
 bool getForegroundWindowInputLocale(HKL& outHkl)
 {
@@ -45,13 +44,14 @@ bool getForegroundWindowInputLocale(HKL& outHkl)
 
 
 //**********************************************************************************************************************
-/// \return true if and only if keystroke correspond to the shortcut
+/// \brief Check whether a keystroke match a shortcut.
+/// 
+/// \param[in] keyStroke The keystroke.
+/// \param[iun] shortcut The shortcut.
+/// \return true if and only if the keystroke match the shortcut.
 //**********************************************************************************************************************
-bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke)
+bool doesKeystrokeMatchShortcut(InputManager::KeyStroke const& keyStroke, SpShortcut const& shortcut)
 {
-   SpShortcut const shortcut = PreferencesManager::instance().comboTriggerShortcut();
-   if (!shortcut)
-      return false;
    if (keyStroke.virtualKey != shortcut->nativeVirtualKey())
       return false;
    Qt::KeyboardModifiers modifiers = shortcut->nativeModifiers();
@@ -59,7 +59,21 @@ bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke)
    return bool((ks[VK_LCONTROL] & 0x80) || (ks[VK_RCONTROL] & 0x80)) == modifiers.testFlag(Qt::ControlModifier)
       && bool((ks[VK_LMENU] & 0x80) || (ks[VK_RMENU] & 0x80)) == modifiers.testFlag(Qt::AltModifier)
       && bool((ks[VK_LWIN] & 0x80) || (ks[VK_RWIN] & 0x80)) == modifiers.testFlag(Qt::MetaModifier)
-      && bool((ks[VK_LSHIFT] & 0x80) || (ks[VK_RSHIFT] & 0x80)) == modifiers.testFlag(Qt::ShiftModifier);
+      && bool((ks[VK_LSHIFT] & 0x80) || (ks[VK_RSHIFT] & 0x80)) == modifiers.testFlag(Qt::ShiftModifier);   
+}
+
+//**********************************************************************************************************************
+/// \brief Check if a keystroke is the manual substitution shortcut.
+///
+/// \return true if and only if keystroke correspond to the shortcut.
+//**********************************************************************************************************************
+bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke)
+{
+   SpShortcut const shortcut = PreferencesManager::instance().comboTriggerShortcut();
+   return shortcut ? doesKeystrokeMatchShortcut(keyStroke, shortcut) : false;
+}
+
+
 }
 
 
@@ -163,9 +177,15 @@ InputManager::~InputManager()
 //**********************************************************************************************************************
 bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
-   if ((!PreferencesManager::instance().useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
+   //if ((!PreferencesManager::instance().useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
+   //{
+   //   emit substitutionShortcutTriggered();
+   //   return false;
+   //}
+
+   if (isComboTriggerShortcut(keyStroke))
    {
-      emit substitutionShortcutTriggered();
+      showComboPickerWindow();
       return false;
    }
 

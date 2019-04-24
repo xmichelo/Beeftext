@@ -30,10 +30,11 @@ public: // member functions
    ~MainWindow() = default; ///< Default destructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
-
+   
 public slots:
    void onAnotherAppInstanceLaunch(); ///< Slot for the launch of another instance of the app
    void onActionEnableDisableBeeftext(); ///< Slot for the Enable/Disable Beeftext
+   void onShowComboMenu(); ///< Show the combo menu
 
 protected: // member functions
    /// \name Drag and drop functions

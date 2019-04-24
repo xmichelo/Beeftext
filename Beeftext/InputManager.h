@@ -49,6 +49,7 @@ signals:
    void characterTyped(QChar c); ///< Signal for character typed
    void backspaceTyped(); ///< Signal for backspace typed
    void substitutionShortcutTriggered();  ///< Signal emitted when the manual substitution shortcut is triggered
+   void comboMenuShortcutTriggered(); ///< Signal emitted when the combo menu shortcut is triggered.
 
 private: // member functions
    InputManager(); ///< Default constructor
