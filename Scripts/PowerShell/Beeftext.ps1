@@ -15,7 +15,6 @@ $solutionDir = absolutePath $PSScriptRoot "..\.."
 $sslDir =  absolutePath $solutionDir "Vendor\OpenSSL"
 $vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\Dlls"
 $nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
-$portableAppsConfigPath = absolutePath $solutionDir "Installer\PortableApps.com\Template\BeeftextPortable\App\AppInfo\appinfo.ini"
 $rcFilePath = absolutePath $solutionDir "Beeftext\Beeftext.rc"
 
 
