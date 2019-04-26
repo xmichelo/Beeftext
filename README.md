@@ -60,7 +60,7 @@ Detailed build instructions are not available at the moment.
 [OpenSSL and SSLeay licenses]:https://www.openssl.org/source/license.html
 [Doxygen]: http://www.stack.nl/~dimitri/doxygen/
 [Beeftext]: https://github.com/xmichelo/Beeftext
-[Visual Studio 2017]: https://www.visualstudio.com/vs/community/
+[Visual Studio 2019]: https://www.visualstudio.com/vs/community/
 [Qt Visual Studio Tools]: https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123
 [XMiLib]: https://github.com/xmichelo/XMiLib
 [NSIS]: http://nsis.sourceforge.net/Main_Page
