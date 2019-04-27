@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>577</height>
+    <width>697</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -65,55 +65,8 @@
         </property>
        </widget>
       </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
-        <item>
-         <widget class="QCheckBox" name="checkEnableEmoji">
-          <property name="text">
-           <string>Enable emoji shortcodes</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonEmojiExcludedApps">
-          <property name="text">
-           <string>&amp;Excluded Applications</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
      </layout>
     </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_4">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>10</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox">
@@ -200,20 +153,111 @@
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+    <widget class="QGroupBox" name="groupboxEmojis">
+     <property name="title">
+      <string>Emojis</string>
      </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>10</height>
-      </size>
-     </property>
-    </spacer>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QCheckBox" name="checkEnableEmoji">
+          <property name="text">
+           <string>Enable emoji shortcodes</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonEmojiExcludedApps">
+          <property name="text">
+           <string>&amp;Excluded Applications</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0,0,0,0">
+        <item row="0" column="4">
+         <widget class="QLineEdit" name="editEmojiRightDelimiter">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelEmojiLeftDelimiter">
+          <property name="text">
+           <string>Left delimiter</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QCheckBox" name="checkEmojiRightDelimiter">
+          <property name="text">
+           <string>Right delimiter</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <spacer name="horizontalSpacer_9">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="2">
+         <spacer name="horizontalSpacer_10">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>10</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="editEmojiLeftDelimiter">
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBoxAppeareance">
@@ -276,22 +320,6 @@
       </item>
      </layout>
     </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>10</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBoxAdvanced">
@@ -591,8 +619,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>625</x>
-     <y>538</y>
+     <x>605</x>
+     <y>579</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -607,8 +635,8 @@
    <slot>onActionOk()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>544</x>
-     <y>538</y>
+     <x>524</x>
+     <y>579</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -623,8 +651,8 @@
    <slot>onActionChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>615</x>
-     <y>444</y>
+     <x>595</x>
+     <y>485</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -640,7 +668,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>456</x>
-     <y>234</y>
+     <y>187</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -655,8 +683,8 @@
    <slot>onActionResetToDefaultValues()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>57</x>
-     <y>538</y>
+     <x>67</x>
+     <y>579</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -671,8 +699,8 @@
    <slot>onActionResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>696</x>
-     <y>444</y>
+     <x>676</x>
+     <y>485</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -688,7 +716,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>537</x>
-     <y>234</y>
+     <y>187</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -704,7 +732,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>296</x>
-     <y>475</y>
+     <y>516</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -719,8 +747,8 @@
    <slot>onActionApply()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>706</x>
-     <y>538</y>
+     <x>686</x>
+     <y>579</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -735,8 +763,8 @@
    <slot>updateGui()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>113</x>
-     <y>205</y>
+     <x>132</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -752,7 +780,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>174</x>
-     <y>538</y>
+     <y>579</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -767,8 +795,8 @@
    <slot>onActionEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>278</x>
-     <y>394</y>
+     <x>359</x>
+     <y>426</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -783,8 +811,8 @@
    <slot>updateGui()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>118</x>
-     <y>394</y>
+     <x>138</x>
+     <y>423</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -799,12 +827,44 @@
    <slot>onActionEditEmojiExcludedApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>231</x>
-     <y>115</y>
+     <x>275</x>
+     <y>250</y>
     </hint>
     <hint type="destinationlabel">
      <x>307</x>
      <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkEnableEmoji</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>updateGui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>54</x>
+     <y>242</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>693</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkEmojiRightDelimiter</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>updateGui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>695</x>
+     <y>213</y>
     </hint>
    </hints>
   </connection>

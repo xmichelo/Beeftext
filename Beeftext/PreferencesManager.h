@@ -69,6 +69,12 @@ public: // member functions
    static SpShortcut defaultComboTriggerShortcut(); ///< Reset the combo trigger shortcut to its default value
    bool emojiShortcodesEnabled() const; ///< Are emoji shortcodes enabled
    void setEmojiShortcodeEnabled(bool value) const; ///< Set if the emoji shortcodes are enabled
+   QString emojiLeftDelimiter() const; ///< Get the left delimiter for emojis.
+   void setEmojiLeftDelimiter(QString const& delimiter) const; ///< Set the left delimiter for emojis.
+   bool useEMojiRightDelimiter() const; ///< Does emoji substitution uses a right delimiter
+   void setUseEmojiRightDelimiter(bool value) const; ///< Set whether emoji substitution uses a right delimiter
+   QString emojiRightDelimiter() const; ///< Get the right delimiter for emojis.
+   void setEmojiRightDelimiter(QString const& delimiter) const; ///< Set the right delimiter for emojis.
    qint32 delayBetweenKeystrokesMs() const; ///< Get the 'delay between keystrokes' when not using the clipboard for combo substitution
    void  setDelayBetweenKeystrokesMs(qint32 value) const; ///< Set the 'delay between keystrokes'
    static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay beetween keystrokes' preference.

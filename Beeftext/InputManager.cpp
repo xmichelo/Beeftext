@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "InputManager.h"
 #include "PreferencesManager.h"
-#include "Combo/ComboPickerWindow.h"
 #include "MainWindow.h"
 #include <XMiLib/Exception.h>
 
@@ -177,17 +176,17 @@ InputManager::~InputManager()
 //**********************************************************************************************************************
 bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
-   //if ((!PreferencesManager::instance().useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
-   //{
-   //   emit substitutionShortcutTriggered();
-   //   return false;
-   //}
-
-   if (isComboTriggerShortcut(keyStroke))
+   if ((!PreferencesManager::instance().useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
    {
-      showComboPickerWindow();
+      emit substitutionShortcutTriggered();
       return false;
    }
+
+   //if (isComboTriggerShortcut(keyStroke))
+   //{
+   //   showComboPickerWindow();
+   //   return false;
+   //}
 
    // on some layout (e.g. US International, direction key + alt lead to garbage char if ToUnicode is pressed, so
    // we bypass normal processing for those keys(note this is different for the dead key issue described in

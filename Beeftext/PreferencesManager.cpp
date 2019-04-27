@@ -39,6 +39,9 @@ QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto 
 QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
 QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
 QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
+QString const kRegKeyUseEmojiRightDelimiter = "EmojiUseRightDelimiter"; ///< The setting key for the 'Emoji use right delimiter' setting.
+QString const kRegKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
+QString const kRegKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
 QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
 bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
 bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
@@ -53,6 +56,9 @@ QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writ
 SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
    | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
 bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
+QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
+bool const kDefaultValueUseEmojiRightDelimiter = true; ///< The default value for the 'Emoji use right delimiter' preference.
+QString const kDefaultValueEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
 qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
@@ -126,6 +132,9 @@ void PreferencesManager::reset()
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
    this->setEmojiShortcodeEnabled(kDefaultValueEmojiShortcodesEnabled);
+   this->setEmojiLeftDelimiter(kDefaultValueEmojiLeftDelimiter);
+   this->setUseEmojiRightDelimiter(kDefaultValueUseEmojiRightDelimiter);
+   this->setEmojiRightDelimiter(kDefaultValueEmojiRightDelimiter);
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
    this->setDelayBetweenKeystrokesMs(kDefaultValueDelayBetweenKeystrokesMs);
    this->resetWarnings();
@@ -526,6 +535,62 @@ bool PreferencesManager::emojiShortcodesEnabled() const
 void PreferencesManager::setEmojiShortcodeEnabled(bool value) const
 {
    settings_->setValue(kRegKeyEmojiShortcodesEnabled, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+QString PreferencesManager::emojiLeftDelimiter() const
+{
+   QString const result = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
+   return result.isEmpty() ? kDefaultValueEmojiLeftDelimiter : result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] delimiter The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter) const
+{
+   settings_->setValue(kRegKeyEmojiLeftDelimiter, delimiter);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::useEMojiRightDelimiter() const
+{
+   return this->readSettings<bool>(kRegKeyUseEmojiRightDelimiter, kDefaultValueUseEmojiRightDelimiter);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setUseEmojiRightDelimiter(bool value) const
+{
+   settings_->setValue(kRegKeyUseEmojiRightDelimiter, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+QString PreferencesManager::emojiRightDelimiter() const
+{
+   QString const result = this->readSettings<QString>(kRegKeyEmojiRightDelimiter, kDefaultValueEmojiRightDelimiter);
+   return result.isEmpty() ? kDefaultValueEmojiRightDelimiter : result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] delimiter The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter) const
+{
+   settings_->setValue(kRegKeyEmojiRightDelimiter, delimiter);
 }
 
 

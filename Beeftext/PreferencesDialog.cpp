@@ -77,11 +77,14 @@ void PreferencesDialog::loadPreferences()
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
-   ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
    if (prefs_.useAutomaticSubstitution())
       ui_.radioComboTriggerAuto->setChecked(true);
    else
       ui_.radioComboTriggerManual->setChecked(true);
+   ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
+   ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
+   ui_.checkEmojiRightDelimiter->setChecked(prefs_.useEMojiRightDelimiter());
+   ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
    I18nManager::selectLocaleInCombo(prefs_.locale(), *ui_.comboLocale);
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
@@ -107,10 +110,13 @@ void PreferencesDialog::savePreferences()
    if (!isInPortableMode())
       prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
    prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
-   prefs_.setEmojiShortcodeEnabled(ui_.checkEnableEmoji->isChecked());
    prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
    prefs_.setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ :
       PreferencesManager::defaultComboTriggerShortcut());
+   prefs_.setEmojiShortcodeEnabled(ui_.checkEnableEmoji->isChecked());
+   prefs_.setEmojiLeftDelimiter(ui_.editEmojiLeftDelimiter->text());
+   prefs_.setUseEmojiRightDelimiter(ui_.checkEmojiRightDelimiter->isChecked());
+   prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
    prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
    prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
    prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
@@ -369,4 +375,11 @@ void PreferencesDialog::updateGui() const
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
    bool const useClipboard = ui_.checkUseClipboardForComboSubstitution->isChecked();
    ui_.buttonSensitiveApplications->setEnabled(useClipboard);
+   bool const emojiEnabled = ui_.checkEnableEmoji->isChecked();
+   ui_.buttonEmojiExcludedApps->setEnabled(emojiEnabled);
+   ui_.labelEmojiLeftDelimiter->setEnabled(emojiEnabled);
+   ui_.editEmojiLeftDelimiter->setEnabled(emojiEnabled);
+   ui_.checkEmojiRightDelimiter->setEnabled(emojiEnabled);
+   bool const useEmojiRightDelimiter = emojiEnabled && ui_.checkEmojiRightDelimiter->isChecked();
+   ui_.editEmojiRightDelimiter->setEnabled(useEmojiRightDelimiter);
 }
