@@ -83,7 +83,6 @@ void PreferencesDialog::loadPreferences()
       ui_.radioComboTriggerManual->setChecked(true);
    ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
    ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
-   ui_.checkEmojiRightDelimiter->setChecked(prefs_.useEmojiRightDelimiter());
    ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
    I18nManager::selectLocaleInCombo(prefs_.locale(), *ui_.comboLocale);
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
@@ -115,7 +114,6 @@ void PreferencesDialog::savePreferences()
       PreferencesManager::defaultComboTriggerShortcut());
    prefs_.setEmojiShortcodeEnabled(ui_.checkEnableEmoji->isChecked());
    prefs_.setEmojiLeftDelimiter(ui_.editEmojiLeftDelimiter->text());
-   prefs_.setUseEmojiRightDelimiter(ui_.checkEmojiRightDelimiter->isChecked());
    prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
    prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
    prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
@@ -379,7 +377,6 @@ void PreferencesDialog::updateGui() const
    ui_.buttonEmojiExcludedApps->setEnabled(emojiEnabled);
    ui_.labelEmojiLeftDelimiter->setEnabled(emojiEnabled);
    ui_.editEmojiLeftDelimiter->setEnabled(emojiEnabled);
-   ui_.checkEmojiRightDelimiter->setEnabled(emojiEnabled);
-   bool const useEmojiRightDelimiter = emojiEnabled && ui_.checkEmojiRightDelimiter->isChecked();
-   ui_.editEmojiRightDelimiter->setEnabled(useEmojiRightDelimiter);
+   ui_.labelEmojiRightDelimiter->setEnabled(emojiEnabled);
+   ui_.editEmojiRightDelimiter->setEnabled(emojiEnabled);
 }

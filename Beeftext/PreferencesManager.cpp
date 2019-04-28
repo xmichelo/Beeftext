@@ -39,7 +39,6 @@ QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto 
 QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
 QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
 QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
-QString const kRegKeyUseEmojiRightDelimiter = "EmojiUseRightDelimiter"; ///< The setting key for the 'Emoji use right delimiter' setting.
 QString const kRegKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
 QString const kRegKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
 QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
@@ -57,7 +56,6 @@ SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(
    | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
 bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
 QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
-bool const kDefaultValueUseEmojiRightDelimiter = true; ///< The default value for the 'Emoji use right delimiter' preference.
 QString const kDefaultValueEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
 qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
@@ -113,8 +111,6 @@ PreferencesManager::PreferencesManager()
    cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled, 
       kDefaultValueEmojiShortcodesEnabled);
    cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
-   cachedUseEmojiRightDelimiter_ = this->readSettings<bool>(kRegKeyUseEmojiRightDelimiter, 
-      kDefaultValueUseEmojiRightDelimiter);
    cachedEmojiRightDelimiter_ = this->readSettings<QString>(kRegKeyEmojiRightDelimiter, 
       kDefaultValueEmojiRightDelimiter);
    // Some preferences setting need initialization
@@ -139,7 +135,6 @@ void PreferencesManager::reset()
    this->setAutoBackup(kDefaultValueAutoBackup);
    this->setEmojiShortcodeEnabled(kDefaultValueEmojiShortcodesEnabled);
    this->setEmojiLeftDelimiter(kDefaultValueEmojiLeftDelimiter);
-   this->setUseEmojiRightDelimiter(kDefaultValueUseEmojiRightDelimiter);
    this->setEmojiRightDelimiter(kDefaultValueEmojiRightDelimiter);
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
    this->setDelayBetweenKeystrokesMs(kDefaultValueDelayBetweenKeystrokesMs);
@@ -562,25 +557,6 @@ void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter)
 {
    cachedEmojiLeftDelimiter_ = delimiter;
    settings_->setValue(kRegKeyEmojiLeftDelimiter, delimiter);
-}
-
-
-//**********************************************************************************************************************
-/// \return The value for the preference.
-//**********************************************************************************************************************
-bool PreferencesManager::useEmojiRightDelimiter() const
-{
-   return cachedUseEmojiRightDelimiter_;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] value The value for the preference.
-//**********************************************************************************************************************
-void PreferencesManager::setUseEmojiRightDelimiter(bool value)
-{
-   cachedUseEmojiRightDelimiter_ = value;
-   settings_->setValue(kRegKeyUseEmojiRightDelimiter, value);
 }
 
 

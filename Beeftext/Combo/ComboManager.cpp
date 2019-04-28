@@ -266,18 +266,25 @@ bool ComboManager::checkAndPerformComboSubstitution()
 //**********************************************************************************************************************
 bool ComboManager::checkAndPerformEmojiSubstitution()
 {
-   qint32 const textSize = currentText_.size();
+   QString currentText = currentText_;
    PreferencesManager& prefs = PreferencesManager::instance();
    if (!prefs.emojiShortcodesEnabled())
       return false;
    QString const leftDelimiter = prefs.emojiLeftDelimiter();
-   bool const useEmojiRightDelimiter = prefs.useEmojiRightDelimiter();
-   QString const rightDelimiter = useEmojiRightDelimiter ? prefs.emojiRightDelimiter() : QString();
-   qint32 const delimsSize = leftDelimiter.size() + rightDelimiter.size();
-   if ((textSize <= delimsSize) || (!currentText_.startsWith(leftDelimiter)) || 
-      (!currentText_.endsWith(rightDelimiter)))
+   QString const rightDelimiter = prefs.emojiRightDelimiter();
+
+   // first we validate the right delimiter, if any
+   if (!currentText.endsWith(rightDelimiter))
       return false;
-   QString const keyword = currentText_.mid(leftDelimiter.size(), currentText_.size() - delimsSize);
+   currentText = currentText.chopped(rightDelimiter.size());
+
+   // we try to locate the left delimiter
+   qint32 const index = currentText.lastIndexOf(leftDelimiter);
+   if (-1 == index) // not found
+      return false;
+
+   // finally we isolate the keyword and perform the substitution, if any
+   QString const keyword = currentText.right(currentText.size() - (index + leftDelimiter.size()));
    EmojiManager& emojisManager = EmojiManager::instance();
    QString emoji = emojisManager.emoji(keyword);
    if (emoji.isEmpty())
@@ -286,7 +293,7 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    if ((!isBeeftextTheForegroundApplication()) &&
       !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
    {
-      performTextSubstitution(currentText_.size(), emoji, -1);
+      performTextSubstitution(keyword.size() + rightDelimiter.size() + leftDelimiter.size(), emoji, -1);
       if (PreferencesManager::instance().playSoundOnCombo())
          sound_->play();
       result = true;

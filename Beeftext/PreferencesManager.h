@@ -71,8 +71,6 @@ public: // member functions
    void setEmojiShortcodeEnabled(bool value); ///< Set if the emoji shortcodes are enabled
    QString emojiLeftDelimiter() const; ///< Get the left delimiter for emojis.
    void setEmojiLeftDelimiter(QString const& delimiter); ///< Set the left delimiter for emojis.
-   bool useEmojiRightDelimiter() const; ///< Does emoji substitution uses a right delimiter
-   void setUseEmojiRightDelimiter(bool value); ///< Set whether emoji substitution uses a right delimiter
    QString emojiRightDelimiter() const; ///< Get the right delimiter for emojis.
    void setEmojiRightDelimiter(QString const& delimiter); ///< Set the right delimiter for emojis.
    qint32 delayBetweenKeystrokesMs() const; ///< Get the 'delay between keystrokes' when not using the clipboard for combo substitution
@@ -100,7 +98,6 @@ private: // data members
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
    bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
    QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.
-   bool cachedUseEmojiRightDelimiter_ { true }; ///< Cached value for the 'use emoji right delimiter' preference.
    QString cachedEmojiRightDelimiter_; ///< Cached value for the 'emoji right delimiter' preference.
 };
 
