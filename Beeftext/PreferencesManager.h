@@ -68,13 +68,13 @@ public: // member functions
    void setLastComboImportExportPath(QString const& path) const; ///< Retrieve the path of the last imported and exported path
    static SpShortcut defaultComboTriggerShortcut(); ///< Reset the combo trigger shortcut to its default value
    bool emojiShortcodesEnabled() const; ///< Are emoji shortcodes enabled
-   void setEmojiShortcodeEnabled(bool value) const; ///< Set if the emoji shortcodes are enabled
+   void setEmojiShortcodeEnabled(bool value); ///< Set if the emoji shortcodes are enabled
    QString emojiLeftDelimiter() const; ///< Get the left delimiter for emojis.
-   void setEmojiLeftDelimiter(QString const& delimiter) const; ///< Set the left delimiter for emojis.
-   bool useEMojiRightDelimiter() const; ///< Does emoji substitution uses a right delimiter
-   void setUseEmojiRightDelimiter(bool value) const; ///< Set whether emoji substitution uses a right delimiter
+   void setEmojiLeftDelimiter(QString const& delimiter); ///< Set the left delimiter for emojis.
+   bool useEmojiRightDelimiter() const; ///< Does emoji substitution uses a right delimiter
+   void setUseEmojiRightDelimiter(bool value); ///< Set whether emoji substitution uses a right delimiter
    QString emojiRightDelimiter() const; ///< Get the right delimiter for emojis.
-   void setEmojiRightDelimiter(QString const& delimiter) const; ///< Set the right delimiter for emojis.
+   void setEmojiRightDelimiter(QString const& delimiter); ///< Set the right delimiter for emojis.
    qint32 delayBetweenKeystrokesMs() const; ///< Get the 'delay between keystrokes' when not using the clipboard for combo substitution
    void  setDelayBetweenKeystrokesMs(qint32 value) const; ///< Set the 'delay between keystrokes'
    static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay beetween keystrokes' preference.
@@ -96,8 +96,12 @@ private: // member functions
    
 private: // data members
    std::unique_ptr<QSettings> settings_; ///< The Qt settings instance
-   bool cachedUseAutomaticSubstitution_; ///< Cached value for the 'use automatic substitution' preference value
+   bool cachedUseAutomaticSubstitution_ { true }; ///< Cached value for the 'use automatic substitution' preference value
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
+   bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
+   QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.
+   bool cachedUseEmojiRightDelimiter_ { true }; ///< Cached value for the 'use emoji right delimiter' preference.
+   QString cachedEmojiRightDelimiter_; ///< Cached value for the 'emoji right delimiter' preference.
 };
 
 

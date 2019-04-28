@@ -83,7 +83,7 @@ void PreferencesDialog::loadPreferences()
       ui_.radioComboTriggerManual->setChecked(true);
    ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
    ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
-   ui_.checkEmojiRightDelimiter->setChecked(prefs_.useEMojiRightDelimiter());
+   ui_.checkEmojiRightDelimiter->setChecked(prefs_.useEmojiRightDelimiter());
    ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
    I18nManager::selectLocaleInCombo(prefs_.locale(), *ui_.comboLocale);
    ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());

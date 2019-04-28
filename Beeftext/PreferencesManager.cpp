@@ -110,7 +110,13 @@ PreferencesManager::PreferencesManager()
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
       kDefaultValueUseAutomaticSubstitution);
    this->cacheComboTriggerShortcut(); 
-
+   cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled, 
+      kDefaultValueEmojiShortcodesEnabled);
+   cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
+   cachedUseEmojiRightDelimiter_ = this->readSettings<bool>(kRegKeyUseEmojiRightDelimiter, 
+      kDefaultValueUseEmojiRightDelimiter);
+   cachedEmojiRightDelimiter_ = this->readSettings<QString>(kRegKeyEmojiRightDelimiter, 
+      kDefaultValueEmojiRightDelimiter);
    // Some preferences setting need initialization
    this->applyCustomThemePreference();
    this->applyLocalePreference();
@@ -525,15 +531,16 @@ SpShortcut PreferencesManager::defaultComboTriggerShortcut()
 //**********************************************************************************************************************
 bool PreferencesManager::emojiShortcodesEnabled() const
 {
-   return this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled, kDefaultValueEmojiShortcodesEnabled);
+   return cachedEmojiShortcodesEnabled_;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setEmojiShortcodeEnabled(bool value) const
+void PreferencesManager::setEmojiShortcodeEnabled(bool value)
 {
+   cachedEmojiShortcodesEnabled_ = value;
    settings_->setValue(kRegKeyEmojiShortcodesEnabled, value);
 }
 
@@ -543,7 +550,7 @@ void PreferencesManager::setEmojiShortcodeEnabled(bool value) const
 //**********************************************************************************************************************
 QString PreferencesManager::emojiLeftDelimiter() const
 {
-   QString const result = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
+   QString const result = cachedEmojiLeftDelimiter_;
    return result.isEmpty() ? kDefaultValueEmojiLeftDelimiter : result;
 }
 
@@ -551,8 +558,9 @@ QString PreferencesManager::emojiLeftDelimiter() const
 //**********************************************************************************************************************
 /// \param[in] delimiter The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter) const
+void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter)
 {
+   cachedEmojiLeftDelimiter_ = delimiter;
    settings_->setValue(kRegKeyEmojiLeftDelimiter, delimiter);
 }
 
@@ -560,17 +568,18 @@ void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter) const
 //**********************************************************************************************************************
 /// \return The value for the preference.
 //**********************************************************************************************************************
-bool PreferencesManager::useEMojiRightDelimiter() const
+bool PreferencesManager::useEmojiRightDelimiter() const
 {
-   return this->readSettings<bool>(kRegKeyUseEmojiRightDelimiter, kDefaultValueUseEmojiRightDelimiter);
+   return cachedUseEmojiRightDelimiter_;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setUseEmojiRightDelimiter(bool value) const
+void PreferencesManager::setUseEmojiRightDelimiter(bool value)
 {
+   cachedUseEmojiRightDelimiter_ = value;
    settings_->setValue(kRegKeyUseEmojiRightDelimiter, value);
 }
 
@@ -580,7 +589,7 @@ void PreferencesManager::setUseEmojiRightDelimiter(bool value) const
 //**********************************************************************************************************************
 QString PreferencesManager::emojiRightDelimiter() const
 {
-   QString const result = this->readSettings<QString>(kRegKeyEmojiRightDelimiter, kDefaultValueEmojiRightDelimiter);
+   QString const result = cachedEmojiRightDelimiter_;
    return result.isEmpty() ? kDefaultValueEmojiRightDelimiter : result;
 }
 
@@ -588,8 +597,9 @@ QString PreferencesManager::emojiRightDelimiter() const
 //**********************************************************************************************************************
 /// \param[in] delimiter The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter) const
+void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter)
 {
+   cachedEmojiRightDelimiter_ = delimiter;
    settings_->setValue(kRegKeyEmojiRightDelimiter, delimiter);
 }
 
