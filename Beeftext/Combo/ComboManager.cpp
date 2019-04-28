@@ -267,25 +267,32 @@ bool ComboManager::checkAndPerformComboSubstitution()
 bool ComboManager::checkAndPerformEmojiSubstitution()
 {
    qint32 const textSize = currentText_.size();
-   if ((!PreferencesManager::instance().emojiShortcodesEnabled()) || (textSize < 3)
-      || (!currentText_.endsWith(constants::kEmojiDelimiter)))
+   PreferencesManager& prefs = PreferencesManager::instance();
+   if (!prefs.emojiShortcodesEnabled())
       return false;
-   if ((currentText_.front() != constants::kEmojiDelimiter) || (currentText_.back() != constants::kEmojiDelimiter))
+   QString const leftDelimiter = prefs.emojiLeftDelimiter();
+   bool const useEmojiRightDelimiter = prefs.useEmojiRightDelimiter();
+   QString const rightDelimiter = useEmojiRightDelimiter ? prefs.emojiRightDelimiter() : QString();
+   qint32 const delimsSize = leftDelimiter.size() + rightDelimiter.size();
+   if ((textSize <= delimsSize) || (!currentText_.startsWith(leftDelimiter)) || 
+      (!currentText_.endsWith(rightDelimiter)))
       return false;
-   QString const keyword = currentText_.mid(1, textSize - 2);
+   QString const keyword = currentText_.mid(leftDelimiter.size(), currentText_.size() - delimsSize);
    EmojiManager& emojisManager = EmojiManager::instance();
    QString emoji = emojisManager.emoji(keyword);
    if (emoji.isEmpty())
       return false;
+   bool result = false;
    if ((!isBeeftextTheForegroundApplication()) &&
       !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
    {
-      performTextSubstitution(keyword.size() + 2, emoji, -1);
+      performTextSubstitution(currentText_.size(), emoji, -1);
       if (PreferencesManager::instance().playSoundOnCombo())
          sound_->play();
+      result = true;
    }
    this->onComboBreakerTyped();
-   return false;
+   return result;
 }
 
 

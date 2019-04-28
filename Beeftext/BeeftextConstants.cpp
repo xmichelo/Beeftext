@@ -102,6 +102,14 @@ QRadioButton:disabled {
 
 
 /*****************************
+* Checkboxes 
+*****************************/	
+QCheckBox:disabled {
+   color: #aaa;
+}
+
+
+/*****************************
 * All Edits
 *****************************/	
 QLineEdit, QPlainTextEdit, QTextEdit {
