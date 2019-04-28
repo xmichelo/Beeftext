@@ -111,7 +111,7 @@
     </message>
     <message>
         <source>This keyword is already in use.</source>
-        <translation>Этот ярлык уже используется.</translation>
+        <translation type="vanished">Этот ярлык уже используется.</translation>
     </message>
     <message>
         <source>Conflict</source>
@@ -187,6 +187,24 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Combo (&amp;lowercase)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Duplicate keyword</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This keyword is already in use. 
+
+You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C&amp;ancel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -922,6 +940,18 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Emojis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Left delimiter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right delimiter</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
