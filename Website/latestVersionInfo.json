@@ -1,8 +1,8 @@
 {
-   "versionMajor": 1,
-   "versionMinor": 10,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v1.10/Beeftext-1.10-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v1.10",
-   "sha256Sum": "a6e18422818abe8fa6beee635c792e10b1e880cbc2c67359d49937f970241453",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v1.10 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>Added missing translations (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/145\">#145</a>).</li><li>Added link to GitHub release page in the Help menu (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/144\">#144</a>).</li><li>Fixed the start folder of the start menu shortcut (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/146\">#146</a>).</li><li>The installer now starts the application as a standard user (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/98\">98</a>).</li><li>The preferences dialog now include a link to the user provided translations.</li><li>Fixed a bug where the substitution sound is played even when the combo is canceled (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/148\">148</a>).</li><li>Added #{upper:} and #{lower:} variables (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/150\">150</a>).</li><li>The delay between keystrokes can be set to 0 (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/149\">149</a>).</li><li>ixed a bug where the cursor would be misplaced after emoji substitution (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/153\">153</a>).</li></ul></body></html>"
+   "versionMajor": 2,
+   "versionMinor": 0,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v2.0/Beeftext-2.0-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v2.0",
+   "sha256Sum": "bd16e784f2efc3795998042145f99b654a0ec35f3a5d5a7a48bceb69dc54a2a7",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v2.0 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>Added support for multiple combos with the same keyword (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/154\">#154</a>).</li><li>Implemented custom delimiters for emojis (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/155\">#155</a>).</li><li>Upgraded to Visual Studio 2019 and Qt 5.12.3.</li><li>Changed version number strategy. <a href=\"https://twitter.com/beeftext/status/1124557510256541696\">More info here</a>.</li></ul></body></html>"
 }
