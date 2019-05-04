@@ -64,7 +64,7 @@ Copy-Item -Path (absolutePath $solutionDir "Submodules\emojilib\emojis.json") -D
 Copy-Item $srcTransDir -Destination $dstTransDir -Recurse
 
 "Zipping destination folder"
-Compress-Archive -Path $dstDir -Force -CompressionLevel NoCompression -DestinationPath $dstZipFilePath
+Compress-Archive -Path $dstDir -Force -CompressionLevel Optimal -DestinationPath $dstZipFilePath
 
 "Removing destination folder"
 Remove-Item -Path $dstDir -Recurse -Force
