@@ -11,6 +11,7 @@
 #include "InputManager.h"
 #include "PreferencesManager.h"
 #include "MainWindow.h"
+#include "Combo/ComboPickerWindow.h"
 #include <XMiLib/Exception.h>
 
 
@@ -69,6 +70,18 @@ bool doesKeystrokeMatchShortcut(InputManager::KeyStroke const& keyStroke, SpShor
 bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke)
 {
    SpShortcut const shortcut = PreferencesManager::instance().comboTriggerShortcut();
+   return shortcut ? doesKeystrokeMatchShortcut(keyStroke, shortcut) : false;
+}
+
+
+//**********************************************************************************************************************
+/// \brief Check if a keystroke is the shortcut for the combo picker window.
+///
+/// \return true if and only if keystroke correspond to the shortcut.
+//**********************************************************************************************************************
+bool isComboPickerShortcut(InputManager::KeyStroke const& keyStroke)
+{
+   SpShortcut const shortcut = PreferencesManager::instance().comboPickerShortcut();
    return shortcut ? doesKeystrokeMatchShortcut(keyStroke, shortcut) : false;
 }
 
@@ -182,11 +195,11 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
       return false;
    }
 
-   //if (isComboTriggerShortcut(keyStroke))
-   //{
-   //   showComboPickerWindow();
-   //   return false;
-   //}
+   if (isComboPickerShortcut(keyStroke))
+   {
+      showComboPickerWindow();
+      return false;
+   }
 
    // on some layout (e.g. US International, direction key + alt lead to garbage char if ToUnicode is pressed, so
    // we bypass normal processing for those keys(note this is different for the dead key issue described in

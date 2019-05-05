@@ -31,8 +31,12 @@ public: // member functions
    ComboPickerWindow& operator=(ComboPickerWindow const&) = delete; ///< Disabled assignment operator
    ComboPickerWindow& operator=(ComboPickerWindow&&) = delete; ///< Disabled move assignment operator
 
+protected:
+   void keyPressEvent(QKeyEvent* event) override; ///< Key press event handler.
+   void changeEvent(QEvent* event) override; ///< Change event handler.
+
 private: // data member
-   Ui::ComboPickerWindow ui_; ///< The GUI for the window
+   Ui::ComboPickerWindow ui_ = {}; ///< The GUI for the window
 };
 
 

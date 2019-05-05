@@ -35,6 +35,9 @@ QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting 
 QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
 QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
 QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
+QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
+QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; ///< The setting key for the combo picker shortcut scan code
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
 QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
 QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
@@ -54,6 +57,8 @@ QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writ
    QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
 SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
    | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
+SpShortcut const kDefaultValueComboPickerShortcut = std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ShiftModifier,
+   13 /*Enter*/, 28); ///< The default value for the 'combo trigger shortcut' preference
 bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
 QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultValueEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
@@ -107,7 +112,8 @@ PreferencesManager::PreferencesManager()
    // Cache often accessed values
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
       kDefaultValueUseAutomaticSubstitution);
-   this->cacheComboTriggerShortcut(); 
+   this->cacheComboTriggerShortcut();
+   this->cacheComboPickerShortcut();
    cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled, 
       kDefaultValueEmojiShortcodesEnabled);
    cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
@@ -132,6 +138,7 @@ void PreferencesManager::reset()
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setWarnAboutShortComboKeywords(kDefaultValueWarnAboutShortComboKeyword);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
+   this->setComboPickerShortcut(kDefaultValueComboPickerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
    this->setEmojiShortcodeEnabled(kDefaultValueEmojiShortcodesEnabled);
    this->setEmojiLeftDelimiter(kDefaultValueEmojiLeftDelimiter);
@@ -454,7 +461,7 @@ QString PreferencesManager::defaultComboListFolderPath()
 void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut)
 {
    SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueComboTriggerShortcut;
-   SpShortcut currentShortcut = comboTriggerShortcut();
+   SpShortcut currentShortcut = this->comboTriggerShortcut();
    if (!currentShortcut)
       currentShortcut = kDefaultValueComboTriggerShortcut;
    if (*newShortcut != *currentShortcut)
@@ -473,6 +480,34 @@ void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut)
 SpShortcut PreferencesManager::comboTriggerShortcut() const
 {
    return cachedComboTriggerShortcut_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shortcut The shortcut
+//**********************************************************************************************************************
+void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut)
+{
+   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueComboPickerShortcut;
+   SpShortcut currentShortcut = this->comboPickerShortcut();
+   if (!currentShortcut)
+      currentShortcut = kDefaultValueComboPickerShortcut;
+   if (*newShortcut != *currentShortcut)
+   {
+      settings_->setValue(kKeyComboPickerShortcutModifiers, int(shortcut->nativeModifiers()));
+      settings_->setValue(kKeyComboPickerShortcutKeyCode, shortcut->nativeVirtualKey());
+      settings_->setValue(kKeyComboPickerShortcutScanCode, shortcut->nativeScanCode());
+      cachedComboPickerShortcut_ = newShortcut;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \return The shortcut
+//**********************************************************************************************************************
+SpShortcut PreferencesManager::comboPickerShortcut() const
+{
+   return cachedComboPickerShortcut_;
 }
 
 
@@ -619,19 +654,42 @@ qint32 PreferencesManager::maxDelayBetweenKeystrokesMs()
 
 
 //**********************************************************************************************************************
+/// \param[in] modRegKey The registry key for the shortcut's  modifiers.
+/// \param[in] vKeyRegKey The registry key for the shortcut's virtual key.
+/// \param[in] scanCodeRegKey The registry key for the shortcut's scan code.
+/// \return The shortcut, or a null pointer if not found
+//**********************************************************************************************************************
+SpShortcut PreferencesManager::readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey, 
+   QString const& scanCodeRegKey) const
+{
+   int const intMods = this->readSettings<quint32>(modRegKey, 0);
+   quint32 const vKey = this->readSettings<quint32>(vKeyRegKey, 0);
+   quint32 const scanCode = this->readSettings<quint32>(scanCodeRegKey, 0);
+   if ((!intMods) || (!vKey) || (!scanCode))
+      return nullptr;
+   SpShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
+   return result->isValid() ? result : nullptr;
+}
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void PreferencesManager::cacheComboTriggerShortcut()
 {
-   int const intMods = this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0);
-   quint32 vKey = this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCode, 0);
-   quint32 scanCode = this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0);
-   if ((!intMods) || (!vKey) || (!scanCode))
-      cachedComboTriggerShortcut_ =  kDefaultValueComboTriggerShortcut;
-   else
-      cachedComboTriggerShortcut_ = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
-   if (!cachedComboTriggerShortcut_->isValid())
-      cachedComboTriggerShortcut_ = kDefaultValueComboTriggerShortcut;
+   SpShortcut const shortcut = this->readShortcutFromPreferences(kKeyComboTriggerShortcutModifiers,
+      kKeyComboTriggerShortcutKeyCode, kKeyComboTriggerShortcutScanCode);
+   cachedComboTriggerShortcut_ = shortcut ? shortcut : kDefaultValueComboTriggerShortcut;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::cacheComboPickerShortcut()
+{
+   SpShortcut const shortcut = this->readShortcutFromPreferences(kKeyComboPickerShortcutModifiers,
+      kKeyComboPickerShortcutKeyCode, kKeyComboPickerShortcutScanCode);
+   cachedComboPickerShortcut_ = shortcut ? shortcut : kDefaultValueComboPickerShortcut;
 }
 
 

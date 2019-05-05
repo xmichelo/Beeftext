@@ -62,6 +62,8 @@ public: // member functions
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
    void setComboTriggerShortcut(SpShortcut const& shortcut); ///< Set the combo trigger shortcut
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
+   void setComboPickerShortcut(SpShortcut const& shortcut); ///< Set the combo picker shortcut
+   SpShortcut comboPickerShortcut() const; ///< Retrieve the combo picker shortcut
    void setAutoBackup(bool value) const; ///< Set the value for the 'Auto backup' preference
    bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
    QString lastComboImportExportPath() const; ///< Retrieve the path of the last imported and exported path
@@ -83,7 +85,11 @@ signals:
 
 private: // member functions
    PreferencesManager(); ///< Default constructor
+   SpShortcut readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey, 
+   QString const& scanCodeRegKey) const; ///< Read a shortcut from the preferences.
+
    void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
+   void cacheComboPickerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
    void applyCustomThemePreference() const; ///< Apply the preference for the custom theme
    void applyAutoStartPreference() const; ///< Apply the preference for the auto-start
    void applyLocalePreference() const; ///< Apply the preference for the locale
@@ -96,6 +102,7 @@ private: // data members
    std::unique_ptr<QSettings> settings_; ///< The Qt settings instance
    bool cachedUseAutomaticSubstitution_ { true }; ///< Cached value for the 'use automatic substitution' preference value
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
+   SpShortcut cachedComboPickerShortcut_; ///< Cached value for the 'combo picker shortcut' preference
    bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
    QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.
    QString cachedEmojiRightDelimiter_; ///< Cached value for the 'emoji right delimiter' preference.
