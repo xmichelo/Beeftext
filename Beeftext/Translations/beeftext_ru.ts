@@ -110,12 +110,16 @@
         <translation>&amp;Содержимое буфера</translation>
     </message>
     <message>
-        <source>This keyword is already in use.</source>
-        <translation type="vanished">Этот ярлык уже используется.</translation>
+        <source>C&amp;ancel</source>
+        <translation>&amp;Отмена</translation>
     </message>
     <message>
         <source>Conflict</source>
         <translation>Конфликт</translation>
+    </message>
+    <message>
+        <source>&amp;Continue</source>
+        <translation>&amp;Продолжить</translation>
     </message>
     <message>
         <source>&amp;Custom Date &amp;&amp; Time</source>
@@ -134,12 +138,28 @@
         <translation>Соответствие</translation>
     </message>
     <message>
+        <source>This keyword is already in use. 
+
+You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
+        <translation>Этот ярлык уже используется. 
+
+У вас может быть много шаблонов с одним и тем же ярлыком, Beeftext выберет один из подходящих шаблонов в случайном порядке.</translation>
+    </message>
+    <message>
         <source>New Group</source>
         <translation>Новая группа</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Фраза&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Combo (&amp;uppercase)</source>
+        <translation>&amp;Шаблон (заглавные)</translation>
+    </message>
+    <message>
+        <source>Combo (&amp;lowercase)</source>
+        <translation>&amp;Шаблон (строчные)</translation>
     </message>
     <message>
         <source>&amp;Date/Time</source>
@@ -162,6 +182,10 @@
         <translation>%1 существующих шаблонов конфликтуют с этим шаблоном.</translation>
     </message>
     <message>
+        <source>Duplicate keyword</source>
+        <translation>Дублировать ярлык</translation>
+    </message>
+    <message>
         <source>&amp;About Variables</source>
         <translation>&amp;О переменных</translation>
     </message>
@@ -180,32 +204,6 @@ Do you want to continue anymay?</source>
     <message>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Существующий шаблон конфликтует с этим шаблоном.</translation>
-    </message>
-    <message>
-        <source>Combo (&amp;uppercase)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Combo (&amp;lowercase)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Duplicate keyword</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>This keyword is already in use. 
-
-You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Continue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C&amp;ancel</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -803,6 +801,10 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
         <translation>Сбросить предупреждения</translation>
     </message>
     <message>
+        <source>Emojis</source>
+        <translation>Эмодзи</translation>
+    </message>
+    <message>
         <source>Combo triggering</source>
         <translation>Запуск шаблонов</translation>
     </message>
@@ -824,7 +826,7 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
     </message>
     <message>
         <source>Manual, using the shortcut</source>
-        <translation>В ручную (горячие клавиши)</translation>
+        <translation>Вручную (горячие клавиши)</translation>
     </message>
     <message>
         <source>De&amp;fault</source>
@@ -853,6 +855,14 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
     <message>
         <source>&amp;Automatically start %1 at login</source>
         <translation>&amp;Автозапуск %1 при входе в систему</translation>
+    </message>
+    <message>
+        <source>Left delimiter</source>
+        <translation>Левый разделитель</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Use custom theme</source>
@@ -931,28 +941,16 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
         <translation>Версия актуальна.</translation>
     </message>
     <message>
+        <source>Right delimiter</source>
+        <translation>Правый разделитель</translation>
+    </message>
+    <message>
         <source>Select folder</source>
         <translation>Выберите папку</translation>
     </message>
     <message>
         <source>Automatically check for &amp;updates</source>
         <translation>&amp;Автоматическая проверка обновлений</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Emojis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1061,7 +1059,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     <message>
         <source>Move To</source>
         <comment>Move entry in the Combo context menu</comment>
-        <translation type="unfinished">Переместить в</translation>
+        <translation>Переместить в</translation>
     </message>
 </context>
 <context>

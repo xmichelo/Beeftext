@@ -1253,12 +1253,12 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="82"/>
+        <location filename="../main.cpp" line="85"/>
         <source>Getting Started</source>
         <translation>Bien Débuter</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="82"/>
+        <location filename="../main.cpp" line="85"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -1290,7 +1290,7 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="107"/>
+        <location filename="../main.cpp" line="110"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>
