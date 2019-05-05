@@ -21,7 +21,7 @@
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
 #include "XMiLib/GlobalShortcut/GlobalShortcutManager.h"
-
+#include <QtPlatformHeaders/QWindowsWindowFunctions>
 
 using namespace xmilib;
 
@@ -71,6 +71,9 @@ int main(int argc, char *argv[])
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
       EmojiManager::instance().loadEmojis();
       MainWindow window;
+#ifdef Q_OS_WIN
+      QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
+#endif
       ensureMainWindowHasAHandle(window);
       GlobalShortcutManager& shortcutManager = GlobalShortcutManager::instance();
       GlobalShortcut const* shortcut = shortcutManager.create(MOD_CONTROL | MOD_ALT | MOD_SHIFT, 'V');
