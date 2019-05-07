@@ -12,6 +12,7 @@
 
 
 #include "ui_ComboPickerWindow.h"
+#include "ComboPickerModel.h"
 
 
 void showComboPickerWindow(); ///< Show the combo picker window.
@@ -36,7 +37,8 @@ protected:
    void changeEvent(QEvent* event) override; ///< Change event handler.
 
 private: // data member
-   Ui::ComboPickerWindow ui_ = {}; ///< The GUI for the window
+   Ui::ComboPickerWindow ui_ = {}; ///< The GUI for the window.
+   ComboPickerModel model_; ///< The model for the list view.
 };
 
 

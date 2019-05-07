@@ -113,10 +113,13 @@
     </ClCompile>
     <ClCompile Include="EmojiManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
+    <ClCompile Include="VariableInputDialog.cpp" />
     <ClCompile Include="Combo\ComboPickerWindow.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="VariableInputDialog.cpp" />
+    <ClCompile Include="Combo\ComboPickerModel.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -285,10 +288,13 @@
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <Filter>Update</Filter>
     </QtMoc>
+    <QtMoc Include="VariableInputDialog.h" />
     <QtMoc Include="Combo\ComboPickerWindow.h">
       <Filter>Combo</Filter>
     </QtMoc>
-    <QtMoc Include="VariableInputDialog.h" />
+    <QtMoc Include="Combo\ComboPickerModel.h">
+      <Filter>Combo</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboPickerWindow.ui">

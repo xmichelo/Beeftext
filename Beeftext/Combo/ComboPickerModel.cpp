@@ -1,61 +1,54 @@
 ﻿/// \file
 /// \author 
 ///
-/// \brief Implementation of combo picker window
+/// \brief Implementation of combo picker model
 ///  
 /// Copyright (c) . All rights reserved.  
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information. 
 
 
 #include "stdafx.h"
-#include "ComboPickerWindow.h"
+#include "ComboPickerModel.h"
+#include "ComboManager.h"
 
 
 //**********************************************************************************************************************
-//
+/// \param[in] parent The parent object of the model.
 //**********************************************************************************************************************
-void showComboPickerWindow()
+ComboPickerModel::ComboPickerModel(QObject* parent)
+   : QAbstractListModel(parent)
 {
-   static ComboPickerWindow window;
-   window.move(QCursor::pos());
-   window.show();
-   window.activateWindow();
-   window.raise();
+   ComboList& comboList = ComboManager::instance().comboListRef();
+   connect(&comboList, &ComboList::modelReset, this, &ComboPickerModel::resetModel);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] parent The index of the parent.
+/// \return The number of row in the model.
+//**********************************************************************************************************************
+int ComboPickerModel::rowCount(const QModelIndex& parent) const
+{
+   return ComboManager::instance().comboListRef().rowCount(parent);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] index The index.
+/// \param[in] role The role.
+/// \return The data for the given role at the specified index.
+//**********************************************************************************************************************
+QVariant ComboPickerModel::data(const QModelIndex& index, int role) const
+{
+   return ComboManager::instance().comboListRef().data(index, role);
 }
 
 
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-ComboPickerWindow::ComboPickerWindow()
-   : QWidget(nullptr)
+void ComboPickerModel::resetModel()
 {
-   ui_.setupUi(this);
-   this->setWindowFlag(Qt::FramelessWindowHint, true);
-   ui_.listViewResults->setModel(&model_);
+   this->beginResetModel();
+   this->endResetModel();
 }
-
-
-//**********************************************************************************************************************
-/// \param[in] event The event.
-//**********************************************************************************************************************
-void ComboPickerWindow::keyPressEvent(QKeyEvent* event)
-{
-   if (event->key() == Qt::Key_Escape)
-     this->close();
-   QWidget::keyPressEvent(event);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] event The event.
-//**********************************************************************************************************************
-void ComboPickerWindow::changeEvent(QEvent* event)
-{
-   if ((event->type() == QEvent::ActivationChange) && !this->isActiveWindow())
-      this->close(); // when the dialog looses the focus, we dismiss is because we don't know where the input
-         // focus can be now.
-   QWidget::changeEvent(event);
-}
-
-
