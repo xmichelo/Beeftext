@@ -32,7 +32,8 @@ ComboPickerWindow::ComboPickerWindow()
 {
    ui_.setupUi(this);
    this->setWindowFlag(Qt::FramelessWindowHint, true);
-   ui_.listViewResults->setModel(&model_);
+   ui_.listViewResults->setModel(&proxyModel_);
+   proxyModel_.setSourceModel(&model_);
 }
 
 
@@ -56,6 +57,27 @@ void ComboPickerWindow::changeEvent(QEvent* event)
       this->close(); // when the dialog looses the focus, we dismiss is because we don't know where the input
          // focus can be now.
    QWidget::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event.
+//**********************************************************************************************************************
+void ComboPickerWindow::showEvent(QShowEvent* event)
+{
+   ui_.editSearch->setText(QString());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] text The new text in the search edit.
+//**********************************************************************************************************************
+void ComboPickerWindow::onSearchTextChanged(QString const& text)
+{
+   qDebug() << QString("New search text: %1").arg(text);
+   proxyModel_.setFilterFixedString(text.trimmed());
+   if (proxyModel_.rowCount() > 0)
+      ui_.listViewResults->setCurrentIndex(proxyModel_.index(0, 0));
 }
 
 

@@ -111,7 +111,27 @@
  </widget>
  <resources>
   <include location="../Beeftext.qrc"/>
-  <include location="Beeftext.qrc"/>
+  <include location="../Beeftext.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>editSearch</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>ComboPickerWindow</receiver>
+   <slot>onSearchTextChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>180</x>
+     <y>26</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onSearchTextChanged(QString)</slot>
+ </slots>
 </ui>

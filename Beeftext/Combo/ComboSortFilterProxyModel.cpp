@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "ComboSortFilterProxyModel.h"
 #include "ComboList.h"
-#include <XMiLib/Exception.h>
+#include "ComboManager.h"
 
 
 //**********************************************************************************************************************
@@ -39,16 +39,15 @@ void ComboSortFilterProxyModel::setGroup(SpGroup const& group)
 //**********************************************************************************************************************
 bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex const&) const
 {
-   ComboList* combos = dynamic_cast<ComboList*>(sourceModel());
-   if (!combos)
-      throw xmilib::Exception(QString("Internal error: %1(): could not cast model to ComboList.").arg(__FUNCTION__));
+   QAbstractItemModel* sourceModel = this->sourceModel();
+   ComboList& combos = ComboManager::instance().comboListRef();
 
-   for (int col = 0; col < combos->columnCount(QModelIndex()); ++col)
+   for (int col = 0; col < combos.columnCount(QModelIndex()); ++col)
    {
-      SpCombo const& combo = (*combos)[sourceRow];
+      SpCombo const& combo = combos[sourceRow];
       if (group_ && (combo->group() != group_))
          return false;
-      QString const str = combos->data(combos->index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString();
+      QString const str = combos.data(combos.index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString();
       if (str.contains(this->filterRegExp()))
          return true;
    }

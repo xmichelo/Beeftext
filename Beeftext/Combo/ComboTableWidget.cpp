@@ -718,8 +718,7 @@ void ComboTableWidget::onActionMatchingModeLoose()
 //**********************************************************************************************************************
 void ComboTableWidget::onSearchFilterChanged(QString const& text)
 {
-   QString const searchStr = text.trimmed();
-   proxyModel_.setFilterFixedString(searchStr);
+   proxyModel_.setFilterFixedString(text.trimmed());
 }
 
 

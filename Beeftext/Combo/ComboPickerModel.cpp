@@ -40,7 +40,9 @@ int ComboPickerModel::rowCount(const QModelIndex& parent) const
 //**********************************************************************************************************************
 QVariant ComboPickerModel::data(const QModelIndex& index, int role) const
 {
-   return ComboManager::instance().comboListRef().data(index, role);
+   if (Qt::DisplayRole != role)
+      return QVariant();
+   return "-= " + ComboManager::instance().comboListRef().data(index, role).toString() + " =-";
 }
 
 

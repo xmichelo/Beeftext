@@ -13,6 +13,7 @@
 
 #include "ui_ComboPickerWindow.h"
 #include "ComboPickerModel.h"
+#include "ComboSortFilterProxyModel.h"
 
 
 void showComboPickerWindow(); ///< Show the combo picker window.
@@ -35,10 +36,15 @@ public: // member functions
 protected:
    void keyPressEvent(QKeyEvent* event) override; ///< Key press event handler.
    void changeEvent(QEvent* event) override; ///< Change event handler.
+   void showEvent(QShowEvent* event) override; ///< Show event handler.
+
+private slots:
+   void onSearchTextChanged(QString const& text); ///< Slot for the change of the search text
 
 private: // data member
    Ui::ComboPickerWindow ui_ = {}; ///< The GUI for the window.
    ComboPickerModel model_; ///< The model for the list view.
+   ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the list view
 };
 
 
