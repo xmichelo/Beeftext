@@ -297,6 +297,22 @@ bool Combo::performSubstitution() const
 
 
 //**********************************************************************************************************************
+/// \return true if the the snippet was actually inserted(it could a been cancelled, for instance by the user
+/// dismissing a variable input dialog.
+//**********************************************************************************************************************
+bool Combo::insertSnippet() const
+{
+   qint32 cursorLeftShift = -1;
+   bool cancelled = false;
+   QMap<QString, QString> knownInputVariables;
+   QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
+   if (!cancelled)
+      performTextSubstitution(0, newText, cursorLeftShift);
+   return !cancelled;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] includeGroup Should the group be included in the export
 /// \return A JSon object representing this Combo instance
 //**********************************************************************************************************************

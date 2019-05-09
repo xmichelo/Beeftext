@@ -139,7 +139,7 @@ QString getActiveExecutableFileName()
 
 
 //**********************************************************************************************************************
-/// \param[in] charCount The number of characters to substitution
+/// \param[in] charCount The number of characters to substitute
 /// \param[in] newText The new text
 /// \param[in] cursorPos The position of the cursor in the new text. The value is -1 if the cursor does not need 
 /// repositionning.

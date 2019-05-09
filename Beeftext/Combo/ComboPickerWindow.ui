@@ -33,11 +33,20 @@
    background-color: transparent;
 }
 
-#listViewResults {
+#listViewResults
+{
    background-color: #363636;
    border: none;
+   text: #fff;
 }
 
+#listViewResults::item {
+   color: #888;
+}
+
+#listViewResults::item:selected {
+   color: #fff;
+}
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">

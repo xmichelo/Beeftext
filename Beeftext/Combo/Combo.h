@@ -56,6 +56,7 @@ public: // member functions
    bool isEnabled() const; ///< Check whether the combo is enabled
    bool matchesForInput(QString const& input) const; ///< Check if the combo is a match for the given input
    bool performSubstitution() const; ///< Perform the combo substitution
+   bool insertSnippet() const; ///< Insert the snippet.
    QJsonObject toJsonObject(bool includeGroup) const; ///< Serialize the combo in a JSon object
    void changeUuid(); ///< Get a new Uuid for the combo
 

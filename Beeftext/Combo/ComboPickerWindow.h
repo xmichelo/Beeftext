@@ -14,6 +14,7 @@
 #include "ui_ComboPickerWindow.h"
 #include "ComboPickerModel.h"
 #include "ComboSortFilterProxyModel.h"
+#include "Combo.h"
 
 
 void showComboPickerWindow(); ///< Show the combo picker window.
@@ -41,6 +42,12 @@ protected:
 private slots:
    void onSearchTextChanged(QString const& text); ///< Slot for the change of the search text
 
+private: // member functions
+   void selectPreviousCombo() const; ///< Select the previous combo in the list.
+   void selectNextCombo() const; ///< Select the next combo in the list.
+   qint32 selectedComboIndex() const; ///< Retrieve the index of the selected combo.
+   SpCombo selectedCombo() const; ///< Retrieve the selected combo.
+   void selectComboAtIndex(qint32 index) const; ///< Select the combo at a given index
 private: // data member
    Ui::ComboPickerWindow ui_ = {}; ///< The GUI for the window.
    ComboPickerModel model_; ///< The model for the list view.
