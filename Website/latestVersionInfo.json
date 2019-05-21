@@ -1,8 +1,8 @@
 {
    "versionMajor": 2,
-   "versionMinor": 0,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v2.0/Beeftext-2.0-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v2.0",
-   "sha256Sum": "bd16e784f2efc3795998042145f99b654a0ec35f3a5d5a7a48bceb69dc54a2a7",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v2.0 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>Added support for multiple combos with the same keyword (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/154\">#154</a>).</li><li>Implemented custom delimiters for emojis (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/155\">#155</a>).</li><li>Upgraded to Visual Studio 2019 and Qt 5.12.3.</li><li>Changed version number strategy. <a href=\"https://twitter.com/beeftext/status/1124557510256541696\">More info here</a>.</li></ul></body></html>"
+   "versionMinor": 1,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v2.1/Beeftext-2.1-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v2.1",
+   "sha256Sum": "893ec54697fa5764d85b727f2906f21af0266f72275a0fe5d364a753a6b815ef",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v2.1 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>Fixed a bug where the installer would cancel installation and reboot the computer without warning (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/158\">#158</a>).</li></ul></body></html>"
 }
