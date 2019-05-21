@@ -20,10 +20,9 @@
 !define UNINSTALLER_FILE_NAME Uninstall.exe
 !define REGISTRY_UNINSTALLER_FOLDER Software\Microsoft\Windows\CurrentVersion\Uninstall
 !define OUTPUT_DIR _build
-!define RESOURCES_FOLDER_PATH "Resources"
+!define RESOURCES_DIR "Resources"
+!define VC_DLL_DIR "..\Vendor\VCRuntime"
 !define VS_DEVENV_PATH "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.com"
-!define VC_REDIST_RUNTIME_FILE "VC_redist.x86.exe"
-!define VC_REDIST_RUNTIME_FILE_PATH "..\Vendor\VCRuntime\Installer\${VC_REDIST_RUNTIME_FILE}"
 !define LICENSE_FILE_NAME "LICENSE"
 !define LICENSE_FILE_PATH "..\${LICENSE_FILE_NAME}"
 !define WEBSITE "https://beeftext.org"
@@ -32,8 +31,8 @@
 !define VERSION_MAJOR 2
 !define VERSION_MINOR 0
 !define APP_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}"
-!define LEFT_IMAGE_PATH "${RESOURCES_FOLDER_PATH}\installerLeftImage.bmp"
-!define TOP_IMAGE_PATH "${RESOURCES_FOLDER_PATH}\installerTopImage.bmp"
+!define LEFT_IMAGE_PATH "${RESOURCES_DIR}\installerLeftImage.bmp"
+!define TOP_IMAGE_PATH "${RESOURCES_DIR}\installerTopImage.bmp"
 !define APP_DATA_REGISTRY_KEY "Software\${COMPANY}\${APP_NAME}"
 
 # Settings for the Modern UI 2 NSIS plugin
@@ -94,21 +93,6 @@ Function .onInit
 FunctionEnd
 
 
-###################################################
-# install the VC Redistributable Runtime for VS2017
-###################################################
-Function InstallVCRedistributableRuntime
-	SetOutPath $TEMP
-	${Unless} ${FileExists} "$TEMP\${VC_REDIST_RUNTIME_FILE}"         
-		 DetailPrint "Installing VC++ 2017 Redistributable Runtime"         
-		 File ${VC_REDIST_RUNTIME_FILE_PATH}
-		 ExecWait "$TEMP\${VC_REDIST_RUNTIME_FILE} /q"         
-		 DetailPrint "Cleaning up"         
-		 Delete $TEMP\${VC_REDIST_RUNTIME_FILE}     
-	${EndUnless}
-FunctionEnd
-
-
 ###############################################
 # Check if the application is already installed
 ###############################################
@@ -161,8 +145,6 @@ Section "${APP_NAME}" secApp
 SectionIn RO # This section is mandatory
 SetShellVarContext all
 
-call InstallVCRedistributableRuntime
-
 setOutPath $INSTDIR
 # copy file
 file "${EXE_SRC_DIR}\${APP_NAME}.exe"
@@ -174,6 +156,8 @@ file "$%QTDIR_XMILIB%\bin\Qt5Gui.dll"
 file "$%QTDIR_XMILIB%\bin\Qt5Widgets.dll"
 file "$%QTDIR_XMILIB%\bin\Qt5Multimedia.dll"
 file "$%QTDIR_XMILIB%\bin\Qt5Network.dll"
+file "${RESOURCES_DIR}\msvcp140.dll"
+file "${RESOURCES_DIR}\vcruntime140.dll"
 setOutPath $INSTDIR\platforms
 file "$%QTDIR_XMILIB%\plugins\platforms\qwindows.dll"
 setOutPath $INSTDIR\styles
