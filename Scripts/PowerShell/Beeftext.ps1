@@ -13,7 +13,7 @@
 #***********************************************************************************************************************
 $solutionDir = absolutePath $PSScriptRoot "..\.."
 $sslDir =  absolutePath $solutionDir "Vendor\OpenSSL"
-$vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\Dlls"
+$vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\"
 $nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
 $rcFilePath = absolutePath $solutionDir "Beeftext\Beeftext.rc"
 
