@@ -156,8 +156,8 @@ file "$%QTDIR_XMILIB%\bin\Qt5Gui.dll"
 file "$%QTDIR_XMILIB%\bin\Qt5Widgets.dll"
 file "$%QTDIR_XMILIB%\bin\Qt5Multimedia.dll"
 file "$%QTDIR_XMILIB%\bin\Qt5Network.dll"
-file "${RESOURCES_DIR}\msvcp140.dll"
-file "${RESOURCES_DIR}\vcruntime140.dll"
+file "${VC_DLL_DIR}\msvcp140.dll"
+file "${VC_DLL_DIR}\vcruntime140.dll"
 setOutPath $INSTDIR\platforms
 file "$%QTDIR_XMILIB%\plugins\platforms\qwindows.dll"
 setOutPath $INSTDIR\styles
