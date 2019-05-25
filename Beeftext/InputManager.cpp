@@ -47,7 +47,7 @@ bool getForegroundWindowInputLocale(HKL& outHkl)
 /// \brief Check whether a keystroke match a shortcut.
 /// 
 /// \param[in] keyStroke The keystroke.
-/// \param[iun] shortcut The shortcut.
+/// \param[in] shortcut The shortcut.
 /// \return true if and only if the keystroke match the shortcut.
 //**********************************************************************************************************************
 bool doesKeystrokeMatchShortcut(InputManager::KeyStroke const& keyStroke, SpShortcut const& shortcut)

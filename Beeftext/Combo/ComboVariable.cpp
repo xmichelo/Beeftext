@@ -92,6 +92,7 @@ QString evaluateDateTimeVariable(QString const& variable)
 
 //**********************************************************************************************************************
 /// \param[in] variable The variable, without the enclosing #{}.
+/// \param[in] caseChange The change of case (uppercase, lowercase) to apply to the evaluated variable.
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion.
 /// \param[in,out] knownInputVariables The list of know input variables.

@@ -19,6 +19,19 @@ namespace {
 
 
 //**********************************************************************************************************************
+/// \return A rect indicating the position and size of the foreground window.
+//**********************************************************************************************************************
+QRect foregroundWindowRect()
+{
+   HWND const hwnd = GetForegroundWindow();
+   RECT r;
+   if ((!hwnd) || (!GetWindowRect(hwnd, &r)))
+      return QRect();
+   return QRect(QPoint(r.left, r.top), QPoint(r.right, r.bottom));
+}
+
+
+//**********************************************************************************************************************
 /// \return The big font used in item rendering.
 //**********************************************************************************************************************
 QFont bigFont()
@@ -51,7 +64,12 @@ QFont smallFont()
 void showComboPickerWindow()
 {
    static ComboPickerWindow window;
-   window.move(QCursor::pos());
+   QRect const rect = foregroundWindowRect();
+   if (rect.isNull()) 
+      window.move(QCursor::pos());
+   else
+      window.move(QPoint(rect.left() + ((rect.width() - window.width()) / 2), 
+         rect.top() + ((rect.height() - window.height()) / 2)));
    window.show();
    window.activateWindow();
    window.raise();
@@ -112,6 +130,7 @@ ComboPickerWindow::ComboPickerWindow()
 {
    ui_.setupUi(this);
    this->setWindowFlag(Qt::FramelessWindowHint, true);
+   this->setAttribute(Qt::WA_TranslucentBackground, true);
    ui_.listViewResults->setModel(&proxyModel_);
    ui_.listViewResults->setItemDelegate(new ResultItemDelegate(ui_.listViewResults));
    proxyModel_.setSourceModel(&model_);
