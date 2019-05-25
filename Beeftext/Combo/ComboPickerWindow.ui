@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>442</width>
+    <height>319</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,14 +19,14 @@
 }
 
 #ComboPickerWindow {
-   background-color: #4e4d4e;
+/*   background-color: #4e4d4e; */
 }
 
 #editSearch {
-   font-size: 14pt;
+   font-size: 12pt;
    border: none;
-   background-color: #363636;
-   color: #fff;
+   /*background-color: #363636;
+   color: #fff; */
 }
 
 #labelLogo {
@@ -35,18 +35,18 @@
 
 #listViewResults
 {
-   background-color: #363636;
+/*   background-color: #363636; */
    border: none;
    text: #fff;
 }
 
-#listViewResults::item {
+/*#listViewResults::item {
    color: #888;
 }
 
 #listViewResults::item:selected {
    color: #fff;
-}
+}*/
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -74,6 +74,14 @@
          <width>0</width>
          <height>32</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="contextMenuPolicy">
         <enum>Qt::NoContextMenu</enum>

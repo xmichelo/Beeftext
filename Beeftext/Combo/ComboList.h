@@ -29,7 +29,12 @@ public: // type definitions
    typedef VecSpCombo::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
    typedef SpCombo value_type;
    // ReSharper restore CppInconsistentNaming
+   enum
+   {
+      KeywordRole = Qt::UserRole, ///< The model role for keywords
+      SnippetRole, ///< The model role for snippets
 
+   };
 public: // static data members
    static QString const defaultFileName; ///< The default name for combo list files
    static qint32 const fileFormatVersionNumber; ///< The version number for the combo list file format

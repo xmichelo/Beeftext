@@ -114,10 +114,10 @@
     <ClCompile Include="EmojiManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="VariableInputDialog.cpp" />
-    <ClCompile Include="Combo\ComboPickerWindow.cpp">
+    <ClCompile Include="Combo\ComboPickerModel.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboPickerModel.cpp">
+    <ClCompile Include="Combo\ComboPickerWindow.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
   </ItemGroup>

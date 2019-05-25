@@ -579,16 +579,19 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
 
    SpCombo const combo = combos_[row];
 
-   if (Qt::DisplayRole == role)
+   switch (role)
+   {
+   case Qt::DisplayRole:
+   {
       switch (index.column())
       {
       case 0: return combo->name();
       case 1: return combo->keyword();
       case 2: return combo->snippet().trimmed().simplified();
       default: return QVariant();
-      }
-
-   if (Qt::ToolTipRole == role)
+      }      
+   }
+   case Qt::ToolTipRole:
    {
       switch (index.column())
       {
@@ -598,11 +601,15 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       default: return QVariant();
       }
    }
-
-   if (Qt::ForegroundRole == role)
+   case Qt::ForegroundRole:
       return combo->isEnabled() ? QVariant() : QColor(160, 160, 160);
-
-   return QVariant();
+   case KeywordRole:
+      return combo->keyword();
+   case SnippetRole:
+      return combo->snippet();
+   default:
+      return QVariant();
+   }
 }
 
 
