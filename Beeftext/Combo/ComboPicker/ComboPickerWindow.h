@@ -21,26 +21,6 @@ void showComboPickerWindow(); ///< Show the combo picker window.
 
 
 //**********************************************************************************************************************
-/// \brief 
-//**********************************************************************************************************************
-class ResultItemDelegate: public QItemDelegate
-{
-   Q_OBJECT
-public: // member functions
-   explicit ResultItemDelegate(QObject* parent = nullptr) : QItemDelegate(parent) {} ///< Default constructor
-   ResultItemDelegate(ResultItemDelegate const&) = delete; ///< Disabled copy-constructor
-   ResultItemDelegate(ResultItemDelegate&&) = delete; ///< Disabled assignment copy-constructor
-   ~ResultItemDelegate() = default; ///< Destructor
-   ResultItemDelegate& operator=(ResultItemDelegate const&) = delete; ///< Disabled assignment operator
-   ResultItemDelegate& operator=(ResultItemDelegate&&) = delete; ///< Disabled move assignment operator
-   void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
-   QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override; 
-};
-
-
-
-
-//**********************************************************************************************************************
 /// \brief The combo picker window class
 //**********************************************************************************************************************
 class ComboPickerWindow: public QWidget

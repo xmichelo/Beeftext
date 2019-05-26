@@ -126,6 +126,9 @@
     <ClCompile Include="Combo\ComboPicker\ComboPickerWindow.cpp">
       <Filter>Combo\ComboPicker</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboPicker\ComboPickerItemDelegate.cpp">
+      <Filter>Combo\ComboPicker</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -302,6 +305,9 @@
       <Filter>Combo\ComboPicker</Filter>
     </QtMoc>
     <QtMoc Include="Combo\ComboPicker\ComboPickerWindow.h">
+      <Filter>Combo\ComboPicker</Filter>
+    </QtMoc>
+    <QtMoc Include="Combo\ComboPicker\ComboPickerItemDelegate.h">
       <Filter>Combo\ComboPicker</Filter>
     </QtMoc>
   </ItemGroup>

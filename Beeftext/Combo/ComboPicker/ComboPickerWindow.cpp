@@ -9,13 +9,8 @@
 
 #include "stdafx.h"
 #include "ComboPickerWindow.h"
+#include "ComboPickerItemDelegate.h"
 #include "../ComboManager.h"
-
-
-namespace {
-   qint32 kItemVMargin = 2; ///< The size of the vertical margin of an item.
-   qint32 kItemHMargin = 10; ///< The size of the horizontal margin of an item.
-}
 
 
 //**********************************************************************************************************************
@@ -28,33 +23,6 @@ QRect foregroundWindowRect()
    if ((!hwnd) || (!GetWindowRect(hwnd, &r)))
       return QRect();
    return QRect(QPoint(r.left, r.top), QPoint(r.right, r.bottom));
-}
-
-
-//**********************************************************************************************************************
-/// \return The big font used in item rendering.
-//**********************************************************************************************************************
-QFont bigFont()
-{
-   QFont font;
-   font.setPointSize(12);
-   font.setBold(true);
-   font.setItalic(false);
-   return font;
-}
-
-
-//**********************************************************************************************************************
-/// \return The small font used in item rendering.
-//**********************************************************************************************************************
-QFont smallFont()
-{
-   QFont font;
-   font.setPointSize(8);
-   font.setBold(true);
-   font.setItalic(false);
-   return font;
-   
 }
 
 
@@ -77,52 +45,6 @@ void showComboPickerWindow()
 
 
 //**********************************************************************************************************************
-/// \param[in] painter The painter.
-/// \param[in] option The style options.
-/// \param[in] index The index of the item to paint.
-//**********************************************************************************************************************
-void ResultItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
-{
-   // we draw the background. Color depends on wether the item is selected or not.
-   bool const selected = option.state & QStyle::State_Selected ;
-   painter->setBrush(selected ? QColor(80, 140, 200) : QColor(255, 255, 255));
-   painter->setPen(Qt::NoPen);
-   painter->drawRect(option.rect);
-
-   // we exclude the margin from the rendering rect.
-   QRect const rect = option.rect.adjusted(kItemHMargin, kItemVMargin, -kItemHMargin, -kItemVMargin);
-   
-   // First line (combo name) use big font.
-   QFont const bFont = bigFont();
-   QFontMetrics const bMetrics(bFont);
-   // second line (combo keyword) use small font.
-   QFont const sFont = smallFont();
-
-   painter->setFont(bFont);
-   painter->setPen(selected ? Qt::white : QColor(78,78, 78));
-   painter->drawText(QPoint(rect.left(), rect.top() + bMetrics.ascent()), 
-      bMetrics.elidedText(index.data(Qt::DisplayRole).toString(), Qt::ElideRight, rect.width()));
-   painter->setPen(QColor(200,200,200));
-   painter->setFont(sFont);
-   painter->drawText(QPoint(rect.left(), rect.bottom() - QFontMetrics(sFont).descent()), 
-      index.data(ComboList::KeywordRole).toString());
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] option The style options.
-/// \param[in] index The index of the item to paint.
-//**********************************************************************************************************************
-QSize ResultItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
-{
-   // we compute the size hint for the item. width is trivial, but height needs attention. 
-   // An item contains one line of text in big font, one line of text with small font, and there are margins.
-   return QSize(option.rect.width(), QFontMetrics(bigFont()).height() + QFontMetrics(smallFont()).height()
-      + 2 * kItemVMargin);
-}
-
-
-//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 ComboPickerWindow::ComboPickerWindow()
@@ -132,7 +54,7 @@ ComboPickerWindow::ComboPickerWindow()
    this->setWindowFlag(Qt::FramelessWindowHint, true);
    this->setAttribute(Qt::WA_TranslucentBackground, true);
    ui_.listViewResults->setModel(&proxyModel_);
-   ui_.listViewResults->setItemDelegate(new ResultItemDelegate(ui_.listViewResults));
+   ui_.listViewResults->setItemDelegate(new ComboPickerItemDelegate(ui_.listViewResults));
    proxyModel_.setSourceModel(&model_);
 }
 
