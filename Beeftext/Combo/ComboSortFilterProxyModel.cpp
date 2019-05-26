@@ -39,7 +39,6 @@ void ComboSortFilterProxyModel::setGroup(SpGroup const& group)
 //**********************************************************************************************************************
 bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex const&) const
 {
-   QAbstractItemModel* sourceModel = this->sourceModel();
    ComboList& combos = ComboManager::instance().comboListRef();
 
    for (int col = 0; col < combos.columnCount(QModelIndex()); ++col)

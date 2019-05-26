@@ -32,7 +32,7 @@ public: // member functions
    void setGroup(SpGroup const& group); ///< Set the group to display
     
 protected: // member functions
-   bool filterAcceptsRow(int sourceRow, QModelIndex const&) const override; ///< Check if a row should be sorted
+   bool filterAcceptsRow(int sourceRow, QModelIndex const&) const override; ///< Check if a row should be included or discarded
 
 private: // data members
    SpGroup group_; ///< The group to display

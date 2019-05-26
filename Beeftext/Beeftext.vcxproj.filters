@@ -120,6 +120,9 @@
     <ClCompile Include="Combo\ComboPickerWindow.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\ComboPickerSortFilterProxyModel.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="SensitiveApplicationManager.h" />
+    <ClInclude Include="Combo\ComboPickerSortFilterProxyModel.h">
+      <Filter>Combo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">
