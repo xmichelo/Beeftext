@@ -14,7 +14,7 @@
 #include "ui_ComboPickerWindow.h"
 #include "ComboPickerModel.h"
 #include "ComboPickerSortFilterProxyModel.h"
-#include "Combo.h"
+#include "../Combo.h"
 
 
 void showComboPickerWindow(); ///< Show the combo picker window.

@@ -11,7 +11,7 @@
 #include "InputManager.h"
 #include "PreferencesManager.h"
 #include "MainWindow.h"
-#include "Combo/ComboPickerWindow.h"
+#include "Combo/ComboPicker/ComboPickerWindow.h"
 #include <XMiLib/Exception.h>
 
 

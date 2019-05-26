@@ -33,6 +33,9 @@
     <Filter Include="Backup">
       <UniqueIdentifier>{c61e6d78-c214-49e9-9722-51e8f91c7da4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Combo\ComboPicker">
+      <UniqueIdentifier>{d6d6e76a-1ae3-4bed-bca2-4eff6e6f20fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -114,14 +117,14 @@
     <ClCompile Include="EmojiManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="VariableInputDialog.cpp" />
-    <ClCompile Include="Combo\ComboPickerModel.cpp">
-      <Filter>Combo</Filter>
+    <ClCompile Include="Combo\ComboPicker\ComboPickerModel.cpp">
+      <Filter>Combo\ComboPicker</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboPickerWindow.cpp">
-      <Filter>Combo</Filter>
+    <ClCompile Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.cpp">
+      <Filter>Combo\ComboPicker</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboPickerSortFilterProxyModel.cpp">
-      <Filter>Combo</Filter>
+    <ClCompile Include="Combo\ComboPicker\ComboPickerWindow.cpp">
+      <Filter>Combo\ComboPicker</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,8 +190,8 @@
     </ClInclude>
     <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="SensitiveApplicationManager.h" />
-    <ClInclude Include="Combo\ComboPickerSortFilterProxyModel.h">
-      <Filter>Combo</Filter>
+    <ClInclude Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.h">
+      <Filter>Combo\ComboPicker</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -295,16 +298,16 @@
       <Filter>Update</Filter>
     </QtMoc>
     <QtMoc Include="VariableInputDialog.h" />
-    <QtMoc Include="Combo\ComboPickerWindow.h">
-      <Filter>Combo</Filter>
+    <QtMoc Include="Combo\ComboPicker\ComboPickerModel.h">
+      <Filter>Combo\ComboPicker</Filter>
     </QtMoc>
-    <QtMoc Include="Combo\ComboPickerModel.h">
-      <Filter>Combo</Filter>
+    <QtMoc Include="Combo\ComboPicker\ComboPickerWindow.h">
+      <Filter>Combo\ComboPicker</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="Combo\ComboPickerWindow.ui">
-      <Filter>Combo</Filter>
+    <QtUic Include="Combo\ComboPicker\ComboPickerWindow.ui">
+      <Filter>Combo\ComboPicker</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

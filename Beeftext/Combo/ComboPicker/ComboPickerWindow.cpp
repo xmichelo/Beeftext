@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboPickerWindow.h"
-#include "ComboManager.h"
+#include "../ComboManager.h"
 
 
 namespace {

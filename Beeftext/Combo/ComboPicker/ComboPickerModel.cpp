@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboPickerModel.h"
-#include "ComboManager.h"
+#include "../ComboManager.h"
 
 
 //**********************************************************************************************************************
