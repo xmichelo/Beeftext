@@ -29,8 +29,8 @@ ComboPickerSortFilterProxyModel::ComboPickerSortFilterProxyModel(QObject* parent
 bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex&) const
 {
    ComboList& combos = ComboManager::instance().comboListRef();
-   if (this->filterRegExp().pattern().trimmed().isEmpty()) /* a empty search string will return an empty result list */
-      return false;
+   //if (this->filterRegExp().pattern().trimmed().isEmpty()) /* a empty search string will return an empty result list */
+   //   return true;
    for (int col = 0; col < combos.columnCount(QModelIndex()); ++col)
    {
       SpCombo const& combo = combos[sourceRow];
@@ -40,5 +40,3 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
    }
    return false;
 }
-
-
