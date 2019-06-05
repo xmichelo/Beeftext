@@ -24,7 +24,7 @@ QString const kKeyGroups = "groups"; ///< The JSon key for groups
 
 
 QString const ComboList::defaultFileName = "comboList.json";
-qint32 const ComboList::fileFormatVersionNumber = 4;
+qint32 const ComboList::fileFormatVersionNumber = 5;
 
 
 //**********************************************************************************************************************
@@ -607,6 +607,8 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       return combo->keyword();
    case SnippetRole:
       return combo->snippet();
+   case LastUsedRole:
+      return combo->lastUsedDateTime();
    default:
       return QVariant();
    }

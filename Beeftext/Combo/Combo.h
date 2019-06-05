@@ -48,6 +48,7 @@ public: // member functions
    void setUseLooseMatching(bool useLooseMatching); ///< Set if the combo uses loose matching
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
+   QDateTime lastUsedDateTime() const; ///< Retrieve the last use date/time of the combo.
    SpGroup group() const; ///< Get the combo group the combo belongs to
    void setGroup(SpGroup const& group); ///< Set the group this combo belongs to
    QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 
@@ -55,8 +56,8 @@ public: // member functions
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
    bool matchesForInput(QString const& input) const; ///< Check if the combo is a match for the given input
-   bool performSubstitution() const; ///< Perform the combo substitution
-   bool insertSnippet() const; ///< Insert the snippet.
+   bool performSubstitution(); ///< Perform the combo substitution
+   bool insertSnippet(); ///< Insert the snippet.
    QJsonObject toJsonObject(bool includeGroup) const; ///< Serialize the combo in a JSon object
    void changeUuid(); ///< Get a new Uuid for the combo
 
@@ -76,9 +77,10 @@ private: // data member
    QString keyword_; ///< The keyword
    QString snippet_; ///< The snippet
    bool useLooseMatching_; ///< Should the combo use loose matching
-   SpGroup group_; ///< The combo group this combo belongs to (may be null)
+   SpGroup group_ { nullptr }; ///< The combo group this combo belongs to (may be null)
    QDateTime creationDateTime_; ///< The date/time of creation of the combo
    QDateTime modificationDateTime_; ///< The date/time of the last modification of the combo
+   QDateTime lastUsedDateTime_; ///< The last use date/time
    bool enabled_; ///< Is the combo enabled
 };
 

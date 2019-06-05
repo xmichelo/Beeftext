@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
       PreferencesManager& prefs = PreferencesManager::instance();
-      (void)ComboManager::instance(); // we make sure the combo manager singleton is instanciated
+      ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
       EmojiManager::instance().loadEmojis();
@@ -92,6 +92,7 @@ int main(int argc, char *argv[])
       qint32 const returnCode = QApplication::exec();
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
       I18nManager::instance().unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
+      comboManager.saveComboListToFile();
       return returnCode;
    }
    catch (Exception const& e)

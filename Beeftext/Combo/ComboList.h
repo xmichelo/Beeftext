@@ -33,8 +33,9 @@ public: // type definitions
    {
       KeywordRole = Qt::UserRole, ///< The model role for keywords
       SnippetRole, ///< The model role for snippets
-
+      LastUsedRole ///< The model role for last used date
    };
+
 public: // static data members
    static QString const defaultFileName; ///< The default name for combo list files
    static qint32 const fileFormatVersionNumber; ///< The version number for the combo list file format

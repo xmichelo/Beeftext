@@ -27,7 +27,7 @@ public: // member functions
    int rowCount(const QModelIndex& parent) const override; ///< return the number of rows in the model
    QVariant data(const QModelIndex& index, int role) const override; ///< Return the data for a given role at a given index
 
-private slots: // member functions
+public slots: // member functions
    void resetModel(); ///< Make the model as reset
 };
 

@@ -24,6 +24,7 @@ public: // member functions
    ComboPickerSortFilterProxyModel& operator=(ComboPickerSortFilterProxyModel const&) = delete; ///< Disabled assignment operator
    ComboPickerSortFilterProxyModel& operator=(ComboPickerSortFilterProxyModel&&) = delete; ///< Disabled move assignment operator
    bool filterAcceptsRow(int sourceRow, const QModelIndex&) const override; ///< Check if a row should be included or discarded
+   bool lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const override; ///< Sort function for the filter
 };
 
 

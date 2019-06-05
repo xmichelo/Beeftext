@@ -41,6 +41,8 @@ QString const kPropLastModified = "lastModified";
 ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
 QString const kPropModificationDateTime = "modificationDateTime";
 ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
+QString const kPropLastUsed = "lastUsed";
+///< The JSON property name for the last used date time, introduced  in the combo list file format v5.
 QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
 
 
@@ -55,13 +57,13 @@ QString const kPropEnabled = "enabled"; ///< The JSON property name for the enab
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
 Combo::Combo(QString name, QString keyword, QString snippet, bool const useLooseMatching, bool const enabled)
-   : uuid_(QUuid::createUuid()),
-     name_(std::move(name)),
-     keyword_(std::move(keyword)),
-     snippet_(std::move(snippet)),
-     useLooseMatching_(useLooseMatching),
-     group_(nullptr),
-     enabled_(enabled)
+   : uuid_(QUuid::createUuid())
+   , name_(std::move(name))
+   , keyword_(std::move(keyword))
+   , snippet_(std::move(snippet))
+   , useLooseMatching_(useLooseMatching)
+   , enabled_(enabled)
+
 {
    modificationDateTime_ = creationDateTime_ = QDateTime::currentDateTime();
 }
@@ -74,17 +76,18 @@ Combo::Combo(QString name, QString keyword, QString snippet, bool const useLoose
 /// \param[in] groups The list of combo groups
 //**********************************************************************************************************************
 Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups)
-   : uuid_(QUuid(object[kPropUuid].toString())),
-     name_(object[kPropName].toString()),
-     keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString()),
-     snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString()),
-     useLooseMatching_(object[kPropUseLooseMatching].toBool(false)),
-     group_(nullptr),
-     creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
-        kPropCreated].toString(), constants::kJsonExportDateFormat)),
-     modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
-        kPropLastModified].toString(), constants::kJsonExportDateFormat)),
-     enabled_(object[kPropEnabled].toBool(true))
+   : uuid_(QUuid(object[kPropUuid].toString()))
+   , name_(object[kPropName].toString())
+   ,  keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
+   ,  snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
+   ,  useLooseMatching_(object[kPropUseLooseMatching].toBool(false))
+   ,  creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
+         kPropCreated].toString(), constants::kJsonExportDateFormat))
+   ,  modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
+         kPropLastModified].toString(), constants::kJsonExportDateFormat))
+   ,  lastUsedDateTime_(formatVersion >= 5 ? QDateTime::fromString(object[kPropLastUsed].toString()
+   ,     constants::kJsonExportDateFormat) : QDateTime())
+   ,  enabled_(object[kPropEnabled].toBool(true))
 {
    if (object.contains(kPropGroup))
    {
@@ -229,6 +232,15 @@ QDateTime Combo::creationDateTime() const
 
 
 //**********************************************************************************************************************
+/// \return The last use date/time of the combo.
+//**********************************************************************************************************************
+QDateTime Combo::lastUsedDateTime() const
+{
+   return lastUsedDateTime_;
+}
+
+
+//**********************************************************************************************************************
 /// \return The group this combo belongs to
 /// \return A null pointer if the combo does not belong to any group
 //**********************************************************************************************************************
@@ -284,14 +296,17 @@ bool Combo::matchesForInput(QString const& input) const
 /// \return true if the substitution was actually performed (it could a been cancelled, for instance by the user
 /// dismissing a variable input dialog.
 //*********************************************************************************************************************
-bool Combo::performSubstitution() const
+bool Combo::performSubstitution()
 {
    qint32 cursorLeftShift = -1;
    bool cancelled = false;
    QMap<QString, QString> knownInputVariables;
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
+   {
       performTextSubstitution(keyword_.size(), newText, cursorLeftShift);
+      lastUsedDateTime_ = QDateTime::currentDateTime();
+   }
    return !cancelled;
 }
 
@@ -300,14 +315,17 @@ bool Combo::performSubstitution() const
 /// \return true if the the snippet was actually inserted(it could a been cancelled, for instance by the user
 /// dismissing a variable input dialog.
 //**********************************************************************************************************************
-bool Combo::insertSnippet() const
+bool Combo::insertSnippet()
 {
    qint32 cursorLeftShift = -1;
    bool cancelled = false;
    QMap<QString, QString> knownInputVariables;
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
+   {
       performTextSubstitution(0, newText, cursorLeftShift);
+      lastUsedDateTime_ = QDateTime::currentDateTime();
+   }
    return !cancelled;
 }
 
@@ -326,6 +344,7 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropUseLooseMatching, useLooseMatching_);
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
+   result.insert(kPropLastUsed, lastUsedDateTime().toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
    if (includeGroup && group_)
       result.insert(kPropGroup, group_->uuid().toString());

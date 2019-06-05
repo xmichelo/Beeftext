@@ -56,6 +56,7 @@ ComboPickerWindow::ComboPickerWindow()
    ui_.listViewResults->setModel(&proxyModel_);
    ui_.listViewResults->setItemDelegate(new ComboPickerItemDelegate(ui_.listViewResults));
    proxyModel_.setSourceModel(&model_);
+   proxyModel_.sort(0, Qt::DescendingOrder);
 }
 
 
@@ -108,6 +109,7 @@ void ComboPickerWindow::changeEvent(QEvent* event)
 void ComboPickerWindow::showEvent(QShowEvent* event)
 {
    ui_.editSearch->setText(QString());
+   model_.resetModel(); // forces a sort
    this->selectComboAtIndex(0);
 }
 
