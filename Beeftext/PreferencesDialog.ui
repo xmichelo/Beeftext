@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>697</width>
-    <height>590</height>
+    <width>563</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -148,6 +148,100 @@
          <string>De&amp;fault</string>
         </property>
        </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupComboPicker">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Combo picker</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <widget class="QCheckBox" name="checkEnableComboPicker">
+        <property name="text">
+         <string>Enable combo picker</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_9">
+        <item>
+         <widget class="QLabel" name="labelComboPickerShortcut">
+          <property name="text">
+           <string>Shortcut</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="editComboPickerShortcut">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>50</number>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonChangeComboPickerShortcut">
+          <property name="text">
+           <string>C&amp;hange</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonResetComboPickerShortcut">
+          <property name="text">
+           <string>De&amp;fault</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_11">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -595,10 +689,19 @@
   <tabstop>editShortcut</tabstop>
   <tabstop>buttonChangeShortcut</tabstop>
   <tabstop>buttonResetComboTriggerShortcut</tabstop>
+  <tabstop>checkEnableComboPicker</tabstop>
+  <tabstop>editComboPickerShortcut</tabstop>
+  <tabstop>buttonChangeComboPickerShortcut</tabstop>
+  <tabstop>buttonResetComboPickerShortcut</tabstop>
+  <tabstop>checkEnableEmoji</tabstop>
+  <tabstop>buttonEmojiExcludedApps</tabstop>
+  <tabstop>editEmojiLeftDelimiter</tabstop>
+  <tabstop>editEmojiRightDelimiter</tabstop>
   <tabstop>comboLocale</tabstop>
   <tabstop>checkUseCustomTheme</tabstop>
   <tabstop>checkUseClipboardForComboSubstitution</tabstop>
   <tabstop>buttonSensitiveApplications</tabstop>
+  <tabstop>spinDelayBetweenKeystrokes</tabstop>
   <tabstop>editComboListFolder</tabstop>
   <tabstop>buttonChangeComboListFolder</tabstop>
   <tabstop>buttonResetComboListFolder</tabstop>
@@ -619,8 +722,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>605</x>
-     <y>579</y>
+     <x>471</x>
+     <y>652</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -635,8 +738,8 @@
    <slot>onActionOk()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>524</x>
-     <y>579</y>
+     <x>390</x>
+     <y>652</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -651,8 +754,8 @@
    <slot>onActionChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>595</x>
-     <y>485</y>
+     <x>459</x>
+     <y>572</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -683,8 +786,8 @@
    <slot>onActionResetToDefaultValues()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>67</x>
-     <y>579</y>
+     <x>77</x>
+     <y>666</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -699,8 +802,8 @@
    <slot>onActionResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>676</x>
-     <y>485</y>
+     <x>540</x>
+     <y>572</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -732,7 +835,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>296</x>
-     <y>516</y>
+     <y>603</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -747,8 +850,8 @@
    <slot>onActionApply()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>686</x>
-     <y>579</y>
+     <x>552</x>
+     <y>652</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -780,7 +883,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>174</x>
-     <y>579</y>
+     <y>666</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -796,7 +899,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>359</x>
-     <y>426</y>
+     <y>513</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -811,8 +914,8 @@
    <slot>updateGui()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>423</y>
+     <x>158</x>
+     <y>510</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -828,7 +931,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>275</x>
-     <y>250</y>
+     <y>337</y>
     </hint>
     <hint type="destinationlabel">
      <x>307</x>
@@ -843,12 +946,60 @@
    <slot>updateGui()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>54</x>
-     <y>242</y>
+     <x>74</x>
+     <y>334</y>
     </hint>
     <hint type="destinationlabel">
-     <x>693</x>
+     <x>562</x>
      <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkEnableComboPicker</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>updateGui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>235</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>338</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeComboPickerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeComboPickerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>310</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>338</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetComboPickerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onResetComboPickerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>391</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>338</y>
     </hint>
    </hints>
   </connection>
@@ -875,5 +1026,7 @@
   <slot>onActionResetWarnings()</slot>
   <slot>onActionEditSensitiveApplications()</slot>
   <slot>onActionEditEmojiExcludedApplications()</slot>
+  <slot>onChangeComboPickerShortcut()</slot>
+  <slot>onResetComboPickerShortcut()</slot>
  </slots>
 </ui>

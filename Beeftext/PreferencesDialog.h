@@ -45,6 +45,8 @@ private slots:
    void onActionResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action
    void onActionChangeShortcut(); ///< Slot for the 'Change shortcut' action
    void onActionResetComboTriggerShortcut(); ///< slot for the 'Reset combo trigger shortcut'
+   void onChangeComboPickerShortcut(); ///< Slot for the combo picker 'Change' button.
+   void onResetComboPickerShortcut(); ///< Slot for the combo picker 'Reset' button.
    void onActionRestoreBackup(); ///< Slot for the 'Restore backup' action
    void onActionResetWarnings(); ///< Slot for teh 'Reset warnings' action
    void onActionOk(); ///< Slot for the OK button
@@ -59,10 +61,11 @@ private slots:
    void updateGui() const; ///< Update the GUI state
 
 private: // data members
-   Ui::PreferencesDialog ui_; ///< The GUI for the dialog
+   Ui::PreferencesDialog ui_ {}; ///< The GUI for the dialog
    PreferencesManager& prefs_; ///< The preferences manager
    QTimer updateCheckStatusTimer_; ///< The timer for clearing the update check status label
    SpShortcut triggerShortcut_; ///< The keyboard shortcut for manual combo trigger
+   SpShortcut comboPickerShortcut_; ///< The keyboard shortcut for the combo picker.
    QString previousComboListPath_; ///< The previous path of the combo list
 };
 

@@ -45,6 +45,7 @@ QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The
 QString const kRegKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
 QString const kRegKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
 QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
+QString const kRegKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
 bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
 bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
 bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
@@ -65,6 +66,7 @@ QString const kDefaultValueEmojiRightDelimiter = "|"; ///< The default left deli
 qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
+bool const kDefaultValueComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
 
 
 }
@@ -113,6 +115,7 @@ PreferencesManager::PreferencesManager()
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
       kDefaultValueUseAutomaticSubstitution);
    this->cacheComboTriggerShortcut();
+   cachedComboPickerEnabled_ = this->readSettings<bool>(kRegKeyComboPickerEnabled, kDefaultValueComboPickerEnabled);
    this->cacheComboPickerShortcut();
    cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled, 
       kDefaultValueEmojiShortcodesEnabled);
@@ -137,6 +140,7 @@ void PreferencesManager::reset()
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setWarnAboutShortComboKeywords(kDefaultValueWarnAboutShortComboKeyword);
+   this->setComboPickerEnabled(kDefaultValueComboPickerEnabled);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setComboPickerShortcut(kDefaultValueComboPickerShortcut);
    this->setAutoBackup(kDefaultValueAutoBackup);
@@ -475,39 +479,20 @@ void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut)
 
 
 //**********************************************************************************************************************
-/// \return The trigger shortcut
-//**********************************************************************************************************************
-SpShortcut PreferencesManager::comboTriggerShortcut() const
-{
-   return cachedComboTriggerShortcut_;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] shortcut The shortcut
-//**********************************************************************************************************************
-void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut)
-{
-   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueComboPickerShortcut;
-   SpShortcut currentShortcut = this->comboPickerShortcut();
-   if (!currentShortcut)
-      currentShortcut = kDefaultValueComboPickerShortcut;
-   if (*newShortcut != *currentShortcut)
-   {
-      settings_->setValue(kKeyComboPickerShortcutModifiers, int(shortcut->nativeModifiers()));
-      settings_->setValue(kKeyComboPickerShortcutKeyCode, shortcut->nativeVirtualKey());
-      settings_->setValue(kKeyComboPickerShortcutScanCode, shortcut->nativeScanCode());
-      cachedComboPickerShortcut_ = newShortcut;
-   }
-}
-
-
-//**********************************************************************************************************************
 /// \return The shortcut
 //**********************************************************************************************************************
 SpShortcut PreferencesManager::comboPickerShortcut() const
 {
    return cachedComboPickerShortcut_;
+}
+
+
+//**********************************************************************************************************************
+/// \return The default combo picker shortcut.
+//**********************************************************************************************************************
+SpShortcut PreferencesManager::defaultComboPickerShortcut()
+{
+   return kDefaultValueComboPickerShortcut;
 }
 
 
@@ -651,6 +636,56 @@ qint32 PreferencesManager::maxDelayBetweenKeystrokesMs()
 {
    return kMaxValueDelayBetweenKeystrokesMs;
 }
+
+
+//**********************************************************************************************************************
+/// \return the value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::comboPickerEnabled() const
+{
+   return cachedComboPickerEnabled_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setComboPickerEnabled(bool value)
+{
+   cachedComboPickerEnabled_ = value;
+   settings_->setValue(kRegKeyComboPickerEnabled, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The trigger shortcut
+//**********************************************************************************************************************
+SpShortcut PreferencesManager::comboTriggerShortcut() const
+{
+   return cachedComboTriggerShortcut_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shortcut The shortcut
+//**********************************************************************************************************************
+void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut)
+{
+   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueComboPickerShortcut;
+   SpShortcut currentShortcut = this->comboPickerShortcut();
+   if (!currentShortcut)
+      currentShortcut = kDefaultValueComboPickerShortcut;
+   if (*newShortcut != *currentShortcut)
+   {
+      settings_->setValue(kKeyComboPickerShortcutModifiers, int(shortcut->nativeModifiers()));
+      settings_->setValue(kKeyComboPickerShortcutKeyCode, shortcut->nativeVirtualKey());
+      settings_->setValue(kKeyComboPickerShortcutScanCode, shortcut->nativeScanCode());
+      cachedComboPickerShortcut_ = newShortcut;
+   }
+}
+
+
+
 
 
 //**********************************************************************************************************************

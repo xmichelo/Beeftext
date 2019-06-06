@@ -33,9 +33,7 @@ qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the u
 //**********************************************************************************************************************
 PreferencesDialog::PreferencesDialog(QWidget* parent)
    : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
-     ui_(),
-     prefs_(PreferencesManager::instance()),
-     triggerShortcut_(nullptr)
+     prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
    this->updateCheckStatusTimer_.setSingleShot(true);
@@ -81,6 +79,9 @@ void PreferencesDialog::loadPreferences()
       ui_.radioComboTriggerAuto->setChecked(true);
    else
       ui_.radioComboTriggerManual->setChecked(true);
+   ui_.checkEnableComboPicker->setChecked(prefs_.comboPickerEnabled());
+   comboPickerShortcut_ = prefs_.comboPickerShortcut();
+   ui_.editComboPickerShortcut->setText(comboPickerShortcut_ ? comboPickerShortcut_->toString() : "");
    ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
    ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
    ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
@@ -112,6 +113,8 @@ void PreferencesDialog::savePreferences()
    prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
    prefs_.setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ :
       PreferencesManager::defaultComboTriggerShortcut());
+   prefs_.setComboPickerEnabled(ui_.checkEnableComboPicker->isChecked());
+   prefs_.setComboPickerShortcut(comboPickerShortcut_);
    prefs_.setEmojiShortcodeEnabled(ui_.checkEnableEmoji->isChecked());
    prefs_.setEmojiLeftDelimiter(ui_.editEmojiLeftDelimiter->text());
    prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
@@ -234,15 +237,24 @@ void PreferencesDialog::onActionResetComboListFolder()
 
 
 //**********************************************************************************************************************
+/// \param[in] shortcut The shortcut.
+/// \param[in] displayEdit The edit where the shortcut should be displayed
+//**********************************************************************************************************************
+void runShortcutDialog(SpShortcut& shortcut, QLineEdit* displayEdit)
+{
+   ShortcutDialog dlg(shortcut);
+   if (QDialog::Accepted != dlg.exec())
+      return;
+   shortcut = dlg.shortcut();
+   displayEdit->setText(shortcut->toString());   
+}
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void PreferencesDialog::onActionChangeShortcut()
 {
-   ShortcutDialog dlg(triggerShortcut_);
-   if (Accepted != dlg.exec())
-      return;
-   triggerShortcut_ = dlg.shortcut();
-   ui_.editShortcut->setText(triggerShortcut_->toString());
+   runShortcutDialog(triggerShortcut_, ui_.editShortcut);
 }
 
 
@@ -253,6 +265,25 @@ void PreferencesDialog::onActionResetComboTriggerShortcut()
 {
    triggerShortcut_ = PreferencesManager::defaultComboTriggerShortcut();
    ui_.editShortcut->setText(triggerShortcut_ ? triggerShortcut_->toString() : "");
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeComboPickerShortcut()
+{
+   runShortcutDialog(comboPickerShortcut_, ui_.editComboPickerShortcut);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onResetComboPickerShortcut()
+{
+   comboPickerShortcut_ = PreferencesManager::defaultComboPickerShortcut();
+   ui_.editComboPickerShortcut->setText(comboPickerShortcut_ ? comboPickerShortcut_->toString() : "");
 }
 
 
@@ -366,17 +397,21 @@ void PreferencesDialog::onActionEditEmojiExcludedApplications()
 //**********************************************************************************************************************
 void PreferencesDialog::updateGui() const
 {
-   bool const manualTrigger = ui_.radioComboTriggerManual->isChecked();
-   ui_.editShortcut->setEnabled(manualTrigger);
-   ui_.buttonChangeShortcut->setEnabled(manualTrigger);
-   ui_.buttonResetComboTriggerShortcut->setEnabled(manualTrigger);
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
-   bool const useClipboard = ui_.checkUseClipboardForComboSubstitution->isChecked();
-   ui_.buttonSensitiveApplications->setEnabled(useClipboard);
-   bool const emojiEnabled = ui_.checkEnableEmoji->isChecked();
-   ui_.buttonEmojiExcludedApps->setEnabled(emojiEnabled);
-   ui_.labelEmojiLeftDelimiter->setEnabled(emojiEnabled);
-   ui_.editEmojiLeftDelimiter->setEnabled(emojiEnabled);
-   ui_.labelEmojiRightDelimiter->setEnabled(emojiEnabled);
-   ui_.editEmojiRightDelimiter->setEnabled(emojiEnabled);
+   ui_.buttonSensitiveApplications->setEnabled(ui_.checkUseClipboardForComboSubstitution->isChecked());
+
+   QWidgetList const triggerWidgets = { ui_.editShortcut, ui_.buttonChangeShortcut, 
+      ui_.buttonResetComboTriggerShortcut };
+   for (QWidget* const widget: triggerWidgets)
+      widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
+
+   QWidgetList const emojiWidgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, 
+      ui_.editEmojiLeftDelimiter, ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter };
+   for (QWidget* const widget: emojiWidgets)
+      widget->setEnabled(ui_.checkEnableEmoji->isChecked());
+   
+   QWidgetList const pickerWidgets = { ui_.labelComboPickerShortcut, ui_.editComboPickerShortcut,
+      ui_.buttonChangeComboPickerShortcut, ui_.buttonResetComboPickerShortcut };
+   for (QWidget* const widget: pickerWidgets)
+      widget->setEnabled(ui_.checkEnableComboPicker->isChecked());
 }

@@ -56,7 +56,5 @@ bool ComboPickerSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, co
    QDateTime rTime = this->sourceModel()->data(sourceRight, ComboList::LastUsedRole).toDateTime();
    if (rTime.isNull())
       rTime = QDateTime::fromSecsSinceEpoch(0);
-   static qint32 i = 0;
-   qDebug() << QString("%1() - %2").arg(__FUNCTION__).arg(i++);
    return lTime < rTime;
 }
