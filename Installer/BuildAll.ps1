@@ -9,6 +9,8 @@ $ErrorActionPreference = "Stop"
 
 
 $nsisPath = "C:\Program Files (x86)\NSIS\makensis.exe"
+$installerPath = (Join-Path $PSScriptRoot "installer.nsi")
+$portableEditionScriptPath = (Join-Path $PSScriptRoot "PortableEdition\BuildPortableEdition.ps1")
 
 
 #***********************************************************************************************************************
@@ -17,7 +19,7 @@ $nsisPath = "C:\Program Files (x86)\NSIS\makensis.exe"
 function compileNsisInstaller
 {
     "Generating Beeftext installer"
-    $buildLog = Invoke-Expression "& `"$nsisPath`" `"Installer\installer.nsi`"" | Out-Null
+    $buildLog = Invoke-Expression "& `"$nsisPath`" `"$installerPath`""
     if (0 -ne $LASTEXITCODE)
     {
        $buildLog # dump the build log
@@ -26,4 +28,4 @@ function compileNsisInstaller
 }
 
 compileNsisInstaller
-. (Join-Path $PSScriptRoot "PortableEdition\BuildPortableEdition.ps1")
+. $portableEditionScriptPath
