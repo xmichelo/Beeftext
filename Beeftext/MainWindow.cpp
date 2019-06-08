@@ -140,7 +140,7 @@ void MainWindow::setupSystemTrayIcon()
 
    menu->setDefaultAction(action);
    action = new QAction(tr("Preferences"), this);
-   connect(action, &QAction::triggered, []() { onActionShowPreferencesDialog(); });
+   connect(action, &QAction::triggered, [this]() { onActionShowPreferencesDialog(); });
    menu->addAction(action);
 #ifndef NDEBUG
    menu->addSeparator();
@@ -247,7 +247,9 @@ void MainWindow::onActionShowAboutDialog()
 //**********************************************************************************************************************
 void MainWindow::onActionShowPreferencesDialog()
 {
-   PreferencesDialog().exec();
+   if (!prefsDialog_)
+      prefsDialog_ = new PreferencesDialog(this);
+   prefsDialog_->show();
 }
 
 

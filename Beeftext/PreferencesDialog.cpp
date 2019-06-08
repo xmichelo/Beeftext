@@ -326,7 +326,7 @@ void PreferencesDialog::onActionResetWarnings()
 void PreferencesDialog::onActionOk()
 {
    this->savePreferences();
-   this->accept();
+   this->close();
 }
 
 

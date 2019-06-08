@@ -12,6 +12,7 @@
 
 
 #include "ui_MainWindow.h"
+#include "PreferencesDialog.h"
 #ifndef NDEBUG
 #include <XMiLib/StyleSheetEditor/StyleSheetEditor.h>
 #endif // #ifndef NDEBUG
@@ -55,12 +56,13 @@ private slots:
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
    void onActionExit(); ///< Slot for the 'Exit' action
    static void onActionShowAboutDialog(); ///< Slot for the 'Show About dialog' action
-   static void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog' action
+   void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog' action
    static void onActionOpenLogFile(); ///< Slot for the 'Open Log File' action
 
 private: // data members
    Ui::MainWindow ui_ {}; ///< The GUI for the window
    QSystemTrayIcon systemTrayIcon_; ///< The system tray icon
+   PreferencesDialog* prefsDialog_ { nullptr }; ///< The preference dialog
    QMenu* groupsMenu_ { nullptr }; ///< The groups menu in the main menu
    QMenu* combosMenu_ { nullptr }; ///< The combos menu in the main menu
 #ifndef NDEBUG
