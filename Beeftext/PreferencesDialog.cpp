@@ -231,6 +231,8 @@ void PreferencesDialog::onActionChangeComboListFolder()
 //**********************************************************************************************************************
 void PreferencesDialog::onActionResetComboListFolder()
 {
+   if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Folder"), tr("Reset the combo list folder?")))
+      return;
    previousComboListPath_ = prefs_.comboListFolderPath();
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(PreferencesManager::defaultComboListFolderPath()));
 }
