@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
+    <width>688</width>
     <height>677</height>
    </rect>
   </property>
@@ -551,6 +551,13 @@
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="buttonOpenComboListFolder">
+           <property name="text">
+            <string>O&amp;pen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="buttonResetComboListFolder">
            <property name="text">
             <string>D&amp;efault</string>
@@ -704,6 +711,7 @@
   <tabstop>spinDelayBetweenKeystrokes</tabstop>
   <tabstop>editComboListFolder</tabstop>
   <tabstop>buttonChangeComboListFolder</tabstop>
+  <tabstop>buttonOpenComboListFolder</tabstop>
   <tabstop>buttonResetComboListFolder</tabstop>
   <tabstop>checkAutoBackup</tabstop>
   <tabstop>buttonRestoreBackup</tabstop>
@@ -1003,6 +1011,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonOpenComboListFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onOpenComboListFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>575</x>
+     <y>561</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>338</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionOk()</slot>
@@ -1028,5 +1052,6 @@
   <slot>onActionEditEmojiExcludedApplications()</slot>
   <slot>onChangeComboPickerShortcut()</slot>
   <slot>onResetComboPickerShortcut()</slot>
+  <slot>onOpenComboListFolder()</slot>
  </slots>
 </ui>

@@ -43,6 +43,7 @@ private slots:
    void onActionResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
    void onActionChangeComboListFolder(); ///< Slot for the 'Change combo list folder' action
    void onActionResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action
+   void onOpenComboListFolder() const; ///< Slot for the 'Open' button of the combo list folder.
    void onActionChangeShortcut(); ///< Slot for the 'Change shortcut' action
    void onActionResetComboTriggerShortcut(); ///< slot for the 'Reset combo trigger shortcut'
    void onChangeComboPickerShortcut(); ///< Slot for the combo picker 'Change' button.

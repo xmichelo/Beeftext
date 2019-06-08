@@ -237,6 +237,17 @@ void PreferencesDialog::onActionResetComboListFolder()
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onOpenComboListFolder() const
+{
+   QString const path = QDir::fromNativeSeparators(ui_.editComboListFolder->text());
+   if (QDir(path).exists())
+      QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] shortcut The shortcut.
 /// \param[in] displayEdit The edit where the shortcut should be displayed
 //**********************************************************************************************************************
