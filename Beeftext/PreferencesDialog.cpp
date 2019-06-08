@@ -93,6 +93,7 @@ void PreferencesDialog::loadPreferences()
    ui_.editShortcut->setText(triggerShortcut_ ? triggerShortcut_->toString() : "");
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
    ui_.checkAutoBackup->setChecked(prefs_.autoBackup());
+   this->updateGui();
 }
 
 
@@ -199,7 +200,7 @@ void PreferencesDialog::changeEvent(QEvent* event)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onActionResetToDefaultValues()
+void PreferencesDialog::onResetToDefaultValues()
 {
    if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Preferences"), tr("Are you sure you want to reset "
       "the preferences to their default values?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
@@ -215,7 +216,7 @@ void PreferencesDialog::onActionResetToDefaultValues()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onActionChangeComboListFolder()
+void PreferencesDialog::onChangeComboListFolder()
 {
    QString const previousPath = QDir::fromNativeSeparators(ui_.editComboListFolder->text());
    QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), previousPath);
@@ -229,7 +230,7 @@ void PreferencesDialog::onActionChangeComboListFolder()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onActionResetComboListFolder()
+void PreferencesDialog::onResetComboListFolder()
 {
    if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Folder"), tr("Reset the combo list folder?")))
       return;
@@ -265,7 +266,7 @@ void runShortcutDialog(SpShortcut& shortcut, QLineEdit* displayEdit)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onActionChangeShortcut()
+void PreferencesDialog::onChangeComboTriggerShortcut()
 {
    runShortcutDialog(triggerShortcut_, ui_.editShortcut);
 }
@@ -274,7 +275,7 @@ void PreferencesDialog::onActionChangeShortcut()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onActionResetComboTriggerShortcut()
+void PreferencesDialog::onResetComboTriggerShortcut()
 {
    triggerShortcut_ = PreferencesManager::defaultComboTriggerShortcut();
    ui_.editShortcut->setText(triggerShortcut_ ? triggerShortcut_->toString() : "");
@@ -303,7 +304,7 @@ void PreferencesDialog::onResetComboPickerShortcut()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onActionRestoreBackup()
+void PreferencesDialog::onRestoreBackup()
 {
    BackupRestoreDialog::run(this);
 }
@@ -312,7 +313,7 @@ void PreferencesDialog::onActionRestoreBackup()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PreferencesDialog::onActionResetWarnings()
+void PreferencesDialog::onResetWarnings()
 {
    if (QMessageBox::Yes == QMessageBox::question(this, tr("Reset Warnings"), tr("Are you sure you want to reset "
       "all warnings?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
@@ -323,7 +324,7 @@ void PreferencesDialog::onActionResetWarnings()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onActionOk()
+void PreferencesDialog::onOk()
 {
    this->savePreferences();
    this->close();
@@ -333,7 +334,7 @@ void PreferencesDialog::onActionOk()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onActionApply()
+void PreferencesDialog::onApply()
 {
    this->savePreferences();
    this->updateGui();
@@ -390,7 +391,7 @@ void PreferencesDialog::onUpdateCheckFailed()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PreferencesDialog::onActionEditSensitiveApplications()
+void PreferencesDialog::onEditSensitiveApplications()
 {
    SensitiveApplicationManager::instance().runDialog(this);
 }
@@ -399,7 +400,7 @@ void PreferencesDialog::onActionEditSensitiveApplications()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PreferencesDialog::onActionEditEmojiExcludedApplications()
+void PreferencesDialog::onEditEmojiExcludedApplications()
 {
    EmojiManager::instance().runDialog(this);
 }

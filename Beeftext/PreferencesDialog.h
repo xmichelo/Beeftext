@@ -30,9 +30,9 @@ public: // member functions
    ~PreferencesDialog() = default; ///< Destructor
    PreferencesDialog& operator=(PreferencesDialog const&) = delete; ///< Disabled assignment operator
    PreferencesDialog& operator=(PreferencesDialog&&) = delete; ///< Disabled move assignment operator
+   void loadPreferences(); ///< Load the preferences
 
 private: // member functions
-   void loadPreferences(); ///< Load the preferences
    void savePreferences(); ///< Save the preferences
    bool validateComboListFolderPath(); ///< Validate the selected combo list folder path
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
@@ -40,25 +40,25 @@ private: // member functions
    void changeEvent(QEvent *event) override; ///< Change event handler
 
 private slots:
-   void onActionResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
-   void onActionChangeComboListFolder(); ///< Slot for the 'Change combo list folder' action
-   void onActionResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action
+   void onResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
+   void onChangeComboListFolder(); ///< Slot for the 'Change combo list folder' action
+   void onResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action
    void onOpenComboListFolder() const; ///< Slot for the 'Open' button of the combo list folder.
-   void onActionChangeShortcut(); ///< Slot for the 'Change shortcut' action
-   void onActionResetComboTriggerShortcut(); ///< slot for the 'Reset combo trigger shortcut'
+   void onChangeComboTriggerShortcut(); ///< Slot for the 'Change shortcut' action
+   void onResetComboTriggerShortcut(); ///< slot for the 'Reset combo trigger shortcut'
    void onChangeComboPickerShortcut(); ///< Slot for the combo picker 'Change' button.
    void onResetComboPickerShortcut(); ///< Slot for the combo picker 'Reset' button.
-   void onActionRestoreBackup(); ///< Slot for the 'Restore backup' action
-   void onActionResetWarnings(); ///< Slot for teh 'Reset warnings' action
-   void onActionOk(); ///< Slot for the OK button
-   void onActionApply(); ///< Slot for the Apply button
+   void onRestoreBackup(); ///< Slot for the 'Restore backup' action
+   void onResetWarnings(); ///< Slot for teh 'Reset warnings' action
+   void onOk(); ///< Slot for the OK button
+   void onApply(); ///< Slot for the Apply button
    void onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo); ///< Slot for the availability of an update
    void onNoUpdateIsAvailable(); ///< Slot for the lack of availability of an update
    void onUpdateCheckStarted() const; ///< Slot for the starting of an update check
    void onUpdateCheckFinished() const; ///< Slot for the finishing of an update check
    void onUpdateCheckFailed(); ///< Slot update check failure
-   void onActionEditSensitiveApplications(); ///< Slot for the 'Edit sensitive applications' action
-   void onActionEditEmojiExcludedApplications(); ///< Slot for the 'Edit emoji excluded applications' action
+   void onEditSensitiveApplications(); ///< Slot for the 'Edit sensitive applications' action
+   void onEditEmojiExcludedApplications(); ///< Slot for the 'Edit emoji excluded applications' action
    void updateGui() const; ///< Update the GUI state
 
 private: // data members

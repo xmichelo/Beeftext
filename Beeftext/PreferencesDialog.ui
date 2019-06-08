@@ -743,7 +743,7 @@
    <sender>buttonOk</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionOk()</slot>
+   <slot>onOk()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>390</x>
@@ -759,7 +759,7 @@
    <sender>buttonChangeComboListFolder</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionChangeComboListFolder()</slot>
+   <slot>onChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>459</x>
@@ -775,7 +775,7 @@
    <sender>buttonChangeShortcut</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionChangeShortcut()</slot>
+   <slot>onChangeComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>456</x>
@@ -791,7 +791,7 @@
    <sender>buttonDefaults</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionResetToDefaultValues()</slot>
+   <slot>onResetToDefaultValues()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>77</x>
@@ -807,7 +807,7 @@
    <sender>buttonResetComboListFolder</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionResetComboListFolder()</slot>
+   <slot>onResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>540</x>
@@ -823,7 +823,7 @@
    <sender>buttonResetComboTriggerShortcut</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionResetComboTriggerShortcut()</slot>
+   <slot>onResetComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>537</x>
@@ -839,7 +839,7 @@
    <sender>buttonRestoreBackup</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionRestoreBackup()</slot>
+   <slot>onRestoreBackup()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>296</x>
@@ -855,7 +855,7 @@
    <sender>buttonApply</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionApply()</slot>
+   <slot>onApply()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>552</x>
@@ -887,7 +887,7 @@
    <sender>buttonResetWarnings</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionResetWarnings()</slot>
+   <slot>onResetWarnings()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>174</x>
@@ -903,7 +903,7 @@
    <sender>buttonSensitiveApplications</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionEditSensitiveApplications()</slot>
+   <slot>onEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>359</x>
@@ -935,7 +935,7 @@
    <sender>buttonEmojiExcludedApps</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>onActionEditEmojiExcludedApplications()</slot>
+   <slot>onEditEmojiExcludedApplications()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>275</x>
@@ -1029,27 +1029,26 @@
   </connection>
  </connections>
  <slots>
-  <slot>onActionOk()</slot>
-  <slot>onActionResetToDefaultValues()</slot>
+  <slot>onOk()</slot>
+  <slot>onResetToDefaultValues()</slot>
   <slot>onPlaySoundOnComboCheckChanged()</slot>
   <slot>onAutoStartCheckChanged()</slot>
   <slot>onAutoCheckForUpdatesCheckChanged()</slot>
-  <slot>onActionCheckForUpdates()</slot>
   <slot>onUseClipboardForComboSubstitutionCheckChanged()</slot>
   <slot>onUseCustomThemeCheckChanged()</slot>
-  <slot>onActionChangeComboListFolder()</slot>
-  <slot>onActionResetComboListFolder()</slot>
+  <slot>onChangeComboListFolder()</slot>
+  <slot>onResetComboListFolder()</slot>
   <slot>onLocaleChanged()</slot>
   <slot>onRadioAutomaticComboTriggerChecked(bool)</slot>
-  <slot>onActionChangeShortcut()</slot>
-  <slot>onActionResetComboTriggerShortcut()</slot>
+  <slot>onChangeComboTriggerShortcut()</slot>
+  <slot>onResetComboTriggerShortcut()</slot>
   <slot>onAutoBackupCheckChanged()</slot>
-  <slot>onActionRestoreBackup()</slot>
-  <slot>onActionApply()</slot>
+  <slot>onRestoreBackup()</slot>
+  <slot>onApply()</slot>
   <slot>updateGui()</slot>
-  <slot>onActionResetWarnings()</slot>
-  <slot>onActionEditSensitiveApplications()</slot>
-  <slot>onActionEditEmojiExcludedApplications()</slot>
+  <slot>onResetWarnings()</slot>
+  <slot>onEditSensitiveApplications()</slot>
+  <slot>onEditEmojiExcludedApplications()</slot>
   <slot>onChangeComboPickerShortcut()</slot>
   <slot>onResetComboPickerShortcut()</slot>
   <slot>onOpenComboListFolder()</slot>

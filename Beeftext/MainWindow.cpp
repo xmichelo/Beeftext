@@ -249,6 +249,8 @@ void MainWindow::onActionShowPreferencesDialog()
 {
    if (!prefsDialog_)
       prefsDialog_ = new PreferencesDialog(this);
+   else
+      prefsDialog_->loadPreferences(); // just to refresh if the user tweaked the registry values directly.
    prefsDialog_->show();
 }
 
