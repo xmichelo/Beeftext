@@ -18,7 +18,6 @@
 #include "EmojiManager.h"
 #include "SensitiveApplicationManager.h"
 #include "BeeftextUtils.h"
-#include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/XMiLibConstants.h>
 
@@ -70,86 +69,46 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::loadPreferences()
+void PreferencesDialog::loadPreferences() const
 {
+   // ReSharper disable CppEntityAssignedButNoRead
+   // ReSharper disable CppAssignedValueIsNeverUsed
+   QSignalBlocker blocker(ui_.checkAutoCheckForUpdates);
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
+   blocker = QSignalBlocker(ui_.checkAutoStart);
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
+   blocker = QSignalBlocker(ui_.checkPlaySoundOnCombo);
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
+   blocker = QSignalBlocker(ui_.radioComboTriggerAuto);
    if (prefs_.useAutomaticSubstitution())
       ui_.radioComboTriggerAuto->setChecked(true);
    else
       ui_.radioComboTriggerManual->setChecked(true);
+   SpShortcut shortcut = prefs_.comboTriggerShortcut();
+   ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
+   blocker = QSignalBlocker(ui_.checkEnableComboPicker);
    ui_.checkEnableComboPicker->setChecked(prefs_.comboPickerEnabled());
-   comboPickerShortcut_ = prefs_.comboPickerShortcut();
-   ui_.editComboPickerShortcut->setText(comboPickerShortcut_ ? comboPickerShortcut_->toString() : "");
+   shortcut = prefs_.comboPickerShortcut();
+   ui_.editComboPickerShortcut->setText(shortcut ? shortcut->toString() : "");
+   blocker = QSignalBlocker(ui_.checkEnableEmoji);
    ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
+   blocker = QSignalBlocker(ui_.editEmojiLeftDelimiter);
    ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
+   blocker = QSignalBlocker(ui_.editEmojiRightDelimiter);
    ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
+   blocker = QSignalBlocker(ui_.comboLocale);
    I18nManager::selectLocaleInCombo(prefs_.locale(), *ui_.comboLocale);
-   ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
-   ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
+   blocker = QSignalBlocker(ui_.checkUseCustomTheme);
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
-   triggerShortcut_ = prefs_.comboTriggerShortcut();
-   ui_.editShortcut->setText(triggerShortcut_ ? triggerShortcut_->toString() : "");
+   blocker = QSignalBlocker(ui_.checkUseClipboardForComboSubstitution);
+   ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
+   blocker = QSignalBlocker(ui_.spinDelayBetweenKeystrokes);
+   ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
    ui_.checkAutoBackup->setChecked(prefs_.autoBackup());
    this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::savePreferences()
-{
-   bool const autoBackup = ui_.checkAutoBackup->isChecked();
-   if (prefs_.autoBackup() && !autoBackup && BackupManager::instance().backupFileCount())
-      if (!this->promptForAndRemoveAutoBackups())
-         return; // the user canceled
-
-   prefs_.setAutoCheckForUpdates(ui_.checkAutoCheckForUpdates->isChecked());
-   if (!isInPortableMode())
-      prefs_.setAutoStartAtLogin(ui_.checkAutoStart->isChecked());
-   prefs_.setPlaySoundOnCombo(ui_.checkPlaySoundOnCombo->isChecked());
-   prefs_.setUseAutomaticSubstitution(ui_.radioComboTriggerAuto->isChecked());
-   prefs_.setComboTriggerShortcut(triggerShortcut_ ? triggerShortcut_ :
-      PreferencesManager::defaultComboTriggerShortcut());
-   prefs_.setComboPickerEnabled(ui_.checkEnableComboPicker->isChecked());
-   prefs_.setComboPickerShortcut(comboPickerShortcut_);
-   prefs_.setEmojiShortcodeEnabled(ui_.checkEnableEmoji->isChecked());
-   prefs_.setEmojiLeftDelimiter(ui_.editEmojiLeftDelimiter->text());
-   prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
-   prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
-   prefs_.setUseCustomTheme(ui_.checkUseCustomTheme->isChecked());
-   prefs_.setUseClipboardForComboSubstitution(ui_.checkUseClipboardForComboSubstitution->isChecked());
-   prefs_.setDelayBetweenKeystrokesMs(ui_.spinDelayBetweenKeystrokes->value());
-   if (!isInPortableMode())
-   {
-      if (this->validateComboListFolderPath())
-         prefs_.setComboListFolderPath(QDir::fromNativeSeparators(ui_.editComboListFolder->text()));
-   }
-   prefs_.setAutoBackup(autoBackup);
-}
-
-
-//**********************************************************************************************************************
-/// \return true if and only if the combo list folder is valid (i.e. it exists and we could save the combo list there)
-//**********************************************************************************************************************
-bool PreferencesDialog::validateComboListFolderPath()
-{
-   if (isInPortableMode())
-      return true;
-   QString const& path = QDir(QDir::fromNativeSeparators(ui_.editComboListFolder->text()))
-      .absoluteFilePath(ComboList::defaultFileName);
-   bool const result = ComboManager::instance().comboListRef().save(path, true);
-   if (!result)
-   {
-      globals::debugLog().addError(QString("The combo list folder could not be changed to '%1'")
-         .arg(QDir::toNativeSeparators(path)));
-      QMessageBox::critical(this, tr("Error"), tr("The combo list folder could not be changed. "
-         "The other settings were saved successfully."));
-   }
-   return result;
+   // ReSharper restore CppAssignedValueIsNeverUsed
+   // ReSharper restore CppEntityAssignedButNoRead
 }
 
 
@@ -191,9 +150,290 @@ void PreferencesDialog::changeEvent(QEvent* event)
    {
       ui_.retranslateUi(this);
       SpShortcut const shortcut = prefs_.comboTriggerShortcut();
-      ui_.editShortcut->setText(shortcut ? shortcut->toString() : "");
+      ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
    }
    QDialog::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesDialog::updateGui() const
+{
+   ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
+   ui_.buttonSensitiveApplications->setEnabled(ui_.checkUseClipboardForComboSubstitution->isChecked());
+
+   QWidgetList const triggerWidgets = { ui_.editComboTriggerShortcut, ui_.buttonChangeComboTriggerShortcut, 
+      ui_.buttonResetComboTriggerShortcut };
+   for (QWidget* const widget: triggerWidgets)
+      widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
+
+   QWidgetList const emojiWidgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, 
+      ui_.editEmojiLeftDelimiter, ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter };
+   for (QWidget* const widget: emojiWidgets)
+      widget->setEnabled(ui_.checkEnableEmoji->isChecked());
+   
+   QWidgetList const pickerWidgets = { ui_.labelComboPickerShortcut, ui_.editComboPickerShortcut,
+      ui_.buttonChangeComboPickerShortcut, ui_.buttonResetComboPickerShortcut };
+   for (QWidget* const widget: pickerWidgets)
+      widget->setEnabled(ui_.checkEnableComboPicker->isChecked());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckAutoCheckForUpdates(bool checked) const
+{
+   prefs_.setAutoCheckForUpdates(checked);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckAutoStart(bool checked) const
+{
+   if (!isInPortableMode())
+      prefs_.setAutoStartAtLogin(checked);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckPlaySoundOnCombo(bool checked) const
+{
+   prefs_.setPlaySoundOnCombo(checked);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked
+//**********************************************************************************************************************
+void PreferencesDialog::onRadioAutomaticComboTrigger(bool checked) const
+{
+   prefs_.setUseAutomaticSubstitution(checked);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shortcut The shortcut.
+/// \return true if and only if the user accepted the dialog
+//**********************************************************************************************************************
+bool runShortcutDialog(SpShortcut& shortcut)
+{
+   ShortcutDialog dlg(shortcut);
+   if (QDialog::Accepted != dlg.exec())
+      return false;
+   shortcut = dlg.shortcut();
+   return true;
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeComboTriggerShortcut() const
+{
+   SpShortcut shortcut = prefs_.comboTriggerShortcut();
+   if (!runShortcutDialog(shortcut))
+      return;
+   prefs_.setComboTriggerShortcut(shortcut);
+   ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");   
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesDialog::onResetComboTriggerShortcut() const
+{
+   SpShortcut const shortcut = PreferencesManager::defaultComboTriggerShortcut();
+   prefs_.setComboTriggerShortcut(shortcut);
+   ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");   
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckEnableComboPicker(bool checked) const
+{
+   prefs_.setComboPickerEnabled(checked);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeComboPickerShortcut() const
+{
+   SpShortcut shortcut = prefs_.comboPickerShortcut();
+   if (!runShortcutDialog(shortcut))
+      return;
+   prefs_.setComboPickerShortcut(shortcut);
+   ui_.editComboPickerShortcut->setText(shortcut ? shortcut->toString() : "");
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onResetComboPickerShortcut() const
+{
+   SpShortcut const shortcut = PreferencesManager::defaultComboPickerShortcut();
+   prefs_.setComboPickerShortcut(shortcut);
+   ui_.editComboPickerShortcut->setText(shortcut ? shortcut->toString() : "");
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked?
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckEnableEmojiShortcodes(bool checked) const
+{
+   prefs_.setEmojiShortcodeEnabled(checked);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onEditEmojiExcludedApplications()
+{
+   EmojiManager::instance().runDialog(this);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the delimiter.
+//**********************************************************************************************************************
+void PreferencesDialog::onEmojiLeftDelimiterChanged(QString const& value) const
+{
+   prefs_.setEmojiLeftDelimiter(ui_.editEmojiLeftDelimiter->text());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the delimiter.
+//**********************************************************************************************************************
+void PreferencesDialog::onEmojiRightDelimiterChanged(QString const& value) const
+{
+   prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] index The index of the newly selected language
+//**********************************************************************************************************************
+void PreferencesDialog::onComboLanguageValueChanged(int index) const
+{
+   prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked?
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckUseCustomTheme(bool checked) const
+{
+   prefs_.setUseCustomTheme(checked);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked?
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckUseClipboardForComboSubstitution(bool checked) const
+{
+   prefs_.setUseClipboardForComboSubstitution(checked);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The new value.
+//**********************************************************************************************************************
+void PreferencesDialog::onSpinDelayBetweenKeystrokesChanged(int value) const
+{
+   prefs_.setDelayBetweenKeystrokesMs(value);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeComboListFolder()
+{
+   QString const previousPath = QDir::fromNativeSeparators(ui_.editComboListFolder->text());
+   QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), previousPath);
+   if (path.trimmed().isEmpty())
+      return;
+   previousComboListPath_ = prefs_.comboListFolderPath();
+   prefs_.setComboListFolderPath(path);
+   if (!ComboManager::instance().saveComboListToFile())
+   {
+      QMessageBox::critical(this, tr("Error"), tr("The location of the combo list folder could not be changed."));
+      prefs_.setComboListFolderPath(previousPath);
+      return;
+   }
+   ui_.editComboListFolder->setText(QDir::toNativeSeparators(path));
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesDialog::onResetComboListFolder()
+{
+   if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Folder"), tr("Reset the combo list folder?")))
+      return;
+   previousComboListPath_ = prefs_.comboListFolderPath();
+   ui_.editComboListFolder->setText(QDir::toNativeSeparators(PreferencesManager::defaultComboListFolderPath()));
+   ComboManager::instance().saveComboListToFile();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onOpenComboListFolder() const
+{
+   QString const path = QDir::fromNativeSeparators(ui_.editComboListFolder->text());
+   if (QDir(path).exists())
+      QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the radio button checked?
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckAutoBackup(bool value)
+{
+   if (!value)
+   {
+      if (!this->promptForAndRemoveAutoBackups()) // did the user cancel?
+      {
+         QSignalBlocker const blocker(ui_.checkAutoBackup);
+         ui_.checkAutoBackup->setChecked(true);
+      }
+   }
+   prefs_.setAutoBackup(value);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesDialog::onRestoreBackup()
+{
+   BackupRestoreDialog::run(this);
 }
 
 
@@ -214,103 +454,6 @@ void PreferencesDialog::onResetToDefaultValues()
 
 
 //**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeComboListFolder()
-{
-   QString const previousPath = QDir::fromNativeSeparators(ui_.editComboListFolder->text());
-   QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), previousPath);
-   if (path.trimmed().isEmpty())
-      return;
-   previousComboListPath_ = prefs_.comboListFolderPath();
-   ui_.editComboListFolder->setText(QDir::toNativeSeparators(path));
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onResetComboListFolder()
-{
-   if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Folder"), tr("Reset the combo list folder?")))
-      return;
-   previousComboListPath_ = prefs_.comboListFolderPath();
-   ui_.editComboListFolder->setText(QDir::toNativeSeparators(PreferencesManager::defaultComboListFolderPath()));
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onOpenComboListFolder() const
-{
-   QString const path = QDir::fromNativeSeparators(ui_.editComboListFolder->text());
-   if (QDir(path).exists())
-      QDesktopServices::openUrl(QUrl::fromLocalFile(path));
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] shortcut The shortcut.
-/// \param[in] displayEdit The edit where the shortcut should be displayed
-//**********************************************************************************************************************
-void runShortcutDialog(SpShortcut& shortcut, QLineEdit* displayEdit)
-{
-   ShortcutDialog dlg(shortcut);
-   if (QDialog::Accepted != dlg.exec())
-      return;
-   shortcut = dlg.shortcut();
-   displayEdit->setText(shortcut->toString());   
-}
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeComboTriggerShortcut()
-{
-   runShortcutDialog(triggerShortcut_, ui_.editShortcut);
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onResetComboTriggerShortcut()
-{
-   triggerShortcut_ = PreferencesManager::defaultComboTriggerShortcut();
-   ui_.editShortcut->setText(triggerShortcut_ ? triggerShortcut_->toString() : "");
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeComboPickerShortcut()
-{
-   runShortcutDialog(comboPickerShortcut_, ui_.editComboPickerShortcut);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onResetComboPickerShortcut()
-{
-   comboPickerShortcut_ = PreferencesManager::defaultComboPickerShortcut();
-   ui_.editComboPickerShortcut->setText(comboPickerShortcut_ ? comboPickerShortcut_->toString() : "");
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onRestoreBackup()
-{
-   BackupRestoreDialog::run(this);
-}
-
-
-//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 void PreferencesDialog::onResetWarnings()
@@ -324,20 +467,9 @@ void PreferencesDialog::onResetWarnings()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::onOk()
+void PreferencesDialog::onClose()
 {
-   this->savePreferences();
    this->close();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onApply()
-{
-   this->savePreferences();
-   this->updateGui();
 }
 
 
@@ -394,38 +526,4 @@ void PreferencesDialog::onUpdateCheckFailed()
 void PreferencesDialog::onEditSensitiveApplications()
 {
    SensitiveApplicationManager::instance().runDialog(this);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onEditEmojiExcludedApplications()
-{
-   EmojiManager::instance().runDialog(this);
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::updateGui() const
-{
-   ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
-   ui_.buttonSensitiveApplications->setEnabled(ui_.checkUseClipboardForComboSubstitution->isChecked());
-
-   QWidgetList const triggerWidgets = { ui_.editShortcut, ui_.buttonChangeShortcut, 
-      ui_.buttonResetComboTriggerShortcut };
-   for (QWidget* const widget: triggerWidgets)
-      widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
-
-   QWidgetList const emojiWidgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, 
-      ui_.editEmojiLeftDelimiter, ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter };
-   for (QWidget* const widget: emojiWidgets)
-      widget->setEnabled(ui_.checkEnableEmoji->isChecked());
-   
-   QWidgetList const pickerWidgets = { ui_.labelComboPickerShortcut, ui_.editComboPickerShortcut,
-      ui_.buttonChangeComboPickerShortcut, ui_.buttonResetComboPickerShortcut };
-   for (QWidget* const widget: pickerWidgets)
-      widget->setEnabled(ui_.checkEnableComboPicker->isChecked());
 }

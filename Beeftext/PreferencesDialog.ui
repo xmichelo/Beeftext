@@ -89,7 +89,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="editShortcut">
+       <widget class="QLineEdit" name="editComboTriggerShortcut">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -136,7 +136,7 @@
        </spacer>
       </item>
       <item row="1" column="2">
-       <widget class="QPushButton" name="buttonChangeShortcut">
+       <widget class="QPushButton" name="buttonChangeComboTriggerShortcut">
         <property name="text">
          <string>C&amp;hange</string>
         </property>
@@ -662,23 +662,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="buttonOk">
+      <widget class="QPushButton" name="buttonClose">
        <property name="text">
-        <string>&amp;OK</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonCancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonApply">
-       <property name="text">
-        <string>&amp;Apply</string>
+        <string>&amp;Close</string>
        </property>
       </widget>
      </item>
@@ -693,8 +679,8 @@
   <tabstop>checkPlaySoundOnCombo</tabstop>
   <tabstop>radioComboTriggerAuto</tabstop>
   <tabstop>radioComboTriggerManual</tabstop>
-  <tabstop>editShortcut</tabstop>
-  <tabstop>buttonChangeShortcut</tabstop>
+  <tabstop>editComboTriggerShortcut</tabstop>
+  <tabstop>buttonChangeComboTriggerShortcut</tabstop>
   <tabstop>buttonResetComboTriggerShortcut</tabstop>
   <tabstop>checkEnableComboPicker</tabstop>
   <tabstop>editComboPickerShortcut</tabstop>
@@ -717,37 +703,19 @@
   <tabstop>buttonRestoreBackup</tabstop>
   <tabstop>buttonDefaults</tabstop>
   <tabstop>buttonResetWarnings</tabstop>
-  <tabstop>buttonOk</tabstop>
-  <tabstop>buttonCancel</tabstop>
-  <tabstop>buttonApply</tabstop>
+  <tabstop>buttonClose</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>buttonCancel</sender>
+   <sender>buttonClose</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>reject()</slot>
+   <slot>onClose()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>471</x>
-     <y>652</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>355</x>
-     <y>264</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonOk</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onOk()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>390</x>
-     <y>652</y>
+     <x>515</x>
+     <y>666</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -772,7 +740,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonChangeShortcut</sender>
+   <sender>buttonChangeComboTriggerShortcut</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
    <slot>onChangeComboTriggerShortcut()</slot>
@@ -810,7 +778,7 @@
    <slot>onResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>540</x>
+     <x>667</x>
      <y>572</y>
     </hint>
     <hint type="destinationlabel">
@@ -852,26 +820,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonApply</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onApply()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>552</x>
-     <y>652</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>254</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>radioComboTriggerAuto</sender>
    <signal>toggled(bool)</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>updateGui()</slot>
+   <slot>onRadioAutomaticComboTrigger(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>132</x>
@@ -917,9 +869,9 @@
   </connection>
   <connection>
    <sender>checkUseClipboardForComboSubstitution</sender>
-   <signal>stateChanged(int)</signal>
+   <signal>toggled(bool)</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>updateGui()</slot>
+   <slot>onCheckUseClipboardForComboSubstitution(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>158</x>
@@ -951,7 +903,7 @@
    <sender>checkEnableEmoji</sender>
    <signal>toggled(bool)</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>updateGui()</slot>
+   <slot>onCheckEnableEmojiShortcodes(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>74</x>
@@ -967,7 +919,7 @@
    <sender>checkEnableComboPicker</sender>
    <signal>toggled(bool)</signal>
    <receiver>PreferencesDialog</receiver>
-   <slot>updateGui()</slot>
+   <slot>onCheckEnableComboPicker(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>281</x>
@@ -1027,9 +979,153 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkAutoCheckForUpdates</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckAutoCheckForUpdates(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>107</x>
+     <y>44</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>343</x>
+     <y>338</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkAutoStart</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckAutoStart(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkPlaySoundOnCombo</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckPlaySoundOnCombo(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editEmojiLeftDelimiter</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onEmojiLeftDelimiterChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>100</x>
+     <y>359</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editEmojiRightDelimiter</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onEmojiRightDelimiterChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>253</x>
+     <y>354</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>123</x>
+     <y>-7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboLocale</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onComboLanguageValueChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>122</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>228</x>
+     <y>-2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseCustomTheme</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseCustomTheme(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>447</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>223</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinDelayBetweenKeystrokes</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>213</x>
+     <y>529</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkAutoBackup</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckAutoBackup(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>108</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>672</x>
+     <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>onOk()</slot>
+  <slot>onClose()</slot>
   <slot>onResetToDefaultValues()</slot>
   <slot>onPlaySoundOnComboCheckChanged()</slot>
   <slot>onAutoStartCheckChanged()</slot>
@@ -1039,12 +1135,10 @@
   <slot>onChangeComboListFolder()</slot>
   <slot>onResetComboListFolder()</slot>
   <slot>onLocaleChanged()</slot>
-  <slot>onRadioAutomaticComboTriggerChecked(bool)</slot>
   <slot>onChangeComboTriggerShortcut()</slot>
   <slot>onResetComboTriggerShortcut()</slot>
   <slot>onAutoBackupCheckChanged()</slot>
   <slot>onRestoreBackup()</slot>
-  <slot>onApply()</slot>
   <slot>updateGui()</slot>
   <slot>onResetWarnings()</slot>
   <slot>onEditSensitiveApplications()</slot>
@@ -1052,5 +1146,18 @@
   <slot>onChangeComboPickerShortcut()</slot>
   <slot>onResetComboPickerShortcut()</slot>
   <slot>onOpenComboListFolder()</slot>
+  <slot>onCheckAutoCheckForUpdates(bool)</slot>
+  <slot>onCheckAutoStart(bool)</slot>
+  <slot>onCheckPlaySoundOnCombo(bool)</slot>
+  <slot>onRadioAutomaticComboTrigger(bool)</slot>
+  <slot>onCheckEnableComboPicker(bool)</slot>
+  <slot>onCheckEnableEmojiShortcodes(bool)</slot>
+  <slot>onEmojiLeftDelimiterChanged(QString)</slot>
+  <slot>onEmojiRightDelimiterChanged(QString)</slot>
+  <slot>onComboLanguageValueChanged(int)</slot>
+  <slot>onCheckUseCustomTheme(bool)</slot>
+  <slot>onCheckUseClipboardForComboSubstitution(bool)</slot>
+  <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
+  <slot>onCheckAutoBackup(bool)</slot>
  </slots>
 </ui>
