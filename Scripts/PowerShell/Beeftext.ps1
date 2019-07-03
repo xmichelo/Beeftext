@@ -23,8 +23,7 @@ $rcFilePath = absolutePath $solutionDir "Beeftext\Beeftext.rc"
 #***********************************************************************************************************************
 function copySslDlls([String]$dstPath)
 {
-    # OpenSSL DLLs
-    foreach ($dll in "libcrypto-1_1.dll", "libssl-1_1.dll") {Copy-Item -Path (absolutePath $openSslBinDir $dll) -Destination $tempPath }
+    foreach ($dll in "libcrypto-1_1.dll", "libssl-1_1.dll") {Copy-Item -Path (absolutePath $openSslBinDir $dll) -Destination $dstPath }
 }
 
 
