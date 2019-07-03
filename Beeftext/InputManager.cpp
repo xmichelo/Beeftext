@@ -108,7 +108,6 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
    if ((WM_KEYDOWN == wParam) || (WM_SYSKEYDOWN == wParam))
    {
       KeyStroke keyStroke = kNullKeyStroke;
-      KBDLLHOOKSTRUCT* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
 
       // we ignore shift / caps lock key events
       if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))

@@ -11,8 +11,8 @@
 #***********************************************************************************************************************
 # useful variable declarations
 #***********************************************************************************************************************
+$openSslBinDir = "C:\Qt\Tools\OpenSSL\Win_x86\bin"
 $solutionDir = absolutePath $PSScriptRoot "..\.."
-$sslDir =  absolutePath $solutionDir "Vendor\OpenSSL"
 $vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\"
 $nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
 $rcFilePath = absolutePath $solutionDir "Beeftext\Beeftext.rc"
@@ -23,8 +23,8 @@ $rcFilePath = absolutePath $solutionDir "Beeftext\Beeftext.rc"
 #***********************************************************************************************************************
 function copySslDlls([String]$dstPath)
 {
-   $sslDlls = "libeay32.dll", "ssleay32.dll"
-   foreach ($dll in $sslDlls) { Copy-Item -Path (absolutePath $sslDir $dll) -Destination $dstPath }
+    # OpenSSL DLLs
+    foreach ($dll in "libcrypto-1_1.dll", "libssl-1_1.dll") {Copy-Item -Path (absolutePath $openSslBinDir $dll) -Destination $tempPath }
 }
 
 

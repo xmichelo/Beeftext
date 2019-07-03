@@ -149,8 +149,8 @@ setOutPath $INSTDIR
 # copy file
 file "${EXE_SRC_DIR}\${APP_NAME}.exe"
 file "..\README.md"
-file "..\Vendor\OpenSSL\libeay32.dll"
-file "..\Vendor\OpenSSL\ssleay32.dll"
+file "$%QTDIR%\..\..\Tools\OpenSSL\Win_x86\bin\libcrypto-1_1.dll"
+file "$%QTDIR%\..\..\Tools\OpenSSL\Win_x86\bin\libssl-1_1.dll"
 file "$%QTDIR%\bin\Qt5Core.dll"
 file "$%QTDIR%\bin\Qt5Gui.dll"
 file "$%QTDIR%\bin\Qt5Widgets.dll"
