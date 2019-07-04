@@ -99,15 +99,10 @@ bool isComboPickerShortcut(InputManager::KeyStroke const& keyStroke)
 //**********************************************************************************************************************
 LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam)
 {
-   KBDLLHOOKSTRUCT* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
-   if (keyEvent->vkCode == VK_LSHIFT)
-   {
-      bool const up = keyEvent->flags & LLKHF_UP;
-      qDebug() << QString("LShift %1.").arg(up ? "up" : "down");
-   }
    if ((WM_KEYDOWN == wParam) || (WM_SYSKEYDOWN == wParam))
    {
       KeyStroke keyStroke = kNullKeyStroke;
+      KBDLLHOOKSTRUCT* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
 
       // we ignore shift / caps lock key events
       if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))

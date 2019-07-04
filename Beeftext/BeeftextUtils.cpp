@@ -164,11 +164,8 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
          clipboardManager.backupClipboard();
          QApplication::clipboard()->setText(newText);
          synthesizeKeyDown(VK_LCONTROL);
-         waitBetweenKeystrokes();
          synthesizeKeyDownAndUp('V');
-         waitBetweenKeystrokes();
          synthesizeKeyUp(VK_LCONTROL);
-         waitBetweenKeystrokes();
          QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
          ///< We need to delay clipboard restoration to avoid unexpected behaviours
       }
