@@ -151,8 +151,6 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
    // we disable the hook to prevent endless recursive substitution
    try
    {
-      QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys();
-      ///< We artificially depress the current modifier keys
 
       // we erase the combo
       synthesizeBackspaces(qMax<qint32>(charCount, 0));
@@ -163,15 +161,18 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
          QApplication::clipboard()->setText(newText);
+         QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
+         restoreModifierKeys(pressedModifiers);
          QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
          ///< We need to delay clipboard restoration to avoid unexpected behaviours
       }
       else
       {
          // we simulate the typing of the snippet text
+         QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          for (QChar c: newText)
          {
             if (c == QChar::LineFeed)
@@ -186,17 +187,19 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
                waitBetweenKeystrokes();
             }
          }
+         restoreModifierKeys(pressedModifiers);
       }
 
       // position the cursor if needed by typing the right amount of left key strokes
       if (cursorPos >= 0)
       {
+         QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          for (qint32 i = 0; i < qMax<qint32>(0, newText.size() - cursorPos); ++i)
             synthesizeKeyDownAndUp(VK_LEFT);
+         restoreModifierKeys(pressedModifiers);
       }
 
       ///< We restore the modifiers that we deactivated at the beginning of the function
-      restoreModifierKeys(pressedModifiers);
    }
    catch (Exception const&)
    {
