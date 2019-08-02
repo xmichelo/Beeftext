@@ -39,6 +39,7 @@ QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers";
 QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
 QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; ///< The setting key for the combo picker shortcut scan code
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
+QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
 QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
 QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
 QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
@@ -54,6 +55,7 @@ bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'U
 bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
 bool const kDefaultValueWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
 bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
+bool const kDefaultValueWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
    QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
 SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
@@ -149,6 +151,7 @@ void PreferencesManager::reset()
    this->setEmojiRightDelimiter(kDefaultValueEmojiRightDelimiter);
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
    this->setDelayBetweenKeystrokesMs(kDefaultValueDelayBetweenKeystrokesMs);
+   this->setWriteDebugLogFile(kDefaultValueWriteDebugLogFile);
    this->resetWarnings();
    if (!isInPortableMode())
    {
@@ -511,6 +514,24 @@ void PreferencesManager::setAutoBackup(bool value) const
 bool PreferencesManager::autoBackup() const
 {
    return this->readSettings<bool>(kKeyAutoBackup, kDefaultValueAutoBackup);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setWriteDebugLogFile(bool value) const
+{
+   settings_->setValue(kKeyWriteDebugLogFile, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::writeDebugLogFile() const
+{
+   return this->readSettings<bool>(kKeyWriteDebugLogFile, kDefaultValueWriteDebugLogFile);
 }
 
 

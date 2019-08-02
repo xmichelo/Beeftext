@@ -61,11 +61,12 @@ int main(int argc, char *argv[])
       QGuiApplication::setApplicationName(constants::kApplicationName);
 
       ensureAppDataDirExists();
-      debugLog.enableLoggingToFile(globals::logFilePath());
+      PreferencesManager& prefs = PreferencesManager::instance();
+      if (prefs.writeDebugLogFile())
+         debugLog.enableLoggingToFile(globals::logFilePath());
       debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
-      PreferencesManager& prefs = PreferencesManager::instance();
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files

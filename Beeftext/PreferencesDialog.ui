@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>688</width>
-    <height>677</height>
+    <height>684</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -601,6 +601,13 @@
         </item>
        </layout>
       </item>
+      <item>
+       <widget class="QCheckBox" name="checkWriteDebugLogFile">
+        <property name="text">
+         <string>Write debug events in a log file</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -610,12 +617,12 @@
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::MinimumExpanding</enum>
+      <enum>QSizePolicy::Expanding</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>16</height>
+       <height>0</height>
       </size>
      </property>
     </spacer>
@@ -714,8 +721,8 @@
    <slot>onClose()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>515</x>
-     <y>666</y>
+     <x>677</x>
+     <y>673</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -1055,7 +1062,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>123</x>
-     <y>-7</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -1071,7 +1078,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>228</x>
-     <y>-2</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -1087,7 +1094,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>223</x>
-     <y>-13</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -1103,7 +1110,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>420</x>
-     <y>-4</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -1119,7 +1126,23 @@
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
-     <y>-3</y>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkWriteDebugLogFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckWriteDebugLogFile(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>622</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>660</y>
     </hint>
    </hints>
   </connection>
@@ -1159,5 +1182,6 @@
   <slot>onCheckUseClipboardForComboSubstitution(bool)</slot>
   <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
   <slot>onCheckAutoBackup(bool)</slot>
+  <slot>onCheckWriteDebugLogFile(bool)</slot>
  </slots>
 </ui>

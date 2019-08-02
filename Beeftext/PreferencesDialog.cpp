@@ -18,6 +18,7 @@
 #include "EmojiManager.h"
 #include "SensitiveApplicationManager.h"
 #include "BeeftextUtils.h"
+#include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/XMiLibConstants.h>
 
@@ -106,6 +107,8 @@ void PreferencesDialog::loadPreferences() const
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
    ui_.checkAutoBackup->setChecked(prefs_.autoBackup());
+   blocker = QSignalBlocker(ui_.checkWriteDebugLogFile);
+   ui_.checkWriteDebugLogFile->setChecked(prefs_.writeDebugLogFile());
    this->updateGui();
    // ReSharper restore CppAssignedValueIsNeverUsed
    // ReSharper restore CppEntityAssignedButNoRead
@@ -411,7 +414,7 @@ void PreferencesDialog::onOpenComboListFolder() const
 
 
 //**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked?
+/// \param[in] value Is the radio button checked?
 //**********************************************************************************************************************
 void PreferencesDialog::onCheckAutoBackup(bool value)
 {
@@ -526,4 +529,18 @@ void PreferencesDialog::onUpdateCheckFailed()
 void PreferencesDialog::onEditSensitiveApplications()
 {
    SensitiveApplicationManager::instance().runDialog(this);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the check box checked?
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckWriteDebugLogFile(bool checked) const
+{
+   prefs_.setWriteDebugLogFile(checked);
+   xmilib::DebugLog& log = globals::debugLog();
+   if (checked)
+      log.enableLoggingToFile(globals::logFilePath());
+   else
+      log.disableLoggingToFile();
 }

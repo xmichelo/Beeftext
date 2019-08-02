@@ -14,7 +14,7 @@
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
-#include <XMiLib/FileUtils.h>
+#include <XMiLib/File/FileUtils.h>
 #include <XMiLib/Exception.h>
 #include <XMiLib/XMiLibConstants.h>
 #include <utility>
