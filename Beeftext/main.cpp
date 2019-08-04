@@ -93,7 +93,6 @@ int main(int argc, char *argv[])
       qint32 const returnCode = QApplication::exec();
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
       I18nManager::instance().unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
-      comboManager.saveComboListToFile();
       return returnCode;
    }
    catch (Exception const& e)

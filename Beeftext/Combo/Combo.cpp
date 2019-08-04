@@ -306,6 +306,7 @@ bool Combo::performSubstitution()
    {
       performTextSubstitution(keyword_.size(), newText, cursorLeftShift);
       lastUsedDateTime_ = QDateTime::currentDateTime();
+      QTimer::singleShot(0, []() { ComboManager::instance().saveComboListToFile(); });
    }
    return !cancelled;
 }
