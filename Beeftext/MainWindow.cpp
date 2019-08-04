@@ -18,6 +18,7 @@
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "InputManager.h"
+#include <XMiLib/Exception.h>
 
 
 //**********************************************************************************************************************
@@ -261,6 +262,48 @@ void MainWindow::onActionShowPreferencesDialog()
 void MainWindow::onActionOpenLogFile()
 {
    openLogFile();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void MainWindow::onActionBackup()
+{
+   QString const path = QFileDialog::getSaveFileName(this, tr("Backup"), QDir(QFileInfo(PreferencesManager::instance()
+      .lastComboImportExportPath()).absolutePath()).absoluteFilePath(ComboList::defaultFileName),
+      tr("JSON Files (*.json);;All Files (*.*)"));
+   if (path.isEmpty())
+      return;
+   QString errMsg;
+   if (!ComboManager::instance().comboListRef().save(path, true, &errMsg))
+      QMessageBox::critical(this, tr("Error"), errMsg);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void MainWindow::onActionRestore()
+{
+   try
+   {
+      if ((ComboManager::instance().comboListRef().rowCount(QModelIndex()) > 0)
+         && (0 != QMessageBox::question(this, tr("Restore"), tr("If you restore a backup, all your current combos will "
+            "be deleted and replaced by the content of the backup file."), tr("Restore"), tr("Cancel"), QString(), 1)))
+         return;
+      QString const path = QFileDialog::getOpenFileName(this, tr("Restore"), 
+         QDir(QFileInfo(PreferencesManager::instance().lastComboImportExportPath()).absolutePath()).
+         absoluteFilePath(ComboList::defaultFileName), tr("JSON Files (*.json);;All Files (*.*)"));
+      if (path.isEmpty())
+         return;
+      if (!ComboManager::instance().restoreBackup(path))
+         throw xmilib::Exception("Could not restore backup file.");
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   }
 }
 
 

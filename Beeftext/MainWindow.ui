@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>843</width>
-    <height>522</height>
+    <width>664</width>
+    <height>476</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -35,7 +35,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>843</width>
+     <width>664</width>
      <height>21</height>
     </rect>
    </property>
@@ -64,6 +64,9 @@
      <string>&amp;Advanced</string>
     </property>
     <addaction name="actionOpenLogFile"/>
+    <addaction name="separator"/>
+    <addaction name="actionBackup"/>
+    <addaction name="actionRestore"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_Advanced"/>
@@ -146,6 +149,22 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+F1</string>
+   </property>
+  </action>
+  <action name="actionBackup">
+   <property name="text">
+    <string>&amp;Backup</string>
+   </property>
+   <property name="toolTip">
+    <string>Backup the combo list.</string>
+   </property>
+  </action>
+  <action name="actionRestore">
+   <property name="text">
+    <string>&amp;Restore</string>
+   </property>
+   <property name="toolTip">
+    <string>Restore the combo list from a backup.</string>
    </property>
   </action>
  </widget>
@@ -242,6 +261,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionBackup</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionBackup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRestore</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionRestore()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
@@ -250,5 +301,7 @@
   <slot>onActionShowAboutDialog()</slot>
   <slot>onActionShowPreferencesDialog()</slot>
   <slot>onActionOpenLogFile()</slot>
+  <slot>onActionBackup()</slot>
+  <slot>onActionRestore()</slot>
  </slots>
 </ui>
