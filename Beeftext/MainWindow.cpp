@@ -32,9 +32,10 @@ MainWindow::MainWindow()
    this->setupSystemTrayIcon();
    this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), groupsMenu_);
    this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), combosMenu_);
-
    PreferencesManager& prefs = PreferencesManager::instance();
    this->restoreGeometry(prefs.mainWindowGeometry());
+   ui_.actionOpenLogFile->setEnabled(prefs.writeDebugLogFile());
+
    connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []()
       { QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl)); });
    connect(ui_.actionGettingStarted, &QAction::triggered, []()
@@ -42,6 +43,7 @@ MainWindow::MainWindow()
    connect(ui_.actionShowReleaseNotes, &QAction::triggered, []()
    { QDesktopServices::openUrl(QUrl(constants::kBeeftextReleasesPagesUrl)); });
    connect(&InputManager::instance(), &InputManager::comboMenuShortcutTriggered, this, &MainWindow::onShowComboMenu);
+   connect(&prefs, &PreferencesManager::writeDebugLogFileChanged, this, &MainWindow::onWriteDebugLogFileChanged);
 }
 
 
@@ -304,6 +306,15 @@ void MainWindow::onActionRestore()
    {
       QMessageBox::critical(this, tr("Error"), e.qwhat());
    }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The new value for the preference.
+//**********************************************************************************************************************
+void MainWindow::onWriteDebugLogFileChanged(bool value) const
+{
+   ui_.actionOpenLogFile->setEnabled(value);
 }
 
 

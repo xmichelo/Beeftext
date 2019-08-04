@@ -520,9 +520,13 @@ bool PreferencesManager::autoBackup() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setWriteDebugLogFile(bool value) const
+void PreferencesManager::setWriteDebugLogFile(bool value)
 {
+   bool const currentValue = this->writeDebugLogFile();
+   if (value == currentValue)
+      return;
    settings_->setValue(kKeyWriteDebugLogFile, value);
+   emit writeDebugLogFileChanged(value);
 }
 
 

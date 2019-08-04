@@ -60,6 +60,7 @@ private slots:
    static void onActionOpenLogFile(); ///< Slot for the 'Open Log File' action
    void onActionBackup(); ///< Slot for the 'Backup' action.
    void onActionRestore(); ///< Slot for the 'Restore' action.
+   void onWriteDebugLogFileChanged(bool value) const; ///< Slot for the change of the 'Write debug log file' preference.
 
 private: // data members
    Ui::MainWindow ui_ {}; ///< The GUI for the window

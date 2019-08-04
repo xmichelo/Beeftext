@@ -64,7 +64,7 @@ public: // member functions
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
    void setAutoBackup(bool value) const; ///< Set the value for the 'Auto backup' preference
    bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
-   void setWriteDebugLogFile(bool value) const; ///< Set the value for the 'Write debug log file' preference.
+   void setWriteDebugLogFile(bool value); ///< Set the value for the 'Write debug log file' preference.
    bool writeDebugLogFile() const; ///< Set the value for the 'Write debug log file' preference.
    QString lastComboImportExportPath() const; ///< Retrieve the path of the last imported and exported path
    void setLastComboImportExportPath(QString const& path) const; ///< Retrieve the path of the last imported and exported path
@@ -86,7 +86,8 @@ public: // member functions
    static SpShortcut defaultComboPickerShortcut(); ///< Return the default combo picker shortcut.
 
 signals:
-   void autoCheckForUpdatesChanged(bool value); // Signal emitted when the 'Auto check for updates' preference value changed
+   void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
+   void writeDebugLogFileChanged(bool value); ///< Signal emitted when the 'Write debug log file' preference value changed.s
 
 private: // member functions
    PreferencesManager(); ///< Default constructor
