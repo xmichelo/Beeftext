@@ -1,8 +1,8 @@
 {
-   "versionMajor": 3,
+   "versionMajor": 4,
    "versionMinor": 0,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v3.0/Beeftext-3.0-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v3.0",
-   "sha256Sum": "cacaab76b5dfbd72739f2e43b9fd66f95b7d9555af2d288897c6fc1df3b1f686",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v3.0 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>The major feature of the release is the introduction of the <strong>combo picker</strong>. See this <a href=\"https://github.com/xmichelo/Beeftext/wiki/The-combo-picker-window\">wiki page</a> for details.</li><li>Added a button to open the combo list folder (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/167\">#167</a>).</li><li>Resetting the combo list folder now requires a confirmation (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/168\">#168</a>).</li><li>The preferences dialog is not modal anymore (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/165\">#165</a>).</li><li>Preferences changes are now applied immediately (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/169\">#169</a>).</li><li>A bug that could occur when a combo ends with an uppercase letter has been fixed (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/164\">#164</a>).</li></ul></body></html>"
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v4.0/Beeftext-4.0-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v4.0",
+   "sha256Sum": "22a98c13ac603c7081dd1895b36ebac715fcdb672c027bd130e9ea147bbb04aa",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v4.0 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>A fix has been implemented for a bug that could potentially erase the combo list on reboot (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/177\">#177</a>).</li><li>Manual backup and restore of the combo list has been implemented (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/174\">#174</a>).</li><li>Logging of debugging information to file can be disabled (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/176\">#176</a>).</li></ul></body></html>"
 }
