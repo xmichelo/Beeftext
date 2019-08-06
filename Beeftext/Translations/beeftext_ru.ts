@@ -749,6 +749,46 @@ Do you want to continue anymay?</source>
         <source>&amp;Release Notes</source>
         <translation>&amp;Примечания к выпуску</translation>
     </message>
+    <message>
+        <source>&amp;Backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup the combo list.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;Восстановить</translation>
+    </message>
+    <message>
+        <source>Restore the combo list from a backup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup</source>
+        <translation type="unfinished">Резервная копия</translation>
+    </message>
+    <message>
+        <source>JSON Files (*.json);;All Files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Ошибка</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Отмена</translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -758,15 +798,15 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>&amp;OK</source>
-        <translation>&amp;ОК</translation>
+        <translation type="vanished">&amp;ОК</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation>Ошибка</translation>
+        <translation type="vanished">Ошибка</translation>
     </message>
     <message>
         <source>Delete Backup Files?</source>
-        <translation>Удалить файлы резервных копий?</translation>
+        <translation type="vanished">Удалить файлы резервных копий?</translation>
     </message>
     <message>
         <source>Reset the preferences to their default values.</source>
@@ -786,19 +826,19 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>&amp;Apply</source>
-        <translation>&amp;Применить</translation>
+        <translation type="vanished">&amp;Применить</translation>
     </message>
     <message>
         <source>A new version is available.</source>
-        <translation>Доступна новая версия.</translation>
+        <translation type="vanished">Доступна новая версия.</translation>
     </message>
     <message>
         <source>Update check failed.</source>
-        <translation>Ошибка проверки обновления.</translation>
+        <translation type="vanished">Ошибка проверки обновления.</translation>
     </message>
     <message>
         <source>Reset Warnings</source>
-        <translation>Сбросить предупреждения</translation>
+        <translation type="vanished">Сбросить предупреждения</translation>
     </message>
     <message>
         <source>Emojis</source>
@@ -810,7 +850,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Are you sure you want to reset all warnings?</source>
-        <translation>Точно хотите сбросить все предупреждения?</translation>
+        <translation type="vanished">Точно хотите сбросить все предупреждения?</translation>
     </message>
     <message>
         <source>C&amp;hange</source>
@@ -838,7 +878,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>%1 v%2.%3 is available.</source>
-        <translation>%1 v%2.%3 доступна.</translation>
+        <translation type="vanished">%1 v%2.%3 доступна.</translation>
     </message>
     <message>
         <source>Combo list folder</source>
@@ -854,7 +894,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>&amp;Automatically start %1 at login</source>
-        <translation>&amp;Автозапуск %1 при входе в систему</translation>
+        <translation type="vanished">&amp;Автозапуск %1 при входе в систему</translation>
     </message>
     <message>
         <source>Left delimiter</source>
@@ -870,15 +910,15 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Are you sure you want to reset the preferences to their default values?</source>
-        <translation>Хотите сбросить настройки до значений по умолчанию?</translation>
+        <translation type="vanished">Хотите сбросить настройки до значений по умолчанию?</translation>
     </message>
     <message>
         <source>Reset Preferences</source>
-        <translation>Сбросить настройки</translation>
+        <translation type="vanished">Сбросить настройки</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation>&amp;Отмена</translation>
+        <translation type="vanished">&amp;Отмена</translation>
     </message>
     <message>
         <source>Delay between simulated keystrokes</source>
@@ -910,7 +950,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Do you want to delete all the backup files?</source>
-        <translation>Хотите удалить все резервные файлы?</translation>
+        <translation type="vanished">Хотите удалить все резервные файлы?</translation>
     </message>
     <message>
         <source>Advanced</source>
@@ -930,7 +970,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>The combo list folder could not be changed. The other settings were saved successfully.</source>
-        <translation>Папка списка шаблонов не может быть изменена. Другие настройки были успешно сохранены.</translation>
+        <translation type="vanished">Папка списка шаблонов не может быть изменена. Другие настройки были успешно сохранены.</translation>
     </message>
     <message>
         <source>Restore a backup.</source>
@@ -938,7 +978,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>The software is up to date.</source>
-        <translation>Версия актуальна.</translation>
+        <translation type="vanished">Версия актуальна.</translation>
     </message>
     <message>
         <source>Right delimiter</source>
@@ -946,11 +986,35 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Select folder</source>
-        <translation>Выберите папку</translation>
+        <translation type="vanished">Выберите папку</translation>
     </message>
     <message>
         <source>Automatically check for &amp;updates</source>
         <translation>&amp;Автоматическая проверка обновлений</translation>
+    </message>
+    <message>
+        <source>Combo picker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable combo picker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shortcut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>O&amp;pen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write debug events in a log file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Close</source>
+        <translation type="unfinished">&amp;Закрыть</translation>
     </message>
 </context>
 <context>

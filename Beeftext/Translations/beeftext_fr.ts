@@ -400,17 +400,17 @@ Voulez-vous tout de même continuer?</translation>
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="623"/>
+        <location filename="../Combo/ComboList.cpp" line="632"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="624"/>
+        <location filename="../Combo/ComboList.cpp" line="633"/>
         <source>Keyword</source>
         <translation>Mot-clé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="625"/>
+        <location filename="../Combo/ComboList.cpp" line="634"/>
         <source>Snippet</source>
         <translation>Snippet</translation>
     </message>
@@ -866,124 +866,178 @@ Voulez-vous tout de même continuer?</translation>
         <translation>&amp;Avancé</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="74"/>
+        <location filename="../MainWindow.ui" line="77"/>
         <source>E&amp;xit Beeftext</source>
         <translation>&amp;Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="80"/>
+        <location filename="../MainWindow.ui" line="83"/>
         <source>Exit Beeftext</source>
         <translation>Quitter Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="83"/>
+        <location filename="../MainWindow.ui" line="86"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="88"/>
+        <location filename="../MainWindow.ui" line="91"/>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Wiki Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="91"/>
+        <location filename="../MainWindow.ui" line="94"/>
         <source>Shift+F1</source>
         <translation>Maj+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="96"/>
+        <location filename="../MainWindow.ui" line="99"/>
         <source>&amp;About Beeftext</source>
         <translation>&amp;À Propos de Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="99"/>
+        <location filename="../MainWindow.ui" line="102"/>
         <source>F1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="118"/>
+        <location filename="../MainWindow.ui" line="121"/>
         <source>Ctrl+,</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="123"/>
+        <location filename="../MainWindow.ui" line="126"/>
         <source>Open &amp;Log File</source>
         <translation>Ouvrir le &amp;Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="126"/>
+        <location filename="../MainWindow.ui" line="129"/>
         <source>Open the log file</source>
         <translation>Ouvrir le journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="129"/>
+        <location filename="../MainWindow.ui" line="132"/>
         <source>Ctrl+Shift+L</source>
         <translation>Ctrl+Maj+L</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="134"/>
+        <location filename="../MainWindow.ui" line="137"/>
         <source>&amp;Getting Started</source>
         <translation>&amp;Bien Débuter</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="137"/>
+        <location filename="../MainWindow.ui" line="140"/>
         <source>Getting Started</source>
         <translation>Bien Débuter</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="140"/>
+        <location filename="../MainWindow.ui" line="143"/>
         <source>Ctrl+F1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="145"/>
+        <location filename="../MainWindow.ui" line="148"/>
         <source>&amp;Release Notes</source>
         <translation>&amp;Notes de Version</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="148"/>
+        <location filename="../MainWindow.ui" line="151"/>
         <source>Ctrl+Shift+F1</source>
         <translation>Ctrl+Maj+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="121"/>
+        <location filename="../MainWindow.ui" line="156"/>
+        <source>&amp;Backup</source>
+        <translation>&amp;Sauvegarder</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="159"/>
+        <source>Backup the combo list.</source>
+        <translation>Effectuer un copie de sauvegarde de la liste de combos.</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="164"/>
+        <source>&amp;Restore</source>
+        <translation>&amp;Restaurer</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="167"/>
+        <source>Restore the combo list from a backup.</source>
+        <translation>Restaurer la liste de combos depuis une sauvegarde.</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="124"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="118"/>
+        <location filename="../MainWindow.cpp" line="121"/>
         <source> - PAUSED</source>
         <translation> - EN PAUSE</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="133"/>
-        <location filename="../MainWindow.cpp" line="229"/>
+        <location filename="../MainWindow.cpp" line="136"/>
+        <location filename="../MainWindow.cpp" line="232"/>
         <source>Open Beeftext</source>
         <translation>Ouvrir Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="137"/>
+        <location filename="../MainWindow.cpp" line="140"/>
         <source>&amp;Pause Beeftext</source>
         <translation>&amp;Désactiver Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="137"/>
+        <location filename="../MainWindow.cpp" line="140"/>
         <source>&amp;Resume Beeftext</source>
         <translation>&amp;Réactiver Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="115"/>
-        <location filename="../MainWindow.cpp" line="142"/>
+        <location filename="../MainWindow.cpp" line="275"/>
+        <source>Backup</source>
+        <translation>Sauvegarde</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="277"/>
+        <location filename="../MainWindow.cpp" line="299"/>
+        <source>JSON Files (*.json);;All Files (*.*)</source>
+        <translation>Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="282"/>
+        <location filename="../MainWindow.cpp" line="307"/>
+        <source>Error</source>
+        <translation>Erreur</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="294"/>
+        <location filename="../MainWindow.cpp" line="295"/>
+        <location filename="../MainWindow.cpp" line="297"/>
+        <source>Restore</source>
+        <translation>Restaurer</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="294"/>
+        <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
+        <translation>Si vous restaurer la liste de combos depuis une sauvegarde, tous vos combos actuels seront supprimés et remplacés par le contenu de la sauvegarde.</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="295"/>
+        <source>Cancel</source>
+        <translation>Annuler</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="118"/>
+        <location filename="../MainWindow.cpp" line="145"/>
         <source>Preferences</source>
         <translation>Préférences</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="147"/>
+        <location filename="../MainWindow.cpp" line="150"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="150"/>
+        <location filename="../MainWindow.cpp" line="153"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>
@@ -1016,12 +1070,12 @@ Voulez-vous tout de même continuer?</translation>
         <translation>&amp;Emettre un son pendant les combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="166"/>
+        <location filename="../PreferencesDialog.ui" line="260"/>
         <source>Enable emoji shortcodes</source>
         <translation>Activer les shortcodes emojis</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="173"/>
+        <location filename="../PreferencesDialog.ui" line="267"/>
         <source>&amp;Excluded Applications</source>
         <translation>Applications &amp;Exclues</translation>
     </message>
@@ -1042,204 +1096,219 @@ Voulez-vous tout de même continuer?</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="141"/>
+        <location filename="../PreferencesDialog.ui" line="220"/>
         <source>C&amp;hange</source>
         <translation>C&amp;hanger</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="148"/>
+        <location filename="../PreferencesDialog.ui" line="227"/>
         <source>De&amp;fault</source>
         <translation>Par Dé&amp;faut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="158"/>
+        <location filename="../PreferencesDialog.ui" line="164"/>
+        <source>Combo picker</source>
+        <translation>Sélecteur de combos</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="170"/>
+        <source>Enable combo picker</source>
+        <translation>Activer le sélecteur de combos</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="179"/>
+        <source>Shortcut</source>
+        <translation>Raccourci</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="252"/>
         <source>Emojis</source>
         <translation>Emojis</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="197"/>
+        <location filename="../PreferencesDialog.ui" line="291"/>
         <source>Left delimiter</source>
         <translation>Délimiteur gauche</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="253"/>
+        <location filename="../PreferencesDialog.ui" line="347"/>
         <source>Right delimiter</source>
         <translation>Délimiteur droit</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="265"/>
+        <location filename="../PreferencesDialog.ui" line="359"/>
         <source>Appearance</source>
         <translation>Apparence</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="273"/>
+        <location filename="../PreferencesDialog.ui" line="367"/>
         <source>Language</source>
         <translation>Langue</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="292"/>
+        <location filename="../PreferencesDialog.ui" line="386"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Autres langues&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="317"/>
+        <location filename="../PreferencesDialog.ui" line="411"/>
         <source>Use custom theme</source>
         <translation>Utiliser un thème personnalisé</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="327"/>
+        <location filename="../PreferencesDialog.ui" line="421"/>
         <source>Advanced</source>
         <translation>Avancé</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="335"/>
+        <location filename="../PreferencesDialog.ui" line="429"/>
         <source>Use clipboard for combo substitution</source>
         <translation>Utiliser le presse-papier pour la substitution des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="358"/>
+        <location filename="../PreferencesDialog.ui" line="452"/>
         <source>Sensitive Applications</source>
         <translation>Applications Sensibles</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="385"/>
+        <location filename="../PreferencesDialog.ui" line="479"/>
         <source>Delay between simulated keystrokes</source>
         <translation>Délai entre les frappes de touches simulées</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="392"/>
+        <location filename="../PreferencesDialog.ui" line="486"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="441"/>
+        <location filename="../PreferencesDialog.ui" line="535"/>
         <source>Combo list folder</source>
         <translation>Dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="455"/>
+        <location filename="../PreferencesDialog.ui" line="549"/>
         <source>&amp;Change</source>
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="462"/>
+        <location filename="../PreferencesDialog.ui" line="556"/>
+        <source>O&amp;pen</source>
+        <translation>O&amp;uvrir</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="563"/>
         <source>D&amp;efault</source>
         <translation>Par D&amp;éfaut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="474"/>
+        <location filename="../PreferencesDialog.ui" line="575"/>
         <source>Automatically backup combo list files</source>
         <translation>Faire des copies de sauvegarde automatique de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="481"/>
+        <location filename="../PreferencesDialog.ui" line="582"/>
         <source>Restore a backup.</source>
         <translation>Restaurer une sauvegarde.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="484"/>
+        <location filename="../PreferencesDialog.ui" line="585"/>
         <source>&amp;Restore</source>
         <translation>&amp;Restaurer</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="527"/>
-        <location filename="../PreferencesDialog.ui" line="540"/>
+        <location filename="../PreferencesDialog.ui" line="607"/>
+        <source>Write debug events in a log file</source>
+        <translation>Écrire les évènements de débogage dans un fichier journal</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="635"/>
+        <location filename="../PreferencesDialog.ui" line="648"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="530"/>
+        <location filename="../PreferencesDialog.ui" line="638"/>
         <source>&amp;Default</source>
         <translation>Par &amp;Défaut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="543"/>
+        <location filename="../PreferencesDialog.ui" line="651"/>
         <source>Reset &amp;Warnings</source>
         <translation>Réactiver les A&amp;vertissements</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="566"/>
+        <location filename="../PreferencesDialog.ui" line="674"/>
+        <source>&amp;Close</source>
+        <translation>&amp;Fermer</translation>
+    </message>
+    <message>
         <source>&amp;OK</source>
-        <translation>&amp;OK</translation>
+        <translation type="vanished">&amp;OK</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="573"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Annuler</translation>
+        <translation type="vanished">&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="580"/>
         <source>&amp;Apply</source>
-        <translation>A&amp;ppliquer</translation>
+        <translation type="vanished">A&amp;ppliquer</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="44"/>
         <source>&amp;Automatically start %1 at login</source>
-        <translation>&amp;Démarrer %1 automatiquement à la connexion</translation>
+        <translation type="vanished">&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="145"/>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation type="vanished">Erreur</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="201"/>
         <source>Reset Preferences</source>
-        <translation>Réinitialiser les Préférences</translation>
+        <translation type="vanished">Réinitialiser les Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="201"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
-        <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
+        <translation type="vanished">Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="218"/>
         <source>Select folder</source>
-        <translation>Sélectionner le dossier</translation>
+        <translation type="vanished">Sélectionner le dossier</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="273"/>
         <source>Are you sure you want to reset all warnings?</source>
-        <translation>Êtes-vous sûr de vouloir réactiver tous les messages d&apos;avertissement?</translation>
+        <translation type="vanished">Êtes-vous sûr de vouloir réactiver tous les messages d&apos;avertissement?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="170"/>
         <source>Delete Backup Files?</source>
-        <translation>Effacer les Sauvegardes?</translation>
+        <translation type="vanished">Effacer les Sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="145"/>
         <source>The combo list folder could not be changed. The other settings were saved successfully.</source>
-        <translation>Le dossier de liste des combos n&apos;a pas pu être modifié. Les autres réglages ont bien été sauvegardés.</translation>
+        <translation type="vanished">Le dossier de liste des combos n&apos;a pas pu être modifié. Les autres réglages ont bien été sauvegardés.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="170"/>
         <source>Do you want to delete all the backup files?</source>
-        <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
+        <translation type="vanished">Voulez-vous effacer toutes les sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="273"/>
         <source>Reset Warnings</source>
-        <translation>Réactiver les Avertissements</translation>
+        <translation type="vanished">Réactiver les Avertissements</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="304"/>
         <source>%1 v%2.%3 is available.</source>
-        <translation>%1 v%2.%3 est disponible.</translation>
+        <translation type="vanished">%1 v%2.%3 est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="306"/>
         <source>A new version is available.</source>
-        <translation>Une nouvelle version est disponible.</translation>
+        <translation type="vanished">Une nouvelle version est disponible.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="315"/>
         <source>The software is up to date.</source>
-        <translation>Le logiciel est à jour.</translation>
+        <translation type="vanished">Le logiciel est à jour.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="342"/>
         <source>Update check failed.</source>
-        <translation>La vérification de mise à jour a échoué.</translation>
+        <translation type="vanished">La vérification de mise à jour a échoué.</translation>
     </message>
 </context>
 <context>
@@ -1253,12 +1322,12 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="85"/>
+        <location filename="../main.cpp" line="86"/>
         <source>Getting Started</source>
         <translation>Bien Débuter</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="85"/>
+        <location filename="../main.cpp" line="86"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -1290,7 +1359,7 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="110"/>
+        <location filename="../main.cpp" line="111"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>
