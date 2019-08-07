@@ -19,55 +19,78 @@ namespace {
 
 
 QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for the "Already launched" indicator
-QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
+QString const kKeyFileMarkedForDeletion = "markedForDeletion";
+///< The path of the file marked for deletion on next application startup
 QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
 QString const kKeyLocale = "Locale"; ///< The settings key for the locale
 QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
 QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
-QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
-QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
+QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate";
+///< The settings key for the 'Autostart at login' preference
+QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution";
+///< The setting key for the 'Use clipboard for combo substitution' preference
 QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
-QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
-QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
+QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution";
+///< The setting key for the 'Use automatic substitution' preference
+QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword";
+///< The setting key for the 'Warn about short combo keyword' preference
 QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
-QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
-QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
-QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
-QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
-QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
-QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; ///< The setting key for the combo picker shortcut scan code
+QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers";
+///< The setting key for the combo trigger shortcut modifiers
+QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode";
+///< The setting key for the combo trigger shortcut key code
+QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode";
+///< The setting key for the combo trigger shortcut scan code
+QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers";
+///< The setting key for the combo picker shortcut modifiers
+QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode";
+///< The setting key for the combo picker shortcut key code
+QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode";
+///< The setting key for the combo picker shortcut scan code
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
-QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
-QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
-QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
-QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
+QString const kKeyWriteDebugLogFile = "WriteDebugLogFile";
+///< The setting key for the 'Write debug log file' preference.
+QString const kKeyLastComboImportExportPath = "LastComboImportExportPath";
+///< The setting key for 'Last combo import/export path' preference
+QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)";
+///< The registry key for autostart
+QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled";
+///< The setting key for the 'Emoji shortcodes enabled'
 QString const kRegKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
 QString const kRegKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
-QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
-QString const kRegKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
+QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes";
+///< The setting key for the 'Delay between keystrokes'preferences value
+QString const kRegKeyComboPickerEnabled = "ComboPickerEnabled";
+///< The setting key for the 'Combo picker enabled' preference.
 bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
 bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
 bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
-bool const kDefaultvalueUseClipboardForComboSubstitution = true; ///< The default value for the 'Use clipboard for combo substitution' preference
+bool const kDefaultvalueUseClipboardForComboSubstitution = true;
+///< The default value for the 'Use clipboard for combo substitution' preference
 bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
-bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
-bool const kDefaultValueWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
+bool const kDefaultValueUseAutomaticSubstitution = true;
+///< The default value for the 'Use automatic substitution' preference
+bool const kDefaultValueWarnAboutShortComboKeyword = true;
+///< The default value for the 'Warn about short combo keyword' preference
 bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
 bool const kDefaultValueWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
-   QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json"); ///< The default value for the 'Last combo import/export path' preference
-SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier 
+   QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");
+///< The default value for the 'Last combo import/export path' preference
+SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
-SpShortcut const kDefaultValueComboPickerShortcut = std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ShiftModifier,
-   13 /*Enter*/, 28); ///< The default value for the 'combo trigger shortcut' preference
-bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
+bool const kDefaultValueEmojiShortcodesEnabled = false;
+///< The default value for the 'Emoji shortcodes enabled' preference.
 QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultValueEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
-qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
-qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
-qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12;
+///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kMinValueDelayBetweenKeystrokesMs = 0;
+///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kMaxValueDelayBetweenKeystrokesMs = 500;
+///< The default valur for the 'Delay between keystrokes' preference.
 bool const kDefaultValueComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
 
 
@@ -82,7 +105,8 @@ bool const kDefaultValueComboPickerEnabled = true; ///< The default value for th
 /// \param[in] defaultValue The default value to use if the key does not exist or its value is not of the right type
 /// \return The read value
 //**********************************************************************************************************************
-template <typename T> T PreferencesManager::readSettings(QString const& key, T const& defaultValue) const
+template <typename T>
+T PreferencesManager::readSettings(QString const& key, T const& defaultValue) const
 {
    if (!settings_->contains(key))
       return defaultValue;
@@ -109,9 +133,9 @@ PreferencesManager::PreferencesManager()
    : settings_(nullptr)
 {
    // portable edition use a different storage method for preferences
-      settings_ = isInPortableMode()
-         ? std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat) 
-         : std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
+   settings_ = isInPortableMode()
+      ? std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat)
+      : std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
 
    // Cache often accessed values
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
@@ -119,10 +143,10 @@ PreferencesManager::PreferencesManager()
    this->cacheComboTriggerShortcut();
    cachedComboPickerEnabled_ = this->readSettings<bool>(kRegKeyComboPickerEnabled, kDefaultValueComboPickerEnabled);
    this->cacheComboPickerShortcut();
-   cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled, 
+   cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled,
       kDefaultValueEmojiShortcodesEnabled);
    cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
-   cachedEmojiRightDelimiter_ = this->readSettings<QString>(kRegKeyEmojiRightDelimiter, 
+   cachedEmojiRightDelimiter_ = this->readSettings<QString>(kRegKeyEmojiRightDelimiter,
       kDefaultValueEmojiRightDelimiter);
    // Some preferences setting need initialization
    this->applyCustomThemePreference();
@@ -144,7 +168,7 @@ void PreferencesManager::reset()
    this->setWarnAboutShortComboKeywords(kDefaultValueWarnAboutShortComboKeyword);
    this->setComboPickerEnabled(kDefaultValueComboPickerEnabled);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
-   this->setComboPickerShortcut(kDefaultValueComboPickerShortcut);
+   this->setComboPickerShortcut(defaultComboPickerShortcut());
    this->setAutoBackup(kDefaultValueAutoBackup);
    this->setEmojiShortcodeEnabled(kDefaultValueEmojiShortcodesEnabled);
    this->setEmojiLeftDelimiter(kDefaultValueEmojiLeftDelimiter);
@@ -280,8 +304,8 @@ void PreferencesManager::setLastUpdateCheckDateTime(QDateTime const& dateTime) c
 //**********************************************************************************************************************
 QDateTime PreferencesManager::lastUpdateCheckDateTime() const
 {
-   QVariant v = settings_->value(kKeyLastUpdateCheckDateTime);
-   return (v.isNull() || !v.canConvert<QDateTime>()) ? QDateTime(): v.toDateTime();
+   QVariant const v = settings_->value(kKeyLastUpdateCheckDateTime);
+   return (v.isNull() || !v.canConvert<QDateTime>()) ? QDateTime() : v.toDateTime();
 }
 
 
@@ -448,7 +472,7 @@ void PreferencesManager::setComboListFolderPath(QString const& value) const
 //**********************************************************************************************************************
 QString PreferencesManager::comboListFolderPath() const
 {
-   return isInPortableMode() ? globals::portableModeDataFolderPath() : 
+   return isInPortableMode() ? globals::portableModeDataFolderPath() :
       this->readSettings<QString>(kKeyComboListFolderPath, defaultComboListFolderPath());
 }
 
@@ -458,7 +482,7 @@ QString PreferencesManager::comboListFolderPath() const
 //**********************************************************************************************************************
 QString PreferencesManager::defaultComboListFolderPath()
 {
-   return isInPortableMode() ? globals::portableModeDataFolderPath() :globals::appDataDir();
+   return isInPortableMode() ? globals::portableModeDataFolderPath() : globals::appDataDir();
 }
 
 
@@ -491,11 +515,21 @@ SpShortcut PreferencesManager::comboPickerShortcut() const
 
 
 //**********************************************************************************************************************
+/// \brief Return the default combo picker shortcut.
+/// 
+/// The shortcut is different on Windows 7 because Win+Shift is reserver for language switching on this platform.
+/// 
 /// \return The default combo picker shortcut.
 //**********************************************************************************************************************
 SpShortcut PreferencesManager::defaultComboPickerShortcut()
 {
-   return kDefaultValueComboPickerShortcut;
+   QString const pType = QSysInfo::productType();
+   QString const pVersion = QSysInfo::productVersion();
+   qDebug() << QString("pType = '%1' - pVersion = '%2'").arg(pType).arg(pVersion);
+   if ((0 == pType.compare("windows", Qt::CaseInsensitive)) && (pVersion.startsWith('7'))) // Windows 7
+      return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ControlModifier, 'B', 48);
+   else
+      return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ShiftModifier, 13 /*Enter*/, 28);
 }
 
 
@@ -640,7 +674,7 @@ qint32 PreferencesManager::delayBetweenKeystrokesMs() const
 //**********************************************************************************************************************
 void PreferencesManager::setDelayBetweenKeystrokesMs(qint32 value) const
 {
-   settings_->setValue(kRegKeyDelayBetweenKeystrokes, qBound<qint32>(kMinValueDelayBetweenKeystrokesMs, value, 
+   settings_->setValue(kRegKeyDelayBetweenKeystrokes, qBound<qint32>(kMinValueDelayBetweenKeystrokesMs, value,
       kMaxValueDelayBetweenKeystrokesMs));
 }
 
@@ -696,10 +730,10 @@ SpShortcut PreferencesManager::comboTriggerShortcut() const
 //**********************************************************************************************************************
 void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut)
 {
-   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueComboPickerShortcut;
+   SpShortcut const newShortcut = shortcut ? shortcut : defaultComboPickerShortcut();
    SpShortcut currentShortcut = this->comboPickerShortcut();
    if (!currentShortcut)
-      currentShortcut = kDefaultValueComboPickerShortcut;
+      currentShortcut = defaultComboPickerShortcut();
    if (*newShortcut != *currentShortcut)
    {
       settings_->setValue(kKeyComboPickerShortcutModifiers, int(shortcut->nativeModifiers()));
@@ -710,16 +744,13 @@ void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut)
 }
 
 
-
-
-
 //**********************************************************************************************************************
 /// \param[in] modRegKey The registry key for the shortcut's  modifiers.
 /// \param[in] vKeyRegKey The registry key for the shortcut's virtual key.
 /// \param[in] scanCodeRegKey The registry key for the shortcut's scan code.
 /// \return The shortcut, or a null pointer if not found
 //**********************************************************************************************************************
-SpShortcut PreferencesManager::readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey, 
+SpShortcut PreferencesManager::readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey,
    QString const& scanCodeRegKey) const
 {
    int const intMods = this->readSettings<quint32>(modRegKey, 0);
@@ -730,6 +761,7 @@ SpShortcut PreferencesManager::readShortcutFromPreferences(QString const& modReg
    SpShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
    return result->isValid() ? result : nullptr;
 }
+
 
 //**********************************************************************************************************************
 // 
@@ -749,7 +781,7 @@ void PreferencesManager::cacheComboPickerShortcut()
 {
    SpShortcut const shortcut = this->readShortcutFromPreferences(kKeyComboPickerShortcutModifiers,
       kKeyComboPickerShortcutKeyCode, kKeyComboPickerShortcutScanCode);
-   cachedComboPickerShortcut_ = shortcut ? shortcut : kDefaultValueComboPickerShortcut;
+   cachedComboPickerShortcut_ = shortcut ? shortcut : defaultComboPickerShortcut();
 }
 
 
@@ -758,7 +790,7 @@ void PreferencesManager::cacheComboPickerShortcut()
 //**********************************************************************************************************************
 void PreferencesManager::applyCustomThemePreference() const
 {
-   dynamic_cast<QApplication *>(QCoreApplication::instance())->setStyleSheet(this->useCustomTheme() 
+   dynamic_cast<QApplication *>(QCoreApplication::instance())->setStyleSheet(this->useCustomTheme()
       ? constants::kStyleSheet : QString());
 }
 
