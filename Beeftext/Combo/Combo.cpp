@@ -23,26 +23,16 @@ using namespace xmilib;
 namespace {
 QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
 QString const kPropName = "name"; ///< The JSON property name for the name
-QString const kPropComboText = "comboText";
-///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by "keyword"
-QString const kPropKeyword = "keyword";
-///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
-QString const kPropSubstitutionText = "substitutionText";
-///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
-QString const kPropSnippet = "snippet";
-///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
+QString const kPropComboText = "comboText"; ///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by "keyword"
+QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
+QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
+QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
 QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option
 QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
-QString const kPropCreated = "created";
-///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
-QString const kPropCreationDateTime = "creationDateTime";
-///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
-QString const kPropLastModified = "lastModified";
-///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
-QString const kPropModificationDateTime = "modificationDateTime";
-///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
-QString const kPropLastUsed = "lastUsed";
-///< The JSON property name for the last used date time, introduced  in the combo list file format v5.
+QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
+QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
+QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
+QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
 QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
 
 
@@ -85,8 +75,6 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
          kPropCreated].toString(), constants::kJsonExportDateFormat))
    ,  modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
          kPropLastModified].toString(), constants::kJsonExportDateFormat))
-   ,  lastUsedDateTime_(formatVersion >= 5 ? QDateTime::fromString(object[kPropLastUsed].toString()
-   ,     constants::kJsonExportDateFormat) : QDateTime())
    ,  enabled_(object[kPropEnabled].toBool(true))
 {
    if (object.contains(kPropGroup))
@@ -232,6 +220,15 @@ QDateTime Combo::creationDateTime() const
 
 
 //**********************************************************************************************************************
+/// \param[in] dateTime The date/time
+//**********************************************************************************************************************
+void Combo::setLastUsedDateTime(QDateTime const& dateTime)
+{
+   lastUsedDateTime_ = dateTime;
+}
+
+
+//**********************************************************************************************************************
 /// \return The last use date/time of the combo.
 //**********************************************************************************************************************
 QDateTime Combo::lastUsedDateTime() const
@@ -306,7 +303,6 @@ bool Combo::performSubstitution()
    {
       performTextSubstitution(keyword_.size(), newText, cursorLeftShift);
       lastUsedDateTime_ = QDateTime::currentDateTime();
-      QTimer::singleShot(0, []() { ComboManager::instance().saveComboListToFile(); });
    }
    return !cancelled;
 }
@@ -345,7 +341,6 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropUseLooseMatching, useLooseMatching_);
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
-   result.insert(kPropLastUsed, lastUsedDateTime().toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
    if (includeGroup && group_)
       result.insert(kPropGroup, group_->uuid().toString());

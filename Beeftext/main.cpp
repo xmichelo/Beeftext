@@ -17,6 +17,7 @@
 #include "PreferencesManager.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
+#include "Combo/LastUseFile.h"
 #include <XMiLib/SingleInstanceApp.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
@@ -91,6 +92,7 @@ int main(int argc, char *argv[])
          &window, &MainWindow::onAnotherAppInstanceLaunch);
       prefs.setAlreadyLaunched();
       qint32 const returnCode = QApplication::exec();
+      saveLastUseDateTimes(ComboManager::instance().comboListRef());
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
       I18nManager::instance().unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
       return returnCode;

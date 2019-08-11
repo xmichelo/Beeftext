@@ -136,6 +136,9 @@
     <ClCompile Include="PreferencesDialog.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\LastUseFile.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -202,6 +205,9 @@
     <ClInclude Include="SensitiveApplicationManager.h" />
     <ClInclude Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.h">
       <Filter>Combo\ComboPicker</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo\LastUseFile.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

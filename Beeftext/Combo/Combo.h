@@ -48,6 +48,7 @@ public: // member functions
    void setUseLooseMatching(bool useLooseMatching); ///< Set if the combo uses loose matching
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
+   void setLastUsedDateTime(QDateTime const& dateTime); ///< Set the last use date time of the combo.
    QDateTime lastUsedDateTime() const; ///< Retrieve the last use date/time of the combo.
    SpGroup group() const; ///< Get the combo group the combo belongs to
    void setGroup(SpGroup const& group); ///< Set the group this combo belongs to

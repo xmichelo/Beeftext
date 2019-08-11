@@ -9,11 +9,11 @@
 
 #include "stdafx.h"
 #include "ComboManager.h"
+#include "LastUseFile.h"
 #include "InputManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
-#include "BeeftextConstants.h"
 #include "Backup/BackupManager.h"
 #include "EmojiManager.h"
 
@@ -134,6 +134,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
          globals::debugLog().addInfo(inOlderFormat ? "The combo list file was upgraded to the latest format version." :
             "The combo list file was successfully saved after fixing the the grouping of combos.");
    }
+   loadLastUseDateTimes(comboList_);
    emit comboListWasLoaded();
    return true;
 }

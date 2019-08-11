@@ -525,7 +525,6 @@ SpShortcut PreferencesManager::defaultComboPickerShortcut()
 {
    QString const pType = QSysInfo::productType();
    QString const pVersion = QSysInfo::productVersion();
-   qDebug() << QString("pType = '%1' - pVersion = '%2'").arg(pType).arg(pVersion);
    if ((0 == pType.compare("windows", Qt::CaseInsensitive)) && (pVersion.startsWith('7'))) // Windows 7
       return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ControlModifier, 'B', 48);
    else
