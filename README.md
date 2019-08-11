@@ -1,5 +1,7 @@
 # Beeftext
 
+![Beeftext](https://raw.githubusercontent.com/wiki/xmichelo/Beeftext/assets/images/Screenshot.png)
+
 Beeftext is a text snippet management tool for Windows, inspired by [TextExpander].
 
 TextExpander is a great program, packed with features. To keep the company profitable, 
