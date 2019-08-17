@@ -23,6 +23,8 @@ QString const kGettingStartedUrl = "https://github.com/xmichelo/Beeftext/wiki/Ge
 QString const kBeeftextWikiVariablesUrl = "https://github.com/xmichelo/Beeftext/wiki/Variables";
 QString const kBeeftextReleasesPagesUrl = "https://github.com/xmichelo/Beeftext/releases";
 QString const kJsonFileDialogFilter = QObject::tr("JSON files (*.json);;All files (*.*)");
+QString const kJsonCsvFileDialogFilter = QObject::tr("JSON & CSV files (*.json *.csv);;""JSON files (*.json);;"
+   "CSV files (*.csv);;All files (*.*)");
 Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs;
 QChar const kEmojiDelimiter = '|';
 

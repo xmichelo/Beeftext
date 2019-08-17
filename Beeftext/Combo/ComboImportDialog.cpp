@@ -35,6 +35,7 @@ ComboImportDialog::ComboImportDialog(QString const& filePath, SpGroup const& gro
    if (!filePath.isEmpty())
    {
       ui_.editPath->setText(QDir::toNativeSeparators(filePath));
+      this->preselectFileFormat(filePath);
       if (!filePath.isEmpty())
          PreferencesManager::instance().setLastComboImportExportPath(filePath);
    }
@@ -82,7 +83,11 @@ void ComboImportDialog::dropEvent(QDropEvent* event)
       return;
    QList<QUrl> urls = mimeData->urls();
    if (!urls.empty()) // should always be the case
-      ui_.editPath->setText(QDir::toNativeSeparators(urls[0].toLocalFile()));
+   {
+      QString const& path = urls[0].toLocalFile();
+      ui_.editPath->setText(QDir::toNativeSeparators(path));
+      this->preselectFileFormat(path);
+   }
    event->acceptProposedAction();
 }
 
@@ -175,6 +180,25 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
 
 
 //**********************************************************************************************************************
+/// \param[in] filePath The path of the file
+//**********************************************************************************************************************
+void ComboImportDialog::preselectFileFormat(QString const& filePath) const
+{
+   if (0 == QFileInfo(filePath).suffix().compare("json", Qt::CaseInsensitive))
+   {
+      ui_.radioCsv->setChecked(false);
+      ui_.radioJson->setChecked(true);
+   }
+   else
+      if (0 == QFileInfo(filePath).suffix().compare("csv", Qt::CaseInsensitive))
+      {
+         ui_.radioJson->setChecked(false);
+         ui_.radioCsv->setChecked(true);
+      }
+}
+
+
+//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 void ComboImportDialog::onActionImport()
@@ -222,11 +246,12 @@ void ComboImportDialog::onActionBrowse()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), prefs.lastComboImportExportPath(),
-      constants::kJsonFileDialogFilter);
+      constants::kJsonCsvFileDialogFilter);
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);
    ui_.editPath->setText(QDir::toNativeSeparators(path));
+   this->preselectFileFormat(path);
 }
 
 
