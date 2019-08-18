@@ -644,7 +644,7 @@ void ComboTableWidget::onActionExportCombo()
 
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getSaveFileName(this, tr("Export Combos"), prefs.lastComboImportExportPath(),
-      constants::kJsonFileDialogFilter);
+      constants::kJsonCsvFileDialogFilter);
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);
@@ -656,8 +656,18 @@ void ComboTableWidget::onActionExportCombo()
       Q_ASSERT((index >= 0) && (index < comboList.size()));
       exportList.append(comboList[index]);
    }
+   if (exportList.isEmpty())
+   {
+      globals::debugLog().addError("Export list is empty");
+      QMessageBox::critical(this, tr("Error"), tr("Nothing to export."));
+      return;
+   }
+
+   // if file extension is .csv we save as CSV, otherwise we export in JSON format
    QString errorMsg;
-   if (!exportList.save(path, false, &errorMsg))
+   bool const result = (0 == QFileInfo(path).suffix().compare("csv", Qt::CaseInsensitive)) ?
+      exportList.exportToCsvFile(path, &errorMsg) : exportList.save(path, false, &errorMsg);
+   if (!result)
    {
       globals::debugLog().addError(errorMsg);
       QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
@@ -672,14 +682,17 @@ void ComboTableWidget::onActionExportAllCombos()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), prefs.lastComboImportExportPath(),
-      constants::kJsonFileDialogFilter);
+      constants::kJsonCsvFileDialogFilter);
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);
-   QString errorMessage;
-   if (!ComboManager::instance().comboListRef().save(path, false, &errorMessage))
+   QString errMsg;
+   ComboList const& comboList = ComboManager::instance().comboListRef();
+   bool const result = (0 == QFileInfo(path).suffix().compare("csv", Qt::CaseInsensitive)) ?
+      comboList.exportToCsvFile(path, &errMsg) : comboList.save(path, false, &errMsg);
+   if (!result)
    {
-      globals::debugLog().addError(errorMessage);
+      globals::debugLog().addError(errMsg);
       QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
    }
 }

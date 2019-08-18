@@ -81,6 +81,7 @@ public: // member functions
    bool readFromJsonDocument(QJsonDocument const& doc, bool* outInOlderFileFormat = nullptr, 
       QString* outErrorMsg = nullptr); ///< Read a combo list from a JSON document
    bool save(QString const& path, bool saveGroups, QString* outErrorMessage = nullptr) const; ///< Save a combo list to a JSON file
+   bool exportToCsvFile(QString const& path, QString* outErrorMessage = nullptr) const; ///< Export a combo list to CSV file
    bool load(QString const& path, bool* outInOlderFileFormat = nullptr, QString* outErrorMessage = nullptr); /// Load a combo list from a JSON file
    void markComboAsEdited(qint32 index); ///< Mark a combo as edited
    void ensureCorrectGrouping(bool *outWasInvalid = nullptr); ///< make sure every combo is affected to a group (and that there is at least one group

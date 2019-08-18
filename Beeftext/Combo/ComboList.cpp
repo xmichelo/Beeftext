@@ -11,7 +11,11 @@
 #include "ComboList.h"
 #include "MimeDataUtils.h"
 #include "BeeftextGlobals.h"
+#include <XMiLib/File/CsvIO.h>
 #include <XMiLib/Exception.h>
+
+
+using namespace xmilib;
 
 
 namespace {
@@ -512,6 +516,22 @@ bool ComboList::save(QString const& path, bool saveGroups, QString* outErrorMess
          *outErrorMessage = e.qwhat();
       return false;
    }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the file to save to
+/// \param[out] outErrorMessage If the function return false and this parameter is not null, the string pointed to 
+/// contains a description of the error
+/// \return true if and only if the combo list was successfully saved to file
+//**********************************************************************************************************************
+bool ComboList::exportToCsvFile(QString const& path, QString* outErrorMessage) const
+{
+   QVector<QStringList> csvData;
+   for (SpCombo const& combo: combos_)
+      if (combo)
+         csvData.push_back({ combo->keyword(), combo->snippet(), combo->name() });
+   return saveCsvFile(path, csvData, outErrorMessage);
 }
 
 

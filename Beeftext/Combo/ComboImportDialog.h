@@ -43,7 +43,6 @@ private: // data members
    void updateGui() const; ///< Update the GUI state
    qint32 computeTotalImportCount() const; ///< Return the number of combos to be imported according to the user selection in the dialog
    void performFinalImport(qint32& outFailureCount); ///< Perform the final import of combos
-   void preselectFileFormat(QString const& filePath) const; ///< Preselect the file type based on the file extension.
 
 private slots:
    void onActionImport(); ///< Slot for the 'Import' action

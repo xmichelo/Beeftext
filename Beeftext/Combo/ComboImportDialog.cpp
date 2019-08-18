@@ -13,8 +13,36 @@
 #include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
+#include <XMiLib/File/CsvIO.h>
 #include <XMiLib/Exception.h>
 #include <XMiLib/XMiLibConstants.h>
+
+
+using namespace xmilib;
+
+
+//**********************************************************************************************************************
+/// \param[in] filePath The path of the file to load.
+/// \param[out] outResult The loaded combos
+///
+//**********************************************************************************************************************
+void loadCombosFromCsvFile(QString const& filePath, ComboList& outResult)
+{
+   outResult.clear();
+   QVector<QStringList> csvData;
+   if (!loadCsvFile(filePath, csvData))
+      return;
+   for (QStringList const& row: csvData)
+   {
+      if (row.size() != 3)
+         continue;
+      QString const name = row[2].trimmed();
+      QString const keyword = row[0];
+      SpCombo const combo = std::make_shared<Combo>(name.isEmpty() ? keyword : name, keyword, row[1], false, true);
+      if (combo->isValid())
+         outResult.push_back(combo);
+   }
+}
 
 
 //**********************************************************************************************************************
@@ -35,7 +63,6 @@ ComboImportDialog::ComboImportDialog(QString const& filePath, SpGroup const& gro
    if (!filePath.isEmpty())
    {
       ui_.editPath->setText(QDir::toNativeSeparators(filePath));
-      this->preselectFileFormat(filePath);
       if (!filePath.isEmpty())
          PreferencesManager::instance().setLastComboImportExportPath(filePath);
    }
@@ -86,7 +113,6 @@ void ComboImportDialog::dropEvent(QDropEvent* event)
    {
       QString const& path = urls[0].toLocalFile();
       ui_.editPath->setText(QDir::toNativeSeparators(path));
-      this->preselectFileFormat(path);
    }
    event->acceptProposedAction();
 }
@@ -110,8 +136,8 @@ void ComboImportDialog::updateGui() const
          .arg(conflictingTotalCount) : tr("Overwrite 1 conflicting combo."));
       ui_.radioImportNewer->setVisible(conflictingNewerCount);
       if (conflictingNewerCount)
-         ui_.radioImportNewer->setText(conflictingNewerCount > 1 ? tr("Overwrite %1 newer conflicting combos.")
-            .arg(conflictingNewerCount) : tr("Overwrite 1 newer conflicting combo.")); 
+         ui_.radioImportNewer->setText(conflictingNewerCount > 1 ? tr("Overwrite %1 older conflicting combos.")
+            .arg(conflictingNewerCount) : tr("Overwrite 1 older conflicting combo.")); 
       if ((!conflictingNewerCombos_.size()) && ui_.radioImportNewer->isChecked())
       {
          QSignalBlocker b1(ui_.radioImportNewer), b2(ui_.radioSkipConflicts);
@@ -180,25 +206,6 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
 
 
 //**********************************************************************************************************************
-/// \param[in] filePath The path of the file
-//**********************************************************************************************************************
-void ComboImportDialog::preselectFileFormat(QString const& filePath) const
-{
-   if (0 == QFileInfo(filePath).suffix().compare("json", Qt::CaseInsensitive))
-   {
-      ui_.radioCsv->setChecked(false);
-      ui_.radioJson->setChecked(true);
-   }
-   else
-      if (0 == QFileInfo(filePath).suffix().compare("csv", Qt::CaseInsensitive))
-      {
-         ui_.radioJson->setChecked(false);
-         ui_.radioCsv->setChecked(true);
-      }
-}
-
-
-//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 void ComboImportDialog::onActionImport()
@@ -246,12 +253,11 @@ void ComboImportDialog::onActionBrowse()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), prefs.lastComboImportExportPath(),
-      constants::kJsonCsvFileDialogFilter);
+      ::constants::kJsonCsvFileDialogFilter);
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);
    ui_.editPath->setText(QDir::toNativeSeparators(path));
-   this->preselectFileFormat(path);
 }
 
 
@@ -266,11 +272,17 @@ void ComboImportDialog::onEditPathTextChanged(QString const& text)
 
    ComboList candidateList;
    ComboList& comboList = ComboManager::instance().comboListRef();
-   if (!candidateList.load(text))
+   QString const path = QDir::fromNativeSeparators(text);
+   if (!candidateList.load(path)) // not a JSON file, let's try CSV
    {
-      this->updateGui();
-      return;
+      loadCombosFromCsvFile(path, candidateList);
+      if (candidateList.isEmpty())
+      {
+         this->updateGui();
+         return;
+      }
    }
+
    for (SpCombo const& combo : candidateList)
    {
       combo->changeUuid(); // we get new a new UUID for imported combo. UUID are intended for synchronization purposes, not import/export
