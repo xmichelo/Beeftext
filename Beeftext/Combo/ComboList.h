@@ -31,9 +31,9 @@ public: // type definitions
    // ReSharper restore CppInconsistentNaming
    enum
    {
-      KeywordRole = Qt::UserRole, ///< The model role for keywords
-      SnippetRole, ///< The model role for snippets
-      LastUsedRole ///< The model role for last used date
+      KeywordRole = Qt::UserRole, ///< The model role for keywords.
+      SnippetRole, ///< The model role for snippets.
+      LastUsedRole ///< The model role for last usage date.
    };
 
 public: // static data members

@@ -30,10 +30,10 @@ public: // member functions
    ComboSortFilterProxyModel& operator=(ComboSortFilterProxyModel const&) = delete; ///< Disabled assignment operator
    ComboSortFilterProxyModel& operator=(ComboSortFilterProxyModel&&) = delete; ///< Disabled move assignment operator
    void setGroup(SpGroup const& group); ///< Set the group to display
-    
+       
 protected: // member functions
    bool filterAcceptsRow(int sourceRow, QModelIndex const&) const override; ///< Check if a row should be included or discarded
-
+   bool lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const override; ///< Return true if and only if sourceLeft is inferior to sourceRight
 private: // data members
    SpGroup group_; ///< The group to display
 };

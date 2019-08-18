@@ -52,3 +52,28 @@ bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex cons
    }
    return false;
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] sourceLeft The index of the left part of the comparison.
+/// \param[in] sourceRight The index of the right part of the comparison.
+/// \return true if and only if sourceLeft is strictly inferior to sourceRight.
+//**********************************************************************************************************************
+bool ComboSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const
+{
+   qint32 const rowLeft = sourceLeft.row();
+   qint32 const rowRight = sourceRight.row();
+   ComboList const& combos = ComboManager::instance().comboListRef();
+   switch (sourceLeft.column())
+   {
+   case 3:
+      return combos[rowLeft]->creationDateTime() < combos[rowRight]->creationDateTime();
+   case 4:
+      return combos[rowLeft]->modificationDateTime() <  combos[rowRight]->modificationDateTime();
+   case 5:
+      return combos[rowLeft]->lastUsedDateTime() < combos[rowRight]->lastUsedDateTime();
+   default:
+      return QSortFilterProxyModel::lessThan(sourceLeft, sourceRight);
+   }
+}
+

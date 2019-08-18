@@ -582,7 +582,7 @@ int ComboList::rowCount(QModelIndex const&) const
 //**********************************************************************************************************************
 int ComboList::columnCount(QModelIndex const&) const
 {
-   return 3;
+   return 6;
 }
 
 
@@ -598,6 +598,8 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       return QVariant();
 
    SpCombo const combo = combos_[row];
+   Qt::DateFormat const dtShortFormat = Qt::SystemLocaleShortDate;
+   Qt::DateFormat const dtLongFormat = Qt::SystemLocaleLongDate;
 
    switch (role)
    {
@@ -608,6 +610,9 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       case 0: return combo->name();
       case 1: return combo->keyword();
       case 2: return combo->snippet().trimmed().simplified();
+      case 3: return combo->creationDateTime().toString(dtShortFormat);
+      case 4: return combo->modificationDateTime().toString(dtShortFormat);
+      case 5: return combo->lastUsedDateTime().toString(dtShortFormat);
       default: return QVariant();
       }      
    }
@@ -618,6 +623,9 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       case 0: return combo->name();
       case 1: return combo->keyword();
       case 2: return combo->snippet();
+      case 3: return combo->creationDateTime().toString(dtLongFormat);
+      case 4: return combo->modificationDateTime().toString(dtLongFormat);
+      case 5: return combo->lastUsedDateTime().toString(dtLongFormat);
       default: return QVariant();
       }
    }
@@ -652,6 +660,9 @@ QVariant ComboList::headerData(int section, Qt::Orientation orientation, int rol
       case 0: return tr("Name");
       case 1: return tr("Keyword");
       case 2: return tr("Snippet");
+      case 3: return tr("Created");
+      case 4: return tr("Modified");
+      case 5: return tr("Last Used");
       default: return QVariant();
       }
 

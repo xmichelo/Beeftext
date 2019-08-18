@@ -23,6 +23,7 @@ namespace {
 
 qint32 const kMinNameColumnDefaultWidth = 200; ///< The maximum default width in pixels of the name column
 qint32 const kMaxNameColumnDefaultWidth = 500; ///< The maximum default width in pixels of the name column
+qint32 const kMaxSnippetColumnWDefaultWith = 600; ///< The maximum default width in pixels of the snippet column
 char const* kPropMatchingModeMenu("matchingMenu"); ///< The matching menu property
 char const* kPropMoveToMenu("moveMenu"); ///< The matching menu property
 
@@ -322,10 +323,11 @@ void ComboTableWidget::resizeColumnsToContents() const
    if (!horizontalHeader)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve horizontal header").arg(__FUNCTION__));
 
-   for (qint32 i = 0; i < 2; ++i)
+   for (qint32 i = 0; i < ComboManager::instance().comboListRef().columnCount(QModelIndex()); ++i)
       ui_.tableComboList->resizeColumnToContents(i);
    horizontalHeader->resizeSection(0, qBound<qint32>(kMinNameColumnDefaultWidth, horizontalHeader->sectionSize(0),
       kMaxNameColumnDefaultWidth));
+   horizontalHeader->resizeSection(2, qMin<qint32>(horizontalHeader->sectionSize(2),kMaxSnippetColumnWDefaultWith));
 }
 
 

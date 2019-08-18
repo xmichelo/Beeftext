@@ -34,6 +34,9 @@
      <property name="handleWidth">
       <number>6</number>
      </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
      <widget class="GroupListWidget" name="groupListWidget" native="true"/>
      <widget class="ComboTableWidget" name="comboTableWidget" native="true"/>
     </widget>
