@@ -53,7 +53,7 @@ Detailed build instructions are not available at the moment.
 [TextExpander]: https://textexpander.com
 [Smile]: https://smilesoftware.com/
 [Qt]: https://www.qt.io/developers/
-[Xavier Michelon]: https://x-mi.com
+[Xavier Michelon]: https://michelon.ch
 [beeftext.org]: https://beeftext.org
 [HTML5 UP]: https://html5up.net/
 [MIT License]: https://opensource.org/licenses/MIT
