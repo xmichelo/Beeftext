@@ -61,19 +61,18 @@ bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex cons
 //**********************************************************************************************************************
 bool ComboSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const
 {
-   qint32 const rowLeft = sourceLeft.row();
-   qint32 const rowRight = sourceRight.row();
-   ComboList const& combos = ComboManager::instance().comboListRef();
    switch (sourceLeft.column())
    {
    case 3:
-      return combos[rowLeft]->creationDateTime() < combos[rowRight]->creationDateTime();
+      return sourceLeft.data(ComboList::CreationDateTimeRole).toDateTime()
+         < sourceRight.data(ComboList::CreationDateTimeRole).toDateTime();
    case 4:
-      return combos[rowLeft]->modificationDateTime() <  combos[rowRight]->modificationDateTime();
+      return sourceLeft.data(ComboList::ModificationDateTimeRole).toDateTime()
+         < sourceRight.data(ComboList::ModificationDateTimeRole).toDateTime();
    case 5:
-      return combos[rowLeft]->lastUsedDateTime() < combos[rowRight]->lastUsedDateTime();
+      return sourceLeft.data(ComboList::LastUseDateTimeRole).toDateTime()
+         < sourceRight.data(ComboList::LastUseDateTimeRole).toDateTime();
    default:
       return QSortFilterProxyModel::lessThan(sourceLeft, sourceRight);
    }
 }
-

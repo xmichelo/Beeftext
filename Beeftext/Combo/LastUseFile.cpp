@@ -46,7 +46,7 @@ void parseDateTimeObject(ComboList& comboList, QJsonObject const& object)
    QString const dateStr = object[kPropDateTime].toString(QString());
    if (dateStr.isEmpty())
       return;
-   combo->setLastUsedDateTime(QDateTime::fromString(dateStr, constants::kJsonExportDateFormat));
+   combo->setLastUseDateTime(QDateTime::fromString(dateStr, constants::kJsonExportDateFormat));
 }
 
 
@@ -105,7 +105,7 @@ void saveLastUseDateTimes(ComboList const& comboList)
             continue;
          QJsonObject object;
          object.insert(kPropUuid, combo->uuid().toString());
-         object.insert(kPropDateTime, combo->lastUsedDateTime().toString(constants::kJsonExportDateFormat));
+         object.insert(kPropDateTime, combo->lastUseDateTime().toString(constants::kJsonExportDateFormat));
          dateTimes.append(object);
       }
       rootObject.insert(kPropDateTimes, dateTimes);

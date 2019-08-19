@@ -39,6 +39,8 @@ public: // member functions
    void clearFileMarkedForDeletionOnStartup() const; ///< Reset the file marked for deletion on startup
    void setMainWindowGeometry(QByteArray const& array) const; ///< Set the geometry of the main window
    QByteArray mainWindowGeometry() const; ///< Get the geometry of the main window
+   void setMainWindowSplitterState(QByteArray const& array) const; ///< Set the geometry of the main window splitter
+   QByteArray mainWindowSplitterState() const; ///< Get the geometry of the main window splitter
    QLocale locale() const; ///< Get the locale
    void setLocale(QLocale const& locale) const; ///< Set the locale
    void setLastUpdateCheckDateTime(QDateTime const& dateTime) const; ///< Set the last time the application checked for update

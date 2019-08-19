@@ -22,6 +22,7 @@ QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for
 QString const kKeyFileMarkedForDeletion = "markedForDeletion";
 ///< The path of the file marked for deletion on next application startup
 QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
+QString const kKeySplitterState = "MainWindowSplitterState"; ///< The setting key for storing the main window splitter state.
 QString const kKeyLocale = "Locale"; ///< The settings key for the locale
 QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
 QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
@@ -265,6 +266,24 @@ void PreferencesManager::setMainWindowGeometry(QByteArray const& array) const
 QByteArray PreferencesManager::mainWindowGeometry() const
 {
    return settings_->value(kKeyGeometry).toByteArray();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] array The state as a byte array.
+//**********************************************************************************************************************
+void PreferencesManager::setMainWindowSplitterState(QByteArray const& array) const
+{
+   settings_->setValue(kKeySplitterState, array);
+}
+
+
+//**********************************************************************************************************************
+/// \return The state as a byte array.
+//**********************************************************************************************************************
+QByteArray PreferencesManager::mainWindowSplitterState() const
+{
+   return settings_->value(kKeySplitterState).toByteArray();
 }
 
 

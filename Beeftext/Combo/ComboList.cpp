@@ -612,7 +612,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       case 2: return combo->snippet().trimmed().simplified();
       case 3: return combo->creationDateTime().toString(dtShortFormat);
       case 4: return combo->modificationDateTime().toString(dtShortFormat);
-      case 5: return combo->lastUsedDateTime().toString(dtShortFormat);
+      case 5: return combo->lastUseDateTime().toString(dtShortFormat);
       default: return QVariant();
       }      
    }
@@ -625,7 +625,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       case 2: return combo->snippet();
       case 3: return combo->creationDateTime().toString(dtLongFormat);
       case 4: return combo->modificationDateTime().toString(dtLongFormat);
-      case 5: return combo->lastUsedDateTime().toString(dtLongFormat);
+      case 5: return combo->lastUseDateTime().toString(dtLongFormat);
       default: return QVariant();
       }
    }
@@ -635,8 +635,12 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       return combo->keyword();
    case SnippetRole:
       return combo->snippet();
-   case LastUsedRole:
-      return combo->lastUsedDateTime();
+   case CreationDateTimeRole:
+      return combo->creationDateTime();
+   case ModificationDateTimeRole:
+      return combo->modificationDateTime();
+   case LastUseDateTimeRole:
+      return combo->lastUseDateTime();
    default:
       return QVariant();
    }

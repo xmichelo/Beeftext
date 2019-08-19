@@ -50,10 +50,10 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
 bool ComboPickerSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const
 {
    ComboList& combos = ComboManager::instance().comboListRef();
-   QDateTime lTime = this->sourceModel()->data(sourceLeft, ComboList::LastUsedRole).toDateTime();
+   QDateTime lTime = this->sourceModel()->data(sourceLeft, ComboList::LastUseDateTimeRole).toDateTime();
    if (lTime.isNull())
       lTime = QDateTime::fromSecsSinceEpoch(0);
-   QDateTime rTime = this->sourceModel()->data(sourceRight, ComboList::LastUsedRole).toDateTime();
+   QDateTime rTime = this->sourceModel()->data(sourceRight, ComboList::LastUseDateTimeRole).toDateTime();
    if (rTime.isNull())
       rTime = QDateTime::fromSecsSinceEpoch(0);
    return lTime < rTime;

@@ -29,6 +29,7 @@ public: // member functions
    ComboFrame& operator=(ComboFrame&&) = delete; ///< Disabled move assignment operator
    GroupListWidget* groupListWidget() const; ///< Return the combo group list widget
    ComboTableWidget* comboTableWidget() const; ///< Return the combo table widget
+   QSplitter* splitter() const; ///< Return a pointer to the splitter widget of the frame;
 
 private: // data members
    Ui::ComboFrame ui_; ///< The GUI for the frame

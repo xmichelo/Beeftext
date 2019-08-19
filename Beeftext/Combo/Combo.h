@@ -48,8 +48,8 @@ public: // member functions
    void setUseLooseMatching(bool useLooseMatching); ///< Set if the combo uses loose matching
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
-   void setLastUsedDateTime(QDateTime const& dateTime); ///< Set the last use date time of the combo.
-   QDateTime lastUsedDateTime() const; ///< Retrieve the last use date/time of the combo.
+   void setLastUseDateTime(QDateTime const& dateTime); ///< Set the last use date time of the combo.
+   QDateTime lastUseDateTime() const; ///< Retrieve the last use date/time of the combo.
    SpGroup group() const; ///< Get the combo group the combo belongs to
    void setGroup(SpGroup const& group); ///< Set the group this combo belongs to
    QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 
@@ -81,7 +81,7 @@ private: // data member
    SpGroup group_ { nullptr }; ///< The combo group this combo belongs to (may be null)
    QDateTime creationDateTime_; ///< The date/time of creation of the combo
    QDateTime modificationDateTime_; ///< The date/time of the last modification of the combo
-   QDateTime lastUsedDateTime_; ///< The last use date/time
+   QDateTime lastUseDateTime_; ///< The last use date/time
    bool enabled_; ///< Is the combo enabled
 };
 

@@ -33,7 +33,9 @@ public: // type definitions
    {
       KeywordRole = Qt::UserRole, ///< The model role for keywords.
       SnippetRole, ///< The model role for snippets.
-      LastUsedRole ///< The model role for last usage date.
+      CreationDateTimeRole, ///< The model role for creation date
+      ModificationDateTimeRole, ///< The model role for modification date
+      LastUseDateTimeRole ///< The model role for last usage date.
    };
 
 public: // static data members

@@ -47,8 +47,8 @@ QVariant ComboPickerModel::data(const QModelIndex& index, int role) const
       return ComboManager::instance().comboListRef().data(index, role).toString();
    case Qt::ToolTipRole:
       return ComboManager::instance().comboListRef().data(index, ComboList::SnippetRole).toString();
-   case ComboList::LastUsedRole:
-      return ComboManager::instance().comboListRef().data(index, ComboList::LastUsedRole).toDateTime();
+   case ComboList::LastUseDateTimeRole:
+      return ComboManager::instance().comboListRef().data(index, ComboList::LastUseDateTimeRole).toDateTime();
    default:
       return QVariant();
    }

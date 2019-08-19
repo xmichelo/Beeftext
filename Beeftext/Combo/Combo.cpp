@@ -222,18 +222,18 @@ QDateTime Combo::creationDateTime() const
 //**********************************************************************************************************************
 /// \param[in] dateTime The date/time
 //**********************************************************************************************************************
-void Combo::setLastUsedDateTime(QDateTime const& dateTime)
+void Combo::setLastUseDateTime(QDateTime const& dateTime)
 {
-   lastUsedDateTime_ = dateTime;
+   lastUseDateTime_ = dateTime;
 }
 
 
 //**********************************************************************************************************************
 /// \return The last use date/time of the combo.
 //**********************************************************************************************************************
-QDateTime Combo::lastUsedDateTime() const
+QDateTime Combo::lastUseDateTime() const
 {
-   return lastUsedDateTime_;
+   return lastUseDateTime_;
 }
 
 
@@ -302,7 +302,7 @@ bool Combo::performSubstitution()
    if (!cancelled)
    {
       performTextSubstitution(keyword_.size(), newText, cursorLeftShift);
-      lastUsedDateTime_ = QDateTime::currentDateTime();
+      lastUseDateTime_ = QDateTime::currentDateTime();
    }
    return !cancelled;
 }
@@ -321,7 +321,7 @@ bool Combo::insertSnippet()
    if (!cancelled)
    {
       performTextSubstitution(0, newText, cursorLeftShift);
-      lastUsedDateTime_ = QDateTime::currentDateTime();
+      lastUseDateTime_ = QDateTime::currentDateTime();
    }
    return !cancelled;
 }

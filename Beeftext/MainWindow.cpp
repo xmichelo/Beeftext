@@ -33,7 +33,7 @@ MainWindow::MainWindow()
    this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), groupsMenu_);
    this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), combosMenu_);
    PreferencesManager& prefs = PreferencesManager::instance();
-   this->restoreGeometry(prefs.mainWindowGeometry());
+   this->restoreWindowGeometry();
    ui_.actionOpenLogFile->setEnabled(prefs.writeDebugLogFile());
 
    connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []()
@@ -107,7 +107,11 @@ void MainWindow::closeEvent(QCloseEvent*)
 {
    // note that we save the geometry every time we close the window, not the app, simply because otherwise we would
    // have to do it in the destructor, where the state of the window may be uncertain.
-   PreferencesManager::instance().setMainWindowGeometry(this->saveGeometry());
+   PreferencesManager& prefs = PreferencesManager::instance();
+   prefs.setMainWindowGeometry(this->saveGeometry());
+   QSplitter const* splitter = ui_.frameCombos->splitter();
+   if (splitter)
+      prefs.setMainWindowSplitterState(splitter->saveState());
 }
 
 
@@ -189,6 +193,23 @@ void MainWindow::showWindow()
    this->show();
    this->raise();
    this->activateWindow();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void MainWindow::restoreWindowGeometry()
+{
+   PreferencesManager& prefs = PreferencesManager::instance();
+   QByteArray array = prefs.mainWindowGeometry();
+   if (!array.isEmpty())
+      this->restoreGeometry(array);
+
+   QSplitter* splitter = ui_.frameCombos->splitter();
+   array = prefs.mainWindowSplitterState();
+   if (splitter && !array.isEmpty())
+      splitter->restoreState(array);
 }
 
 

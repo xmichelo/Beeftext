@@ -24,6 +24,8 @@ ComboFrame::ComboFrame(QWidget* parent)
    ui_.comboTableWidget->setGroupListWidget(ui_.groupListWidget);
    connect(ui_.groupListWidget, &GroupListWidget::selectedGroupChanged, ui_.comboTableWidget,
       &ComboTableWidget::onSelectedGroupChanged);
+   ui_.splitter->setStretchFactor(0, 0);
+   ui_.splitter->setStretchFactor(1, 1);
 }
 
 
@@ -42,6 +44,15 @@ GroupListWidget* ComboFrame::groupListWidget() const
 ComboTableWidget* ComboFrame::comboTableWidget() const
 {
    return ui_.comboTableWidget;
+}
+
+
+//**********************************************************************************************************************
+/// \return A pointer to the splitter widget of the frame.
+//**********************************************************************************************************************
+QSplitter* ComboFrame::splitter() const
+{
+   return ui_.splitter;
 }
 
 

@@ -51,6 +51,7 @@ private: // member functions
    void setupSystemTrayIcon(); ///< Setup the system tray icon
    void changeEvent(QEvent *event) override; ///< Change event handler
    void showWindow(); ///< Ensure the window is visible, active and on top
+   void restoreWindowGeometry(); ///< Restore the geometry of the window.
 
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon
