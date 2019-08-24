@@ -44,7 +44,7 @@ public: // member functions
    bool saveComboListToFile(QString* outErrorMsg = nullptr) const; /// Save the combo list to the default location
    bool restoreBackup(QString const& backupFilePath); /// Restore the combo list from a backup file
    void loadSoundFromPreferences(); ///< Load the combo sound to be played from the preferences
-
+   void playSound() const; ///< Play the combo substitution sound.
 signals:
    void comboListWasLoaded() const; ///< Signal emitted when the combo list has been loaded
    void comboListWasSaved() const;  ///< Signal emitted when the combo list has been saved

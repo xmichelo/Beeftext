@@ -177,25 +177,27 @@ void PreferencesDialog::updateGui() const
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
    ui_.buttonSensitiveApplications->setEnabled(ui_.checkUseClipboardForComboSubstitution->isChecked());
 
-   QWidgetList const triggerWidgets = { ui_.editComboTriggerShortcut, ui_.buttonChangeComboTriggerShortcut, 
+   QWidgetList widgets = { ui_.editComboTriggerShortcut, ui_.buttonChangeComboTriggerShortcut, 
       ui_.buttonResetComboTriggerShortcut };
-   for (QWidget* const widget: triggerWidgets)
+   for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
 
-   QWidgetList const emojiWidgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, 
-      ui_.editEmojiLeftDelimiter, ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter };
-   for (QWidget* const widget: emojiWidgets)
+   widgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, ui_.editEmojiLeftDelimiter,
+      ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter };
+   for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.checkEnableEmoji->isChecked());
    
-   QWidgetList const pickerWidgets = { ui_.labelComboPickerShortcut, ui_.editComboPickerShortcut,
-      ui_.buttonChangeComboPickerShortcut, ui_.buttonResetComboPickerShortcut };
-   for (QWidget* const widget: pickerWidgets)
+   widgets = { ui_.labelComboPickerShortcut, ui_.editComboPickerShortcut, ui_.buttonChangeComboPickerShortcut,
+      ui_.buttonResetComboPickerShortcut };
+   for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.checkEnableComboPicker->isChecked());
 
    ui_.frameCustomSound->setEnabled(ui_.checkPlaySoundOnCombo->isChecked());
+
    bool const useCustomSound = ui_.checkUseCustomSound->isChecked();
-   ui_.editCustomSound->setEnabled(useCustomSound);
-   ui_.buttonChangeCustomSound->setEnabled(useCustomSound);
+   widgets = { ui_.editCustomSound, ui_.buttonChangeCustomSound, ui_.buttonPlay };
+   for (QWidget* const widget: widgets)
+      widget->setEnabled(useCustomSound);
 }
 
 
@@ -253,6 +255,15 @@ void PreferencesDialog::onChangeCustomSound() const
    ui_.editCustomSound->setText(QDir::toNativeSeparators(path));
    prefs_.setCustomSoundPath(path);
    ComboManager::instance().loadSoundFromPreferences();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onPlaySoundButton()
+{
+   ComboManager::instance().playSound();
 }
 
 

@@ -101,6 +101,13 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="buttonPlay">
+           <property name="text">
+            <string>&amp;Play</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>
@@ -1208,12 +1215,28 @@
    <slot>onChangeCustomSound()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>639</x>
-     <y>117</y>
+     <x>586</x>
+     <y>132</y>
     </hint>
     <hint type="destinationlabel">
      <x>683</x>
      <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonPlay</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onPlaySoundButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>620</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>686</x>
+     <y>147</y>
     </hint>
    </hints>
   </connection>
@@ -1256,5 +1279,6 @@
   <slot>onCheckWriteDebugLogFile(bool)</slot>
   <slot>onCheckUseCustomSound(bool)</slot>
   <slot>onChangeCustomSound()</slot>
+  <slot>onPlaySoundButton()</slot>
  </slots>
 </ui>
