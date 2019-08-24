@@ -41,6 +41,8 @@ private slots:
    void onCheckAutoCheckForUpdates(bool checked) const; ///< Slot for the 'Auto check for updated' checkbox.
    void onCheckAutoStart(bool checked) const; ///< Slot for the 'Auto start at login' checkbox.
    void onCheckPlaySoundOnCombo(bool checked) const; ///< Slot for the  'Play sound on combo' checkbox.
+   void onCheckUseCustomSound(bool checked) const; ///< Slot for the 'Use custom sound' checkbox.
+   void onChangeCustomSound() const; ///< Slot for the 'Change custom sound' button.
    void onRadioAutomaticComboTrigger(bool checked) const; ///< Slot for the 'Automatic combo trigger' button.
    void onChangeComboTriggerShortcut() const; ///< Slot for the 'Change shortcut' action
    void onResetComboTriggerShortcut() const; ///< Slot for the 'Reset combo trigger shortcut'

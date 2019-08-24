@@ -43,6 +43,7 @@ public: // member functions
    bool loadComboListFromFile(QString* outErrorMsg = nullptr); ///< Load the combo list from the default file
    bool saveComboListToFile(QString* outErrorMsg = nullptr) const; /// Save the combo list to the default location
    bool restoreBackup(QString const& backupFilePath); /// Restore the combo list from a backup file
+   void loadSoundFromPreferences(); ///< Load the combo sound to be played from the preferences
 
 signals:
    void comboListWasLoaded() const; ///< Signal emitted when the combo list has been loaded

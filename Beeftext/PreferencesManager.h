@@ -49,6 +49,10 @@ public: // member functions
    bool autoStartAtLogin() const; ///< Get the value for the 'Autostart at login' preference
    void setPlaySoundOnCombo(bool value) const; ///< Set the value for the 'Play sound on combo' preference
    bool playSoundOnCombo() const; ///< Set the value for the 'Play sound on combo' preference
+   void setUseCustomSound(bool value) const; ///< Set the value for the 'Use custom sound' preference.
+   bool useCustomSound() const; ///< Get the value for the 'Use custom sound' preference.
+   void setCustomSoundPath(QString const& path) const; ///< Get the value for the 'Custom sound path' preferences.
+   QString customSoundPath() const; ///< Set the value for the 'Custom sound path' preferences.
    void setAutoCheckForUpdates(bool value); ///< Set the value for the 'Auto check for updates preference
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
    void setUseClipboardForComboSubstitution(bool value) const; ///< Set the value for the 'Use clipboard for combo substitution' preference

@@ -67,7 +67,6 @@ ComboList const& ComboManager::comboListRef() const
 // 
 //**********************************************************************************************************************
 ComboManager::ComboManager()
-   : sound_(std::make_unique<QSound>(":/MainWindow/Resources/Notification.wav"))
 {
    // We used queued connections to minimize the time spent in the keyboard hook
    InputManager& inputManager = InputManager::instance();
@@ -89,6 +88,7 @@ ComboManager::ComboManager()
    }
    if (!this->loadComboListFromFile(&errMsg))
       QMessageBox::critical(nullptr, tr("Error"), errMsg);
+   this->loadSoundFromPreferences();
 }
 
 
@@ -175,6 +175,21 @@ bool ComboManager::restoreBackup(QString const& backupFilePath)
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the sound was successfully loaded
+//**********************************************************************************************************************
+void ComboManager::loadSoundFromPreferences()
+{
+   PreferencesManager& prefs = PreferencesManager::instance();
+   QString const customSoundPath = prefs.customSoundPath();
+   if (!prefs.playSoundOnCombo() || customSoundPath.isEmpty())
+      sound_.reset();
+   else
+      sound_ = std::make_unique<QSound>(prefs.useCustomSound() ? prefs.customSoundPath() : 
+         ":/MainWindow/Resources/Notification.wav");
+}
+
+
+//**********************************************************************************************************************
 /// \return true if and only if the combo manager is enabled
 //**********************************************************************************************************************
 bool ComboManager::isEnabled()
@@ -254,7 +269,7 @@ bool ComboManager::checkAndPerformComboSubstitution()
 
    SpCombo const combo = result[result.size() > 1 ? rng_.get() % result.size() : 0];
    if ((!isBeeftextTheForegroundApplication()) &&
-      (combo->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()))
+      (combo->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()) && sound_)
       sound_->play(); // in Beeftext windows, substitution is disabled
    this->onComboBreakerTyped();
    return true;
@@ -295,7 +310,7 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
       !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
    {
       performTextSubstitution(keyword.size() + rightDelimiter.size() + leftDelimiter.size(), emoji, -1);
-      if (PreferencesManager::instance().playSoundOnCombo())
+      if (PreferencesManager::instance().playSoundOnCombo() && sound_)
          sound_->play();
       result = true;
    }

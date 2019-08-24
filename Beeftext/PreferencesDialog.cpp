@@ -24,7 +24,14 @@
 
 
 namespace {
+
+
 qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the update check status label is cleared
+
+
+QString soundErrorString() { return QObject::tr("The sound file could not be loaded"); } ///< Return the error string when sound file fails to load.
+
+
 }
 
 
@@ -109,6 +116,9 @@ void PreferencesDialog::loadPreferences() const
    ui_.checkAutoBackup->setChecked(prefs_.autoBackup());
    blocker = QSignalBlocker(ui_.checkWriteDebugLogFile);
    ui_.checkWriteDebugLogFile->setChecked(prefs_.writeDebugLogFile());
+   blocker = QSignalBlocker(ui_.checkUseCustomSound);
+   ui_.checkUseCustomSound->setChecked(prefs_.useCustomSound());
+   ui_.editCustomSound->setText(QDir::toNativeSeparators(prefs_.customSoundPath()));
    this->updateGui();
    // ReSharper restore CppAssignedValueIsNeverUsed
    // ReSharper restore CppEntityAssignedButNoRead
@@ -181,6 +191,11 @@ void PreferencesDialog::updateGui() const
       ui_.buttonChangeComboPickerShortcut, ui_.buttonResetComboPickerShortcut };
    for (QWidget* const widget: pickerWidgets)
       widget->setEnabled(ui_.checkEnableComboPicker->isChecked());
+
+   ui_.frameCustomSound->setEnabled(ui_.checkPlaySoundOnCombo->isChecked());
+   bool const useCustomSound = ui_.checkUseCustomSound->isChecked();
+   ui_.editCustomSound->setEnabled(useCustomSound);
+   ui_.buttonChangeCustomSound->setEnabled(useCustomSound);
 }
 
 
@@ -209,6 +224,35 @@ void PreferencesDialog::onCheckAutoStart(bool checked) const
 void PreferencesDialog::onCheckPlaySoundOnCombo(bool checked) const
 {
    prefs_.setPlaySoundOnCombo(checked);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the check box checked?
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckUseCustomSound(bool checked) const
+{
+   prefs_.setUseCustomSound(checked);
+   ComboManager::instance().loadSoundFromPreferences();
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeCustomSound() const
+{
+   QString const oldPath = prefs_.customSoundPath();
+   QString const path = QFileDialog::getOpenFileName(nullptr, tr("Select custom sound file"),   
+      oldPath.isEmpty() ? QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) : oldPath,
+      tr("WAV files (*.wav);;All files (*.*)"));
+   if (path.isEmpty())
+      return;
+   ui_.editCustomSound->setText(QDir::toNativeSeparators(path));
+   prefs_.setCustomSoundPath(path);
+   ComboManager::instance().loadSoundFromPreferences();
 }
 
 

@@ -26,6 +26,8 @@ QString const kKeySplitterState = "MainWindowSplitterState"; ///< The setting ke
 QString const kKeyLocale = "Locale"; ///< The settings key for the locale
 QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
 QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
+QString const kKeyUseCustomSound = "UseCustomSound"; ///< The settings key for the 'Use custom sound' preference.
+QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for the 'Custom sound path' preference.
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate";
 ///< The settings key for the 'Autostart at login' preference
@@ -66,6 +68,7 @@ QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes";
 QString const kRegKeyComboPickerEnabled = "ComboPickerEnabled";
 ///< The setting key for the 'Combo picker enabled' preference.
 bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
+bool const kDefaultValueUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
 bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
 bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
 bool const kDefaultvalueUseClipboardForComboSubstitution = true;
@@ -165,6 +168,8 @@ void PreferencesManager::reset()
    this->setAutoCheckForUpdates(kDefaultValueAutoCheckForUpdates);
    this->setUseClipboardForComboSubstitution(kDefaultvalueUseClipboardForComboSubstitution);
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
+   this->setUseCustomSound(kDefaultValueUseCustomSound);
+   this->setCustomSoundPath(QString());
    this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
    this->setWarnAboutShortComboKeywords(kDefaultValueWarnAboutShortComboKeyword);
    this->setComboPickerEnabled(kDefaultValueComboPickerEnabled);
@@ -371,6 +376,42 @@ void PreferencesManager::setPlaySoundOnCombo(bool value) const
 bool PreferencesManager::playSoundOnCombo() const
 {
    return this->readSettings<bool>(kKeyPlaySoundOnCombo, kDefaultValuePlaySoundOnCombo);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preferences.
+//**********************************************************************************************************************
+void PreferencesManager::setUseCustomSound(bool value) const
+{
+   settings_->setValue(kKeyUseCustomSound, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::useCustomSound() const
+{
+   return this->readSettings<bool>(kKeyUseCustomSound, kDefaultValueUseCustomSound);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the custom sound file.
+//**********************************************************************************************************************
+void PreferencesManager::setCustomSoundPath(QString const& path) const
+{
+   settings_->setValue(kKeyCustomSoundPath, path);
+}
+
+
+//**********************************************************************************************************************
+/// \return The path of the custom sound file.
+//**********************************************************************************************************************
+QString PreferencesManager::customSoundPath() const
+{
+   return this->readSettings<QString>(kKeyCustomSoundPath, QString());
 }
 
 
