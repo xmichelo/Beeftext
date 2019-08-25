@@ -641,6 +641,8 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       return combo->modificationDateTime();
    case LastUseDateTimeRole:
       return combo->lastUseDateTime();
+   case EnabledRole:
+      return combo->isEnabled();
    default:
       return QVariant();
    }

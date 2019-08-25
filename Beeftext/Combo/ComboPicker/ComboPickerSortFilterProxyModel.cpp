@@ -28,13 +28,16 @@ ComboPickerSortFilterProxyModel::ComboPickerSortFilterProxyModel(QObject* parent
 //**********************************************************************************************************************
 bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex&) const
 {
-   ComboList& combos = ComboManager::instance().comboListRef();
    if (this->filterRegExp().pattern().trimmed().isEmpty())
       return true;
-   for (int col = 0; col < combos.columnCount(QModelIndex()); ++col)
+
+   QAbstractItemModel const* model = this->sourceModel();
+   if ((!model) || (!model->data(model->index(sourceRow, 0, QModelIndex()), ComboList::EnabledRole).toBool()))
+      return false;
+
+   for (int col = 0; col < model->columnCount(QModelIndex()); ++col)
    {
-      SpCombo const& combo = combos[sourceRow];
-      QString const str = combos.data(combos.index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString();
+      QString const str = model->data(model->index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString();
       if (str.contains(this->filterRegExp()))
          return true;
    }
@@ -49,7 +52,6 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
 //**********************************************************************************************************************
 bool ComboPickerSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const
 {
-   ComboList& combos = ComboManager::instance().comboListRef();
    QDateTime lTime = this->sourceModel()->data(sourceLeft, ComboList::LastUseDateTimeRole).toDateTime();
    if (lTime.isNull())
       lTime = QDateTime::fromSecsSinceEpoch(0);

@@ -35,7 +35,8 @@ public: // type definitions
       SnippetRole, ///< The model role for snippets.
       CreationDateTimeRole, ///< The model role for creation date
       ModificationDateTimeRole, ///< The model role for modification date
-      LastUseDateTimeRole ///< The model role for last usage date.
+      LastUseDateTimeRole, ///< The model role for last usage date.
+      EnabledRole ///< The model role for the enabled/disabled status.
    };
 
 public: // static data members

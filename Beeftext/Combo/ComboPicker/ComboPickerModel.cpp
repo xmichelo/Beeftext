@@ -40,17 +40,13 @@ int ComboPickerModel::rowCount(const QModelIndex& parent) const
 //**********************************************************************************************************************
 QVariant ComboPickerModel::data(const QModelIndex& index, int role) const
 {
+   ComboList const& comboList = ComboManager::instance().comboListRef();
    switch (role)
    {
-   case Qt::DisplayRole:
-   case ComboList::KeywordRole:
-      return ComboManager::instance().comboListRef().data(index, role).toString();
    case Qt::ToolTipRole:
-      return ComboManager::instance().comboListRef().data(index, ComboList::SnippetRole).toString();
-   case ComboList::LastUseDateTimeRole:
-      return ComboManager::instance().comboListRef().data(index, ComboList::LastUseDateTimeRole).toDateTime();
+      return comboList.data(index, ComboList::SnippetRole);
    default:
-      return QVariant();
+      return comboList.data(index, role);
    }
 }
 
