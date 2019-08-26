@@ -28,7 +28,7 @@
 !define WEBSITE "https://beeftext.org"
 !define AUTHOR "Xavier Michelon"
 !define COMPANY "beeftext.org"
-!define VERSION_MAJOR 4
+!define VERSION_MAJOR 5
 !define VERSION_MINOR 0
 !define APP_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}"
 !define LEFT_IMAGE_PATH "${RESOURCES_DIR}\installerLeftImage.bmp"
