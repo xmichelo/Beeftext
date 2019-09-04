@@ -171,23 +171,26 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       }
       else
       {
+         QList<quint16> pressedModifiers;
          // we simulate the typing of the snippet text
-         QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          for (QChar c: newText)
          {
             if (c == QChar::LineFeed)
                // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
             {
+               pressedModifiers = backupAndReleaseModifierKeys();
                synthesizeKeyDownAndUp(VK_RETURN);
+               restoreModifierKeys(pressedModifiers);
                waitBetweenKeystrokes();
             }
             else
             {
+               pressedModifiers = backupAndReleaseModifierKeys();
                synthesizeUnicodeKeyDownAndUp(c.unicode());
+               restoreModifierKeys(pressedModifiers);
                waitBetweenKeystrokes();
             }
          }
-         restoreModifierKeys(pressedModifiers);
       }
 
       // position the cursor if needed by typing the right amount of left key strokes
