@@ -218,7 +218,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Overwrite %1 newer conflicting combos.</source>
-        <translation>Перезаписать %1 новых конфликтующих шаблонов.</translation>
+        <translation type="vanished">Перезаписать %1 новых конфликтующих шаблонов.</translation>
     </message>
     <message>
         <source>Import options</source>
@@ -262,7 +262,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Overwrite 1 newer conflicting combo.</source>
-        <translation>Перезаписать 1 новый конфликтующий шаблон.</translation>
+        <translation type="vanished">Перезаписать 1 новый конфликтующий шаблон.</translation>
     </message>
     <message>
         <source>Import into group</source>
@@ -270,7 +270,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Combo file</source>
-        <translation>Файл шаблонов</translation>
+        <translation type="vanished">Файл шаблонов</translation>
     </message>
     <message>
         <source>Skip %1 conflicting combos.</source>
@@ -296,6 +296,22 @@ Do you want to continue anymay?</source>
         <source>%1 combo(s) could not be imported.</source>
         <translation>%1 шаблонов не удалось импортировать.</translation>
     </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overwrite %1 older conflicting combos.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overwrite 1 older conflicting combo.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ComboList</name>
@@ -310,6 +326,18 @@ Do you want to continue anymay?</source>
     <message>
         <source>Snippet</source>
         <translation>Фраза</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last Used</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -541,6 +569,10 @@ Do you want to continue anymay?</source>
         <source>Copy Snippet</source>
         <translation>Копировать фразу</translation>
     </message>
+    <message>
+        <source>Nothing to export.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GroupDialog</name>
@@ -654,6 +686,10 @@ Do you want to continue anymay?</source>
         <translation>&amp;Помощь</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
         <source>&amp;Getting Started</source>
         <translation>&amp;Начало работы</translation>
     </message>
@@ -678,6 +714,10 @@ Do you want to continue anymay?</source>
         <translation>&amp;О Beeftext</translation>
     </message>
     <message>
+        <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
+        <translation>Если вы восстановите резервную копию, все ваши текущие шаблоны будут удалены и заменены содержимым из резервной копии.</translation>
+    </message>
+    <message>
         <source> - Portable Edition</source>
         <translation> - Портативная версия</translation>
     </message>
@@ -698,12 +738,24 @@ Do you want to continue anymay?</source>
         <translation>Ctrl+Shift+F1</translation>
     </message>
     <message>
+        <source>Backup</source>
+        <translation>Резервная копия</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
         <source>Ctrl+,</source>
         <translation>Ctrl+,</translation>
     </message>
     <message>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
+    </message>
+    <message>
+        <source>Backup the combo list.</source>
+        <translation>Создать резервную копию списка шаблонов.</translation>
     </message>
     <message>
         <source> - PAUSED</source>
@@ -720,6 +772,26 @@ Do you want to continue anymay?</source>
     <message>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Beeftext в Википедии</translation>
+    </message>
+    <message>
+        <source>Restore the combo list from a backup.</source>
+        <translation>Восстановить список шаблонов из резервной копии.</translation>
+    </message>
+    <message>
+        <source>&amp;Restore</source>
+        <translation>&amp;Восстановить</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation>Восстановить</translation>
+    </message>
+    <message>
+        <source>JSON Files (*.json);;All Files (*.*)</source>
+        <translation>JSON-файлы (*.json);;Все файлы (*.*)</translation>
+    </message>
+    <message>
+        <source>&amp;Backup</source>
+        <translation>&amp;Резервная копия</translation>
     </message>
     <message>
         <source>Ctrl+F1</source>
@@ -749,46 +821,6 @@ Do you want to continue anymay?</source>
         <source>&amp;Release Notes</source>
         <translation>&amp;Примечания к выпуску</translation>
     </message>
-    <message>
-        <source>&amp;Backup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Backup the combo list.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation type="unfinished">&amp;Восстановить</translation>
-    </message>
-    <message>
-        <source>Restore the combo list from a backup.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Backup</source>
-        <translation type="unfinished">Резервная копия</translation>
-    </message>
-    <message>
-        <source>JSON Files (*.json);;All Files (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="unfinished">Ошибка</translation>
-    </message>
-    <message>
-        <source>Restore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
-    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -797,16 +829,8 @@ Do you want to continue anymay?</source>
         <translation>мс</translation>
     </message>
     <message>
-        <source>&amp;OK</source>
-        <translation type="vanished">&amp;ОК</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="vanished">Ошибка</translation>
-    </message>
-    <message>
-        <source>Delete Backup Files?</source>
-        <translation type="vanished">Удалить файлы резервных копий?</translation>
+        <source>O&amp;pen</source>
+        <translation>&amp;Открыть</translation>
     </message>
     <message>
         <source>Reset the preferences to their default values.</source>
@@ -825,20 +849,12 @@ Do you want to continue anymay?</source>
         <translation>&amp;Воспроизводить звук для шаблона</translation>
     </message>
     <message>
-        <source>&amp;Apply</source>
-        <translation type="vanished">&amp;Применить</translation>
+        <source>&amp;Close</source>
+        <translation>&amp;Закрыть</translation>
     </message>
     <message>
-        <source>A new version is available.</source>
-        <translation type="vanished">Доступна новая версия.</translation>
-    </message>
-    <message>
-        <source>Update check failed.</source>
-        <translation type="vanished">Ошибка проверки обновления.</translation>
-    </message>
-    <message>
-        <source>Reset Warnings</source>
-        <translation type="vanished">Сбросить предупреждения</translation>
+        <source>Combo picker</source>
+        <translation>Средство выбора шаблонов</translation>
     </message>
     <message>
         <source>Emojis</source>
@@ -847,10 +863,6 @@ Do you want to continue anymay?</source>
     <message>
         <source>Combo triggering</source>
         <translation>Запуск шаблонов</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset all warnings?</source>
-        <translation type="vanished">Точно хотите сбросить все предупреждения?</translation>
     </message>
     <message>
         <source>C&amp;hange</source>
@@ -869,16 +881,16 @@ Do you want to continue anymay?</source>
         <translation>Вручную (горячие клавиши)</translation>
     </message>
     <message>
+        <source>Write debug events in a log file</source>
+        <translation>Записывать события отладки в файл журнала</translation>
+    </message>
+    <message>
         <source>De&amp;fault</source>
         <translation>&amp;По умолчанию</translation>
     </message>
     <message>
         <source>Automatically backup combo list files</source>
         <translation>Автоматическое резервное копирование файлов со списком шаблонов</translation>
-    </message>
-    <message>
-        <source>%1 v%2.%3 is available.</source>
-        <translation type="vanished">%1 v%2.%3 доступна.</translation>
     </message>
     <message>
         <source>Combo list folder</source>
@@ -893,10 +905,6 @@ Do you want to continue anymay?</source>
         <translation>&amp;Восстановить</translation>
     </message>
     <message>
-        <source>&amp;Automatically start %1 at login</source>
-        <translation type="vanished">&amp;Автозапуск %1 при входе в систему</translation>
-    </message>
-    <message>
         <source>Left delimiter</source>
         <translation>Левый разделитель</translation>
     </message>
@@ -907,18 +915,6 @@ Do you want to continue anymay?</source>
     <message>
         <source>Use custom theme</source>
         <translation>Использовать пользовательскую тему</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset the preferences to their default values?</source>
-        <translation type="vanished">Хотите сбросить настройки до значений по умолчанию?</translation>
-    </message>
-    <message>
-        <source>Reset Preferences</source>
-        <translation type="vanished">Сбросить настройки</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="vanished">&amp;Отмена</translation>
     </message>
     <message>
         <source>Delay between simulated keystrokes</source>
@@ -949,10 +945,6 @@ Do you want to continue anymay?</source>
         <translation>&amp;Проверить сейчас</translation>
     </message>
     <message>
-        <source>Do you want to delete all the backup files?</source>
-        <translation type="vanished">Хотите удалить все резервные файлы?</translation>
-    </message>
-    <message>
         <source>Advanced</source>
         <translation>Дополнительно</translation>
     </message>
@@ -969,52 +961,36 @@ Do you want to continue anymay?</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <source>The combo list folder could not be changed. The other settings were saved successfully.</source>
-        <translation type="vanished">Папка списка шаблонов не может быть изменена. Другие настройки были успешно сохранены.</translation>
+        <source>Enable combo picker</source>
+        <translation>Включить средство выбора шаблонов</translation>
     </message>
     <message>
         <source>Restore a backup.</source>
         <translation>Восстановление резервной копии.</translation>
     </message>
     <message>
-        <source>The software is up to date.</source>
-        <translation type="vanished">Версия актуальна.</translation>
-    </message>
-    <message>
         <source>Right delimiter</source>
         <translation>Правый разделитель</translation>
     </message>
     <message>
-        <source>Select folder</source>
-        <translation type="vanished">Выберите папку</translation>
+        <source>Shortcut</source>
+        <translation>Ярлык</translation>
     </message>
     <message>
         <source>Automatically check for &amp;updates</source>
         <translation>&amp;Автоматическая проверка обновлений</translation>
     </message>
     <message>
-        <source>Combo picker</source>
+        <source>Use custom sound</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable combo picker</source>
+        <source>Cha&amp;nge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Shortcut</source>
+        <source>&amp;Play</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="unfinished">&amp;Закрыть</translation>
     </message>
 </context>
 <context>
@@ -1121,9 +1097,13 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>Не удалось сохранить файл эмодзи исключенных приложений.</translation>
     </message>
     <message>
+        <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Move To</source>
         <comment>Move entry in the Combo context menu</comment>
-        <translation>Переместить в</translation>
+        <translation type="unfinished">Переместить в</translation>
     </message>
 </context>
 <context>
