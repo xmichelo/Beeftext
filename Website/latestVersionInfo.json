@@ -1,8 +1,8 @@
 {
    "versionMajor": 5,
-   "versionMinor": 0,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v5.0/Beeftext-5.0-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v5.0",
-   "sha256Sum": "252f915cc7f965017dcb56b8ceb9d5da6231c062e9b7d0a932c90e34f5383be7",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v4.0 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>Combos can be imported from other applications via the CSV format (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/104\">#104</a>).  More information about import export can be found in the <a href=\"https://github.com/xmichelo/Beeftext/wiki/Import-and-export\">wiki</a>.</li><li>A custom sound can be played when expanding a combo (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/184\">#184</a>).</li><li>The width of the 'Groups' list is now memorized by by the application (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/183\">#183</a>).</li><li>New columns for creation/modification/last usage dates are available in the main window (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/181\">#181</a>).</li><li>The default combo picker shortcut for Windows 7 is now Ctrl+Win+B (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/175\">#175</a>).</li><li>The combo file is not saved after every combo invocation anymore (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/179\">#179</a>).</li><li>Disabled combos do not appear in the combo picker anymore (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/185\">#185</a>).</li></ul></body></html>"
+   "versionMinor": 1,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v5.1/Beeftext-5.1-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v5.1",
+   "sha256Sum": "1edf78d2549493fbfa079f7a2bdbce81d41363815f383378826120e8b0f019e1",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head> <title>Beeftext v5.1 Release Notes</title> <style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body>This bugfix release adds missing French translations.</body></html>"
 }
