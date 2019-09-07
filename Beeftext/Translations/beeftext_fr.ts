@@ -1444,7 +1444,7 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     <message>
         <location filename="../BeeftextConstants.cpp" line="26"/>
         <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
-        <translation>Fichers JSON &amp; CSV (*.json *.csv);;Fichiers JSON (*.json);;Fichiers CSV (*.csv);;Tous les fichiers (*.*)</translation>
+        <translation>Fichiers JSON &amp; CSV (*.json *.csv);;Fichiers JSON (*.json);;Fichiers CSV (*.csv);;Tous les fichiers (*.*)</translation>
     </message>
     <message>
         <location filename="../Group/GroupList.cpp" line="19"/>

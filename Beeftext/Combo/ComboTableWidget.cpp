@@ -646,7 +646,7 @@ void ComboTableWidget::onActionExportCombo()
 
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getSaveFileName(this, tr("Export Combos"), prefs.lastComboImportExportPath(),
-      constants::kJsonCsvFileDialogFilter);
+      constants::kJsonCsvFileDialogFilter());
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);
@@ -684,7 +684,7 @@ void ComboTableWidget::onActionExportAllCombos()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), prefs.lastComboImportExportPath(),
-      constants::kJsonCsvFileDialogFilter);
+      constants::kJsonCsvFileDialogFilter());
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);

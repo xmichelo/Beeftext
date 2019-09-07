@@ -253,7 +253,7 @@ void ComboImportDialog::onActionBrowse()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), prefs.lastComboImportExportPath(),
-      ::constants::kJsonCsvFileDialogFilter);
+      ::constants::kJsonCsvFileDialogFilter());
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);
