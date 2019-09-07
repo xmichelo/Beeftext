@@ -48,7 +48,7 @@
       <item>
        <widget class="QCheckBox" name="checkAutoStart">
         <property name="text">
-         <string notr="true">Automatically &amp;start &lt;AppName&gt; at login</string>
+         <string>&amp;Automatically start Beeftext at login</string>
         </property>
        </widget>
       </item>

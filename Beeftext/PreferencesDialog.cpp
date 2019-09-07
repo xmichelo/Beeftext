@@ -29,7 +29,6 @@ namespace {
 qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the update check status label is cleared
 
 
-QString soundErrorString() { return QObject::tr("The sound file could not be loaded"); } ///< Return the error string when sound file fails to load.
 
 
 }
@@ -46,7 +45,6 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    this->updateCheckStatusTimer_.setSingleShot(true);
    connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
    ui_.labelUpdateCheckStatus->setText(QString());
-   ui_.checkAutoStart->setText(tr("&Automatically start %1 at login").arg(constants::kApplicationName));
    ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(), 
       PreferencesManager::maxDelayBetweenKeystrokesMs());
    I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);

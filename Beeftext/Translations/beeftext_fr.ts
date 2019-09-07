@@ -1123,6 +1123,11 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Déclenchement des combos</translation>
     </message>
     <message>
+        <location filename="../PreferencesDialog.ui" line="51"/>
+        <source>&amp;Automatically start Beeftext at login</source>
+        <translation>&amp;Démarrer Beeftext automatiquement à la connexion</translation>
+    </message>
+    <message>
         <location filename="../PreferencesDialog.ui" line="86"/>
         <source>Use custom sound</source>
         <translation>Utiliser un son personnalisé</translation>
@@ -1445,6 +1450,10 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <location filename="../BeeftextConstants.cpp" line="26"/>
         <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
         <translation>Fichiers JSON &amp; CSV (*.json *.csv);;Fichiers JSON (*.json);;Fichiers CSV (*.csv);;Tous les fichiers (*.*)</translation>
+    </message>
+    <message>
+        <source>&amp;Automatically start %1 at login</source>
+        <translation type="vanished">&amp;Démarrer %1 automatiquement à la connexion</translation>
     </message>
     <message>
         <location filename="../Group/GroupList.cpp" line="19"/>

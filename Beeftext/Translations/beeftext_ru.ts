@@ -992,6 +992,10 @@ Do you want to continue anymay?</source>
         <source>&amp;Play</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Automatically start Beeftext at login</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
