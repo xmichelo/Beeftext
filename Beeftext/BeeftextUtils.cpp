@@ -151,11 +151,9 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
    // we disable the hook to prevent endless recursive substitution
    try
    {
-
       // we erase the combo
       synthesizeBackspaces(qMax<qint32>(charCount, 0));
-      if (PreferencesManager::instance().useClipboardForComboSubstitution()
-         && !SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
+      if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();

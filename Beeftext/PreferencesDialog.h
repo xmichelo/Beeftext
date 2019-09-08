@@ -56,7 +56,6 @@ private slots:
    void onEmojiRightDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji right delimiter.
    void onComboLanguageValueChanged(int index) const; ///< Slot for the change of the value in the language combo.
    void onCheckUseCustomTheme(bool checked) const; ///< Slot for the 'Use custom theme' checkbox.
-   void onCheckUseClipboardForComboSubstitution(bool checked) const; ///< Slot for the 'Use clipbboard for combo substitution' checkbox
    void onSpinDelayBetweenKeystrokesChanged(int value) const; ///< Slot for the 'Delay between keystrokes' spin value change.
    void onChangeComboListFolder(); ///< Slot for the 'Change combo list folder' action
    void onResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action

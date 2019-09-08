@@ -470,29 +470,6 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
-         <widget class="QCheckBox" name="checkUseClipboardForComboSubstitution">
-          <property name="text">
-           <string>Use clipboard for combo substitution</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_8">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>10</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <widget class="QPushButton" name="buttonSensitiveApplications">
           <property name="text">
            <string>Sensitive Applications</string>
@@ -745,7 +722,6 @@
   <tabstop>editEmojiRightDelimiter</tabstop>
   <tabstop>comboLocale</tabstop>
   <tabstop>checkUseCustomTheme</tabstop>
-  <tabstop>checkUseClipboardForComboSubstitution</tabstop>
   <tabstop>buttonSensitiveApplications</tabstop>
   <tabstop>spinDelayBetweenKeystrokes</tabstop>
   <tabstop>editComboListFolder</tabstop>
@@ -913,22 +889,6 @@
     <hint type="sourcelabel">
      <x>359</x>
      <y>544</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>358</x>
-     <y>270</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkUseClipboardForComboSubstitution</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckUseClipboardForComboSubstitution(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>178</x>
-     <y>541</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -1247,7 +1207,6 @@
   <slot>onPlaySoundOnComboCheckChanged()</slot>
   <slot>onAutoStartCheckChanged()</slot>
   <slot>onAutoCheckForUpdatesCheckChanged()</slot>
-  <slot>onUseClipboardForComboSubstitutionCheckChanged()</slot>
   <slot>onUseCustomThemeCheckChanged()</slot>
   <slot>onChangeComboListFolder()</slot>
   <slot>onResetComboListFolder()</slot>
@@ -1273,7 +1232,6 @@
   <slot>onEmojiRightDelimiterChanged(QString)</slot>
   <slot>onComboLanguageValueChanged(int)</slot>
   <slot>onCheckUseCustomTheme(bool)</slot>
-  <slot>onCheckUseClipboardForComboSubstitution(bool)</slot>
   <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
   <slot>onCheckAutoBackup(bool)</slot>
   <slot>onCheckWriteDebugLogFile(bool)</slot>

@@ -55,8 +55,6 @@ public: // member functions
    QString customSoundPath() const; ///< Set the value for the 'Custom sound path' preferences.
    void setAutoCheckForUpdates(bool value); ///< Set the value for the 'Auto check for updates preference
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
-   void setUseClipboardForComboSubstitution(bool value) const; ///< Set the value for the 'Use clipboard for combo substitution' preference
-   bool useClipboardForComboSubstitution() const; ///< Get the value for the 'Use clipboard for combo substitution' preference
    void setUseCustomTheme(bool value) const; ///< Set the value for the 'Use custom theme' preference
    bool useCustomTheme() const; ///< Get the value for the 'Use custom theme' preference
    void setUseAutomaticSubstitution(bool value); ///< Set the value for the 'Use automatic substitution' preference

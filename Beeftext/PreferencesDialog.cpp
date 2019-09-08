@@ -106,8 +106,6 @@ void PreferencesDialog::loadPreferences() const
    I18nManager::selectLocaleInCombo(prefs_.locale(), *ui_.comboLocale);
    blocker = QSignalBlocker(ui_.checkUseCustomTheme);
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
-   blocker = QSignalBlocker(ui_.checkUseClipboardForComboSubstitution);
-   ui_.checkUseClipboardForComboSubstitution->setChecked(prefs_.useClipboardForComboSubstitution());
    blocker = QSignalBlocker(ui_.spinDelayBetweenKeystrokes);
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
@@ -173,7 +171,6 @@ void PreferencesDialog::changeEvent(QEvent* event)
 void PreferencesDialog::updateGui() const
 {
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
-   ui_.buttonSensitiveApplications->setEnabled(ui_.checkUseClipboardForComboSubstitution->isChecked());
 
    QWidgetList widgets = { ui_.editComboTriggerShortcut, ui_.buttonChangeComboTriggerShortcut, 
       ui_.buttonResetComboTriggerShortcut };
@@ -399,16 +396,6 @@ void PreferencesDialog::onComboLanguageValueChanged(int index) const
 void PreferencesDialog::onCheckUseCustomTheme(bool checked) const
 {
    prefs_.setUseCustomTheme(checked);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked?
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckUseClipboardForComboSubstitution(bool checked) const
-{
-   prefs_.setUseClipboardForComboSubstitution(checked);
-   this->updateGui();
 }
 
 

@@ -22,7 +22,8 @@ QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for
 QString const kKeyFileMarkedForDeletion = "markedForDeletion";
 ///< The path of the file marked for deletion on next application startup
 QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
-QString const kKeySplitterState = "MainWindowSplitterState"; ///< The setting key for storing the main window splitter state.
+QString const kKeySplitterState = "MainWindowSplitterState";
+///< The setting key for storing the main window splitter state.
 QString const kKeyLocale = "Locale"; ///< The settings key for the locale
 QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
 QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
@@ -31,8 +32,6 @@ QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate";
 ///< The settings key for the 'Autostart at login' preference
-QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution";
-///< The setting key for the 'Use clipboard for combo substitution' preference
 QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
 QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution";
 ///< The setting key for the 'Use automatic substitution' preference
@@ -71,7 +70,6 @@ bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 
 bool const kDefaultValueUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
 bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
 bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
-bool const kDefaultvalueUseClipboardForComboSubstitution = true;
 ///< The default value for the 'Use clipboard for combo substitution' preference
 bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
 bool const kDefaultValueUseAutomaticSubstitution = true;
@@ -166,7 +164,6 @@ void PreferencesManager::reset()
 {
    this->setPlaySoundOnCombo(kDefaultValuePlaySoundOnCombo);
    this->setAutoCheckForUpdates(kDefaultValueAutoCheckForUpdates);
-   this->setUseClipboardForComboSubstitution(kDefaultvalueUseClipboardForComboSubstitution);
    this->setUseCustomTheme(kDefaultValueUseCustomTheme);
    this->setUseCustomSound(kDefaultValueUseCustomSound);
    this->setCustomSoundPath(QString());
@@ -433,24 +430,6 @@ void PreferencesManager::setAutoCheckForUpdates(bool value)
 bool PreferencesManager::autoCheckForUpdates() const
 {
    return this->readSettings<bool>(kKeyAutoCheckForUpdates, kDefaultValueAutoCheckForUpdates);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] value The value for the preference
-//**********************************************************************************************************************
-void PreferencesManager::setUseClipboardForComboSubstitution(bool value) const
-{
-   settings_->setValue(kKeyUseClipboardForComboSubstitution, value);
-}
-
-
-//**********************************************************************************************************************
-/// \return The value for the preference
-//**********************************************************************************************************************
-bool PreferencesManager::useClipboardForComboSubstitution() const
-{
-   return this->readSettings<bool>(kKeyUseClipboardForComboSubstitution, kDefaultvalueUseClipboardForComboSubstitution);
 }
 
 
