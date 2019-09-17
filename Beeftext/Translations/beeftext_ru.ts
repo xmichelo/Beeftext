@@ -209,16 +209,16 @@ Do you want to continue anymay?</source>
 <context>
     <name>ComboImportDialog</name>
     <message>
+        <source>File</source>
+        <translation>Файл</translation>
+    </message>
+    <message>
         <source>Overwrite 1 conflicting combo.</source>
         <translation>Перезаписать 1 конфликтующий шаблон.</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Ошибка</translation>
-    </message>
-    <message>
-        <source>Overwrite %1 newer conflicting combos.</source>
-        <translation type="vanished">Перезаписать %1 новых конфликтующих шаблонов.</translation>
     </message>
     <message>
         <source>Import options</source>
@@ -242,7 +242,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>%1 combos will be imported.</source>
-        <translation>%1 шаблонов будет импортировано.</translation>
+        <translation>%1 шаблонов будет импортировано</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -261,16 +261,12 @@ Do you want to continue anymay?</source>
         <translation>Игнорировать 1 конфликтующий шаблон.</translation>
     </message>
     <message>
-        <source>Overwrite 1 newer conflicting combo.</source>
-        <translation type="vanished">Перезаписать 1 новый конфликтующий шаблон.</translation>
+        <source>Overwrite 1 older conflicting combo.</source>
+        <translation>Перезаписать 1 более старый конфликтующий шаблон.</translation>
     </message>
     <message>
         <source>Import into group</source>
         <translation>Импорт в группу</translation>
-    </message>
-    <message>
-        <source>Combo file</source>
-        <translation type="vanished">Файл шаблонов</translation>
     </message>
     <message>
         <source>Skip %1 conflicting combos.</source>
@@ -293,24 +289,16 @@ Do you want to continue anymay?</source>
         <translation>Выберите действительную группу.</translation>
     </message>
     <message>
+        <source>Overwrite %1 older conflicting combos.</source>
+        <translation>Перезаписать %1 старых конфликтующих шаблонов</translation>
+    </message>
+    <message>
         <source>%1 combo(s) could not be imported.</source>
         <translation>%1 шаблонов не удалось импортировать.</translation>
     </message>
     <message>
-        <source>File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Overwrite %1 older conflicting combos.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Overwrite 1 older conflicting combo.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Импорт и экспорт#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Поддерживаемые форматы файлов&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -324,20 +312,20 @@ Do you want to continue anymay?</source>
         <translation>Ярлык</translation>
     </message>
     <message>
+        <source>Modified</source>
+        <translation>Изменен</translation>
+    </message>
+    <message>
         <source>Snippet</source>
         <translation>Фраза</translation>
     </message>
     <message>
-        <source>Created</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Modified</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Last Used</source>
-        <translation type="unfinished"></translation>
+        <translation>Последнее использование</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>Создан</translation>
     </message>
 </context>
 <context>
@@ -546,6 +534,10 @@ Do you want to continue anymay?</source>
         <translation>Не удалось сохранить файл списка шаблонов.</translation>
     </message>
     <message>
+        <source>Nothing to export.</source>
+        <translation>Нечего экспортировать.</translation>
+    </message>
+    <message>
         <source>Ctrl+Shift+L</source>
         <translation>Ctrl+Shift+L</translation>
     </message>
@@ -568,10 +560,6 @@ Do you want to continue anymay?</source>
     <message>
         <source>Copy Snippet</source>
         <translation>Копировать фразу</translation>
-    </message>
-    <message>
-        <source>Nothing to export.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -829,6 +817,10 @@ Do you want to continue anymay?</source>
         <translation>мс</translation>
     </message>
     <message>
+        <source>&amp;Play</source>
+        <translation>&amp;Воспроизвести</translation>
+    </message>
+    <message>
         <source>O&amp;pen</source>
         <translation>&amp;Открыть</translation>
     </message>
@@ -838,7 +830,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Use clipboard for combo substitution</source>
-        <translation>Использовать буфер обмена для замещения в шаблонах</translation>
+        <translation type="vanished">Использовать буфер обмена для замещения в шаблонах</translation>
     </message>
     <message>
         <source>Reset &amp;Warnings</source>
@@ -851,6 +843,10 @@ Do you want to continue anymay?</source>
     <message>
         <source>&amp;Close</source>
         <translation>&amp;Закрыть</translation>
+    </message>
+    <message>
+        <source>&amp;Automatically start Beeftext at login</source>
+        <translation>&amp;Автозапуск Beeftext при входе в систему</translation>
     </message>
     <message>
         <source>Combo picker</source>
@@ -913,8 +909,16 @@ Do you want to continue anymay?</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
+        <source>Use custom sound</source>
+        <translation>Использовать пользовательский звук</translation>
+    </message>
+    <message>
         <source>Use custom theme</source>
         <translation>Использовать пользовательскую тему</translation>
+    </message>
+    <message>
+        <source>Cha&amp;nge</source>
+        <translation>&amp;Изменить</translation>
     </message>
     <message>
         <source>Delay between simulated keystrokes</source>
@@ -979,22 +983,6 @@ Do you want to continue anymay?</source>
     <message>
         <source>Automatically check for &amp;updates</source>
         <translation>&amp;Автоматическая проверка обновлений</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1073,6 +1061,10 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>Группа по умолчанию.</translation>
     </message>
     <message>
+        <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
+        <translation>JSON и CSV файлы (*.json *.csv);;JSON файлы (*.json);;CSV файлы (*.csv);;Все файлы (*.*)</translation>
+    </message>
+    <message>
         <source>The sensitive application file could not be saved.</source>
         <translation>Не удалось сохранить файл затрагиваемого приложения.</translation>
     </message>
@@ -1101,13 +1093,9 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>Не удалось сохранить файл эмодзи исключенных приложений.</translation>
     </message>
     <message>
-        <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Move To</source>
         <comment>Move entry in the Combo context menu</comment>
-        <translation type="unfinished">Переместить в</translation>
+        <translation>Переместить в</translation>
     </message>
 </context>
 <context>

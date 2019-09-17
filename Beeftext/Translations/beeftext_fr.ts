@@ -1220,83 +1220,82 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Avancé</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="475"/>
         <source>Use clipboard for combo substitution</source>
-        <translation>Utiliser le presse-papier pour la substitution des combos</translation>
+        <translation type="vanished">Utiliser le presse-papier pour la substitution des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="498"/>
+        <location filename="../PreferencesDialog.ui" line="475"/>
         <source>Sensitive Applications</source>
         <translation>Applications Sensibles</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="525"/>
+        <location filename="../PreferencesDialog.ui" line="502"/>
         <source>Delay between simulated keystrokes</source>
         <translation>Délai entre les frappes de touches simulées</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="532"/>
+        <location filename="../PreferencesDialog.ui" line="509"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="581"/>
+        <location filename="../PreferencesDialog.ui" line="558"/>
         <source>Combo list folder</source>
         <translation>Dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="595"/>
+        <location filename="../PreferencesDialog.ui" line="572"/>
         <source>&amp;Change</source>
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="602"/>
+        <location filename="../PreferencesDialog.ui" line="579"/>
         <source>O&amp;pen</source>
         <translation>O&amp;uvrir</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="609"/>
+        <location filename="../PreferencesDialog.ui" line="586"/>
         <source>D&amp;efault</source>
         <translation>Par D&amp;éfaut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="621"/>
+        <location filename="../PreferencesDialog.ui" line="598"/>
         <source>Automatically backup combo list files</source>
         <translation>Faire des copies de sauvegarde automatique de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="628"/>
+        <location filename="../PreferencesDialog.ui" line="605"/>
         <source>Restore a backup.</source>
         <translation>Restaurer une sauvegarde.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="631"/>
+        <location filename="../PreferencesDialog.ui" line="608"/>
         <source>&amp;Restore</source>
         <translation>&amp;Restaurer</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="653"/>
+        <location filename="../PreferencesDialog.ui" line="630"/>
         <source>Write debug events in a log file</source>
         <translation>Écrire les évènements de débogage dans un fichier journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="681"/>
-        <location filename="../PreferencesDialog.ui" line="694"/>
+        <location filename="../PreferencesDialog.ui" line="658"/>
+        <location filename="../PreferencesDialog.ui" line="671"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="684"/>
+        <location filename="../PreferencesDialog.ui" line="661"/>
         <source>&amp;Default</source>
         <translation>Par &amp;Défaut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="697"/>
+        <location filename="../PreferencesDialog.ui" line="674"/>
         <source>Reset &amp;Warnings</source>
         <translation>Réactiver les A&amp;vertissements</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="720"/>
+        <location filename="../PreferencesDialog.ui" line="697"/>
         <source>&amp;Close</source>
         <translation>&amp;Fermer</translation>
     </message>
@@ -1394,7 +1393,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="222"/>
+        <location filename="../BeeftextUtils.cpp" line="220"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="260"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
