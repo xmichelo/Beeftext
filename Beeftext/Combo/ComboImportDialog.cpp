@@ -38,7 +38,9 @@ void loadCombosFromCsvFile(QString const& filePath, ComboList& outResult)
          continue;
       QString const name = row[2].trimmed();
       QString const keyword = row[0];
-      SpCombo const combo = std::make_shared<Combo>(name.isEmpty() ? keyword : name, keyword, row[1], false, true);
+      QString const snippet = row[1];
+      SpCombo const combo = std::make_shared<Combo>(name.isEmpty() ? keyword : name, keyword, snippet, 
+         Qt::mightBeRichText(snippet), false, true);
       if (combo->isValid())
          outResult.push_back(combo);
    }

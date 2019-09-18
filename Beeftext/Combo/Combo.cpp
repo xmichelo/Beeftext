@@ -27,6 +27,7 @@ QString const kPropComboText = "comboText"; ///< The JSON property for the "comb
 QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
 QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
 QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
+QString const kPropUseRichText = "useRichText"; ///< The JSON property for the "Use Richt Text" property, introduced in file format v7
 QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option
 QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
 QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
@@ -46,11 +47,13 @@ QString const kPropEnabled = "enabled"; ///< The JSON property name for the enab
 /// \param[in] useLooseMatching Should the combo use loose matching
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString name, QString keyword, QString snippet, bool const useLooseMatching, bool const enabled)
+Combo::Combo(QString name, QString keyword, QString snippet, bool useRichText, bool const useLooseMatching, 
+   bool const enabled)
    : uuid_(QUuid::createUuid())
    , name_(std::move(name))
    , keyword_(std::move(keyword))
    , snippet_(std::move(snippet))
+   , useRichText_(useRichText)
    , useLooseMatching_(useLooseMatching)
    , enabled_(enabled)
 
@@ -68,14 +71,15 @@ Combo::Combo(QString name, QString keyword, QString snippet, bool const useLoose
 Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups)
    : uuid_(QUuid(object[kPropUuid].toString()))
    , name_(object[kPropName].toString())
-   ,  keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
-   ,  snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
-   ,  useLooseMatching_(object[kPropUseLooseMatching].toBool(false))
-   ,  creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
+   , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
+   , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
+   , useRichText_(object[kPropUseRichText].toBool(false))
+   , useLooseMatching_(object[kPropUseLooseMatching].toBool(false))
+   , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
          kPropCreated].toString(), constants::kJsonExportDateFormat))
-   ,  modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
+   , modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
          kPropLastModified].toString(), constants::kJsonExportDateFormat))
-   ,  enabled_(object[kPropEnabled].toBool(true))
+   , enabled_(object[kPropEnabled].toBool(true))
 {
    if (object.contains(kPropGroup))
    {
@@ -176,6 +180,24 @@ void Combo::setSnippet(QString const& snippet)
       snippet_ = snippet;
       this->touch();
    }
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if the combo uses rich text.
+//**********************************************************************************************************************
+bool Combo::useRichText() const
+{
+   return useRichText_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] useRichText Does the combo use rich text?
+//**********************************************************************************************************************
+void Combo::setUseRichText(bool useRichText)
+{
+   useRichText_ = useRichText;
 }
 
 
@@ -338,6 +360,7 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropName, name_);
    result.insert(kPropKeyword, keyword_);
    result.insert(kPropSnippet, snippet_);
+   result.insert(kPropUseRichText, useRichText_);
    result.insert(kPropUseLooseMatching, useLooseMatching_);
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
@@ -361,14 +384,15 @@ void Combo::changeUuid()
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
+/// \param[in] useRichText Does the combo use rich text?
 /// \param[in] useLooseMatching Does the combo use loose matching
 /// \param[in] enabled Is the combo enabled
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool useLooseMatching,
-   bool enabled)
+SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool useRichText, 
+   bool useLooseMatching, bool enabled)
 {
-   return std::make_shared<Combo>(name, keyword, snippet, useLooseMatching, enabled);
+   return std::make_shared<Combo>(name, keyword, snippet, useRichText, useLooseMatching, enabled);
 }
 
 
@@ -398,8 +422,8 @@ SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useLooseMatching(),
-      combo.isEnabled());
+   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useRichText(), 
+      combo.useLooseMatching(), combo.isEnabled());
    result->setGroup(combo.group());
    return result;
 }
