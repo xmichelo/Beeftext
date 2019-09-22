@@ -29,6 +29,7 @@ QString const kPortableModeBeaconFileName = "Portable.bin"; ///< The name of the
 QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The name of the 'beacon file used to detect if the app is in PortableApps mode
 QList<quint16> const modifierKeys = {  VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
    VK_RWIN }; ///< The modifier keys
+QChar const kObjectReplacementChar = 0xfffc; ///< The unicode object replacement character.
 
 
 //**********************************************************************************************************************
@@ -82,6 +83,31 @@ void waitBetweenKeystrokes()
    qint32 const delayMs = PreferencesManager::instance().delayBetweenKeystrokesMs();
    if (delayMs > 0)
       qApp->thread()->msleep(delayMs);
+}
+
+
+//**********************************************************************************************************************
+/// \brief Get the MIME data for a text snippet.
+/// 
+/// \param[in] snippet The snippet's text.
+/// \param[in] isHtml Is the snippet in HTML format.
+/// \return A pointer to heap-allocated MIME data representing the snippet. The caller is responsible for
+/// release the allocated memory.
+//**********************************************************************************************************************
+QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
+{
+   QMimeData* result = new QMimeData;
+   if (isHtml)
+   {
+      QTextDocumentFragment const fragment = QTextDocumentFragment::fromHtml(snippet);
+      result->setHtml(fragment.toHtml());
+      QString plainText = fragment.toPlainText();
+      plainText.remove(kObjectReplacementChar); //< Remove the 'Object replacement character' that replaced images during conversion to plain text
+      result->setText(plainText);
+   }
+   else
+      result->setText(snippet);
+   return result;
 }
 
 
@@ -139,12 +165,13 @@ QString getActiveExecutableFileName()
 
 
 //**********************************************************************************************************************
-/// \param[in] charCount The number of characters to substitute
-/// \param[in] newText The new text
+/// \param[in] charCount The number of characters to substitute.
+/// \param[in] newText The new text.
+/// \param[in] isHtml Is the new HTML?
 /// \param[in] cursorPos The position of the cursor in the new text. The value is -1 if the cursor does not need 
 /// repositionning.
 //**********************************************************************************************************************
-void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos)
+void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos)
 {
    InputManager& inputManager = InputManager::instance();
    bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
@@ -158,7 +185,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
          // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
-         QApplication::clipboard()->setText(newText);
+         QApplication::clipboard()->setMimeData(mimeDataFromSnippet(newText, isHtml)); // Ownership of data is transfered to the clipboard
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
@@ -169,9 +196,20 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       }
       else
       {
+         QString text = newText;
+
+         // sensitive applications cannot use the clipboard, so rich text is not an option. We convert to plain text.
+         if (isHtml) 
+         {
+            QTextDocument doc;
+            doc.setHtml(newText);
+            text = doc.toPlainText();
+            text.remove(kObjectReplacementChar);
+         }
+
          QList<quint16> pressedModifiers;
          // we simulate the typing of the snippet text
-         for (QChar c: newText)
+         for (QChar c: text)
          {
             if (c == QChar::LineFeed)
                // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())

@@ -29,7 +29,7 @@ typedef std::vector<SpCombo> VecSpCombo; ///< Type definition for vector of SpCo
 class Combo
 {
 public: // member functions
-   Combo(QString name, QString keyword, QString snippet, bool useRichText, bool useLooseMatching, bool enabled); ///< Default constructor
+   Combo(QString name, QString keyword, QString snippet, bool useHtml, bool useLooseMatching, bool enabled); ///< Default constructor
    Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups = GroupList()); ///< Constructor from JSon object
    Combo(Combo const&) = delete; ///< Disabled copy constructor
 	Combo(Combo&&) = delete; ///< Disabled move constructor
@@ -44,8 +44,8 @@ public: // member functions
    void setKeyword(QString const& keyword); ///< Set the keyword
    QString snippet() const; ///< Retrieve the snippet
    void setSnippet(QString const& snippet); ///< Set the snippet
-   bool useRichText() const; ///< Test if the combo use rich text
-   void setUseRichText(bool useRichText); ///< Test if the combo use rich text
+   bool useHtml() const; ///< Test if the combo use HTML.
+   void setUseHtml(bool useHtml); ///< Test if the combo use HTML.
    bool useLooseMatching() const; ///< Test if the combo use loose matching
    void setUseLooseMatching(bool useLooseMatching); ///< Set if the combo uses loose matching
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
@@ -66,7 +66,7 @@ public: // member functions
 
 public: // static functions
    static SpCombo create(QString const& name = QString(), QString const& keyword = QString(),
-      QString const& snippet = QString(), bool useRichText = false, bool useLooseMatching = false, bool enabled = true);
+      QString const& snippet = QString(), bool useHtml = false, bool useLooseMatching = false, bool enabled = true);
    static SpCombo create(QJsonObject const& object, qint32 formatVersion, 
       GroupList const& groups = GroupList()); ///< create a Combo from a JSON object
    static SpCombo duplicate(Combo const& combo); ///< Duplicate
@@ -79,7 +79,7 @@ private: // data member
    QString name_; ///< The display name of the combo
    QString keyword_; ///< The keyword
    QString snippet_; ///< The snippet
-   bool useRichText_ { false }; ///< Does the combo use rich text?
+   bool useHtml_ { false }; ///< Does the combo use HTML?
    bool useLooseMatching_ { false }; ///< Should the combo use loose matching
    SpGroup group_ { nullptr }; ///< The combo group this combo belongs to (may be null)
    QDateTime creationDateTime_; ///< The date/time of creation of the combo

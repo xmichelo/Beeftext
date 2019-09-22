@@ -76,7 +76,12 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    this->setMatchingComboValue(combo->useLooseMatching());
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
-   ui_.editSnippet->setPlainText(combo->snippet());
+   bool const useHtml = combo->useHtml();
+   this->setUseHtmlComboValue(useHtml);
+   if (useHtml)
+      ui_.editSnippet->setHtml(combo->snippet());
+   else
+      ui_.editSnippet->setPlainText(combo->snippet());
    connect(ui_.editSnippet, &QPlainTextEdit::customContextMenuRequested, this, 
       &ComboDialog::onEditorContextMenuRequested);
    this->updateGui();
@@ -221,9 +226,27 @@ void ComboDialog::setMatchingComboValue(bool const useLooseMatching) const
 //**********************************************************************************************************************
 /// \return true if the 'Loose' item is selected
 //**********************************************************************************************************************
-bool ComboDialog::getMatchingComboValue() const
+bool ComboDialog::matchingComboValue() const
 {
    return 1 == ui_.comboMatching->currentIndex();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] the value of the 'Use HTML' combo.
+//**********************************************************************************************************************
+void ComboDialog::setUseHtmlComboValue(bool useHtml) const
+{
+   ui_.comboUseHtml->setCurrentIndex(useHtml ? 1 : 0);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value of the 'Use Html' combo.
+//**********************************************************************************************************************
+bool ComboDialog::useHtmlComboValue() const
+{
+   return 0 != ui_.comboUseHtml->currentIndex();
 }
 
 
@@ -241,9 +264,11 @@ void ComboDialog::onActionOk()
       return;
    combo_->setName(ui_.editName->text().trimmed());
    combo_->setGroup(ui_.comboGroup->currentGroup());
-   combo_->setUseLooseMatching(this->getMatchingComboValue());
+   combo_->setUseLooseMatching(this->matchingComboValue());
    combo_->setKeyword(keyword);
-   combo_->setSnippet(ui_.editSnippet->toPlainText());
+   bool const useHtml = this->useHtmlComboValue();
+   combo_->setUseHtml(useHtml);
+   combo_->setSnippet(useHtml ? ui_.editSnippet->toHtml() : ui_.editSnippet->toPlainText());
    this->accept();
 }
 
@@ -283,6 +308,7 @@ void ComboDialog::updateGui() const
    bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
       (!ui_.editSnippet->toPlainText().isEmpty()) && ui_.comboGroup->currentGroup();
    ui_.buttonOk->setEnabled(canAccept);
+   ui_.editSnippet->setAcceptRichText(this->useHtmlComboValue());
 }
 
 

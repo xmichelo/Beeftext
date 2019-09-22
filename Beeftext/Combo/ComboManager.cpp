@@ -318,7 +318,7 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    if ((!isBeeftextTheForegroundApplication()) &&
       !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
    {
-      performTextSubstitution(keyword.size() + rightDelimiter.size() + leftDelimiter.size(), emoji, -1);
+      performTextSubstitution(keyword.size() + rightDelimiter.size() + leftDelimiter.size(), emoji, false, -1);
       if (PreferencesManager::instance().playSoundOnCombo() && sound_)
          sound_->play();
       result = true;
