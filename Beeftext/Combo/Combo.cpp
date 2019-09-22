@@ -44,6 +44,7 @@ QString const kPropEnabled = "enabled"; ///< The JSON property name for the enab
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
+/// \param[in] useHtml Does the combo use a HTML snippet.
 /// \param[in] useLooseMatching Should the combo use loose matching
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************

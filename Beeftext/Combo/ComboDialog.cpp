@@ -233,7 +233,7 @@ bool ComboDialog::matchingComboValue() const
 
 
 //**********************************************************************************************************************
-/// \param[in] the value of the 'Use HTML' combo.
+/// \param[in] useHtml The value of the 'Use HTML' combo.
 //**********************************************************************************************************************
 void ComboDialog::setUseHtmlComboValue(bool useHtml) const
 {

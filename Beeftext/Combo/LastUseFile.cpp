@@ -32,6 +32,7 @@ qint32 const kFileFormatVersion = 1; ///< The file format version.
 
 
 //**********************************************************************************************************************
+/// \param[in] comboList The combo list.
 /// \param[in] object The JSON object.
 //**********************************************************************************************************************
 void parseDateTimeObject(ComboList& comboList, QJsonObject const& object)
