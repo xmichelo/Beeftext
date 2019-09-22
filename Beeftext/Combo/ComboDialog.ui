@@ -261,8 +261,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>551</x>
-     <y>334</y>
+     <x>594</x>
+     <y>359</y>
     </hint>
     <hint type="destinationlabel">
      <x>179</x>
@@ -325,8 +325,8 @@
    <slot>onActionOk()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>433</x>
-     <y>343</y>
+     <x>513</x>
+     <y>359</y>
     </hint>
     <hint type="destinationlabel">
      <x>280</x>
@@ -347,6 +347,22 @@
     <hint type="destinationlabel">
      <x>302</x>
      <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editSnippet</sender>
+   <signal>textChanged()</signal>
+   <receiver>ComboDialog</receiver>
+   <slot>updateGui()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>137</x>
+     <y>337</y>
     </hint>
    </hints>
   </connection>

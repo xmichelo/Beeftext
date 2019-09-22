@@ -99,11 +99,10 @@ QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
    QMimeData* result = new QMimeData;
    if (isHtml)
    {
-      QTextDocumentFragment const fragment = QTextDocumentFragment::fromHtml(snippet);
-      result->setHtml(fragment.toHtml());
-      QString plainText = fragment.toPlainText();
-      plainText.remove(kObjectReplacementChar); //< Remove the 'Object replacement character' that replaced images during conversion to plain text
-      result->setText(plainText);
+      // we filter the HTML through a QTextDocumentFragment as is prevent errouneous insertion of new line
+      // at the beginning and and of the snippet
+      result->setHtml(QTextDocumentFragment::fromHtml(snippet).toHtml());
+      result->setText(snippetToPlainText(snippet, isHtml));
    }
    else
       result->setText(snippet);
@@ -165,6 +164,22 @@ QString getActiveExecutableFileName()
 
 
 //**********************************************************************************************************************
+/// \param[in] snippet The snippet.
+/// \param[in] isHtml Is the snippet in HTML format?
+/// \return The snippet in plain text format.
+//**********************************************************************************************************************
+QString snippetToPlainText(QString const& snippet, bool isHtml)
+{
+   if (!isHtml)
+      return snippet;
+   QTextDocumentFragment const fragment = QTextDocumentFragment::fromHtml(snippet);
+   QString plainText = fragment.toPlainText();
+   plainText.remove(kObjectReplacementChar); //< Remove the 'Object replacement character' that replaced images during conversion to plain text
+   return plainText;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] charCount The number of characters to substitute.
 /// \param[in] newText The new text.
 /// \param[in] isHtml Is the new HTML?
@@ -196,16 +211,8 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       }
       else
       {
-         QString text = newText;
-
          // sensitive applications cannot use the clipboard, so rich text is not an option. We convert to plain text.
-         if (isHtml) 
-         {
-            QTextDocument doc;
-            doc.setHtml(newText);
-            text = doc.toPlainText();
-            text.remove(kObjectReplacementChar);
-         }
+         QString text = snippetToPlainText(newText, isHtml);
 
          QList<quint16> pressedModifiers;
          // we simulate the typing of the snippet text
@@ -257,4 +264,5 @@ void reportError(QWidget* parent, QString const& logMessage, QString const& user
    globals::debugLog().addError(logMessage);
    QMessageBox::critical(parent, QObject::tr("Error"), userMessage);
 }
+
 

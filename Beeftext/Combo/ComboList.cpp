@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "ComboList.h"
 #include "MimeDataUtils.h"
+#include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/File/CsvIO.h>
 #include <XMiLib/Exception.h>
@@ -609,7 +610,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       {
       case 0: return combo->name();
       case 1: return combo->keyword();
-      case 2: return combo->snippet().trimmed().simplified();
+      case 2: return snippetToPlainText(combo->snippet(), combo->useHtml()).simplified();
       case 3: return combo->creationDateTime().toString(dtShortFormat);
       case 4: return combo->modificationDateTime().toString(dtShortFormat);
       case 5: return combo->lastUseDateTime().toString(dtShortFormat);
