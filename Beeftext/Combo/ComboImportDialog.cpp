@@ -180,7 +180,7 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
    qint32 failureCount = 0;
    SpGroup const group = ui_.comboGroup->currentGroup();
    if (!group)
-      throw xmilib::Exception(tr("Please select a valid group."));
+      throw Exception(tr("Please select a valid group."));
    for (SpCombo const& combo : importableCombos_)
    {
       combo->setGroup(group);
@@ -232,7 +232,7 @@ void ComboImportDialog::onActionImport()
 
       this->accept();
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       QMessageBox::critical(this, tr("&Error"), e.qwhat());
    }
@@ -255,7 +255,7 @@ void ComboImportDialog::onActionBrowse()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), prefs.lastComboImportExportPath(),
-      ::constants::kJsonCsvFileDialogFilter());
+      ::constants::jsonCsvFileDialogFilter());
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);

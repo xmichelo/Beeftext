@@ -364,27 +364,27 @@ void PreferencesDialog::onEditEmojiExcludedApplications()
 
 
 //**********************************************************************************************************************
-/// \param[in] value The value for the delimiter.
+//
 //**********************************************************************************************************************
-void PreferencesDialog::onEmojiLeftDelimiterChanged(QString const& value) const
+void PreferencesDialog::onEmojiLeftDelimiterChanged(QString const&) const
 {
    prefs_.setEmojiLeftDelimiter(ui_.editEmojiLeftDelimiter->text());
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] value The value for the delimiter.
+//
 //**********************************************************************************************************************
-void PreferencesDialog::onEmojiRightDelimiterChanged(QString const& value) const
+void PreferencesDialog::onEmojiRightDelimiterChanged(QString const&) const
 {
    prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] index The index of the newly selected language
+//
 //**********************************************************************************************************************
-void PreferencesDialog::onComboLanguageValueChanged(int index) const
+void PreferencesDialog::onComboLanguageValueChanged(int) const
 {
    prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
 }

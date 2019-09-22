@@ -9,7 +9,6 @@
 #include "BeeftextGlobals.h"
 #include <XMiLib/String/StringListEditorDialog.h>
 #include <XMiLib/String/StringUtils.h>
-#include <XMiLib/SystemUtils.h>
 
 
 using namespace xmilib;

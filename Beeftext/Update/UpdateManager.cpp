@@ -65,7 +65,7 @@ void UpdateManager::onAutoCheckForUpdateChanged(bool enabled)
    if (!enabled)
       return;
    
-   QDateTime lastCheckDateTime = PreferencesManager::instance().lastUpdateCheckDateTime();
+   QDateTime const lastCheckDateTime = PreferencesManager::instance().lastUpdateCheckDateTime();
    qint64 const msSecsToNextCheck = lastCheckDateTime.isNull() ? kLaunchCheckDelayMs : qMax<qint64>(kLaunchCheckDelayMs, 
       QDateTime::currentDateTime().msecsTo(lastCheckDateTime.addMSecs(kUpdateCheckIntervalMs)));
    timer_.start(msSecsToNextCheck);

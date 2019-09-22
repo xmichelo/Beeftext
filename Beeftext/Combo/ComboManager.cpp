@@ -311,7 +311,7 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    // finally we isolate the keyword and perform the substitution, if any
    QString const keyword = currentText.right(currentText.size() - (index + leftDelimiter.size()));
    EmojiManager& emojisManager = EmojiManager::instance();
-   QString emoji = emojisManager.emoji(keyword);
+   QString const emoji = emojisManager.emoji(keyword);
    if (emoji.isEmpty())
       return false;
    bool result = false;

@@ -95,7 +95,7 @@ SpLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) co
 {
    QString errMsg;
    QJsonParseError error{};
-   QJsonDocument doc = QJsonDocument::fromJson(jsonData.toUtf8(), &error);
+   QJsonDocument const doc = QJsonDocument::fromJson(jsonData.toUtf8(), &error);
    if (error.error != QJsonParseError::NoError)
       throw xmilib::Exception(QString("Could not retrieve version information. The downloaded JSON file is "
          "invalid: %1").arg(error.errorString()));

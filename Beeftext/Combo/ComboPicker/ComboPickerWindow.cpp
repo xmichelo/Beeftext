@@ -104,9 +104,9 @@ void ComboPickerWindow::changeEvent(QEvent* event)
 
 
 //**********************************************************************************************************************
-/// \param[in] event The event.
+//
 //**********************************************************************************************************************
-void ComboPickerWindow::showEvent(QShowEvent* event)
+void ComboPickerWindow::showEvent(QShowEvent*)
 {
    ui_.editSearch->setText(QString());
    model_.resetModel(); // forces a sort

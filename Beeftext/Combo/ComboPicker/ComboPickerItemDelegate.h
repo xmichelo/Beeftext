@@ -25,7 +25,7 @@ public: // member functions
    ComboPickerItemDelegate& operator=(ComboPickerItemDelegate const&) = delete; ///< Disabled assignment operator
    ComboPickerItemDelegate& operator=(ComboPickerItemDelegate&&) = delete; ///< Disabled move assignment operator
    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
-   QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override; 
+   QSize sizeHint(const QStyleOptionViewItem &option, QModelIndex const&) const override; 
 };
 
 

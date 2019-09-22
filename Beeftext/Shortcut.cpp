@@ -24,7 +24,7 @@ QString getKeyName(qint32 scanCode)
    wchar_t buffer[bufferSize];
    if (!GetKeyNameText(scanCode << 16, buffer, bufferSize - 1))
       return QString();
-   QString raw = QString::fromWCharArray(buffer);
+   QString const raw = QString::fromWCharArray(buffer);
    QStringList words = raw.split(QRegularExpression("\\s"), QString::SkipEmptyParts);
    for (QString& wrd : words)
    {

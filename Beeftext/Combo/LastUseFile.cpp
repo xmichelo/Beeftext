@@ -83,7 +83,7 @@ void loadLastUseDateTimes(ComboList& comboList)
          parseDateTimeObject(comboList, value.toObject());
       }
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       globals::debugLog().addError(e.qwhat());
    }
@@ -119,7 +119,7 @@ void saveLastUseDateTimes(ComboList const& comboList)
       if (data.size() != file.write(data))
          throw Exception("An error occurred while writing the last use date/time file.");
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       globals::debugLog().addError(e.qwhat());
    }

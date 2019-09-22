@@ -48,7 +48,7 @@ BackupManager& BackupManager::instance()
 QStringList BackupManager::orderedBackupFilePaths()
 {
    QString const path = globals::backupFolderPath();
-   QFileInfo folderInfo(path);
+   QFileInfo const folderInfo(path);
    if (!folderInfo.exists() || (!folderInfo.isDir()))
       return QStringList();
    QStringList result;

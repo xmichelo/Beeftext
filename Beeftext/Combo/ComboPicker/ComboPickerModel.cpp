@@ -41,13 +41,9 @@ int ComboPickerModel::rowCount(const QModelIndex& parent) const
 QVariant ComboPickerModel::data(const QModelIndex& index, int role) const
 {
    ComboList const& comboList = ComboManager::instance().comboListRef();
-   switch (role)
-   {
-   case Qt::ToolTipRole:
+   if (Qt::ToolTipRole == role)
       return comboList.data(index, ComboList::SnippetRole);
-   default:
-      return comboList.data(index, role);
-   }
+   return comboList.data(index, role);
 }
 
 

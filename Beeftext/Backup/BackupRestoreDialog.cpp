@@ -48,7 +48,7 @@ void BackupRestoreDialog::onButtonRestore()
       QString const path = ui_.comboBackup->currentData().toString();
       if (path.isEmpty())
          throw xmilib::Exception("Invalid backup file path.");
-      QFile file(path);
+      QFile const file(path);
       if (!file.exists())
          throw xmilib::Exception("Backup file does not exist.");
       if (!ComboManager::instance().restoreBackup(path))

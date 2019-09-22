@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
          &window, &MainWindow::onAnotherAppInstanceLaunch);
       prefs.setAlreadyLaunched();
       qint32 const returnCode = QApplication::exec();
-      saveLastUseDateTimes(ComboManager::instance().comboListRef());
+      saveLastUseDateTimes(comboManager.comboListRef());
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
       I18nManager::instance().unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
       return returnCode;
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
 void ensureAppDataDirExists()
 {
    QString const path = globals::appDataDir();
-   QDir dir(path);
+   QDir const dir(path);
    if (dir.exists())
       return;
    QDir().mkpath(path);

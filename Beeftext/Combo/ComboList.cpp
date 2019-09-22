@@ -416,46 +416,46 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, bool* outInOlderF
    {
       this->clear();
       if (!doc.isObject())
-         throw xmilib::Exception("The combo list file is invalid.");
+         throw Exception("The combo list file is invalid.");
       QJsonObject const rootObject = doc.object();
 
       // check the file format version number
       QJsonValue const versionValue = rootObject[kKeyFileFormatVersion];
       if (!versionValue.isDouble()) // the JSon format consider all numbers as double
-         throw xmilib::Exception("The combo list file does not specify its version number.");
+         throw Exception("The combo list file does not specify its version number.");
       qint32 const version = versionValue.toInt();
       if (version > fileFormatVersionNumber)
-         throw xmilib::Exception("The combo list file was created by a newer version of the application.");
+         throw Exception("The combo list file was created by a newer version of the application.");
 
       // parse the groups
       if (version >= 3)
       {
          QJsonValue const groupListValue = rootObject[kKeyGroups];
          if (!groupListValue.isArray())
-            throw xmilib::Exception("The list of groups is not a valid array");
+            throw Exception("The list of groups is not a valid array");
          QString errorMsg;
          if (!groups_.readFromJsonArray(groupListValue.toArray(), version, &errorMsg))
-            throw xmilib::Exception(errorMsg);
+            throw Exception(errorMsg);
       }
 
       // parse the combos
       QJsonValue const combosListValue = rootObject[kKeyCombos];
       if (!combosListValue.isArray())
-         throw xmilib::Exception("The list of combos is not a valid array");
+         throw Exception("The list of combos is not a valid array");
       for (QJsonValueRef const& comboValue: combosListValue.toArray())
       {
          if (!comboValue.isObject())
-            throw xmilib::Exception("The combo list array contains an invalid combo.");
+            throw Exception("The combo list array contains an invalid combo.");
          SpCombo const combo = Combo::create(comboValue.toObject(), version, groups_);
          if ((!combo) || (!combo->isValid()))
-            throw xmilib::Exception("One of the combo in the list is invalid");
+            throw Exception("One of the combo in the list is invalid");
          this->append(combo);
       }
       if (outInOlderFileFormat)
          *outInOlderFileFormat = (version < fileFormatVersionNumber);
       return true;
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       if (outErrorMsg)
          *outErrorMsg = QString("An error occurred while parsing the combo list file: %1").arg(e.qwhat());
@@ -479,10 +479,10 @@ bool ComboList::load(QString const& path, bool* outInOlderFileFormat, QString* o
       this->clear();
       QFile file(path);
       if ((!file.exists()) || (!file.open(QIODevice::ReadOnly)))
-         throw xmilib::Exception(QString("Could not open file for reading: '%1'").arg(QDir::toNativeSeparators(path)));
+         throw Exception(QString("Could not open file for reading: '%1'").arg(QDir::toNativeSeparators(path)));
       return this->readFromJsonDocument(QJsonDocument::fromJson(file.readAll()), outInOlderFileFormat, outErrorMessage);
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       if (outErrorMessage)
          *outErrorMessage = e.qwhat();
@@ -504,13 +504,13 @@ bool ComboList::save(QString const& path, bool saveGroups, QString* outErrorMess
    {
       QFile file(path);
       if (!file.open(QIODevice::WriteOnly))
-         throw xmilib::Exception(QString("Could not open file for writing: '%1'").arg(QDir::toNativeSeparators(path)));
+         throw Exception(QString("Could not open file for writing: '%1'").arg(QDir::toNativeSeparators(path)));
       QByteArray const data = this->toJsonDocument(saveGroups).toJson();
       if (data.size() != file.write(data))
-         throw xmilib::Exception(QString("Error writing to file: %1").arg(QDir::toNativeSeparators(path)));
+         throw Exception(QString("Error writing to file: %1").arg(QDir::toNativeSeparators(path)));
       return true;
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       if (outErrorMessage)
          *outErrorMessage = e.qwhat();

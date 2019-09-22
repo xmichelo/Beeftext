@@ -80,9 +80,8 @@ void ComboPickerItemDelegate::paint(QPainter* painter, const QStyleOptionViewIte
 
 //**********************************************************************************************************************
 /// \param[in] option The style options.
-/// \param[in] index The index of the item to paint.
 //**********************************************************************************************************************
-QSize ComboPickerItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
+QSize ComboPickerItemDelegate::sizeHint(const QStyleOptionViewItem& option, QModelIndex const&) const
 {
    // we compute the size hint for the item. width is trivial, but height needs attention. 
    // An item contains one line of text in big font, one line of text with small font, and there are margins.

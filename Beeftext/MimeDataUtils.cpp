@@ -37,7 +37,7 @@ QList<QUuid> mimeDataToUuidList(QMimeData const& mimeData)
 {
    if (!mimeData.hasFormat(kUuuidListMimeType))
       return QList<QUuid>();
-   QByteArray array = mimeData.data(kUuuidListMimeType);
+   QByteArray const array = mimeData.data(kUuuidListMimeType);
    qint32 const arraySize = array.size();
    if ((0 == arraySize) || (0 != array.size() % 16))
       return QList<QUuid>();
