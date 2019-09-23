@@ -46,6 +46,7 @@ private slots:
    void onActionNewGroup(); ///< Slot for the 'New Group' action
    void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu
    void updateGui() const; ///< Update the GUI state
+   void onUseHtmlChanged() const; ///< Slot for the change of the 'Use rich text' combo.
 
 private: // data members
    Ui::ComboDialog ui_ {}; ///< The GUI for the dialog

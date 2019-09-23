@@ -308,7 +308,25 @@ void ComboDialog::updateGui() const
    bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
       (!ui_.editSnippet->toPlainText().isEmpty()) && ui_.comboGroup->currentGroup();
    ui_.buttonOk->setEnabled(canAccept);
-   ui_.editSnippet->setAcceptRichText(this->useHtmlComboValue());
+   ui_.labelEditor->setVisible(this->useHtmlComboValue());
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboDialog::onUseHtmlChanged() const
+{
+   bool const useHtml = this->useHtmlComboValue();
+   ui_.editSnippet->setAcceptRichText(useHtml);
+   if (!useHtml)
+   {
+      QTextEdit& edit = *ui_.editSnippet;
+      // note: normally, the code above could simply be edit.setPlainText(edit.toPlainText(), but a Qt issue
+      // causes the format not to be properly removed in some cases.
+      edit.document()->setPlainText(edit.toPlainText());
+   }
+   this->updateGui();
 }
 
 
