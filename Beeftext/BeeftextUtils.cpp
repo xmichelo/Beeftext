@@ -100,7 +100,7 @@ QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
    if (isHtml)
    {
       // we filter the HTML through a QTextDocumentFragment as is prevent errouneous insertion of new line
-      // at the beginning and and of the snippet
+      // at the beginning and end of the snippet
       result->setHtml(QTextDocumentFragment::fromHtml(snippet).toHtml());
       result->setText(snippetToPlainText(snippet, isHtml));
    }
