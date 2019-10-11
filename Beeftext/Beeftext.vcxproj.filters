@@ -139,6 +139,9 @@
     <ClCompile Include="Combo\LastUseFile.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\SnippetEdit.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -322,6 +325,9 @@
     </QtMoc>
     <QtMoc Include="Combo\ComboPicker\ComboPickerItemDelegate.h">
       <Filter>Combo\ComboPicker</Filter>
+    </QtMoc>
+    <QtMoc Include="Combo\SnippetEdit.h">
+      <Filter>Generated Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

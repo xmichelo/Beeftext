@@ -77,6 +77,7 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
    bool const useHtml = combo->useHtml();
+   ui_.editSnippet->setAcceptRichText(useHtml);
    this->setUseHtmlComboValue(useHtml);
    if (useHtml)
       ui_.editSnippet->setHtml(combo->snippet());

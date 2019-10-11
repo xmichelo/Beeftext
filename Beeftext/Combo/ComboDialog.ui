@@ -17,9 +17,12 @@
    <item>
     <layout class="QGridLayout" name="gridLayout">
      <item row="4" column="1" rowspan="2">
-      <widget class="QTextEdit" name="editSnippet">
+      <widget class="SnippetEdit" name="editSnippet">
        <property name="contextMenuPolicy">
         <enum>Qt::CustomContextMenu</enum>
+       </property>
+       <property name="acceptRichText">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -250,6 +253,11 @@
    <class>GroupComboBox</class>
    <extends>QComboBox</extends>
    <header>Group/GroupComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SnippetEdit</class>
+   <extends>QTextEdit</extends>
+   <header>SnippetEdit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

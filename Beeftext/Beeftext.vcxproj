@@ -230,6 +230,7 @@
     <ClCompile Include="Combo\ComboTableWidget.cpp" />
     <ClCompile Include="Combo\ComboVariable.cpp" />
     <ClCompile Include="Combo\LastUseFile.cpp" />
+    <ClCompile Include="Combo\SnippetEdit.cpp" />
     <ClCompile Include="EmojiManager.cpp" />
     <ClCompile Include="Group\Group.cpp" />
     <ClCompile Include="Group\GroupComboBox.cpp" />
@@ -266,6 +267,7 @@
     <QtMoc Include="Combo\ComboPicker\ComboPickerWindow.h">
     </QtMoc>
     <ClInclude Include="Combo\LastUseFile.h" />
+    <QtMoc Include="Combo\SnippetEdit.h" />
     <ClInclude Include="SensitiveApplicationManager.h" />
     <QtMoc Include="VariableInputDialog.h">
     </QtMoc>
