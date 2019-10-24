@@ -266,3 +266,14 @@ void reportError(QWidget* parent, QString const& logMessage, QString const& user
 }
 
 
+//**********************************************************************************************************************
+/// \return true if and only if the application is running on Windows 10 or higher.
+//**********************************************************************************************************************
+bool isAppRunningOnWindows10OrHigher()
+{
+   QRegularExpression const re(R"(^(\d+)\.)");
+   QRegularExpressionMatch const match = re.match(QSysInfo::kernelVersion());
+   return match.hasMatch() ? match.captured(1).toInt() >= 10 : false;
+}
+
+

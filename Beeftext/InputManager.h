@@ -55,6 +55,8 @@ private: // member functions
    InputManager(); ///< Default constructor
    bool onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
    QString processKey(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
+   static QString processKeyModern(KeyStroke const& keyStroke); ///< Process a key stroke and return the generated characters 
+   QString processKeyLegacy(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
    void onMouseClickEvent(int, WPARAM, LPARAM); ///< Process a mouse click event
 
 private: // static member functions
@@ -62,9 +64,10 @@ private: // static member functions
    static LRESULT CALLBACK mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The mouse event callback
 
 private: // data members
-   HHOOK keyboardHook_; ///< The handle to the keyboard hook used to be notified of keyboard events
-   HHOOK mouseHook_; ///< The handle to the mouse hook used to be notified of mouse event
-   KeyStroke deadKey_; ///< The currently active dead key
+   HHOOK keyboardHook_ { nullptr }; ///< The handle to the keyboard hook used to be notified of keyboard events
+   HHOOK mouseHook_ { nullptr }; ///< The handle to the mouse hook used to be notified of mouse event
+   KeyStroke deadKey_ = { 0, 0, { 0 } }; ///< The currently active dead key
+   bool useLegacyKeyProcessing_ { false }; ///< Should we use the legacy key processing code
 };
 
 

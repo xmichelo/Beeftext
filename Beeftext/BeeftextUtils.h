@@ -17,6 +17,7 @@ QString getActiveExecutableFileName(); ///< Return the name of the active applic
 QString snippetToPlainText(QString const& snippet, bool isHtml); ///< Return the plain text for a snippet.
 void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos); ///< Substitute the last characters with the specified text
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage = QString()); ///< Report an error to the user
+bool isAppRunningOnWindows10OrHigher(); ///< Return true if and only if the application is running on windows 10 or higher
 
 
 #endif // #ifndef BEEFTEXT_UTILS_H

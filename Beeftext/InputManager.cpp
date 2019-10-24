@@ -11,6 +11,7 @@
 #include "InputManager.h"
 #include "PreferencesManager.h"
 #include "MainWindow.h"
+#include "BeeftextUtils.h"
 #include "Combo/ComboPicker/ComboPickerWindow.h"
 #include <XMiLib/Exception.h>
 
@@ -20,7 +21,6 @@ using namespace xmilib;
 
 namespace {
 
-InputManager::KeyStroke const kNullKeyStroke = {0, 0, {0}}; ///< A null keystroke
 qint32 const kTextBufferSize = 10;
 ///< The size of the buffer that will receive the text resulting from the processing of the key stroke
 
@@ -101,7 +101,7 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
 {
    if ((WM_KEYDOWN == wParam) || (WM_SYSKEYDOWN == wParam))
    {
-      KeyStroke keyStroke = kNullKeyStroke;
+      KeyStroke keyStroke = { 0, 0, { 0 } };
       KBDLLHOOKSTRUCT* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
 
       // we ignore shift / caps lock key events
@@ -160,10 +160,8 @@ InputManager& InputManager::instance()
 ///
 //**********************************************************************************************************************
 InputManager::InputManager()
-   : QObject(nullptr),
-     keyboardHook_(nullptr),
-     mouseHook_(nullptr),
-     deadKey_(kNullKeyStroke)
+   : QObject(nullptr)
+   , useLegacyKeyProcessing_(!isAppRunningOnWindows10OrHigher())
 {
    this->enableKeyboardHook();
 #ifdef NDEBUG
@@ -236,29 +234,52 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 
 
 //**********************************************************************************************************************
-/// This function is more complex than it should be because dead keys that are present on layouts such as 
-/// the US-International keyboard require a special treatment.
-///
 /// \param[in] keyStroke The key stroke
 /// \param[out] outIsDeadKey Is the key a dead key
 /// \return The text resulting of the keystroke
 //**********************************************************************************************************************
 QString InputManager::processKey(KeyStroke const& keyStroke, bool& outIsDeadKey)
 {
+   // Windows version before Windows 10 build 1607, there is not option to ensure that ToUnicode() / ToUnicodeEx does
+   // not modify the keyboard state, which forces us to perform a special treatment for dead keys.
+   return useLegacyKeyProcessing_ ? processKeyLegacy(keyStroke, outIsDeadKey) : processKeyModern(keyStroke);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] keyStroke The key stroke
+/// \return The text resulting of the keystroke
+//**********************************************************************************************************************
+QString InputManager::processKeyModern(KeyStroke const& keyStroke)
+{
+   // Windows allow each window to have its own input locale, so we try to obtain the locale (HKL) of the active window
+   // and pass it to ToUnicodeEx(). If we fail to do so we call ToUnicode instead, which use the system-wide locale
+   WCHAR textBuffer[kTextBufferSize];
+   HKL hkl = nullptr;
+   qint32 const size = getForegroundWindowInputLocale(hkl)
+      ? ToUnicodeEx(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, kTextBufferSize
+         , 1 << 2, hkl) : ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer
+         , kTextBufferSize, 1 << 2);
+   return size > 0 ? QString::fromWCharArray(textBuffer, size): QString();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] keyStroke The key stroke
+/// \param[out] outIsDeadKey Is the key a dead key
+/// \return The text resulting of the keystroke
+//**********************************************************************************************************************
+QString InputManager::processKeyLegacy(KeyStroke const& keyStroke, bool& outIsDeadKey)
+{
    // The core of this function is the call to ToUnicodeEx() - or ToUnicode() - who transforms a keystroke into 
    // an actual text output, taking into account the current input locale (a.k.a. keyboard layout).
    // now the tricky part: ToUnicode() "consumes" the dead key that may be stored in the kernel-mode keyboard buffer
    // so we need to manually restore the dead key by calling ToUnicode() again
-   WCHAR textBuffer[kTextBufferSize];
+   WCHAR textBuffer[kTextBufferSize] = { 0 };
    outIsDeadKey = false;
-   HKL hkl = nullptr;
-
-   // Windows allow each window to have its own input locale, so we try to obtain the locale (HKL) of the active window
-   // andpass it to ToUnicodeEx(). If we fail to do so we call ToUnicode instead, which use the system-wide locale
-   qint32 const size = getForegroundWindowInputLocale(hkl)
-      ? ToUnicodeEx(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, kTextBufferSize, 0
-         , hkl) : ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer
-         , kTextBufferSize, 0);
+   // for some unkown reasons, in this legacy code ToUnicodeEx cause failures with dead keys in some locales.
+   qint32 const size = ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, 
+      kTextBufferSize, 0);
 
    if (-1 == size)
    {
