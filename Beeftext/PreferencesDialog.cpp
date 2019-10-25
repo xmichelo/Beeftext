@@ -68,6 +68,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    // We update the GUI when the combo list is saved to proper enable/disable the 'Restore Backup' button
    connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PreferencesDialog::updateGui);
 
+   ui_.tabPreferences->setCurrentIndex(0);
    this->updateGui();
 }
 
