@@ -43,7 +43,7 @@ private slots:
    void onCheckPlaySoundOnCombo(bool checked) const; ///< Slot for the  'Play sound on combo' checkbox.
    void onCheckUseCustomSound(bool checked) const; ///< Slot for the 'Use custom sound' checkbox.
    void onChangeCustomSound() const; ///< Slot for the 'Change custom sound' button.
-   static void onPlaySoundButton(); ///< Slot for the 'Play' button for custom sound.
+   void onPlaySoundButton() const; ///< Slot for the 'Play' button for custom sound.
    void onRadioAutomaticComboTrigger(bool checked) const; ///< Slot for the 'Automatic combo trigger' button.
    void onChangeComboTriggerShortcut() const; ///< Slot for the 'Change shortcut' action
    void onResetComboTriggerShortcut() const; ///< Slot for the 'Reset combo trigger shortcut'

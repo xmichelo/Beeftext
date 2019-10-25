@@ -257,9 +257,10 @@ void PreferencesDialog::onChangeCustomSound() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PreferencesDialog::onPlaySoundButton()
+void PreferencesDialog::onPlaySoundButton() const
 {
-   ComboManager::instance().playSound();
+   if (QFileInfo(prefs_.customSoundPath()).exists())
+      ComboManager::instance().playSound();
 }
 
 
