@@ -13,7 +13,7 @@
 namespace {
 
 
-enum ECaseChange
+enum class ECaseChange
 {
    NoChange, ///< Do not change case
    ToUpper, ///< Convert to upper case
@@ -117,9 +117,9 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
       forbiddenSubCombos << comboName, knownInputVariables, nullptr); // forbiddenSubcombos is intended at avoiding endless recursion
    switch (caseChange)
    {
-   case ToUpper: return str.toUpper();
-   case ToLower: return str.toLower();
-   case NoChange: default: return str;
+   case ECaseChange::ToUpper: return str.toUpper();
+   case ECaseChange::ToLower: return str.toLower();
+   case ECaseChange::NoChange: default: return str;
    }
 }
 
@@ -198,13 +198,16 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
       return evaluateDateTimeVariable(variable);
 
    if (variable.startsWith("combo:"))
-      return evaluateComboVariable(variable, NoChange, forbiddenSubCombos, knownInputVariables, outCancelled);
+      return evaluateComboVariable(variable, ECaseChange::NoChange, forbiddenSubCombos, knownInputVariables, 
+         outCancelled);
 
    if (variable.startsWith("upper:"))
-      return evaluateComboVariable(variable, ToUpper, forbiddenSubCombos, knownInputVariables, outCancelled);
+      return evaluateComboVariable(variable, ECaseChange::ToUpper, forbiddenSubCombos, knownInputVariables, 
+         outCancelled);
 
    if (variable.startsWith("lower:"))
-      return evaluateComboVariable(variable, ToLower, forbiddenSubCombos, knownInputVariables, outCancelled);
+      return evaluateComboVariable(variable, ECaseChange::ToLower, forbiddenSubCombos, knownInputVariables, 
+         outCancelled);
 
    if (variable.startsWith(kInputVariable))
       return evaluateInputVariable(variable, knownInputVariables, outCancelled);

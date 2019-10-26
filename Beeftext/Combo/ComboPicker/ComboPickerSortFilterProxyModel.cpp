@@ -37,9 +37,11 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
 
    for (int col = 0; col < model->columnCount(QModelIndex()); ++col)
    {
-      QString const str = model->data(model->index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString();
-      if (str.contains(this->filterRegExp()))
-         return true;
+      QRegExp const regExp = this->filterRegExp(); // we search for the string in name, keyword and snippet
+      return (model->data(model->index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString().contains(regExp))
+         || model->data(model->index(sourceRow, col, QModelIndex()), ComboList::KeywordRole).toString().
+         contains(regExp) || model->data(model->index(sourceRow, col, QModelIndex()), ComboList::SnippetRole)
+         .toString().contains(regExp);
    }
    return false;
 }
