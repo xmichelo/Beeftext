@@ -88,6 +88,7 @@ public: // member functions
    void setComboPickerShortcut(SpShortcut const& shortcut); ///< Set the combo picker shortcut.
    SpShortcut comboPickerShortcut() const; ///< Retrieve the combo picker shortcut.
    static SpShortcut defaultComboPickerShortcut(); ///< Return the default combo picker shortcut.
+   void checkRemoveAndNotifyAboutRemovalOfClipboardUsage() const; ///< Check if the 'Use clipboard for combo substitution' is used.
 
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed

@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
       debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
+      prefs.checkRemoveAndNotifyAboutRemovalOfClipboardUsage(); // \todo remove this after Beeftext 8.0.
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
@@ -175,5 +176,3 @@ void removeFileMarkedForDeletion()
       debugLog.addWarning(QString("The following file was marked for deletion but could not be removed: %1")
          .arg(nativePath));
 }
-
-

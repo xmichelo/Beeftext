@@ -32,6 +32,7 @@ QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate";
 ///< The settings key for the 'Autostart at login' preference
+QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
 QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
 QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution";
 ///< The setting key for the 'Use automatic substitution' preference
@@ -97,6 +98,8 @@ bool const kDefaultValueComboPickerEnabled = true; ///< The default value for th
 
 
 }
+
+
 
 
 //**********************************************************************************************************************
@@ -886,4 +889,19 @@ void PreferencesManager::unregisterApplicationFromAutoStart()
 {
    if (!isInPortableMode())
       QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
+}
+
+
+//**********************************************************************************************************************
+/// if the preference is set and disabled, the user is notified that it is deprecated and remove it from the system.
+//**********************************************************************************************************************
+void PreferencesManager::checkRemoveAndNotifyAboutRemovalOfClipboardUsage() const
+{
+   if (this->readSettings<bool>(kKeyUseClipboardForComboSubstitution, true))
+      return;
+   QMessageBox::information(nullptr, QString(), tr("You have the 'Use clipboard for combo substitution' option "
+      "disabled. This setting is now deprecated.\n\nIf you really need to disable the use of the clipboard, "
+      "click on the 'Sensitive Applications' button in the 'Advanced' tab of the "
+      "Preferences dialog, and add an entry in the list containing the wildcard '*' (without quotes)."));
+   settings_->remove(kKeyUseClipboardForComboSubstitution);
 }
