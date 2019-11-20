@@ -205,6 +205,22 @@ Do you want to continue anymay?</source>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Существующий шаблон конфликтует с этим шаблоном.</translation>
     </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plain text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rich text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Where is the editor?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ComboImportDialog</name>
@@ -983,6 +999,19 @@ Do you want to continue anymay?</source>
     <message>
         <source>Automatically check for &amp;updates</source>
         <translation>&amp;Автоматическая проверка обновлений</translation>
+    </message>
+    <message>
+        <source>Combos</source>
+        <translation type="unfinished">Шаблоны</translation>
+    </message>
+</context>
+<context>
+    <name>PreferencesManager</name>
+    <message>
+        <source>You have the &apos;Use clipboard for combo substitution&apos; option disabled. This setting is now deprecated.
+
+If you really need to disable the use of the clipboard, click on the &apos;Sensitive Applications&apos; button in the &apos;Advanced&apos; tab of the Preferences dialog, and add an entry in the list containing the wildcard &apos;*&apos; (without quotes).</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
