@@ -100,11 +100,15 @@ Function checkAlreadyInstalled
   Push $0 
   ReadRegStr $0 HKLM "${REGISTRY_UNINSTALLER_FOLDER}\${APP_NAME}" "UninstallString"
   ${If} $0 != ""
-	 MessageBox MB_YESNO|MB_ICONQUESTION "Before you can install ${APP_FANCY_NAME}, you must uninstall the version that is currently installed on your computer.$\n$\nDo you want to uninstall the previous version of ${APP_FANCY_NAME} ?" /SD IDNO IDYES yes IDNO no
+	 MessageBox MB_YESNO|MB_ICONQUESTION "Before you can install ${APP_FANCY_NAME}, you must uninstall the version that is currently installed on your computer.$\n$\nDo you want to uninstall the previous version of ${APP_FANCY_NAME} ?" /SD IDYES IDYES yes IDNO no
 no:
 	 Abort
 yes:
+     IfSilent +3
 	 ExecWait '"$INSTDIR\${UNINSTALLER_FILE_NAME}" _?=$INSTDIR' # the _?=$INSTDIR means that the uninstaller will not copy itself but run from the installer folder, forcing ExecWait to actually wait for the uninstaller to finish.
+	 Goto clean
+	 ExecWait '"$INSTDIR\${UNINSTALLER_FILE_NAME}" /S _?=$INSTDIR' # the _?=$INSTDIR means that the uninstaller will not copy itself but run from the installer folder, forcing ExecWait to actually wait for the uninstaller to finish.
+clean:
   ${Endif}
   Pop $0
 FunctionEnd
