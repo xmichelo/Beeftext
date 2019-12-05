@@ -818,7 +818,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Group/GroupList.cpp" line="482"/>
         <source>&lt;All combos&gt;</source>
-        <translation>&lt;Alle combo&amp;ss&gt;</translation>
+        <translation>&lt;Alle combos&gt;</translation>
     </message>
 </context>
 <context>
@@ -1421,10 +1421,18 @@ If you really need to disable the use of the clipboard, click on the &apos;Sensi
     </message>
     <message>
         <location filename="../main.cpp" line="91"/>
-        <source>Nieuw bij Beeftext?
+        <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>U begint net met Beeftext?
+
+Raadpleeg de snelstartgids (in het Engels)?</translation>
+    </message>
+    <message>
+        <source>Nieuw bij Beeftext?
+
+Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
+        <translation type="vanished">U begint net met Beeftext?
 
 Raadpleeg de snelstartgids (in het Engels)?</translation>
     </message>
@@ -1563,12 +1571,12 @@ Raadpleeg de snelstartgids (in het Engels)?</translation>
     <message>
         <location filename="../SensitiveApplicationManager.cpp" line="105"/>
         <source>Are you sure you want to reset the list of sensitive applications?</source>
-        <translation>Weet u zeker dat u de lijst gevoelige programma's wilt resetten?</translation>
+        <translation>Weet u zeker dat u de lijst gevoelige programma&apos;s wilt resetten?</translation>
     </message>
     <message>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>The sensitive application file could not be saved.</source>
-        <translation>Het bestand met gevoelige programma's kon niet worden opgeslagen.</translation>
+        <translation>Het bestand met gevoelige programma&apos;s kon niet worden opgeslagen.</translation>
     </message>
 </context>
 <context>

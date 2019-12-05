@@ -100,8 +100,7 @@ bool I18nManager::isValidTranslationSubfolder(QString const& languageCode, QLoca
    outLocale = QLocale(languageCode); // if languageCode is invalid the locale will be "C" 
    if (QLocale::C == outLocale.language())
       return false;
-   QStringList const files = { QString("beeftext_%1.qm").arg(languageCode), QString("qtbase_%1.qm").arg(languageCode), 
-      QString("xmilib_%1.qm").arg(languageCode) };
+   QStringList const files = { QString("beeftext_%1.qm").arg(languageCode), QString("xmilib_%1.qm").arg(languageCode) }; ///< qtbase_%1.ts is optional.
    for (QString const& file: files)
    {
       QFileInfo const fileInfo(dir.absoluteFilePath(file));
@@ -227,10 +226,13 @@ void I18nManager::loadTranslation()
       qtTranslator_ = std::make_unique<QTranslator>(app);
       QDir const transDir = globals::translationRootFolderPath();
       QString const qtTransFile = transDir.absoluteFilePath(QString("%1/qtbase_%1.qm").arg(langStr));
-      if (!qtTranslator_->load(qtTransFile))
+      if (QFileInfo(qtTransFile).exists()) // qtbase translation file is optional
       {
-         qtTranslator_.reset();
-         throw xmilib::Exception(kStrTranslationFileMissing.arg(qtTransFile));
+         if (!qtTranslator_->load(qtTransFile))
+         {
+            qtTranslator_.reset();
+            throw xmilib::Exception(kStrTranslationFileMissing.arg(qtTransFile));
+         }
       }
 
       // load and install application translations
