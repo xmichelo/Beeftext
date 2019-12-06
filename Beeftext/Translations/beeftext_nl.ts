@@ -55,22 +55,6 @@
 <context>
     <name>ComboDialog</name>
     <message>
-        <source>Keyword:</source>
-        <translation type="vanished">Sleutelwoord:</translation>
-    </message>
-    <message>
-        <source>Name:</source>
-        <translation type="vanished">Naam:</translation>
-    </message>
-    <message>
-        <source>Group:</source>
-        <translation type="vanished">Groep:</translation>
-    </message>
-    <message>
-        <source>Snippet:</source>
-        <translation type="vanished">Knipsel:</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.ui" line="123"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Naam&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -263,10 +247,6 @@ U kunt meerdere combo&apos;s hebben met hetzelfde sleutelwoord. Beeftext zal wil
         <translation>&amp;Annuleren</translation>
     </message>
     <message>
-        <source>This keyword is already in use.</source>
-        <translation type="vanished">Dit sleutelwoord is al in gebruik.</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.cpp" line="208"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Een bestaande combo zorgt voor een conflict met dit combo.</translation>
@@ -291,10 +271,6 @@ Do you want to continue anymay?</source>
 Weet u zeker dat u wilt doorgaan?</translation>
     </message>
     <message>
-        <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
-        <translation type="vanished">Een bestaande combo, getriggerd door &apos;%1&apos;, zorgt voor een conflict met dit combo.</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.cpp" line="283"/>
         <source>New Group</source>
         <translation>Nieuwe groep</translation>
@@ -307,10 +283,6 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <location filename="../Combo/ComboImportDialog.ui" line="225"/>
         <source>&amp;Browse</source>
         <translation>&amp;Bladeren</translation>
-    </message>
-    <message>
-        <source>Combo file</source>
-        <translation type="vanished">Combo-bestand</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="32"/>
@@ -399,14 +371,6 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <location filename="../Combo/ComboImportDialog.cpp" line="142"/>
         <source>Overwrite 1 older conflicting combo.</source>
         <translation>Overschrijf 1 oudere conflicterende combo.</translation>
-    </message>
-    <message>
-        <source>Overwrite %1 newer conflicting combos.</source>
-        <translation type="vanished">Overschrijf %1 nieuwere conflicterende combos.</translation>
-    </message>
-    <message>
-        <source>Overwrite 1 newer conflicting combo.</source>
-        <translation type="vanished">Overschrijf 1 nieuwere conflicterende combo.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="154"/>
@@ -778,14 +742,6 @@ Weet u zeker dat u wilt doorgaan?</translation>
 </context>
 <context>
     <name>GroupDialog</name>
-    <message>
-        <source>Name:</source>
-        <translation type="vanished">Naam:</translation>
-    </message>
-    <message>
-        <source>Description:</source>
-        <translation type="vanished">Beschrijving:</translation>
-    </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="22"/>
         <source>Description</source>
@@ -1245,10 +1201,6 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Geavanceerd</translation>
     </message>
     <message>
-        <source>Use clipboard for combo substitution</source>
-        <translation type="vanished">Gebruik klembord voor combo-vervanging</translation>
-    </message>
-    <message>
         <location filename="../PreferencesDialog.ui" line="669"/>
         <source>Sensitive Applications</source>
         <translation>Gevoelige applicaties</translation>
@@ -1324,74 +1276,6 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <source>&amp;Close</source>
         <translation>&amp;Sluiten</translation>
     </message>
-    <message>
-        <source>&amp;OK</source>
-        <translation type="vanished">&amp;OK</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="vanished">&amp;Annuleren</translation>
-    </message>
-    <message>
-        <source>&amp;Apply</source>
-        <translation type="vanished">T&amp;oepassen</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start %1 at login</source>
-        <translation type="vanished">&amp;Automatisch starten bij inloggen</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="vanished">Fout</translation>
-    </message>
-    <message>
-        <source>Reset Preferences</source>
-        <translation type="vanished">Voorkeuren resetten</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset the preferences to their default values?</source>
-        <translation type="vanished">Weet u zeker dat u de voorkeuren naar hun standaardwaarden wilt terugzetten?</translation>
-    </message>
-    <message>
-        <source>Select folder</source>
-        <translation type="vanished">Selecteer map</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset all warnings?</source>
-        <translation type="vanished">Weet u zeker dat u alle waarschuwingen wilt resetten?</translation>
-    </message>
-    <message>
-        <source>Delete Backup Files?</source>
-        <translation type="vanished">Backup-bestanden verwijderen?</translation>
-    </message>
-    <message>
-        <source>The combo list folder could not be changed. The other settings were saved successfully.</source>
-        <translation type="vanished">De combolijst-map kon niet gewijzigd worden. De andere instellingen zijn succesvol opgeslagen.</translation>
-    </message>
-    <message>
-        <source>Do you want to delete all the backup files?</source>
-        <translation type="vanished">Wilt u alle backupbestanden verwijderen?</translation>
-    </message>
-    <message>
-        <source>Reset Warnings</source>
-        <translation type="vanished">Waarschuwingen resetten</translation>
-    </message>
-    <message>
-        <source>%1 v%2.%3 is available.</source>
-        <translation type="vanished">%1 v%2.%3 is niet beschikbar.</translation>
-    </message>
-    <message>
-        <source>A new version is available.</source>
-        <translation type="vanished">Er is een nieuwe versie beschikbaar.</translation>
-    </message>
-    <message>
-        <source>The software is up to date.</source>
-        <translation type="vanished">De software is up to date.</translation>
-    </message>
-    <message>
-        <source>Update check failed.</source>
-        <translation type="vanished">Controleren op updates mislukt.</translation>
-    </message>
 </context>
 <context>
     <name>PreferencesManager</name>
@@ -1407,14 +1291,6 @@ If you really need to disable the use of the clipboard, click on the &apos;Sensi
 <context>
     <name>QObject</name>
     <message>
-        <source>Already Running</source>
-        <translation type="vanished">Reeds actief</translation>
-    </message>
-    <message>
-        <source>Another instance of the application is already running.</source>
-        <translation type="vanished">Een ander exemplaar van het programma is al actief.</translation>
-    </message>
-    <message>
         <location filename="../main.cpp" line="91"/>
         <source>Getting Started</source>
         <translation>Eerste stappen</translation>
@@ -1429,33 +1305,21 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 Raadpleeg de snelstartgids (in het Engels)?</translation>
     </message>
     <message>
-        <source>Nieuw bij Beeftext?
-
-Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
-        <translation type="vanished">U begint net met Beeftext?
-
-Raadpleeg de snelstartgids (in het Engels)?</translation>
-    </message>
-    <message>
         <location filename="../BeeftextUtils.cpp" line="265"/>
         <location filename="../EmojiManager.cpp" line="166"/>
-        <location filename="../I18nManager.cpp" line="260"/>
+        <location filename="../I18nManager.cpp" line="262"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="260"/>
+        <location filename="../I18nManager.cpp" line="262"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Kan vertaling niet laden: %1</translation>
     </message>
     <message>
-        <source>Translation files could not be loaded.</source>
-        <translation type="vanished">Taalbestanden konden niet worden geladen.</translation>
-    </message>
-    <message>
-        <location filename="../I18nManager.cpp" line="207"/>
+        <location filename="../I18nManager.cpp" line="206"/>
         <source> - Portable Edition</source>
         <translation> - Portable Editie</translation>
     </message>
@@ -1495,10 +1359,6 @@ Raadpleeg de snelstartgids (in het Engels)?</translation>
         <translation>JSON &amp; CSV (*.json *.csv);;JSON-bestanden (*.json);;CSV-bestanden (*.csv);;Alle bestanden (*.*)</translation>
     </message>
     <message>
-        <source>&amp;Automatically start %1 at login</source>
-        <translation type="vanished">&amp;Automatisch starten bij inloggen</translation>
-    </message>
-    <message>
         <location filename="../Group/GroupList.cpp" line="19"/>
         <source>Default Group</source>
         <translation>Standaardgroep</translation>
@@ -1523,18 +1383,6 @@ Raadpleeg de snelstartgids (in het Engels)?</translation>
         <location filename="../Combo/ComboDialog.cpp" line="36"/>
         <source>Do not show this warning again.</source>
         <translation>Waarschuwing niet meer tonen.</translation>
-    </message>
-    <message>
-        <source>Invalid file</source>
-        <translation type="vanished">Ongeldig bestand</translation>
-    </message>
-    <message>
-        <source>The file containing the list of sensitive application is invalid. Do you want to replace it by the default one?</source>
-        <translation type="vanished">Het bestand met de lijst gevoelige applicaties is ongeldig. Wilt u dit vervangen door de standaardversie?</translation>
-    </message>
-    <message>
-        <source>The sensitive applications file could not be saved.</source>
-        <translation type="vanished">Het bestand met gevoelige applicaties kon niet worden opgeslagen.</translation>
     </message>
     <message>
         <location filename="../EmojiManager.cpp" line="149"/>

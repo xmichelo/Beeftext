@@ -55,22 +55,6 @@
 <context>
     <name>ComboDialog</name>
     <message>
-        <source>Keyword:</source>
-        <translation type="vanished">Mot-clé:</translation>
-    </message>
-    <message>
-        <source>Name:</source>
-        <translation type="vanished">Nom:</translation>
-    </message>
-    <message>
-        <source>Group:</source>
-        <translation type="vanished">Groupe:</translation>
-    </message>
-    <message>
-        <source>Snippet:</source>
-        <translation type="vanished">Snippet:</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.ui" line="123"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Nom&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -263,10 +247,6 @@ Il est possible d&apos;utiliser le même mot-clé pour plusieurs combos. Beeftex
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <source>This keyword is already in use.</source>
-        <translation type="vanished">Ce mot clé est déjà utilisé.</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.cpp" line="208"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Un combo existant cause un conflit avec ce combo.</translation>
@@ -291,10 +271,6 @@ Do you want to continue anymay?</source>
 Voulez-vous tout de même continuer?</translation>
     </message>
     <message>
-        <source>An existing combo, triggered by &apos;%1&apos;, is creating a conflict with this combo.</source>
-        <translation type="vanished">Un combo existant, déclenché par &apos;%1&apos;, crée un conflit.</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.cpp" line="283"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
@@ -307,10 +283,6 @@ Voulez-vous tout de même continuer?</translation>
         <location filename="../Combo/ComboImportDialog.ui" line="225"/>
         <source>&amp;Browse</source>
         <translation>&amp;Parcourir</translation>
-    </message>
-    <message>
-        <source>Combo file</source>
-        <translation type="vanished">Ficher de combos</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="32"/>
@@ -399,14 +371,6 @@ Voulez-vous tout de même continuer?</translation>
         <location filename="../Combo/ComboImportDialog.cpp" line="142"/>
         <source>Overwrite 1 older conflicting combo.</source>
         <translation>Remplacer 1 combo conflictuel plus ancien.</translation>
-    </message>
-    <message>
-        <source>Overwrite %1 newer conflicting combos.</source>
-        <translation type="vanished">Remplacer %1 combos conflictuels plus récent.</translation>
-    </message>
-    <message>
-        <source>Overwrite 1 newer conflicting combo.</source>
-        <translation type="vanished">Remplacer 1 combo conflictuel plus récent.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="154"/>
@@ -778,14 +742,6 @@ Voulez-vous tout de même continuer?</translation>
 </context>
 <context>
     <name>GroupDialog</name>
-    <message>
-        <source>Name:</source>
-        <translation type="vanished">Nom:</translation>
-    </message>
-    <message>
-        <source>Description:</source>
-        <translation type="vanished">Description:</translation>
-    </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="22"/>
         <source>Description</source>
@@ -1245,10 +1201,6 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Avancé</translation>
     </message>
     <message>
-        <source>Use clipboard for combo substitution</source>
-        <translation type="vanished">Utiliser le presse-papier pour la substitution des combos</translation>
-    </message>
-    <message>
         <location filename="../PreferencesDialog.ui" line="669"/>
         <source>Sensitive Applications</source>
         <translation>Applications Sensibles</translation>
@@ -1324,74 +1276,6 @@ Voulez-vous tout de même continuer?</translation>
         <source>&amp;Close</source>
         <translation>&amp;Fermer</translation>
     </message>
-    <message>
-        <source>&amp;OK</source>
-        <translation type="vanished">&amp;OK</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="vanished">&amp;Annuler</translation>
-    </message>
-    <message>
-        <source>&amp;Apply</source>
-        <translation type="vanished">A&amp;ppliquer</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start %1 at login</source>
-        <translation type="vanished">&amp;Démarrer %1 automatiquement à la connexion</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="vanished">Erreur</translation>
-    </message>
-    <message>
-        <source>Reset Preferences</source>
-        <translation type="vanished">Réinitialiser les Préférences</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset the preferences to their default values?</source>
-        <translation type="vanished">Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défault?</translation>
-    </message>
-    <message>
-        <source>Select folder</source>
-        <translation type="vanished">Sélectionner le dossier</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset all warnings?</source>
-        <translation type="vanished">Êtes-vous sûr de vouloir réactiver tous les messages d&apos;avertissement?</translation>
-    </message>
-    <message>
-        <source>Delete Backup Files?</source>
-        <translation type="vanished">Effacer les Sauvegardes?</translation>
-    </message>
-    <message>
-        <source>The combo list folder could not be changed. The other settings were saved successfully.</source>
-        <translation type="vanished">Le dossier de liste des combos n&apos;a pas pu être modifié. Les autres réglages ont bien été sauvegardés.</translation>
-    </message>
-    <message>
-        <source>Do you want to delete all the backup files?</source>
-        <translation type="vanished">Voulez-vous effacer toutes les sauvegardes?</translation>
-    </message>
-    <message>
-        <source>Reset Warnings</source>
-        <translation type="vanished">Réactiver les Avertissements</translation>
-    </message>
-    <message>
-        <source>%1 v%2.%3 is available.</source>
-        <translation type="vanished">%1 v%2.%3 est disponible.</translation>
-    </message>
-    <message>
-        <source>A new version is available.</source>
-        <translation type="vanished">Une nouvelle version est disponible.</translation>
-    </message>
-    <message>
-        <source>The software is up to date.</source>
-        <translation type="vanished">Le logiciel est à jour.</translation>
-    </message>
-    <message>
-        <source>Update check failed.</source>
-        <translation type="vanished">La vérification de mise à jour a échoué.</translation>
-    </message>
 </context>
 <context>
     <name>PreferencesManager</name>
@@ -1407,14 +1291,6 @@ Si vous devez continuer d&apos;utiliser cette option, dans l&apos;onglet &apos;A
 </context>
 <context>
     <name>QObject</name>
-    <message>
-        <source>Already Running</source>
-        <translation type="vanished">En Cours d&apos;Exécution</translation>
-    </message>
-    <message>
-        <source>Another instance of the application is already running.</source>
-        <translation type="vanished">Une autre instance de l&apos;application est déjà en cours d&apos;exécution.</translation>
-    </message>
     <message>
         <location filename="../main.cpp" line="91"/>
         <source>Getting Started</source>
@@ -1432,23 +1308,19 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     <message>
         <location filename="../BeeftextUtils.cpp" line="265"/>
         <location filename="../EmojiManager.cpp" line="166"/>
-        <location filename="../I18nManager.cpp" line="260"/>
+        <location filename="../I18nManager.cpp" line="262"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="260"/>
+        <location filename="../I18nManager.cpp" line="262"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Impossible de charger le fichier de traduction: %1</translation>
     </message>
     <message>
-        <source>Translation files could not be loaded.</source>
-        <translation type="vanished">Le chargement des fichiers de traduction a échoué.</translation>
-    </message>
-    <message>
-        <location filename="../I18nManager.cpp" line="207"/>
+        <location filename="../I18nManager.cpp" line="206"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
@@ -1488,10 +1360,6 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation>Fichiers JSON &amp; CSV (*.json *.csv);;Fichiers JSON (*.json);;Fichiers CSV (*.csv);;Tous les fichiers (*.*)</translation>
     </message>
     <message>
-        <source>&amp;Automatically start %1 at login</source>
-        <translation type="vanished">&amp;Démarrer %1 automatiquement à la connexion</translation>
-    </message>
-    <message>
         <location filename="../Group/GroupList.cpp" line="19"/>
         <source>Default Group</source>
         <translation>Groupe Par Défaut</translation>
@@ -1516,18 +1384,6 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <location filename="../Combo/ComboDialog.cpp" line="36"/>
         <source>Do not show this warning again.</source>
         <translation>Ne plus afficher cet avertissement.</translation>
-    </message>
-    <message>
-        <source>Invalid file</source>
-        <translation type="vanished">Fichier invalide</translation>
-    </message>
-    <message>
-        <source>The file containing the list of sensitive application is invalid. Do you want to replace it by the default one?</source>
-        <translation type="vanished">Le fichier contenant la liste des applications sensible est invalide. Voulez-vous le remplacer par le fichier par défaut?</translation>
-    </message>
-    <message>
-        <source>The sensitive applications file could not be saved.</source>
-        <translation type="vanished">Le fichiers des applications sensibles n&apos;a pas pu être sauvegardé.</translation>
     </message>
     <message>
         <location filename="../EmojiManager.cpp" line="149"/>

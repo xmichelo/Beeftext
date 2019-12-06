@@ -845,10 +845,6 @@ Do you want to continue anymay?</source>
         <translation>Сброс настроек к значениям по умолчанию.</translation>
     </message>
     <message>
-        <source>Use clipboard for combo substitution</source>
-        <translation type="vanished">Использовать буфер обмена для замещения в шаблонах</translation>
-    </message>
-    <message>
         <source>Reset &amp;Warnings</source>
         <translation>&amp;Сбросить предупреждения</translation>
     </message>
@@ -1051,10 +1047,6 @@ If you really need to disable the use of the clipboard, click on the &apos;Sensi
     <message>
         <source> - Portable Edition</source>
         <translation> - Портативная версия</translation>
-    </message>
-    <message>
-        <source>Move To</source>
-        <translation type="vanished">Переместить в</translation>
     </message>
     <message>
         <source>New to Beeftext?
