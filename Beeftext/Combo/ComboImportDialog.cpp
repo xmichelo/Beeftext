@@ -202,6 +202,7 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
          ++failureCount;
          continue;
       }
+      combo->setGroup(group);
       *it = combo;
    }
 }
