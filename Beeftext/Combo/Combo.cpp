@@ -451,11 +451,13 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
    QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const
 {
    outCancelled = false;
+   QTextDocument remainingText;
    if (this->useHtml())
-      return snippet_;    /// \todo Implement variable support for HTML
-
-   QString remainingText = snippet_;
-   QString result;
+      remainingText.setHtml(snippet_);
+   else
+      remainingText.setPlainText(snippet_);
+   QTextDocument result;
+   QTextCursor resultCursor(&result);
 
    // The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \.
    // Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents
@@ -464,28 +466,37 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
 
    while (true)
    {
-      QRegularExpressionMatch match = regexp.match(remainingText);
-      if (!match.hasMatch())
-         return result + remainingText;
-
-      // we add the text before the variable
-      result += remainingText.left(match.capturedStart(1));
-
-      QString const variable = match.captured(2);
-      if ("cursor" == variable)
+      QTextCursor cursor = remainingText.find(regexp);
+      if (cursor.isNull())
       {
-         if (outCursorPos)
-            *outCursorPos = result.size();
-      }
-      else
-      {
-         // we add the text before the variable and the evaluated variable contents to the result
-         result += evaluateVariable(match.captured(2), forbiddenSubCombos, knownInputVariables, outCancelled);
-         if (outCancelled)
-            return QString();
+         resultCursor.movePosition(QTextCursor::End);
+         resultCursor.insertHtml(remainingText.toHtml());
+         return this->useHtml() ? result.toHtml() : result.toPlainText();
       }
 
-      // we still need to evaluate the text that was at the right of the variable
-      remainingText = remainingText.right(remainingText.size() - match.capturedEnd(1));
+      QTextDocumentFragment const variable = cursor.selection();
+      cursor.deleteChar();
+      qDebug() << QString("variable detected: %1").arg(variable.toPlainText());
+      cursor.movePosition(QTextCursor::Start, QTextCursor::KeepAnchor);
+      resultCursor.movePosition(QTextCursor::Start);
+      resultCursor.insertHtml(cursor.selection().toHtml());
+      cursor.deleteChar();
+
+      //QString const variable = match.captured(2);
+      //if ("cursor" == variable)
+      //{
+      //   if (outCursorPos)
+      //      *outCursorPos = result.size();
+      //}
+      //else
+      //{
+      //   // we add the text before the variable and the evaluated variable contents to the result
+      //   result += evaluateVariable(match.captured(2), forbiddenSubCombos, knownInputVariables, outCancelled);
+      //   if (outCancelled)
+      //      return QString();
+      //}
+
+      //// we still need to evaluate the text that was at the right of the variable
+      //remainingText = remainingText.right(remainingText.size() - match.capturedEnd(1));
    }
 }
