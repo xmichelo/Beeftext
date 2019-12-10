@@ -100,8 +100,9 @@ QString evaluateDateTimeVariable(QString const& variable)
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
 QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, QSet<QString> forbiddenSubCombos, 
-   QMap<QString, QString>& knownInputVariables, bool& outCancelled)
+   QMap<QString, QString>& knownInputVariables, bool& outIsHtml, bool& outCancelled)
 {
+   outIsHtml = false;
    QString const fallbackResult = QString("#{%1}").arg(variable);
    qint32 const varNameLength = variable.indexOf(':');
    if (varNameLength < 0)
@@ -113,8 +114,11 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
    ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(),
       [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
 
-   QString const str = combos.end() == it ? fallbackResult : (*it)->evaluatedSnippet(outCancelled, 
-      forbiddenSubCombos << comboName, knownInputVariables, nullptr); // forbiddenSubcombos is intended at avoiding endless recursion
+   if (combos.end() == it)
+      return fallbackResult;
+   QString const str = (*it)->evaluatedSnippet(outCancelled, forbiddenSubCombos << comboName, knownInputVariables, 
+      nullptr); // forbiddenSubcombos is intended at avoiding endless recursion
+   outIsHtml = (*it)->useHtml();
    switch (caseChange)
    {
    case ECaseChange::ToUpper: return str.toUpper();
@@ -168,18 +172,28 @@ QString evaluateEnvVarVariable(QString const& variable)
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion.
 /// \param[in,out] knownInputVariables The list of know input variables.
+/// \param[out] outIsHtml Is the evaluated variable in HTML format?
 /// \param[out] outCancelled Was the input variable cancelled by the user.
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
 QString evaluateVariable(QString const& variable, QSet<QString> const& forbiddenSubCombos, 
-   QMap<QString, QString>& knownInputVariables, bool& outCancelled)
+   QMap<QString, QString>& knownInputVariables, bool& outIsHtml, bool& outCancelled)
 {
+   outIsHtml = false;
    outCancelled = false;
    QLocale const systemLocale = QLocale::system();
    if (variable == "clipboard")
    {
       QClipboard const* clipboard = QGuiApplication::clipboard();
-      return clipboard ? clipboard->text() : QString();
+      if (clipboard)
+         return QString();
+      QMimeData const* mimeData = clipboard->mimeData();
+      if (mimeData->hasHtml())
+      {
+         outIsHtml = true;
+         return mimeData->html();
+      }
+      return clipboard->text();
    }
    
    if (variable == "discordemoji") //secret variable that create text in Discord emoji from the clipboard text
@@ -199,15 +213,15 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
 
    if (variable.startsWith("combo:"))
       return evaluateComboVariable(variable, ECaseChange::NoChange, forbiddenSubCombos, knownInputVariables, 
-         outCancelled);
+         outIsHtml, outCancelled);
 
    if (variable.startsWith("upper:"))
       return evaluateComboVariable(variable, ECaseChange::ToUpper, forbiddenSubCombos, knownInputVariables, 
-         outCancelled);
+         outIsHtml, outCancelled);
 
    if (variable.startsWith("lower:"))
       return evaluateComboVariable(variable, ECaseChange::ToLower, forbiddenSubCombos, knownInputVariables, 
-         outCancelled);
+         outIsHtml, outCancelled);
 
    if (variable.startsWith(kInputVariable))
       return evaluateInputVariable(variable, knownInputVariables, outCancelled);

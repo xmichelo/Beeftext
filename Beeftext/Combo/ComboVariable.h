@@ -9,7 +9,7 @@
 
 
 QString evaluateVariable(QString const& variable, QSet<QString> const& forbiddenSubCombos, 
-   QMap<QString, QString>& knownInputVariables, bool& outCancelled); ///< Compute the value of a variable.
+   QMap<QString, QString>& knownInputVariables, bool& outIsHtml, bool& outCancelled); ///< Compute the value of a variable.
 
 
 #endif // #ifndef BEEFTEXT_COMBO_VARIABLE_H

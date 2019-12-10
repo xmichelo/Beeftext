@@ -474,29 +474,34 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
          return this->useHtml() ? result.toHtml() : result.toPlainText();
       }
 
-      QTextDocumentFragment const variable = cursor.selection();
-      cursor.deleteChar();
-      qDebug() << QString("variable detected: %1").arg(variable.toPlainText());
+      // get the text of the variable
+      QString variable = cursor.selection().toPlainText();
+      variable = variable.mid(2, variable.size() - 3);
+
+      // delete the variable from the remaining text, copy the text before the variable to the result, and remove it from
+      // the remaining text
+      cursor.removeSelectedText();
       cursor.movePosition(QTextCursor::Start, QTextCursor::KeepAnchor);
-      resultCursor.movePosition(QTextCursor::Start);
+      resultCursor.movePosition(QTextCursor::End);
       resultCursor.insertHtml(cursor.selection().toHtml());
-      cursor.deleteChar();
+      cursor.removeSelectedText();
 
-      //QString const variable = match.captured(2);
-      //if ("cursor" == variable)
-      //{
-      //   if (outCursorPos)
-      //      *outCursorPos = result.size();
-      //}
-      //else
-      //{
-      //   // we add the text before the variable and the evaluated variable contents to the result
-      //   result += evaluateVariable(match.captured(2), forbiddenSubCombos, knownInputVariables, outCancelled);
-      //   if (outCancelled)
-      //      return QString();
-      //}
-
-      //// we still need to evaluate the text that was at the right of the variable
-      //remainingText = remainingText.right(remainingText.size() - match.capturedEnd(1));
+      if (outCursorPos && ("cursor" == variable))
+      {
+         if (outCursorPos)
+            *outCursorPos = result.toPlainText().size();
+      }
+      else
+      {
+         resultCursor.movePosition(QTextCursor::End);
+         bool isHtml = false;
+         QString const eval = evaluateVariable(variable, forbiddenSubCombos, knownInputVariables, isHtml, outCancelled);
+         if (isHtml)
+            resultCursor.insertHtml(eval);
+         else 
+            resultCursor.insertText(eval);
+         if (outCancelled)
+            return QString();
+      }
    }
 }
