@@ -1,4 +1,4 @@
-﻿# This files contains the NSIS script for building the installer for the Beeftext application
+# This files contains the NSIS script for building the installer for the Beeftext application
 # Xavier Michelon
 # 2017-11-12
 
@@ -29,7 +29,7 @@
 !define AUTHOR "Xavier Michelon"
 !define COMPANY "beeftext.org"
 !define VERSION_MAJOR 6
-!define VERSION_MINOR 0
+!define VERSION_MINOR 1
 !define APP_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}"
 !define LEFT_IMAGE_PATH "${RESOURCES_DIR}\installerLeftImage.bmp"
 !define TOP_IMAGE_PATH "${RESOURCES_DIR}\installerTopImage.bmp"
