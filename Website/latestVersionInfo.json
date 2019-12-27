@@ -1,8 +1,8 @@
 {
    "versionMajor": 6,
-   "versionMinor": 0,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v6.0/Beeftext-6.0-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v6.0",
-   "sha256Sum": "fcc1ca8f42cdefcd01c00c8d890a6c3d36d399f949a3e43d428f269a05a47fe5",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v6.0 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>Added support for rich text in snippets (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/126\">#126</a>).</li><li>The preferences dialog has been split in tabs (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/206\">#206</a>).</li><li>The combo picker search now search in keyword and snippet content (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/193\">#193</a>).</li><li>Fixed a bug where accents would not render properly on non US keyboard layouts with dead keys (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/107\">#107</a>).</li><li>Fixed two bugs with custom combo sound (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/203\">#203</a> and issue <a href=\"https://github.com/xmichelo/Beeftext/issues/186\">#186</a>).</li></ul></body></html>"
+   "versionMinor": 1,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v6.1/Beeftext-6.1-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v6.1",
+   "sha256Sum": "d3d5c2bcbbe753be52050285155c41b2dbbd39692965edc1f555f608dfe6147c",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v6.1 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><body><ul><li>Variables are supported in rich text combos (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/213\">#213</a>).</li><li>Fixed the installer to properly support silent install (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/217\">#217</a>).</li><li>The combo dialog can be maximized (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/214\">#214</a>).</li><li>Fixed a bug where imported combos would not be included in any group (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/209\">#209</a>).</li><li>Added support for languages without a qtbase translation (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/225\">#225</a>).</li></ul></body></html>"
 }
