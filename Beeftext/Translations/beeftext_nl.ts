@@ -147,7 +147,7 @@
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="113"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
-        <translation>Aangepaste &amp;&amp; Datum</translation>
+        <translation>&amp;Aangepaste datum&amp;&amp; Tijd</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="104"/>
@@ -332,13 +332,13 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Bladeren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="230"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="231"/>
         <source>%1 combo(s) could not be imported.</source>
         <translation>%1 combo(s) kon niet geïporteerd worden.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="225"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="230"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="226"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="231"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
@@ -388,12 +388,12 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Selecteer een geldige groep.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="237"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="238"/>
         <source>&amp;Error</source>
         <translation>&amp;Fout</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="257"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="258"/>
         <source>Select Combo File</source>
         <translation>Selecteer Combo-Bestand</translation>
     </message>
@@ -444,7 +444,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="34"/>
         <source>Combos</source>
-        <translation>Combo&amp;s</translation>
+        <translation>Combo&apos;s</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="66"/>
@@ -454,7 +454,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="162"/>
         <source>&amp;Delete</source>
-        <translation>Verwijderen</translation>
+        <translation>&amp;Verwijderen</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="176"/>
@@ -572,7 +572,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="212"/>
         <source>&amp;Deselect All</source>
-        <translation>Deselecteer Alles</translation>
+        <translation>&amp;Deselecteer Alles</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="215"/>
@@ -597,12 +597,12 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="234"/>
         <source>Export Selected Combos</source>
-        <translation>Exporteer geselecteerde combo&amp;s</translation>
+        <translation>Exporteer geselecteerde combo&apos;s</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="245"/>
         <source>Import Combos</source>
-        <translation>Importeer Combo&amp;s</translation>
+        <translation>Importeer Combo&apos;s</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="248"/>
@@ -613,7 +613,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <location filename="../Combo/ComboTableWidget.ui" line="256"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="686"/>
         <source>Export All Combos</source>
-        <translation>Exporteer alle combo&amp;s</translation>
+        <translation>Exporteer alle combo&apos;s</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="264"/>
@@ -633,7 +633,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="275"/>
         <source>&amp;Strict</source>
-        <translation>Strikt</translation>
+        <translation>&amp;Strikt</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="281"/>
@@ -711,7 +711,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="536"/>
         <source>Are you sure you want to delete the selected combos?</source>
-        <translation>Weet u zeker dat u de geselecteerde combo&amp;s wilt verwijderen?</translation>
+        <translation>Weet u zeker dat u de geselecteerde combo&apos;s wilt verwijderen?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="537"/>
@@ -726,7 +726,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="648"/>
         <source>Export Combos</source>
-        <translation>Combo&amp;s exporteren</translation>
+        <translation>Combo&apos;s exporteren</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="664"/>
@@ -882,12 +882,12 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../MainWindow.ui" line="77"/>
         <source>E&amp;xit Beeftext</source>
-        <translation>A&amp;fsluiten Beeftext</translation>
+        <translation>Beeftext A&amp;fsluiten</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="83"/>
         <source>Exit Beeftext</source>
-        <translation>Afsluiten Beeftext</translation>
+        <translation>Beeftext afsluiten</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="86"/>
@@ -922,7 +922,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../MainWindow.ui" line="126"/>
         <source>Open &amp;Log File</source>
-        <translation>Open Logbestand</translation>
+        <translation>Open &amp;Logbestand</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="129"/>
@@ -967,7 +967,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../MainWindow.ui" line="159"/>
         <source>Backup the combo list.</source>
-        <translation>Backup de lijst met combo&amp;s.</translation>
+        <translation>Backup de lijst met combo&apos;s.</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="164"/>
@@ -977,7 +977,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../MainWindow.ui" line="167"/>
         <source>Restore the combo list from a backup.</source>
-        <translation>Herstel de lijst met combo&amp;s van een backup.</translation>
+        <translation>Herstel de lijst met combo&apos;s van een backup.</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="128"/>
@@ -1032,7 +1032,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../MainWindow.cpp" line="315"/>
         <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
-        <translation>Als u een backup terugzet, worden alle huidige combo&amp;s verwijderd en vervangen door de inhoud van het backup-bestand.</translation>
+        <translation>Als u een backup terugzet, worden alle huidige combo&apos;s verwijderd en vervangen door de inhoud van het backup-bestand.</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="316"/>
@@ -1071,7 +1071,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="32"/>
         <source>Automatically check for &amp;updates</source>
-        <translation>Automatisch op updates controleren</translation>
+        <translation>Automatisch op &amp;updates controleren</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="39"/>
@@ -1091,7 +1091,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="348"/>
         <source>&amp;Excluded Applications</source>
-        <translation>Uitgesloten applicaties</translation>
+        <translation>&amp;Uitgesloten applicaties</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="141"/>
@@ -1121,7 +1121,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="135"/>
         <source>Combos</source>
-        <translation>Combo&amp;s</translation>
+        <translation>Combo&apos;s</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="147"/>
@@ -1269,7 +1269,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="732"/>
         <source>Reset &amp;Warnings</source>
-        <translation>Waarschuwingen resetten</translation>
+        <translation>Waarschuwingen &amp;Resetten</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="755"/>
@@ -1284,8 +1284,9 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <source>You have the &apos;Use clipboard for combo substitution&apos; option disabled. This setting is now deprecated.
 
 If you really need to disable the use of the clipboard, click on the &apos;Sensitive Applications&apos; button in the &apos;Advanced&apos; tab of the Preferences dialog, and add an entry in the list containing the wildcard &apos;*&apos; (without quotes).</source>
-        <translation>Als u gebruik van het klembord echt moet uitschakelen, klik dan op de &apos;Gevoelige Applicaties &apos; knop in de &apos;Geavanceerd&apos;-knop in het Voorkeuren-scherm, en voeg een item toe aan de lijst met de wildcard &apos;*&apos; (zonder aanhalingstekens).Si vous devez continuer d&apos;utiliser cette option, dans l&apos;onglet &apos;Avancé&apos; des préferences, cliquez sur le bouton &apos;Applications Sensibles&apos; et ajourter une entrée contenant le caractère *.
-		</translation>
+        <translation>U heeft de &apos;Gebruik klembord voor combo vervanging&apos;-optie uitgeschakeld. Deze instelling is nu verouderd.
+
+Als u gebruik van het klembord echt moet uitschakelen, klik dan op de &apos;Gevoelige Applicaties &apos; knop in de &apos;Geavanceerd&apos;-tab in het Voorkeuren-scherm, en voeg een item toe aan de lijst met de wildcard &apos;*&apos; (zonder aanhalingstekens).</translation>
     </message>
 </context>
 <context>
@@ -1484,7 +1485,7 @@ Control, Alt of Windows.</translation>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
         <source>&amp;Download Page</source>
-        <translation>Downloadpagina</translation>
+        <translation>&amp;Downloadpagina</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="76"/>
@@ -1495,7 +1496,7 @@ Control, Alt of Windows.</translation>
         <location filename="../Update/UpdateDialog.cpp" line="134"/>
         <location filename="../Update/UpdateDialog.cpp" line="167"/>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="134"/>

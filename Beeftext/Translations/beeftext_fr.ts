@@ -332,13 +332,13 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Parcourir</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="230"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="231"/>
         <source>%1 combo(s) could not be imported.</source>
         <translation>%1 combo(s) n&apos;ont pu être importés.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="225"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="230"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="226"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="231"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -388,12 +388,12 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Veuillez sélectionner un group valide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="237"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="238"/>
         <source>&amp;Error</source>
         <translation>&amp;Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="257"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="258"/>
         <source>Select Combo File</source>
         <translation>Sélection le Fichier de Combos</translation>
     </message>

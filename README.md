@@ -16,6 +16,7 @@ written in C++ using the [Qt] framework.
 The project is developed and managed by [Xavier Michelon].
 
 The Russian translation is kindly provided by Valerij Romanovskij.
+The Dutch translation is kindly provided by Sander Goudswaard.
 
 The [beeftext.org] website uses a template provided by [HTML5 UP].
 
