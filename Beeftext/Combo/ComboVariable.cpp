@@ -185,7 +185,7 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
    if (variable == "clipboard")
    {
       QClipboard const* clipboard = QGuiApplication::clipboard();
-      if (clipboard)
+      if (!clipboard)
          return QString();
       QMimeData const* mimeData = clipboard->mimeData();
       if (mimeData->hasHtml())
