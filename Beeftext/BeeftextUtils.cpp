@@ -240,7 +240,8 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       if (cursorPos >= 0)
       {
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
-         for (qint32 i = 0; i < qMax<qint32>(0, newText.size() - cursorPos); ++i)
+         for (qint32 i = 0; i < qMax<qint32>(0, (isHtml ? QTextDocumentFragment::fromHtml(newText).toPlainText().size() :
+            newText.size()) - cursorPos); ++i)
             synthesizeKeyDownAndUp(VK_LEFT);
          restoreModifierKeys(pressedModifiers);
       }
