@@ -72,15 +72,15 @@ void SnippetEdit::insertFromMimeData(const QMimeData* source)
    if (!this->acceptRichText())
    {
       if (source->hasText())
-         QTextEdit::insertPlainText(source->text());
+         this->insertPlainText(source->text());
       else
          if (source->hasHtml())
-            QTextEdit::insertHtml(source->html());
+            this->insertHtml(source->html());
       return;
    }
 
    if (source->hasHtml())
-      QTextEdit::insertHtml(removeImagesFromHtml(source->html()));
+      this->insertHtml(removeImagesFromHtml(source->html()));
    else 
       QTextEdit::insertFromMimeData(source);
 }

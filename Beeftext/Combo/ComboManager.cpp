@@ -268,11 +268,6 @@ bool ComboManager::checkAndPerformComboSubstitution()
    for (SpCombo const& combo: comboList_)
       if (combo && combo->isEnabled() && combo->matchesForInput(currentText_))
          result.push_back(combo);
-   VecSpCombo::const_iterator const it = std::find_if(comboList_.begin(), comboList_.end(),
-      [&](SpCombo const& combo) -> bool
-      {
-         return combo && combo->isEnabled() && combo->matchesForInput(currentText_);
-      });
 
    if (result.empty())
       return false;
