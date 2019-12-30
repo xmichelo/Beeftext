@@ -52,6 +52,7 @@ private: // member functions
    void changeEvent(QEvent *event) override; ///< Change event handler
    void showWindow(); ///< Ensure the window is visible, active and on top
    void restoreWindowGeometry(); ///< Restore the geometry of the window.
+   void restoreBackup(QString const& path); ///< The path of the backup file
 
 private slots: 
    void onSystemTrayIconActivated(QSystemTrayIcon::ActivationReason reason); ///< Slot for the activation of the system tray icon

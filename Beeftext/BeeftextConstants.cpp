@@ -23,8 +23,10 @@ QString const kGettingStartedUrl = "https://github.com/xmichelo/Beeftext/wiki/Ge
 QString const kBeeftextWikiVariablesUrl = "https://github.com/xmichelo/Beeftext/wiki/Variables";
 QString const kBeeftextReleasesPagesUrl = "https://github.com/xmichelo/Beeftext/releases";
 QString jsonFileDialogFilter() { return QObject::tr("JSON files (*.json);;All files (*.*)"); }
-QString jsonCsvFileDialogFilter() { return QObject::tr("JSON & CSV files (*.json *.csv);;""JSON files (*.json);;"
+QString jsonCsvFileDialogFilter() { return QObject::tr("JSON & CSV files (*.json *.csv);;JSON files (*.json);;"
    "CSV files (*.csv);;All files (*.*)"); }
+QString const backupFileExtension = "btbackup";
+QString backupFileDialogFilter() { return QObject::tr("Beeftext backup files (*.%1);;All files (*.*)").arg(backupFileExtension); }
 Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs;
 QChar const kEmojiDelimiter = '|';
 

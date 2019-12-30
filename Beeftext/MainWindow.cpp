@@ -89,13 +89,13 @@ void MainWindow::dropEvent(QDropEvent* event)
    {
       event->acceptProposedAction();
       this->showWindow();
-      // note we need to postpone the launch of the dialog to end the event handler ASAP, otherwise the application
+      QString const path = urls[0].toLocalFile();
+      // note we need to postpone the launch of the dialogs to end the event handler ASAP, otherwise the application
       // that the file was dropped from will like be frozen until we complete the import dialog
-      QTimer::singleShot(0, [urls, this]()
-      {
-         ui_.frameCombos->comboTableWidget()->
-            runComboImportDialog(urls[0].toLocalFile());
-      });
+      if (QFileInfo(path).suffix() == constants::backupFileExtension)
+         QTimer::singleShot(0, [path, this](){ this->restoreBackup(path); });
+      else
+         QTimer::singleShot(0, [path, this](){ ui_.frameCombos->comboTableWidget()->runComboImportDialog(path); });
    }
 }
 
@@ -214,6 +214,27 @@ void MainWindow::restoreWindowGeometry()
 
 
 //**********************************************************************************************************************
+/// \param[in] path The path of the file to backup
+//**********************************************************************************************************************
+void MainWindow::restoreBackup(QString const& path)
+{
+   try
+   {
+      if ((ComboManager::instance().comboListRef().rowCount(QModelIndex()) > 0)
+         && (0 != QMessageBox::question(this, tr("Restore"), tr("If you restore a backup, all your current combos will "
+            "be deleted and replaced by the content of the backup file."), tr("Restore"), tr("Cancel"), QString(), 1)))
+         return;
+      if (!ComboManager::instance().restoreBackup(path))
+         throw xmilib::Exception("Could not restore backup file.");
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   }
+}
+
+
+//**********************************************************************************************************************
 /// An 'activation' in an action performed on the system tray icon.
 /// \param[in] reason The reason for the activation
 //**********************************************************************************************************************
@@ -293,9 +314,12 @@ void MainWindow::onActionOpenLogFile()
 //**********************************************************************************************************************
 void MainWindow::onActionBackup()
 {
-   QString const path = QFileDialog::getSaveFileName(this, tr("Backup"), QDir(QFileInfo(PreferencesManager::instance()
-      .lastComboImportExportPath()).absolutePath()).absoluteFilePath(ComboList::defaultFileName),
-      tr("JSON Files (*.json);;All Files (*.*)"));
+   QString folder = PreferencesManager::instance().lastComboImportExportPath();
+   if (!QFileInfo(folder).isDir())
+      folder = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+   QString const path = QFileDialog::getSaveFileName(this, tr("Backup"), 
+      QDir(folder).absoluteFilePath(QString("Beeftext.%1").arg(constants::backupFileExtension)), 
+      constants::backupFileDialogFilter());
    if (path.isEmpty())
       return;
    QString errMsg;
@@ -309,24 +333,14 @@ void MainWindow::onActionBackup()
 //**********************************************************************************************************************
 void MainWindow::onActionRestore()
 {
-   try
-   {
-      if ((ComboManager::instance().comboListRef().rowCount(QModelIndex()) > 0)
-         && (0 != QMessageBox::question(this, tr("Restore"), tr("If you restore a backup, all your current combos will "
-            "be deleted and replaced by the content of the backup file."), tr("Restore"), tr("Cancel"), QString(), 1)))
-         return;
-      QString const path = QFileDialog::getOpenFileName(this, tr("Restore"), 
-         QDir(QFileInfo(PreferencesManager::instance().lastComboImportExportPath()).absolutePath()).
-         absoluteFilePath(ComboList::defaultFileName), tr("JSON Files (*.json);;All Files (*.*)"));
-      if (path.isEmpty())
-         return;
-      if (!ComboManager::instance().restoreBackup(path))
-         throw xmilib::Exception("Could not restore backup file.");
-   }
-   catch (xmilib::Exception const& e)
-   {
-      QMessageBox::critical(this, tr("Error"), e.qwhat());
-   }
+   QString folder = PreferencesManager::instance().lastComboImportExportPath();
+   if (!QFileInfo(folder).isDir())
+      folder = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+   QString const path = QFileDialog::getOpenFileName(this, tr("Restore"), 
+      QDir(folder).absolutePath(), constants::backupFileDialogFilter());
+   if (path.isEmpty())
+      return;
+   this->restoreBackup(path);
 }
 
 

@@ -24,6 +24,8 @@ extern QString const kBeeftextWikiVariablesUrl; ///< The URL of the page about v
 extern QString const kBeeftextReleasesPagesUrl; ///< The URL of the page for the project releases on GitHub
 QString jsonFileDialogFilter(); ///< The Open/Save file dialog filter
 QString jsonCsvFileDialogFilter(); ///< The file format filter for the import file picker dialog.
+extern QString const backupFileExtension; ///< The extension for backup files.
+QString backupFileDialogFilter(); ///< The file format filter for the backup and restore file picker dialogs.
 extern QString const kStyleSheet; // The application stylesheet
 extern Qt::DateFormat const kJsonExportDateFormat; ///< The date/time export format used for JSon docs
 extern QChar const kEmojiDelimiter; ///< The delimiter for emojis
