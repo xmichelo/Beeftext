@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>712</width>
-    <height>266</height>
+    <width>709</width>
+    <height>268</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -498,6 +498,37 @@
         </layout>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QLabel" name="labelTranslationFolder">
+           <property name="text">
+            <string>User-provided translations</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonTranslationFolder">
+           <property name="text">
+            <string>Open Folder</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QCheckBox" name="checkUseCustomTheme">
          <property name="text">
           <string>Use custom theme</string>
@@ -798,8 +829,8 @@
    <slot>onClose()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>677</x>
-     <y>704</y>
+     <x>698</x>
+     <y>257</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -814,8 +845,8 @@
    <slot>onChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>505</x>
-     <y>603</y>
+     <x>523</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -830,8 +861,8 @@
    <slot>onChangeComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>456</x>
-     <y>218</y>
+     <x>469</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -847,7 +878,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>84</x>
-     <y>704</y>
+     <y>257</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -862,8 +893,8 @@
    <slot>onResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>667</x>
-     <y>603</y>
+     <x>685</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -878,8 +909,8 @@
    <slot>onResetComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>537</x>
-     <y>218</y>
+     <x>550</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -894,8 +925,8 @@
    <slot>onRestoreBackup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>296</x>
-     <y>634</y>
+     <x>303</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -910,8 +941,8 @@
    <slot>onRadioAutomaticComboTrigger(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>151</x>
-     <y>189</y>
+     <x>172</x>
+     <y>80</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -927,7 +958,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>174</x>
-     <y>704</y>
+     <y>257</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -942,8 +973,8 @@
    <slot>onEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>359</x>
-     <y>544</y>
+     <x>133</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -958,8 +989,8 @@
    <slot>onEditEmojiExcludedApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>275</x>
-     <y>368</y>
+     <x>281</x>
+     <y>63</y>
     </hint>
     <hint type="destinationlabel">
      <x>307</x>
@@ -974,8 +1005,8 @@
    <slot>onCheckEnableEmojiShortcodes(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>365</y>
+     <x>106</x>
+     <y>60</y>
     </hint>
     <hint type="destinationlabel">
      <x>562</x>
@@ -990,8 +1021,8 @@
    <slot>onCheckEnableComboPicker(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>300</x>
-     <y>274</y>
+     <x>321</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1006,8 +1037,8 @@
    <slot>onChangeComboPickerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>347</x>
-     <y>304</y>
+     <x>358</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1022,8 +1053,8 @@
    <slot>onResetComboPickerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>428</x>
-     <y>304</y>
+     <x>439</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1038,8 +1069,8 @@
    <slot>onOpenComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>586</x>
-     <y>603</y>
+     <x>604</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
@@ -1086,8 +1117,8 @@
    <slot>onCheckPlaySoundOnCombo(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>115</x>
-     <y>94</y>
+     <x>126</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>485</x>
@@ -1102,8 +1133,8 @@
    <slot>onEmojiLeftDelimiterChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>137</x>
-     <y>396</y>
+     <x>140</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -1118,8 +1149,8 @@
    <slot>onEmojiRightDelimiterChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>396</y>
+     <x>299</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>123</x>
@@ -1134,8 +1165,8 @@
    <slot>onComboLanguageValueChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>457</y>
+     <x>143</x>
+     <y>61</y>
     </hint>
     <hint type="destinationlabel">
      <x>228</x>
@@ -1150,8 +1181,8 @@
    <slot>onCheckUseCustomTheme(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>51</x>
-     <y>481</y>
+     <x>62</x>
+     <y>88</y>
     </hint>
     <hint type="destinationlabel">
      <x>223</x>
@@ -1166,8 +1197,8 @@
    <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>250</x>
-     <y>572</y>
+     <x>257</x>
+     <y>60</y>
     </hint>
     <hint type="destinationlabel">
      <x>420</x>
@@ -1182,8 +1213,8 @@
    <slot>onCheckAutoBackup(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>128</x>
-     <y>631</y>
+     <x>140</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
@@ -1198,8 +1229,8 @@
    <slot>onCheckWriteDebugLogFile(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>255</x>
-     <y>658</y>
+     <x>266</x>
+     <y>147</y>
     </hint>
     <hint type="destinationlabel">
      <x>295</x>
@@ -1230,8 +1261,8 @@
    <slot>onChangeCustomSound()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>586</x>
-     <y>132</y>
+     <x>604</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
      <x>683</x>
@@ -1246,12 +1277,28 @@
    <slot>onPlaySoundButton()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>620</x>
-     <y>123</y>
+     <x>685</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
      <x>686</x>
      <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonTranslationFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onOpenTranslationFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>292</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>703</x>
+     <y>44</y>
     </hint>
    </hints>
   </connection>
@@ -1293,5 +1340,6 @@
   <slot>onCheckUseCustomSound(bool)</slot>
   <slot>onChangeCustomSound()</slot>
   <slot>onPlaySoundButton()</slot>
+  <slot>onOpenTranslationFolder()</slot>
  </slots>
 </ui>

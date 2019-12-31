@@ -36,11 +36,20 @@ QString appDataDir()
 
 
 //**********************************************************************************************************************
-/// \return The path of the folder containing all the translation files
+/// \return The path of the folder containing the application provided translations.
 //**********************************************************************************************************************
 QString translationRootFolderPath()
 {
    return QDir(QCoreApplication::applicationDirPath()).absoluteFilePath("Translations");
+}
+
+
+//**********************************************************************************************************************
+/// \return The path of the folder containing the user-provided translations.
+//**********************************************************************************************************************
+QString userTranslationRootFolderPath()
+{
+   return QDir(appDataDir()).absoluteFilePath("Translations");
 }
 
 

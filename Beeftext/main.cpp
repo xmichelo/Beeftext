@@ -27,7 +27,8 @@
 using namespace xmilib;
 
 
-void ensureAppDataDirExists(); ///< Make sure the application data folder exists
+void ensureDirExists(QString const& path); ///< Make sure a folder exists.
+void ensureAppDataDirsExist(); ///< Make sure the application data folder exists
 void ensureMainWindowHasAHandle(MainWindow& mainWindow); ///< Ensure that the main window has a Win32 handle
 void removeFileMarkedForDeletion(); ///< Remove the software update file that may have been marker for deletion
 
@@ -64,7 +65,7 @@ int main(int argc, char *argv[])
       QGuiApplication::setOrganizationName(constants::kOrganizationName);
       QGuiApplication::setApplicationName(constants::kApplicationName);
 
-      ensureAppDataDirExists();
+      ensureAppDataDirsExist();
       PreferencesManager& prefs = PreferencesManager::instance();
       if (prefs.writeDebugLogFile())
          debugLog.enableLoggingToFile(globals::logFilePath());
@@ -121,11 +122,10 @@ int main(int argc, char *argv[])
 
 
 //**********************************************************************************************************************
-//
+/// \param[in] path The path
 //**********************************************************************************************************************
-void ensureAppDataDirExists()
+void ensureDirExists(QString const& path)
 {
-   QString const path = globals::appDataDir();
    QDir const dir(path);
    if (dir.exists())
       return;
@@ -133,6 +133,15 @@ void ensureAppDataDirExists()
    if (!dir.exists())
       throw Exception(QString("The application data folder '%1' could not be created")
          .arg(QDir::toNativeSeparators(path)));
+}
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ensureAppDataDirsExist()
+{
+   ensureDirExists(globals::appDataDir());
+   ensureDirExists(globals::userTranslationRootFolderPath());
 }
 
 

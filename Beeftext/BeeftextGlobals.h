@@ -19,7 +19,8 @@ namespace globals {
 
 xmilib::DebugLog& debugLog(); ///< Returns a reference to the debug log
 QString appDataDir(); ///< Returns the location of the local storage folder for the application
-QString translationRootFolderPath(); ///< Returns the location of the root translation folder
+QString translationRootFolderPath(); ///< Returns the location of the root folder for application provided translations.
+QString userTranslationRootFolderPath(); ///< Returns the location of the root folder of the user provided translations.
 QString logFilePath(); ///< Returns the path of the log file
 QString backupFolderPath(); ///< Return the backup folder path
 QString portableModeDataFolderPath(); ///< Returns the path of the user data folder when the application is run in portable mode

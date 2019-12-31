@@ -40,14 +40,22 @@ public: // member functions
    void loadTranslation(); ///< Load the translation
    void unloadTranslation(); ///< Unload the translation
 
+private: // data types
+   struct LocaleInfo
+   {
+      QLocale locale;
+      QString folder;
+   }; ///< Type definition for locale information
+
 private: // member functions
    I18nManager(); ///< Default constructor
    void buildSupportedLocalesList(); ///< Build the list of supported locales
-   static bool isValidTranslationSubfolder(QString const& languageCode, QLocale& outLocale); ///< Check whether a translation subfolder contains a valid translation
+   static bool isValidTranslationSubfolder(LocaleInfo const& localeInfo); ///< Check whether a translation subfolder contains a valid translation
    void removeAllTranslators(); ///< Remove and free all translators used by the application
+   QString translationFolderForLocale(QLocale const& locale); ///< Return the path of the translation folder for the given locale
 
 private: // data members
-   QList<QLocale> supportedLocales_; ///< The list of supported locales
+   QList<LocaleInfo> supportedLocales_; ///< The list of supported locales
    std::unique_ptr<QTranslator> qtTranslator_; ///< The translator for Qt built-in contents
    std::unique_ptr<QTranslator> appTranslator_; ///< The translator for the application contents
    std::unique_ptr<QTranslator> xmilibTranslator_; ///< The translator the the XMiLib contents

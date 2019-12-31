@@ -586,3 +586,14 @@ void PreferencesDialog::onCheckWriteDebugLogFile(bool checked) const
    else
       log.disableLoggingToFile();
 }
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onOpenTranslationFolder()
+{
+   QString const path = globals::userTranslationRootFolderPath();
+   if (QDir(path).exists())
+      QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+}
