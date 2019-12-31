@@ -104,7 +104,7 @@ void PreferencesDialog::loadPreferences() const
    blocker = QSignalBlocker(ui_.editEmojiRightDelimiter);
    ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
    blocker = QSignalBlocker(ui_.comboLocale);
-   I18nManager::selectLocaleInCombo(prefs_.locale(), *ui_.comboLocale);
+   this->onRefreshLanguageList();
    blocker = QSignalBlocker(ui_.checkUseCustomTheme);
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
    blocker = QSignalBlocker(ui_.spinDelayBetweenKeystrokes);
@@ -596,4 +596,19 @@ void PreferencesDialog::onOpenTranslationFolder()
    QString const path = globals::userTranslationRootFolderPath();
    if (QDir(path).exists())
       QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onRefreshLanguageList() const
+{
+   I18nManager& i18NManager = I18nManager::instance();
+   QLocale const currentLocale = I18nManager::locale();
+   i18NManager.refreshSupportedLocalesList();
+   i18NManager.fillLocaleCombo(*ui_.comboLocale);
+   QLocale const validatedLocale = i18NManager.validateLocale(currentLocale);
+   I18nManager::selectLocaleInCombo(validatedLocale, *ui_.comboLocale);
+   i18NManager.setLocale(validatedLocale);
 }

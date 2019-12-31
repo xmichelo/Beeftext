@@ -24,6 +24,7 @@ class I18nManager
 {
 public: // static functions
    static I18nManager& instance(); ///< Return the only allowed instance of the class
+   void refreshSupportedLocalesList(); ///< Build the list of supported locales
    QLocale validateLocale(QLocale const& locale); ///< Validate the specified locale
    void fillLocaleCombo(QComboBox& combo); ///< Fill a combo box with the available locale
    static void selectLocaleInCombo(QLocale const& locale, QComboBox& combo); ///< Select a locale in a locale combo
@@ -49,7 +50,6 @@ private: // data types
 
 private: // member functions
    I18nManager(); ///< Default constructor
-   void buildSupportedLocalesList(); ///< Build the list of supported locales
    static bool isValidTranslationSubfolder(LocaleInfo const& localeInfo); ///< Check whether a translation subfolder contains a valid translation
    void removeAllTranslators(); ///< Remove and free all translators used by the application
    QString translationFolderForLocale(QLocale const& locale); ///< Return the path of the translation folder for the given locale

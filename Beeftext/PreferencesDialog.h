@@ -72,7 +72,8 @@ private slots:
    void onUpdateCheckFailed(); ///< Slot update check failure
    void onEditSensitiveApplications(); ///< Slot for the 'Edit sensitive applications' action
    void onCheckWriteDebugLogFile(bool checked) const; ///< Slot the for 'Write debug log file' checkbox
-   static void onOpenTranslationFolder(); ///< Button for the 'Translation Folder' button.
+   static void onOpenTranslationFolder(); ///< Slot for the 'Translation Folder' button.
+   void onRefreshLanguageList() const; ///< Slot for the 'Refresh Language List' button.
 
 private: // data members
    Ui::PreferencesDialog ui_ {}; ///< The GUI for the dialog

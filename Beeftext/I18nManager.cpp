@@ -54,14 +54,14 @@ I18nManager& I18nManager::instance()
 //**********************************************************************************************************************
 I18nManager::I18nManager()
 {
-   this->buildSupportedLocalesList();
+   this->refreshSupportedLocalesList();
 }
 
 
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void I18nManager::buildSupportedLocalesList()
+void I18nManager::refreshSupportedLocalesList()
 {
    supportedLocales_ = { { QLocale::English, QString() } }; ///< English is always supported, as no translation is required
 
