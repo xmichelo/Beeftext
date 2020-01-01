@@ -79,6 +79,69 @@ QString discordEmojisFromClipboard()
 
 
 //**********************************************************************************************************************
+/// \brief Split a timeshift string (e.g. +1d-4w+11h), into individual shifts (e.g. { +1d, -4w, +11h)
+//**********************************************************************************************************************
+QStringList splitTimeShiftString(QString const& shiftStr)
+{
+   QStringList result;
+   QString acc;
+   for (QChar const c: shiftStr)
+   {
+      if (('+' == c) || ('-' == c))
+      {
+         if (!acc.isEmpty())
+         {
+            result.append(acc);
+            acc = QString();
+         }
+      }
+      acc += c;
+   }
+   if (!acc.isEmpty())
+      result.append(acc);
+   return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shiftStr The string describing the timeshift (as defined in the dateTime: variable documentation.
+/// \return The current date shifted according to the instructions in the shift string.
+//**********************************************************************************************************************
+QDateTime shiftedDateTime(QString const& shiftStr)
+{
+   QDateTime result = QDateTime::currentDateTime();
+
+   QStringList const shifts = splitTimeShiftString(shiftStr);
+   for (QString const& shift: shifts)
+   {
+      QRegularExpressionMatch const match = QRegularExpression(R"(([+-])(\d+)([yMwdhmsz]))").match(shift);
+      if (!match.hasMatch())
+         continue;
+      bool ok = false;
+      qint64 value = match.captured(2).toLongLong(&ok);
+      if (!ok)
+         continue;
+      if (match.captured(1) == "-")
+         value = -value;
+      char const type = match.captured(3)[0].toLatin1();
+      switch (type)
+      {
+      case 'y': result = result.addYears(value); break;
+      case 'M': result = result.addMonths(value); break;
+      case 'w': result = result.addDays(value * 7); break;
+      case 'd': result = result.addDays(value); break;
+      case 'h': result = result.addSecs(3600 * value); break;
+      case 'm': result = result.addSecs(60 * value); break;
+      case 's': result = result.addSecs(value); break;
+      case 'z': result = result.addMSecs(value); break;
+      default: break;
+      }
+   }
+   return result;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] variable The variable.
 /// \return the result of the evaluation.
 //**********************************************************************************************************************
@@ -86,7 +149,15 @@ QString evaluateDateTimeVariable(QString const& variable)
 {
    QString const formatString = resolveEscapingInVariableParameter(variable.right(variable.size()
       - kCustomDateTimeVariable.size()));
-   return formatString.isEmpty() ? QString() : QLocale::system().toString(QDateTime::currentDateTime(), formatString);
+
+   QRegularExpression const regExp(R"(^dateTime(:(([+-]\d+[yMwdhmsz])+))?:(.*)$)");
+   QRegularExpressionMatch const match = regExp.match(variable);
+   if (!match.hasMatch())
+      return QString();
+   QDateTime const dateTime = match.captured(1).isEmpty() ? QDateTime::currentDateTime() :
+      shiftedDateTime(match.captured(2));
+   QString const formatStr = match.captured(4);
+   return formatStr.isEmpty() ? QLocale::system().toString(dateTime) : QLocale::system().toString(dateTime, formatStr);
 }
 
 
