@@ -130,6 +130,10 @@ QMenu* ComboDialog::createComboVariableMenu()
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{lower:}", true); });
    comboMenu->addAction(action);
    menu->addMenu(comboMenu);
+   action = new QAction(tr("Combo (&trimmed)"), this);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{trim:}", true); });
+   comboMenu->addAction(action);
+   menu->addMenu(comboMenu);
 
    action = new QAction(tr("En&vironment Variable"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{envVar:}", true); });

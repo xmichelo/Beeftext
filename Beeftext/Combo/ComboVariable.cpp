@@ -80,6 +80,9 @@ QString discordEmojisFromClipboard()
 
 //**********************************************************************************************************************
 /// \brief Split a timeshift string (e.g. +1d-4w+11h), into individual shifts (e.g. { +1d, -4w, +11h)
+///
+/// \param[in] shiftStr The timeshift string
+/// \return a string list containing the individual shifts
 //**********************************************************************************************************************
 QStringList splitTimeShiftString(QString const& shiftStr)
 {
@@ -104,6 +107,7 @@ QStringList splitTimeShiftString(QString const& shiftStr)
 
 
 //**********************************************************************************************************************
+/// \brief Returns the current date shifted according to the instructions in the shift string.
 /// \param[in] shiftStr The string describing the timeshift (as defined in the dateTime: variable documentation.
 /// \return The current date shifted according to the instructions in the shift string.
 //**********************************************************************************************************************
@@ -142,6 +146,7 @@ QDateTime shiftedDateTime(QString const& shiftStr)
 
 
 //**********************************************************************************************************************
+/// \brief Evaluate a #[dateTime:} variable
 /// \param[in] variable The variable.
 /// \return the result of the evaluation.
 //**********************************************************************************************************************
@@ -162,6 +167,8 @@ QString evaluateDateTimeVariable(QString const& variable)
 
 
 //**********************************************************************************************************************
+/// \brief Evaluate a #{combo:} variable.
+///
 /// \param[in] variable The variable, without the enclosing #{}.
 /// \param[in] caseChange The change of case (uppercase, lowercase) to apply to the evaluated variable.
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
@@ -200,6 +207,8 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
 
 
 //**********************************************************************************************************************
+/// \brief Evaluate an #{input:} variable.
+///
 /// \param[in] variable The variable, without the enclosing #{}.
 /// \param[in,out] knownInputVariables The list of know input variables.
 /// \param[out] outCancelled Was the input variable cancelled by the user.
@@ -225,6 +234,8 @@ QString evaluateInputVariable(QString const& variable, QMap<QString, QString>& k
 
 
 //**********************************************************************************************************************
+/// \brief Evaluate an #{envvar:} variable.
+///
 /// \param[in] variable The variable, without the enclosing #{}.
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
@@ -235,7 +246,47 @@ QString evaluateEnvVarVariable(QString const& variable)
 }
 
 
+//**********************************************************************************************************************
+//  \brief Trim the specified plain or rich text, i.e. erase all non printable characters at the beginning and end
+//  of the text.
+///
+/// \param[in] text The text
+/// \param[in] isHtml Is the text in HTML format?
+/// \return The trimmed text
+//**********************************************************************************************************************
+QString trimText(QString const& text, bool isHtml)
+{
+   if (!isHtml)
+      return text.trimmed();
+
+   QTextDocument doc;
+   doc.setHtml(text);
+   QTextCursor cursor(&doc);
+
+   // trim the beginning
+   cursor.movePosition(QTextCursor::Start);
+   while ((!cursor.atEnd()) && cursor.selectedText().trimmed().isEmpty())
+   {
+      cursor.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor);
+   }
+   if (!cursor.selectedText().isEmpty())
+      cursor.deleteChar();
+
+   // trim the end
+   cursor.movePosition(QTextCursor::End);
+   while ((!cursor.atStart()) && cursor.selectedText().trimmed().isEmpty())
+   {
+      cursor.movePosition(QTextCursor::Left, QTextCursor::KeepAnchor);
+   }
+   if (!cursor.selectedText().isEmpty())
+      cursor.deleteChar();
+
+   return doc.toHtml();
+}
+
+
 } // anonymous namespace
+
 
 
 //**********************************************************************************************************************
@@ -293,6 +344,13 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
    if (variable.startsWith("lower:"))
       return evaluateComboVariable(variable, ECaseChange::ToLower, forbiddenSubCombos, knownInputVariables, 
          outIsHtml, outCancelled);
+
+   if (variable.startsWith("trim:"))
+   {
+      QString const var = evaluateComboVariable(variable, ECaseChange::ToLower, forbiddenSubCombos, 
+         knownInputVariables, outIsHtml, outCancelled);
+      return trimText(var, outIsHtml);
+   }
 
    if (variable.startsWith(kInputVariable))
       return evaluateInputVariable(variable, knownInputVariables, outCancelled);
