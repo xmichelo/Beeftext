@@ -220,7 +220,7 @@ void InputManager::setEnabled(bool enabled)
 bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
    PreferencesManager const& prefs = PreferencesManager::instance();
-   if (isAppEnableDisableShortcut(keyStroke))
+   if (prefs.enableAppEnableDisableShortcut() && isAppEnableDisableShortcut(keyStroke))
    {
       emit appEnableDisableShortcutTriggered();
       return false;

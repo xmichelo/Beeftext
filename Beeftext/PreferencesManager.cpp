@@ -45,6 +45,7 @@ QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode";
 QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
 QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
 QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; ///< The setting key for the combo picker shortcut scan code
+QString const kKeyEnableAppEnableDisableShortcut ="EnableAppEnableDisableShortcut"; ///< The setting key for the 'enable app enable/disable shortcut' preference.
 QString const kKeyAppEnableShortcutModifiers = "AppEnableDisableShortcutModifiers"; ///< The setting key for the app enable/disable shortcut modifiers.
 QString const kKeyAppEnableShortcutKeyCode = "AppEnableDisableShortcutKeyCode"; ///< The setting key for the app enable/disable shortcut key code.
 QString const kKeyAppEnableShortcutScanCode = "AppEnableDisableShortcutScanCode"; ///< The setting key for the app enable/disable shortcut scan code.
@@ -80,8 +81,9 @@ QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writ
 ///< The default value for the 'Last combo import/export path' preference
 SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
+bool kDefaultValueEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
 SpShortcut const kDefaultValueAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
-   | Qt::ControlModifier, 'H', 0x23); ///< The default value for the 'combo trigger shortcut' preference
+   | Qt::ControlModifier, 0x74 /* F5 */, 0x3f); ///< The default value for the 'combo trigger shortcut' preference
 bool const kDefaultValueEmojiShortcodesEnabled = false;
 ///< The default value for the 'Emoji shortcodes enabled' preference.
 QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
@@ -148,6 +150,8 @@ PreferencesManager::PreferencesManager()
    this->cacheComboPickerShortcut();
    cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled,
       kDefaultValueEmojiShortcodesEnabled);
+   cachedEnableAppEnableDisableShortcut_ = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
+      kDefaultValueEnableAppEnableDisableShortcut);
    this->cacheAppEnableDisableShortcut();
    cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
    cachedEmojiRightDelimiter_ = this->readSettings<QString>(kRegKeyEmojiRightDelimiter,
@@ -174,6 +178,8 @@ void PreferencesManager::reset()
    this->setComboPickerEnabled(kDefaultValueComboPickerEnabled);
    this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
    this->setComboPickerShortcut(defaultComboPickerShortcut());
+   this->setEnableAppEnableDisableShortcut(kDefaultValueEnableAppEnableDisableShortcut);
+   this->setAppEnableDisableShortcut(defaultAppEnableDisableShortcut());
    this->setAutoBackup(kDefaultValueAutoBackup);
    this->setEmojiShortcodeEnabled(kDefaultValueEmojiShortcodesEnabled);
    this->setEmojiLeftDelimiter(kDefaultValueEmojiLeftDelimiter);
@@ -569,6 +575,25 @@ SpShortcut PreferencesManager::defaultComboPickerShortcut()
    if ((0 == pType.compare("windows", Qt::CaseInsensitive)) && (pVersion.startsWith('7'))) // Windows 7
       return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ControlModifier, 'B', 48);
    return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ShiftModifier, 13 /*Enter*/, 28);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enable The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setEnableAppEnableDisableShortcut(bool enable)
+{
+   settings_->setValue(kKeyEnableAppEnableDisableShortcut, enable);
+   cachedEnableAppEnableDisableShortcut_ = enable;
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::enableAppEnableDisableShortcut() const
+{
+   return cachedEnableAppEnableDisableShortcut_;
 }
 
 

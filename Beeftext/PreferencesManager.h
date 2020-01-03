@@ -88,6 +88,8 @@ public: // member functions
    void setComboPickerShortcut(SpShortcut const& shortcut); ///< Set the combo picker shortcut.
    SpShortcut comboPickerShortcut() const; ///< Retrieve the combo picker shortcut.
    static SpShortcut defaultComboPickerShortcut(); ///< Return the default combo picker shortcut.
+   void setEnableAppEnableDisableShortcut(bool enable); ///< Get the value for the 'Enable app enable/disable' shortcut.
+   bool  enableAppEnableDisableShortcut() const; ///< Get the value for the 'Enable app enable/disable' shortcut.
    void setAppEnableDisableShortcut(SpShortcut const& shortcut); ///< Set the shortcut short to enable/disable the application.
    SpShortcut appEnableDisableShortcut() const; ///< Retrieve the shortcut to enable/disable the application.
    static SpShortcut defaultAppEnableDisableShortcut(); ///< Return the default combo shortcut to enable/disable the application. 
@@ -118,6 +120,7 @@ private: // data members
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
    bool cachedComboPickerEnabled_ { true }; ///< Cached value for the 'Combo picker enabled' preference.
    SpShortcut cachedComboPickerShortcut_; ///< Cached value for the 'combo picker shortcut' preference
+   bool cachedEnableAppEnableDisableShortcut_ { true }; ///< Cached value for the 'app enable/disable shortcut' preference.
    SpShortcut cachedAppEnableDisableShortcut_; ///< Cached value for the 'app enable/disable shortcut' preference.
    bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
    QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.

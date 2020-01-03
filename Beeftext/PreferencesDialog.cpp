@@ -85,13 +85,17 @@ void PreferencesDialog::loadPreferences() const
    blocker = QSignalBlocker(ui_.checkAutoStart);
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    blocker = QSignalBlocker(ui_.checkPlaySoundOnCombo);
+   SpShortcut shortcut = prefs_.appEnableDisableShortcut();
+   blocker = QSignalBlocker(ui_.CheckAppEnableDisable);
+   ui_.CheckAppEnableDisable->setChecked(prefs_.enableAppEnableDisableShortcut());
+   ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : "");
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
    blocker = QSignalBlocker(ui_.radioComboTriggerAuto);
    if (prefs_.useAutomaticSubstitution())
       ui_.radioComboTriggerAuto->setChecked(true);
    else
       ui_.radioComboTriggerManual->setChecked(true);
-   SpShortcut shortcut = prefs_.comboTriggerShortcut();
+   shortcut = prefs_.comboTriggerShortcut();
    ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
    blocker = QSignalBlocker(ui_.checkEnableComboPicker);
    ui_.checkEnableComboPicker->setChecked(prefs_.comboPickerEnabled());
@@ -190,6 +194,8 @@ void PreferencesDialog::updateGui() const
 
    ui_.frameCustomSound->setEnabled(ui_.checkPlaySoundOnCombo->isChecked());
 
+   ui_.frameAppEnableDisableShortcut->setEnabled(ui_.CheckAppEnableDisable->isChecked());
+
    bool const useCustomSound = ui_.checkUseCustomSound->isChecked();
    widgets = { ui_.editCustomSound, ui_.buttonChangeCustomSound, ui_.buttonPlay };
    for (QWidget* const widget: widgets)
@@ -275,6 +281,16 @@ void PreferencesDialog::onRadioAutomaticComboTrigger(bool checked) const
 
 
 //**********************************************************************************************************************
+/// \param[in] checked Is the check box checked?
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckEnableAppEnableDisableShortcut(bool checked) const
+{
+   prefs_.setEnableAppEnableDisableShortcut(checked);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] shortcut The shortcut.
 /// \return true if and only if the user accepted the dialog
 //**********************************************************************************************************************
@@ -285,6 +301,30 @@ bool runShortcutDialog(SpShortcut& shortcut)
       return false;
    shortcut = dlg.shortcut();
    return true;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeAppEnableDisableShortcut() const
+{
+   SpShortcut shortcut = prefs_.appEnableDisableShortcut();
+   if (!runShortcutDialog(shortcut))
+      return;
+   prefs_.setAppEnableDisableShortcut(shortcut);
+   ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : ""); 
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onResetAppEnableDisableShortcut() const
+{
+   SpShortcut const shortcut = PreferencesManager::defaultAppEnableDisableShortcut();
+   prefs_.setAppEnableDisableShortcut(shortcut);
+   ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : ""); 
 }
 
 

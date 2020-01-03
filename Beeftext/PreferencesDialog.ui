@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>709</width>
-    <height>268</height>
+    <height>289</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -114,6 +114,77 @@
           </item>
          </layout>
         </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="0,0">
+         <item>
+          <widget class="QCheckBox" name="CheckAppEnableDisable">
+           <property name="text">
+            <string>Use shortcut to enable/disable Beeftext</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frameAppEnableDisableShortcut">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLineEdit" name="editAppEnableDisableShortcut">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maxLength">
+               <number>50</number>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonChangeAppEnableDisableShortcut">
+              <property name="text">
+               <string>&amp;Change</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonDefaultAppEnableDisableShortcut">
+              <property name="text">
+               <string>&amp;Default</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
         <spacer name="verticalSpacer">
@@ -259,12 +330,6 @@
                <size>
                 <width>200</width>
                 <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
                </size>
               </property>
               <property name="baseSize">
@@ -801,6 +866,13 @@
  <tabstops>
   <tabstop>checkAutoCheckForUpdates</tabstop>
   <tabstop>buttonCheckNow</tabstop>
+  <tabstop>checkAutoStart</tabstop>
+  <tabstop>checkPlaySoundOnCombo</tabstop>
+  <tabstop>checkUseCustomSound</tabstop>
+  <tabstop>editCustomSound</tabstop>
+  <tabstop>buttonChangeCustomSound</tabstop>
+  <tabstop>buttonPlay</tabstop>
+  <tabstop>CheckAppEnableDisable</tabstop>
   <tabstop>radioComboTriggerAuto</tabstop>
   <tabstop>radioComboTriggerManual</tabstop>
   <tabstop>editComboTriggerShortcut</tabstop>
@@ -815,7 +887,9 @@
   <tabstop>editEmojiLeftDelimiter</tabstop>
   <tabstop>editEmojiRightDelimiter</tabstop>
   <tabstop>comboLocale</tabstop>
-  <tabstop>buttonSensitiveApplications</tabstop>
+  <tabstop>buttonRefresh</tabstop>
+  <tabstop>buttonTranslationFolder</tabstop>
+  <tabstop>checkUseCustomTheme</tabstop>
   <tabstop>spinDelayBetweenKeystrokes</tabstop>
   <tabstop>editComboListFolder</tabstop>
   <tabstop>buttonChangeComboListFolder</tabstop>
@@ -823,6 +897,9 @@
   <tabstop>buttonResetComboListFolder</tabstop>
   <tabstop>checkAutoBackup</tabstop>
   <tabstop>buttonRestoreBackup</tabstop>
+  <tabstop>checkWriteDebugLogFile</tabstop>
+  <tabstop>buttonSensitiveApplications</tabstop>
+  <tabstop>tabPreferences</tabstop>
   <tabstop>buttonDefaults</tabstop>
   <tabstop>buttonResetWarnings</tabstop>
   <tabstop>buttonClose</tabstop>
@@ -969,7 +1046,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
-     <y>495</y>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -1033,7 +1110,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
-     <y>338</y>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -1049,7 +1126,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
-     <y>338</y>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -1065,7 +1142,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
-     <y>338</y>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -1081,7 +1158,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
-     <y>338</y>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -1097,7 +1174,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>343</x>
-     <y>338</y>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -1108,8 +1185,8 @@
    <slot>onCheckAutoStart(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>89</x>
-     <y>43</y>
+     <x>100</x>
+     <y>88</y>
     </hint>
     <hint type="destinationlabel">
      <x>319</x>
@@ -1124,8 +1201,8 @@
    <slot>onCheckPlaySoundOnCombo(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>101</x>
-     <y>46</y>
+     <x>112</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>485</x>
@@ -1172,8 +1249,8 @@
    <slot>onComboLanguageValueChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>143</x>
-     <y>61</y>
+     <x>88</x>
+     <y>59</y>
     </hint>
     <hint type="destinationlabel">
      <x>228</x>
@@ -1188,8 +1265,8 @@
    <slot>onCheckUseCustomTheme(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>73</x>
-     <y>119</y>
+     <x>84</x>
+     <y>49</y>
     </hint>
     <hint type="destinationlabel">
      <x>223</x>
@@ -1241,7 +1318,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>295</x>
-     <y>660</y>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -1252,8 +1329,8 @@
    <slot>onCheckUseCustomSound(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>37</x>
-     <y>50</y>
+     <x>48</x>
+     <y>136</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1268,8 +1345,8 @@
    <slot>onChangeCustomSound()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>83</y>
+     <x>604</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
      <x>683</x>
@@ -1284,8 +1361,8 @@
    <slot>onPlaySoundButton()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>83</y>
+     <x>685</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
      <x>686</x>
@@ -1300,8 +1377,8 @@
    <slot>onOpenTranslationFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>229</x>
-     <y>94</y>
+     <x>119</x>
+     <y>74</y>
     </hint>
     <hint type="destinationlabel">
      <x>703</x>
@@ -1316,12 +1393,60 @@
    <slot>onRefreshLanguageList()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>179</x>
-     <y>53</y>
+     <x>119</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
      <x>706</x>
      <y>86</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeAppEnableDisableShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeAppEnableDisableShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>569</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>704</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonDefaultAppEnableDisableShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onResetAppEnableDisableShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>663</x>
+     <y>192</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>706</x>
+     <y>220</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CheckAppEnableDisable</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>185</y>
     </hint>
    </hints>
   </connection>
@@ -1365,5 +1490,8 @@
   <slot>onPlaySoundButton()</slot>
   <slot>onOpenTranslationFolder()</slot>
   <slot>onRefreshLanguageList()</slot>
+  <slot>onChangeAppEnableDisableShortcut()</slot>
+  <slot>onResetAppEnableDisableShortcut()</slot>
+  <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
  </slots>
 </ui>

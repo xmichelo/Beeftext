@@ -77,7 +77,7 @@
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>26444;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26444;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -133,7 +133,7 @@
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>26444;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26444;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -188,7 +188,7 @@
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>26444;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26444;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
