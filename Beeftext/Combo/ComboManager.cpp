@@ -204,7 +204,7 @@ void ComboManager::playSound() const
 //**********************************************************************************************************************
 bool ComboManager::isEnabled()
 {
-   return InputManager::instance().isKeyboardHookEnable();
+   return InputManager::instance().isEnabled();
 }
 
 
@@ -213,11 +213,7 @@ bool ComboManager::isEnabled()
 //**********************************************************************************************************************
 void ComboManager::enable()
 {
-   InputManager& inputManager = InputManager::instance();
-   inputManager.enableKeyboardHook();
-#ifdef NDEBUG
-   inputManager.enableMouseHook();
-#endif
+   InputManager::instance().setEnabled(true);
 }
 
 
@@ -226,11 +222,7 @@ void ComboManager::enable()
 //**********************************************************************************************************************
 void ComboManager::disable()
 {
-   InputManager& inputManager = InputManager::instance();
-   inputManager.disableKeyboardHook();
-#ifdef NDEBUG
-   inputManager.disableMouseHook();
-#endif
+   InputManager::instance().setEnabled(false);
 }
 
 

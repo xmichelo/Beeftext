@@ -88,7 +88,9 @@ public: // member functions
    void setComboPickerShortcut(SpShortcut const& shortcut); ///< Set the combo picker shortcut.
    SpShortcut comboPickerShortcut() const; ///< Retrieve the combo picker shortcut.
    static SpShortcut defaultComboPickerShortcut(); ///< Return the default combo picker shortcut.
-   void checkRemoveAndNotifyAboutRemovalOfClipboardUsage() const; ///< Check if the 'Use clipboard for combo substitution' is used.
+   void setAppEnableDisableShortcut(SpShortcut const& shortcut); ///< Set the shortcut short to enable/disable the application.
+   SpShortcut appEnableDisableShortcut() const; ///< Retrieve the shortcut to enable/disable the application.
+   static SpShortcut defaultAppEnableDisableShortcut(); ///< Return the default combo shortcut to enable/disable the application. 
 
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
@@ -100,7 +102,8 @@ private: // member functions
    QString const& scanCodeRegKey) const; ///< Read a shortcut from the preferences.
 
    void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
-   void cacheComboPickerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
+   void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
+   void cacheAppEnableDisableShortcut(); ///< Read the app enable/disable shortcut and cache it for faster access.
    void applyCustomThemePreference() const; ///< Apply the preference for the custom theme
    void applyAutoStartPreference() const; ///< Apply the preference for the auto-start
    void applyLocalePreference() const; ///< Apply the preference for the locale
@@ -115,6 +118,7 @@ private: // data members
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
    bool cachedComboPickerEnabled_ { true }; ///< Cached value for the 'Combo picker enabled' preference.
    SpShortcut cachedComboPickerShortcut_; ///< Cached value for the 'combo picker shortcut' preference
+   SpShortcut cachedAppEnableDisableShortcut_; ///< Cached value for the 'app enable/disable shortcut' preference.
    bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
    QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.
    QString cachedEmojiRightDelimiter_; ///< Cached value for the 'emoji right delimiter' preference.

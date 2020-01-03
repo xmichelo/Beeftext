@@ -87,6 +87,17 @@ bool isComboPickerShortcut(InputManager::KeyStroke const& keyStroke)
 }
 
 
+//**********************************************************************************************************************
+/// \brief Check if a keystroke is the shortcut for the app enable/disable shortcut.
+///
+/// \return true if and only if keystroke correspond to the shortcut
+//**********************************************************************************************************************
+bool isAppEnableDisableShortcut(InputManager::KeyStroke const& keyStroke)
+{
+   return doesKeystrokeMatchShortcut(keyStroke, PreferencesManager::instance().appEnableDisableShortcut());
+}
+
+
 }
 
 
@@ -137,6 +148,8 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
 //**********************************************************************************************************************
 LRESULT CALLBACK InputManager::mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam)
 {
+   if (!InputManager::instance().enabled_)
+      return CallNextHookEx(nullptr, nCode, wParam, lParam);
    if ((WM_LBUTTONDOWN == wParam) || (WM_RBUTTONDOWN == wParam) || (WM_MOUSEWHEEL == wParam) ||
       (WM_MBUTTONDOWN == wParam)) // note we consider mouse wheel moves as clicks
    {
@@ -183,12 +196,39 @@ InputManager::~InputManager()
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the input manager is enabled.
+//**********************************************************************************************************************
+bool InputManager::isEnabled() const
+{
+   return enabled_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enabled Should the input manager be enabled
+//**********************************************************************************************************************
+void InputManager::setEnabled(bool enabled)
+{
+   enabled_ = enabled;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] keyStroke The key stroke
 /// \return true if the event can be passed down to the keyboard hooked chain, and false it it should be removed
 //**********************************************************************************************************************
 bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
    PreferencesManager const& prefs = PreferencesManager::instance();
+   if (isAppEnableDisableShortcut(keyStroke))
+   {
+      emit appEnableDisableShortcutTriggered();
+      return false;
+   }
+
+   if (!enabled_)
+      return true;
+
    if ((!prefs.useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
    {
       emit substitutionShortcutTriggered();

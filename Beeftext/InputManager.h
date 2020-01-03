@@ -35,6 +35,24 @@ public: // member functions
    ~InputManager(); ///< Default destructor
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
    InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
+   bool isEnabled() const; ///< Is the input manager enabled
+   void setEnabled(bool enabled); ///< Is the input manager enabled
+
+signals:
+   void comboBreakerTyped(); ///< Signal for combo breaking events
+   void characterTyped(QChar c); ///< Signal for character typed
+   void backspaceTyped(); ///< Signal for backspace typed
+   void substitutionShortcutTriggered();  ///< Signal emitted when the manual substitution shortcut is triggered
+   void comboMenuShortcutTriggered(); ///< Signal emitted when the combo menu shortcut is triggered.
+   void appEnableDisableShortcutTriggered(); ///< Signal emitted when the app enable/disable shortcut has been triggered.
+
+private: // member functions
+   InputManager(); ///< Default constructor
+   bool onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
+   QString processKey(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
+   static QString processKeyModern(KeyStroke const& keyStroke); ///< Process a key stroke and return the generated characters 
+   QString processKeyLegacy(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
+   void onMouseClickEvent(int, WPARAM, LPARAM); ///< Process a mouse click event
    bool isKeyboardHookEnable() const; ///< Is the keyboard hook enabled
    void enableKeyboardHook(); ///< Enable the keyboard hook
    void disableKeyboardHook(); ///< Disable the keyboard hook
@@ -44,26 +62,15 @@ public: // member functions
    void disableMouseHook(); ///< Disable the mouse hook
    bool setMouseHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
 
-signals:
-   void comboBreakerTyped(); ///< Signal for combo breaking events
-   void characterTyped(QChar c); ///< Signal for character typed
-   void backspaceTyped(); ///< Signal for backspace typed
-   void substitutionShortcutTriggered();  ///< Signal emitted when the manual substitution shortcut is triggered
-   void comboMenuShortcutTriggered(); ///< Signal emitted when the combo menu shortcut is triggered.
-
-private: // member functions
-   InputManager(); ///< Default constructor
-   bool onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
-   QString processKey(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
-   static QString processKeyModern(KeyStroke const& keyStroke); ///< Process a key stroke and return the generated characters 
-   QString processKeyLegacy(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
-   void onMouseClickEvent(int, WPARAM, LPARAM); ///< Process a mouse click event
-
 private: // static member functions
    static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The keyboard event callback
    static LRESULT CALLBACK mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The mouse event callback
 
+
+   friend void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos);
+
 private: // data members
+   bool enabled_ { true }; ///< Is beeftext enabled
    HHOOK keyboardHook_ { nullptr }; ///< The handle to the keyboard hook used to be notified of keyboard events
    HHOOK mouseHook_ { nullptr }; ///< The handle to the mouse hook used to be notified of mouse event
    KeyStroke deadKey_ = { 0, 0, { 0 } }; ///< The currently active dead key

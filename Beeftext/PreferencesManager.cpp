@@ -32,7 +32,6 @@ QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate";
 ///< The settings key for the 'Autostart at login' preference
-QString const kKeyUseClipboardForComboSubstitution = "UseClipboardForComboSubstitution"; ///< The setting key for the 'Use clipboard for combo substitution' preference
 QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
 QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution";
 ///< The setting key for the 'Use automatic substitution' preference
@@ -40,18 +39,15 @@ QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword";
 ///< The setting key for the 'Warn about short combo keyword' preference
 QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
-QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers";
-///< The setting key for the combo trigger shortcut modifiers
-QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode";
-///< The setting key for the combo trigger shortcut key code
-QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode";
-///< The setting key for the combo trigger shortcut scan code
-QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers";
-///< The setting key for the combo picker shortcut modifiers
-QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode";
-///< The setting key for the combo picker shortcut key code
-QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode";
-///< The setting key for the combo picker shortcut scan code
+QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
+QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
+QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
+QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
+QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; ///< The setting key for the combo picker shortcut scan code
+QString const kKeyAppEnableShortcutModifiers = "AppEnableDisableShortcutModifiers"; ///< The setting key for the app enable/disable shortcut modifiers.
+QString const kKeyAppEnableShortcutKeyCode = "AppEnableDisableShortcutKeyCode"; ///< The setting key for the app enable/disable shortcut key code.
+QString const kKeyAppEnableShortcutScanCode = "AppEnableDisableShortcutScanCode"; ///< The setting key for the app enable/disable shortcut scan code.
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
 QString const kKeyWriteDebugLogFile = "WriteDebugLogFile";
 ///< The setting key for the 'Write debug log file' preference.
@@ -83,7 +79,9 @@ QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writ
    QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");
 ///< The default value for the 'Last combo import/export path' preference
 SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
-   | Qt::ControlModifier, 'B', 48); ///< The default value for the 'combo trigger shortcut' preference
+   | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
+SpShortcut const kDefaultValueAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
+   | Qt::ControlModifier, 'H', 0x23); ///< The default value for the 'combo trigger shortcut' preference
 bool const kDefaultValueEmojiShortcodesEnabled = false;
 ///< The default value for the 'Emoji shortcodes enabled' preference.
 QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
@@ -150,6 +148,7 @@ PreferencesManager::PreferencesManager()
    this->cacheComboPickerShortcut();
    cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled,
       kDefaultValueEmojiShortcodesEnabled);
+   this->cacheAppEnableDisableShortcut();
    cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
    cachedEmojiRightDelimiter_ = this->readSettings<QString>(kRegKeyEmojiRightDelimiter,
       kDefaultValueEmojiRightDelimiter);
@@ -574,6 +573,43 @@ SpShortcut PreferencesManager::defaultComboPickerShortcut()
 
 
 //**********************************************************************************************************************
+/// \param[in] shortcut The shortcut.
+//**********************************************************************************************************************
+void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut)
+{
+   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueAppEnableDisableShortcut;
+   SpShortcut currentShortcut = this->appEnableDisableShortcut();
+   if (!currentShortcut)
+      currentShortcut = kDefaultValueAppEnableDisableShortcut;
+   if (*newShortcut != *currentShortcut)
+   {
+      settings_->setValue(kKeyAppEnableShortcutModifiers, int(shortcut->nativeModifiers()));
+      settings_->setValue(kKeyAppEnableShortcutKeyCode, shortcut->nativeVirtualKey());
+      settings_->setValue(kKeyAppEnableShortcutScanCode, shortcut->nativeScanCode());
+      cachedAppEnableDisableShortcut_ = newShortcut;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \return The shortcut.
+//**********************************************************************************************************************
+SpShortcut PreferencesManager::appEnableDisableShortcut() const
+{
+   return cachedAppEnableDisableShortcut_;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+SpShortcut PreferencesManager::defaultAppEnableDisableShortcut()
+{
+   return kDefaultValueAppEnableDisableShortcut;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
 void PreferencesManager::setAutoBackup(bool value) const
@@ -826,6 +862,17 @@ void PreferencesManager::cacheComboPickerShortcut()
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::cacheAppEnableDisableShortcut()
+{
+   SpShortcut const shortcut = this->readShortcutFromPreferences(kKeyAppEnableShortcutModifiers,
+      kKeyAppEnableShortcutKeyCode, kKeyAppEnableShortcutScanCode);
+   cachedAppEnableDisableShortcut_ = shortcut ? shortcut : defaultAppEnableDisableShortcut();
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void PreferencesManager::applyCustomThemePreference() const
@@ -892,16 +939,3 @@ void PreferencesManager::unregisterApplicationFromAutoStart()
 }
 
 
-//**********************************************************************************************************************
-/// if the preference is set and disabled, the user is notified that it is deprecated and remove it from the system.
-//**********************************************************************************************************************
-void PreferencesManager::checkRemoveAndNotifyAboutRemovalOfClipboardUsage() const
-{
-   if (this->readSettings<bool>(kKeyUseClipboardForComboSubstitution, true))
-      return;
-   QMessageBox::information(nullptr, QString(), tr("You have the 'Use clipboard for combo substitution' option "
-      "disabled. This setting is now deprecated.\n\nIf you really need to disable the use of the clipboard, "
-      "click on the 'Sensitive Applications' button in the 'Advanced' tab of the "
-      "Preferences dialog, and add an entry in the list containing the wildcard '*' (without quotes)."));
-   settings_->remove(kKeyUseClipboardForComboSubstitution);
-}

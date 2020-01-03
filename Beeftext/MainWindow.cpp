@@ -35,7 +35,8 @@ MainWindow::MainWindow()
    PreferencesManager& prefs = PreferencesManager::instance();
    this->restoreWindowGeometry();
    ui_.actionOpenLogFile->setEnabled(prefs.writeDebugLogFile());
-
+   connect(&InputManager::instance(), &InputManager::appEnableDisableShortcutTriggered,
+      this, &MainWindow::onActionEnableDisableBeeftext);
    connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []()
       { QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl)); });
    connect(ui_.actionGettingStarted, &QAction::triggered, []()
@@ -260,7 +261,8 @@ void MainWindow::onActionExit()
 //**********************************************************************************************************************
 void MainWindow::onActionEnableDisableBeeftext()
 {
-   ComboManager::setEnabled(!ComboManager::isEnabled());
+   bool const enabled = ComboManager::isEnabled();
+   ComboManager::setEnabled(!enabled);
    this->setupSystemTrayIcon();
 }
 
