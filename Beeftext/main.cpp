@@ -81,9 +81,6 @@ int main(int argc, char *argv[])
       QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
 #endif
       ensureMainWindowHasAHandle(window);
-      GlobalShortcutManager& shortcutManager = GlobalShortcutManager::instance();
-      GlobalShortcut const* shortcut = shortcutManager.create(MOD_CONTROL | MOD_ALT | MOD_SHIFT, 'V');
-      QObject::connect(shortcut, &GlobalShortcut::triggered, &window, &MainWindow::onActionEnableDisableBeeftext);
       if (!prefs.alreadyLaunched())
       {
          window.show();

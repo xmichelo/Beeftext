@@ -83,7 +83,7 @@ SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(
    | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
 bool kDefaultValueEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
 SpShortcut const kDefaultValueAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
-   | Qt::ControlModifier, 0x74 /* F5 */, 0x3f); ///< The default value for the 'combo trigger shortcut' preference
+   | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
 bool const kDefaultValueEmojiShortcodesEnabled = false;
 ///< The default value for the 'Emoji shortcodes enabled' preference.
 QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
@@ -98,8 +98,6 @@ bool const kDefaultValueComboPickerEnabled = true; ///< The default value for th
 
 
 }
-
-
 
 
 //**********************************************************************************************************************
