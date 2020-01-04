@@ -35,8 +35,6 @@ public: // member functions
    ~InputManager(); ///< Default destructor
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
    InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
-   bool isEnabled() const; ///< Is the input manager enabled
-   void setEnabled(bool enabled); ///< Is the input manager enabled
 
 signals:
    void comboBreakerTyped(); ///< Signal for combo breaking events
@@ -70,7 +68,6 @@ private: // static member functions
    friend void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos);
 
 private: // data members
-   bool enabled_ { true }; ///< Is beeftext enabled
    HHOOK keyboardHook_ { nullptr }; ///< The handle to the keyboard hook used to be notified of keyboard events
    HHOOK mouseHook_ { nullptr }; ///< The handle to the mouse hook used to be notified of mouse event
    KeyStroke deadKey_ = { 0, 0, { 0 } }; ///< The currently active dead key

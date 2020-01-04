@@ -93,6 +93,8 @@ public: // member functions
    void setAppEnableDisableShortcut(SpShortcut const& shortcut); ///< Set the shortcut short to enable/disable the application.
    SpShortcut appEnableDisableShortcut() const; ///< Retrieve the shortcut to enable/disable the application.
    static SpShortcut defaultAppEnableDisableShortcut(); ///< Return the default combo shortcut to enable/disable the application. 
+   void setBeeftextEnabled(bool enabled); ///< Set if beeftext is enabled.
+   bool beeftextEnabled() const; ///< Set if beeftext is enabled.
 
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
@@ -115,7 +117,7 @@ private: // member functions
    template <typename T> T readSettings(QString const& key, T const& defaultValue = T()) const; ///< Read a value of a given type read from the settings
    
 private: // data members
-   std::unique_ptr<QSettings> settings_; ///< The Qt settings instance
+   std::unique_ptr<QSettings> settings_ { nullptr }; ///< The Qt settings instance
    bool cachedUseAutomaticSubstitution_ { true }; ///< Cached value for the 'use automatic substitution' preference value
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
    bool cachedComboPickerEnabled_ { true }; ///< Cached value for the 'Combo picker enabled' preference.
@@ -125,6 +127,7 @@ private: // data members
    bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
    QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.
    QString cachedEmojiRightDelimiter_; ///< Cached value for the 'emoji right delimiter' preference.
+   bool cachedBeeftextEnabled_ { true }; ///< Cached value for the 'Beeftext enabled' preference.
 };
 
 

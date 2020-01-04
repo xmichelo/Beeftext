@@ -25,10 +25,6 @@ class ComboManager: public QObject
    Q_OBJECT
 public: // static member functions
    static ComboManager& instance(); ///< Returns a reference to the only allowed instance of the class
-   static bool isEnabled(); ///< Check whether the combo manager is enabled
-   static void enable(); ///< Enable the combo manager manager
-   static void disable(); ///< Disable the combo manager
-   static bool setEnabled(bool enabled); ///< Set the combo manager state
 
 public: // member functions
    ComboManager(ComboManager const&) = delete; ///< Disabled copy constructor

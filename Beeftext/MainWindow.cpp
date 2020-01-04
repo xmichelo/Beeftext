@@ -124,7 +124,7 @@ void MainWindow::setupSystemTrayIcon()
    disconnect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
    connect(&systemTrayIcon_, &QSystemTrayIcon::activated, this, &MainWindow::onSystemTrayIconActivated);
    QString const pausedIndicator = tr(" - PAUSED");
-   bool const enabled = ComboManager::isEnabled();
+   bool const enabled = PreferencesManager::instance().beeftextEnabled();
    QGuiApplication::setApplicationDisplayName(constants::kApplicationName
       + (isInPortableMode() ? tr(" - Portable Edition") : QString())
       + (enabled ? QString() : pausedIndicator));
@@ -261,8 +261,9 @@ void MainWindow::onActionExit()
 //**********************************************************************************************************************
 void MainWindow::onActionEnableDisableBeeftext()
 {
-   bool const enabled = ComboManager::isEnabled();
-   ComboManager::setEnabled(!enabled);
+   PreferencesManager& prefs = PreferencesManager::instance();
+   bool const enabled = prefs.beeftextEnabled();
+   prefs.setBeeftextEnabled(!enabled);
    this->setupSystemTrayIcon();
 }
 

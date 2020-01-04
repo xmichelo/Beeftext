@@ -19,24 +19,19 @@ namespace {
 
 
 QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for the "Already launched" indicator
-QString const kKeyFileMarkedForDeletion = "markedForDeletion";
-///< The path of the file marked for deletion on next application startup
+QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
 QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
-QString const kKeySplitterState = "MainWindowSplitterState";
-///< The setting key for storing the main window splitter state.
+QString const kKeySplitterState = "MainWindowSplitterState"; ///< The setting key for storing the main window splitter state.
 QString const kKeyLocale = "Locale"; ///< The settings key for the locale
 QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
 QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
 QString const kKeyUseCustomSound = "UseCustomSound"; ///< The settings key for the 'Use custom sound' preference.
 QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for the 'Custom sound path' preference.
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
-QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate";
-///< The settings key for the 'Autostart at login' preference
+QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
-QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution";
-///< The setting key for the 'Use automatic substitution' preference
-QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword";
-///< The setting key for the 'Warn about short combo keyword' preference
+QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
+QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
 QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
 QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
@@ -50,51 +45,40 @@ QString const kKeyAppEnableShortcutModifiers = "AppEnableDisableShortcutModifier
 QString const kKeyAppEnableShortcutKeyCode = "AppEnableDisableShortcutKeyCode"; ///< The setting key for the app enable/disable shortcut key code.
 QString const kKeyAppEnableShortcutScanCode = "AppEnableDisableShortcutScanCode"; ///< The setting key for the app enable/disable shortcut scan code.
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
-QString const kKeyWriteDebugLogFile = "WriteDebugLogFile";
-///< The setting key for the 'Write debug log file' preference.
-QString const kKeyLastComboImportExportPath = "LastComboImportExportPath";
-///< The setting key for 'Last combo import/export path' preference
-QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)";
-///< The registry key for autostart
-QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled";
-///< The setting key for the 'Emoji shortcodes enabled'
+QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
+QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
+QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
+QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
 QString const kRegKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
 QString const kRegKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
-QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes";
-///< The setting key for the 'Delay between keystrokes'preferences value
-QString const kRegKeyComboPickerEnabled = "ComboPickerEnabled";
-///< The setting key for the 'Combo picker enabled' preference.
+QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
+QString const kRegKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
+QString const kRegKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
+
 bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
 bool const kDefaultValueUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
 bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
 bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
-///< The default value for the 'Use clipboard for combo substitution' preference
 bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
-bool const kDefaultValueUseAutomaticSubstitution = true;
-///< The default value for the 'Use automatic substitution' preference
-bool const kDefaultValueWarnAboutShortComboKeyword = true;
-///< The default value for the 'Warn about short combo keyword' preference
+bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+bool const kDefaultValueWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
 bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
 bool const kDefaultValueWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
-   QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");
-///< The default value for the 'Last combo import/export path' preference
+   QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");///< The default value for the 'Last combo import/export path' preference
 SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
 bool kDefaultValueEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
 SpShortcut const kDefaultValueAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
-bool const kDefaultValueEmojiShortcodesEnabled = false;
-///< The default value for the 'Emoji shortcodes enabled' preference.
+bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
 QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultValueEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
-qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12;
-///< The default valur for the 'Delay between keystrokes' preference.
-qint32 const kMinValueDelayBetweenKeystrokesMs = 0;
-///< The default valur for the 'Delay between keystrokes' preference.
-qint32 const kMaxValueDelayBetweenKeystrokesMs = 500;
-///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
+qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
 bool const kDefaultValueComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
+bool const kDefaultValueBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
 
 
 }
@@ -133,7 +117,6 @@ PreferencesManager& PreferencesManager::instance()
 /// to QApplication::SetOrganizationName() and QApplication::SetApplicationName()
 //**********************************************************************************************************************
 PreferencesManager::PreferencesManager()
-   : settings_(nullptr)
 {
    // portable edition use a different storage method for preferences
    settings_ = isInPortableMode()
@@ -154,6 +137,7 @@ PreferencesManager::PreferencesManager()
    cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
    cachedEmojiRightDelimiter_ = this->readSettings<QString>(kRegKeyEmojiRightDelimiter,
       kDefaultValueEmojiRightDelimiter);
+   cachedBeeftextEnabled_ = this->readSettings<bool>(kRegKeyBeeftextEnabled, kDefaultValueBeeftextEnabled);
    // Some preferences setting need initialization
    this->applyCustomThemePreference();
    this->applyLocalePreference();
@@ -577,62 +561,6 @@ SpShortcut PreferencesManager::defaultComboPickerShortcut()
 
 
 //**********************************************************************************************************************
-/// \param[in] enable The value for the preference.
-//**********************************************************************************************************************
-void PreferencesManager::setEnableAppEnableDisableShortcut(bool enable)
-{
-   settings_->setValue(kKeyEnableAppEnableDisableShortcut, enable);
-   cachedEnableAppEnableDisableShortcut_ = enable;
-}
-
-
-//**********************************************************************************************************************
-/// \return The value for the preference
-//**********************************************************************************************************************
-bool PreferencesManager::enableAppEnableDisableShortcut() const
-{
-   return cachedEnableAppEnableDisableShortcut_;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] shortcut The shortcut.
-//**********************************************************************************************************************
-void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut)
-{
-   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueAppEnableDisableShortcut;
-   SpShortcut currentShortcut = this->appEnableDisableShortcut();
-   if (!currentShortcut)
-      currentShortcut = kDefaultValueAppEnableDisableShortcut;
-   if (*newShortcut != *currentShortcut)
-   {
-      settings_->setValue(kKeyAppEnableShortcutModifiers, int(shortcut->nativeModifiers()));
-      settings_->setValue(kKeyAppEnableShortcutKeyCode, shortcut->nativeVirtualKey());
-      settings_->setValue(kKeyAppEnableShortcutScanCode, shortcut->nativeScanCode());
-      cachedAppEnableDisableShortcut_ = newShortcut;
-   }
-}
-
-
-//**********************************************************************************************************************
-/// \return The shortcut.
-//**********************************************************************************************************************
-SpShortcut PreferencesManager::appEnableDisableShortcut() const
-{
-   return cachedAppEnableDisableShortcut_;
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-SpShortcut PreferencesManager::defaultAppEnableDisableShortcut()
-{
-   return kDefaultValueAppEnableDisableShortcut;
-}
-
-
-//**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
 void PreferencesManager::setAutoBackup(bool value) const
@@ -959,6 +887,83 @@ void PreferencesManager::unregisterApplicationFromAutoStart()
 {
    if (!isInPortableMode())
       QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enable The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setEnableAppEnableDisableShortcut(bool enable)
+{
+   settings_->setValue(kKeyEnableAppEnableDisableShortcut, enable);
+   cachedEnableAppEnableDisableShortcut_ = enable;
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::enableAppEnableDisableShortcut() const
+{
+   return cachedEnableAppEnableDisableShortcut_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shortcut The shortcut.
+//**********************************************************************************************************************
+void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut)
+{
+   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueAppEnableDisableShortcut;
+   SpShortcut currentShortcut = this->appEnableDisableShortcut();
+   if (!currentShortcut)
+      currentShortcut = kDefaultValueAppEnableDisableShortcut;
+   if (*newShortcut != *currentShortcut)
+   {
+      settings_->setValue(kKeyAppEnableShortcutModifiers, int(shortcut->nativeModifiers()));
+      settings_->setValue(kKeyAppEnableShortcutKeyCode, shortcut->nativeVirtualKey());
+      settings_->setValue(kKeyAppEnableShortcutScanCode, shortcut->nativeScanCode());
+      cachedAppEnableDisableShortcut_ = newShortcut;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \return The shortcut.
+//**********************************************************************************************************************
+SpShortcut PreferencesManager::appEnableDisableShortcut() const
+{
+   return cachedAppEnableDisableShortcut_;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+SpShortcut PreferencesManager::defaultAppEnableDisableShortcut()
+{
+   return kDefaultValueAppEnableDisableShortcut;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enabled Is Beeftext enabled?
+//**********************************************************************************************************************
+void PreferencesManager::setBeeftextEnabled(bool enabled)
+{
+   if (cachedBeeftextEnabled_ == enabled)
+      return;
+   settings_->setValue(kRegKeyBeeftextEnabled, enabled);
+   cachedBeeftextEnabled_ = enabled;
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if Beeftext is enabled.
+//**********************************************************************************************************************
+bool PreferencesManager::beeftextEnabled() const
+{
+   return cachedBeeftextEnabled_;
 }
 
 

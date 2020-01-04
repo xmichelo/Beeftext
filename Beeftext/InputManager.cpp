@@ -148,7 +148,7 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
 //**********************************************************************************************************************
 LRESULT CALLBACK InputManager::mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam)
 {
-   if (!InputManager::instance().enabled_)
+   if (!PreferencesManager::instance().beeftextEnabled())
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
    if ((WM_LBUTTONDOWN == wParam) || (WM_RBUTTONDOWN == wParam) || (WM_MOUSEWHEEL == wParam) ||
       (WM_MBUTTONDOWN == wParam)) // note we consider mouse wheel moves as clicks
@@ -196,24 +196,6 @@ InputManager::~InputManager()
 
 
 //**********************************************************************************************************************
-/// \return true if and only if the input manager is enabled.
-//**********************************************************************************************************************
-bool InputManager::isEnabled() const
-{
-   return enabled_;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] enabled Should the input manager be enabled
-//**********************************************************************************************************************
-void InputManager::setEnabled(bool enabled)
-{
-   enabled_ = enabled;
-}
-
-
-//**********************************************************************************************************************
 /// \param[in] keyStroke The key stroke
 /// \return true if the event can be passed down to the keyboard hooked chain, and false it it should be removed
 //**********************************************************************************************************************
@@ -226,7 +208,7 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
       return false;
    }
 
-   if (!enabled_)
+   if (!prefs.beeftextEnabled())
       return true;
 
    if ((!prefs.useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
