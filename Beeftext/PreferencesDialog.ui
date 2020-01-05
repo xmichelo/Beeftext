@@ -814,6 +814,32 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
+      <widget class="QPushButton" name="buttonExport">
+       <property name="toolTip">
+        <string>Reset the preferences to their default values.</string>
+       </property>
+       <property name="text">
+        <string>&amp;Export</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonImport">
+       <property name="toolTip">
+        <string>Reset the preferences to their default values.</string>
+       </property>
+       <property name="text">
+        <string>&amp;Import</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="buttonDefaults">
        <property name="toolTip">
         <string>Reset the preferences to their default values.</string>
@@ -856,6 +882,9 @@
       <widget class="QPushButton" name="buttonClose">
        <property name="text">
         <string>&amp;Close</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -900,8 +929,6 @@
   <tabstop>checkWriteDebugLogFile</tabstop>
   <tabstop>buttonSensitiveApplications</tabstop>
   <tabstop>tabPreferences</tabstop>
-  <tabstop>buttonDefaults</tabstop>
-  <tabstop>buttonResetWarnings</tabstop>
   <tabstop>buttonClose</tabstop>
  </tabstops>
  <resources/>
@@ -929,8 +956,8 @@
    <slot>onChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>73</y>
+     <x>523</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -945,8 +972,8 @@
    <slot>onChangeComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
+     <x>469</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -961,8 +988,8 @@
    <slot>onResetToDefaultValues()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>257</y>
+     <x>246</x>
+     <y>278</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -977,8 +1004,8 @@
    <slot>onResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>73</y>
+     <x>685</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -993,8 +1020,8 @@
    <slot>onResetComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
+     <x>550</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1009,8 +1036,8 @@
    <slot>onRestoreBackup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>303</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1041,8 +1068,8 @@
    <slot>onResetWarnings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>174</x>
-     <y>257</y>
+     <x>336</x>
+     <y>278</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -1057,8 +1084,8 @@
    <slot>onEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>83</y>
+     <x>131</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -1073,8 +1100,8 @@
    <slot>onEditEmojiExcludedApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
+     <x>279</x>
+     <y>63</y>
     </hint>
     <hint type="destinationlabel">
      <x>307</x>
@@ -1105,8 +1132,8 @@
    <slot>onCheckEnableComboPicker(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>75</y>
+     <x>140</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1121,8 +1148,8 @@
    <slot>onChangeComboPickerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>75</y>
+     <x>358</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1137,8 +1164,8 @@
    <slot>onResetComboPickerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>75</y>
+     <x>439</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1153,8 +1180,8 @@
    <slot>onOpenComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>73</y>
+     <x>604</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>356</x>
@@ -1217,8 +1244,8 @@
    <slot>onEmojiLeftDelimiterChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>69</x>
-     <y>75</y>
+     <x>140</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -1233,8 +1260,8 @@
    <slot>onEmojiRightDelimiterChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>69</x>
-     <y>75</y>
+     <x>299</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>123</x>
@@ -1265,8 +1292,8 @@
    <slot>onCheckUseCustomTheme(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>49</y>
+     <x>95</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
      <x>223</x>
@@ -1281,8 +1308,8 @@
    <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
+     <x>257</x>
+     <y>60</y>
     </hint>
     <hint type="destinationlabel">
      <x>420</x>
@@ -1297,8 +1324,8 @@
    <slot>onCheckAutoBackup(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>131</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
@@ -1313,8 +1340,8 @@
    <slot>onCheckWriteDebugLogFile(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>101</x>
-     <y>50</y>
+     <x>112</x>
+     <y>147</y>
     </hint>
     <hint type="destinationlabel">
      <x>295</x>
@@ -1377,8 +1404,8 @@
    <slot>onOpenTranslationFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>74</y>
+     <x>229</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>703</x>
@@ -1393,8 +1420,8 @@
    <slot>onRefreshLanguageList()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
+     <x>224</x>
+     <y>63</y>
     </hint>
     <hint type="destinationlabel">
      <x>706</x>
@@ -1450,6 +1477,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonExport</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onExport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>48</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonImport</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onImport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>113</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>246</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onClose()</slot>
@@ -1493,5 +1552,7 @@
   <slot>onChangeAppEnableDisableShortcut()</slot>
   <slot>onResetAppEnableDisableShortcut()</slot>
   <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
+  <slot>onExport()</slot>
+  <slot>onImport()</slot>
  </slots>
 </ui>

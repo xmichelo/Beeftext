@@ -29,7 +29,12 @@ public: // member functions
 	~PreferencesManager() = default; ///< Default destructor
 	PreferencesManager& operator=(PreferencesManager const&) = delete; ///< Disabled assignment operator
 	PreferencesManager& operator=(PreferencesManager&&) = delete; ///< Disabled move assignment operator
+   void init(); ///< Initialize the preferences manager.
    void reset(); ///< Reset the preferences to their default values
+   bool save(QString const& path) const; ///< Save the preference to a JSON file.
+   bool load(QString const& path); ///< Load the preference from a JSON file.
+   void toJsonDocument(QJsonDocument& outDoc) const; ///< Copy the preferences to a JSON document.
+   void fromJsonDocument(QJsonDocument const& doc); ///< Load the preferences from a JSON document.
    void resetWarnings() const; ///< Reset the warnings
    QString getInstalledApplicationPath() const; ///< Retrieve the path of the installed application
    void setAlreadyLaunched() const; ///< Set the value for the 'First Launch' preference to false

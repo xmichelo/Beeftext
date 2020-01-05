@@ -13,6 +13,10 @@
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
+#include <XMiLib/Exception.h>
+
+
+using namespace xmilib;
 
 
 namespace {
@@ -47,38 +51,38 @@ QString const kKeyAppEnableShortcutScanCode = "AppEnableDisableShortcutScanCode"
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
 QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
 QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
-QString const kRegKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
-QString const kRegKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
-QString const kRegKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
-QString const kRegKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
-QString const kRegKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
-QString const kRegKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
-QString const kRegKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
+QString const kKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
+QString const kKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
+QString const kKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
+QString const kKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
+QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
+QString const kKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
+QString const kKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
 
-bool const kDefaultValuePlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
-bool const kDefaultValueUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
-bool const kDefaultValueAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
-bool const kDefaultValueAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
-bool const kDefaultValueUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
-bool const kDefaultValueUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
-bool const kDefaultValueWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
-bool const kDefaultValueAutoBackup = true; ///< The default value for the 'Auto backup' preference
-bool const kDefaultValueWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
-QString const kDefaultValueLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
+bool const kDefaultPlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
+bool const kDefaultUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
+bool const kDefaultAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
+bool const kDefaultAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
+bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
+bool const kDefaultUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
+bool const kDefaultAutoBackup = true; ///< The default value for the 'Auto backup' preference
+bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
+QString const kDefaultLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
    QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");///< The default value for the 'Last combo import/export path' preference
-SpShortcut const kDefaultValueComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
+SpShortcut const kDefaultComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
-bool kDefaultValueEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
-SpShortcut const kDefaultValueAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
+bool kDefaultEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
+SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
-bool const kDefaultValueEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
-QString const kDefaultValueEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
-QString const kDefaultValueEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
-qint32 const kDefaultValueDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
+bool const kDefaultEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
+QString const kDefaultEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
+QString const kDefaultEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
+qint32 const kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
-bool const kDefaultValueComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
-bool const kDefaultValueBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
+bool const kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
+bool const kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
 
 
 }
@@ -122,22 +126,30 @@ PreferencesManager::PreferencesManager()
    settings_ = isInPortableMode()
       ? std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat)
       : std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
+   this->init();
+}
 
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::init()
+{
    // Cache often accessed values
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
-      kDefaultValueUseAutomaticSubstitution);
+      kDefaultUseAutomaticSubstitution);
    this->cacheComboTriggerShortcut();
-   cachedComboPickerEnabled_ = this->readSettings<bool>(kRegKeyComboPickerEnabled, kDefaultValueComboPickerEnabled);
+   cachedComboPickerEnabled_ = this->readSettings<bool>(kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
    this->cacheComboPickerShortcut();
-   cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kRegKeyEmojiShortcodesEnabled,
-      kDefaultValueEmojiShortcodesEnabled);
+   cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kKeyEmojiShortcodesEnabled,
+      kDefaultEmojiShortcodesEnabled);
    cachedEnableAppEnableDisableShortcut_ = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
-      kDefaultValueEnableAppEnableDisableShortcut);
+      kDefaultEnableAppEnableDisableShortcut);
    this->cacheAppEnableDisableShortcut();
-   cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kRegKeyEmojiLeftDelimiter, kDefaultValueEmojiLeftDelimiter);
-   cachedEmojiRightDelimiter_ = this->readSettings<QString>(kRegKeyEmojiRightDelimiter,
-      kDefaultValueEmojiRightDelimiter);
-   cachedBeeftextEnabled_ = this->readSettings<bool>(kRegKeyBeeftextEnabled, kDefaultValueBeeftextEnabled);
+   cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kKeyEmojiLeftDelimiter, kDefaultEmojiLeftDelimiter);
+   cachedEmojiRightDelimiter_ = this->readSettings<QString>(kKeyEmojiRightDelimiter,
+      kDefaultEmojiRightDelimiter);
+   cachedBeeftextEnabled_ = this->readSettings<bool>(kKeyBeeftextEnabled, kDefaultBeeftextEnabled);
    // Some preferences setting need initialization
    this->applyCustomThemePreference();
    this->applyLocalePreference();
@@ -150,31 +162,232 @@ PreferencesManager::PreferencesManager()
 //**********************************************************************************************************************
 void PreferencesManager::reset()
 {
-   this->setPlaySoundOnCombo(kDefaultValuePlaySoundOnCombo);
-   this->setAutoCheckForUpdates(kDefaultValueAutoCheckForUpdates);
-   this->setUseCustomTheme(kDefaultValueUseCustomTheme);
-   this->setUseCustomSound(kDefaultValueUseCustomSound);
+   this->setPlaySoundOnCombo(kDefaultPlaySoundOnCombo);
+   this->setAutoCheckForUpdates(kDefaultAutoCheckForUpdates);
+   this->setUseCustomTheme(kDefaultUseCustomTheme);
+   this->setUseCustomSound(kDefaultUseCustomSound);
    this->setCustomSoundPath(QString());
-   this->setUseAutomaticSubstitution(kDefaultValueUseAutomaticSubstitution);
-   this->setWarnAboutShortComboKeywords(kDefaultValueWarnAboutShortComboKeyword);
-   this->setComboPickerEnabled(kDefaultValueComboPickerEnabled);
-   this->setComboTriggerShortcut(kDefaultValueComboTriggerShortcut);
+   this->setUseAutomaticSubstitution(kDefaultUseAutomaticSubstitution);
+   this->setWarnAboutShortComboKeywords(kDefaultWarnAboutShortComboKeyword);
+   this->setComboPickerEnabled(kDefaultComboPickerEnabled);
+   this->setComboTriggerShortcut(kDefaultComboTriggerShortcut);
    this->setComboPickerShortcut(defaultComboPickerShortcut());
-   this->setEnableAppEnableDisableShortcut(kDefaultValueEnableAppEnableDisableShortcut);
+   this->setEnableAppEnableDisableShortcut(kDefaultEnableAppEnableDisableShortcut);
    this->setAppEnableDisableShortcut(defaultAppEnableDisableShortcut());
-   this->setAutoBackup(kDefaultValueAutoBackup);
-   this->setEmojiShortcodeEnabled(kDefaultValueEmojiShortcodesEnabled);
-   this->setEmojiLeftDelimiter(kDefaultValueEmojiLeftDelimiter);
-   this->setEmojiRightDelimiter(kDefaultValueEmojiRightDelimiter);
+   this->setAutoBackup(kDefaultAutoBackup);
+   this->setEmojiShortcodeEnabled(kDefaultEmojiShortcodesEnabled);
+   this->setEmojiLeftDelimiter(kDefaultEmojiLeftDelimiter);
+   this->setEmojiRightDelimiter(kDefaultEmojiRightDelimiter);
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
-   this->setDelayBetweenKeystrokesMs(kDefaultValueDelayBetweenKeystrokesMs);
-   this->setWriteDebugLogFile(kDefaultValueWriteDebugLogFile);
+   this->setDelayBetweenKeystrokesMs(kDefaultDelayBetweenKeystrokesMs);
+   this->setWriteDebugLogFile(kDefaultWriteDebugLogFile);
    this->resetWarnings();
    if (!isInPortableMode())
    {
-      this->setAutoStartAtLogin(kDefaultValueAutoStartAtLogin);
+      this->setAutoStartAtLogin(kDefaultAutoStartAtLogin);
       this->setComboListFolderPath(globals::appDataDir());
    }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the file to save to.
+/// \return true if and only if the operation was completed successfully.
+//**********************************************************************************************************************
+bool PreferencesManager::save(QString const& path) const
+{
+   try
+   {
+      QJsonDocument doc;
+      this->toJsonDocument(doc);
+      QFile file(path);
+      if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+         throw Exception("The output file could not be opened.");
+      QByteArray const data = doc.toJson();
+      if (data.size() != file.write(data))
+         throw Exception("An error occurred while trying to write file.");
+      return true;
+   }
+   catch (xmilib::Exception const& e)
+   {
+      globals::debugLog().addError(e.qwhat());
+      return false;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the file to load from.
+/// \return true if and only if the operation was completed successfully.
+//**********************************************************************************************************************
+bool PreferencesManager::load(QString const& path)
+{
+   try
+   {
+      QFile file(path);
+      if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+         throw Exception("The output file could not be opened.");
+      QJsonDocument const doc = QJsonDocument::fromJson(file.readAll());
+      if (doc.isNull())
+         throw Exception("The input file is not a valid JSON file.");
+      this->fromJsonDocument(doc);
+      return true;
+   }
+   catch (xmilib::Exception const& e)
+   {
+      globals::debugLog().addError(e.qwhat());
+      return false;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] object The JSON object.
+/// \param[in] key The key.
+/// \return The value associated with the key
+//**********************************************************************************************************************
+template <typename T> T objectValue(QJsonObject const& object, QString const& key)
+{
+   if (!object.contains(key))
+      throw xmilib::Exception(QString("Could not find entry %1 in imported preferences file.").arg(key));
+   QVariant const v = object[key].toVariant();
+   if (!v.canConvert<T>())
+      throw xmilib::Exception(QString("The value for entry %1 in imported preferences file is invalid.").arg(key));
+   return v.value<T>();
+}
+
+
+//**********************************************************************************************************************
+/// \brief Return a serilizable array containing a QVariant.
+///
+/// \param[in] v The QVariant.
+/// \return a serilizable array containing a QVariant.
+//**********************************************************************************************************************
+QByteArray variantToByteArray(QVariant const& v)
+{
+   QByteArray data;
+   QDataStream stream(&data, QIODevice::WriteOnly);
+   stream << v;
+   return data;
+}
+
+
+//**********************************************************************************************************************
+/// \brief Deserialize a QVariant from a byte array
+///
+/// \param[in] data The byte array.
+/// \return The deserialized QVariant
+//**********************************************************************************************************************
+template <typename T> T byteArrayToVariant(QByteArray const& data)
+{
+   QByteArray array(data);
+   QDataStream stream(&array, QIODevice::ReadOnly);
+   QVariant v;
+   stream >> v;
+   if (!v.canConvert<T>())
+      throw Exception("The imported file is invalid.");
+   return v.value<T>();
+}
+
+//**********************************************************************************************************************
+/// \param[out] outDoc The JSON document.
+//**********************************************************************************************************************
+void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
+{
+   QJsonObject object;
+   object[kKeyAppEnableShortcutKeyCode] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutKeyCode, 0));
+   object[kKeyAppEnableShortcutModifiers] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutModifiers, 0));
+   object[kKeyAppEnableShortcutScanCode] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutScanCode, 0));
+   object[kKeyAutoBackup] = this->readSettings<bool>(kKeyAutoBackup, kDefaultAutoBackup);
+   object[kKeyAutoCheckForUpdates] = this->readSettings<bool>(kKeyAutoCheckForUpdates, kDefaultAutoCheckForUpdates);
+   object[kKeyAutoStartAtLogin] = this->readSettings<bool>(kKeyAutoStartAtLogin, kDefaultAutoStartAtLogin);
+   object[kKeyBeeftextEnabled] = this->readSettings<bool>(kKeyBeeftextEnabled, kDefaultBeeftextEnabled);
+   object[kKeyComboListFolderPath] = this->readSettings<QString>(kKeyComboListFolderPath, 
+      defaultComboListFolderPath());
+   object[kKeyComboPickerEnabled] = this->readSettings<bool>(kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
+   object[kKeyComboPickerShortcutKeyCode] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutKeyCode, 0));
+   object[kKeyComboPickerShortcutModifiers] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutModifiers, 0));
+   object[kKeyComboPickerShortcutScanCode] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutScanCode, 0));
+   object[kKeyComboTriggerShortcutKeyCode] = qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCode, 0));
+   object[kKeyComboTriggerShortcutModifiers] = qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0));
+   object[kKeyComboTriggerShortcutScanCode] = qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0));
+   object[kKeyCustomSoundPath] = this->readSettings<QString>(kKeyCustomSoundPath, QString());
+   object[kKeyDelayBetweenKeystrokes] = this->readSettings<qint32>(kKeyDelayBetweenKeystrokes, 
+      kDefaultDelayBetweenKeystrokesMs);
+   object[kKeyEmojiLeftDelimiter] = this->readSettings<QString>(kKeyEmojiLeftDelimiter, kDefaultEmojiLeftDelimiter);
+   object[kKeyEmojiRightDelimiter] = this->readSettings<QString>(kKeyEmojiRightDelimiter, kDefaultEmojiRightDelimiter);
+   object[kKeyEmojiShortcodesEnabled] = this->readSettings<bool>(kKeyEmojiShortcodesEnabled, 
+      kDefaultEmojiShortcodesEnabled);
+   object[kKeyEnableAppEnableDisableShortcut] = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
+      kDefaultEnableAppEnableDisableShortcut);
+   object[kKeyGeometry] = QString::fromLocal8Bit(this->readSettings<QByteArray>(kKeyGeometry, QByteArray()).toHex());
+   object[kKeyLastComboImportExportPath] = this->readSettings<QString>(kKeyLastComboImportExportPath, QString());
+   object[kKeyLastUpdateCheckDateTime] = QString::fromLocal8Bit(variantToByteArray( 
+      this->lastUpdateCheckDateTime()).toHex());
+   object[kKeyLocale] = QString::fromLocal8Bit(variantToByteArray(this->locale()).toHex());
+   object[kKeySplitterState] = QString::fromLocal8Bit(this->readSettings<QByteArray>(kKeySplitterState, 
+      QByteArray()).toHex());
+   object[kKeyPlaySoundOnCombo] = this->readSettings<bool>(kKeyPlaySoundOnCombo, kDefaultPlaySoundOnCombo);
+   object[kKeyUseAutomaticSubstitution] = this->readSettings<bool>(kKeyUseAutomaticSubstitution, 
+      kDefaultUseAutomaticSubstitution);
+   object[kKeyUseCustomSound] = this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomSound);
+   object[kKeyUseCustomTheme] = this->readSettings<bool>(kKeyUseCustomTheme, kDefaultUseCustomTheme);
+   object[kKeyWarnAboutShortComboKeyword] = this->readSettings<bool>(kKeyWarnAboutShortComboKeyword, 
+      kDefaultWarnAboutShortComboKeyword);
+   object[kKeyWriteDebugLogFile] = this->readSettings<bool>(kKeyWriteDebugLogFile, 
+      kDefaultWriteDebugLogFile);
+
+   outDoc = QJsonDocument(object);
+}
+
+
+
+
+//**********************************************************************************************************************
+/// \param[in] doc The JSON document.
+//**********************************************************************************************************************
+void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
+{
+   QJsonObject const object = doc.object();
+   settings_->setValue(kKeyAppEnableShortcutKeyCode, objectValue<quint32>(object, kKeyAppEnableShortcutKeyCode));
+   settings_->setValue(kKeyAppEnableShortcutModifiers, objectValue<quint32>(object, kKeyAppEnableShortcutModifiers));
+   settings_->setValue(kKeyAppEnableShortcutScanCode, objectValue<quint32>(object, kKeyAppEnableShortcutScanCode));
+   settings_->setValue(kKeyAutoBackup, objectValue<bool>(object, kKeyAutoBackup));
+   settings_->setValue(kKeyAutoCheckForUpdates, objectValue<bool>(object, kKeyAutoCheckForUpdates));
+   settings_->setValue(kKeyAutoStartAtLogin, objectValue<bool>(object, kKeyAutoStartAtLogin));
+   settings_->setValue(kKeyBeeftextEnabled, objectValue<bool>(object, kKeyBeeftextEnabled));
+   settings_->setValue(kKeyComboListFolderPath, objectValue<QString>(object, kKeyComboListFolderPath));
+   settings_->setValue(kKeyComboPickerEnabled, objectValue<bool>(object, kKeyComboPickerEnabled));
+   settings_->setValue(kKeyComboPickerShortcutKeyCode, objectValue<quint32>(object, kKeyComboPickerShortcutKeyCode));
+   settings_->setValue(kKeyComboPickerShortcutModifiers, objectValue<quint32>(object, kKeyComboPickerShortcutModifiers));
+   settings_->setValue(kKeyComboPickerShortcutScanCode, objectValue<quint32>(object, kKeyComboPickerShortcutScanCode));
+   settings_->setValue(kKeyComboTriggerShortcutKeyCode, objectValue<quint32>(object, kKeyComboTriggerShortcutKeyCode));
+   settings_->setValue(kKeyComboTriggerShortcutModifiers, objectValue<quint32>(object, 
+      kKeyComboTriggerShortcutModifiers));
+   settings_->setValue(kKeyComboTriggerShortcutScanCode, objectValue<quint32>(object, kKeyComboTriggerShortcutScanCode));
+   settings_->setValue(kKeyCustomSoundPath, objectValue<QString>(object, kKeyCustomSoundPath));
+   settings_->setValue(kKeyDelayBetweenKeystrokes, objectValue<qint32>(object, kKeyDelayBetweenKeystrokes));
+   settings_->setValue(kKeyEmojiLeftDelimiter, objectValue<QString>(object, kKeyEmojiLeftDelimiter));
+   settings_->setValue(kKeyEmojiRightDelimiter, objectValue<QString>(object, kKeyEmojiRightDelimiter));
+   settings_->setValue(kKeyEmojiShortcodesEnabled, objectValue<bool>(object, kKeyEmojiShortcodesEnabled));
+   settings_->setValue(kKeyEnableAppEnableDisableShortcut, objectValue<bool>(object, 
+      kKeyEnableAppEnableDisableShortcut));
+   settings_->setValue(kKeyGeometry, QByteArray::fromHex(objectValue<QString>(object, kKeyGeometry).toLocal8Bit()));
+   settings_->setValue(kKeyLastComboImportExportPath, objectValue<QString>(object, kKeyLastComboImportExportPath));
+   settings_->setValue(kKeyLastUpdateCheckDateTime,byteArrayToVariant<QDateTime>(QByteArray::fromHex(
+      objectValue<QString>(object, kKeyLastUpdateCheckDateTime).toLocal8Bit())));
+   settings_->setValue(kKeyLocale, byteArrayToVariant<QLocale>(QByteArray::fromHex(objectValue<QString>(object, 
+      kKeyLocale).toLocal8Bit())));
+   settings_->setValue(kKeyGeometry, QByteArray::fromHex(objectValue<QString>(object, 
+      kKeySplitterState).toLocal8Bit()));
+   settings_->setValue(kKeyPlaySoundOnCombo, objectValue<bool>(object, kKeyPlaySoundOnCombo));
+   settings_->setValue(kKeyUseAutomaticSubstitution, objectValue<bool>(object, kKeyUseAutomaticSubstitution));
+   settings_->setValue(kKeyUseCustomSound, objectValue<bool>(object, kKeyUseCustomSound));
+   settings_->setValue(kKeyUseCustomTheme, objectValue<bool>(object, kKeyUseCustomTheme));
+   settings_->setValue(kKeyWarnAboutShortComboKeyword, objectValue<bool>(object, kKeyWarnAboutShortComboKeyword));
+   settings_->setValue(kKeyWriteDebugLogFile, objectValue<bool>(object, kKeyWriteDebugLogFile));
+
+   this->init();
 }
 
 
@@ -344,7 +557,7 @@ void PreferencesManager::setAutoStartAtLogin(bool value) const
 //**********************************************************************************************************************
 bool PreferencesManager::autoStartAtLogin() const
 {
-   return isInPortableMode() ? false : this->readSettings<bool>(kKeyAutoStartAtLogin, kDefaultValueAutoStartAtLogin);
+   return isInPortableMode() ? false : this->readSettings<bool>(kKeyAutoStartAtLogin, kDefaultAutoStartAtLogin);
 }
 
 
@@ -362,7 +575,7 @@ void PreferencesManager::setPlaySoundOnCombo(bool value) const
 //**********************************************************************************************************************
 bool PreferencesManager::playSoundOnCombo() const
 {
-   return this->readSettings<bool>(kKeyPlaySoundOnCombo, kDefaultValuePlaySoundOnCombo);
+   return this->readSettings<bool>(kKeyPlaySoundOnCombo, kDefaultPlaySoundOnCombo);
 }
 
 
@@ -380,7 +593,7 @@ void PreferencesManager::setUseCustomSound(bool value) const
 //**********************************************************************************************************************
 bool PreferencesManager::useCustomSound() const
 {
-   return this->readSettings<bool>(kKeyUseCustomSound, kDefaultValueUseCustomSound);
+   return this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomSound);
 }
 
 
@@ -419,7 +632,7 @@ void PreferencesManager::setAutoCheckForUpdates(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::autoCheckForUpdates() const
 {
-   return this->readSettings<bool>(kKeyAutoCheckForUpdates, kDefaultValueAutoCheckForUpdates);
+   return this->readSettings<bool>(kKeyAutoCheckForUpdates, kDefaultAutoCheckForUpdates);
 }
 
 
@@ -441,7 +654,7 @@ void PreferencesManager::setUseCustomTheme(bool value) const
 //**********************************************************************************************************************
 bool PreferencesManager::useCustomTheme() const
 {
-   return this->readSettings<bool>(kKeyUseCustomTheme, kDefaultValueUseCustomTheme);
+   return this->readSettings<bool>(kKeyUseCustomTheme, kDefaultUseCustomTheme);
 }
 
 
@@ -479,7 +692,7 @@ void PreferencesManager::setWarnAboutShortComboKeywords(bool value) const
 //**********************************************************************************************************************
 bool PreferencesManager::warnAboutShortComboKeywords() const
 {
-   return this->readSettings<bool>(kKeyWarnAboutShortComboKeyword, kDefaultValueWarnAboutShortComboKeyword);
+   return this->readSettings<bool>(kKeyWarnAboutShortComboKeyword, kDefaultWarnAboutShortComboKeyword);
 }
 
 
@@ -520,10 +733,10 @@ QString PreferencesManager::defaultComboListFolderPath()
 //**********************************************************************************************************************
 void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut)
 {
-   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueComboTriggerShortcut;
+   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultComboTriggerShortcut;
    SpShortcut currentShortcut = this->comboTriggerShortcut();
    if (!currentShortcut)
-      currentShortcut = kDefaultValueComboTriggerShortcut;
+      currentShortcut = kDefaultComboTriggerShortcut;
    if (*newShortcut != *currentShortcut)
    {
       settings_->setValue(kKeyComboTriggerShortcutModifiers, int(shortcut->nativeModifiers()));
@@ -574,7 +787,7 @@ void PreferencesManager::setAutoBackup(bool value) const
 //**********************************************************************************************************************
 bool PreferencesManager::autoBackup() const
 {
-   return this->readSettings<bool>(kKeyAutoBackup, kDefaultValueAutoBackup);
+   return this->readSettings<bool>(kKeyAutoBackup, kDefaultAutoBackup);
 }
 
 
@@ -596,7 +809,7 @@ void PreferencesManager::setWriteDebugLogFile(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::writeDebugLogFile() const
 {
-   return this->readSettings<bool>(kKeyWriteDebugLogFile, kDefaultValueWriteDebugLogFile);
+   return this->readSettings<bool>(kKeyWriteDebugLogFile, kDefaultWriteDebugLogFile);
 }
 
 
@@ -605,7 +818,7 @@ bool PreferencesManager::writeDebugLogFile() const
 //**********************************************************************************************************************
 QString PreferencesManager::lastComboImportExportPath() const
 {
-   return this->readSettings<QString>(kKeyLastComboImportExportPath, kDefaultValueLastComboImportExportPath);
+   return this->readSettings<QString>(kKeyLastComboImportExportPath, kDefaultLastComboImportExportPath);
 }
 
 
@@ -623,7 +836,7 @@ void PreferencesManager::setLastComboImportExportPath(QString const& path) const
 //**********************************************************************************************************************
 SpShortcut PreferencesManager::defaultComboTriggerShortcut()
 {
-   return kDefaultValueComboTriggerShortcut;
+   return kDefaultComboTriggerShortcut;
 }
 
 
@@ -642,7 +855,7 @@ bool PreferencesManager::emojiShortcodesEnabled() const
 void PreferencesManager::setEmojiShortcodeEnabled(bool value)
 {
    cachedEmojiShortcodesEnabled_ = value;
-   settings_->setValue(kRegKeyEmojiShortcodesEnabled, value);
+   settings_->setValue(kKeyEmojiShortcodesEnabled, value);
 }
 
 
@@ -652,7 +865,7 @@ void PreferencesManager::setEmojiShortcodeEnabled(bool value)
 QString PreferencesManager::emojiLeftDelimiter() const
 {
    QString const result = cachedEmojiLeftDelimiter_;
-   return result.isEmpty() ? kDefaultValueEmojiLeftDelimiter : result;
+   return result.isEmpty() ? kDefaultEmojiLeftDelimiter : result;
 }
 
 
@@ -662,7 +875,7 @@ QString PreferencesManager::emojiLeftDelimiter() const
 void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter)
 {
    cachedEmojiLeftDelimiter_ = delimiter;
-   settings_->setValue(kRegKeyEmojiLeftDelimiter, delimiter);
+   settings_->setValue(kKeyEmojiLeftDelimiter, delimiter);
 }
 
 
@@ -672,7 +885,7 @@ void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter)
 QString PreferencesManager::emojiRightDelimiter() const
 {
    QString const result = cachedEmojiRightDelimiter_;
-   return result.isEmpty() ? kDefaultValueEmojiRightDelimiter : result;
+   return result.isEmpty() ? kDefaultEmojiRightDelimiter : result;
 }
 
 
@@ -682,7 +895,7 @@ QString PreferencesManager::emojiRightDelimiter() const
 void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter)
 {
    cachedEmojiRightDelimiter_ = delimiter;
-   settings_->setValue(kRegKeyEmojiRightDelimiter, delimiter);
+   settings_->setValue(kKeyEmojiRightDelimiter, delimiter);
 }
 
 
@@ -691,8 +904,8 @@ void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter)
 //**********************************************************************************************************************
 qint32 PreferencesManager::delayBetweenKeystrokesMs() const
 {
-   return qBound<qint32>(kMinValueDelayBetweenKeystrokesMs, this->readSettings<qint32>(kRegKeyDelayBetweenKeystrokes,
-      kDefaultValueDelayBetweenKeystrokesMs), kMaxValueDelayBetweenKeystrokesMs);
+   return qBound<qint32>(kMinValueDelayBetweenKeystrokesMs, this->readSettings<qint32>(kKeyDelayBetweenKeystrokes,
+      kDefaultDelayBetweenKeystrokesMs), kMaxValueDelayBetweenKeystrokesMs);
 }
 
 
@@ -701,7 +914,7 @@ qint32 PreferencesManager::delayBetweenKeystrokesMs() const
 //**********************************************************************************************************************
 void PreferencesManager::setDelayBetweenKeystrokesMs(qint32 value) const
 {
-   settings_->setValue(kRegKeyDelayBetweenKeystrokes, qBound<qint32>(kMinValueDelayBetweenKeystrokesMs, value,
+   settings_->setValue(kKeyDelayBetweenKeystrokes, qBound<qint32>(kMinValueDelayBetweenKeystrokesMs, value,
       kMaxValueDelayBetweenKeystrokesMs));
 }
 
@@ -739,7 +952,7 @@ bool PreferencesManager::comboPickerEnabled() const
 void PreferencesManager::setComboPickerEnabled(bool value)
 {
    cachedComboPickerEnabled_ = value;
-   settings_->setValue(kRegKeyComboPickerEnabled, value);
+   settings_->setValue(kKeyComboPickerEnabled, value);
 }
 
 
@@ -797,7 +1010,7 @@ void PreferencesManager::cacheComboTriggerShortcut()
 {
    SpShortcut const shortcut = this->readShortcutFromPreferences(kKeyComboTriggerShortcutModifiers,
       kKeyComboTriggerShortcutKeyCode, kKeyComboTriggerShortcutScanCode);
-   cachedComboTriggerShortcut_ = shortcut ? shortcut : kDefaultValueComboTriggerShortcut;
+   cachedComboTriggerShortcut_ = shortcut ? shortcut : kDefaultComboTriggerShortcut;
 }
 
 
@@ -874,7 +1087,7 @@ bool PreferencesManager::registerApplicationForAutoStart() const
    if (installedPath.isEmpty() || (!QFileInfo(installedPath).exists()))
       return false;
 
-   QSettings(kRegKeyAutoStart, QSettings::NativeFormat).setValue(constants::kApplicationName,
+   QSettings(kKeyAutoStart, QSettings::NativeFormat).setValue(constants::kApplicationName,
       QDir::toNativeSeparators(installedPath));
    return true;
 }
@@ -886,7 +1099,7 @@ bool PreferencesManager::registerApplicationForAutoStart() const
 void PreferencesManager::unregisterApplicationFromAutoStart()
 {
    if (!isInPortableMode())
-      QSettings(kRegKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
+      QSettings(kKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
 }
 
 
@@ -914,10 +1127,10 @@ bool PreferencesManager::enableAppEnableDisableShortcut() const
 //**********************************************************************************************************************
 void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut)
 {
-   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultValueAppEnableDisableShortcut;
+   SpShortcut const newShortcut = shortcut ? shortcut : kDefaultAppEnableDisableShortcut;
    SpShortcut currentShortcut = this->appEnableDisableShortcut();
    if (!currentShortcut)
-      currentShortcut = kDefaultValueAppEnableDisableShortcut;
+      currentShortcut = kDefaultAppEnableDisableShortcut;
    if (*newShortcut != *currentShortcut)
    {
       settings_->setValue(kKeyAppEnableShortcutModifiers, int(shortcut->nativeModifiers()));
@@ -942,7 +1155,7 @@ SpShortcut PreferencesManager::appEnableDisableShortcut() const
 //**********************************************************************************************************************
 SpShortcut PreferencesManager::defaultAppEnableDisableShortcut()
 {
-   return kDefaultValueAppEnableDisableShortcut;
+   return kDefaultAppEnableDisableShortcut;
 }
 
 
@@ -953,7 +1166,7 @@ void PreferencesManager::setBeeftextEnabled(bool enabled)
 {
    if (cachedBeeftextEnabled_ == enabled)
       return;
-   settings_->setValue(kRegKeyBeeftextEnabled, enabled);
+   settings_->setValue(kKeyBeeftextEnabled, enabled);
    cachedBeeftextEnabled_ = enabled;
 }
 

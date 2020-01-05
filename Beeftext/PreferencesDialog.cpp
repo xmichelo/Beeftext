@@ -27,8 +27,7 @@ namespace {
 
 
 qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the update check status label is cleared
-
-
+QString const kExportFileName = "BeeftextPrefs.json"; ///< The default file name for export/import of preferences.
 
 
 }
@@ -651,4 +650,35 @@ void PreferencesDialog::onRefreshLanguageList() const
    QLocale const validatedLocale = i18NManager.validateLocale(currentLocale);
    I18nManager::selectLocaleInCombo(validatedLocale, *ui_.comboLocale);
    i18NManager.setLocale(validatedLocale);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onExport()
+{
+   QString const path = QFileDialog::getSaveFileName(this, tr("Export Preferences"), 
+      QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath(kExportFileName), 
+      constants::jsonFileDialogFilter());
+   if (path.isEmpty())
+      return;
+   if (!prefs_.save(path))
+      QMessageBox::critical(this, tr("Error"), tr("An error occurred while exporting the preferences."));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onImport()
+{
+   QString const path = QFileDialog::getOpenFileName(this, tr("Import Preferences"),
+      QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath(kExportFileName),
+      constants::jsonFileDialogFilter());
+   if (path.isEmpty())
+      return;
+   if (!prefs_.load(path))
+      QMessageBox::critical(this, tr("Error"), tr("An error occurred while importing the preferences."));
+   this->loadPreferences();
 }

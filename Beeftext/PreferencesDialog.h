@@ -77,6 +77,8 @@ private slots:
    void onCheckWriteDebugLogFile(bool checked) const; ///< Slot the for 'Write debug log file' checkbox
    static void onOpenTranslationFolder(); ///< Slot for the 'Translation Folder' button.
    void onRefreshLanguageList() const; ///< Slot for the 'Refresh Language List' button.
+   void onExport(); ///< Slot for the 'Export' button.
+   void onImport(); ///< Slot for the 'Import' button.
 
 private: // data members
    Ui::PreferencesDialog ui_ {}; ///< The GUI for the dialog
