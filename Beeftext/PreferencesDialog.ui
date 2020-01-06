@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>709</width>
-    <height>289</height>
+    <height>303</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -724,44 +724,78 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QCheckBox" name="checkAutoBackup">
-           <property name="text">
-            <string>Automatically backup combo list files</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonRestoreBackup">
-           <property name="toolTip">
-            <string>Restore a backup.</string>
-           </property>
-           <property name="text">
-            <string>&amp;Restore</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>5</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
         <widget class="QCheckBox" name="checkWriteDebugLogFile">
          <property name="text">
           <string>Write debug events in a log file</string>
          </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupboxAutoBackup">
+         <property name="title">
+          <string>Automatic backup</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item>
+             <widget class="QCheckBox" name="checkAutoBackup">
+              <property name="text">
+               <string>Automatically backup combo list files</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonRestoreBackup">
+              <property name="toolTip">
+               <string>Restore a backup.</string>
+              </property>
+              <property name="text">
+               <string>&amp;Restore</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>545</width>
+                <height>13</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <widget class="QCheckBox" name="checkUseCustomBackupLocation">
+              <property name="text">
+               <string>Use custom backup location</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="editCustomBackupLocation">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonChangeCustomBackupLocation">
+              <property name="text">
+               <string>&amp;Change</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -924,8 +958,6 @@
   <tabstop>buttonChangeComboListFolder</tabstop>
   <tabstop>buttonOpenComboListFolder</tabstop>
   <tabstop>buttonResetComboListFolder</tabstop>
-  <tabstop>checkAutoBackup</tabstop>
-  <tabstop>buttonRestoreBackup</tabstop>
   <tabstop>checkWriteDebugLogFile</tabstop>
   <tabstop>buttonSensitiveApplications</tabstop>
   <tabstop>tabPreferences</tabstop>
@@ -941,7 +973,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>698</x>
-     <y>257</y>
+     <y>283</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -1084,8 +1116,8 @@
    <slot>onEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>177</y>
+     <x>133</x>
+     <y>232</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -1340,8 +1372,8 @@
    <slot>onCheckWriteDebugLogFile(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>112</x>
-     <y>147</y>
+     <x>123</x>
+     <y>202</y>
     </hint>
     <hint type="destinationlabel">
      <x>295</x>
@@ -1509,6 +1541,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkUseCustomBackupLocation</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseCustomBackupLocation(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>74</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onClose()</slot>
@@ -1554,5 +1602,6 @@
   <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
   <slot>onExport()</slot>
   <slot>onImport()</slot>
+  <slot>onCheckUseCustomBackupLocation(bool)</slot>
  </slots>
 </ui>

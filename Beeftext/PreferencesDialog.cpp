@@ -115,6 +115,7 @@ void PreferencesDialog::loadPreferences() const
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
    ui_.checkAutoBackup->setChecked(prefs_.autoBackup());
    blocker = QSignalBlocker(ui_.checkWriteDebugLogFile);
+   ui_.checkUseCustomBackupLocation->setChecked(prefs_.useCustomBackupLocation());
    ui_.checkWriteDebugLogFile->setChecked(prefs_.writeDebugLogFile());
    blocker = QSignalBlocker(ui_.checkUseCustomSound);
    ui_.checkUseCustomSound->setChecked(prefs_.useCustomSound());
@@ -194,6 +195,10 @@ void PreferencesDialog::updateGui() const
    ui_.frameCustomSound->setEnabled(ui_.checkPlaySoundOnCombo->isChecked());
 
    ui_.frameAppEnableDisableShortcut->setEnabled(ui_.CheckAppEnableDisable->isChecked());
+
+   widgets = { ui_.editCustomBackupLocation, ui_.buttonChangeCustomBackupLocation };
+   for (QWidget* widget: widgets)
+      widget->setEnabled(prefs_.useCustomBackupLocation());
 
    bool const useCustomSound = ui_.checkUseCustomSound->isChecked();
    widgets = { ui_.editCustomSound, ui_.buttonChangeCustomSound, ui_.buttonPlay };
@@ -508,6 +513,16 @@ void PreferencesDialog::onCheckAutoBackup(bool value)
       }
    }
    prefs_.setAutoBackup(value);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The check state of the box.
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckUseCustomBackupLocation(bool value) const
+{
+   prefs_.setUseCustomBackupLocation(value);
    this->updateGui();
 }
 

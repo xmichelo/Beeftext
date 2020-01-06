@@ -23,66 +23,69 @@ namespace {
 
 
 QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for the "Already launched" indicator
-QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
-QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
-QString const kKeySplitterState = "MainWindowSplitterState"; ///< The setting key for storing the main window splitter state.
-QString const kKeyLocale = "Locale"; ///< The settings key for the locale
+QString const kKeyAppEnableShortcutKeyCode = "AppEnableDisableShortcutKeyCode"; ///< The setting key for the app enable/disable shortcut key code.
+QString const kKeyAppEnableShortcutModifiers = "AppEnableDisableShortcutModifiers"; ///< The setting key for the app enable/disable shortcut modifiers.
+QString const kKeyAppEnableShortcutScanCode = "AppEnableDisableShortcutScanCode"; ///< The setting key for the app enable/disable shortcut scan code.
 QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
-QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
-QString const kKeyUseCustomSound = "UseCustomSound"; ///< The settings key for the 'Use custom sound' preference.
-QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for the 'Custom sound path' preference.
-QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
+QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
 QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
-QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
-QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
-QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
-QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
+QString const kKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
+QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
+QString const kKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
-QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
-QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
-QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+QString const kKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
 QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
 QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
 QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; ///< The setting key for the combo picker shortcut scan code
-QString const kKeyEnableAppEnableDisableShortcut ="EnableAppEnableDisableShortcut"; ///< The setting key for the 'enable app enable/disable shortcut' preference.
-QString const kKeyAppEnableShortcutModifiers = "AppEnableDisableShortcutModifiers"; ///< The setting key for the app enable/disable shortcut modifiers.
-QString const kKeyAppEnableShortcutKeyCode = "AppEnableDisableShortcutKeyCode"; ///< The setting key for the app enable/disable shortcut key code.
-QString const kKeyAppEnableShortcutScanCode = "AppEnableDisableShortcutScanCode"; ///< The setting key for the app enable/disable shortcut scan code.
-QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
-QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
-QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
-QString const kKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
-QString const kKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
+QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
+QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
+QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for the 'Custom sound path' preference.
+QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
 QString const kKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
 QString const kKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
-QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
-QString const kKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
-QString const kKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
+QString const kKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
+QString const kKeyEnableAppEnableDisableShortcut ="EnableAppEnableDisableShortcut"; ///< The setting key for the 'enable app enable/disable shortcut' preference.
+QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
+QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
+QString const kKeyLastComboImportExportPath = "LastComboImportExportPath"; ///< The setting key for 'Last combo import/export path' preference
+QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting key for the last update check date/time
+QString const kKeyLocale = "Locale"; ///< The settings key for the locale
+QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
+QString const kKeySplitterState = "MainWindowSplitterState"; ///< The setting key for storing the main window splitter state.
+QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
+QString const kKeyUseCustomBackupLocation = "UseCustomBackupLocation"; ///< The settings key for the 'Use custom backup location' preference.
+QString const kKeyUseCustomSound = "UseCustomSound"; ///< The settings key for the 'Use custom sound' preference.
+QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
+QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
+QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
 
-bool const kDefaultPlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
-bool const kDefaultUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
-bool const kDefaultAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
-bool const kDefaultAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
-bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
-bool const kDefaultUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
-bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
-bool const kDefaultAutoBackup = true; ///< The default value for the 'Auto backup' preference
-bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
-QString const kDefaultLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
-   QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");///< The default value for the 'Last combo import/export path' preference
-SpShortcut const kDefaultComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
-   | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
-bool kDefaultEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
+
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
-bool const kDefaultEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
+bool const kDefaultAutoBackup = true; ///< The default value for the 'Auto backup' preference
+bool const kDefaultAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
+bool const kDefaultAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
+bool const kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
+bool const kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
+SpShortcut const kDefaultComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
+   | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
+qint32 const kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 QString const kDefaultEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
-qint32 const kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
+bool const kDefaultEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
+bool const kDefaultEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
+QString const kDefaultLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
+   QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");///< The default value for the 'Last combo import/export path' preference
 qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
-bool const kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
-bool const kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
+bool const kDefaultPlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
+bool const kDefaultUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+bool const kDefaultUseCustomBackupLocation = false; ///< The default value for the 'Use custom backup location' preference.
+bool const kDefaultUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
+bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
+bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
+bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 
 
 }
@@ -162,25 +165,27 @@ void PreferencesManager::init()
 //**********************************************************************************************************************
 void PreferencesManager::reset()
 {
-   this->setPlaySoundOnCombo(kDefaultPlaySoundOnCombo);
-   this->setAutoCheckForUpdates(kDefaultAutoCheckForUpdates);
-   this->setUseCustomTheme(kDefaultUseCustomTheme);
-   this->setUseCustomSound(kDefaultUseCustomSound);
-   this->setCustomSoundPath(QString());
-   this->setUseAutomaticSubstitution(kDefaultUseAutomaticSubstitution);
-   this->setWarnAboutShortComboKeywords(kDefaultWarnAboutShortComboKeyword);
-   this->setComboPickerEnabled(kDefaultComboPickerEnabled);
-   this->setComboTriggerShortcut(kDefaultComboTriggerShortcut);
-   this->setComboPickerShortcut(defaultComboPickerShortcut());
-   this->setEnableAppEnableDisableShortcut(kDefaultEnableAppEnableDisableShortcut);
    this->setAppEnableDisableShortcut(defaultAppEnableDisableShortcut());
    this->setAutoBackup(kDefaultAutoBackup);
-   this->setEmojiShortcodeEnabled(kDefaultEmojiShortcodesEnabled);
+   this->setAutoCheckForUpdates(kDefaultAutoCheckForUpdates);
+   this->setComboPickerEnabled(kDefaultComboPickerEnabled);
+   this->setComboPickerShortcut(defaultComboPickerShortcut());
+   this->setComboTriggerShortcut(kDefaultComboTriggerShortcut);
+   this->setCustomSoundPath(QString());
+   this->setDelayBetweenKeystrokesMs(kDefaultDelayBetweenKeystrokesMs);
    this->setEmojiLeftDelimiter(kDefaultEmojiLeftDelimiter);
    this->setEmojiRightDelimiter(kDefaultEmojiRightDelimiter);
+   this->setEmojiShortcodeEnabled(kDefaultEmojiShortcodesEnabled);
+   this->setEnableAppEnableDisableShortcut(kDefaultEnableAppEnableDisableShortcut);
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
-   this->setDelayBetweenKeystrokesMs(kDefaultDelayBetweenKeystrokesMs);
+   this->setPlaySoundOnCombo(kDefaultPlaySoundOnCombo);
+   this->setUseAutomaticSubstitution(kDefaultUseAutomaticSubstitution);
+   this->setUseCustomBackupLocation(kDefaultUseCustomBackupLocation);
+   this->setUseCustomTheme(kDefaultUseCustomTheme);
+   this->setUseCustomSound(kDefaultUseCustomSound);
+   this->setWarnAboutShortComboKeywords(kDefaultWarnAboutShortComboKeyword);
    this->setWriteDebugLogFile(kDefaultWriteDebugLogFile);
+
    this->resetWarnings();
    if (!isInPortableMode())
    {
@@ -330,6 +335,7 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
    object[kKeyPlaySoundOnCombo] = this->readSettings<bool>(kKeyPlaySoundOnCombo, kDefaultPlaySoundOnCombo);
    object[kKeyUseAutomaticSubstitution] = this->readSettings<bool>(kKeyUseAutomaticSubstitution, 
       kDefaultUseAutomaticSubstitution);
+   object[kKeyUseCustomBackupLocation] = this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomBackupLocation);
    object[kKeyUseCustomSound] = this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomSound);
    object[kKeyUseCustomTheme] = this->readSettings<bool>(kKeyUseCustomTheme, kDefaultUseCustomTheme);
    object[kKeyWarnAboutShortComboKeyword] = this->readSettings<bool>(kKeyWarnAboutShortComboKeyword, 
@@ -382,6 +388,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
       kKeySplitterState).toLocal8Bit()));
    settings_->setValue(kKeyPlaySoundOnCombo, objectValue<bool>(object, kKeyPlaySoundOnCombo));
    settings_->setValue(kKeyUseAutomaticSubstitution, objectValue<bool>(object, kKeyUseAutomaticSubstitution));
+   settings_->setValue(kKeyUseCustomBackupLocation, objectValue<bool>(object, kKeyUseCustomBackupLocation));
    settings_->setValue(kKeyUseCustomSound, objectValue<bool>(object, kKeyUseCustomSound));
    settings_->setValue(kKeyUseCustomTheme, objectValue<bool>(object, kKeyUseCustomTheme));
    settings_->setValue(kKeyWarnAboutShortComboKeyword, objectValue<bool>(object, kKeyWarnAboutShortComboKeyword));
@@ -788,6 +795,24 @@ void PreferencesManager::setAutoBackup(bool value) const
 bool PreferencesManager::autoBackup() const
 {
    return this->readSettings<bool>(kKeyAutoBackup, kDefaultAutoBackup);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setUseCustomBackupLocation(bool value) const
+{
+   settings_->setValue(kKeyUseCustomBackupLocation, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::useCustomBackupLocation() const
+{
+   return this->readSettings<bool>(kKeyUseCustomBackupLocation, kDefaultUseCustomBackupLocation);
 }
 
 

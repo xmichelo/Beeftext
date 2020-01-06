@@ -73,6 +73,8 @@ public: // member functions
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
    void setAutoBackup(bool value) const; ///< Set the value for the 'Auto backup' preference
    bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
+   void setUseCustomBackupLocation(bool value) const; ///< Set the value for the 'Use custom backup location' preference.
+   bool useCustomBackupLocation() const; ///< Get the value for the 'Use custom backup location' preference.
    void setWriteDebugLogFile(bool value); ///< Set the value for the 'Write debug log file' preference.
    bool writeDebugLogFile() const; ///< Set the value for the 'Write debug log file' preference.
    QString lastComboImportExportPath() const; ///< Retrieve the path of the last imported and exported path
