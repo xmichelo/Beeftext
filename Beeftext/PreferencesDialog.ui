@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>709</width>
+    <width>900</width>
     <height>303</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Preferences</string>
@@ -972,8 +978,8 @@
    <slot>onClose()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>698</x>
-     <y>283</y>
+     <x>889</x>
+     <y>292</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -988,7 +994,7 @@
    <slot>onChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>523</x>
+     <x>714</x>
      <y>91</y>
     </hint>
     <hint type="destinationlabel">
@@ -1036,7 +1042,7 @@
    <slot>onResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>685</x>
+     <x>876</x>
      <y>91</y>
     </hint>
     <hint type="destinationlabel">
@@ -1068,8 +1074,8 @@
    <slot>onRestoreBackup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>303</x>
-     <y>122</y>
+     <x>313</x>
+     <y>169</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1212,7 +1218,7 @@
    <slot>onOpenComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>604</x>
+     <x>795</x>
      <y>91</y>
     </hint>
     <hint type="destinationlabel">
@@ -1356,8 +1362,8 @@
    <slot>onCheckAutoBackup(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>119</y>
+     <x>153</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
@@ -1372,8 +1378,8 @@
    <slot>onCheckWriteDebugLogFile(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>123</x>
-     <y>202</y>
+     <x>134</x>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
      <x>295</x>
@@ -1404,7 +1410,7 @@
    <slot>onChangeCustomSound()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>604</x>
+     <x>795</x>
      <y>166</y>
     </hint>
     <hint type="destinationlabel">
@@ -1420,7 +1426,7 @@
    <slot>onPlaySoundButton()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>685</x>
+     <x>876</x>
      <y>166</y>
     </hint>
     <hint type="destinationlabel">
@@ -1468,8 +1474,8 @@
    <slot>onChangeAppEnableDisableShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>569</x>
-     <y>187</y>
+     <x>794</x>
+     <y>198</y>
     </hint>
     <hint type="destinationlabel">
      <x>704</x>
@@ -1484,8 +1490,8 @@
    <slot>onResetAppEnableDisableShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>663</x>
-     <y>192</y>
+     <x>875</x>
+     <y>198</y>
     </hint>
     <hint type="destinationlabel">
      <x>706</x>
@@ -1516,8 +1522,8 @@
    <slot>onExport()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>68</x>
-     <y>263</y>
+     <x>78</x>
+     <y>292</y>
     </hint>
     <hint type="destinationlabel">
      <x>48</x>
@@ -1532,8 +1538,8 @@
    <slot>onImport()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>113</x>
-     <y>262</y>
+     <x>165</x>
+     <y>292</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -1548,12 +1554,28 @@
    <slot>onCheckUseCustomBackupLocation(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>139</y>
+     <x>96</x>
+     <y>197</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
      <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeCustomBackupLocation</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeCustomBackupLocation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>186</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>893</x>
+     <y>178</y>
     </hint>
    </hints>
   </connection>
@@ -1603,5 +1625,6 @@
   <slot>onExport()</slot>
   <slot>onImport()</slot>
   <slot>onCheckUseCustomBackupLocation(bool)</slot>
+  <slot>onChangeCustomBackupLocation()</slot>
  </slots>
 </ui>

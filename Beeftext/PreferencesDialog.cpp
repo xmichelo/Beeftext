@@ -114,8 +114,10 @@ void PreferencesDialog::loadPreferences() const
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
    ui_.checkAutoBackup->setChecked(prefs_.autoBackup());
-   blocker = QSignalBlocker(ui_.checkWriteDebugLogFile);
+   blocker = QSignalBlocker(ui_.checkUseCustomBackupLocation);
    ui_.checkUseCustomBackupLocation->setChecked(prefs_.useCustomBackupLocation());
+   ui_.editCustomBackupLocation->setText(QDir::toNativeSeparators(prefs_.customBackupLocation()));
+      blocker = QSignalBlocker(ui_.checkWriteDebugLogFile);
    ui_.checkWriteDebugLogFile->setChecked(prefs_.writeDebugLogFile());
    blocker = QSignalBlocker(ui_.checkUseCustomSound);
    ui_.checkUseCustomSound->setChecked(prefs_.useCustomSound());
@@ -524,6 +526,21 @@ void PreferencesDialog::onCheckUseCustomBackupLocation(bool value) const
 {
    prefs_.setUseCustomBackupLocation(value);
    this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeCustomBackupLocation()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   QString const path = QFileDialog::getExistingDirectory(this, tr("Custom backup location"), 
+      prefs_.customBackupLocation());
+   if (path.isEmpty())
+      return;
+   ui_.editCustomBackupLocation->setText(QDir::toNativeSeparators(path));
+   prefs_.setCustomBackupLocation(path);
 }
 
 

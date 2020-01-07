@@ -75,6 +75,8 @@ public: // member functions
    bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
    void setUseCustomBackupLocation(bool value) const; ///< Set the value for the 'Use custom backup location' preference.
    bool useCustomBackupLocation() const; ///< Get the value for the 'Use custom backup location' preference.
+   void setCustomBackupLocation(QString const& path) const; ///< Set the value for the 'Custom backup location' preference.
+   QString customBackupLocation() const; ///< Get the value for the 'Custom backup location' preference.
    void setWriteDebugLogFile(bool value); ///< Set the value for the 'Write debug log file' preference.
    bool writeDebugLogFile() const; ///< Set the value for the 'Write debug log file' preference.
    QString lastComboImportExportPath() const; ///< Retrieve the path of the last imported and exported path

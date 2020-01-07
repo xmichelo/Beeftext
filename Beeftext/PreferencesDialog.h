@@ -65,6 +65,7 @@ private slots:
    void onOpenComboListFolder() const; ///< Slot for the 'Open' button of the combo list folder.
    void onCheckAutoBackup(bool value); ///< Slot for the 'auto backup' checkbox.
    void onCheckUseCustomBackupLocation(bool value) const; ///< Slot for the 'Use custom backup location' checkbox.
+   void onChangeCustomBackupLocation(); ///< Slot for the 'Change' button of the custom backup location.
    void onResetToDefaultValues(); ///< Slot for the 'Reset to default values' action
    void onRestoreBackup(); ///< Slot for the 'Restore backup' action
    void onResetWarnings(); ///< Slot for teh 'Reset warnings' action

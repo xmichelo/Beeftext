@@ -40,6 +40,7 @@ QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; /
 QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
 QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
 QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+QString const kKeyCustomBackupLocation = "CustomBackupLocation"; ///< The settings key for the 'Custom backup location' preference.
 QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for the 'Custom sound path' preference.
 QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
 QString const kKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
@@ -171,6 +172,7 @@ void PreferencesManager::reset()
    this->setComboPickerEnabled(kDefaultComboPickerEnabled);
    this->setComboPickerShortcut(defaultComboPickerShortcut());
    this->setComboTriggerShortcut(kDefaultComboTriggerShortcut);
+   this->setCustomBackupLocation(globals::backupFolderPath());
    this->setCustomSoundPath(QString());
    this->setDelayBetweenKeystrokesMs(kDefaultDelayBetweenKeystrokesMs);
    this->setEmojiLeftDelimiter(kDefaultEmojiLeftDelimiter);
@@ -314,8 +316,12 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
    object[kKeyComboPickerShortcutModifiers] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutModifiers, 0));
    object[kKeyComboPickerShortcutScanCode] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutScanCode, 0));
    object[kKeyComboTriggerShortcutKeyCode] = qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCode, 0));
-   object[kKeyComboTriggerShortcutModifiers] = qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0));
-   object[kKeyComboTriggerShortcutScanCode] = qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0));
+   object[kKeyComboTriggerShortcutModifiers] = 
+      qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0));
+   object[kKeyComboTriggerShortcutScanCode] = 
+      qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0));
+   object[kKeyCustomBackupLocation] = this->readSettings<QString>(kKeyCustomBackupLocation, 
+      globals::backupFolderPath());
    object[kKeyCustomSoundPath] = this->readSettings<QString>(kKeyCustomSoundPath, QString());
    object[kKeyDelayBetweenKeystrokes] = this->readSettings<qint32>(kKeyDelayBetweenKeystrokes, 
       kDefaultDelayBetweenKeystrokesMs);
@@ -372,6 +378,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
       kKeyComboTriggerShortcutModifiers));
    settings_->setValue(kKeyComboTriggerShortcutScanCode, objectValue<quint32>(object, kKeyComboTriggerShortcutScanCode));
    settings_->setValue(kKeyCustomSoundPath, objectValue<QString>(object, kKeyCustomSoundPath));
+   settings_->setValue(kKeyCustomBackupLocation, objectValue<QString>(object, kKeyCustomBackupLocation));
    settings_->setValue(kKeyDelayBetweenKeystrokes, objectValue<qint32>(object, kKeyDelayBetweenKeystrokes));
    settings_->setValue(kKeyEmojiLeftDelimiter, objectValue<QString>(object, kKeyEmojiLeftDelimiter));
    settings_->setValue(kKeyEmojiRightDelimiter, objectValue<QString>(object, kKeyEmojiRightDelimiter));
@@ -813,6 +820,24 @@ void PreferencesManager::setUseCustomBackupLocation(bool value) const
 bool PreferencesManager::useCustomBackupLocation() const
 {
    return this->readSettings<bool>(kKeyUseCustomBackupLocation, kDefaultUseCustomBackupLocation);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the custom backup location.
+//**********************************************************************************************************************
+void PreferencesManager::setCustomBackupLocation(QString const& path) const
+{
+   settings_->setValue(kKeyCustomBackupLocation, path);
+}
+
+
+//**********************************************************************************************************************
+/// \return The custom backup location.
+//**********************************************************************************************************************
+QString PreferencesManager::customBackupLocation() const
+{
+   return this->readSettings<QString>(kKeyCustomBackupLocation, globals::backupFolderPath());
 }
 
 
