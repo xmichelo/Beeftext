@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
+#include "PreferencesManager.h"
 
 
 namespace globals {
@@ -62,11 +63,24 @@ QString logFilePath()
 }
 
 
-
 //**********************************************************************************************************************
 /// \return The path of the backup folder
 //**********************************************************************************************************************
 QString backupFolderPath()
+{
+   PreferencesManager& prefs = PreferencesManager::instance();
+   QString const defaultPath = defaultBackupFolderPath();
+   if (!prefs.useCustomBackupLocation())
+      return defaultPath;
+   QString const customPath = PreferencesManager::instance().customBackupLocation();
+   return customPath.isEmpty() ? defaultPath : customPath;
+}
+
+
+//**********************************************************************************************************************
+/// \return The default path of the backup folder
+//**********************************************************************************************************************
+QString defaultBackupFolderPath()
 {
    return QDir(appDataDir()).absoluteFilePath("Backup");
 }

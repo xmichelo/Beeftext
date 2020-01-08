@@ -10,6 +10,9 @@
 #include <XMiLib/Exception.h>
 
 
+using namespace xmilib;
+
+
 namespace {
    QRegularExpression const kBackupFileRegExp(R"(^\d{8}_\d{9}_backup\.json$)");
    qint32 const kMaxBackupFileCount = 50;
@@ -45,9 +48,8 @@ BackupManager& BackupManager::instance()
 //**********************************************************************************************************************
 /// \return The chronologically ordered list of backup file paths
 //**********************************************************************************************************************
-QStringList BackupManager::orderedBackupFilePaths()
+QStringList BackupManager::orderedBackupFilePaths(QString const& path)
 {
-   QString const path = globals::backupFolderPath();
    QFileInfo const folderInfo(path);
    if (!folderInfo.exists() || (!folderInfo.isDir()))
       return QStringList();
@@ -56,6 +58,49 @@ QStringList BackupManager::orderedBackupFilePaths()
       if (kBackupFileRegExp.match(fileInfo.fileName()).hasMatch())
          result.push_back(fileInfo.absoluteFilePath());
    return result;
+}
+
+
+//**********************************************************************************************************************
+/// \return The chronologically ordered list of backup file paths
+//**********************************************************************************************************************
+QStringList BackupManager::orderedBackupFilePaths()
+{
+   return orderedBackupFilePaths(globals::backupFolderPath());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] oldPath The old path of the backup folder.
+/// \param[in] newPath The new path of the backup folder.
+/// \return true if and only if the operation was successful.
+//**********************************************************************************************************************
+bool BackupManager::moveBackupFolder(QString const& oldPath, QString const& newPath)
+{
+   try
+   {
+      qDebug() << oldPath;
+      qDebug() << newPath;
+      QDir const newDir(newPath);
+      if ((!newDir.exists()) && !QDir().mkpath(newPath))
+         throw Exception("The backup folder could not be created");
+      QStringList const files = orderedBackupFilePaths();
+      bool error = false;
+      for (QString const& filePath: orderedBackupFilePaths(oldPath))
+      {
+         QFileInfo file(filePath);
+         if ((!file.exists()) ||(QFile(filePath).rename(QDir(newPath).absoluteFilePath(file.fileName()))))
+            error= true;
+      }
+      if (error)
+         throw Exception("Some backup files could not be moved to their new location.");
+      return true;
+   }
+   catch (Exception const& e)
+   {
+      globals::debugLog().addError(QString("An error occurred while moving the backup folder: %1").arg(e.qwhat()));
+      return false;
+   }
 }
 
 

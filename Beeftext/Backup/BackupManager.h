@@ -18,7 +18,9 @@ class BackupManager
 {
 public: // static member functions
    static BackupManager& instance(); ///< Return the only allowed instance of the class
-   static QStringList orderedBackupFilePaths(); ///< Return the chronologically ordered list of backup file paths
+   static QStringList orderedBackupFilePaths(QString const& path); ///< Return the chronologically ordered list of backup file paths in the application backup folder.
+   static QStringList orderedBackupFilePaths(); ///< Return the chronologically ordered list of backup file paths in the application backup folder.
+   static bool moveBackupFolder(QString const& oldPath, QString const& newPath); ///< Move the backup folder from oldPath to newPath
 
 public: // member functions
    BackupManager(BackupManager const&) = delete; ///< Disabled copy-constructor

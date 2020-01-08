@@ -461,16 +461,12 @@ void PreferencesDialog::onSpinDelayBetweenKeystrokesChanged(int value) const
 //**********************************************************************************************************************
 void PreferencesDialog::onChangeComboListFolder()
 {
-   QString const previousPath = QDir::fromNativeSeparators(ui_.editComboListFolder->text());
-   QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), previousPath);
+   QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), prefs_.comboListFolderPath());
    if (path.trimmed().isEmpty())
       return;
-   previousComboListPath_ = prefs_.comboListFolderPath();
-   prefs_.setComboListFolderPath(path);
-   if (!ComboManager::instance().saveComboListToFile())
+   if (!prefs_.setComboListFolderPath(path))
    {
       QMessageBox::critical(this, tr("Error"), tr("The location of the combo list folder could not be changed."));
-      prefs_.setComboListFolderPath(previousPath);
       return;
    }
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(path));
@@ -541,6 +537,7 @@ void PreferencesDialog::onChangeCustomBackupLocation()
       return;
    ui_.editCustomBackupLocation->setText(QDir::toNativeSeparators(path));
    prefs_.setCustomBackupLocation(path);
+
 }
 
 
