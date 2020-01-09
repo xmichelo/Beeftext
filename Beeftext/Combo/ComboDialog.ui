@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>605</width>
-    <height>370</height>
+    <width>655</width>
+    <height>412</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,16 +16,6 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="4" column="1" rowspan="2">
-      <widget class="SnippetEdit" name="editSnippet">
-       <property name="contextMenuPolicy">
-        <enum>Qt::CustomContextMenu</enum>
-       </property>
-       <property name="acceptRichText">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">
@@ -188,6 +178,9 @@
        </item>
       </layout>
      </item>
+     <item row="4" column="1" rowspan="2">
+      <widget class="ComboEditor" name="comboEditor" native="true"/>
+     </item>
     </layout>
    </item>
    <item>
@@ -255,9 +248,10 @@
    <header>Group/GroupComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>SnippetEdit</class>
-   <extends>QTextEdit</extends>
-   <header>SnippetEdit.h</header>
+   <class>ComboEditor</class>
+   <extends>QWidget</extends>
+   <header>ComboEditor.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -266,7 +260,6 @@
   <tabstop>buttonNewGroup</tabstop>
   <tabstop>comboMatching</tabstop>
   <tabstop>editKeyword</tabstop>
-  <tabstop>editSnippet</tabstop>
   <tabstop>buttonOk</tabstop>
   <tabstop>buttonCancel</tabstop>
  </tabstops>
@@ -365,22 +358,6 @@
     <hint type="destinationlabel">
      <x>302</x>
      <y>184</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>editSnippet</sender>
-   <signal>textChanged()</signal>
-   <receiver>ComboDialog</receiver>
-   <slot>updateGui()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>90</x>
-     <y>204</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>137</x>
-     <y>337</y>
     </hint>
    </hints>
   </connection>

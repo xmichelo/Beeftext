@@ -33,8 +33,6 @@ public: // member functions
    ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
 
 private: // member functions
-   QMenu* createComboVariableMenu(); ///< Create the combo variable menu
-   void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false) const; ///< Insert some text at the current cursor position in the snippet text edit control
    bool checkAndReportInvalidCombo(); ///< Check the keyword against existing combos and report conflicts
    void setMatchingComboValue(bool useLooseMatching) const; ///< Set the 'Matching' combo value
    bool matchingComboValue() const; ///<  Read the matching mode from the 'Matching' combo value
@@ -44,7 +42,6 @@ private: // member functions
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
    void onActionNewGroup(); ///< Slot for the 'New Group' action
-   void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu
    void updateGui() const; ///< Update the GUI state
    void onUseHtmlChanged() const; ///< Slot for the change of the 'Use rich text' combo.
 

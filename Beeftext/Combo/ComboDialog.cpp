@@ -11,7 +11,6 @@
 #include "../Group/GroupDialog.h"
 #include "ComboDialog.h"
 #include "ComboManager.h"
-#include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
 #include <XMiLib/XMiLibConstants.h>
 #include "PreferencesManager.h"
@@ -77,96 +76,13 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
    bool const useHtml = combo->useHtml();
-   ui_.editSnippet->setAcceptRichText(useHtml);
+   ui_.comboEditor->setRichTextMode(useHtml);
    this->setUseHtmlComboValue(useHtml);
    if (useHtml)
-      ui_.editSnippet->setHtml(combo->snippet());
+      ui_.comboEditor->snippetEdit()->setHtml(combo->snippet());
    else
-      ui_.editSnippet->setPlainText(combo->snippet());
-   connect(ui_.editSnippet, &QPlainTextEdit::customContextMenuRequested, this, 
-      &ComboDialog::onEditorContextMenuRequested);
+      ui_.comboEditor->snippetEdit()->setPlainText(combo->snippet());
    this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-QMenu* ComboDialog::createComboVariableMenu()
-{
-   QMenu* menu = new QMenu(tr("&Insert Variable"), this);
-
-   QAction* action = new QAction(tr("Clip&board Content"), this);
-   connect(action, &QAction::triggered, [&]() { this->insertTextInSnippetEdit("#{clipboard}", false); });
-   menu->addAction(action);
-
-   QMenu* dtMenu = new QMenu(tr("&Date/Time"));
-   action = new QAction(tr("D&ate"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{date}", false); });
-   dtMenu->addAction(action);
-   action = new QAction(tr("&Time"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{time}", false); });
-   dtMenu->addAction(action);
-   action = new QAction(tr("Dat&e && Time"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{dateTime}", false); });
-   dtMenu->addAction(action);
-   action = new QAction(tr("&Custom Date && Time"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{dateTime:}", true); });
-   dtMenu->addAction(action);
-   menu->addMenu(dtMenu);
-
-   action = new QAction(tr("C&ursor Position"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{cursor}", false); });
-   menu->addAction(action);
-   
-   QMenu* comboMenu = new QMenu(tr("Co&mbo"), this);
-   action = new QAction(tr("Co&mbo"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{combo:}", true); });
-   comboMenu->addAction(action);
-   action = new QAction(tr("Combo (&uppercase)"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{upper:}", true); });
-   comboMenu->addAction(action);
-   action = new QAction(tr("Combo (&lowercase)"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{lower:}", true); });
-   comboMenu->addAction(action);
-   menu->addMenu(comboMenu);
-   action = new QAction(tr("Combo (&trimmed)"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{trim:}", true); });
-   comboMenu->addAction(action);
-   menu->addMenu(comboMenu);
-
-   action = new QAction(tr("En&vironment Variable"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{envVar:}", true); });
-   menu->addAction(action);
-   action = new QAction(tr("User &Input"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{input:}", true); });
-   menu->addAction(action);
-
-   menu->addSeparator();
-   action = new QAction(tr("&About Variables"), this);
-   connect(action, &QAction::triggered, []() { QDesktopServices::openUrl(constants::kBeeftextWikiVariablesUrl); });
-   menu->addAction(action);
-   return menu;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] text The text to insert
-/// \param[in] move1CharLeft Should the cursor be moved by one character to the left after insertion
-//**********************************************************************************************************************
-void ComboDialog::insertTextInSnippetEdit(QString const& text, bool move1CharLeft) const
-{
-   QTextCursor cursor = ui_.editSnippet->textCursor();
-   cursor.beginEditBlock();
-   cursor.insertText(text);
-   if (move1CharLeft)
-   {
-      cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
-      cursor.endEditBlock();
-      ui_.editSnippet->setTextCursor(cursor); ///< Required for the cursor position change to take effect
-   }
-   else
-      cursor.endEditBlock();
 }
 
 
@@ -175,7 +91,7 @@ void ComboDialog::insertTextInSnippetEdit(QString const& text, bool move1CharLef
 //**********************************************************************************************************************
 bool ComboDialog::checkAndReportInvalidCombo()
 {
-   if (ui_.editSnippet->toPlainText().isEmpty())
+   if (ui_.comboEditor->plainText().isEmpty())
    {
       QMessageBox::critical(this, tr("Error"), tr("The snippet text is empty."));
       return false;
@@ -273,7 +189,7 @@ void ComboDialog::onActionOk()
    combo_->setKeyword(keyword);
    bool const useHtml = this->useHtmlComboValue();
    combo_->setUseHtml(useHtml);
-   combo_->setSnippet(useHtml ? ui_.editSnippet->toHtml() : ui_.editSnippet->toPlainText());
+   combo_->setSnippet(useHtml ? ui_.comboEditor->html() : ui_.comboEditor->plainText());
    this->accept();
 }
 
@@ -293,25 +209,13 @@ void ComboDialog::onActionNewGroup()
 
 
 //**********************************************************************************************************************
-/// \param[in] pos The position of the cursor
-//**********************************************************************************************************************
-void ComboDialog::onEditorContextMenuRequested(QPoint const& pos)
-{
-   QScopedPointer<QMenu, QScopedPointerDeleteLater> menu(ui_.editSnippet->createStandardContextMenu(pos));
-   menu->addSeparator();
-   menu->addMenu(this->createComboVariableMenu());         
-   menu->exec(ui_.editSnippet->viewport()->mapToGlobal(pos));
-}
-
-
-//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboDialog::updateGui() const
 {
    QString keyword = ui_.editKeyword->text();
    bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
-      (!ui_.editSnippet->toPlainText().isEmpty()) && ui_.comboGroup->currentGroup();
+      (!ui_.comboEditor->plainText().isEmpty()) && ui_.comboGroup->currentGroup();
    ui_.buttonOk->setEnabled(canAccept);
    ui_.labelEditor->setVisible(this->useHtmlComboValue());
 }
@@ -323,10 +227,10 @@ void ComboDialog::updateGui() const
 void ComboDialog::onUseHtmlChanged() const
 {
    bool const useHtml = this->useHtmlComboValue();
-   ui_.editSnippet->setAcceptRichText(useHtml);
+   ui_.comboEditor->setRichTextMode(useHtml);
    if (!useHtml)
    {
-      QTextEdit& edit = *ui_.editSnippet;
+      QTextEdit& edit = *ui_.comboEditor->snippetEdit();
       // note: normally, the code above could simply be edit.setPlainText(edit.toPlainText(), but a Qt issue
       // causes the format not to be properly removed in some cases.
       edit.document()->setPlainText(edit.toPlainText());

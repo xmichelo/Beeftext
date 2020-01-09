@@ -41,6 +41,11 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -140,6 +145,9 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="Combo\SnippetEdit.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Combo\ComboEditor.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -332,10 +340,16 @@
     <QtMoc Include="Combo\SnippetEdit.h">
       <Filter>Generated Files</Filter>
     </QtMoc>
+    <QtMoc Include="Combo\ComboEditor.h">
+      <Filter>Generated Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboPicker\ComboPickerWindow.ui">
       <Filter>Combo\ComboPicker</Filter>
+    </QtUic>
+    <QtUic Include="Combo\ComboEditor.ui">
+      <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
