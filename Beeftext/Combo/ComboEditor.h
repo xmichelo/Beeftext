@@ -34,11 +34,14 @@ public: // member functions
    QString html() const; ///< Return the HTML content of the editor.
 
 private: // data members
-   QMenu* createComboVariableMenu(); ///< Create the combo variable menu
-   void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false) const; ///< Insert some text at the current cursor position in the snippet text edit control
+   QMenu* createComboVariableMenu(); ///< Create the combo variable menu.
+   void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false) const; ///< Insert some text at the current cursor position in the snippet text edit control.
 
 private slots:
-   void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu
+   void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu.
+   void onCurrentCharFormatChanged(const QTextCharFormat &format); ///< Slot for change of the edit current character format.
+   void onFontChanged(QFont const& font); ///< Slot for the change of the current font.
+   void onFontComboChanged(QString const& family); ///< Slot for change of the font family.
 
 private:
    Ui::ComboEditor ui_ {}; ///< The GUI for the widget

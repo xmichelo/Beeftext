@@ -48,7 +48,19 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QFontComboBox" name="comboFont"/>
+       <widget class="QFontComboBox" name="comboFont">
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="currentFont">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer">
@@ -86,5 +98,42 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>comboFont</sender>
+   <signal>textActivated(QString)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onFontComboChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>13</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>25</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snippetEdit</sender>
+   <signal>currentCharFormatChanged(QTextCharFormat)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onCurrentCharFormatChanged(QTextCharFormat)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>24</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onFontComboChanged(QString)</slot>
+  <slot>onCurrentCharFormatChanged(QTextCharFormat)</slot>
+ </slots>
 </ui>

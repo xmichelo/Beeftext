@@ -21,7 +21,14 @@ ComboEditor::ComboEditor(QWidget* parent)
    ui_.setupUi(this);
    ui_.snippetEdit->setAcceptRichText(true);
    connect(ui_.snippetEdit, &QPlainTextEdit::customContextMenuRequested, this, 
-      &ComboEditor::onEditorContextMenuRequested);}
+      &ComboEditor::onEditorContextMenuRequested);
+
+   // init the font
+   QFont font("Arial");
+   font.setStyleHint(QFont::SansSerif);
+   ui_.snippetEdit->setFont(font);
+   this->onFontChanged(font);
+}
 
 
 //**********************************************************************************************************************
@@ -141,7 +148,7 @@ QMenu* ComboEditor::createComboVariableMenu()
 //**********************************************************************************************************************
 /// \param[in] text The text to insert
 /// \param[in] move1CharLeft Should the cursor be moved by one character to the left after insertion
-/// //**********************************************************************************************************************
+//**********************************************************************************************************************
 void ComboEditor::insertTextInSnippetEdit(QString const& text, bool move1CharLeft) const
 {
    QTextCursor cursor = ui_.snippetEdit->textCursor();
@@ -154,7 +161,8 @@ void ComboEditor::insertTextInSnippetEdit(QString const& text, bool move1CharLef
       ui_.snippetEdit->setTextCursor(cursor); ///< Required for the cursor position change to take effect
    }
    else
-      cursor.endEditBlock();}
+      cursor.endEditBlock();
+}
 
 
 //**********************************************************************************************************************
@@ -165,4 +173,37 @@ void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
    QScopedPointer<QMenu, QScopedPointerDeleteLater> menu(ui_.snippetEdit->createStandardContextMenu(pos));
    menu->addSeparator();
    menu->addMenu(this->createComboVariableMenu());         
-   menu->exec(ui_.snippetEdit->viewport()->mapToGlobal(pos));}
+   menu->exec(ui_.snippetEdit->viewport()->mapToGlobal(pos));
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] format the new character format
+//**********************************************************************************************************************
+void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format)
+{
+   onFontChanged(format.font());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] font The font.
+//**********************************************************************************************************************
+void ComboEditor::onFontChanged(QFont const& font)
+{
+   ui_.comboFont->setCurrentIndex(ui_.comboFont->findText(font.family()));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboEditor::onFontComboChanged(QString const& family)
+{
+   QTextCharFormat format;
+   format.setFontFamily(family);
+   QTextCursor cursor = ui_.snippetEdit->textCursor();
+   cursor.mergeCharFormat(format);
+   ui_.snippetEdit->mergeCurrentCharFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
