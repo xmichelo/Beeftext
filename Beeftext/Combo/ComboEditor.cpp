@@ -19,15 +19,11 @@ ComboEditor::ComboEditor(QWidget* parent)
    : QWidget(parent)
 {
    ui_.setupUi(this);
-   ui_.snippetEdit->setAcceptRichText(true);
+   ui_.snippetEdit->setAcceptRichText(false);
    connect(ui_.snippetEdit, &QPlainTextEdit::customContextMenuRequested, this, 
       &ComboEditor::onEditorContextMenuRequested);
-
-   // init the font
-   QFont font("Arial");
-   font.setStyleHint(QFont::SansSerif);
-   ui_.snippetEdit->setFont(font);
-   this->onFontChanged(font);
+   ui_.snippetEdit->textCursor().movePosition(QTextCursor::End); // required to ensure the font is detected correctly
+   this->onFontChanged(ui_.snippetEdit->currentFont());
 }
 
 
@@ -45,6 +41,7 @@ SnippetEdit* ComboEditor::snippetEdit() const
 //**********************************************************************************************************************
 void ComboEditor::setRichTextMode(bool richTextMode) const
 {
+   ui_.frameRichTextControls->setVisible(richTextMode);
    if (!richTextMode)
    {
       QString const plainText = QTextDocumentFragment::fromHtml(ui_.snippetEdit->toHtml()).toPlainText();
@@ -53,7 +50,7 @@ void ComboEditor::setRichTextMode(bool richTextMode) const
       return;
    }
    ui_.snippetEdit->setAcceptRichText(true);
-   ui_.frameRichTextControls->setVisible(richTextMode);
+   this->onFontChanged(snippetEdit()->currentFont());
 }
 
 
@@ -180,7 +177,7 @@ void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
 //**********************************************************************************************************************
 /// \param[in] format the new character format
 //**********************************************************************************************************************
-void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format)
+void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format) const
 {
    onFontChanged(format.font());
 }
@@ -189,7 +186,7 @@ void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format)
 //**********************************************************************************************************************
 /// \param[in] font The font.
 //**********************************************************************************************************************
-void ComboEditor::onFontChanged(QFont const& font)
+void ComboEditor::onFontChanged(QFont const& font) const
 {
    ui_.comboFont->setCurrentIndex(ui_.comboFont->findText(font.family()));
 }
@@ -198,7 +195,7 @@ void ComboEditor::onFontChanged(QFont const& font)
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void ComboEditor::onFontComboChanged(QString const& family)
+void ComboEditor::onFontComboChanged(QString const& family) const
 {
    QTextCharFormat format;
    format.setFontFamily(family);

@@ -39,9 +39,9 @@ private: // data members
 
 private slots:
    void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu.
-   void onCurrentCharFormatChanged(const QTextCharFormat &format); ///< Slot for change of the edit current character format.
-   void onFontChanged(QFont const& font); ///< Slot for the change of the current font.
-   void onFontComboChanged(QString const& family); ///< Slot for change of the font family.
+   void onCurrentCharFormatChanged(const QTextCharFormat &format) const; ///< Slot for change of the edit current character format.
+   void onFontChanged(QFont const& font) const; ///< Slot for the change of the current font.
+   void onFontComboChanged(QString const& family) const; ///< Slot for change of the font family.
 
 private:
    Ui::ComboEditor ui_ {}; ///< The GUI for the widget
