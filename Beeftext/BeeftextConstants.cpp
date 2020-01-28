@@ -165,6 +165,7 @@ QComboBox::down-arrow {
 image: url(:/MainWindow/Resources/ArrowDown.png);
 }
 
+QFontComboBox { font-family: inherit; }
 
 /*****************************
 * QSpinBox

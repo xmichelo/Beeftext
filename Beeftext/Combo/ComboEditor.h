@@ -36,12 +36,14 @@ public: // member functions
 private: // data members
    QMenu* createComboVariableMenu(); ///< Create the combo variable menu.
    void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false) const; ///< Insert some text at the current cursor position in the snippet text edit control.
+   void fillFontSizeCombo() const; ///< Fill the font size combo.
+   void applyFormat(QTextCharFormat const& format); ///< Apply the format to the current selection.
 
 private slots:
    void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu.
    void onCurrentCharFormatChanged(const QTextCharFormat &format) const; ///< Slot for change of the edit current character format.
-   void onFontChanged(QFont const& font) const; ///< Slot for the change of the current font.
-   void onFontComboChanged(QString const& family) const; ///< Slot for change of the font family.
+   void onComboFontFamilyChanged(QString const& family); ///< Slot for change of the value of the 
+   void onComboFontSizeChanged(QString const& sizeText); ///< Slot for the change of the value in the font size combo.
 
 private:
    Ui::ComboEditor ui_ {}; ///< The GUI for the widget

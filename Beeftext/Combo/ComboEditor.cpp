@@ -23,7 +23,7 @@ ComboEditor::ComboEditor(QWidget* parent)
    connect(ui_.snippetEdit, &QPlainTextEdit::customContextMenuRequested, this, 
       &ComboEditor::onEditorContextMenuRequested);
    ui_.snippetEdit->textCursor().movePosition(QTextCursor::End); // required to ensure the font is detected correctly
-   this->onFontChanged(ui_.snippetEdit->currentFont());
+   this->fillFontSizeCombo();
 }
 
 
@@ -50,7 +50,7 @@ void ComboEditor::setRichTextMode(bool richTextMode) const
       return;
    }
    ui_.snippetEdit->setAcceptRichText(true);
-   this->onFontChanged(snippetEdit()->currentFont());
+   this->onCurrentCharFormatChanged(ui_.snippetEdit->currentCharFormat());
 }
 
 
@@ -163,6 +163,30 @@ void ComboEditor::insertTextInSnippetEdit(QString const& text, bool move1CharLef
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboEditor::fillFontSizeCombo() const
+{
+   ui_.comboFontSize->clear();
+   QList<qint32> const stdSizes = QFontDatabase::standardSizes();
+   for (qint32 size: stdSizes)
+      ui_.comboFontSize->addItem(QString::number(size));
+   ui_.comboFontSize->setCurrentIndex(stdSizes.indexOf(QApplication::font().pointSize()));
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] format The format.
+//**********************************************************************************************************************
+void ComboEditor::applyFormat(QTextCharFormat const& format)
+{
+   QTextCursor cursor = ui_.snippetEdit->textCursor();
+   cursor.mergeCharFormat(format);
+   ui_.snippetEdit->mergeCurrentCharFormat(format);
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] pos The cursos position.
 //**********************************************************************************************************************
 void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
@@ -179,28 +203,35 @@ void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
 //**********************************************************************************************************************
 void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format) const
 {
-   onFontChanged(format.font());
+   qDebug() << QString("Current font: %1").arg(format.font().family());
+   ui_.comboFontFamily->setCurrentIndex(ui_.comboFontFamily->findText(format.font().family()));
+   ui_.comboFontSize->setCurrentIndex(ui_.comboFontSize->findText(QString::number(format.font().pointSize())));
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] font The font.
+/// \param[in] family The font family.
 //**********************************************************************************************************************
-void ComboEditor::onFontChanged(QFont const& font) const
-{
-   ui_.comboFont->setCurrentIndex(ui_.comboFont->findText(font.family()));
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::onFontComboChanged(QString const& family) const
+void ComboEditor::onComboFontFamilyChanged(QString const& family)
 {
    QTextCharFormat format;
    format.setFontFamily(family);
-   QTextCursor cursor = ui_.snippetEdit->textCursor();
-   cursor.mergeCharFormat(format);
-   ui_.snippetEdit->mergeCurrentCharFormat(format);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] sizeText The size, as text.
+//**********************************************************************************************************************
+void ComboEditor::onComboFontSizeChanged(QString const& sizeText)
+{
+   bool ok = false;
+   float const size = sizeText.toFloat(&ok);
+   if ((!ok) || (size <= 0.0f))
+      return;
+   QTextCharFormat format;
+   format.setFontPointSize(size);
+   this->applyFormat(format);
    ui_.snippetEdit->setFocus(Qt::NoFocusReason);
 }
