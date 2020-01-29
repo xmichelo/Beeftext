@@ -24,6 +24,7 @@ ComboEditor::ComboEditor(QWidget* parent)
       &ComboEditor::onEditorContextMenuRequested);
    ui_.snippetEdit->textCursor().movePosition(QTextCursor::End); // required to ensure the font is detected correctly
    this->fillFontSizeCombo();
+   this->setColorButton(Qt::black);
 }
 
 
@@ -176,9 +177,20 @@ void ComboEditor::fillFontSizeCombo() const
 
 
 //**********************************************************************************************************************
+/// \param[in] color The color.
+//**********************************************************************************************************************
+void ComboEditor::setColorButton(QColor const& color) const
+{
+   QPixmap pix(32, 32);
+   pix.fill(color);
+   ui_.buttonColor->setIcon(pix);
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] format The format.
 //**********************************************************************************************************************
-void ComboEditor::applyFormat(QTextCharFormat const& format)
+void ComboEditor::applyFormat(QTextCharFormat const& format) const
 {
    QTextCursor cursor = ui_.snippetEdit->textCursor();
    cursor.mergeCharFormat(format);
@@ -206,13 +218,14 @@ void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format) cons
    qDebug() << QString("Current font: %1").arg(format.font().family());
    ui_.comboFontFamily->setCurrentIndex(ui_.comboFontFamily->findText(format.font().family()));
    ui_.comboFontSize->setCurrentIndex(ui_.comboFontSize->findText(QString::number(format.font().pointSize())));
+   this->setColorButton(format.foreground().color());
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] family The font family.
 //**********************************************************************************************************************
-void ComboEditor::onComboFontFamilyChanged(QString const& family)
+void ComboEditor::onComboFontFamilyChanged(QString const& family) const
 {
    QTextCharFormat format;
    format.setFontFamily(family);
@@ -224,7 +237,7 @@ void ComboEditor::onComboFontFamilyChanged(QString const& family)
 //**********************************************************************************************************************
 /// \param[in] sizeText The size, as text.
 //**********************************************************************************************************************
-void ComboEditor::onComboFontSizeChanged(QString const& sizeText)
+void ComboEditor::onComboFontSizeChanged(QString const& sizeText) const
 {
    bool ok = false;
    float const size = sizeText.toFloat(&ok);
@@ -232,6 +245,22 @@ void ComboEditor::onComboFontSizeChanged(QString const& sizeText)
       return;
    QTextCharFormat format;
    format.setFontPointSize(size);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboEditor::onButtonColor()
+{
+   QColor const color = QColorDialog::getColor(ui_.snippetEdit->textColor(), this, tr("Text color"));
+   if (!color.isValid())
+      return;
+   this->setColorButton(color);
+   QTextCharFormat format;
+   format.setForeground(color);
    this->applyFormat(format);
    ui_.snippetEdit->setFocus(Qt::NoFocusReason);
 }

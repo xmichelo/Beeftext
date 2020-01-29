@@ -51,16 +51,16 @@
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <QtModules>core;network;gui;multimedia;widgets</QtModules>
-    <QtInstall>Qt 5.14.1</QtInstall>
+    <QtInstall>$(DefaultQtVersion)</QtInstall>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <QtModules>core;network;gui;multimedia;widgets</QtModules>
-    <QtInstall>Qt 5.14.1</QtInstall>
+    <QtInstall>$(DefaultQtVersion)</QtInstall>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">
     <QtModules>core;network;gui;multimedia;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
-    <QtInstall>Qt 5.14.1</QtInstall>
+    <QtInstall>$(DefaultQtVersion)</QtInstall>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
