@@ -530,7 +530,6 @@ void PreferencesDialog::onCheckUseCustomBackupLocation(bool value) const
 //**********************************************************************************************************************
 void PreferencesDialog::onChangeCustomBackupLocation()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    QString const path = QFileDialog::getExistingDirectory(this, tr("Custom backup location"), 
       prefs_.customBackupLocation());
    if (path.isEmpty())

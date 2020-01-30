@@ -79,8 +79,6 @@ bool BackupManager::moveBackupFolder(QString const& oldPath, QString const& newP
 {
    try
    {
-      qDebug() << oldPath;
-      qDebug() << newPath;
       QDir const newDir(newPath);
       if ((!newDir.exists()) && !QDir().mkpath(newPath))
          throw Exception("The backup folder could not be created");

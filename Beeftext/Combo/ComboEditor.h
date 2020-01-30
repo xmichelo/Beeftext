@@ -46,6 +46,10 @@ private slots:
    void onComboFontFamilyChanged(QString const& family) const; ///< Slot for change of the value of the 
    void onComboFontSizeChanged(QString const& sizeText) const; ///< Slot for the change of the value in the font size combo.
    void onButtonColor(); ///< Slot for the color button.
+   void onButtonBold(bool checked) const; ///< Slot for the bold button.
+   void onButtonItalic(bool checked) const; ///< Slot for the italic button.
+   void onButtonUnderline(bool checked) const; ///< Slot for the underline button.
+   void onButtonStrikeout(bool checked) const; ///< Slot for the strikeout button.
 
 private:
    Ui::ComboEditor ui_ {}; ///< The GUI for the widget

@@ -24,7 +24,7 @@ ComboEditor::ComboEditor(QWidget* parent)
       &ComboEditor::onEditorContextMenuRequested);
    ui_.snippetEdit->textCursor().movePosition(QTextCursor::End); // required to ensure the font is detected correctly
    this->fillFontSizeCombo();
-   this->setColorButton(Qt::black);
+   this->onCurrentCharFormatChanged(ui_.snippetEdit->currentCharFormat());
 }
 
 
@@ -215,10 +215,25 @@ void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
 //**********************************************************************************************************************
 void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format) const
 {
-   qDebug() << QString("Current font: %1").arg(format.font().family());
    ui_.comboFontFamily->setCurrentIndex(ui_.comboFontFamily->findText(format.font().family()));
    ui_.comboFontSize->setCurrentIndex(ui_.comboFontSize->findText(QString::number(format.font().pointSize())));
    this->setColorButton(format.foreground().color());
+   {
+      QSignalBlocker blocker(ui_.buttonBold);
+      ui_.buttonBold->setChecked(format.fontWeight() > QFont::Normal);
+   }
+   {
+      QSignalBlocker blocker(ui_.buttonItalic);
+      ui_.buttonItalic->setChecked(format.fontItalic());
+   }
+   {
+      QSignalBlocker blocker(ui_.buttonUnderline);
+      ui_.buttonUnderline->setChecked(format.fontUnderline());
+   }
+   {
+      QSignalBlocker blocker(ui_.buttonStrikeout);
+      ui_.buttonStrikeout->setChecked(format.fontStrikeOut());
+   }
 }
 
 
@@ -261,6 +276,54 @@ void ComboEditor::onButtonColor()
    this->setColorButton(color);
    QTextCharFormat format;
    format.setForeground(color);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonBold(bool checked) const
+{
+   QTextCharFormat format;
+   format.setFontWeight(checked ? QFont::Bold : QFont::Normal);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonItalic(bool checked) const
+{
+   QTextCharFormat format;
+   format.setFontItalic(checked);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonUnderline(bool checked) const
+{
+   QTextCharFormat format;
+   format.setFontUnderline(checked);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonStrikeout(bool checked) const
+{
+   QTextCharFormat format;
+   format.setFontStrikeOut(checked);
    this->applyFormat(format);
    ui_.snippetEdit->setFocus(Qt::NoFocusReason);
 }

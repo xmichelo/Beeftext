@@ -119,6 +119,9 @@
           <height>32</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Bold</string>
+        </property>
         <property name="styleSheet">
          <string notr="true">border:none;</string>
         </property>
@@ -130,6 +133,169 @@
           <width>32</width>
           <height>32</height>
          </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonBold">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Black</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>B</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonItalic">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>true</italic>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Italic</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>I</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonUnderline">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Underline</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>U</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonStrikeout">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>false</underline>
+          <strikeout>true</strikeout>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Strikeout</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>S</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -193,8 +359,8 @@
    <slot>onComboFontSizeChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>229</x>
-     <y>10</y>
+     <x>269</x>
+     <y>22</y>
     </hint>
     <hint type="destinationlabel">
      <x>336</x>
@@ -234,11 +400,79 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonBold</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonBold(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>338</x>
+     <y>12</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>-2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonItalic</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonItalic(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>379</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>-9</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonUnderline</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonUnderline(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>424</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>441</x>
+     <y>-11</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonStrikeout</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonStrikeout(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>447</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>767</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onComboFontFamilyChanged(QString)</slot>
   <slot>onCurrentCharFormatChanged(QTextCharFormat)</slot>
   <slot>onComboFontSizeChanged(QString)</slot>
   <slot>onButtonColor()</slot>
+  <slot>onButtonBold(bool)</slot>
+  <slot>onButtonItalic(bool)</slot>
+  <slot>onButtonUnderline(bool)</slot>
+  <slot>onButtonStrikeout(bool)</slot>
  </slots>
 </ui>
