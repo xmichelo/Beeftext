@@ -39,10 +39,12 @@ private: // data members
    void fillFontSizeCombo() const; ///< Fill the font size combo.
    void setColorButton(QColor const& color) const; ///< Setup the color button.
    void applyFormat(QTextCharFormat const& format) const; ///< Apply the format to the current selection.
+   void updateAlignmentButtonsState() const; ///< Update the state of the alignment buttons.
 
 private slots:
    void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu.
    void onCurrentCharFormatChanged(const QTextCharFormat &format) const; ///< Slot for change of the edit current character format.
+   void onCursorPositionChanged() const; ///< Slot for change of the cursor position.
    void onComboFontFamilyChanged(QString const& family) const; ///< Slot for change of the value of the 
    void onComboFontSizeChanged(QString const& sizeText) const; ///< Slot for the change of the value in the font size combo.
    void onButtonColor(); ///< Slot for the color button.
@@ -50,6 +52,10 @@ private slots:
    void onButtonItalic(bool checked) const; ///< Slot for the italic button.
    void onButtonUnderline(bool checked) const; ///< Slot for the underline button.
    void onButtonStrikeout(bool checked) const; ///< Slot for the strikeout button.
+   void onButtonAlignLeft(bool checked) const; ///< Slot for the align left button.
+   void onButtonAlignCenter(bool checked) const; ///< Slot for the align center button.
+   void onButtonAlignRight(bool checked) const; ///< Slot for the align right button.
+   void onButtonAlignJustify(bool checked) const; ///< Slot for the align justify button.
 
 private:
    Ui::ComboEditor ui_ {}; ///< The GUI for the widget

@@ -25,6 +25,7 @@ ComboEditor::ComboEditor(QWidget* parent)
    ui_.snippetEdit->textCursor().movePosition(QTextCursor::End); // required to ensure the font is detected correctly
    this->fillFontSizeCombo();
    this->onCurrentCharFormatChanged(ui_.snippetEdit->currentCharFormat());
+   this->onCursorPositionChanged();
 }
 
 
@@ -199,6 +200,31 @@ void ComboEditor::applyFormat(QTextCharFormat const& format) const
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboEditor::updateAlignmentButtonsState() const
+{
+   Qt::Alignment const alignment = ui_.snippetEdit->alignment();
+   {
+      QSignalBlocker blocker(ui_.buttonAlignLeft);
+      ui_.buttonAlignLeft->setChecked(alignment & Qt::AlignLeft);
+   }
+   {
+      QSignalBlocker blocker(ui_.buttonAlignCenter);
+      ui_.buttonAlignCenter->setChecked(alignment & Qt::AlignCenter);
+   }
+   {
+      QSignalBlocker blocker(ui_.buttonAlignRight);
+      ui_.buttonAlignRight->setChecked(alignment & Qt::AlignRight);
+   }
+   {
+      QSignalBlocker blocker(ui_.buttonAlignJustify);
+      ui_.buttonAlignJustify->setChecked(alignment & Qt::AlignJustify);
+   }
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] pos The cursos position.
 //**********************************************************************************************************************
 void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
@@ -234,6 +260,15 @@ void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format) cons
       QSignalBlocker blocker(ui_.buttonStrikeout);
       ui_.buttonStrikeout->setChecked(format.fontStrikeOut());
    }
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboEditor::onCursorPositionChanged() const
+{
+   this->updateAlignmentButtonsState();
 }
 
 
@@ -325,5 +360,49 @@ void ComboEditor::onButtonStrikeout(bool checked) const
    QTextCharFormat format;
    format.setFontStrikeOut(checked);
    this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonAlignLeft(bool checked) const
+{
+   ui_.snippetEdit->setAlignment(Qt::AlignLeft | Qt::AlignAbsolute);
+   this->updateAlignmentButtonsState();
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonAlignCenter(bool checked) const
+{
+   ui_.snippetEdit->setAlignment(Qt::AlignCenter);
+   this->updateAlignmentButtonsState();
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonAlignRight(bool checked) const
+{
+   ui_.snippetEdit->setAlignment(Qt::AlignRight | Qt::AlignAbsolute);
+   this->updateAlignmentButtonsState();
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonAlignJustify(bool checked) const
+{
+   ui_.snippetEdit->setAlignment(Qt::AlignJustify);
+   this->updateAlignmentButtonsState();
    ui_.snippetEdit->setFocus(Qt::NoFocusReason);
 }

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>999</width>
+    <width>875</width>
     <height>699</height>
    </rect>
   </property>
@@ -300,6 +300,198 @@
        </widget>
       </item>
       <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>1</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonAlignLeft">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Strikeout</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>L</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonAlignCenter">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Strikeout</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>C</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonAlignRight">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Strikeout</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>R</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonAlignJustify">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Strikeout</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>J</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -412,7 +604,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>364</x>
-     <y>-2</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -428,7 +620,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>162</x>
-     <y>-9</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -444,7 +636,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>441</x>
-     <y>-11</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -460,7 +652,87 @@
     </hint>
     <hint type="destinationlabel">
      <x>767</x>
-     <y>-13</y>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snippetEdit</sender>
+   <signal>cursorPositionChanged()</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onCursorPositionChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>437</x>
+     <y>369</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>437</x>
+     <y>349</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonAlignLeft</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonAlignLeft(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>506</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>626</x>
+     <y>-8</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonAlignCenter</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonAlignCenter(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>551</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>719</x>
+     <y>-18</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonAlignRight</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonAlignRight(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>595</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>751</x>
+     <y>-6</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonAlignJustify</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonAlignJustify(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>635</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>876</x>
+     <y>30</y>
     </hint>
    </hints>
   </connection>
@@ -474,5 +746,10 @@
   <slot>onButtonItalic(bool)</slot>
   <slot>onButtonUnderline(bool)</slot>
   <slot>onButtonStrikeout(bool)</slot>
+  <slot>onCursorPositionChanged()</slot>
+  <slot>onButtonAlignLeft(bool)</slot>
+  <slot>onButtonAlignCenter(bool)</slot>
+  <slot>onButtonAlignRight(bool)</slot>
+  <slot>onButtonAlignJustify(bool)</slot>
  </slots>
 </ui>
