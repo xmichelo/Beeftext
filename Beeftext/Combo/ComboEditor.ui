@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>875</width>
+    <width>1018</width>
     <height>699</height>
    </rect>
   </property>
@@ -78,6 +78,9 @@ QToolButton:checked {
           <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
+          <property name="toolTip">
+           <string>Font family</string>
+          </property>
           <property name="editable">
            <bool>false</bool>
           </property>
@@ -90,6 +93,9 @@ QToolButton:checked {
         </item>
         <item row="1" column="1">
          <widget class="QComboBox" name="comboFontSize">
+          <property name="toolTip">
+           <string>Font size</string>
+          </property>
           <property name="editable">
            <bool>true</bool>
           </property>
@@ -138,7 +144,7 @@ QToolButton:checked {
          </size>
         </property>
         <property name="toolTip">
-         <string>Bold</string>
+         <string>Color</string>
         </property>
         <property name="styleSheet">
          <string notr="true">border:none;</string>
@@ -173,6 +179,9 @@ QToolButton:checked {
           <family>Arial Black</family>
           <pointsize>16</pointsize>
          </font>
+        </property>
+        <property name="toolTip">
+         <string>Bold</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-image: url(&quot;:/MainWindow/Resources/buttonBold.png&quot;);</string>
@@ -318,6 +327,92 @@ QToolButton:checked {
        </widget>
       </item>
       <item>
+       <widget class="QToolButton" name="buttonSuperscript">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>false</underline>
+          <strikeout>true</strikeout>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Superscript</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(&quot;:/MainWindow/Resources/buttonSuperscript.png&quot;);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonSubscript">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <italic>false</italic>
+          <underline>false</underline>
+          <strikeout>true</strikeout>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Subscript</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(&quot;:/MainWindow/Resources/buttonSubscript.png&quot;);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -358,7 +453,7 @@ QToolButton:checked {
          </font>
         </property>
         <property name="toolTip">
-         <string>Strikeout</string>
+         <string>Align left</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-image: url(&quot;:/MainWindow/Resources/buttonAlignLeft.png&quot;);</string>
@@ -402,7 +497,7 @@ QToolButton:checked {
          </font>
         </property>
         <property name="toolTip">
-         <string>Strikeout</string>
+         <string>Center</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-image: url(&quot;:/MainWindow/Resources/buttonAlignCenter.png&quot;);</string>
@@ -446,7 +541,7 @@ QToolButton:checked {
          </font>
         </property>
         <property name="toolTip">
-         <string>Strikeout</string>
+         <string>Align right</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-image: url(&quot;:/MainWindow/Resources/buttonAlignRight.png&quot;);</string>
@@ -490,7 +585,7 @@ QToolButton:checked {
          </font>
         </property>
         <property name="toolTip">
-         <string>Strikeout</string>
+         <string>Justify</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-image: url(&quot;:/MainWindow/Resources/buttonAlignJustify.png&quot;);</string>
@@ -550,7 +645,7 @@ QToolButton:checked {
          </font>
         </property>
         <property name="toolTip">
-         <string>Strikeout</string>
+         <string>Hyperlink</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-image: url(:/MainWindow/Resources/buttonLink.png); 
@@ -632,8 +727,8 @@ QToolButton:checked {
    <slot>onComboFontSizeChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>22</y>
+     <x>264</x>
+     <y>31</y>
     </hint>
     <hint type="destinationlabel">
      <x>336</x>
@@ -712,8 +807,8 @@ QToolButton:checked {
    <slot>onButtonUnderline(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>424</x>
-     <y>24</y>
+     <x>423</x>
+     <y>30</y>
     </hint>
     <hint type="destinationlabel">
      <x>441</x>
@@ -760,12 +855,12 @@ QToolButton:checked {
    <slot>onButtonAlignLeft(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>506</x>
-     <y>23</y>
+     <x>601</x>
+     <y>29</y>
     </hint>
     <hint type="destinationlabel">
      <x>626</x>
-     <y>-8</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -776,12 +871,12 @@ QToolButton:checked {
    <slot>onButtonAlignCenter(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>551</x>
-     <y>22</y>
+     <x>639</x>
+     <y>28</y>
     </hint>
     <hint type="destinationlabel">
      <x>719</x>
-     <y>-18</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -792,12 +887,12 @@ QToolButton:checked {
    <slot>onButtonAlignRight(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>595</x>
-     <y>25</y>
+     <x>677</x>
+     <y>31</y>
     </hint>
     <hint type="destinationlabel">
      <x>751</x>
-     <y>-6</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -808,8 +903,8 @@ QToolButton:checked {
    <slot>onButtonAlignJustify(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>635</x>
-     <y>24</y>
+     <x>715</x>
+     <y>30</y>
     </hint>
     <hint type="destinationlabel">
      <x>876</x>
@@ -824,12 +919,44 @@ QToolButton:checked {
    <slot>onButtonHyperlink(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>693</x>
-     <y>16</y>
+     <x>779</x>
+     <y>22</y>
     </hint>
     <hint type="destinationlabel">
      <x>879</x>
      <y>17</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonSuperscript</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonSuperscript(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>482</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1023</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonSubscript</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ComboEditor</receiver>
+   <slot>onButtonSubscript(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>512</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-5</x>
+     <y>138</y>
     </hint>
    </hints>
   </connection>
@@ -849,5 +976,7 @@ QToolButton:checked {
   <slot>onButtonAlignRight(bool)</slot>
   <slot>onButtonAlignJustify(bool)</slot>
   <slot>onButtonHyperlink(bool)</slot>
+  <slot>onButtonSuperscript(bool)</slot>
+  <slot>onButtonSubscript(bool)</slot>
  </slots>
 </ui>

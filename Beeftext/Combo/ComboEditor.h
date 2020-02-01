@@ -52,6 +52,8 @@ private slots:
    void onButtonItalic(bool checked) const; ///< Slot for the italic button.
    void onButtonUnderline(bool checked) const; ///< Slot for the underline button.
    void onButtonStrikeout(bool checked) const; ///< Slot for the strikeout button.
+   void onButtonSuperscript(bool checked) const; ///< Slot for the superscript button.
+   void onButtonSubscript(bool checked) const; ///< Slot for the subscript button.
    void onButtonAlignLeft(bool checked) const; ///< Slot for the align left button.
    void onButtonAlignCenter(bool checked) const; ///< Slot for the align center button.
    void onButtonAlignRight(bool checked) const; ///< Slot for the align right button.

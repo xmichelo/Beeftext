@@ -261,6 +261,18 @@ void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format) cons
       ui_.buttonStrikeout->setChecked(format.fontStrikeOut());
    }
    {
+      QSignalBlocker blocker(ui_.buttonSuperscript);
+      ui_.buttonSuperscript->setChecked(QTextCharFormat::AlignSuperScript == format.verticalAlignment());
+   }
+   {
+      QSignalBlocker blocker(ui_.buttonSubscript);
+      ui_.buttonSubscript->setChecked(QTextCharFormat::AlignSubScript == format.verticalAlignment());
+   }
+   {
+      QSignalBlocker blocker(ui_.buttonStrikeout);
+      ui_.buttonStrikeout->setChecked(format.fontStrikeOut());
+   }
+   {
       QSignalBlocker blocker(ui_.buttonHyperlink);
       ui_.buttonHyperlink->setChecked(!format.anchorHref().isEmpty());
    }
@@ -363,6 +375,30 @@ void ComboEditor::onButtonStrikeout(bool checked) const
 {
    QTextCharFormat format;
    format.setFontStrikeOut(checked);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonSuperscript(bool checked) const
+{
+   QTextCharFormat format;
+   format.setVerticalAlignment(checked ? QTextCharFormat::AlignSuperScript : QTextCharFormat::AlignNormal);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonSubscript(bool checked) const
+{
+   QTextCharFormat format;
+   format.setVerticalAlignment(checked ? QTextCharFormat::AlignSubScript : QTextCharFormat::AlignNormal);
    this->applyFormat(format);
    ui_.snippetEdit->setFocus(Qt::NoFocusReason);
 }
