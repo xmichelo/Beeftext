@@ -182,7 +182,7 @@ void ComboEditor::fillFontSizeCombo() const
 //**********************************************************************************************************************
 void ComboEditor::setColorButton(QColor const& color) const
 {
-   QPixmap pix(32, 32);
+   QPixmap pix(24, 24);
    pix.fill(color);
    ui_.buttonColor->setIcon(pix);
 }
@@ -446,6 +446,5 @@ void ComboEditor::onButtonHyperlink(bool checked)
    this->applyFormat(format);
    ui_.snippetEdit->setFocus(Qt::NoFocusReason);
    return;
-
 }
 

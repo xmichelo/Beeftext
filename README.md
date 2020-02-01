@@ -30,6 +30,8 @@ Beeftext uses the [OpenSSL] library under [OpenSSL and SSLeay licenses].
 
 Beeftext uses the [emojilib](https://github.com/muan/emojilib) library under the [MIT License].
 
+Beeftext uses icons made by [Pixel perfect] from [www.flaticon.com]
+
 ## Documentation
 ### End User
 
@@ -67,3 +69,5 @@ Detailed build instructions are not available at the moment.
 [Qt Visual Studio Tools]: https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123
 [XMiLib]: https://github.com/xmichelo/XMiLib
 [NSIS]: http://nsis.sourceforge.net/Main_Page
+[Pixel perfect]: https://www.flaticon.com/authors/pixel-perfect
+[www.flaticon.com]: https://www.flaticon.com/

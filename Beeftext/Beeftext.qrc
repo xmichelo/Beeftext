@@ -1,10 +1,19 @@
 <RCC>
   <qresource prefix="/MainWindow">
+    <file>Resources/buttonBold.png</file>
+    <file>Resources/buttonItalic.png</file>
+    <file>Resources/buttonUnderline.png</file>
+    <file>Resources/buttonStrikeout.png</file>
+    <file>Resources/buttonAlignLeft.png</file>
+    <file>Resources/buttonAlignRight.png</file>
     <file>Resources/ArrowUp.png</file>
+    <file>Resources/buttonAlignCenter.png</file>
+    <file>Resources/buttonAlignJustify.png</file>
     <file>Resources/BeeftextLogo128.png</file>
     <file>Resources/BeeftextIcon.ico</file>
     <file>Resources/Notification.wav</file>
     <file>Resources/ArrowDown.png</file>
     <file>Resources/BeeftextIconGrayscale.ico</file>
+    <file>Resources/buttonLink.png</file>
   </qresource>
 </RCC>
