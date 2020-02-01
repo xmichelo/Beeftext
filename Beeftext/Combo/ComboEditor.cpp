@@ -260,6 +260,10 @@ void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format) cons
       QSignalBlocker blocker(ui_.buttonStrikeout);
       ui_.buttonStrikeout->setChecked(format.fontStrikeOut());
    }
+   {
+      QSignalBlocker blocker(ui_.buttonHyperlink);
+      ui_.buttonHyperlink->setChecked(!format.anchorHref().isEmpty());
+   }
 }
 
 
@@ -406,3 +410,42 @@ void ComboEditor::onButtonAlignJustify(bool checked) const
    this->updateAlignmentButtonsState();
    ui_.snippetEdit->setFocus(Qt::NoFocusReason);
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the button checked?
+//**********************************************************************************************************************
+void ComboEditor::onButtonHyperlink(bool checked)
+{
+   if (checked)
+   {
+      bool ok = false;
+      QString const url = QInputDialog::getText(this, tr("Enter URL"), tr("Hyperlink URL"), QLineEdit::Normal, 
+         QString(), &ok);
+      if (!ok)
+      {
+         QSignalBlocker blocker(ui_.buttonHyperlink);
+         ui_.buttonHyperlink->setChecked(false);
+         ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+         return;
+      }
+      QTextCharFormat format;
+      format.setAnchor(true);
+      format.setAnchorHref(url);
+      format.setFontUnderline(true);
+      format.setForeground(QColor(0, 0, 255));
+      this->applyFormat(format);
+      ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+      return;
+   }
+   QTextCharFormat format;
+   format.setAnchor(false);
+   format.setAnchorHref(QString());
+   format.setFontUnderline(false);
+   format.setForeground(Qt::black);
+   this->applyFormat(format);
+   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
+   return;
+
+}
+

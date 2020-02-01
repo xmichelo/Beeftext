@@ -56,6 +56,7 @@ private slots:
    void onButtonAlignCenter(bool checked) const; ///< Slot for the align center button.
    void onButtonAlignRight(bool checked) const; ///< Slot for the align right button.
    void onButtonAlignJustify(bool checked) const; ///< Slot for the align justify button.
+   void onButtonHyperlink(bool checked); ///< Slot for the hyperlink button.
 
 private:
    Ui::ComboEditor ui_ {}; ///< The GUI for the widget
