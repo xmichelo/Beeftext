@@ -217,7 +217,7 @@ bool PreferencesManager::save(QString const& path) const
          throw Exception("An error occurred while trying to write file.");
       return true;
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       globals::debugLog().addError(e.qwhat());
       return false;
@@ -242,7 +242,7 @@ bool PreferencesManager::load(QString const& path)
       this->fromJsonDocument(doc);
       return true;
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       globals::debugLog().addError(e.qwhat());
       return false;
@@ -258,10 +258,10 @@ bool PreferencesManager::load(QString const& path)
 template <typename T> T objectValue(QJsonObject const& object, QString const& key)
 {
    if (!object.contains(key))
-      throw xmilib::Exception(QString("Could not find entry %1 in imported preferences file.").arg(key));
+      throw Exception(QString("Could not find entry %1 in imported preferences file.").arg(key));
    QVariant const v = object[key].toVariant();
    if (!v.canConvert<T>())
-      throw xmilib::Exception(QString("The value for entry %1 in imported preferences file is invalid.").arg(key));
+      throw Exception(QString("The value for entry %1 in imported preferences file is invalid.").arg(key));
    return v.value<T>();
 }
 

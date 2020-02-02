@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1018</width>
-    <height>699</height>
+    <height>694</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -852,7 +852,7 @@ QToolButton:checked {
    <sender>buttonAlignLeft</sender>
    <signal>toggled(bool)</signal>
    <receiver>ComboEditor</receiver>
-   <slot>onButtonAlignLeft(bool)</slot>
+   <slot>onButtonAlignLeft()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>601</x>
@@ -868,7 +868,7 @@ QToolButton:checked {
    <sender>buttonAlignCenter</sender>
    <signal>toggled(bool)</signal>
    <receiver>ComboEditor</receiver>
-   <slot>onButtonAlignCenter(bool)</slot>
+   <slot>onButtonAlignCenter()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>639</x>
@@ -884,7 +884,7 @@ QToolButton:checked {
    <sender>buttonAlignRight</sender>
    <signal>toggled(bool)</signal>
    <receiver>ComboEditor</receiver>
-   <slot>onButtonAlignRight(bool)</slot>
+   <slot>onButtonAlignRight()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>677</x>
@@ -900,7 +900,7 @@ QToolButton:checked {
    <sender>buttonAlignJustify</sender>
    <signal>toggled(bool)</signal>
    <receiver>ComboEditor</receiver>
-   <slot>onButtonAlignJustify(bool)</slot>
+   <slot>onButtonAlignJustify()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>715</x>
@@ -971,10 +971,10 @@ QToolButton:checked {
   <slot>onButtonUnderline(bool)</slot>
   <slot>onButtonStrikeout(bool)</slot>
   <slot>onCursorPositionChanged()</slot>
-  <slot>onButtonAlignLeft(bool)</slot>
-  <slot>onButtonAlignCenter(bool)</slot>
-  <slot>onButtonAlignRight(bool)</slot>
-  <slot>onButtonAlignJustify(bool)</slot>
+  <slot>onButtonAlignLeft()</slot>
+  <slot>onButtonAlignCenter()</slot>
+  <slot>onButtonAlignRight()</slot>
+  <slot>onButtonAlignJustify()</slot>
   <slot>onButtonHyperlink(bool)</slot>
   <slot>onButtonSuperscript(bool)</slot>
   <slot>onButtonSubscript(bool)</slot>

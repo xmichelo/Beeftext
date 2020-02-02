@@ -29,7 +29,7 @@ void ensureBackupFolderExists()
       return;
    QDir().mkpath(path);
    if (!QFileInfo(path).exists())
-      return throw xmilib::Exception(QString("Internal error: %1(): could not create backup folder.")
+      return throw Exception(QString("Internal error: %1(): could not create backup folder.")
          .arg(__FUNCTION__));
 }
 
@@ -116,7 +116,7 @@ qint32 BackupManager::backupFileCount() const
 //**********************************************************************************************************************
 void BackupManager::removeAllBackups() const
 {
-   xmilib::DebugLog& log = globals::debugLog();
+   DebugLog& log = globals::debugLog();
    for (QString const& path : this->orderedBackupFilePaths())
    {
       if (QFile(path).remove())
@@ -132,7 +132,7 @@ void BackupManager::removeAllBackups() const
 //**********************************************************************************************************************
 void BackupManager::cleanup() const
 {
-   xmilib::DebugLog& log = globals::debugLog();
+   DebugLog& log = globals::debugLog();
    QStringList paths = this->orderedBackupFilePaths();
    qint32 const count = paths.size();
    for (int i = 0; i < count - kMaxBackupFileCount; ++i)
@@ -152,7 +152,7 @@ void BackupManager::cleanup() const
 void BackupManager::archive(QString const& filePath) const
 {
    ensureBackupFolderExists();
-   xmilib::DebugLog& log = globals::debugLog();
+   DebugLog& log = globals::debugLog();
    QString const backupFolderPath = globals::backupFolderPath();
    QFileInfo const fileInfo(filePath);
    QString const dstPath = QDir(backupFolderPath)

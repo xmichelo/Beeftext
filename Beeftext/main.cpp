@@ -21,7 +21,6 @@
 #include <XMiLib/SingleInstanceApp.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
-#include "XMiLib/GlobalShortcut/GlobalShortcutManager.h"
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
 
 using namespace xmilib;

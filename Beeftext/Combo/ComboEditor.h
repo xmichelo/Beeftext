@@ -54,10 +54,10 @@ private slots:
    void onButtonStrikeout(bool checked) const; ///< Slot for the strikeout button.
    void onButtonSuperscript(bool checked) const; ///< Slot for the superscript button.
    void onButtonSubscript(bool checked) const; ///< Slot for the subscript button.
-   void onButtonAlignLeft(bool checked) const; ///< Slot for the align left button.
-   void onButtonAlignCenter(bool checked) const; ///< Slot for the align center button.
-   void onButtonAlignRight(bool checked) const; ///< Slot for the align right button.
-   void onButtonAlignJustify(bool checked) const; ///< Slot for the align justify button.
+   void onButtonAlignLeft() const; ///< Slot for the align left button.
+   void onButtonAlignCenter() const; ///< Slot for the align center button.
+   void onButtonAlignRight() const; ///< Slot for the align right button.
+   void onButtonAlignJustify() const; ///< Slot for the align justify button.
    void onButtonHyperlink(bool checked); ///< Slot for the hyperlink button.
 
 private:
