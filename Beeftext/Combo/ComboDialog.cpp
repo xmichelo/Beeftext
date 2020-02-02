@@ -217,7 +217,6 @@ void ComboDialog::updateGui() const
    bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
       (!ui_.comboEditor->plainText().isEmpty()) && ui_.comboGroup->currentGroup();
    ui_.buttonOk->setEnabled(canAccept);
-   ui_.labelEditor->setVisible(this->useHtmlComboValue());
 }
 
 

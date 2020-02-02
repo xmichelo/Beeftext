@@ -2,369 +2,45 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
-    <name>MainWindow</name>
+    <name>AboutDialog</name>
     <message>
-        <source>F1</source>
-        <translation>F1</translation>
+        <source>About</source>
+        <translation>О программе</translation>
     </message>
     <message>
-        <source>&amp;File</source>
-        <translation>&amp;Файл</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation>&amp;Помощь</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>Ошибка</translation>
-    </message>
-    <message>
-        <source>&amp;Getting Started</source>
-        <translation>&amp;Начало работы</translation>
-    </message>
-    <message>
-        <source>Getting Started</source>
-        <translation>Начало работы</translation>
-    </message>
-    <message>
-        <source>&amp;Resume Beeftext</source>
-        <translation>&amp;Возобновить Beeftext</translation>
-    </message>
-    <message>
-        <source>Show Stylesheet Editor</source>
-        <translation>Показать редактор таблиц стилей</translation>
-    </message>
-    <message>
-        <source>Open the log file</source>
-        <translation>Открыть файл журнала</translation>
-    </message>
-    <message>
-        <source>&amp;About Beeftext</source>
-        <translation>&amp;О Beeftext</translation>
-    </message>
-    <message>
-        <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
-        <translation>Если вы восстановите резервную копию, все ваши текущие шаблоны будут удалены и заменены содержимым из резервной копии.</translation>
-    </message>
-    <message>
-        <source> - Portable Edition</source>
-        <translation> - Портативная версия</translation>
-    </message>
-    <message>
-        <source>Open &amp;Log File</source>
-        <translation>&amp;Открыть файл журнала</translation>
-    </message>
-    <message>
-        <source>&amp;Pause Beeftext</source>
-        <translation>&amp;Приостановить Beeftext</translation>
-    </message>
-    <message>
-        <source>Open Log File</source>
-        <translation>Открыть файл журнала</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F1</source>
-        <translation>Ctrl+Shift+F1</translation>
-    </message>
-    <message>
-        <source>Backup</source>
-        <translation>Резервная копия</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <source>Ctrl+,</source>
-        <translation>Ctrl+,</translation>
-    </message>
-    <message>
-        <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-        <source>Backup the combo list.</source>
-        <translation>Создать резервную копию списка шаблонов.</translation>
-    </message>
-    <message>
-        <source> - PAUSED</source>
-        <translation> - ПРИОСТАНОВЛЕНО</translation>
-    </message>
-    <message>
-        <source>E&amp;xit Beeftext</source>
-        <translation>&amp;Выйти из программы</translation>
-    </message>
-    <message>
-        <source>Exit Beeftext</source>
-        <translation>Выйти из Beeftext</translation>
-    </message>
-    <message>
-        <source>&amp;Beeftext Wiki</source>
-        <translation>&amp;Beeftext в Википедии</translation>
-    </message>
-    <message>
-        <source>Restore the combo list from a backup.</source>
-        <translation>Восстановить список шаблонов из резервной копии.</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation>&amp;Восстановить</translation>
-    </message>
-    <message>
-        <source>Restore</source>
-        <translation>Восстановить</translation>
-    </message>
-    <message>
-        <source>JSON Files (*.json);;All Files (*.*)</source>
-        <translation>JSON-файлы (*.json);;Все файлы (*.*)</translation>
-    </message>
-    <message>
-        <source>&amp;Backup</source>
-        <translation>&amp;Резервная копия</translation>
-    </message>
-    <message>
-        <source>Ctrl+F1</source>
-        <translation>Ctrl+F1</translation>
-    </message>
-    <message>
-        <source>&amp;Advanced</source>
-        <translation>&amp;Дополнительно</translation>
-    </message>
-    <message>
-        <source>Preferences</source>
-        <translation>Настройки</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+L</source>
-        <translation>Ctrl+Shift+L</translation>
-    </message>
-    <message>
-        <source>Open Beeftext</source>
-        <translation>Открыть Beeftext</translation>
-    </message>
-    <message>
-        <source>Shift+F1</source>
-        <translation>Shift+F1</translation>
-    </message>
-    <message>
-        <source>&amp;Release Notes</source>
-        <translation>&amp;Примечания к выпуску</translation>
-    </message>
-</context>
-<context>
-    <name>PreferencesDialog</name>
-    <message>
-        <source>ms</source>
-        <translation>мс</translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation>&amp;Воспроизвести</translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation>&amp;Открыть</translation>
-    </message>
-    <message>
-        <source>Reset the preferences to their default values.</source>
-        <translation>Сброс настроек к значениям по умолчанию.</translation>
-    </message>
-    <message>
-        <source>Reset &amp;Warnings</source>
-        <translation>&amp;Сбросить предупреждения</translation>
-    </message>
-    <message>
-        <source>&amp;Play sound on combo</source>
-        <translation>&amp;Воспроизводить звук для шаблона</translation>
+        <source>Portable Edition</source>
+        <translation>Портативная версия</translation>
     </message>
     <message>
         <source>&amp;Close</source>
         <translation>&amp;Закрыть</translation>
     </message>
     <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation>&amp;Автозапуск Beeftext при входе в систему</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Эта программа распространяется на условиях &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;лицензии MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext использует &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; библиотеку на условиях &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext использует &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; библиотеку на условиях &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;лицензий OpenSSL и SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>Combo picker</source>
-        <translation>Средство выбора шаблонов</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Icons made by &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; from &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BackupRestoreDialog</name>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
     </message>
     <message>
-        <source>Combos</source>
-        <translation>Шаблоны</translation>
+        <source>Backup</source>
+        <translation>Резервная копия</translation>
     </message>
     <message>
-        <source>Emojis</source>
-        <translation>Эмодзи</translation>
-    </message>
-    <message>
-        <source>Combo triggering</source>
-        <translation>Запуск шаблонов</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation>&amp;Изменить</translation>
-    </message>
-    <message>
-        <source>Sensitive Applications</source>
-        <translation>Затрагиваемые приложения</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation>&amp;Исключенные приложения</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation>Вручную (горячие клавиши)</translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation>Записывать события отладки в файл журнала</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translation>&amp;По умолчанию</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation>Автоматическое резервное копирование файлов со списком шаблонов</translation>
-    </message>
-    <message>
-        <source>Combo list folder</source>
-        <translation>Папка со списком шаблонов</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation>Язык</translation>
+        <source>The backup could not be restored.</source>
+        <translation>Резервная копия не может быть восстановлена.</translation>
     </message>
     <message>
         <source>&amp;Restore</source>
         <translation>&amp;Восстановить</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation>Левый разделитель</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation>Использовать пользовательский звук</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation>Использовать пользовательскую тему</translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation>&amp;Изменить</translation>
-    </message>
-    <message>
-        <source>Delay between simulated keystrokes</source>
-        <translation>Задержка между симуляцией нажатий</translation>
-    </message>
-    <message>
-        <source>&amp;Change</source>
-        <translation>&amp;Изменить</translation>
-    </message>
-    <message>
-        <source>&amp;Default</source>
-        <translation>&amp;По умолчанию</translation>
-    </message>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation>Включить шорткоды эмодзи</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation>Автоматически</translation>
-    </message>
-    <message>
-        <source>Appearance</source>
-        <translation>Вид</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation>&amp;Проверить сейчас</translation>
-    </message>
-    <message>
-        <source>Advanced</source>
-        <translation>Дополнительно</translation>
-    </message>
-    <message>
-        <source>Behavior</source>
-        <translation>Поведение</translation>
-    </message>
-    <message>
-        <source>D&amp;efault</source>
-        <translation>&amp;По умолчанию</translation>
-    </message>
-    <message>
-        <source>Preferences</source>
-        <translation>Настройки</translation>
-    </message>
-    <message>
-        <source>Enable combo picker</source>
-        <translation>Включить средство выбора шаблонов</translation>
-    </message>
-    <message>
-        <source>Restore a backup.</source>
-        <translation>Восстановление резервной копии.</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation>Правый разделитель</translation>
-    </message>
-    <message>
-        <source>Shortcut</source>
-        <translation>Ярлык</translation>
-    </message>
-    <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation>&amp;Автоматическая проверка обновлений</translation>
-    </message>
-</context>
-<context>
-    <name>ShortcutDialog</name>
-    <message>
-        <source>&amp;OK</source>
-        <translation>&amp;ОК</translation>
-    </message>
-    <message>
-        <source>Type the new shortcut</source>
-        <translation>Введите новую комбинацию</translation>
-    </message>
-    <message>
-        <source>The shortcut must contain at least one of the following modifier keys:
-Control, Alt or Windows.</source>
-        <translation>Комбинация должна содержать минимум одну из следующих клавиш-модификаторов:
-Control, Alt или Windows.</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation>&amp;Отмена</translation>
-    </message>
-</context>
-<context>
-    <name>GroupDialog</name>
-    <message>
-        <source>&amp;OK</source>
-        <translation>&amp;ОК</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Обязательные поля&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Название&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Описание</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
@@ -391,11 +67,11 @@ Control, Alt или Windows.</translation>
     </message>
     <message>
         <source>&amp;Time</source>
-        <translation>&amp;Время</translation>
+        <translation type="vanished">&amp;Время</translation>
     </message>
     <message>
         <source>D&amp;ate</source>
-        <translation>&amp;Дата</translation>
+        <translation type="vanished">&amp;Дата</translation>
     </message>
     <message>
         <source>Error</source>
@@ -415,11 +91,11 @@ Control, Alt или Windows.</translation>
     </message>
     <message>
         <source>&amp;Insert Variable</source>
-        <translation>&amp;Вставить переменную</translation>
+        <translation type="vanished">&amp;Вставить переменную</translation>
     </message>
     <message>
         <source>Dat&amp;e &amp;&amp; Time</source>
-        <translation>&amp;Дата и время</translation>
+        <translation type="vanished">&amp;Дата и время</translation>
     </message>
     <message>
         <source>The keyword is invalid.</source>
@@ -427,7 +103,7 @@ Control, Alt или Windows.</translation>
     </message>
     <message>
         <source>User &amp;Input</source>
-        <translation>&amp;Пользовательский ввод</translation>
+        <translation type="vanished">&amp;Пользовательский ввод</translation>
     </message>
     <message>
         <source>The snippet text is empty.</source>
@@ -435,11 +111,11 @@ Control, Alt или Windows.</translation>
     </message>
     <message>
         <source>Co&amp;mbo</source>
-        <translation>&amp;Шаблон</translation>
+        <translation type="vanished">&amp;Шаблон</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Where is the editor?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Где редактор?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Где редактор?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Strict</source>
@@ -447,7 +123,7 @@ Control, Alt или Windows.</translation>
     </message>
     <message>
         <source>Clip&amp;board Content</source>
-        <translation>&amp;Содержимое буфера</translation>
+        <translation type="vanished">&amp;Содержимое буфера</translation>
     </message>
     <message>
         <source>C&amp;ancel</source>
@@ -463,11 +139,11 @@ Control, Alt или Windows.</translation>
     </message>
     <message>
         <source>&amp;Custom Date &amp;&amp; Time</source>
-        <translation>&amp;Пользовательские дата и время</translation>
+        <translation type="vanished">&amp;Пользовательские дата и время</translation>
     </message>
     <message>
         <source>En&amp;vironment Variable</source>
-        <translation>&amp;Переменная окружения</translation>
+        <translation type="vanished">&amp;Переменная окружения</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -499,15 +175,15 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
     </message>
     <message>
         <source>Combo (&amp;uppercase)</source>
-        <translation>&amp;Шаблон (заглавные)</translation>
+        <translation type="vanished">&amp;Шаблон (заглавные)</translation>
     </message>
     <message>
         <source>Combo (&amp;lowercase)</source>
-        <translation>&amp;Шаблон (строчные)</translation>
+        <translation type="vanished">&amp;Шаблон (строчные)</translation>
     </message>
     <message>
         <source>&amp;Date/Time</source>
-        <translation>&amp;Дата/Время</translation>
+        <translation type="vanished">&amp;Дата/Время</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
@@ -531,7 +207,7 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
     </message>
     <message>
         <source>&amp;About Variables</source>
-        <translation>&amp;О переменных</translation>
+        <translation type="vanished">&amp;О переменных</translation>
     </message>
     <message>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
@@ -543,7 +219,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>C&amp;ursor Position</source>
-        <translation>&amp;Позиция курсора</translation>
+        <translation type="vanished">&amp;Позиция курсора</translation>
     </message>
     <message>
         <source>An existing combo is creating a conflict with this combo.</source>
@@ -551,111 +227,191 @@ Do you want to continue anymay?</source>
     </message>
 </context>
 <context>
-    <name>QObject</name>
+    <name>ComboEditor</name>
     <message>
-        <source>Alt</source>
-        <translation>Alt</translation>
+        <source>Font family</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Win</source>
-        <translation>Win</translation>
+        <source>Font size</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl</source>
-        <translation>Ctrl</translation>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Italic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Underline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strikeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Superscript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subscript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Justify</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hyperlink</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ComboImportDialog</name>
+    <message>
+        <source>File</source>
+        <translation>Файл</translation>
+    </message>
+    <message>
+        <source>Overwrite 1 conflicting combo.</source>
+        <translation>Перезаписать 1 конфликтующий шаблон.</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <source>Shift</source>
-        <translation>Shift</translation>
+        <source>Import options</source>
+        <translation>Опции импорта</translation>
     </message>
     <message>
-        <source>Getting Started</source>
-        <translation>Начало работы</translation>
+        <source>&amp;Error</source>
+        <translation>&amp;Ошибка</translation>
     </message>
     <message>
-        <source>An unhandled exception occurred.</source>
-        <translation>Возникло необработанное исключение.</translation>
+        <source>Select Combo File</source>
+        <translation>Выбрать файл шаблонов</translation>
     </message>
     <message>
-        <source>&amp;Reset</source>
-        <translation>&amp;Сброс</translation>
+        <source>1 combo will be imported.</source>
+        <translation>1 шаблон будет импортирован.</translation>
     </message>
     <message>
-        <source> - Portable Edition</source>
-        <translation> - Портативная версия</translation>
+        <source>Overwrite %1 conflicting combos.</source>
+        <translation>Перезаписать %1 конфликтующих шаблонов.</translation>
     </message>
     <message>
-        <source>Move To</source>
-        <translation>Переместить в</translation>
+        <source>%1 combos will be imported.</source>
+        <translation>%1 шаблонов будет импортировано.</translation>
     </message>
     <message>
-        <source>New to Beeftext?
-
-Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
-        <translation>Новичок в Beeftext?
-
-Хотите прочитать краткий курс &apos;Начало работы&apos;?</translation>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
     </message>
     <message>
-        <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
-        <translation>Комбинация очень короткая. Хотите использовать комбинацию &apos;%1&apos;?</translation>
+        <source>Browse</source>
+        <translation>Обзор</translation>
     </message>
     <message>
-        <source>Are you sure you want to reset the list of sensitive applications?</source>
-        <translation>Вы уверены, что хотите сбросить список затрагиваемых приложений?</translation>
+        <source>Import</source>
+        <translation>Импорт</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list applications in which emoji substitution should be disabled.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог, для вывода списка приложений, в которых замещение эмодзи нужно отключить.&lt;/p&gt;&lt;p&gt;Список приложений, использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>Skip 1 conflicting combo.</source>
+        <translation>Игнорировать 1 конфликтующий шаблон.</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог для вывода списка чувствительных приложений, некорректно работающих с Beeftext, так как они не поддерживают стандартные копирование-вставку через Ctrl+V.&lt;/p&gt;&lt;p&gt;Список приложений использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>Overwrite 1 older conflicting combo.</source>
+        <translation>Перезаписать 1 более старый конфликтующий шаблон.</translation>
     </message>
     <message>
-        <source>Cannot load translation:
-%1</source>
-        <translation>Невозможно загрузить перевод: %1</translation>
+        <source>Import into group</source>
+        <translation>Импорт в группу</translation>
     </message>
     <message>
-        <source>The default group.</source>
-        <translation>Группа по умолчанию.</translation>
+        <source>Skip %1 conflicting combos.</source>
+        <translation>Игнорировать %1 конфликтующих шаблонов.</translation>
     </message>
     <message>
-        <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
-        <translation>JSON и CSV файлы (*.json *.csv);;JSON файлы (*.json);;CSV файлы (*.csv);;Все файлы (*.*)</translation>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Отмена</translation>
     </message>
     <message>
-        <source>The sensitive application file could not be saved.</source>
-        <translation>Не удалось сохранить файл затрагиваемого приложения.</translation>
+        <source>&amp;Browse</source>
+        <translation>&amp;Обзор</translation>
     </message>
     <message>
-        <source>JSON files (*.json);;All files (*.*)</source>
-        <translation>JSON-файлы (*.json);;Все файлы (*.*)</translation>
+        <source>&amp;Import</source>
+        <translation>&amp;Импорт</translation>
     </message>
     <message>
-        <source>Do not show this warning again.</source>
-        <translation>Не показывать это предупреждение.</translation>
+        <source>Please select a valid group.</source>
+        <translation>Выберите действительную группу.</translation>
     </message>
     <message>
-        <source>Are you sure you want to reset the list of excluded applications?</source>
-        <translation>Вы уверены, что хотите сбросить список исключенных приложений?</translation>
+        <source>Overwrite %1 older conflicting combos.</source>
+        <translation>Перезаписать %1 старых конфликтующих шаблонов.</translation>
     </message>
     <message>
-        <source>Reset List</source>
-        <translation>Сбросить список</translation>
+        <source>%1 combo(s) could not be imported.</source>
+        <translation>%1 шаблонов не удалось импортировать.</translation>
     </message>
     <message>
-        <source>Default Group</source>
-        <translation>Группа по умолчанию</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Импорт и экспорт#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Поддерживаемые форматы файлов&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>ComboList</name>
+    <message>
+        <source>Name</source>
+        <translation>Название</translation>
     </message>
     <message>
-        <source>The emoji excluded applications file could not be saved.</source>
-        <translation>Не удалось сохранить файл эмодзи исключенных приложений.</translation>
+        <source>Keyword</source>
+        <translation>Ярлык</translation>
+    </message>
+    <message>
+        <source>Modified</source>
+        <translation>Изменен</translation>
+    </message>
+    <message>
+        <source>Snippet</source>
+        <translation>Фраза</translation>
+    </message>
+    <message>
+        <source>Last Used</source>
+        <translation>Последнее использование</translation>
+    </message>
+    <message>
+        <source>Created</source>
+        <translation>Создан</translation>
+    </message>
+</context>
+<context>
+    <name>ComboManager</name>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
     </message>
 </context>
 <context>
@@ -886,6 +642,36 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     </message>
 </context>
 <context>
+    <name>GroupDialog</name>
+    <message>
+        <source>&amp;OK</source>
+        <translation>&amp;ОК</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Обязательные поля&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Название&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Описание</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Отмена</translation>
+    </message>
+</context>
+<context>
+    <name>GroupList</name>
+    <message>
+        <source>&lt;All combos&gt;</source>
+        <translation>&lt;Все шаблоны&gt;</translation>
+    </message>
+</context>
+<context>
     <name>GroupListWidget</name>
     <message>
         <source>New</source>
@@ -953,125 +739,510 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     </message>
 </context>
 <context>
-    <name>ComboImportDialog</name>
+    <name>MainWindow</name>
     <message>
-        <source>File</source>
-        <translation>Файл</translation>
+        <source>F1</source>
+        <translation>F1</translation>
     </message>
     <message>
-        <source>Overwrite 1 conflicting combo.</source>
-        <translation>Перезаписать 1 конфликтующий шаблон.</translation>
+        <source>&amp;File</source>
+        <translation>&amp;Файл</translation>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation>&amp;Помощь</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <source>Import options</source>
-        <translation>Опции импорта</translation>
+        <source>&amp;Getting Started</source>
+        <translation>&amp;Начало работы</translation>
     </message>
     <message>
-        <source>&amp;Error</source>
-        <translation>&amp;Ошибка</translation>
+        <source>Getting Started</source>
+        <translation>Начало работы</translation>
     </message>
     <message>
-        <source>Select Combo File</source>
-        <translation>Выбрать файл шаблонов</translation>
+        <source>&amp;Resume Beeftext</source>
+        <translation>&amp;Возобновить Beeftext</translation>
     </message>
     <message>
-        <source>1 combo will be imported.</source>
-        <translation>1 шаблон будет импортирован.</translation>
+        <source>Show Stylesheet Editor</source>
+        <translation>Показать редактор таблиц стилей</translation>
     </message>
     <message>
-        <source>Overwrite %1 conflicting combos.</source>
-        <translation>Перезаписать %1 конфликтующих шаблонов.</translation>
+        <source>Open the log file</source>
+        <translation>Открыть файл журнала</translation>
     </message>
     <message>
-        <source>%1 combos will be imported.</source>
-        <translation>%1 шаблонов будет импортировано.</translation>
+        <source>&amp;About Beeftext</source>
+        <translation>&amp;О Beeftext</translation>
+    </message>
+    <message>
+        <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
+        <translation>Если вы восстановите резервную копию, все ваши текущие шаблоны будут удалены и заменены содержимым из резервной копии.</translation>
+    </message>
+    <message>
+        <source> - Portable Edition</source>
+        <translation> - Портативная версия</translation>
+    </message>
+    <message>
+        <source>Open &amp;Log File</source>
+        <translation>&amp;Открыть файл журнала</translation>
+    </message>
+    <message>
+        <source>&amp;Pause Beeftext</source>
+        <translation>&amp;Приостановить Beeftext</translation>
+    </message>
+    <message>
+        <source>Open Log File</source>
+        <translation>Открыть файл журнала</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+F1</source>
+        <translation>Ctrl+Shift+F1</translation>
+    </message>
+    <message>
+        <source>Backup</source>
+        <translation>Резервная копия</translation>
     </message>
     <message>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <source>Browse</source>
-        <translation>Обзор</translation>
+        <source>Ctrl+,</source>
+        <translation>Ctrl+,</translation>
     </message>
     <message>
-        <source>Import</source>
-        <translation>Импорт</translation>
+        <source>Ctrl+Q</source>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>Skip 1 conflicting combo.</source>
-        <translation>Игнорировать 1 конфликтующий шаблон.</translation>
+        <source>Backup the combo list.</source>
+        <translation>Создать резервную копию списка шаблонов.</translation>
     </message>
     <message>
-        <source>Overwrite 1 older conflicting combo.</source>
-        <translation>Перезаписать 1 более старый конфликтующий шаблон.</translation>
+        <source> - PAUSED</source>
+        <translation> - ПРИОСТАНОВЛЕНО</translation>
     </message>
     <message>
-        <source>Import into group</source>
-        <translation>Импорт в группу</translation>
+        <source>E&amp;xit Beeftext</source>
+        <translation>&amp;Выйти из программы</translation>
     </message>
     <message>
-        <source>Skip %1 conflicting combos.</source>
-        <translation>Игнорировать %1 конфликтующих шаблонов.</translation>
+        <source>Exit Beeftext</source>
+        <translation>Выйти из Beeftext</translation>
+    </message>
+    <message>
+        <source>&amp;Beeftext Wiki</source>
+        <translation>&amp;Beeftext в Википедии</translation>
+    </message>
+    <message>
+        <source>Restore the combo list from a backup.</source>
+        <translation>Восстановить список шаблонов из резервной копии.</translation>
+    </message>
+    <message>
+        <source>&amp;Restore</source>
+        <translation>&amp;Восстановить</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation>Восстановить</translation>
+    </message>
+    <message>
+        <source>JSON Files (*.json);;All Files (*.*)</source>
+        <translation type="vanished">JSON-файлы (*.json);;Все файлы (*.*)</translation>
+    </message>
+    <message>
+        <source>&amp;Backup</source>
+        <translation>&amp;Резервная копия</translation>
+    </message>
+    <message>
+        <source>Ctrl+F1</source>
+        <translation>Ctrl+F1</translation>
+    </message>
+    <message>
+        <source>&amp;Advanced</source>
+        <translation>&amp;Дополнительно</translation>
+    </message>
+    <message>
+        <source>Preferences</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+L</source>
+        <translation>Ctrl+Shift+L</translation>
+    </message>
+    <message>
+        <source>Open Beeftext</source>
+        <translation>Открыть Beeftext</translation>
+    </message>
+    <message>
+        <source>Shift+F1</source>
+        <translation>Shift+F1</translation>
+    </message>
+    <message>
+        <source>&amp;Release Notes</source>
+        <translation>&amp;Примечания к выпуску</translation>
+    </message>
+</context>
+<context>
+    <name>PreferencesDialog</name>
+    <message>
+        <source>ms</source>
+        <translation>мс</translation>
+    </message>
+    <message>
+        <source>&amp;Play</source>
+        <translation>&amp;Воспроизвести</translation>
+    </message>
+    <message>
+        <source>O&amp;pen</source>
+        <translation>&amp;Открыть</translation>
+    </message>
+    <message>
+        <source>Reset the preferences to their default values.</source>
+        <translation>Сброс настроек к значениям по умолчанию.</translation>
+    </message>
+    <message>
+        <source>Reset &amp;Warnings</source>
+        <translation>&amp;Сбросить предупреждения</translation>
+    </message>
+    <message>
+        <source>&amp;Play sound on combo</source>
+        <translation>&amp;Воспроизводить звук для шаблона</translation>
+    </message>
+    <message>
+        <source>&amp;Close</source>
+        <translation>&amp;Закрыть</translation>
+    </message>
+    <message>
+        <source>&amp;Automatically start Beeftext at login</source>
+        <translation>&amp;Автозапуск Beeftext при входе в систему</translation>
+    </message>
+    <message>
+        <source>Combo picker</source>
+        <translation>Средство выбора шаблонов</translation>
+    </message>
+    <message>
+        <source>Combos</source>
+        <translation>Шаблоны</translation>
+    </message>
+    <message>
+        <source>Emojis</source>
+        <translation>Эмодзи</translation>
+    </message>
+    <message>
+        <source>Combo triggering</source>
+        <translation>Запуск шаблонов</translation>
+    </message>
+    <message>
+        <source>C&amp;hange</source>
+        <translation>&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>Sensitive Applications</source>
+        <translation>Затрагиваемые приложения</translation>
+    </message>
+    <message>
+        <source>&amp;Excluded Applications</source>
+        <translation>&amp;Исключенные приложения</translation>
+    </message>
+    <message>
+        <source>Manual, using the shortcut</source>
+        <translation>Вручную (горячие клавиши)</translation>
+    </message>
+    <message>
+        <source>Write debug events in a log file</source>
+        <translation>Записывать события отладки в файл журнала</translation>
+    </message>
+    <message>
+        <source>De&amp;fault</source>
+        <translation>&amp;По умолчанию</translation>
+    </message>
+    <message>
+        <source>Automatically backup combo list files</source>
+        <translation>Автоматическое резервное копирование файлов со списком шаблонов</translation>
+    </message>
+    <message>
+        <source>Combo list folder</source>
+        <translation>Папка со списком шаблонов</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Язык</translation>
+    </message>
+    <message>
+        <source>&amp;Restore</source>
+        <translation>&amp;Восстановить</translation>
+    </message>
+    <message>
+        <source>Left delimiter</source>
+        <translation>Левый разделитель</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Use custom sound</source>
+        <translation>Использовать пользовательский звук</translation>
+    </message>
+    <message>
+        <source>Use custom theme</source>
+        <translation>Использовать пользовательскую тему</translation>
+    </message>
+    <message>
+        <source>Cha&amp;nge</source>
+        <translation>&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>Delay between simulated keystrokes</source>
+        <translation>Задержка между симуляцией нажатий</translation>
+    </message>
+    <message>
+        <source>&amp;Change</source>
+        <translation>&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>&amp;Default</source>
+        <translation>&amp;По умолчанию</translation>
+    </message>
+    <message>
+        <source>Enable emoji shortcodes</source>
+        <translation>Включить шорткоды эмодзи</translation>
+    </message>
+    <message>
+        <source>Automatic</source>
+        <translation>Автоматически</translation>
+    </message>
+    <message>
+        <source>Appearance</source>
+        <translation>Вид</translation>
+    </message>
+    <message>
+        <source>&amp;Check Now</source>
+        <translation>&amp;Проверить сейчас</translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation>Дополнительно</translation>
+    </message>
+    <message>
+        <source>Behavior</source>
+        <translation>Поведение</translation>
+    </message>
+    <message>
+        <source>D&amp;efault</source>
+        <translation>&amp;По умолчанию</translation>
+    </message>
+    <message>
+        <source>Preferences</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>Enable combo picker</source>
+        <translation>Включить средство выбора шаблонов</translation>
+    </message>
+    <message>
+        <source>Restore a backup.</source>
+        <translation>Восстановление резервной копии.</translation>
+    </message>
+    <message>
+        <source>Right delimiter</source>
+        <translation>Правый разделитель</translation>
+    </message>
+    <message>
+        <source>Shortcut</source>
+        <translation>Ярлык</translation>
+    </message>
+    <message>
+        <source>Automatically check for &amp;updates</source>
+        <translation>&amp;Автоматическая проверка обновлений</translation>
+    </message>
+    <message>
+        <source>Use shortcut to enable/disable Beeftext</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User-provided translations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom backup location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Export</source>
+        <translation type="unfinished">&amp;Экспорт</translation>
+    </message>
+    <message>
+        <source>&amp;Import</source>
+        <translation type="unfinished">&amp;Импорт</translation>
+    </message>
+</context>
+<context>
+    <name>PreferencesManager</name>
+    <message>
+        <source>You have the &apos;Use clipboard for combo substitution&apos; option disabled. This setting is now deprecated.
+
+If you really need to disable the use of the clipboard, click on the &apos;Sensitive Applications&apos; button in the &apos;Advanced&apos; tab of the Preferences dialog, and add an entry in the list containing the wildcard &apos;*&apos; (without quotes).</source>
+        <translation type="vanished">У вас отключена опция &apos;Использовать буфер обмена для замещения в шаблонах&apos;. Теперь этот параметр устарел.
+
+Если вам действительно нужно отключить использование буфера обмена, нажмите кнопку &apos;Затрагиваемые приложения&apos; на вкладке &apos;Дополнительно&apos; диалогового окна &apos;Настройки&apos; и добавьте в список запись, содержащую подстановочный знак &apos;*&apos; (без кавычек).</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <source>Alt</source>
+        <translation>Alt</translation>
+    </message>
+    <message>
+        <source>Win</source>
+        <translation>Win</translation>
+    </message>
+    <message>
+        <source>Ctrl</source>
+        <translation>Ctrl</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
+        <source>Shift</source>
+        <translation>Shift</translation>
+    </message>
+    <message>
+        <source>Getting Started</source>
+        <translation>Начало работы</translation>
+    </message>
+    <message>
+        <source>An unhandled exception occurred.</source>
+        <translation>Возникло необработанное исключение.</translation>
+    </message>
+    <message>
+        <source>&amp;Reset</source>
+        <translation>&amp;Сброс</translation>
+    </message>
+    <message>
+        <source> - Portable Edition</source>
+        <translation> - Портативная версия</translation>
+    </message>
+    <message>
+        <source>Move To</source>
+        <translation type="vanished">Переместить в</translation>
+    </message>
+    <message>
+        <source>New to Beeftext?
+
+Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
+        <translation>Новичок в Beeftext?
+
+Хотите прочитать краткий курс &apos;Начало работы&apos;?</translation>
+    </message>
+    <message>
+        <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
+        <translation>Комбинация очень короткая. Хотите использовать комбинацию &apos;%1&apos;?</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset the list of sensitive applications?</source>
+        <translation>Вы уверены, что хотите сбросить список затрагиваемых приложений?</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list applications in which emoji substitution should be disabled.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог, для вывода списка приложений, в которых замещение эмодзи нужно отключить.&lt;/p&gt;&lt;p&gt;Список приложений, использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог для вывода списка чувствительных приложений, некорректно работающих с Beeftext, так как они не поддерживают стандартные копирование-вставку через Ctrl+V.&lt;/p&gt;&lt;p&gt;Список приложений использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Cannot load translation:
+%1</source>
+        <translation>Невозможно загрузить перевод: %1</translation>
+    </message>
+    <message>
+        <source>The default group.</source>
+        <translation>Группа по умолчанию.</translation>
+    </message>
+    <message>
+        <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
+        <translation>JSON и CSV файлы (*.json *.csv);;JSON файлы (*.json);;CSV файлы (*.csv);;Все файлы (*.*)</translation>
+    </message>
+    <message>
+        <source>The sensitive application file could not be saved.</source>
+        <translation>Не удалось сохранить файл затрагиваемого приложения.</translation>
+    </message>
+    <message>
+        <source>JSON files (*.json);;All files (*.*)</source>
+        <translation>JSON-файлы (*.json);;Все файлы (*.*)</translation>
+    </message>
+    <message>
+        <source>Do not show this warning again.</source>
+        <translation>Не показывать это предупреждение.</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset the list of excluded applications?</source>
+        <translation>Вы уверены, что хотите сбросить список исключенных приложений?</translation>
+    </message>
+    <message>
+        <source>Reset List</source>
+        <translation>Сбросить список</translation>
+    </message>
+    <message>
+        <source>Default Group</source>
+        <translation>Группа по умолчанию</translation>
+    </message>
+    <message>
+        <source>The emoji excluded applications file could not be saved.</source>
+        <translation>Не удалось сохранить файл эмодзи исключенных приложений.</translation>
+    </message>
+    <message>
+        <source>Beeftext backup files (*.%1);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move To</source>
+        <comment>Move entry in the Combo context menu</comment>
+        <translation type="unfinished">Переместить в</translation>
+    </message>
+</context>
+<context>
+    <name>ShortcutDialog</name>
+    <message>
+        <source>&amp;OK</source>
+        <translation>&amp;ОК</translation>
+    </message>
+    <message>
+        <source>Type the new shortcut</source>
+        <translation>Введите новую комбинацию</translation>
+    </message>
+    <message>
+        <source>The shortcut must contain at least one of the following modifier keys:
+Control, Alt or Windows.</source>
+        <translation>Комбинация должна содержать минимум одну из следующих клавиш-модификаторов:
+Control, Alt или Windows.</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
         <translation>&amp;Отмена</translation>
-    </message>
-    <message>
-        <source>&amp;Browse</source>
-        <translation>&amp;Обзор</translation>
-    </message>
-    <message>
-        <source>&amp;Import</source>
-        <translation>&amp;Импорт</translation>
-    </message>
-    <message>
-        <source>Please select a valid group.</source>
-        <translation>Выберите действительную группу.</translation>
-    </message>
-    <message>
-        <source>Overwrite %1 older conflicting combos.</source>
-        <translation>Перезаписать %1 старых конфликтующих шаблонов.</translation>
-    </message>
-    <message>
-        <source>%1 combo(s) could not be imported.</source>
-        <translation>%1 шаблонов не удалось импортировать.</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Импорт и экспорт#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Поддерживаемые форматы файлов&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>ComboList</name>
-    <message>
-        <source>Name</source>
-        <translation>Название</translation>
-    </message>
-    <message>
-        <source>Keyword</source>
-        <translation>Ярлык</translation>
-    </message>
-    <message>
-        <source>Modified</source>
-        <translation>Изменен</translation>
-    </message>
-    <message>
-        <source>Snippet</source>
-        <translation>Фраза</translation>
-    </message>
-    <message>
-        <source>Last Used</source>
-        <translation>Последнее использование</translation>
-    </message>
-    <message>
-        <source>Created</source>
-        <translation>Создан</translation>
     </message>
 </context>
 <context>
@@ -1117,73 +1288,6 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     <message>
         <source>&amp;Download Page</source>
         <translation>&amp;Страница загрузки</translation>
-    </message>
-</context>
-<context>
-    <name>AboutDialog</name>
-    <message>
-        <source>About</source>
-        <translation>О программе</translation>
-    </message>
-    <message>
-        <source>Portable Edition</source>
-        <translation>Портативная версия</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation>&amp;Закрыть</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Эта программа распространяется на условиях &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;лицензии MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext использует &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; библиотеку на условиях &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext использует &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; библиотеку на условиях &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;лицензий OpenSSL и SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>ComboManager</name>
-    <message>
-        <source>Error</source>
-        <translation>Ошибка</translation>
-    </message>
-</context>
-<context>
-    <name>BackupRestoreDialog</name>
-    <message>
-        <source>Error</source>
-        <translation>Ошибка</translation>
-    </message>
-    <message>
-        <source>Backup</source>
-        <translation>Резервная копия</translation>
-    </message>
-    <message>
-        <source>The backup could not be restored.</source>
-        <translation>Резервная копия не может быть восстановлена.</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation>&amp;Восстановить</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation>&amp;Отмена</translation>
-    </message>
-</context>
-<context>
-    <name>PreferencesManager</name>
-    <message>
-        <source>You have the &apos;Use clipboard for combo substitution&apos; option disabled. This setting is now deprecated.
-
-If you really need to disable the use of the clipboard, click on the &apos;Sensitive Applications&apos; button in the &apos;Advanced&apos; tab of the Preferences dialog, and add an entry in the list containing the wildcard &apos;*&apos; (without quotes).</source>
-        <translation>У вас отключена опция &apos;Использовать буфер обмена для замещения в шаблонах&apos;. Теперь этот параметр устарел.
-
-Если вам действительно нужно отключить использование буфера обмена, нажмите кнопку &apos;Затрагиваемые приложения&apos; на вкладке &apos;Дополнительно&apos; диалогового окна &apos;Настройки&apos; и добавьте в список запись, содержащую подстановочный знак &apos;*&apos; (без кавычек).</translation>
-    </message>
-</context>
-<context>
-    <name>GroupList</name>
-    <message>
-        <source>&lt;All combos&gt;</source>
-        <translation>&lt;Все шаблоны&gt;</translation>
     </message>
 </context>
 </TS>

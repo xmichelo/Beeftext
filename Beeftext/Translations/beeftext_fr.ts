@@ -10,8 +10,12 @@
     </message>
     <message>
         <location filename="../AboutDialog.ui" line="33"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Icons made by &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; from &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Ce logiciel est publié sous la &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licence MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; selon les termes de la licence &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; selon les termes des &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licences OpenSSL and SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Les Icones sont faites par &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; de &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Ce logiciel est publié sous la &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licence MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; selon les termes de la licence &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; selon les termes des &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licences OpenSSL and SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Ce logiciel est publié sous la &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licence MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; selon les termes de la licence &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; selon les termes des &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;licences OpenSSL and SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../AboutDialog.ui" line="128"/>
@@ -55,180 +59,164 @@
 <context>
     <name>ComboDialog</name>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="123"/>
+        <location filename="../Combo/ComboDialog.ui" line="103"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Nom&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="44"/>
+        <location filename="../Combo/ComboDialog.ui" line="34"/>
         <source>&amp;New</source>
         <translation>&amp;Nouveau</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="116"/>
+        <location filename="../Combo/ComboDialog.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Mot-clé&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="103"/>
+        <location filename="../Combo/ComboDialog.ui" line="83"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Groupe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="93"/>
+        <location filename="../Combo/ComboDialog.ui" line="157"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="64"/>
+        <location filename="../Combo/ComboDialog.ui" line="54"/>
         <source>Matching</source>
         <translation>Mode de déclenchement</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="75"/>
+        <location filename="../Combo/ComboDialog.ui" line="65"/>
         <source>Strict</source>
         <translation>Strict</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="80"/>
+        <location filename="../Combo/ComboDialog.ui" line="70"/>
         <source>Loose</source>
         <translation>Laxiste</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="130"/>
+        <location filename="../Combo/ComboDialog.ui" line="110"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="156"/>
+        <location filename="../Combo/ComboDialog.ui" line="123"/>
         <source>Plain text</source>
         <translation>Text brut</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="161"/>
+        <location filename="../Combo/ComboDialog.ui" line="128"/>
         <source>Rich text</source>
         <translation>Texte enrichi</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="169"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Where is the editor?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Où est l&apos;éditeur enrichi?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Où est l&apos;éditeur enrichi?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="213"/>
+        <location filename="../Combo/ComboDialog.ui" line="186"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Champs requis&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="233"/>
+        <location filename="../Combo/ComboDialog.ui" line="206"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="243"/>
+        <location filename="../Combo/ComboDialog.ui" line="216"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="97"/>
         <source>&amp;Insert Variable</source>
-        <translation>&amp;Insérer une Variable</translation>
+        <translation type="vanished">&amp;Insérer une Variable</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="103"/>
         <source>&amp;Date/Time</source>
-        <translation>&amp;Date/Heure</translation>
+        <translation type="vanished">&amp;Date/Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="107"/>
         <source>&amp;Time</source>
-        <translation>&amp;Heure</translation>
+        <translation type="vanished">&amp;Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="113"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
-        <translation>Date &amp;&amp; Heure &amp;Personnalisée</translation>
+        <translation type="vanished">Date &amp;&amp; Heure &amp;Personnalisée</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="104"/>
         <source>D&amp;ate</source>
-        <translation>D&amp;ate</translation>
+        <translation type="vanished">D&amp;ate</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="99"/>
         <source>Clip&amp;board Content</source>
-        <translation>&amp;Contenu du Presse-Papier</translation>
+        <translation type="vanished">&amp;Contenu du Presse-Papier</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="110"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
-        <translation>Dat&amp;e &amp;&amp; Heure</translation>
+        <translation type="vanished">Dat&amp;e &amp;&amp; Heure</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="118"/>
         <source>C&amp;ursor Position</source>
-        <translation>Position du C&amp;urseur</translation>
+        <translation type="vanished">Position du C&amp;urseur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="122"/>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
         <source>Co&amp;mbo</source>
-        <translation>Co&amp;mbo</translation>
+        <translation type="vanished">Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="126"/>
         <source>Combo (&amp;uppercase)</source>
-        <translation>Combo (&amp;majuscule)</translation>
+        <translation type="vanished">Combo (&amp;majuscule)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="129"/>
         <source>Combo (&amp;lowercase)</source>
-        <translation>Combo (m&amp;inisucule)</translation>
+        <translation type="vanished">Combo (m&amp;inisucule)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="134"/>
         <source>En&amp;vironment Variable</source>
-        <translation>&amp;Variable d&apos;Environnement</translation>
+        <translation type="vanished">&amp;Variable d&apos;Environnement</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="137"/>
         <source>User &amp;Input</source>
-        <translation>Saisie Ut&amp;ilisateur</translation>
+        <translation type="vanished">Saisie Ut&amp;ilisateur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>&amp;About Variables</source>
-        <translation>&amp;À Propos des Variables</translation>
+        <translation type="vanished">&amp;À Propos des Variables</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="176"/>
-        <location filename="../Combo/ComboDialog.cpp" line="182"/>
-        <location filename="../Combo/ComboDialog.cpp" line="189"/>
+        <location filename="../Combo/ComboDialog.cpp" line="96"/>
+        <location filename="../Combo/ComboDialog.cpp" line="102"/>
+        <location filename="../Combo/ComboDialog.cpp" line="109"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="176"/>
+        <location filename="../Combo/ComboDialog.cpp" line="96"/>
         <source>The snippet text is empty.</source>
         <translation>Le snippet est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="182"/>
+        <location filename="../Combo/ComboDialog.cpp" line="102"/>
         <source>The keyword is invalid.</source>
         <translation>Le mot-clé est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="189"/>
+        <location filename="../Combo/ComboDialog.cpp" line="109"/>
         <source>The group is invalid.</source>
         <translation>Le groupe est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="198"/>
+        <location filename="../Combo/ComboDialog.cpp" line="118"/>
         <source>Duplicate keyword</source>
         <translation>Mot-clé déjà utilisé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="198"/>
+        <location filename="../Combo/ComboDialog.cpp" line="118"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
@@ -237,32 +225,32 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
 Il est possible d&apos;utiliser le même mot-clé pour plusieurs combos. Beeftext choisira au hazard parmi toutes les possibilités.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="200"/>
+        <location filename="../Combo/ComboDialog.cpp" line="120"/>
         <source>&amp;Continue</source>
         <translation>&amp;Continuer</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="200"/>
+        <location filename="../Combo/ComboDialog.cpp" line="120"/>
         <source>C&amp;ancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="208"/>
+        <location filename="../Combo/ComboDialog.cpp" line="128"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Un combo existant cause un conflit avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="209"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translation>%1 combos existants créent des conflits avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="211"/>
+        <location filename="../Combo/ComboDialog.cpp" line="131"/>
         <source>Conflict</source>
         <translation>Conflit</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="211"/>
+        <location filename="../Combo/ComboDialog.cpp" line="131"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anymay?</source>
@@ -271,9 +259,82 @@ Do you want to continue anymay?</source>
 Voulez-vous tout de même continuer?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="283"/>
+        <location filename="../Combo/ComboDialog.cpp" line="203"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
+    </message>
+</context>
+<context>
+    <name>ComboEditor</name>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="82"/>
+        <source>Font family</source>
+        <translation>Police</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="97"/>
+        <source>Font size</source>
+        <translation>Taille de la police</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="147"/>
+        <source>Color</source>
+        <translation>Couleur</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="184"/>
+        <source>Bold</source>
+        <translation>Gras</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="225"/>
+        <source>Italic</source>
+        <translation>Italique</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="267"/>
+        <source>Underline</source>
+        <translation>Souligné</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="310"/>
+        <source>Strikeout</source>
+        <translation>Barré</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="353"/>
+        <source>Superscript</source>
+        <translation>Exposant</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="396"/>
+        <source>Subscript</source>
+        <translation>Indice</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="456"/>
+        <source>Align left</source>
+        <translation>Aligné à gauche</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="500"/>
+        <source>Center</source>
+        <translation>Centré</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="544"/>
+        <source>Align right</source>
+        <translation>Aligné à droite</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="588"/>
+        <source>Justify</source>
+        <translation>Justifié</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.ui" line="648"/>
+        <source>Hyperlink</source>
+        <translation>Hyperlien</translation>
     </message>
 </context>
 <context>
@@ -980,78 +1041,76 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Restaurer la liste de combos depuis une sauvegarde.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="128"/>
+        <location filename="../MainWindow.cpp" line="129"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="125"/>
+        <location filename="../MainWindow.cpp" line="126"/>
         <source> - PAUSED</source>
         <translation> - EN PAUSE</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="140"/>
-        <location filename="../MainWindow.cpp" line="253"/>
+        <location filename="../MainWindow.cpp" line="141"/>
+        <location filename="../MainWindow.cpp" line="277"/>
         <source>Open Beeftext</source>
         <translation>Ouvrir Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="144"/>
+        <location filename="../MainWindow.cpp" line="145"/>
         <source>&amp;Pause Beeftext</source>
         <translation>&amp;Désactiver Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="144"/>
+        <location filename="../MainWindow.cpp" line="145"/>
         <source>&amp;Resume Beeftext</source>
         <translation>&amp;Réactiver Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="296"/>
+        <location filename="../MainWindow.cpp" line="323"/>
         <source>Backup</source>
         <translation>Sauvegarde</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="298"/>
-        <location filename="../MainWindow.cpp" line="320"/>
         <source>JSON Files (*.json);;All Files (*.*)</source>
-        <translation>Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
+        <translation type="vanished">Fichiers JSON (*.json);;Tous les fichiers (*.*)</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="303"/>
-        <location filename="../MainWindow.cpp" line="328"/>
+        <location filename="../MainWindow.cpp" line="233"/>
+        <location filename="../MainWindow.cpp" line="330"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="315"/>
-        <location filename="../MainWindow.cpp" line="316"/>
-        <location filename="../MainWindow.cpp" line="318"/>
+        <location filename="../MainWindow.cpp" line="225"/>
+        <location filename="../MainWindow.cpp" line="226"/>
+        <location filename="../MainWindow.cpp" line="342"/>
         <source>Restore</source>
         <translation>Restaurer</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="315"/>
+        <location filename="../MainWindow.cpp" line="225"/>
         <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
         <translation>Si vous restaurer la liste de combos depuis une sauvegarde, tous vos combos actuels seront supprimés et remplacés par le contenu de la sauvegarde.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="316"/>
+        <location filename="../MainWindow.cpp" line="226"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="118"/>
-        <location filename="../MainWindow.cpp" line="149"/>
+        <location filename="../MainWindow.cpp" line="150"/>
         <source>Preferences</source>
         <translation>Préférences</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="154"/>
+        <location filename="../MainWindow.cpp" line="155"/>
         <source>Open Log File</source>
         <translation>Ouvrir le Journal</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="157"/>
+        <location filename="../MainWindow.cpp" line="158"/>
         <source>Show Stylesheet Editor</source>
         <translation>Afficher l&apos;Editeur de Feuille de Style</translation>
     </message>
@@ -1059,220 +1118,265 @@ Voulez-vous tout de même continuer?</translation>
 <context>
     <name>PreferencesDialog</name>
     <message>
-        <location filename="../PreferencesDialog.ui" line="14"/>
+        <location filename="../PreferencesDialog.ui" line="20"/>
         <source>Preferences</source>
         <translation>Préférences</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="24"/>
+        <location filename="../PreferencesDialog.ui" line="30"/>
         <source>Behavior</source>
         <translation>Comportement</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="32"/>
+        <location filename="../PreferencesDialog.ui" line="38"/>
         <source>Automatically check for &amp;updates</source>
         <translation>Vérifier automatiquement les &amp;mises à jour</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="39"/>
+        <location filename="../PreferencesDialog.ui" line="45"/>
         <source>&amp;Check Now</source>
         <translation>&amp;Vérifier Maintenant</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="62"/>
+        <location filename="../PreferencesDialog.ui" line="68"/>
         <source>&amp;Play sound on combo</source>
         <translation>&amp;Emettre un son pendant les combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="341"/>
+        <location filename="../PreferencesDialog.ui" line="412"/>
         <source>Enable emoji shortcodes</source>
         <translation>Activer les shortcodes emojis</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="348"/>
+        <location filename="../PreferencesDialog.ui" line="419"/>
         <source>&amp;Excluded Applications</source>
         <translation>Applications &amp;Exclues</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="141"/>
+        <location filename="../PreferencesDialog.ui" line="218"/>
         <source>Combo triggering</source>
         <translation>Déclenchement des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="55"/>
+        <location filename="../PreferencesDialog.ui" line="61"/>
         <source>&amp;Automatically start Beeftext at login</source>
         <translation>&amp;Démarrer Beeftext automatiquement à la connexion</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="69"/>
+        <location filename="../PreferencesDialog.ui" line="75"/>
         <source>Use custom sound</source>
         <translation>Utiliser un son personnalisé</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="104"/>
+        <location filename="../PreferencesDialog.ui" line="110"/>
         <source>Cha&amp;nge</source>
         <translation>Cha&amp;nger</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="111"/>
+        <location filename="../PreferencesDialog.ui" line="117"/>
         <source>&amp;Play</source>
         <translation>&amp;Tester</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="135"/>
+        <location filename="../PreferencesDialog.ui" line="129"/>
+        <source>Use shortcut to enable/disable Beeftext</source>
+        <translation>Utiliiser un raccourci pour activer/désactiver Beeftext</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="212"/>
         <source>Combos</source>
         <translation>Combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="147"/>
+        <location filename="../PreferencesDialog.ui" line="224"/>
         <source>Automatic</source>
         <translation>Automatique</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="154"/>
+        <location filename="../PreferencesDialog.ui" line="231"/>
         <source>Manual, using the shortcut</source>
         <translation>Manuel, avec le raccourci</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="208"/>
-        <location filename="../PreferencesDialog.ui" line="287"/>
+        <location filename="../PreferencesDialog.ui" line="285"/>
+        <location filename="../PreferencesDialog.ui" line="358"/>
         <source>C&amp;hange</source>
         <translation>C&amp;hanger</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="215"/>
-        <location filename="../PreferencesDialog.ui" line="294"/>
+        <location filename="../PreferencesDialog.ui" line="292"/>
+        <location filename="../PreferencesDialog.ui" line="365"/>
         <source>De&amp;fault</source>
         <translation>Par Dé&amp;faut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="231"/>
+        <location filename="../PreferencesDialog.ui" line="308"/>
         <source>Combo picker</source>
         <translation>Sélecteur de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="237"/>
+        <location filename="../PreferencesDialog.ui" line="314"/>
         <source>Enable combo picker</source>
         <translation>Activer le sélecteur de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="246"/>
+        <location filename="../PreferencesDialog.ui" line="323"/>
         <source>Shortcut</source>
         <translation>Raccourci</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="333"/>
+        <location filename="../PreferencesDialog.ui" line="404"/>
         <source>Emojis</source>
         <translation>Emojis</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="372"/>
+        <location filename="../PreferencesDialog.ui" line="443"/>
         <source>Left delimiter</source>
         <translation>Délimiteur gauche</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="428"/>
+        <location filename="../PreferencesDialog.ui" line="499"/>
         <source>Right delimiter</source>
         <translation>Délimiteur droit</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="451"/>
+        <location filename="../PreferencesDialog.ui" line="522"/>
         <source>Appearance</source>
         <translation>Apparence</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="459"/>
+        <location filename="../PreferencesDialog.ui" line="530"/>
         <source>Language</source>
         <translation>Langue</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="478"/>
+        <location filename="../PreferencesDialog.ui" line="549"/>
+        <source>Refresh</source>
+        <translation>Rafraîchir</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="556"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Autres langues&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="503"/>
+        <location filename="../PreferencesDialog.ui" line="583"/>
+        <source>User-provided translations</source>
+        <translation>Traductions communautaires</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="590"/>
+        <source>Open Folder</source>
+        <translation>Ouvrir le dossier</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="612"/>
         <source>Use custom theme</source>
         <translation>Utiliser un thème personnalisé</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="524"/>
+        <location filename="../PreferencesDialog.ui" line="633"/>
         <source>Advanced</source>
         <translation>Avancé</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="669"/>
+        <location filename="../PreferencesDialog.ui" line="742"/>
+        <source>Automatic backup</source>
+        <translation>Sauvegarde automatique</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="784"/>
+        <source>Use custom backup location</source>
+        <translation>Dossier de sauvegarde personnalisé</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="812"/>
         <source>Sensitive Applications</source>
         <translation>Applications Sensibles</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="532"/>
+        <location filename="../PreferencesDialog.ui" line="641"/>
         <source>Delay between simulated keystrokes</source>
         <translation>Délai entre les frappes de touches simulées</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="539"/>
+        <location filename="../PreferencesDialog.ui" line="648"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="588"/>
+        <location filename="../PreferencesDialog.ui" line="697"/>
         <source>Combo list folder</source>
         <translation>Dossier de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="602"/>
+        <location filename="../PreferencesDialog.ui" line="179"/>
+        <location filename="../PreferencesDialog.ui" line="711"/>
+        <location filename="../PreferencesDialog.ui" line="798"/>
         <source>&amp;Change</source>
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="609"/>
+        <location filename="../PreferencesDialog.ui" line="718"/>
         <source>O&amp;pen</source>
         <translation>O&amp;uvrir</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="616"/>
+        <location filename="../PreferencesDialog.ui" line="725"/>
         <source>D&amp;efault</source>
         <translation>Par D&amp;éfaut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="628"/>
+        <location filename="../PreferencesDialog.ui" line="750"/>
         <source>Automatically backup combo list files</source>
         <translation>Faire des copies de sauvegarde automatique de la liste des combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="635"/>
+        <location filename="../PreferencesDialog.ui" line="757"/>
         <source>Restore a backup.</source>
         <translation>Restaurer une sauvegarde.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="638"/>
+        <location filename="../PreferencesDialog.ui" line="760"/>
         <source>&amp;Restore</source>
         <translation>&amp;Restaurer</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="660"/>
+        <location filename="../PreferencesDialog.ui" line="735"/>
         <source>Write debug events in a log file</source>
         <translation>Écrire les évènements de débogage dans un fichier journal</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="716"/>
-        <location filename="../PreferencesDialog.ui" line="729"/>
+        <location filename="../PreferencesDialog.ui" line="859"/>
+        <location filename="../PreferencesDialog.ui" line="872"/>
+        <location filename="../PreferencesDialog.ui" line="885"/>
+        <location filename="../PreferencesDialog.ui" line="898"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="719"/>
+        <location filename="../PreferencesDialog.ui" line="186"/>
+        <location filename="../PreferencesDialog.ui" line="888"/>
         <source>&amp;Default</source>
         <translation>Par &amp;Défaut</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="732"/>
+        <location filename="../PreferencesDialog.ui" line="862"/>
+        <source>&amp;Export</source>
+        <translation>&amp;Exporter</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="875"/>
+        <source>&amp;Import</source>
+        <translation>&amp;Importer</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="901"/>
         <source>Reset &amp;Warnings</source>
         <translation>Réactiver les A&amp;vertissements</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="755"/>
+        <location filename="../PreferencesDialog.ui" line="924"/>
         <source>&amp;Close</source>
         <translation>&amp;Fermer</translation>
     </message>
@@ -1280,11 +1384,10 @@ Voulez-vous tout de même continuer?</translation>
 <context>
     <name>PreferencesManager</name>
     <message>
-        <location filename="../PreferencesManager.cpp" line="902"/>
         <source>You have the &apos;Use clipboard for combo substitution&apos; option disabled. This setting is now deprecated.
 
 If you really need to disable the use of the clipboard, click on the &apos;Sensitive Applications&apos; button in the &apos;Advanced&apos; tab of the Preferences dialog, and add an entry in the list containing the wildcard &apos;*&apos; (without quotes).</source>
-        <translation>Vous avez l&apos;option &apos;Utiliser le presse-papier pour le remplacement&apos;. Ce régagle n&apos;est plus disponible.
+        <translation type="vanished">Vous avez l&apos;option &apos;Utiliser le presse-papier pour le remplacement&apos;. Ce régagle n&apos;est plus disponible.
 
 Si vous devez continuer d&apos;utiliser cette option, dans l&apos;onglet &apos;Avancé&apos; des préferences, cliquez sur le bouton &apos;Applications Sensibles&apos; et ajourter une entrée contenant le caractère *.</translation>
     </message>
@@ -1292,12 +1395,12 @@ Si vous devez continuer d&apos;utiliser cette option, dans l&apos;onglet &apos;A
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="91"/>
+        <location filename="../main.cpp" line="87"/>
         <source>Getting Started</source>
         <translation>Bien Débuter</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="91"/>
+        <location filename="../main.cpp" line="87"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -1306,26 +1409,26 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="265"/>
+        <location filename="../BeeftextUtils.cpp" line="266"/>
         <location filename="../EmojiManager.cpp" line="166"/>
-        <location filename="../I18nManager.cpp" line="262"/>
+        <location filename="../I18nManager.cpp" line="273"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="262"/>
+        <location filename="../I18nManager.cpp" line="273"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Impossible de charger le fichier de traduction: %1</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="206"/>
+        <location filename="../I18nManager.cpp" line="217"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="117"/>
+        <location filename="../main.cpp" line="113"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
     </message>
@@ -1360,6 +1463,11 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation>Fichiers JSON &amp; CSV (*.json *.csv);;Fichiers JSON (*.json);;Fichiers CSV (*.csv);;Tous les fichiers (*.*)</translation>
     </message>
     <message>
+        <location filename="../BeeftextConstants.cpp" line="29"/>
+        <source>Beeftext backup files (*.%1);;All files (*.*)</source>
+        <translation>Fichiers de sauvegarde Beeftext (*.%1);;Tous les fichiers (*.*)</translation>
+    </message>
+    <message>
         <location filename="../Group/GroupList.cpp" line="19"/>
         <source>Default Group</source>
         <translation>Groupe Par Défaut</translation>
@@ -1376,12 +1484,12 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <translation>Déplacer Dans</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="31"/>
+        <location filename="../Combo/ComboDialog.cpp" line="30"/>
         <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
         <translation>Le mot-clé est très court. Êtes-vous sûr de vouloir utliser le mot-clé &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="36"/>
+        <location filename="../Combo/ComboDialog.cpp" line="35"/>
         <source>Do not show this warning again.</source>
         <translation>Ne plus afficher cet avertissement.</translation>
     </message>

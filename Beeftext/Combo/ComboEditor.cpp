@@ -405,9 +405,9 @@ void ComboEditor::onButtonSubscript(bool checked) const
 
 
 //**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
+//
 //**********************************************************************************************************************
-void ComboEditor::onButtonAlignLeft(bool checked) const
+void ComboEditor::onButtonAlignLeft() const
 {
    ui_.snippetEdit->setAlignment(Qt::AlignLeft | Qt::AlignAbsolute);
    this->updateAlignmentButtonsState();
@@ -416,9 +416,9 @@ void ComboEditor::onButtonAlignLeft(bool checked) const
 
 
 //**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
+//
 //**********************************************************************************************************************
-void ComboEditor::onButtonAlignCenter(bool checked) const
+void ComboEditor::onButtonAlignCenter() const
 {
    ui_.snippetEdit->setAlignment(Qt::AlignCenter);
    this->updateAlignmentButtonsState();
@@ -427,9 +427,9 @@ void ComboEditor::onButtonAlignCenter(bool checked) const
 
 
 //**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
+//
 //**********************************************************************************************************************
-void ComboEditor::onButtonAlignRight(bool checked) const
+void ComboEditor::onButtonAlignRight() const
 {
    ui_.snippetEdit->setAlignment(Qt::AlignRight | Qt::AlignAbsolute);
    this->updateAlignmentButtonsState();
@@ -438,9 +438,9 @@ void ComboEditor::onButtonAlignRight(bool checked) const
 
 
 //**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
-//**********************************************************************************************************************
-void ComboEditor::onButtonAlignJustify(bool checked) const
+//
+/////**********************************************************************************************************************
+void ComboEditor::onButtonAlignJustify() const
 {
    ui_.snippetEdit->setAlignment(Qt::AlignJustify);
    this->updateAlignmentButtonsState();
