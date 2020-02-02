@@ -26,6 +26,7 @@ ComboEditor::ComboEditor(QWidget* parent)
    this->fillFontSizeCombo();
    this->onCurrentCharFormatChanged(ui_.snippetEdit->currentCharFormat());
    this->onCursorPositionChanged();
+   connect(ui_.snippetEdit, &QTextEdit::textChanged, [this]() { emit textChanged(); });
 }
 
 

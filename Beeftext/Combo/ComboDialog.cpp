@@ -83,6 +83,7 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    else
       ui_.comboEditor->snippetEdit()->setPlainText(combo->snippet());
    this->updateGui();
+   connect(ui_.comboEditor, &ComboEditor::textChanged, this, &ComboDialog::updateGui);
 }
 
 

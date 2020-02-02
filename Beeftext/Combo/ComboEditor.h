@@ -33,6 +33,9 @@ public: // member functions
    QString plainText() const; ///< Return the plain text content of the editor.
    QString html() const; ///< Return the HTML content of the editor.
 
+signals:
+   void textChanged(); ///< Signal emitted when the content changed
+
 private: // data members
    QMenu* createComboVariableMenu(); ///< Create the combo variable menu.
    void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false) const; ///< Insert some text at the current cursor position in the snippet text edit control.
