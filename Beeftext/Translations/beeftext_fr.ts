@@ -189,34 +189,34 @@
         <translation type="vanished">&amp;À Propos des Variables</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="96"/>
-        <location filename="../Combo/ComboDialog.cpp" line="102"/>
-        <location filename="../Combo/ComboDialog.cpp" line="109"/>
+        <location filename="../Combo/ComboDialog.cpp" line="97"/>
+        <location filename="../Combo/ComboDialog.cpp" line="103"/>
+        <location filename="../Combo/ComboDialog.cpp" line="110"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="96"/>
+        <location filename="../Combo/ComboDialog.cpp" line="97"/>
         <source>The snippet text is empty.</source>
         <translation>Le snippet est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="102"/>
+        <location filename="../Combo/ComboDialog.cpp" line="103"/>
         <source>The keyword is invalid.</source>
         <translation>Le mot-clé est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="109"/>
+        <location filename="../Combo/ComboDialog.cpp" line="110"/>
         <source>The group is invalid.</source>
         <translation>Le groupe est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="118"/>
+        <location filename="../Combo/ComboDialog.cpp" line="119"/>
         <source>Duplicate keyword</source>
         <translation>Mot-clé déjà utilisé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="118"/>
+        <location filename="../Combo/ComboDialog.cpp" line="119"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
@@ -225,32 +225,32 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
 Il est possible d&apos;utiliser le même mot-clé pour plusieurs combos. Beeftext choisira au hazard parmi toutes les possibilités.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="120"/>
+        <location filename="../Combo/ComboDialog.cpp" line="121"/>
         <source>&amp;Continue</source>
         <translation>&amp;Continuer</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="120"/>
+        <location filename="../Combo/ComboDialog.cpp" line="121"/>
         <source>C&amp;ancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="128"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Un combo existant cause un conflit avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="130"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translation>%1 combos existants créent des conflits avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="131"/>
+        <location filename="../Combo/ComboDialog.cpp" line="132"/>
         <source>Conflict</source>
         <translation>Conflit</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="131"/>
+        <location filename="../Combo/ComboDialog.cpp" line="132"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anymay?</source>
@@ -259,7 +259,7 @@ Do you want to continue anymay?</source>
 Voulez-vous tout de même continuer?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="203"/>
+        <location filename="../Combo/ComboDialog.cpp" line="204"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
