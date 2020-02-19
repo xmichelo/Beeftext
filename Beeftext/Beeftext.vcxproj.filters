@@ -317,6 +317,9 @@
     <None Include="Translations\beeftext_it.ts">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="Translations\beeftext_de.ts">
+      <Filter>Translation Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\BeeftextIcon.ico">
