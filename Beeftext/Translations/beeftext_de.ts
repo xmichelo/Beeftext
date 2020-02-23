@@ -1095,7 +1095,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="129"/>
         <source>Use shortcut to enable/disable Beeftext</source>
-        <translation>Akürzung zum aktivieren/deaktivieren von Beeftext</translation>
+        <translation>Tastenkombination zum aktivieren/deaktivieren von Beeftext</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="179"/>
@@ -1128,7 +1128,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="231"/>
         <source>Manual, using the shortcut</source>
-        <translation>Manuell, benutze folgende Abkürzung</translation>
+        <translation>Manuell, benutze folgende Tastenkombination</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="285"/>
@@ -1155,7 +1155,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="323"/>
         <source>Shortcut</source>
-        <translation>Abkürzung</translation>
+        <translation>Tastenkombination</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="404"/>
@@ -1205,7 +1205,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="583"/>
         <source>User-provided translations</source>
-        <translation>Benutzerdefinierte Übersetzung verwenden</translation>
+        <translation>Benutzerdefinierte Übersetzungen</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="590"/>
@@ -1235,7 +1235,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="697"/>
         <source>Combo list folder</source>
-        <translation>Kombo Listen Verzeichnis</translation>
+        <translation>Kombolisten Verzeichnis</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="718"/>
@@ -1260,7 +1260,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="750"/>
         <source>Automatically backup combo list files</source>
-        <translation>Automatische Sicherung der Kombo Datei</translation>
+        <translation>Automatische Sicherung der Kombolistendatei</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="757"/>
