@@ -11,9 +11,9 @@
 #include "BeeftextUtils.h"
 #include "SensitiveApplicationManager.h"
 #include "InputManager.h"
-#include "ClipboardManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
+#include "Clipboard/ClipboardManager.h"
 #include <Psapi.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>

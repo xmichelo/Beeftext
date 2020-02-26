@@ -242,7 +242,7 @@
     <ClCompile Include="BeeftextConstants.cpp" />
     <ClCompile Include="BeeftextGlobals.cpp" />
     <ClCompile Include="BeeftextUtils.cpp" />
-    <ClCompile Include="ClipboardManager.cpp" />
+    <ClCompile Include="Clipboard\ClipboardManager.cpp" />
     <ClCompile Include="Combo\Combo.cpp" />
     <ClCompile Include="Combo\ComboDialog.cpp" />
     <ClCompile Include="Combo\ComboEditor.cpp" />
@@ -294,6 +294,7 @@
     </QtMoc>
     <QtMoc Include="Combo\ComboEditor.h">
     </QtMoc>
+    <ClInclude Include="Clipboard\ClipboardManager.h" />
     <ClInclude Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.h" />
     <QtMoc Include="Combo\ComboPicker\ComboPickerWindow.h">
     </QtMoc>
@@ -332,7 +333,6 @@
     <ClInclude Include="BeeftextConstants.h" />
     <ClInclude Include="BeeftextGlobals.h" />
     <ClInclude Include="BeeftextUtils.h" />
-    <ClInclude Include="ClipboardManager.h" />
     <ClInclude Include="Combo\Combo.h" />
     <QtMoc Include="Combo\ComboList.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h;../../Combo/%(Filename)%(Extension)</ForceInclude>

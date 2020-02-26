@@ -71,7 +71,6 @@
     <ClCompile Include="PreferencesManager.cpp" />
     <ClCompile Include="BeeftextUtils.cpp" />
     <ClCompile Include="LatestVersionInfo.cpp" />
-    <ClCompile Include="ClipboardManager.cpp" />
     <ClCompile Include="Update\UpdateDialog.cpp">
       <Filter>Update</Filter>
     </ClCompile>
@@ -150,6 +149,9 @@
     <ClCompile Include="Combo\ComboEditor.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="Clipboard\ClipboardManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -165,7 +167,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="BeeftextUtils.h" />
-    <ClInclude Include="ClipboardManager.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -218,6 +219,9 @@
       <Filter>Combo\ComboPicker</Filter>
     </ClInclude>
     <ClInclude Include="Combo\LastUseFile.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Clipboard\ClipboardManager.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
