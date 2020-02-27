@@ -8,6 +8,7 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "VariableInputDialog.h"
+#include "Clipboard/ClipboardManager.h"
 
 
 namespace {
@@ -68,11 +69,9 @@ QString qcharToDiscordEmoji(QChar const& c)
 //**********************************************************************************************************************
 QString discordEmojisFromClipboard()
 {
-   QClipboard const* clipboard = QGuiApplication::clipboard();
-   if (!clipboard)
-      return QString();
+   QString str = ClipboardManager::text();
    QString result;
-   for (QChar const& c : clipboard->text())
+   for (QChar const& c : str)
       result += qcharToDiscordEmoji(c);
    return result;
 }

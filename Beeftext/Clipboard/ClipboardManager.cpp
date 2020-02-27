@@ -108,3 +108,27 @@ bool ClipboardManager::hasBackup() const
 {
    return !backup_.empty();
 }
+
+
+//**********************************************************************************************************************
+/// \ return the text value of the clipboard. If the clipboard does not contain text, an empty string is returned.
+//**********************************************************************************************************************
+QString ClipboardManager::text()
+{
+   ScopedClipboardAccess const sca(nullptr);
+   if ((!sca.isOpen()) || (!IsClipboardFormatAvailable(CF_UNICODETEXT))) // Note system does automatic conversion from CF_OEMTEXT and CF_TEXT to CF_UNICODETEXT
+      return QString();
+   HANDLE const handle = GetClipboardData(CF_UNICODETEXT);
+   if (!handle)
+      return QString();
+   ScopedGlobalMemoryLock const memlock(handle);
+   quint32 const* const data = reinterpret_cast<quint32 const*>(memlock.pointer());
+   if (!data)
+      return QString();
+   qint32 const size = GlobalSize(handle);
+   if (!size)
+      return QString();
+   QByteArray array(size, 0);
+   memcpy(array.data(), data, size);
+   return QString::fromUtf16(reinterpret_cast<quint16 const*>(array.data()), (size - 1) / 2); // (size - 1) because we discard the final `0x0000`
+}
