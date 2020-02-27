@@ -305,16 +305,11 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
    QLocale const systemLocale = QLocale::system();
    if (variable == "clipboard")
    {
-      QClipboard const* clipboard = QGuiApplication::clipboard();
-      if (!clipboard)
-         return QString();
-      QMimeData const* mimeData = clipboard->mimeData();
-      if (mimeData->hasHtml())
-      {
-         outIsHtml = true;
-         return mimeData->html();
-      }
-      return clipboard->text();
+      QString const html = ClipboardManager::html();
+      if (html.isEmpty())
+         return ClipboardManager::text();
+      outIsHtml = true;
+      return html;
    }
    
    if (variable == "discordemoji") //secret variable that create text in Discord emoji from the clipboard text
