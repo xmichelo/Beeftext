@@ -27,6 +27,7 @@ public: // member functions
    void restoreClipboard(); ///< Restore the clipboard and delete the current backup
    bool hasBackup() const; ///< Test if the clipboard is empty.
    static QString text(); ///< Return the current text value of the clipboard.
+   static bool setText(QString const& text); ///< Put text into the clipboard.
    static QString html(); ///< Return the current HTML value of the clipboard.
 
 private: // member functions

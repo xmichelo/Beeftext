@@ -200,7 +200,10 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
          // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
-         QApplication::clipboard()->setMimeData(mimeDataFromSnippet(newText, isHtml)); // Ownership of data is transfered to the clipboard
+         if (isHtml)
+            QApplication::clipboard()->setMimeData(mimeDataFromSnippet(newText, isHtml)); // Ownership of data is transfered to the clipboard
+         else
+            ClipboardManager::setText(newText);
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');

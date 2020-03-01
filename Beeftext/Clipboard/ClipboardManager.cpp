@@ -155,6 +155,32 @@ QString ClipboardManager::text()
 
 
 //**********************************************************************************************************************
+/// \param[in] text The text to put in the clipboard.
+/// \return true if and only if the operation was successful.
+//**********************************************************************************************************************
+bool ClipboardManager::setText(QString const& text)
+{
+   EmptyClipboard();
+   ScopedClipboardAccess const sca(nullptr);
+   if (!sca.isOpen())
+      return false;
+   quint16 const* data = text.utf16();
+   quint32 const size = (text.length() + 1) * 2;
+   HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, (text.length() + 1) * 2);
+   if (!handle)
+      return false;
+   ScopedGlobalMemoryLock const memLock(handle);
+   quint8* const pointer = reinterpret_cast<quint8*>(memLock.pointer());
+   if (!pointer)
+      return false;
+   memcpy(pointer, data, size);
+   pointer[size - 1] = 0;
+   pointer[size - 2] = 0; // for safety
+   return SetClipboardData(CF_UNICODETEXT, handle);
+}
+
+
+//**********************************************************************************************************************
 /// \extract a number from an HTML clipboard data description field (which have the form 'fieldName:00000123'
 /// \param[in] clipboardData The HTML format data read from the clipboard
 /// \param[in] fieldName The name of the field.
