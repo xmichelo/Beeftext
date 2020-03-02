@@ -86,30 +86,6 @@ void waitBetweenKeystrokes()
 }
 
 
-//**********************************************************************************************************************
-/// \brief Get the MIME data for a text snippet.
-/// 
-/// \param[in] snippet The snippet's text.
-/// \param[in] isHtml Is the snippet in HTML format.
-/// \return A pointer to heap-allocated MIME data representing the snippet. The caller is responsible for
-/// release the allocated memory.
-//**********************************************************************************************************************
-QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
-{
-   QMimeData* result = new QMimeData;
-   if (isHtml)
-   {
-      // we filter the HTML through a QTextDocumentFragment as is prevent errouneous insertion of new line
-      // at the beginning and end of the snippet
-      result->setHtml(QTextDocumentFragment::fromHtml(snippet).toHtml());
-      result->setText(snippetToPlainText(snippet, isHtml));
-   }
-   else
-      result->setText(snippet);
-   return result;
-}
-
-
 }
 
 
@@ -201,7 +177,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
          if (isHtml)
-            QApplication::clipboard()->setMimeData(mimeDataFromSnippet(newText, isHtml)); // Ownership of data is transfered to the clipboard
+            ClipboardManager::setHtml(newText);
          else
             ClipboardManager::setText(newText);
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys

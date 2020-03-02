@@ -29,6 +29,7 @@ public: // member functions
    static QString text(); ///< Return the current text value of the clipboard.
    static bool setText(QString const& text); ///< Put text into the clipboard.
    static QString html(); ///< Return the current HTML value of the clipboard.
+   static bool setHtml(QString const& html); ///< Set the current HTML value of the clipboard.
 
 private: // member functions
    ClipboardManager() = default; ///< Default constructor.
