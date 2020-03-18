@@ -341,7 +341,7 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
 
    if (variable.startsWith("trim:"))
    {
-      QString const var = evaluateComboVariable(variable, ECaseChange::ToLower, forbiddenSubCombos, 
+      QString const var = evaluateComboVariable(variable, ECaseChange::NoChange, forbiddenSubCombos, 
          knownInputVariables, outIsHtml, outCancelled);
       return trimText(var, outIsHtml);
    }
