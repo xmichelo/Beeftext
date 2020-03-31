@@ -1329,7 +1329,7 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>Beeftext Sicherungsdateien (*.%1);;Alle Dateien (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="266"/>
+        <location filename="../BeeftextUtils.cpp" line="245"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="273"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>

@@ -1347,7 +1347,7 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <translation>Beeftext copia di sicurezza (*.%1);;Tutti i file (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="266"/>
+        <location filename="../BeeftextUtils.cpp" line="245"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="273"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
