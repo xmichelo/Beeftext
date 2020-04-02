@@ -461,6 +461,7 @@
     <None Include="Translations\beeftext_de.ts" />
     <None Include="Translations\beeftext_it.ts" />
     <None Include="Translations\beeftext_nl.ts" />
+    <None Include="Translations\beeftext_pl.ts" />
     <None Include="Translations\beeftext_ru.ts" />
     <QtUic Include="ShortcutDialog.ui">
     </QtUic>
