@@ -11,7 +11,7 @@
     <message>
         <location filename="AboutDialog.ui" line="33"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Icons made by &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; from &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Prawa autorskie (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;To oprogramowanie zostało wydane na warunkach &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Licencji MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext wykorzystuje bibliotekę &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; zgodnie z warunkami &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext wykorzystuje bibliotekę &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; zgodnie z warunkami &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL oraz SSLeay licencji&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Ikony zostały zaprojektowane przez &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; z &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Prawa autorskie (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;To oprogramowanie zostało wydane na warunkach &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Licencji MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext wykorzystuje bibliotekę &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; zgodnie z warunkami &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext wykorzystuje bibliotekę &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; zgodnie z warunkami &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL oraz SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Ikony zostały zaprojektowane przez &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;(www.flaticon.com)&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="AboutDialog.ui" line="128"/>
@@ -427,7 +427,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="Combo/ComboList.cpp" line="672"/>
         <source>Last Used</source>
-        <translation>Ostatnio użyto</translation>
+        <translation>Ostatnie użycie</translation>
     </message>
 </context>
 <context>
@@ -896,7 +896,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="MainWindow.ui" line="91"/>
         <source>&amp;Beeftext Wiki</source>
-        <translation>&amp;Beeftext Wiki</translation>
+        <translation>&amp;Odwiedź Beeftext Wiki</translation>
     </message>
     <message>
         <location filename="MainWindow.ui" line="94"/>
@@ -967,7 +967,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="MainWindow.ui" line="156"/>
         <source>&amp;Backup</source>
-        <translation>&amp;Kopia zapasowa</translation>
+        <translation>&amp;Wykonaj kopię zapasową</translation>
     </message>
     <message>
         <location filename="MainWindow.ui" line="159"/>
@@ -977,7 +977,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="MainWindow.ui" line="164"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Przywróć</translation>
+        <translation>&amp;Przywróć kopię zapasową</translation>
     </message>
     <message>
         <location filename="MainWindow.ui" line="167"/>
@@ -987,7 +987,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="MainWindow.cpp" line="126"/>
         <source> - PAUSED</source>
-        <translation>- PAUZA</translation>
+        <translation> - PAUZA</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="129"/>
@@ -1008,7 +1008,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="MainWindow.cpp" line="145"/>
         <source>&amp;Resume Beeftext</source>
-        <translation>&amp;Powróć do Beeftext</translation>
+        <translation>&amp;Przywróć Beeftext</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="155"/>
@@ -1064,7 +1064,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="PreferencesDialog.ui" line="38"/>
         <source>Automatically check for &amp;updates</source>
-        <translation>Automatycznie wyszukuj &amp;aktualizacji</translation>
+        <translation>Automatyczne wyszukiwanie &amp;aktualizacji</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="45"/>
@@ -1079,12 +1079,12 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="PreferencesDialog.ui" line="68"/>
         <source>&amp;Play sound on combo</source>
-        <translation>&amp;Odtwórz dźwięk podczas wstawienia wyrażenia</translation>
+        <translation>&amp;Odtwórz dźwięk podczas wstawiania wyrażenia</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="75"/>
         <source>Use custom sound</source>
-        <translation>Używaj spersonalizowanech dźwięków</translation>
+        <translation>Używaj spersonalizowanego dźwięku</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="110"/>
@@ -1127,12 +1127,12 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="PreferencesDialog.ui" line="224"/>
         <source>Automatic</source>
-        <translation>Automatycznie</translation>
+        <translation>Automatycznie wstawiaj wyrażenia</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="231"/>
         <source>Manual, using the shortcut</source>
-        <translation>Podręcznik, używanie skrótów klawiszowych</translation>
+        <translation>Ręcznie, za pomocą skrótu klawiczowego</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="285"/>
@@ -1149,12 +1149,12 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="PreferencesDialog.ui" line="308"/>
         <source>Combo picker</source>
-        <translation>Zbieracz wyrażeń</translation>
+        <translation>Lista wyrażeń</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="314"/>
         <source>Enable combo picker</source>
-        <translation>Aktywuj zbieracz wyrażeń</translation>
+        <translation>Aktywuj okienko z listą wyrażeń</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="323"/>
@@ -1209,7 +1209,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="PreferencesDialog.ui" line="583"/>
         <source>User-provided translations</source>
-        <translation>Tłumaczenia dostarczone przez użytkownika</translation>
+        <translation>Tłumaczenia dostarczone przez użytkowników</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="590"/>
@@ -1249,7 +1249,7 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="PreferencesDialog.ui" line="725"/>
         <source>D&amp;efault</source>
-        <translation>D&amp;omyślne</translation>
+        <translation>Ustawienia D&amp;omyślne</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="735"/>
@@ -1297,12 +1297,12 @@ Czy mimo to chcesz kontynuować?</translation>
     <message>
         <location filename="PreferencesDialog.ui" line="862"/>
         <source>&amp;Export</source>
-        <translation>&amp;Export</translation>
+        <translation>&amp;Eksportuj</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="875"/>
         <source>&amp;Import</source>
-        <translation>&amp;Import</translation>
+        <translation>&amp;Importuj</translation>
     </message>
     <message>
         <location filename="PreferencesDialog.ui" line="901"/>
