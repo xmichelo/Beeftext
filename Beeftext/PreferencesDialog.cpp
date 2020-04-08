@@ -255,7 +255,7 @@ void PreferencesDialog::onCheckUseCustomSound(bool checked) const
 void PreferencesDialog::onChangeCustomSound() const
 {
    QString const oldPath = prefs_.customSoundPath();
-   QString const path = QFileDialog::getOpenFileName(nullptr, tr("Select custom sound file"),   
+   QString const path = QFileDialog::getOpenFileName(nullptr, QObject::tr("Select custom sound file"),   
       oldPath.isEmpty() ? QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) : oldPath,
       tr("WAV files (*.wav);;All files (*.*)"));
    if (path.isEmpty())
