@@ -23,12 +23,6 @@ namespace {
 
 QString const kHtmlFormatName = "HTML Format"; ///< The name of the format used for HTML clipboard content. This a a Microsoft convention, do no change it
 QString const kRegExpHtmlFormatField = R"(^\s*%1:(-?[\d]+)\s*$)"; ///The regular expression for the 
-QString const kHtmlClipboardDescription = R"(Version:0.9
-StartHTML:%1
-EndHTML:%2
-StartFragment:%3
-EndFragment:%4
-)"; ///< The description of the HTML Clipboard format (see https://docs.microsoft.com/en-us/windows/win32/dataxchg/html-clipboard-format )
 } // namespace 
 
 
@@ -69,7 +63,7 @@ void ClipboardManager::backupClipboard()
       if (!handle)
          continue;
       ScopedGlobalMemoryLock memLock(handle);
-      quint32 const* const data = reinterpret_cast<quint32 const*>(memLock.pointer());
+      quint32 const* const data = static_cast<quint32 const*>(memLock.pointer());
       if (!data)
          continue;
 
@@ -109,7 +103,7 @@ void ClipboardManager::restoreClipboard()
       try
       {
          ScopedGlobalMemoryLock memLock(handle);
-         quint32* const data = reinterpret_cast<quint32*>(memLock.pointer());
+         quint32* const data = static_cast<quint32*>(memLock.pointer());
          if (!data)
             throw Exception();
          memcpy(data, cbData->data.data(), size);
@@ -148,7 +142,7 @@ QString ClipboardManager::text()
    if (!handle)
       return QString();
    ScopedGlobalMemoryLock const memlock(handle);
-   quint32 const* const data = reinterpret_cast<quint32 const*>(memlock.pointer());
+   quint32 const* const data = static_cast<quint32 const*>(memlock.pointer());
    if (!data)
       return QString();
    qint32 const size = GlobalSize(handle);
@@ -177,7 +171,7 @@ HANDLE putUtf16InGlobalMemory(QString const& text)
    if (!handle)
       return nullptr;
    ScopedGlobalMemoryLock const memLock(handle);
-   quint8* const pointer = reinterpret_cast<quint8*>(memLock.pointer());
+   quint8* const pointer = static_cast<quint8*>(memLock.pointer());
    if (!pointer)
    {
       GlobalFree(handle);
@@ -207,7 +201,7 @@ HANDLE putUtf8InGlobalMemory(QString const& text)
    if (!handle)
       return nullptr;
    ScopedGlobalMemoryLock const memLock(handle);
-   quint8* const pointer = reinterpret_cast<quint8*>(memLock.pointer());
+   quint8* const pointer = static_cast<quint8*>(memLock.pointer());
    if (!pointer)
    {
       GlobalFree(handle);
@@ -301,7 +295,7 @@ QString ClipboardManager::html()
    if (!handle)
       return QString();
    ScopedGlobalMemoryLock const memlock(handle);
-   quint32 const* const data = reinterpret_cast<quint32 const*>(memlock.pointer());
+   quint32 const* const data = static_cast<quint32 const*>(memlock.pointer());
    if (!data)
       return QString();
    qint32 const size = GlobalSize(handle);
@@ -315,52 +309,26 @@ QString ClipboardManager::html()
 
 
 //**********************************************************************************************************************
-/// \brief Create a 0-padded 10 characters long string containing the given number.
-///
-/// \param[in] number The number
-/// \return a zero-padded ten characters long string containing the number
+/// \brief Get the MIME data for a text snippet.
+/// 
+/// \param[in] snippet The snippet's text.
+/// \param[in] isHtml Is the snippet in HTML format.
+/// \return A pointer to heap-allocated MIME data representing the snippet. The caller is responsible for
+/// release the allocated memory.
 //**********************************************************************************************************************
-QString numberTo10CharsString(qint32 number)
+QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
 {
-   if (number < 0)
-      return "-000000001";
-   return QString("%1").arg(number, 10, 10, QChar('0'));
-}
-
-
-//**********************************************************************************************************************
-/// \brief Generate the HTML format for the clipboard.
-/// For details, see https://docs.microsoft.com/en-us/windows/win32/dataxchg/html-clipboard-format
-///
-/// \param[in] html The HTML content.
-/// \return The HTML format for the clipboard.
-//**********************************************************************************************************************
-QString generateHtmlFormatContent(QString const& html)
-{
-   qint32 const htmlClipboardDescriptionSize = kHtmlClipboardDescription.size() + 4 * 8; /// The size of the clipboard description, knowing that the 6 '%n' arguments will be replace by 10 digits (e.g. 0000000123)
-   QString result = kHtmlClipboardDescription + html;
-   result = result.arg(numberTo10CharsString(htmlClipboardDescriptionSize))
-      .arg(numberTo10CharsString(htmlClipboardDescriptionSize + html.size() + 1)); // positions of StartHTML and EndHTML
-   QRegularExpression const regExp(R"(<body.*>)", QRegularExpression::CaseInsensitiveOption | 
-      QRegularExpression::InvertedGreedinessOption);
-   QRegularExpressionMatch const match = regExp.match(html);
-   if (!match.hasMatch())
-      return QString();
-   qDebug() << QString("Match: %1").arg(match.captured(0));
-   qint32 const indexStartFrag = htmlClipboardDescriptionSize + match.capturedEnd(0);
-   qint32 const indexEndFrag = html.indexOf("</body", 0, Qt::CaseInsensitive) + htmlClipboardDescriptionSize;
-
-   result = result.arg(numberTo10CharsString(indexStartFrag)).arg(numberTo10CharsString(indexEndFrag));
-   qDebug() << "Full Message:" + result;
-   QString temp = result.left(htmlClipboardDescriptionSize + html.size());
-   temp = temp.right(temp.size() - htmlClipboardDescriptionSize);
-   qDebug() << "HTML:" + temp;
-
-   temp = result.left(indexEndFrag);
-   temp = temp.right(indexStartFrag);
-   qDebug() << "Frag:" + temp;
+   QMimeData* result = new QMimeData;
+   if (isHtml)
+   {
+      // we filter the HTML through a QTextDocumentFragment as is prevent errouneous insertion of new line
+      // at the beginning and end of the snippet
+      result->setHtml(QTextDocumentFragment::fromHtml(snippet).toHtml());
+      result->setText(snippetToPlainText(snippet, isHtml));
+   }
+   else
+      result->setText(snippet);
    return result;
-
 }
 
 
@@ -370,39 +338,7 @@ QString generateHtmlFormatContent(QString const& html)
 //**********************************************************************************************************************
 bool ClipboardManager::setHtml(QString const& html)
 {
-   QString const htmlContent = generateHtmlFormatContent(html);
-   QString const textContent = snippetToPlainText(html, true);
-   HANDLE htmlHandle = nullptr, textHandle = nullptr;
-
-   try
-   {
-      htmlHandle = putUtf8InGlobalMemory(htmlContent);
-      if (!htmlHandle)
-         throw Exception();
-      textHandle = putUtf16InGlobalMemory(textContent);
-      if (!textHandle)
-         throw Exception();
-      ScopedClipboardAccess sca(nullptr);
-      EmptyClipboard();
-      if (!SetClipboardData(htmlClipboardFormat(), htmlHandle))
-         throw Exception();
-      htmlHandle = nullptr; // Clipboard now owns the global memory storing the HTML content
-      if (!SetClipboardData(CF_UNICODETEXT, textHandle))
-         throw Exception();
-      return true;
-   }
-   catch (Exception const&)
-   {
-      if (htmlHandle)
-      {
-         ScopedGlobalMemoryLock htmlLock(htmlHandle);
-         GlobalFree(htmlHandle);
-      }
-      if (textHandle)
-      {
-         ScopedGlobalMemoryLock textLock(htmlHandle);
-         GlobalFree(textHandle);
-      }
-      return false;
-   }
+   // Later, this function should use the lower level clipboard API for HTML, which is not really easy at the moment.
+   QApplication::clipboard()->setMimeData(mimeDataFromSnippet(html, true)); // Ownership of data is transfered to the clipboard
+   return true;
 }
