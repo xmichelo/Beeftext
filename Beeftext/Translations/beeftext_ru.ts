@@ -220,6 +220,78 @@ Do you want to continue anymay?</source>
         <source>Align left</source>
         <translation>По левому краю</translation>
     </message>
+    <message>
+        <source>&amp;Insert Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clip&amp;board Content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Date/Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>D&amp;ate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dat&amp;e &amp;&amp; Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Custom Date &amp;&amp; Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C&amp;ursor Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Co&amp;mbo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Combo (&amp;uppercase)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Combo (&amp;lowercase)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Combo (&amp;trimmed)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>En&amp;vironment Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User &amp;Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;About Variables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hyperlink URL</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ComboImportDialog</name>
@@ -1027,6 +1099,90 @@ Do you want to continue anymay?</source>
         <source>Automatically check for &amp;updates</source>
         <translation>&amp;Автоматическая проверка обновлений</translation>
     </message>
+    <message>
+        <source>Delete Backup Files?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to delete all the backup files?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WAV files (*.wav);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Ошибка</translation>
+    </message>
+    <message>
+        <source>The location of the combo list folder could not be changed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset the combo list folder?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom backup location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset the preferences to their default values?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Warnings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset all warnings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 v%2.%3 is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A new version is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The software is up to date.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update check failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error occurred while exporting the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error occurred while importing the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1143,6 +1299,10 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <source>Move To</source>
         <comment>Move entry in the Combo context menu</comment>
         <translation type="unfinished">Переместить в</translation>
+    </message>
+    <message>
+        <source>Select custom sound file</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

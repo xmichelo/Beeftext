@@ -336,6 +336,97 @@ Voulez-vous tout de même continuer?</translation>
         <source>Hyperlink</source>
         <translation>Hyperlien</translation>
     </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="92"/>
+        <source>&amp;Insert Variable</source>
+        <translation>&amp;Insérer une Variable</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="94"/>
+        <source>Clip&amp;board Content</source>
+        <translation>&amp;Contenu du Presse-Papier</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="98"/>
+        <source>&amp;Date/Time</source>
+        <translation>&amp;Date/Heure</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="99"/>
+        <source>D&amp;ate</source>
+        <translation>D&amp;ate</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="102"/>
+        <source>&amp;Time</source>
+        <translation>&amp;Heure</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="105"/>
+        <source>Dat&amp;e &amp;&amp; Time</source>
+        <translation>Dat&amp;e &amp;&amp; Heure</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="108"/>
+        <source>&amp;Custom Date &amp;&amp; Time</source>
+        <translation>Date &amp;&amp; Heure &amp;Personnalisée</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="113"/>
+        <source>C&amp;ursor Position</source>
+        <translation>Position du C&amp;urseur</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="117"/>
+        <location filename="../Combo/ComboEditor.cpp" line="118"/>
+        <source>Co&amp;mbo</source>
+        <translation>Co&amp;mbo</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="121"/>
+        <source>Combo (&amp;uppercase)</source>
+        <translation>Combo (&amp;majuscule)</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="124"/>
+        <source>Combo (&amp;lowercase)</source>
+        <translation>Combo (m&amp;inisucule)</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="128"/>
+        <source>Combo (&amp;trimmed)</source>
+        <translation>Combo (&amp;sans espaces aux extremités)</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="133"/>
+        <source>En&amp;vironment Variable</source>
+        <translation>&amp;Variable d&apos;Environnement</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="136"/>
+        <source>User &amp;Input</source>
+        <translation>Saisie Ut&amp;ilisateur</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="141"/>
+        <source>&amp;About Variables</source>
+        <translation>&amp;À Propos des Variables</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="325"/>
+        <source>Text color</source>
+        <translation>Couleur du Texte</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="460"/>
+        <source>Enter URL</source>
+        <translation>Saisir l&apos;URL</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="460"/>
+        <source>Hyperlink URL</source>
+        <translation>URL de l&apos;Hyperlien</translation>
+    </message>
 </context>
 <context>
     <name>ComboImportDialog</name>
@@ -1380,6 +1471,113 @@ Voulez-vous tout de même continuer?</translation>
         <source>&amp;Close</source>
         <translation>&amp;Fermer</translation>
     </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="149"/>
+        <source>Delete Backup Files?</source>
+        <translation>Effacer les Sauvegardes?</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="149"/>
+        <source>Do you want to delete all the backup files?</source>
+        <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="260"/>
+        <source>WAV files (*.wav);;All files (*.*)</source>
+        <translation>Fichiers WAV (*.wav);;Tous les fichiers (*.*)</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="464"/>
+        <source>Select folder</source>
+        <translation>Choisissez le dosser</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="469"/>
+        <location filename="../PreferencesDialog.cpp" line="695"/>
+        <location filename="../PreferencesDialog.cpp" line="710"/>
+        <source>Error</source>
+        <translation>Erreur</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="469"/>
+        <source>The location of the combo list folder could not be changed.</source>
+        <translation>Impossible de changer l&apos;emplacement du fichier de combos.</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="481"/>
+        <source>Reset Folder</source>
+        <translation>Réinitialiser le Dossier</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="481"/>
+        <source>Reset the combo list folder?</source>
+        <translation>Êtes-vous certain de vouloir réinitialiser l&apos;emplacement du fichier de combos?</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="533"/>
+        <source>Custom backup location</source>
+        <translation>Emplacement des sauvegardes</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="557"/>
+        <source>Reset Preferences</source>
+        <translation>Réinitialiser les Préferences</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="557"/>
+        <source>Are you sure you want to reset the preferences to their default values?</source>
+        <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défaut?</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="573"/>
+        <source>Reset Warnings</source>
+        <translation>Réinitialiser les Avertissements</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="573"/>
+        <source>Are you sure you want to reset all warnings?</source>
+        <translation>Êtes-vous sûr de vouloir réinitialiser les avertissements à leurs valeurs par défaut?</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="593"/>
+        <source>%1 v%2.%3 is available.</source>
+        <translation>%1 v%2.%3 est disponible.</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="595"/>
+        <source>A new version is available.</source>
+        <translation>Une nouvelle version est disponible.</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="604"/>
+        <source>The software is up to date.</source>
+        <translation>Le logiciel est à jour.</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="631"/>
+        <source>Update check failed.</source>
+        <translation>Impossible de vérifier les mises à jour.</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="689"/>
+        <source>Export Preferences</source>
+        <translation>Exporter les Préférences</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="695"/>
+        <source>An error occurred while exporting the preferences.</source>
+        <translation>Une erreur est survenue lors de l&apos;export des préférences.</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="704"/>
+        <source>Import Preferences</source>
+        <translation>Import des préférences</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="710"/>
+        <source>An error occurred while importing the preferences.</source>
+        <translation>Une erreur est survenue lors de l&apos;import des préférences.</translation>
+    </message>
 </context>
 <context>
     <name>PreferencesManager</name>
@@ -1534,6 +1732,11 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>The sensitive application file could not be saved.</source>
         <translation>Le fichier d&apos;applications sensibles n&apos;a pas pu être sauvé.</translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="258"/>
+        <source>Select custom sound file</source>
+        <translation>Son personnalisé</translation>
     </message>
 </context>
 <context>
