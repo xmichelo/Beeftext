@@ -236,15 +236,20 @@ void I18nManager::loadTranslation()
       QCoreApplication* app = QCoreApplication::instance();
       qtTranslator_ = std::make_unique<QTranslator>(app);
       QDir const transDir = this->translationFolderForLocale(locale);
-      QString const qtTransFile = transDir.absoluteFilePath(QString("qtbase_%1.qm").arg(langStr));
-      if (QFileInfo(qtTransFile).exists()) // qtbase translation file is optional
+      QString qtTransFile = transDir.absoluteFilePath(QString("qtbase_%1.qm").arg(langStr));
+      if (!QFileInfo(qtTransFile).exists()) // qtbase translation file is optional
       {
-         if (!qtTranslator_->load(qtTransFile))
-         {
-            qtTranslator_.reset();
-            throw xmilib::Exception(kStrTranslationFileMissing.arg(qtTransFile));
-         }
+         qtTransFile = qtTransFile = transDir.absoluteFilePath(QString("qt_%1.qm").arg(langStr));
+         if (!QFileInfo(qtTransFile).exists())
+            qtTransFile = QString();
       }
+
+      if ((!qtTransFile.isEmpty()) && (!qtTranslator_->load(qtTransFile)))
+      {
+         qtTranslator_.reset();
+         throw xmilib::Exception(kStrTranslationFileMissing.arg(qtTransFile));
+      }
+         
 
       // load and install application translations
       appTranslator_ = std::make_unique<QTranslator>(app);

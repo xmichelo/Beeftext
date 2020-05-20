@@ -44,6 +44,11 @@
     <Filter Include="Clipboard">
       <UniqueIdentifier>{f4e85ad1-7009-4c18-96da-5794e584c2c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -72,7 +77,6 @@
     <ClCompile Include="Update\UpdateDialog.cpp">
       <Filter>Update</Filter>
     </ClCompile>
-    <ClCompile Include="I18nManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ShortcutDialog.cpp" />
     <ClCompile Include="Shortcut.cpp" />
@@ -148,6 +152,7 @@
     <ClCompile Include="Combo\SnippetEdit.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
+    <ClCompile Include="I18nManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -321,6 +326,9 @@
       <Filter>Translation Files</Filter>
     </None>
     <None Include="Translations\beeftext_pl.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="Translations\beeftext_pt.ts">
       <Filter>Translation Files</Filter>
     </None>
   </ItemGroup>
