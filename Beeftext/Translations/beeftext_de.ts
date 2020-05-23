@@ -1529,7 +1529,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../BeeftextUtils.cpp" line="245"/>
         <location filename="../EmojiManager.cpp" line="166"/>
-        <location filename="../I18nManager.cpp" line="273"/>
+        <location filename="../I18nManager.cpp" line="278"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>Error</source>
         <translation>Fehler</translation>
@@ -1567,7 +1567,7 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation> - Portable Edition</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="273"/>
+        <location filename="../I18nManager.cpp" line="278"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Kann die Übersetzung nicht laden:

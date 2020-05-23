@@ -1547,7 +1547,7 @@ To be precise I should know if the name it refers to is masculine or feminine, s
     <message>
         <location filename="../BeeftextUtils.cpp" line="245"/>
         <location filename="../EmojiManager.cpp" line="166"/>
-        <location filename="../I18nManager.cpp" line="273"/>
+        <location filename="../I18nManager.cpp" line="278"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>Error</source>
         <translation>Errore</translation>
@@ -1585,7 +1585,7 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <translation> - Versione portabile</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="273"/>
+        <location filename="../I18nManager.cpp" line="278"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Impossibile caricare la traduzione: 

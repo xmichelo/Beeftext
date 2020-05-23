@@ -1609,13 +1609,13 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     <message>
         <location filename="../BeeftextUtils.cpp" line="245"/>
         <location filename="../EmojiManager.cpp" line="166"/>
-        <location filename="../I18nManager.cpp" line="273"/>
+        <location filename="../I18nManager.cpp" line="278"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="273"/>
+        <location filename="../I18nManager.cpp" line="278"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Impossible de charger le fichier de traduction: %1</translation>
