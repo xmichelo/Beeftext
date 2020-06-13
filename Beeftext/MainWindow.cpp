@@ -42,7 +42,9 @@ MainWindow::MainWindow()
    connect(ui_.actionGettingStarted, &QAction::triggered, []()
    { QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl)); });
    connect(ui_.actionShowReleaseNotes, &QAction::triggered, []()
-   { QDesktopServices::openUrl(QUrl(constants::kBeeftextReleasesPagesUrl)); });
+      { QDesktopServices::openUrl(QUrl(constants::kBeeftextReleasesPagesUrl)); });
+   connect(ui_.actionReportBug, &QAction::triggered, []()
+      { QDesktopServices::openUrl(QUrl(constants::kBeeftextIssueTrackerUrl)); });
    connect(&InputManager::instance(), &InputManager::comboMenuShortcutTriggered, this, &MainWindow::onShowComboMenu);
    connect(&prefs, &PreferencesManager::writeDebugLogFileChanged, this, &MainWindow::onWriteDebugLogFileChanged);
 }

@@ -56,6 +56,7 @@
     <addaction name="actionGettingStarted"/>
     <addaction name="actionVisitBeeftextWiki"/>
     <addaction name="actionShowReleaseNotes"/>
+    <addaction name="actionReportBug"/>
     <addaction name="separator"/>
     <addaction name="actionShowAboutDialog"/>
    </widget>
@@ -165,6 +166,14 @@
    </property>
    <property name="toolTip">
     <string>Restore the combo list from a backup.</string>
+   </property>
+  </action>
+  <action name="actionReportBug">
+   <property name="text">
+    <string>Report &amp;Bug</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+F1</string>
    </property>
   </action>
  </widget>
