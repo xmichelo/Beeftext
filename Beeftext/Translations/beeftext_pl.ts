@@ -965,177 +965,187 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation>&amp;Pomoc</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="64"/>
+        <location filename="../MainWindow.ui" line="65"/>
         <source>&amp;Advanced</source>
         <translation>&amp;Zaawansowane</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="77"/>
+        <location filename="../MainWindow.ui" line="78"/>
         <source>E&amp;xit Beeftext</source>
         <translation>Z&amp;akończ Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="83"/>
+        <location filename="../MainWindow.ui" line="84"/>
         <source>Exit Beeftext</source>
         <translation>Zakoń Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="86"/>
+        <location filename="../MainWindow.ui" line="87"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="91"/>
+        <location filename="../MainWindow.ui" line="92"/>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Odwiedź Beeftext Wiki</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="94"/>
+        <location filename="../MainWindow.ui" line="95"/>
         <source>Shift+F1</source>
         <translation>Shift+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="99"/>
+        <location filename="../MainWindow.ui" line="100"/>
         <source>&amp;About Beeftext</source>
         <translation>&amp;O programie Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="102"/>
+        <location filename="../MainWindow.ui" line="103"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="118"/>
-        <location filename="../MainWindow.cpp" line="150"/>
+        <location filename="../MainWindow.ui" line="119"/>
+        <location filename="../MainWindow.cpp" line="152"/>
         <source>Preferences</source>
         <translation>Preferencje</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="121"/>
+        <location filename="../MainWindow.ui" line="122"/>
         <source>Ctrl+,</source>
         <translation>Ctrl+,</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="126"/>
+        <location filename="../MainWindow.ui" line="127"/>
         <source>Open &amp;Log File</source>
         <translation>Otwórz &amp;Dziennik Zdarzeń</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="129"/>
+        <location filename="../MainWindow.ui" line="130"/>
         <source>Open the log file</source>
         <translation>Otwórz dziennik zdarzeń</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="132"/>
+        <location filename="../MainWindow.ui" line="133"/>
         <source>Ctrl+Shift+L</source>
         <translation>Ctrl+Shift+L</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="137"/>
+        <location filename="../MainWindow.ui" line="138"/>
         <source>&amp;Getting Started</source>
         <translation>&amp;Zacznij tutaj</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="140"/>
+        <location filename="../MainWindow.ui" line="141"/>
         <source>Getting Started</source>
         <translation>Zacznij tutaj</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="143"/>
+        <location filename="../MainWindow.ui" line="144"/>
         <source>Ctrl+F1</source>
         <translation>Ctrl+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="148"/>
+        <location filename="../MainWindow.ui" line="149"/>
         <source>&amp;Release Notes</source>
         <translation>Informacje o wydaniu</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="151"/>
+        <location filename="../MainWindow.ui" line="152"/>
         <source>Ctrl+Shift+F1</source>
         <translation>Ctrl+Shift+F1</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="156"/>
+        <location filename="../MainWindow.ui" line="157"/>
         <source>&amp;Backup</source>
         <translation>&amp;Wykonaj kopię zapasową</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="159"/>
+        <location filename="../MainWindow.ui" line="160"/>
         <source>Backup the combo list.</source>
         <translation>Utwórz kopię zapasową listy wyrażeń.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="164"/>
+        <location filename="../MainWindow.ui" line="165"/>
         <source>&amp;Restore</source>
         <translation>&amp;Przywróć kopię zapasową</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="167"/>
+        <location filename="../MainWindow.ui" line="168"/>
         <source>Restore the combo list from a backup.</source>
         <translation>Przywróć listę wyrażeń z kopii zapasowej.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="126"/>
+        <location filename="../MainWindow.ui" line="173"/>
+        <source>Report &amp;Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="176"/>
+        <source>Ctrl+Alt+F1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="128"/>
         <source> - PAUSED</source>
         <translation> - PAUZA</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="129"/>
+        <location filename="../MainWindow.cpp" line="131"/>
         <source> - Portable Edition</source>
         <translation> - Wersja Przenośna</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="141"/>
-        <location filename="../MainWindow.cpp" line="277"/>
+        <location filename="../MainWindow.cpp" line="143"/>
+        <location filename="../MainWindow.cpp" line="279"/>
         <source>Open Beeftext</source>
         <translation>Otwórz Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="145"/>
+        <location filename="../MainWindow.cpp" line="147"/>
         <source>&amp;Pause Beeftext</source>
         <translation>&amp;Zatrzymaj Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="145"/>
+        <location filename="../MainWindow.cpp" line="147"/>
         <source>&amp;Resume Beeftext</source>
         <translation>&amp;Przywróć Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="155"/>
+        <location filename="../MainWindow.cpp" line="157"/>
         <source>Open Log File</source>
         <translation>Otwórz Dziennik Zdarzeń</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="158"/>
+        <location filename="../MainWindow.cpp" line="160"/>
         <source>Show Stylesheet Editor</source>
         <translation>Pokaż Edytor Arkusza Stylów</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="225"/>
-        <location filename="../MainWindow.cpp" line="226"/>
-        <location filename="../MainWindow.cpp" line="342"/>
+        <location filename="../MainWindow.cpp" line="227"/>
+        <location filename="../MainWindow.cpp" line="228"/>
+        <location filename="../MainWindow.cpp" line="344"/>
         <source>Restore</source>
         <translation>Przywróć</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="225"/>
+        <location filename="../MainWindow.cpp" line="227"/>
         <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
         <translation>Jeżeli przyrócisz kopię zapasową to wsystkie aktualne wyrażenia zostaną usunięte i zastąpione tymi z kopii zapaswej.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="226"/>
+        <location filename="../MainWindow.cpp" line="228"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="233"/>
-        <location filename="../MainWindow.cpp" line="330"/>
+        <location filename="../MainWindow.cpp" line="235"/>
+        <location filename="../MainWindow.cpp" line="332"/>
         <source>Error</source>
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="323"/>
+        <location filename="../MainWindow.cpp" line="325"/>
         <source>Backup</source>
         <translation>Kopia zapasowa</translation>
     </message>
@@ -1516,17 +1526,17 @@ Czy mimo to chcesz kontynuować?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../BeeftextConstants.cpp" line="25"/>
+        <location filename="../BeeftextConstants.cpp" line="26"/>
         <source>JSON files (*.json);;All files (*.*)</source>
         <translation>Pliki typu JSON (*.json);;Wszystkie pliki (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextConstants.cpp" line="26"/>
+        <location filename="../BeeftextConstants.cpp" line="27"/>
         <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
         <translation>Pliki typu JSON i CSV (*.json *.csv);;Pliki typu JSON (*.json);; Pliki typu CSV (*.csv);;Wszystkie pliki (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextConstants.cpp" line="29"/>
+        <location filename="../BeeftextConstants.cpp" line="30"/>
         <source>Beeftext backup files (*.%1);;All files (*.*)</source>
         <translation>Pliki kopii zapasowej Beeftext (*.%1);;Wszystkie pliki (*.*)</translation>
     </message>

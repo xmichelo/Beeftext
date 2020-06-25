@@ -892,6 +892,14 @@ Do you want to continue anymay?</source>
         <source>&amp;Release Notes</source>
         <translation>&amp;Примечания к выпуску</translation>
     </message>
+    <message>
+        <source>Report &amp;Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Alt+F1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
