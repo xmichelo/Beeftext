@@ -161,6 +161,7 @@ file "$%QTDIR%\bin\Qt5Widgets.dll"
 file "$%QTDIR%\bin\Qt5Multimedia.dll"
 file "$%QTDIR%\bin\Qt5Network.dll"
 file "${VC_DLL_DIR}\msvcp140.dll"
+file "${VC_DLL_DIR}\msvcp140_1.dll"
 file "${VC_DLL_DIR}\vcruntime140.dll"
 file "${VC_DLL_DIR}\msvcr100.dll"
 setOutPath $INSTDIR\platforms
