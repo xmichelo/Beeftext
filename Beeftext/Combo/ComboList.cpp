@@ -16,6 +16,7 @@
 #include <XMiLib/Exception.h>
 
 
+
 using namespace xmilib;
 
 
@@ -599,8 +600,9 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       return QVariant();
 
    SpCombo const combo = combos_[row];
-   Qt::DateFormat const dtShortFormat = Qt::SystemLocaleShortDate;
-   Qt::DateFormat const dtLongFormat = Qt::SystemLocaleLongDate;
+   QLocale const locale = QLocale::system();
+   QString const dtShortFormat = locale.dateTimeFormat(QLocale::ShortFormat);
+   QString const dtLongFormat = locale.dateTimeFormat(QLocale::LongFormat);
 
    switch (role)
    {

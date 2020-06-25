@@ -66,8 +66,7 @@ void UpdateDialog::startDownload()
    request.setMaximumRedirectsAllowed(10);
    reply_ = nam_.get(request);
    connect(reply_, &QNetworkReply::finished, this, &UpdateDialog::onDownloadFinished);
-   connect(reply_, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), this,
-      &UpdateDialog::onDownloadError);
+   connect(reply_, &QNetworkReply::errorOccurred, this, &UpdateDialog::onDownloadError);
    connect(reply_, &QNetworkReply::downloadProgress, this, &UpdateDialog::onDownloadProgress);
    connect(reply_, &QNetworkReply::readyRead, this, &UpdateDialog::onDownloadDataAvailable);
    ui_.progressBar->setEnabled(true);

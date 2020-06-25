@@ -74,14 +74,13 @@ QByteArray UpdateCheckWorker::downloadLatestVersionInformation() const
    QNetworkReply* reply = nam.get(request);
    QString errorMessage;
    connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-   connect(reply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error),
-      [&](QNetworkReply::NetworkError code) {
+   connect(reply, &QNetworkReply::errorOccurred, [&](QNetworkReply::NetworkError code) {
       errorMessage = QString("Error %1: %2").arg(code).arg(reply->errorString()); });
    loop.exec();
    if (!errorMessage.isEmpty())
       throw xmilib::Exception(QString("Could not retrieve version information file from the Beeftext website: %1")
          .arg(errorMessage));
-   QByteArray const result = reply->readAll();
+   QByteArray result = reply->readAll();
    reply->deleteLater();
    return result;
 }

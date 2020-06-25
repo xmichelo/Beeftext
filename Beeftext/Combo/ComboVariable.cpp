@@ -180,7 +180,7 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
    QMap<QString, QString>& knownInputVariables, bool& outIsHtml, bool& outCancelled)
 {
    outIsHtml = false;
-   QString const fallbackResult = QString("#{%1}").arg(variable);
+   QString fallbackResult = QString("#{%1}").arg(variable);
    qint32 const varNameLength = variable.indexOf(':');
    if (varNameLength < 0)
       return QString();
@@ -193,7 +193,7 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
 
    if (combos.end() == it)
       return fallbackResult;
-   QString const str = (*it)->evaluatedSnippet(outCancelled, forbiddenSubCombos << comboName, knownInputVariables, 
+   QString str = (*it)->evaluatedSnippet(outCancelled, forbiddenSubCombos << comboName, knownInputVariables, 
       nullptr); // forbiddenSubcombos is intended at avoiding endless recursion
    outIsHtml = (*it)->useHtml();
    switch (caseChange)
@@ -305,7 +305,7 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
    QLocale const systemLocale = QLocale::system();
    if (variable == "clipboard")
    {
-      QString const html = ClipboardManager::html();
+      QString html = ClipboardManager::html();
       if (html.isEmpty())
          return ClipboardManager::text();
       outIsHtml = true;
