@@ -458,6 +458,7 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\style.qss" />
     <None Include="Translations\beeftext_de.ts" />
     <None Include="Translations\beeftext_es.ts" />
     <None Include="Translations\beeftext_it.ts" />

@@ -334,6 +334,9 @@
     <None Include="Translations\beeftext_es.ts">
       <Filter>Translation Files</Filter>
     </None>
+    <None Include="Resources\style.qss">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\BeeftextIcon.ico">

@@ -1110,8 +1110,20 @@ void PreferencesManager::cacheAppEnableDisableShortcut()
 //**********************************************************************************************************************
 void PreferencesManager::applyCustomThemePreference() const
 {
-   dynamic_cast<QApplication *>(QCoreApplication::instance())->setStyleSheet(this->useCustomTheme()
-      ? constants::kStyleSheet : QString());
+   if (!this->useCustomTheme())
+   {
+      qApp->setStyleSheet(QString());
+      return;
+   }
+   QString const resourcePath;
+   QFile f(":/MainWindow/Resources/style.qss");
+   if (!f.open(QIODevice::ReadOnly))
+   {
+      globals::debugLog().addInfo(QString("Could not load stylesheet from resource '%1'").arg(resourcePath));
+      qApp->setStyleSheet(QString());
+      return;
+   }
+   qApp->setStyleSheet(QString::fromLocal8Bit(f.readAll()));
 }
 
 

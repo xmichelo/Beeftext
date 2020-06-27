@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/MainWindow">
+    <file>Resources/style.qss</file>
     <file>Resources/buttonSubscript.png</file>
     <file>Resources/buttonSuperscript.png</file>
     <file>Resources/buttonBold.png</file>
