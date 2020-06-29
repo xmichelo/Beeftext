@@ -571,6 +571,16 @@ void ComboList::ensureCorrectGrouping(bool* outWasInvalid)
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the combo list contains at least one combo that uses HTML.
+//**********************************************************************************************************************
+bool ComboList::containsHtmlCombo() const
+{
+   return combos_.end() != std::find_if(combos_.begin(), combos_.end(), [](SpCombo const& combo) -> bool
+      { return combo && combo->useHtml(); });
+}
+
+
+//**********************************************************************************************************************
 /// \return The number of rows in the table model
 //**********************************************************************************************************************
 int ComboList::rowCount(QModelIndex const&) const

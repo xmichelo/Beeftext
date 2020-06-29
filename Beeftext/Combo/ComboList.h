@@ -88,7 +88,8 @@ public: // member functions
    bool load(QString const& path, bool* outInOlderFileFormat = nullptr, QString* outErrorMessage = nullptr); /// Load a combo list from a JSON file
    void markComboAsEdited(qint32 index); ///< Mark a combo as edited
    void ensureCorrectGrouping(bool *outWasInvalid = nullptr); ///< make sure every combo is affected to a group (and that there is at least one group
-
+   bool containsHtmlCombo() const; ///< Check whether the combo list contain at least one HTML combo.
+   
    /// \name Table model member functions
    ///\{
    int rowCount(QModelIndex const&) const override; ///< Retrieve the number of row in the table model

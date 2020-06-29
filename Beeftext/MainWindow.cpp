@@ -21,6 +21,20 @@
 #include <XMiLib/Exception.h>
 
 
+namespace {
+
+QString richTextDeprecationMessage()
+{
+   return QObject::tr(R"(<html><head/><body><p>Your combo list contains rich text 
+      combos. Starting with Beeftext v8.0, rich text combos will not be supported anymore.</p>
+      <p>For more information, please refer to the following page in the
+      <a href="https://github.com/xmichelo/Beeftext/wiki/Rich-Text"><span style=" text-decoration: underline;
+      color:#0000ff;">Beeftext wiki</span></a>.</p></body></html>)");
+}
+
+
+} 
+
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
@@ -47,6 +61,10 @@ MainWindow::MainWindow()
       { QDesktopServices::openUrl(QUrl(constants::kBeeftextIssueTrackerUrl)); });
    connect(&InputManager::instance(), &InputManager::comboMenuShortcutTriggered, this, &MainWindow::onShowComboMenu);
    connect(&prefs, &PreferencesManager::writeDebugLogFileChanged, this, &MainWindow::onWriteDebugLogFileChanged);
+
+   // Display a Message indicating that support for rich text will be deprecated in v8.0.
+   if (ComboManager::instance().comboListRef().containsHtmlCombo())
+      QMessageBox::warning(this, tr("Announcement"), richTextDeprecationMessage());
 }
 
 
