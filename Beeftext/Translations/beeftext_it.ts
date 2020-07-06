@@ -494,32 +494,32 @@ Vuoi continuare comunque?</translation>
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="667"/>
+        <location filename="../Combo/ComboList.cpp" line="679"/>
         <source>Name</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="668"/>
+        <location filename="../Combo/ComboList.cpp" line="680"/>
         <source>Keyword</source>
         <translation>Scorciatoia</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="669"/>
+        <location filename="../Combo/ComboList.cpp" line="681"/>
         <source>Snippet</source>
         <translation>Anteprima</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="670"/>
+        <location filename="../Combo/ComboList.cpp" line="682"/>
         <source>Created</source>
         <translation>Creazione</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="671"/>
+        <location filename="../Combo/ComboList.cpp" line="683"/>
         <source>Modified</source>
         <translation>Modifica</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="672"/>
+        <location filename="../Combo/ComboList.cpp" line="684"/>
         <source>Last Used</source>
         <translation>Ultimo utilizzo</translation>
     </message>
@@ -1013,7 +1013,7 @@ Vuoi continuare comunque?</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="119"/>
-        <location filename="../MainWindow.cpp" line="152"/>
+        <location filename="../MainWindow.cpp" line="170"/>
         <source>Preferences</source>
         <translation>Preferenze</translation>
     </message>
@@ -1093,66 +1093,71 @@ Vuoi continuare comunque?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="128"/>
+        <location filename="../MainWindow.cpp" line="67"/>
+        <source>Announcement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="146"/>
         <source> - PAUSED</source>
         <translation> - PAUSA</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="131"/>
+        <location filename="../MainWindow.cpp" line="149"/>
         <source> - Portable Edition</source>
         <translation> - Versione Portatile</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="143"/>
-        <location filename="../MainWindow.cpp" line="279"/>
+        <location filename="../MainWindow.cpp" line="161"/>
+        <location filename="../MainWindow.cpp" line="297"/>
         <source>Open Beeftext</source>
         <translation>Apri Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="147"/>
+        <location filename="../MainWindow.cpp" line="165"/>
         <source>&amp;Pause Beeftext</source>
         <translation>&amp;Sospendi Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="147"/>
+        <location filename="../MainWindow.cpp" line="165"/>
         <source>&amp;Resume Beeftext</source>
         <translation>&amp;Riprendi Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="157"/>
+        <location filename="../MainWindow.cpp" line="175"/>
         <source>Open Log File</source>
         <translation>Apri Log file</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="160"/>
+        <location filename="../MainWindow.cpp" line="178"/>
         <source>Show Stylesheet Editor</source>
         <translation>Mostra l&apos;editore dei fogli di stile</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="227"/>
-        <location filename="../MainWindow.cpp" line="228"/>
-        <location filename="../MainWindow.cpp" line="344"/>
+        <location filename="../MainWindow.cpp" line="245"/>
+        <location filename="../MainWindow.cpp" line="246"/>
+        <location filename="../MainWindow.cpp" line="362"/>
         <source>Restore</source>
         <translation>Ripristina</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="227"/>
+        <location filename="../MainWindow.cpp" line="245"/>
         <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
         <translation>Ripristinando la copia di sicurezza tutte le scorciatoie correnti saranno cancellate e sostituite da quelle della copia di sicurezza.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="228"/>
+        <location filename="../MainWindow.cpp" line="246"/>
         <source>Cancel</source>
         <translation>Cancella</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="235"/>
-        <location filename="../MainWindow.cpp" line="332"/>
+        <location filename="../MainWindow.cpp" line="253"/>
+        <location filename="../MainWindow.cpp" line="350"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="325"/>
+        <location filename="../MainWindow.cpp" line="343"/>
         <source>Backup</source>
         <translation>Copia di sicurezza</translation>
     </message>
@@ -1688,6 +1693,15 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
         <source>Select custom sound file</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="28"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your combo list contains rich text 
+      combos. Starting with Beeftext v8.0, rich text combos will not be supported anymore.&lt;/p&gt;
+      &lt;p&gt;For more information, please refer to the following page in the
+      &lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline;
+      color:#0000ff;&quot;&gt;Beeftext wiki&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShortcutDialog</name>
@@ -1749,23 +1763,23 @@ Control, Alt o Windows.</translation>
         <translation>&amp;Pagina di download</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="76"/>
+        <location filename="../Update/UpdateDialog.cpp" line="75"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancella</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="134"/>
-        <location filename="../Update/UpdateDialog.cpp" line="167"/>
+        <location filename="../Update/UpdateDialog.cpp" line="133"/>
+        <location filename="../Update/UpdateDialog.cpp" line="166"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="134"/>
+        <location filename="../Update/UpdateDialog.cpp" line="133"/>
         <source>The update cannot be installed: the checksum does not match.</source>
         <translation>L&apos;aggiornamento non può essere installato: il checksum non corrisponde.</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="167"/>
+        <location filename="../Update/UpdateDialog.cpp" line="166"/>
         <source>An error occurred while downloading the software update:
 %1</source>
         <translation>Si è verificato un errore durante lo scarico dell&apos;aggiornamento: %1</translation>

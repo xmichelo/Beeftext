@@ -900,6 +900,10 @@ Do you want to continue anymay?</source>
         <source>Ctrl+Alt+F1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Announcement</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -1310,6 +1314,14 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     </message>
     <message>
         <source>Select custom sound file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your combo list contains rich text 
+      combos. Starting with Beeftext v8.0, rich text combos will not be supported anymore.&lt;/p&gt;
+      &lt;p&gt;For more information, please refer to the following page in the
+      &lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline;
+      color:#0000ff;&quot;&gt;Beeftext wiki&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
