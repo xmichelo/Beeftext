@@ -128,7 +128,6 @@ void UpdateManager::onWorkerUpdateIsAvailable(SpLatestVersionInfo const& latestV
 //**********************************************************************************************************************
 void UpdateManager::onWorkerNoUpdateIsAvailable()
 {
-   globals::debugLog().addInfo("The application is up to date.");
    emit noUpdateIsAvailable();
 }
 
@@ -138,7 +137,6 @@ void UpdateManager::onWorkerNoUpdateIsAvailable()
 //**********************************************************************************************************************
 void UpdateManager::onWorkerError(QString const& error)
 {
-   globals::debugLog().addError(QString("Error during update check: %1").arg(error));
    emit updateCheckFailed();
 }
 

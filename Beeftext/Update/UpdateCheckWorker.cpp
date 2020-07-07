@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "UpdateCheckWorker.h"
+#include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
 
@@ -49,12 +50,24 @@ void UpdateCheckWorker::performUpdateCheck()
 {
    try
    {
+      xmilib::DebugLog& log = globals::debugLog();
+      log.addInfo(QString("Update check started. Installed version is Beeftext %1.%2.")
+         .arg(constants::kVersionMajor).arg(constants::kVersionMinor));
       QByteArray const jsonData = this->downloadLatestVersionInformation();
       SpLatestVersionInfo const latestVersionInfo = this->parseJsonData(jsonData);
+      log.addInfo(QString("Downloaded latest version information. Latest version is Beeftext %1.%2.")
+         .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor()));
       if (isNewVersionAvailable(latestVersionInfo))
+      {
+         log.addInfo("A new version is available.");
          emit updateIsAvailable(latestVersionInfo);
+      }
       else
+      {
+         log.addInfo("No new version is available.");
          emit noUpdateIsAvailable();
+      }
+      log.addInfo("Update check ended.");
    }
    catch (xmilib::Exception const& e)
    {
