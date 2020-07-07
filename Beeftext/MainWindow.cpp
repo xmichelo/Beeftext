@@ -35,6 +35,7 @@ QString richTextDeprecationMessage()
 
 } 
 
+
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
@@ -54,7 +55,7 @@ MainWindow::MainWindow()
    connect(ui_.actionVisitBeeftextWiki, &QAction::triggered, []()
       { QDesktopServices::openUrl(QUrl(constants::kBeeftextWikiHomeUrl)); });
    connect(ui_.actionGettingStarted, &QAction::triggered, []()
-   { QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl)); });
+      { QDesktopServices::openUrl(QUrl(constants::kGettingStartedUrl)); });
    connect(ui_.actionShowReleaseNotes, &QAction::triggered, []()
       { QDesktopServices::openUrl(QUrl(constants::kBeeftextReleasesPagesUrl)); });
    connect(ui_.actionReportBug, &QAction::triggered, []()
@@ -63,8 +64,12 @@ MainWindow::MainWindow()
    connect(&prefs, &PreferencesManager::writeDebugLogFileChanged, this, &MainWindow::onWriteDebugLogFileChanged);
 
    // Display a Message indicating that support for rich text will be deprecated in v8.0.
-   if (ComboManager::instance().comboListRef().containsHtmlCombo())
+   if ((!prefs.richTextDeprecationWarningHasAlreadyBeenDisplayed()) 
+      && ComboManager::instance().comboListRef().containsHtmlCombo())
+   {
       QMessageBox::warning(this, tr("Announcement"), richTextDeprecationMessage());
+      prefs.setRichTextDeprecationWarningHasAlreadyBeenDisplayed(true);
+   }
 }
 
 

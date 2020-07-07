@@ -62,7 +62,7 @@ QString const kKeyUseCustomSound = "UseCustomSound"; ///< The settings key for t
 QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
 QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
 QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
-
+QString const kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = "RichTextDeprecationWarningHasAlreadyBeenDisplayed"; ///< The setting key for teh 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
@@ -89,7 +89,7 @@ bool const kDefaultUseCustomSound = false; ///< The default value for the 'Use c
 bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
 bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
 bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
-
+bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 
 }
 
@@ -189,7 +189,8 @@ void PreferencesManager::reset()
    this->setUseCustomSound(kDefaultUseCustomSound);
    this->setWarnAboutShortComboKeywords(kDefaultWarnAboutShortComboKeyword);
    this->setWriteDebugLogFile(kDefaultWriteDebugLogFile);
-
+   this->setRichTextDeprecationWarningHasAlreadyBeenDisplayed(
+      kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
    this->resetWarnings();
    if (!isInPortableMode())
    {
@@ -350,7 +351,9 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
       kDefaultWarnAboutShortComboKeyword);
    object[kKeyWriteDebugLogFile] = this->readSettings<bool>(kKeyWriteDebugLogFile, 
       kDefaultWriteDebugLogFile);
-
+   object[kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed] = this->readSettings<bool>(
+      kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, 
+      kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
    outDoc = QJsonDocument(object);
 }
 
@@ -402,7 +405,8 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
    settings_->setValue(kKeyUseCustomTheme, objectValue<bool>(object, kKeyUseCustomTheme));
    settings_->setValue(kKeyWarnAboutShortComboKeyword, objectValue<bool>(object, kKeyWarnAboutShortComboKeyword));
    settings_->setValue(kKeyWriteDebugLogFile, objectValue<bool>(object, kKeyWriteDebugLogFile));
-
+   settings_->setValue(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, objectValue<bool>(object,
+      kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed));
    this->init();
 }
 
@@ -1258,6 +1262,25 @@ void PreferencesManager::setBeeftextEnabled(bool enabled)
 bool PreferencesManager::beeftextEnabled() const
 {
    return cachedBeeftextEnabled_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] alreadyDisplayed The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setRichTextDeprecationWarningHasAlreadyBeenDisplayed(bool alreadyDisplayed) const
+{
+   settings_->setValue(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, alreadyDisplayed);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::richTextDeprecationWarningHasAlreadyBeenDisplayed() const
+{
+   return readSettings<bool>(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed,
+      kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
 }
 
 
