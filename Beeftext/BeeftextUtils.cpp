@@ -219,8 +219,9 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       if (cursorPos >= 0)
       {
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
-         for (qint32 i = 0; i < qMax<qint32>(0, (isHtml ? QTextDocumentFragment::fromHtml(newText).toPlainText().size() :
-            newText.size()) - cursorPos); ++i)
+         for (qint32 i = 0; i < qMax<qint32>(0, 
+            printableCharacterCount(isHtml ? QTextDocumentFragment::fromHtml(newText).toPlainText() : newText) 
+               - cursorPos); ++i)
             synthesizeKeyDownAndUp(VK_LEFT);
          restoreModifierKeys(pressedModifiers);
       }
@@ -257,3 +258,28 @@ bool isAppRunningOnWindows10OrHigher()
 }
 
 
+//**********************************************************************************************************************
+/// The number of printable character can only be estimated because it depends on the way
+/// application edit, most notably when it comes to the behaviour of the left arrow key supporting compound emojis
+/// (https://eclecticlight.co/2018/03/15/compound-emoji-can-confuse/)
+///
+/// \param[in] str the string
+/// \return The estimated number of characters for the string.
+//**********************************************************************************************************************
+qint32 printableCharacterCount(QString const& str)
+{
+   // The easiest way to count characters is to convert the string to UTF-32 (a.k.a. UCS-4)
+   
+   QVector<quint32> const ucs4 = str.toUcs4();
+   // Now we assume that if you use the Zero Width Joiner (U+200D), it is resolved properly
+   // We also account for compound emojis made with the skin color tones (Fitzpatrick type)
+   qint32 result = ucs4.size();
+   for (quint32 c: ucs4)
+   {
+      if (c == 0x200d) // zero width joiner
+         result -= 2;
+      if ((c >= 0x1f3fb) && (c <= 0x1f3ff)) // fitzpatrick scale range
+         result -= 1; 
+   }
+   return quint32(qMax<qint32>(0, result));
+}

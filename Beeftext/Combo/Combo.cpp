@@ -489,7 +489,7 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
       if (outCursorPos && ("cursor" == variable))
       {
          if (outCursorPos)
-            *outCursorPos = result.toPlainText().size();
+            *outCursorPos = printableCharacterCount(result.toPlainText());
       }
       else
       {

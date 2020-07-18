@@ -18,6 +18,7 @@ QString snippetToPlainText(QString const& snippet, bool isHtml); ///< Return the
 void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos); ///< Substitute the last characters with the specified text
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage = QString()); ///< Report an error to the user
 bool isAppRunningOnWindows10OrHigher(); ///< Return true if and only if the application is running on windows 10 or higher
+qint32 printableCharacterCount(QString const& str); ///< Return the (estimated) number of printable characters in a string
 
 
 #endif // #ifndef BEEFTEXT_UTILS_H
