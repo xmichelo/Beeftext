@@ -373,6 +373,25 @@ void MainWindow::onActionRestore()
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void MainWindow::onActionGenerateCheatSheet()
+{
+   QString folder = PreferencesManager::instance().lastComboImportExportPath();
+   if (!QFileInfo(folder).isDir())
+      folder = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+   QString const path = QFileDialog::getSaveFileName(this, tr("Generate Cheat Sheet"),
+      QDir(folder).absoluteFilePath("BeeftextCheatSheet.csv"), constants::csvFileDialogFilter());
+   if (path.isEmpty())
+      return;
+   QString errMsg;
+   if (!ComboManager::instance().comboListRef().exportCheatSheet(path, &errMsg))
+      QMessageBox::critical(this, tr("Error"), errMsg);
+
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] value The new value for the preference.
 //**********************************************************************************************************************
 void MainWindow::onWriteDebugLogFileChanged(bool value) const

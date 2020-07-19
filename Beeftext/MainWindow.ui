@@ -68,6 +68,8 @@
     <addaction name="separator"/>
     <addaction name="actionBackup"/>
     <addaction name="actionRestore"/>
+    <addaction name="separator"/>
+    <addaction name="actionGenerateCheatSheet"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_Advanced"/>
@@ -174,6 +176,17 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+F1</string>
+   </property>
+  </action>
+  <action name="actionGenerateCheatSheet">
+   <property name="text">
+    <string>&amp;Generate Cheat Sheet</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate a cheat sheet that can be imported into a spreadsheet application, formatted and printed.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Shift+C</string>
    </property>
   </action>
  </widget>
@@ -302,6 +315,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionGenerateCheatSheet</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionGenerateCheatSheet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
@@ -312,5 +341,6 @@
   <slot>onActionOpenLogFile()</slot>
   <slot>onActionBackup()</slot>
   <slot>onActionRestore()</slot>
+  <slot>onActionGenerateCheatSheet()</slot>
  </slots>
 </ui>

@@ -538,6 +538,49 @@ bool ComboList::exportToCsvFile(QString const& path, QString* outErrorMessage) c
 
 
 //**********************************************************************************************************************
+/// \brief Test whether a combo should appear before another one in a cheat sheet.
+///
+/// \param[in] lhs The left hand side of the comparison.
+/// \param[in] rhs The right hand side of the comparison.
+///
+/// \return true if and only if lhs should appear before rhs in the cheat sheet.
+//**********************************************************************************************************************
+bool compareForCheatSheet(QStringList const& lhs, QStringList const& rhs)
+{
+   if (rhs.size() < 2)
+      return true;
+   if (lhs.size() < 2)
+      return false;
+   qint32 const groupCompare = lhs[0].compare(rhs[0], Qt::CaseInsensitive);
+   return (0 == groupCompare) ? lhs[1].compare(rhs[1], Qt::CaseInsensitive) < 0 : groupCompare < 0;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the file to save to
+/// \param[out] outErrorMessage If the function return false and this parameter is not null, the string pointed to 
+/// contains a description of the error
+/// \return true if and only if the combo list was successfully saved to file
+//**********************************************************************************************************************
+bool ComboList::exportCheatSheet(QString const& path, QString* outErrorMessage) const
+{
+   QVector<QStringList> csvData;
+   csvData.push_back({ tr("Group"), tr("Name"), tr("Keyword"), tr("Snippet") });
+   for (SpCombo const& combo : combos_)
+   {
+      if (!combo)
+         continue;
+      SpGroup const group = combo->group();
+      QString const snippet = combo->snippet();
+      csvData.push_back({ group ? group->name() : QString(), combo->name(), combo->keyword(),
+         snippetToPlainText(combo->snippet(), combo->useHtml()) });
+   }
+   std::sort(csvData.begin(), csvData.end(), compareForCheatSheet);
+   return saveCsvFile(path, csvData, outErrorMessage);
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboList::markComboAsEdited(qint32 index)

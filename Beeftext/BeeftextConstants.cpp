@@ -26,6 +26,7 @@ QString const kBeeftextIssueTrackerUrl = "https://github.com/xmichelo/Beeftext/i
 QString jsonFileDialogFilter() { return QObject::tr("JSON files (*.json);;All files (*.*)"); }
 QString jsonCsvFileDialogFilter() { return QObject::tr("JSON & CSV files (*.json *.csv);;JSON files (*.json);;"
    "CSV files (*.csv);;All files (*.*)"); }
+QString csvFileDialogFilter() { return QObject::tr("CSV files (*.csv);;All files (*.*)"); }
 QString const backupFileExtension = "btbackup";
 QString backupFileDialogFilter() { return QObject::tr("Beeftext backup files (*.%1);;All files (*.*)").arg(backupFileExtension); }
 Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs;
