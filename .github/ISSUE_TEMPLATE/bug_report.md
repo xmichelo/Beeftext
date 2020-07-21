@@ -7,12 +7,12 @@ assignees: xmichelo
 
 ---
 
-### Expected behavior
+#### Expected behavior
 
-### Actual behavior
+#### Actual behavior
 
-### Steps to reproduce the behavior
+#### Steps to reproduce the behavior
 
-### Beeftext version (e.g. Beeftext v7.0 Portable Edition).
+#### Beeftext version (e.g. Beeftext v7.0 Portable Edition).
 
-### Operating system version (e.g Windows 10)
+#### Operating system version (e.g Windows 10)
