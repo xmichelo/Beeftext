@@ -686,6 +686,9 @@ QToolButton:checked {
      <property name="contextMenuPolicy">
       <enum>Qt::CustomContextMenu</enum>
      </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
      <property name="acceptRichText">
       <bool>false</bool>
      </property>
@@ -700,6 +703,22 @@ QToolButton:checked {
    <header>SnippetEdit.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>snippetEdit</tabstop>
+  <tabstop>comboFontSize</tabstop>
+  <tabstop>buttonColor</tabstop>
+  <tabstop>buttonBold</tabstop>
+  <tabstop>buttonItalic</tabstop>
+  <tabstop>buttonUnderline</tabstop>
+  <tabstop>buttonStrikeout</tabstop>
+  <tabstop>buttonSuperscript</tabstop>
+  <tabstop>buttonSubscript</tabstop>
+  <tabstop>buttonAlignLeft</tabstop>
+  <tabstop>buttonAlignCenter</tabstop>
+  <tabstop>buttonAlignRight</tabstop>
+  <tabstop>buttonAlignJustify</tabstop>
+  <tabstop>buttonHyperlink</tabstop>
+ </tabstops>
  <resources>
   <include location="../Beeftext.qrc"/>
  </resources>

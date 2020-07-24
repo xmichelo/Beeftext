@@ -36,11 +36,6 @@
     <Filter Include="Combo\ComboPicker">
       <UniqueIdentifier>{d6d6e76a-1ae3-4bed-bca2-4eff6e6f20fe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Form Files">
-      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
-      <Extensions>ui</Extensions>
-      <ParseFiles>true</ParseFiles>
-    </Filter>
     <Filter Include="Clipboard">
       <UniqueIdentifier>{f4e85ad1-7009-4c18-96da-5794e584c2c8}</UniqueIdentifier>
     </Filter>
@@ -372,7 +367,7 @@
       <Filter>Combo\ComboPicker</Filter>
     </QtUic>
     <QtUic Include="Combo\ComboEditor.ui">
-      <Filter>Form Files</Filter>
+      <Filter>Combo</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
