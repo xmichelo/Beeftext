@@ -210,6 +210,24 @@ void PreferencesDialog::updateGui() const
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the settings are consistant
+//**********************************************************************************************************************
+bool PreferencesDialog::checkAndReportInconsistencies()
+{
+   if (ui_.checkPlaySoundOnCombo->isChecked() && ui_.checkUseCustomSound->isChecked())
+   {
+      QFileInfo const fi(ui_.editCustomSound->text());
+      if ((!fi.exists()) || (!fi.isFile()) || (!fi.isReadable()))
+      {
+         QMessageBox::critical(this, tr("Error"), tr("The path of the custom sound file is invalid."));
+         return false;
+      }
+   }
+   return true;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] checked Is the radio button checked
 //**********************************************************************************************************************
 void PreferencesDialog::onCheckAutoCheckForUpdates(bool checked) const
@@ -581,7 +599,8 @@ void PreferencesDialog::onResetWarnings()
 //**********************************************************************************************************************
 void PreferencesDialog::onClose()
 {
-   this->close();
+   if (this->checkAndReportInconsistencies())
+      this->close();
 }
 
 

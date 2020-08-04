@@ -36,6 +36,7 @@ private: // member functions
    bool promptForAndRemoveAutoBackups(); ///< Ask the user if automatic backups should be deleted and if so, performs the operation
    void changeEvent(QEvent *event) override; ///< Change event handler
    void updateGui() const; ///< Update the GUI state
+   bool checkAndReportInconsistencies(); ///< Check that the values for the dialog are consistant
 
 private slots:
    void onCheckAutoCheckForUpdates(bool checked) const; ///< Slot for the 'Auto check for updated' checkbox.

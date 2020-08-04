@@ -181,11 +181,22 @@ void ComboManager::loadSoundFromPreferences()
 {
    PreferencesManager& prefs = PreferencesManager::instance();
    QString const customSoundPath = prefs.customSoundPath();
-   bool const useCustomSound = prefs.useCustomSound();
-   if ((!prefs.playSoundOnCombo()) || (useCustomSound && customSoundPath.isEmpty()))
+   bool useCustomSound = prefs.useCustomSound();
+   if (!prefs.playSoundOnCombo())
+   {
       sound_.reset();
-   else
-      sound_ = std::make_unique<QSound>(useCustomSound ? customSoundPath : ":/MainWindow/Resources/Notification.wav");
+      return;
+   }
+   if (useCustomSound) // if the custom sound file is not available, we reverse to the default one
+   {
+      QFileInfo const fi(customSoundPath);
+      if ((!fi.exists()) || (!fi.isFile()) || (!fi.isReadable()))
+      {
+         useCustomSound = false;
+         prefs.setUseCustomSound(false);
+      }
+   }
+   sound_ = std::make_unique<QSound>(useCustomSound ? customSoundPath : ":/MainWindow/Resources/Notification.wav");
 }
 
 
