@@ -32,19 +32,22 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
       return true;
 
    QAbstractItemModel const* model = this->sourceModel();
-   if ((!model) || (!model->data(model->index(sourceRow, 0, QModelIndex()), ComboList::EnabledRole).toBool()))
+   if ((!model) || (!model->columnCount(QModelIndex())) || 
+      (!model->data(model->index(sourceRow, 0, QModelIndex()), ComboList::EnabledRole).toBool()))
       return false;
 
-   for (int col = 0; col < model->columnCount(QModelIndex()); ++col)
+   QStringList const searchWords = this->filterRegExp().pattern().split(QRegularExpression("\\s"), Qt::SkipEmptyParts);
+   QModelIndex const index = model->index(sourceRow, 0, QModelIndex());
+   QString const comboName = model->data(index, Qt::DisplayRole).toString();
+   QString const keyword = model->data(index, ComboList::KeywordRole).toString();
+   QString const snippet = model->data(index, ComboList::SnippetRole).toString();
+   for (QString const& word: searchWords)
    {
-      QRegExp const regExp = this->filterRegExp(); // we search for the string in name, keyword and snippet
-      if ((model->data(model->index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString().contains(regExp))
-         || model->data(model->index(sourceRow, col, QModelIndex()), ComboList::KeywordRole).toString().
-         contains(regExp) || model->data(model->index(sourceRow, col, QModelIndex()), ComboList::SnippetRole)
-         .toString().contains(regExp))
-         return true;
+      if ((!comboName.contains(word, Qt::CaseInsensitive)) && (!keyword.contains(word, Qt::CaseInsensitive))
+         && (!snippet.contains(word, Qt::CaseInsensitive)))
+         return false;
    }
-   return false;
+   return true;
 }
 
 
