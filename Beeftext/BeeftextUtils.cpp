@@ -13,7 +13,7 @@
 #include "InputManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
-#include "Clipboard/ClipboardManager.h"
+#include "Clipboard/ClipboardManagerDefault.h"
 #include <Psapi.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
@@ -174,18 +174,18 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet
-         ClipboardManager& clipboardManager = ClipboardManager::instance();
+         ClipboardManager& clipboardManager = globals::clipboardManager();
          clipboardManager.backupClipboard();
          if (isHtml)
-            ClipboardManager::setHtml(newText);
+            clipboardManager.setHtml(newText);
          else
-            ClipboardManager::setText(newText);
+            clipboardManager.setText(newText);
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
          restoreModifierKeys(pressedModifiers);
-         QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
+         QTimer::singleShot(1000, []() { globals::clipboardManager().restoreClipboard(); });
          ///< We need to delay clipboard restoration to avoid unexpected behaviours
       }
       else

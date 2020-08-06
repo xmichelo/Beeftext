@@ -135,9 +135,6 @@
       <Filter>Combo\ComboPicker</Filter>
     </ClCompile>
     <ClCompile Include="PreferencesDialog.cpp" />
-    <ClCompile Include="Clipboard\ClipboardManager.cpp">
-      <Filter>Clipboard</Filter>
-    </ClCompile>
     <ClCompile Include="Combo\ComboEditor.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -148,6 +145,9 @@
       <Filter>Combo</Filter>
     </ClCompile>
     <ClCompile Include="I18nManager.cpp" />
+    <ClCompile Include="Clipboard\ClipboardManagerDefault.cpp">
+      <Filter>Clipboard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -214,11 +214,14 @@
     <ClInclude Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.h">
       <Filter>Combo\ComboPicker</Filter>
     </ClInclude>
-    <ClInclude Include="Clipboard\ClipboardManager.h">
-      <Filter>Clipboard</Filter>
-    </ClInclude>
     <ClInclude Include="Combo\LastUseFile.h">
       <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Clipboard\ClipboardManagerDefault.h">
+      <Filter>Clipboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Clipboard\ClipboardManager.h">
+      <Filter>Clipboard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

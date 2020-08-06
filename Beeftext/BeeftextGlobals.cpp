@@ -11,10 +11,30 @@
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
 #include "PreferencesManager.h"
+#include "Clipboard/ClipboardManagerDefault.h"
+
+
+namespace {
+
+
+std::unique_ptr<ClipboardManager> clipboardManagerPtr = nullptr; ///< The global variable containing the clipboard manager
+
+
+}
 
 
 namespace globals {
 
+
+//**********************************************************************************************************************
+/// \return A reference to the clipboard manager
+//**********************************************************************************************************************
+ClipboardManager& clipboardManager()
+{
+   if (!clipboardManagerPtr)
+      clipboardManagerPtr = std::make_unique<ClipboardManagerDefault>();
+   return *clipboardManagerPtr;
+}
 
 //**********************************************************************************************************************
 /// \return The application debug log

@@ -242,7 +242,7 @@
     <ClCompile Include="BeeftextConstants.cpp" />
     <ClCompile Include="BeeftextGlobals.cpp" />
     <ClCompile Include="BeeftextUtils.cpp" />
-    <ClCompile Include="Clipboard\ClipboardManager.cpp" />
+    <ClCompile Include="Clipboard\ClipboardManagerDefault.cpp" />
     <ClCompile Include="Combo\Combo.cpp" />
     <ClCompile Include="Combo\ComboDialog.cpp" />
     <ClCompile Include="Combo\ComboEditor.cpp" />
@@ -294,6 +294,7 @@
     </QtMoc>
     <QtMoc Include="Combo\ComboEditor.h">
     </QtMoc>
+    <ClInclude Include="Clipboard\ClipboardManagerDefault.h" />
     <ClInclude Include="Clipboard\ClipboardManager.h" />
     <ClInclude Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.h" />
     <QtMoc Include="Combo\ComboPicker\ComboPickerWindow.h">

@@ -8,7 +8,8 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "VariableInputDialog.h"
-#include "Clipboard/ClipboardManager.h"
+#include "BeeftextGlobals.h"
+#include "Clipboard/ClipboardManagerDefault.h"
 
 
 namespace {
@@ -69,7 +70,7 @@ QString qcharToDiscordEmoji(QChar const& c)
 //**********************************************************************************************************************
 QString discordEmojisFromClipboard()
 {
-   QString str = ClipboardManager::text();
+   QString str = globals::clipboardManager().text();
    QString result;
    for (QChar const& c : str)
       result += qcharToDiscordEmoji(c);
@@ -305,9 +306,10 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
    QLocale const systemLocale = QLocale::system();
    if (variable == "clipboard")
    {
-      QString html = ClipboardManager::html();
+      ClipboardManager& clipboardManager = globals::clipboardManager();
+      QString html = clipboardManager.html();
       if (html.isEmpty())
-         return ClipboardManager::text();
+         return clipboardManager.text();
       outIsHtml = true;
       return html;
    }

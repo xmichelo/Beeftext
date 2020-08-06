@@ -1,52 +1,33 @@
 /// \file
 /// \author Xavier Michelon
 ///
-/// \brief Declaration of clipboard manager class
-///  
-/// Copyright (c) Xavier Michelon. All rights reserved.  
-/// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
+/// \brief Declaration of abstract clipboard manager interface.
 
 
-#ifndef BEEFTEXT_CLIPBOARD_MANAGER_H
-#define BEEFTEXT_CLIPBOARD_MANAGER_H
+#ifndef BEEFTEXT_CLIPBOARD_MANAGER_INTERFACE_H
+#define BEEFTEXT_CLIPBOARD_MANAGER_INTERFACE_H
 
 
 //**********************************************************************************************************************
-/// \brief Clipboard manager class
+/// \brief Clipboard manager interface
 //**********************************************************************************************************************
 class ClipboardManager
 {
 public: // member functions
-   static ClipboardManager& instance(); ///< Return the only allowed instance of the class.
-   ClipboardManager(ClipboardManager const&) = delete; ///< Disabled copy constructor.
-	ClipboardManager(ClipboardManager&&) = delete; ///< Disabled move constructor.
-	~ClipboardManager() = default; ///< Default destructor.
-	ClipboardManager& operator=(ClipboardManager const&) = delete; ///< Disabled assignment operator.
-	ClipboardManager& operator=(ClipboardManager&&) = delete; ///< Disabled move assignment operator.
-   void backupClipboard(); ///< backup the clipboard.
-   void restoreClipboard(); ///< Restore the clipboard and delete the current backup
-   bool hasBackup() const; ///< Test if the clipboard is empty.
-   static QString text(); ///< Return the current text value of the clipboard.
-   static bool setText(QString const& text); ///< Put text into the clipboard.
-   static QString html(); ///< Return the current HTML value of the clipboard.
-   static bool setHtml(QString const& html); ///< Set the current HTML value of the clipboard.
-
-private: // member functions
    ClipboardManager() = default; ///< Default constructor.
-
-private: // data structures
-   struct ClipBoardFormatData
-   {
-      qint32 format { 0 }; ///< The format.
-      QByteArray data; ///< The data.
-   }; ///< A structure associating a clipboard format with its data.
-
-   typedef std::shared_ptr<ClipBoardFormatData> SpClipBoardFormatData; ///< Type definition for shared pointer to ClipboardFormatData.
-   typedef std::vector<SpClipBoardFormatData> VecSpClipBoardFormatData; ///< Type definition for vector of SpClipBoardFormatData.
-
-private: // data members
-   VecSpClipBoardFormatData backup_; ///< The clipboard backup.
+   ClipboardManager(ClipboardManager const&) = delete; ///< Disabled copy constructor.
+   ClipboardManager(ClipboardManager&&) = delete; ///< Disabled move constructor.
+   virtual ~ClipboardManager() {} ; ///< Default destructor.
+   ClipboardManager& operator=(ClipboardManager const&) = delete; ///< Disabled assignment operator.
+   ClipboardManager& operator=(ClipboardManager&&) = delete; ///< Disabled move assignment operator.
+   virtual void backupClipboard() = 0; ///< backup the clipboard.
+   virtual void restoreClipboard() = 0; ///< Restore the clipboard and delete the current backup
+   virtual bool hasBackup() const = 0; ///< Test if the clipboard is empty.
+   virtual QString text() = 0; ///< Return the current text value of the clipboard.
+   virtual bool setText(QString const& text) = 0; ///< Put text into the clipboard.
+   virtual QString html() = 0; ///< Return the current HTML value of the clipboard.
+   virtual bool setHtml(QString const& html) = 0; ///< Set the current HTML value of the clipboard.
 };
 
 
-#endif // #ifndef BEEFTEXT_CLIPBOARD_MANAGER_H
+#endif // BEEFTEXT_CLIPBOARD_MANAGER_INTERFACE_H

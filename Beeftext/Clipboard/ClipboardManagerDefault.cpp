@@ -8,7 +8,7 @@
 
 
 #include "stdafx.h"
-#include "ClipboardManager.h"
+#include "ClipboardManagerDefault.h"
 #include "BeeftextUtils.h"
 #include <XMiLib/Scoped/ScopedClipboardAccess.h>
 #include <XMiLib/Scoped/ScopedGlobalMemoryLock.h>
@@ -37,19 +37,9 @@ qint32 htmlClipboardFormat()
 
 
 //**********************************************************************************************************************
-/// \return The only allowed instance of the class
-//**********************************************************************************************************************
-ClipboardManager& ClipboardManager::instance()
-{
-   static ClipboardManager instance;
-   return instance;
-}
-
-
-//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void ClipboardManager::backupClipboard()
+void ClipboardManagerDefault::backupClipboard()
 {
    backup_.clear();
    ScopedClipboardAccess const sca(nullptr);
@@ -82,7 +72,7 @@ void ClipboardManager::backupClipboard()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void ClipboardManager::restoreClipboard()
+void ClipboardManagerDefault::restoreClipboard()
 {
    if (!this->hasBackup())
       return;
@@ -124,7 +114,7 @@ void ClipboardManager::restoreClipboard()
 //**********************************************************************************************************************
 /// \return true if and only if the clipboard manager contains a clipboard backup
 //**********************************************************************************************************************
-bool ClipboardManager::hasBackup() const
+bool ClipboardManagerDefault::hasBackup() const
 {
    return !backup_.empty();
 }
@@ -133,7 +123,7 @@ bool ClipboardManager::hasBackup() const
 //**********************************************************************************************************************
 /// \ return The text value of the clipboard. If the clipboard does not contain text, an empty string is returned.
 //**********************************************************************************************************************
-QString ClipboardManager::text()
+QString ClipboardManagerDefault::text()
 {
    ScopedClipboardAccess const sca(nullptr);
    if ((!sca.isOpen()) || (!IsClipboardFormatAvailable(CF_UNICODETEXT))) // Note system does automatic conversion from CF_OEMTEXT and CF_TEXT to CF_UNICODETEXT
@@ -216,7 +206,7 @@ HANDLE putUtf8InGlobalMemory(QString const& text)
 /// \param[in] text The text to put in the clipboard.
 /// \return true if and only if the operation was successful.
 //**********************************************************************************************************************
-bool ClipboardManager::setText(QString const& text)
+bool ClipboardManagerDefault::setText(QString const& text)
 {
    HANDLE const handle = putUtf16InGlobalMemory(text);
    if (!handle)
@@ -285,7 +275,7 @@ QString extractHtmlFromClipboardData(QString const& clipboardData)
 //**********************************************************************************************************************
 /// \ return The HTML value of the clipboard. If the clipboard does not contain HTML, an empty string is returned.
 //**********************************************************************************************************************
-QString ClipboardManager::html()
+QString ClipboardManagerDefault::html()
 {
    ScopedClipboardAccess const sca(nullptr);
    quint32 const htmlFormat = htmlClipboardFormat();
@@ -336,7 +326,7 @@ QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
 /// \param[in] html The HTML data.
 /// \return true if and only if the HTML data was successfully copied to the clipboard
 //**********************************************************************************************************************
-bool ClipboardManager::setHtml(QString const& html)
+bool ClipboardManagerDefault::setHtml(QString const& html)
 {
    // Later, this function should use the lower level clipboard API for HTML, which is not really easy at the moment.
    QApplication::clipboard()->setMimeData(mimeDataFromSnippet(html, true)); // Ownership of data is transfered to the clipboard
