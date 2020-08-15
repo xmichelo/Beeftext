@@ -86,7 +86,7 @@ QString Shortcut::toString() const
       result += QObject::tr("Shift") + "+";
    if (modifiers_ & Qt::MetaModifier)
       result += QObject::tr("Win") + "+";
-   return result + getKeyName(nativeScanCode_);
+   return result + getKeyName(static_cast<qint32>(nativeScanCode_));
 }
 
 

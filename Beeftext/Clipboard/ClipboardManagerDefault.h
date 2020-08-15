@@ -23,7 +23,7 @@ public: // member functions
    ClipboardManagerDefault() = default; ///< Default constructor.
    ClipboardManagerDefault(ClipboardManagerDefault const&) = delete; ///< Disabled copy constructor.
 	ClipboardManagerDefault(ClipboardManagerDefault&&) = delete; ///< Disabled move constructor.
-	~ClipboardManagerDefault() = default; ///< Default destructor.
+	~ClipboardManagerDefault() override = default; ///< Default destructor.
 	ClipboardManagerDefault& operator=(ClipboardManagerDefault const&) = delete; ///< Disabled assignment operator.
 	ClipboardManagerDefault& operator=(ClipboardManagerDefault&&) = delete; ///< Disabled move assignment operator.
    EType type() const override; ///< Return the type of clipboard manager of the instance.
@@ -38,7 +38,7 @@ public: // member functions
 private: // data structures
    struct ClipBoardFormatData
    {
-      qint32 format { 0 }; ///< The format.
+      quint32 format { 0 }; ///< The format.
       QByteArray data; ///< The data.
    }; ///< A structure associating a clipboard format with its data.
 

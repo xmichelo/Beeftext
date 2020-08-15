@@ -31,7 +31,7 @@ public: // member functions
    ClipboardManager() = default; ///< Default constructor.
    ClipboardManager(ClipboardManager const&) = delete; ///< Disabled copy constructor.
    ClipboardManager(ClipboardManager&&) = delete; ///< Disabled move constructor.
-   virtual ~ClipboardManager() {} ; ///< Default destructor.
+   virtual ~ClipboardManager() = default; ///< Default destructor.
    ClipboardManager& operator=(ClipboardManager const&) = delete; ///< Disabled assignment operator.
    ClipboardManager& operator=(ClipboardManager&&) = delete; ///< Disabled move assignment operator.
    virtual EType type() const = 0; ///< Return the type of clipboard manager of the instance.

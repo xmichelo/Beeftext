@@ -8,7 +8,6 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "VariableInputDialog.h"
-#include "BeeftextGlobals.h"
 #include "Clipboard/ClipboardManager.h"
 
 
@@ -130,8 +129,8 @@ QDateTime shiftedDateTime(QString const& shiftStr)
       char const type = match.captured(3)[0].toLatin1();
       switch (type)
       {
-      case 'y': result = result.addYears(value); break;
-      case 'M': result = result.addMonths(value); break;
+      case 'y': result = result.addYears(static_cast<qint32>(value)); break;
+      case 'M': result = result.addMonths(static_cast<qint32>(value)); break;
       case 'w': result = result.addDays(value * 7); break;
       case 'd': result = result.addDays(value); break;
       case 'h': result = result.addSecs(3600 * value); break;
@@ -201,7 +200,9 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
    {
    case ECaseChange::ToUpper: return str.toUpper();
    case ECaseChange::ToLower: return str.toLower();
-   case ECaseChange::NoChange: default: return str;
+   case ECaseChange::NoChange:
+   default:
+      return str;
    }
 }
 

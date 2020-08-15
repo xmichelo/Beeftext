@@ -25,7 +25,7 @@ ComboSortFilterProxyModel::ComboSortFilterProxyModel(QObject* parent)
 
 
 //**********************************************************************************************************************
-/// \param[in] group
+/// \param[in] group The group.
 //**********************************************************************************************************************
 void ComboSortFilterProxyModel::setGroup(SpGroup const& group)
 {

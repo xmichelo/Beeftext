@@ -26,7 +26,7 @@ public: // member functions
    explicit ComboImportDialog(QString const& filePath = QString(), SpGroup const& group = SpGroup(), QWidget* parent = nullptr); ///< Default constructor
 	ComboImportDialog(ComboImportDialog const&) = delete; ///< Disabled copy constructor
 	ComboImportDialog(ComboImportDialog&&) = delete; ///< Disabled move constructor
-	~ComboImportDialog() = default; ///< Default destructor
+	~ComboImportDialog() override = default; ///< Default destructor
 	ComboImportDialog& operator=(ComboImportDialog const&) = delete; ///< Disabled assignment operator
 	ComboImportDialog& operator=(ComboImportDialog&&) = delete; ///< Disabled move assignment operator
 

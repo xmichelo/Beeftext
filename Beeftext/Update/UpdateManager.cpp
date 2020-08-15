@@ -68,7 +68,7 @@ void UpdateManager::onAutoCheckForUpdateChanged(bool enabled)
    QDateTime const lastCheckDateTime = PreferencesManager::instance().lastUpdateCheckDateTime();
    qint64 const msSecsToNextCheck = lastCheckDateTime.isNull() ? kLaunchCheckDelayMs : qMax<qint64>(kLaunchCheckDelayMs, 
       QDateTime::currentDateTime().msecsTo(lastCheckDateTime.addMSecs(kUpdateCheckIntervalMs)));
-   timer_.start(msSecsToNextCheck);
+   timer_.start(static_cast<qint32>(msSecsToNextCheck));
 }
 
 
@@ -133,9 +133,9 @@ void UpdateManager::onWorkerNoUpdateIsAvailable()
 
 
 //**********************************************************************************************************************
-/// \param[in] error The error message
+//
 //**********************************************************************************************************************
-void UpdateManager::onWorkerError(QString const& error)
+void UpdateManager::onWorkerError(QString const&)
 {
    emit updateCheckFailed();
 }

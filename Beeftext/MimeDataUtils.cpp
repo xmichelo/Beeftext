@@ -51,7 +51,7 @@ QList<QUuid> mimeDataToUuidList(QMimeData const& mimeData)
 
 
 //**********************************************************************************************************************
-/// \param[in] index
+/// \param[in] index The index.
 /// \return A newly allocated QMimeData instance() containing the index of a group in a Beeftext specific MIME type
 //**********************************************************************************************************************
 QMimeData* groupIndexToMimeData(qint32 index)

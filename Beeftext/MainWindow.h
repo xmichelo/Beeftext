@@ -28,7 +28,7 @@ public: // member functions
    MainWindow(MainWindow const&) = delete; ///< Disabled copy constructor
    MainWindow(MainWindow&&) = delete; ///< Disabled move constructor
    MainWindow(); ///< Default constructor
-   ~MainWindow() = default; ///< Default destructor
+   ~MainWindow() override = default; ///< Default destructor
    MainWindow& operator=(MainWindow const&) = delete; ///< Disabled assignment operator
    MainWindow& operator=(MainWindow&&) = delete; ///< Disabled move assignment operator
    

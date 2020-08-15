@@ -26,7 +26,7 @@ public: // member functions
    explicit ComboSortFilterProxyModel(QObject* parent = nullptr); ///< Default constructor
    ComboSortFilterProxyModel(ComboSortFilterProxyModel const&) = delete; ///< Disabled copy constructor
    ComboSortFilterProxyModel(ComboSortFilterProxyModel&&) = delete; ///< Disabled move constructor
-   ~ComboSortFilterProxyModel() = default; ///< Default destructor
+   ~ComboSortFilterProxyModel() override = default; ///< Default destructor
    ComboSortFilterProxyModel& operator=(ComboSortFilterProxyModel const&) = delete; ///< Disabled assignment operator
    ComboSortFilterProxyModel& operator=(ComboSortFilterProxyModel&&) = delete; ///< Disabled move assignment operator
    void setGroup(SpGroup const& group); ///< Set the group to display

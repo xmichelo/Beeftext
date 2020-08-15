@@ -82,7 +82,7 @@ void waitBetweenKeystrokes()
 {
    qint32 const delayMs = PreferencesManager::instance().delayBetweenKeystrokesMs();
    if (delayMs > 0)
-      qApp->thread()->msleep(delayMs);
+      qApp->thread()->msleep(static_cast<quint32>(delayMs));
 }
 
 
@@ -150,7 +150,7 @@ QString snippetToPlainText(QString const& snippet, bool isHtml)
       return snippet;
    QTextDocumentFragment const fragment = QTextDocumentFragment::fromHtml(snippet);
    QString plainText = fragment.toPlainText();
-   plainText.remove(kObjectReplacementChar); //< Remove the 'Object replacement character' that replaced images during conversion to plain text
+   plainText.remove(kObjectReplacementChar); // Remove the 'Object replacement character' that replaced images during conversion to plain text
    return plainText;
 }
 
@@ -281,7 +281,7 @@ qint32 printableCharacterCount(QString const& str)
       if ((c >= 0x1f3fb) && (c <= 0x1f3ff)) // fitzpatrick scale range
          result -= 1; 
    }
-   return quint32(qMax<qint32>(0, result));
+   return qMax<qint32>(0, result);
 }
 
 

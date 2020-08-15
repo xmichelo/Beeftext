@@ -11,12 +11,12 @@
 #include "PreferencesManager.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
+#include "Clipboard/ClipboardManager.h"
 #include "Backup/BackupManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
-
 
 using namespace xmilib;
 
@@ -1074,7 +1074,7 @@ void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut)
 SpShortcut PreferencesManager::readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey,
    QString const& scanCodeRegKey) const
 {
-   int const intMods = this->readSettings<quint32>(modRegKey, 0);
+   int const intMods = this->readSettings<qint32>(modRegKey, 0);
    quint32 const vKey = this->readSettings<quint32>(vKeyRegKey, 0);
    quint32 const scanCode = this->readSettings<quint32>(scanCodeRegKey, 0);
    if ((!intMods) || (!vKey) || (!scanCode))

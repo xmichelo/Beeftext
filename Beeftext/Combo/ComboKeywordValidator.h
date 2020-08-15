@@ -23,7 +23,7 @@ public: // member functions
    explicit ComboKeywordValidator(QObject* parent = nullptr); ///< Default constructor
 	ComboKeywordValidator(ComboKeywordValidator const&) = delete; ///< Disabled copy constructor
 	ComboKeywordValidator(ComboKeywordValidator&&) = delete; ///< Disabled move constructor
-	~ComboKeywordValidator() = default; ///< Default destructor
+	~ComboKeywordValidator() override = default; ///< Default destructor
 	ComboKeywordValidator& operator=(ComboKeywordValidator const&) = delete; ///< Disabled assignment operator
 	ComboKeywordValidator& operator=(ComboKeywordValidator&&) = delete; ///< Disabled move assignment operator
    void fixup(QString& input) const override; ///< Attempt to change the input to be valid according to the validator rules

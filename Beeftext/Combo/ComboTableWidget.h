@@ -30,7 +30,7 @@ public: // member functions
    explicit ComboTableWidget(QWidget* parent = nullptr); ///< Default constructor
 	ComboTableWidget(ComboTableWidget const&) = delete; ///< Disabled copy constructor
 	ComboTableWidget(ComboTableWidget&&) = delete; ///< Disabled move constructor
-	~ComboTableWidget() = default; ///< Default destructor
+	~ComboTableWidget() override = default; ///< Default destructor
 	ComboTableWidget& operator=(ComboTableWidget const&) = delete; ///< Disabled assignment operator
 	ComboTableWidget& operator=(ComboTableWidget&&) = delete; ///< Disabled move assignment operator
    void setGroupListWidget(GroupListWidget* groupListWidget); ///< Set the group list widget associated with this combo

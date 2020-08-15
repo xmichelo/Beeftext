@@ -18,7 +18,6 @@
 ClipboardManagerLegacy::ClipboardManagerLegacy()
    : ClipboardManager()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
 }
 
 
@@ -27,7 +26,7 @@ ClipboardManagerLegacy::ClipboardManagerLegacy()
 //**********************************************************************************************************************
 ClipboardManager::EType ClipboardManagerLegacy::type() const
 {
-   return ClipboardManager::EType::Legacy;
+   return EType::Legacy;
 }
 
 
@@ -36,7 +35,6 @@ ClipboardManager::EType ClipboardManagerLegacy::type() const
 //**********************************************************************************************************************
 void ClipboardManagerLegacy::backupClipboard()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    backup_.reset();
    QMimeData const* mimeData = QApplication::clipboard()->mimeData();
    if ((!mimeData) || ((!mimeData->hasUrls()) && (!mimeData->hasImage()) && (!mimeData->hasColor())
@@ -71,7 +69,6 @@ void ClipboardManagerLegacy::backupClipboard()
 //**********************************************************************************************************************
 void ClipboardManagerLegacy::restoreClipboard()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    if (!this->hasBackup())
       return;
 

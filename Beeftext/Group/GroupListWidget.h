@@ -25,7 +25,7 @@ public: // member functions
    explicit GroupListWidget(QWidget* parent = nullptr); ///< Default constructor
    GroupListWidget(GroupListWidget const&) = delete; ///< Disabled copy-constructor
    GroupListWidget(GroupListWidget&&) = delete; ///< Disabled assignment copy-constructor
-   ~GroupListWidget() = default; ///< Destructor
+   ~GroupListWidget() override = default; ///< Destructor
    GroupListWidget& operator=(GroupListWidget const&) = delete; ///< Disabled assignment operator
    GroupListWidget& operator=(GroupListWidget&&) = delete; ///< Disabled move assignment operator
    SpGroup selectedGroup() const; ///< Get the selected group

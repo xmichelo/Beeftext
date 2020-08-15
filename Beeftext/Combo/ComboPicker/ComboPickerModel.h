@@ -21,7 +21,7 @@ public: // member functions
    explicit ComboPickerModel(QObject* parent = nullptr); ///< Default constructor
    ComboPickerModel(ComboPickerModel const&) = delete; ///< Disabled copy-constructor
    ComboPickerModel(ComboPickerModel&&) = delete; ///< Disabled assignment copy-constructor
-   ~ComboPickerModel() = default; ///< Destructor
+   ~ComboPickerModel() override = default; ///< Destructor
    ComboPickerModel& operator=(ComboPickerModel const&) = delete; ///< Disabled assignment operator
    ComboPickerModel& operator=(ComboPickerModel&&) = delete; ///< Disabled move assignment operator
    int rowCount(const QModelIndex& parent) const override; ///< return the number of rows in the model

@@ -21,7 +21,7 @@ public: // member functions
    explicit VariableInputDialog(QString const& description); ///< Default constructor
    VariableInputDialog(VariableInputDialog const&) = delete; ///< Disabled copy-constructor
    VariableInputDialog(VariableInputDialog&&) = delete; ///< Disabled assignment copy-constructor
-   ~VariableInputDialog() = default; ///< Destructor
+   ~VariableInputDialog() override = default; ///< Destructor
    VariableInputDialog& operator=(VariableInputDialog const&) = delete; ///< Disabled assignment operator
    VariableInputDialog& operator=(VariableInputDialog&&) = delete; ///< Disabled move assignment operator
 

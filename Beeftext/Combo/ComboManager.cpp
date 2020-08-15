@@ -175,7 +175,7 @@ bool ComboManager::restoreBackup(QString const& backupFilePath)
 
 
 //**********************************************************************************************************************
-/// \return true if and only if the sound was successfully loaded
+//
 //**********************************************************************************************************************
 void ComboManager::loadSoundFromPreferences()
 {
@@ -234,7 +234,7 @@ bool ComboManager::checkAndPerformComboSubstitution()
    if (result.empty())
       return false;
 
-   SpCombo const combo = result[result.size() > 1 ? rng_.get() % result.size() : 0];
+   SpCombo const combo = result[result.size() > 1 ? static_cast<quint32>(rng_.get()) % result.size() : 0];
    if ((!isBeeftextTheForegroundApplication()) &&
       (combo->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()) && sound_)
       sound_->play(); // in Beeftext windows, substitution is disabled

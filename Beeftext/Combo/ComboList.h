@@ -50,7 +50,7 @@ public: // member functions
    explicit ComboList(QObject* parent = nullptr); ///< Default constructor
    ComboList(ComboList const& ref); ///< Copy constructor
    ComboList(ComboList&& ref) noexcept; ///< Move constructor
-   ~ComboList() = default; ///< Default destructor
+   ~ComboList() override = default; ///< Default destructor
    ComboList& operator=(ComboList const& ref); ///< Assignment operator
    ComboList& operator=(ComboList&& ref) noexcept; ///< Move assignment operator
    GroupList& groupListRef(); ///< Return a mutable reference to the group list

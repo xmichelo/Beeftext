@@ -30,7 +30,7 @@ public: // member functions
    ComboPickerWindow(); ///< Default constructor
    ComboPickerWindow(ComboPickerWindow const&) = delete; ///< Disabled copy-constructor
    ComboPickerWindow(ComboPickerWindow&&) = delete; ///< Disabled assignment copy-constructor
-   ~ComboPickerWindow() = default; ///< Destructor
+   ~ComboPickerWindow() override = default; ///< Destructor
    ComboPickerWindow& operator=(ComboPickerWindow const&) = delete; ///< Disabled assignment operator
    ComboPickerWindow& operator=(ComboPickerWindow&&) = delete; ///< Disabled move assignment operator
 

@@ -86,7 +86,7 @@ void I18nManager::refreshSupportedLocalesList()
       if (isValidTranslationSubfolder(localeInfo))
       {
          if (supportedLocales_.end() != std::find_if(supportedLocales_.begin(), supportedLocales_.end(), 
-            [&locale](LocaleInfo const& localeInfo) -> bool { return locale == localeInfo.locale; }))
+            [&locale](LocaleInfo const& li) -> bool { return locale == li.locale; }))
             continue; // we already have a translation for this locale
 
          supportedLocales_.append(localeInfo);

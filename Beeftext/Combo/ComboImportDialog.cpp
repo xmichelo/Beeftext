@@ -125,8 +125,8 @@ void ComboImportDialog::dropEvent(QDropEvent* event)
 //**********************************************************************************************************************
 void ComboImportDialog::updateGui() const
 {
-   quint32 const conflictingNewerCount = conflictingNewerCombos_.size();
-   quint32 const conflictingTotalCount = conflictingNewerCount + conflictingOlderCombos_.size();
+   qint32 const conflictingNewerCount = conflictingNewerCombos_.size();
+   qint32 const conflictingTotalCount = conflictingNewerCount + conflictingOlderCombos_.size();
 
    ui_.groupBoxConflicts->setVisible(conflictingTotalCount > 0);
 
@@ -147,7 +147,7 @@ void ComboImportDialog::updateGui() const
       }
    }
 
-   quint32 const importCount = this->computeTotalImportCount();
+   qint32 const importCount = this->computeTotalImportCount();
    ui_.buttonImport->setEnabled(importCount);
    ui_.labelImportCount->setVisible(importCount);
    if (importCount)

@@ -126,7 +126,7 @@ GroupList const& ComboList::groupListRef() const
 //**********************************************************************************************************************
 qint32 ComboList::size() const
 {
-   return combos_.size();
+   return static_cast<qint32>(combos_.size());
 }
 
 
@@ -172,7 +172,8 @@ bool ComboList::isKeywordUsed(QString const& keyword) const
 
 
 //**********************************************************************************************************************
-/// \return 
+/// \param[in] combo The combo.
+/// \return true if and only if the combo can be added.
 //**********************************************************************************************************************
 bool ComboList::canComboBeAdded(SpCombo const& combo) const
 {
@@ -191,7 +192,7 @@ bool ComboList::append(SpCombo const& combo)
       globals::debugLog().addError("Cannot add combo (duplicate or keyword conflict).");
       return false;
    }
-   this->beginInsertRows(QModelIndex(), combos_.size(), combos_.size());
+   this->beginInsertRows(QModelIndex(), static_cast<qint32>(combos_.size()), static_cast<qint32>(combos_.size()));
    combos_.push_back(combo);
    this->endInsertRows();
    return true;
@@ -206,7 +207,7 @@ bool ComboList::append(SpCombo const& combo)
 // ReSharper disable once CppInconsistentNaming
 void ComboList::push_back(SpCombo const& combo)
 {
-   this->beginInsertRows(QModelIndex(), combos_.size(), combos_.size());
+   this->beginInsertRows(QModelIndex(), static_cast<qint32>(combos_.size()), static_cast<qint32>(combos_.size()));
    combos_.push_back(combo);
    this->endInsertRows();
 }
@@ -231,9 +232,9 @@ void ComboList::eraseCombosOfGroup(SpGroup const& group)
    if (!group)
       return;
    QUuid const uuid = group->uuid();
-   for (qint32 index = combos_.size() - 1; index >= 0; --index)
+   for (qint32 index = static_cast<qint32>(combos_.size()) - 1; index >= 0; --index)
    {
-      SpCombo const& combo = combos_[index];
+      SpCombo const& combo = combos_[static_cast<quint32>(index)];
       if (!combo)
          continue;
       SpGroup const grp = combo->group();
@@ -297,7 +298,7 @@ ComboList::const_iterator ComboList::findByUuid(QUuid const& uuid) const
 //**********************************************************************************************************************
 SpCombo& ComboList::operator[](qint32 index)
 {
-   return combos_[index];
+   return combos_[static_cast<quint32>(index)];
 }
 
 
@@ -307,7 +308,7 @@ SpCombo& ComboList::operator[](qint32 index)
 //**********************************************************************************************************************
 SpCombo const& ComboList::operator[](qint32 index) const
 {
-   return combos_[index];
+   return combos_[static_cast<quint32>(index)];
 }
 
 
@@ -444,7 +445,7 @@ bool ComboList::readFromJsonDocument(QJsonDocument const& doc, bool* outInOlderF
       QJsonValue const combosListValue = rootObject[kKeyCombos];
       if (!combosListValue.isArray())
          throw Exception("The list of combos is not a valid array");
-      for (QJsonValueRef const& comboValue: combosListValue.toArray())
+      for (QJsonValueRef const comboValue: combosListValue.toArray())
       {
          if (!comboValue.isObject())
             throw Exception("The combo list array contains an invalid combo.");
@@ -592,7 +593,7 @@ void ComboList::markComboAsEdited(qint32 index)
 
 
 //**********************************************************************************************************************
-/// \return false if and only if the grouping was incorrect and had to be fixed
+/// \param[in] outWasInvalid Was the grouping invalid.
 //**********************************************************************************************************************
 void ComboList::ensureCorrectGrouping(bool* outWasInvalid)
 {
@@ -628,7 +629,7 @@ bool ComboList::containsHtmlCombo() const
 //**********************************************************************************************************************
 int ComboList::rowCount(QModelIndex const&) const
 {
-   return combos_.size();
+   return static_cast<int>(combos_.size());
 }
 
 
@@ -649,10 +650,10 @@ int ComboList::columnCount(QModelIndex const&) const
 QVariant ComboList::data(QModelIndex const& index, int role) const
 {
    qint32 const row = index.row();
-   if ((row < 0) || (row >= qint32(combos_.size())))
+   if ((row < 0) || (row >= static_cast<qint32>(combos_.size())))
       return QVariant();
 
-   SpCombo const combo = combos_[row];
+   SpCombo const combo = combos_[static_cast<quint32>(row)];
    QLocale const locale = QLocale::system();
    QString const dtShortFormat = locale.dateTimeFormat(QLocale::ShortFormat);
    QString const dtLongFormat = locale.dateTimeFormat(QLocale::LongFormat);
@@ -774,7 +775,7 @@ QMimeData* ComboList::mimeData(const QModelIndexList& indexes) const
       qint32 const row = index.row();
       if ((row < 0) || (row >= qint32(combos_.size())))
          continue;
-      uuids.append(combos_[row]->uuid());
+      uuids.append(combos_[static_cast<quint32>(row)]->uuid());
    }
    if (uuids.isEmpty())
       return nullptr;

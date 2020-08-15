@@ -29,9 +29,9 @@ QString const kRegExpHtmlFormatField = R"(^\s*%1:(-?[\d]+)\s*$)"; ///The regular
 //**********************************************************************************************************************
 /// \return The clipboard format for HTML.
 //**********************************************************************************************************************
-qint32 htmlClipboardFormat()
+quint32 htmlClipboardFormat()
 {
-   static qint32 result = RegisterClipboardFormatA(kHtmlFormatName.toLocal8Bit());
+   static quint32 result = RegisterClipboardFormatA(kHtmlFormatName.toLocal8Bit());
    return result;
 }
 
@@ -41,7 +41,7 @@ qint32 htmlClipboardFormat()
 //**********************************************************************************************************************
 ClipboardManager::EType ClipboardManagerDefault::type() const
 {
-   return ClipboardManager::EType::Default;
+   return EType::Default;
 }
 
 
@@ -50,10 +50,9 @@ ClipboardManager::EType ClipboardManagerDefault::type() const
 //**********************************************************************************************************************
 void ClipboardManagerDefault::backupClipboard()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    backup_.clear();
    ScopedClipboardAccess const sca(nullptr);
-   qint32 format = 0;
+   quint32 format = 0;
 
    while ((format = EnumClipboardFormats(format)))
    {
@@ -67,11 +66,11 @@ void ClipboardManagerDefault::backupClipboard()
       if (!data)
          continue;
 
-      qint32 const size = GlobalSize(handle);
+      quint32 const size = GlobalSize(handle);
       if (!size)
          continue;
 
-      cbData->data = QByteArray(size, 0);
+      cbData->data = QByteArray(static_cast<qint32>(size), 0);
       memcpy(cbData->data.data(), data, size);
 
       backup_.push_back(cbData);
@@ -84,7 +83,6 @@ void ClipboardManagerDefault::backupClipboard()
 //**********************************************************************************************************************
 void ClipboardManagerDefault::restoreClipboard()
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    if (!this->hasBackup())
       return;
 
@@ -97,7 +95,7 @@ void ClipboardManagerDefault::restoreClipboard()
    {
       if ((!cbData) || (!cbData->data.size()))
          continue;
-      qint32 const size = cbData->data.size();
+      quint32 const size = static_cast<quint32>(cbData->data.size());
       HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, size);
       if (!handle)
          continue;
@@ -146,10 +144,10 @@ QString ClipboardManagerDefault::text()
    quint32 const* const data = static_cast<quint32 const*>(memlock.pointer());
    if (!data)
       return QString();
-   qint32 const size = GlobalSize(handle);
+   quint32 const size = GlobalSize(handle);
    if (!size)
       return QString();
-   QByteArray array(size, 0);
+   QByteArray array(static_cast<qint32>(size), 0);
    memcpy(array.data(), data, size);
    return QString::fromUtf16(reinterpret_cast<quint16 const*>(array.data()), (size - 1) / 2); // (size - 1) because we discard the final `0x0000`
 }
@@ -166,8 +164,8 @@ HANDLE putUtf16InGlobalMemory(QString const& text)
    if (text.isEmpty())
       return nullptr;
    quint16 const* const data = text.utf16();
-   quint32 const size = (text.length() + 1) * 2;
-   HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, (text.length() + 1) * 2);
+   quint32 const size = 2 * (static_cast<quint32>(text.length()) + 1);
+   HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, 2 * (static_cast<quint32>(text.length()) + 1));
    if (!handle)
       return nullptr;
    ScopedGlobalMemoryLock const memLock(handle);
@@ -196,7 +194,7 @@ HANDLE putUtf8InGlobalMemory(QString const& text)
    if (text.isEmpty())
       return nullptr;
    QByteArray const data = text.toUtf8() + char(0);
-   qint32 const size = data.size();
+   quint32 const size = static_cast<quint32>(data.size());
    HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, size);
    if (!handle)
       return nullptr;
@@ -257,7 +255,7 @@ qint32 numberFieldFromHtmlClipboardData(QString const& clipboardData, QString co
    if (!match.hasMatch())
       return -1;
    bool ok = false;
-   quint32 result = 0;
+   qint32 result = 0;
    result = match.captured(1).toInt(&ok);
    return ok ? result : -1;
 }
@@ -298,12 +296,12 @@ QString ClipboardManagerDefault::html()
    quint32 const* const data = static_cast<quint32 const*>(memlock.pointer());
    if (!data)
       return QString();
-   qint32 const size = GlobalSize(handle);
+   quint32 const size = GlobalSize(handle);
    if (!size)
       return QString();
-   QByteArray array(size, 0);
+   QByteArray array(static_cast<qint32>(size), 0);
    memcpy(array.data(), data, size);
-   return extractHtmlFromClipboardData(QString::fromUtf8(array.data(), size - 1)); // (size - 1) because we discard the final `0x0000`
+   return extractHtmlFromClipboardData(QString::fromUtf8(array.data(), static_cast<qint32>(size) - 1)); // (size - 1) because we discard the final `0x0000`
 
 }
 

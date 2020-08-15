@@ -29,7 +29,7 @@ void ensureBackupFolderExists()
       return;
    QDir().mkpath(path);
    if (!QFileInfo(path).exists())
-      return throw Exception(QString("Internal error: %1(): could not create backup folder.")
+      throw Exception(QString("Internal error: %1(): could not create backup folder.")
          .arg(__FUNCTION__));
 }
 

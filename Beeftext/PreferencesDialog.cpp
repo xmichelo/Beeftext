@@ -707,7 +707,6 @@ void PreferencesDialog::onRefreshLanguageList() const
 //**********************************************************************************************************************
 void PreferencesDialog::onCheckUseLegacyCopyPaste() const
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    prefs_.setUseLegacyCopyPaste(ui_.checkUseLegacyCopyPaste->isChecked());
 }
 

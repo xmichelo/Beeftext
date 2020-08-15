@@ -127,8 +127,8 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
          VK_SHIFT, VK_LSHIFT, VK_RSHIFT, VK_CONTROL, VK_LCONTROL,
          VK_RCONTROL, VK_MENU, VK_LMENU, VK_RMENU, VK_RWIN, VK_LWIN, VK_CAPITAL
       };
-      for (qint32 key: keyList)
-         keyStroke.keyboardState[key] = GetKeyState(key);
+      for (quint32 key: keyList)
+         keyStroke.keyboardState[key] = static_cast<quint8>(GetKeyState(static_cast<quint16>(key)));
 
       // our event handler will return false if we want to 'intercept' the keystroke and not pass it to the next hook,
       // but the MSDN documentation says we MUST do it if nCode < 0
@@ -352,7 +352,7 @@ bool InputManager::isKeyboardHookEnable() const
 
 
 //**********************************************************************************************************************
-/// \return true if and only if the hook was enabled
+//
 //**********************************************************************************************************************
 void InputManager::enableKeyboardHook()
 {

@@ -13,7 +13,7 @@
 
 
 //**********************************************************************************************************************
-/// \parma[in] parent The parent widget of the editor.
+/// \param[in] parent The parent widget of the editor.
 //**********************************************************************************************************************
 ComboEditor::ComboEditor(QWidget* parent)
    : QWidget(parent)
@@ -307,8 +307,8 @@ void ComboEditor::onComboFontFamilyChanged(QString const& family) const
 void ComboEditor::onComboFontSizeChanged(QString const& sizeText) const
 {
    bool ok = false;
-   float const size = sizeText.toFloat(&ok);
-   if ((!ok) || (size <= 0.0f))
+   double const size = sizeText.toDouble(&ok);
+   if ((!ok) || (size <= 0.0))
       return;
    QTextCharFormat format;
    format.setFontPointSize(size);

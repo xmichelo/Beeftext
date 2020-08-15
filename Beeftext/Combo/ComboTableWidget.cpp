@@ -180,7 +180,7 @@ void ComboTableWidget::setupTable()
          .arg(__FUNCTION__));
    horizontalHeader->setFixedHeight(horizontalHeader->fontMetrics().height() + 10);
    horizontalHeader->setSortIndicator(0, Qt::AscendingOrder);
-   //< required, otherwise the indicator is first displayed in the wrong direction
+   // required, otherwise the indicator is first displayed in the wrong direction
    horizontalHeader->setDefaultAlignment(Qt::AlignLeft);
    connect(ui_.tableComboList->selectionModel(), &QItemSelectionModel::selectionChanged, this,
       &ComboTableWidget::updateGui);
@@ -758,6 +758,7 @@ void ComboTableWidget::onDoubleClick()
       break;
    case 1:
       this->onActionEditCombo();
+      break;
    default:
       break;
    }

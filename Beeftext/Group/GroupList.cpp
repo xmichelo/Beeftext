@@ -104,7 +104,7 @@ GroupList& GroupList::operator=(GroupList&& ref) noexcept
 //**********************************************************************************************************************
 SpGroup& GroupList::operator[](qint32 index)
 {
-   return groups_[index];
+   return groups_[static_cast<quint32>(index)];
 }
 
 
@@ -114,7 +114,7 @@ SpGroup& GroupList::operator[](qint32 index)
 //**********************************************************************************************************************
 SpGroup const& GroupList::operator[](qint32 index) const
 {
-   return groups_[index];
+   return groups_[static_cast<quint32>(index)];
 }
 
 
@@ -123,7 +123,7 @@ SpGroup const& GroupList::operator[](qint32 index) const
 //**********************************************************************************************************************
 qint32 GroupList::size() const
 {
-   return groups_.size();
+   return static_cast<qint32>(groups_.size());
 }
 
 
@@ -174,7 +174,8 @@ bool GroupList::append(SpGroup const& group)
       globals::debugLog().addError("Cannot add group (null or duplicate).");
       return false;
    }
-   this->beginInsertRows(QModelIndex(), groups_.size() + 1, groups_.size() + 1);
+   this->beginInsertRows(QModelIndex(), static_cast<qint32>(groups_.size()) + 1, 
+      static_cast<qint32>(groups_.size()) + 1);
    groups_.push_back(group);
    this->endInsertRows();
    return true;
@@ -187,7 +188,8 @@ bool GroupList::append(SpGroup const& group)
 // ReSharper disable once CppInconsistentNaming
 void GroupList::push_back(SpGroup const& group)
 {
-   this->beginInsertRows(QModelIndex(), groups_.size() + 1, groups_.size() + 1);
+   this->beginInsertRows(QModelIndex(), static_cast<qint32>(groups_.size()) + 1, 
+      static_cast<qint32>(groups_.size()) + 1);
    groups_.push_back(group);
    this->endInsertRows();
 }
@@ -404,9 +406,9 @@ void GroupList::setDropType(EDropType dropType)
 //**********************************************************************************************************************
 bool GroupList::processComboListDrop(QList<QUuid> const& uuids, qint32 index)
 {
-   if ((index < 0) || (index >= qint32(groups_.size())) || (!groups_[index]) ||uuids.isEmpty())
+   if ((index < 0) || (index >= qint32(groups_.size())) || (!groups_[static_cast<quint32>(index)]) ||uuids.isEmpty())
       return false;
-   SpGroup const& group = groups_[index];
+   SpGroup const& group = groups_[static_cast<quint32>(index)];
    ComboList& comboList = ComboManager::instance().comboListRef();
    bool changed = false;
    for (QUuid const& uuid : uuids)
@@ -430,10 +432,10 @@ bool GroupList::processComboListDrop(QList<QUuid> const& uuids, qint32 index)
 //**********************************************************************************************************************
 bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
 {
-   qint32 const listSize = groups_.size();
+   qint32 const listSize = static_cast<qint32>(groups_.size());
    if ((dropIndex < 0) || (groupIndex < 0) || (groupIndex >= listSize))
       return false;
-   SpGroup const group = groups_[groupIndex];
+   SpGroup const group = groups_[static_cast<quint32>(groupIndex)];
    if (!group)
       return false;
 
@@ -467,7 +469,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
 //**********************************************************************************************************************
 int GroupList::rowCount(const QModelIndex &) const
 {
-   return groups_.size() + 1;
+   return static_cast<qint32>(groups_.size()) + 1;
 }
 
 
@@ -480,7 +482,7 @@ QVariant GroupList::data(QModelIndex const& index, int role) const
 {
    // note entry at index 0 is special entry "<All combos>"
    QString allCombosStr = tr("<All combos>");
-   qint32 const groupCount = groups_.size();
+   qint32 const groupCount = static_cast<qint32>(groups_.size());
    qint32 const row = index.row();
    if ((row < 0) || (row > groupCount))
       return QVariant();
@@ -490,14 +492,14 @@ QVariant GroupList::data(QModelIndex const& index, int role) const
    {
       if (0 == row)
          return allCombosStr;
-      SpGroup const& group = groups_[row - 1];
+      SpGroup const& group = groups_[static_cast<quint32>(row) - 1];
       return group ? group->name() : QString();
    }
    case Qt::ToolTipRole:
    {
       if (0 == row)
          return allCombosStr; 
-      SpGroup const& group = groups_[row - 1];
+      SpGroup const& group = groups_[static_cast<quint32>(row) - 1];
       return group ? group->description() : QString();
    }
    case Qt::FontRole:

@@ -47,7 +47,7 @@ private slots:
    void onWorkerFinished(); ///< Slot for the finishing of the worker
    void onWorkerUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo); ///< Slot for the reporting of new version
    void onWorkerNoUpdateIsAvailable(); ///< Slot for the notification that no update is available
-   void onWorkerError(QString const& error); ///< Slot for worker errors
+   void onWorkerError(QString const&); ///< Slot for worker errors
 
 private: // data members
    QTimer timer_; /// The timer for periodical checks

@@ -126,7 +126,7 @@ QString EmojiManager::emoji(QString const& keyword) const
 
 
 //**********************************************************************************************************************
-/// \param[in] appExeName 
+/// \param[in] appExeName The application executable name.
 //**********************************************************************************************************************
 bool EmojiManager::isExcludedApplication(QString const& appExeName) const
 {

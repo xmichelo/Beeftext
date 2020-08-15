@@ -20,7 +20,7 @@ public: // member functions
    explicit ComboPickerSortFilterProxyModel(QObject* parent = nullptr); ///< Default constructor
    ComboPickerSortFilterProxyModel(ComboPickerSortFilterProxyModel const&) = delete; ///< Disabled copy-constructor
    ComboPickerSortFilterProxyModel(ComboPickerSortFilterProxyModel&&) = delete; ///< Disabled assignment copy-constructor
-   ~ComboPickerSortFilterProxyModel() = default; ///< Destructor
+   ~ComboPickerSortFilterProxyModel() override = default; ///< Destructor
    ComboPickerSortFilterProxyModel& operator=(ComboPickerSortFilterProxyModel const&) = delete; ///< Disabled assignment operator
    ComboPickerSortFilterProxyModel& operator=(ComboPickerSortFilterProxyModel&&) = delete; ///< Disabled move assignment operator
    bool filterAcceptsRow(int sourceRow, const QModelIndex&) const override; ///< Check if a row should be included or discarded

@@ -22,7 +22,7 @@ class AboutDialog: public QDialog
    Q_OBJECT
 public: // member functions
    explicit AboutDialog(QWidget* parent = nullptr); ///< Default constructor
-	~AboutDialog() = default; ///< Default destructor
+	~AboutDialog() override = default; ///< Default destructor
    AboutDialog(AboutDialog const&) = delete; ///< Disabled copy constructor
    AboutDialog(AboutDialog&&) = delete; ///< Disabled move constructor
    AboutDialog& operator=(AboutDialog const&) = delete; ///< Disabled assignment operator

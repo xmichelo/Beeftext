@@ -43,7 +43,7 @@ public: // member functions
    explicit GroupList(QObject* parent = nullptr); ///< Default constructor
    GroupList(GroupList const& ref); ///< copy-constructor
    GroupList(GroupList&& ref) noexcept; ///< assignment copy-constructor
-   ~GroupList() = default; ///< Destructor
+   ~GroupList() override = default; ///< Destructor
    GroupList& operator=(GroupList const& ref); ///< Assignment operator
    GroupList& operator=(GroupList&& ref) noexcept; ///< Move assignment operator
    SpGroup& operator[](qint32 index); ///< Get a reference to the group at a given position in the list

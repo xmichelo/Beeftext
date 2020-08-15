@@ -26,7 +26,7 @@ public: // member functions
    explicit PreferencesDialog(QWidget* parent = nullptr); ///< Default constructor
    PreferencesDialog(PreferencesDialog const&) = delete; ///< Disabled copy-constructor
    PreferencesDialog(PreferencesDialog&&) = delete; ///< Disabled assignment copy-constructor
-   ~PreferencesDialog() = default; ///< Destructor
+   ~PreferencesDialog() override = default; ///< Destructor
    PreferencesDialog& operator=(PreferencesDialog const&) = delete; ///< Disabled assignment operator
    PreferencesDialog& operator=(PreferencesDialog&&) = delete; ///< Disabled move assignment operator
    void loadPreferences() const; ///< Load the preferences

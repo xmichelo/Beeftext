@@ -21,7 +21,7 @@ public: // member functions
    explicit ComboPickerItemDelegate(QObject* parent = nullptr) : QItemDelegate(parent) {} ///< Default constructor
    ComboPickerItemDelegate(ComboPickerItemDelegate const&) = delete; ///< Disabled copy-constructor
    ComboPickerItemDelegate(ComboPickerItemDelegate&&) = delete; ///< Disabled assignment copy-constructor
-   ~ComboPickerItemDelegate() = default; ///< Destructor
+   ~ComboPickerItemDelegate() override = default; ///< Destructor
    ComboPickerItemDelegate& operator=(ComboPickerItemDelegate const&) = delete; ///< Disabled assignment operator
    ComboPickerItemDelegate& operator=(ComboPickerItemDelegate&&) = delete; ///< Disabled move assignment operator
    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;

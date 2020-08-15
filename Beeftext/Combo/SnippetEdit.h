@@ -21,7 +21,7 @@ public: // member functions
    explicit SnippetEdit(QWidget* parent = nullptr); ///< Default constructor
    SnippetEdit(SnippetEdit const&) = delete; ///< Disabled copy-constructor
    SnippetEdit(SnippetEdit&&) = delete; ///< Disabled assignment copy-constructor
-   ~SnippetEdit() = default; ///< Destructor
+   ~SnippetEdit() override = default; ///< Destructor
    SnippetEdit& operator=(SnippetEdit const&) = delete; ///< Disabled assignment operator
    SnippetEdit& operator=(SnippetEdit&&) = delete; ///< Disabled move assignment operator
 

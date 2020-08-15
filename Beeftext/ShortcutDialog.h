@@ -25,7 +25,7 @@ public: // member functions
    explicit ShortcutDialog(SpShortcut const& shortcut, QWidget* parent = nullptr); ///< Default constructor
 	ShortcutDialog(ShortcutDialog const&) = delete; ///< Disabled copy constructor
 	ShortcutDialog(ShortcutDialog&&) = delete; ///< Disabled move constructor
-	~ShortcutDialog() = default; ///< Default destructor
+	~ShortcutDialog() override = default; ///< Default destructor
 	ShortcutDialog& operator=(ShortcutDialog const&) = delete; ///< Disabled assignment operator
 	ShortcutDialog& operator=(ShortcutDialog&&) = delete; ///< Disabled move assignment operator
    SpShortcut shortcut() const; ///< Get the shortcut

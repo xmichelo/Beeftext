@@ -11,7 +11,6 @@
 #define BEEFTEXT_GLOBALS_H
 
 
-#include "Clipboard/ClipboardManager.h"
 #include <XMiLib/DebugLog/DebugLogWindow.h>
 
 
