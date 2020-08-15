@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
       {
          // SingleInstance app detected that another instance is running and 'put a flag in memory to indicate
          // to the other instance that another one tried to be created
-#ifndef NODEBUG
+#ifndef NDEBUG
          QMessageBox::information(nullptr, QString(), "Another instance of the application is already running");
 #endif
          return 1;

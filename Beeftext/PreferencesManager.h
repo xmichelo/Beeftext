@@ -106,6 +106,8 @@ public: // member functions
    bool beeftextEnabled() const; ///< Set if beeftext is enabled.
    void setRichTextDeprecationWarningHasAlreadyBeenDisplayed(bool alreadyDisplayed) const; ///< Set the value for the 'Rich text deprecation warning has already been displayed' preference.
    bool richTextDeprecationWarningHasAlreadyBeenDisplayed() const; ///< Get the value for the 'Rich text deprecation warning has already been displayed' preference.
+   void setUseLegacyCopyPaste(bool value) const; ///< Set he value for the 'Use legacy copy/paste'.
+   bool useLegacyCopyPaste() const; ///< Get he value for the 'Use legacy copy/paste'.
 
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed

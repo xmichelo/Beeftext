@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>303</height>
+    <height>325</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -737,6 +737,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="checkUseLegacyCopyPaste">
+         <property name="text">
+          <string>Use legacy copy/paste</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QGroupBox" name="groupboxAutoBackup">
          <property name="title">
           <string>Automatic backup</string>
@@ -1010,8 +1017,8 @@
    <slot>onChangeComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>469</x>
-     <y>109</y>
+     <x>467</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1027,7 +1034,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>246</x>
-     <y>278</y>
+     <y>314</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1058,8 +1065,8 @@
    <slot>onResetComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>550</x>
-     <y>109</y>
+     <x>548</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1074,8 +1081,8 @@
    <slot>onRestoreBackup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>313</x>
-     <y>169</y>
+     <x>307</x>
+     <y>191</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1107,7 +1114,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>336</x>
-     <y>278</y>
+     <y>314</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -1122,8 +1129,8 @@
    <slot>onEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>133</x>
-     <y>232</y>
+     <x>131</x>
+     <y>263</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -1138,7 +1145,7 @@
    <slot>onEditEmojiExcludedApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>279</x>
+     <x>276</x>
      <y>63</y>
     </hint>
     <hint type="destinationlabel">
@@ -1170,8 +1177,8 @@
    <slot>onCheckEnableComboPicker(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>140</x>
-     <y>166</y>
+     <x>161</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1187,7 +1194,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>358</x>
-     <y>196</y>
+     <y>194</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1203,7 +1210,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>439</x>
-     <y>196</y>
+     <y>194</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1250,8 +1257,8 @@
    <slot>onCheckAutoStart(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>88</y>
+     <x>111</x>
+     <y>87</y>
     </hint>
     <hint type="destinationlabel">
      <x>319</x>
@@ -1266,8 +1273,8 @@
    <slot>onCheckPlaySoundOnCombo(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>112</x>
-     <y>112</y>
+     <x>123</x>
+     <y>110</y>
     </hint>
     <hint type="destinationlabel">
      <x>485</x>
@@ -1282,7 +1289,7 @@
    <slot>onEmojiLeftDelimiterChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>140</x>
+     <x>138</x>
      <y>91</y>
     </hint>
     <hint type="destinationlabel">
@@ -1298,7 +1305,7 @@
    <slot>onEmojiRightDelimiterChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>299</x>
+     <x>294</x>
      <y>91</y>
     </hint>
     <hint type="destinationlabel">
@@ -1330,8 +1337,8 @@
    <slot>onCheckUseCustomTheme(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>119</y>
+     <x>106</x>
+     <y>118</y>
     </hint>
     <hint type="destinationlabel">
      <x>223</x>
@@ -1346,7 +1353,7 @@
    <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>257</x>
+     <x>247</x>
      <y>60</y>
     </hint>
     <hint type="destinationlabel">
@@ -1362,8 +1369,8 @@
    <slot>onCheckAutoBackup(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>153</x>
-     <y>166</y>
+     <x>175</x>
+     <y>188</y>
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
@@ -1378,8 +1385,8 @@
    <slot>onCheckWriteDebugLogFile(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>134</x>
-     <y>116</y>
+     <x>145</x>
+     <y>115</y>
     </hint>
     <hint type="destinationlabel">
      <x>295</x>
@@ -1394,8 +1401,8 @@
    <slot>onCheckUseCustomSound(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>48</x>
-     <y>136</y>
+     <x>59</x>
+     <y>133</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1411,7 +1418,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>795</x>
-     <y>166</y>
+     <y>163</y>
     </hint>
     <hint type="destinationlabel">
      <x>683</x>
@@ -1427,7 +1434,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>876</x>
-     <y>166</y>
+     <y>163</y>
     </hint>
     <hint type="destinationlabel">
      <x>686</x>
@@ -1442,7 +1449,7 @@
    <slot>onOpenTranslationFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>229</x>
+     <x>228</x>
      <y>94</y>
     </hint>
     <hint type="destinationlabel">
@@ -1458,7 +1465,7 @@
    <slot>onRefreshLanguageList()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>224</x>
+     <x>221</x>
      <y>63</y>
     </hint>
     <hint type="destinationlabel">
@@ -1475,7 +1482,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>794</x>
-     <y>198</y>
+     <y>195</y>
     </hint>
     <hint type="destinationlabel">
      <x>704</x>
@@ -1491,7 +1498,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>875</x>
-     <y>198</y>
+     <y>195</y>
     </hint>
     <hint type="destinationlabel">
      <x>706</x>
@@ -1554,8 +1561,8 @@
    <slot>onCheckUseCustomBackupLocation(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>96</x>
-     <y>197</y>
+     <x>118</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1570,12 +1577,28 @@
    <slot>onChangeCustomBackupLocation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>836</x>
-     <y>186</y>
+     <x>866</x>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
      <x>893</x>
      <y>178</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseLegacyCopyPaste</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseLegacyCopyPaste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>115</y>
     </hint>
    </hints>
   </connection>
@@ -1626,5 +1649,6 @@
   <slot>onImport()</slot>
   <slot>onCheckUseCustomBackupLocation(bool)</slot>
   <slot>onChangeCustomBackupLocation()</slot>
+  <slot>onCheckUseLegacyCopyPaste()</slot>
  </slots>
 </ui>

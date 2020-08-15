@@ -174,7 +174,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet
-         ClipboardManager& clipboardManager = globals::clipboardManager();
+         ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
          if (isHtml)
             clipboardManager.setHtml(newText);
@@ -185,7 +185,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
          restoreModifierKeys(pressedModifiers);
-         QTimer::singleShot(1000, []() { globals::clipboardManager().restoreClipboard(); });
+         QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
          ///< We need to delay clipboard restoration to avoid unexpected behaviours
       }
       else
@@ -282,4 +282,28 @@ qint32 printableCharacterCount(QString const& str)
          result -= 1; 
    }
    return quint32(qMax<qint32>(0, result));
+}
+
+
+//**********************************************************************************************************************
+/// \brief Get the MIME data for a text snippet.
+/// 
+/// \param[in] snippet The snippet's text.
+/// \param[in] isHtml Is the snippet in HTML format.
+/// \return A pointer to heap-allocated MIME data representing the snippet. The caller is responsible for
+/// release the allocated memory.
+//**********************************************************************************************************************
+QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
+{
+   QMimeData* result = new QMimeData;
+   if (isHtml)
+   {
+      // we filter the HTML through a QTextDocumentFragment as is prevent errouneous insertion of new line
+      // at the beginning and end of the snippet
+      result->setHtml(QTextDocumentFragment::fromHtml(snippet).toHtml());
+      result->setText(snippetToPlainText(snippet, isHtml));
+   }
+   else
+      result->setText(snippet);
+   return result;
 }

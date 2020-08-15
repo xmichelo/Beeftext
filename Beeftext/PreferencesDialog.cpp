@@ -117,11 +117,13 @@ void PreferencesDialog::loadPreferences() const
    blocker = QSignalBlocker(ui_.checkUseCustomBackupLocation);
    ui_.checkUseCustomBackupLocation->setChecked(prefs_.useCustomBackupLocation());
    ui_.editCustomBackupLocation->setText(QDir::toNativeSeparators(prefs_.customBackupLocation()));
-      blocker = QSignalBlocker(ui_.checkWriteDebugLogFile);
+   blocker = QSignalBlocker(ui_.checkWriteDebugLogFile);
    ui_.checkWriteDebugLogFile->setChecked(prefs_.writeDebugLogFile());
    blocker = QSignalBlocker(ui_.checkUseCustomSound);
    ui_.checkUseCustomSound->setChecked(prefs_.useCustomSound());
    ui_.editCustomSound->setText(QDir::toNativeSeparators(prefs_.customSoundPath()));
+   blocker = QSignalBlocker(ui_.checkUseLegacyCopyPaste);
+   ui_.checkUseLegacyCopyPaste->setChecked(prefs_.useLegacyCopyPaste());
    this->updateGui();
    // ReSharper restore CppAssignedValueIsNeverUsed
    // ReSharper restore CppEntityAssignedButNoRead
@@ -697,6 +699,16 @@ void PreferencesDialog::onRefreshLanguageList() const
    QLocale const validatedLocale = i18NManager.validateLocale(currentLocale);
    I18nManager::selectLocaleInCombo(validatedLocale, *ui_.comboLocale);
    i18NManager.setLocale(validatedLocale);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckUseLegacyCopyPaste() const
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   prefs_.setUseLegacyCopyPaste(ui_.checkUseLegacyCopyPaste->isChecked());
 }
 
 

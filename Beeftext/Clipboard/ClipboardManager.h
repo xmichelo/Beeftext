@@ -2,6 +2,9 @@
 /// \author Xavier Michelon
 ///
 /// \brief Declaration of abstract clipboard manager interface.
+///
+/// Copyright (c) Xavier Michelon. All rights reserved.  
+/// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 
 #ifndef BEEFTEXT_CLIPBOARD_MANAGER_INTERFACE_H
@@ -9,10 +12,21 @@
 
 
 //**********************************************************************************************************************
-/// \brief Clipboard manager interface
+/// \brief Abstract clipboard manager class used as an interface.
 //**********************************************************************************************************************
 class ClipboardManager
 {
+public: // data types
+   enum class EType
+   {
+      Default, ///< The default clipboard manager.
+      Legacy ///< The legacy clipboard manager.
+   }; ///< Enumeration for the type of clipboard manager
+
+public: // static members
+   static ClipboardManager& instance(); ///< Return the instance of the clipboard manager
+   static void setClipboardManagerType(EType type); ///< Set the clipboard manager type (default or legacy).
+
 public: // member functions
    ClipboardManager() = default; ///< Default constructor.
    ClipboardManager(ClipboardManager const&) = delete; ///< Disabled copy constructor.
@@ -20,6 +34,7 @@ public: // member functions
    virtual ~ClipboardManager() {} ; ///< Default destructor.
    ClipboardManager& operator=(ClipboardManager const&) = delete; ///< Disabled assignment operator.
    ClipboardManager& operator=(ClipboardManager&&) = delete; ///< Disabled move assignment operator.
+   virtual EType type() const = 0; ///< Return the type of clipboard manager of the instance.
    virtual void backupClipboard() = 0; ///< backup the clipboard.
    virtual void restoreClipboard() = 0; ///< Restore the clipboard and delete the current backup
    virtual bool hasBackup() const = 0; ///< Test if the clipboard is empty.

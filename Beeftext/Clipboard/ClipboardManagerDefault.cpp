@@ -37,10 +37,20 @@ qint32 htmlClipboardFormat()
 
 
 //**********************************************************************************************************************
+/// \return The type of the clipboard manager
+//**********************************************************************************************************************
+ClipboardManager::EType ClipboardManagerDefault::type() const
+{
+   return ClipboardManager::EType::Default;
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ClipboardManagerDefault::backupClipboard()
 {
+   qDebug() << QString("%1()").arg(__FUNCTION__);
    backup_.clear();
    ScopedClipboardAccess const sca(nullptr);
    qint32 format = 0;
@@ -74,6 +84,7 @@ void ClipboardManagerDefault::backupClipboard()
 //**********************************************************************************************************************
 void ClipboardManagerDefault::restoreClipboard()
 {
+   qDebug() << QString("%1()").arg(__FUNCTION__);
    if (!this->hasBackup())
       return;
 
@@ -149,7 +160,6 @@ QString ClipboardManagerDefault::text()
 ///
 /// \param[in] text The plain text.
 /// \return A handle to the global memory containing the text in UTF-8 format.
-/// \return 
 //**********************************************************************************************************************
 HANDLE putUtf16InGlobalMemory(QString const& text)
 {
@@ -233,7 +243,7 @@ bool ClipboardManagerDefault::setText(QString const& text)
 
 
 //**********************************************************************************************************************
-/// \extract a number from an HTML clipboard data description field (which have the form 'fieldName:00000123'
+/// \brief extract a number from an HTML clipboard data description field (which have the form 'fieldName:00000123'
 /// \param[in] clipboardData The HTML format data read from the clipboard
 /// \param[in] fieldName The name of the field.
 /// \return The value read from the field.
@@ -295,30 +305,6 @@ QString ClipboardManagerDefault::html()
    memcpy(array.data(), data, size);
    return extractHtmlFromClipboardData(QString::fromUtf8(array.data(), size - 1)); // (size - 1) because we discard the final `0x0000`
 
-}
-
-
-//**********************************************************************************************************************
-/// \brief Get the MIME data for a text snippet.
-/// 
-/// \param[in] snippet The snippet's text.
-/// \param[in] isHtml Is the snippet in HTML format.
-/// \return A pointer to heap-allocated MIME data representing the snippet. The caller is responsible for
-/// release the allocated memory.
-//**********************************************************************************************************************
-QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
-{
-   QMimeData* result = new QMimeData;
-   if (isHtml)
-   {
-      // we filter the HTML through a QTextDocumentFragment as is prevent errouneous insertion of new line
-      // at the beginning and end of the snippet
-      result->setHtml(QTextDocumentFragment::fromHtml(snippet).toHtml());
-      result->setText(snippetToPlainText(snippet, isHtml));
-   }
-   else
-      result->setText(snippet);
-   return result;
 }
 
 

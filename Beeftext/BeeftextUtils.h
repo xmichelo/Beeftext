@@ -19,6 +19,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage = QString()); ///< Report an error to the user
 bool isAppRunningOnWindows10OrHigher(); ///< Return true if and only if the application is running on windows 10 or higher
 qint32 printableCharacterCount(QString const& str); ///< Return the (estimated) number of printable characters in a string
+QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml); ///< Retrieve the MIME data corresponding to a combo's snippet.
 
 
 #endif // #ifndef BEEFTEXT_UTILS_H

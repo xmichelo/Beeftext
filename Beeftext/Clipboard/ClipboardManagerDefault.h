@@ -26,6 +26,7 @@ public: // member functions
 	~ClipboardManagerDefault() = default; ///< Default destructor.
 	ClipboardManagerDefault& operator=(ClipboardManagerDefault const&) = delete; ///< Disabled assignment operator.
 	ClipboardManagerDefault& operator=(ClipboardManagerDefault&&) = delete; ///< Disabled move assignment operator.
+   EType type() const override; ///< Return the type of clipboard manager of the instance.
    void backupClipboard() override; ///< backup the clipboard.
    void restoreClipboard() override; ///< Restore the clipboard and delete the current backup
    bool hasBackup() const override; ///< Test if the clipboard is empty.

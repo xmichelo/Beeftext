@@ -148,6 +148,12 @@
     <ClCompile Include="Clipboard\ClipboardManagerDefault.cpp">
       <Filter>Clipboard</Filter>
     </ClCompile>
+    <ClCompile Include="Clipboard\ClipboardManagerLegacy.cpp">
+      <Filter>Clipboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Clipboard\ClipboardManager.cpp">
+      <Filter>Clipboard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -221,6 +227,9 @@
       <Filter>Clipboard</Filter>
     </ClInclude>
     <ClInclude Include="Clipboard\ClipboardManager.h">
+      <Filter>Clipboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Clipboard\ClipboardManagerLegacy.h">
       <Filter>Clipboard</Filter>
     </ClInclude>
   </ItemGroup>

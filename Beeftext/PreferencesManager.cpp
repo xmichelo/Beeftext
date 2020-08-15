@@ -63,6 +63,8 @@ QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for th
 QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
 QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
 QString const kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = "RichTextDeprecationWarningHasAlreadyBeenDisplayed"; ///< The setting key for teh 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
+QString const kKeyUseLegacyCopyPaste = "UseLegacyCopyPaste"; ///< The setting key for the 'Use legacy copy/paste' preference.
+
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
@@ -90,8 +92,13 @@ bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use cu
 bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
 bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
+bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
+
 
 }
+
+
+QByteArray variantToByteArray(QVariant const& v); ///< Return a serializable array containing a QVariant.
 
 
 //**********************************************************************************************************************
@@ -192,6 +199,7 @@ void PreferencesManager::reset()
    this->setRichTextDeprecationWarningHasAlreadyBeenDisplayed(
       kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
    this->resetWarnings();
+   this->setUseLegacyCopyPaste(kDefaultUseLegacyCopyPaste);
    if (!isInPortableMode())
    {
       this->setAutoStartAtLogin(kDefaultAutoStartAtLogin);
@@ -268,8 +276,6 @@ template <typename T> T objectValue(QJsonObject const& object, QString const& ke
 
 
 //**********************************************************************************************************************
-/// \brief Return a serilizable array containing a QVariant.
-///
 /// \param[in] v The QVariant.
 /// \return a serilizable array containing a QVariant.
 //**********************************************************************************************************************
@@ -354,6 +360,7 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
    object[kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed] = this->readSettings<bool>(
       kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, 
       kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
+   object[kKeyUseLegacyCopyPaste] = this->readSettings<bool>(kKeyUseLegacyCopyPaste, kDefaultUseLegacyCopyPaste);
    outDoc = QJsonDocument(object);
 }
 
@@ -407,6 +414,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
    settings_->setValue(kKeyWriteDebugLogFile, objectValue<bool>(object, kKeyWriteDebugLogFile));
    settings_->setValue(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, objectValue<bool>(object,
       kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed));
+   this->setUseLegacyCopyPaste(objectValue<bool>(object, kKeyUseLegacyCopyPaste));
    this->init();
 }
 
@@ -1281,6 +1289,26 @@ bool PreferencesManager::richTextDeprecationWarningHasAlreadyBeenDisplayed() con
 {
    return readSettings<bool>(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed,
       kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setUseLegacyCopyPaste(bool value) const
+{
+   settings_->setValue(kKeyUseLegacyCopyPaste, value);
+   ClipboardManager::setClipboardManagerType(value ? ClipboardManager::EType::Legacy : 
+      ClipboardManager::EType::Default);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::useLegacyCopyPaste() const
+{
+   return readSettings<bool>(kKeyUseLegacyCopyPaste, kDefaultUseLegacyCopyPaste);
 }
 
 
