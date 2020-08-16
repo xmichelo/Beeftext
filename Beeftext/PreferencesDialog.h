@@ -46,6 +46,7 @@ private slots:
    void onChangeCustomSound() const; ///< Slot for the 'Change custom sound' button.
    void onPlaySoundButton() const; ///< Slot for the 'Play' button for custom sound.
    void onRadioAutomaticComboTrigger(bool checked) const; ///< Slot for the 'Automatic combo trigger' button.
+   void onCheckComboTriggersOnSpace(bool checked) const; ///< Slot for the 'Combo triggers on space' check box.
    void onCheckEnableAppEnableDisableShortcut(bool checked) const; ///< Slot for the 'Enable app enable/disable shortcut' check box.
    void onChangeAppEnableDisableShortcut() const; ///< Slot for the button Change of the app enable/disable shortcut.
    void onResetAppEnableDisableShortcut() const; ///< Slot for the button Default of the app enable/disable shortcut.

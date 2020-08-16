@@ -124,6 +124,8 @@ void PreferencesDialog::loadPreferences() const
    ui_.editCustomSound->setText(QDir::toNativeSeparators(prefs_.customSoundPath()));
    blocker = QSignalBlocker(ui_.checkUseLegacyCopyPaste);
    ui_.checkUseLegacyCopyPaste->setChecked(prefs_.useLegacyCopyPaste());
+   blocker = QSignalBlocker(ui_.checkComboTriggersOnSpace);
+   ui_.checkComboTriggersOnSpace->setChecked(prefs_.comboTriggersOnSpace());
    this->updateGui();
    // ReSharper restore CppAssignedValueIsNeverUsed
    // ReSharper restore CppEntityAssignedButNoRead
@@ -208,6 +210,8 @@ void PreferencesDialog::updateGui() const
    widgets = { ui_.editCustomSound, ui_.buttonChangeCustomSound, ui_.buttonPlay };
    for (QWidget* const widget: widgets)
       widget->setEnabled(useCustomSound);
+
+   ui_.checkComboTriggersOnSpace->setEnabled(ui_.radioComboTriggerAuto->isChecked());
 }
 
 
@@ -303,6 +307,16 @@ void PreferencesDialog::onRadioAutomaticComboTrigger(bool checked) const
 {
    prefs_.setUseAutomaticSubstitution(checked);
    this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the check box checked.
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckComboTriggersOnSpace(bool checked) const
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   prefs_.setComboTriggersOnSpace(checked);
 }
 
 

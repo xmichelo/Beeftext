@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -290,6 +290,13 @@
            <widget class="QPushButton" name="buttonResetComboTriggerShortcut">
             <property name="text">
              <string>De&amp;fault</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="4">
+           <widget class="QCheckBox" name="checkComboTriggersOnSpace">
+            <property name="text">
+             <string>Trigger only after spacebar is pressed</string>
             </property>
            </widget>
           </item>
@@ -1602,6 +1609,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkComboTriggersOnSpace</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckComboTriggersOnSpace(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>264</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>892</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onClose()</slot>
@@ -1650,5 +1673,6 @@
   <slot>onCheckUseCustomBackupLocation(bool)</slot>
   <slot>onChangeCustomBackupLocation()</slot>
   <slot>onCheckUseLegacyCopyPaste()</slot>
+  <slot>onCheckComboTriggersOnSpace(bool)</slot>
  </slots>
 </ui>

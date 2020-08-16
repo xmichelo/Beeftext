@@ -64,6 +64,8 @@ public: // member functions
    bool useCustomTheme() const; ///< Get the value for the 'Use custom theme' preference
    void setUseAutomaticSubstitution(bool value); ///< Set the value for the 'Use automatic substitution' preference
    bool useAutomaticSubstitution() const; ///< Get the value for the 'Use automatic substitution' preference
+   void setComboTriggersOnSpace(bool value); ///< Set the value for the 'Combo triggers on space' preference.
+   bool comboTriggersOnSpace() const; ///< Set the value for the 'Combo triggers on space' preference.
    void setWarnAboutShortComboKeywords(bool value) const; ///< Set the value for the 'Warn about short combo keyword' preference
    bool warnAboutShortComboKeywords() const; ///< Get the value for the 'Warn about short combo keyword' preference
    bool setComboListFolderPath(QString const& path) const; ///< Set the path of the folder for saving the combo list
@@ -106,8 +108,8 @@ public: // member functions
    bool beeftextEnabled() const; ///< Set if beeftext is enabled.
    void setRichTextDeprecationWarningHasAlreadyBeenDisplayed(bool alreadyDisplayed) const; ///< Set the value for the 'Rich text deprecation warning has already been displayed' preference.
    bool richTextDeprecationWarningHasAlreadyBeenDisplayed() const; ///< Get the value for the 'Rich text deprecation warning has already been displayed' preference.
-   void setUseLegacyCopyPaste(bool value) const; ///< Set he value for the 'Use legacy copy/paste'.
-   bool useLegacyCopyPaste() const; ///< Get he value for the 'Use legacy copy/paste'.
+   void setUseLegacyCopyPaste(bool value) const; ///< Set he value for the 'Use legacy copy/paste' preference.
+   bool useLegacyCopyPaste() const; ///< Get the value for the 'Use legacy copy/paste' preference.
 
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
@@ -132,6 +134,7 @@ private: // member functions
 private: // data members
    std::unique_ptr<QSettings> settings_ { nullptr }; ///< The Qt settings instance
    bool cachedUseAutomaticSubstitution_ { true }; ///< Cached value for the 'use automatic substitution' preference value
+   bool cachedComboTriggersOnSpace_{ false }; ///< Cached vaue for the 'combo trigger on space' preference.
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
    bool cachedComboPickerEnabled_ { true }; ///< Cached value for the 'Combo picker enabled' preference.
    SpShortcut cachedComboPickerShortcut_; ///< Cached value for the 'combo picker shortcut' preference

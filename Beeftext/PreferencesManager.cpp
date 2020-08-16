@@ -64,6 +64,7 @@ QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///
 QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
 QString const kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = "RichTextDeprecationWarningHasAlreadyBeenDisplayed"; ///< The setting key for teh 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 QString const kKeyUseLegacyCopyPaste = "UseLegacyCopyPaste"; ///< The setting key for the 'Use legacy copy/paste' preference.
+QString const kKeyComboTriggersOnSpace = "ComboTriggersOnSpace"; ///< The setting key for the 'Combo triggers on space' preference.
 
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
@@ -93,7 +94,7 @@ bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for
 bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
-
+bool const kDefaultComboTriggersOnSpace = false; ///< The default value for the 'Combo triggers on space' preference.
 
 }
 
@@ -151,6 +152,8 @@ void PreferencesManager::init()
    // Cache often accessed values
    cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
       kDefaultUseAutomaticSubstitution);
+   cachedComboTriggersOnSpace_ = this->readSettings<bool>(kKeyComboTriggersOnSpace, 
+      kDefaultComboTriggersOnSpace);
    this->cacheComboTriggerShortcut();
    cachedComboPickerEnabled_ = this->readSettings<bool>(kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
    this->cacheComboPickerShortcut();
@@ -191,6 +194,7 @@ void PreferencesManager::reset()
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
    this->setPlaySoundOnCombo(kDefaultPlaySoundOnCombo);
    this->setUseAutomaticSubstitution(kDefaultUseAutomaticSubstitution);
+   this->setComboTriggersOnSpace(kDefaultComboTriggersOnSpace);
    this->setUseCustomBackupLocation(kDefaultUseCustomBackupLocation);
    this->setUseCustomTheme(kDefaultUseCustomTheme);
    this->setUseCustomSound(kDefaultUseCustomSound);
@@ -350,6 +354,8 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
    object[kKeyPlaySoundOnCombo] = this->readSettings<bool>(kKeyPlaySoundOnCombo, kDefaultPlaySoundOnCombo);
    object[kKeyUseAutomaticSubstitution] = this->readSettings<bool>(kKeyUseAutomaticSubstitution, 
       kDefaultUseAutomaticSubstitution);
+   object[kKeyComboTriggersOnSpace] = this->readSettings<bool>(kKeyComboTriggersOnSpace, 
+      kDefaultComboTriggersOnSpace);
    object[kKeyUseCustomBackupLocation] = this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomBackupLocation);
    object[kKeyUseCustomSound] = this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomSound);
    object[kKeyUseCustomTheme] = this->readSettings<bool>(kKeyUseCustomTheme, kDefaultUseCustomTheme);
@@ -407,6 +413,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
       kKeySplitterState).toLocal8Bit()));
    settings_->setValue(kKeyPlaySoundOnCombo, objectValue<bool>(object, kKeyPlaySoundOnCombo));
    settings_->setValue(kKeyUseAutomaticSubstitution, objectValue<bool>(object, kKeyUseAutomaticSubstitution));
+   settings_->setValue(kKeyComboTriggersOnSpace, objectValue<bool>(object, kKeyComboTriggersOnSpace));
    this->setUseCustomBackupLocation(objectValue<bool>(object, kKeyUseCustomBackupLocation)); // we call the function because it has side effects
    settings_->setValue(kKeyUseCustomSound, objectValue<bool>(object, kKeyUseCustomSound));
    settings_->setValue(kKeyUseCustomTheme, objectValue<bool>(object, kKeyUseCustomTheme));
@@ -703,6 +710,25 @@ void PreferencesManager::setUseAutomaticSubstitution(bool value)
 bool PreferencesManager::useAutomaticSubstitution() const
 {
    return cachedUseAutomaticSubstitution_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setComboTriggersOnSpace(bool value)
+{
+   cachedComboTriggersOnSpace_ = value;
+   settings_->setValue(kKeyComboTriggersOnSpace, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::comboTriggersOnSpace() const
+{
+   return cachedComboTriggersOnSpace_;
 }
 
 
