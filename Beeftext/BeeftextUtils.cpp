@@ -165,12 +165,14 @@ QString snippetToPlainText(QString const& snippet, bool isHtml)
 void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos)
 {
    InputManager& inputManager = InputManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
    // we disable the hook to prevent endless recursive substitution
    try
    {
       // we erase the combo
-      synthesizeBackspaces(qMax<qint32>(charCount, 0));
+      bool const triggersOnSpace = prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace();
+      synthesizeBackspaces(qMax<qint32>(charCount + (triggersOnSpace ? 1 : 0), 0));
       if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet

@@ -246,9 +246,19 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
          emit backspaceTyped();
          continue;
       }
-      if (c.isSpace() || (!c.isPrint()))
-      emit comboBreakerTyped();
-      else
+      if (!c.isPrint())
+      {
+         emit comboBreakerTyped();
+         continue;
+      }
+      if (c.isSpace())
+      {
+         if (prefs.comboTriggersOnSpace() && prefs.useAutomaticSubstitution())
+            emit characterTyped(c);
+         else
+            emit comboBreakerTyped();
+         continue;
+      }
       emit characterTyped(c);
    }
    return true;

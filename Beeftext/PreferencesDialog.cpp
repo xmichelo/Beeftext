@@ -315,7 +315,6 @@ void PreferencesDialog::onRadioAutomaticComboTrigger(bool checked) const
 //**********************************************************************************************************************
 void PreferencesDialog::onCheckComboTriggersOnSpace(bool checked) const
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    prefs_.setComboTriggersOnSpace(checked);
 }
 
