@@ -414,6 +414,10 @@ Do you want to continue anymay?</source>
         <source>Created</source>
         <translation>Создан</translation>
     </message>
+    <message>
+        <source>Group</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ComboManager</name>
@@ -904,6 +908,22 @@ Do you want to continue anymay?</source>
         <source>Announcement</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Generate Cheat Sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generate a cheat sheet that can be imported into a spreadsheet application, formatted and printed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Alt+Shift+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generate Cheat Sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -1195,6 +1215,18 @@ Do you want to continue anymay?</source>
         <source>An error occurred while importing the preferences.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Trigger only after spacebar is pressed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use legacy copy/paste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The path of the custom sound file is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1322,6 +1354,14 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
       &lt;p&gt;For more information, please refer to the following page in the
       &lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline;
       color:#0000ff;&quot;&gt;Beeftext wiki&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSV files (*.csv);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have not defined a keyword. Are you sure you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
