@@ -61,6 +61,7 @@ QString const kKeyUseCustomBackupLocation = "UseCustomBackupLocation"; ///< The 
 QString const kKeyUseCustomSound = "UseCustomSound"; ///< The settings key for the 'Use custom sound' preference.
 QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
 QString const kKeyWarnAboutShortComboKeyword = "WarnAboutShortComboKeyword"; ///< The setting key for the 'Warn about short combo keyword' preference
+QString const kKeyWarnAboutEmptyComboKeyword = "WarnAboutEmptyComboKeyword"; ///< The setting key for the 'Warn about empty combo keyword' preference
 QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
 QString const kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = "RichTextDeprecationWarningHasAlreadyBeenDisplayed"; ///< The setting key for teh 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 QString const kKeyUseLegacyCopyPaste = "UseLegacyCopyPaste"; ///< The setting key for the 'Use legacy copy/paste' preference.
@@ -91,6 +92,7 @@ bool const kDefaultUseCustomBackupLocation = false; ///< The default value for t
 bool const kDefaultUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
 bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
 bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
+bool const kDefaultWarnAboutEmptyComboKeyword = true; ///< The default value for the 'Warn about empty combo keyword' preference
 bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
@@ -432,6 +434,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
 void PreferencesManager::resetWarnings() const
 {
    this->setWarnAboutShortComboKeywords(true);
+   this->setWarnAboutEmptyComboKeywords(true);
 }
 
 
@@ -747,6 +750,25 @@ void PreferencesManager::setWarnAboutShortComboKeywords(bool value) const
 bool PreferencesManager::warnAboutShortComboKeywords() const
 {
    return this->readSettings<bool>(kKeyWarnAboutShortComboKeyword, kDefaultWarnAboutShortComboKeyword);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setWarnAboutEmptyComboKeywords(bool value) const
+{
+   settings_->setValue(kKeyWarnAboutEmptyComboKeyword, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//
+//**********************************************************************************************************************
+bool PreferencesManager::warnAboutEmptyComboKeywords() const
+{
+   return this->readSettings<bool>(kKeyWarnAboutEmptyComboKeyword, kDefaultWarnAboutEmptyComboKeyword);
 }
 
 

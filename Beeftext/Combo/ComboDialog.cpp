@@ -40,6 +40,25 @@ bool showShortKeywordConfirmationDialog(QString const& keyword, QWidget* parent 
 }
 
 
+//**********************************************************************************************************************
+/// \param[in] parent The parent widget of the dialog.
+/// \return true if and only if the user decided to proceed with the short keyword.
+//**********************************************************************************************************************
+bool showEmptyKeywordConfirmationDialog(QWidget* parent = nullptr)
+{
+   QMessageBox msgBox(parent);
+   msgBox.setText(QObject::tr("You have not defined a keyword. Are you sure you want to continue?"));
+   msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+   msgBox.setDefaultButton(QMessageBox::No);
+   msgBox.setEscapeButton(QMessageBox::No);
+   QCheckBox* check = new QCheckBox(QObject::tr("Do not show this warning again."), &msgBox);
+   msgBox.setCheckBox(check);
+   qint32 const button = msgBox.exec();
+   PreferencesManager::instance().setWarnAboutEmptyComboKeywords(!check->isChecked());
+   return (QMessageBox::Yes == button);
+}
+
+
 }
 
 
@@ -121,6 +140,8 @@ bool ComboDialog::checkAndReportInvalidCombo()
          "randomly."), tr("&Continue"), tr("C&ancel"), QString());
 
    // we check for conflicts that would make some combo 'unreachable'
+   if (newKeyword.isEmpty()) // We do not check for conflicts if the user validated an empty keyword.
+      return true;
    qint32 const conflictCount = std::count_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) -> bool 
    { return (existing != combo_) && (existing->keyword().startsWith(newKeyword) || 
       newKeyword.startsWith(existing->keyword())); });
@@ -181,9 +202,16 @@ void ComboDialog::onActionOk()
    if (!checkAndReportInvalidCombo())
       return;
    QString const keyword = ui_.editKeyword->text().trimmed();
-   if (PreferencesManager::instance().warnAboutShortComboKeywords() && (keyword.size() < 3) 
-      && (!showShortKeywordConfirmationDialog(keyword, this)))
-      return;
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   if (keyword.isEmpty())
+   {
+      if (prefs.warnAboutEmptyComboKeywords() && (!showEmptyKeywordConfirmationDialog(this)))
+         return;
+   }
+   else
+      if ((keyword.size() < 3)  && prefs.warnAboutShortComboKeywords() 
+         && (!showShortKeywordConfirmationDialog(keyword, this)))
+         return;
    combo_->setName(ui_.editName->text().trimmed());
    combo_->setGroup(ui_.comboGroup->currentGroup());
    combo_->setUseLooseMatching(this->matchingComboValue());

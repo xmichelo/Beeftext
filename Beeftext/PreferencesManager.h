@@ -68,6 +68,8 @@ public: // member functions
    bool comboTriggersOnSpace() const; ///< Set the value for the 'Combo triggers on space' preference.
    void setWarnAboutShortComboKeywords(bool value) const; ///< Set the value for the 'Warn about short combo keyword' preference
    bool warnAboutShortComboKeywords() const; ///< Get the value for the 'Warn about short combo keyword' preference
+   void setWarnAboutEmptyComboKeywords(bool value) const; ///< Set the value for the 'Warn about empty combo keyword' preference
+   bool warnAboutEmptyComboKeywords() const; ///< Get the value for the 'Warn about empty combo keyword' preference
    bool setComboListFolderPath(QString const& path) const; ///< Set the path of the folder for saving the combo list
    QString comboListFolderPath() const; ///< Get the path of the folder for saving the combo list
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
