@@ -126,6 +126,8 @@ void PreferencesDialog::loadPreferences() const
    ui_.checkUseLegacyCopyPaste->setChecked(prefs_.useLegacyCopyPaste());
    blocker = QSignalBlocker(ui_.checkComboTriggersOnSpace);
    ui_.checkComboTriggersOnSpace->setChecked(prefs_.comboTriggersOnSpace());
+   blocker = QSignalBlocker(ui_.checkKeepFinalSpaceCharacter);
+   ui_.checkKeepFinalSpaceCharacter->setChecked(prefs_.keepFinalSpaceCharacter());
    this->updateGui();
    // ReSharper restore CppAssignedValueIsNeverUsed
    // ReSharper restore CppEntityAssignedButNoRead
@@ -211,7 +213,9 @@ void PreferencesDialog::updateGui() const
    for (QWidget* const widget: widgets)
       widget->setEnabled(useCustomSound);
 
-   ui_.checkComboTriggersOnSpace->setEnabled(ui_.radioComboTriggerAuto->isChecked());
+   bool const comboTriggerAuto = ui_.radioComboTriggerAuto->isChecked();
+   ui_.checkComboTriggersOnSpace->setEnabled(comboTriggerAuto);
+   ui_.checkKeepFinalSpaceCharacter->setEnabled(comboTriggerAuto && ui_.checkComboTriggersOnSpace->isChecked());
 }
 
 
@@ -316,6 +320,17 @@ void PreferencesDialog::onRadioAutomaticComboTrigger(bool checked) const
 void PreferencesDialog::onCheckComboTriggersOnSpace(bool checked) const
 {
    prefs_.setComboTriggersOnSpace(checked);
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the check box checked.
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckKeepFinalSpace(bool checked) const
+{
+   prefs_.setKeepFinalSpaceCharacter(checked);
+   this->updateGui();
 }
 
 
