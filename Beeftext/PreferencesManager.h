@@ -66,6 +66,8 @@ public: // member functions
    bool useAutomaticSubstitution() const; ///< Get the value for the 'Use automatic substitution' preference
    void setComboTriggersOnSpace(bool value); ///< Set the value for the 'Combo triggers on space' preference.
    bool comboTriggersOnSpace() const; ///< Set the value for the 'Combo triggers on space' preference.
+   void setKeepFinalSpaceCharacter(bool value); ///< Set the value for the 'Keep final space character' preference.
+   bool keepFinalSpaceCharacter() const; ///< Get the value for the 'Keep final space character' preference.
    void setWarnAboutShortComboKeywords(bool value) const; ///< Set the value for the 'Warn about short combo keyword' preference
    bool warnAboutShortComboKeywords() const; ///< Get the value for the 'Warn about short combo keyword' preference
    void setWarnAboutEmptyComboKeywords(bool value) const; ///< Set the value for the 'Warn about empty combo keyword' preference
@@ -137,6 +139,7 @@ private: // data members
    std::unique_ptr<QSettings> settings_ { nullptr }; ///< The Qt settings instance
    bool cachedUseAutomaticSubstitution_ { true }; ///< Cached value for the 'use automatic substitution' preference value
    bool cachedComboTriggersOnSpace_{ false }; ///< Cached vaue for the 'combo trigger on space' preference.
+   bool cachedKeepFinalSpaceCharacter_{ false }; ///< Cached vaue for the 'keep final space character' preference.
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
    bool cachedComboPickerEnabled_ { true }; ///< Cached value for the 'Combo picker enabled' preference.
    SpShortcut cachedComboPickerShortcut_; ///< Cached value for the 'combo picker shortcut' preference

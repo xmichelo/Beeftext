@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
+    <width>700</width>
     <height>325</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>900</width>
+    <width>700</width>
     <height>0</height>
    </size>
   </property>
@@ -217,88 +217,116 @@
          <property name="title">
           <string>Combo triggering</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QRadioButton" name="radioComboTriggerAuto">
-            <property name="text">
-             <string>Automatic</string>
-            </property>
-           </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QRadioButton" name="radioComboTriggerAuto">
+              <property name="text">
+               <string>Automatic</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkComboTriggersOnSpace">
+              <property name="text">
+               <string>Trigger only after spacebar is pressed</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkKeepFinalSpaceCharacter">
+              <property name="text">
+               <string>Keep the final space character</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
-          <item row="1" column="0">
-           <widget class="QRadioButton" name="radioComboTriggerManual">
-            <property name="text">
-             <string>Manual, using the shortcut</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="editComboTriggerShortcut">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="baseSize">
-             <size>
-              <width>50</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maxLength">
-             <number>50</number>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="4">
-           <spacer name="horizontalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="2">
-           <widget class="QPushButton" name="buttonChangeComboTriggerShortcut">
-            <property name="text">
-             <string>C&amp;hange</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="3">
-           <widget class="QPushButton" name="buttonResetComboTriggerShortcut">
-            <property name="text">
-             <string>De&amp;fault</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" colspan="4">
-           <widget class="QCheckBox" name="checkComboTriggersOnSpace">
-            <property name="text">
-             <string>Trigger only after spacebar is pressed</string>
-            </property>
-           </widget>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <item>
+             <widget class="QRadioButton" name="radioComboTriggerManual">
+              <property name="text">
+               <string>Manual, using the shortcut</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="editComboTriggerShortcut">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maxLength">
+               <number>50</number>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonChangeComboTriggerShortcut">
+              <property name="text">
+               <string>C&amp;hange</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonResetComboTriggerShortcut">
+              <property name="text">
+               <string>De&amp;fault</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -380,7 +408,7 @@
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>40</width>
+                <width>0</width>
                 <height>20</height>
                </size>
               </property>
@@ -434,7 +462,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>40</width>
+             <width>0</width>
              <height>20</height>
             </size>
            </property>
@@ -484,7 +512,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>40</width>
+             <width>0</width>
              <height>20</height>
             </size>
            </property>
@@ -574,7 +602,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>40</width>
+             <width>0</width>
              <height>10</height>
             </size>
            </property>
@@ -605,7 +633,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>40</width>
+             <width>0</width>
              <height>10</height>
             </size>
            </property>
@@ -782,7 +810,7 @@
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>545</width>
+                <width>0</width>
                 <height>13</height>
                </size>
               </property>
@@ -926,7 +954,7 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
+         <width>0</width>
          <height>10</height>
         </size>
        </property>
@@ -992,8 +1020,8 @@
    <slot>onClose()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>889</x>
-     <y>292</y>
+     <x>689</x>
+     <y>314</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -1008,7 +1036,7 @@
    <slot>onChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>714</x>
+     <x>514</x>
      <y>91</y>
     </hint>
     <hint type="destinationlabel">
@@ -1056,7 +1084,7 @@
    <slot>onResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>876</x>
+     <x>676</x>
      <y>91</y>
     </hint>
     <hint type="destinationlabel">
@@ -1104,8 +1132,8 @@
    <slot>onRadioAutomaticComboTrigger(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
+     <x>101</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -1232,7 +1260,7 @@
    <slot>onOpenComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>795</x>
+     <x>595</x>
      <y>91</y>
     </hint>
     <hint type="destinationlabel">
@@ -1424,7 +1452,7 @@
    <slot>onChangeCustomSound()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>795</x>
+     <x>595</x>
      <y>163</y>
     </hint>
     <hint type="destinationlabel">
@@ -1440,7 +1468,7 @@
    <slot>onPlaySoundButton()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>876</x>
+     <x>676</x>
      <y>163</y>
     </hint>
     <hint type="destinationlabel">
@@ -1460,7 +1488,7 @@
      <y>94</y>
     </hint>
     <hint type="destinationlabel">
-     <x>703</x>
+     <x>699</x>
      <y>44</y>
     </hint>
    </hints>
@@ -1476,7 +1504,7 @@
      <y>63</y>
     </hint>
     <hint type="destinationlabel">
-     <x>706</x>
+     <x>699</x>
      <y>86</y>
     </hint>
    </hints>
@@ -1488,11 +1516,11 @@
    <slot>onChangeAppEnableDisableShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>794</x>
+     <x>594</x>
      <y>195</y>
     </hint>
     <hint type="destinationlabel">
-     <x>704</x>
+     <x>699</x>
      <y>184</y>
     </hint>
    </hints>
@@ -1504,11 +1532,11 @@
    <slot>onResetAppEnableDisableShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>875</x>
+     <x>675</x>
      <y>195</y>
     </hint>
     <hint type="destinationlabel">
-     <x>706</x>
+     <x>699</x>
      <y>220</y>
     </hint>
    </hints>
@@ -1584,11 +1612,11 @@
    <slot>onChangeCustomBackupLocation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>866</x>
+     <x>666</x>
      <y>222</y>
     </hint>
     <hint type="destinationlabel">
-     <x>893</x>
+     <x>699</x>
      <y>178</y>
     </hint>
    </hints>
@@ -1620,8 +1648,24 @@
      <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>892</x>
+     <x>699</x>
      <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkKeepFinalSpaceCharacter</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckKeepFinalSpace(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>381</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>698</x>
+     <y>74</y>
     </hint>
    </hints>
   </connection>
@@ -1674,5 +1718,6 @@
   <slot>onChangeCustomBackupLocation()</slot>
   <slot>onCheckUseLegacyCopyPaste()</slot>
   <slot>onCheckComboTriggersOnSpace(bool)</slot>
+  <slot>onCheckKeepFinalSpace(bool)</slot>
  </slots>
 </ui>

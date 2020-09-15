@@ -66,6 +66,7 @@ QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key 
 QString const kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = "RichTextDeprecationWarningHasAlreadyBeenDisplayed"; ///< The setting key for teh 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 QString const kKeyUseLegacyCopyPaste = "UseLegacyCopyPaste"; ///< The setting key for the 'Use legacy copy/paste' preference.
 QString const kKeyComboTriggersOnSpace = "ComboTriggersOnSpace"; ///< The setting key for the 'Combo triggers on space' preference.
+QString const kKeyKeepFinalSpaceCharacter = "KeepFinalSpaceCharacter"; ///< The setting key for the 'Keep final space character' preference.
 
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
@@ -97,6 +98,8 @@ bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Wri
 bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
 bool const kDefaultComboTriggersOnSpace = false; ///< The default value for the 'Combo triggers on space' preference.
+bool const kDefaultKeepFinalSpaceCharacter = false; ///< The default value for the 'Combo triggers on space' preference.
+
 
 }
 
@@ -156,6 +159,8 @@ void PreferencesManager::init()
       kDefaultUseAutomaticSubstitution);
    cachedComboTriggersOnSpace_ = this->readSettings<bool>(kKeyComboTriggersOnSpace, 
       kDefaultComboTriggersOnSpace);
+   cachedKeepFinalSpaceCharacter_ = this->readSettings<bool>(kKeyKeepFinalSpaceCharacter, 
+      kDefaultKeepFinalSpaceCharacter);
    this->cacheComboTriggerShortcut();
    cachedComboPickerEnabled_ = this->readSettings<bool>(kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
    this->cacheComboPickerShortcut();
@@ -197,6 +202,7 @@ void PreferencesManager::reset()
    this->setPlaySoundOnCombo(kDefaultPlaySoundOnCombo);
    this->setUseAutomaticSubstitution(kDefaultUseAutomaticSubstitution);
    this->setComboTriggersOnSpace(kDefaultComboTriggersOnSpace);
+   this->setKeepFinalSpaceCharacter(kDefaultKeepFinalSpaceCharacter);
    this->setUseCustomBackupLocation(kDefaultUseCustomBackupLocation);
    this->setUseCustomTheme(kDefaultUseCustomTheme);
    this->setUseCustomSound(kDefaultUseCustomSound);
@@ -732,6 +738,25 @@ void PreferencesManager::setComboTriggersOnSpace(bool value)
 bool PreferencesManager::comboTriggersOnSpace() const
 {
    return cachedComboTriggersOnSpace_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setKeepFinalSpaceCharacter(bool value)
+{
+   cachedKeepFinalSpaceCharacter_ = value;
+   settings_->setValue(kKeyKeepFinalSpaceCharacter, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::keepFinalSpaceCharacter() const
+{
+   return cachedKeepFinalSpaceCharacter_;
 }
 
 
