@@ -168,10 +168,12 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
    PreferencesManager const& prefs = PreferencesManager::instance();
    bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
    // we disable the hook to prevent endless recursive substitution
+
    try
    {
       // we erase the combo
       bool const triggersOnSpace = prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace();
+      QString text = newText + (triggersOnSpace && prefs.keepFinalSpaceCharacter() && (!isHtml) ? " " : QString());
       synthesizeBackspaces(qMax<qint32>(charCount + (triggersOnSpace ? 1 : 0), 0));
       if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
       {
@@ -179,9 +181,9 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
          if (isHtml)
-            clipboardManager.setHtml(newText);
+            clipboardManager.setHtml(text);
          else
-            clipboardManager.setText(newText);
+            clipboardManager.setText(text);
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
@@ -193,7 +195,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       else
       {
          // sensitive applications cannot use the clipboard, so rich text is not an option. We convert to plain text.
-         QString text = snippetToPlainText(newText, isHtml);
+         text = snippetToPlainText(text, isHtml);
 
          QList<quint16> pressedModifiers;
          // we simulate the typing of the snippet text
@@ -222,7 +224,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       {
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          for (qint32 i = 0; i < qMax<qint32>(0, 
-            printableCharacterCount(isHtml ? QTextDocumentFragment::fromHtml(newText).toPlainText() : newText) 
+            printableCharacterCount(isHtml ? QTextDocumentFragment::fromHtml(text).toPlainText() : text)
                - cursorPos); ++i)
             synthesizeKeyDownAndUp(VK_LEFT);
          restoreModifierKeys(pressedModifiers);
