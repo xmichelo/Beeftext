@@ -1227,6 +1227,10 @@ Do you want to continue anymay?</source>
         <source>The path of the custom sound file is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Keep the final space character</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>

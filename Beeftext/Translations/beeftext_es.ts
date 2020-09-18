@@ -1232,14 +1232,14 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="179"/>
-        <location filename="../PreferencesDialog.ui" line="718"/>
-        <location filename="../PreferencesDialog.ui" line="812"/>
+        <location filename="../PreferencesDialog.ui" line="746"/>
+        <location filename="../PreferencesDialog.ui" line="840"/>
         <source>&amp;Change</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="186"/>
-        <location filename="../PreferencesDialog.ui" line="902"/>
+        <location filename="../PreferencesDialog.ui" line="930"/>
         <source>&amp;Default</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1254,315 +1254,320 @@ Do you want to continue anymay?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="224"/>
+        <location filename="../PreferencesDialog.ui" line="226"/>
         <source>Automatic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="231"/>
+        <location filename="../PreferencesDialog.ui" line="264"/>
         <source>Manual, using the shortcut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="285"/>
-        <location filename="../PreferencesDialog.ui" line="365"/>
+        <location filename="../PreferencesDialog.ui" line="305"/>
+        <location filename="../PreferencesDialog.ui" line="393"/>
         <source>C&amp;hange</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="292"/>
-        <location filename="../PreferencesDialog.ui" line="372"/>
+        <location filename="../PreferencesDialog.ui" line="312"/>
+        <location filename="../PreferencesDialog.ui" line="400"/>
         <source>De&amp;fault</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="299"/>
+        <location filename="../PreferencesDialog.ui" line="233"/>
         <source>Trigger only after spacebar is pressed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="315"/>
+        <location filename="../PreferencesDialog.ui" line="240"/>
+        <source>Keep the final space character</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="343"/>
         <source>Combo picker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="321"/>
+        <location filename="../PreferencesDialog.ui" line="349"/>
         <source>Enable combo picker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="330"/>
+        <location filename="../PreferencesDialog.ui" line="358"/>
         <source>Shortcut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="411"/>
+        <location filename="../PreferencesDialog.ui" line="439"/>
         <source>Emojis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="419"/>
+        <location filename="../PreferencesDialog.ui" line="447"/>
         <source>Enable emoji shortcodes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="426"/>
+        <location filename="../PreferencesDialog.ui" line="454"/>
         <source>&amp;Excluded Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="450"/>
+        <location filename="../PreferencesDialog.ui" line="478"/>
         <source>Left delimiter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="506"/>
+        <location filename="../PreferencesDialog.ui" line="534"/>
         <source>Right delimiter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="529"/>
+        <location filename="../PreferencesDialog.ui" line="557"/>
         <source>Appearance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="537"/>
+        <location filename="../PreferencesDialog.ui" line="565"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="556"/>
+        <location filename="../PreferencesDialog.ui" line="584"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="563"/>
+        <location filename="../PreferencesDialog.ui" line="591"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="590"/>
+        <location filename="../PreferencesDialog.ui" line="618"/>
         <source>User-provided translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="597"/>
+        <location filename="../PreferencesDialog.ui" line="625"/>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="619"/>
+        <location filename="../PreferencesDialog.ui" line="647"/>
         <source>Use custom theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="640"/>
+        <location filename="../PreferencesDialog.ui" line="668"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="648"/>
+        <location filename="../PreferencesDialog.ui" line="676"/>
         <source>Delay between simulated keystrokes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="655"/>
+        <location filename="../PreferencesDialog.ui" line="683"/>
         <source>ms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="704"/>
+        <location filename="../PreferencesDialog.ui" line="732"/>
         <source>Combo list folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="725"/>
+        <location filename="../PreferencesDialog.ui" line="753"/>
         <source>O&amp;pen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="732"/>
+        <location filename="../PreferencesDialog.ui" line="760"/>
         <source>D&amp;efault</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="742"/>
+        <location filename="../PreferencesDialog.ui" line="770"/>
         <source>Write debug events in a log file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="749"/>
+        <location filename="../PreferencesDialog.ui" line="777"/>
         <source>Use legacy copy/paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="756"/>
+        <location filename="../PreferencesDialog.ui" line="784"/>
         <source>Automatic backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="764"/>
+        <location filename="../PreferencesDialog.ui" line="792"/>
         <source>Automatically backup combo list files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="771"/>
+        <location filename="../PreferencesDialog.ui" line="799"/>
         <source>Restore a backup.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="774"/>
+        <location filename="../PreferencesDialog.ui" line="802"/>
         <source>&amp;Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="798"/>
+        <location filename="../PreferencesDialog.ui" line="826"/>
         <source>Use custom backup location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="826"/>
+        <location filename="../PreferencesDialog.ui" line="854"/>
         <source>Sensitive Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="873"/>
-        <location filename="../PreferencesDialog.ui" line="886"/>
-        <location filename="../PreferencesDialog.ui" line="899"/>
-        <location filename="../PreferencesDialog.ui" line="912"/>
+        <location filename="../PreferencesDialog.ui" line="901"/>
+        <location filename="../PreferencesDialog.ui" line="914"/>
+        <location filename="../PreferencesDialog.ui" line="927"/>
+        <location filename="../PreferencesDialog.ui" line="940"/>
         <source>Reset the preferences to their default values.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="876"/>
+        <location filename="../PreferencesDialog.ui" line="904"/>
         <source>&amp;Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="889"/>
+        <location filename="../PreferencesDialog.ui" line="917"/>
         <source>&amp;Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="915"/>
+        <location filename="../PreferencesDialog.ui" line="943"/>
         <source>Reset &amp;Warnings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="938"/>
+        <location filename="../PreferencesDialog.ui" line="966"/>
         <source>&amp;Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="153"/>
+        <location filename="../PreferencesDialog.cpp" line="155"/>
         <source>Delete Backup Files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="153"/>
+        <location filename="../PreferencesDialog.cpp" line="155"/>
         <source>Do you want to delete all the backup files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="284"/>
+        <location filename="../PreferencesDialog.cpp" line="288"/>
         <source>WAV files (*.wav);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="497"/>
+        <location filename="../PreferencesDialog.cpp" line="512"/>
         <source>Select folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="228"/>
-        <location filename="../PreferencesDialog.cpp" line="502"/>
-        <location filename="../PreferencesDialog.cpp" line="738"/>
+        <location filename="../PreferencesDialog.cpp" line="232"/>
+        <location filename="../PreferencesDialog.cpp" line="517"/>
         <location filename="../PreferencesDialog.cpp" line="753"/>
+        <location filename="../PreferencesDialog.cpp" line="768"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="228"/>
+        <location filename="../PreferencesDialog.cpp" line="232"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="502"/>
+        <location filename="../PreferencesDialog.cpp" line="517"/>
         <source>The location of the combo list folder could not be changed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="514"/>
+        <location filename="../PreferencesDialog.cpp" line="529"/>
         <source>Reset Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="514"/>
+        <location filename="../PreferencesDialog.cpp" line="529"/>
         <source>Reset the combo list folder?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="566"/>
+        <location filename="../PreferencesDialog.cpp" line="581"/>
         <source>Custom backup location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="590"/>
+        <location filename="../PreferencesDialog.cpp" line="605"/>
         <source>Reset Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="590"/>
+        <location filename="../PreferencesDialog.cpp" line="605"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="606"/>
+        <location filename="../PreferencesDialog.cpp" line="621"/>
         <source>Reset Warnings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="606"/>
+        <location filename="../PreferencesDialog.cpp" line="621"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="627"/>
+        <location filename="../PreferencesDialog.cpp" line="642"/>
         <source>%1 v%2.%3 is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="629"/>
+        <location filename="../PreferencesDialog.cpp" line="644"/>
         <source>A new version is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="638"/>
+        <location filename="../PreferencesDialog.cpp" line="653"/>
         <source>The software is up to date.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="665"/>
+        <location filename="../PreferencesDialog.cpp" line="680"/>
         <source>Update check failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="732"/>
+        <location filename="../PreferencesDialog.cpp" line="747"/>
         <source>Export Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="738"/>
+        <location filename="../PreferencesDialog.cpp" line="753"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="747"/>
+        <location filename="../PreferencesDialog.cpp" line="762"/>
         <source>Import Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="753"/>
+        <location filename="../PreferencesDialog.cpp" line="768"/>
         <source>An error occurred while importing the preferences.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1590,7 +1595,7 @@ Do you want to continue anymay?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="248"/>
+        <location filename="../BeeftextUtils.cpp" line="250"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="278"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
@@ -1653,7 +1658,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="282"/>
+        <location filename="../PreferencesDialog.cpp" line="286"/>
         <source>Select custom sound file</source>
         <translation type="unfinished"></translation>
     </message>
