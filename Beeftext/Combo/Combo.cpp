@@ -324,7 +324,7 @@ bool Combo::performSubstitution()
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
    {
-      performTextSubstitution(keyword_.size(), newText, useHtml_, cursorLeftShift);
+      performTextSubstitution(keyword_.size(), newText, useHtml_, cursorLeftShift, ETriggerSource::Keyword);
       lastUseDateTime_ = QDateTime::currentDateTime();
    }
    return !cancelled;
@@ -335,7 +335,7 @@ bool Combo::performSubstitution()
 /// \return true if the the snippet was actually inserted(it could a been cancelled, for instance by the user
 /// dismissing a variable input dialog.
 //**********************************************************************************************************************
-bool Combo::insertSnippet()
+bool Combo::insertSnippet(ETriggerSource source)
 {
    qint32 cursorLeftShift = -1;
    bool cancelled = false;
@@ -343,7 +343,7 @@ bool Combo::insertSnippet()
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
    {
-      performTextSubstitution(0, newText, useHtml_, cursorLeftShift);
+      performTextSubstitution(0, newText, useHtml_, cursorLeftShift, source);
       lastUseDateTime_ = QDateTime::currentDateTime();
    }
    return !cancelled;

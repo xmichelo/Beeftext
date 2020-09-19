@@ -159,10 +159,12 @@ QString snippetToPlainText(QString const& snippet, bool isHtml)
 /// \param[in] charCount The number of characters to substitute.
 /// \param[in] newText The new text.
 /// \param[in] isHtml Is the new HTML?
-/// \param[in] cursorPos The position of the cursor in the new text. The value is -1 if the cursor does not need 
+/// \param[in] cursorPos The position of the cursor in the new text. The value is -1 if the cursor does not need
+/// \param[in] source The source that triggered the combo
 /// repositionning.
 //**********************************************************************************************************************
-void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos)
+void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos, 
+   ETriggerSource source)
 {
    InputManager& inputManager = InputManager::instance();
    PreferencesManager const& prefs = PreferencesManager::instance();
@@ -172,9 +174,12 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
    try
    {
       // we erase the combo
+      bool const triggeredByPicker = (ETriggerSource::ComboPicker == source);
       bool const triggersOnSpace = prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace();
-      QString text = newText + (triggersOnSpace && prefs.keepFinalSpaceCharacter() && (!isHtml) ? " " : QString());
-      synthesizeBackspaces(qMax<qint32>(charCount + (triggersOnSpace ? 1 : 0), 0));
+      QString text = newText + (triggersOnSpace && prefs.keepFinalSpaceCharacter() && (!isHtml) 
+         && (!triggeredByPicker) ? " " : QString());
+      if (!triggeredByPicker)
+         synthesizeBackspaces(qMax<qint32>(charCount + (triggersOnSpace ? 1 : 0), 0));
       if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet

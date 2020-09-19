@@ -82,7 +82,7 @@ void ComboPickerWindow::keyPressEvent(QKeyEvent* event)
       SpCombo const combo = this->selectedCombo();
       this->close();
       if (combo)
-         QTimer::singleShot(200, [combo]() { combo->insertSnippet(); });
+         QTimer::singleShot(200, [combo]() { combo->insertSnippet(ETriggerSource::ComboPicker); });
       break;
    }
    default:

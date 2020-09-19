@@ -12,6 +12,7 @@
 
 
 #include "Group/GroupList.h"
+#include "BeeftextUtils.h"
 #include <memory>
 #include <vector>
  
@@ -60,7 +61,7 @@ public: // member functions
    bool isEnabled() const; ///< Check whether the combo is enabled
    bool matchesForInput(QString const& input) const; ///< Check if the combo is a match for the given input
    bool performSubstitution(); ///< Perform the combo substitution
-   bool insertSnippet(); ///< Insert the snippet.
+   bool insertSnippet(ETriggerSource source); ///< Insert the snippet.
    QJsonObject toJsonObject(bool includeGroup) const; ///< Serialize the combo in a JSon object
    void changeUuid(); ///< Get a new Uuid for the combo
 
