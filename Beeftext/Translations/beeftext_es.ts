@@ -1595,7 +1595,7 @@ Do you want to continue anymay?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="250"/>
+        <location filename="../BeeftextUtils.cpp" line="255"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="278"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>

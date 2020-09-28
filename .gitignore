@@ -28,4 +28,5 @@ sh.exe.stackdump
 workspace.xml
 tasks.xml
 *.DotSettings.user
-qtvars_*
+qtvars*
+temp/
