@@ -56,11 +56,13 @@
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <QtModules>core;network;gui;multimedia;widgets</QtModules>
     <QtInstall>$(DefaultQtVersion)</QtInstall>
+    <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">
     <QtModules>core;network;gui;multimedia;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtInstall>$(DefaultQtVersion)</QtInstall>
+    <QtQMLDebugEnable>false</QtQMLDebugEnable>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
