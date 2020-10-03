@@ -184,6 +184,7 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
    for (SpCombo const& combo : importableCombos_)
    {
       combo->setGroup(group);
+      combo->convertToPlainText();
       if (!comboList.append(combo))
          ++failureCount;
    }

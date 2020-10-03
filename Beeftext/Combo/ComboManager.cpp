@@ -168,6 +168,9 @@ bool ComboManager::restoreBackup(QString const& backupFilePath)
    QString outErrorMsg;
    if (!comboList_.load(backupFilePath, &inOlderFormat, &outErrorMsg))
       return false;
+   for (SpCombo& combo : comboList_)
+      if (combo)
+         combo->convertToPlainText();
    comboList_.ensureCorrectGrouping();
    emit backupWasRestored();
    return this->saveComboListToFile();
