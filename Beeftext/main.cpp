@@ -80,6 +80,14 @@ int main(int argc, char *argv[])
       QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
 #endif
       ensureMainWindowHasAHandle(window);
+
+      // Handle deprecated html combos
+      if (comboManager.comboListRef().containsHtmlCombo())
+      {
+         if (!warnAndConvertHtmlCombos())
+            return 0;
+      }
+
       if (!prefs.alreadyLaunched())
       {
          window.show();

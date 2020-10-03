@@ -208,8 +208,6 @@ void PreferencesManager::reset()
    this->setUseCustomSound(kDefaultUseCustomSound);
    this->setWarnAboutShortComboKeywords(kDefaultWarnAboutShortComboKeyword);
    this->setWriteDebugLogFile(kDefaultWriteDebugLogFile);
-   this->setRichTextDeprecationWarningHasAlreadyBeenDisplayed(
-      kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
    this->resetWarnings();
    this->setUseLegacyCopyPaste(kDefaultUseLegacyCopyPaste);
    if (!isInPortableMode())
@@ -1343,25 +1341,6 @@ void PreferencesManager::setBeeftextEnabled(bool enabled)
 bool PreferencesManager::beeftextEnabled() const
 {
    return cachedBeeftextEnabled_;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] alreadyDisplayed The value for the preference.
-//**********************************************************************************************************************
-void PreferencesManager::setRichTextDeprecationWarningHasAlreadyBeenDisplayed(bool alreadyDisplayed) const
-{
-   settings_->setValue(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, alreadyDisplayed);
-}
-
-
-//**********************************************************************************************************************
-/// \return The value for the preference.
-//**********************************************************************************************************************
-bool PreferencesManager::richTextDeprecationWarningHasAlreadyBeenDisplayed() const
-{
-   return readSettings<bool>(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed,
-      kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
 }
 
 

@@ -31,6 +31,6 @@ void reportError(QWidget* parent, QString const& logMessage, QString const& user
 bool isAppRunningOnWindows10OrHigher(); ///< Return true if and only if the application is running on windows 10 or higher
 qint32 printableCharacterCount(QString const& str); ///< Return the (estimated) number of printable characters in a string
 QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml); ///< Retrieve the MIME data corresponding to a combo's snippet.
-
+bool warnAndConvertHtmlCombos(); ///< Warn the user about discontinued rich text combo support and convert them to plain text.
 
 #endif // #ifndef BEEFTEXT_UTILS_H

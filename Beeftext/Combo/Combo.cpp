@@ -382,6 +382,18 @@ void Combo::changeUuid()
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void Combo::convertToPlainText()
+{
+   if (!useHtml())
+      return;
+   this->setUseHtml(false);
+   this->setSnippet(snippetToPlainText(this->snippet(), true));
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo

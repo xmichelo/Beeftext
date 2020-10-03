@@ -64,6 +64,7 @@ public: // member functions
    bool insertSnippet(ETriggerSource source); ///< Insert the snippet.
    QJsonObject toJsonObject(bool includeGroup) const; ///< Serialize the combo in a JSon object
    void changeUuid(); ///< Get a new Uuid for the combo
+   void convertToPlainText(); ///< Convert the combo from rich text to plain text.
 
 public: // static functions
    static SpCombo create(QString const& name = QString(), QString const& keyword = QString(),

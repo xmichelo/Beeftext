@@ -110,8 +110,6 @@ public: // member functions
    static SpShortcut defaultAppEnableDisableShortcut(); ///< Return the default combo shortcut to enable/disable the application. 
    void setBeeftextEnabled(bool enabled); ///< Set if beeftext is enabled.
    bool beeftextEnabled() const; ///< Set if beeftext is enabled.
-   void setRichTextDeprecationWarningHasAlreadyBeenDisplayed(bool alreadyDisplayed) const; ///< Set the value for the 'Rich text deprecation warning has already been displayed' preference.
-   bool richTextDeprecationWarningHasAlreadyBeenDisplayed() const; ///< Get the value for the 'Rich text deprecation warning has already been displayed' preference.
    void setUseLegacyCopyPaste(bool value) const; ///< Set he value for the 'Use legacy copy/paste' preference.
    bool useLegacyCopyPaste() const; ///< Get the value for the 'Use legacy copy/paste' preference.
 

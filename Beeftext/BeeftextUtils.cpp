@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "BeeftextUtils.h"
+#include "Combo/ComboManager.h"
 #include "SensitiveApplicationManager.h"
 #include "InputManager.h"
 #include "PreferencesManager.h"
@@ -30,7 +31,16 @@ QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The nam
 QList<quint16> const modifierKeys = {  VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
    VK_RWIN }; ///< The modifier keys
 QChar const kObjectReplacementChar = 0xfffc; ///< The unicode object replacement character.
-
+QString richTextMessage() { return QObject::tr(R"(<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Your combo list contains rich text combos. Beeftext does not support rich text anymore.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- Click on the 'Convert' button to convert your rich text combos to plain text.</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- Click on the 'Exit' button to quit the application. If you want to keep using rich text combos, you can re-install <a href="https://github.com/xmichelo/Beeftext/releases/tag/v7.2"><span style=" text-decoration: underline; color:#0000ff;">Beeftext v7.2</span></a>.</p></body></html>
+   )");
+}
 
 //**********************************************************************************************************************
 /// \brief Test if the application is running in portable mode
@@ -247,12 +257,16 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
 
 
 //**********************************************************************************************************************
-/// \brief The report constists in writting logMessage to the debug log
+/// \param[in] parent The parent widget of the message box.
+/// \param[in] logMessage The message to add to the log.
+/// \param[in] userMessage The message to display to the user. if empty, log message is displayed to the user
+/// \brief The report contists in writting logMessage to the debug log
 //**********************************************************************************************************************
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage)
 {
    globals::debugLog().addError(logMessage);
-   QMessageBox::critical(parent, QObject::tr("Error"), userMessage);
+   QString const usrMsg = userMessage.isEmpty() ? logMessage : userMessage;
+   QMessageBox::critical(parent, QObject::tr("Error"), usrMsg);
 }
 
 
@@ -316,3 +330,30 @@ QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
       result->setText(snippet);
    return result;
 }
+
+
+//**********************************************************************************************************************
+/// \return false if the user opted not to convert combos to plain text and want to exit the application.
+//**********************************************************************************************************************
+bool warnAndConvertHtmlCombos()
+{
+   QMessageBox dlg;
+   dlg.setWindowTitle(QObject::tr("Warning"));
+   dlg.setIcon(QMessageBox::Warning);
+   dlg.setText(richTextMessage());
+   QPushButton* convertButton = dlg.addButton(QObject::tr("&Convert"), QMessageBox::AcceptRole);
+   dlg.addButton(QObject::tr("E&xit"), QMessageBox::RejectRole);
+   dlg.setDefaultButton(convertButton);
+   if (QMessageBox::AcceptRole != dlg.exec())
+      return false;
+
+   ComboManager& comboManager = ComboManager::instance();
+   for (SpCombo const& combo : comboManager.comboListRef())
+      combo->convertToPlainText();
+
+   QString errMsg;
+   if (!comboManager.saveComboListToFile(&errMsg))
+      reportError(nullptr, "Could not save combo list file.", QObject::tr("The combo list file could not be saved."));
+   return true;
+}
+      
