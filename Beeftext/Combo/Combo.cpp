@@ -27,7 +27,6 @@ QString const kPropComboText = "comboText"; ///< The JSON property for the "comb
 QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
 QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
 QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
-QString const kPropUseHtml = "useHtml"; ///< The JSON property for the "Use HTML" property, introduced in file format v7
 QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option
 QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
 QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
@@ -40,21 +39,22 @@ QString const kPropEnabled = "enabled"; ///< The JSON property name for the enab
 } // anonymous namespace
 
 
+QString const kPropUseHtml = "useHtml";
+
+
 //**********************************************************************************************************************
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
-/// \param[in] useHtml Does the combo use a HTML snippet.
 /// \param[in] useLooseMatching Should the combo use loose matching
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString name, QString keyword, QString snippet, bool useHtml, bool const useLooseMatching, 
+Combo::Combo(QString name, QString keyword, QString snippet, bool const useLooseMatching, 
    bool const enabled)
    : uuid_(QUuid::createUuid())
    , name_(std::move(name))
    , keyword_(std::move(keyword))
    , snippet_(std::move(snippet))
-   , useHtml_(useHtml)
    , useLooseMatching_(useLooseMatching)
    , enabled_(enabled)
 
@@ -74,7 +74,6 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
    , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
-   , useHtml_(object[kPropUseHtml].toBool(false))
    , useLooseMatching_(object[kPropUseLooseMatching].toBool(false))
    , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
          kPropCreated].toString(), constants::kJsonExportDateFormat))
@@ -82,6 +81,9 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
          kPropLastModified].toString(), constants::kJsonExportDateFormat))
    , enabled_(object[kPropEnabled].toBool(true))
 {
+   if (object.contains(kPropUseHtml) && object[kPropUseHtml].toBool(false))
+      snippet_ = snippetToPlainText(snippet_, true);
+
    if (object.contains(kPropGroup))
    {
       QUuid const uuid(object[kPropGroup].toString());
@@ -181,24 +183,6 @@ void Combo::setSnippet(QString const& snippet)
       snippet_ = snippet;
       this->touch();
    }
-}
-
-
-//**********************************************************************************************************************
-/// \return true if and only if the combo uses HTML.
-//**********************************************************************************************************************
-bool Combo::useHtml() const
-{
-   return useHtml_;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] useHtml Does the combo use HTML?
-//**********************************************************************************************************************
-void Combo::setUseHtml(bool useHtml)
-{
-   useHtml_ = useHtml;
 }
 
 
@@ -324,7 +308,7 @@ bool Combo::performSubstitution()
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
    {
-      performTextSubstitution(keyword_.size(), newText, useHtml_, cursorLeftShift, ETriggerSource::Keyword);
+      performTextSubstitution(keyword_.size(), newText, cursorLeftShift, ETriggerSource::Keyword);
       lastUseDateTime_ = QDateTime::currentDateTime();
    }
    return !cancelled;
@@ -343,7 +327,7 @@ bool Combo::insertSnippet(ETriggerSource source)
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
    {
-      performTextSubstitution(0, newText, useHtml_, cursorLeftShift, source);
+      performTextSubstitution(0, newText, cursorLeftShift, source);
       lastUseDateTime_ = QDateTime::currentDateTime();
    }
    return !cancelled;
@@ -361,7 +345,6 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropName, name_);
    result.insert(kPropKeyword, keyword_);
    result.insert(kPropSnippet, snippet_);
-   result.insert(kPropUseHtml, useHtml_);
    result.insert(kPropUseLooseMatching, useLooseMatching_);
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
@@ -382,30 +365,17 @@ void Combo::changeUuid()
 
 
 //**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void Combo::convertToPlainText()
-{
-   if (!useHtml())
-      return;
-   this->setUseHtml(false);
-   this->setSnippet(snippetToPlainText(this->snippet(), true));
-}
-
-
-//**********************************************************************************************************************
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
-/// \param[in] useHtml Does the combo use HTML?
 /// \param[in] useLooseMatching Does the combo use loose matching
 /// \param[in] enabled Is the combo enabled
 /// \return A shared pointer to the created Combo
 //**********************************************************************************************************************
-SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool useHtml, 
-   bool useLooseMatching, bool enabled)
+SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool useLooseMatching, 
+   bool enabled)
 {
-   return std::make_shared<Combo>(name, keyword, snippet, useHtml, useLooseMatching, enabled);
+   return std::make_shared<Combo>(name, keyword, snippet, useLooseMatching, enabled);
 }
 
 
@@ -435,8 +405,8 @@ SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useHtml(), 
-      combo.useLooseMatching(), combo.isEnabled());
+   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useLooseMatching(), 
+      combo.isEnabled());
    result->setGroup(combo.group());
    return result;
 }
@@ -464,10 +434,7 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
 {
    outCancelled = false;
    QTextDocument remainingText;
-   if (this->useHtml())
-      remainingText.setHtml(snippet_);
-   else
-      remainingText.setPlainText(snippet_);
+   remainingText.setPlainText(snippet_);
    QTextDocument result;
    QTextCursor resultCursor(&result);
 
@@ -483,7 +450,7 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
       {
          resultCursor.movePosition(QTextCursor::End);
          resultCursor.insertHtml(remainingText.toHtml());
-         return this->useHtml() ? result.toHtml() : result.toPlainText();
+         return result.toPlainText();
       }
 
       // get the text of the variable
@@ -506,12 +473,8 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
       else
       {
          resultCursor.movePosition(QTextCursor::End);
-         bool isHtml = false;
-         QString const eval = evaluateVariable(variable, forbiddenSubCombos, knownInputVariables, isHtml, outCancelled);
-         if (isHtml)
-            resultCursor.insertHtml(eval);
-         else 
-            resultCursor.insertText(eval);
+         QString const eval = evaluateVariable(variable, forbiddenSubCombos, knownInputVariables, outCancelled);
+         resultCursor.insertText(eval);
          if (outCancelled)
             return QString();
       }

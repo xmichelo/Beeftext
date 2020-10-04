@@ -68,7 +68,7 @@ private: // static member functions
    static LRESULT CALLBACK mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The mouse event callback
 
 
-   friend void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos,
+   friend void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos,
       ETriggerSource source);
 
 private: // data members

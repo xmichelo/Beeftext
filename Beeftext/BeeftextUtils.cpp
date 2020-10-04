@@ -31,7 +31,11 @@ QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The nam
 QList<quint16> const modifierKeys = {  VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
    VK_RWIN }; ///< The modifier keys
 QChar const kObjectReplacementChar = 0xfffc; ///< The unicode object replacement character.
-QString richTextMessage() { return QObject::tr(R"(<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+
+
+
+QString richTextMessage() {
+   return QObject::tr(R"(<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 <html><head><meta name="qrichtext" content="1" /><style type="text/css">
 p, li { white-space: pre-wrap; }
 </style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;">
@@ -39,8 +43,9 @@ p, li { white-space: pre-wrap; }
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- Click on the 'Convert' button to convert your rich text combos to plain text.</p>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- Click on the 'Exit' button to quit the application. If you want to keep using rich text combos, you can re-install <a href="https://github.com/xmichelo/Beeftext/releases/tag/v7.2"><span style=" text-decoration: underline; color:#0000ff;">Beeftext v7.2</span></a>.</p></body></html>
-   )");
+)");
 }
+
 
 //**********************************************************************************************************************
 /// \brief Test if the application is running in portable mode
@@ -168,12 +173,11 @@ QString snippetToPlainText(QString const& snippet, bool isHtml)
 //**********************************************************************************************************************
 /// \param[in] charCount The number of characters to substitute.
 /// \param[in] newText The new text.
-/// \param[in] isHtml Is the new HTML?
 /// \param[in] cursorPos The position of the cursor in the new text. The value is -1 if the cursor does not need
 /// \param[in] source The source that triggered the combo
 /// repositionning.
 //**********************************************************************************************************************
-void performTextSubstitution(qint32 charCount, QString const& newText, bool isHtml, qint32 cursorPos, 
+void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos,
    ETriggerSource source)
 {
    InputManager& inputManager = InputManager::instance();
@@ -186,8 +190,8 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       // we erase the combo
       bool const triggeredByPicker = (ETriggerSource::ComboPicker == source);
       bool const triggersOnSpace = prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace();
-      QString text = newText + (triggersOnSpace && prefs.keepFinalSpaceCharacter() && (!isHtml) 
-         && (!triggeredByPicker) ? " " : QString());
+      QString text = newText + (triggersOnSpace && prefs.keepFinalSpaceCharacter() && (!triggeredByPicker) 
+         ? " " : QString());
       if (!triggeredByPicker)
          synthesizeBackspaces(qMax<qint32>(charCount + (triggersOnSpace ? 1 : 0), 0));
       if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
@@ -195,10 +199,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
          // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
-         if (isHtml)
-            clipboardManager.setHtml(text);
-         else
-            clipboardManager.setText(text);
+         clipboardManager.setText(text);
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
@@ -209,9 +210,6 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       }
       else
       {
-         // sensitive applications cannot use the clipboard, so rich text is not an option. We convert to plain text.
-         text = snippetToPlainText(text, isHtml);
-
          QList<quint16> pressedModifiers;
          // we simulate the typing of the snippet text
          for (QChar c: text)
@@ -238,14 +236,10 @@ void performTextSubstitution(qint32 charCount, QString const& newText, bool isHt
       if (cursorPos >= 0)
       {
          QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
-         for (qint32 i = 0; i < qMax<qint32>(0, 
-            printableCharacterCount(isHtml ? QTextDocumentFragment::fromHtml(text).toPlainText() : text)
-               - cursorPos); ++i)
+         for (qint32 i = 0; i < qMax<qint32>(0, printableCharacterCount(text) - cursorPos); ++i)
             synthesizeKeyDownAndUp(VK_LEFT);
          restoreModifierKeys(pressedModifiers);
       }
-
-      ///< We restore the modifiers that we deactivated at the beginning of the function
    }
    catch (Exception const&)
    {
@@ -344,16 +338,5 @@ bool warnAndConvertHtmlCombos()
    QPushButton* convertButton = dlg.addButton(QObject::tr("&Convert"), QMessageBox::AcceptRole);
    dlg.addButton(QObject::tr("E&xit"), QMessageBox::RejectRole);
    dlg.setDefaultButton(convertButton);
-   if (QMessageBox::AcceptRole != dlg.exec())
-      return false;
-
-   ComboManager& comboManager = ComboManager::instance();
-   for (SpCombo const& combo : comboManager.comboListRef())
-      combo->convertToPlainText();
-
-   QString errMsg;
-   if (!comboManager.saveComboListToFile(&errMsg))
-      reportError(nullptr, "Could not save combo list file.", QObject::tr("The combo list file could not be saved."));
-   return true;
+   return QMessageBox::AcceptRole == dlg.exec();
 }
-      

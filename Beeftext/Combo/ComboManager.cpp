@@ -21,6 +21,8 @@
 using namespace xmilib;
 
 
+namespace {
+
 bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
 
 
@@ -32,6 +34,9 @@ bool isBeeftextTheForegroundApplication()
    DWORD processId = 0;
    GetWindowThreadProcessId(GetForegroundWindow(), &processId);
    return QCoreApplication::applicationPid() == processId;
+}
+
+
 }
 
 
@@ -168,9 +173,6 @@ bool ComboManager::restoreBackup(QString const& backupFilePath)
    QString outErrorMsg;
    if (!comboList_.load(backupFilePath, &inOlderFormat, &outErrorMsg))
       return false;
-   for (SpCombo& combo : comboList_)
-      if (combo)
-         combo->convertToPlainText();
    comboList_.ensureCorrectGrouping();
    emit backupWasRestored();
    return this->saveComboListToFile();
@@ -295,8 +297,7 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    if ((!isBeeftextTheForegroundApplication()) &&
       !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
    {
-      performTextSubstitution(keyword.size() + rightDelimiter.size() + leftDelimiter.size(), emoji, false, -1,
-         ETriggerSource::Keyword);
+      performTextSubstitution(keyword.size() + rightDelimiter.size() + leftDelimiter.size(), emoji, -1, ETriggerSource::Keyword);
       if (PreferencesManager::instance().playSoundOnCombo() && sound_)
          sound_->play();
       result = true;

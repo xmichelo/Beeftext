@@ -112,6 +112,8 @@ public: // member functions
    bool beeftextEnabled() const; ///< Set if beeftext is enabled.
    void setUseLegacyCopyPaste(bool value) const; ///< Set he value for the 'Use legacy copy/paste' preference.
    bool useLegacyCopyPaste() const; ///< Get the value for the 'Use legacy copy/paste' preference.
+   void setAlreadyConvertedRichTextCombos(bool value) const; ///< Set the value for the 'Already converted rich text combos' preference.
+   bool alreadyConvertedRichTextCombos() const; ///< Get the value for the 'Already converted rich text combos' preference.
 
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed

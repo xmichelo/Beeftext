@@ -71,6 +71,15 @@ int main(int argc, char *argv[])
       debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       removeFileMarkedForDeletion();
+
+      // if necessary warn about deprecated rich text support and offer an exit option.
+      if (prefs.alreadyLaunched() && (!prefs.alreadyConvertedRichTextCombos()) &&
+         comboFileContainsRichTextCombos(QDir(PreferencesManager::instance().comboListFolderPath())
+         .absoluteFilePath(ComboList::defaultFileName)) && (!warnAndConvertHtmlCombos()))
+            return 0;
+      prefs.setAlreadyConvertedRichTextCombos(true);
+
+
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
@@ -80,13 +89,6 @@ int main(int argc, char *argv[])
       QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
 #endif
       ensureMainWindowHasAHandle(window);
-
-      // Handle deprecated html combos
-      if (comboManager.comboListRef().containsHtmlCombo())
-      {
-         if (!warnAndConvertHtmlCombos())
-            return 0;
-      }
 
       if (!prefs.alreadyLaunched())
       {

@@ -56,7 +56,7 @@ QString qcharToDiscordEmoji(QChar const& c)
    if ((l >= 'a') && (l <= 'z'))
       return QString(":regional_indicator_%1: ").arg(l);
    QMap<QChar, QString> const substs = { { '0', ":zero: " }, { '1', ":one: " }, { '2', ":two: " }, { '3', ":three: " },
-   { '4', ":four: " }, { '5', ":five: " }, { '6', ":six: " }, { '7', ":seven: "}, { '8', ":eight: "}, 
+   { '4', ":four: " }, { '5', ":five: " }, { '6', ":six: " }, { '7', ":seven: "}, { '8', ":eight: "},
    { '9', ":nine: " }, { '!', ":exclamation: "}, { '?', ":question: " } };
    return substs.value(c, "        ");
 }
@@ -87,7 +87,7 @@ QStringList splitTimeShiftString(QString const& shiftStr)
 {
    QStringList result;
    QString acc;
-   for (QChar const c: shiftStr)
+   for (QChar const c : shiftStr)
    {
       if (('+' == c) || ('-' == c))
       {
@@ -115,7 +115,7 @@ QDateTime shiftedDateTime(QString const& shiftStr)
    QDateTime result = QDateTime::currentDateTime();
 
    QStringList const shifts = splitTimeShiftString(shiftStr);
-   for (QString const& shift: shifts)
+   for (QString const& shift : shifts)
    {
       QRegularExpressionMatch const match = QRegularExpression(R"(([+-])(\d+)([yMwdhmsz]))").match(shift);
       if (!match.hasMatch())
@@ -176,10 +176,9 @@ QString evaluateDateTimeVariable(QString const& variable)
 /// \param[out] outCancelled Was the input variable cancelled by the user.
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
-QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, QSet<QString> forbiddenSubCombos, 
-   QMap<QString, QString>& knownInputVariables, bool& outIsHtml, bool& outCancelled)
+QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, QSet<QString> forbiddenSubCombos,
+   QMap<QString, QString>& knownInputVariables, bool& outCancelled)
 {
-   outIsHtml = false;
    QString fallbackResult = QString("#{%1}").arg(variable);
    qint32 const varNameLength = variable.indexOf(':');
    if (varNameLength < 0)
@@ -193,9 +192,8 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
 
    if (combos.end() == it)
       return fallbackResult;
-   QString str = (*it)->evaluatedSnippet(outCancelled, forbiddenSubCombos << comboName, knownInputVariables, 
+   QString str = (*it)->evaluatedSnippet(outCancelled, forbiddenSubCombos << comboName, knownInputVariables,
       nullptr); // forbiddenSubcombos is intended at avoiding endless recursion
-   outIsHtml = (*it)->useHtml();
    switch (caseChange)
    {
    case ECaseChange::ToUpper: return str.toUpper();
@@ -247,47 +245,7 @@ QString evaluateEnvVarVariable(QString const& variable)
 }
 
 
-//**********************************************************************************************************************
-//  \brief Trim the specified plain or rich text, i.e. erase all non printable characters at the beginning and end
-//  of the text.
-///
-/// \param[in] text The text
-/// \param[in] isHtml Is the text in HTML format?
-/// \return The trimmed text
-//**********************************************************************************************************************
-QString trimText(QString const& text, bool isHtml)
-{
-   if (!isHtml)
-      return text.trimmed();
-
-   QTextDocument doc;
-   doc.setHtml(text);
-   QTextCursor cursor(&doc);
-
-   // trim the beginning
-   cursor.movePosition(QTextCursor::Start);
-   while ((!cursor.atEnd()) && cursor.selectedText().trimmed().isEmpty())
-   {
-      cursor.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor);
-   }
-   if (!cursor.selectedText().isEmpty())
-      cursor.deleteChar();
-
-   // trim the end
-   cursor.movePosition(QTextCursor::End);
-   while ((!cursor.atStart()) && cursor.selectedText().trimmed().isEmpty())
-   {
-      cursor.movePosition(QTextCursor::Left, QTextCursor::KeepAnchor);
-   }
-   if (!cursor.selectedText().isEmpty())
-      cursor.deleteChar();
-
-   return doc.toHtml();
 }
-
-
-} // anonymous namespace
-
 
 
 //**********************************************************************************************************************
@@ -295,25 +253,16 @@ QString trimText(QString const& text, bool isHtml)
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion.
 /// \param[in,out] knownInputVariables The list of know input variables.
-/// \param[out] outIsHtml Is the evaluated variable in HTML format?
 /// \param[out] outCancelled Was the input variable cancelled by the user.
 /// \return The result of evaluating the variable.
 //**********************************************************************************************************************
 QString evaluateVariable(QString const& variable, QSet<QString> const& forbiddenSubCombos, 
-   QMap<QString, QString>& knownInputVariables, bool& outIsHtml, bool& outCancelled)
+   QMap<QString, QString>& knownInputVariables, bool& outCancelled)
 {
-   outIsHtml = false;
    outCancelled = false;
    QLocale const systemLocale = QLocale::system();
    if (variable == "clipboard")
-   {
-      ClipboardManager& clipboardManager = ClipboardManager::instance();
-      QString html = clipboardManager.html();
-      if (html.isEmpty())
-         return clipboardManager.text();
-      outIsHtml = true;
-      return html;
-   }
+      return ClipboardManager::instance().text();
    
    if (variable == "discordemoji") //secret variable that create text in Discord emoji from the clipboard text
       return discordEmojisFromClipboard();
@@ -332,21 +281,21 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
 
    if (variable.startsWith("combo:"))
       return evaluateComboVariable(variable, ECaseChange::NoChange, forbiddenSubCombos, knownInputVariables, 
-         outIsHtml, outCancelled);
+         outCancelled);
 
    if (variable.startsWith("upper:"))
       return evaluateComboVariable(variable, ECaseChange::ToUpper, forbiddenSubCombos, knownInputVariables, 
-         outIsHtml, outCancelled);
+         outCancelled);
 
    if (variable.startsWith("lower:"))
       return evaluateComboVariable(variable, ECaseChange::ToLower, forbiddenSubCombos, knownInputVariables, 
-         outIsHtml, outCancelled);
+         outCancelled);
 
    if (variable.startsWith("trim:"))
    {
       QString const var = evaluateComboVariable(variable, ECaseChange::NoChange, forbiddenSubCombos, 
-         knownInputVariables, outIsHtml, outCancelled);
-      return trimText(var, outIsHtml);
+         knownInputVariables, outCancelled);
+      return var.trimmed();
    }
 
    if (variable.startsWith(kInputVariable))

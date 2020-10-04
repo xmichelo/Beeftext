@@ -67,6 +67,7 @@ QString const kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = "RichTextD
 QString const kKeyUseLegacyCopyPaste = "UseLegacyCopyPaste"; ///< The setting key for the 'Use legacy copy/paste' preference.
 QString const kKeyComboTriggersOnSpace = "ComboTriggersOnSpace"; ///< The setting key for the 'Combo triggers on space' preference.
 QString const kKeyKeepFinalSpaceCharacter = "KeepFinalSpaceCharacter"; ///< The setting key for the 'Keep final space character' preference.
+QString const kKeyAlreadyConvertedRichTextCombos = "AlreadyConvertedRichTextCombos"; ///< The setting key for the 'Already converted rich text combos' preference.
 
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
@@ -1361,6 +1362,24 @@ void PreferencesManager::setUseLegacyCopyPaste(bool value) const
 bool PreferencesManager::useLegacyCopyPaste() const
 {
    return readSettings<bool>(kKeyUseLegacyCopyPaste, kDefaultUseLegacyCopyPaste);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setAlreadyConvertedRichTextCombos(bool value) const
+{
+   settings_->setValue(kKeyAlreadyConvertedRichTextCombos, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::alreadyConvertedRichTextCombos() const
+{
+   return readSettings<bool>(kKeyAlreadyConvertedRichTextCombos, false);
 }
 
 

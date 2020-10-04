@@ -15,6 +15,9 @@
 #include "Group/GroupList.h"
 
 
+bool comboFileContainsRichTextCombos(QString const& path); ///< Check if a file contains rich text combos
+
+
 //**********************************************************************************************************************
 /// \brief A class for combo lists
 //**********************************************************************************************************************

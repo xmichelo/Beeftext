@@ -26,11 +26,38 @@ QString const kKeyFileFormatVersion = "fileFormatVersion"; ///< The JSon key for
 QString const kKeyCombos = "combos"; ///< The JSon key for combos
 QString const kKeyGroups = "groups"; ///< The JSon key for groups
 
+
 } // anonymous namespace
 
 
 QString const ComboList::defaultFileName = "comboList.json";
-qint32 const ComboList::fileFormatVersionNumber = 7;
+qint32 const ComboList::fileFormatVersionNumber = 8;
+
+
+//**********************************************************************************************************************
+/// \return bool if and only if the specified file contains rich text combos
+//**********************************************************************************************************************
+bool comboFileContainsRichTextCombos(QString const& path)
+{
+   QFile file(path);
+   if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+      return false;
+   QJsonParseError error;
+   QJsonDocument const doc(QJsonDocument::fromJson(file.readAll(), &error));
+   if (QJsonParseError::NoError != error.error)
+      return false;
+   QJsonObject const rootObject = doc.object();
+   if (!rootObject.contains(kKeyCombos))
+      return false;
+   QJsonValue const comboArrayValue = rootObject[kKeyCombos];
+   if (!comboArrayValue.isArray())
+      return false;
+   QJsonArray const array = comboArrayValue.toArray();
+   for (QJsonValueRef const comboValue : comboArrayValue.toArray())
+      if (comboValue.isObject() && comboValue.toObject().value(kPropUseHtml).toBool(false))
+         return true;
+   return false;
+}
 
 
 //**********************************************************************************************************************
@@ -573,8 +600,7 @@ bool ComboList::exportCheatSheet(QString const& path, QString* outErrorMessage) 
          continue;
       SpGroup const group = combo->group();
       QString const snippet = combo->snippet();
-      csvData.push_back({ group ? group->name() : QString(), combo->name(), combo->keyword(),
-         snippetToPlainText(combo->snippet(), combo->useHtml()) });
+      csvData.push_back({ group ? group->name() : QString(), combo->name(), combo->keyword(), combo->snippet() });
    }
    std::sort(csvData.begin(), csvData.end(), compareForCheatSheet);
    return saveCsvFile(path, csvData, outErrorMessage);
@@ -611,16 +637,6 @@ void ComboList::ensureCorrectGrouping(bool* outWasInvalid)
    }
    if (outWasInvalid)
       *outWasInvalid = wasInvalid;
-}
-
-
-//**********************************************************************************************************************
-/// \return true if and only if the combo list contains at least one combo that uses HTML.
-//**********************************************************************************************************************
-bool ComboList::containsHtmlCombo() const
-{
-   return combos_.end() != std::find_if(combos_.begin(), combos_.end(), [](SpCombo const& combo) -> bool
-      { return combo && combo->useHtml(); });
 }
 
 
@@ -666,7 +682,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       {
       case 0: return combo->name();
       case 1: return combo->keyword();
-      case 2: return snippetToPlainText(combo->snippet(), combo->useHtml()).simplified();
+      case 2: return combo->snippet();
       case 3: return combo->creationDateTime().toString(dtShortFormat);
       case 4: return combo->modificationDateTime().toString(dtShortFormat);
       case 5: return combo->lastUseDateTime().toString(dtShortFormat);

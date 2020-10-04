@@ -40,7 +40,7 @@ void loadCombosFromCsvFile(QString const& filePath, ComboList& outResult)
       QString const keyword = row[0];
       QString const snippet = row[1];
       SpCombo const combo = std::make_shared<Combo>(name.isEmpty() ? keyword : name, keyword, snippet, 
-         Qt::mightBeRichText(snippet), false, true);
+         false, true);
       if (combo->isValid())
          outResult.push_back(combo);
    }
@@ -184,7 +184,6 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
    for (SpCombo const& combo : importableCombos_)
    {
       combo->setGroup(group);
-      combo->convertToPlainText();
       if (!comboList.append(combo))
          ++failureCount;
    }

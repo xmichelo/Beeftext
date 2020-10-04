@@ -192,7 +192,6 @@ void ComboDialog::onActionOk()
    combo_->setGroup(ui_.comboGroup->currentGroup());
    combo_->setUseLooseMatching(this->matchingComboValue());
    combo_->setKeyword(keyword);
-   combo_->setUseHtml(false); ///< HTML combos are deprecated
    combo_->setSnippet(ui_.comboEditor->plainText());
    this->accept();
 }
