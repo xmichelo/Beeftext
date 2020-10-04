@@ -136,9 +136,6 @@
     <ClCompile Include="Combo\LastUseFile.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\SnippetEdit.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
     <ClCompile Include="I18nManager.cpp" />
     <ClCompile Include="Clipboard\ClipboardManagerDefault.cpp">
       <Filter>Clipboard</Filter>
@@ -363,9 +360,6 @@
       <Filter>Combo\ComboPicker</Filter>
     </QtMoc>
     <QtMoc Include="Combo\ComboEditor.h">
-      <Filter>Combo</Filter>
-    </QtMoc>
-    <QtMoc Include="Combo\SnippetEdit.h">
       <Filter>Combo</Filter>
     </QtMoc>
   </ItemGroup>

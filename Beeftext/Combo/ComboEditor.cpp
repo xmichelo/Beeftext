@@ -19,55 +19,22 @@ ComboEditor::ComboEditor(QWidget* parent)
    : QWidget(parent)
 {
    ui_.setupUi(this);
-   ui_.snippetEdit->setAcceptRichText(false);
    connect(ui_.snippetEdit, &QPlainTextEdit::customContextMenuRequested, this, 
       &ComboEditor::onEditorContextMenuRequested);
-   ui_.snippetEdit->textCursor().movePosition(QTextCursor::End); // required to ensure the font is detected correctly
-   this->fillFontSizeCombo();
-   this->onCurrentCharFormatChanged(ui_.snippetEdit->currentCharFormat());
-   this->onCursorPositionChanged();
-   connect(ui_.snippetEdit, &QTextEdit::textChanged, [this]() { emit textChanged(); });
 }
 
 
 //**********************************************************************************************************************
 /// \return The snippet edit widget
 //**********************************************************************************************************************
-SnippetEdit* ComboEditor::snippetEdit() const
+QPlainTextEdit* ComboEditor::plainTextEdit() const
 {
    return ui_.snippetEdit;
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] richTextMode Is the control is rich text mode. 
-//**********************************************************************************************************************
-void ComboEditor::setRichTextMode(bool richTextMode) const
-{
-   ui_.frameRichTextControls->setVisible(richTextMode);
-   if (!richTextMode)
-   {
-      QString const plainText = QTextDocumentFragment::fromHtml(ui_.snippetEdit->toHtml()).toPlainText();
-      ui_.snippetEdit->setAcceptRichText(false);
-      ui_.snippetEdit->setPlainText(plainText);
-      return;
-   }
-   ui_.snippetEdit->setAcceptRichText(true);
-   this->onCurrentCharFormatChanged(ui_.snippetEdit->currentCharFormat());
-}
-
-
-//**********************************************************************************************************************
-/// \return true if and only if the widget is in rich text mode.
-//**********************************************************************************************************************
-bool ComboEditor::isInRichTextMode() const
-{
-   return ui_.snippetEdit->acceptRichText();
-}
-
-
-//**********************************************************************************************************************
-/// \return The plain text content of the editor
+/// \return The content of the edit
 //**********************************************************************************************************************
 QString ComboEditor::plainText() const
 {
@@ -76,11 +43,11 @@ QString ComboEditor::plainText() const
 
 
 //**********************************************************************************************************************
-/// \return The HTML content of the editor
+//
 //**********************************************************************************************************************
-QString ComboEditor::html() const
+void ComboEditor::setPlainText(QString const& text) const
 {
-   return ui_.snippetEdit->toHtml();
+   ui_.snippetEdit->setPlainText(text);
 }
 
 
@@ -166,66 +133,6 @@ void ComboEditor::insertTextInSnippetEdit(QString const& text, bool move1CharLef
 
 
 //**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::fillFontSizeCombo() const
-{
-   ui_.comboFontSize->clear();
-   QList<qint32> const stdSizes = QFontDatabase::standardSizes();
-   for (qint32 size: stdSizes)
-      ui_.comboFontSize->addItem(QString::number(size));
-   ui_.comboFontSize->setCurrentIndex(stdSizes.indexOf(QApplication::font().pointSize()));
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] color The color.
-//**********************************************************************************************************************
-void ComboEditor::setColorButton(QColor const& color) const
-{
-   QPixmap pix(24, 24);
-   pix.fill(color);
-   ui_.buttonColor->setIcon(pix);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] format The format.
-//**********************************************************************************************************************
-void ComboEditor::applyFormat(QTextCharFormat const& format) const
-{
-   QTextCursor cursor = ui_.snippetEdit->textCursor();
-   cursor.mergeCharFormat(format);
-   ui_.snippetEdit->mergeCurrentCharFormat(format);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::updateAlignmentButtonsState() const
-{
-   Qt::Alignment const alignment = ui_.snippetEdit->alignment();
-   {
-      QSignalBlocker blocker(ui_.buttonAlignLeft);
-      ui_.buttonAlignLeft->setChecked(alignment & Qt::AlignLeft);
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonAlignCenter);
-      ui_.buttonAlignCenter->setChecked(alignment & Qt::AlignCenter);
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonAlignRight);
-      ui_.buttonAlignRight->setChecked(alignment & Qt::AlignRight);
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonAlignJustify);
-      ui_.buttonAlignJustify->setChecked(alignment & Qt::AlignJustify);
-   }
-}
-
-
-//**********************************************************************************************************************
 /// \param[in] pos The cursos position.
 //**********************************************************************************************************************
 void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
@@ -236,252 +143,4 @@ void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
    menu->exec(ui_.snippetEdit->viewport()->mapToGlobal(pos));
 }
 
-
-//**********************************************************************************************************************
-/// \param[in] format the new character format
-//**********************************************************************************************************************
-void ComboEditor::onCurrentCharFormatChanged(const QTextCharFormat& format) const
-{
-   ui_.comboFontFamily->setCurrentIndex(ui_.comboFontFamily->findText(format.font().family()));
-   ui_.comboFontSize->setCurrentIndex(ui_.comboFontSize->findText(QString::number(format.font().pointSize())));
-   this->setColorButton(format.foreground().color());
-   {
-      QSignalBlocker blocker(ui_.buttonBold);
-      ui_.buttonBold->setChecked(format.fontWeight() > QFont::Normal);
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonItalic);
-      ui_.buttonItalic->setChecked(format.fontItalic());
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonUnderline);
-      ui_.buttonUnderline->setChecked(format.fontUnderline());
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonStrikeout);
-      ui_.buttonStrikeout->setChecked(format.fontStrikeOut());
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonSuperscript);
-      ui_.buttonSuperscript->setChecked(QTextCharFormat::AlignSuperScript == format.verticalAlignment());
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonSubscript);
-      ui_.buttonSubscript->setChecked(QTextCharFormat::AlignSubScript == format.verticalAlignment());
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonStrikeout);
-      ui_.buttonStrikeout->setChecked(format.fontStrikeOut());
-   }
-   {
-      QSignalBlocker blocker(ui_.buttonHyperlink);
-      ui_.buttonHyperlink->setChecked(!format.anchorHref().isEmpty());
-   }
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::onCursorPositionChanged() const
-{
-   this->updateAlignmentButtonsState();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] family The font family.
-//**********************************************************************************************************************
-void ComboEditor::onComboFontFamilyChanged(QString const& family) const
-{
-   QTextCharFormat format;
-   format.setFontFamily(family);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] sizeText The size, as text.
-//**********************************************************************************************************************
-void ComboEditor::onComboFontSizeChanged(QString const& sizeText) const
-{
-   bool ok = false;
-   double const size = sizeText.toDouble(&ok);
-   if ((!ok) || (size <= 0.0))
-      return;
-   QTextCharFormat format;
-   format.setFontPointSize(size);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::onButtonColor()
-{
-   QColor const color = QColorDialog::getColor(ui_.snippetEdit->textColor(), this, tr("Text color"));
-   if (!color.isValid())
-      return;
-   this->setColorButton(color);
-   QTextCharFormat format;
-   format.setForeground(color);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
-//**********************************************************************************************************************
-void ComboEditor::onButtonBold(bool checked) const
-{
-   QTextCharFormat format;
-   format.setFontWeight(checked ? QFont::Bold : QFont::Normal);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
-//**********************************************************************************************************************
-void ComboEditor::onButtonItalic(bool checked) const
-{
-   QTextCharFormat format;
-   format.setFontItalic(checked);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
-//**********************************************************************************************************************
-void ComboEditor::onButtonUnderline(bool checked) const
-{
-   QTextCharFormat format;
-   format.setFontUnderline(checked);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
-//**********************************************************************************************************************
-void ComboEditor::onButtonStrikeout(bool checked) const
-{
-   QTextCharFormat format;
-   format.setFontStrikeOut(checked);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
-//**********************************************************************************************************************
-void ComboEditor::onButtonSuperscript(bool checked) const
-{
-   QTextCharFormat format;
-   format.setVerticalAlignment(checked ? QTextCharFormat::AlignSuperScript : QTextCharFormat::AlignNormal);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
-//**********************************************************************************************************************
-void ComboEditor::onButtonSubscript(bool checked) const
-{
-   QTextCharFormat format;
-   format.setVerticalAlignment(checked ? QTextCharFormat::AlignSubScript : QTextCharFormat::AlignNormal);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::onButtonAlignLeft() const
-{
-   ui_.snippetEdit->setAlignment(Qt::AlignLeft | Qt::AlignAbsolute);
-   this->updateAlignmentButtonsState();
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::onButtonAlignCenter() const
-{
-   ui_.snippetEdit->setAlignment(Qt::AlignCenter);
-   this->updateAlignmentButtonsState();
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::onButtonAlignRight() const
-{
-   ui_.snippetEdit->setAlignment(Qt::AlignRight | Qt::AlignAbsolute);
-   this->updateAlignmentButtonsState();
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-//
-/////**********************************************************************************************************************
-void ComboEditor::onButtonAlignJustify() const
-{
-   ui_.snippetEdit->setAlignment(Qt::AlignJustify);
-   this->updateAlignmentButtonsState();
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the button checked?
-//**********************************************************************************************************************
-void ComboEditor::onButtonHyperlink(bool checked)
-{
-   if (checked)
-   {
-      bool ok = false;
-      QString const url = QInputDialog::getText(this, tr("Enter URL"), tr("Hyperlink URL"), QLineEdit::Normal, 
-         QString(), &ok);
-      if (!ok)
-      {
-         QSignalBlocker blocker(ui_.buttonHyperlink);
-         ui_.buttonHyperlink->setChecked(false);
-         ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-         return;
-      }
-      QTextCharFormat format;
-      format.setAnchor(true);
-      format.setAnchorHref(url);
-      format.setFontUnderline(true);
-      format.setForeground(QColor(0, 0, 255));
-      this->applyFormat(format);
-      ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-      return;
-   }
-   QTextCharFormat format;
-   format.setAnchor(false);
-   format.setAnchorHref(QString());
-   format.setFontUnderline(false);
-   format.setForeground(Qt::black);
-   this->applyFormat(format);
-   ui_.snippetEdit->setFocus(Qt::NoFocusReason);
-   return;
-}
 

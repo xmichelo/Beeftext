@@ -36,14 +36,11 @@ private: // member functions
    bool checkAndReportInvalidCombo(); ///< Check the keyword against existing combos and report conflicts
    void setMatchingComboValue(bool useLooseMatching) const; ///< Set the 'Matching' combo value
    bool matchingComboValue() const; ///<  Read the matching mode from the 'Matching' combo value
-   void setUseHtmlComboValue(bool useHtml) const; ///< Set the value for the 'Use HTML' combo.
-   bool useHtmlComboValue() const; ///< Get the value for the 'HTML' combo.
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action
    void onActionNewGroup(); ///< Slot for the 'New Group' action
    void updateGui() const; ///< Update the GUI state
-   void onUseHtmlChanged() const; ///< Slot for the change of the 'Use rich text' combo.
 
 private: // data members
    Ui::ComboDialog ui_ {}; ///< The GUI for the dialog

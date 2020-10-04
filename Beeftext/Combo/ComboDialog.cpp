@@ -94,15 +94,9 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    this->setMatchingComboValue(combo->useLooseMatching());
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
-   bool const useHtml = combo->useHtml();
-   ui_.comboEditor->setRichTextMode(useHtml);
-   this->setUseHtmlComboValue(useHtml);
-   if (useHtml)
-      ui_.comboEditor->snippetEdit()->setHtml(combo->snippet());
-   else
-      ui_.comboEditor->snippetEdit()->setPlainText(combo->snippet());
+   ui_.comboEditor->plainTextEdit()->setPlainText(combo->snippet());
    this->updateGui();
-   connect(ui_.comboEditor, &ComboEditor::textChanged, this, &ComboDialog::updateGui);
+   connect(ui_.comboEditor->plainTextEdit(), &QPlainTextEdit::textChanged, this, &ComboDialog::updateGui);
 }
 
 
@@ -176,24 +170,6 @@ bool ComboDialog::matchingComboValue() const
 
 
 //**********************************************************************************************************************
-/// \param[in] useHtml The value of the 'Use HTML' combo.
-//**********************************************************************************************************************
-void ComboDialog::setUseHtmlComboValue(bool useHtml) const
-{
-   ui_.comboUseHtml->setCurrentIndex(useHtml ? 1 : 0);
-}
-
-
-//**********************************************************************************************************************
-/// \return The value of the 'Use Html' combo.
-//**********************************************************************************************************************
-bool ComboDialog::useHtmlComboValue() const
-{
-   return 0 != ui_.comboUseHtml->currentIndex();
-}
-
-
-//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboDialog::onActionOk()
@@ -216,9 +192,8 @@ void ComboDialog::onActionOk()
    combo_->setGroup(ui_.comboGroup->currentGroup());
    combo_->setUseLooseMatching(this->matchingComboValue());
    combo_->setKeyword(keyword);
-   bool const useHtml = this->useHtmlComboValue();
-   combo_->setUseHtml(useHtml);
-   combo_->setSnippet(useHtml ? ui_.comboEditor->html() : ui_.comboEditor->plainText());
+   combo_->setUseHtml(false); ///< HTML combos are deprecated
+   combo_->setSnippet(ui_.comboEditor->plainText());
    this->accept();
 }
 
@@ -247,23 +222,3 @@ void ComboDialog::updateGui() const
       (!ui_.comboEditor->plainText().isEmpty()) && ui_.comboGroup->currentGroup();
    ui_.buttonOk->setEnabled(canAccept);
 }
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboDialog::onUseHtmlChanged() const
-{
-   bool const useHtml = this->useHtmlComboValue();
-   ui_.comboEditor->setRichTextMode(useHtml);
-   if (!useHtml)
-   {
-      QTextEdit& edit = *ui_.comboEditor->snippetEdit();
-      // note: normally, the code above could simply be edit.setPlainText(edit.toPlainText(), but a Qt issue
-      // causes the format not to be properly removed in some cases.
-      edit.document()->setPlainText(edit.toPlainText());
-   }
-   this->updateGui();
-}
-
-

@@ -27,41 +27,16 @@ public: // member functions
    ~ComboEditor() = default; ///< Destructor.
    ComboEditor& operator=(ComboEditor const&) = delete; ///< Disabled assignment operator.
    ComboEditor& operator=(ComboEditor&&) = delete; ///< Disabled move assignment operator.
-   SnippetEdit* snippetEdit() const; ///< Return the snippet edit.
-   void setRichTextMode(bool richTextMode) const; ///< Set whether the editor is in rich text mode
-   bool isInRichTextMode() const; ///< Check whether the widget is in rich text mode.
-   QString plainText() const; ///< Return the plain text content of the editor.
-   QString html() const; ///< Return the HTML content of the editor.
-
-signals:
-   void textChanged(); ///< Signal emitted when the content changed
+   QPlainTextEdit* plainTextEdit() const; ///< Return the snippet edit.
+   QString plainText() const; ///< Return the plain text content of the edit.
+   void setPlainText(QString const& text) const; ///< Set the content of the edit.
 
 private: // data members
    QMenu* createComboVariableMenu(); ///< Create the combo variable menu.
    void insertTextInSnippetEdit(QString const& text, bool move1CharLeft = false) const; ///< Insert some text at the current cursor position in the snippet text edit control.
-   void fillFontSizeCombo() const; ///< Fill the font size combo.
-   void setColorButton(QColor const& color) const; ///< Setup the color button.
-   void applyFormat(QTextCharFormat const& format) const; ///< Apply the format to the current selection.
-   void updateAlignmentButtonsState() const; ///< Update the state of the alignment buttons.
 
 private slots:
    void onEditorContextMenuRequested(QPoint const& pos); ///< Slot for the display of the editor's context menu.
-   void onCurrentCharFormatChanged(const QTextCharFormat &format) const; ///< Slot for change of the edit current character format.
-   void onCursorPositionChanged() const; ///< Slot for change of the cursor position.
-   void onComboFontFamilyChanged(QString const& family) const; ///< Slot for change of the value of the 
-   void onComboFontSizeChanged(QString const& sizeText) const; ///< Slot for the change of the value in the font size combo.
-   void onButtonColor(); ///< Slot for the color button.
-   void onButtonBold(bool checked) const; ///< Slot for the bold button.
-   void onButtonItalic(bool checked) const; ///< Slot for the italic button.
-   void onButtonUnderline(bool checked) const; ///< Slot for the underline button.
-   void onButtonStrikeout(bool checked) const; ///< Slot for the strikeout button.
-   void onButtonSuperscript(bool checked) const; ///< Slot for the superscript button.
-   void onButtonSubscript(bool checked) const; ///< Slot for the subscript button.
-   void onButtonAlignLeft() const; ///< Slot for the align left button.
-   void onButtonAlignCenter() const; ///< Slot for the align center button.
-   void onButtonAlignRight() const; ///< Slot for the align right button.
-   void onButtonAlignJustify() const; ///< Slot for the align justify button.
-   void onButtonHyperlink(bool checked); ///< Slot for the hyperlink button.
 
 private:
    Ui::ComboEditor ui_ {}; ///< The GUI for the widget
