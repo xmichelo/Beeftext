@@ -156,13 +156,10 @@ QString getActiveExecutableFileName()
 
 //**********************************************************************************************************************
 /// \param[in] snippet The snippet.
-/// \param[in] isHtml Is the snippet in HTML format?
 /// \return The snippet in plain text format.
 //**********************************************************************************************************************
-QString snippetToPlainText(QString const& snippet, bool isHtml)
+QString htmlToPlainText(QString const& snippet)
 {
-   if (!isHtml)
-      return snippet;
    QTextDocumentFragment const fragment = QTextDocumentFragment::fromHtml(snippet);
    QString plainText = fragment.toPlainText();
    plainText.remove(kObjectReplacementChar); // Remove the 'Object replacement character' that replaced images during conversion to plain text
@@ -305,23 +302,28 @@ qint32 printableCharacterCount(QString const& str)
 //**********************************************************************************************************************
 /// \brief Get the MIME data for a text snippet.
 /// 
-/// \param[in] snippet The snippet's text.
-/// \param[in] isHtml Is the snippet in HTML format.
+/// \param[in] text The snippet's text.
 /// \return A pointer to heap-allocated MIME data representing the snippet. The caller is responsible for
 /// release the allocated memory.
 //**********************************************************************************************************************
-QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml)
+QMimeData* mimeDataFromText(QString const& text)
 {
    QMimeData* result = new QMimeData;
-   if (isHtml)
-   {
-      // we filter the HTML through a QTextDocumentFragment as is prevent errouneous insertion of new line
-      // at the beginning and end of the snippet
-      result->setHtml(QTextDocumentFragment::fromHtml(snippet).toHtml());
-      result->setText(snippetToPlainText(snippet, isHtml));
-   }
-   else
-      result->setText(snippet);
+   result->setText(text);
+   return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] html The HTML content
+//**********************************************************************************************************************
+QMimeData* mimeDataFromHtml(QString const& html)
+{
+   QMimeData* result = new QMimeData;
+   // we filter the HTML through a QTextDocumentFragment as is prevent errouneous insertion of new line
+   // at the beginning and end of the snippet
+   result->setHtml(QTextDocumentFragment::fromHtml(html).toHtml());
+   result->setText(htmlToPlainText(html));
    return result;
 }
 

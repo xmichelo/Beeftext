@@ -24,13 +24,14 @@ void openLogFile(); ///< Open the log file with the default text editor
 bool isInPortableMode(); ///< Test whether the application is running in portable mode
 bool usePortableAppsFolderLayout(); ///< Test if the application is using the PortableApps.com layout
 QString getActiveExecutableFileName(); ///< Return the name of the active application's executable file
-QString snippetToPlainText(QString const& snippet, bool isHtml); ///< Return the plain text for a snippet.
+QString htmlToPlainText(QString const& snippet); ///< Return the plain text for a snippet.
 void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos,
    ETriggerSource source); ///< Substitute the last characters with the specified text
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage = QString()); ///< Report an error to the user
 bool isAppRunningOnWindows10OrHigher(); ///< Return true if and only if the application is running on windows 10 or higher
 qint32 printableCharacterCount(QString const& str); ///< Return the (estimated) number of printable characters in a string
-QMimeData* mimeDataFromSnippet(QString const& snippet, bool isHtml); ///< Retrieve the MIME data corresponding to a combo's snippet.
+QMimeData* mimeDataFromText(QString const& text); ///< Create a MIME data instance for text content.
+QMimeData* mimeDataFromHtml(QString const& html);  ///< Create a MIME data instance for HTML content.
 bool warnAndConvertHtmlCombos(); ///< Warn the user about discontinued rich text combo support and convert them to plain text.
 
 

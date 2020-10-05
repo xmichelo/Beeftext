@@ -313,6 +313,6 @@ QString ClipboardManagerDefault::html()
 bool ClipboardManagerDefault::setHtml(QString const& html)
 {
    // Later, this function should use the lower level clipboard API for HTML, which is not really easy at the moment.
-   QApplication::clipboard()->setMimeData(mimeDataFromSnippet(html, true)); // Ownership of data is transfered to the clipboard
+   QApplication::clipboard()->setMimeData(mimeDataFromHtml(html)); // Ownership of data is transfered to the clipboard
    return true;
 }

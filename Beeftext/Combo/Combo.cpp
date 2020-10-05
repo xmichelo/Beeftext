@@ -82,7 +82,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
    , enabled_(object[kPropEnabled].toBool(true))
 {
    if (object.contains(kPropUseHtml) && object[kPropUseHtml].toBool(false))
-      snippet_ = snippetToPlainText(snippet_, true);
+      snippet_ = htmlToPlainText(snippet_);
 
    if (object.contains(kPropGroup))
    {
@@ -433,50 +433,31 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
    QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const
 {
    outCancelled = false;
-   QTextDocument remainingText;
-   remainingText.setPlainText(snippet_);
-   QTextDocument result;
-   QTextCursor resultCursor(&result);
-
+   QString remainingText = snippet_;
+   QString result;
    // The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \.
    // Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents
    // inside the #{}.
-   QRegularExpression const regexp(R"((#\{(.*?)(?<!\\)\}))");
+   QRegularExpression const regexp(R"(#\{((.*?)(?<!\\))\})");
 
    while (true)
    {
-      QTextCursor cursor = remainingText.find(regexp);
-      if (cursor.isNull())
-      {
-         resultCursor.movePosition(QTextCursor::End);
-         resultCursor.insertHtml(remainingText.toHtml());
-         return result.toPlainText();
-      }
+      QRegularExpressionMatch match = regexp.match(remainingText);
+      if (!match.hasMatch())
+         return result + remainingText;
 
-      // get the text of the variable
-      QString variable = cursor.selection().toPlainText();
-      variable = variable.mid(2, variable.size() - 3);
-
-      // delete the variable from the remaining text, copy the text before the variable to the result, and remove it from
-      // the remaining text
-      cursor.removeSelectedText();
-      cursor.movePosition(QTextCursor::Start, QTextCursor::KeepAnchor);
-      resultCursor.movePosition(QTextCursor::End);
-      resultCursor.insertHtml(cursor.selection().toHtml());
-      cursor.removeSelectedText();
+      QString variable = match.captured(1);
+      qint32 const pos = match.capturedStart(0);
+      if (pos > 0)
+         result += remainingText.left(pos);
+      remainingText = remainingText.right(remainingText.size() - pos - match.capturedLength(0));
 
       if (outCursorPos && ("cursor" == variable))
-      {
-         if (outCursorPos)
-            *outCursorPos = printableCharacterCount(result.toPlainText());
-      }
-      else
-      {
-         resultCursor.movePosition(QTextCursor::End);
-         QString const eval = evaluateVariable(variable, forbiddenSubCombos, knownInputVariables, outCancelled);
-         resultCursor.insertText(eval);
-         if (outCancelled)
-            return QString();
-      }
+         *outCursorPos = printableCharacterCount(result);
+      else 
+         result += evaluateVariable(variable, forbiddenSubCombos, knownInputVariables, outCancelled);
+
+      if (outCancelled)
+         return QString();
    }
 }

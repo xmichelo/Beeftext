@@ -113,7 +113,7 @@ bool ClipboardManagerLegacy::setText(QString const& text)
    QClipboard* clipboard = QApplication::clipboard();
    if (!clipboard)
       return false;
-   clipboard->setMimeData(mimeDataFromSnippet(text, false));
+   clipboard->setMimeData(mimeDataFromText(text));
    return true;
 }
 
@@ -140,7 +140,7 @@ bool ClipboardManagerLegacy::setHtml(QString const& html)
    QClipboard* clipboard = QApplication::clipboard();
    if (!clipboard)
       return false;
-   clipboard->setMimeData(mimeDataFromSnippet(html, true));
+   clipboard->setMimeData(mimeDataFromHtml(html));
    return true;
 }
 
