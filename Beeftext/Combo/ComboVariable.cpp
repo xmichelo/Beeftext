@@ -25,6 +25,7 @@ enum class ECaseChange
 QString const kCustomDateTimeVariable = "dateTime:"; ///< The dateTime variable.
 QString const kInputVariable = "input:"; ///< The input variable.
 QString const kEnvVarVariable = "envVar:"; ///< The envVar variable.
+QString const kPowershellVariable = "powershell:"; ///< The execute variable.
 
 
 //**********************************************************************************************************************
@@ -245,6 +246,18 @@ QString evaluateEnvVarVariable(QString const& variable)
 }
 
 
+//**********************************************************************************************************************
+/// \brief Evaluate an #{execute:} variable.
+///
+/// \param[in] variable The variable, without the enclosing #{}.
+/// \return The result of evaluating the variable.
+//**********************************************************************************************************************
+QString evaluatePowershellVariable(QString const& variable)
+{
+   return variable.right(variable.size() - kPowershellVariable.size());
+}
+
+
 }
 
 
@@ -303,6 +316,9 @@ QString evaluateVariable(QString const& variable, QSet<QString> const& forbidden
 
    if (variable.startsWith(kEnvVarVariable))
       return evaluateEnvVarVariable(variable);
+
+   if (variable.startsWith(kPowershellVariable))
+      return evaluatePowershellVariable(variable);
 
    return QString("#{%1}").arg(variable); // we could not recognize the variable, so we put it back in the result
 }
