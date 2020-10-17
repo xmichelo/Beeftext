@@ -52,6 +52,7 @@
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <QtModules>core;network;gui;multimedia;widgets</QtModules>
     <QtInstall>$(DefaultQtVersion)</QtInstall>
+    <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <QtModules>core;network;gui;multimedia;widgets</QtModules>
@@ -62,7 +63,7 @@
     <QtModules>core;network;gui;multimedia;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtInstall>$(DefaultQtVersion)</QtInstall>
-    <QtQMLDebugEnable>false</QtQMLDebugEnable>
+    <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />

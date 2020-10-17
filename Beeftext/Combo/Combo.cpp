@@ -452,6 +452,7 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
          result += remainingText.left(pos);
       remainingText = remainingText.right(remainingText.size() - pos - match.capturedLength(0));
 
+      variable.replace("\\}", "}");
       if (outCursorPos && ("cursor" == variable))
          *outCursorPos = printableCharacterCount(result);
       else 

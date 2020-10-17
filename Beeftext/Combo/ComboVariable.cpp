@@ -9,6 +9,8 @@
 #include "ComboManager.h"
 #include "VariableInputDialog.h"
 #include "Clipboard/ClipboardManager.h"
+#include "BeeftextGlobals.h"
+#include <XMiLib/Exception.h>
 
 
 namespace {
@@ -254,7 +256,29 @@ QString evaluateEnvVarVariable(QString const& variable)
 //**********************************************************************************************************************
 QString evaluatePowershellVariable(QString const& variable)
 {
-   return variable.right(variable.size() - kPowershellVariable.size());
+   try
+   {
+      QString const path = variable.right(variable.size() - kPowershellVariable.size());
+      qDebug() << QString("Path: %1").arg(path);
+      if (!QFileInfo(path).exists())
+         throw xmilib::Exception(QString("the file `%1` does not exist.").arg(path));
+
+      QProcess p;
+      p.start("powershell.exe", { "-NonInteractive", "-ExecutionPolicy", "Unrestricted", "-File", path });
+      if (!p.waitForFinished(5000)) ///< we timeout after 5 seconds
+         throw xmilib::Exception(QString("the script `%1` timed out.").arg(path));
+
+      qint32 const returnCode = p.exitCode();
+      if (returnCode)
+         throw xmilib::Exception(QString("execution of `%1` return an error (code %2).").arg(path).arg(returnCode));
+      return QString::fromUtf8(p.readAllStandardOutput());
+   }
+   catch (xmilib::Exception const& e)
+   {
+      globals::debugLog().addWarning(QString("Evaluation of #{%1} variable failed: %2").arg(kPowershellVariable)
+         .arg(e.qwhat()));
+      return QString();
+   }
 }
 
 
