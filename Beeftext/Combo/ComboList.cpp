@@ -716,6 +716,11 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       return combo->lastUseDateTime();
    case EnabledRole:
       return combo->isEnabled();
+   case GroupNameRole:
+   {
+      SpGroup const group = combo->group();
+      return group ? group->name() : QString();
+   }
    default:
       return QVariant();
    }

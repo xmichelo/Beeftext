@@ -39,7 +39,8 @@ public: // type definitions
       CreationDateTimeRole, ///< The model role for creation date
       ModificationDateTimeRole, ///< The model role for modification date
       LastUseDateTimeRole, ///< The model role for last usage date.
-      EnabledRole ///< The model role for the enabled/disabled status.
+      EnabledRole, ///< The model role for the enabled/disabled status.
+      GroupNameRole ///< The model role for the group name
    };
 
 public: // static data members
