@@ -259,13 +259,12 @@ QString evaluatePowershellVariable(QString const& variable)
    try
    {
       QString const path = variable.right(variable.size() - kPowershellVariable.size());
-      qDebug() << QString("Path: %1").arg(path);
       if (!QFileInfo(path).exists())
          throw xmilib::Exception(QString("the file `%1` does not exist.").arg(path));
 
       QProcess p;
       p.start("powershell.exe", { "-NonInteractive", "-ExecutionPolicy", "Unrestricted", "-File", path });
-      if (!p.waitForFinished(5000)) ///< we timeout after 5 seconds
+      if (!p.waitForFinished(10000)) ///< we timeout after 10 seconds
          throw xmilib::Exception(QString("the script `%1` timed out.").arg(path));
 
       qint32 const returnCode = p.exitCode();

@@ -88,7 +88,7 @@ QMenu* ComboEditor::createComboVariableMenu()
    action = new QAction(tr("Combo (&uppercase)"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{upper:}", true); });
    comboMenu->addAction(action);
-   action = new QAction(tr("Combo (&lowercase)"), this);
+   action = new QAction(tr("Combo (lo&wercase)"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{lower:}", true); });
    comboMenu->addAction(action);
    menu->addMenu(comboMenu);
@@ -99,6 +99,9 @@ QMenu* ComboEditor::createComboVariableMenu()
 
    action = new QAction(tr("En&vironment Variable"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{envVar:}", true); });
+   menu->addAction(action);
+   action = new QAction(tr("&PowerShell Script"), this);
+   connect(action, &QAction::triggered, this, &ComboEditor::insertPowershellVariable);
    menu->addAction(action);
    action = new QAction(tr("User &Input"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{input:}", true); });
@@ -141,6 +144,18 @@ void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
    menu->addSeparator();
    menu->addMenu(this->createComboVariableMenu());         
    menu->exec(ui_.snippetEdit->viewport()->mapToGlobal(pos));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboEditor::insertPowershellVariable()
+{
+   QString const path = QFileDialog::getOpenFileName(this, tr("Select PowerShell script file"), QString(),
+      tr("PowerShell script files (*.ps1);;All files (*.*)"));
+   if (!path.isEmpty())
+      this->insertTextInSnippetEdit(QString("#{powershell:%1}").arg(path));
 }
 
 
