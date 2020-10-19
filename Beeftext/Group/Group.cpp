@@ -19,6 +19,7 @@ QString const kPropName = "name"; ///< The JSON property name for the name
 QString const kPropDescription = "description"; ///< The JSON property name for the description
 QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time
 QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time
+QString const kPropEnabled = "enabled"; ///< The JSON property for the enabled/disabled state of the group
 }
 
 
@@ -48,7 +49,9 @@ Group::Group(QJsonObject const& object, qint32 formatVersion)
    , modificationDateTime_(QDateTime::fromString(object[kPropModificationDateTime].toString(), 
       constants::kJsonExportDateFormat))
 {
-    (void)formatVersion; // avoid warning in MinGW. We will for sure use this variable later
+   (void)formatVersion; // avoid warning in MinGW. We will for sure use this variable later
+   if (object.contains(kPropEnabled))
+      enabled_ = object[kPropEnabled].toBool(true);
 }
 
 
@@ -115,6 +118,25 @@ void Group::setDescription(QString const& description)
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the group is enabled.
+//**********************************************************************************************************************
+bool Group::enabled() const
+{
+   return enabled_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enable The enabled/disabled state of the group.
+//**********************************************************************************************************************
+void Group::setEnabled(bool enable)
+{
+   enabled_ = enable;
+   this->touch();
+}
+
+
+//**********************************************************************************************************************
 /// \return A JSON object representing the group
 //**********************************************************************************************************************
 QJsonObject Group::toJsonObject() const
@@ -125,6 +147,7 @@ QJsonObject Group::toJsonObject() const
    result.insert(kPropDescription, description_);
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
+   result.insert(kPropEnabled, enabled_);
    return result;
 }
 

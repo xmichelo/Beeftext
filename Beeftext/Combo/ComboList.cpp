@@ -703,7 +703,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       }
    }
    case Qt::ForegroundRole:
-      return combo->isEnabled() ? QVariant() : QColor(160, 160, 160);
+      return combo->isUsable() ? QVariant() : QColor(160, 160, 160);
    case KeywordRole:
       return combo->keyword();
    case SnippetRole:
@@ -715,7 +715,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
    case LastUseDateTimeRole:
       return combo->lastUseDateTime();
    case EnabledRole:
-      return combo->isEnabled();
+      return combo->isUsable();
    case GroupNameRole:
    {
       SpGroup const group = combo->group();

@@ -37,6 +37,8 @@ public: // member functions
    void setName(QString const& name); ///< Set the name of the group
    QString description() const; ///< Get the description of the group
    void setDescription(QString const& description); ///< Set the description of the group
+   bool enabled() const; ///< Set the enabled/disabled state of the group.
+   void setEnabled(bool enable); ///< Get the enabled/disabled state of the group.
    QJsonObject toJsonObject() const; ///< Serialize the group in a JSon object
 
 public: // static functions
@@ -52,6 +54,7 @@ private: // data members
    QString description_; ///< The description of the group
    QDateTime creationDateTime_; ///< The creation date/time of the group
    QDateTime modificationDateTime_; ///< The last modification date/time of the group
+   bool enabled_ { true }; ///< Is the group enabled.
 };
 
 

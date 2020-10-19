@@ -419,15 +419,17 @@ void ComboTableWidget::updateGui() const
       (!allComboUseLooseMatching)));
    QString enableDisableText = tr("Ena&ble");
    QString enableDisableToolTip = tr("Enable combo");
+   QString enableDisableIconText = tr("Enable the combo");
    if ((hasOneSelected)
       && (ComboManager::instance().comboListRef()[this->getSelectedComboIndexes().front()]->isEnabled()))
    {
       enableDisableText = tr("Disa&ble");
       enableDisableToolTip = tr("Disable combo");
+      enableDisableIconText = tr("Disable the combo");
    }
    ui_.actionEnableDisableCombo->setText(enableDisableText);
    ui_.actionEnableDisableCombo->setToolTip(enableDisableToolTip);
-   ui_.actionEnableDisableCombo->setIconText(enableDisableToolTip);
+   ui_.actionEnableDisableCombo->setIconText(enableDisableIconText);
 }
 
 
@@ -771,7 +773,7 @@ void ComboTableWidget::onDoubleClick()
 void ComboTableWidget::onComboChangedGroup()
 {
    proxyModel_.invalidate();
-   if (!ComboManager::instance().saveComboListToFile(new QString))
+   if (!ComboManager::instance().saveComboListToFile())
       throw xmilib::Exception("Could not save combo list.");
    this->resizeColumnsToContents();
 }

@@ -49,6 +49,7 @@ private slots:
    void onActionNewGroup(); ///< Slot for the 'new group' action
    void onActionEditGroup(); ///< Slot for the 'edit group' action
    void onActionDeleteGroup(); ///< Slot for the 'delete group' action
+   void onActionEnableDisableGroup(); ///< Slot for the 'Enable/Disable' action.
    void onSelectionChanged(QItemSelection const&, QItemSelection const&); ///< Slot for selection change
    void onGroupMoved(SpGroup const& group, qint32 newIndex) const; ///< Slot for the moving of a group in the list
    void onContextMenuRequested() const; ///< Slot for the context menu

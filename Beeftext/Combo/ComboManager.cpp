@@ -245,7 +245,7 @@ bool ComboManager::checkAndPerformComboSubstitution()
 
    VecSpCombo result;
    for (SpCombo const& combo: comboList_)
-      if (combo && combo->isEnabled() && combo->matchesForInput(currentText_))
+      if (combo && combo->isUsable() && combo->matchesForInput(currentText_))
          result.push_back(combo);
 
    if (result.empty())

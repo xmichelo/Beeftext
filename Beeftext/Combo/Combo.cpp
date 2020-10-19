@@ -287,6 +287,16 @@ bool Combo::isEnabled() const
 
 
 //**********************************************************************************************************************
+/// \return true if and only if the combo is usable, i.e. if it is enabled, and member of a group that is enabled (or
+/// not member of a group).
+//**********************************************************************************************************************
+bool Combo::isUsable() const
+{
+   return enabled_ & ((!group()) || group_->enabled());
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] input The input to check
 /// \return true if and only if the input is a match for the combo
 //**********************************************************************************************************************

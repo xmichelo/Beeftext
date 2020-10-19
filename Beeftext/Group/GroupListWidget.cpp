@@ -109,6 +109,9 @@ QMenu* GroupListWidget::menu(QWidget* parent) const
    menu->addAction(ui_.actionEditGroup);
    menu->addSeparator();
    menu->addAction(ui_.actionDeleteGroup);
+   menu->addAction(ui_.actionDeleteGroup);
+   menu->addSeparator();
+   menu->addAction(ui_.actionEnableDisableGroup);
    return menu;
 }
 
@@ -309,6 +312,33 @@ void GroupListWidget::onActionDeleteGroup()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
+void GroupListWidget::onActionEnableDisableGroup()
+{
+   try
+   {
+      SpGroup const group = this->selectedGroup();
+      if (!group)
+         return;
+      group->setEnabled(!group->enabled());
+      this->updateGui();
+      QString errorMessage;
+      if (!ComboManager::instance().saveComboListToFile(&errorMessage))
+         throw xmilib::Exception(errorMessage);
+
+      qint32 const index = this->selectedGroupIndex();
+      GroupList& groups = ComboManager::instance().groupListRef();
+      emit selectedGroupChanged(((index < 0) || (index >= groups.size())) ? nullptr : groups[index]);
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, tr("Error"), e.qwhat());
+   }
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
 void GroupListWidget::onSelectionChanged(QItemSelection const&, QItemSelection const&)
 {
    this->updateGui();
@@ -341,6 +371,14 @@ void GroupListWidget::onGroupMoved(SpGroup const& group, qint32 newIndex) const
 //**********************************************************************************************************************
 void GroupListWidget::onContextMenuRequested() const
 {
+   SpGroup const group = this->selectedGroup();
+   if (group)
+   {
+      bool const enabled = group->enabled();
+      ui_.actionEnableDisableGroup->setText(enabled ? tr("&Disable") : tr("&Enable"));
+      ui_.actionEnableDisableGroup->setIconText(enabled ? tr("Enable") : tr("Disable"));
+      ui_.actionEnableDisableGroup->setToolTip(enabled ? tr("Enable the group") : tr("Disable the group"));
+   }
    if (contextMenu_)
       contextMenu_->exec(QCursor::pos());
 }

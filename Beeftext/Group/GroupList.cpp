@@ -511,6 +511,13 @@ QVariant GroupList::data(QModelIndex const& index, int role) const
       font.setItalic(true);
       return font;
    }
+   case Qt::ForegroundRole:
+   {
+      if (0 == row)
+         return QVariant();
+      SpGroup const& group = groups_[static_cast<quint32>(row) - 1];
+      return group->enabled() ? QVariant() : QColor(160, 160, 160);
+   }
    default: return QVariant();
    }
 }

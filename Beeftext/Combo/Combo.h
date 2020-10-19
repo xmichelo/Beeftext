@@ -57,6 +57,7 @@ public: // member functions
       QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const; ///< Retrieve the the snippet after having evaluated it
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
+   bool isUsable() const; ///< Check if the combo is usable, i.e. if it is enabled and member of a group that is enabled.
    bool matchesForInput(QString const& input) const; ///< Check if the combo is a match for the given input
    bool performSubstitution(); ///< Perform the combo substitution
    bool insertSnippet(ETriggerSource source); ///< Insert the snippet.

@@ -109,6 +109,20 @@
     <string>Shift+Return</string>
    </property>
   </action>
+  <action name="actionEnableDisableGroup">
+   <property name="text">
+    <string notr="true">#Enable#</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">#Enable#</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">#Enable#</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>listGroup</tabstop>
@@ -180,10 +194,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionEnableDisableGroup</sender>
+   <signal>triggered()</signal>
+   <receiver>GroupListWidget</receiver>
+   <slot>onActionEnableDisableGroup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>124</x>
+     <y>361</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionNewGroup()</slot>
   <slot>onActionDeleteGroup()</slot>
   <slot>onActionEditGroup()</slot>
+  <slot>onActionEnableDisableGroup()</slot>
  </slots>
 </ui>
