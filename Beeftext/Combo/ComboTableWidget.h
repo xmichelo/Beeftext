@@ -41,6 +41,7 @@ public: // member functions
 
 public slots:
    void onSelectedGroupChanged(SpGroup const& group); ///< Slot for the changing of the selected group
+   void onActionNewCombo(); ///< Slot for the 'Add Combo' action
 
 protected: // member functions
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
@@ -65,7 +66,6 @@ private slots:
    void onActionStartSearch() const; ///< Slot for the start of the search
    void onActionStartSearchInAllGroups() const; ///< Slot for the start of the search in all groups
    void onActionClearSearch() const; ///< Slot for the clearing of the search box
-   void onActionNewCombo(); ///< Slot for the 'Add Combo' action
    void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
    void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
    void onActionEditCombo(); ///< Slot for the 'Edit Combo' action

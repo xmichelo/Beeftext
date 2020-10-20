@@ -34,6 +34,10 @@ public: // member functions
    void selectAllCombosEntry() const; ///< select the special "All combos entry" in the list
    QMenu* menu(QWidget* parent) const; ///< Get the menu for the widget
    static QString menuTitle(); ///< Return the translated menu title
+
+public slots:
+   void onActionNewGroup(); ///< Slot for the 'new group' action
+
 signals: 
    void selectedGroupChanged(SpGroup const& group); /// Signal emitted when the selected group changes
 
@@ -46,7 +50,6 @@ private: // member functions
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
 
 private slots: 
-   void onActionNewGroup(); ///< Slot for the 'new group' action
    void onActionEditGroup(); ///< Slot for the 'edit group' action
    void onActionDeleteGroup(); ///< Slot for the 'delete group' action
    void onActionEnableDisableGroup(); ///< Slot for the 'Enable/Disable' action.

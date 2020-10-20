@@ -143,12 +143,23 @@ void MainWindow::setupSystemTrayIcon()
    QAction* action = new QAction(tr("Open Beeftext"), this);
    connect(action, &QAction::triggered, [this]() { this->showWindow(); });
    menu->addAction(action);
-   menu->addSeparator();
-   ui_.actionEnableDisableBeeftext->setText(enabled ? tr("&Pause Beeftext") : tr("&Resume Beeftext"));
-   menu->addAction(ui_.actionEnableDisableBeeftext);
+   menu->setDefaultAction(action);
+
+   action = new QAction(tr("New Combo"), this);
+   connect(action, &QAction::triggered, [this]() { ui_.frameCombos->comboTableWidget()->onActionNewCombo(); });
+   menu->addAction(action);
+
+   action = new QAction(tr("New Group"), this);
+   connect(action, &QAction::triggered, [this]() { ui_.frameCombos->groupListWidget()->onActionNewGroup(); });
+   menu->addAction(action);
+
    menu->addSeparator();
 
-   menu->setDefaultAction(action);
+   ui_.actionEnableDisableBeeftext->setText(enabled ? tr("&Pause Beeftext") : tr("&Resume Beeftext"));
+   menu->addAction(ui_.actionEnableDisableBeeftext);
+
+   menu->addSeparator();
+
    action = new QAction(tr("Preferences"), this);
    connect(action, &QAction::triggered, [this]() { onActionShowPreferencesDialog(); });
    menu->addAction(action);
