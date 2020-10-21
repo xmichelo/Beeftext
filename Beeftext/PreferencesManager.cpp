@@ -68,6 +68,8 @@ QString const kKeyUseLegacyCopyPaste = "UseLegacyCopyPaste"; ///< The setting ke
 QString const kKeyComboTriggersOnSpace = "ComboTriggersOnSpace"; ///< The setting key for the 'Combo triggers on space' preference.
 QString const kKeyKeepFinalSpaceCharacter = "KeepFinalSpaceCharacter"; ///< The setting key for the 'Keep final space character' preference.
 QString const kKeyAlreadyConvertedRichTextCombos = "AlreadyConvertedRichTextCombos"; ///< The setting key for the 'Already converted rich text combos' preference.
+QString const kKeyUseCustomPowershellVersion = "UseCustomPowershellVersion"; ///< The setting key for the 'Use custom PowerShell version'.
+QString const kKeyCustomPowershellPath = "CustomPowershellPath"; ///< The setting key for the 'Custom PowerShell path'.
 
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
@@ -100,6 +102,7 @@ bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false
 bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
 bool const kDefaultComboTriggersOnSpace = false; ///< The default value for the 'Combo triggers on space' preference.
 bool const kDefaultKeepFinalSpaceCharacter = false; ///< The default value for the 'Combo triggers on space' preference.
+bool const kDefaultUseCustomPowershellVersion = false; ///< The default value for the 'Use custom PowerShell version' preference.
 
 
 }
@@ -1380,6 +1383,42 @@ void PreferencesManager::setAlreadyConvertedRichTextCombos(bool value) const
 bool PreferencesManager::alreadyConvertedRichTextCombos() const
 {
    return readSettings<bool>(kKeyAlreadyConvertedRichTextCombos, false);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setUseCustomPowershellVersion(bool value) const
+{
+   settings_->setValue(kKeyUseCustomPowershellVersion, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::useCustomPowershellVersion() const
+{
+   return readSettings<bool>(kKeyUseCustomPowershellVersion, kDefaultUseCustomPowershellVersion);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] path The path of the PowerShell executable.
+//**********************************************************************************************************************
+void PreferencesManager::setCustomPowershellPath(QString const& path) const
+{
+   settings_->setValue(kKeyCustomPowershellPath, path);
+}
+
+
+//**********************************************************************************************************************
+/// \return The path of the custom PowerShell executable.
+//**********************************************************************************************************************
+QString PreferencesManager::customPowershellPath() const
+{
+   return readSettings<QString>(kKeyCustomPowershellPath, QString());
 }
 
 

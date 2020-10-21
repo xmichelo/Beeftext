@@ -128,6 +128,10 @@ void PreferencesDialog::loadPreferences() const
    ui_.checkComboTriggersOnSpace->setChecked(prefs_.comboTriggersOnSpace());
    blocker = QSignalBlocker(ui_.checkKeepFinalSpaceCharacter);
    ui_.checkKeepFinalSpaceCharacter->setChecked(prefs_.keepFinalSpaceCharacter());
+   blocker = QSignalBlocker(ui_.checkUseCustomPowershellVersion);
+   ui_.checkUseCustomPowershellVersion->setChecked(prefs_.useCustomPowershellVersion());
+   blocker = QSignalBlocker(ui_.editCustomPowerShellPath);
+   ui_.editCustomPowerShellPath->setText(QDir::toNativeSeparators(prefs_.customPowershellPath()));
    this->updateGui();
    // ReSharper restore CppAssignedValueIsNeverUsed
    // ReSharper restore CppEntityAssignedButNoRead
@@ -216,6 +220,10 @@ void PreferencesDialog::updateGui() const
    bool const comboTriggerAuto = ui_.radioComboTriggerAuto->isChecked();
    ui_.checkComboTriggersOnSpace->setEnabled(comboTriggerAuto);
    ui_.checkKeepFinalSpaceCharacter->setEnabled(comboTriggerAuto && ui_.checkComboTriggersOnSpace->isChecked());
+
+   bool const customPowershell = ui_.checkUseCustomPowershellVersion->isChecked();
+   ui_.editCustomPowerShellPath->setEnabled(customPowershell);
+   ui_.buttonChangeCustomPowershellVersion->setEnabled(customPowershell);
 }
 
 
@@ -736,6 +744,45 @@ void PreferencesDialog::onRefreshLanguageList() const
 void PreferencesDialog::onCheckUseLegacyCopyPaste() const
 {
    prefs_.setUseLegacyCopyPaste(ui_.checkUseLegacyCopyPaste->isChecked());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] checked Is the check box checked.
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckUseCustomPowerShellVersion(bool checked)
+{
+   if (checked)
+   {
+      QString path = prefs_.customPowershellPath();
+      QFileInfo fi(path);
+      if (path.isEmpty() || (!fi.exists()) || (!fi.isExecutable()))
+      {
+         this->onChangeCustomPowershellVersion();
+         if ((path.isEmpty() || (!fi.exists()) || (!fi.isExecutable())))
+         {
+            QSignalBlocker blocker(ui_.checkUseCustomPowershellVersion);
+            ui_.checkUseCustomPowershellVersion->setChecked(false);
+         }
+      }
+   }
+   prefs_.setUseCustomPowershellVersion(ui_.checkUseCustomPowershellVersion->isChecked());
+   this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeCustomPowershellVersion()
+{
+   QString const path = QFileDialog::getOpenFileName(this, tr("Select PowerShell executable"), QString(),
+      tr("Executable files (*.exe);;All files (*.*)"));
+   if (path.isEmpty())
+      return;
+   prefs_.setCustomPowershellPath(path);
+   QSignalBlocker blocker(ui_.editCustomPowerShellPath);
+   ui_.editCustomPowerShellPath->setText(QDir::toNativeSeparators(path));
 }
 
 

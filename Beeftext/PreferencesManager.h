@@ -114,7 +114,10 @@ public: // member functions
    bool useLegacyCopyPaste() const; ///< Get the value for the 'Use legacy copy/paste' preference.
    void setAlreadyConvertedRichTextCombos(bool value) const; ///< Set the value for the 'Already converted rich text combos' preference.
    bool alreadyConvertedRichTextCombos() const; ///< Get the value for the 'Already converted rich text combos' preference.
-
+   void setUseCustomPowershellVersion(bool value) const; ///< Set the value for the 'Use custom PowerShell version'.
+   bool useCustomPowershellVersion() const; ///< Get the value for the 'Use custom PowerShell version'.
+   void setCustomPowershellPath(QString const& path) const; ///< Set the value for the 'Custom PowerShell Path'.
+   QString customPowershellPath() const; ///< Set the value for the 'Custom PowerShell Path'.
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
    void writeDebugLogFileChanged(bool value); ///< Signal emitted when the 'Write debug log file' preference value changed.s

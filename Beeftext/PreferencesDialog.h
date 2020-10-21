@@ -83,6 +83,8 @@ private slots:
    static void onOpenTranslationFolder(); ///< Slot for the 'Translation Folder' button.
    void onRefreshLanguageList() const; ///< Slot for the 'Refresh Language List' button.
    void onCheckUseLegacyCopyPaste() const; ///< Set for the 'Use legacy copy/paste'.
+   void onCheckUseCustomPowerShellVersion(bool checked); ///< Slot for the 'Use custom PowerShell version' check box.
+   void onChangeCustomPowershellVersion(); ///< Slot for the 'Change' button of the custom PowerShell version.
    void onExport(); ///< Slot for the 'Export' button.
    void onImport(); ///< Slot for the 'Import' button.
 

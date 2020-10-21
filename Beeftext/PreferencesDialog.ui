@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>325</height>
+    <height>356</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>1</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -779,6 +779,31 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
+         <item>
+          <widget class="QCheckBox" name="checkUseCustomPowershellVersion">
+           <property name="text">
+            <string>Use custom PowerShell version</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="editCustomPowerShellPath">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonChangeCustomPowershellVersion">
+           <property name="text">
+            <string>&amp;Change</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QGroupBox" name="groupboxAutoBackup">
          <property name="title">
           <string>Automatic backup</string>
@@ -1021,7 +1046,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>689</x>
-     <y>314</y>
+     <y>345</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -1069,7 +1094,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>246</x>
-     <y>314</y>
+     <y>345</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1117,7 +1142,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>307</x>
-     <y>191</y>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1149,7 +1174,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>336</x>
-     <y>314</y>
+     <y>345</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -1165,7 +1190,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>131</x>
-     <y>263</y>
+     <y>294</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -1404,8 +1429,8 @@
    <slot>onCheckAutoBackup(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>175</x>
-     <y>188</y>
+     <x>197</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
@@ -1564,8 +1589,8 @@
    <slot>onExport()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>78</x>
-     <y>292</y>
+     <x>84</x>
+     <y>345</y>
     </hint>
     <hint type="destinationlabel">
      <x>48</x>
@@ -1581,7 +1606,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>165</x>
-     <y>292</y>
+     <y>345</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -1596,8 +1621,8 @@
    <slot>onCheckUseCustomBackupLocation(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>118</x>
-     <y>219</y>
+     <x>140</x>
+     <y>250</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1613,7 +1638,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>666</x>
-     <y>222</y>
+     <y>253</y>
     </hint>
     <hint type="destinationlabel">
      <x>699</x>
@@ -1669,6 +1694,54 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonChangeCustomPowershellVersion</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeCustomPowershellVersion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>637</x>
+     <y>152</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>697</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editCustomBackupLocation</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onEditCustomPowershellVersion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>545</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>460</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseCustomPowershellVersion</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>155</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onClose()</slot>
@@ -1719,5 +1792,8 @@
   <slot>onCheckUseLegacyCopyPaste()</slot>
   <slot>onCheckComboTriggersOnSpace(bool)</slot>
   <slot>onCheckKeepFinalSpace(bool)</slot>
+  <slot>onChangeCustomPowershellVersion()</slot>
+  <slot>onEditCustomPowershellVersion(QString)</slot>
+  <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
  </slots>
 </ui>
