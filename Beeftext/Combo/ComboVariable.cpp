@@ -8,6 +8,7 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "VariableInputDialog.h"
+#include "PreferencesManager.h"
 #include "Clipboard/ClipboardManager.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
@@ -262,8 +263,22 @@ QString evaluatePowershellVariable(QString const& variable)
       if (!QFileInfo(path).exists())
          throw xmilib::Exception(QString("the file `%1` does not exist.").arg(path));
 
+      PreferencesManager const& prefs = PreferencesManager::instance();
+      QString exePath = "powershell.exe";
+      if (prefs.useCustomPowershellVersion())
+      {
+         QString const customPath = prefs.customPowershellPath();
+         QFileInfo fi(customPath);
+         if (fi.exists() && fi.isExecutable())
+            exePath = customPath;
+         else 
+            globals::debugLog().addWarning(QString("The custom PowerShell executable '%1' is invalid or not "
+               "executable.").arg(QDir::toNativeSeparators(customPath)));
+      }
+
       QProcess p;
-      p.start("powershell.exe", { "-NonInteractive", "-ExecutionPolicy", "Unrestricted", "-File", path });
+      qDebug() << QString("Powershell executable: '%1'").arg(exePath);
+      p.start(exePath, { "-NonInteractive", "-ExecutionPolicy", "Unrestricted", "-File", path });
       if (!p.waitForFinished(10000)) ///< we timeout after 10 seconds
          throw xmilib::Exception(QString("the script `%1` timed out.").arg(path));
 
