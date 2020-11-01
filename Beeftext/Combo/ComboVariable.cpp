@@ -11,6 +11,7 @@
 #include "PreferencesManager.h"
 #include "Clipboard/ClipboardManager.h"
 #include "BeeftextGlobals.h"
+#include <XMiLib/RandomNumberGenerator.h>
 #include <XMiLib/Exception.h>
 
 
@@ -190,12 +191,30 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
    QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() - varNameLength - 1));
    if (forbiddenSubCombos.contains(comboName))
       return fallbackResult;
-   ComboList const& combos = ComboManager::instance().comboListRef();
-   ComboList::const_iterator const it = std::find_if(combos.begin(), combos.end(),
-      [&comboName](SpCombo const& combo) -> bool { return combo->keyword() == comboName; });
 
-   if (combos.end() == it)
+   ComboList results;
+   for (SpCombo const& combo : ComboManager::instance().comboListRef())
+      if (combo->keyword() == comboName)
+         results.push_back(combo);
+
+   
+   qint32 const resultCount = results.size();
+   ComboList::const_iterator it;
+   switch (resultCount)
+   {
+   case 0:
       return fallbackResult;
+   case 1:
+      it = results.begin();
+      break;
+   default:
+      {
+         xmilib::RandomNumberGenerator rng(0, results.size() - 1);
+         it = results.begin() + rng.get();
+         break;
+      }
+   }
+   
    QString str = (*it)->evaluatedSnippet(outCancelled, forbiddenSubCombos << comboName, knownInputVariables,
       nullptr); // forbiddenSubcombos is intended at avoiding endless recursion
    switch (caseChange)
@@ -268,7 +287,7 @@ QString evaluatePowershellVariable(QString const& variable)
       if (prefs.useCustomPowershellVersion())
       {
          QString const customPath = prefs.customPowershellPath();
-         QFileInfo fi(customPath);
+         QFileInfo const  fi(customPath);
          if (fi.exists() && fi.isExecutable())
             exePath = customPath;
          else 
