@@ -40,17 +40,15 @@ void ComboSortFilterProxyModel::setGroup(SpGroup const& group)
 bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex const&) const
 {
    ComboList& combos = ComboManager::instance().comboListRef();
-
-   for (int col = 0; col < combos.columnCount(QModelIndex()); ++col)
-   {
-      SpCombo const& combo = combos[sourceRow];
-      if (group_ && (combo->group() != group_))
+   SpCombo const& combo = combos[sourceRow];
+   if (group_ && (combo->group() != group_))
+      return false;
+   for (QString const& word : this->filterRegExp().pattern().split(QRegularExpression("\\s"), Qt::SkipEmptyParts))
+      if ((!combo->name().contains(word, Qt::CaseInsensitive)) 
+         && (!combo->keyword().contains(word, Qt::CaseInsensitive))
+         && (!combo->snippet().contains(word, Qt::CaseInsensitive)))
          return false;
-      QString const str = combos.data(combos.index(sourceRow, col, QModelIndex()), Qt::DisplayRole).toString();
-      if (str.contains(this->filterRegExp()))
-         return true;
-   }
-   return false;
+   return true;
 }
 
 
