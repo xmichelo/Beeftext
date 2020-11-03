@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>4</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -642,11 +642,38 @@
         </layout>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkUseCustomTheme">
-         <property name="text">
-          <string>Use custom theme</string>
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
+         <property name="topMargin">
+          <number>0</number>
          </property>
-        </widget>
+         <item>
+          <widget class="QCheckBox" name="checkUseCustomTheme">
+           <property name="text">
+            <string>Use custom theme</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboTheme">
+           <property name="sizeAdjustPolicy">
+            <enum>QComboBox::AdjustToContents</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_13">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
        <item>
         <spacer name="verticalSpacer_4">
@@ -1025,7 +1052,6 @@
   <tabstop>comboLocale</tabstop>
   <tabstop>buttonRefresh</tabstop>
   <tabstop>buttonTranslationFolder</tabstop>
-  <tabstop>checkUseCustomTheme</tabstop>
   <tabstop>spinDelayBetweenKeystrokes</tabstop>
   <tabstop>editComboListFolder</tabstop>
   <tabstop>buttonChangeComboListFolder</tabstop>

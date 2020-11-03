@@ -5,8 +5,6 @@ outline: none; /* Disable the focus dotted rectangle nearly everywhere */
 QWidget {
    font-family: "Segoe UI";
    font-size: 10pt;
-   color: #464646;
-   background-color: #eee;
 }
 
 

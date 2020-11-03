@@ -10,8 +10,9 @@
 #include "stdafx.h"
 #include "PreferencesDialog.h"
 #include "ShortcutDialog.h"
-#include "Combo/ComboManager.h"
+#include "Theme.h"
 #include "I18nManager.h"
+#include "Combo/ComboManager.h"
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
 #include "Update/UpdateManager.h"
@@ -41,6 +42,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
      prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
+   fillThemeComboBox(*ui_.comboTheme);
    this->updateCheckStatusTimer_.setSingleShot(true);
    connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
    ui_.labelUpdateCheckStatus->setText(QString());
@@ -224,6 +226,8 @@ void PreferencesDialog::updateGui() const
    bool const customPowershell = ui_.checkUseCustomPowershellVersion->isChecked();
    ui_.editCustomPowerShellPath->setEnabled(customPowershell);
    ui_.buttonChangeCustomPowershellVersion->setEnabled(customPowershell);
+
+   ui_.comboTheme->setEnabled(prefs_.useCustomTheme());
 }
 
 
@@ -500,6 +504,7 @@ void PreferencesDialog::onComboLanguageValueChanged(int) const
 void PreferencesDialog::onCheckUseCustomTheme(bool checked) const
 {
    prefs_.setUseCustomTheme(checked);
+   this->updateGui();
 }
 
 

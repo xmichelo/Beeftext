@@ -286,12 +286,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugRemote|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Theme.cpp" />
     <ClCompile Include="Update\UpdateCheckWorker.cpp" />
     <ClCompile Include="Update\UpdateDialog.cpp" />
     <ClCompile Include="Update\UpdateManager.cpp" />
     <ClCompile Include="VariableInputDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Theme.h" />
     <QtMoc Include="Combo\ComboPicker\ComboPickerModel.h">
     </QtMoc>
     <QtMoc Include="Combo\ComboPicker\ComboPickerItemDelegate.h">
@@ -462,7 +464,9 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\style.qss" />
+    <None Include="Resources\StyleCommon.qss" />
+    <None Include="Resources\StyleDark.qss" />
+    <None Include="Resources\StyleLight.qss" />
     <None Include="Translations\beeftext_de.ts" />
     <None Include="Translations\beeftext_es.ts" />
     <None Include="Translations\beeftext_it.ts" />

@@ -146,6 +146,7 @@
     <ClCompile Include="Clipboard\ClipboardManager.cpp">
       <Filter>Clipboard</Filter>
     </ClCompile>
+    <ClCompile Include="Theme.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -224,6 +225,7 @@
     <ClInclude Include="Clipboard\ClipboardManagerLegacy.h">
       <Filter>Clipboard</Filter>
     </ClInclude>
+    <ClInclude Include="Theme.h" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">
@@ -333,7 +335,13 @@
     <None Include="Translations\beeftext_es.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Resources\style.qss">
+    <None Include="Resources\StyleCommon.qss">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\StyleDark.qss">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\StyleLight.qss">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

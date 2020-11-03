@@ -1203,7 +1203,7 @@ void PreferencesManager::applyCustomThemePreference() const
       return;
    }
    QString const resourcePath;
-   QFile f(":/MainWindow/Resources/style.qss");
+   QFile f(":/MainWindow/Resources/StyleCommon.qss");
    if (!f.open(QIODevice::ReadOnly))
    {
       globals::debugLog().addInfo(QString("Could not load stylesheet from resource '%1'").arg(resourcePath));
