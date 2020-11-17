@@ -12,6 +12,7 @@
 
 
 #include "Shortcut.h"
+#include "Theme.h"
 
 
 //**********************************************************************************************************************
@@ -118,6 +119,8 @@ public: // member functions
    bool useCustomPowershellVersion() const; ///< Get the value for the 'Use custom PowerShell version'.
    void setCustomPowershellPath(QString const& path) const; ///< Set the value for the 'Custom PowerShell Path'.
    QString customPowershellPath() const; ///< Set the value for the 'Custom PowerShell Path'.
+   void setTheme(ETheme theme) const; ///< Set the theme parameter.
+   ETheme theme() const; ///< Get the theme.
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
    void writeDebugLogFileChanged(bool value); ///< Signal emitted when the 'Write debug log file' preference value changed.s

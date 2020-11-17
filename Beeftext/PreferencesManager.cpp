@@ -70,6 +70,7 @@ QString const kKeyKeepFinalSpaceCharacter = "KeepFinalSpaceCharacter"; ///< The 
 QString const kKeyAlreadyConvertedRichTextCombos = "AlreadyConvertedRichTextCombos"; ///< The setting key for the 'Already converted rich text combos' preference.
 QString const kKeyUseCustomPowershellVersion = "UseCustomPowershellVersion"; ///< The setting key for the 'Use custom PowerShell version'.
 QString const kKeyCustomPowershellPath = "CustomPowershellPath"; ///< The setting key for the 'Custom PowerShell path'.
+QString const kKeyTheme = "Theme"; ///< The setting key for the 'Theme' preference.
 
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
@@ -103,6 +104,7 @@ bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'U
 bool const kDefaultComboTriggersOnSpace = false; ///< The default value for the 'Combo triggers on space' preference.
 bool const kDefaultKeepFinalSpaceCharacter = false; ///< The default value for the 'Combo triggers on space' preference.
 bool const kDefaultUseCustomPowershellVersion = false; ///< The default value for the 'Use custom PowerShell version' preference.
+ETheme const kDefaultTheme = ETheme::Light; ///< The default value for the theme preference.
 
 
 }
@@ -1419,6 +1421,26 @@ void PreferencesManager::setCustomPowershellPath(QString const& path) const
 QString PreferencesManager::customPowershellPath() const
 {
    return readSettings<QString>(kKeyCustomPowershellPath, QString());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] theme The theme.
+//**********************************************************************************************************************
+void PreferencesManager::setTheme(ETheme theme) const
+{
+   settings_->setValue(kKeyTheme, static_cast<qint32>(theme));
+}
+
+
+//**********************************************************************************************************************
+/// \return The theme.
+//**********************************************************************************************************************
+ETheme PreferencesManager::theme() const
+{
+   qint32 const intValue = readSettings<qint32>(kKeyTheme, static_cast<qint32>(kDefaultTheme));
+   return ((intValue < 0) || (intValue >= static_cast<qint32>(ETheme::Count))) ? kDefaultTheme
+      : static_cast<ETheme>(intValue);
 }
 
 

@@ -112,6 +112,8 @@ void PreferencesDialog::loadPreferences() const
    this->onRefreshLanguageList();
    blocker = QSignalBlocker(ui_.checkUseCustomTheme);
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
+   blocker = QSignalBlocker(ui_.comboTheme);
+   selectThemeInCombo(prefs_.theme(), *ui_.comboTheme);
    blocker = QSignalBlocker(ui_.spinDelayBetweenKeystrokes);
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
@@ -505,6 +507,15 @@ void PreferencesDialog::onCheckUseCustomTheme(bool checked) const
 {
    prefs_.setUseCustomTheme(checked);
    this->updateGui();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onComboThemeValueChanged(int) const
+{
+   prefs_.setTheme(selectedThemeInCombo(*ui_.comboTheme));
 }
 
 

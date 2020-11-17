@@ -32,6 +32,7 @@ QString themeName(ETheme theme)
 //**********************************************************************************************************************
 void fillThemeComboBox(QComboBox& combo)
 {
+   QSignalBlocker blocker(&combo);
    combo.clear();
    for (qint32 i = 0; i < static_cast<qint32>(ETheme::Count); ++i)
    {

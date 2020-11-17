@@ -1768,6 +1768,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboTheme</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onComboThemeValueChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>178</x>
+     <y>109</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>318</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onClose()</slot>
@@ -1821,5 +1837,6 @@
   <slot>onChangeCustomPowershellVersion()</slot>
   <slot>onEditCustomPowershellVersion(QString)</slot>
   <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
+  <slot>onComboThemeValueChanged(int)</slot>
  </slots>
 </ui>
