@@ -1737,22 +1737,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>editCustomBackupLocation</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onEditCustomPowershellVersion()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>545</x>
-     <y>241</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>460</x>
-     <y>339</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>checkUseCustomPowershellVersion</sender>
    <signal>toggled(bool)</signal>
    <receiver>PreferencesDialog</receiver>
