@@ -211,6 +211,7 @@ void PreferencesManager::reset()
    this->setKeepFinalSpaceCharacter(kDefaultKeepFinalSpaceCharacter);
    this->setUseCustomBackupLocation(kDefaultUseCustomBackupLocation);
    this->setUseCustomTheme(kDefaultUseCustomTheme);
+   this->setTheme(static_cast<ETheme>(kDefaultTheme));
    this->setUseCustomSound(kDefaultUseCustomSound);
    this->setWarnAboutShortComboKeywords(kDefaultWarnAboutShortComboKeyword);
    this->setWriteDebugLogFile(kDefaultWriteDebugLogFile);
@@ -371,6 +372,7 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
    object[kKeyUseCustomBackupLocation] = this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomBackupLocation);
    object[kKeyUseCustomSound] = this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomSound);
    object[kKeyUseCustomTheme] = this->readSettings<bool>(kKeyUseCustomTheme, kDefaultUseCustomTheme);
+   object[kKeyTheme] = this->readSettings<qint32>(kKeyTheme, static_cast<qint32>(kDefaultTheme));
    object[kKeyWarnAboutShortComboKeyword] = this->readSettings<bool>(kKeyWarnAboutShortComboKeyword, 
       kDefaultWarnAboutShortComboKeyword);
    object[kKeyWriteDebugLogFile] = this->readSettings<bool>(kKeyWriteDebugLogFile, 
@@ -429,6 +431,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
    this->setUseCustomBackupLocation(objectValue<bool>(object, kKeyUseCustomBackupLocation)); // we call the function because it has side effects
    settings_->setValue(kKeyUseCustomSound, objectValue<bool>(object, kKeyUseCustomSound));
    settings_->setValue(kKeyUseCustomTheme, objectValue<bool>(object, kKeyUseCustomTheme));
+   settings_->setValue(kKeyTheme, objectValue<qint32>(object, kKeyTheme));
    settings_->setValue(kKeyWarnAboutShortComboKeyword, objectValue<bool>(object, kKeyWarnAboutShortComboKeyword));
    settings_->setValue(kKeyWriteDebugLogFile, objectValue<bool>(object, kKeyWriteDebugLogFile));
    settings_->setValue(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, objectValue<bool>(object,
