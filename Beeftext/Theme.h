@@ -26,5 +26,7 @@ QString themeName(ETheme theme); ///< Get the display name of a theme.
 void fillThemeComboBox(QComboBox& combo); ///< Fill a combo box with the list of themes.
 void selectThemeInCombo(ETheme theme, QComboBox& combo); ///< Select a theme in a theme combo box.
 ETheme selectedThemeInCombo(QComboBox const& combo); ///< Get the currently selected theme in a combo box.
+void applyThemePreferences(bool useCustomTheme, ETheme theme); ///< Apply the theme preferences.
+
 
 #endif // #ifndef BEEFTEXT_THEME_H

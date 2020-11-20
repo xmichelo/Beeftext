@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "PreferencesManager.h"
+#include "Theme.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
 #include "Clipboard/ClipboardManager.h"
@@ -180,7 +181,7 @@ void PreferencesManager::init()
       kDefaultEmojiRightDelimiter);
    cachedBeeftextEnabled_ = this->readSettings<bool>(kKeyBeeftextEnabled, kDefaultBeeftextEnabled);
    // Some preferences setting need initialization
-   this->applyCustomThemePreference();
+   applyThemePreferences(this->useCustomTheme(), this->theme());
    this->applyLocalePreference();
    this->applyAutoStartPreference();
 }
@@ -695,7 +696,7 @@ void PreferencesManager::setUseCustomTheme(bool value) const
    if (this->useCustomTheme() != value)
    {
       settings_->setValue(kKeyUseCustomTheme, value);
-      this->applyCustomThemePreference();
+      applyThemePreferences(value, this->theme());
    }
 }
 
@@ -1200,28 +1201,6 @@ void PreferencesManager::cacheAppEnableDisableShortcut()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesManager::applyCustomThemePreference() const
-{
-   if (!this->useCustomTheme())
-   {
-      qApp->setStyleSheet(QString());
-      return;
-   }
-   QString const resourcePath;
-   QFile f(":/MainWindow/Resources/StyleCommon.qss");
-   if (!f.open(QIODevice::ReadOnly))
-   {
-      globals::debugLog().addInfo(QString("Could not load stylesheet from resource '%1'").arg(resourcePath));
-      qApp->setStyleSheet(QString());
-      return;
-   }
-   qApp->setStyleSheet(QString::fromLocal8Bit(f.readAll()));
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
 void PreferencesManager::applyAutoStartPreference() const
 {
    if (isInPortableMode())
@@ -1433,6 +1412,7 @@ QString PreferencesManager::customPowershellPath() const
 void PreferencesManager::setTheme(ETheme theme) const
 {
    settings_->setValue(kKeyTheme, static_cast<qint32>(theme));
+   applyThemePreferences(this->useCustomTheme(), theme);
 }
 
 

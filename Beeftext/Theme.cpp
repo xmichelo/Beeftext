@@ -9,6 +9,9 @@
 
 #include "stdafx.h"
 #include "Theme.h"
+#include "PreferencesManager.h"
+#include "BeeftextGlobals.h"
+#include <XMiLib/Exception.h>
 
 
 //**********************************************************************************************************************
@@ -73,3 +76,48 @@ ETheme selectedThemeInCombo(QComboBox const& combo)
       index = 0;
    return static_cast<ETheme>(index);
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] useCustomTheme Does the application use a custom theme
+/// \param[in] theme The theme.
+//**********************************************************************************************************************
+void applyThemePreferences(bool useCustomTheme, ETheme theme)
+{
+   try
+   {
+      if (!useCustomTheme)
+      {
+         qApp->setStyleSheet(QString());
+         return;
+      }
+
+      // Load the common part of the stylesheet.
+      QString const resourcePath;
+      QFile commonFile(":/MainWindow/Resources/StyleCommon.qss");
+      if (!commonFile.open(QIODevice::ReadOnly | QIODevice::Text))
+         throw xmilib::Exception(QString("Could not load stylesheet from resource '%1'").arg(resourcePath));
+      QString stylesheet = QString::fromUtf8(commonFile.readAll()) + "\n";
+      commonFile.close();
+
+      // Add the theme-dependent part of the style sheet.
+      QString const themeResourcePath = QString(":/MainWindow/Resources/Style%1.qss").arg((ETheme::Dark == theme)
+         ? "Dark" : "Light");
+      QFile themeFile(themeResourcePath);
+      if (!themeFile.open(QIODevice::ReadOnly | QIODevice::Text))
+         throw xmilib::Exception(QString("Could not load stylesheet from resource '%1'").arg(resourcePath));
+      stylesheet += QString::fromUtf8(themeFile.readAll());
+
+      qApp->setStyleSheet(stylesheet);
+
+   }
+   catch (xmilib::Exception const& e)
+   {
+      QString const& msg = e.qwhat();
+      if (!msg.isEmpty())
+         globals::debugLog().addWarning(msg);
+      qApp->setStyleSheet(QString());
+   }
+
+}
+

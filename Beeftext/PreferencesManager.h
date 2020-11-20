@@ -133,7 +133,6 @@ private: // member functions
    void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
    void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
    void cacheAppEnableDisableShortcut(); ///< Read the app enable/disable shortcut and cache it for faster access.
-   void applyCustomThemePreference() const; ///< Apply the preference for the custom theme
    void applyAutoStartPreference() const; ///< Apply the preference for the auto-start
    void applyLocalePreference() const; ///< Apply the preference for the locale
    bool registerApplicationForAutoStart() const; ///< Register the application to be automatically started at login
