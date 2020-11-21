@@ -227,6 +227,10 @@ QMenu::item:disabled:selected {
    background: none;
 }
 
+QMenu::item:default {
+   font-weight: 600;
+}
+
 QMenu::right-arrow {
    width: 6px;
    height: 6px;
@@ -254,3 +258,17 @@ QMenu::separator {
 QProgressBar {
    text-align: center;
 }
+
+
+/*****************************
+* QProgressBar
+*****************************/
+#frameTopLevel {
+   border-radius: 10px;
+}
+
+
+#editSearch {
+   font-size: 12pt;
+}
+

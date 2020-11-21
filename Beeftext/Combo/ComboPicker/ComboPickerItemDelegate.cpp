@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboPickerItemDelegate.h"
+#include "PreferencesManager.h"
 #include "../ComboList.h"
 
 
@@ -52,9 +53,17 @@ QFont smallFont()
 //**********************************************************************************************************************
 void ComboPickerItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   bool const light = ((!prefs.useCustomTheme()) || (ETheme::Light == prefs.theme()));
+   QColor const bgColor = light ? QColor(0xff,0xff,0xff) : QColor(0x21, 0x21, 0x21);
+   QColor const bgSelectedColor(0x50, 0x8c, 0xc8);
+   QColor const bigTextColor = light ? QColor(0x4e, 0x4e, 0x4e) : QColor(0xff, 0xff, 0xff);
+   QColor const bigTextSelectedColor(0xff, 0xff,0xff);
+   QColor const smallTextColor(0xc8, 0xc8, 0xc8);
+
    // we draw the background. Color depends on wether the item is selected or not.
    bool const selected = option.state & QStyle::State_Selected ;
-   painter->setBrush(selected ? QColor(80, 140, 200) : QColor(255, 255, 255));
+   painter->setBrush(selected ? bgSelectedColor : bgColor);
    painter->setPen(Qt::NoPen);
    painter->drawRect(option.rect);
 
@@ -68,10 +77,10 @@ void ComboPickerItemDelegate::paint(QPainter* painter, const QStyleOptionViewIte
    QFont const sFont = smallFont();
 
    painter->setFont(bFont);
-   painter->setPen(selected ? Qt::white : QColor(78,78, 78));
+   painter->setPen(selected ? bigTextSelectedColor : bigTextColor);
    painter->drawText(QPoint(rect.left(), rect.top() + bMetrics.ascent()), 
       bMetrics.elidedText(index.data(Qt::DisplayRole).toString(), Qt::ElideRight, rect.width()));
-   painter->setPen(QColor(200,200,200));
+   painter->setPen(smallTextColor);
    painter->setFont(sFont);
    painter->drawText(QPoint(rect.left(), rect.bottom() - QFontMetrics(sFont).descent()), 
       index.data(ComboList::KeywordRole).toString());

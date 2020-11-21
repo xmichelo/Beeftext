@@ -223,6 +223,11 @@ QMenu {
    border: 1px solid #606060;
 }
 
+
+QMenu::item:default {
+   font-weight: 800;
+}
+
 QMenu::item:selected {
    border: none;
    background-color: #258fc0;
@@ -253,4 +258,27 @@ QProgressBar {
 
 QProgressBar::chunk {
   background-color: #258fc0;
+}
+
+/*****************************
+* ComboPickerWindow
+*****************************/
+#frameTopLevel {
+   border: none;
+   background-color: #373737;
+}
+
+
+#editSearch {
+   border: none;
+}
+
+#labelLogo {
+   background-color: transparent;
+}
+
+#listViewResults
+{
+   border: none;
+   text: #000000;
 }

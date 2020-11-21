@@ -14,39 +14,7 @@
    <string/>
   </property>
   <property name="styleSheet">
-   <string notr="true">#frameTopLevel {
-   border: 1px solid #ccc;
-   border-radius: 10px;
-   background-color: #ffffff;
-}
-
-
-#editSearch {
-   border: 1px solid #ccc;
-   font-size: 12pt;
-   /*background-color: #363636;
-   color: #fff; */
-}
-
-#labelLogo {
-   background-color: transparent;
-}
-
-#listViewResults
-{
-/*   background-color: #363636; */
-   border: 1px solid #ccc;
-   text: #fff;
-}
-
-/*#listViewResults::item {
-   color: #888;
-}
-
-#listViewResults::item:selected {
-   color: #fff;
-}*/
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">

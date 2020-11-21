@@ -237,10 +237,6 @@ QMenu::item:selected {
    color: #fff;
 }
 
-QMenu::item:default {
-   font-weight: bold;
-}
-
 QMenu::item:disabled {
    color: #aaa;
 }
@@ -267,3 +263,25 @@ QProgressBar::chunk {
   background-color: #258fc0;
 }
 
+/*****************************
+* ComboPickerWindow
+*****************************/
+#frameTopLevel {
+   border: 1px solid #ccc;
+   background-color: #ffffff;
+}
+
+
+#editSearch {
+   border: 1px solid #ccc;
+}
+
+#labelLogo {
+   background-color: transparent;
+}
+
+#listViewResults
+{
+   border: 1px solid #ccc;
+   text: #fff;
+}
