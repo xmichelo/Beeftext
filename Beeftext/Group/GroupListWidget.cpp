@@ -112,6 +112,7 @@ QMenu* GroupListWidget::menu(QWidget* parent) const
    menu->addAction(ui_.actionDeleteGroup);
    menu->addSeparator();
    menu->addAction(ui_.actionEnableDisableGroup);
+   connect(menu, &QMenu::aboutToShow, this, &GroupListWidget::onMenuAboutToShow);
    return menu;
 }
 
@@ -135,6 +136,7 @@ void GroupListWidget::updateGui() const
    bool const validIndex = (index >= 0) && (index < groupCount);
    ui_.actionDeleteGroup->setEnabled(validIndex && (groupCount > 1));
    ui_.actionEditGroup->setEnabled(validIndex);
+   ui_.actionEnableDisableGroup->setEnabled(validIndex);
 }
 
 
@@ -196,6 +198,8 @@ qint32 GroupListWidget::selectedGroupIndex() const
 //**********************************************************************************************************************
 bool GroupListWidget::eventFilter(QObject* object, QEvent* event)
 {
+   if ((!event) || (!object))
+      return false;
    if (event->type() == QEvent::DragEnter)
    {
       QDropEvent* dropEvent = dynamic_cast<QDropEvent*>(event);
@@ -223,6 +227,19 @@ bool GroupListWidget::eventFilter(QObject* object, QEvent* event)
       return true;
    }
    return QObject::eventFilter(object, event);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] menu The menu.
+//**********************************************************************************************************************
+void GroupListWidget::updateMenuContent(QMenu* const menu) const
+{
+   SpGroup const group = this->selectedGroup();
+   bool const enabled = (group && group->enabled());
+   ui_.actionEnableDisableGroup->setText(enabled ? tr("&Disable") : tr("&Enable"));
+   ui_.actionEnableDisableGroup->setIconText(enabled ? tr("Enable") : tr("Disable"));
+   ui_.actionEnableDisableGroup->setToolTip(enabled ? tr("Enable the group") : tr("Disable the group"));
 }
 
 
@@ -371,16 +388,21 @@ void GroupListWidget::onGroupMoved(SpGroup const& group, qint32 newIndex) const
 //**********************************************************************************************************************
 void GroupListWidget::onContextMenuRequested() const
 {
-   SpGroup const group = this->selectedGroup();
-   if (group)
-   {
-      bool const enabled = group->enabled();
-      ui_.actionEnableDisableGroup->setText(enabled ? tr("&Disable") : tr("&Enable"));
-      ui_.actionEnableDisableGroup->setIconText(enabled ? tr("Enable") : tr("Disable"));
-      ui_.actionEnableDisableGroup->setToolTip(enabled ? tr("Enable the group") : tr("Disable the group"));
-   }
    if (contextMenu_)
       contextMenu_->exec(QCursor::pos());
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void GroupListWidget::onMenuAboutToShow() const
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   QMenu* menu = dynamic_cast<QMenu*>(this->sender());
+   if (!menu)
+      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve context menu.").arg(__FUNCTION__));
+   this->updateMenuContent(menu);
 }
 
 

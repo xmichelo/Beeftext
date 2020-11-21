@@ -48,6 +48,7 @@ private: // member functions
    void changeEvent(QEvent *event) override; ///< Change event handler
    qint32 selectedGroupIndex() const; ///< Retrieve the index of the selected combo
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
+   void updateMenuContent(QMenu* const menu) const; ///< Update the content of a group menu.
 
 private slots: 
    void onActionEditGroup(); ///< Slot for the 'edit group' action
@@ -56,8 +57,8 @@ private slots:
    void onSelectionChanged(QItemSelection const&, QItemSelection const&); ///< Slot for selection change
    void onGroupMoved(SpGroup const& group, qint32 newIndex) const; ///< Slot for the moving of a group in the list
    void onContextMenuRequested() const; ///< Slot for the context menu
+   void onMenuAboutToShow() const; ///< Slot triggered when the menu is about to be displayed
    void onBackupRestored() const; ///< Slot triggered when a backup is restored
-
 private: // data members
    Ui::GroupListWidget ui_; ///< The GUI for the dialog
    QMenu* contextMenu_; ///< The context menu for the list view
