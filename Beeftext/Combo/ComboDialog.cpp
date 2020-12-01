@@ -127,8 +127,9 @@ bool ComboDialog::checkAndReportInvalidCombo()
    // we check that the keyword is not already in use
    QString const newKeyword = ui_.editKeyword->text();
    ComboList const& comboList = ComboManager::instance().comboListRef();
-   if (comboList.end() != std::find_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) -> bool
-      { return (existing != combo_) && (existing->keyword() == newKeyword);}))
+   if ((!newKeyword.isEmpty()) && (comboList.end() != std::find_if(comboList.begin(), 
+      comboList.end(), [&](SpCombo const& existing) -> bool      
+      { return (existing != combo_) && (existing->keyword() == newKeyword);})))
       return 0 == QMessageBox::information(this, tr("Duplicate keyword"), tr("This keyword is already in use. \n\n"
          "You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos "
          "randomly."), tr("&Continue"), tr("C&ancel"), QString());
