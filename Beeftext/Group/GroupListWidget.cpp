@@ -398,7 +398,6 @@ void GroupListWidget::onContextMenuRequested() const
 //**********************************************************************************************************************
 void GroupListWidget::onMenuAboutToShow() const
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    QMenu* menu = dynamic_cast<QMenu*>(this->sender());
    if (!menu)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve context menu.").arg(__FUNCTION__));

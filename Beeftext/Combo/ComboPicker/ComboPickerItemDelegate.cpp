@@ -57,7 +57,7 @@ void ComboPickerItemDelegate::paint(QPainter* painter, const QStyleOptionViewIte
    bool const light = ((!prefs.useCustomTheme()) || (ETheme::Light == prefs.theme()));
    QColor const bgColor = light ? QColor(0xff,0xff,0xff) : QColor(0x21, 0x21, 0x21);
    QColor const bgSelectedColor(0x50, 0x8c, 0xc8);
-   QColor const bigTextColor = light ? QColor(0x4e, 0x4e, 0x4e) : QColor(0xff, 0xff, 0xff);
+   QColor const bigTextColor = light ? QColor(0x4e, 0x4e, 0x4e) : QColor(0xee, 0xee, 0xee);
    QColor const bigTextSelectedColor(0xff, 0xff,0xff);
    QColor const smallTextColor(0xc8, 0xc8, 0xc8);
 

@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "ComboList.h"
 #include "MimeDataUtils.h"
-#include "BeeftextUtils.h"
+#include "BeeftextGlobals.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/File/CsvIO.h>
 #include <XMiLib/Exception.h>
@@ -703,7 +703,8 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       }
    }
    case Qt::ForegroundRole:
-      return combo->isUsable() ? QVariant() : QColor(160, 160, 160);
+      return QVariant();
+      //return combo->isUsable() ? QVariant() : globals::disabledTextColor();
    case KeywordRole:
       return combo->keyword();
    case SnippetRole:

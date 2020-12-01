@@ -123,5 +123,23 @@ QString emojiExcludedAppsFilePath()
    return QDir(appDataDir()).absoluteFilePath("emojiExcludedApps.json");
 }
 
+//**********************************************************************************************************************
+/// \return the blue color used for the Beeftext GUI.
+//**********************************************************************************************************************
+QColor blueBeeftextColor()
+{
+   return QColor(0x25, 0x8c, 0xc0);
+}
+
+//**********************************************************************************************************************
+/// \return the color to use for disabled text
+//**********************************************************************************************************************
+QColor disabledTextColor()
+{
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   return (prefs.useCustomTheme() && (prefs.theme() == ETheme::Dark)) ? QColor(0x55, 0x55, 0x55)
+      : QColor(0xa0, 0xa0, 0xa0);
+}
+
 
 } // namespace globals

@@ -61,7 +61,7 @@ public: // member functions
    QString customSoundPath() const; ///< Set the value for the 'Custom sound path' preferences.
    void setAutoCheckForUpdates(bool value); ///< Set the value for the 'Auto check for updates preference
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
-   void setUseCustomTheme(bool value) const; ///< Set the value for the 'Use custom theme' preference
+   void setUseCustomTheme(bool value); ///< Set the value for the 'Use custom theme' preference
    bool useCustomTheme() const; ///< Get the value for the 'Use custom theme' preference
    void setUseAutomaticSubstitution(bool value); ///< Set the value for the 'Use automatic substitution' preference
    bool useAutomaticSubstitution() const; ///< Get the value for the 'Use automatic substitution' preference
@@ -119,7 +119,7 @@ public: // member functions
    bool useCustomPowershellVersion() const; ///< Get the value for the 'Use custom PowerShell version'.
    void setCustomPowershellPath(QString const& path) const; ///< Set the value for the 'Custom PowerShell Path'.
    QString customPowershellPath() const; ///< Set the value for the 'Custom PowerShell Path'.
-   void setTheme(ETheme theme) const; ///< Set the theme parameter.
+   void setTheme(ETheme theme); ///< Set the theme parameter.
    ETheme theme() const; ///< Get the theme.
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
@@ -133,6 +133,7 @@ private: // member functions
    void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
    void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
    void cacheAppEnableDisableShortcut(); ///< Read the app enable/disable shortcut and cache it for faster access.
+   void cacheThemePrefs(); ///< Read the theme and cache it for faster access.
    void applyAutoStartPreference() const; ///< Apply the preference for the auto-start
    void applyLocalePreference() const; ///< Apply the preference for the locale
    bool registerApplicationForAutoStart() const; ///< Register the application to be automatically started at login
@@ -154,6 +155,8 @@ private: // data members
    QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.
    QString cachedEmojiRightDelimiter_; ///< Cached value for the 'emoji right delimiter' preference.
    bool cachedBeeftextEnabled_ { true }; ///< Cached value for the 'Beeftext enabled' preference.
+   bool cachedUseCustomTheme_ { true }; ///< Cached value for the 'Use custom theme' preference.
+   ETheme cachedTheme_ { ETheme::Light }; ///< Cached value for the 'Theme' preference.
 };
 
 

@@ -342,3 +342,19 @@ bool warnAndConvertHtmlCombos()
    dlg.setDefaultButton(convertButton);
    return QMessageBox::AcceptRole == dlg.exec();
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] color The color.
+/// \param[in] includeAlpha Should the alpha channel be included in the hexadecimal string.
+/// \return The hex representation of the color.
+//**********************************************************************************************************************
+QString colorToHex(QColor const& color, bool includeAlpha)
+{
+   QChar const zero('0');
+   QString result = QString("%1%2%3").arg(color.red(), 2, 16, zero).arg(color.green(), 2, 16, zero)
+      .arg(color.blue(), 2, 16, zero);
+   if (includeAlpha)
+      result += QString("%1").arg(color.alpha(), 2, 16, zero);
+   return result;
+}

@@ -2,13 +2,13 @@
 * QWidget
 *****************************/
 QWidget {
-    color: #eeeeee;
+    color: #cccccc;
     background-color: #373737;
 }
 
 
 QWidget:disabled {
-    color: #888888;
+    color: #555555;
 }
 
 
@@ -17,7 +17,7 @@ QWidget:disabled {
 *****************************/
 QPushButton {
    background-color: #258fc0;
-   color: #ffffff;
+   color: #eeeeee;
 }
 
 QPushButton:hover {
@@ -30,7 +30,7 @@ QPushButton:pressed {
 
 QPushButton:disabled {
    background-color: #cccccc;
-   color: #aaaaaa;
+   color: #888888;
 }
 
 QPushButton:focus {
@@ -51,7 +51,7 @@ QPushButton:focus:pressed {
 QLineEdit, QPlainTextEdit, QTextEdit {
    background-color: #606060;
    border: none;
-   selection-color: #ffffff;
+   selection-color: #eeeeee;
    selection-background-color: #258fc0; 
    min-height: 20px;
 }
@@ -81,7 +81,7 @@ QComboBox::drop-down {
 QComboBox QAbstractItemView {
    border: none;
    background-color: #606060;
-   selection-color: #ffffff;
+   selection-color: #eeeeee;
    selection-background-color: #258fc0;
 }
 
@@ -97,7 +97,7 @@ QComboBox::down-arrow {
 QSpinBox {
  background-color: #606060;
  border: none;
- selection-color: #fff;
+ selection-color: #eeeeee;
  selection-background-color: #258fc0;
  min-height: 30px;
 }
@@ -138,11 +138,17 @@ QHeaderView:section:!last {
 
 QTableView::item {
    border: 0px; /* required in order for the padding to work. Don't ask why */
+   color: #eeeeee;
 }
 
 QTableView::item:selected {
    background-color: #258fc0;
-   color: #fff;
+   color: #eeeeee;
+}
+
+QTableView::item:selected {
+   background-color: #258fc0;
+   color: #eeeeee;
 }
 
 
@@ -161,7 +167,7 @@ QListView::item {
 
 QListView::item:selected {
    background-color: #258fc0;
-   color: #fff;
+   color: #eeeeee;
 }
 
 /*****************************
@@ -216,7 +222,7 @@ QMenuBar {
 QMenuBar::item:selected {
    border: none;
    background-color: #258fc0;
-   color: #fff;
+   color: #eeeeee;
 }
 
 QMenu {
@@ -231,11 +237,11 @@ QMenu::item:default {
 QMenu::item:selected {
    border: none;
    background-color: #258fc0;
-   color: #ffffff;
+   color: #eeeeee;
 }
 
 QMenu::item:disabled {
-   color: #888888;
+   color: #555555;
 }
 
 QMenu::item:disabled:selected {
@@ -252,7 +258,7 @@ QMenu::separator {
 *****************************/
 QProgressBar {
    border: 1px solid #cccccc;
-   color: #ffffff;
+   color: #cccccc;
    background-color: #dddddd;   
 }
 

@@ -176,6 +176,7 @@ void PreferencesManager::init()
    cachedEnableAppEnableDisableShortcut_ = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
       kDefaultEnableAppEnableDisableShortcut);
    this->cacheAppEnableDisableShortcut();
+   this->cacheThemePrefs();
    cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kKeyEmojiLeftDelimiter, kDefaultEmojiLeftDelimiter);
    cachedEmojiRightDelimiter_ = this->readSettings<QString>(kKeyEmojiRightDelimiter,
       kDefaultEmojiRightDelimiter);
@@ -691,11 +692,12 @@ bool PreferencesManager::autoCheckForUpdates() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setUseCustomTheme(bool value) const
+void PreferencesManager::setUseCustomTheme(bool value)
 {
    if (this->useCustomTheme() != value)
    {
       settings_->setValue(kKeyUseCustomTheme, value);
+      cachedUseCustomTheme_ = value;
       applyThemePreferences(value, this->theme());
    }
 }
@@ -706,7 +708,7 @@ void PreferencesManager::setUseCustomTheme(bool value) const
 //**********************************************************************************************************************
 bool PreferencesManager::useCustomTheme() const
 {
-   return this->readSettings<bool>(kKeyUseCustomTheme, kDefaultUseCustomTheme);
+   return cachedUseCustomTheme_;
 }
 
 
@@ -1199,6 +1201,19 @@ void PreferencesManager::cacheAppEnableDisableShortcut()
 
 
 //**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::cacheThemePrefs()
+{
+   qint32 const intValue = readSettings<qint32>(kKeyTheme, static_cast<qint32>(kDefaultTheme));
+   cachedTheme_ = ((intValue < 0) || (intValue >= static_cast<qint32>(ETheme::Count))) ? kDefaultTheme
+      : static_cast<ETheme>(intValue);
+
+   cachedUseCustomTheme_ = this->readSettings<bool>(kKeyUseCustomTheme, kDefaultUseCustomTheme);
+}
+
+
+//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void PreferencesManager::applyAutoStartPreference() const
@@ -1409,9 +1424,10 @@ QString PreferencesManager::customPowershellPath() const
 //**********************************************************************************************************************
 /// \param[in] theme The theme.
 //**********************************************************************************************************************
-void PreferencesManager::setTheme(ETheme theme) const
+void PreferencesManager::setTheme(ETheme theme)
 {
    settings_->setValue(kKeyTheme, static_cast<qint32>(theme));
+   cachedTheme_ = theme;
    applyThemePreferences(this->useCustomTheme(), theme);
 }
 
@@ -1421,9 +1437,7 @@ void PreferencesManager::setTheme(ETheme theme) const
 //**********************************************************************************************************************
 ETheme PreferencesManager::theme() const
 {
-   qint32 const intValue = readSettings<qint32>(kKeyTheme, static_cast<qint32>(kDefaultTheme));
-   return ((intValue < 0) || (intValue >= static_cast<qint32>(ETheme::Count))) ? kDefaultTheme
-      : static_cast<ETheme>(intValue);
+   return cachedTheme_;
 }
 
 

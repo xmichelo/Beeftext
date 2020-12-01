@@ -29,6 +29,9 @@ QString portableModeSettingsFilePath(); ///< Returns the path of the settings fi
 QString sensitiveApplicationsFilePath(); ///< Return the path of the JSON file containing the list of sensitive applications
 QString emojiExcludedAppsFilePath(); ///< Return the path of the JSON file containing the list of emoji exceptions
 
+QColor blueBeeftextColor(); ///< Return the blue color used for the GUI.
+QColor disabledTextColor(); ///< Return the color for disabled text.
+
 
 } // namespace globals
 

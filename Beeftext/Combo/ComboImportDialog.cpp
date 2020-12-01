@@ -57,6 +57,8 @@ ComboImportDialog::ComboImportDialog(QString const& filePath, SpGroup const& gro
    ui_()
 {
    ui_.setupUi(this);
+   ui_.labelSupportedFormats->setText(ui_.labelSupportedFormats->text()
+      .arg(colorToHex(globals::blueBeeftextColor(), false)));
    GroupList& groupList = ComboManager::instance().groupListRef();
    groupList.ensureNotEmpty();
    ui_.comboGroup->setContent(groupList);
