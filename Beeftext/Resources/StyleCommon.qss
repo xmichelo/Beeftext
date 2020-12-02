@@ -268,8 +268,3 @@ QProgressBar {
    border-radius: 10px;
 }
 
-
-#editSearch {
-   font-size: 12pt;
-}
-

@@ -53,17 +53,13 @@ QLineEdit, QPlainTextEdit, QTextEdit {
    border: none;
    selection-color: #eeeeee;
    selection-background-color: #258fc0; 
-   min-height: 20px;
+   min-height: 18px;
 }
 
 
 QAbstractScrollArea {
 background-color: #555555;
 }
-
-/*QLineEdit:read-only {
-   background-color: #555555;
-}*/
 
 /*****************************
 * QComboBox
