@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Icons made by &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; from &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Эта программа распространяется на условиях &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;лицензии MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext использует &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; библиотеку на условиях &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext использует &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; библиотеку на условиях &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;лицензий OpenSSL и SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Иконки представлены &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; от &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Эта программа распространяется на условиях &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;лицензии MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext использует &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; библиотеку на условиях &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext использует &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; библиотеку на условиях &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;лицензий OpenSSL и SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Иконки представлены &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; от &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Portable Edition</source>
@@ -18,6 +18,10 @@
     <message>
         <source>&amp;Close</source>
         <translation>&amp;Закрыть</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Icons made by &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; from &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -55,11 +59,11 @@
     </message>
     <message>
         <source>Plain text</source>
-        <translation>Простой текст</translation>
+        <translation type="vanished">Простой текст</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Тип</translation>
+        <translation type="vanished">Тип</translation>
     </message>
     <message>
         <source>Error</source>
@@ -103,7 +107,7 @@
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Ярлык&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Ярлык&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Matching</source>
@@ -123,11 +127,11 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Фраза&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Фраза&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Rich text</source>
-        <translation>Текст с форматированием</translation>
+        <translation type="vanished">Текст с форматированием</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
@@ -161,64 +165,72 @@ Do you want to continue anymay?</source>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Существующий шаблон конфликтует с этим шаблоном.</translation>
     </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ComboEditor</name>
     <message>
         <source>Bold</source>
-        <translation>Жирный</translation>
+        <translation type="vanished">Жирный</translation>
     </message>
     <message>
         <source>Align right</source>
-        <translation>По правому краю</translation>
+        <translation type="vanished">По правому краю</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation>Цвет</translation>
+        <translation type="vanished">Цвет</translation>
     </message>
     <message>
         <source>Justify</source>
-        <translation>По ширине</translation>
+        <translation type="vanished">По ширине</translation>
     </message>
     <message>
         <source>Center</source>
-        <translation>По центру</translation>
+        <translation type="vanished">По центру</translation>
     </message>
     <message>
         <source>Italic</source>
-        <translation>Курсив</translation>
+        <translation type="vanished">Курсив</translation>
     </message>
     <message>
         <source>Font size</source>
-        <translation>Размер шрифта</translation>
+        <translation type="vanished">Размер шрифта</translation>
     </message>
     <message>
         <source>Font family</source>
-        <translation>Тип шрифта</translation>
+        <translation type="vanished">Тип шрифта</translation>
     </message>
     <message>
         <source>Hyperlink</source>
-        <translation>Гиперссылка</translation>
+        <translation type="vanished">Гиперссылка</translation>
     </message>
     <message>
         <source>Strikeout</source>
-        <translation>Зачеркивание</translation>
+        <translation type="vanished">Зачеркивание</translation>
     </message>
     <message>
         <source>Subscript</source>
-        <translation>Подстрочный знак</translation>
+        <translation type="vanished">Подстрочный знак</translation>
     </message>
     <message>
         <source>Superscript</source>
-        <translation>Надстрочный знак</translation>
+        <translation type="vanished">Надстрочный знак</translation>
     </message>
     <message>
         <source>Underline</source>
-        <translation>Подчеркивание</translation>
+        <translation type="vanished">Подчеркивание</translation>
     </message>
     <message>
         <source>Align left</source>
-        <translation>По левому краю</translation>
+        <translation type="vanished">По левому краю</translation>
     </message>
     <message>
         <source>&amp;Insert Variable</source>
@@ -261,10 +273,6 @@ Do you want to continue anymay?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Combo (&amp;lowercase)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Combo (&amp;trimmed)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -281,15 +289,19 @@ Do you want to continue anymay?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Text color</source>
+        <source>Combo (lo&amp;wercase)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enter URL</source>
+        <source>&amp;PowerShell Script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hyperlink URL</source>
+        <source>Select PowerShell script file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PowerShell script files (*.ps1);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -385,7 +397,11 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Импорт и экспорт#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Поддерживаемые форматы файлов&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Импорт и экспорт#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Поддерживаемые форматы файлов&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -652,6 +668,14 @@ Do you want to continue anymay?</source>
         <source>Copy Snippet</source>
         <translation>Копировать фразу</translation>
     </message>
+    <message>
+        <source>Enable the combo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable the combo</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GroupDialog</name>
@@ -748,6 +772,34 @@ Do you want to continue anymay?</source>
     <message>
         <source>Shift+Del</source>
         <translation>Shift+Del</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Enable</source>
+        <translation type="unfinished">&amp;Включить</translation>
+    </message>
+    <message>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable the group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable the group</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -905,10 +957,6 @@ Do you want to continue anymay?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Announcement</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Generate Cheat Sheet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -923,6 +971,14 @@ Do you want to continue anymay?</source>
     <message>
         <source>Generate Cheat Sheet</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Combo</source>
+        <translation type="unfinished">Новый шаблон</translation>
+    </message>
+    <message>
+        <source>New Group</source>
+        <translation type="unfinished">Новая группа</translation>
     </message>
 </context>
 <context>
@@ -1231,6 +1287,18 @@ Do you want to continue anymay?</source>
         <source>Keep the final space character</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Use custom PowerShell version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select PowerShell executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable files (*.exe);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1353,19 +1421,35 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your combo list contains rich text 
-      combos. Starting with Beeftext v8.0, rich text combos will not be supported anymore.&lt;/p&gt;
-      &lt;p&gt;For more information, please refer to the following page in the
-      &lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline;
-      color:#0000ff;&quot;&gt;Beeftext wiki&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>CSV files (*.csv);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You have not defined a keyword. Are you sure you want to continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Your combo list contains rich text combos. Beeftext does not support rich text anymore.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Click on the &apos;Convert&apos; button to convert your rich text combos to plain text.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Click on the &apos;Exit&apos; button to quit the application. If you want to keep using rich text combos, you can re-install &lt;a href=&quot;https://github.com/xmichelo/Beeftext/releases/tag/v7.2&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Beeftext v7.2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Convert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E&amp;xit</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

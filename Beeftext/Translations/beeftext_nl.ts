@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../AboutDialog.ui" line="33"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Icons made by &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; from &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Icons made by &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; from &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -23,7 +23,7 @@
         <translation>&amp;Sluiten</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="35"/>
+        <location filename="../AboutDialog.cpp" line="37"/>
         <source>Portable Edition</source>
         <translation>Portable Editie</translation>
     </message>
@@ -59,7 +59,7 @@
 <context>
     <name>ComboDialog</name>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="103"/>
+        <location filename="../Combo/ComboDialog.ui" line="86"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Naam&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -69,19 +69,17 @@
         <translation>&amp;Nieuw</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Sleutelwoord&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Sleutelwoord&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="83"/>
+        <location filename="../Combo/ComboDialog.ui" line="93"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Groep&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="161"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Knipsel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Knipsel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="54"/>
@@ -99,36 +97,43 @@
         <translation>Soepel</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="110"/>
+        <location filename="../Combo/ComboDialog.ui" line="103"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="113"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation type="vanished">Type</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="123"/>
         <source>Plain text</source>
-        <translation>Platte tekst</translation>
+        <translation type="vanished">Platte tekst</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="128"/>
         <source>Rich text</source>
-        <translation>Opgemaakte tekst</translation>
+        <translation type="vanished">Opgemaakte tekst</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Where is the editor?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Waaar is de editor?&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="190"/>
+        <location filename="../Combo/ComboDialog.ui" line="149"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Verplichte velden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="210"/>
+        <location filename="../Combo/ComboDialog.ui" line="169"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="220"/>
+        <location filename="../Combo/ComboDialog.ui" line="179"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuleren</translation>
     </message>
@@ -189,34 +194,34 @@
         <translation type="vanished">&amp;Over variabelen</translation>
     </message>
     <message>
+        <location filename="../Combo/ComboDialog.cpp" line="110"/>
         <location filename="../Combo/ComboDialog.cpp" line="116"/>
-        <location filename="../Combo/ComboDialog.cpp" line="122"/>
-        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="123"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="116"/>
+        <location filename="../Combo/ComboDialog.cpp" line="110"/>
         <source>The snippet text is empty.</source>
         <translation>Het tekstknipsel is leeg.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="122"/>
+        <location filename="../Combo/ComboDialog.cpp" line="116"/>
         <source>The keyword is invalid.</source>
         <translation>Het sleutelwoord is ongeldig.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="123"/>
         <source>The group is invalid.</source>
         <translation>De groep is ongeldig.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="138"/>
+        <location filename="../Combo/ComboDialog.cpp" line="133"/>
         <source>Duplicate keyword</source>
         <translation>Dupliceer sleutelwoord</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="138"/>
+        <location filename="../Combo/ComboDialog.cpp" line="133"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
@@ -225,32 +230,32 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
 U kunt meerdere combo&apos;s hebben met hetzelfde sleutelwoord. Beeftext zal willekeurig een van de overeenkomende combo&apos;s oppakken.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboDialog.cpp" line="135"/>
         <source>&amp;Continue</source>
         <translation>&amp;Doorgaan</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboDialog.cpp" line="135"/>
         <source>C&amp;ancel</source>
         <translation>&amp;Annuleren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="150"/>
+        <location filename="../Combo/ComboDialog.cpp" line="145"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Een bestaande combo zorgt voor een conflict met dit combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="151"/>
+        <location filename="../Combo/ComboDialog.cpp" line="146"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translation>%1 bestaande combo&apos;s zorgen voor conflicten met dit combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="153"/>
+        <location filename="../Combo/ComboDialog.cpp" line="148"/>
         <source>Conflict</source>
         <translation>Conflict</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="153"/>
+        <location filename="../Combo/ComboDialog.cpp" line="148"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anymay?</source>
@@ -259,7 +264,7 @@ Do you want to continue anymay?</source>
 Weet u zeker dat u wilt doorgaan?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="232"/>
+        <location filename="../Combo/ComboDialog.cpp" line="207"/>
         <source>New Group</source>
         <translation>Nieuwe groep</translation>
     </message>
@@ -267,165 +272,99 @@ Weet u zeker dat u wilt doorgaan?</translation>
 <context>
     <name>ComboEditor</name>
     <message>
-        <location filename="../Combo/ComboEditor.ui" line="82"/>
-        <source>Font family</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="97"/>
-        <source>Font size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="147"/>
-        <source>Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="184"/>
-        <source>Bold</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="225"/>
-        <source>Italic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="267"/>
-        <source>Underline</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="310"/>
-        <source>Strikeout</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="353"/>
-        <source>Superscript</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="396"/>
-        <source>Subscript</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="456"/>
-        <source>Align left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="500"/>
-        <source>Center</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="544"/>
-        <source>Align right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="588"/>
-        <source>Justify</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.ui" line="648"/>
-        <source>Hyperlink</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.cpp" line="92"/>
+        <location filename="../Combo/ComboEditor.cpp" line="59"/>
         <source>&amp;Insert Variable</source>
         <translation type="unfinished">&amp;Variabele invoegen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="94"/>
+        <location filename="../Combo/ComboEditor.cpp" line="61"/>
         <source>Clip&amp;board Content</source>
         <translation type="unfinished">&amp;Klembord-inhoud</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="98"/>
+        <location filename="../Combo/ComboEditor.cpp" line="65"/>
         <source>&amp;Date/Time</source>
         <translation type="unfinished">&amp;Datum/Tijd</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="99"/>
+        <location filename="../Combo/ComboEditor.cpp" line="66"/>
         <source>D&amp;ate</source>
         <translation type="unfinished">D&amp;atum</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="102"/>
+        <location filename="../Combo/ComboEditor.cpp" line="69"/>
         <source>&amp;Time</source>
         <translation type="unfinished">&amp;Tijd</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="105"/>
+        <location filename="../Combo/ComboEditor.cpp" line="72"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation type="unfinished">Dat&amp;e &amp;&amp; Tijd</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="108"/>
+        <location filename="../Combo/ComboEditor.cpp" line="75"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation type="unfinished">&amp;Aangepaste datum&amp;&amp; Tijd</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="113"/>
+        <location filename="../Combo/ComboEditor.cpp" line="80"/>
         <source>C&amp;ursor Position</source>
         <translation type="unfinished">C&amp;ursorpositie</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="117"/>
-        <location filename="../Combo/ComboEditor.cpp" line="118"/>
+        <location filename="../Combo/ComboEditor.cpp" line="84"/>
+        <location filename="../Combo/ComboEditor.cpp" line="85"/>
         <source>Co&amp;mbo</source>
         <translation type="unfinished">Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="121"/>
+        <location filename="../Combo/ComboEditor.cpp" line="88"/>
         <source>Combo (&amp;uppercase)</source>
         <translation type="unfinished">Combo (&amp;hoofdletters)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="124"/>
-        <source>Combo (&amp;lowercase)</source>
-        <translation type="unfinished">Combo (m&amp;kleine letters)</translation>
+        <location filename="../Combo/ComboEditor.cpp" line="91"/>
+        <source>Combo (lo&amp;wercase)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="128"/>
+        <location filename="../Combo/ComboEditor.cpp" line="155"/>
+        <source>Select PowerShell script file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="156"/>
+        <source>PowerShell script files (*.ps1);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Combo (&amp;lowercase)</source>
+        <translation type="obsolete">Combo (m&amp;kleine letters)</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="95"/>
         <source>Combo (&amp;trimmed)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="133"/>
+        <location filename="../Combo/ComboEditor.cpp" line="100"/>
         <source>En&amp;vironment Variable</source>
         <translation type="unfinished">&amp;Omgevingsvariabele</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="136"/>
+        <location filename="../Combo/ComboEditor.cpp" line="103"/>
+        <source>&amp;PowerShell Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="106"/>
         <source>User &amp;Input</source>
         <translation type="unfinished">Gebruikers&amp;invoer</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="141"/>
+        <location filename="../Combo/ComboEditor.cpp" line="111"/>
         <source>&amp;About Variables</source>
         <translation type="unfinished">&amp;Over variabelen</translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.cpp" line="325"/>
-        <source>Text color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.cpp" line="460"/>
-        <source>Enter URL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.cpp" line="460"/>
-        <source>Hyperlink URL</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -442,9 +381,13 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Bestand</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="52"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Ondersteunde bestandsformaten&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Ondersteunde bestandsformaten&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.ui" line="52"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="65"/>
@@ -484,68 +427,68 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Bladeren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="231"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="233"/>
         <source>%1 combo(s) could not be imported.</source>
         <translation>%1 combo(s) kon niet geïporteerd worden.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="226"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="231"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="228"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="233"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="135"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="137"/>
         <source>Skip %1 conflicting combos.</source>
         <translation>Negeer %1 combos met conflicten.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="136"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="138"/>
         <source>Skip 1 conflicting combo.</source>
         <translation>Negeer 1 conflicterende combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="137"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="139"/>
         <source>Overwrite %1 conflicting combos.</source>
         <translation>Overschrijf %1 conflicterende combos.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="138"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="140"/>
         <source>Overwrite 1 conflicting combo.</source>
         <translation>Overschrijf 1 conflicterende combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="141"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="143"/>
         <source>Overwrite %1 older conflicting combos.</source>
         <translation>Overschrijf %1 oudere conflicterende combos.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="144"/>
         <source>Overwrite 1 older conflicting combo.</source>
         <translation>Overschrijf 1 oudere conflicterende combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="154"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="156"/>
         <source>%1 combos will be imported.</source>
         <translation>%1 combo&apos;s worden geïporteerd.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="155"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="157"/>
         <source>1 combo will be imported.</source>
         <translation>1 combo wordt geïporteerd.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="183"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="185"/>
         <source>Please select a valid group.</source>
         <translation>Selecteer een geldige groep.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="238"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
         <source>&amp;Error</source>
         <translation>&amp;Fout</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="258"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="260"/>
         <source>Select Combo File</source>
         <translation>Selecteer Combo-Bestand</translation>
     </message>
@@ -553,40 +496,40 @@ Weet u zeker dat u wilt doorgaan?</translation>
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="569"/>
-        <location filename="../Combo/ComboList.cpp" line="723"/>
+        <location filename="../Combo/ComboList.cpp" line="596"/>
+        <location filename="../Combo/ComboList.cpp" line="745"/>
         <source>Name</source>
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="569"/>
-        <location filename="../Combo/ComboList.cpp" line="724"/>
+        <location filename="../Combo/ComboList.cpp" line="596"/>
+        <location filename="../Combo/ComboList.cpp" line="746"/>
         <source>Keyword</source>
         <translation>Sleutelwoord</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="569"/>
-        <location filename="../Combo/ComboList.cpp" line="725"/>
+        <location filename="../Combo/ComboList.cpp" line="596"/>
+        <location filename="../Combo/ComboList.cpp" line="747"/>
         <source>Snippet</source>
         <translation>Knipsel</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="569"/>
+        <location filename="../Combo/ComboList.cpp" line="596"/>
         <source>Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="726"/>
+        <location filename="../Combo/ComboList.cpp" line="748"/>
         <source>Created</source>
         <translation>Aangemaakt</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="727"/>
+        <location filename="../Combo/ComboList.cpp" line="749"/>
         <source>Modified</source>
         <translation>Gewijzigd</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="728"/>
+        <location filename="../Combo/ComboList.cpp" line="750"/>
         <source>Last Used</source>
         <translation>Laatst gebruikt</translation>
     </message>
@@ -594,7 +537,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
 <context>
     <name>ComboManager</name>
     <message>
-        <location filename="../Combo/ComboManager.cpp" line="90"/>
+        <location filename="../Combo/ComboManager.cpp" line="95"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
@@ -670,7 +613,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="154"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="475"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="477"/>
         <source>New Combo</source>
         <translation>Nieuwe Combo</translation>
     </message>
@@ -693,7 +636,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="179"/>
         <location filename="../Combo/ComboTableWidget.ui" line="182"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="568"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="570"/>
         <source>Edit Combo</source>
         <translation>Wijzig Combo</translation>
     </message>
@@ -710,7 +653,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="193"/>
         <location filename="../Combo/ComboTableWidget.ui" line="196"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="511"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="513"/>
         <source>Duplicate Combo</source>
         <translation>Dupliceer Combo</translation>
     </message>
@@ -771,7 +714,7 @@ Weet u zeker dat u wilt doorgaan?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="256"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="686"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="688"/>
         <source>Export All Combos</source>
         <translation>Exporteer alle combo&apos;s</translation>
     </message>
@@ -831,71 +774,81 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Wijze van matchen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="425"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="426"/>
         <source>Disa&amp;ble</source>
         <translation>Dea&amp;ctiveren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="426"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="427"/>
         <source>Disable combo</source>
         <translation>Deactiveer combo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="480"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="482"/>
         <source>The combo could not be added to the list.</source>
         <translation>Combo kon niet aan lijst worden toegevoegd.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="371"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="489"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="523"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="549"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="573"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="633"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="664"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="675"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="698"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="491"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="525"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="551"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="575"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="635"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="666"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="677"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="700"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="509"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="422"/>
+        <source>Enable the combo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="428"/>
+        <source>Disable the combo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="511"/>
         <source>The combo could not be duplicated: invalid index.</source>
         <translation>Combo kon niet gedupliceerd worden: ongeldige index.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="514"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="516"/>
         <source>The duplicated combo could not added to the list.</source>
         <translation>Gedupliceerde combo kon niet aan de lijst worden toegevoegd.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="536"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="538"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>Weet u zeker dat u de geselecteerde combo&apos;s wilt verwijderen?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="537"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="539"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>Weet u zeker dat u de geselecteerde combo wilt verwijderen?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="538"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="540"/>
         <source>Delete Combo?</source>
         <translation>Combo verwijderen?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="648"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="650"/>
         <source>Export Combos</source>
         <translation>Combo&apos;s exporteren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="664"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="666"/>
         <source>Nothing to export.</source>
         <translation>Niets om te exporteren.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="675"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="698"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="677"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="700"/>
         <source>Could not save the combo list file.</source>
         <translation>Kon het combo-bestand niet opslaan.</translation>
     </message>
@@ -985,39 +938,75 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Shift+Enter</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="121"/>
+        <location filename="../Group/GroupListWidget.ui" line="123"/>
+        <source>Ctrl+Shift+E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="125"/>
         <source>&amp;Groups</source>
         <translation>&amp;Groepen</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="234"/>
+        <location filename="../Group/GroupListWidget.cpp" line="240"/>
+        <source>&amp;Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="240"/>
+        <source>&amp;Enable</source>
+        <translation type="unfinished">&amp;Inschakelen</translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="241"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="241"/>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="242"/>
+        <source>Enable the group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="242"/>
+        <source>Disable the group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="254"/>
         <source>New Group</source>
         <translation>Nieuwe Groep</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="239"/>
+        <location filename="../Group/GroupListWidget.cpp" line="259"/>
         <source>The group could not be added to the list.</source>
         <translation>De groep kon niet aan de lijst worden toegevoegd.</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="247"/>
-        <location filename="../Group/GroupListWidget.cpp" line="274"/>
-        <location filename="../Group/GroupListWidget.cpp" line="304"/>
+        <location filename="../Group/GroupListWidget.cpp" line="267"/>
+        <location filename="../Group/GroupListWidget.cpp" line="294"/>
+        <location filename="../Group/GroupListWidget.cpp" line="324"/>
+        <location filename="../Group/GroupListWidget.cpp" line="351"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="265"/>
+        <location filename="../Group/GroupListWidget.cpp" line="285"/>
         <source>Edit Group</source>
         <translation>Groep wijzigen</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="286"/>
+        <location filename="../Group/GroupListWidget.cpp" line="306"/>
         <source>Delete Group?</source>
         <translation>Groep verwijderen?</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="286"/>
+        <location filename="../Group/GroupListWidget.cpp" line="306"/>
         <source>Are you sure you want to delete the selected group and all its combos?</source>
         <translation>Weet u zeker dat u de geselecteerde groep met inhoud wilt verwijderen?</translation>
     </message>
@@ -1165,43 +1154,48 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="154"/>
+        <location filename="../MainWindow.cpp" line="131"/>
         <source> - Portable Edition</source>
         <translation> - Portable Editie</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="151"/>
+        <location filename="../MainWindow.cpp" line="128"/>
         <source> - PAUSED</source>
         <translation> - GEPAUZEERD</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="70"/>
-        <source>Announcement</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.cpp" line="166"/>
-        <location filename="../MainWindow.cpp" line="302"/>
+        <location filename="../MainWindow.cpp" line="143"/>
+        <location filename="../MainWindow.cpp" line="290"/>
         <source>Open Beeftext</source>
         <translation>Open Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="170"/>
+        <location filename="../MainWindow.cpp" line="148"/>
+        <source>New Combo</source>
+        <translation type="unfinished">Nieuwe Combo</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="152"/>
+        <source>New Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="158"/>
         <source>&amp;Pause Beeftext</source>
         <translation>&amp;Pauzeer Beeftext</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="170"/>
+        <location filename="../MainWindow.cpp" line="158"/>
         <source>&amp;Resume Beeftext</source>
         <translation>&amp;Beeftext voortzetten</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="348"/>
+        <location filename="../MainWindow.cpp" line="336"/>
         <source>Backup</source>
         <translation>Backup</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="383"/>
+        <location filename="../MainWindow.cpp" line="371"/>
         <source>Generate Cheat Sheet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1210,42 +1204,42 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation type="vanished">JSON-bestanden (*.json);;Alle bestanden (*.*)</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="258"/>
-        <location filename="../MainWindow.cpp" line="355"/>
-        <location filename="../MainWindow.cpp" line="389"/>
+        <location filename="../MainWindow.cpp" line="246"/>
+        <location filename="../MainWindow.cpp" line="343"/>
+        <location filename="../MainWindow.cpp" line="377"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="250"/>
-        <location filename="../MainWindow.cpp" line="251"/>
-        <location filename="../MainWindow.cpp" line="367"/>
+        <location filename="../MainWindow.cpp" line="238"/>
+        <location filename="../MainWindow.cpp" line="239"/>
+        <location filename="../MainWindow.cpp" line="355"/>
         <source>Restore</source>
         <translation>Herstellen</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="250"/>
+        <location filename="../MainWindow.cpp" line="238"/>
         <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
         <translation>Als u een backup terugzet, worden alle huidige combo&apos;s verwijderd en vervangen door de inhoud van het backup-bestand.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="251"/>
+        <location filename="../MainWindow.cpp" line="239"/>
         <source>Cancel</source>
         <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="121"/>
-        <location filename="../MainWindow.cpp" line="175"/>
+        <location filename="../MainWindow.cpp" line="163"/>
         <source>Preferences</source>
         <translation>Voorkeuren</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="180"/>
+        <location filename="../MainWindow.cpp" line="168"/>
         <source>Open Log File</source>
         <translation>Open logbestand</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="183"/>
+        <location filename="../MainWindow.cpp" line="171"/>
         <source>Show Stylesheet Editor</source>
         <translation>Toon l&apos;Stylesheet Editor</translation>
     </message>
@@ -1415,231 +1409,247 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="647"/>
+        <location filename="../PreferencesDialog.ui" line="652"/>
         <source>Use custom theme</source>
         <translation>Gebruik aangepast thema</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="668"/>
+        <location filename="../PreferencesDialog.ui" line="695"/>
         <source>Advanced</source>
         <translation>Geavanceerd</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="777"/>
+        <location filename="../PreferencesDialog.ui" line="804"/>
         <source>Use legacy copy/paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="784"/>
+        <location filename="../PreferencesDialog.ui" line="813"/>
+        <source>Use custom PowerShell version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="836"/>
         <source>Automatic backup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="826"/>
+        <location filename="../PreferencesDialog.ui" line="878"/>
         <source>Use custom backup location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="854"/>
+        <location filename="../PreferencesDialog.ui" line="906"/>
         <source>Sensitive Applications</source>
         <translation>Gevoelige applicaties</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="676"/>
+        <location filename="../PreferencesDialog.ui" line="703"/>
         <source>Delay between simulated keystrokes</source>
         <translation>Vertraging tussen gesimileerde toetsaanslagen</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="683"/>
+        <location filename="../PreferencesDialog.ui" line="710"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="732"/>
+        <location filename="../PreferencesDialog.ui" line="759"/>
         <source>Combo list folder</source>
         <translation>Combo lijst-map</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="179"/>
-        <location filename="../PreferencesDialog.ui" line="746"/>
-        <location filename="../PreferencesDialog.ui" line="840"/>
+        <location filename="../PreferencesDialog.ui" line="773"/>
+        <location filename="../PreferencesDialog.ui" line="827"/>
+        <location filename="../PreferencesDialog.ui" line="892"/>
         <source>&amp;Change</source>
         <translation>&amp;Wijzig</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="753"/>
+        <location filename="../PreferencesDialog.ui" line="780"/>
         <source>O&amp;pen</source>
         <translation>O&amp;penen</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="760"/>
+        <location filename="../PreferencesDialog.ui" line="787"/>
         <source>D&amp;efault</source>
         <translation>S&amp;tandaard</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="792"/>
+        <location filename="../PreferencesDialog.ui" line="844"/>
         <source>Automatically backup combo list files</source>
         <translation>Automatische backups maken van combolijst-bestanden</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="799"/>
+        <location filename="../PreferencesDialog.ui" line="851"/>
         <source>Restore a backup.</source>
         <translation>Een backup herstellen.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="802"/>
+        <location filename="../PreferencesDialog.ui" line="854"/>
         <source>&amp;Restore</source>
         <translation>&amp;Herstellen</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="770"/>
+        <location filename="../PreferencesDialog.ui" line="797"/>
         <source>Write debug events in a log file</source>
         <translation>Schrijf debug-gebeurtenissen naar een logbestand</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="901"/>
-        <location filename="../PreferencesDialog.ui" line="914"/>
-        <location filename="../PreferencesDialog.ui" line="927"/>
-        <location filename="../PreferencesDialog.ui" line="940"/>
+        <location filename="../PreferencesDialog.ui" line="953"/>
+        <location filename="../PreferencesDialog.ui" line="966"/>
+        <location filename="../PreferencesDialog.ui" line="979"/>
+        <location filename="../PreferencesDialog.ui" line="992"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Voorkeuren terugzetten naar hun standaardwaarden.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="186"/>
-        <location filename="../PreferencesDialog.ui" line="930"/>
+        <location filename="../PreferencesDialog.ui" line="982"/>
         <source>&amp;Default</source>
         <translation>&amp;Standaard</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="904"/>
+        <location filename="../PreferencesDialog.ui" line="956"/>
         <source>&amp;Export</source>
         <translation type="unfinished">&amp;Exporteren</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="917"/>
+        <location filename="../PreferencesDialog.ui" line="969"/>
         <source>&amp;Import</source>
         <translation type="unfinished">&amp;Importeren</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="943"/>
+        <location filename="../PreferencesDialog.ui" line="995"/>
         <source>Reset &amp;Warnings</source>
         <translation>Waarschuwingen &amp;Resetten</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="966"/>
+        <location filename="../PreferencesDialog.ui" line="1018"/>
         <source>&amp;Close</source>
         <translation>&amp;Sluiten</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="155"/>
+        <location filename="../PreferencesDialog.cpp" line="163"/>
         <source>Delete Backup Files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="155"/>
+        <location filename="../PreferencesDialog.cpp" line="163"/>
         <source>Do you want to delete all the backup files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="288"/>
+        <location filename="../PreferencesDialog.cpp" line="302"/>
         <source>WAV files (*.wav);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="512"/>
+        <location filename="../PreferencesDialog.cpp" line="536"/>
         <source>Select folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="232"/>
-        <location filename="../PreferencesDialog.cpp" line="517"/>
-        <location filename="../PreferencesDialog.cpp" line="753"/>
-        <location filename="../PreferencesDialog.cpp" line="768"/>
+        <location filename="../PreferencesDialog.cpp" line="246"/>
+        <location filename="../PreferencesDialog.cpp" line="541"/>
+        <location filename="../PreferencesDialog.cpp" line="816"/>
+        <location filename="../PreferencesDialog.cpp" line="831"/>
         <source>Error</source>
         <translation type="unfinished">Fout</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="232"/>
+        <location filename="../PreferencesDialog.cpp" line="246"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="517"/>
+        <location filename="../PreferencesDialog.cpp" line="541"/>
         <source>The location of the combo list folder could not be changed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="529"/>
+        <location filename="../PreferencesDialog.cpp" line="553"/>
         <source>Reset Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="529"/>
+        <location filename="../PreferencesDialog.cpp" line="553"/>
         <source>Reset the combo list folder?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="581"/>
+        <location filename="../PreferencesDialog.cpp" line="605"/>
         <source>Custom backup location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="605"/>
+        <location filename="../PreferencesDialog.cpp" line="629"/>
         <source>Reset Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="605"/>
+        <location filename="../PreferencesDialog.cpp" line="629"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="621"/>
+        <location filename="../PreferencesDialog.cpp" line="645"/>
         <source>Reset Warnings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="621"/>
+        <location filename="../PreferencesDialog.cpp" line="645"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="642"/>
+        <location filename="../PreferencesDialog.cpp" line="666"/>
         <source>%1 v%2.%3 is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="644"/>
+        <location filename="../PreferencesDialog.cpp" line="668"/>
         <source>A new version is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="653"/>
+        <location filename="../PreferencesDialog.cpp" line="677"/>
         <source>The software is up to date.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="680"/>
+        <location filename="../PreferencesDialog.cpp" line="704"/>
         <source>Update check failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="747"/>
+        <location filename="../PreferencesDialog.cpp" line="795"/>
+        <source>Select PowerShell executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="796"/>
+        <source>Executable files (*.exe);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.cpp" line="810"/>
         <source>Export Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="753"/>
+        <location filename="../PreferencesDialog.cpp" line="816"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="762"/>
+        <location filename="../PreferencesDialog.cpp" line="825"/>
         <source>Import Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="768"/>
+        <location filename="../PreferencesDialog.cpp" line="831"/>
         <source>An error occurred while importing the preferences.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1658,12 +1668,12 @@ Als u gebruik van het klembord echt moet uitschakelen, klik dan op de &apos;Gevo
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="87"/>
+        <location filename="../main.cpp" line="97"/>
         <source>Getting Started</source>
         <translation>Eerste stappen</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="87"/>
+        <location filename="../main.cpp" line="97"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -1672,12 +1682,40 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 Raadpleeg de snelstartgids (in het Engels)?</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="255"/>
+        <location filename="../BeeftextUtils.cpp" line="38"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Your combo list contains rich text combos. Beeftext does not support rich text anymore.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Click on the &apos;Convert&apos; button to convert your rich text combos to plain text.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Click on the &apos;Exit&apos; button to quit the application. If you want to keep using rich text combos, you can re-install &lt;a href=&quot;https://github.com/xmichelo/Beeftext/releases/tag/v7.2&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Beeftext v7.2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../BeeftextUtils.cpp" line="260"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="278"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
         <source>Error</source>
         <translation>Fout</translation>
+    </message>
+    <message>
+        <location filename="../BeeftextUtils.cpp" line="337"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../BeeftextUtils.cpp" line="340"/>
+        <source>&amp;Convert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../BeeftextUtils.cpp" line="341"/>
+        <source>E&amp;xit</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../I18nManager.cpp" line="278"/>
@@ -1691,7 +1729,7 @@ Raadpleeg de snelstartgids (in het Engels)?</translation>
         <translation> - Portable Editie</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="113"/>
+        <location filename="../main.cpp" line="123"/>
         <source>An unhandled exception occurred.</source>
         <translation>Er is een onbekende fout opgetreden.</translation>
     </message>
@@ -1810,17 +1848,8 @@ Raadpleeg de snelstartgids (in het Engels)?</translation>
         <translation>Het bestand met gevoelige programma&apos;s kon niet worden opgeslagen.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="286"/>
+        <location filename="../PreferencesDialog.cpp" line="300"/>
         <source>Select custom sound file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.cpp" line="28"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your combo list contains rich text 
-      combos. Starting with Beeftext v8.0, rich text combos will not be supported anymore.&lt;/p&gt;
-      &lt;p&gt;For more information, please refer to the following page in the
-      &lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Rich-Text&quot;&gt;&lt;span style=&quot; text-decoration: underline;
-      color:#0000ff;&quot;&gt;Beeftext wiki&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
