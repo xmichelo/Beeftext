@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "Theme.h"
-#include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 

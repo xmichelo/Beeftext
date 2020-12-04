@@ -770,8 +770,8 @@ void PreferencesDialog::onCheckUseCustomPowerShellVersion(bool checked)
 {
    if (checked)
    {
-      QString path = prefs_.customPowershellPath();
-      QFileInfo fi(path);
+      QString const path = prefs_.customPowershellPath();
+      QFileInfo const fi(path);
       if (path.isEmpty() || (!fi.exists()) || (!fi.isExecutable()))
       {
          this->onChangeCustomPowershellVersion();

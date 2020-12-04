@@ -62,7 +62,7 @@ void UpdateDialog::startDownload()
    if (installerPath_.isEmpty() || !file_.isOpen())
       throw Exception("Error during software update: could save installer file.");
    QNetworkRequest request(latestVersionInfo_->downloadUrl());
-   request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+   request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, true);
    request.setMaximumRedirectsAllowed(10);
    reply_ = nam_.get(request);
    connect(reply_, &QNetworkReply::finished, this, &UpdateDialog::onDownloadFinished);

@@ -231,9 +231,9 @@ bool GroupListWidget::eventFilter(QObject* object, QEvent* event)
 
 
 //**********************************************************************************************************************
-/// \param[in] menu The menu.
+//
 //**********************************************************************************************************************
-void GroupListWidget::updateMenuContent(QMenu* const menu) const
+void GroupListWidget::updateActionsAvailabilityAndNames() const
 {
    SpGroup const group = this->selectedGroup();
    bool const enabled = (group && group->enabled());
@@ -401,7 +401,7 @@ void GroupListWidget::onMenuAboutToShow() const
    QMenu* menu = dynamic_cast<QMenu*>(this->sender());
    if (!menu)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve context menu.").arg(__FUNCTION__));
-   this->updateMenuContent(menu);
+   this->updateActionsAvailabilityAndNames();
 }
 
 

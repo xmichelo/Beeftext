@@ -48,7 +48,7 @@ private: // member functions
    void changeEvent(QEvent *event) override; ///< Change event handler
    qint32 selectedGroupIndex() const; ///< Retrieve the index of the selected combo
    bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
-   void updateMenuContent(QMenu* const menu) const; ///< Update the content of a group menu.
+   void updateActionsAvailabilityAndNames() const; ///< Update the content of a group menu.
 
 private slots: 
    void onActionEditGroup(); ///< Slot for the 'edit group' action

@@ -11,10 +11,8 @@
 #include "ComboList.h"
 #include "MimeDataUtils.h"
 #include "BeeftextGlobals.h"
-#include "BeeftextGlobals.h"
 #include <XMiLib/File/CsvIO.h>
 #include <XMiLib/Exception.h>
-
 
 
 using namespace xmilib;
