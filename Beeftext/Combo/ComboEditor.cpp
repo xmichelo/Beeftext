@@ -38,7 +38,7 @@ QPlainTextEdit* ComboEditor::plainTextEdit() const
 //**********************************************************************************************************************
 QString ComboEditor::plainText() const
 {
-   return ui_.snippetEdit->toPlainText();
+   return ui_.snippetEdit->document()->toRawText(); ///< using toRawText() instead of toPlainText() prevent the conversion of unicode non-breaking space characters to regular space characters
 }
 
 
