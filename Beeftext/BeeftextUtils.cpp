@@ -48,6 +48,22 @@ p, li { white-space: pre-wrap; }
 
 
 //**********************************************************************************************************************
+/// \brief Display on the state of the modifier keys on 
+//**********************************************************************************************************************
+void debugDisplayModifiersStates()
+{
+   qDebug() << QString("Left  Control: %1").arg(GetKeyState(VK_LCONTROL));
+   qDebug() << QString("Right Control: %1").arg(GetKeyState(VK_RCONTROL));
+   qDebug() << QString("Left  Menu   : %1").arg(GetKeyState(VK_LMENU));
+   qDebug() << QString("Right Menu   : %1").arg(GetKeyState(VK_RMENU));
+   qDebug() << QString("Left  Shift  : %1").arg(GetKeyState(VK_LSHIFT));
+   qDebug() << QString("Right Shift  : %1").arg(GetKeyState(VK_RSHIFT));
+   qDebug() << QString("Left  Win    : %1").arg(GetKeyState(VK_LWIN));
+   qDebug() << QString("Right Win    : %1").arg(GetKeyState(VK_RWIN));
+}
+
+
+//**********************************************************************************************************************
 /// \brief Test if the application is running in portable mode
 /// 
 /// \return true if and only if the application is running in portable mode
@@ -189,15 +205,20 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       bool const triggersOnSpace = prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace();
       QString text = newText + (triggersOnSpace && prefs.keepFinalSpaceCharacter() && (!triggeredByPicker) 
          ? " " : QString());
+      QList<quint16> pressedModifiers;
       if (!triggeredByPicker)
+      {
+         pressedModifiers = backupAndReleaseModifierKeys();
          synthesizeBackspaces(qMax<qint32>(charCount + (triggersOnSpace ? 1 : 0), 0));
+         restoreModifierKeys(pressedModifiers);
+      }
       if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
       {
          // we use the clipboard to and copy/paste the snippet
          ClipboardManager& clipboardManager = ClipboardManager::instance();
          clipboardManager.backupClipboard();
          clipboardManager.setText(text);
-         QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
+         pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          synthesizeKeyDown(VK_LCONTROL);
          synthesizeKeyDownAndUp('V');
          synthesizeKeyUp(VK_LCONTROL);
@@ -207,7 +228,6 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       }
       else
       {
-         QList<quint16> pressedModifiers;
          // we simulate the typing of the snippet text
          for (QChar c: text)
          {
@@ -244,6 +264,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       throw;
    }
    inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
+   debugDisplayModifiersStates();
 }
 
 
