@@ -215,8 +215,7 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
       }
    }
    
-   QString str = (*it)->evaluatedSnippet(outCancelled, forbiddenSubCombos << comboName, knownInputVariables,
-      nullptr); // forbiddenSubcombos is intended at avoiding endless recursion
+   QString str = (*it)->evaluatedSnippet(outCancelled, forbiddenSubCombos << comboName, knownInputVariables); // forbiddenSubcombos is intended at avoiding endless recursion
    switch (caseChange)
    {
    case ECaseChange::ToUpper: return str.toUpper();

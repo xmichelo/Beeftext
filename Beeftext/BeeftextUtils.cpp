@@ -264,7 +264,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       throw;
    }
    inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
-   debugDisplayModifiersStates();
+   // debugDisplayModifiersStates();
 }
 
 

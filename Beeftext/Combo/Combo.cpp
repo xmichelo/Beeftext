@@ -432,6 +432,8 @@ void Combo::touch()
 
 
 //**********************************************************************************************************************
+///  This function does not process the #{cursor} variable.
+///
 /// \param[out] outCancelled Did the user cancel user input
 /// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
@@ -440,7 +442,7 @@ void Combo::touch()
 /// \return The snippet text once it has been evaluated
 //**********************************************************************************************************************
 QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbiddenSubCombos, 
-   QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const
+   QMap<QString, QString>& knownInputVariables) const
 {
    outCancelled = false;
    QString remainingText = snippet_;
@@ -454,7 +456,7 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
    {
       QRegularExpressionMatch match = regexp.match(remainingText);
       if (!match.hasMatch())
-         return result + remainingText;
+         return result += remainingText;
 
       QString variable = match.captured(1);
       qint32 const pos = match.capturedStart(0);
@@ -463,12 +465,42 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
       remainingText = remainingText.right(remainingText.size() - pos - match.capturedLength(0));
 
       variable.replace("\\}", "}");
-      if (outCursorPos && ("cursor" == variable))
-         *outCursorPos = printableCharacterCount(result);
-      else 
-         result += evaluateVariable(variable, forbiddenSubCombos, knownInputVariables, outCancelled);
+      result += evaluateVariable(variable, forbiddenSubCombos, knownInputVariables, outCancelled);
 
       if (outCancelled)
          return QString();
+   }   
+}
+
+
+//**********************************************************************************************************************
+/// \param[out] outCancelled Did the user cancel user input
+/// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
+/// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
+/// avoid endless recursion
+/// \param[in,out] knownInputVariables The list of know input variables.
+/// \return The snippet text once it has been evaluated
+//**********************************************************************************************************************
+QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbiddenSubCombos, 
+   QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const
+{
+   QString result = evaluatedSnippet(outCancelled, forbiddenSubCombos, knownInputVariables);
+   if (outCancelled)
+      return QString();
+
+   QString const cursorVariable = "#{cursor}";
+   if (!outCursorPos)
+      return result.remove(cursorVariable);
+
+   qint32 const index = result.lastIndexOf(cursorVariable);
+   if (index < 0)
+   {
+      *outCursorPos = -1;
+      return result;
    }
+
+   qint32 const lShift = result.length() - (index + cursorVariable.length());
+   result.remove(cursorVariable);
+   *outCursorPos = result.length() - lShift;
+   return result;
 }

@@ -54,6 +54,8 @@ public: // member functions
    SpGroup group() const; ///< Get the combo group the combo belongs to
    void setGroup(SpGroup const& group); ///< Set the group this combo belongs to
    QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 
+      QMap<QString, QString>& knownInputVariables) const; ///< Retrieve the the snippet after having evaluated it, but leave the #{cursor} variable in place.
+   QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 
       QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const; ///< Retrieve the the snippet after having evaluated it
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
