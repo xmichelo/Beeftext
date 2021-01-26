@@ -72,7 +72,7 @@ void ClipboardManagerLegacy::restoreClipboard()
    if (!this->hasBackup())
       return;
 
-   QMimeData* mimeData = this->mimeDataFromBackup(); // ownership will be transfered to Qt when calling QClipboard::setMimeData()
+   QMimeData* mimeData = this->mimeDataFromBackup(); // ownership will be transferred to Qt when calling QClipboard::setMimeData()
    QClipboard* clipboard = QApplication::clipboard();
    if (!mimeData)
       clipboard->clear();

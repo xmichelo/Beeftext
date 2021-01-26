@@ -80,8 +80,8 @@ int main(int argc, char *argv[])
       prefs.setAlreadyConvertedRichTextCombos(true);
 
 
-      ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
-      (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
+      ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instantiated
+      (void)UpdateManager::instance(); // we make sure the update manager singleton is instantiated
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
       EmojiManager::instance().loadEmojis();
       MainWindow window;

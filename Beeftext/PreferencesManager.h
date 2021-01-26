@@ -97,8 +97,8 @@ public: // member functions
    void setEmojiRightDelimiter(QString const& delimiter); ///< Set the right delimiter for emojis.
    qint32 delayBetweenKeystrokesMs() const; ///< Get the 'delay between keystrokes' when not using the clipboard for combo substitution
    void  setDelayBetweenKeystrokesMs(qint32 value) const; ///< Set the 'delay between keystrokes'
-   static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay beetween keystrokes' preference.
-   static qint32 maxDelayBetweenKeystrokesMs(); ///< Get the maximum value for the 'delay beetween keystrokes' preference.
+   static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay between keystrokes' preference.
+   static qint32 maxDelayBetweenKeystrokesMs(); ///< Get the maximum value for the 'delay between keystrokes' preference.
    bool comboPickerEnabled() const; ///< Get the value for the 'Combo picker enabled'  preference.
    void setComboPickerEnabled(bool value); ///< Set the value for the 'Combo picker enabled'  preference.
    void setComboPickerShortcut(SpShortcut const& shortcut); ///< Set the combo picker shortcut.

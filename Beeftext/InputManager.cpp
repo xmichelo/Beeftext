@@ -309,7 +309,7 @@ QString InputManager::processKeyLegacy(KeyStroke const& keyStroke, bool& outIsDe
    // so we need to manually restore the dead key by calling ToUnicode() again
    WCHAR textBuffer[kTextBufferSize] = { 0 };
    outIsDeadKey = false;
-   // for some unkown reasons, in this legacy code ToUnicodeEx cause failures with dead keys in some locales.
+   // for some unknown reasons, in this legacy code ToUnicodeEx cause failures with dead keys in some locales.
    qint32 const size = ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, 
       kTextBufferSize, 0);
 

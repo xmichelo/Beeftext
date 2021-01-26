@@ -234,7 +234,7 @@ void PreferencesDialog::updateGui() const
 
 
 //**********************************************************************************************************************
-/// \return true if and only if the settings are consistant
+/// \return true if and only if the settings are consistent
 //**********************************************************************************************************************
 bool PreferencesDialog::checkAndReportInconsistencies()
 {

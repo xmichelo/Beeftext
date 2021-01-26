@@ -272,7 +272,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
 /// \param[in] parent The parent widget of the message box.
 /// \param[in] logMessage The message to add to the log.
 /// \param[in] userMessage The message to display to the user. if empty, log message is displayed to the user
-/// \brief The report contists in writting logMessage to the debug log
+/// \brief The report contists in writing logMessage to the debug log
 //**********************************************************************************************************************
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage)
 {

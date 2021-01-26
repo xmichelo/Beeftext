@@ -35,7 +35,7 @@ private: // member functions
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
    bool promptForAndRemoveAutoBackups(); ///< Ask the user if automatic backups should be deleted and if so, performs the operation
    void changeEvent(QEvent *event) override; ///< Change event handler
-   bool checkAndReportInconsistencies(); ///< Check that the values for the dialog are consistant
+   bool checkAndReportInconsistencies(); ///< Check that the values for the dialog are consistent
 
 private slots:
    void updateGui() const; ///< Update the GUI state
