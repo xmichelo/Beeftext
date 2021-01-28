@@ -78,13 +78,8 @@ void ComboPickerWindow::keyPressEvent(QKeyEvent* event)
       break;
    case Qt::Key_Enter:
    case Qt::Key_Return:
-   {
-      SpCombo const combo = this->selectedCombo();
-      this->close();
-      if (combo)
-         QTimer::singleShot(200, [combo]() { combo->insertSnippet(ETriggerSource::ComboPicker); });
+      this->triggerSelectedCombo();
       break;
-   }
    default:
       QWidget::keyPressEvent(event);
    }
@@ -122,6 +117,17 @@ void ComboPickerWindow::onSearchTextChanged(QString const& text)
    proxyModel_.setFilterFixedString(text.trimmed());
    if (proxyModel_.rowCount() > 0)
       this->selectComboAtIndex(0);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboPickerWindow::onItemClicked(QModelIndex const&)
+{
+   if (!this->selectedCombo())
+      return;
+   this->triggerSelectedCombo();
 }
 
 
@@ -177,4 +183,16 @@ void ComboPickerWindow::selectComboAtIndex(qint32 index) const
 {
    ui_.listViewResults->setCurrentIndex(proxyModel_.index(index, 0));
    ui_.editSearch->setFocus();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboPickerWindow::triggerSelectedCombo()
+{
+      SpCombo const combo = this->selectedCombo();
+      this->close();
+      if (combo)
+         QTimer::singleShot(200, [combo]() { combo->insertSnippet(ETriggerSource::ComboPicker); });
 }

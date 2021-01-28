@@ -435,7 +435,6 @@ void Combo::touch()
 ///  This function does not process the #{cursor} variable.
 ///
 /// \param[out] outCancelled Did the user cancel user input
-/// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
 /// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
 /// avoid endless recursion
 /// \param[in,out] knownInputVariables The list of know input variables.

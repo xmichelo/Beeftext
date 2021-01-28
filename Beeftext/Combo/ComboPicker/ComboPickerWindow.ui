@@ -140,8 +140,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>listViewResults</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>ComboPickerWindow</receiver>
+   <slot>onItemClicked(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>391</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onSearchTextChanged(QString)</slot>
+  <slot>onItemClicked(QModelIndex)</slot>
  </slots>
 </ui>
