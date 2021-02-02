@@ -48,7 +48,7 @@ p, li { white-space: pre-wrap; }
 
 
 //**********************************************************************************************************************
-/// \brief Display on the state of the modifier keys on 
+//
 //**********************************************************************************************************************
 void debugDisplayModifiersStates()
 {
@@ -252,7 +252,7 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
       // position the cursor if needed by typing the right amount of left key strokes
       if (cursorPos >= 0)
       {
-         QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
+         pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
          for (qint32 i = 0; i < qMax<qint32>(0, printableCharacterCount(text) - cursorPos); ++i)
             synthesizeKeyDownAndUp(VK_LEFT);
          restoreModifierKeys(pressedModifiers);

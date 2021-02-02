@@ -28,7 +28,7 @@ public: // member functions
    explicit ComboDialog(SpCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
    ComboDialog(ComboDialog const&) = delete; ///< Disabled copy constructor
    ComboDialog(ComboDialog&&) = delete; ///< Disabled move constructor
-	~ComboDialog() = default; ///< Default destructor
+	~ComboDialog() override = default; ///< Default destructor
    ComboDialog& operator=(ComboDialog const&) = delete; ///< Disabled assignment operator
    ComboDialog& operator=(ComboDialog&&) = delete; ///< Disabled move assignment operator
 

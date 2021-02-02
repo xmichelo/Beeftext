@@ -24,7 +24,7 @@ public: // member functions
    explicit ComboEditor(QWidget* parent = nullptr); ///< Default constructor.
    ComboEditor(ComboEditor const&) = delete; ///< Disabled copy-constructor.
    ComboEditor(ComboEditor&&) = delete; ///< Disabled assignment copy-constructor.
-   ~ComboEditor() = default; ///< Destructor.
+   ~ComboEditor() override = default; ///< Destructor.
    ComboEditor& operator=(ComboEditor const&) = delete; ///< Disabled assignment operator.
    ComboEditor& operator=(ComboEditor&&) = delete; ///< Disabled move assignment operator.
    QPlainTextEdit* plainTextEdit() const; ///< Return the snippet edit.

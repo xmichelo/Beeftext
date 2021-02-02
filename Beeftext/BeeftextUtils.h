@@ -20,6 +20,7 @@ enum class ETriggerSource
 }; ///< 
 
 
+void debugDisplayModifiersStates(); ///< Display the state of the modifier keys.
 void openLogFile(); ///< Open the log file with the default text editor
 bool isInPortableMode(); ///< Test whether the application is running in portable mode
 bool usePortableAppsFolderLayout(); ///< Test if the application is using the PortableApps.com layout

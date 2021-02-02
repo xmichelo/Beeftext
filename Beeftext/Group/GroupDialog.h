@@ -28,7 +28,7 @@ public: // member functions
    GroupDialog(SpGroup& group, QString const& title, QWidget* parent = nullptr); ///< Default constructor
    GroupDialog(GroupDialog const&) = delete; ///< Disabled copy-constructor
    GroupDialog(GroupDialog&&) = delete; ///< Disabled assignment copy-constructor
-   ~GroupDialog() = default; ///< Destructor
+   ~GroupDialog() override = default; ///< Destructor
    GroupDialog& operator=(GroupDialog const&) = delete; ///< Disabled assignment operator
    GroupDialog& operator=(GroupDialog&&) = delete; ///< Disabled move assignment operator
 

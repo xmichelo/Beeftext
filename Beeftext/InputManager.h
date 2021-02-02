@@ -35,7 +35,7 @@ public: // static member functions
 public: // member functions
    InputManager(InputManager const&) = delete; ///< Disabled copy constructor
    InputManager(InputManager&&) = delete; ///< Disabled move constructor
-   ~InputManager(); ///< Default destructor
+   ~InputManager() override; ///< Default destructor
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
    InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
 

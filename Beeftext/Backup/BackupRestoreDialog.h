@@ -27,7 +27,7 @@ public: // member functions
    explicit BackupRestoreDialog(QWidget* parent = nullptr); ///< Default constructor
    BackupRestoreDialog(BackupRestoreDialog const&) = delete; ///< Disabled copy-constructor
    BackupRestoreDialog(BackupRestoreDialog&&) = delete; ///< Disabled assignment copy-constructor
-   ~BackupRestoreDialog() = default; ///< Destructor
+   ~BackupRestoreDialog() override = default; ///< Destructor
    BackupRestoreDialog& operator=(BackupRestoreDialog const&) = delete; ///< Disabled assignment operator
    BackupRestoreDialog& operator=(BackupRestoreDialog&&) = delete; ///< Disabled move assignment operator
 

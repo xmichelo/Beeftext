@@ -27,7 +27,7 @@ public: // static member functions
 public: // member functions
    PreferencesManager(PreferencesManager const&) = delete; ///< Disabled copy constructor
 	PreferencesManager(PreferencesManager&&) = delete; ///< Disabled move constructor
-	~PreferencesManager() = default; ///< Default destructor
+	~PreferencesManager() override = default; ///< Default destructor
 	PreferencesManager& operator=(PreferencesManager const&) = delete; ///< Disabled assignment operator
 	PreferencesManager& operator=(PreferencesManager&&) = delete; ///< Disabled move assignment operator
    void init(); ///< Initialize the preferences manager.

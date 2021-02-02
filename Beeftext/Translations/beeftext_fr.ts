@@ -568,40 +568,40 @@ Voulez-vous tout de même continuer?</translation>
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="596"/>
-        <location filename="../Combo/ComboList.cpp" line="745"/>
+        <location filename="../Combo/ComboList.cpp" line="594"/>
+        <location filename="../Combo/ComboList.cpp" line="743"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="596"/>
-        <location filename="../Combo/ComboList.cpp" line="746"/>
+        <location filename="../Combo/ComboList.cpp" line="594"/>
+        <location filename="../Combo/ComboList.cpp" line="744"/>
         <source>Keyword</source>
         <translation>Mot-clé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="596"/>
-        <location filename="../Combo/ComboList.cpp" line="747"/>
+        <location filename="../Combo/ComboList.cpp" line="594"/>
+        <location filename="../Combo/ComboList.cpp" line="745"/>
         <source>Snippet</source>
         <translation>Snippet</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="596"/>
+        <location filename="../Combo/ComboList.cpp" line="594"/>
         <source>Group</source>
         <translation>Groupe</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="748"/>
+        <location filename="../Combo/ComboList.cpp" line="746"/>
         <source>Created</source>
         <translation>Créé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="749"/>
+        <location filename="../Combo/ComboList.cpp" line="747"/>
         <source>Modified</source>
         <translation>Modifié</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="750"/>
+        <location filename="../Combo/ComboList.cpp" line="748"/>
         <source>Last Used</source>
         <translation>Utilisé</translation>
     </message>
@@ -1779,7 +1779,7 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="260"/>
+        <location filename="../BeeftextUtils.cpp" line="281"/>
         <location filename="../EmojiManager.cpp" line="166"/>
         <location filename="../I18nManager.cpp" line="278"/>
         <location filename="../SensitiveApplicationManager.cpp" line="115"/>
@@ -1787,17 +1787,17 @@ p, li { white-space: pre-wrap; }
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="337"/>
+        <location filename="../BeeftextUtils.cpp" line="358"/>
         <source>Warning</source>
         <translation>Avertissement</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="340"/>
+        <location filename="../BeeftextUtils.cpp" line="361"/>
         <source>&amp;Convert</source>
         <translation>&amp;Convertir</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="341"/>
+        <location filename="../BeeftextUtils.cpp" line="362"/>
         <source>E&amp;xit</source>
         <translation>&amp;Quitter</translation>
     </message>

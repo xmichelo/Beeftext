@@ -24,7 +24,7 @@ public: // member functions
    explicit UpdateCheckWorker(QObject* parent = nullptr); ///< Default constructor
 	UpdateCheckWorker(UpdateCheckWorker const&) = delete; ///< Disabled copy constructor
 	UpdateCheckWorker(UpdateCheckWorker&&) = delete; ///< Disabled move constructor
-	~UpdateCheckWorker() = default; ///< Default destructor
+	~UpdateCheckWorker() override = default; ///< Default destructor
 	UpdateCheckWorker& operator=(UpdateCheckWorker const&) = delete; ///< Disabled assignment operator
 	UpdateCheckWorker& operator=(UpdateCheckWorker&&) = delete; ///< Disabled move assignment operator
 	

@@ -20,7 +20,7 @@ public: // member functions
    explicit GroupComboBox(QWidget* parent = nullptr); ///< Default constructor
    GroupComboBox(GroupComboBox const&) = delete; ///< Disabled copy-constructor
    GroupComboBox(GroupComboBox&&) = delete; ///< Disabled assignment copy-constructor
-   ~GroupComboBox() = default; ///< Destructor
+   ~GroupComboBox() override = default; ///< Destructor
    GroupComboBox& operator=(GroupComboBox const&) = delete; ///< Disabled assignment operator
    GroupComboBox& operator=(GroupComboBox&&) = delete; ///< Disabled move assignment operator
    void setContent(GroupList const& groups = GroupList()); ///< Fill the combo box with the specified group list

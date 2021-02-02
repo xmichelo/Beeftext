@@ -31,7 +31,7 @@ public: // static member functions
 public: // member functions
    ComboManager(ComboManager const&) = delete; ///< Disabled copy constructor
 	ComboManager(ComboManager const&&) = delete; ///< Disabled move constructor
-	~ComboManager() = default; ///< Default destructor
+	~ComboManager() override = default; ///< Default destructor
 	ComboManager& operator=(ComboManager const&) = delete; ///< Disabled assignment operator
 	ComboManager& operator=(ComboManager const&&) = delete; ///< Disabled move assignment operator
    ComboList& comboListRef(); ///< Return a mutable reference to the combo list

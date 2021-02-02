@@ -24,7 +24,7 @@ public: // member functions
    static UpdateManager& instance(); ///< Return The only allowed instance of the class
    UpdateManager(UpdateManager const&) = delete; ///< Disabled copy constructor
 	UpdateManager(UpdateManager&&) = delete; ///< Disabled move constructor
-	~UpdateManager() = default; ///< Default destructor
+	~UpdateManager() override = default; ///< Default destructor
 	UpdateManager& operator=(UpdateManager const&) = delete; ///< Disabled assignment operator
 	UpdateManager& operator=(UpdateManager&&) = delete; ///< Disabled move assignment operator
 	

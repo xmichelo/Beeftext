@@ -24,7 +24,7 @@ public: // member functions
    explicit ComboFrame(QWidget* parent = nullptr); ///< Default constructor
    ComboFrame(ComboFrame const&) = delete; ///< Disabled copy-constructor
    ComboFrame(ComboFrame&&) = delete; ///< Disabled assignment copy-constructor
-   ~ComboFrame() = default; ///< Destructor
+   ~ComboFrame() override = default; ///< Destructor
    ComboFrame& operator=(ComboFrame const&) = delete; ///< Disabled assignment operator
    ComboFrame& operator=(ComboFrame&&) = delete; ///< Disabled move assignment operator
    GroupListWidget* groupListWidget() const; ///< Return the combo group list widget

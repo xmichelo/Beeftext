@@ -25,7 +25,7 @@ public: // member functions
    explicit UpdateDialog(SpLatestVersionInfo latestVersionInfo, QWidget* parent = nullptr); ///< Default constructor
 	UpdateDialog(UpdateDialog const&) = delete; ///< Disabled copy constructor
 	UpdateDialog(UpdateDialog&&) = delete; ///< Disabled move constructor
-	~UpdateDialog() = default; ///< Default destructor
+	~UpdateDialog() override = default; ///< Default destructor
 	UpdateDialog& operator=(UpdateDialog const&) = delete; ///< Disabled assignment operator
 	UpdateDialog& operator=(UpdateDialog&&) = delete; ///< Disabled move assignment operator
 	
