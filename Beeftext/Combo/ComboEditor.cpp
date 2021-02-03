@@ -38,7 +38,10 @@ QPlainTextEdit* ComboEditor::plainTextEdit() const
 //**********************************************************************************************************************
 QString ComboEditor::plainText() const
 {
-   return ui_.snippetEdit->document()->toRawText(); ///< using toRawText() instead of toPlainText() prevent the conversion of unicode non-breaking space characters to regular space characters
+   // rawtext() preserve non breaking space that are removed by toPlainText(), but replaces spaces with the
+   // unicode paragraph separator (U+2029) so we replace them with '\n'.
+   return ui_.snippetEdit->document()->toRawText().replace(QString::fromUtf8(QByteArray("\xe2\x80\xa9")),
+      QString("\n"), Qt::CaseInsensitive);
 }
 
 
