@@ -268,68 +268,68 @@ Você realmente deseja continuar?</translation>
         <translation type="vanished">Hiperligação</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="59"/>
+        <location filename="../Combo/ComboEditor.cpp" line="62"/>
         <source>&amp;Insert Variable</source>
         <translation>&amp;Inserir Variável</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="61"/>
+        <location filename="../Combo/ComboEditor.cpp" line="64"/>
         <source>Clip&amp;board Content</source>
         <translation>Á&amp;rea de Transferência</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="65"/>
+        <location filename="../Combo/ComboEditor.cpp" line="68"/>
         <source>&amp;Date/Time</source>
         <translation>&amp;Data/Hora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="66"/>
+        <location filename="../Combo/ComboEditor.cpp" line="69"/>
         <source>D&amp;ate</source>
         <translation>D&amp;ata</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="69"/>
+        <location filename="../Combo/ComboEditor.cpp" line="72"/>
         <source>&amp;Time</source>
         <translation>&amp;Hora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="72"/>
+        <location filename="../Combo/ComboEditor.cpp" line="75"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation>Data &amp;e&amp;&amp; Hora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="75"/>
+        <location filename="../Combo/ComboEditor.cpp" line="78"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation>&amp;Customizar Data e &amp;&amp; Hora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="80"/>
+        <location filename="../Combo/ComboEditor.cpp" line="83"/>
         <source>C&amp;ursor Position</source>
         <translation>Posição do C&amp;ursor</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="84"/>
-        <location filename="../Combo/ComboEditor.cpp" line="85"/>
+        <location filename="../Combo/ComboEditor.cpp" line="87"/>
+        <location filename="../Combo/ComboEditor.cpp" line="88"/>
         <source>Co&amp;mbo</source>
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="88"/>
+        <location filename="../Combo/ComboEditor.cpp" line="91"/>
         <source>Combo (&amp;uppercase)</source>
         <translation>Combo (&amp;maiúsc&amp;ula)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="91"/>
+        <location filename="../Combo/ComboEditor.cpp" line="94"/>
         <source>Combo (lo&amp;wercase)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="155"/>
+        <location filename="../Combo/ComboEditor.cpp" line="158"/>
         <source>Select PowerShell script file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="156"/>
+        <location filename="../Combo/ComboEditor.cpp" line="159"/>
         <source>PowerShell script files (*.ps1);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -338,27 +338,27 @@ Você realmente deseja continuar?</translation>
         <translation type="vanished">Combo (minúscu&amp;la)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="95"/>
+        <location filename="../Combo/ComboEditor.cpp" line="98"/>
         <source>Combo (&amp;trimmed)</source>
         <translation>Combo (Forma&amp;tada)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="100"/>
+        <location filename="../Combo/ComboEditor.cpp" line="103"/>
         <source>En&amp;vironment Variable</source>
         <translation>&amp;Variável de Ambiente</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="103"/>
+        <location filename="../Combo/ComboEditor.cpp" line="106"/>
         <source>&amp;PowerShell Script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="106"/>
+        <location filename="../Combo/ComboEditor.cpp" line="109"/>
         <source>User &amp;Input</source>
         <translation>&amp;Inserção do Usuário</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="111"/>
+        <location filename="../Combo/ComboEditor.cpp" line="114"/>
         <source>&amp;About Variables</source>
         <translation>Sobre V&amp;ariáveis</translation>
     </message>
