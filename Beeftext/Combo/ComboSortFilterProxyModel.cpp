@@ -43,7 +43,8 @@ bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex cons
    SpCombo const& combo = combos[sourceRow];
    if (group_ && (combo->group() != group_))
       return false;
-   for (QString const& word : this->filterRegExp().pattern().split(QRegularExpression("\\s"), Qt::SkipEmptyParts))
+   for (QString const& word : this->filterRegularExpression().pattern().split(QRegularExpression("\\s"), 
+      Qt::SkipEmptyParts))
       if ((!combo->name().contains(word, Qt::CaseInsensitive)) 
          && (!combo->keyword().contains(word, Qt::CaseInsensitive))
          && (!combo->snippet().contains(word, Qt::CaseInsensitive)))

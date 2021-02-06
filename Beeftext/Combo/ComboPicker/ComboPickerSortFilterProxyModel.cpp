@@ -28,7 +28,7 @@ ComboPickerSortFilterProxyModel::ComboPickerSortFilterProxyModel(QObject* parent
 //**********************************************************************************************************************
 bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex&) const
 {
-   if (this->filterRegExp().pattern().trimmed().isEmpty())
+   if (this->filterRegularExpression().pattern().trimmed().isEmpty())
       return true;
 
    QAbstractItemModel const* model = this->sourceModel();
@@ -36,7 +36,8 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
       (!model->data(model->index(sourceRow, 0, QModelIndex()), ComboList::EnabledRole).toBool()))
       return false;
 
-   QStringList const searchWords = this->filterRegExp().pattern().split(QRegularExpression("\\s"), Qt::SkipEmptyParts);
+   QStringList const searchWords = this->filterRegularExpression().pattern().split(QRegularExpression("\\s"), 
+      Qt::SkipEmptyParts);
    QModelIndex const index = model->index(sourceRow, 0, QModelIndex());
    QString const comboName = model->data(index, Qt::DisplayRole).toString();
    QString const keyword = model->data(index, ComboList::KeywordRole).toString();

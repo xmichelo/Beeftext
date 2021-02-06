@@ -201,7 +201,7 @@ void ComboManager::loadSoundFromPreferences()
          prefs.setUseCustomSound(false);
       }
    }
-   sound_ = std::make_unique<QSound>(useCustomSound ? customSoundPath : ":/MainWindow/Resources/Notification.wav");
+   sound_ = std::make_unique<WaveSound>(useCustomSound ? customSoundPath : ":/MainWindow/Resources/Notification.wav");
 }
 
 

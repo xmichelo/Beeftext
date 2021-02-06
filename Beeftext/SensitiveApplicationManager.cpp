@@ -79,7 +79,8 @@ bool SensitiveApplicationManager::isSensitiveApplication(QString const& appExeNa
 {
    std::function<bool(QString const&)> const predicate = [&](QString const& str) -> bool
    {
-      return QRegExp(str, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(appExeName);
+      return QRegularExpression(QRegularExpression::wildcardToRegularExpression(str), 
+         QRegularExpression::CaseInsensitiveOption).match(appExeName).hasMatch();
    };
    return (kBuiltInApps.end() != std::find_if(kBuiltInApps.begin(), kBuiltInApps.end(), predicate)) ||
       (sensitiveApps_.end() != std::find_if(sensitiveApps_.begin(), sensitiveApps_.end(), predicate));

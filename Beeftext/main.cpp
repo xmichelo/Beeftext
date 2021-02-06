@@ -21,7 +21,7 @@
 #include <XMiLib/SingleInstanceApp.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
-#include <QtPlatformHeaders/QWindowsWindowFunctions>
+//#include <QtPlatformHeaders/QWindowsWindowFunctions>
 
 using namespace xmilib;
 
@@ -30,6 +30,15 @@ void ensureDirExists(QString const& path); ///< Make sure a folder exists.
 void ensureAppDataDirsExist(); ///< Make sure the application data folder exists
 void ensureMainWindowHasAHandle(MainWindow& mainWindow); ///< Ensure that the main window has a Win32 handle
 void removeFileMarkedForDeletion(); ///< Remove the software update file that may have been marker for deletion
+
+
+void playSound(QString const& path)
+{
+   QFile file(path);
+   if (!file.open(QIODevice::ReadOnly))
+      return;
+   QByteArray result = file.readAll();
+}
 
 
 //**********************************************************************************************************************
@@ -85,9 +94,7 @@ int main(int argc, char *argv[])
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
       EmojiManager::instance().loadEmojis();
       MainWindow window;
-#ifdef Q_OS_WIN
-      QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
-#endif
+      // QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
       ensureMainWindowHasAHandle(window);
 
       if (!prefs.alreadyLaunched())

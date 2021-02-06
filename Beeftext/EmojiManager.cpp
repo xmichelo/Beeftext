@@ -18,6 +18,8 @@
 using namespace xmilib;
 
 
+
+
 namespace {
 
 
@@ -69,6 +71,7 @@ QString emojiFilePath()
 {
    QString const fileName = "emojis.json";
    QDir const appDir(qApp->applicationDirPath());
+   qDebug() << QString("appDir: %1").arg(appDir.absolutePath());
    QString filePath = appDir.absoluteFilePath("emojis/" + fileName);
    if (QFile(filePath).exists())
       return filePath;
@@ -132,7 +135,8 @@ bool EmojiManager::isExcludedApplication(QString const& appExeName) const
 {
    std::function<bool(QString const&)> const predicate = [&](QString const& str) -> bool
    {
-      return QRegExp(str, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(appExeName);
+      return QRegularExpression(QRegularExpression::wildcardToRegularExpression(str), 
+         QRegularExpression::CaseInsensitiveOption).match(appExeName).hasMatch();
    };
    return (kBuiltInExcludedApps.end() != std::find_if(kBuiltInExcludedApps.begin(), kBuiltInExcludedApps.end(), 
       predicate)) || (excludedApps_.end() != std::find_if(excludedApps_.begin(), excludedApps_.end(), predicate));

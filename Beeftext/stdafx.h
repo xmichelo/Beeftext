@@ -11,7 +11,6 @@
 #define BEEFTEXT_STDAFX_H
 
 
-#include <QtMultimedia>
 #include <QtWidgets>
 #include <QtNetwork>
 #include <QtGui>
