@@ -10,45 +10,29 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		DebugRemote|x64 = DebugRemote|x64
-		DebugRemote|x86 = DebugRemote|x86
 		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Debug|x64.ActiveCfg = Debug|x64
 		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Debug|x64.Build.0 = Debug|x64
-		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Debug|x86.ActiveCfg = Debug|Win32
-		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Debug|x86.Build.0 = Debug|Win32
 		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.DebugRemote|x64.ActiveCfg = Debug|x64
 		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.DebugRemote|x64.Build.0 = Debug|x64
-		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.DebugRemote|x86.ActiveCfg = Debug|Win32
-		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.DebugRemote|x86.Build.0 = Debug|Win32
 		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Release|x64.ActiveCfg = Release|x64
 		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Release|x64.Build.0 = Release|x64
-		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Release|x86.ActiveCfg = Release|Win32
-		{C2C2E08C-D1FF-4496-8D42-8DFB24AEEE66}.Release|x86.Build.0 = Release|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.ActiveCfg = Debug|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.Build.0 = Debug|x64
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x86.ActiveCfg = Debug|Win32
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x86.Build.0 = Debug|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.DebugRemote|x64.ActiveCfg = DebugRemote|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.DebugRemote|x64.Build.0 = DebugRemote|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.DebugRemote|x64.Deploy.0 = DebugRemote|x64
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.DebugRemote|x86.ActiveCfg = DebugRemote|Win32
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.DebugRemote|x86.Build.0 = DebugRemote|Win32
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.DebugRemote|x86.Deploy.0 = DebugRemote|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.ActiveCfg = Release|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.Build.0 = Release|x64
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x86.ActiveCfg = Release|Win32
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		Qt5Version = Qt 6.0.1
 		SolutionGuid = {6C34D44C-97E9-4375-8F51-D29779424AB7}
+		Qt5Version = Qt 6.0.1
 	EndGlobalSection
 EndGlobal

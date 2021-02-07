@@ -11,7 +11,7 @@
 #***********************************************************************************************************************
 # useful variable declarations
 #***********************************************************************************************************************
-$openSslBinDir = "C:\Qt\Tools\OpenSSL\Win_x86\bin"
+$openSslBinDir = "C:\Qt\Tools\OpenSSL\Win_x64\bin"
 $solutionDir = absolutePath $PSScriptRoot "..\.."
 $vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\"
 $nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
@@ -23,7 +23,8 @@ $rcFilePath = absolutePath $solutionDir "Beeftext\Beeftext.rc"
 #***********************************************************************************************************************
 function copySslDlls([String]$dstPath)
 {
-    foreach ($dll in "libcrypto-1_1.dll", "libssl-1_1.dll") {Copy-Item -Path (absolutePath $openSslBinDir $dll) -Destination $dstPath }
+    foreach ($dll in "libcrypto-1_1-x64.dll", "libssl-1_1-x64.dll") 
+    { Copy-Item -Path (absolutePath $openSslBinDir $dll) -Destination $dstPath }
 }
 
 
@@ -32,7 +33,7 @@ function copySslDlls([String]$dstPath)
 #***********************************************************************************************************************
 function copyVcppDlls([String]$dstPath)
 {
-   $vcDlls = "msvcp140.dll", "msvcp140_1.dll", "vcruntime140.dll", "msvcr100.dll"
+   $vcDlls = "msvcp140.dll", "msvcp140_1.dll", "vcruntime140.dll", "vcruntime140_1.dll", "msvcr100.dll"
    foreach ($dll in $vcDlls) { Copy-Item -Path (absolutePath $vcDllDir $dll) -Destination $dstPath }
 }
 

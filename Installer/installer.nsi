@@ -16,7 +16,7 @@
 #global defines ( basically compile time constants)
 !define APP_FANCY_NAME "Beeftext"
 !define APP_NAME "Beeftext"
-!define EXE_SRC_DIR ..\_build\Win32\Release
+!define EXE_SRC_DIR ..\_build\x64\Release
 !define UNINSTALLER_FILE_NAME Uninstall.exe
 !define REGISTRY_UNINSTALLER_FOLDER Software\Microsoft\Windows\CurrentVersion\Uninstall
 !define OUTPUT_DIR _build
@@ -48,7 +48,7 @@
 #!define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Build the solution file and stop if the result is not 0
-!system '"${VS_DEVENV_PATH}" "..\${APP_NAME}.sln" /rebuild "Release|x86"' = 0
+!system '"${VS_DEVENV_PATH}" "..\${APP_NAME}.sln" /rebuild "Release|x64"' = 0
 
 
 # General attributes for the installer/uninstaller
@@ -153,25 +153,23 @@ setOutPath $INSTDIR
 # copy file
 file "${EXE_SRC_DIR}\${APP_NAME}.exe"
 file "..\README.md"
-file "$%QTDIR%\..\..\Tools\OpenSSL\Win_x86\bin\libcrypto-1_1.dll"
-file "$%QTDIR%\..\..\Tools\OpenSSL\Win_x86\bin\libssl-1_1.dll"
-file "$%QTDIR%\bin\Qt5Core.dll"
-file "$%QTDIR%\bin\Qt5Gui.dll"
-file "$%QTDIR%\bin\Qt5Widgets.dll"
-file "$%QTDIR%\bin\Qt5Multimedia.dll"
-file "$%QTDIR%\bin\Qt5Network.dll"
+file "$%QT6DIR%\..\..\Tools\OpenSSL\Win_x64\bin\libcrypto-1_1-x64.dll"
+file "$%QT6DIR%\..\..\Tools\OpenSSL\Win_x64\bin\libssl-1_1-x64.dll"
+file "$%QT6DIR%\bin\Qt6Core.dll"
+file "$%QT6DIR%\bin\Qt6Gui.dll"
+file "$%QT6DIR%\bin\Qt6Widgets.dll"
+file "$%QT6DIR%\bin\Qt6Network.dll"
 file "${VC_DLL_DIR}\msvcp140.dll"
 file "${VC_DLL_DIR}\msvcp140_1.dll"
 file "${VC_DLL_DIR}\vcruntime140.dll"
+file "${VC_DLL_DIR}\vcruntime140_1.dll"
 file "${VC_DLL_DIR}\msvcr100.dll"
 setOutPath $INSTDIR\platforms
-file "$%QTDIR%\plugins\platforms\qwindows.dll"
+file "$%QT6DIR%\plugins\platforms\qwindows.dll"
 setOutPath $INSTDIR\styles
-file "$%QTDIR%\plugins\styles\qwindowsvistastyle.dll"
+file "$%QT6DIR%\plugins\styles\qwindowsvistastyle.dll"
 setOutPath $INSTDIR\imageformats
-file "$%QTDIR%\plugins\imageformats\qico.dll"
-setOutPath $INSTDIR\audio
-file "$%QTDIR%\plugins\audio\qtaudio_windows.dll"
+file "$%QT6DIR%\plugins\imageformats\qico.dll"
 setOutPath $INSTDIR\translations\fr
 file "${EXE_SRC_DIR}\translations\fr\beeftext_fr.qm"
 file "${EXE_SRC_DIR}\translations\fr\qtbase_fr.qm"
