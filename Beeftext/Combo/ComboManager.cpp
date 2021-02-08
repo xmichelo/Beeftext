@@ -85,14 +85,14 @@ ComboManager::ComboManager()
       &ComboManager::onSubstitutionTriggerShortcut, Qt::QueuedConnection);
    QString errMsg;
 
-   if (!QFileInfo(QDir(PreferencesManager::instance().comboListFolderPath())
+   if (QFileInfo(QDir(PreferencesManager::instance().comboListFolderPath())
       .absoluteFilePath(ComboList::defaultFileName)).exists()) // we avoid displaying an error on first launch
    {
-      comboList_.ensureCorrectGrouping();
-      return;
+      if (!this->loadComboListFromFile(&errMsg))
+         QMessageBox::critical(nullptr, tr("Error"), errMsg);
    }
-   if (!this->loadComboListFromFile(&errMsg))
-      QMessageBox::critical(nullptr, tr("Error"), errMsg);
+   else
+      comboList_.ensureCorrectGrouping();
    this->loadSoundFromPreferences();
 }
 
