@@ -68,17 +68,23 @@
     <QtModules>core;gui;network;widgets</QtModules>
     <QtInstall>Qt 6.0.1</QtInstall>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="QtSettings">
     <QtModules>core;gui;network;widgets</QtModules>
     <QtInstall>Qt 6.0.1</QtInstall>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'" Label="QtSettings">
     <QtModules>core;gui;network;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtInstall>Qt 6.0.1</QtInstall>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
