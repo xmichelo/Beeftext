@@ -175,12 +175,6 @@ QGroupBox::title {
 /*****************************
 * QTabWidget
 *****************************/
-QTabWidget:pane {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
 QTabWidget::tab-bar {
   subcontrol-position: top left;
 
