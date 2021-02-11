@@ -79,8 +79,8 @@ public: // member functions
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
    void setComboTriggerShortcut(SpShortcut const& shortcut); ///< Set the combo trigger shortcut
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
-   void setDefaultMatchingMode(EMatchingMode mode); ///< Set the value for the 'Default matching mode' preference.
-   EMatchingMode defaultMatchingMode(); ///< Get the value for the 'Default matching mode' preference.
+   void setDefaultMatchingMode(EMatchingMode mode) const; ///< Set the value for the 'Default matching mode' preference.
+   EMatchingMode defaultMatchingMode() const; ///< Get the value for the 'Default matching mode' preference.
    void setAutoBackup(bool value) const; ///< Set the value for the 'Auto backup' preference
    bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
    void setUseCustomBackupLocation(bool value) const; ///< Set the value for the 'Use custom backup location' preference.
