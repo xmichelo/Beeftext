@@ -43,6 +43,7 @@ QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; /
 QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
 QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
 QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+QString const kKeyDefaultMatchingMode = "DefaultMatchingMode"; ///< The setting key for the default matching mode.
 QString const kKeyCustomBackupLocation = "CustomBackupLocation"; ///< The settings key for the 'Custom backup location' preference.
 QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for the 'Custom sound path' preference.
 QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
@@ -83,6 +84,7 @@ bool const kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeft
 bool const kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
 SpShortcut const kDefaultComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
+EMatchingMode kDefaultMatchingMode = EMatchingMode::Strict; ///< The default value for the 'Default matching mode preference'.
 qint32 const kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 QString const kDefaultEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
@@ -1126,6 +1128,33 @@ void PreferencesManager::setComboPickerEnabled(bool value)
 SpShortcut PreferencesManager::comboTriggerShortcut() const
 {
    return cachedComboTriggerShortcut_;
+}
+
+
+//**********************************************************************************************************************
+//\ param[in] mode The default matching mode
+//**********************************************************************************************************************
+void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode) const
+{
+   return settings_->setValue(kKeyDefaultMatchingMode, static_cast<qint32>(mode));
+}
+
+
+//**********************************************************************************************************************
+/// \return The default matching mode.
+//**********************************************************************************************************************
+EMatchingMode PreferencesManager::defaultMatchingMode() const
+{
+   EMatchingMode const mode = static_cast<EMatchingMode>(this->readSettings<qint32>(kKeyDefaultMatchingMode, 
+      static_cast<qint32>(EMatchingMode::Strict)));
+   switch (mode)
+   {
+   case EMatchingMode::Strict:
+   case EMatchingMode::Loose:
+      return mode;
+   default:
+      return EMatchingMode::Strict;
+   }
 }
 
 

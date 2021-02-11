@@ -150,6 +150,9 @@
     <ClCompile Include="WaveSound.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\MatchingMode.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -231,6 +234,9 @@
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo\MatchingMode.h">
+      <Filter>Combo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
