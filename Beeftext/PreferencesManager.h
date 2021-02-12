@@ -79,7 +79,7 @@ public: // member functions
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
    void setComboTriggerShortcut(SpShortcut const& shortcut); ///< Set the combo trigger shortcut
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
-   void setDefaultMatchingMode(EMatchingMode mode) const; ///< Set the value for the 'Default matching mode' preference.
+   void setDefaultMatchingMode(EMatchingMode mode); ///< Set the value for the 'Default matching mode' preference.
    EMatchingMode defaultMatchingMode() const; ///< Get the value for the 'Default matching mode' preference.
    void setAutoBackup(bool value) const; ///< Set the value for the 'Auto backup' preference
    bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
@@ -132,6 +132,7 @@ private: // member functions
    PreferencesManager(); ///< Default constructor
    SpShortcut readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey, 
    QString const& scanCodeRegKey) const; ///< Read a shortcut from the preferences.
+   EMatchingMode readDefaultMatchingModeFromPreferences() const; ///< Get the value for the 'Default matching mode' preference.
 
    void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
    void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
@@ -152,6 +153,7 @@ private: // data members
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
    bool cachedComboPickerEnabled_ { true }; ///< Cached value for the 'Combo picker enabled' preference.
    SpShortcut cachedComboPickerShortcut_; ///< Cached value for the 'combo picker shortcut' preference
+   EMatchingMode cachedDefaultMatchingMode_ { EMatchingMode::Strict }; ///< Cached value for the 'Default matching mode' preference.
    bool cachedEnableAppEnableDisableShortcut_ { true }; ///< Cached value for the 'app enable/disable shortcut' preference.
    SpShortcut cachedAppEnableDisableShortcut_; ///< Cached value for the 'app enable/disable shortcut' preference.
    bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference

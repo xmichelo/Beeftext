@@ -84,7 +84,7 @@ bool const kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeft
 bool const kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
 SpShortcut const kDefaultComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
-EMatchingMode kDefaultMatchingMode = EMatchingMode::Strict; ///< The default value for the 'Default matching mode preference'.
+EMatchingMode kDefaultDefaultMatchingMode = EMatchingMode::Strict; ///< The default value for the 'Default matching mode preference'.
 qint32 const kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 QString const kDefaultEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
@@ -173,6 +173,7 @@ void PreferencesManager::init()
    this->cacheComboTriggerShortcut();
    cachedComboPickerEnabled_ = this->readSettings<bool>(kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
    this->cacheComboPickerShortcut();
+   cachedDefaultMatchingMode_ = this->readDefaultMatchingModeFromPreferences();
    cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kKeyEmojiShortcodesEnabled,
       kDefaultEmojiShortcodesEnabled);
    cachedEnableAppEnableDisableShortcut_ = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
@@ -201,6 +202,7 @@ void PreferencesManager::reset()
    this->setComboPickerEnabled(kDefaultComboPickerEnabled);
    this->setComboPickerShortcut(defaultComboPickerShortcut());
    this->setComboTriggerShortcut(kDefaultComboTriggerShortcut);
+   this->setDefaultMatchingMode(kDefaultDefaultMatchingMode);
    this->setCustomBackupLocation(globals::defaultBackupFolderPath());
    this->setCustomSoundPath(QString());
    this->setDelayBetweenKeystrokesMs(kDefaultDelayBetweenKeystrokesMs);
@@ -350,6 +352,8 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
       qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0));
    object[kKeyComboTriggerShortcutScanCode] = 
       qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0));
+   object[kKeyDefaultMatchingMode] = qint32(this->readSettings<qint32>(kKeyDefaultMatchingMode,
+      static_cast<qint32>(kDefaultDefaultMatchingMode)));
    object[kKeyCustomBackupLocation] = this->readSettings<QString>(kKeyCustomBackupLocation, 
       globals::defaultBackupFolderPath());
    object[kKeyCustomSoundPath] = this->readSettings<QString>(kKeyCustomSoundPath, QString());
@@ -413,6 +417,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
    settings_->setValue(kKeyComboTriggerShortcutModifiers, objectValue<quint32>(object, 
       kKeyComboTriggerShortcutModifiers));
    settings_->setValue(kKeyComboTriggerShortcutScanCode, objectValue<quint32>(object, kKeyComboTriggerShortcutScanCode));
+   settings_->setValue(kKeyDefaultMatchingMode, objectValue<qint32>(object, kKeyDefaultMatchingMode));
    settings_->setValue(kKeyCustomSoundPath, objectValue<QString>(object, kKeyCustomSoundPath));
    this->setCustomBackupLocation(objectValue<QString>(object, kKeyCustomBackupLocation)); // we call the function because it has side effects
    settings_->setValue(kKeyDelayBetweenKeystrokes, objectValue<qint32>(object, kKeyDelayBetweenKeystrokes));
@@ -1134,8 +1139,9 @@ SpShortcut PreferencesManager::comboTriggerShortcut() const
 //**********************************************************************************************************************
 //\ param[in] mode The default matching mode
 //**********************************************************************************************************************
-void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode) const
+void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode)
 {
+   cachedDefaultMatchingMode_ = mode;
    return settings_->setValue(kKeyDefaultMatchingMode, static_cast<qint32>(mode));
 }
 
@@ -1145,16 +1151,7 @@ void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode) const
 //**********************************************************************************************************************
 EMatchingMode PreferencesManager::defaultMatchingMode() const
 {
-   EMatchingMode const mode = static_cast<EMatchingMode>(this->readSettings<qint32>(kKeyDefaultMatchingMode, 
-      static_cast<qint32>(EMatchingMode::Strict)));
-   switch (mode)
-   {
-   case EMatchingMode::Strict:
-   case EMatchingMode::Loose:
-      return mode;
-   default:
-      return EMatchingMode::Strict;
-   }
+   return cachedDefaultMatchingMode_;
 }
 
 
@@ -1193,6 +1190,24 @@ SpShortcut PreferencesManager::readShortcutFromPreferences(QString const& modReg
       return nullptr;
    SpShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
    return result->isValid() ? result : nullptr;
+}
+
+
+//**********************************************************************************************************************
+/// \return The default matching mode read from the preferences
+//**********************************************************************************************************************
+EMatchingMode PreferencesManager::readDefaultMatchingModeFromPreferences() const
+{
+   EMatchingMode const mode = static_cast<EMatchingMode>(this->readSettings<qint32>(kKeyDefaultMatchingMode,
+      static_cast<qint32>(EMatchingMode::Strict)));
+   switch (mode)
+   {
+   case EMatchingMode::Strict:
+   case EMatchingMode::Loose:
+      return mode;
+   default:
+      return EMatchingMode::Strict;
+   }
 }
 
 

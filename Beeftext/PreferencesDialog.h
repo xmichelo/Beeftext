@@ -53,6 +53,7 @@ private slots:
    void onResetAppEnableDisableShortcut() const; ///< Slot for the button Default of the app enable/disable shortcut.
    void onChangeComboTriggerShortcut() const; ///< Slot for the 'Change shortcut' action
    void onResetComboTriggerShortcut() const; ///< Slot for the 'Reset combo trigger shortcut'
+   void onChangeDefaultMatchingMode() const; ///< Slot for the 'Default matching mode' combo value change.
    void onCheckEnableComboPicker(bool checked) const; ///< Slot for the 'Enable combo picker' checkbox.
    void onChangeComboPickerShortcut() const; ///< Slot for the combo picker 'Change' button.
    void onResetComboPickerShortcut() const; ///< Slot for the combo picker 'Reset' button.

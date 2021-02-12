@@ -71,7 +71,6 @@ QString emojiFilePath()
 {
    QString const fileName = "emojis.json";
    QDir const appDir(qApp->applicationDirPath());
-   qDebug() << QString("appDir: %1").arg(appDir.absolutePath());
    QString filePath = appDir.absoluteFilePath("emojis/" + fileName);
    if (QFile(filePath).exists())
       return filePath;

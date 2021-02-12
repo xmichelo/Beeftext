@@ -18,7 +18,12 @@ namespace {
 
 
 //**********************************************************************************************************************
-/// \brief Internal version of the matching mode
+/// \brief Internal version of the matching mode.
+///
+/// \param[in] mode The matching mode.
+/// \param[in] resolveDefault If the mode is 'Defaut', should we retrieve the name of the default mode and include
+/// it in the description.
+/// \return A string describing the matching mode.
 //**********************************************************************************************************************
 QString matchingModeToStringInternal(EMatchingMode mode, bool resolveDefault)
 {
@@ -46,7 +51,8 @@ QString matchingModeToStringInternal(EMatchingMode mode, bool resolveDefault)
 
 
 //**********************************************************************************************************************
-//
+/// \param[in] mode The matching mode.
+/// \return A string describing the matching mode.
 //**********************************************************************************************************************
 QString matchingModeToString(EMatchingMode mode)
 {
@@ -60,6 +66,7 @@ QString matchingModeToString(EMatchingMode mode)
 //**********************************************************************************************************************
 void fillMatchingModeCombo(QComboBox& combo, bool includeDefault)
 {
+   QSignalBlocker blocker(&combo);
    combo.clear();
    qint32 const startIndex = includeDefault ? 0 : 1;
    for (qint32 i = startIndex; i < static_cast<qint32>(EMatchingMode::Count); ++i)
@@ -88,5 +95,28 @@ EMatchingMode selectedMatchingModeInCombo(QComboBox const& combo)
       Q_ASSERT(false);
       globals::debugLog().addWarning(e.qwhat());
       return EMatchingMode::Default;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] combo The combo box.
+/// \param[in] mode The matching mode.
+/// \param[in] blockSignals Should the signals be block for the combo before selecting.
+//**********************************************************************************************************************
+void selectMatchingModeInCombo(QComboBox& combo, EMatchingMode mode, bool blockSignals)
+{
+   std::unique_ptr<QSignalBlocker> blocker;
+   if (blockSignals)
+      blocker = std::make_unique<QSignalBlocker>(&combo);
+   for (quint32 i = 0; i < combo.count(); ++i)
+   {
+      bool ok = false;
+      qint32 const intValue = combo.itemData(i).toInt(&ok);
+      if ((ok) && (mode == static_cast<EMatchingMode>(combo.itemData(i).toInt())))
+      {
+         combo.setCurrentIndex(i);
+         return;
+      }
    }
 }

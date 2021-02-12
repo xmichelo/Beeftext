@@ -12,6 +12,7 @@
 #include "ShortcutDialog.h"
 #include "Theme.h"
 #include "I18nManager.h"
+#include "Combo/MatchingMode.h"
 #include "Combo/ComboManager.h"
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
@@ -46,9 +47,11 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    this->updateCheckStatusTimer_.setSingleShot(true);
    connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
    ui_.labelUpdateCheckStatus->setText(QString());
-   ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(), 
+   ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(),
       PreferencesManager::maxDelayBetweenKeystrokesMs());
+   fillMatchingModeCombo(*ui_.comboMatchingMode, false);
    I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
+
    this->loadPreferences();
    if (isInPortableMode())
    {
@@ -103,6 +106,7 @@ void PreferencesDialog::loadPreferences() const
    shortcut = prefs_.comboPickerShortcut();
    ui_.editComboPickerShortcut->setText(shortcut ? shortcut->toString() : "");
    blocker = QSignalBlocker(ui_.checkEnableEmoji);
+   selectMatchingModeInCombo(*ui_.comboMatchingMode, prefs_.defaultMatchingMode(), true);
    ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
    blocker = QSignalBlocker(ui_.editEmojiLeftDelimiter);
    ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
@@ -417,6 +421,15 @@ void PreferencesDialog::onResetComboTriggerShortcut() const
    SpShortcut const shortcut = PreferencesManager::defaultComboTriggerShortcut();
    prefs_.setComboTriggerShortcut(shortcut);
    ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");   
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeDefaultMatchingMode() const
+{
+   prefs_.setDefaultMatchingMode(selectedMatchingModeInCombo(*ui_.comboMatchingMode));
 }
 
 
