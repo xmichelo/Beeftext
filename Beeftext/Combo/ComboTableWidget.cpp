@@ -83,10 +83,6 @@ QMenu* ComboTableWidget::menu(QWidget* parent) const
    menu->addAction(ui_.actionDeleteCombo);
    QMenu* moveToMenu = ComboManager::instance().groupListRef().createMenu(moveMenuTitle(), std::set<SpGroup>(), menu);
    menu->addMenu(moveToMenu);
-   QMenu* matchingModeMenu = new QMenu(tr("Matching Mode"), menu);
-   matchingModeMenu->addAction(ui_.actionMatchingModeStrict);
-   matchingModeMenu->addAction(ui_.actionMatchingModeLoose);
-   menu->addMenu(matchingModeMenu);
    menu->addSeparator();
    menu->addAction(ui_.actionCopySnippet);
    menu->addSeparator();
@@ -99,7 +95,6 @@ QMenu* ComboTableWidget::menu(QWidget* parent) const
    menu->addAction(ui_.actionExportCombo);
    menu->addAction(ui_.actionExportAllCombos);
    menu->setProperty(kPropMoveToMenu, QVariant::fromValue(moveToMenu));
-   menu->setProperty(kPropMatchingModeMenu, QVariant::fromValue(matchingModeMenu));
    connect(menu, &QMenu::aboutToShow, this, &ComboTableWidget::onContextMenuAboutToShow);
    connect(moveToMenu, &QMenu::triggered, this, &ComboTableWidget::onMoveToGroupMenuTriggered);
    connect(moveToMenu, &QMenu::aboutToShow, this, &ComboTableWidget::onMoveToGroupMenuAboutToShow);
@@ -351,51 +346,6 @@ std::set<SpGroup> ComboTableWidget::groupsOfSelectedCombos() const
 
 
 //**********************************************************************************************************************
-/// \param[in] looseMatching Should the combo use loose matching.
-//**********************************************************************************************************************
-void ComboTableWidget::changeMatchingModeOfSelectedCombos(bool const looseMatching)
-{
-   try
-   {
-      QList<SpCombo> const combos = this->getSelectedCombos();
-      for (SpCombo const& combo: combos)
-         if (combo)
-            combo->setUseLooseMatching(looseMatching);
-      this->updateGui();
-      QString errorMessage;
-      if (!ComboManager::instance().saveComboListToFile(&errorMessage))
-         throw xmilib::Exception(errorMessage);
-   }
-   catch (xmilib::Exception const& e)
-   {
-      QMessageBox::critical(this, tr("Error"), e.qwhat());
-   }
-}
-
-
-//**********************************************************************************************************************
-/// \param[out] outUseLooseMatching if not null and if the function return true, this variable is true if all
-/// combo use loose matching, false is they all use strict matching. If the function returns false, the content of
-/// this variable is undetermined
-/// \return true if and only if all selected combo have the same matching mode
-/// \return false if there is not selected combo
-//**********************************************************************************************************************
-bool ComboTableWidget::doSelectedCombosHaveSameMathchingMode(bool* outUseLooseMatching) const
-{
-   QList<SpCombo> const combos = this->getSelectedCombos();
-   if (combos.isEmpty())
-      return false;
-   bool const useLooseMatching = combos.front()->useLooseMatching();
-   for (auto it = combos.begin() + 1; it != combos.end(); ++it)
-      if (useLooseMatching != (*it)->useLooseMatching())
-         return false;
-   if (outUseLooseMatching)
-      *outUseLooseMatching = useLooseMatching;
-   return true;
-}
-
-
-//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void ComboTableWidget::updateGui() const
@@ -404,8 +354,6 @@ void ComboTableWidget::updateGui() const
    bool const listIsEmpty = (ComboManager::instance().comboListRef().size() == 0);
    bool const hasOneSelected = (1 == selectedCount);
    bool const hasOneOrMoreSelected = (selectedCount > 0);
-   bool allComboUseLooseMatching = false;
-   bool const combosHaveSameMatchingMode = this->doSelectedCombosHaveSameMathchingMode(&allComboUseLooseMatching);
    ui_.actionDuplicateCombo->setEnabled(hasOneSelected);
    ui_.actionDeleteCombo->setEnabled(hasOneOrMoreSelected);
    ui_.actionEditCombo->setEnabled(hasOneSelected);
@@ -413,10 +361,6 @@ void ComboTableWidget::updateGui() const
    ui_.actionEnableDisableCombo->setEnabled(hasOneSelected);
    ui_.actionExportCombo->setEnabled(hasOneOrMoreSelected);
    ui_.actionExportAllCombos->setEnabled(!listIsEmpty);
-   ui_.actionMatchingModeStrict->setEnabled(hasOneOrMoreSelected && ((!combosHaveSameMatchingMode) ||
-      (allComboUseLooseMatching)));
-   ui_.actionMatchingModeLoose->setEnabled(hasOneOrMoreSelected && ((!combosHaveSameMatchingMode) ||
-      (!allComboUseLooseMatching)));
    QString enableDisableText = tr("Ena&ble");
    QString enableDisableToolTip = tr("Enable combo");
    QString enableDisableIconText = tr("Enable the combo");
@@ -709,24 +653,6 @@ void ComboTableWidget::onActionImportCombos()
 {
    this->runComboImportDialog();
    this->resizeColumnsToContents();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboTableWidget::onActionMatchingModeStrict()
-{
-   this->changeMatchingModeOfSelectedCombos(false);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboTableWidget::onActionMatchingModeLoose()
-{
-   this->changeMatchingModeOfSelectedCombos(true);
 }
 
 

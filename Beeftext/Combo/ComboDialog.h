@@ -34,8 +34,6 @@ public: // member functions
 
 private: // member functions
    bool checkAndReportInvalidCombo(); ///< Check the keyword against existing combos and report conflicts
-   void setMatchingComboValue(bool useLooseMatching) const; ///< Set the 'Matching' combo value
-   bool matchingComboValue() const; ///<  Read the matching mode from the 'Matching' combo value
 
 private slots:
    void onActionOk(); ///< Slot for the 'OK' action

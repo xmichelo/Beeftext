@@ -12,6 +12,7 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "BeeftextUtils.h"
+#include "PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <utility>
@@ -27,7 +28,8 @@ QString const kPropComboText = "comboText"; ///< The JSON property for the "comb
 QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
 QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
 QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
-QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option
+QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option. This option is deprecated since combo list file format v9, replaced by matching mode.
+QString const kPropMatchingMode = "matchingMode"; ///< The JSON property for the 'matching mode' of the combo. This option was introduced in combo list file format v9.
 QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
 QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
 QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
@@ -46,16 +48,15 @@ QString const kPropUseHtml = "useHtml";
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
-/// \param[in] useLooseMatching Should the combo use loose matching
+/// \param[in] matchingMode The matching mode
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString name, QString keyword, QString snippet, bool const useLooseMatching, 
-   bool const enabled)
+Combo::Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, bool const enabled)
    : uuid_(QUuid::createUuid())
    , name_(std::move(name))
    , keyword_(std::move(keyword))
    , snippet_(std::move(snippet))
-   , useLooseMatching_(useLooseMatching)
+   , matchingMode_(matchingMode)
    , enabled_(enabled)
 
 {
@@ -74,7 +75,6 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
    , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
-   , useLooseMatching_(object[kPropUseLooseMatching].toBool(false))
    , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
          kPropCreated].toString(), constants::kJsonExportDateFormat))
    , modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
@@ -93,6 +93,15 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
       else
          globals::debugLog().addWarning("While parsing combo file, a combo with an invalid group was found.");
    }
+
+   if (formatVersion < 9)
+   {
+      if (object.contains(kPropUseLooseMatching))
+         matchingMode_ = object[kPropUseLooseMatching].toBool(false) ? EMatchingMode::Loose : EMatchingMode::Default;
+   }
+   else
+         matchingMode_ = static_cast<EMatchingMode>(qBound<qint32>(0, object[kPropMatchingMode].toInt(
+         qint32(EMatchingMode::Strict)), static_cast<qint32>(EMatchingMode::Count) - 1));
 
    // because we parse a older format version, we update the modification date, as the combo manager will save 
    // the file to update it to the latest format
@@ -187,22 +196,26 @@ void Combo::setSnippet(QString const& snippet)
 
 
 //**********************************************************************************************************************
-/// \return true if and only if the combo uses loose matching
+/// \param[in] resolveDefault If the value is default, should the function return the actual default matching mode for
+/// the application.
+/// \return The matching mode of the combo.
 //**********************************************************************************************************************
-bool Combo::useLooseMatching() const
+EMatchingMode Combo::matchingMode(bool resolveDefault) const
 {
-   return useLooseMatching_;
+   if ((EMatchingMode::Default == matchingMode_) && resolveDefault)
+      return PreferencesManager::instance().defaultMatchingMode();
+   return matchingMode_;
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] useLooseMatching Should the combo use loose matching
+/// \param[in] mode The matching mode.
 //**********************************************************************************************************************
-void Combo::setUseLooseMatching(bool useLooseMatching)
+void Combo::setMatchingMode(EMatchingMode mode)
 {
-   if (useLooseMatching_ != useLooseMatching)
+   if (matchingMode_ != mode)
    {
-      useLooseMatching_ = useLooseMatching;
+      matchingMode_ = mode;
       this->touch();
    }
 }
@@ -292,7 +305,7 @@ bool Combo::isEnabled() const
 //**********************************************************************************************************************
 bool Combo::isUsable() const
 {
-   return enabled_ & ((!group()) || group_->enabled());
+   return enabled_ && ((!group()) || group_->enabled());
 }
 
 
@@ -302,7 +315,7 @@ bool Combo::isUsable() const
 //**********************************************************************************************************************
 bool Combo::matchesForInput(QString const& input) const
 {
-   return useLooseMatching_ ? input.endsWith(keyword_) : (input == keyword_);
+   return (this->matchingMode(true) == EMatchingMode::Loose) ? input.endsWith(keyword_) : (input == keyword_);
 }
 
 
@@ -318,7 +331,7 @@ bool Combo::performSubstitution()
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
    if (!cancelled)
    {
-      performTextSubstitution(keyword_.size(), newText, cursorLeftShift, ETriggerSource::Keyword);
+      performTextSubstitution(qint32(keyword_.size()), newText, cursorLeftShift, ETriggerSource::Keyword);
       lastUseDateTime_ = QDateTime::currentDateTime();
    }
    return !cancelled;
@@ -355,7 +368,7 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropName, name_);
    result.insert(kPropKeyword, keyword_);
    result.insert(kPropSnippet, snippet_);
-   result.insert(kPropUseLooseMatching, useLooseMatching_);
+   result.insert(kPropMatchingMode, qint32(matchingMode_));
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
@@ -375,17 +388,17 @@ void Combo::changeUuid()
 
 
 //**********************************************************************************************************************
-/// \param[in] name The display name of the combo
-/// \param[in] keyword The keyword
-/// \param[in] snippet The text that will replace the combo
-/// \param[in] useLooseMatching Does the combo use loose matching
-/// \param[in] enabled Is the combo enabled
-/// \return A shared pointer to the created Combo
+/// \param[in] name The display name of the combo.
+/// \param[in] keyword The keyword.
+/// \param[in] snippet The text that will replace the combo.
+/// \param[in] matchingMode The matching mode.
+/// \param[in] enabled Is the combo enabled.
+/// \return A shared pointer to the created Combo.
 //**********************************************************************************************************************
-SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, bool useLooseMatching, 
+SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, EMatchingMode matchingMode, 
    bool enabled)
 {
-   return std::make_shared<Combo>(name, keyword, snippet, useLooseMatching, enabled);
+   return std::make_shared<Combo>(name, keyword, snippet, matchingMode, enabled);
 }
 
 
@@ -415,7 +428,7 @@ SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.useLooseMatching(), 
+   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.matchingMode(false), 
       combo.isEnabled());
    result->setGroup(combo.group());
    return result;
@@ -458,7 +471,7 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
          return result += remainingText;
 
       QString variable = match.captured(1);
-      qint32 const pos = match.capturedStart(0);
+      qint32 const pos = qint32(match.capturedStart(0));
       if (pos > 0)
          result += remainingText.left(pos);
       remainingText = remainingText.right(remainingText.size() - pos - match.capturedLength(0));
@@ -491,15 +504,15 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
    if (!outCursorPos)
       return result.remove(cursorVariable);
 
-   qint32 const index = result.lastIndexOf(cursorVariable);
+   qint32 const index = qint32(result.lastIndexOf(cursorVariable));
    if (index < 0)
    {
       *outCursorPos = -1;
       return result;
    }
 
-   qint32 const lShift = result.length() - (index + cursorVariable.length());
+   qint32 const lShift = qint32(result.length()) - (index + qint32(cursorVariable.length()));
    result.remove(cursorVariable);
-   *outCursorPos = result.length() - lShift;
+   *outCursorPos = qint32(result.length()) - lShift;
    return result;
 }

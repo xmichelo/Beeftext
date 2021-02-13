@@ -60,16 +60,9 @@
        </item>
        <item>
         <widget class="QComboBox" name="comboMatching">
-         <item>
-          <property name="text">
-           <string>Strict</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Loose</string>
-          </property>
-         </item>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
+         </property>
         </widget>
        </item>
       </layout>

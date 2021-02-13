@@ -109,11 +109,11 @@ void selectMatchingModeInCombo(QComboBox& combo, EMatchingMode mode, bool blockS
    std::unique_ptr<QSignalBlocker> blocker;
    if (blockSignals)
       blocker = std::make_unique<QSignalBlocker>(&combo);
-   for (quint32 i = 0; i < combo.count(); ++i)
+   for (qint32 i = 0; i < combo.count(); ++i)
    {
       bool ok = false;
       qint32 const intValue = combo.itemData(i).toInt(&ok);
-      if ((ok) && (mode == static_cast<EMatchingMode>(combo.itemData(i).toInt())))
+      if ((ok) && (mode == static_cast<EMatchingMode>(intValue)))
       {
          combo.setCurrentIndex(i);
          return;

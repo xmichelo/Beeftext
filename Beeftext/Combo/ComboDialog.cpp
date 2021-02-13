@@ -11,6 +11,7 @@
 #include "../Group/GroupDialog.h"
 #include "ComboDialog.h"
 #include "ComboManager.h"
+#include "MatchingMode.h"
 #include <XMiLib/Exception.h>
 #include <XMiLib/XMiLibConstants.h>
 #include "PreferencesManager.h"
@@ -91,7 +92,8 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.editName->setText(combo->name());
    ui_.comboGroup->setContent(ComboManager::instance().groupListRef());
    ui_.comboGroup->setCurrentGroup(combo_->group());
-   this->setMatchingComboValue(combo->useLooseMatching());
+   fillMatchingModeCombo(*ui_.comboMatching, true);
+   selectMatchingModeInCombo(*ui_.comboMatching, combo->matchingMode(false), true);
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
    ui_.comboEditor->plainTextEdit()->setPlainText(combo->snippet());
@@ -137,9 +139,9 @@ bool ComboDialog::checkAndReportInvalidCombo()
    // we check for conflicts that would make some combo 'unreachable'
    if (newKeyword.isEmpty()) // We do not check for conflicts if the user validated an empty keyword.
       return true;
-   qint32 const conflictCount = std::count_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) -> bool 
-   { return (existing != combo_) && (existing->keyword().startsWith(newKeyword) || 
-      newKeyword.startsWith(existing->keyword())); });
+   qint32 const conflictCount = qint32(std::count_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) 
+      -> bool  { return (existing != combo_) && (existing->keyword().startsWith(newKeyword) || 
+      newKeyword.startsWith(existing->keyword())); }));
    if (!conflictCount)
       return true;
    QString const singleConflictStr = tr("An existing combo is creating a conflict with this combo.");
@@ -150,25 +152,6 @@ bool ComboDialog::checkAndReportInvalidCombo()
       .arg(conflictCount > 1 ? multipleConflictStr : singleConflictStr), QMessageBox::Yes | QMessageBox::No, 
       QMessageBox::No);
 }
-
-
-//**********************************************************************************************************************
-/// \param[in] useLooseMatching true if the combo uses loose matching
-//**********************************************************************************************************************
-void ComboDialog::setMatchingComboValue(bool const useLooseMatching) const
-{
-   ui_.comboMatching->setCurrentIndex(useLooseMatching ? 1 : 0);
-}
-
-
-//**********************************************************************************************************************
-/// \return true if the 'Loose' item is selected
-//**********************************************************************************************************************
-bool ComboDialog::matchingComboValue() const
-{
-   return 1 == ui_.comboMatching->currentIndex();
-}
-
 
 //**********************************************************************************************************************
 // 
@@ -191,7 +174,7 @@ void ComboDialog::onActionOk()
          return;
    combo_->setName(ui_.editName->text().trimmed());
    combo_->setGroup(ui_.comboGroup->currentGroup());
-   combo_->setUseLooseMatching(this->matchingComboValue());
+   combo_->setMatchingMode(selectedMatchingModeInCombo(*ui_.comboMatching));
    combo_->setKeyword(keyword);
    combo_->setSnippet(ui_.comboEditor->plainText());
    this->accept();
