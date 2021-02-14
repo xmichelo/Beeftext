@@ -23,8 +23,9 @@ enum class EMatchingMode: qint32
 };
 
 
-void fillMatchingModeCombo(QComboBox& combo, bool includeDefault); ///< Fill a combo with the matching mode entries
-EMatchingMode selectedMatchingModeInCombo(QComboBox const& combo); ///< Retrieve the value of the selected matching mode in a combo
+QString matchingModeToString(EMatchingMode mode); ///< Retrieve a string describing a matching mode.
+void fillMatchingModeCombo(QComboBox& combo, bool includeDefault); ///< Fill a combo with the matching mode entries.
+EMatchingMode selectedMatchingModeInCombo(QComboBox const& combo); ///< Retrieve the value of the selected matching mode in a combo.
 void selectMatchingModeInCombo(QComboBox& combo, EMatchingMode mode, bool blockSignals); ///< Select a mode in a combo box.
 
 

@@ -36,6 +36,7 @@ QString const kKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\Cu
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
+QString const kKeyDefaultComboTrigger = "DefaultComboTrigger"; ///< The setting key for the 'Default combo trigger' preference.
 QString const kKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
 QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
 QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
@@ -101,6 +102,7 @@ bool const kDefaultUseCustomSound = false; ///< The default value for the 'Use c
 bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
 bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
 bool const kDefaultWarnAboutEmptyComboKeyword = true; ///< The default value for the 'Warn about empty combo keyword' preference
+EComboTrigger kDefaultDefaultComboTrigger = EComboTrigger::Automatic; ///< The default value for the 'Default combo trigger' preference.
 bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
@@ -852,6 +854,32 @@ QString PreferencesManager::comboListFolderPath() const
 QString PreferencesManager::defaultComboListFolderPath()
 {
    return isInPortableMode() ? globals::portableModeDataFolderPath() : globals::appDataDir();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] trigger The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setDefaultComboTrigger(EComboTrigger trigger) const
+{
+   settings_->setValue(kKeyDefaultComboTrigger, qint32(trigger));
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+EComboTrigger PreferencesManager::defaultComboTrigger() const
+{
+   if (settings_->contains(kKeyDefaultComboTrigger))
+      return EComboTrigger(qBound<qint32>(qint32(EMatchingMode::Default) + 1, 
+         this->readSettings<qint32>(kKeyDefaultComboTrigger), qint32(EComboTrigger::Count) - 1));
+
+   EComboTrigger const trigger = settings_->contains(kKeyUseAutomaticSubstitution) ? 
+      (this->readSettings<bool>(kKeyUseAutomaticSubstitution, kDefaultUseAutomaticSubstitution) ? 
+         EComboTrigger::Automatic: EComboTrigger::Shortcut) : kDefaultDefaultComboTrigger;
+   settings_->setValue(kKeyDefaultComboTrigger, qint32(trigger));
+   return trigger;
 }
 
 

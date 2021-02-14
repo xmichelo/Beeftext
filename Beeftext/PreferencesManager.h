@@ -14,6 +14,7 @@
 #include "Shortcut.h"
 #include "Theme.h"
 #include "Combo/MatchingMode.h"
+#include "Combo/ComboTrigger.h" 
 
 
 //**********************************************************************************************************************
@@ -77,6 +78,8 @@ public: // member functions
    bool setComboListFolderPath(QString const& path) const; ///< Set the path of the folder for saving the combo list
    QString comboListFolderPath() const; ///< Get the path of the folder for saving the combo list
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
+   void setDefaultComboTrigger(EComboTrigger trigger) const; ///< Set the default combo trigger.
+   EComboTrigger defaultComboTrigger() const; ///< Set the default combo trigger.
    void setComboTriggerShortcut(SpShortcut const& shortcut); ///< Set the combo trigger shortcut
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
    void setDefaultMatchingMode(EMatchingMode mode); ///< Set the value for the 'Default matching mode' preference.
