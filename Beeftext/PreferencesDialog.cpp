@@ -12,6 +12,7 @@
 #include "ShortcutDialog.h"
 #include "Theme.h"
 #include "I18nManager.h"
+#include "Combo/ComboTrigger.h"
 #include "Combo/MatchingMode.h"
 #include "Combo/ComboManager.h"
 #include "Backup/BackupManager.h"
@@ -50,6 +51,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(),
       PreferencesManager::maxDelayBetweenKeystrokesMs());
    fillMatchingModeCombo(*ui_.comboMatchingMode, false);
+   fillComboTriggerCombo(*ui_.comboDefaultComboTrigger, false);
    I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
 
    this->loadPreferences();
@@ -94,11 +96,7 @@ void PreferencesDialog::loadPreferences() const
    ui_.CheckAppEnableDisable->setChecked(prefs_.enableAppEnableDisableShortcut());
    ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : "");
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
-   blocker = QSignalBlocker(ui_.radioComboTriggerAuto);
-   if (prefs_.useAutomaticSubstitution())
-      ui_.radioComboTriggerAuto->setChecked(true);
-   else
-      ui_.radioComboTriggerManual->setChecked(true);
+   selectComboTriggerInCombo(*ui_.comboDefaultComboTrigger, prefs_.defaultComboTrigger(), true);
    shortcut = prefs_.comboTriggerShortcut();
    ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
    blocker = QSignalBlocker(ui_.checkEnableComboPicker);
@@ -132,8 +130,8 @@ void PreferencesDialog::loadPreferences() const
    ui_.editCustomSound->setText(QDir::toNativeSeparators(prefs_.customSoundPath()));
    blocker = QSignalBlocker(ui_.checkUseLegacyCopyPaste);
    ui_.checkUseLegacyCopyPaste->setChecked(prefs_.useLegacyCopyPaste());
-   blocker = QSignalBlocker(ui_.checkComboTriggersOnSpace);
-   ui_.checkComboTriggersOnSpace->setChecked(prefs_.comboTriggersOnSpace());
+   blocker = QSignalBlocker(ui_.checkAutomaticTriggerOnSpace);
+   ui_.checkAutomaticTriggerOnSpace->setChecked(prefs_.comboTriggersOnSpace());
    blocker = QSignalBlocker(ui_.checkKeepFinalSpaceCharacter);
    ui_.checkKeepFinalSpaceCharacter->setChecked(prefs_.keepFinalSpaceCharacter());
    blocker = QSignalBlocker(ui_.checkUseCustomPowershellVersion);
@@ -197,12 +195,7 @@ void PreferencesDialog::updateGui() const
 {
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
 
-   QWidgetList widgets = { ui_.editComboTriggerShortcut, ui_.buttonChangeComboTriggerShortcut, 
-      ui_.buttonResetComboTriggerShortcut };
-   for (QWidget* const widget: widgets)
-      widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
-
-   widgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, ui_.editEmojiLeftDelimiter,
+   QWidgetList widgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, ui_.editEmojiLeftDelimiter,
       ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter };
    for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.checkEnableEmoji->isChecked());
@@ -225,10 +218,7 @@ void PreferencesDialog::updateGui() const
    for (QWidget* const widget: widgets)
       widget->setEnabled(useCustomSound);
 
-   bool const comboTriggerAuto = ui_.radioComboTriggerAuto->isChecked();
-   ui_.checkComboTriggersOnSpace->setEnabled(comboTriggerAuto);
-   ui_.checkKeepFinalSpaceCharacter->setEnabled(comboTriggerAuto && ui_.checkComboTriggersOnSpace->isChecked());
-
+   ui_.checkKeepFinalSpaceCharacter->setEnabled(ui_.checkAutomaticTriggerOnSpace->isChecked());
    bool const customPowershell = ui_.checkUseCustomPowershellVersion->isChecked();
    ui_.editCustomPowerShellPath->setEnabled(customPowershell);
    ui_.buttonChangeCustomPowershellVersion->setEnabled(customPowershell);
@@ -323,12 +313,11 @@ void PreferencesDialog::onPlaySoundButton() const
 
 
 //**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked
+//
 //**********************************************************************************************************************
-void PreferencesDialog::onRadioAutomaticComboTrigger(bool checked) const
+void PreferencesDialog::onChangeComboDefaultComboTrigger() const
 {
-   prefs_.setUseAutomaticSubstitution(checked);
-   this->updateGui();
+   prefs_.setDefaultComboTrigger(selectedComboTriggerInCombo(*ui_.comboDefaultComboTrigger));
 }
 
 

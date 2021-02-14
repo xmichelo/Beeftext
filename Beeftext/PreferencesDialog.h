@@ -45,7 +45,7 @@ private slots:
    void onCheckUseCustomSound(bool checked) const; ///< Slot for the 'Use custom sound' checkbox.
    void onChangeCustomSound() const; ///< Slot for the 'Change custom sound' button.
    void onPlaySoundButton() const; ///< Slot for the 'Play' button for custom sound.
-   void onRadioAutomaticComboTrigger(bool checked) const; ///< Slot for the 'Automatic combo trigger' button.
+   void onChangeComboDefaultComboTrigger() const;
    void onCheckComboTriggersOnSpace(bool checked) const; ///< Slot for the 'Combo triggers on space' check box.
    void onCheckKeepFinalSpace(bool checked) const; ///< Slot for the 'Keep final space character' check box.
    void onCheckEnableAppEnableDisableShortcut(bool checked) const; ///< Slot for the 'Enable app enable/disable shortcut' check box.

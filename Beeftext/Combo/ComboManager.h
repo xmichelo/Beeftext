@@ -49,8 +49,8 @@ signals:
 
 private: // member functions
    ComboManager(); ///< Default constructor
-   void checkAndPerformSubstitution(); ///< Check if a combo or emoji substitution is possible and if so performs it
-   bool checkAndPerformComboSubstitution(); ///< check if a combo substitution is possible and if so performs it
+   void checkAndPerformSubstitution(bool fromShortcut); ///< Check if a combo or emoji substitution is possible and if so performs it
+   bool checkAndPerformComboSubstitution(bool fromShortcut); ///< check if a combo substitution is possible and if so performs it
    bool checkAndPerformEmojiSubstitution(); ///< check if an emoji substitution is possible and if so performs it
 
 private slots:

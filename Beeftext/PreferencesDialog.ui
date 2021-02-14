@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>376</height>
+    <height>382</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -219,18 +219,42 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <layout class="QHBoxLayout" name="horizontalLayout_20">
             <item>
-             <widget class="QRadioButton" name="radioComboTriggerAuto">
+             <widget class="QLabel" name="labelDefaultComboTrigger">
               <property name="text">
-               <string>Automatic</string>
+               <string>Default combo trigger</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkComboTriggersOnSpace">
+             <widget class="QComboBox" name="comboDefaultComboTrigger">
+              <property name="sizeAdjustPolicy">
+               <enum>QComboBox::AdjustToContents</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_15">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QCheckBox" name="checkAutomaticTriggerOnSpace">
               <property name="text">
-               <string>Trigger only after spacebar is pressed</string>
+               <string>Automatic trigger works only after spacebar is pressed</string>
               </property>
              </widget>
             </item>
@@ -259,9 +283,9 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_16">
             <item>
-             <widget class="QRadioButton" name="radioComboTriggerManual">
+             <widget class="QLabel" name="labelComboTriggerShortcut">
               <property name="text">
-               <string>Manual, using the shortcut</string>
+               <string>Combo trigger shortcut</string>
               </property>
              </widget>
             </item>
@@ -1078,8 +1102,6 @@
   <tabstop>buttonChangeCustomSound</tabstop>
   <tabstop>buttonPlay</tabstop>
   <tabstop>CheckAppEnableDisable</tabstop>
-  <tabstop>radioComboTriggerAuto</tabstop>
-  <tabstop>radioComboTriggerManual</tabstop>
   <tabstop>editComboTriggerShortcut</tabstop>
   <tabstop>buttonChangeComboTriggerShortcut</tabstop>
   <tabstop>buttonResetComboTriggerShortcut</tabstop>
@@ -1114,7 +1136,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>689</x>
-     <y>345</y>
+     <y>371</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -1145,8 +1167,8 @@
    <slot>onChangeComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>467</x>
-     <y>108</y>
+     <x>442</x>
+     <y>151</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1162,7 +1184,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>246</x>
-     <y>345</y>
+     <y>371</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1193,8 +1215,8 @@
    <slot>onResetComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>548</x>
-     <y>108</y>
+     <x>523</x>
+     <y>151</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1219,30 +1241,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioComboTriggerAuto</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onRadioAutomaticComboTrigger(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>101</x>
-     <y>81</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>358</x>
-     <y>254</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>buttonResetWarnings</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
    <slot>onResetWarnings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>336</x>
-     <y>345</y>
+     <x>341</x>
+     <y>371</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -1305,8 +1311,8 @@
    <slot>onCheckEnableComboPicker(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>182</x>
-     <y>248</y>
+     <x>203</x>
+     <y>278</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1322,7 +1328,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>362</x>
-     <y>279</y>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1338,7 +1344,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>443</x>
-     <y>279</y>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1658,7 +1664,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>84</x>
-     <y>345</y>
+     <y>371</y>
     </hint>
     <hint type="destinationlabel">
      <x>48</x>
@@ -1674,7 +1680,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>165</x>
-     <y>345</y>
+     <y>371</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -1731,30 +1737,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>checkComboTriggersOnSpace</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckComboTriggersOnSpace(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>331</x>
-     <y>89</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>699</x>
-     <y>230</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>checkKeepFinalSpaceCharacter</sender>
    <signal>toggled(bool)</signal>
    <receiver>PreferencesDialog</receiver>
    <slot>onCheckKeepFinalSpace(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>381</x>
-     <y>71</y>
+     <x>524</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
      <x>698</x>
@@ -1817,12 +1807,44 @@
    <slot>onChangeDefaultMatchingMode()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>201</x>
-     <y>180</y>
+     <x>230</x>
+     <y>216</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
      <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkAutomaticTriggerOnSpace</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckComboTriggersOnSpace(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>109</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>105</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboDefaultComboTrigger</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeComboDefaultComboTrigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>67</y>
     </hint>
    </hints>
   </connection>
@@ -1881,5 +1903,6 @@
   <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
   <slot>onComboThemeValueChanged(int)</slot>
   <slot>onChangeDefaultMatchingMode()</slot>
+  <slot>onChangeComboDefaultComboTrigger()</slot>
  </slots>
 </ui>

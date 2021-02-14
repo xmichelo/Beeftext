@@ -65,8 +65,6 @@ public: // member functions
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
    void setUseCustomTheme(bool value); ///< Set the value for the 'Use custom theme' preference
    bool useCustomTheme() const; ///< Get the value for the 'Use custom theme' preference
-   void setUseAutomaticSubstitution(bool value); ///< Set the value for the 'Use automatic substitution' preference
-   bool useAutomaticSubstitution() const; ///< Get the value for the 'Use automatic substitution' preference
    void setComboTriggersOnSpace(bool value); ///< Set the value for the 'Combo triggers on space' preference.
    bool comboTriggersOnSpace() const; ///< Set the value for the 'Combo triggers on space' preference.
    void setKeepFinalSpaceCharacter(bool value); ///< Set the value for the 'Keep final space character' preference.
@@ -150,7 +148,7 @@ private: // member functions
    
 private: // data members
    std::unique_ptr<QSettings> settings_ { nullptr }; ///< The Qt settings instance
-   bool cachedUseAutomaticSubstitution_ { true }; ///< Cached value for the 'use automatic substitution' preference value
+   EComboTrigger cachedDefaultComboTrigger_ { EComboTrigger::Automatic }; ///< Cached value for the 'Default combo trigger' preference.
    bool cachedComboTriggersOnSpace_{ false }; ///< Cached vaue for the 'combo trigger on space' preference.
    bool cachedKeepFinalSpaceCharacter_{ false }; ///< Cached vaue for the 'keep final space character' preference.
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference

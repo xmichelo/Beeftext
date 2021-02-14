@@ -193,78 +193,78 @@ QString htmlToPlainText(QString const& snippet)
 void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos,
    ETriggerSource source)
 {
-   InputManager& inputManager = InputManager::instance();
-   PreferencesManager const& prefs = PreferencesManager::instance();
-   bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
-   // we disable the hook to prevent endless recursive substitution
+   //InputManager& inputManager = InputManager::instance();
+   //PreferencesManager const& prefs = PreferencesManager::instance();
+   //bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
+   //// we disable the hook to prevent endless recursive substitution
 
-   try
-   {
-      // we erase the combo
-      bool const triggeredByPicker = (ETriggerSource::ComboPicker == source);
-      bool const triggersOnSpace = prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace();
-      QString text = newText + (triggersOnSpace && prefs.keepFinalSpaceCharacter() && (!triggeredByPicker) 
-         ? " " : QString());
-      QList<quint16> pressedModifiers;
-      if (!triggeredByPicker)
-      {
-         pressedModifiers = backupAndReleaseModifierKeys();
-         synthesizeBackspaces(qMax<qint32>(charCount + (triggersOnSpace ? 1 : 0), 0));
-         restoreModifierKeys(pressedModifiers);
-      }
-      if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
-      {
-         // we use the clipboard to and copy/paste the snippet
-         ClipboardManager& clipboardManager = ClipboardManager::instance();
-         clipboardManager.backupClipboard();
-         clipboardManager.setText(text);
-         pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
-         synthesizeKeyDown(VK_LCONTROL);
-         synthesizeKeyDownAndUp('V');
-         synthesizeKeyUp(VK_LCONTROL);
-         restoreModifierKeys(pressedModifiers);
-         QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
-         ///< We need to delay clipboard restoration to avoid unexpected behaviours
-      }
-      else
-      {
-         // we simulate the typing of the snippet text
-         for (QChar c: text)
-         {
-            if (c == QChar::LineFeed)
-               // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
-            {
-               pressedModifiers = backupAndReleaseModifierKeys();
-               synthesizeKeyDownAndUp(VK_RETURN);
-               restoreModifierKeys(pressedModifiers);
-               waitBetweenKeystrokes();
-            }
-            else
-            {
-               pressedModifiers = backupAndReleaseModifierKeys();
-               synthesizeUnicodeKeyDownAndUp(c.unicode());
-               restoreModifierKeys(pressedModifiers);
-               waitBetweenKeystrokes();
-            }
-         }
-      }
+   //try
+   //{
+   //   // we erase the combo
+   //   bool const triggeredByPicker = (ETriggerSource::ComboPicker == source);
+   //   bool const triggersOnSpace = prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace();
+   //   QString text = newText + (triggersOnSpace && prefs.keepFinalSpaceCharacter() && (!triggeredByPicker) 
+   //      ? " " : QString());
+   //   QList<quint16> pressedModifiers;
+   //   if (!triggeredByPicker)
+   //   {
+   //      pressedModifiers = backupAndReleaseModifierKeys();
+   //      synthesizeBackspaces(qMax<qint32>(charCount + (triggersOnSpace ? 1 : 0), 0));
+   //      restoreModifierKeys(pressedModifiers);
+   //   }
+   //   if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
+   //   {
+   //      // we use the clipboard to and copy/paste the snippet
+   //      ClipboardManager& clipboardManager = ClipboardManager::instance();
+   //      clipboardManager.backupClipboard();
+   //      clipboardManager.setText(text);
+   //      pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
+   //      synthesizeKeyDown(VK_LCONTROL);
+   //      synthesizeKeyDownAndUp('V');
+   //      synthesizeKeyUp(VK_LCONTROL);
+   //      restoreModifierKeys(pressedModifiers);
+   //      QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
+   //      ///< We need to delay clipboard restoration to avoid unexpected behaviours
+   //   }
+   //   else
+   //   {
+   //      // we simulate the typing of the snippet text
+   //      for (QChar c: text)
+   //      {
+   //         if (c == QChar::LineFeed)
+   //            // synthesizeUnicode key down does not handle line feed properly (the problem actually comes from Windows API's SendInput())
+   //         {
+   //            pressedModifiers = backupAndReleaseModifierKeys();
+   //            synthesizeKeyDownAndUp(VK_RETURN);
+   //            restoreModifierKeys(pressedModifiers);
+   //            waitBetweenKeystrokes();
+   //         }
+   //         else
+   //         {
+   //            pressedModifiers = backupAndReleaseModifierKeys();
+   //            synthesizeUnicodeKeyDownAndUp(c.unicode());
+   //            restoreModifierKeys(pressedModifiers);
+   //            waitBetweenKeystrokes();
+   //         }
+   //      }
+   //   }
 
-      // position the cursor if needed by typing the right amount of left key strokes
-      if (cursorPos >= 0)
-      {
-         pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
-         for (qint32 i = 0; i < qMax<qint32>(0, printableCharacterCount(text) - cursorPos); ++i)
-            synthesizeKeyDownAndUp(VK_LEFT);
-         restoreModifierKeys(pressedModifiers);
-      }
-   }
-   catch (Exception const&)
-   {
-      inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
-      throw;
-   }
-   inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
-   // debugDisplayModifiersStates();
+   //   // position the cursor if needed by typing the right amount of left key strokes
+   //   if (cursorPos >= 0)
+   //   {
+   //      pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
+   //      for (qint32 i = 0; i < qMax<qint32>(0, printableCharacterCount(text) - cursorPos); ++i)
+   //         synthesizeKeyDownAndUp(VK_LEFT);
+   //      restoreModifierKeys(pressedModifiers);
+   //   }
+   //}
+   //catch (Exception const&)
+   //{
+   //   inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
+   //   throw;
+   //}
+   //inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
+   //// debugDisplayModifiersStates();
 }
 
 
