@@ -18,7 +18,8 @@ enum class EComboTrigger: qint32 {
    Default = 0, ///< The default combo trigger.
    Automatic = 1, ///< Automatic trigger.
    Shortcut = 2, ///< Trigger by shortcut.
-   Count = 3, ///< The number of triggers.
+   Picker = 3, ///< Trigger by combo picker.
+   Count = 4, ///< The number of triggers.
 };
 
 

@@ -39,6 +39,7 @@ namespace {
       }
       case EComboTrigger::Automatic: return QObject::tr("Automatic");
       case EComboTrigger::Shortcut: return QObject::tr("Shortcut");
+      case EComboTrigger::Picker: return QObject::tr("Combo picker only");
       default:
          Q_ASSERT(false);
          globals::debugLog().addWarning(QString("Unknown matching mode with value %1")
