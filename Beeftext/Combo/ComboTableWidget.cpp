@@ -716,13 +716,8 @@ void ComboTableWidget::onContextMenuAboutToShow() const
    QMenu* moveToMenu = qvariant_cast<QMenu*>(menu->property(kPropMoveToMenu));
    if (!moveToMenu)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve 'Move To' menu.").arg(__FUNCTION__));
-   QMenu* matchingModeMenu = qvariant_cast<QMenu*>(menu->property(kPropMatchingModeMenu));
-   if (!matchingModeMenu)
-      throw xmilib::Exception(QString("Internal error: %1(): could not retrieve 'Matching Mode' menu.")
-         .arg(__FUNCTION__));
    bool const hasOneOrMoreSelected = this->selectedComboCount() > 0;
    moveToMenu->setEnabled(hasOneOrMoreSelected);
-   matchingModeMenu->setEnabled(hasOneOrMoreSelected);
 }
 
 
