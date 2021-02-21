@@ -1367,12 +1367,12 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.ui" line="804"/>
         <source>Use legacy copy/paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwende alte Kopieren-/Einfügen-Methode (Legacy)</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="813"/>
         <source>Use custom PowerShell version</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwende benutzerdefinierte PowerShell-Version</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="836"/>
@@ -1435,22 +1435,22 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.cpp" line="163"/>
         <source>Delete Backup Files?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sicherungsdateien löschen?</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="163"/>
         <source>Do you want to delete all the backup files?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wollen Sie alle Sicherungsdateien löschen?</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="302"/>
         <source>WAV files (*.wav);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>WAV-Dateien (*.wav);;Alle Dateien (*.*)</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="536"/>
         <source>Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordner auswählen</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="246"/>
@@ -1458,12 +1458,12 @@ Möchten Sie dennoch fortsetzen?</translation>
         <location filename="../PreferencesDialog.cpp" line="816"/>
         <location filename="../PreferencesDialog.cpp" line="831"/>
         <source>Error</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="246"/>
         <source>The path of the custom sound file is invalid.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der angegebene Pfad zur benutzerdefinierten Sound-Datei ist ungültig.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="541"/>
@@ -1473,7 +1473,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.cpp" line="553"/>
         <source>Reset Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordner zurücksetzen</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="553"/>
@@ -1483,47 +1483,47 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.cpp" line="605"/>
         <source>Custom backup location</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierter Sicherungsort</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="629"/>
         <source>Reset Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen zurücksetzen</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="629"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sind Sie sicher, dass Sie alle Einstellungen auf ihren Standardwert zurücksetzen wollen?</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="645"/>
         <source>Reset Warnings</source>
-        <translation type="unfinished"></translation>
+        <translation>Warnungen zurücksetzen</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="645"/>
         <source>Are you sure you want to reset all warnings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sind Sie sicher, dass Sie alle Warnungen zurücksetzen wollen?</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="666"/>
         <source>%1 v%2.%3 is available.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 v%2.%3 ist verfügbar.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="668"/>
         <source>A new version is available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine neue Version ist verfügbar.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="677"/>
         <source>The software is up to date.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Software ist auf dem aktuellsten Stand.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="704"/>
         <source>Update check failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisierungsprüfung fehlgeschlagen.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="795"/>
@@ -1538,22 +1538,22 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../PreferencesDialog.cpp" line="810"/>
         <source>Export Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen exportieren</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="816"/>
         <source>An error occurred while exporting the preferences.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein Fehler ist während des Exportierens der Einstellungen aufgetreten.</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="825"/>
         <source>Import Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen importieren</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.cpp" line="831"/>
         <source>An error occurred while importing the preferences.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein Fehler ist während des Importierens der Einstellungen aufgetreten.</translation>
     </message>
 </context>
 <context>
@@ -1571,7 +1571,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../BeeftextConstants.cpp" line="29"/>
         <source>CSV files (*.csv);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>CSV-Dateien (*.csv);;Alle Dateien (*.*)</translation>
     </message>
     <message>
         <location filename="../BeeftextConstants.cpp" line="31"/>
@@ -1602,12 +1602,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../BeeftextUtils.cpp" line="358"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Warnung</translation>
     </message>
     <message>
         <location filename="../BeeftextUtils.cpp" line="361"/>
         <source>&amp;Convert</source>
-        <translation type="unfinished"></translation>
+        <translation>Konvertieren</translation>
     </message>
     <message>
         <location filename="../BeeftextUtils.cpp" line="362"/>
@@ -1742,7 +1742,7 @@ Möchten Sie ein kurzes &apos;Erste Schritte&apos;-Tutorial lesen?</translation>
     <message>
         <location filename="../PreferencesDialog.cpp" line="300"/>
         <source>Select custom sound file</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierte Sound-Datei auswählen</translation>
     </message>
 </context>
 <context>
