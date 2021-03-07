@@ -165,6 +165,7 @@ PreferencesManager::PreferencesManager()
 void PreferencesManager::init()
 {
    // Cache often accessed values
+   cachedDefaultComboTrigger_ = this->readDefaultComboTriggerFromPreferences();
    cachedComboTriggersOnSpace_ = this->readSettings<bool>(kKeyComboTriggersOnSpace, 
       kDefaultComboTriggersOnSpace);
    cachedKeepFinalSpaceCharacter_ = this->readSettings<bool>(kKeyKeepFinalSpaceCharacter, 
@@ -838,9 +839,10 @@ QString PreferencesManager::defaultComboListFolderPath()
 //**********************************************************************************************************************
 /// \param[in] trigger The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setDefaultComboTrigger(EComboTrigger trigger) const
+void PreferencesManager::setDefaultComboTrigger(EComboTrigger trigger)
 {
    settings_->setValue(kKeyDefaultComboTrigger, qint32(trigger));
+   cachedDefaultComboTrigger_ = trigger;
 }
 
 
@@ -849,17 +851,7 @@ void PreferencesManager::setDefaultComboTrigger(EComboTrigger trigger) const
 //**********************************************************************************************************************
 EComboTrigger PreferencesManager::defaultComboTrigger() const
 {
-   if (settings_->contains(kKeyDefaultComboTrigger))
-      return EComboTrigger(qBound<qint32>(qint32(EMatchingMode::Default) + 1, 
-         this->readSettings<qint32>(kKeyDefaultComboTrigger), qint32(EComboTrigger::Count) - 1));
-
-   bool const hasOldKey = settings_->contains(kKeyUseAutomaticSubstitutionDeprecated);
-   EComboTrigger const trigger =  hasOldKey ? (this->readSettings<bool>(kKeyUseAutomaticSubstitutionDeprecated, true) 
-      ? EComboTrigger::Automatic: EComboTrigger::Shortcut) : kDefaultDefaultComboTrigger;
-   settings_->setValue(kKeyDefaultComboTrigger, qint32(trigger));
-   if (hasOldKey)
-      settings_->remove(kKeyUseAutomaticSubstitutionDeprecated);
-   return trigger;
+   return cachedDefaultComboTrigger_;
 }
 
 
@@ -1216,6 +1208,25 @@ EMatchingMode PreferencesManager::readDefaultMatchingModeFromPreferences() const
    default:
       return EMatchingMode::Strict;
    }
+}
+
+
+//**********************************************************************************************************************
+/// \return The default combo trigger read from the preferences
+//**********************************************************************************************************************
+EComboTrigger PreferencesManager::readDefaultComboTriggerFromPreferences() const
+{
+   if (settings_->contains(kKeyDefaultComboTrigger))
+      return EComboTrigger(qBound<qint32>(qint32(EMatchingMode::Default) + 1,
+         this->readSettings<qint32>(kKeyDefaultComboTrigger), qint32(EComboTrigger::Count) - 1));
+
+   bool const hasOldKey = settings_->contains(kKeyUseAutomaticSubstitutionDeprecated);
+   EComboTrigger const trigger = hasOldKey ? (this->readSettings<bool>(kKeyUseAutomaticSubstitutionDeprecated, true)
+      ? EComboTrigger::Automatic : EComboTrigger::Shortcut) : kDefaultDefaultComboTrigger;
+   settings_->setValue(kKeyDefaultComboTrigger, qint32(trigger));
+   if (hasOldKey)
+      settings_->remove(kKeyUseAutomaticSubstitutionDeprecated);
+   return trigger;
 }
 
 

@@ -76,7 +76,7 @@ public: // member functions
    bool setComboListFolderPath(QString const& path) const; ///< Set the path of the folder for saving the combo list
    QString comboListFolderPath() const; ///< Get the path of the folder for saving the combo list
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
-   void setDefaultComboTrigger(EComboTrigger trigger) const; ///< Set the default combo trigger.
+   void setDefaultComboTrigger(EComboTrigger trigger); ///< Set the default combo trigger.
    EComboTrigger defaultComboTrigger() const; ///< Set the default combo trigger.
    void setComboTriggerShortcut(SpShortcut const& shortcut); ///< Set the combo trigger shortcut
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
@@ -134,6 +134,7 @@ private: // member functions
    SpShortcut readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey, 
    QString const& scanCodeRegKey) const; ///< Read a shortcut from the preferences.
    EMatchingMode readDefaultMatchingModeFromPreferences() const; ///< Get the value for the 'Default matching mode' preference.
+   EComboTrigger readDefaultComboTriggerFromPreferences() const; ///< Read the 'Defaut combo trigger' preference.
 
    void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
    void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
