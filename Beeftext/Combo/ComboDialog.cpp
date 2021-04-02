@@ -150,7 +150,7 @@ bool ComboDialog::checkAndReportInvalidCombo()
    QString const multipleConflictStr = tr("%1 existing combos are creating conflicts with this combo.")
       .arg(conflictCount);
    return QMessageBox::Yes == QMessageBox::question(this, tr("Conflict"), tr("%1 If you use automatic substitution, "
-      "conflicts make some combos impossible to trigger.\n\nDo you want to continue anymay?")
+      "conflicts make some combos impossible to trigger.\n\nDo you want to continue anyway?")
       .arg(conflictCount > 1 ? multipleConflictStr : singleConflictStr), QMessageBox::Yes | QMessageBox::No, 
       QMessageBox::No);
 }
