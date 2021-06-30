@@ -12,7 +12,6 @@
 
 
 #include "Group/GroupList.h"
-#include "Combo/ComboTrigger.h"
 #include "MatchingMode.h"
 #include "BeeftextUtils.h"
 #include <memory>
@@ -32,8 +31,7 @@ typedef std::vector<SpCombo> VecSpCombo; ///< Type definition for vector of SpCo
 class Combo
 {
 public: // member functions
-   Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, EComboTrigger trigger,
-      bool enabled); ///< Default constructor
+   Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, bool enabled); ///< Default constructor
    Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups = GroupList()); ///< Constructor from JSon object
    Combo(Combo const&) = delete; ///< Disabled copy constructor
 	Combo(Combo&&) = delete; ///< Disabled move constructor
@@ -50,8 +48,6 @@ public: // member functions
    void setSnippet(QString const& snippet); ///< Set the snippet
    EMatchingMode matchingMode(bool resolveDefault) const; ///< Get the matching mode of the combo.
    void setMatchingMode(EMatchingMode mode); ///< Set the matching mode of the combo.
-   EComboTrigger trigger(bool resolveDefault) const; ///< Get the trigger for the combo.
-   void setTrigger(EComboTrigger trigger); ///< Set the trigger for the combo.
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
    void setLastUseDateTime(QDateTime const& dateTime); ///< Set the last use date time of the combo.
@@ -73,8 +69,7 @@ public: // member functions
 
 public: // static functions
    static SpCombo create(QString const& name = QString(), QString const& keyword = QString(),
-      QString const& snippet = QString(), EMatchingMode matchingMode = EMatchingMode::Default, 
-      EComboTrigger trigger = EComboTrigger::Default, bool enabled = true);
+      QString const& snippet = QString(), EMatchingMode matchingMode = EMatchingMode::Default, bool enabled = true);
    static SpCombo create(QJsonObject const& object, qint32 formatVersion, 
       GroupList const& groups = GroupList()); ///< create a Combo from a JSON object
    static SpCombo duplicate(Combo const& combo); ///< Duplicate
@@ -88,7 +83,6 @@ private: // data member
    QString keyword_; ///< The keyword
    QString snippet_; ///< The snippet
    EMatchingMode matchingMode_ { EMatchingMode::Default }; ///< The matching mode.
-   EComboTrigger trigger_ { EComboTrigger::Default }; ///< The trigger.
    SpGroup group_ { nullptr }; ///< The combo group this combo belongs to (may be null)
    QDateTime creationDateTime_; ///< The date/time of creation of the combo
    QDateTime modificationDateTime_; ///< The date/time of the last modification of the combo

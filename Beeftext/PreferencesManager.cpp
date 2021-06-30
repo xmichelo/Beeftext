@@ -36,7 +36,6 @@ QString const kKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\Cu
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
-QString const kKeyDefaultComboTrigger = "DefaultComboTrigger"; ///< The setting key for the 'Default combo trigger' preference.
 QString const kKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
 QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
 QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
@@ -59,7 +58,7 @@ QString const kKeyLastUpdateCheckDateTime = "LastUpdateCheck"; ///< The setting 
 QString const kKeyLocale = "Locale"; ///< The settings key for the locale
 QString const kKeyPlaySoundOnCombo = "PlaySoundOnCombo"; ///< The settings key for the 'Play sound on combo' preference
 QString const kKeySplitterState = "MainWindowSplitterState"; ///< The setting key for storing the main window splitter state.
-QString const kKeyUseAutomaticSubstitutionDeprecated = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
+QString const kKeyUseAutomaticSubstitution = "UseAutomaticSubstitution"; ///< The setting key for the 'Use automatic substitution' preference
 QString const kKeyUseCustomBackupLocation = "UseCustomBackupLocation"; ///< The settings key for the 'Use custom backup location' preference.
 QString const kKeyUseCustomSound = "UseCustomSound"; ///< The settings key for the 'Use custom sound' preference.
 QString const kKeyUseCustomTheme = "UseCustomTheme"; ///< The setting key for the 'Use custom theme' preference
@@ -96,12 +95,12 @@ QString const kDefaultLastComboImportExportPath = QDir(QStandardPaths::writableL
 qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
 qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
 bool const kDefaultPlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
+bool const kDefaultUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
 bool const kDefaultUseCustomBackupLocation = false; ///< The default value for the 'Use custom backup location' preference.
 bool const kDefaultUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
 bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
 bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
 bool const kDefaultWarnAboutEmptyComboKeyword = true; ///< The default value for the 'Warn about empty combo keyword' preference
-EComboTrigger kDefaultDefaultComboTrigger = EComboTrigger::Automatic; ///< The default value for the 'Default combo trigger' preference.
 bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
@@ -165,7 +164,8 @@ PreferencesManager::PreferencesManager()
 void PreferencesManager::init()
 {
    // Cache often accessed values
-   cachedDefaultComboTrigger_ = this->readDefaultComboTriggerFromPreferences();
+   cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
+      kDefaultUseAutomaticSubstitution);
    cachedComboTriggersOnSpace_ = this->readSettings<bool>(kKeyComboTriggersOnSpace, 
       kDefaultComboTriggersOnSpace);
    cachedKeepFinalSpaceCharacter_ = this->readSettings<bool>(kKeyKeepFinalSpaceCharacter, 
@@ -212,7 +212,7 @@ void PreferencesManager::reset()
    this->setEnableAppEnableDisableShortcut(kDefaultEnableAppEnableDisableShortcut);
    this->setLocale(I18nManager::instance().validateLocale(QLocale::system()));
    this->setPlaySoundOnCombo(kDefaultPlaySoundOnCombo);
-   this->setDefaultComboTrigger(kDefaultDefaultComboTrigger);
+   this->setUseAutomaticSubstitution(kDefaultUseAutomaticSubstitution);
    this->setComboTriggersOnSpace(kDefaultComboTriggersOnSpace);
    this->setKeepFinalSpaceCharacter(kDefaultKeepFinalSpaceCharacter);
    this->setUseCustomBackupLocation(kDefaultUseCustomBackupLocation);
@@ -373,8 +373,8 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
    object[kKeySplitterState] = QString::fromLocal8Bit(this->readSettings<QByteArray>(kKeySplitterState, 
       QByteArray()).toHex());
    object[kKeyPlaySoundOnCombo] = this->readSettings<bool>(kKeyPlaySoundOnCombo, kDefaultPlaySoundOnCombo);
-   object[kKeyDefaultComboTrigger] = this->readSettings<qint32>(kKeyDefaultComboTrigger, 
-      qint32(kDefaultDefaultComboTrigger));
+   object[kKeyUseAutomaticSubstitution] = this->readSettings<bool>(kKeyUseAutomaticSubstitution, 
+      kDefaultUseAutomaticSubstitution);
    object[kKeyComboTriggersOnSpace] = this->readSettings<bool>(kKeyComboTriggersOnSpace, 
       kDefaultComboTriggersOnSpace);
    object[kKeyUseCustomBackupLocation] = this->readSettings<bool>(kKeyUseCustomSound, kDefaultUseCustomBackupLocation);
@@ -435,8 +435,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
    settings_->setValue(kKeyGeometry, QByteArray::fromHex(objectValue<QString>(object, 
       kKeySplitterState).toLocal8Bit()));
    settings_->setValue(kKeyPlaySoundOnCombo, objectValue<bool>(object, kKeyPlaySoundOnCombo));
-   settings_->setValue(kKeyDefaultComboTrigger, objectValue<qint32>(object, kKeyDefaultComboTrigger));
-   settings_->setValue(kKeyUseAutomaticSubstitutionDeprecated, objectValue<bool>(object, kKeyUseAutomaticSubstitutionDeprecated));
+   settings_->setValue(kKeyUseAutomaticSubstitution, objectValue<bool>(object, kKeyUseAutomaticSubstitution));
    settings_->setValue(kKeyComboTriggersOnSpace, objectValue<bool>(object, kKeyComboTriggersOnSpace));
    this->setUseCustomBackupLocation(objectValue<bool>(object, kKeyUseCustomBackupLocation)); // we call the function because it has side effects
    settings_->setValue(kKeyUseCustomSound, objectValue<bool>(object, kKeyUseCustomSound));
@@ -721,6 +720,26 @@ bool PreferencesManager::useCustomTheme() const
 
 
 //**********************************************************************************************************************
+/// As the getter for this value is polled frequently (at every keystroke), it is cached
+/// \param[in] value The new value for the preference
+//**********************************************************************************************************************
+void PreferencesManager::setUseAutomaticSubstitution(bool value)
+{
+   cachedUseAutomaticSubstitution_ = value;
+   settings_->setValue(kKeyUseAutomaticSubstitution, value);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference
+//**********************************************************************************************************************
+bool PreferencesManager::useAutomaticSubstitution() const
+{
+   return cachedUseAutomaticSubstitution_;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] value The value for the preference.
 //**********************************************************************************************************************
 void PreferencesManager::setComboTriggersOnSpace(bool value)
@@ -833,25 +852,6 @@ QString PreferencesManager::comboListFolderPath() const
 QString PreferencesManager::defaultComboListFolderPath()
 {
    return isInPortableMode() ? globals::portableModeDataFolderPath() : globals::appDataDir();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] trigger The value for the preference.
-//**********************************************************************************************************************
-void PreferencesManager::setDefaultComboTrigger(EComboTrigger trigger)
-{
-   settings_->setValue(kKeyDefaultComboTrigger, qint32(trigger));
-   cachedDefaultComboTrigger_ = trigger;
-}
-
-
-//**********************************************************************************************************************
-/// \return The value for the preference.
-//**********************************************************************************************************************
-EComboTrigger PreferencesManager::defaultComboTrigger() const
-{
-   return cachedDefaultComboTrigger_;
 }
 
 
@@ -1208,25 +1208,6 @@ EMatchingMode PreferencesManager::readDefaultMatchingModeFromPreferences() const
    default:
       return EMatchingMode::Strict;
    }
-}
-
-
-//**********************************************************************************************************************
-/// \return The default combo trigger read from the preferences
-//**********************************************************************************************************************
-EComboTrigger PreferencesManager::readDefaultComboTriggerFromPreferences() const
-{
-   if (settings_->contains(kKeyDefaultComboTrigger))
-      return EComboTrigger(qBound<qint32>(qint32(EMatchingMode::Default) + 1,
-         this->readSettings<qint32>(kKeyDefaultComboTrigger), qint32(EComboTrigger::Count) - 1));
-
-   bool const hasOldKey = settings_->contains(kKeyUseAutomaticSubstitutionDeprecated);
-   EComboTrigger const trigger = hasOldKey ? (this->readSettings<bool>(kKeyUseAutomaticSubstitutionDeprecated, true)
-      ? EComboTrigger::Automatic : EComboTrigger::Shortcut) : kDefaultDefaultComboTrigger;
-   settings_->setValue(kKeyDefaultComboTrigger, qint32(trigger));
-   if (hasOldKey)
-      settings_->remove(kKeyUseAutomaticSubstitutionDeprecated);
-   return trigger;
 }
 
 

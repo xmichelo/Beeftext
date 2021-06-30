@@ -14,7 +14,6 @@
 #include "Shortcut.h"
 #include "Theme.h"
 #include "Combo/MatchingMode.h"
-#include "Combo/ComboTrigger.h" 
 
 
 //**********************************************************************************************************************
@@ -65,6 +64,8 @@ public: // member functions
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
    void setUseCustomTheme(bool value); ///< Set the value for the 'Use custom theme' preference
    bool useCustomTheme() const; ///< Get the value for the 'Use custom theme' preference
+   void setUseAutomaticSubstitution(bool value); ///< Set the value for the 'Use automatic substitution' preference
+   bool useAutomaticSubstitution() const; ///< Get the value for the 'Use automatic substitution' preference
    void setComboTriggersOnSpace(bool value); ///< Set the value for the 'Combo triggers on space' preference.
    bool comboTriggersOnSpace() const; ///< Set the value for the 'Combo triggers on space' preference.
    void setKeepFinalSpaceCharacter(bool value); ///< Set the value for the 'Keep final space character' preference.
@@ -76,8 +77,6 @@ public: // member functions
    bool setComboListFolderPath(QString const& path) const; ///< Set the path of the folder for saving the combo list
    QString comboListFolderPath() const; ///< Get the path of the folder for saving the combo list
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
-   void setDefaultComboTrigger(EComboTrigger trigger); ///< Set the default combo trigger.
-   EComboTrigger defaultComboTrigger() const; ///< Set the default combo trigger.
    void setComboTriggerShortcut(SpShortcut const& shortcut); ///< Set the combo trigger shortcut
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
    void setDefaultMatchingMode(EMatchingMode mode); ///< Set the value for the 'Default matching mode' preference.
@@ -134,7 +133,6 @@ private: // member functions
    SpShortcut readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey, 
    QString const& scanCodeRegKey) const; ///< Read a shortcut from the preferences.
    EMatchingMode readDefaultMatchingModeFromPreferences() const; ///< Get the value for the 'Default matching mode' preference.
-   EComboTrigger readDefaultComboTriggerFromPreferences() const; ///< Read the 'Defaut combo trigger' preference.
 
    void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
    void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
@@ -149,7 +147,7 @@ private: // member functions
    
 private: // data members
    std::unique_ptr<QSettings> settings_ { nullptr }; ///< The Qt settings instance
-   EComboTrigger cachedDefaultComboTrigger_ { EComboTrigger::Automatic }; ///< Cached value for the 'Default combo trigger' preference.
+   bool cachedUseAutomaticSubstitution_ { true }; ///< Cached value for the 'use automatic substitution' preference value
    bool cachedComboTriggersOnSpace_{ false }; ///< Cached vaue for the 'combo trigger on space' preference.
    bool cachedKeepFinalSpaceCharacter_{ false }; ///< Cached vaue for the 'keep final space character' preference.
    SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference

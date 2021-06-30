@@ -211,7 +211,7 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
    if (!prefs.beeftextEnabled())
       return true;
 
-   if (isComboTriggerShortcut(keyStroke))
+   if ((!prefs.useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
    {
       emit substitutionShortcutTriggered();
       return false;
@@ -253,7 +253,7 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
       }
       if (c.isSpace())
       {
-         if (prefs.comboTriggersOnSpace())
+         if (prefs.comboTriggersOnSpace() && prefs.useAutomaticSubstitution())
             emit characterTyped(c);
          else
             emit comboBreakerTyped();

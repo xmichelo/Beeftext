@@ -147,13 +147,12 @@
       <Filter>Clipboard</Filter>
     </ClCompile>
     <ClCompile Include="Theme.cpp" />
+    <ClCompile Include="WaveSound.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
     <ClCompile Include="Combo\MatchingMode.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\ComboTrigger.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
-    <ClCompile Include="WaveSound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -233,13 +232,12 @@
       <Filter>Clipboard</Filter>
     </ClInclude>
     <ClInclude Include="Theme.h" />
+    <ClInclude Include="WaveSound.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="Combo\MatchingMode.h">
       <Filter>Combo</Filter>
     </ClInclude>
-    <ClInclude Include="Combo\ComboTrigger.h">
-      <Filter>Combo</Filter>
-    </ClInclude>
-    <ClInclude Include="WaveSound.h" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">

@@ -30,13 +30,13 @@ QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property
 QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
 QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option. This option is deprecated since combo list file format v9, replaced by matching mode.
 QString const kPropMatchingMode = "matchingMode"; ///< The JSON property for the 'matching mode' of the combo. This option was introduced in combo list file format v9.
-QString const kPropTrigger = "trigger"; ///< The JSON property name for the trigger.
 QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
 QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
 QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
 QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
 QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
 QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
+
 
 } // anonymous namespace
 
@@ -49,17 +49,14 @@ QString const kPropUseHtml = "useHtml";
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
 /// \param[in] matchingMode The matching mode
-/// \param[in] trigger The trigger.
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, EComboTrigger trigger, 
-   bool const enabled)
+Combo::Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, bool const enabled)
    : uuid_(QUuid::createUuid())
    , name_(std::move(name))
    , keyword_(std::move(keyword))
    , snippet_(std::move(snippet))
    , matchingMode_(matchingMode)
-   , trigger_(trigger)
    , enabled_(enabled)
 
 {
@@ -103,12 +100,8 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
          matchingMode_ = object[kPropUseLooseMatching].toBool(false) ? EMatchingMode::Loose : EMatchingMode::Default;
    }
    else
-      matchingMode_ = static_cast<EMatchingMode>(qBound<qint32>(0, object[kPropMatchingMode].toInt(
+         matchingMode_ = static_cast<EMatchingMode>(qBound<qint32>(0, object[kPropMatchingMode].toInt(
          qint32(EMatchingMode::Strict)), static_cast<qint32>(EMatchingMode::Count) - 1));
-   if (formatVersion < 9)
-      trigger_ = EComboTrigger::Default;
-   else
-      trigger_ = EComboTrigger(object[kPropTrigger].toInt(qint32(EComboTrigger::Default)));
 
    // because we parse a older format version, we update the modification date, as the combo manager will save 
    // the file to update it to the latest format
@@ -225,28 +218,6 @@ void Combo::setMatchingMode(EMatchingMode mode)
       matchingMode_ = mode;
       this->touch();
    }
-}
-
-
-//**********************************************************************************************************************
-/// \return the trigger for the combo.
-//**********************************************************************************************************************
-EComboTrigger Combo::trigger(bool resolveDefault) const
-{
-   if (resolveDefault && (EComboTrigger::Default == trigger_))
-      return PreferencesManager::instance().defaultComboTrigger();
-   qint32 const intValue = qint32(trigger_);
-   return (intValue < qint32(EComboTrigger::Default)) || (intValue >= qint32(EComboTrigger::Count)) ?
-      EComboTrigger::Default : trigger_;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] trigger The trigger.
-//**********************************************************************************************************************
-void Combo::setTrigger(EComboTrigger trigger)
-{
-   trigger_ = trigger;
 }
 
 
@@ -398,7 +369,6 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropKeyword, keyword_);
    result.insert(kPropSnippet, snippet_);
    result.insert(kPropMatchingMode, qint32(matchingMode_));
-   result.insert(kPropTrigger, qint32(trigger_));
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
@@ -422,14 +392,13 @@ void Combo::changeUuid()
 /// \param[in] keyword The keyword.
 /// \param[in] snippet The text that will replace the combo.
 /// \param[in] matchingMode The matching mode.
-/// \param[in] trigger The trigger.
 /// \param[in] enabled Is the combo enabled.
 /// \return A shared pointer to the created Combo.
 //**********************************************************************************************************************
 SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, EMatchingMode matchingMode, 
-   EComboTrigger trigger, bool enabled)
+   bool enabled)
 {
-   return std::make_shared<Combo>(name, keyword, snippet, matchingMode, trigger, enabled);
+   return std::make_shared<Combo>(name, keyword, snippet, matchingMode, enabled);
 }
 
 
@@ -459,8 +428,8 @@ SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.matchingMode(false),
-      combo.trigger(false), combo.isEnabled());
+   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.matchingMode(false), 
+      combo.isEnabled());
    result->setGroup(combo.group());
    return result;
 }

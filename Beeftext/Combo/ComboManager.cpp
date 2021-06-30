@@ -216,54 +216,51 @@ void ComboManager::playSound() const
 
 
 //**********************************************************************************************************************
-/// \param[in] fromShortcut Was the check triggered by a shortuct
+//
 //**********************************************************************************************************************
-void ComboManager::checkAndPerformSubstitution(bool fromShortcut)
+void ComboManager::checkAndPerformSubstitution()
 {
-   if (!this->checkAndPerformComboSubstitution(fromShortcut))
+   if (!this->checkAndPerformComboSubstitution())
       this->checkAndPerformEmojiSubstitution();
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] fromShortcut Was the check triggered by a shortuct
 /// \return true if a substitution was available and it was performed or cancelled because Beeftext is the active 
 /// application.
 //**********************************************************************************************************************
-bool ComboManager::checkAndPerformComboSubstitution(bool fromShortcut)
+bool ComboManager::checkAndPerformComboSubstitution()
 {
-   return false;
-   //PreferencesManager const& prefs = PreferencesManager::instance();
-   //bool const triggersOnSpace = (prefs.comboTriggersOnSpace());
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   bool const triggersOnSpace = (prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace());
+   
+   if (triggersOnSpace)
+   {
+      bool const cond = (!currentText_.isEmpty()) && currentText_.back().isSpace();
+      Q_ASSERT(cond);
+      if (!cond) 
+         return false;
+      currentText_.chop(1); // the last character is a space, and we want to remove it before matching keywords
+   }
 
-   //
-   //if (triggersOnSpace)
-   //{
-   //   bool const cond = (!currentText_.isEmpty()) && currentText_.back().isSpace();
-   //   Q_ASSERT(cond);
-   //   if (!cond) 
-   //      return false;
-   //   currentText_.chop(1); // the last character is a space, and we want to remove it before matching keywords
-   //}
+   VecSpCombo result;
+   for (SpCombo const& combo: comboList_)
+      if (combo && combo->isUsable() && combo->matchesForInput(currentText_))
+         result.push_back(combo);
 
-   //VecSpCombo result;
-   //for (SpCombo const& combo: comboList_)
-   //   if (combo && combo->isUsable() && combo->matchesForInput(currentText_))
-   //      result.push_back(combo);
+   if (result.empty())
+   {
+      if (triggersOnSpace)
+         this->onComboBreakerTyped();
+      return false;
+   }
 
-   //if (result.empty())
-   //{
-   //   if (triggersOnSpace)
-   //      this->onComboBreakerTyped();
-   //   return false;
-   //}
-
-   //SpCombo const combo = result[result.size() > 1 ? static_cast<quint32>(rng_.get()) % result.size() : 0];
-   //if ((!isBeeftextTheForegroundApplication()) &&
-   //   (combo->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()) && sound_)
-   //   sound_->play(); // in Beeftext windows, substitution is disabled
-   //this->onComboBreakerTyped();
-   //return true;
+   SpCombo const combo = result[result.size() > 1 ? static_cast<quint32>(rng_.get()) % result.size() : 0];
+   if ((!isBeeftextTheForegroundApplication()) &&
+      (combo->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()) && sound_)
+      sound_->play(); // in Beeftext windows, substitution is disabled
+   this->onComboBreakerTyped();
+   return true;
 }
 
 
@@ -326,6 +323,9 @@ void ComboManager::onCharacterTyped(QChar c)
 {
    PreferencesManager const& prefs = PreferencesManager::instance();
    currentText_.append(c);
+   if ((!prefs.useAutomaticSubstitution()) || (prefs.comboTriggersOnSpace() && (!c.isSpace())))
+      return;
+   this->checkAndPerformSubstitution();
 }
 
 
@@ -343,5 +343,6 @@ void ComboManager::onBackspaceTyped()
 //**********************************************************************************************************************
 void ComboManager::onSubstitutionTriggerShortcut()
 {
-   this->checkAndPerformSubstitution(true);
+   if (!PreferencesManager::instance().useAutomaticSubstitution())
+      this->checkAndPerformSubstitution();
 }
