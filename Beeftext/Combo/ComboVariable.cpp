@@ -131,8 +131,7 @@ QDateTime shiftedDateTime(QString const& shiftStr)
          continue;
       if (match.captured(1) == "-")
          value = -value;
-      char const type = match.captured(3)[0].toLatin1();
-      switch (type)
+      switch (match.captured(3)[0].toLatin1())
       {
       case 'y': result = result.addYears(static_cast<qint32>(value)); break;
       case 'M': result = result.addMonths(static_cast<qint32>(value)); break;
@@ -166,7 +165,12 @@ QString evaluateDateTimeVariable(QString const& variable)
    QDateTime const dateTime = match.captured(1).isEmpty() ? QDateTime::currentDateTime() :
       shiftedDateTime(match.captured(2));
    QString const formatStr = match.captured(4);
-   return formatStr.isEmpty() ? QLocale::system().toString(dateTime) : QLocale::system().toString(dateTime, formatStr);
+   if (formatStr.isEmpty())
+      return QLocale::system().toString(dateTime);
+   QString result = QLocale::system().toString(dateTime, formatStr);
+   qint32 const weekNumber = dateTime.date().weekNumber();
+   result.replace("ww", QString("%1").arg(weekNumber, 2, 10, QChar('0')));
+   return result.replace("w", QString::number(weekNumber));
 }
 
 
@@ -185,7 +189,7 @@ QString evaluateComboVariable(QString const& variable, ECaseChange caseChange, Q
    QMap<QString, QString>& knownInputVariables, bool& outCancelled)
 {
    QString fallbackResult = QString("#{%1}").arg(variable);
-   qint32 const varNameLength = variable.indexOf(':');
+   qint32 const varNameLength = qint32(variable.indexOf(':'));
    if (varNameLength < 0)
       return QString();
    QString const comboName = resolveEscapingInVariableParameter(variable.right(variable.size() - varNameLength - 1));
