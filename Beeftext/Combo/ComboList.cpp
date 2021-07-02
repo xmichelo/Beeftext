@@ -701,8 +701,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       }
    }
    case Qt::ForegroundRole:
-      return QVariant();
-      //return combo->isUsable() ? QVariant() : globals::disabledTextColor();
+      return combo->isUsable() ? QVariant() : globals::disabledTextColorInTablesAndLists();
    case KeywordRole:
       return combo->keyword();
    case SnippetRole:

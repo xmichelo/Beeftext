@@ -138,6 +138,7 @@ QHeaderView:section:!last {
 
 QTableView::item {
    border: 0px; /* required in order for the padding to work. Don't ask why */
+   /* note:  color property is set in the table view's code */
 }
 
 
@@ -156,6 +157,7 @@ QListView {
 
 QListView::item {
    border: 0px; /* required in order for the padding to work. Don't ask why */
+   /* note:  color property is set in the list view's code */
 }
 
 QListView::item:selected {

@@ -516,7 +516,7 @@ QVariant GroupList::data(QModelIndex const& index, int role) const
       if (0 == row)
          return QVariant();
       SpGroup const& group = groups_[static_cast<quint32>(row) - 1];
-      return group->enabled() ? QVariant() : globals::disabledTextColor();
+      return group->enabled() ? QVariant() : globals::disabledTextColorInTablesAndLists();
    }
    default: return QVariant();
    }
