@@ -1,8 +1,8 @@
 {
-   "versionMajor": 8,
-   "versionMinor": 1,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v8.1/Beeftext-8.1-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v8.1",
-   "sha256Sum": "b2668c7e263d31bbef3db9aaaa74369e8362b248a41668b138ac2e4f19501d29",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v7.1 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><ul><li>Mouse clicking on a combo in the combo picker dialog now triggers the combo (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/346\">#346</a>).</li><li>Fixed issue with non-breaking spaces (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/322\">#322</a>).</li><li>Fixed issue with the #{cursor} variable when used in sub-combos (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/323\">#323</a>).</li><li>Fixed issue where the combo editor would replace carriage returns by Unicode paragraph separators (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/348\">#348</a>).</li></ul></body></html>"
+   "versionMajor": 9,
+   "versionMinor": 0,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v9.0/Beeftext-9.0-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v9.0",
+   "sha256Sum": "056f9464fbc12d7f27f65b3c4825b27cbad758ed4efc4f5e6f179845b4091688",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v9.0 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><ul><li>Implemented per combo matching mode (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/354\">#354</a>).</li><li>Added support for week number in #{dateTime} variable (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/368\">#368</a>).</li><li>Fixed a bug with sound feedback on first launch (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/351\">#351</a>).</li><li>Fixed visual glitch in the Preferences dialog (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/353\">#353</a>).</li><li>Updated credits (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/352\">#352</a>).</li><li>Beeftext now uses <a href=\"https://www.qt.io/product/qt6\">Qt 6</a>.</li></ul></body></html>"
 }
