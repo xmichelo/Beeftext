@@ -24,7 +24,6 @@ namespace {
 qint32 const kMinNameColumnDefaultWidth = 200; ///< The maximum default width in pixels of the name column
 qint32 const kMaxNameColumnDefaultWidth = 500; ///< The maximum default width in pixels of the name column
 qint32 const kMaxSnippetColumnWDefaultWith = 600; ///< The maximum default width in pixels of the snippet column
-char const* kPropMatchingModeMenu("matchingMenu"); ///< The matching menu property
 char const* kPropMoveToMenu("moveMenu"); ///< The matching menu property
 
 QString moveMenuTitle() { return QObject::tr("Move To", "Move entry in the Combo context menu"); }
@@ -240,7 +239,7 @@ void ComboTableWidget::setupContextMenu()
 //**********************************************************************************************************************
 qint32 ComboTableWidget::selectedComboCount() const
 {
-   return ui_.tableComboList->selectionModel()->selectedRows().size();
+   return qint32(ui_.tableComboList->selectionModel()->selectedRows().size());
 }
 
 

@@ -283,7 +283,7 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    currentText = currentText.chopped(rightDelimiter.size());
 
    // we try to locate the left delimiter
-   qint32 const index = currentText.lastIndexOf(leftDelimiter);
+   qsizetype const index = currentText.lastIndexOf(leftDelimiter);
    if (-1 == index) // not found
       return false;
 
@@ -297,7 +297,8 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    if ((!isBeeftextTheForegroundApplication()) &&
       !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
    {
-      performTextSubstitution(keyword.size() + rightDelimiter.size() + leftDelimiter.size(), emoji, -1, ETriggerSource::Keyword);
+      performTextSubstitution(qint32(keyword.size() + rightDelimiter.size() + leftDelimiter.size()), emoji, -1, 
+         ETriggerSource::Keyword);
       if (PreferencesManager::instance().playSoundOnCombo() && sound_)
          sound_->play();
       result = true;

@@ -66,12 +66,12 @@ void ClipboardManagerDefault::backupClipboard()
       if (!data)
          continue;
 
-      quint32 const size = GlobalSize(handle);
+      SIZE_T const size = GlobalSize(handle);
       if (!size)
          continue;
 
-      cbData->data = QByteArray(static_cast<qint32>(size), 0);
-      memcpy(cbData->data.data(), data, size);
+      cbData->data = QByteArray(qsizetype(size), 0);
+      memcpy(cbData->data.data(), data, size_t(size));
 
       backup_.push_back(cbData);
    }
@@ -144,12 +144,12 @@ QString ClipboardManagerDefault::text()
    quint32 const* const data = static_cast<quint32 const*>(memlock.pointer());
    if (!data)
       return QString();
-   quint32 const size = GlobalSize(handle);
+   SIZE_T const size = GlobalSize(handle);
    if (!size)
       return QString();
-   QByteArray array(static_cast<qint32>(size), 0);
+   QByteArray array(static_cast<qsizetype>(size), 0);
    memcpy(array.data(), data, size);
-   return QString::fromUtf16(reinterpret_cast<quint16 const*>(array.data()), (size - 1) / 2); // (size - 1) because we discard the final `0x0000`
+   return QString::fromUtf16(reinterpret_cast<char16_t const*>(array.data()), (qsizetype(size) - 1) / 2); // (size - 1) because we discard the final `0x0000`
 }
 
 
@@ -296,7 +296,7 @@ QString ClipboardManagerDefault::html()
    quint32 const* const data = static_cast<quint32 const*>(memlock.pointer());
    if (!data)
       return QString();
-   quint32 const size = GlobalSize(handle);
+   SIZE_T const size = GlobalSize(handle);
    if (!size)
       return QString();
    QByteArray array(static_cast<qint32>(size), 0);

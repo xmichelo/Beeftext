@@ -324,7 +324,7 @@ bool GroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVersion,
    try
    {
       this->clear();
-      for (QJsonValue const& value : array)
+      for (QJsonValueRef const value : array)
       {
          if (!value.isObject())
             throw xmilib::Exception("The group list is invalid.");
@@ -458,7 +458,7 @@ bool GroupList::processGroupDrop(qint32 groupIndex, qint32 dropIndex)
    const_iterator const newPosIt = this->findByUuid(group->uuid());
    if (newPosIt == this->end())
       throw xmilib::Exception("Internal error: %1(): could not located moved group.");
-   emit groupMoved(group, newPosIt - this->begin());
+   emit groupMoved(group, qint32(newPosIt - this->begin()));
    return true;
 
 }

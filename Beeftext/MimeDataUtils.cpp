@@ -38,11 +38,11 @@ QList<QUuid> mimeDataToUuidList(QMimeData const& mimeData)
    if (!mimeData.hasFormat(kUuuidListMimeType))
       return QList<QUuid>();
    QByteArray const array = mimeData.data(kUuuidListMimeType);
-   qint32 const arraySize = array.size();
+   qsizetype const arraySize = array.size();
    if ((0 == arraySize) || (0 != array.size() % 16))
       return QList<QUuid>();
    QList<QUuid> result;
-   for (int i = 0; i < arraySize; i += 16)
+   for (qsizetype i = 0; i < arraySize; i += 16)
       result.append(QUuid::fromRfc4122(array.mid(i, 16)));
    return result;
 }

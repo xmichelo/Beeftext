@@ -107,7 +107,7 @@ bool BackupManager::moveBackupFolder(QString const& oldPath, QString const& newP
 //**********************************************************************************************************************
 qint32 BackupManager::backupFileCount() const
 {
-   return this->orderedBackupFilePaths().size();
+   return qint32(this->orderedBackupFilePaths().size());
 }
 
 
@@ -134,7 +134,7 @@ void BackupManager::cleanup() const
 {
    DebugLog& log = globals::debugLog();
    QStringList paths = this->orderedBackupFilePaths();
-   qint32 const count = paths.size();
+   qint32 const count = qint32(paths.size());
    for (int i = 0; i < count - kMaxBackupFileCount; ++i)
    {
       QString const path = paths[i];

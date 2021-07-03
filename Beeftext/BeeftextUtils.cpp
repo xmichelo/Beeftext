@@ -48,19 +48,19 @@ p, li { white-space: pre-wrap; }
 
 
 //**********************************************************************************************************************
-//
+/// \brief Display the state of the modifier keys.
 //**********************************************************************************************************************
-void debugDisplayModifiersStates()
-{
-   qDebug() << QString("Left  Control: %1").arg(GetKeyState(VK_LCONTROL));
-   qDebug() << QString("Right Control: %1").arg(GetKeyState(VK_RCONTROL));
-   qDebug() << QString("Left  Menu   : %1").arg(GetKeyState(VK_LMENU));
-   qDebug() << QString("Right Menu   : %1").arg(GetKeyState(VK_RMENU));
-   qDebug() << QString("Left  Shift  : %1").arg(GetKeyState(VK_LSHIFT));
-   qDebug() << QString("Right Shift  : %1").arg(GetKeyState(VK_RSHIFT));
-   qDebug() << QString("Left  Win    : %1").arg(GetKeyState(VK_LWIN));
-   qDebug() << QString("Right Win    : %1").arg(GetKeyState(VK_RWIN));
-}
+//void debugDisplayModifiersStates()
+//{
+//   qDebug() << QString("Left  Control: %1").arg(GetKeyState(VK_LCONTROL));
+//   qDebug() << QString("Right Control: %1").arg(GetKeyState(VK_RCONTROL));
+//   qDebug() << QString("Left  Menu   : %1").arg(GetKeyState(VK_LMENU));
+//   qDebug() << QString("Right Menu   : %1").arg(GetKeyState(VK_RMENU));
+//   qDebug() << QString("Left  Shift  : %1").arg(GetKeyState(VK_LSHIFT));
+//   qDebug() << QString("Right Shift  : %1").arg(GetKeyState(VK_RSHIFT));
+//   qDebug() << QString("Left  Win    : %1").arg(GetKeyState(VK_LWIN));
+//   qDebug() << QString("Right Win    : %1").arg(GetKeyState(VK_RWIN));
+//}
 
 
 //**********************************************************************************************************************
@@ -308,7 +308,7 @@ qint32 printableCharacterCount(QString const& str)
    QVector<quint32> const ucs4 = str.toUcs4();
    // Now we assume that if you use the Zero Width Joiner (U+200D), it is resolved properly
    // We also account for compound emojis made with the skin color tones (Fitzpatrick type)
-   qint32 result = ucs4.size();
+   qint32 result = qint32(ucs4.size());
    for (quint32 c: ucs4)
    {
       if (c == 0x200d) // zero width joiner
