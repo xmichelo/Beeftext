@@ -59,7 +59,7 @@
     </message>
     <message>
         <source>Loose</source>
-        <translation>Свободно</translation>
+        <translation type="vanished">Свободно</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -79,7 +79,7 @@
     </message>
     <message>
         <source>Strict</source>
-        <translation>Строго</translation>
+        <translation type="vanished">Строго</translation>
     </message>
     <message>
         <source>C&amp;ancel</source>
@@ -133,7 +133,7 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anymay?</source>
-        <translation>%1 Если вы используете автозамещение, конфликты делают невозможным запуск некоторых шаблонов.
+        <translation type="vanished">%1 Если вы используете автозамещение, конфликты делают невозможным запуск некоторых шаблонов.
 
 Вы хотите продолжить?</translation>
     </message>
@@ -147,6 +147,12 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
+
+Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -386,7 +392,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Use loose matching.</source>
-        <translation>Использовать свободное соответствие.</translation>
+        <translation type="vanished">Использовать свободное соответствие.</translation>
     </message>
     <message>
         <source>Export Selected Combos</source>
@@ -406,7 +412,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>&amp;Loose</source>
-        <translation>&amp;Свободно</translation>
+        <translation type="vanished">&amp;Свободно</translation>
     </message>
     <message>
         <source>Enable Combo</source>
@@ -478,7 +484,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Matching Mode</source>
-        <translation>Режим соответствия</translation>
+        <translation type="vanished">Режим соответствия</translation>
     </message>
     <message>
         <source>&amp;Duplicate</source>
@@ -534,7 +540,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>&amp;Strict</source>
-        <translation>&amp;Строго</translation>
+        <translation type="vanished">&amp;Строго</translation>
     </message>
     <message>
         <source>I&amp;mport</source>
@@ -546,7 +552,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Use strict matching.</source>
-        <translation>Использовать строгое соответствие.</translation>
+        <translation type="vanished">Использовать строгое соответствие.</translation>
     </message>
     <message>
         <source>Disable combo</source>
@@ -562,7 +568,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Ctrl+Shift+L</source>
-        <translation>Ctrl+Shift+L</translation>
+        <translation type="vanished">Ctrl+Shift+L</translation>
     </message>
     <message>
         <source>Ctrl+Shift+O</source>
@@ -570,7 +576,7 @@ Do you want to continue anymay?</source>
     </message>
     <message>
         <source>Ctrl+Shift+S</source>
-        <translation>Ctrl+Shift+S</translation>
+        <translation type="vanished">Ctrl+Shift+S</translation>
     </message>
     <message>
         <source>Export All Combos</source>
@@ -1215,6 +1221,14 @@ Do you want to continue anymay?</source>
         <source>Executable files (*.exe);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Matching mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default matching mode</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1362,6 +1376,22 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>E&amp;xit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Strict</source>
+        <translation type="unfinished">Строго</translation>
+    </message>
+    <message>
+        <source>Loose</source>
+        <translation type="unfinished">Свободно</translation>
+    </message>
+    <message>
+        <source>&lt;Unknown&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
