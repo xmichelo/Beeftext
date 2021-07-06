@@ -45,8 +45,9 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
    QString const groupName = model->data(index, ComboList::GroupNameRole).toString();
    for (QString const& word: searchWords)
    {
-      if ((!comboName.contains(word, Qt::CaseInsensitive)) && (!keyword.contains(word, Qt::CaseInsensitive))
-         && (!snippet.contains(word, Qt::CaseInsensitive)) && (!groupName.contains(word, Qt::CaseInsensitive)))
+      QRegularExpression const rx(word, QRegularExpression::CaseInsensitiveOption);
+      if ((!comboName.contains(rx)) && (!keyword.contains(rx))
+         && (!snippet.contains(rx)) && (!groupName.contains(rx)))
          return false;
    }
    return true;
