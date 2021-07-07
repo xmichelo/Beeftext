@@ -66,14 +66,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="QtSettings">
     <QtModules>core;gui;network;widgets</QtModules>
-    <QtInstall>Qt 6.1.1</QtInstall>
+    <QtInstall>$(DefaultQtVersion)</QtInstall>
     <QtLUpdateOptions>
     </QtLUpdateOptions>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="QtSettings">
     <QtModules>core;gui;network;widgets</QtModules>
-    <QtInstall>Qt 6.1.1</QtInstall>
+    <QtInstall>$(DefaultQtVersion)</QtInstall>
     <QtLUpdateOptions>
     </QtLUpdateOptions>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
@@ -81,7 +81,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'" Label="QtSettings">
     <QtModules>core;gui;network;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
-    <QtInstall>Qt 6.1.1</QtInstall>
+    <QtInstall>$(DefaultQtVersion)</QtInstall>
     <QtLUpdateOptions>
     </QtLUpdateOptions>
     <QtQMLDebugEnable>false</QtQMLDebugEnable>
