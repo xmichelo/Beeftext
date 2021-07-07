@@ -35,15 +35,13 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
    if ((!model) || (!model->columnCount(QModelIndex())) || 
       (!model->data(model->index(sourceRow, 0, QModelIndex()), ComboList::EnabledRole).toBool()))
       return false;
-
-   QStringList const searchWords = this->filterRegularExpression().pattern().split(QRegularExpression("\\s"), 
-      Qt::SkipEmptyParts);
    QModelIndex const index = model->index(sourceRow, 0, QModelIndex());
    QString const comboName = model->data(index, Qt::DisplayRole).toString();
    QString const keyword = model->data(index, ComboList::KeywordRole).toString();
    QString const snippet = model->data(index, ComboList::SnippetRole).toString();
    QString const groupName = model->data(index, ComboList::GroupNameRole).toString();
-   for (QString const& word: searchWords)
+   for (QString const& word: this->filterRegularExpression().pattern().replace("\\ ", " ")
+      .split(QRegularExpression("\\s"), Qt::SkipEmptyParts))
    {
       QRegularExpression const rx(word, QRegularExpression::CaseInsensitiveOption);
       if ((!comboName.contains(rx)) && (!keyword.contains(rx))

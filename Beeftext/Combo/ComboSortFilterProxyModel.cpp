@@ -43,12 +43,15 @@ bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex cons
    SpCombo const& combo = combos[sourceRow];
    if (group_ && (combo->group() != group_))
       return false;
-   for (QString const& word : this->filterRegularExpression().pattern().split(QRegularExpression("\\s"), 
-      Qt::SkipEmptyParts))
-      if ((!combo->name().contains(word, Qt::CaseInsensitive)) 
-         && (!combo->keyword().contains(word, Qt::CaseInsensitive))
-         && (!combo->snippet().contains(word, Qt::CaseInsensitive)))
+   for (QString const& word : this->filterRegularExpression().pattern().replace("\\ ", " ")
+      .split(QRegularExpression("\\s"), Qt::SkipEmptyParts))
+   {
+      QRegularExpression const rx(word, QRegularExpression::CaseInsensitiveOption);
+      if ((!combo->name().contains(rx)) 
+         && (!combo->keyword().contains(rx))
+         && (!combo->snippet().contains(rx)))
          return false;
+   }
    return true;
 }
 
