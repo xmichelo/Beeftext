@@ -281,6 +281,7 @@
     <ClCompile Include="Combo\ComboPicker\ComboPickerModel.cpp" />
     <ClCompile Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.cpp" />
     <ClCompile Include="Combo\ComboPicker\ComboPickerWindow.cpp" />
+    <ClCompile Include="Combo\ComboPicker\ComboPickerWindowResizer.cpp" />
     <ClCompile Include="Combo\ComboSortFilterProxyModel.cpp" />
     <ClCompile Include="Combo\ComboKeywordValidator.cpp" />
     <ClCompile Include="Combo\ComboTableWidget.cpp" />
@@ -317,6 +318,7 @@
     <ClCompile Include="WaveSound.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Combo\ComboPicker\ComboPickerWindowResizer.h" />
     <ClInclude Include="Combo\MatchingMode.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />

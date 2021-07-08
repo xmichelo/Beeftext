@@ -33,10 +33,10 @@ void showComboPickerWindow()
 {
    static ComboPickerWindow window;
    QRect const rect = foregroundWindowRect();
-   if (rect.isNull()) 
+   if (rect.isNull())
       window.move(QCursor::pos());
    else
-      window.move(QPoint(rect.left() + ((rect.width() - window.width()) / 2), 
+      window.move(QPoint(rect.left() + ((rect.width() - window.width()) / 2),
          rect.top() + ((rect.height() - window.height()) / 2)));
    window.show();
    window.activateWindow();
@@ -49,6 +49,7 @@ void showComboPickerWindow()
 //**********************************************************************************************************************
 ComboPickerWindow::ComboPickerWindow()
    : QWidget(nullptr)
+   , resizer_(*this)
 {
    ui_.setupUi(this);
    this->setWindowFlag(Qt::FramelessWindowHint, true);
@@ -57,6 +58,7 @@ ComboPickerWindow::ComboPickerWindow()
    ui_.listViewResults->setItemDelegate(new ComboPickerItemDelegate(ui_.listViewResults));
    proxyModel_.setSourceModel(&model_);
    proxyModel_.sort(0, Qt::DescendingOrder);
+   qApp->installEventFilter(this);
 }
 
 
@@ -106,6 +108,39 @@ void ComboPickerWindow::showEvent(QShowEvent*)
    ui_.editSearch->setText(QString());
    model_.resetModel(); // forces a sort
    this->selectComboAtIndex(0);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void ComboPickerWindow::mousePressEvent(QMouseEvent* event)
+{
+   resizer_.processMousePressEvent(event);
+   QWidget::mousePressEvent(event);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event
+//**********************************************************************************************************************
+void ComboPickerWindow::mouseReleaseEvent(QMouseEvent* event)
+{
+   resizer_.processMouseReleaseEvent(event);
+   QWidget::mouseReleaseEvent(event);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] watched The watched object.
+/// \param[in] event The event.
+//**********************************************************************************************************************
+bool ComboPickerWindow::eventFilter(QObject* watched, QEvent* event)
+{
+   if  (QEvent::MouseMove == event->type())
+      resizer_.processMouseMoveEvent(dynamic_cast<QMouseEvent*>(event));
+
+   return QWidget::eventFilter(watched, event);
 }
 
 

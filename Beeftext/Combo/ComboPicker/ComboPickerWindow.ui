@@ -6,14 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
-    <height>319</height>
+    <width>500</width>
+    <height>250</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string/>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>0</height>
+   </size>
   </property>
-  <property name="styleSheet">
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
    <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -68,9 +74,7 @@
           </property>
           <property name="font">
            <font>
-            <family>Segoe UI</family>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>

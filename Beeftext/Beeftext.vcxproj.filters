@@ -151,6 +151,9 @@
       <Filter>Combo</Filter>
     </ClCompile>
     <ClCompile Include="WaveSound.cpp" />
+    <ClCompile Include="Combo\ComboPicker\ComboPickerWindowResizer.cpp">
+      <Filter>Combo\ComboPicker</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -234,6 +237,9 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="WaveSound.h" />
+    <ClInclude Include="Combo\ComboPicker\ComboPickerWindowResizer.h">
+      <Filter>Combo\ComboPicker</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">
