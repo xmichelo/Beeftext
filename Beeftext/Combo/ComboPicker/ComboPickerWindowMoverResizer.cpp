@@ -8,8 +8,9 @@
 
 
 #include "stdafx.h"
-#include "ComboPickerWindowResizer.h"
+#include "ComboPickerWindowMoverResizer.h"
 #include "ComboPickerWindow.h"
+#include "PreferencesManager.h"
 
 
 namespace {
@@ -20,57 +21,63 @@ namespace {
 //**********************************************************************************************************************
 ///\ param[in] widget The widget
 //**********************************************************************************************************************
-ComboPickerWindowResizer::ComboPickerWindowResizer(ComboPickerWindow& widget)
-   : widget_(widget)
+ComboPickerWindowMoverResizer::ComboPickerWindowMoverResizer(ComboPickerWindow& window)
+   : window_(window)
 {
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] event The event.
+//
 //**********************************************************************************************************************
-void ComboPickerWindowResizer::processMouseMoveEvent(QMouseEvent* event)
+void ComboPickerWindowMoverResizer::processMouseMoveEvent()
 {
-   if (!event)
-      return;
-   QPoint const pos = event->pos();
+   QPoint const pos = QCursor::pos();
    EMode const modeCandidate = resizingModeForCurrentMousePosition();
    if (EMode::Normal == mode_)
    {
 
-      widget_.setCursor(cursorForMode(modeCandidate));
+      window_.setCursor(cursorForMode(modeCandidate));
       return;
    }
-   qint32 const dx = ((mode_ == EMode::ResizingHorizontal) || (mode_ == EMode::ResizingDiagonal)) ?
-      pos.x() - prevMousePos_.x() : 0;
-   qint32 const dy = ((mode_ == EMode::ResizingVertical) || (mode_ == EMode::ResizingDiagonal)) ?
-      pos.y() - prevMousePos_.y() : 0;
+   qint32 const dx = ((mode_ == EMode::ResizingHorizontal) || (mode_ == EMode::ResizingDiagonal))
+   || (mode_ == EMode::Moving) ? pos.x() - prevMousePos_.x() : 0;
+   qint32 const dy = ((mode_ == EMode::ResizingVertical) || (mode_ == EMode::ResizingDiagonal))
+   || (mode_ == EMode::Moving) ? pos.y() - prevMousePos_.y() : 0;
 
-   if (dx || dy)
-      widget_.resize(widget_.width() + dx, widget_.height() + dy);
    prevMousePos_ = pos;
+   if (dx || dy)
+   {
+      if (EMode::Moving == mode_)
+         window_.move(window_.x() + dx, window_.y() + dy);
+      else
+         window_.resize(window_.width() + dx, window_.height() + dy);
+   }
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] event The event.
 //**********************************************************************************************************************
-void ComboPickerWindowResizer::processMousePressEvent(QMouseEvent* event)
+void ComboPickerWindowMoverResizer::processMousePressEvent(QMouseEvent* event)
 {
    if ((!event) || (Qt::LeftButton != event->button()))
       return;
    mode_ = resizingModeForCurrentMousePosition();
-   prevMousePos_ = event->pos();
+   prevMousePos_ = QCursor::pos();
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] event The event.
 //**********************************************************************************************************************
-void ComboPickerWindowResizer::processMouseReleaseEvent(QMouseEvent* event)
+void ComboPickerWindowMoverResizer::processMouseReleaseEvent(QMouseEvent* event)
 {
    if ((!event) || (event->button() != Qt::LeftButton))
       return;
+   if (mode_ == EMode::Normal)
+   return;
+   PreferencesManager::instance().setComboPickerWindowGeometry(window_.saveGeometry());
    mode_ = EMode::Normal;
 }
 
@@ -78,12 +85,14 @@ void ComboPickerWindowResizer::processMouseReleaseEvent(QMouseEvent* event)
 //**********************************************************************************************************************
 /// \return true if the mouse is over the resize area zone (the lower right corner of the window).
 //**********************************************************************************************************************
-ComboPickerWindowResizer::EMode ComboPickerWindowResizer::resizingModeForCurrentMousePosition() const
+ComboPickerWindowMoverResizer::EMode ComboPickerWindowMoverResizer::resizingModeForCurrentMousePosition() const
 {
-   QPoint const pos = widget_.mapFromGlobal(QCursor::pos());
+   QPoint const pos = window_.mapFromGlobal(QCursor::pos());
    qint32 const x = pos.x(), y = pos.y();
-   QSize const size = widget_.size();
+   QSize const size = window_.size();
    qint32 const w = size.width(), h = size.height();
+   if ((y >= 0) && (y < kSizeAreaLength))
+      return EMode::Moving;
    bool const xInZone = (x < w) && (x >= w - kSizeAreaLength);
    bool const yInZone = (y < h) && (y >= h - kSizeAreaLength);
    if (xInZone)
@@ -96,13 +105,14 @@ ComboPickerWindowResizer::EMode ComboPickerWindowResizer::resizingModeForCurrent
 /// \param[in] mode The mode.
 /// \return The cursor for the mode.
 //**********************************************************************************************************************
-QCursor ComboPickerWindowResizer::cursorForMode(EMode mode)
+QCursor ComboPickerWindowMoverResizer::cursorForMode(EMode mode)
 {
    switch (mode)
    {
    case EMode::ResizingDiagonal: return Qt::SizeFDiagCursor;
    case EMode::ResizingHorizontal: return Qt::SizeHorCursor;
    case EMode::ResizingVertical: return Qt::SizeVerCursor;
+   case EMode::Moving: return Qt::SizeAllCursor;
    case EMode::Normal: default: return Qt::ArrowCursor;
    }
 }

@@ -11,6 +11,7 @@
 #include "ComboPickerWindow.h"
 #include "ComboPickerItemDelegate.h"
 #include "../ComboManager.h"
+#include "PreferencesManager.h"
 
 
 //**********************************************************************************************************************
@@ -49,7 +50,7 @@ void showComboPickerWindow()
 //**********************************************************************************************************************
 ComboPickerWindow::ComboPickerWindow()
    : QWidget(nullptr)
-   , resizer_(*this)
+   , moverResizer_(*this)
 {
    ui_.setupUi(this);
    this->setWindowFlag(Qt::FramelessWindowHint, true);
@@ -59,6 +60,7 @@ ComboPickerWindow::ComboPickerWindow()
    proxyModel_.setSourceModel(&model_);
    proxyModel_.sort(0, Qt::DescendingOrder);
    qApp->installEventFilter(this);
+   this->restoreGeometry(PreferencesManager::instance().comboPickerWindowGeometry());
 }
 
 
@@ -116,7 +118,7 @@ void ComboPickerWindow::showEvent(QShowEvent*)
 //**********************************************************************************************************************
 void ComboPickerWindow::mousePressEvent(QMouseEvent* event)
 {
-   resizer_.processMousePressEvent(event);
+   moverResizer_.processMousePressEvent(event);
    QWidget::mousePressEvent(event);
 }
 
@@ -126,7 +128,7 @@ void ComboPickerWindow::mousePressEvent(QMouseEvent* event)
 //**********************************************************************************************************************
 void ComboPickerWindow::mouseReleaseEvent(QMouseEvent* event)
 {
-   resizer_.processMouseReleaseEvent(event);
+   moverResizer_.processMouseReleaseEvent(event);
    QWidget::mouseReleaseEvent(event);
 }
 
@@ -137,8 +139,8 @@ void ComboPickerWindow::mouseReleaseEvent(QMouseEvent* event)
 //**********************************************************************************************************************
 bool ComboPickerWindow::eventFilter(QObject* watched, QEvent* event)
 {
-   if  (QEvent::MouseMove == event->type())
-      resizer_.processMouseMoveEvent(dynamic_cast<QMouseEvent*>(event));
+   if  (event && (QEvent::MouseMove == event->type()))
+      moverResizer_.processMouseMoveEvent();
 
    return QWidget::eventFilter(watched, event);
 }

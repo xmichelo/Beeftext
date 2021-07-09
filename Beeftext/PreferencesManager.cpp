@@ -73,7 +73,7 @@ QString const kKeyAlreadyConvertedRichTextCombos = "AlreadyConvertedRichTextComb
 QString const kKeyUseCustomPowershellVersion = "UseCustomPowershellVersion"; ///< The setting key for the 'Use custom PowerShell version'.
 QString const kKeyCustomPowershellPath = "CustomPowershellPath"; ///< The setting key for the 'Custom PowerShell path'.
 QString const kKeyTheme = "Theme"; ///< The setting key for the 'Theme' preference.
-
+QString const kKeyComboPickerWindowGeometry = "ComboPickerWindowGeometry"; ///< The settings key for the combo picker geometry.
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
@@ -1482,6 +1482,24 @@ void PreferencesManager::setTheme(ETheme theme)
 ETheme PreferencesManager::theme() const
 {
    return cachedTheme_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] geometry The geometry.
+//**********************************************************************************************************************
+void PreferencesManager::setComboPickerWindowGeometry(QByteArray const& geometry) const
+{
+   settings_->setValue(kKeyComboPickerWindowGeometry, geometry);
+}
+
+
+//**********************************************************************************************************************
+/// \return The geometry.
+//**********************************************************************************************************************
+QByteArray PreferencesManager::comboPickerWindowGeometry() const
+{
+   return readSettings<QByteArray>(kKeyComboPickerWindowGeometry, QByteArray());
 }
 
 

@@ -151,7 +151,7 @@
       <Filter>Combo</Filter>
     </ClCompile>
     <ClCompile Include="WaveSound.cpp" />
-    <ClCompile Include="Combo\ComboPicker\ComboPickerWindowResizer.cpp">
+    <ClCompile Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.cpp">
       <Filter>Combo\ComboPicker</Filter>
     </ClCompile>
   </ItemGroup>
@@ -237,7 +237,7 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="WaveSound.h" />
-    <ClInclude Include="Combo\ComboPicker\ComboPickerWindowResizer.h">
+    <ClInclude Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.h">
       <Filter>Combo\ComboPicker</Filter>
     </ClInclude>
   </ItemGroup>

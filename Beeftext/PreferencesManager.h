@@ -124,6 +124,9 @@ public: // member functions
    QString customPowershellPath() const; ///< Set the value for the 'Custom PowerShell Path'.
    void setTheme(ETheme theme); ///< Set the theme parameter.
    ETheme theme() const; ///< Get the theme.
+   void setComboPickerWindowGeometry(QByteArray const& geometry) const; ///< Set the geometry of the combo picker window
+   QByteArray comboPickerWindowGeometry() const; ///< Get the geometry of the combo picker.
+   
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
    void writeDebugLogFileChanged(bool value); ///< Signal emitted when the 'Write debug log file' preference value changed.s

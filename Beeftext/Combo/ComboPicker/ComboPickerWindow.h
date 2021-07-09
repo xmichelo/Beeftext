@@ -13,7 +13,7 @@
 
 #include "ui_ComboPickerWindow.h"
 #include "ComboPickerModel.h"
-#include "ComboPickerWindowResizer.h"
+#include "ComboPickerWindowMoverResizer.h"
 #include "ComboPickerSortFilterProxyModel.h"
 #include "../Combo.h"
 
@@ -59,7 +59,7 @@ private: // data member
    Ui::ComboPickerWindow ui_ = {}; ///< The GUI for the window.
    ComboPickerModel model_; ///< The model for the list view.
    ComboPickerSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the list view
-   ComboPickerWindowResizer resizer_; ///< The resizer for the window.
+   ComboPickerWindowMoverResizer moverResizer_; ///< The mover/resizer for the window.
 };
 
 
