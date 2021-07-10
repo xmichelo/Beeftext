@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>787</width>
-    <height>594</height>
+    <width>770</width>
+    <height>564</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,30 +36,11 @@
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>25</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
       <widget class="QLineEdit" name="editSearch">
        <property name="minimumSize">
         <size>
          <width>200</width>
          <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>16777215</height>
         </size>
        </property>
        <property name="placeholderText">
