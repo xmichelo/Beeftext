@@ -42,7 +42,6 @@ QFont smallFont()
    font.setBold(true);
    font.setItalic(false);
    return font;
-   
 }
 
 
@@ -76,14 +75,31 @@ void ComboPickerItemDelegate::paint(QPainter* painter, const QStyleOptionViewIte
    // second line (combo keyword) use small font.
    QFont const sFont = smallFont();
 
+   QString const nameText = bMetrics.elidedText(index.data(Qt::DisplayRole).toString(), Qt::ElideRight, rect.width());
+   qint32 const nameYPos = rect.top() + bMetrics.ascent();
+   qint32 const nameWidth = bMetrics.boundingRect(nameText).width();
    painter->setFont(bFont);
    painter->setPen(selected ? bigTextSelectedColor : bigTextColor);
-   painter->drawText(QPoint(rect.left(), rect.top() + bMetrics.ascent()), 
-      bMetrics.elidedText(index.data(Qt::DisplayRole).toString(), Qt::ElideRight, rect.width()));
+   painter->drawText(QPoint(rect.left(), nameYPos), nameText);
+
    painter->setPen(smallTextColor);
    painter->setFont(sFont);
-   painter->drawText(QPoint(rect.left(), rect.bottom() - QFontMetrics(sFont).descent()), 
+   QFontMetrics const sMetrics(sFont);
+
+   // draw keyword
+   qint32 yPos = rect.bottom() - sMetrics.descent();
+   painter->drawText(QPoint(rect.left(), yPos), 
       index.data(ComboList::KeywordRole).toString());
+
+   // draw group name
+   QString  groupName = index.data(ComboList::GroupNameRole).toString();
+   if (!groupName.trimmed().isEmpty())
+   {
+      qint32 const groupNameMaxWidth = rect.width() - nameWidth - kItemHMargin;
+      groupName = sMetrics.elidedText(groupName, Qt::ElideRight, groupNameMaxWidth);
+      if (!groupName.isEmpty())
+         painter->drawText(QPoint(rect.right() - sMetrics.boundingRect(groupName).width(), nameYPos), groupName);
+   }
 }
 
 

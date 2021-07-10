@@ -668,6 +668,9 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       return QVariant();
 
    SpCombo const combo = combos_[static_cast<quint32>(row)];
+   if (!combo)
+      return QVariant();
+
    QLocale const locale = QLocale::system();
    QString const dtShortFormat = locale.dateTimeFormat(QLocale::ShortFormat);
    QString const dtLongFormat = locale.dateTimeFormat(QLocale::LongFormat);
