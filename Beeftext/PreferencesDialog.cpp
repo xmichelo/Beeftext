@@ -187,6 +187,10 @@ void PreferencesDialog::changeEvent(QEvent* event)
       ui_.retranslateUi(this);
       SpShortcut const shortcut = prefs_.comboTriggerShortcut();
       ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
+
+      QSignalBlocker blocker(ui_.comboTheme);
+      fillThemeComboBox(*ui_.comboTheme);
+      selectThemeInCombo(prefs_.theme(), *ui_.comboTheme);
    }
    QDialog::changeEvent(event);
 }

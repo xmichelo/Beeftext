@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "ComboManager.h"
 #include "LastUseFile.h"
+#include "WaveSound.h"
 #include "InputManager.h"
 #include "PreferencesManager.h"
 #include "BeeftextUtils.h"
@@ -22,6 +23,7 @@ using namespace xmilib;
 
 
 namespace {
+
 
 bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
 

@@ -21,10 +21,9 @@ QString themeName(ETheme theme)
 {
    switch (theme)
    {
-   case ETheme::Light: return "light";
-   case ETheme::Dark: return "dark";
-   case ETheme::Count: 
-   default: return "unknown";
+   case ETheme::Light: return QObject::tr("light");
+   case ETheme::Dark: return QObject::tr("dark");
+   case ETheme::Count: default: return QObject::tr("unknown");
    }
 }
 
