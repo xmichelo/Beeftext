@@ -1229,6 +1229,10 @@ Do you want to continue anyway?</source>
         <source>Default matching mode</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Use Shift+Insert for pasting</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1392,6 +1396,18 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&lt;Unknown&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>dark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>unknown</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
