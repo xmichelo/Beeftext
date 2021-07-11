@@ -299,7 +299,6 @@ QString evaluatePowershellVariable(QString const& variable)
       }
 
       QProcess p;
-      qDebug() << QString("Powershell executable: '%1'").arg(exePath);
       p.start(exePath, { "-NonInteractive", "-ExecutionPolicy", "Unrestricted", "-File", path });
       if (!p.waitForFinished(10000)) ///< we timeout after 10 seconds
          throw xmilib::Exception(QString("the script `%1` timed out.").arg(path));

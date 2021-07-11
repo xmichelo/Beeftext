@@ -126,7 +126,9 @@ public: // member functions
    ETheme theme() const; ///< Get the theme.
    void setComboPickerWindowGeometry(QByteArray const& geometry) const; ///< Set the geometry of the combo picker window
    QByteArray comboPickerWindowGeometry() const; ///< Get the geometry of the combo picker.
-   
+   void setUseShiftInsertForPasting(bool value); ///< Get the value for the 'Shift+Insert for pasting' preference
+   bool useShiftInsertForPasting() const; ///< Get the value for the 'Shift+Insert for pasting' preference
+
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed
    void writeDebugLogFileChanged(bool value); ///< Signal emitted when the 'Write debug log file' preference value changed.s
@@ -165,6 +167,7 @@ private: // data members
    bool cachedBeeftextEnabled_ { true }; ///< Cached value for the 'Beeftext enabled' preference.
    bool cachedUseCustomTheme_ { true }; ///< Cached value for the 'Use custom theme' preference.
    ETheme cachedTheme_ { ETheme::Light }; ///< Cached value for the 'Theme' preference.
+   bool cachedUseShiftInsertForPasting_ { false }; ///< Cached value for use 'Use Shift+Insert for pasting' preference.
 };
 
 

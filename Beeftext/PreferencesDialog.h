@@ -84,7 +84,8 @@ private slots:
    void onCheckWriteDebugLogFile(bool checked) const; ///< Slot the for 'Write debug log file' checkbox
    static void onOpenTranslationFolder(); ///< Slot for the 'Translation Folder' button.
    void onRefreshLanguageList() const; ///< Slot for the 'Refresh Language List' button.
-   void onCheckUseLegacyCopyPaste() const; ///< Set for the 'Use legacy copy/paste'.
+   void onCheckUseLegacyCopyPaste() const; ///< Slot for the 'Use legacy copy/paste'.
+   void onCheckUseShiftInsertForPasting() const; ///< Slot for the 'Use Shift+Insert for pasting' checkbox.
    void onCheckUseCustomPowerShellVersion(bool checked); ///< Slot for the 'Use custom PowerShell version' check box.
    void onChangeCustomPowershellVersion(); ///< Slot for the 'Change' button of the custom PowerShell version.
    void onExport(); ///< Slot for the 'Export' button.

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>376</height>
+    <height>402</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>1</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -848,6 +848,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="checkUseShiftInsertForPasting">
+         <property name="text">
+          <string>Use Shift+Insert for pasting</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_18">
          <item>
           <widget class="QCheckBox" name="checkUseCustomPowershellVersion">
@@ -1078,11 +1085,17 @@
   <tabstop>buttonChangeCustomSound</tabstop>
   <tabstop>buttonPlay</tabstop>
   <tabstop>CheckAppEnableDisable</tabstop>
+  <tabstop>editAppEnableDisableShortcut</tabstop>
+  <tabstop>buttonChangeAppEnableDisableShortcut</tabstop>
+  <tabstop>buttonDefaultAppEnableDisableShortcut</tabstop>
   <tabstop>radioComboTriggerAuto</tabstop>
+  <tabstop>checkComboTriggersOnSpace</tabstop>
+  <tabstop>checkKeepFinalSpaceCharacter</tabstop>
   <tabstop>radioComboTriggerManual</tabstop>
   <tabstop>editComboTriggerShortcut</tabstop>
   <tabstop>buttonChangeComboTriggerShortcut</tabstop>
   <tabstop>buttonResetComboTriggerShortcut</tabstop>
+  <tabstop>comboMatchingMode</tabstop>
   <tabstop>checkEnableComboPicker</tabstop>
   <tabstop>editComboPickerShortcut</tabstop>
   <tabstop>buttonChangeComboPickerShortcut</tabstop>
@@ -1094,15 +1107,31 @@
   <tabstop>comboLocale</tabstop>
   <tabstop>buttonRefresh</tabstop>
   <tabstop>buttonTranslationFolder</tabstop>
+  <tabstop>checkUseCustomTheme</tabstop>
+  <tabstop>comboTheme</tabstop>
   <tabstop>spinDelayBetweenKeystrokes</tabstop>
   <tabstop>editComboListFolder</tabstop>
   <tabstop>buttonChangeComboListFolder</tabstop>
   <tabstop>buttonOpenComboListFolder</tabstop>
   <tabstop>buttonResetComboListFolder</tabstop>
   <tabstop>checkWriteDebugLogFile</tabstop>
+  <tabstop>checkUseLegacyCopyPaste</tabstop>
+  <tabstop>checkUseShiftInsertForPasting</tabstop>
+  <tabstop>checkUseCustomPowershellVersion</tabstop>
+  <tabstop>editCustomPowerShellPath</tabstop>
+  <tabstop>buttonChangeCustomPowershellVersion</tabstop>
+  <tabstop>checkAutoBackup</tabstop>
+  <tabstop>buttonRestoreBackup</tabstop>
+  <tabstop>checkUseCustomBackupLocation</tabstop>
+  <tabstop>editCustomBackupLocation</tabstop>
+  <tabstop>buttonChangeCustomBackupLocation</tabstop>
   <tabstop>buttonSensitiveApplications</tabstop>
-  <tabstop>tabPreferences</tabstop>
+  <tabstop>buttonExport</tabstop>
+  <tabstop>buttonImport</tabstop>
+  <tabstop>buttonDefaults</tabstop>
+  <tabstop>buttonResetWarnings</tabstop>
   <tabstop>buttonClose</tabstop>
+  <tabstop>tabPreferences</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -1826,6 +1855,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkUseShiftInsertForPasting</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseShiftInsertForPasting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>348</x>
+     <y>166</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onClose()</slot>
@@ -1881,5 +1926,6 @@
   <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
   <slot>onComboThemeValueChanged(int)</slot>
   <slot>onChangeDefaultMatchingMode()</slot>
+  <slot>onCheckUseShiftInsertForPasting()</slot>
  </slots>
 </ui>

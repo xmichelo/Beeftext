@@ -132,6 +132,8 @@ void PreferencesDialog::loadPreferences() const
    ui_.editCustomSound->setText(QDir::toNativeSeparators(prefs_.customSoundPath()));
    blocker = QSignalBlocker(ui_.checkUseLegacyCopyPaste);
    ui_.checkUseLegacyCopyPaste->setChecked(prefs_.useLegacyCopyPaste());
+   blocker = QSignalBlocker(ui_.checkUseShiftInsertForPasting);
+   ui_.checkUseShiftInsertForPasting->setChecked(prefs_.useShiftInsertForPasting());
    blocker = QSignalBlocker(ui_.checkComboTriggersOnSpace);
    ui_.checkComboTriggersOnSpace->setChecked(prefs_.comboTriggersOnSpace());
    blocker = QSignalBlocker(ui_.checkKeepFinalSpaceCharacter);
@@ -773,6 +775,15 @@ void PreferencesDialog::onRefreshLanguageList() const
 void PreferencesDialog::onCheckUseLegacyCopyPaste() const
 {
    prefs_.setUseLegacyCopyPaste(ui_.checkUseLegacyCopyPaste->isChecked());
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckUseShiftInsertForPasting() const
+{
+   prefs_.setUseShiftInsertForPasting(ui_.checkUseShiftInsertForPasting->isChecked());
 }
 
 

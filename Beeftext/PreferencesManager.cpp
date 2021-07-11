@@ -74,6 +74,8 @@ QString const kKeyUseCustomPowershellVersion = "UseCustomPowershellVersion"; ///
 QString const kKeyCustomPowershellPath = "CustomPowershellPath"; ///< The setting key for the 'Custom PowerShell path'.
 QString const kKeyTheme = "Theme"; ///< The setting key for the 'Theme' preference.
 QString const kKeyComboPickerWindowGeometry = "ComboPickerWindowGeometry"; ///< The settings key for the combo picker geometry.
+QString const kKeyUseShiftInsertForPasting= "UseShiftInsertForPasting"; ///< The settings key for the 'Use Shift+Insert for pasting' preference
+
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
@@ -108,7 +110,7 @@ bool const kDefaultComboTriggersOnSpace = false; ///< The default value for the 
 bool const kDefaultKeepFinalSpaceCharacter = false; ///< The default value for the 'Combo triggers on space' preference.
 bool const kDefaultUseCustomPowershellVersion = false; ///< The default value for the 'Use custom PowerShell version' preference.
 ETheme const kDefaultTheme = ETheme::Light; ///< The default value for the theme preference.
-
+bool const kDefaultUseShiftInsertForPasting = false; ///< The default value for the 'Use Shift+Insert for pasting' preference.
 
 }
 
@@ -184,6 +186,9 @@ void PreferencesManager::init()
    cachedEmojiRightDelimiter_ = this->readSettings<QString>(kKeyEmojiRightDelimiter,
       kDefaultEmojiRightDelimiter);
    cachedBeeftextEnabled_ = this->readSettings<bool>(kKeyBeeftextEnabled, kDefaultBeeftextEnabled);
+   cachedUseShiftInsertForPasting_ = this->readSettings<bool>(kKeyUseShiftInsertForPasting, 
+      kDefaultUseShiftInsertForPasting);
+
    // Some preferences setting need initialization
    applyThemePreferences(this->useCustomTheme(), this->theme());
    this->applyLocalePreference();
@@ -223,6 +228,7 @@ void PreferencesManager::reset()
    this->setWriteDebugLogFile(kDefaultWriteDebugLogFile);
    this->resetWarnings();
    this->setUseLegacyCopyPaste(kDefaultUseLegacyCopyPaste);
+   this->setUseShiftInsertForPasting(kDefaultUseShiftInsertForPasting);
    if (!isInPortableMode())
    {
       this->setAutoStartAtLogin(kDefaultAutoStartAtLogin);
@@ -389,6 +395,8 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
       kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, 
       kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
    object[kKeyUseLegacyCopyPaste] = this->readSettings<bool>(kKeyUseLegacyCopyPaste, kDefaultUseLegacyCopyPaste);
+   object[kKeyUseShiftInsertForPasting] = this->readSettings<bool>(kKeyUseShiftInsertForPasting, 
+      kDefaultUseShiftInsertForPasting);
    outDoc = QJsonDocument(object);
 }
 
@@ -446,6 +454,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
    settings_->setValue(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, objectValue<bool>(object,
       kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed));
    this->setUseLegacyCopyPaste(objectValue<bool>(object, kKeyUseLegacyCopyPaste));
+   this->setUseShiftInsertForPasting(objectValue<bool>(object, kKeyUseShiftInsertForPasting));
    this->init();
 }
 
@@ -1500,6 +1509,25 @@ void PreferencesManager::setComboPickerWindowGeometry(QByteArray const& geometry
 QByteArray PreferencesManager::comboPickerWindowGeometry() const
 {
    return readSettings<QByteArray>(kKeyComboPickerWindowGeometry, QByteArray());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] value The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setUseShiftInsertForPasting(bool value)
+{
+   settings_->setValue(kKeyUseShiftInsertForPasting, value);
+   cachedUseShiftInsertForPasting_ = value;
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::useShiftInsertForPasting() const
+{
+   return cachedUseShiftInsertForPasting_;
 }
 
 

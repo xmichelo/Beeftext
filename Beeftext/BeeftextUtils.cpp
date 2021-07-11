@@ -219,9 +219,18 @@ void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cu
          clipboardManager.backupClipboard();
          clipboardManager.setText(text);
          pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
-         synthesizeKeyDown(VK_LCONTROL);
-         synthesizeKeyDownAndUp('V');
-         synthesizeKeyUp(VK_LCONTROL);
+         if (prefs.useShiftInsertForPasting())
+         {
+            synthesizeKeyDown(VK_LSHIFT);
+            synthesizeKeyDownAndUp(VK_INSERT);
+            synthesizeKeyUp(VK_LSHIFT);
+         }
+         else
+         {
+            synthesizeKeyDown(VK_LCONTROL);
+            synthesizeKeyDownAndUp('V');
+            synthesizeKeyUp(VK_LCONTROL);
+         }
          restoreModifierKeys(pressedModifiers);
          QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
          ///< We need to delay clipboard restoration to avoid unexpected behaviours
