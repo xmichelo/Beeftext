@@ -47,9 +47,6 @@ QString matchingModeToStringInternal(EMatchingMode mode, bool resolveDefault)
 }
 
 
-}
-
-
 //**********************************************************************************************************************
 /// \param[in] mode The matching mode.
 /// \return A string describing the matching mode.
@@ -57,6 +54,9 @@ QString matchingModeToStringInternal(EMatchingMode mode, bool resolveDefault)
 QString matchingModeToString(EMatchingMode mode)
 {
    return matchingModeToStringInternal(mode, true);
+}
+
+
 }
 
 

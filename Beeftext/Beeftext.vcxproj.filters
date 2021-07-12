@@ -154,6 +154,9 @@
     <ClCompile Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.cpp">
       <Filter>Combo\ComboPicker</Filter>
     </ClCompile>
+    <ClCompile Include="Combo\CaseSensitivity.cpp">
+      <Filter>Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -239,6 +242,9 @@
     <ClInclude Include="WaveSound.h" />
     <ClInclude Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.h">
       <Filter>Combo\ComboPicker</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo\CaseSensitivity.h">
+      <Filter>Combo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

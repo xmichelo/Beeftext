@@ -44,6 +44,7 @@ QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers
 QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
 QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
 QString const kKeyDefaultMatchingMode = "DefaultMatchingMode"; ///< The setting key for the default matching mode.
+QString const kKeyDefaultCaseSensitivity = "DefaultCaseSensitivity"; ///< The setting key for the 'Default case sensitivity' preference.
 QString const kKeyCustomBackupLocation = "CustomBackupLocation"; ///< The settings key for the 'Custom backup location' preference.
 QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for the 'Custom sound path' preference.
 QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
@@ -87,6 +88,7 @@ bool const kDefaultComboPickerEnabled = true; ///< The default value for the 'Co
 SpShortcut const kDefaultComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
 EMatchingMode kDefaultDefaultMatchingMode = EMatchingMode::Strict; ///< The default value for the 'Default matching mode preference'.
+ECaseSensitivity kDefaultDefaultCaseSensitivity = ECaseSensitivity::CaseSensitive; ///< The default value for the 'Default case sensitivity' preference.
 qint32 const kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 QString const kDefaultEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
@@ -176,6 +178,7 @@ void PreferencesManager::init()
    cachedComboPickerEnabled_ = this->readSettings<bool>(kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
    this->cacheComboPickerShortcut();
    cachedDefaultMatchingMode_ = this->readDefaultMatchingModeFromPreferences();
+   cachedDefaultCaseSensitivity_ = this->readDefaultCaseSensitivityFromPreferences();
    cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kKeyEmojiShortcodesEnabled,
       kDefaultEmojiShortcodesEnabled);
    cachedEnableAppEnableDisableShortcut_ = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
@@ -208,6 +211,7 @@ void PreferencesManager::reset()
    this->setComboPickerShortcut(defaultComboPickerShortcut());
    this->setComboTriggerShortcut(kDefaultComboTriggerShortcut);
    this->setDefaultMatchingMode(kDefaultDefaultMatchingMode);
+   this->setDefaultCaseSensitivity(kDefaultDefaultCaseSensitivity);
    this->setCustomBackupLocation(globals::defaultBackupFolderPath());
    this->setCustomSoundPath(QString());
    this->setDelayBetweenKeystrokesMs(kDefaultDelayBetweenKeystrokesMs);
@@ -360,6 +364,8 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
       qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0));
    object[kKeyDefaultMatchingMode] = qint32(this->readSettings<qint32>(kKeyDefaultMatchingMode,
       static_cast<qint32>(kDefaultDefaultMatchingMode)));
+   object[kKeyDefaultCaseSensitivity] = this->readSettings<qint32>(kKeyDefaultCaseSensitivity, 
+      qint32(kDefaultDefaultCaseSensitivity));
    object[kKeyCustomBackupLocation] = this->readSettings<QString>(kKeyCustomBackupLocation, 
       globals::defaultBackupFolderPath());
    object[kKeyCustomSoundPath] = this->readSettings<QString>(kKeyCustomSoundPath, QString());
@@ -426,6 +432,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
       kKeyComboTriggerShortcutModifiers));
    settings_->setValue(kKeyComboTriggerShortcutScanCode, objectValue<quint32>(object, kKeyComboTriggerShortcutScanCode));
    settings_->setValue(kKeyDefaultMatchingMode, objectValue<qint32>(object, kKeyDefaultMatchingMode));
+   settings_->setValue(kKeyDefaultCaseSensitivity, objectValue<qint32>(object, kKeyDefaultCaseSensitivity));
    settings_->setValue(kKeyCustomSoundPath, objectValue<QString>(object, kKeyCustomSoundPath));
    this->setCustomBackupLocation(objectValue<QString>(object, kKeyCustomBackupLocation)); // we call the function because it has side effects
    settings_->setValue(kKeyDelayBetweenKeystrokes, objectValue<qint32>(object, kKeyDelayBetweenKeystrokes));
@@ -1151,7 +1158,7 @@ SpShortcut PreferencesManager::comboTriggerShortcut() const
 void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode)
 {
    cachedDefaultMatchingMode_ = mode;
-   return settings_->setValue(kKeyDefaultMatchingMode, static_cast<qint32>(mode));
+   settings_->setValue(kKeyDefaultMatchingMode, static_cast<qint32>(mode));
 }
 
 
@@ -1161,6 +1168,25 @@ void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode)
 EMatchingMode PreferencesManager::defaultMatchingMode() const
 {
    return cachedDefaultMatchingMode_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] sensitivity The default case sensitivity.
+//**********************************************************************************************************************
+void PreferencesManager::setDefaultCaseSensitivity(ECaseSensitivity sensitivity)
+{
+   cachedDefaultCaseSensitivity_ = sensitivity;
+   settings_->setValue(kKeyDefaultCaseSensitivity, qint32(sensitivity));
+}
+
+
+//**********************************************************************************************************************
+/// \return The default case sensitivity.
+//**********************************************************************************************************************
+ECaseSensitivity PreferencesManager::defaultCaseSensitivity() const
+{
+   return cachedDefaultCaseSensitivity_;
 }
 
 
@@ -1216,6 +1242,26 @@ EMatchingMode PreferencesManager::readDefaultMatchingModeFromPreferences() const
       return mode;
    default:
       return EMatchingMode::Strict;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \return The default case sensitivity read from the preferences.
+//**********************************************************************************************************************
+ECaseSensitivity PreferencesManager::readDefaultCaseSensitivityFromPreferences() const
+{
+   ECaseSensitivity const sensitivity = static_cast<ECaseSensitivity>(
+      this->readSettings<qint32>(kKeyDefaultCaseSensitivity, static_cast<qint32>(kDefaultDefaultCaseSensitivity)));
+   switch (sensitivity)
+   {
+   case ECaseSensitivity::CaseSensitive: 
+   case ECaseSensitivity::CaseInsensitive: 
+      return sensitivity;
+   case ECaseSensitivity::Count:
+   case ECaseSensitivity::Default:
+   default:
+      return kDefaultDefaultCaseSensitivity;
    }
 }
 
