@@ -1259,493 +1259,499 @@ Você realmente deseja continuar?</translation>
     <name>PreferencesDialog</name>
     <message>
         <location filename="../PreferencesDialog.ui" line="20"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="894"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="907"/>
         <source>Preferences</source>
         <translation>Preferências</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="30"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="905"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="918"/>
         <source>Behavior</source>
         <translation>Comportamento</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="38"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="895"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="908"/>
         <source>Automatically check for &amp;updates</source>
         <translation>Verificar por at&amp;ualizações automaticamente</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="45"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="896"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="909"/>
         <source>&amp;Check Now</source>
         <translation>&amp;Checar Agora</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="61"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="897"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="910"/>
         <source>&amp;Automatically start Beeftext at login</source>
         <translation>&amp;Automaticamente iniciar Beeftext ao iniciar sessão</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="68"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="898"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="911"/>
         <source>&amp;Play sound on combo</source>
         <translation>Re&amp;produzir som com combo</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="75"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="899"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="912"/>
         <source>Use custom sound</source>
         <translation>Usar som customizado</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="110"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="900"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="913"/>
         <source>Cha&amp;nge</source>
         <translatorcomment>Best translation with different letter from &quot;C&quot;.</translatorcomment>
         <translation>&amp;Trocar</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="117"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="901"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="914"/>
         <source>&amp;Play</source>
         <translation>Re&amp;produzir</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="129"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="902"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="915"/>
         <source>Use shortcut to enable/disable Beeftext</source>
         <translation>Usar atalho para habilitar/desativar o Beeftext</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="179"/>
-        <location filename="../PreferencesDialog.ui" line="815"/>
-        <location filename="../PreferencesDialog.ui" line="876"/>
-        <location filename="../PreferencesDialog.ui" line="941"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="903"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="937"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="944"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="952"/>
+        <location filename="../PreferencesDialog.ui" line="823"/>
+        <location filename="../PreferencesDialog.ui" line="884"/>
+        <location filename="../PreferencesDialog.ui" line="949"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="916"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="951"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="958"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="966"/>
         <source>&amp;Change</source>
         <translatorcomment>Best translation with different letter from &quot;C&quot;.</translatorcomment>
         <translation>&amp;Trocar</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="186"/>
-        <location filename="../PreferencesDialog.ui" line="1031"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="904"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="966"/>
+        <location filename="../PreferencesDialog.ui" line="1039"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="917"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="980"/>
         <source>&amp;Default</source>
         <translation>&amp;Padrão</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="212"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="920"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="934"/>
         <source>Combos</source>
         <translation>Combos</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="218"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="906"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="919"/>
         <source>Combo triggering</source>
         <translation>Gatilho para o combo</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="226"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="907"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="920"/>
         <source>Automatic</source>
         <translation>Automático</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="264"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="910"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="923"/>
         <source>Manual, using the shortcut</source>
         <translation>Manual, utilizando o atalho</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="305"/>
-        <location filename="../PreferencesDialog.ui" line="435"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="911"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="918"/>
+        <location filename="../PreferencesDialog.ui" line="443"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="924"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="932"/>
         <source>C&amp;hange</source>
         <translatorcomment>Best translation with different letter from &quot;C&quot;.</translatorcomment>
         <translation>&amp;Trocar</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="312"/>
-        <location filename="../PreferencesDialog.ui" line="442"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="912"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="919"/>
+        <location filename="../PreferencesDialog.ui" line="450"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="925"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="933"/>
         <source>De&amp;fault</source>
         <translation>&amp;Padrão</translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="233"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="908"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="921"/>
         <source>Trigger only after spacebar is pressed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PreferencesDialog.ui" line="240"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="909"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="922"/>
         <source>Keep the final space character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="343"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="913"/>
-        <source>Matching mode</source>
+        <location filename="../PreferencesDialog.ui" line="337"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="926"/>
+        <source>Default behavior</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="349"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="914"/>
+        <location filename="../PreferencesDialog.ui" line="343"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="927"/>
         <source>Default matching mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="385"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="915"/>
+        <location filename="../PreferencesDialog.ui" line="357"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="928"/>
+        <source>Default case sensitivity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PreferencesDialog.ui" line="393"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="929"/>
         <source>Combo picker</source>
         <translation>Seletor de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="391"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="916"/>
+        <location filename="../PreferencesDialog.ui" line="399"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="930"/>
         <source>Enable combo picker</source>
         <translation>Habilitar seletor de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="400"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="917"/>
+        <location filename="../PreferencesDialog.ui" line="408"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="931"/>
         <source>Shortcut</source>
         <translation>Atalhos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="481"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="925"/>
+        <location filename="../PreferencesDialog.ui" line="489"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="939"/>
         <source>Emojis</source>
         <translation>Emojis</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="489"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="921"/>
+        <location filename="../PreferencesDialog.ui" line="497"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="935"/>
         <source>Enable emoji shortcodes</source>
         <translation>Habilitar atalhos para emojis</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="496"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="922"/>
+        <location filename="../PreferencesDialog.ui" line="504"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="936"/>
         <source>&amp;Excluded Applications</source>
         <translation>&amp;Excluir Aplicações</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="520"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="923"/>
+        <location filename="../PreferencesDialog.ui" line="528"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="937"/>
         <source>Left delimiter</source>
         <translation>Delimitador esquerdo</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="576"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="924"/>
+        <location filename="../PreferencesDialog.ui" line="584"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="938"/>
         <source>Right delimiter</source>
         <translation>Delimitador direito</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="599"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="933"/>
+        <location filename="../PreferencesDialog.ui" line="607"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="947"/>
         <source>Appearance</source>
         <translation>Aspecto</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="607"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="926"/>
+        <location filename="../PreferencesDialog.ui" line="615"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="940"/>
         <source>Language</source>
         <translation>Idioma</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="626"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="928"/>
+        <location filename="../PreferencesDialog.ui" line="634"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="942"/>
         <source>Refresh</source>
         <translation>Atualizar</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="633"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="929"/>
+        <location filename="../PreferencesDialog.ui" line="641"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="943"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Outros idiomas&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="660"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="930"/>
+        <location filename="../PreferencesDialog.ui" line="668"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="944"/>
         <source>User-provided translations</source>
         <translation>Traduções providas por usuários</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="667"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="931"/>
+        <location filename="../PreferencesDialog.ui" line="675"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="945"/>
         <source>Open Folder</source>
         <translation>Abir Pasta</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="694"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="932"/>
+        <location filename="../PreferencesDialog.ui" line="702"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="946"/>
         <source>Use custom theme</source>
         <translation>Usar tema customizado</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="737"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="954"/>
+        <location filename="../PreferencesDialog.ui" line="745"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="968"/>
         <source>Advanced</source>
         <translation>Avançado</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="745"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="934"/>
+        <location filename="../PreferencesDialog.ui" line="753"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="948"/>
         <source>Delay between simulated keystrokes</source>
         <translation>Atraso entre caracteres simulados</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="752"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="935"/>
+        <location filename="../PreferencesDialog.ui" line="760"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="949"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="801"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="936"/>
+        <location filename="../PreferencesDialog.ui" line="809"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="950"/>
         <source>Combo list folder</source>
         <translation>Pasta da lista de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="822"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="938"/>
+        <location filename="../PreferencesDialog.ui" line="830"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="952"/>
         <source>O&amp;pen</source>
         <translation>A&amp;brir</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="829"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="939"/>
+        <location filename="../PreferencesDialog.ui" line="837"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="953"/>
         <source>D&amp;efault</source>
         <translation>&amp;Padrão</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="839"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="940"/>
+        <location filename="../PreferencesDialog.ui" line="847"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="954"/>
         <source>Write debug events in a log file</source>
         <translation>Escrever eventos de erro em arquivo de log</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="846"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="941"/>
+        <location filename="../PreferencesDialog.ui" line="854"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="955"/>
         <source>Use legacy copy/paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="853"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="942"/>
+        <location filename="../PreferencesDialog.ui" line="861"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="956"/>
         <source>Use Shift+Insert for pasting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="862"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="943"/>
+        <location filename="../PreferencesDialog.ui" line="870"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="957"/>
         <source>Use custom PowerShell version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="885"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="945"/>
+        <location filename="../PreferencesDialog.ui" line="893"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="959"/>
         <source>Automatic backup</source>
         <translation>Backup automático</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="893"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="946"/>
+        <location filename="../PreferencesDialog.ui" line="901"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="960"/>
         <source>Automatically backup combo list files</source>
         <translation>Backup automático de lista de combos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="900"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="948"/>
+        <location filename="../PreferencesDialog.ui" line="908"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="962"/>
         <source>Restore a backup.</source>
         <translation>Restaurar um backup.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="903"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="950"/>
+        <location filename="../PreferencesDialog.ui" line="911"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="964"/>
         <source>&amp;Restore</source>
         <translation>&amp;Restaurar</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="927"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="951"/>
+        <location filename="../PreferencesDialog.ui" line="935"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="965"/>
         <source>Use custom backup location</source>
         <translation>Usar localização customizada de backup</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="955"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="953"/>
+        <location filename="../PreferencesDialog.ui" line="963"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="967"/>
         <source>Sensitive Applications</source>
         <translation>Aplicações Sensíveis</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="1002"/>
-        <location filename="../PreferencesDialog.ui" line="1015"/>
-        <location filename="../PreferencesDialog.ui" line="1028"/>
-        <location filename="../PreferencesDialog.ui" line="1041"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="956"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="960"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="964"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="968"/>
+        <location filename="../PreferencesDialog.ui" line="1010"/>
+        <location filename="../PreferencesDialog.ui" line="1023"/>
+        <location filename="../PreferencesDialog.ui" line="1036"/>
+        <location filename="../PreferencesDialog.ui" line="1049"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="970"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="974"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="978"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="982"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Restaurar as preferências para seus valores padrão.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="1005"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="958"/>
+        <location filename="../PreferencesDialog.ui" line="1013"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="972"/>
         <source>&amp;Export</source>
         <translation>&amp;Exportar</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="1018"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="962"/>
+        <location filename="../PreferencesDialog.ui" line="1026"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="976"/>
         <source>&amp;Import</source>
         <translation>&amp;Importar</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="1044"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="970"/>
+        <location filename="../PreferencesDialog.ui" line="1052"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="984"/>
         <source>Reset &amp;Warnings</source>
         <translation>Reiniciar A&amp;visos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.ui" line="1067"/>
-        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="971"/>
+        <location filename="../PreferencesDialog.ui" line="1075"/>
+        <location filename="../GeneratedFiles/ui_PreferencesDialog.h" line="985"/>
         <source>&amp;Close</source>
         <translation>Fe&amp;char</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="169"/>
+        <location filename="../PreferencesDialog.cpp" line="174"/>
         <source>Delete Backup Files?</source>
         <translation>Deletar arquivos de cópia de segurança?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="169"/>
+        <location filename="../PreferencesDialog.cpp" line="174"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>Você deseja deletar todos os arquivos de segurança?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="308"/>
+        <location filename="../PreferencesDialog.cpp" line="317"/>
         <source>WAV files (*.wav);;All files (*.*)</source>
         <translation>Arquivos WAV (*.wav);; Todos os arquivos (*.*)</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="551"/>
+        <location filename="../PreferencesDialog.cpp" line="570"/>
         <source>Select folder</source>
         <translation>Selecionar pasta</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="252"/>
-        <location filename="../PreferencesDialog.cpp" line="556"/>
-        <location filename="../PreferencesDialog.cpp" line="840"/>
-        <location filename="../PreferencesDialog.cpp" line="855"/>
+        <location filename="../PreferencesDialog.cpp" line="261"/>
+        <location filename="../PreferencesDialog.cpp" line="575"/>
+        <location filename="../PreferencesDialog.cpp" line="859"/>
+        <location filename="../PreferencesDialog.cpp" line="874"/>
         <source>Error</source>
         <translation>Erro</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="252"/>
+        <location filename="../PreferencesDialog.cpp" line="261"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="556"/>
+        <location filename="../PreferencesDialog.cpp" line="575"/>
         <source>The location of the combo list folder could not be changed.</source>
         <translation>A localização da pasta da lista de combos não pode ser alterada.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="568"/>
+        <location filename="../PreferencesDialog.cpp" line="587"/>
         <source>Reset Folder</source>
         <translation>Resetar Pasta</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="568"/>
+        <location filename="../PreferencesDialog.cpp" line="587"/>
         <source>Reset the combo list folder?</source>
         <translation>Resetar pasta da lista de combos?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="620"/>
+        <location filename="../PreferencesDialog.cpp" line="639"/>
         <source>Custom backup location</source>
         <translation>Localização de backup personalizada</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="644"/>
+        <location filename="../PreferencesDialog.cpp" line="663"/>
         <source>Reset Preferences</source>
         <translation>Reiniciar Preferências</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="644"/>
+        <location filename="../PreferencesDialog.cpp" line="663"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Você tem certeza sobre reiniciar as preferências para seus valores padrão?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="660"/>
+        <location filename="../PreferencesDialog.cpp" line="679"/>
         <source>Reset Warnings</source>
         <translation>Reiniciar Avisos</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="660"/>
+        <location filename="../PreferencesDialog.cpp" line="679"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation>Você tem certeza sobre reiniciar todos os avisos?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="681"/>
+        <location filename="../PreferencesDialog.cpp" line="700"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 está disponível.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="683"/>
+        <location filename="../PreferencesDialog.cpp" line="702"/>
         <source>A new version is available.</source>
         <translation>Uma nova versão está disponível.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="692"/>
+        <location filename="../PreferencesDialog.cpp" line="711"/>
         <source>The software is up to date.</source>
         <translation>O programa está atualizado.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="719"/>
+        <location filename="../PreferencesDialog.cpp" line="738"/>
         <source>Update check failed.</source>
         <translation>Falha da verificação da atualização.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="819"/>
+        <location filename="../PreferencesDialog.cpp" line="838"/>
         <source>Select PowerShell executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="820"/>
+        <location filename="../PreferencesDialog.cpp" line="839"/>
         <source>Executable files (*.exe);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="834"/>
+        <location filename="../PreferencesDialog.cpp" line="853"/>
         <source>Export Preferences</source>
         <translation>Exportar Preferências</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="840"/>
+        <location filename="../PreferencesDialog.cpp" line="859"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation>Um erro ocorreu enquanto eram exportadas as preferências.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="849"/>
+        <location filename="../PreferencesDialog.cpp" line="868"/>
         <source>Import Preferences</source>
         <translation>Importar Preferências</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="855"/>
+        <location filename="../PreferencesDialog.cpp" line="874"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>Um erro ocorreu enquanto estavam sendo importadas as preferências.</translation>
     </message>
@@ -1934,13 +1940,24 @@ Você gostaria de ler o curto tutorial de &apos;Primeiros Passos&apos;?</transla
         <translation>O grupo padrão.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="306"/>
+        <location filename="../PreferencesDialog.cpp" line="315"/>
         <source>Select custom sound file</source>
         <translation>Selecionar som personalizado</translation>
     </message>
     <message>
+        <location filename="../Combo/CaseSensitivity.cpp" line="34"/>
         <location filename="../Combo/MatchingMode.cpp" line="34"/>
         <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/CaseSensitivity.cpp" line="40"/>
+        <source>Case sensitive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/CaseSensitivity.cpp" line="41"/>
+        <source>Case insensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1954,6 +1971,7 @@ Você gostaria de ler o curto tutorial de &apos;Primeiros Passos&apos;?</transla
         <translation type="unfinished">Aproximada</translation>
     </message>
     <message>
+        <location filename="../Combo/CaseSensitivity.cpp" line="46"/>
         <location filename="../Combo/MatchingMode.cpp" line="45"/>
         <source>&lt;Unknown&gt;</source>
         <translation type="unfinished"></translation>

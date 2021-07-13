@@ -1222,15 +1222,19 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Matching mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Default matching mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use Shift+Insert for pasting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default behavior</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default case sensitivity</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1408,6 +1412,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Case sensitive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Case insensitive</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

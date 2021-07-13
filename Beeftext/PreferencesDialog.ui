@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -332,39 +332,47 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBoxMatchingMode">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
+        <widget class="QGroupBox" name="groupBoxDefaultBehavior">
          <property name="title">
-          <string>Matching mode</string>
+          <string>Default behavior</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_19">
-          <item>
-           <widget class="QLabel" name="label">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelMatchingMode">
             <property name="text">
              <string>Default matching mode</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item row="0" column="1">
            <widget class="QComboBox" name="comboMatchingMode">
             <property name="sizeAdjustPolicy">
              <enum>QComboBox::AdjustToContents</enum>
             </property>
            </widget>
           </item>
-          <item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelCaseSensitivity">
+            <property name="text">
+             <string>Default case sensitivity</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboCaseSensitivity">
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" rowspan="2">
            <spacer name="horizontalSpacer_14">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>428</width>
+              <width>0</width>
               <height>20</height>
              </size>
             </property>
@@ -1871,6 +1879,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboCaseSensitivity</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeDefaultCaseSensitivity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>196</x>
+     <y>203</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onClose()</slot>
@@ -1927,5 +1951,6 @@
   <slot>onComboThemeValueChanged(int)</slot>
   <slot>onChangeDefaultMatchingMode()</slot>
   <slot>onCheckUseShiftInsertForPasting()</slot>
+  <slot>onChangeDefaultCaseSensitivity()</slot>
  </slots>
 </ui>

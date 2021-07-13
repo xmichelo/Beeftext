@@ -54,6 +54,7 @@ private slots:
    void onChangeComboTriggerShortcut() const; ///< Slot for the 'Change shortcut' action
    void onResetComboTriggerShortcut() const; ///< Slot for the 'Reset combo trigger shortcut'
    void onChangeDefaultMatchingMode() const; ///< Slot for the 'Default matching mode' combo value change.
+   void onChangeDefaultCaseSensitivity() const; ///< Slot for the 'Default case sensitivity' combo value change.
    void onCheckEnableComboPicker(bool checked) const; ///< Slot for the 'Enable combo picker' checkbox.
    void onChangeComboPickerShortcut() const; ///< Slot for the combo picker 'Change' button.
    void onResetComboPickerShortcut() const; ///< Slot for the combo picker 'Reset' button.

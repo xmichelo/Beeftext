@@ -12,6 +12,7 @@
 #include "ShortcutDialog.h"
 #include "Theme.h"
 #include "I18nManager.h"
+#include "Combo/CaseSensitivity.h"
 #include "Combo/MatchingMode.h"
 #include "Combo/ComboManager.h"
 #include "Backup/BackupManager.h"
@@ -49,7 +50,10 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    ui_.labelUpdateCheckStatus->setText(QString());
    ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(),
       PreferencesManager::maxDelayBetweenKeystrokesMs());
+//   ui_.comboCaseSensitivity->setSizeAdjustPolicy(QComboBox::AdjustToContentsOnFirstShow);
    fillMatchingModeCombo(*ui_.comboMatchingMode, false);
+   fillCaseSensitivityCombo(*ui_.comboCaseSensitivity, false);
+  // ui_.comboCaseSensitivity->setSizeAdjustPolicy(QComboBox::AdjustToContents);
    I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
 
    this->loadPreferences();
@@ -105,8 +109,9 @@ void PreferencesDialog::loadPreferences() const
    ui_.checkEnableComboPicker->setChecked(prefs_.comboPickerEnabled());
    shortcut = prefs_.comboPickerShortcut();
    ui_.editComboPickerShortcut->setText(shortcut ? shortcut->toString() : "");
-   blocker = QSignalBlocker(ui_.checkEnableEmoji);
    selectMatchingModeInCombo(*ui_.comboMatchingMode, prefs_.defaultMatchingMode(), true);
+   selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
+   blocker = QSignalBlocker(ui_.checkEnableEmoji);
    ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
    blocker = QSignalBlocker(ui_.editEmojiLeftDelimiter);
    ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
@@ -191,6 +196,12 @@ void PreferencesDialog::changeEvent(QEvent* event)
       QSignalBlocker blocker(ui_.comboTheme);
       fillThemeComboBox(*ui_.comboTheme);
       selectThemeInCombo(prefs_.theme(), *ui_.comboTheme);
+
+      fillMatchingModeCombo(*ui_.comboMatchingMode, false);
+      selectMatchingModeInCombo(*ui_.comboMatchingMode, prefs_.defaultMatchingMode(), true);
+
+      fillCaseSensitivityCombo(*ui_.comboCaseSensitivity, false);
+      selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
    }
    QDialog::changeEvent(event);
 }
@@ -436,6 +447,16 @@ void PreferencesDialog::onResetComboTriggerShortcut() const
 void PreferencesDialog::onChangeDefaultMatchingMode() const
 {
    prefs_.setDefaultMatchingMode(selectedMatchingModeInCombo(*ui_.comboMatchingMode));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onChangeDefaultCaseSensitivity() const
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   prefs_.setDefaultCaseSensitivity(selectedCaseSensitivityInCombo(*ui_.comboCaseSensitivity));
 }
 
 
