@@ -1177,7 +1177,7 @@ EMatchingMode PreferencesManager::defaultMatchingMode() const
 void PreferencesManager::setDefaultCaseSensitivity(ECaseSensitivity sensitivity)
 {
    cachedDefaultCaseSensitivity_ = sensitivity;
-   settings_->setValue(kKeyDefaultCaseSensitivity, qint32(sensitivity));
+   settings_->setValue(kKeyDefaultCaseSensitivity, caseSensitivityToInt(sensitivity));
 }
 
 
@@ -1251,8 +1251,8 @@ EMatchingMode PreferencesManager::readDefaultMatchingModeFromPreferences() const
 //**********************************************************************************************************************
 ECaseSensitivity PreferencesManager::readDefaultCaseSensitivityFromPreferences() const
 {
-   ECaseSensitivity const sensitivity = static_cast<ECaseSensitivity>(
-      this->readSettings<qint32>(kKeyDefaultCaseSensitivity, static_cast<qint32>(kDefaultDefaultCaseSensitivity)));
+   ECaseSensitivity const sensitivity = intToCaseSensitivity(this->readSettings<qint32>(kKeyDefaultCaseSensitivity, 
+      caseSensitivityToInt(kDefaultDefaultCaseSensitivity)));
    switch (sensitivity)
    {
    case ECaseSensitivity::CaseSensitive: 

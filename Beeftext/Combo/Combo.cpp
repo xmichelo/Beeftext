@@ -315,7 +315,10 @@ bool Combo::isUsable() const
 //**********************************************************************************************************************
 bool Combo::matchesForInput(QString const& input) const
 {
-   return (this->matchingMode(true) == EMatchingMode::Loose) ? input.endsWith(keyword_) : (input == keyword_);
+   Qt::CaseSensitivity const cs = (PreferencesManager::instance().defaultCaseSensitivity() == 
+      ECaseSensitivity::CaseInsensitive)? Qt::CaseInsensitive : Qt::CaseSensitive;
+   return (this->matchingMode(true) == EMatchingMode::Loose) ? input.endsWith(keyword_, cs) :
+      (input.compare(keyword_, cs) == 0);
 }
 
 
