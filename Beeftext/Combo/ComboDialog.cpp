@@ -12,6 +12,7 @@
 #include "ComboDialog.h"
 #include "ComboManager.h"
 #include "MatchingMode.h"
+#include "CaseSensitivity.h"
 #include <XMiLib/Exception.h>
 #include <XMiLib/XMiLibConstants.h>
 #include "PreferencesManager.h"
@@ -94,6 +95,8 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.comboGroup->setCurrentGroup(combo_->group());
    fillMatchingModeCombo(*ui_.comboMatching, true);
    selectMatchingModeInCombo(*ui_.comboMatching, combo->matchingMode(false), true);
+   fillCaseSensitivityCombo(*ui_.comboCaseSensitivity, true);
+   selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, combo->caseSensitivity(false), true);
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
    ui_.comboEditor->plainTextEdit()->setPlainText(combo->snippet());
@@ -175,6 +178,7 @@ void ComboDialog::onActionOk()
    combo_->setName(ui_.editName->text().trimmed());
    combo_->setGroup(ui_.comboGroup->currentGroup());
    combo_->setMatchingMode(selectedMatchingModeInCombo(*ui_.comboMatching));
+   combo_->setCaseSensitivity(selectedCaseSensitivityInCombo(*ui_.comboCaseSensitivity));
    combo_->setKeyword(keyword);
    combo_->setSnippet(ui_.comboEditor->plainText());
    this->accept();

@@ -29,7 +29,7 @@ QString const kKeyGroups = "groups"; ///< The JSon key for groups
 
 
 QString const ComboList::defaultFileName = "comboList.json";
-qint32 const ComboList::fileFormatVersionNumber = 9;
+qint32 const ComboList::fileFormatVersionNumber = 10;
 
 
 //**********************************************************************************************************************

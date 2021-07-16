@@ -30,13 +30,13 @@ QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property
 QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
 QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option. This option is deprecated since combo list file format v9, replaced by matching mode.
 QString const kPropMatchingMode = "matchingMode"; ///< The JSON property for the 'matching mode' of the combo. This option was introduced in combo list file format v9.
+QString const kPropCaseSensitivity = "caseSensitivity"; ///< The JSON property for the 'case sensitivity' of the combo. This option was introduced in combo list file format v10.
 QString const kPropGroup = "group"; ///< The JSON property name for the combo group 
 QString const kPropCreated = "created"; ///< The JSON property name for the created date/time, deprecated in combo list file format v3, replaced by "creationDateTime"
 QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property name for the created date/time, introduced in the combo list file format v3, replacing "created"
 QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
 QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
 QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
-
 
 } // anonymous namespace
 
@@ -49,14 +49,17 @@ QString const kPropUseHtml = "useHtml";
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
 /// \param[in] matchingMode The matching mode
+/// \param[in] caseSensitivity The case sensitivity.
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, bool const enabled)
+Combo::Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, 
+   ECaseSensitivity caseSensitivity, bool const enabled)
    : uuid_(QUuid::createUuid())
    , name_(std::move(name))
    , keyword_(std::move(keyword))
    , snippet_(std::move(snippet))
    , matchingMode_(matchingMode)
+   , caseSensitivity_(caseSensitivity)
    , enabled_(enabled)
 
 {
@@ -75,6 +78,8 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
    , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
+   , caseSensitivity_((formatVersion < 10) ? ECaseSensitivity::Default : 
+      intToCaseSensitivity(object[kPropCaseSensitivity].toInt(0), ECaseSensitivity::Default))
    , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
          kPropCreated].toString(), constants::kJsonExportDateFormat))
    , modificationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropModificationDateTime :
@@ -222,6 +227,32 @@ void Combo::setMatchingMode(EMatchingMode mode)
 
 
 //**********************************************************************************************************************
+/// \param[in] resolveDefault If the value is default, should the function return the actual default case sensitivity
+/// for the application.
+/// \return The case sensitivity of the combo.
+/// //**********************************************************************************************************************
+ECaseSensitivity Combo::caseSensitivity(bool resolveDefault) const
+{
+   if ((ECaseSensitivity::Default == caseSensitivity_) && resolveDefault)
+      return PreferencesManager::instance().defaultCaseSensitivity();
+   return caseSensitivity_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] caseSensitivity The case sensitivity.
+//**********************************************************************************************************************
+void Combo::setCaseSensitivity(ECaseSensitivity caseSensitivity)
+{
+   if (caseSensitivity_ != caseSensitivity)
+   { 
+      caseSensitivity_ = caseSensitivity;
+      this->touch();
+   }
+}
+
+
+//**********************************************************************************************************************
 /// \return The last modification date of the combo
 //**********************************************************************************************************************
 QDateTime Combo::modificationDateTime() const
@@ -315,8 +346,8 @@ bool Combo::isUsable() const
 //**********************************************************************************************************************
 bool Combo::matchesForInput(QString const& input) const
 {
-   Qt::CaseSensitivity const cs = (PreferencesManager::instance().defaultCaseSensitivity() == 
-      ECaseSensitivity::CaseInsensitive)? Qt::CaseInsensitive : Qt::CaseSensitive;
+   Qt::CaseSensitivity const cs = (this->caseSensitivity(true) == ECaseSensitivity::CaseInsensitive)
+      ? Qt::CaseInsensitive : Qt::CaseSensitive;
    return (this->matchingMode(true) == EMatchingMode::Loose) ? input.endsWith(keyword_, cs) :
       (input.compare(keyword_, cs) == 0);
 }
@@ -372,6 +403,7 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropKeyword, keyword_);
    result.insert(kPropSnippet, snippet_);
    result.insert(kPropMatchingMode, qint32(matchingMode_));
+   result.insert(kPropCaseSensitivity, caseSensitivityToInt(caseSensitivity_));
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropModificationDateTime, modificationDateTime_.toString(constants::kJsonExportDateFormat));
    result.insert(kPropEnabled, enabled_);
@@ -398,10 +430,10 @@ void Combo::changeUuid()
 /// \param[in] enabled Is the combo enabled.
 /// \return A shared pointer to the created Combo.
 //**********************************************************************************************************************
-SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, EMatchingMode matchingMode, 
-   bool enabled)
+SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, EMatchingMode matchingMode,
+   ECaseSensitivity caseSensitivity, bool enabled)
 {
-   return std::make_shared<Combo>(name, keyword, snippet, matchingMode, enabled);
+   return std::make_shared<Combo>(name, keyword, snippet, matchingMode, caseSensitivity, enabled);
 }
 
 
@@ -432,7 +464,7 @@ SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
    SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.matchingMode(false), 
-      combo.isEnabled());
+      combo.caseSensitivity(false), combo.isEnabled());
    result->setGroup(combo.group());
    return result;
 }

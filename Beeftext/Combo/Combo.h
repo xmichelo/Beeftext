@@ -13,6 +13,7 @@
 
 #include "Group/GroupList.h"
 #include "MatchingMode.h"
+#include "CaseSensitivity.h"
 #include "BeeftextUtils.h"
 #include <memory>
 #include <vector>
@@ -31,7 +32,8 @@ typedef std::vector<SpCombo> VecSpCombo; ///< Type definition for vector of SpCo
 class Combo
 {
 public: // member functions
-   Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, bool enabled); ///< Default constructor
+   Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, ECaseSensitivity caseSensitivity, 
+      bool enabled); ///< Default constructor
    Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& groups = GroupList()); ///< Constructor from JSon object
    Combo(Combo const&) = delete; ///< Disabled copy constructor
 	Combo(Combo&&) = delete; ///< Disabled move constructor
@@ -48,6 +50,8 @@ public: // member functions
    void setSnippet(QString const& snippet); ///< Set the snippet
    EMatchingMode matchingMode(bool resolveDefault) const; ///< Get the matching mode of the combo.
    void setMatchingMode(EMatchingMode mode); ///< Set the matching mode of the combo.
+   ECaseSensitivity caseSensitivity(bool resolveDefault) const; ///< Get the case sensitivity of the combo.
+   void setCaseSensitivity(ECaseSensitivity caseSensitivity); ///< Set the case sensitivity of the combo.
    QDateTime modificationDateTime() const; ///< Retrieve the last modification date/time of the combo
    QDateTime creationDateTime() const; ///< Retrieve the creation date/time of the combo
    void setLastUseDateTime(QDateTime const& dateTime); ///< Set the last use date time of the combo.
@@ -69,7 +73,8 @@ public: // member functions
 
 public: // static functions
    static SpCombo create(QString const& name = QString(), QString const& keyword = QString(),
-      QString const& snippet = QString(), EMatchingMode matchingMode = EMatchingMode::Default, bool enabled = true);
+      QString const& snippet = QString(), EMatchingMode matchingMode = EMatchingMode::Default, 
+      ECaseSensitivity caseSensitivity = ECaseSensitivity::Default, bool enabled = true);
    static SpCombo create(QJsonObject const& object, qint32 formatVersion, 
       GroupList const& groups = GroupList()); ///< create a Combo from a JSON object
    static SpCombo duplicate(Combo const& combo); ///< Duplicate
@@ -83,6 +88,7 @@ private: // data member
    QString keyword_; ///< The keyword
    QString snippet_; ///< The snippet
    EMatchingMode matchingMode_ { EMatchingMode::Default }; ///< The matching mode.
+   ECaseSensitivity caseSensitivity_ { ECaseSensitivity::Default }; ///< The case sensitivity.
    SpGroup group_ { nullptr }; ///< The combo group this combo belongs to (may be null)
    QDateTime creationDateTime_; ///< The date/time of creation of the combo
    QDateTime modificationDateTime_; ///< The date/time of the last modification of the combo

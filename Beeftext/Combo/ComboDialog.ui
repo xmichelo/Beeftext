@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>658</width>
-    <height>385</height>
+    <width>751</width>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -67,9 +67,6 @@
        </item>
       </layout>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="editKeyword"/>
-     </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="editName"/>
      </item>
@@ -116,6 +113,26 @@
         <enum>Qt::StrongFocus</enum>
        </property>
       </widget>
+     </item>
+     <item row="2" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,0,0">
+       <property name="spacing">
+        <number>9</number>
+       </property>
+       <item>
+        <widget class="QLineEdit" name="editKeyword"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelCaseSensitivity">
+         <property name="text">
+          <string>Case sensitivity</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboCaseSensitivity"/>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
@@ -195,7 +212,6 @@
   <tabstop>comboGroup</tabstop>
   <tabstop>buttonNewGroup</tabstop>
   <tabstop>comboMatching</tabstop>
-  <tabstop>editKeyword</tabstop>
   <tabstop>comboEditor</tabstop>
   <tabstop>buttonOk</tabstop>
   <tabstop>buttonCancel</tabstop>
