@@ -155,6 +155,10 @@ Do you want to continue anymay?</source>
 Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Case sensitivity</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ComboEditor</name>

@@ -62,13 +62,13 @@
     <name>ComboDialog</name>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="34"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="188"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="207"/>
         <source>&amp;New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="54"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="189"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="208"/>
         <source>Matching</source>
         <translation>Auslösung</translation>
     </message>
@@ -81,108 +81,114 @@
         <translation type="vanished">locker</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="86"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="191"/>
+        <location filename="../Combo/ComboDialog.ui" line="83"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="210"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Gruppe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="96"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="192"/>
+        <location filename="../Combo/ComboDialog.ui" line="93"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="106"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="193"/>
+        <location filename="../Combo/ComboDialog.ui" line="103"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="212"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="79"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="190"/>
+        <location filename="../Combo/ComboDialog.ui" line="76"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="209"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="142"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="194"/>
+        <location filename="../Combo/ComboDialog.ui" line="128"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="213"/>
+        <source>Case sensitivity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="159"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="214"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Pflichtfelder&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="162"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="195"/>
+        <location filename="../Combo/ComboDialog.ui" line="179"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="215"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="172"/>
-        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="196"/>
+        <location filename="../Combo/ComboDialog.ui" line="189"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="216"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Abbrechen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="112"/>
-        <location filename="../Combo/ComboDialog.cpp" line="118"/>
-        <location filename="../Combo/ComboDialog.cpp" line="125"/>
+        <location filename="../Combo/ComboDialog.cpp" line="115"/>
+        <location filename="../Combo/ComboDialog.cpp" line="121"/>
+        <location filename="../Combo/ComboDialog.cpp" line="128"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="112"/>
+        <location filename="../Combo/ComboDialog.cpp" line="115"/>
         <source>The snippet text is empty.</source>
         <translation>Das Feld Textschnipsel ist leer.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="118"/>
+        <location filename="../Combo/ComboDialog.cpp" line="121"/>
         <source>The keyword is invalid.</source>
         <translation>Das Schlüsselwort ist ungültig.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="125"/>
+        <location filename="../Combo/ComboDialog.cpp" line="128"/>
         <source>The group is invalid.</source>
         <translation>Die Gruppe ist ungültig.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="135"/>
+        <location filename="../Combo/ComboDialog.cpp" line="138"/>
         <source>Duplicate keyword</source>
         <translation>Doppeltes Schlüsselwort</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="135"/>
+        <location filename="../Combo/ComboDialog.cpp" line="138"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
         <translation>Dieses Schlüsselwort wurde bereits verwendet.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="137"/>
+        <location filename="../Combo/ComboDialog.cpp" line="140"/>
         <source>&amp;Continue</source>
         <translation>&amp;Weiter</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="137"/>
+        <location filename="../Combo/ComboDialog.cpp" line="140"/>
         <source>C&amp;ancel</source>
         <translation>&amp;Abbrechen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="147"/>
+        <location filename="../Combo/ComboDialog.cpp" line="150"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Eine bestehende Kombo verursacht einen Konflikt mit dieser Kombo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="148"/>
+        <location filename="../Combo/ComboDialog.cpp" line="151"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translation>%1 bestehende Kombos verursachen einen Konflikt mit dieser Kombo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="150"/>
+        <location filename="../Combo/ComboDialog.cpp" line="153"/>
         <source>Conflict</source>
         <translation>Konflikt</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="150"/>
+        <location filename="../Combo/ComboDialog.cpp" line="153"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anyway?</source>
@@ -197,7 +203,7 @@ Do you want to continue anymay?</source>
 Möchten Sie dennoch fortsetzen?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="190"/>
+        <location filename="../Combo/ComboDialog.cpp" line="194"/>
         <source>New Group</source>
         <translation>Neue Gruppe</translation>
     </message>
@@ -1635,115 +1641,115 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>Wollen Sie alle Sicherungsdateien löschen?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="317"/>
+        <location filename="../PreferencesDialog.cpp" line="323"/>
         <source>WAV files (*.wav);;All files (*.*)</source>
         <translation>WAV-Dateien (*.wav);;Alle Dateien (*.*)</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="570"/>
+        <location filename="../PreferencesDialog.cpp" line="576"/>
         <source>Select folder</source>
         <translation>Ordner auswählen</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="261"/>
-        <location filename="../PreferencesDialog.cpp" line="575"/>
-        <location filename="../PreferencesDialog.cpp" line="859"/>
-        <location filename="../PreferencesDialog.cpp" line="874"/>
+        <location filename="../PreferencesDialog.cpp" line="267"/>
+        <location filename="../PreferencesDialog.cpp" line="581"/>
+        <location filename="../PreferencesDialog.cpp" line="865"/>
+        <location filename="../PreferencesDialog.cpp" line="880"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="261"/>
+        <location filename="../PreferencesDialog.cpp" line="267"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation>Der angegebene Pfad zur benutzerdefinierten Sound-Datei ist ungültig.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="575"/>
+        <location filename="../PreferencesDialog.cpp" line="581"/>
         <source>The location of the combo list folder could not be changed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="587"/>
+        <location filename="../PreferencesDialog.cpp" line="593"/>
         <source>Reset Folder</source>
         <translation>Ordner zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="587"/>
+        <location filename="../PreferencesDialog.cpp" line="593"/>
         <source>Reset the combo list folder?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="639"/>
+        <location filename="../PreferencesDialog.cpp" line="645"/>
         <source>Custom backup location</source>
         <translation>Benutzerdefinierter Sicherungsort</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="663"/>
+        <location filename="../PreferencesDialog.cpp" line="669"/>
         <source>Reset Preferences</source>
         <translation>Einstellungen zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="663"/>
+        <location filename="../PreferencesDialog.cpp" line="669"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Sind Sie sicher, dass Sie alle Einstellungen auf ihren Standardwert zurücksetzen wollen?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="679"/>
+        <location filename="../PreferencesDialog.cpp" line="685"/>
         <source>Reset Warnings</source>
         <translation>Warnungen zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="679"/>
+        <location filename="../PreferencesDialog.cpp" line="685"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation>Sind Sie sicher, dass Sie alle Warnungen zurücksetzen wollen?</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="700"/>
+        <location filename="../PreferencesDialog.cpp" line="706"/>
         <source>%1 v%2.%3 is available.</source>
         <translation>%1 v%2.%3 ist verfügbar.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="702"/>
+        <location filename="../PreferencesDialog.cpp" line="708"/>
         <source>A new version is available.</source>
         <translation>Eine neue Version ist verfügbar.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="711"/>
+        <location filename="../PreferencesDialog.cpp" line="717"/>
         <source>The software is up to date.</source>
         <translation>Die Software ist auf dem aktuellsten Stand.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="738"/>
+        <location filename="../PreferencesDialog.cpp" line="744"/>
         <source>Update check failed.</source>
         <translation>Aktualisierungsprüfung fehlgeschlagen.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="838"/>
+        <location filename="../PreferencesDialog.cpp" line="844"/>
         <source>Select PowerShell executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="839"/>
+        <location filename="../PreferencesDialog.cpp" line="845"/>
         <source>Executable files (*.exe);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="853"/>
+        <location filename="../PreferencesDialog.cpp" line="859"/>
         <source>Export Preferences</source>
         <translation>Einstellungen exportieren</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="859"/>
+        <location filename="../PreferencesDialog.cpp" line="865"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation>Ein Fehler ist während des Exportierens der Einstellungen aufgetreten.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="868"/>
+        <location filename="../PreferencesDialog.cpp" line="874"/>
         <source>Import Preferences</source>
         <translation>Einstellungen importieren</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="874"/>
+        <location filename="../PreferencesDialog.cpp" line="880"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>Ein Fehler ist während des Importierens der Einstellungen aufgetreten.</translation>
     </message>
@@ -1900,18 +1906,18 @@ Möchten Sie ein kurzes &apos;Erste Schritte&apos;-Tutorial lesen?</translation>
         <translation>Win</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="31"/>
+        <location filename="../Combo/ComboDialog.cpp" line="32"/>
         <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
         <translation>Das Schlüsselwort ist sehr kurz. Bist du dir sicher das du das Schlüsselwort &apos;%1&apos; verwenden möchtest?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="36"/>
-        <location filename="../Combo/ComboDialog.cpp" line="55"/>
+        <location filename="../Combo/ComboDialog.cpp" line="37"/>
+        <location filename="../Combo/ComboDialog.cpp" line="56"/>
         <source>Do not show this warning again.</source>
         <translation>Zeige diese Warnung nicht wieder.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="51"/>
+        <location filename="../Combo/ComboDialog.cpp" line="52"/>
         <source>You have not defined a keyword. Are you sure you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1932,7 +1938,7 @@ Möchten Sie ein kurzes &apos;Erste Schritte&apos;-Tutorial lesen?</translation>
         <translation>Die Standard Gruppe.</translation>
     </message>
     <message>
-        <location filename="../PreferencesDialog.cpp" line="315"/>
+        <location filename="../PreferencesDialog.cpp" line="321"/>
         <source>Select custom sound file</source>
         <translation>Benutzerdefinierte Sound-Datei auswählen</translation>
     </message>
