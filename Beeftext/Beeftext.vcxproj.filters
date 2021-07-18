@@ -39,6 +39,9 @@
     <Filter Include="Clipboard">
       <UniqueIdentifier>{f4e85ad1-7009-4c18-96da-5794e584c2c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Emoji">
+      <UniqueIdentifier>{8b4ee234-8d04-4c22-a956-62adc6065b2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -114,7 +117,6 @@
     <ClCompile Include="Update\UpdateCheckWorker.cpp">
       <Filter>Update</Filter>
     </ClCompile>
-    <ClCompile Include="EmojiManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="VariableInputDialog.cpp" />
     <ClCompile Include="Combo\ComboPicker\ComboPickerModel.cpp">
@@ -156,6 +158,12 @@
     </ClCompile>
     <ClCompile Include="Combo\CaseSensitivity.cpp">
       <Filter>Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Emoji\EmojiManager.cpp">
+      <Filter>Emoji</Filter>
+    </ClCompile>
+    <ClCompile Include="Emoji\value.cpp">
+      <Filter>Emoji</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -214,7 +222,6 @@
     <ClInclude Include="GeneratedFiles\ui_PreferencesDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="EmojiManager.h" />
     <ClInclude Include="Combo\ComboKeywordValidator.h">
       <Filter>Combo</Filter>
     </ClInclude>
@@ -245,6 +252,12 @@
     </ClInclude>
     <ClInclude Include="Combo\CaseSensitivity.h">
       <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Emoji\EmojiManager.h">
+      <Filter>Emoji</Filter>
+    </ClInclude>
+    <ClInclude Include="Emoji\value.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

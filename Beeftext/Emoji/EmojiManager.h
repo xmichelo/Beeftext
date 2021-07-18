@@ -11,6 +11,9 @@
 #define BEEFTEXT_EMOJI_MANAGER_H
 
 
+#include "value.h"
+
+
 //**********************************************************************************************************************
 /// \brief Emoji manager class
 //**********************************************************************************************************************
@@ -36,7 +39,7 @@ private: // member functions
    bool load(QString const& path); ///< Load the emoji list from file
 
 private: // data members
-   QHash<QString, QString> emojis_; ///< The list of emojis
+   EmojiList emojis_; ///< The list of emojis
    QStringList excludedApps_; ///< The list of applications where emoji should not be substituted
 };
 

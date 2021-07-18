@@ -18,7 +18,7 @@
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
 #include "Update/UpdateManager.h"
-#include "EmojiManager.h"
+#include "Emoji/EmojiManager.h"
 #include "SensitiveApplicationManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"

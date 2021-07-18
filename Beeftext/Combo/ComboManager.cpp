@@ -16,7 +16,7 @@
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "Backup/BackupManager.h"
-#include "EmojiManager.h"
+#include "Emoji/EmojiManager.h"
 
 
 using namespace xmilib;

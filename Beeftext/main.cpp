@@ -12,7 +12,7 @@
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "SensitiveApplicationManager.h"
-#include "EmojiManager.h"
+#include "Emoji/EmojiManager.h"
 #include "Update/UpdateManager.h"
 #include "PreferencesManager.h"
 #include "I18nManager.h"

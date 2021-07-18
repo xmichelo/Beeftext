@@ -18,8 +18,6 @@
 using namespace xmilib;
 
 
-
-
 namespace {
 
 
@@ -123,7 +121,10 @@ void EmojiManager::unloadEmojis()
 //**********************************************************************************************************************
 QString EmojiManager::emoji(QString const& keyword) const
 {
-   return emojis_.contains(keyword) ? emojis_[keyword] : QString();
+   if (!emojis_.contains(keyword))
+      return QString();
+   SpEmoji const emoji = emojis_[keyword];
+   return emoji ? emoji->value() : QString();
 }
 
 
@@ -212,10 +213,12 @@ bool EmojiManager::load(QString const& path)
          QJsonValue const value = it.value();
          if (!value.isObject())
             throw Exception("The emoji list file is invalid.");
-         QString const emoji = value.toObject()["char"].toString(QString());
-         if (emoji.isEmpty())
+         QJsonObject const object = value.toObject();
+         QString const chars = object["char"].toString(QString());
+         if (chars.isEmpty())
             throw Exception("The emoji list file is invalid.");
-         emojis_[it.key()] = emoji;
+         QString const shortcode = it.key();
+         emojis_[shortcode] = std::make_shared<Emoji>(shortcode, chars, object["category"].toString());
       }
    }
    catch (Exception const& e)
