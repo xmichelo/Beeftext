@@ -11,7 +11,7 @@
 #define BEEFTEXT_EMOJI_MANAGER_H
 
 
-#include "value.h"
+#include "Emoji.h"
 
 
 //**********************************************************************************************************************
@@ -33,6 +33,7 @@ public: // member functions
    EmojiManager& operator=(EmojiManager&&) = delete; ///< Disabled move assignment operator
    bool isExcludedApplication(QString const& appExeName) const; ///< Check whether the application is excluded from emoji substitution.
    bool runDialog(QWidget* parent = nullptr); ///< Run the sensitive application dialog
+   QString emojiListtoString() const; ///< Return a string containing all the emojis
 
 private: // member functions
    EmojiManager(); ///< Default constructor

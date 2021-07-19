@@ -174,6 +174,18 @@ bool EmojiManager::runDialog(QWidget* parent)
 
 
 //**********************************************************************************************************************
+/// \return a string containing all the emojis' data.
+//**********************************************************************************************************************
+QString EmojiManager::emojiListtoString() const
+{
+   QString result;
+   for (SpEmoji const& emoji: emojis_)
+      result += emoji->toString() + "\n";
+   return result.trimmed();
+}
+
+
+//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 EmojiManager::EmojiManager()
@@ -212,18 +224,37 @@ bool EmojiManager::load(QString const& path)
       {
          QJsonValue const value = it.value();
          if (!value.isObject())
-            throw Exception("The emoji list file is invalid.");
+            throw Exception();
          QJsonObject const object = value.toObject();
          QString const chars = object["char"].toString(QString());
          if (chars.isEmpty())
-            throw Exception("The emoji list file is invalid.");
+            throw Exception();
          QString const shortcode = it.key();
-         emojis_[shortcode] = std::make_shared<Emoji>(shortcode, chars, object["category"].toString());
+         SpEmoji emoji = std::make_shared<Emoji>(shortcode, chars, object["category"].toString());
+         QString const keywordKey = "keywords";
+         if (object.contains(keywordKey))
+         {
+            QJsonValue keywordsValue = object[keywordKey];
+            if (!keywordsValue.isArray())
+               throw Exception();
+            QJsonArray const array = keywordsValue.toArray();
+            QSet<QString> keywords;
+            for (QJsonValueRef const keywordValue: array)
+            {
+               if (! keywordValue.isString())
+                  throw Exception();
+               keywords.insert(keywordValue.toString());
+            }
+            emoji->setKeywords(keywords);
+            emojis_[shortcode] = emoji;
+         }
       }
    }
    catch (Exception const& e)
    {
-      globals::debugLog().addWarning(QString("Error parsing emoji list file: %1").arg(e.qwhat()));
+      QString const& what = e.qwhat();
+      globals::debugLog().addWarning(QString("Error parsing emoji list file%1").arg(what.isEmpty() ? "." : 
+         " (" + what + ")."));
       return false;
    }
    return true;
