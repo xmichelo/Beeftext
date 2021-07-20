@@ -165,6 +165,9 @@
     <ClCompile Include="Emoji\Emoji.cpp">
       <Filter>Emoji</Filter>
     </ClCompile>
+    <ClCompile Include="Emoji\EmojiList.cpp">
+      <Filter>Emoji</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -257,6 +260,9 @@
       <Filter>Emoji</Filter>
     </ClInclude>
     <ClInclude Include="Emoji\Emoji.h">
+      <Filter>Emoji</Filter>
+    </ClInclude>
+    <ClInclude Include="Emoji\EmojiList.h">
       <Filter>Emoji</Filter>
     </ClInclude>
   </ItemGroup>

@@ -290,6 +290,7 @@
     <ClCompile Include="Combo\LastUseFile.cpp" />
     <ClCompile Include="Combo\MatchingMode.cpp" />
     <ClCompile Include="Emoji\Emoji.cpp" />
+    <ClCompile Include="Emoji\EmojiList.cpp" />
     <ClCompile Include="Emoji\EmojiManager.cpp" />
     <ClCompile Include="Group\Group.cpp" />
     <ClCompile Include="Group\GroupComboBox.cpp" />
@@ -324,6 +325,7 @@
     <ClInclude Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.h" />
     <ClInclude Include="Combo\MatchingMode.h" />
     <ClInclude Include="Emoji\Emoji.h" />
+    <ClInclude Include="Emoji\EmojiList.h" />
     <ClInclude Include="Emoji\EmojiManager.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />

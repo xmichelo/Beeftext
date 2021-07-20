@@ -123,7 +123,7 @@ QString EmojiManager::emoji(QString const& keyword) const
 {
    if (!emojis_.contains(keyword))
       return QString();
-   SpEmoji const emoji = emojis_[keyword];
+   SpEmoji const emoji = emojis_.find(keyword);
    return emoji ? emoji->value() : QString();
 }
 
@@ -246,7 +246,7 @@ bool EmojiManager::load(QString const& path)
                keywords.insert(keywordValue.toString());
             }
             emoji->setKeywords(keywords);
-            emojis_[shortcode] = emoji;
+            emojis_.append(emoji);
          }
       }
    }

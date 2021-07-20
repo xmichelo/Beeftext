@@ -43,7 +43,6 @@ private:
 
 
 typedef std::shared_ptr<Emoji> SpEmoji; ///< Type definition for shared pointer to emoji.
-typedef QHash<QString, SpEmoji> EmojiList; ///<Type definition for a list of emojis.
 
 
 #endif // #ifndef BEEFTEXT_EMOJI_H
