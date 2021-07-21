@@ -34,6 +34,8 @@ public: // member functions
    bool isExcludedApplication(QString const& appExeName) const; ///< Check whether the application is excluded from emoji substitution.
    bool runDialog(QWidget* parent = nullptr); ///< Run the sensitive application dialog
    QString emojiListtoString() const; ///< Return a string containing all the emojis
+   EmojiList const& emojiListRef() const; ///< Return a constant reference the list of emojis.
+   qsizetype size() const; ///< Return the number of emojis in the list.
 
 private: // member functions
    EmojiManager(); ///< Default constructor

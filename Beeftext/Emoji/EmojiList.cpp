@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "EmojiList.h"
+#include "BeeftextConstants.h"
 
 
 //**********************************************************************************************************************
@@ -118,6 +119,15 @@ void EmojiList::append(SpEmoji const& emoji)
 
 
 //**********************************************************************************************************************
+/// \return The number of emojis in the list.
+//**********************************************************************************************************************
+qsizetype EmojiList::size() const
+{
+   return list_.size();
+}
+
+
+//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 int EmojiList::rowCount(const QModelIndex&) const
@@ -142,16 +152,26 @@ int EmojiList::columnCount(const QModelIndex&) const
 QVariant EmojiList::data(const QModelIndex& index, int role) const
 {
    qint32 const row = index.row();
+//   qDebug() << QString("Data for role %1 of emoji at index %2").arg(role).arg(index.row());
    if ((row < 0) || (row >= qint32(list_.size())))
       return QVariant();
    SpEmoji const emoji = list_[row];
    if (!emoji)
       return QVariant();
 
-   if (Qt::DisplayRole == role)
-      return emoji->value();
-
-   return QVariant();
+   switch (role)
+   {
+   case Qt::DisplayRole:
+   case constants::SnippetRole: return emoji->value();
+   case constants::KeywordRole: return emoji->shortcode();
+   case constants::GroupNameRole: return tr("Emojis");
+   case constants::EnabledRole: return true;
+   case constants::CreationDateTimeRole:
+   case constants::ModificationDateTimeRole:
+   case constants::LastUseDateTimeRole:
+   default:
+      return QVariant();
+   }
 }
 
 

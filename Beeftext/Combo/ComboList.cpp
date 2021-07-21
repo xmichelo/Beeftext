@@ -11,6 +11,7 @@
 #include "ComboList.h"
 #include "MimeDataUtils.h"
 #include "BeeftextGlobals.h"
+#include "BeeftextConstants.h" 
 #include <XMiLib/File/CsvIO.h>
 #include <XMiLib/Exception.h>
 
@@ -705,19 +706,19 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
    }
    case Qt::ForegroundRole:
       return combo->isUsable() ? QVariant() : globals::disabledTextColorInTablesAndLists();
-   case KeywordRole:
+   case constants::KeywordRole:
       return combo->keyword();
-   case SnippetRole:
+   case constants::SnippetRole:
       return combo->snippet();
-   case CreationDateTimeRole:
+   case constants::CreationDateTimeRole:
       return combo->creationDateTime();
-   case ModificationDateTimeRole:
+   case constants::ModificationDateTimeRole:
       return combo->modificationDateTime();
-   case LastUseDateTimeRole:
+   case constants::LastUseDateTimeRole:
       return combo->lastUseDateTime();
-   case EnabledRole:
+   case constants::EnabledRole:
       return combo->isUsable();
-   case GroupNameRole:
+   case constants::GroupNameRole:
    {
       SpGroup const group = combo->group();
       return group ? group->name() : QString();

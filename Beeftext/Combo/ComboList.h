@@ -32,16 +32,6 @@ public: // type definitions
    typedef VecSpCombo::const_reverse_iterator const_reverse_iterator; ///< Type definition for const_iterator
    typedef SpCombo value_type;
    // ReSharper restore CppInconsistentNaming
-   enum
-   {
-      KeywordRole = Qt::UserRole, ///< The model role for keywords.
-      SnippetRole, ///< The model role for snippets.
-      CreationDateTimeRole, ///< The model role for creation date
-      ModificationDateTimeRole, ///< The model role for modification date
-      LastUseDateTimeRole, ///< The model role for last usage date.
-      EnabledRole, ///< The model role for the enabled/disabled status.
-      GroupNameRole ///< The model role for the group name
-   };
 
 public: // static data members
    static QString const defaultFileName; ///< The default name for combo list files

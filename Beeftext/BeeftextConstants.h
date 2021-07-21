@@ -32,6 +32,17 @@ extern Qt::DateFormat const kJsonExportDateFormat; ///< The date/time export for
 extern QChar const kEmojiDelimiter; ///< The delimiter for emojis
 
 
+enum {
+      KeywordRole = Qt::UserRole, ///< The model role for keywords.
+      SnippetRole, ///< The model role for snippets.
+      CreationDateTimeRole, ///< The model role for creation date
+      ModificationDateTimeRole, ///< The model role for modification date
+      LastUseDateTimeRole, ///< The model role for last usage date.
+      EnabledRole, ///< The model role for the enabled/disabled status.
+      GroupNameRole ///< The model role for the group name
+}; ///< Anonymous enumeration for Beeftext customs model roles
+
+
 } // namespace constants
 
 

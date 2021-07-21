@@ -11,6 +11,7 @@
 #include "ComboSortFilterProxyModel.h"
 #include "ComboList.h"
 #include "ComboManager.h"
+#include "BeeftextConstants.h"
 
 
 //**********************************************************************************************************************
@@ -66,14 +67,14 @@ bool ComboSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const QM
    switch (sourceLeft.column())
    {
    case 3:
-      return sourceLeft.data(ComboList::CreationDateTimeRole).toDateTime()
-         < sourceRight.data(ComboList::CreationDateTimeRole).toDateTime();
+      return sourceLeft.data(constants::CreationDateTimeRole).toDateTime()
+         < sourceRight.data(constants::CreationDateTimeRole).toDateTime();
    case 4:
-      return sourceLeft.data(ComboList::ModificationDateTimeRole).toDateTime()
-         < sourceRight.data(ComboList::ModificationDateTimeRole).toDateTime();
+      return sourceLeft.data(constants::ModificationDateTimeRole).toDateTime()
+         < sourceRight.data(constants::ModificationDateTimeRole).toDateTime();
    case 5:
-      return sourceLeft.data(ComboList::LastUseDateTimeRole).toDateTime()
-         < sourceRight.data(ComboList::LastUseDateTimeRole).toDateTime();
+      return sourceLeft.data(constants::LastUseDateTimeRole).toDateTime()
+         < sourceRight.data(constants::LastUseDateTimeRole).toDateTime();
    default:
       return QSortFilterProxyModel::lessThan(sourceLeft, sourceRight);
    }

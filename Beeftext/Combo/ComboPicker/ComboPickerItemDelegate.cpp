@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "ComboPickerItemDelegate.h"
 #include "PreferencesManager.h"
-#include "../ComboList.h"
+#include "BeeftextConstants.h"
 
 
 namespace {
@@ -89,10 +89,10 @@ void ComboPickerItemDelegate::paint(QPainter* painter, const QStyleOptionViewIte
    // draw keyword
    qint32 yPos = rect.bottom() - sMetrics.descent();
    painter->drawText(QPoint(rect.left(), yPos), 
-      index.data(ComboList::KeywordRole).toString());
+      index.data(constants::KeywordRole).toString());
 
    // draw group name
-   QString  groupName = index.data(ComboList::GroupNameRole).toString();
+   QString  groupName = index.data(constants::GroupNameRole).toString();
    if (!groupName.trimmed().isEmpty())
    {
       qint32 const groupNameMaxWidth = rect.width() - nameWidth - kItemHMargin;

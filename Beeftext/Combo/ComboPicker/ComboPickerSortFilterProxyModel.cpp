@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboPickerSortFilterProxyModel.h"
-#include "../ComboManager.h"
+#include "BeeftextConstants.h"
 
 
 //**********************************************************************************************************************
@@ -29,17 +29,17 @@ ComboPickerSortFilterProxyModel::ComboPickerSortFilterProxyModel(QObject* parent
 bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex&) const
 {
    if (this->filterRegularExpression().pattern().trimmed().isEmpty())
-      return true;
+      return false;
 
    QAbstractItemModel const* model = this->sourceModel();
    if ((!model) || (!model->columnCount(QModelIndex())) || 
-      (!model->data(model->index(sourceRow, 0, QModelIndex()), ComboList::EnabledRole).toBool()))
+      (!model->data(model->index(sourceRow, 0, QModelIndex()), constants::EnabledRole).toBool()))
       return false;
    QModelIndex const index = model->index(sourceRow, 0, QModelIndex());
    QString const comboName = model->data(index, Qt::DisplayRole).toString();
-   QString const keyword = model->data(index, ComboList::KeywordRole).toString();
-   QString const snippet = model->data(index, ComboList::SnippetRole).toString();
-   QString const groupName = model->data(index, ComboList::GroupNameRole).toString();
+   QString const keyword = model->data(index, constants::KeywordRole).toString();
+   QString const snippet = model->data(index, constants::SnippetRole).toString();
+   QString const groupName = model->data(index, constants::GroupNameRole).toString();
    for (QString const& word: this->filterRegularExpression().pattern().replace("\\ ", " ")
       .split(QRegularExpression("\\s"), Qt::SkipEmptyParts))
    {
@@ -59,10 +59,10 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
 //**********************************************************************************************************************
 bool ComboPickerSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const
 {
-   QDateTime lTime = this->sourceModel()->data(sourceLeft, ComboList::LastUseDateTimeRole).toDateTime();
+   QDateTime lTime = this->sourceModel()->data(sourceLeft, constants::LastUseDateTimeRole).toDateTime();
    if (lTime.isNull())
       lTime = QDateTime::fromSecsSinceEpoch(0);
-   QDateTime rTime = this->sourceModel()->data(sourceRight, ComboList::LastUseDateTimeRole).toDateTime();
+   QDateTime rTime = this->sourceModel()->data(sourceRight, constants::LastUseDateTimeRole).toDateTime();
    if (rTime.isNull())
       rTime = QDateTime::fromSecsSinceEpoch(0);
    return lTime < rTime;

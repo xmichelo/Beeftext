@@ -9,10 +9,12 @@
 
 #include "stdafx.h"
 #include "ComboPickerModel.h"
+#include "Emoji/EmojiManager.h"
+#include "BeeftextConstants.h"
 #include "../ComboManager.h"
 
 
-//**********************************************************************************************************************
+//***************************************************************************Xavier Michelon*******************************************
 /// \param[in] parent The parent object of the model.
 //**********************************************************************************************************************
 ComboPickerModel::ComboPickerModel(QObject* parent)
@@ -29,7 +31,8 @@ ComboPickerModel::ComboPickerModel(QObject* parent)
 //**********************************************************************************************************************
 int ComboPickerModel::rowCount(const QModelIndex& parent) const
 {
-   return ComboManager::instance().comboListRef().rowCount(parent);
+   return ComboManager::instance().comboListRef().rowCount(parent) + 
+      qint32(EmojiManager::instance().emojiListRef().size());
 }
 
 
@@ -41,9 +44,16 @@ int ComboPickerModel::rowCount(const QModelIndex& parent) const
 QVariant ComboPickerModel::data(const QModelIndex& index, int role) const
 {
    ComboList const& comboList = ComboManager::instance().comboListRef();
-   if (Qt::ToolTipRole == role)
-      return comboList.data(index, ComboList::SnippetRole);
-   return comboList.data(index, role);
+   qint32 const comboListSize = comboList.size();
+   qint32 const row = index.row();
+   if (row < comboList.size())
+   {
+      if (Qt::ToolTipRole == role)
+         return comboList.data(index, constants::SnippetRole);
+      return comboList.data(index, role);
+   }
+   QModelIndex const shiftedIndex = createIndex(row - comboListSize, index.column());
+   return EmojiManager::instance().emojiListRef().data(shiftedIndex, role);
 }
 
 
