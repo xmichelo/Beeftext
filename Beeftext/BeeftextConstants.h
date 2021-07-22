@@ -11,6 +11,9 @@
 #define BEEFTEXT_CONSTANTS_H
 
 
+Q_DECLARE_SMART_POINTER_METATYPE(std::shared_ptr)
+
+
 namespace constants {
 
 
@@ -32,14 +35,16 @@ extern Qt::DateFormat const kJsonExportDateFormat; ///< The date/time export for
 extern QChar const kEmojiDelimiter; ///< The delimiter for emojis
 
 
+enum EITemType
+{
+   Combo = 0, ///< The combo item type.
+   Emoji = 1, ///< The emoji item type.
+}; ///< An enumeration for item type.
+
+
 enum {
-      KeywordRole = Qt::UserRole, ///< The model role for keywords.
-      SnippetRole, ///< The model role for snippets.
-      CreationDateTimeRole, ///< The model role for creation date
-      ModificationDateTimeRole, ///< The model role for modification date
-      LastUseDateTimeRole, ///< The model role for last usage date.
-      EnabledRole, ///< The model role for the enabled/disabled status.
-      GroupNameRole ///< The model role for the group name
+      TypeRole = Qt::UserRole, ///< The role for the type of item (combo or emoji).
+      PointerRole, /// The role for the pointer to the item.
 }; ///< Anonymous enumeration for Beeftext customs model roles
 
 

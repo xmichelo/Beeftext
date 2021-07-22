@@ -14,7 +14,7 @@
 #include "../ComboManager.h"
 
 
-//***************************************************************************Xavier Michelon*******************************************
+//**********************************************************************************************************************
 /// \param[in] parent The parent object of the model.
 //**********************************************************************************************************************
 ComboPickerModel::ComboPickerModel(QObject* parent)
@@ -49,7 +49,7 @@ QVariant ComboPickerModel::data(const QModelIndex& index, int role) const
    if (row < comboList.size())
    {
       if (Qt::ToolTipRole == role)
-         return comboList.data(index, constants::SnippetRole);
+         return comboList.data(index, Qt::DisplayRole);
       return comboList.data(index, role);
    }
    QModelIndex const shiftedIndex = createIndex(row - comboListSize, index.column());

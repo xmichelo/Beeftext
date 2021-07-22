@@ -64,18 +64,19 @@ bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex cons
 //**********************************************************************************************************************
 bool ComboSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const
 {
+   bool const leftIsCombo = (constants::Combo == sourceLeft.data(constants::TypeRole).value<constants::EITemType>());
+   bool const rightIsCombo = (constants::Combo == sourceRight.data(constants::TypeRole).value<constants::EITemType>());
+   SpCombo const lCombo(sourceLeft.data(constants::PointerRole).value<SpCombo>());
+   SpCombo const rCombo(sourceRight.data(constants::PointerRole).value<SpCombo>());
+   bool const ok = (leftIsCombo && rightIsCombo && lCombo && rCombo);
+   Q_ASSERT(ok);
+   if (!ok)
+      return false;
    switch (sourceLeft.column())
    {
-   case 3:
-      return sourceLeft.data(constants::CreationDateTimeRole).toDateTime()
-         < sourceRight.data(constants::CreationDateTimeRole).toDateTime();
-   case 4:
-      return sourceLeft.data(constants::ModificationDateTimeRole).toDateTime()
-         < sourceRight.data(constants::ModificationDateTimeRole).toDateTime();
-   case 5:
-      return sourceLeft.data(constants::LastUseDateTimeRole).toDateTime()
-         < sourceRight.data(constants::LastUseDateTimeRole).toDateTime();
-   default:
-      return QSortFilterProxyModel::lessThan(sourceLeft, sourceRight);
+   case 3: return lCombo->creationDateTime() < rCombo->creationDateTime();
+   case 4: return lCombo->modificationDateTime() < rCombo->modificationDateTime();
+   case 5: return lCombo->lastUseDateTime() < rCombo->lastUseDateTime();
+   default: return QSortFilterProxyModel::lessThan(sourceLeft, sourceRight);
    }
 }

@@ -9,6 +9,8 @@
 
 #include "stdafx.h"
 #include "ComboPickerSortFilterProxyModel.h"
+#include "Emoji/Emoji.h"
+#include "Combo/Combo.h"
 #include "BeeftextConstants.h"
 
 
@@ -32,20 +34,27 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
       return false;
 
    QAbstractItemModel const* model = this->sourceModel();
-   if ((!model) || (!model->columnCount(QModelIndex())) || 
-      (!model->data(model->index(sourceRow, 0, QModelIndex()), constants::EnabledRole).toBool()))
+   if ((!model) || (!model->columnCount(QModelIndex())))
       return false;
    QModelIndex const index = model->index(sourceRow, 0, QModelIndex());
+   bool const isEmoji = (index.data(constants::TypeRole).value<constants::EITemType>() == constants::Emoji);
+   SpEmoji const emoji(isEmoji ? index.data(constants::PointerRole).value<SpEmoji>() : nullptr);
+   SpCombo const combo(isEmoji ? nullptr : index.data(constants::PointerRole).value<SpCombo>());
+   bool const ok = isEmoji ? !!emoji.get() : !!combo.get();
+   Q_ASSERT(ok);
+   if ((!ok) || ((!isEmoji) && (!combo->isUsable())))
+      return false;
+
    QString const comboName = model->data(index, Qt::DisplayRole).toString();
-   QString const keyword = model->data(index, constants::KeywordRole).toString();
-   QString const snippet = model->data(index, constants::SnippetRole).toString();
-   QString const groupName = model->data(index, constants::GroupNameRole).toString();
+   QString const keyword = isEmoji ? emoji->shortcode() : combo->keyword();
+   QString const snippet = isEmoji ? emoji->value() : combo->snippet();
+   SpGroup const group = isEmoji ? nullptr : combo->group();
    for (QString const& word: this->filterRegularExpression().pattern().replace("\\ ", " ")
       .split(QRegularExpression("\\s"), Qt::SkipEmptyParts))
    {
       QRegularExpression const rx(word, QRegularExpression::CaseInsensitiveOption);
       if ((!comboName.contains(rx)) && (!keyword.contains(rx))
-         && (!snippet.contains(rx)) && (!groupName.contains(rx)))
+         && (!snippet.contains(rx)) && (!(group && group->name().contains(rx))))
          return false;
    }
    return true;
@@ -59,11 +68,13 @@ bool ComboPickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QMod
 //**********************************************************************************************************************
 bool ComboPickerSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const
 {
-   QDateTime lTime = this->sourceModel()->data(sourceLeft, constants::LastUseDateTimeRole).toDateTime();
-   if (lTime.isNull())
-      lTime = QDateTime::fromSecsSinceEpoch(0);
-   QDateTime rTime = this->sourceModel()->data(sourceRight, constants::LastUseDateTimeRole).toDateTime();
-   if (rTime.isNull())
-      rTime = QDateTime::fromSecsSinceEpoch(0);
+   bool const lIsCombo = (sourceLeft.data(constants::TypeRole).value<constants::EITemType>() == constants::Combo);
+   bool const rIsCombo = (sourceRight.data(constants::TypeRole).value<constants::EITemType>() == constants::Combo);
+   SpCombo const lCombo = lIsCombo ? sourceLeft.data(constants::PointerRole).value<SpCombo>() : nullptr;
+   SpCombo const rCombo = rIsCombo ? sourceRight.data(constants::PointerRole).value<SpCombo>() : nullptr;
+
+   QDateTime const originTime = QDateTime::fromSecsSinceEpoch(0);
+   QDateTime const lTime = lCombo ? lCombo->lastUseDateTime() : originTime;
+   QDateTime const rTime = rCombo ? rCombo->lastUseDateTime() : originTime;
    return lTime < rTime;
 }

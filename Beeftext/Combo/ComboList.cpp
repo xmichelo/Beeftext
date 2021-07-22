@@ -704,27 +704,10 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
       default: return QVariant();
       }
    }
-   case Qt::ForegroundRole:
-      return combo->isUsable() ? QVariant() : globals::disabledTextColorInTablesAndLists();
-   case constants::KeywordRole:
-      return combo->keyword();
-   case constants::SnippetRole:
-      return combo->snippet();
-   case constants::CreationDateTimeRole:
-      return combo->creationDateTime();
-   case constants::ModificationDateTimeRole:
-      return combo->modificationDateTime();
-   case constants::LastUseDateTimeRole:
-      return combo->lastUseDateTime();
-   case constants::EnabledRole:
-      return combo->isUsable();
-   case constants::GroupNameRole:
-   {
-      SpGroup const group = combo->group();
-      return group ? group->name() : QString();
-   }
-   default:
-      return QVariant();
+   case Qt::ForegroundRole: return combo->isUsable() ? QVariant() : globals::disabledTextColorInTablesAndLists();
+   case constants::TypeRole: return constants::Combo;
+   case constants::PointerRole: return QVariant::fromValue(combo);
+   default: return QVariant();
    }
 }
 

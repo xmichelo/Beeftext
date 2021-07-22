@@ -10,8 +10,10 @@
 #include "stdafx.h"
 #include "ComboPickerWindow.h"
 #include "ComboPickerItemDelegate.h"
-#include "../ComboManager.h"
+#include "Emoji/EmojiManager.h"
+#include "Combo/ComboManager.h"
 #include "PreferencesManager.h"
+#include "BeeftextConstants.h"
 
 
 //**********************************************************************************************************************
@@ -228,8 +230,20 @@ void ComboPickerWindow::selectComboAtIndex(qint32 index) const
 //**********************************************************************************************************************
 void ComboPickerWindow::triggerSelectedCombo()
 {
-      SpCombo const combo = this->selectedCombo();
-      this->close();
-      if (combo)
-         QTimer::singleShot(200, [combo]() { combo->insertSnippet(ETriggerSource::ComboPicker); });
+   this->close();
+   QModelIndex const index = ui_.listViewResults->currentIndex();
+   if (!index.isValid())
+      return;
+   bool const isCombo = (constants::Combo == index.data(constants::TypeRole).value<constants::EITemType>());
+   SpCombo const combo = (isCombo ? index.data(constants::PointerRole).value<SpCombo>() : nullptr);
+   SpEmoji const emoji = (isCombo ? nullptr : index.data(constants::PointerRole).value<SpEmoji>());
+   std::chrono::milliseconds const delay(200);
+   if (combo)
+      QTimer::singleShot(delay, [combo]() { combo->insertSnippet(ETriggerSource::ComboPicker); });
+   else
+      QTimer::singleShot(delay, [emoji]() { 
+         if ((!isBeeftextTheForegroundApplication()) && 
+            !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
+            performTextSubstitution(0, emoji->value(), -1, ETriggerSource::ComboPicker);
+      });
 }

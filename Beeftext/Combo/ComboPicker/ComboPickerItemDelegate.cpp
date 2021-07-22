@@ -9,6 +9,8 @@
 
 #include "stdafx.h"
 #include "ComboPickerItemDelegate.h"
+#include "Combo/Combo.h"
+#include "Emoji/Emoji.h"
 #include "PreferencesManager.h"
 #include "BeeftextConstants.h"
 
@@ -60,6 +62,14 @@ void ComboPickerItemDelegate::paint(QPainter* painter, const QStyleOptionViewIte
    QColor const bigTextSelectedColor(0xff, 0xff,0xff);
    QColor const smallTextColor(0xc8, 0xc8, 0xc8);
 
+   bool const isEmoji = (constants::Emoji == index.data(constants::TypeRole).value<constants::EITemType>());
+   SpEmoji emoji = isEmoji ? index.data(constants::PointerRole).value<SpEmoji>() : nullptr;
+   SpCombo combo = isEmoji ? nullptr: index.data(constants::PointerRole).value<SpCombo>();
+   bool const ok = isEmoji ? !!emoji : !!combo;
+   Q_ASSERT(ok);
+   if (!ok)
+      return;
+
    // we draw the background. Color depends on wether the item is selected or not.
    bool const selected = option.state & QStyle::State_Selected ;
    painter->setBrush(selected ? bgSelectedColor : bgColor);
@@ -88,11 +98,10 @@ void ComboPickerItemDelegate::paint(QPainter* painter, const QStyleOptionViewIte
 
    // draw keyword
    qint32 yPos = rect.bottom() - sMetrics.descent();
-   painter->drawText(QPoint(rect.left(), yPos), 
-      index.data(constants::KeywordRole).toString());
+   painter->drawText(QPoint(rect.left(), yPos), isEmoji ? emoji->shortcode() : combo->keyword());
 
    // draw group name
-   QString  groupName = index.data(constants::GroupNameRole).toString();
+   QString groupName = (isEmoji ? tr("Emojis") : (combo->group() ? combo->group()->name() : QString()));
    if (!groupName.trimmed().isEmpty())
    {
       qint32 const groupNameMaxWidth = rect.width() - nameWidth - kItemHMargin;

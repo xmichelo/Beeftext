@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "BeeftextUtils.h"
 #include "Combo/ComboManager.h"
+#include "Emoji/EmojiManager.h"
 #include "SensitiveApplicationManager.h"
 #include "InputManager.h"
 #include "PreferencesManager.h"
@@ -45,22 +46,6 @@ p, li { white-space: pre-wrap; }
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- Click on the 'Exit' button to quit the application. If you want to keep using rich text combos, you can re-install <a href="https://github.com/xmichelo/Beeftext/releases/tag/v7.2"><span style=" text-decoration: underline; color:#0000ff;">Beeftext v7.2</span></a>.</p></body></html>
 )");
 }
-
-
-//**********************************************************************************************************************
-/// \brief Display the state of the modifier keys.
-//**********************************************************************************************************************
-//void debugDisplayModifiersStates()
-//{
-//   qDebug() << QString("Left  Control: %1").arg(GetKeyState(VK_LCONTROL));
-//   qDebug() << QString("Right Control: %1").arg(GetKeyState(VK_RCONTROL));
-//   qDebug() << QString("Left  Menu   : %1").arg(GetKeyState(VK_LMENU));
-//   qDebug() << QString("Right Menu   : %1").arg(GetKeyState(VK_RMENU));
-//   qDebug() << QString("Left  Shift  : %1").arg(GetKeyState(VK_LSHIFT));
-//   qDebug() << QString("Right Shift  : %1").arg(GetKeyState(VK_RSHIFT));
-//   qDebug() << QString("Left  Win    : %1").arg(GetKeyState(VK_LWIN));
-//   qDebug() << QString("Right Win    : %1").arg(GetKeyState(VK_RWIN));
-//}
 
 
 //**********************************************************************************************************************
@@ -167,6 +152,17 @@ QString getActiveExecutableFileName()
    bool const ok = GetModuleFileNameEx(processHandle, nullptr, buffer, MAX_PATH);
    CloseHandle(processHandle);
    return ok ? QFileInfo(QDir::fromNativeSeparators(QString::fromWCharArray(buffer))).fileName() : QString();
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if Beeftext is the application currently in the foreground
+//**********************************************************************************************************************
+bool isBeeftextTheForegroundApplication()
+{
+   DWORD processId = 0;
+   GetWindowThreadProcessId(GetForegroundWindow(), &processId);
+   return QCoreApplication::applicationPid() == processId;
 }
 
 

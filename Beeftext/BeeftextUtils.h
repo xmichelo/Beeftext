@@ -20,10 +20,10 @@ enum class ETriggerSource
 }; ///< 
 
 
-void debugDisplayModifiersStates(); ///< Display the state of the modifier keys.
 void openLogFile(); ///< Open the log file with the default text editor
 bool isInPortableMode(); ///< Test whether the application is running in portable mode
 bool usePortableAppsFolderLayout(); ///< Test if the application is using the PortableApps.com layout
+bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
 QString getActiveExecutableFileName(); ///< Return the name of the active application's executable file
 QString htmlToPlainText(QString const& snippet); ///< Return the plain text for a snippet.
 void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos,

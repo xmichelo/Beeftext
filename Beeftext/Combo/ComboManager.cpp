@@ -22,26 +22,6 @@
 using namespace xmilib;
 
 
-namespace {
-
-
-bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
-
-
-//**********************************************************************************************************************
-/// \return true if and only if Beeftext is the application currently in the foreground
-//**********************************************************************************************************************
-bool isBeeftextTheForegroundApplication()
-{
-   DWORD processId = 0;
-   GetWindowThreadProcessId(GetForegroundWindow(), &processId);
-   return QCoreApplication::applicationPid() == processId;
-}
-
-
-}
-
-
 //**********************************************************************************************************************
 /// \return A reference to the only allowed instance of the class
 //**********************************************************************************************************************

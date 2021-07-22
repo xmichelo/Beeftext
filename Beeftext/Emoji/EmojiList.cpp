@@ -161,16 +161,12 @@ QVariant EmojiList::data(const QModelIndex& index, int role) const
 
    switch (role)
    {
-   case Qt::DisplayRole:
-   case constants::SnippetRole: return emoji->value();
-   case constants::KeywordRole: return emoji->shortcode();
-   case constants::GroupNameRole: return tr("Emojis");
-   case constants::EnabledRole: return true;
-   case constants::CreationDateTimeRole:
-   case constants::ModificationDateTimeRole:
-   case constants::LastUseDateTimeRole:
-   default:
-      return QVariant();
+   case Qt::DisplayRole: return emoji->value();
+   case constants::TypeRole: 
+      return constants::Emoji;
+   case constants::PointerRole: 
+      return QVariant::fromValue(emoji);
+   default: return QVariant();
    }
 }
 

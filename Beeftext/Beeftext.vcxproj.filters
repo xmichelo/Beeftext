@@ -176,9 +176,6 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="BeeftextConstants.h" />
     <ClInclude Include="BeeftextGlobals.h" />
-    <ClInclude Include="Combo\Combo.h">
-      <Filter>Combo</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_ComboDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -264,6 +261,9 @@
     </ClInclude>
     <ClInclude Include="Emoji\EmojiList.h">
       <Filter>Emoji</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo\Combo.h">
+      <Filter>Combo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
