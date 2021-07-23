@@ -33,14 +33,14 @@
     <Filter Include="Backup">
       <UniqueIdentifier>{c61e6d78-c214-49e9-9722-51e8f91c7da4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Combo\ComboPicker">
-      <UniqueIdentifier>{d6d6e76a-1ae3-4bed-bca2-4eff6e6f20fe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Clipboard">
       <UniqueIdentifier>{f4e85ad1-7009-4c18-96da-5794e584c2c8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Emoji">
       <UniqueIdentifier>{8b4ee234-8d04-4c22-a956-62adc6065b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Picker">
+      <UniqueIdentifier>{d6d6e76a-1ae3-4bed-bca2-4eff6e6f20fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -119,18 +119,6 @@
     </ClCompile>
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="VariableInputDialog.cpp" />
-    <ClCompile Include="Combo\ComboPicker\ComboPickerModel.cpp">
-      <Filter>Combo\ComboPicker</Filter>
-    </ClCompile>
-    <ClCompile Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.cpp">
-      <Filter>Combo\ComboPicker</Filter>
-    </ClCompile>
-    <ClCompile Include="Combo\ComboPicker\ComboPickerWindow.cpp">
-      <Filter>Combo\ComboPicker</Filter>
-    </ClCompile>
-    <ClCompile Include="Combo\ComboPicker\ComboPickerItemDelegate.cpp">
-      <Filter>Combo\ComboPicker</Filter>
-    </ClCompile>
     <ClCompile Include="PreferencesDialog.cpp" />
     <ClCompile Include="Combo\ComboEditor.cpp">
       <Filter>Combo</Filter>
@@ -153,9 +141,6 @@
       <Filter>Combo</Filter>
     </ClCompile>
     <ClCompile Include="WaveSound.cpp" />
-    <ClCompile Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.cpp">
-      <Filter>Combo\ComboPicker</Filter>
-    </ClCompile>
     <ClCompile Include="Combo\CaseSensitivity.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -167,6 +152,21 @@
     </ClCompile>
     <ClCompile Include="Emoji\EmojiList.cpp">
       <Filter>Emoji</Filter>
+    </ClCompile>
+    <ClCompile Include="Picker\PickerItemDelegate.cpp">
+      <Filter>Picker</Filter>
+    </ClCompile>
+    <ClCompile Include="Picker\PickerModel.cpp">
+      <Filter>Picker</Filter>
+    </ClCompile>
+    <ClCompile Include="Picker\PickerSortFilterProxyModel.cpp">
+      <Filter>Picker</Filter>
+    </ClCompile>
+    <ClCompile Include="Picker\PickerWindow.cpp">
+      <Filter>Picker</Filter>
+    </ClCompile>
+    <ClCompile Include="Picker\PickerWindowMoverResizer.cpp">
+      <Filter>Picker</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -227,9 +227,6 @@
     </ClInclude>
     <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="SensitiveApplicationManager.h" />
-    <ClInclude Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.h">
-      <Filter>Combo\ComboPicker</Filter>
-    </ClInclude>
     <ClInclude Include="Combo\LastUseFile.h">
       <Filter>Combo</Filter>
     </ClInclude>
@@ -247,9 +244,6 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="WaveSound.h" />
-    <ClInclude Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.h">
-      <Filter>Combo\ComboPicker</Filter>
-    </ClInclude>
     <ClInclude Include="Combo\CaseSensitivity.h">
       <Filter>Combo</Filter>
     </ClInclude>
@@ -264,6 +258,12 @@
     </ClInclude>
     <ClInclude Include="Combo\Combo.h">
       <Filter>Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Picker\PickerSortFilterProxyModel.h">
+      <Filter>Picker</Filter>
+    </ClInclude>
+    <ClInclude Include="Picker\PickerWindowMoverResizer.h">
+      <Filter>Picker</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -397,25 +397,25 @@
       <Filter>Update</Filter>
     </QtMoc>
     <QtMoc Include="VariableInputDialog.h" />
-    <QtMoc Include="Combo\ComboPicker\ComboPickerModel.h">
-      <Filter>Combo\ComboPicker</Filter>
-    </QtMoc>
-    <QtMoc Include="Combo\ComboPicker\ComboPickerWindow.h">
-      <Filter>Combo\ComboPicker</Filter>
-    </QtMoc>
-    <QtMoc Include="Combo\ComboPicker\ComboPickerItemDelegate.h">
-      <Filter>Combo\ComboPicker</Filter>
-    </QtMoc>
     <QtMoc Include="Combo\ComboEditor.h">
       <Filter>Combo</Filter>
     </QtMoc>
+    <QtMoc Include="Picker\PickerItemDelegate.h">
+      <Filter>Picker</Filter>
+    </QtMoc>
+    <QtMoc Include="Picker\PickerModel.h">
+      <Filter>Picker</Filter>
+    </QtMoc>
+    <QtMoc Include="Picker\PickerWindow.h">
+      <Filter>Picker</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="Combo\ComboPicker\ComboPickerWindow.ui">
-      <Filter>Combo\ComboPicker</Filter>
-    </QtUic>
     <QtUic Include="Combo\ComboEditor.ui">
       <Filter>Combo</Filter>
+    </QtUic>
+    <QtUic Include="Picker\PickerWindow.ui">
+      <Filter>Picker</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

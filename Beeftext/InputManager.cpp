@@ -12,7 +12,7 @@
 #include "PreferencesManager.h"
 #include "MainWindow.h"
 #include "BeeftextUtils.h"
-#include "Combo/ComboPicker/ComboPickerWindow.h"
+#include "Picker/PickerWindow.h"
 #include <XMiLib/Exception.h>
 
 

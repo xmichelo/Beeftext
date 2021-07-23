@@ -278,11 +278,6 @@
     <ClCompile Include="Combo\ComboImportDialog.cpp" />
     <ClCompile Include="Combo\ComboList.cpp" />
     <ClCompile Include="Combo\ComboManager.cpp" />
-    <ClCompile Include="Combo\ComboPicker\ComboPickerItemDelegate.cpp" />
-    <ClCompile Include="Combo\ComboPicker\ComboPickerModel.cpp" />
-    <ClCompile Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.cpp" />
-    <ClCompile Include="Combo\ComboPicker\ComboPickerWindow.cpp" />
-    <ClCompile Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.cpp" />
     <ClCompile Include="Combo\ComboSortFilterProxyModel.cpp" />
     <ClCompile Include="Combo\ComboKeywordValidator.cpp" />
     <ClCompile Include="Combo\ComboTableWidget.cpp" />
@@ -303,6 +298,11 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="MimeDataUtils.cpp" />
+    <ClCompile Include="Picker\PickerItemDelegate.cpp" />
+    <ClCompile Include="Picker\PickerModel.cpp" />
+    <ClCompile Include="Picker\PickerSortFilterProxyModel.cpp" />
+    <ClCompile Include="Picker\PickerWindow.cpp" />
+    <ClCompile Include="Picker\PickerWindowMoverResizer.cpp" />
     <ClCompile Include="PreferencesDialog.cpp" />
     <ClCompile Include="PreferencesManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
@@ -322,25 +322,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Combo\CaseSensitivity.h" />
-    <ClInclude Include="Combo\ComboPicker\ComboPickerWindowMoverResizer.h" />
     <ClInclude Include="Combo\MatchingMode.h" />
     <ClInclude Include="Emoji\Emoji.h" />
     <ClInclude Include="Emoji\EmojiList.h" />
     <ClInclude Include="Emoji\EmojiManager.h" />
+    <QtMoc Include="Picker\PickerItemDelegate.h" />
+    <QtMoc Include="Picker\PickerModel.h" />
+    <ClInclude Include="Picker\PickerSortFilterProxyModel.h" />
+    <QtMoc Include="Picker\PickerWindow.h" />
+    <ClInclude Include="Picker\PickerWindowMoverResizer.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />
-    <QtMoc Include="Combo\ComboPicker\ComboPickerModel.h">
-    </QtMoc>
-    <QtMoc Include="Combo\ComboPicker\ComboPickerItemDelegate.h">
-    </QtMoc>
     <QtMoc Include="Combo\ComboEditor.h">
     </QtMoc>
     <ClInclude Include="Clipboard\ClipboardManagerDefault.h" />
     <ClInclude Include="Clipboard\ClipboardManager.h" />
     <ClInclude Include="Clipboard\ClipboardManagerLegacy.h" />
-    <ClInclude Include="Combo\ComboPicker\ComboPickerSortFilterProxyModel.h" />
-    <QtMoc Include="Combo\ComboPicker\ComboPickerWindow.h">
-    </QtMoc>
     <ClInclude Include="Combo\LastUseFile.h" />
     <ClInclude Include="SensitiveApplicationManager.h" />
     <QtMoc Include="VariableInputDialog.h">
@@ -478,7 +475,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboEditor.ui" />
-    <QtUic Include="Combo\ComboPicker\ComboPickerWindow.ui" />
     <QtUic Include="MainWindow.ui">
     </QtUic>
   </ItemGroup>
@@ -494,6 +490,7 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="Picker\PickerWindow.ui" />
     <QtUic Include="Update\UpdateDialog.ui">
     </QtUic>
   </ItemGroup>
