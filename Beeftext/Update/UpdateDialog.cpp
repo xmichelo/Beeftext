@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "UpdateDialog.h"
 #include "UpdateManager.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"

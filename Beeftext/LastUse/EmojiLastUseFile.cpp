@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "EmojiLastUseFile.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>

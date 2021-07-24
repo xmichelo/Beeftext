@@ -8,7 +8,7 @@
 #include "ClipboardManager.h"
 #include "ClipboardManagerLegacy.h"
 #include "ClipboardManagerDefault.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 
 namespace {
 

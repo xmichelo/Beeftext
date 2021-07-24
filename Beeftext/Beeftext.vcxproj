@@ -304,8 +304,8 @@
     <ClCompile Include="Picker\PickerSortFilterProxyModel.cpp" />
     <ClCompile Include="Picker\PickerWindow.cpp" />
     <ClCompile Include="Picker\PickerWindowMoverResizer.cpp" />
-    <ClCompile Include="PreferencesDialog.cpp" />
-    <ClCompile Include="PreferencesManager.cpp" />
+    <ClCompile Include="Preferences\PreferencesDialog.cpp" />
+    <ClCompile Include="Preferences\PreferencesManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="Shortcut.cpp" />
     <ClCompile Include="ShortcutDialog.cpp" />
@@ -334,6 +334,8 @@
     <ClInclude Include="Picker\PickerSortFilterProxyModel.h" />
     <QtMoc Include="Picker\PickerWindow.h" />
     <ClInclude Include="Picker\PickerWindowMoverResizer.h" />
+    <QtMoc Include="Preferences\PreferencesDialog.h" />
+    <QtMoc Include="Preferences\PreferencesManager.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />
     <QtMoc Include="Combo\ComboEditor.h">
@@ -430,14 +432,8 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
-    <ClInclude Include="GeneratedFiles\ui_PreferencesDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_ShortcutDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h" />
-    <QtMoc Include="PreferencesManager.h">
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-    </QtMoc>
     <ClInclude Include="Group\Group.h" />
     <QtMoc Include="Group\GroupList.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
@@ -467,11 +463,6 @@
     </QtMoc>
     <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="MimeDataUtils.h" />
-    <QtMoc Include="PreferencesDialog.h">
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-    </QtMoc>
     <ClInclude Include="Shortcut.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -493,6 +484,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Picker\PickerWindow.ui" />
+    <QtUic Include="Preferences\PreferencesDialog.ui" />
     <QtUic Include="Update\UpdateDialog.ui">
     </QtUic>
   </ItemGroup>
@@ -522,8 +514,6 @@
     <QtUic Include="Backup\BackupRestoreDialog.ui">
     </QtUic>
     <QtUic Include="AboutDialog.ui">
-    </QtUic>
-    <QtUic Include="PreferencesDialog.ui">
     </QtUic>
     <None Include="Translations\beeftext_fr.ts" />
   </ItemGroup>

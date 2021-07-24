@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "InputManager.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "MainWindow.h"
 #include "BeeftextUtils.h"
 #include "Picker/PickerWindow.h"

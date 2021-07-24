@@ -1,0 +1,1997 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PreferencesDialog</class>
+ <widget class="QDialog" name="PreferencesDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>402</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabPreferences">
+     <property name="currentIndex">
+      <number>2</number>
+     </property>
+     <widget class="QWidget" name="tabBehavior">
+      <attribute name="title">
+       <string>Behavior</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,1">
+         <item>
+          <widget class="QCheckBox" name="checkAutoCheckForUpdates">
+           <property name="text">
+            <string>Automatically check for &amp;updates</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonCheckNow">
+           <property name="text">
+            <string>&amp;Check Now</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelUpdateCheckStatus">
+           <property name="text">
+            <string notr="true">#Update Check Status#</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkAutoStart">
+         <property name="text">
+          <string>&amp;Automatically start Beeftext at login</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkPlaySoundOnCombo">
+         <property name="text">
+          <string>&amp;Play sound on combo</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkUseCustomSound">
+         <property name="text">
+          <string>Use custom sound</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frameCustomSound">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="editCustomSound">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="buttonChangeCustomSound">
+            <property name="text">
+             <string>Cha&amp;nge</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="buttonPlay">
+            <property name="text">
+             <string>&amp;Play</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="0,0">
+         <item>
+          <widget class="QCheckBox" name="CheckAppEnableDisable">
+           <property name="text">
+            <string>Use shortcut to enable/disable Beeftext</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frameAppEnableDisableShortcut">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLineEdit" name="editAppEnableDisableShortcut">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maxLength">
+               <number>50</number>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonChangeAppEnableDisableShortcut">
+              <property name="text">
+               <string>&amp;Change</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonDefaultAppEnableDisableShortcut">
+              <property name="text">
+               <string>&amp;Default</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>39</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabCombos">
+      <attribute name="title">
+       <string>Combos</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Combo triggering</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QRadioButton" name="radioComboTriggerAuto">
+              <property name="text">
+               <string>Automatic</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkComboTriggersOnSpace">
+              <property name="text">
+               <string>Trigger only after spacebar is pressed</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkKeepFinalSpaceCharacter">
+              <property name="text">
+               <string>Keep the final space character</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <item>
+             <widget class="QRadioButton" name="radioComboTriggerManual">
+              <property name="text">
+               <string>Manual, using the shortcut</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="editComboTriggerShortcut">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maxLength">
+               <number>50</number>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonChangeComboTriggerShortcut">
+              <property name="text">
+               <string>C&amp;hange</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonResetComboTriggerShortcut">
+              <property name="text">
+               <string>De&amp;fault</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBoxDefaultBehavior">
+         <property name="title">
+          <string>Default behavior</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelMatchingMode">
+            <property name="text">
+             <string>Default matching mode</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="comboMatchingMode">
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelCaseSensitivity">
+            <property name="text">
+             <string>Default case sensitivity</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboCaseSensitivity">
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" rowspan="2">
+           <spacer name="horizontalSpacer_14">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupComboPicker">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Combo picker</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QCheckBox" name="checkEnableComboPicker">
+            <property name="text">
+             <string>Enable combo picker</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLabel" name="labelComboPickerShortcut">
+              <property name="text">
+               <string>Shortcut</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="editComboPickerShortcut">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maxLength">
+               <number>50</number>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonChangeComboPickerShortcut">
+              <property name="text">
+               <string>C&amp;hange</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonResetComboPickerShortcut">
+              <property name="text">
+               <string>De&amp;fault</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_11">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabEmojis">
+      <attribute name="title">
+       <string>Emojis</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QCheckBox" name="checkEnableEmoji">
+           <property name="text">
+            <string>Enable emoji shortcodes</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonEmojiExcludedApps">
+           <property name="text">
+            <string>&amp;Excluded Applications</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0,0,0,0">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labelEmojiLeftDelimiter">
+           <property name="text">
+            <string>Left delimiter</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <spacer name="horizontalSpacer_10">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="editEmojiLeftDelimiter">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <spacer name="horizontalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLineEdit" name="editEmojiRightDelimiter">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="labelEmojiRightDelimiter">
+           <property name="text">
+            <string>Right delimiter</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
+         <item>
+          <widget class="QCheckBox" name="checkShowEmojiInPickerWindow">
+           <property name="text">
+            <string>Show emojis in picker window</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_15">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>111</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabAppearance">
+      <attribute name="title">
+       <string>Appearance</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="labelLocale">
+           <property name="text">
+            <string>Language</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboLocale">
+           <property name="sizeAdjustPolicy">
+            <enum>QComboBox::AdjustToContents</enum>
+           </property>
+           <item>
+            <property name="text">
+             <string notr="true">#English</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonRefresh">
+           <property name="text">
+            <string>Refresh</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelOtherLanguages">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="openExternalLinks">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QLabel" name="labelTranslationFolder">
+           <property name="text">
+            <string>User-provided translations</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonTranslationFolder">
+           <property name="text">
+            <string>Open Folder</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="checkUseCustomTheme">
+           <property name="text">
+            <string>Use custom theme</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboTheme">
+           <property name="sizeAdjustPolicy">
+            <enum>QComboBox::AdjustToContents</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_13">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>119</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabAdvanced">
+      <attribute name="title">
+       <string>Advanced</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLabel" name="labelDelayBetweenKeystrokes">
+           <property name="text">
+            <string>Delay between simulated keystrokes</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinDelayBetweenKeystrokes">
+           <property name="suffix">
+            <string>ms</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QFrame" name="frameComboListFolder">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelComboListFolder">
+            <property name="text">
+             <string>Combo list folder</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="editComboListFolder">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="buttonChangeComboListFolder">
+            <property name="text">
+             <string>&amp;Change</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="buttonOpenComboListFolder">
+            <property name="text">
+             <string>O&amp;pen</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="buttonResetComboListFolder">
+            <property name="text">
+             <string>D&amp;efault</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkWriteDebugLogFile">
+         <property name="text">
+          <string>Write debug events in a log file</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkUseLegacyCopyPaste">
+         <property name="text">
+          <string>Use legacy copy/paste</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkUseShiftInsertForPasting">
+         <property name="text">
+          <string>Use Shift+Insert for pasting</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
+         <item>
+          <widget class="QCheckBox" name="checkUseCustomPowershellVersion">
+           <property name="text">
+            <string>Use custom PowerShell version</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="editCustomPowerShellPath">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonChangeCustomPowershellVersion">
+           <property name="text">
+            <string>&amp;Change</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupboxAutoBackup">
+         <property name="title">
+          <string>Automatic backup</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item>
+             <widget class="QCheckBox" name="checkAutoBackup">
+              <property name="text">
+               <string>Automatically backup combo list files</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonRestoreBackup">
+              <property name="toolTip">
+               <string>Restore a backup.</string>
+              </property>
+              <property name="text">
+               <string>&amp;Restore</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>13</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <widget class="QCheckBox" name="checkUseCustomBackupLocation">
+              <property name="text">
+               <string>Use custom backup location</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="editCustomBackupLocation">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonChangeCustomBackupLocation">
+              <property name="text">
+               <string>&amp;Change</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QPushButton" name="buttonSensitiveApplications">
+           <property name="text">
+            <string>Sensitive Applications</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>667</width>
+           <height>26</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="buttonExport">
+       <property name="toolTip">
+        <string>Reset the preferences to their default values.</string>
+       </property>
+       <property name="text">
+        <string>&amp;Export</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonImport">
+       <property name="toolTip">
+        <string>Reset the preferences to their default values.</string>
+       </property>
+       <property name="text">
+        <string>&amp;Import</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonDefaults">
+       <property name="toolTip">
+        <string>Reset the preferences to their default values.</string>
+       </property>
+       <property name="text">
+        <string>&amp;Default</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonResetWarnings">
+       <property name="toolTip">
+        <string>Reset the preferences to their default values.</string>
+       </property>
+       <property name="text">
+        <string>Reset &amp;Warnings</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonClose">
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>checkAutoCheckForUpdates</tabstop>
+  <tabstop>buttonCheckNow</tabstop>
+  <tabstop>checkAutoStart</tabstop>
+  <tabstop>checkPlaySoundOnCombo</tabstop>
+  <tabstop>checkUseCustomSound</tabstop>
+  <tabstop>editCustomSound</tabstop>
+  <tabstop>buttonChangeCustomSound</tabstop>
+  <tabstop>buttonPlay</tabstop>
+  <tabstop>CheckAppEnableDisable</tabstop>
+  <tabstop>editAppEnableDisableShortcut</tabstop>
+  <tabstop>buttonChangeAppEnableDisableShortcut</tabstop>
+  <tabstop>buttonDefaultAppEnableDisableShortcut</tabstop>
+  <tabstop>radioComboTriggerAuto</tabstop>
+  <tabstop>checkComboTriggersOnSpace</tabstop>
+  <tabstop>checkKeepFinalSpaceCharacter</tabstop>
+  <tabstop>radioComboTriggerManual</tabstop>
+  <tabstop>editComboTriggerShortcut</tabstop>
+  <tabstop>buttonChangeComboTriggerShortcut</tabstop>
+  <tabstop>buttonResetComboTriggerShortcut</tabstop>
+  <tabstop>comboMatchingMode</tabstop>
+  <tabstop>checkEnableComboPicker</tabstop>
+  <tabstop>editComboPickerShortcut</tabstop>
+  <tabstop>buttonChangeComboPickerShortcut</tabstop>
+  <tabstop>buttonResetComboPickerShortcut</tabstop>
+  <tabstop>checkEnableEmoji</tabstop>
+  <tabstop>buttonEmojiExcludedApps</tabstop>
+  <tabstop>editEmojiLeftDelimiter</tabstop>
+  <tabstop>editEmojiRightDelimiter</tabstop>
+  <tabstop>comboLocale</tabstop>
+  <tabstop>buttonRefresh</tabstop>
+  <tabstop>buttonTranslationFolder</tabstop>
+  <tabstop>checkUseCustomTheme</tabstop>
+  <tabstop>comboTheme</tabstop>
+  <tabstop>spinDelayBetweenKeystrokes</tabstop>
+  <tabstop>editComboListFolder</tabstop>
+  <tabstop>buttonChangeComboListFolder</tabstop>
+  <tabstop>buttonOpenComboListFolder</tabstop>
+  <tabstop>buttonResetComboListFolder</tabstop>
+  <tabstop>checkWriteDebugLogFile</tabstop>
+  <tabstop>checkUseLegacyCopyPaste</tabstop>
+  <tabstop>checkUseShiftInsertForPasting</tabstop>
+  <tabstop>checkUseCustomPowershellVersion</tabstop>
+  <tabstop>editCustomPowerShellPath</tabstop>
+  <tabstop>buttonChangeCustomPowershellVersion</tabstop>
+  <tabstop>checkAutoBackup</tabstop>
+  <tabstop>buttonRestoreBackup</tabstop>
+  <tabstop>checkUseCustomBackupLocation</tabstop>
+  <tabstop>editCustomBackupLocation</tabstop>
+  <tabstop>buttonChangeCustomBackupLocation</tabstop>
+  <tabstop>buttonSensitiveApplications</tabstop>
+  <tabstop>buttonExport</tabstop>
+  <tabstop>buttonImport</tabstop>
+  <tabstop>buttonDefaults</tabstop>
+  <tabstop>buttonResetWarnings</tabstop>
+  <tabstop>buttonClose</tabstop>
+  <tabstop>tabPreferences</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonClose</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onClose()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>689</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>355</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeComboListFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeComboListFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>514</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeComboTriggerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeComboTriggerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>467</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonDefaults</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onResetToDefaultValues()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>246</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetComboListFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onResetComboListFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>676</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetComboTriggerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onResetComboTriggerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>548</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonRestoreBackup</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onRestoreBackup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>333</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioComboTriggerAuto</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onRadioAutomaticComboTrigger(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>358</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetWarnings</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onResetWarnings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>341</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonSensitiveApplications</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onEditSensitiveApplications()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>143</x>
+     <y>339</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>358</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonEmojiExcludedApps</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onEditEmojiExcludedApplications()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>63</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>307</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkEnableEmoji</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckEnableEmojiShortcodes(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>562</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkEnableComboPicker</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckEnableComboPicker(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>203</x>
+     <y>276</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeComboPickerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeComboPickerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>362</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetComboPickerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onResetComboPickerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>443</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonOpenComboListFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onOpenComboListFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>595</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkAutoCheckForUpdates</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckAutoCheckForUpdates(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>65</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>343</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkAutoStart</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckAutoStart(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkPlaySoundOnCombo</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckPlaySoundOnCombo(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editEmojiLeftDelimiter</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onEmojiLeftDelimiterChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>138</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editEmojiRightDelimiter</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onEmojiRightDelimiterChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>294</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>123</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboLocale</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onComboLanguageValueChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>228</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseCustomTheme</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseCustomTheme(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>223</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinDelayBetweenKeystrokes</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>247</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkAutoBackup</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckAutoBackup(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>219</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>672</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkWriteDebugLogFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckWriteDebugLogFile(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseCustomSound</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseCustomSound(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>121</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeCustomSound</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeCustomSound()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>595</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>683</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonPlay</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onPlaySoundButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>676</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>686</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonTranslationFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onOpenTranslationFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>44</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonRefresh</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onRefreshLanguageList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>63</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>86</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeAppEnableDisableShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeAppEnableDisableShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>594</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonDefaultAppEnableDisableShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onResetAppEnableDisableShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>675</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>220</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CheckAppEnableDisable</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>42</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonExport</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onExport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>48</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonImport</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onImport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>165</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>246</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseCustomBackupLocation</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseCustomBackupLocation(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>295</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeCustomBackupLocation</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeCustomBackupLocation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>666</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>178</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseLegacyCopyPaste</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseLegacyCopyPaste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkComboTriggersOnSpace</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckComboTriggersOnSpace(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>331</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkKeepFinalSpaceCharacter</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckKeepFinalSpace(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>381</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>698</x>
+     <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeCustomPowershellVersion</sender>
+   <signal>clicked()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeCustomPowershellVersion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>676</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>697</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseCustomPowershellVersion</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>72</x>
+     <y>205</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboTheme</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onComboThemeValueChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>178</x>
+     <y>109</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>318</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboMatchingMode</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeDefaultMatchingMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>201</x>
+     <y>180</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseShiftInsertForPasting</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckUseShiftInsertForPasting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>348</x>
+     <y>166</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboCaseSensitivity</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onChangeDefaultCaseSensitivity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>196</x>
+     <y>203</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkShowEmojiInPickerWindow</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckShowEmojisInPickerWindow(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>546</x>
+     <y>371</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onClose()</slot>
+  <slot>onResetToDefaultValues()</slot>
+  <slot>onPlaySoundOnComboCheckChanged()</slot>
+  <slot>onAutoStartCheckChanged()</slot>
+  <slot>onAutoCheckForUpdatesCheckChanged()</slot>
+  <slot>onUseCustomThemeCheckChanged()</slot>
+  <slot>onChangeComboListFolder()</slot>
+  <slot>onResetComboListFolder()</slot>
+  <slot>onLocaleChanged()</slot>
+  <slot>onChangeComboTriggerShortcut()</slot>
+  <slot>onResetComboTriggerShortcut()</slot>
+  <slot>onAutoBackupCheckChanged()</slot>
+  <slot>onRestoreBackup()</slot>
+  <slot>updateGui()</slot>
+  <slot>onResetWarnings()</slot>
+  <slot>onEditSensitiveApplications()</slot>
+  <slot>onEditEmojiExcludedApplications()</slot>
+  <slot>onChangeComboPickerShortcut()</slot>
+  <slot>onResetComboPickerShortcut()</slot>
+  <slot>onOpenComboListFolder()</slot>
+  <slot>onCheckAutoCheckForUpdates(bool)</slot>
+  <slot>onCheckAutoStart(bool)</slot>
+  <slot>onCheckPlaySoundOnCombo(bool)</slot>
+  <slot>onRadioAutomaticComboTrigger(bool)</slot>
+  <slot>onCheckEnableComboPicker(bool)</slot>
+  <slot>onCheckEnableEmojiShortcodes(bool)</slot>
+  <slot>onEmojiLeftDelimiterChanged(QString)</slot>
+  <slot>onEmojiRightDelimiterChanged(QString)</slot>
+  <slot>onComboLanguageValueChanged(int)</slot>
+  <slot>onCheckUseCustomTheme(bool)</slot>
+  <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
+  <slot>onCheckAutoBackup(bool)</slot>
+  <slot>onCheckWriteDebugLogFile(bool)</slot>
+  <slot>onCheckUseCustomSound(bool)</slot>
+  <slot>onChangeCustomSound()</slot>
+  <slot>onPlaySoundButton()</slot>
+  <slot>onOpenTranslationFolder()</slot>
+  <slot>onRefreshLanguageList()</slot>
+  <slot>onChangeAppEnableDisableShortcut()</slot>
+  <slot>onResetAppEnableDisableShortcut()</slot>
+  <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
+  <slot>onExport()</slot>
+  <slot>onImport()</slot>
+  <slot>onCheckUseCustomBackupLocation(bool)</slot>
+  <slot>onChangeCustomBackupLocation()</slot>
+  <slot>onCheckUseLegacyCopyPaste()</slot>
+  <slot>onCheckComboTriggersOnSpace(bool)</slot>
+  <slot>onCheckKeepFinalSpace(bool)</slot>
+  <slot>onChangeCustomPowershellVersion()</slot>
+  <slot>onEditCustomPowershellVersion(QString)</slot>
+  <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
+  <slot>onComboThemeValueChanged(int)</slot>
+  <slot>onChangeDefaultMatchingMode()</slot>
+  <slot>onCheckUseShiftInsertForPasting()</slot>
+  <slot>onChangeDefaultCaseSensitivity()</slot>
+  <slot>onCheckShowEmojisInPickerWindow(bool)</slot>
+ </slots>
+</ui>

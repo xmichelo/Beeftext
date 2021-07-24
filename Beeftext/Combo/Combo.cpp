@@ -12,7 +12,7 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "BeeftextUtils.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <utility>

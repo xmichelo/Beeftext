@@ -12,7 +12,7 @@
 #include "LastUse/ComboLastUseFile.h"
 #include "WaveSound.h"
 #include "InputManager.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "Backup/BackupManager.h"

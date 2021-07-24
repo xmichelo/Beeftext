@@ -11,7 +11,7 @@
 #include "UpdateManager.h"
 #include "UpdateDialog.h"
 #include "UpdateCheckWorker.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>

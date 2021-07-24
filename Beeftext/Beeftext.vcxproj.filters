@@ -45,6 +45,9 @@
     <Filter Include="LastUse">
       <UniqueIdentifier>{d7a38f0a-9561-4551-bf52-f571939cabea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Preferences">
+      <UniqueIdentifier>{768bd915-726b-46d5-b7ab-4a56babfdf37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -67,7 +70,6 @@
     <ClCompile Include="Combo\ComboSortFilterProxyModel.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="PreferencesManager.cpp" />
     <ClCompile Include="BeeftextUtils.cpp" />
     <ClCompile Include="LatestVersionInfo.cpp" />
     <ClCompile Include="Update\UpdateDialog.cpp">
@@ -122,7 +124,6 @@
     </ClCompile>
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="VariableInputDialog.cpp" />
-    <ClCompile Include="PreferencesDialog.cpp" />
     <ClCompile Include="Combo\ComboEditor.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -174,6 +175,12 @@
     <ClCompile Include="LastUse\EmojiLastUseFile.cpp">
       <Filter>LastUse</Filter>
     </ClCompile>
+    <ClCompile Include="Preferences\PreferencesDialog.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="Preferences\PreferencesManager.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -223,9 +230,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_AboutDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_PreferencesDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Combo\ComboKeywordValidator.h">
@@ -303,7 +307,6 @@
     <QtUic Include="Update\UpdateDialog.ui">
       <Filter>Update</Filter>
     </QtUic>
-    <QtMoc Include="PreferencesManager.h" />
     <QtUic Include="ShortcutDialog.ui" />
     <QtMoc Include="ShortcutDialog.h" />
     <QtMoc Include="Combo\ComboImportDialog.h">
@@ -350,8 +353,6 @@
     </QtMoc>
     <QtUic Include="AboutDialog.ui" />
     <QtMoc Include="AboutDialog.h" />
-    <QtMoc Include="PreferencesDialog.h" />
-    <QtUic Include="PreferencesDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">
@@ -418,6 +419,12 @@
     <QtMoc Include="Picker\PickerWindow.h">
       <Filter>Picker</Filter>
     </QtMoc>
+    <QtMoc Include="Preferences\PreferencesDialog.h">
+      <Filter>Preferences</Filter>
+    </QtMoc>
+    <QtMoc Include="Preferences\PreferencesManager.h">
+      <Filter>Preferences</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboEditor.ui">
@@ -425,6 +432,9 @@
     </QtUic>
     <QtUic Include="Picker\PickerWindow.ui">
       <Filter>Picker</Filter>
+    </QtUic>
+    <QtUic Include="Preferences\PreferencesDialog.ui">
+      <Filter>Preferences</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

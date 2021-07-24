@@ -12,7 +12,7 @@
 
 
 #include "ui_MainWindow.h"
-#include "PreferencesDialog.h"
+#include "Preferences/PreferencesDialog.h"
 #ifndef NDEBUG
 #include <XMiLib/StyleSheetEditor/StyleSheetEditor.h>
 #endif // #ifndef NDEBUG

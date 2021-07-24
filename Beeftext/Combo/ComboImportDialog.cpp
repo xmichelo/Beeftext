@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "ComboImportDialog.h"
 #include "ComboManager.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/File/CsvIO.h>

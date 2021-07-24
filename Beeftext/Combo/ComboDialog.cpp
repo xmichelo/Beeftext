@@ -15,7 +15,7 @@
 #include "CaseSensitivity.h"
 #include <XMiLib/Exception.h>
 #include <XMiLib/XMiLibConstants.h>
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 
 
 namespace {

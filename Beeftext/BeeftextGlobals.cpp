@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 
 
 namespace globals {

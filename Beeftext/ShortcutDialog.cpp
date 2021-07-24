@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "ShortcutDialog.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include <XMiLib/XMiLibConstants.h>
 
 

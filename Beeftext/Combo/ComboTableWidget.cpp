@@ -12,7 +12,7 @@
 #include "ComboImportDialog.h"
 #include "ComboManager.h"
 #include "ComboDialog.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>

@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboLastUseFile.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "Combo/ComboManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"

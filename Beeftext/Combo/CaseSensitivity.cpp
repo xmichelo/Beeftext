@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "CaseSensitivity.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/Exception.h>
 

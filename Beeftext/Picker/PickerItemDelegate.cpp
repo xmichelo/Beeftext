@@ -11,7 +11,7 @@
 #include "PickerItemDelegate.h"
 #include "Combo/Combo.h"
 #include "Emoji/Emoji.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextConstants.h"
 
 

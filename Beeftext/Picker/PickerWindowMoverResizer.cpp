@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "PickerWindowMoverResizer.h"
 #include "PickerWindow.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 
 
 namespace {

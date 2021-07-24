@@ -8,7 +8,7 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "VariableInputDialog.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "Clipboard/ClipboardManager.h"
 #include "BeeftextGlobals.h"
 #include <XMiLib/RandomNumberGenerator.h>

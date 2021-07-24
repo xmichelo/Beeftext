@@ -10,10 +10,9 @@
 #include "stdafx.h"
 #include "BeeftextUtils.h"
 #include "Combo/ComboManager.h"
-#include "Emoji/EmojiManager.h"
 #include "SensitiveApplicationManager.h"
 #include "InputManager.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "Clipboard/ClipboardManagerDefault.h"
 #include <Psapi.h>

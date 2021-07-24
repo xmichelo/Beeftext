@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "MatchingMode.h"
 #include "BeeftextGlobals.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include <XMiLib/Exception.h>
 
 

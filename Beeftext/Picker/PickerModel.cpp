@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "PickerModel.h"
-#include "PreferencesManager.h"
+#include "Preferences/PreferencesManager.h"
 #include "Emoji/EmojiManager.h"
 #include "Combo/ComboManager.h"
 
