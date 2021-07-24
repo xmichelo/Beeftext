@@ -32,12 +32,12 @@ public: // member functions
 	~PreferencesManager() override = default; ///< Default destructor
 	PreferencesManager& operator=(PreferencesManager const&) = delete; ///< Disabled assignment operator
 	PreferencesManager& operator=(PreferencesManager&&) = delete; ///< Disabled move assignment operator
-   void init(); ///< Initialize the preferences manager.
+   void init() const; ///< Initialize the preferences manager.
    void reset(); ///< Reset the preferences to their default values
    bool save(QString const& path) const; ///< Save the preference to a JSON file.
-   bool load(QString const& path); ///< Load the preference from a JSON file.
+   bool load(QString const& path) const; ///< Load the preference from a JSON file.
    void toJsonDocument(QJsonDocument& outDoc) const; ///< Copy the preferences to a JSON document.
-   void fromJsonDocument(QJsonDocument const& doc); ///< Load the preferences from a JSON document.
+   void fromJsonDocument(QJsonDocument const& doc) const; ///< Load the preferences from a JSON document.
    void resetWarnings() const; ///< Reset the warnings
    QString getInstalledApplicationPath() const; ///< Retrieve the path of the installed application
    void setAlreadyLaunched() const; ///< Set the value for the 'First Launch' preference to false
@@ -63,13 +63,13 @@ public: // member functions
    QString customSoundPath() const; ///< Set the value for the 'Custom sound path' preferences.
    void setAutoCheckForUpdates(bool value); ///< Set the value for the 'Auto check for updates preference
    bool autoCheckForUpdates() const; ///< Set the value for the 'Auto check for updates preference
-   void setUseCustomTheme(bool value); ///< Set the value for the 'Use custom theme' preference
+   void setUseCustomTheme(bool value) const; ///< Set the value for the 'Use custom theme' preference
    bool useCustomTheme() const; ///< Get the value for the 'Use custom theme' preference
-   void setUseAutomaticSubstitution(bool value); ///< Set the value for the 'Use automatic substitution' preference
+   void setUseAutomaticSubstitution(bool value) const; ///< Set the value for the 'Use automatic substitution' preference
    bool useAutomaticSubstitution() const; ///< Get the value for the 'Use automatic substitution' preference
-   void setComboTriggersOnSpace(bool value); ///< Set the value for the 'Combo triggers on space' preference.
+   void setComboTriggersOnSpace(bool value) const; ///< Set the value for the 'Combo triggers on space' preference.
    bool comboTriggersOnSpace() const; ///< Set the value for the 'Combo triggers on space' preference.
-   void setKeepFinalSpaceCharacter(bool value); ///< Set the value for the 'Keep final space character' preference.
+   void setKeepFinalSpaceCharacter(bool value) const; ///< Set the value for the 'Keep final space character' preference.
    bool keepFinalSpaceCharacter() const; ///< Get the value for the 'Keep final space character' preference.
    void setWarnAboutShortComboKeywords(bool value) const; ///< Set the value for the 'Warn about short combo keyword' preference
    bool warnAboutShortComboKeywords() const; ///< Get the value for the 'Warn about short combo keyword' preference
@@ -78,11 +78,11 @@ public: // member functions
    bool setComboListFolderPath(QString const& path) const; ///< Set the path of the folder for saving the combo list
    QString comboListFolderPath() const; ///< Get the path of the folder for saving the combo list
    static QString defaultComboListFolderPath(); ///< Get the default combo list folder path
-   void setComboTriggerShortcut(SpShortcut const& shortcut); ///< Set the combo trigger shortcut
+   void setComboTriggerShortcut(SpShortcut const& shortcut) const; ///< Set the combo trigger shortcut
    SpShortcut comboTriggerShortcut() const; ///< Retrieve the combo trigger shortcut
-   void setDefaultMatchingMode(EMatchingMode mode); ///< Set the value for the 'Default matching mode' preference.
+   void setDefaultMatchingMode(EMatchingMode mode) const; ///< Set the value for the 'Default matching mode' preference.
    EMatchingMode defaultMatchingMode() const; ///< Get the value for the 'Default matching mode' preference.
-   void setDefaultCaseSensitivity(ECaseSensitivity sensitivity); ///< Set the value for the 'Default case sensitivity' preference
+   void setDefaultCaseSensitivity(ECaseSensitivity sensitivity) const; ///< Set the value for the 'Default case sensitivity' preference
    ECaseSensitivity defaultCaseSensitivity() const; ///< Set the value for the 'Default case sensitivity' preference
    void setAutoBackup(bool value) const; ///< Set the value for the 'Auto backup' preference
    bool autoBackup() const; ///< Get the value for the 'Auto backup' preference
@@ -96,28 +96,28 @@ public: // member functions
    void setLastComboImportExportPath(QString const& path) const; ///< Retrieve the path of the last imported and exported path
    static SpShortcut defaultComboTriggerShortcut(); ///< Reset the combo trigger shortcut to its default value
    bool emojiShortcodesEnabled() const; ///< Are emoji shortcodes enabled
-   void setEmojiShortcodeEnabled(bool value); ///< Set if the emoji shortcodes are enabled
+   void setEmojiShortcodeEnabled(bool value) const; ///< Set if the emoji shortcodes are enabled
    QString emojiLeftDelimiter() const; ///< Get the left delimiter for emojis.
-   void setEmojiLeftDelimiter(QString const& delimiter); ///< Set the left delimiter for emojis.
+   void setEmojiLeftDelimiter(QString const& delimiter) const; ///< Set the left delimiter for emojis.
    QString emojiRightDelimiter() const; ///< Get the right delimiter for emojis.
-   void setEmojiRightDelimiter(QString const& delimiter); ///< Set the right delimiter for emojis.
-   void setShowEmojisInPickerWindow(bool show); ///< Set the value for the 'Show Emojis in picker window.
+   void setEmojiRightDelimiter(QString const& delimiter) const; ///< Set the right delimiter for emojis.
+   void setShowEmojisInPickerWindow(bool show) const; ///< Set the value for the 'Show Emojis in picker window.
    bool showEmojisInPickerWindow() const; ///< Get the value for the 'Show Emojis in picker window.
    qint32 delayBetweenKeystrokesMs() const; ///< Get the 'delay between keystrokes' when not using the clipboard for combo substitution
    void  setDelayBetweenKeystrokesMs(qint32 value) const; ///< Set the 'delay between keystrokes'
    static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay beetween keystrokes' preference.
    static qint32 maxDelayBetweenKeystrokesMs(); ///< Get the maximum value for the 'delay beetween keystrokes' preference.
    bool comboPickerEnabled() const; ///< Get the value for the 'Combo picker enabled'  preference.
-   void setComboPickerEnabled(bool value); ///< Set the value for the 'Combo picker enabled'  preference.
-   void setComboPickerShortcut(SpShortcut const& shortcut); ///< Set the combo picker shortcut.
+   void setComboPickerEnabled(bool value) const; ///< Set the value for the 'Combo picker enabled'  preference.
+   void setComboPickerShortcut(SpShortcut const& shortcut) const; ///< Set the combo picker shortcut.
    SpShortcut comboPickerShortcut() const; ///< Retrieve the combo picker shortcut.
    static SpShortcut defaultComboPickerShortcut(); ///< Return the default combo picker shortcut.
-   void setEnableAppEnableDisableShortcut(bool enable); ///< Get the value for the 'Enable app enable/disable' shortcut.
+   void setEnableAppEnableDisableShortcut(bool enable) const; ///< Get the value for the 'Enable app enable/disable' shortcut.
    bool  enableAppEnableDisableShortcut() const; ///< Get the value for the 'Enable app enable/disable' shortcut.
-   void setAppEnableDisableShortcut(SpShortcut const& shortcut); ///< Set the shortcut short to enable/disable the application.
+   void setAppEnableDisableShortcut(SpShortcut const& shortcut) const; ///< Set the shortcut short to enable/disable the application.
    SpShortcut appEnableDisableShortcut() const; ///< Retrieve the shortcut to enable/disable the application.
    static SpShortcut defaultAppEnableDisableShortcut(); ///< Return the default combo shortcut to enable/disable the application. 
-   void setBeeftextEnabled(bool enabled); ///< Set if beeftext is enabled.
+   void setBeeftextEnabled(bool enabled) const; ///< Set if beeftext is enabled.
    bool beeftextEnabled() const; ///< Set if beeftext is enabled.
    void setUseLegacyCopyPaste(bool value) const; ///< Set he value for the 'Use legacy copy/paste' preference.
    bool useLegacyCopyPaste() const; ///< Get the value for the 'Use legacy copy/paste' preference.
@@ -127,11 +127,11 @@ public: // member functions
    bool useCustomPowershellVersion() const; ///< Get the value for the 'Use custom PowerShell version'.
    void setCustomPowershellPath(QString const& path) const; ///< Set the value for the 'Custom PowerShell Path'.
    QString customPowershellPath() const; ///< Set the value for the 'Custom PowerShell Path'.
-   void setTheme(ETheme theme); ///< Set the theme parameter.
+   void setTheme(ETheme theme) const; ///< Set the theme parameter.
    ETheme theme() const; ///< Get the theme.
    void setComboPickerWindowGeometry(QByteArray const& geometry) const; ///< Set the geometry of the combo picker window
    QByteArray comboPickerWindowGeometry() const; ///< Get the geometry of the combo picker.
-   void setUseShiftInsertForPasting(bool value); ///< Get the value for the 'Shift+Insert for pasting' preference
+   void setUseShiftInsertForPasting(bool value) const; ///< Get the value for the 'Shift+Insert for pasting' preference
    bool useShiftInsertForPasting() const; ///< Get the value for the 'Shift+Insert for pasting' preference
 
 signals:
@@ -140,15 +140,6 @@ signals:
 
 private: // member functions
    PreferencesManager(); ///< Default constructor
-   SpShortcut readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey, 
-   QString const& scanCodeRegKey) const; ///< Read a shortcut from the preferences.
-   EMatchingMode readDefaultMatchingModeFromPreferences() const; ///< Get the value for the 'Default matching mode' preference.
-   ECaseSensitivity readDefaultCaseSensitivityFromPreferences() const; ///< Get the value for the 'Default case sensitivity' preference.
-
-   void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
-   void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
-   void cacheAppEnableDisableShortcut(); ///< Read the app enable/disable shortcut and cache it for faster access.
-   void cacheThemePrefs(); ///< Read the theme and cache it for faster access.
    void applyAutoStartPreference() const; ///< Apply the preference for the auto-start
    void applyLocalePreference() const; ///< Apply the preference for the locale
    bool registerApplicationForAutoStart() const; ///< Register the application to be automatically started at login
@@ -157,25 +148,9 @@ private: // member functions
    template <typename T> T readSettings(QString const& key, T const& defaultValue = T()) const; ///< Read a value of a given type read from the settings
    
 private: // data members
-   std::unique_ptr<QSettings> settings_ { nullptr }; ///< The Qt settings instance
-   bool cachedUseAutomaticSubstitution_ { true }; ///< Cached value for the 'use automatic substitution' preference value
-   bool cachedComboTriggersOnSpace_{ false }; ///< Cached vaue for the 'combo trigger on space' preference.
-   bool cachedKeepFinalSpaceCharacter_{ false }; ///< Cached vaue for the 'keep final space character' preference.
-   SpShortcut cachedComboTriggerShortcut_; ///< Cached value for the 'combo trigger shortcut' preference
-   bool cachedComboPickerEnabled_ { true }; ///< Cached value for the 'Combo picker enabled' preference.
-   SpShortcut cachedComboPickerShortcut_; ///< Cached value for the 'combo picker shortcut' preference
-   EMatchingMode cachedDefaultMatchingMode_ { EMatchingMode::Strict }; ///< Cached value for the 'Default matching mode' preference.
-   ECaseSensitivity cachedDefaultCaseSensitivity_ { ECaseSensitivity::CaseSensitive }; ///< Cached valur for the 'Default case sensitivity' preference.
-   bool cachedEnableAppEnableDisableShortcut_ { true }; ///< Cached value for the 'app enable/disable shortcut' preference.
-   SpShortcut cachedAppEnableDisableShortcut_; ///< Cached value for the 'app enable/disable shortcut' preference.
-   bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
-   QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.
-   QString cachedEmojiRightDelimiter_; ///< Cached value for the 'emoji right delimiter' preference.
-   bool cachedShowEmojisInPickerWindow_; ///< Cached value for the 'Show emojis in picker window' preference.
-   bool cachedBeeftextEnabled_ { true }; ///< Cached value for the 'Beeftext enabled' preference.
-   bool cachedUseCustomTheme_ { true }; ///< Cached value for the 'Use custom theme' preference.
-   ETheme cachedTheme_ { ETheme::Light }; ///< Cached value for the 'Theme' preference.
-   bool cachedUseShiftInsertForPasting_ { false }; ///< Cached value for use 'Use Shift+Insert for pasting' preference.
+   class Cache; ///< Forward declaration of cache class
+   std::unique_ptr<QSettings> settings_ { nullptr }; ///< The Qt settings instance.
+   std::unique_ptr<Cache> cache_ { nullptr }; ///< The cache (implemented as pimpl).
 };
 
 

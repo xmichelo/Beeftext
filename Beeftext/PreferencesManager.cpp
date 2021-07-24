@@ -19,6 +19,7 @@
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
 
+
 using namespace xmilib;
 
 
@@ -119,7 +120,70 @@ bool const kDefaultUseShiftInsertForPasting = false; ///< The default value for 
 }
 
 
-QByteArray variantToByteArray(QVariant const& v); ///< Return a serializable array containing a QVariant.
+//**********************************************************************************************************************
+/// \brief A cache for fast access to critical preferences.
+//**********************************************************************************************************************
+class PreferencesManager::Cache
+{
+public: // member functions
+   explicit Cache(QSettings& settings): settings_(settings) {} ///< Default constructor.
+   Cache(Cache const&) = delete; ///< Disabled copy-constructor.
+   Cache(Cache&&) = delete; ///< Disabled assignment copy-constructor.
+   ~Cache() = default; ///< Destructor.
+   Cache& operator=(Cache const&) = delete; ///< Disabled assignment operator.
+   Cache& operator=(Cache&&) = delete; ///< Disabled move assignment operator.
+   void init(); ///< Initialize the cache.
+
+public: // data members
+   bool useAutomaticSubstitution { true }; ///< Cached value for the 'use automatic substitution' preference value
+   bool comboTriggersOnSpace { false }; ///< Cached vaue for the 'combo trigger on space' preference.
+   bool keepFinalSpaceCharacter { false }; ///< Cached vaue for the 'keep final space character' preference.
+   SpShortcut comboTriggerShortcut; ///< Cached value for the 'combo trigger shortcut' preference
+   bool comboPickerEnabled { true }; ///< Cached value for the 'Combo picker enabled' preference.
+   SpShortcut comboPickerShortcut; ///< Cached value for the 'combo picker shortcut' preference
+   EMatchingMode defaultMatchingMode { EMatchingMode::Strict }; ///< Cached value for the 'Default matching mode' preference.
+   ECaseSensitivity defaultCaseSensitivity { ECaseSensitivity::CaseSensitive }; ///< Cached valur for the 'Default case sensitivity' preference.
+   bool enableAppEnableDisableShortcut { true }; ///< Cached value for the 'app enable/disable shortcut' preference.
+   SpShortcut appEnableDisableShortcut; ///< Cached value for the 'app enable/disable shortcut' preference.
+   bool emojiShortcodesEnabled { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
+   QString emojiLeftDelimiter; ///< Cached value for the 'emoji left delimiter' preference.
+   QString emojiRightDelimiter; ///< Cached value for the 'emoji right delimiter' preference.
+   bool showEmojisInPickerWindow { false }; ///< Cached value for the 'Show emojis in picker window' preference.
+   bool beeftextEnabled { true }; ///< Cached value for the 'Beeftext enabled' preference.
+   bool useCustomTheme { true }; ///< Cached value for the 'Use custom theme' preference.
+   ETheme theme { ETheme::Light }; ///< Cached value for the 'Theme' preference.
+   bool useShiftInsertForPasting { false }; ///< Cached value for use 'Use Shift+Insert for pasting' preference.
+
+private: // member functions
+   void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
+   void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
+   void cacheAppEnableDisableShortcut(); ///< Read the app enable/disable shortcut and cache it for faster access.
+   void cacheThemePrefs(); ///< Read the theme and cache it for faster access.
+   EMatchingMode readDefaultMatchingModeFromPreferences() const; ///< Get the value for the 'Default matching mode' preference.
+   ECaseSensitivity readDefaultCaseSensitivityFromPreferences() const; ///< Get the value for the 'Default case sensitivity' preference.
+
+private: // data members
+   QSettings& settings_; ///< The settings
+};
+
+
+//**********************************************************************************************************************
+/// This function returns the default value if the key does not exist in the settings OR if the value is not of the
+/// expected data type.
+///
+/// \param[in] settings The settings to read from.
+/// \param[in] key The key to read from
+/// \param[in] defaultValue The default value to use if the key does not exist or its value is not of the right type
+/// \return The read value
+//**********************************************************************************************************************
+template <typename T>
+T readSettings(QSettings& settings, QString const& key, T const& defaultValue)
+{
+   if (!settings.contains(key))
+      return defaultValue;
+   QVariant v = settings.value(key, QVariant::fromValue<T>(defaultValue));
+   return v.canConvert<T>() ? qvariant_cast<T>(v) : defaultValue;
+}
 
 
 //**********************************************************************************************************************
@@ -133,10 +197,143 @@ QByteArray variantToByteArray(QVariant const& v); ///< Return a serializable arr
 template <typename T>
 T PreferencesManager::readSettings(QString const& key, T const& defaultValue) const
 {
-   if (!settings_->contains(key))
-      return defaultValue;
-   QVariant v = settings_->value(key, QVariant::fromValue<T>(defaultValue));
-   return v.canConvert<T>() ? qvariant_cast<T>(v) : defaultValue;
+   return ::readSettings<T>(*settings_, key, defaultValue);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] modRegKey The registry key for the shortcut's  modifiers.
+/// \param[in] vKeyRegKey The registry key for the shortcut's virtual key.
+/// \param[in] scanCodeRegKey The registry key for the shortcut's scan code.
+/// \return The shortcut, or a null pointer if not found
+//**********************************************************************************************************************
+SpShortcut readShortcutFromPreferences(QSettings& settings, QString const& modRegKey, QString const& vKeyRegKey,
+   QString const& scanCodeRegKey)
+{
+   int const intMods = readSettings<qint32>(settings, modRegKey, 0);
+   quint32 const vKey = readSettings<quint32>(settings, vKeyRegKey, 0);
+   quint32 const scanCode = readSettings<quint32>(settings, scanCodeRegKey, 0);
+   if ((!intMods) || (!vKey) || (!scanCode))
+      return nullptr;
+   SpShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
+   return result->isValid() ? result : nullptr;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::Cache::init()
+{
+   // Cache often accessed values
+   useAutomaticSubstitution = ::readSettings<bool>(settings_, kKeyUseAutomaticSubstitution,
+      kDefaultUseAutomaticSubstitution);
+   comboTriggersOnSpace = ::readSettings<bool>(settings_, kKeyComboTriggersOnSpace,
+      kDefaultComboTriggersOnSpace);
+   keepFinalSpaceCharacter = ::readSettings<bool>(settings_, kKeyKeepFinalSpaceCharacter,
+      kDefaultKeepFinalSpaceCharacter);
+   cacheComboTriggerShortcut();
+   comboPickerEnabled = ::readSettings<bool>(settings_, kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
+   cacheComboPickerShortcut();
+   defaultMatchingMode = this->readDefaultMatchingModeFromPreferences();
+   defaultCaseSensitivity = this->readDefaultCaseSensitivityFromPreferences();
+   emojiShortcodesEnabled = ::readSettings<bool>(settings_, kKeyEmojiShortcodesEnabled,kDefaultEmojiShortcodesEnabled);
+   showEmojisInPickerWindow = ::readSettings<bool>(settings_, kKeyShowEmojisInPickerWindow,
+      kDefaultShowEmojisInPickerWindow);
+   enableAppEnableDisableShortcut = ::readSettings<bool>(settings_, kKeyEnableAppEnableDisableShortcut,
+      kDefaultEnableAppEnableDisableShortcut);
+   cacheAppEnableDisableShortcut();
+   cacheThemePrefs();
+   emojiLeftDelimiter = ::readSettings<QString>(settings_, kKeyEmojiLeftDelimiter, kDefaultEmojiLeftDelimiter);
+   emojiRightDelimiter = ::readSettings<QString>(settings_, kKeyEmojiRightDelimiter,
+      kDefaultEmojiRightDelimiter);
+   beeftextEnabled = ::readSettings<bool>(settings_, kKeyBeeftextEnabled, kDefaultBeeftextEnabled);
+   useShiftInsertForPasting = ::readSettings<bool>(settings_, kKeyUseShiftInsertForPasting,
+      kDefaultUseShiftInsertForPasting);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void PreferencesManager::Cache::cacheComboTriggerShortcut()
+{
+   SpShortcut const shortcut = readShortcutFromPreferences(settings_, kKeyComboTriggerShortcutModifiers,
+      kKeyComboTriggerShortcutKeyCode, kKeyComboTriggerShortcutScanCode);
+   comboTriggerShortcut = shortcut ? shortcut : kDefaultComboTriggerShortcut;
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::Cache::cacheComboPickerShortcut()
+{
+   SpShortcut const shortcut = readShortcutFromPreferences(settings_, kKeyComboPickerShortcutModifiers,
+      kKeyComboPickerShortcutKeyCode, kKeyComboPickerShortcutScanCode);
+   comboPickerShortcut = shortcut ? shortcut : defaultComboPickerShortcut();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::Cache::cacheAppEnableDisableShortcut()
+{
+   SpShortcut const shortcut = readShortcutFromPreferences(settings_, kKeyAppEnableShortcutModifiers,
+      kKeyAppEnableShortcutKeyCode, kKeyAppEnableShortcutScanCode);
+   appEnableDisableShortcut = shortcut ? shortcut : defaultAppEnableDisableShortcut();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::Cache::cacheThemePrefs()
+{
+   qint32 const intValue = ::readSettings<qint32>(settings_, kKeyTheme, static_cast<qint32>(kDefaultTheme));
+   theme = ((intValue < 0) || (intValue >= static_cast<qint32>(ETheme::Count))) ? kDefaultTheme
+      : static_cast<ETheme>(intValue);
+
+   useCustomTheme = ::readSettings<bool>(settings_, kKeyUseCustomTheme, kDefaultUseCustomTheme);
+}
+
+
+//**********************************************************************************************************************
+/// \return The default matching mode read from the preferences
+//**********************************************************************************************************************
+EMatchingMode PreferencesManager::Cache::readDefaultMatchingModeFromPreferences() const
+{
+   EMatchingMode const mode = static_cast<EMatchingMode>(::readSettings<qint32>(settings_, kKeyDefaultMatchingMode,
+      static_cast<qint32>(EMatchingMode::Strict)));
+   switch (mode)
+   {
+   case EMatchingMode::Strict:
+   case EMatchingMode::Loose:
+      return mode;
+   default:
+      return EMatchingMode::Strict;
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \return The default case sensitivity read from the preferences.
+//**********************************************************************************************************************
+ECaseSensitivity PreferencesManager::Cache::readDefaultCaseSensitivityFromPreferences() const
+{
+   ECaseSensitivity const sensitivity = intToCaseSensitivity(::readSettings<qint32>(settings_,
+      kKeyDefaultCaseSensitivity, caseSensitivityToInt(kDefaultDefaultCaseSensitivity)));
+   switch (sensitivity)
+   {
+   case ECaseSensitivity::CaseSensitive:
+   case ECaseSensitivity::CaseInsensitive:
+      return sensitivity;
+   case ECaseSensitivity::Count:
+   case ECaseSensitivity::Default:
+   default:
+      return kDefaultDefaultCaseSensitivity;
+   }
 }
 
 
@@ -160,6 +357,7 @@ PreferencesManager::PreferencesManager()
    settings_ = isInPortableMode()
       ? std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat)
       : std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
+   cache_ = std::make_unique<Cache>(*settings_);
    this->init();
 }
 
@@ -167,36 +365,9 @@ PreferencesManager::PreferencesManager()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PreferencesManager::init()
+void PreferencesManager::init() const
 {
-   // Cache often accessed values
-   cachedUseAutomaticSubstitution_ = this->readSettings<bool>(kKeyUseAutomaticSubstitution,
-      kDefaultUseAutomaticSubstitution);
-   cachedComboTriggersOnSpace_ = this->readSettings<bool>(kKeyComboTriggersOnSpace, 
-      kDefaultComboTriggersOnSpace);
-   cachedKeepFinalSpaceCharacter_ = this->readSettings<bool>(kKeyKeepFinalSpaceCharacter, 
-      kDefaultKeepFinalSpaceCharacter);
-   this->cacheComboTriggerShortcut();
-   cachedComboPickerEnabled_ = this->readSettings<bool>(kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
-   this->cacheComboPickerShortcut();
-   cachedDefaultMatchingMode_ = this->readDefaultMatchingModeFromPreferences();
-   cachedDefaultCaseSensitivity_ = this->readDefaultCaseSensitivityFromPreferences();
-   cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kKeyEmojiShortcodesEnabled,
-      kDefaultEmojiShortcodesEnabled);
-   cachedShowEmojisInPickerWindow_ = this->readSettings<bool>(kKeyShowEmojisInPickerWindow,
-      kDefaultShowEmojisInPickerWindow);
-   cachedEnableAppEnableDisableShortcut_ = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
-      kDefaultEnableAppEnableDisableShortcut);
-   this->cacheAppEnableDisableShortcut();
-   this->cacheThemePrefs();
-   cachedEmojiLeftDelimiter_ = this->readSettings<QString>(kKeyEmojiLeftDelimiter, kDefaultEmojiLeftDelimiter);
-   cachedEmojiRightDelimiter_ = this->readSettings<QString>(kKeyEmojiRightDelimiter,
-      kDefaultEmojiRightDelimiter);
-   cachedBeeftextEnabled_ = this->readSettings<bool>(kKeyBeeftextEnabled, kDefaultBeeftextEnabled);
-   cachedUseShiftInsertForPasting_ = this->readSettings<bool>(kKeyUseShiftInsertForPasting, 
-      kDefaultUseShiftInsertForPasting);
-
-   // Some preferences setting need initialization
+   cache_->init();
    applyThemePreferences(this->useCustomTheme(), this->theme());
    this->applyLocalePreference();
    this->applyAutoStartPreference();
@@ -275,7 +446,7 @@ bool PreferencesManager::save(QString const& path) const
 /// \param[in] path The path of the file to load from.
 /// \return true if and only if the operation was completed successfully.
 //**********************************************************************************************************************
-bool PreferencesManager::load(QString const& path)
+bool PreferencesManager::load(QString const& path) const
 {
    try
    {
@@ -418,7 +589,7 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
 //**********************************************************************************************************************
 /// \param[in] doc The JSON document.
 //**********************************************************************************************************************
-void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
+void PreferencesManager::fromJsonDocument(QJsonDocument const& doc) const
 {
    QJsonObject const object = doc.object();
    settings_->setValue(kKeyAppEnableShortcutKeyCode, objectValue<quint32>(object, kKeyAppEnableShortcutKeyCode));
@@ -722,12 +893,12 @@ bool PreferencesManager::autoCheckForUpdates() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setUseCustomTheme(bool value)
+void PreferencesManager::setUseCustomTheme(bool value) const
 {
    if (this->useCustomTheme() != value)
    {
       settings_->setValue(kKeyUseCustomTheme, value);
-      cachedUseCustomTheme_ = value;
+      cache_->useCustomTheme = value;
       applyThemePreferences(value, this->theme());
    }
 }
@@ -738,7 +909,7 @@ void PreferencesManager::setUseCustomTheme(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::useCustomTheme() const
 {
-   return cachedUseCustomTheme_;
+   return cache_->useCustomTheme;
 }
 
 
@@ -746,9 +917,9 @@ bool PreferencesManager::useCustomTheme() const
 /// As the getter for this value is polled frequently (at every keystroke), it is cached
 /// \param[in] value The new value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setUseAutomaticSubstitution(bool value)
+void PreferencesManager::setUseAutomaticSubstitution(bool value) const
 {
-   cachedUseAutomaticSubstitution_ = value;
+   cache_->useAutomaticSubstitution = value;
    settings_->setValue(kKeyUseAutomaticSubstitution, value);
 }
 
@@ -758,16 +929,16 @@ void PreferencesManager::setUseAutomaticSubstitution(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::useAutomaticSubstitution() const
 {
-   return cachedUseAutomaticSubstitution_;
+   return cache_->useAutomaticSubstitution;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setComboTriggersOnSpace(bool value)
+void PreferencesManager::setComboTriggersOnSpace(bool value) const
 {
-   cachedComboTriggersOnSpace_ = value;
+   cache_->comboTriggersOnSpace = value;
    settings_->setValue(kKeyComboTriggersOnSpace, value);
 }
 
@@ -777,16 +948,16 @@ void PreferencesManager::setComboTriggersOnSpace(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::comboTriggersOnSpace() const
 {
-   return cachedComboTriggersOnSpace_;
+   return cache_->comboTriggersOnSpace;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setKeepFinalSpaceCharacter(bool value)
+void PreferencesManager::setKeepFinalSpaceCharacter(bool value) const
 {
-   cachedKeepFinalSpaceCharacter_ = value;
+   cache_->keepFinalSpaceCharacter = value;
    settings_->setValue(kKeyKeepFinalSpaceCharacter, value);
 }
 
@@ -796,7 +967,7 @@ void PreferencesManager::setKeepFinalSpaceCharacter(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::keepFinalSpaceCharacter() const
 {
-   return cachedKeepFinalSpaceCharacter_;
+   return cache_->keepFinalSpaceCharacter;
 }
 
 
@@ -881,7 +1052,7 @@ QString PreferencesManager::defaultComboListFolderPath()
 //**********************************************************************************************************************
 /// \param[in] shortcut The shortcut
 //**********************************************************************************************************************
-void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut)
+void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut) const
 {
    SpShortcut const newShortcut = shortcut ? shortcut : kDefaultComboTriggerShortcut;
    SpShortcut currentShortcut = this->comboTriggerShortcut();
@@ -892,7 +1063,7 @@ void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut)
       settings_->setValue(kKeyComboTriggerShortcutModifiers, int(shortcut->nativeModifiers()));
       settings_->setValue(kKeyComboTriggerShortcutKeyCode, shortcut->nativeVirtualKey());
       settings_->setValue(kKeyComboTriggerShortcutScanCode, shortcut->nativeScanCode());
-      cachedComboTriggerShortcut_ = newShortcut;
+      cache_->comboTriggerShortcut = newShortcut;
    }
 }
 
@@ -902,7 +1073,7 @@ void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut)
 //**********************************************************************************************************************
 SpShortcut PreferencesManager::comboPickerShortcut() const
 {
-   return cachedComboPickerShortcut_;
+   return cache_->comboPickerShortcut;
 }
 
 
@@ -1039,16 +1210,16 @@ SpShortcut PreferencesManager::defaultComboTriggerShortcut()
 //**********************************************************************************************************************
 bool PreferencesManager::emojiShortcodesEnabled() const
 {
-   return cachedEmojiShortcodesEnabled_;
+   return cache_->emojiShortcodesEnabled;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference
 //**********************************************************************************************************************
-void PreferencesManager::setEmojiShortcodeEnabled(bool value)
+void PreferencesManager::setEmojiShortcodeEnabled(bool value) const
 {
-   cachedEmojiShortcodesEnabled_ = value;
+   cache_->emojiShortcodesEnabled = value;
    settings_->setValue(kKeyEmojiShortcodesEnabled, value);
 }
 
@@ -1058,7 +1229,7 @@ void PreferencesManager::setEmojiShortcodeEnabled(bool value)
 //**********************************************************************************************************************
 QString PreferencesManager::emojiLeftDelimiter() const
 {
-   QString const result = cachedEmojiLeftDelimiter_;
+   QString const result = cache_->emojiLeftDelimiter;
    return result.isEmpty() ? kDefaultEmojiLeftDelimiter : result;
 }
 
@@ -1066,9 +1237,9 @@ QString PreferencesManager::emojiLeftDelimiter() const
 //**********************************************************************************************************************
 /// \param[in] delimiter The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter)
+void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter) const
 {
-   cachedEmojiLeftDelimiter_ = delimiter;
+   cache_->emojiLeftDelimiter = delimiter;
    settings_->setValue(kKeyEmojiLeftDelimiter, delimiter);
 }
 
@@ -1078,7 +1249,7 @@ void PreferencesManager::setEmojiLeftDelimiter(QString const& delimiter)
 //**********************************************************************************************************************
 QString PreferencesManager::emojiRightDelimiter() const
 {
-   QString const result = cachedEmojiRightDelimiter_;
+   QString const result = cache_->emojiRightDelimiter;
    return result.isEmpty() ? kDefaultEmojiRightDelimiter : result;
 }
 
@@ -1086,9 +1257,9 @@ QString PreferencesManager::emojiRightDelimiter() const
 //**********************************************************************************************************************
 /// \param[in] delimiter The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter)
+void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter) const
 {
-   cachedEmojiRightDelimiter_ = delimiter;
+   cache_->emojiRightDelimiter = delimiter;
    settings_->setValue(kKeyEmojiRightDelimiter, delimiter);
 }
 
@@ -1096,9 +1267,9 @@ void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter)
 //**********************************************************************************************************************
 /// \param[in] show The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setShowEmojisInPickerWindow(bool show)
+void PreferencesManager::setShowEmojisInPickerWindow(bool show) const
 {
-   cachedShowEmojisInPickerWindow_ = show;
+   cache_->showEmojisInPickerWindow = show;
    settings_->setValue(kKeyShowEmojisInPickerWindow, show);
 }
 
@@ -1108,7 +1279,7 @@ void PreferencesManager::setShowEmojisInPickerWindow(bool show)
 //**********************************************************************************************************************
 bool PreferencesManager::showEmojisInPickerWindow() const
 {
-   return cachedShowEmojisInPickerWindow_;
+   return cache_->showEmojisInPickerWindow;
 }
 
 
@@ -1155,16 +1326,16 @@ qint32 PreferencesManager::maxDelayBetweenKeystrokesMs()
 //**********************************************************************************************************************
 bool PreferencesManager::comboPickerEnabled() const
 {
-   return cachedComboPickerEnabled_;
+   return cache_->comboPickerEnabled;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setComboPickerEnabled(bool value)
+void PreferencesManager::setComboPickerEnabled(bool value) const
 {
-   cachedComboPickerEnabled_ = value;
+   cache_->comboPickerEnabled = value;
    settings_->setValue(kKeyComboPickerEnabled, value);
 }
 
@@ -1174,16 +1345,16 @@ void PreferencesManager::setComboPickerEnabled(bool value)
 //**********************************************************************************************************************
 SpShortcut PreferencesManager::comboTriggerShortcut() const
 {
-   return cachedComboTriggerShortcut_;
+   return cache_->comboTriggerShortcut;
 }
 
 
 //**********************************************************************************************************************
 //\ param[in] mode The default matching mode
 //**********************************************************************************************************************
-void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode)
+void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode) const
 {
-   cachedDefaultMatchingMode_ = mode;
+   cache_->defaultMatchingMode = mode;
    settings_->setValue(kKeyDefaultMatchingMode, static_cast<qint32>(mode));
 }
 
@@ -1193,16 +1364,16 @@ void PreferencesManager::setDefaultMatchingMode(EMatchingMode mode)
 //**********************************************************************************************************************
 EMatchingMode PreferencesManager::defaultMatchingMode() const
 {
-   return cachedDefaultMatchingMode_;
+   return cache_->defaultMatchingMode;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] sensitivity The default case sensitivity.
 //**********************************************************************************************************************
-void PreferencesManager::setDefaultCaseSensitivity(ECaseSensitivity sensitivity)
+void PreferencesManager::setDefaultCaseSensitivity(ECaseSensitivity sensitivity) const
 {
-   cachedDefaultCaseSensitivity_ = sensitivity;
+   cache_->defaultCaseSensitivity = sensitivity;
    settings_->setValue(kKeyDefaultCaseSensitivity, caseSensitivityToInt(sensitivity));
 }
 
@@ -1212,14 +1383,14 @@ void PreferencesManager::setDefaultCaseSensitivity(ECaseSensitivity sensitivity)
 //**********************************************************************************************************************
 ECaseSensitivity PreferencesManager::defaultCaseSensitivity() const
 {
-   return cachedDefaultCaseSensitivity_;
+   return cache_->defaultCaseSensitivity;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] shortcut The shortcut
 //**********************************************************************************************************************
-void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut)
+void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut) const
 {
    SpShortcut const newShortcut = shortcut ? shortcut : defaultComboPickerShortcut();
    SpShortcut currentShortcut = this->comboPickerShortcut();
@@ -1230,111 +1401,8 @@ void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut)
       settings_->setValue(kKeyComboPickerShortcutModifiers, int(shortcut->nativeModifiers()));
       settings_->setValue(kKeyComboPickerShortcutKeyCode, shortcut->nativeVirtualKey());
       settings_->setValue(kKeyComboPickerShortcutScanCode, shortcut->nativeScanCode());
-      cachedComboPickerShortcut_ = newShortcut;
+      cache_->comboPickerShortcut = newShortcut;
    }
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] modRegKey The registry key for the shortcut's  modifiers.
-/// \param[in] vKeyRegKey The registry key for the shortcut's virtual key.
-/// \param[in] scanCodeRegKey The registry key for the shortcut's scan code.
-/// \return The shortcut, or a null pointer if not found
-//**********************************************************************************************************************
-SpShortcut PreferencesManager::readShortcutFromPreferences(QString const& modRegKey, QString const& vKeyRegKey,
-   QString const& scanCodeRegKey) const
-{
-   int const intMods = this->readSettings<qint32>(modRegKey, 0);
-   quint32 const vKey = this->readSettings<quint32>(vKeyRegKey, 0);
-   quint32 const scanCode = this->readSettings<quint32>(scanCodeRegKey, 0);
-   if ((!intMods) || (!vKey) || (!scanCode))
-      return nullptr;
-   SpShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
-   return result->isValid() ? result : nullptr;
-}
-
-
-//**********************************************************************************************************************
-/// \return The default matching mode read from the preferences
-//**********************************************************************************************************************
-EMatchingMode PreferencesManager::readDefaultMatchingModeFromPreferences() const
-{
-   EMatchingMode const mode = static_cast<EMatchingMode>(this->readSettings<qint32>(kKeyDefaultMatchingMode,
-      static_cast<qint32>(EMatchingMode::Strict)));
-   switch (mode)
-   {
-   case EMatchingMode::Strict:
-   case EMatchingMode::Loose:
-      return mode;
-   default:
-      return EMatchingMode::Strict;
-   }
-}
-
-
-//**********************************************************************************************************************
-/// \return The default case sensitivity read from the preferences.
-//**********************************************************************************************************************
-ECaseSensitivity PreferencesManager::readDefaultCaseSensitivityFromPreferences() const
-{
-   ECaseSensitivity const sensitivity = intToCaseSensitivity(this->readSettings<qint32>(kKeyDefaultCaseSensitivity, 
-      caseSensitivityToInt(kDefaultDefaultCaseSensitivity)));
-   switch (sensitivity)
-   {
-   case ECaseSensitivity::CaseSensitive: 
-   case ECaseSensitivity::CaseInsensitive: 
-      return sensitivity;
-   case ECaseSensitivity::Count:
-   case ECaseSensitivity::Default:
-   default:
-      return kDefaultDefaultCaseSensitivity;
-   }
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesManager::cacheComboTriggerShortcut()
-{
-   SpShortcut const shortcut = this->readShortcutFromPreferences(kKeyComboTriggerShortcutModifiers,
-      kKeyComboTriggerShortcutKeyCode, kKeyComboTriggerShortcutScanCode);
-   cachedComboTriggerShortcut_ = shortcut ? shortcut : kDefaultComboTriggerShortcut;
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesManager::cacheComboPickerShortcut()
-{
-   SpShortcut const shortcut = this->readShortcutFromPreferences(kKeyComboPickerShortcutModifiers,
-      kKeyComboPickerShortcutKeyCode, kKeyComboPickerShortcutScanCode);
-   cachedComboPickerShortcut_ = shortcut ? shortcut : defaultComboPickerShortcut();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesManager::cacheAppEnableDisableShortcut()
-{
-   SpShortcut const shortcut = this->readShortcutFromPreferences(kKeyAppEnableShortcutModifiers,
-      kKeyAppEnableShortcutKeyCode, kKeyAppEnableShortcutScanCode);
-   cachedAppEnableDisableShortcut_ = shortcut ? shortcut : defaultAppEnableDisableShortcut();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesManager::cacheThemePrefs()
-{
-   qint32 const intValue = readSettings<qint32>(kKeyTheme, static_cast<qint32>(kDefaultTheme));
-   cachedTheme_ = ((intValue < 0) || (intValue >= static_cast<qint32>(ETheme::Count))) ? kDefaultTheme
-      : static_cast<ETheme>(intValue);
-
-   cachedUseCustomTheme_ = this->readSettings<bool>(kKeyUseCustomTheme, kDefaultUseCustomTheme);
 }
 
 
@@ -1398,10 +1466,10 @@ void PreferencesManager::unregisterApplicationFromAutoStart()
 //**********************************************************************************************************************
 /// \param[in] enable The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setEnableAppEnableDisableShortcut(bool enable)
+void PreferencesManager::setEnableAppEnableDisableShortcut(bool enable) const
 {
    settings_->setValue(kKeyEnableAppEnableDisableShortcut, enable);
-   cachedEnableAppEnableDisableShortcut_ = enable;
+   cache_->enableAppEnableDisableShortcut = enable;
 }
 
 
@@ -1410,14 +1478,14 @@ void PreferencesManager::setEnableAppEnableDisableShortcut(bool enable)
 //**********************************************************************************************************************
 bool PreferencesManager::enableAppEnableDisableShortcut() const
 {
-   return cachedEnableAppEnableDisableShortcut_;
+   return cache_->enableAppEnableDisableShortcut;
 }
 
 
 //**********************************************************************************************************************
 /// \param[in] shortcut The shortcut.
 //**********************************************************************************************************************
-void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut)
+void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut) const
 {
    SpShortcut const newShortcut = shortcut ? shortcut : kDefaultAppEnableDisableShortcut;
    SpShortcut currentShortcut = this->appEnableDisableShortcut();
@@ -1428,7 +1496,7 @@ void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut)
       settings_->setValue(kKeyAppEnableShortcutModifiers, int(shortcut->nativeModifiers()));
       settings_->setValue(kKeyAppEnableShortcutKeyCode, shortcut->nativeVirtualKey());
       settings_->setValue(kKeyAppEnableShortcutScanCode, shortcut->nativeScanCode());
-      cachedAppEnableDisableShortcut_ = newShortcut;
+      cache_->appEnableDisableShortcut = newShortcut;
    }
 }
 
@@ -1438,7 +1506,7 @@ void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut)
 //**********************************************************************************************************************
 SpShortcut PreferencesManager::appEnableDisableShortcut() const
 {
-   return cachedAppEnableDisableShortcut_;
+   return cache_->appEnableDisableShortcut;
 }
 
 
@@ -1454,12 +1522,12 @@ SpShortcut PreferencesManager::defaultAppEnableDisableShortcut()
 //**********************************************************************************************************************
 /// \param[in] enabled Is Beeftext enabled?
 //**********************************************************************************************************************
-void PreferencesManager::setBeeftextEnabled(bool enabled)
+void PreferencesManager::setBeeftextEnabled(bool enabled) const
 {
-   if (cachedBeeftextEnabled_ == enabled)
+   if (cache_->beeftextEnabled == enabled)
       return;
    settings_->setValue(kKeyBeeftextEnabled, enabled);
-   cachedBeeftextEnabled_ = enabled;
+   cache_->beeftextEnabled = enabled;
 }
 
 
@@ -1468,7 +1536,7 @@ void PreferencesManager::setBeeftextEnabled(bool enabled)
 //**********************************************************************************************************************
 bool PreferencesManager::beeftextEnabled() const
 {
-   return cachedBeeftextEnabled_;
+   return cache_->beeftextEnabled;
 }
 
 
@@ -1549,10 +1617,10 @@ QString PreferencesManager::customPowershellPath() const
 //**********************************************************************************************************************
 /// \param[in] theme The theme.
 //**********************************************************************************************************************
-void PreferencesManager::setTheme(ETheme theme)
+void PreferencesManager::setTheme(ETheme theme) const
 {
    settings_->setValue(kKeyTheme, static_cast<qint32>(theme));
-   cachedTheme_ = theme;
+   cache_->theme = theme;
    applyThemePreferences(this->useCustomTheme(), theme);
 }
 
@@ -1562,7 +1630,7 @@ void PreferencesManager::setTheme(ETheme theme)
 //**********************************************************************************************************************
 ETheme PreferencesManager::theme() const
 {
-   return cachedTheme_;
+   return cache_->theme;
 }
 
 
@@ -1587,10 +1655,10 @@ QByteArray PreferencesManager::comboPickerWindowGeometry() const
 //**********************************************************************************************************************
 /// \param[in] value The value for the preference.
 //**********************************************************************************************************************
-void PreferencesManager::setUseShiftInsertForPasting(bool value)
+void PreferencesManager::setUseShiftInsertForPasting(bool value) const
 {
    settings_->setValue(kKeyUseShiftInsertForPasting, value);
-   cachedUseShiftInsertForPasting_ = value;
+   cache_->useShiftInsertForPasting = value;
 }
 
 
@@ -1599,7 +1667,7 @@ void PreferencesManager::setUseShiftInsertForPasting(bool value)
 //**********************************************************************************************************************
 bool PreferencesManager::useShiftInsertForPasting() const
 {
-   return cachedUseShiftInsertForPasting_;
+   return cache_->useShiftInsertForPasting;
 }
 
 
