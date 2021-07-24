@@ -18,6 +18,7 @@
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
 #include "LastUse/ComboLastUseFile.h"
+#include "LastUse/EmojiLastUseFile.h"
 #include <XMiLib/SingleInstanceApp.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
@@ -92,7 +93,8 @@ int main(int argc, char *argv[])
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
-      EmojiManager::instance().loadEmojis();
+      EmojiManager& emojiManager = EmojiManager::instance();
+      emojiManager.loadEmojis();
       MainWindow window;
       // QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
       ensureMainWindowHasAHandle(window);
@@ -109,7 +111,8 @@ int main(int argc, char *argv[])
          &window, &MainWindow::onAnotherAppInstanceLaunch);
       prefs.setAlreadyLaunched();
       qint32 const returnCode = QApplication::exec();
-      saveLastUseDateTimes(comboManager.comboListRef());
+      saveComboLastUseDateTimes(comboManager.comboListRef());
+      saveEmojiLastUseDateTimes(emojiManager.emojiListRef());
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
       I18nManager::instance().unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
       return returnCode;

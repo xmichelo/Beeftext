@@ -230,6 +230,9 @@ void PickerWindow::triggerSelectedItem()
       QTimer::singleShot(delay, [emoji]() { 
          if ((!isBeeftextTheForegroundApplication()) && 
             !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
+         {
             performTextSubstitution(0, emoji->value(), -1, ETriggerSource::ComboPicker);
+            emoji->setlastUseDateTime(QDateTime::currentDateTime());
+         }
       });
 }

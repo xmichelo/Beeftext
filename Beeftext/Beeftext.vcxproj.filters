@@ -171,6 +171,9 @@
     <ClCompile Include="LastUse\ComboLastUseFile.cpp">
       <Filter>LastUse</Filter>
     </ClCompile>
+    <ClCompile Include="LastUse\EmojiLastUseFile.cpp">
+      <Filter>LastUse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -266,6 +269,9 @@
       <Filter>Picker</Filter>
     </ClInclude>
     <ClInclude Include="LastUse\ComboLastUseFile.h">
+      <Filter>LastUse</Filter>
+    </ClInclude>
+    <ClInclude Include="LastUse\EmojiLastUseFile.h">
       <Filter>LastUse</Filter>
     </ClInclude>
   </ItemGroup>

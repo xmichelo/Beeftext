@@ -121,7 +121,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
          globals::debugLog().addInfo(inOlderFormat ? "The combo list file was upgraded to the latest format version." :
             "The combo list file was successfully saved after fixing the the grouping of combos.");
    }
-   loadLastUseDateTimes(comboList_);
+   loadComboLastUseDateTimes(comboList_);
    emit comboListWasLoaded();
    return true;
 }
@@ -272,15 +272,16 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
    // finally we isolate the keyword and perform the substitution, if any
    QString const keyword = currentText.right(currentText.size() - (index + leftDelimiter.size()));
    EmojiManager& emojisManager = EmojiManager::instance();
-   QString const emoji = emojisManager.emoji(keyword);
-   if (emoji.isEmpty())
+   SpEmoji emoji = emojisManager.find(keyword);
+   if (!emoji)
       return false;
    bool result = false;
    if ((!isBeeftextTheForegroundApplication()) &&
       !EmojiManager::instance().isExcludedApplication(getActiveExecutableFileName()))
    {
-      performTextSubstitution(qint32(keyword.size() + rightDelimiter.size() + leftDelimiter.size()), emoji, -1, 
-         ETriggerSource::Keyword);
+      performTextSubstitution(qint32(keyword.size() + rightDelimiter.size() + leftDelimiter.size()), emoji->value(), 
+         -1, ETriggerSource::Keyword);
+      emoji->setlastUseDateTime(QDateTime::currentDateTime());
       if (PreferencesManager::instance().playSoundOnCombo() && sound_)
          sound_->play();
       result = true;

@@ -30,14 +30,21 @@ PickerSortFilterProxyModel::PickerSortFilterProxyModel(QObject* parent)
 //**********************************************************************************************************************
 bool PickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex&) const
 {
-   if (this->filterRegularExpression().pattern().trimmed().isEmpty())
-      return false;
-
+   QString const pattern = this->filterRegularExpression().pattern().trimmed();
    QAbstractItemModel const* model = this->sourceModel();
    if ((!model) || (!model->columnCount(QModelIndex())))
       return false;
    QModelIndex const index = model->index(sourceRow, 0, QModelIndex());
    bool const isEmoji = (index.data(constants::TypeRole).value<constants::EITemType>() == constants::Emoji);
+   if (isEmoji)
+   {
+      if (pattern.size() < 3)
+         return false;
+   }
+   else
+      if (pattern.isEmpty())
+         return true;
+
    SpEmoji const emoji(isEmoji ? index.data(constants::PointerRole).value<SpEmoji>() : nullptr);
    SpCombo const combo(isEmoji ? nullptr : index.data(constants::PointerRole).value<SpCombo>());
    bool const ok = isEmoji ? !!emoji.get() : !!combo.get();
@@ -72,9 +79,12 @@ bool PickerSortFilterProxyModel::lessThan(const QModelIndex& sourceLeft, const Q
    bool const rIsCombo = (sourceRight.data(constants::TypeRole).value<constants::EITemType>() == constants::Combo);
    SpCombo const lCombo = lIsCombo ? sourceLeft.data(constants::PointerRole).value<SpCombo>() : nullptr;
    SpCombo const rCombo = rIsCombo ? sourceRight.data(constants::PointerRole).value<SpCombo>() : nullptr;
-
+   SpEmoji const lEmoji = !lIsCombo ? sourceLeft.data(constants::PointerRole).value<SpEmoji>() : nullptr;
+   SpEmoji const rEmoji = !rIsCombo ? sourceRight.data(constants::PointerRole).value<SpEmoji>() : nullptr;
    QDateTime const originTime = QDateTime::fromSecsSinceEpoch(0);
-   QDateTime const lTime = lCombo ? lCombo->lastUseDateTime() : originTime;
-   QDateTime const rTime = rCombo ? rCombo->lastUseDateTime() : originTime;
+   QDateTime const lTime = lIsCombo ? (lCombo ? lCombo->lastUseDateTime() : originTime) :
+      (lEmoji ? lEmoji->lastUseDateTime() : originTime);
+   QDateTime const rTime = rIsCombo ? (rCombo ? rCombo->lastUseDateTime() : originTime) :
+      (rEmoji ? rEmoji->lastUseDateTime() : originTime);
    return lTime < rTime;
 }

@@ -23,7 +23,7 @@ public: // static member functions
    static EmojiManager& instance(); ///< Return the only allowed instance of the class
    void loadEmojis(); ///< Load the emoji list from file
    void unloadEmojis(); ///< Unload the emoji list
-   QString emoji(QString const& keyword) const; ///< Retrieve the emoji associated to a keyword
+   SpEmoji find(QString const& shortcode) const; ///< Retrieve the emoji associated to a keyword
 
 public: // member functions
    EmojiManager(EmojiManager const&) = delete; ///< Disabled copy-constructor
@@ -35,7 +35,6 @@ public: // member functions
    bool runDialog(QWidget* parent = nullptr); ///< Run the sensitive application dialog
    QString emojiListtoString() const; ///< Return a string containing all the emojis
    EmojiList const& emojiListRef() const; ///< Return a constant reference the list of emojis.
-   qsizetype size() const; ///< Return the number of emojis in the list.
 
 private: // member functions
    EmojiManager(); ///< Default constructor

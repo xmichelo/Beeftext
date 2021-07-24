@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "EmojiManager.h"
 #include "BeeftextGlobals.h"
+#include "LastUse/EmojiLastUseFile.h"
 #include <XMiLib/String/StringListEditorDialog.h>
 #include <XMiLib/String/StringUtils.h>
 #include <XMiLib/Exception.h>
@@ -115,16 +116,13 @@ void EmojiManager::unloadEmojis()
 
 
 //**********************************************************************************************************************
-/// \param[in] keyword The keyword
-/// \return The associated emoji
-/// \return A Null string if no emoji is associated with this keyword
+/// \param[in] shortcode The shortcode.
+/// \return The emoji.
+/// \return A Null pointer if the emoji does not exist.
 //**********************************************************************************************************************
-QString EmojiManager::emoji(QString const& keyword) const
+SpEmoji EmojiManager::find(QString const& shortcode) const
 {
-   if (!emojis_.contains(keyword))
-      return QString();
-   SpEmoji const emoji = emojis_.find(keyword);
-   return emoji ? emoji->value() : QString();
+   return emojis_.find(shortcode);
 }
 
 
@@ -258,6 +256,7 @@ bool EmojiManager::load(QString const& path)
             emojis_.append(emoji);
          }
       }
+      loadEmojiLastUseDateTimes(emojis_);
    }
    catch (Exception const& e)
    {

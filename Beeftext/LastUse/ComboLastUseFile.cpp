@@ -79,23 +79,23 @@ void upgradeLegacyFileNameIfNecessary()
 //**********************************************************************************************************************
 /// \param[in,out] comboList The combo list.
 //**********************************************************************************************************************
-void loadLastUseDateTimes(ComboList& comboList)
+void loadComboLastUseDateTimes(ComboList& comboList)
 {
    try
    {
       upgradeLegacyFileNameIfNecessary();
-      QString const invalidFileStr = "The last use file is invalid.";
+      QString const invalidFileStr = "The combo last use file is invalid.";
       QFile file = QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(kComboLastUseFileName);
       if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-         throw Exception("Could not save last use date/time file.");
+         throw Exception("Could not save the combo last use date/time file.");
       QJsonParseError jsonError {};
       QJsonDocument const doc = QJsonDocument::fromJson(file.readAll(), &jsonError);
       if (jsonError.error != QJsonParseError::NoError)
-         throw Exception("The last use date/time file is not a valid JSON document");
+         throw Exception("The combo last use date/time file is not a valid JSON document");
       QJsonObject const rootObject = doc.object();
       qint32 const version = rootObject[kPropFileFormatVersion].toInt();
       if (version > kFileFormatVersion)
-         throw Exception("The last use file format has been created with a newer version of the application.");
+         throw Exception("The combo last use file format has been created with a newer version of the application.");
       QJsonValue const dateTimesValue = rootObject[kPropDateTimes];
       if (!dateTimesValue.isArray())
          throw Exception(invalidFileStr);
@@ -116,7 +116,7 @@ void loadLastUseDateTimes(ComboList& comboList)
 //**********************************************************************************************************************
 /// \param[in] comboList The combo list.
 //**********************************************************************************************************************
-void saveLastUseDateTimes(ComboList const& comboList)
+void saveComboLastUseDateTimes(ComboList const& comboList)
 {
    try
    {

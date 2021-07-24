@@ -54,7 +54,4 @@ private: // data members
 };
 
 
-
-
-
 #endif // #ifndef BEEFTEXT_EMOJI_LIST_H
