@@ -17,11 +17,11 @@
 #include "PreferencesManager.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
-#include "Combo/LastUseFile.h"
+#include "LastUse/ComboLastUseFile.h"
 #include <XMiLib/SingleInstanceApp.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>
-//#include <QtPlatformHeaders/QWindowsWindowFunctions>
+
 
 using namespace xmilib;
 

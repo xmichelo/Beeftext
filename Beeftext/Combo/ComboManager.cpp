@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboManager.h"
-#include "LastUseFile.h"
+#include "LastUse/ComboLastUseFile.h"
 #include "WaveSound.h"
 #include "InputManager.h"
 #include "PreferencesManager.h"

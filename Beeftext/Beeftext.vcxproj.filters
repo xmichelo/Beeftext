@@ -42,6 +42,9 @@
     <Filter Include="Picker">
       <UniqueIdentifier>{d6d6e76a-1ae3-4bed-bca2-4eff6e6f20fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LastUse">
+      <UniqueIdentifier>{d7a38f0a-9561-4551-bf52-f571939cabea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -123,9 +126,6 @@
     <ClCompile Include="Combo\ComboEditor.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
-    <ClCompile Include="Combo\LastUseFile.cpp">
-      <Filter>Combo</Filter>
-    </ClCompile>
     <ClCompile Include="I18nManager.cpp" />
     <ClCompile Include="Clipboard\ClipboardManagerDefault.cpp">
       <Filter>Clipboard</Filter>
@@ -167,6 +167,9 @@
     </ClCompile>
     <ClCompile Include="Picker\PickerWindowMoverResizer.cpp">
       <Filter>Picker</Filter>
+    </ClCompile>
+    <ClCompile Include="LastUse\ComboLastUseFile.cpp">
+      <Filter>LastUse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -227,9 +230,6 @@
     </ClInclude>
     <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="SensitiveApplicationManager.h" />
-    <ClInclude Include="Combo\LastUseFile.h">
-      <Filter>Combo</Filter>
-    </ClInclude>
     <ClInclude Include="Clipboard\ClipboardManagerDefault.h">
       <Filter>Clipboard</Filter>
     </ClInclude>
@@ -264,6 +264,9 @@
     </ClInclude>
     <ClInclude Include="Picker\PickerWindowMoverResizer.h">
       <Filter>Picker</Filter>
+    </ClInclude>
+    <ClInclude Include="LastUse\ComboLastUseFile.h">
+      <Filter>LastUse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -282,7 +282,6 @@
     <ClCompile Include="Combo\ComboKeywordValidator.cpp" />
     <ClCompile Include="Combo\ComboTableWidget.cpp" />
     <ClCompile Include="Combo\ComboVariable.cpp" />
-    <ClCompile Include="Combo\LastUseFile.cpp" />
     <ClCompile Include="Combo\MatchingMode.cpp" />
     <ClCompile Include="Emoji\Emoji.cpp" />
     <ClCompile Include="Emoji\EmojiList.cpp" />
@@ -294,6 +293,7 @@
     <ClCompile Include="Group\GroupListWidget.cpp" />
     <ClCompile Include="I18nManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="LastUse\ComboLastUseFile.cpp" />
     <ClCompile Include="LatestVersionInfo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
@@ -328,6 +328,7 @@
     <ClInclude Include="Emoji\EmojiManager.h" />
     <QtMoc Include="Picker\PickerItemDelegate.h" />
     <QtMoc Include="Picker\PickerModel.h" />
+    <ClInclude Include="LastUse\ComboLastUseFile.h" />
     <ClInclude Include="Picker\PickerSortFilterProxyModel.h" />
     <QtMoc Include="Picker\PickerWindow.h" />
     <ClInclude Include="Picker\PickerWindowMoverResizer.h" />
@@ -338,7 +339,6 @@
     <ClInclude Include="Clipboard\ClipboardManagerDefault.h" />
     <ClInclude Include="Clipboard\ClipboardManager.h" />
     <ClInclude Include="Clipboard\ClipboardManagerLegacy.h" />
-    <ClInclude Include="Combo\LastUseFile.h" />
     <ClInclude Include="SensitiveApplicationManager.h" />
     <QtMoc Include="VariableInputDialog.h">
     </QtMoc>

@@ -8,9 +8,9 @@
 
 
 #include "stdafx.h"
-#include "LastUseFile.h"
+#include "ComboLastUseFile.h"
 #include "PreferencesManager.h"
-#include "ComboManager.h"
+#include "Combo/ComboManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
@@ -22,8 +22,8 @@ using namespace xmilib;
 namespace {
 
 
-QString const kLastUseFileName = "lastUse.json";
-///< The name of the file used to store the last use date/time of combos.
+QString const kLegacyComboLastUseFileName = "lastUse.json"; ///< The legacy name of the file used to store the last use date/time of combos.
+QString const kComboLastUseFileName = "comboLastUse.json"; ///< The name of the file used to store the last use date/time of combos.
 QString const kPropFileFormatVersion = "fileFormatVersion"; ///< The property name for the file format version.
 QString const kPropDateTimes = "dateTimes"; ///< The property name for the date/time.
 QString const kPropUuid = "uuid"; ///< The property name for uuid.
@@ -51,18 +51,41 @@ void parseDateTimeObject(ComboList& comboList, QJsonObject const& object)
 }
 
 
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void upgradeLegacyFileNameIfNecessary()
+{
+   QDir const dir(PreferencesManager::instance().comboListFolderPath());
+   QString const newFilePath = dir.absoluteFilePath(kComboLastUseFileName);
+   QFile const newFile(newFilePath);
+   QFile oldFile(dir.absoluteFilePath(kLegacyComboLastUseFileName))
+   ;
+   if (newFile.exists())
+   {
+      if (oldFile.exists())
+         if (!oldFile.remove())
+            globals::debugLog().addWarning("Could not remove old combo last use file.");
+      return;
+   }
+   if (oldFile.exists() && (!oldFile.rename(newFilePath)))
+      globals::debugLog().addWarning("Could not modify the name of the combo last use file.");
+}
+
+
 } // namespace
 
 
 //**********************************************************************************************************************
-//
+/// \param[in,out] comboList The combo list.
 //**********************************************************************************************************************
 void loadLastUseDateTimes(ComboList& comboList)
 {
    try
    {
+      upgradeLegacyFileNameIfNecessary();
       QString const invalidFileStr = "The last use file is invalid.";
-      QFile file = QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(kLastUseFileName);
+      QFile file = QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(kComboLastUseFileName);
       if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
          throw Exception("Could not save last use date/time file.");
       QJsonParseError jsonError {};
@@ -91,7 +114,7 @@ void loadLastUseDateTimes(ComboList& comboList)
 
 
 //**********************************************************************************************************************
-//
+/// \param[in] comboList The combo list.
 //**********************************************************************************************************************
 void saveLastUseDateTimes(ComboList const& comboList)
 {
@@ -111,7 +134,7 @@ void saveLastUseDateTimes(ComboList const& comboList)
       }
       rootObject.insert(kPropDateTimes, dateTimes);
 
-      QFile file = QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(kLastUseFileName);
+      QFile file = QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(kComboLastUseFileName);
       if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
          throw Exception("Could not save last use date/time file.");
 
