@@ -427,6 +427,7 @@ void Combo::changeUuid()
 /// \param[in] keyword The keyword.
 /// \param[in] snippet The text that will replace the combo.
 /// \param[in] matchingMode The matching mode.
+/// \param[in] caseSensitivity The case sensitivity.
 /// \param[in] enabled Is the combo enabled.
 /// \return A shared pointer to the created Combo.
 //**********************************************************************************************************************
