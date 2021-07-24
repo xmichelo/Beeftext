@@ -62,6 +62,7 @@ private slots:
    void onEditEmojiExcludedApplications(); ///< Slot for the 'Edit emoji excluded applications' action
    void onEmojiLeftDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji left delimiter.
    void onEmojiRightDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji right delimiter.
+   void onCheckShowEmojisInPickerWindow(bool checked) const; ///< Slot for the 'Show emojis in picker window' checkbox.
    void onComboLanguageValueChanged(int index) const; ///< Slot for the change of the value in the language combo.
    void onCheckUseCustomTheme(bool checked) const; ///< Slot for the 'Use custom theme' checkbox.
    void onComboThemeValueChanged(int) const; ///< slot for the change of the 'Theme' combo.

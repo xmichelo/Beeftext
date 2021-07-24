@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -584,6 +584,30 @@
             <string>Right delimiter</string>
            </property>
           </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
+         <item>
+          <widget class="QCheckBox" name="checkShowEmojiInPickerWindow">
+           <property name="text">
+            <string>Show emojis in picker window</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_15">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -1151,7 +1175,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>689</x>
-     <y>345</y>
+     <y>391</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -1199,7 +1223,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>246</x>
-     <y>345</y>
+     <y>391</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1246,8 +1270,8 @@
    <slot>onRestoreBackup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>307</x>
-     <y>222</y>
+     <x>333</x>
+     <y>265</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1278,8 +1302,8 @@
    <slot>onResetWarnings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>336</x>
-     <y>345</y>
+     <x>341</x>
+     <y>391</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -1294,8 +1318,8 @@
    <slot>onEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>294</y>
+     <x>143</x>
+     <y>339</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -1342,8 +1366,8 @@
    <slot>onCheckEnableComboPicker(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>182</x>
-     <y>248</y>
+     <x>203</x>
+     <y>276</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1359,7 +1383,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>362</x>
-     <y>279</y>
+     <y>307</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1375,7 +1399,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>443</x>
-     <y>279</y>
+     <y>307</y>
     </hint>
     <hint type="destinationlabel">
      <x>281</x>
@@ -1534,8 +1558,8 @@
    <slot>onCheckAutoBackup(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>197</x>
-     <y>219</y>
+     <x>219</x>
+     <y>263</y>
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
@@ -1695,7 +1719,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>84</x>
-     <y>345</y>
+     <y>391</y>
     </hint>
     <hint type="destinationlabel">
      <x>48</x>
@@ -1711,7 +1735,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>165</x>
-     <y>345</y>
+     <y>391</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -1726,8 +1750,8 @@
    <slot>onCheckUseCustomBackupLocation(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>140</x>
-     <y>250</y>
+     <x>162</x>
+     <y>295</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1743,7 +1767,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>666</x>
-     <y>253</y>
+     <y>297</y>
     </hint>
     <hint type="destinationlabel">
      <x>699</x>
@@ -1807,7 +1831,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>676</x>
-     <y>181</y>
+     <y>207</y>
     </hint>
     <hint type="destinationlabel">
      <x>697</x>
@@ -1822,8 +1846,8 @@
    <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>60</x>
-     <y>179</y>
+     <x>72</x>
+     <y>205</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -1895,6 +1919,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkShowEmojiInPickerWindow</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>onCheckShowEmojisInPickerWindow(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>546</x>
+     <y>371</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onClose()</slot>
@@ -1952,5 +1992,6 @@
   <slot>onChangeDefaultMatchingMode()</slot>
   <slot>onCheckUseShiftInsertForPasting()</slot>
   <slot>onChangeDefaultCaseSensitivity()</slot>
+  <slot>onCheckShowEmojisInPickerWindow(bool)</slot>
  </slots>
 </ui>

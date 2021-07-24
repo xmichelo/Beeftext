@@ -117,6 +117,8 @@ void PreferencesDialog::loadPreferences() const
    ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
    blocker = QSignalBlocker(ui_.editEmojiRightDelimiter);
    ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
+   blocker = QSignalBlocker(ui_.checkShowEmojiInPickerWindow);
+   ui_.checkShowEmojiInPickerWindow->setChecked(prefs_.showEmojisInPickerWindow());
    blocker = QSignalBlocker(ui_.comboLocale);
    this->onRefreshLanguageList();
    blocker = QSignalBlocker(ui_.checkUseCustomTheme);
@@ -220,7 +222,7 @@ void PreferencesDialog::updateGui() const
       widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
 
    widgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, ui_.editEmojiLeftDelimiter,
-      ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter };
+      ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter, ui_.checkShowEmojiInPickerWindow };
    for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.checkEnableEmoji->isChecked());
    
@@ -528,6 +530,15 @@ void PreferencesDialog::onEmojiLeftDelimiterChanged(QString const&) const
 void PreferencesDialog::onEmojiRightDelimiterChanged(QString const&) const
 {
    prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesDialog::onCheckShowEmojisInPickerWindow(bool checked) const
+{
+   prefs_.setShowEmojisInPickerWindow(checked);
 }
 
 

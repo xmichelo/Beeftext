@@ -51,6 +51,7 @@ QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The se
 QString const kKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
 QString const kKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
 QString const kKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
+QString const kKeyShowEmojisInPickerWindow = "ShowEmojisInPickerWindow"; ///< The setting key for the 'Show emojis in picker window preference. 
 QString const kKeyEnableAppEnableDisableShortcut ="EnableAppEnableDisableShortcut"; ///< The setting key for the 'enable app enable/disable shortcut' preference.
 QString const kKeyFileMarkedForDeletion = "markedForDeletion"; ///< The path of the file marked for deletion on next application startup
 QString const kKeyGeometry = "Geometry"; ///< The settings key for storing the geometry
@@ -93,6 +94,7 @@ qint32 const kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for t
 QString const kDefaultEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
 bool const kDefaultEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
+bool const kDefaultShowEmojisInPickerWindow = false; ///< The default value for the 'Show emojis in picker window' preference.
 bool const kDefaultEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
 QString const kDefaultLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
    QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");///< The default value for the 'Last combo import/export path' preference
@@ -181,6 +183,8 @@ void PreferencesManager::init()
    cachedDefaultCaseSensitivity_ = this->readDefaultCaseSensitivityFromPreferences();
    cachedEmojiShortcodesEnabled_ = this->readSettings<bool>(kKeyEmojiShortcodesEnabled,
       kDefaultEmojiShortcodesEnabled);
+   cachedShowEmojisInPickerWindow_ = this->readSettings<bool>(kKeyShowEmojisInPickerWindow,
+      kDefaultShowEmojisInPickerWindow);
    cachedEnableAppEnableDisableShortcut_ = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
       kDefaultEnableAppEnableDisableShortcut);
    this->cacheAppEnableDisableShortcut();
@@ -375,6 +379,8 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
    object[kKeyEmojiRightDelimiter] = this->readSettings<QString>(kKeyEmojiRightDelimiter, kDefaultEmojiRightDelimiter);
    object[kKeyEmojiShortcodesEnabled] = this->readSettings<bool>(kKeyEmojiShortcodesEnabled, 
       kDefaultEmojiShortcodesEnabled);
+   object[kKeyShowEmojisInPickerWindow] = this->readSettings<bool>(kKeyShowEmojisInPickerWindow,
+      kDefaultShowEmojisInPickerWindow);
    object[kKeyEnableAppEnableDisableShortcut] = this->readSettings<bool>(kKeyEnableAppEnableDisableShortcut, 
       kDefaultEnableAppEnableDisableShortcut);
    object[kKeyGeometry] = QString::fromLocal8Bit(this->readSettings<QByteArray>(kKeyGeometry, QByteArray()).toHex());
@@ -439,6 +445,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc)
    settings_->setValue(kKeyEmojiLeftDelimiter, objectValue<QString>(object, kKeyEmojiLeftDelimiter));
    settings_->setValue(kKeyEmojiRightDelimiter, objectValue<QString>(object, kKeyEmojiRightDelimiter));
    settings_->setValue(kKeyEmojiShortcodesEnabled, objectValue<bool>(object, kKeyEmojiShortcodesEnabled));
+   settings_->setValue(kKeyShowEmojisInPickerWindow, objectValue<bool>(object, kKeyShowEmojisInPickerWindow));
    settings_->setValue(kKeyEnableAppEnableDisableShortcut, objectValue<bool>(object, 
       kKeyEnableAppEnableDisableShortcut));
    settings_->setValue(kKeyGeometry, QByteArray::fromHex(objectValue<QString>(object, kKeyGeometry).toLocal8Bit()));
@@ -1083,6 +1090,25 @@ void PreferencesManager::setEmojiRightDelimiter(QString const& delimiter)
 {
    cachedEmojiRightDelimiter_ = delimiter;
    settings_->setValue(kKeyEmojiRightDelimiter, delimiter);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] show The value for the preference.
+//**********************************************************************************************************************
+void PreferencesManager::setShowEmojisInPickerWindow(bool show)
+{
+   cachedShowEmojisInPickerWindow_ = show;
+   settings_->setValue(kKeyShowEmojisInPickerWindow, show);
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the preference.
+//**********************************************************************************************************************
+bool PreferencesManager::showEmojisInPickerWindow() const
+{
+   return cachedShowEmojisInPickerWindow_;
 }
 
 

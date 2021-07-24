@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "PickerModel.h"
+#include "PreferencesManager.h"
 #include "Emoji/EmojiManager.h"
 #include "Combo/ComboManager.h"
 
@@ -30,8 +31,10 @@ PickerModel::PickerModel(QObject* parent)
 //**********************************************************************************************************************
 int PickerModel::rowCount(const QModelIndex& parent) const
 {
+   PreferencesManager const& prefs = PreferencesManager::instance();
    return ComboManager::instance().comboListRef().rowCount(parent) + 
-      qint32(EmojiManager::instance().emojiListRef().size());
+      ((prefs.emojiShortcodesEnabled() && prefs.showEmojisInPickerWindow()) ? 
+         qint32(EmojiManager::instance().emojiListRef().size()) : 0);
 }
 
 

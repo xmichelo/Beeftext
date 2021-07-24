@@ -101,6 +101,8 @@ public: // member functions
    void setEmojiLeftDelimiter(QString const& delimiter); ///< Set the left delimiter for emojis.
    QString emojiRightDelimiter() const; ///< Get the right delimiter for emojis.
    void setEmojiRightDelimiter(QString const& delimiter); ///< Set the right delimiter for emojis.
+   void setShowEmojisInPickerWindow(bool show); ///< Set the value for the 'Show Emojis in picker window.
+   bool showEmojisInPickerWindow() const; ///< Get the value for the 'Show Emojis in picker window.
    qint32 delayBetweenKeystrokesMs() const; ///< Get the 'delay between keystrokes' when not using the clipboard for combo substitution
    void  setDelayBetweenKeystrokesMs(qint32 value) const; ///< Set the 'delay between keystrokes'
    static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay beetween keystrokes' preference.
@@ -169,6 +171,7 @@ private: // data members
    bool cachedEmojiShortcodesEnabled_ { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
    QString cachedEmojiLeftDelimiter_; ///< Cached value for the 'emoji left delimiter' preference.
    QString cachedEmojiRightDelimiter_; ///< Cached value for the 'emoji right delimiter' preference.
+   bool cachedShowEmojisInPickerWindow_; ///< Cached value for the 'Show emojis in picker window' preference.
    bool cachedBeeftextEnabled_ { true }; ///< Cached value for the 'Beeftext enabled' preference.
    bool cachedUseCustomTheme_ { true }; ///< Cached value for the 'Use custom theme' preference.
    ETheme cachedTheme_ { ETheme::Light }; ///< Cached value for the 'Theme' preference.
