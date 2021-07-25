@@ -29,9 +29,6 @@ public: // member functions
    QString value() const; ///< Get the value.
    void setCategory(QString const& category); ///< Set the category.
    QString category() const; ///< Get the category.
-   void setKeywords(QSet<QString> const& keywords); ///< Get the list of keywords
-   QSet<QString> const& keywordsRef() const; ///< Return a constant reference to the list of keywords.
-   QSet<QString>& keywordsRef(); ///< Return a constant reference to the list of keywords.
    void setlastUseDateTime(QDateTime const& dateTime); ///< Set the last use date/time of the emoji.
    QDateTime lastUseDateTime() const; ///< Get the last use date/time of the emoji.
    QString toString() const; ///< Return a string containing the emoji data.
@@ -40,7 +37,6 @@ private:
    QString shortcode_; ///< The shortcode for the emoji.
    QString value_; ///< The emoji.
    QString category_; ///< The category.
-   QSet<QString> keywords_; ///< The keywords for the emoji.
    QDateTime lastUseDateTime_; ///< The last use date/time
 };
 

@@ -79,33 +79,6 @@ QString Emoji::category() const
 
 
 //**********************************************************************************************************************
-/// \param[in] keywords The list of keywords
-//**********************************************************************************************************************
-void Emoji::setKeywords(QSet<QString> const& keywords)
-{
-   keywords_ = keywords;
-}
-
-
-//**********************************************************************************************************************
-/// \return The list of keywords
-//**********************************************************************************************************************
-QSet<QString> const& Emoji::keywordsRef() const
-{
-   return keywords_;
-}
-
-
-//**********************************************************************************************************************
-/// \return The list of keywords
-//**********************************************************************************************************************
-QSet<QString>& Emoji::keywordsRef()
-{
-   return keywords_;
-}
-
-
-//**********************************************************************************************************************
 /// \param[in] dateTime The date/time.
 //**********************************************************************************************************************
 void Emoji::setlastUseDateTime(QDateTime const& dateTime)
@@ -128,9 +101,6 @@ QDateTime Emoji::lastUseDateTime() const
 //**********************************************************************************************************************
 QString Emoji::toString() const
 {
-   QString result = QString("emoji: %1 - shortcode: %2 - category: %3 - keywords: { ").arg(value_).arg(shortcode_)
+   return QString("emoji: %1 - shortcode: %2 - category: %3").arg(value_).arg(shortcode_)
       .arg(category_);
-   for (QString const& keyword :keywords_)
-      result += keyword + " ";
-   return result + "}";
 }

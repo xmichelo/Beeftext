@@ -247,24 +247,7 @@ bool EmojiManager::load(QString const& path)
          if (chars.isEmpty())
             throw Exception();
          QString const shortcode = it.key();
-         SpEmoji emoji = std::make_shared<Emoji>(shortcode, chars, object["category"].toString());
-         QString const keywordKey = "keywords";
-         if (object.contains(keywordKey))
-         {
-            QJsonValue keywordsValue = object[keywordKey];
-            if (!keywordsValue.isArray())
-               throw Exception();
-            QJsonArray const array = keywordsValue.toArray();
-            QSet<QString> keywords;
-            for (QJsonValueRef const keywordValue: array)
-            {
-               if (! keywordValue.isString())
-                  throw Exception();
-               keywords.insert(keywordValue.toString());
-            }
-            emoji->setKeywords(keywords);
-            emojis_.append(emoji);
-         }
+         emojis_.append(std::make_shared<Emoji>(shortcode, chars, object["category"].toString()));
       }
       loadEmojiLastUseDateTimes(emojis_);
    }
