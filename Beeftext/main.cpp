@@ -94,7 +94,8 @@ int main(int argc, char *argv[])
       (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
       (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
       EmojiManager& emojiManager = EmojiManager::instance();
-      emojiManager.loadEmojis();
+      if (prefs.emojiShortcodesEnabled())
+         emojiManager.loadEmojis();
       MainWindow window;
       // QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
       ensureMainWindowHasAHandle(window);
@@ -112,7 +113,6 @@ int main(int argc, char *argv[])
       prefs.setAlreadyLaunched();
       qint32 const returnCode = QApplication::exec();
       saveComboLastUseDateTimes(comboManager.comboListRef());
-      saveEmojiLastUseDateTimes(emojiManager.emojiListRef());
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
       I18nManager::instance().unloadTranslation(); // required to avoid crash because otherwise the app instance could be destroyed before the translators
       return returnCode;

@@ -502,6 +502,11 @@ void PreferencesDialog::onResetComboPickerShortcut() const
 void PreferencesDialog::onCheckEnableEmojiShortcodes(bool checked) const
 {
    prefs_.setEmojiShortcodeEnabled(checked);
+   EmojiManager& emojis = EmojiManager::instance();
+   if (checked)
+      emojis.loadEmojis();
+   else
+      emojis.unloadEmojis();
    this->updateGui();
 }
 

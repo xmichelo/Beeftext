@@ -111,6 +111,7 @@ void EmojiManager::loadEmojis()
 //**********************************************************************************************************************
 void EmojiManager::unloadEmojis()
 {
+   saveEmojiLastUseDateTimes(emojis_);
    emojis_.clear();
 }
 
@@ -123,6 +124,15 @@ void EmojiManager::unloadEmojis()
 SpEmoji EmojiManager::find(QString const& shortcode) const
 {
    return emojis_.find(shortcode);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+EmojiManager::~EmojiManager()
+{
+   saveEmojiLastUseDateTimes(emojis_);
 }
 
 

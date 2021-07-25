@@ -94,6 +94,8 @@ void saveEmojiLastUseDateTimes(EmojiList const& emojiList)
 {
    try
    {
+      if (emojiList.isEmpty())
+         return;
       QJsonObject rootObject;
       rootObject.insert(kPropFileFormatVersion, kFileFormatVersion);
       QJsonArray dateTimes;

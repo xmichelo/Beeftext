@@ -28,7 +28,7 @@ public: // static member functions
 public: // member functions
    EmojiManager(EmojiManager const&) = delete; ///< Disabled copy-constructor
    EmojiManager(EmojiManager&&) = delete; ///< Disabled assignment copy-constructor
-   ~EmojiManager() = default; ///< Destructor
+   ~EmojiManager(); ///< Destructor
    EmojiManager& operator=(EmojiManager const&) = delete; ///< Disabled assignment operator
    EmojiManager& operator=(EmojiManager&&) = delete; ///< Disabled move assignment operator
    bool isExcludedApplication(QString const& appExeName) const; ///< Check whether the application is excluded from emoji substitution.

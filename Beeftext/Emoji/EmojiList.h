@@ -43,6 +43,7 @@ public: // member functions
    SpEmoji find(QString const& shortcode) const; ///< Retrieve an emoji given its shortcode.
    void append(SpEmoji const& emoji); ///< Add an emoji at the end of the list
    qsizetype size() const; ///< Return the number of emojis in the list.
+   bool isEmpty() const; ///< Check if the list is empty.
    
    // implementation of the Abstract table model interface
    int rowCount(const QModelIndex& parent) const override; ///< Return the row count for the model.
