@@ -28,6 +28,7 @@ QString const kPropComboText = "comboText"; ///< The JSON property for the "comb
 QString const kPropKeyword = "keyword"; ///< The JSON property for the for the keyword, introduced in the combo list file format v2, replacing "combo text"
 QString const kPropSubstitutionText = "substitutionText"; ///< The JSON property name for the substitution text, deprecated in combo list file format v2, replaced by "snippet"
 QString const kPropSnippet = "snippet"; ///< The JSON property name for the snippet, introduced in the combo list file format v2, replacing "substitution text"
+QString const kPropDescription = "description"; ///< The JSON property name for the description, introduced in the combo list file format v10.
 QString const kPropUseLooseMatching = "useLooseMatch"; ///< The JSON property for the 'use loose matching' option. This option is deprecated since combo list file format v9, replaced by matching mode.
 QString const kPropMatchingMode = "matchingMode"; ///< The JSON property for the 'matching mode' of the combo. This option was introduced in combo list file format v9.
 QString const kPropCaseSensitivity = "caseSensitivity"; ///< The JSON property for the 'case sensitivity' of the combo. This option was introduced in combo list file format v10.
@@ -48,16 +49,18 @@ QString const kPropUseHtml = "useHtml";
 /// \param[in] name The display name of the combo
 /// \param[in] keyword The keyword
 /// \param[in] snippet The text that will replace the combo
+/// \param[in] description The description.
 /// \param[in] matchingMode The matching mode
 /// \param[in] caseSensitivity The case sensitivity.
 /// \param[in] enabled Is the combo enabled
 //**********************************************************************************************************************
-Combo::Combo(QString name, QString keyword, QString snippet, EMatchingMode matchingMode, 
+Combo::Combo(QString name, QString keyword, QString snippet, QString description, EMatchingMode matchingMode, 
    ECaseSensitivity caseSensitivity, bool const enabled)
    : uuid_(QUuid::createUuid())
    , name_(std::move(name))
    , keyword_(std::move(keyword))
    , snippet_(std::move(snippet))
+   , description_(std::move(description))
    , matchingMode_(matchingMode)
    , caseSensitivity_(caseSensitivity)
    , enabled_(enabled)
@@ -78,6 +81,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
    , name_(object[kPropName].toString())
    , keyword_(object[formatVersion >= 2 ? kPropKeyword : kPropComboText].toString())
    , snippet_(object[formatVersion >= 2 ? kPropSnippet : kPropSubstitutionText].toString())
+   , description_((formatVersion < 10) ? QString() : object[kPropDescription].toString())
    , caseSensitivity_((formatVersion < 10) ? ECaseSensitivity::Default : 
       intToCaseSensitivity(object[kPropCaseSensitivity].toInt(0), ECaseSensitivity::Default))
    , creationDateTime_(QDateTime::fromString(object[formatVersion >= 3 ? kPropCreationDateTime :
@@ -195,6 +199,28 @@ void Combo::setSnippet(QString const& snippet)
    if (snippet_ != snippet)
    {
       snippet_ = snippet;
+      this->touch();
+   }
+}
+
+
+//**********************************************************************************************************************
+/// \return The description.
+//**********************************************************************************************************************
+QString Combo::description() const
+{
+   return description_;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] description The description.
+//**********************************************************************************************************************
+void Combo::setDescription(QString const& description)
+{
+   if (description != description_)
+   {
+      description_ = description;
       this->touch();
    }
 }
@@ -402,6 +428,7 @@ QJsonObject Combo::toJsonObject(bool includeGroup) const
    result.insert(kPropName, name_);
    result.insert(kPropKeyword, keyword_);
    result.insert(kPropSnippet, snippet_);
+   result.insert(kPropDescription, description_);
    result.insert(kPropMatchingMode, qint32(matchingMode_));
    result.insert(kPropCaseSensitivity, caseSensitivityToInt(caseSensitivity_));
    result.insert(kPropCreationDateTime, creationDateTime_.toString(constants::kJsonExportDateFormat));
@@ -426,15 +453,17 @@ void Combo::changeUuid()
 /// \param[in] name The display name of the combo.
 /// \param[in] keyword The keyword.
 /// \param[in] snippet The text that will replace the combo.
+/// \param[in] description The description.
 /// \param[in] matchingMode The matching mode.
 /// \param[in] caseSensitivity The case sensitivity.
 /// \param[in] enabled Is the combo enabled.
 /// \return A shared pointer to the created Combo.
 //**********************************************************************************************************************
-SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, EMatchingMode matchingMode,
+SpCombo Combo::create(QString const& name, QString const& keyword, QString const& snippet, 
+   QString const& description, EMatchingMode matchingMode,
    ECaseSensitivity caseSensitivity, bool enabled)
 {
-   return std::make_shared<Combo>(name, keyword, snippet, matchingMode, caseSensitivity, enabled);
+   return std::make_shared<Combo>(name, keyword, snippet, description, matchingMode, caseSensitivity, enabled);
 }
 
 
@@ -464,8 +493,8 @@ SpCombo Combo::create(QJsonObject const& object, qint32 formatVersion, GroupList
 SpCombo Combo::duplicate(Combo const& combo)
 {
    // note that the duplicate is enabled even if the source is not.
-   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.matchingMode(false), 
-      combo.caseSensitivity(false), combo.isEnabled());
+   SpCombo result = std::make_shared<Combo>(combo.name(), QString(), combo.snippet(), combo.description(), 
+      combo.matchingMode(false), combo.caseSensitivity(false), combo.isEnabled());
    result->setGroup(combo.group());
    return result;
 }

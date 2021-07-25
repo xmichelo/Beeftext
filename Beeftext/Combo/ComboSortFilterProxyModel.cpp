@@ -48,9 +48,8 @@ bool ComboSortFilterProxyModel::filterAcceptsRow(int sourceRow, QModelIndex cons
       .split(QRegularExpression("\\s"), Qt::SkipEmptyParts))
    {
       QRegularExpression const rx(word, QRegularExpression::CaseInsensitiveOption);
-      if ((!combo->name().contains(rx)) 
-         && (!combo->keyword().contains(rx))
-         && (!combo->snippet().contains(rx)))
+      if ((!combo->name().contains(rx)) && (!combo->keyword().contains(rx)) && (!combo->snippet().contains(rx))
+         && (!combo->description().contains(rx)))
          return false;
    }
    return true;

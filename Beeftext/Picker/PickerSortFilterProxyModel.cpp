@@ -55,13 +55,14 @@ bool PickerSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelInd
    QString const comboName = model->data(index, Qt::DisplayRole).toString();
    QString const keyword = isEmoji ? emoji->shortcode() : combo->keyword();
    QString const snippet = isEmoji ? emoji->value() : combo->snippet();
+   QString const description = isEmoji ? QString() : combo->description();
    SpGroup const group = isEmoji ? nullptr : combo->group();
    for (QString const& word: this->filterRegularExpression().pattern().replace("\\ ", " ")
       .split(QRegularExpression("\\s"), Qt::SkipEmptyParts))
    {
       QRegularExpression const rx(word, QRegularExpression::CaseInsensitiveOption);
-      if ((!comboName.contains(rx)) && (!keyword.contains(rx))
-         && (!snippet.contains(rx)) && (!(group && group->name().contains(rx))))
+      if ((!comboName.contains(rx)) && (!keyword.contains(rx)) && (!snippet.contains(rx)) 
+         && (!(group && group->name().contains(rx))) && (!description.contains(rx)))
          return false;
    }
    return true;

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>679</width>
-    <height>434</height>
+    <width>546</width>
+    <height>363</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,81 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
    <item>
-    <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,1">
+    <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,4,1">
+     <item row="3" column="0" rowspan="2">
+      <widget class="QLabel" name="labelSnippet">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelGroup">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="labelName_2">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Description&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QPlainTextEdit" name="editDescription">
+       <property name="tabChangesFocus">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,0,0">
+       <property name="spacing">
+        <number>9</number>
+       </property>
+       <item>
+        <widget class="QLineEdit" name="editKeyword"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelCaseSensitivity">
+         <property name="text">
+          <string>Case sensitivity</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboCaseSensitivity"/>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelKeyword">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="editName"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelName">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">
@@ -67,72 +141,12 @@
        </item>
       </layout>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="editName"/>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="labelName">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="labelGroup">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="labelKeyword">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0" rowspan="2">
-      <widget class="QLabel" name="labelSnippet">
-       <property name="styleSheet">
-        <string notr="true">padding-top: 40px</string>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="1" rowspan="2">
       <widget class="ComboEditor" name="comboEditor" native="true">
        <property name="focusPolicy">
         <enum>Qt::StrongFocus</enum>
        </property>
       </widget>
-     </item>
-     <item row="2" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,0,0">
-       <property name="spacing">
-        <number>9</number>
-       </property>
-       <item>
-        <widget class="QLineEdit" name="editKeyword"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelCaseSensitivity">
-         <property name="text">
-          <string>Case sensitivity</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboCaseSensitivity"/>
-       </item>
-      </layout>
      </item>
     </layout>
    </item>
@@ -212,7 +226,10 @@
   <tabstop>comboGroup</tabstop>
   <tabstop>buttonNewGroup</tabstop>
   <tabstop>comboMatching</tabstop>
+  <tabstop>editKeyword</tabstop>
+  <tabstop>comboCaseSensitivity</tabstop>
   <tabstop>comboEditor</tabstop>
+  <tabstop>editDescription</tabstop>
   <tabstop>buttonOk</tabstop>
   <tabstop>buttonCancel</tabstop>
  </tabstops>

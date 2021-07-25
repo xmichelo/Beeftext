@@ -100,6 +100,7 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
    ui_.comboEditor->plainTextEdit()->setPlainText(combo->snippet());
+   ui_.editDescription->setPlainText(combo->description());
    this->updateGui();
    connect(ui_.comboEditor->plainTextEdit(), &QPlainTextEdit::textChanged, this, &ComboDialog::updateGui);
 }
@@ -181,6 +182,7 @@ void ComboDialog::onActionOk()
    combo_->setCaseSensitivity(selectedCaseSensitivityInCombo(*ui_.comboCaseSensitivity));
    combo_->setKeyword(keyword);
    combo_->setSnippet(ui_.comboEditor->plainText());
+   combo_->setDescription(ui_.editDescription->toPlainText());
    this->accept();
 }
 
