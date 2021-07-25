@@ -9,9 +9,9 @@
 
 #include "stdafx.h"
 #include "PreferencesDialog.h"
-#include "ShortcutDialog.h"
 #include "Theme.h"
 #include "I18nManager.h"
+#include "Dialogs/ShortcutDialog.h"
 #include "Combo/CaseSensitivity.h"
 #include "Combo/MatchingMode.h"
 #include "Combo/ComboManager.h"

@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
-#include "AboutDialog.h"
+#include "Dialogs/AboutDialog.h"
 #include "Preferences/PreferencesDialog.h"
 #include "Preferences/PreferencesManager.h"
 #include "Combo/ComboManager.h"

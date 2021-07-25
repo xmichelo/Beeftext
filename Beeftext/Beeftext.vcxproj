@@ -261,7 +261,6 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AboutDialog.cpp" />
     <ClCompile Include="Backup\BackupManager.cpp" />
     <ClCompile Include="Backup\BackupRestoreDialog.cpp" />
     <ClCompile Include="BeeftextConstants.cpp" />
@@ -283,6 +282,9 @@
     <ClCompile Include="Combo\ComboTableWidget.cpp" />
     <ClCompile Include="Combo\ComboVariable.cpp" />
     <ClCompile Include="Combo\MatchingMode.cpp" />
+    <ClCompile Include="Dialogs\AboutDialog.cpp" />
+    <ClCompile Include="Dialogs\ShortcutDialog.cpp" />
+    <ClCompile Include="Dialogs\VariableInputDialog.cpp" />
     <ClCompile Include="Emoji\Emoji.cpp" />
     <ClCompile Include="Emoji\EmojiList.cpp" />
     <ClCompile Include="Emoji\EmojiManager.cpp" />
@@ -308,7 +310,6 @@
     <ClCompile Include="Preferences\PreferencesManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="Shortcut.cpp" />
-    <ClCompile Include="ShortcutDialog.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">Create</PrecompiledHeader>
@@ -318,12 +319,14 @@
     <ClCompile Include="Update\UpdateCheckWorker.cpp" />
     <ClCompile Include="Update\UpdateDialog.cpp" />
     <ClCompile Include="Update\UpdateManager.cpp" />
-    <ClCompile Include="VariableInputDialog.cpp" />
     <ClCompile Include="WaveSound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Combo\CaseSensitivity.h" />
     <ClInclude Include="Combo\MatchingMode.h" />
+    <QtMoc Include="Dialogs\AboutDialog.h" />
+    <QtMoc Include="Dialogs\ShortcutDialog.h" />
+    <QtMoc Include="Dialogs\VariableInputDialog.h" />
     <ClInclude Include="Emoji\Emoji.h" />
     <ClInclude Include="Emoji\EmojiList.h" />
     <ClInclude Include="Emoji\EmojiManager.h" />
@@ -344,8 +347,6 @@
     <ClInclude Include="Clipboard\ClipboardManager.h" />
     <ClInclude Include="Clipboard\ClipboardManagerLegacy.h" />
     <ClInclude Include="SensitiveApplicationManager.h" />
-    <QtMoc Include="VariableInputDialog.h">
-    </QtMoc>
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
@@ -360,11 +361,6 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
-    </QtMoc>
-    <QtMoc Include="AboutDialog.h">
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="Backup\BackupManager.h" />
     <QtMoc Include="Backup\BackupRestoreDialog.h">
@@ -413,7 +409,6 @@
     </QtMoc>
     <ClInclude Include="Combo\ComboKeywordValidator.h" />
     <ClInclude Include="Combo\ComboVariable.h" />
-    <ClInclude Include="GeneratedFiles\ui_AboutDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_BackupRestoreDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_ComboDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_ComboFrame.h" />
@@ -432,7 +427,6 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
-    <ClInclude Include="GeneratedFiles\ui_ShortcutDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h" />
     <ClInclude Include="Group\Group.h" />
     <QtMoc Include="Group\GroupList.h">
@@ -456,11 +450,6 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
     <ClInclude Include="I18nManager.h" />
-    <QtMoc Include="ShortcutDialog.h">
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-      <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
-    </QtMoc>
     <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="MimeDataUtils.h" />
     <ClInclude Include="Shortcut.h" />
@@ -468,6 +457,8 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboEditor.ui" />
+    <QtUic Include="Dialogs\AboutDialog.ui" />
+    <QtUic Include="Dialogs\ShortcutDialog.ui" />
     <QtUic Include="MainWindow.ui">
     </QtUic>
   </ItemGroup>
@@ -499,8 +490,6 @@
     <None Include="Translations\beeftext_pl.ts" />
     <None Include="Translations\beeftext_pt.ts" />
     <None Include="Translations\beeftext_ru.ts" />
-    <QtUic Include="ShortcutDialog.ui">
-    </QtUic>
     <QtUic Include="Combo\ComboImportDialog.ui">
     </QtUic>
     <QtUic Include="Combo\ComboFrame.ui">
@@ -512,8 +501,6 @@
     <QtUic Include="Group\GroupListWidget.ui">
     </QtUic>
     <QtUic Include="Backup\BackupRestoreDialog.ui">
-    </QtUic>
-    <QtUic Include="AboutDialog.ui">
     </QtUic>
     <None Include="Translations\beeftext_fr.ts" />
   </ItemGroup>

@@ -48,6 +48,9 @@
     <Filter Include="Preferences">
       <UniqueIdentifier>{768bd915-726b-46d5-b7ab-4a56babfdf37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dialogs">
+      <UniqueIdentifier>{dbfe8783-cc29-4a54-921b-bf1a7672c90a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -76,7 +79,6 @@
       <Filter>Update</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="ShortcutDialog.cpp" />
     <ClCompile Include="Shortcut.cpp" />
     <ClCompile Include="Combo\ComboVariable.cpp">
       <Filter>Combo</Filter>
@@ -115,7 +117,6 @@
     <ClCompile Include="Backup\BackupRestoreDialog.cpp">
       <Filter>Backup</Filter>
     </ClCompile>
-    <ClCompile Include="AboutDialog.cpp" />
     <ClCompile Include="Update\UpdateManager.cpp">
       <Filter>Update</Filter>
     </ClCompile>
@@ -123,7 +124,6 @@
       <Filter>Update</Filter>
     </ClCompile>
     <ClCompile Include="SensitiveApplicationManager.cpp" />
-    <ClCompile Include="VariableInputDialog.cpp" />
     <ClCompile Include="Combo\ComboEditor.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -181,6 +181,15 @@
     <ClCompile Include="Preferences\PreferencesManager.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
+    <ClCompile Include="Dialogs\AboutDialog.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\ShortcutDialog.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\VariableInputDialog.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -197,9 +206,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="I18nManager.h" />
-    <ClInclude Include="GeneratedFiles\ui_ShortcutDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="Shortcut.h" />
     <ClInclude Include="Combo\ComboVariable.h">
       <Filter>Combo</Filter>
@@ -227,9 +233,6 @@
       <Filter>Backup</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_BackupRestoreDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_AboutDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Combo\ComboKeywordValidator.h">
@@ -307,8 +310,6 @@
     <QtUic Include="Update\UpdateDialog.ui">
       <Filter>Update</Filter>
     </QtUic>
-    <QtUic Include="ShortcutDialog.ui" />
-    <QtMoc Include="ShortcutDialog.h" />
     <QtMoc Include="Combo\ComboImportDialog.h">
       <Filter>Combo</Filter>
     </QtMoc>
@@ -351,8 +352,6 @@
     <QtMoc Include="Group\GroupListWidget.h">
       <Filter>Group</Filter>
     </QtMoc>
-    <QtUic Include="AboutDialog.ui" />
-    <QtMoc Include="AboutDialog.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Beeftext.rc">
@@ -406,7 +405,6 @@
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <Filter>Update</Filter>
     </QtMoc>
-    <QtMoc Include="VariableInputDialog.h" />
     <QtMoc Include="Combo\ComboEditor.h">
       <Filter>Combo</Filter>
     </QtMoc>
@@ -425,6 +423,15 @@
     <QtMoc Include="Preferences\PreferencesManager.h">
       <Filter>Preferences</Filter>
     </QtMoc>
+    <QtMoc Include="Dialogs\AboutDialog.h">
+      <Filter>Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="Dialogs\ShortcutDialog.h">
+      <Filter>Dialogs</Filter>
+    </QtMoc>
+    <QtMoc Include="Dialogs\VariableInputDialog.h">
+      <Filter>Dialogs</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboEditor.ui">
@@ -435,6 +442,12 @@
     </QtUic>
     <QtUic Include="Preferences\PreferencesDialog.ui">
       <Filter>Preferences</Filter>
+    </QtUic>
+    <QtUic Include="Dialogs\AboutDialog.ui">
+      <Filter>Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="Dialogs\ShortcutDialog.ui">
+      <Filter>Dialogs</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

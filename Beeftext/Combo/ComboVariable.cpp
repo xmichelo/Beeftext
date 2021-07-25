@@ -7,7 +7,7 @@
 #include "stdafx.h"
 #include "ComboVariable.h"
 #include "ComboManager.h"
-#include "VariableInputDialog.h"
+#include "Dialogs/VariableInputDialog.h"
 #include "Preferences/PreferencesManager.h"
 #include "Clipboard/ClipboardManager.h"
 #include "BeeftextGlobals.h"
