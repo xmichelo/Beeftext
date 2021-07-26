@@ -58,14 +58,6 @@ private slots:
    void onCheckEnableComboPicker(bool checked) const; ///< Slot for the 'Enable combo picker' checkbox.
    void onChangeComboPickerShortcut() const; ///< Slot for the combo picker 'Change' button.
    void onResetComboPickerShortcut() const; ///< Slot for the combo picker 'Reset' button.
-   //void onCheckEnableEmojiShortcodes(bool checked) const; ///< Slot for the 'Enable emoji shortcodes' checkbox.
-   //void onEditEmojiExcludedApplications(); ///< Slot for the 'Edit emoji excluded applications' action
-   //void onEmojiLeftDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji left delimiter.
-   //void onEmojiRightDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji right delimiter.
-   //void onCheckShowEmojisInPickerWindow(bool checked) const; ///< Slot for the 'Show emojis in picker window' checkbox.
-   void onComboLanguageValueChanged(int index) const; ///< Slot for the change of the value in the language combo.
-   void onCheckUseCustomTheme(bool checked) const; ///< Slot for the 'Use custom theme' checkbox.
-   void onComboThemeValueChanged(int) const; ///< slot for the change of the 'Theme' combo.
    void onSpinDelayBetweenKeystrokesChanged(int value) const; ///< Slot for the 'Delay between keystrokes' spin value change.
    void onChangeComboListFolder(); ///< Slot for the 'Change combo list folder' action
    void onResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action
@@ -84,8 +76,6 @@ private slots:
    void onUpdateCheckFailed(); ///< Slot update check failure
    void onEditSensitiveApplications(); ///< Slot for the 'Edit sensitive applications' action
    void onCheckWriteDebugLogFile(bool checked) const; ///< Slot the for 'Write debug log file' checkbox
-   static void onOpenTranslationFolder(); ///< Slot for the 'Translation Folder' button.
-   void onRefreshLanguageList() const; ///< Slot for the 'Refresh Language List' button.
    void onCheckUseLegacyCopyPaste() const; ///< Slot for the 'Use legacy copy/paste'.
    void onCheckUseShiftInsertForPasting() const; ///< Slot for the 'Use Shift+Insert for pasting' checkbox.
    void onCheckUseCustomPowerShellVersion(bool checked); ///< Slot for the 'Use custom PowerShell version' check box.

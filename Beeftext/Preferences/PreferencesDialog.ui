@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>402</height>
+    <height>873</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -22,8 +22,14 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTabWidget" name="tabPreferences">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>100</height>
+      </size>
+     </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -200,7 +206,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>39</height>
+           <height>0</height>
           </size>
          </property>
         </spacer>
@@ -477,7 +483,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>20</height>
+           <height>0</height>
           </size>
          </property>
         </spacer>
@@ -513,7 +519,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>111</height>
+           <height>0</height>
           </size>
          </property>
         </spacer>
@@ -526,122 +532,20 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_9">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QLabel" name="labelLocale">
-           <property name="text">
-            <string>Language</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboLocale">
-           <property name="sizeAdjustPolicy">
-            <enum>QComboBox::AdjustToContents</enum>
-           </property>
-           <item>
-            <property name="text">
-             <string notr="true">#English</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonRefresh">
-           <property name="text">
-            <string>Refresh</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelOtherLanguages">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="openExternalLinks">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>0</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_11">
-         <item>
-          <widget class="QLabel" name="labelTranslationFolder">
-           <property name="text">
-            <string>User-provided translations</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonTranslationFolder">
-           <property name="text">
-            <string>Open Folder</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_8">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>0</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_17">
-         <property name="topMargin">
-          <number>0</number>
+        <widget class="PrefsPaneAppearance" name="paneAppearance">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
          </property>
-         <item>
-          <widget class="QCheckBox" name="checkUseCustomTheme">
-           <property name="text">
-            <string>Use custom theme</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboTheme">
-           <property name="sizeAdjustPolicy">
-            <enum>QComboBox::AdjustToContents</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_13">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>0</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer name="verticalSpacer_4">
@@ -651,7 +555,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>119</height>
+           <height>0</height>
           </size>
          </property>
         </spacer>
@@ -911,7 +815,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>667</width>
-           <height>26</height>
+           <height>0</height>
           </size>
          </property>
         </spacer>
@@ -1008,6 +912,12 @@
    <header>Preferences/Panes/PrefsPaneEmojis.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>PrefsPaneAppearance</class>
+   <extends>QFrame</extends>
+   <header>Preferences/Panes/PrefsPaneAppearance.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>checkAutoCheckForUpdates</tabstop>
@@ -1034,11 +944,6 @@
   <tabstop>editPickerWindowShortcut</tabstop>
   <tabstop>buttonChangePickerWindowShortcut</tabstop>
   <tabstop>buttonResetPickerWindowShortcut</tabstop>
-  <tabstop>comboLocale</tabstop>
-  <tabstop>buttonRefresh</tabstop>
-  <tabstop>buttonTranslationFolder</tabstop>
-  <tabstop>checkUseCustomTheme</tabstop>
-  <tabstop>comboTheme</tabstop>
   <tabstop>spinDelayBetweenKeystrokes</tabstop>
   <tabstop>editComboListFolder</tabstop>
   <tabstop>buttonChangeComboListFolder</tabstop>
@@ -1073,7 +978,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>689</x>
-     <y>391</y>
+     <y>370</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -1121,7 +1026,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>246</x>
-     <y>391</y>
+     <y>370</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1169,7 +1074,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>333</x>
-     <y>265</y>
+     <y>255</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -1201,7 +1106,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>341</x>
-     <y>391</y>
+     <y>370</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
@@ -1217,7 +1122,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>143</x>
-     <y>339</y>
+     <y>319</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -1338,38 +1243,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>comboLocale</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onComboLanguageValueChanged(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>88</x>
-     <y>59</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>228</x>
-     <y>0</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkUseCustomTheme</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckUseCustomTheme(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>106</x>
-     <y>118</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>223</x>
-     <y>0</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>spinDelayBetweenKeystrokes</sender>
    <signal>valueChanged(int)</signal>
    <receiver>PreferencesDialog</receiver>
@@ -1392,8 +1265,8 @@
    <slot>onCheckAutoBackup(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>219</x>
-     <y>263</y>
+     <x>241</x>
+     <y>255</y>
     </hint>
     <hint type="destinationlabel">
      <x>672</x>
@@ -1466,38 +1339,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonTranslationFolder</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onOpenTranslationFolder()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>228</x>
-     <y>94</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>699</x>
-     <y>44</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonRefresh</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onRefreshLanguageList()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>221</x>
-     <y>63</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>699</x>
-     <y>86</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>buttonChangeAppEnableDisableShortcut</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
@@ -1553,7 +1394,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>84</x>
-     <y>391</y>
+     <y>370</y>
     </hint>
     <hint type="destinationlabel">
      <x>48</x>
@@ -1569,7 +1410,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>165</x>
-     <y>391</y>
+     <y>370</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -1584,8 +1425,8 @@
    <slot>onCheckUseCustomBackupLocation(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>162</x>
-     <y>295</y>
+     <x>184</x>
+     <y>277</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1601,7 +1442,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>666</x>
-     <y>297</y>
+     <y>277</y>
     </hint>
     <hint type="destinationlabel">
      <x>699</x>
@@ -1686,22 +1527,6 @@
     <hint type="destinationlabel">
      <x>7</x>
      <y>169</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>comboTheme</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onComboThemeValueChanged(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>178</x>
-     <y>109</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>417</x>
-     <y>318</y>
     </hint>
    </hints>
   </connection>

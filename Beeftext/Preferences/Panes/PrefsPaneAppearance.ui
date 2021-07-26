@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefsPaneAppearance</class>
+ <widget class="QFrame" name="PrefsPaneAppearance">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>442</width>
+    <height>88</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="layout1">
+     <item>
+      <widget class="QLabel" name="labelLocale">
+       <property name="text">
+        <string>Language</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboLocale">
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string notr="true">#English</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonRefresh">
+       <property name="text">
+        <string>Refresh</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelOtherLanguages">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer1">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="layout2">
+     <item>
+      <widget class="QLabel" name="labelTranslationFolder">
+       <property name="text">
+        <string>User-provided translations</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonTranslationFolder">
+       <property name="text">
+        <string>Open Folder</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="layout3">
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="checkUseCustomTheme">
+       <property name="text">
+        <string>Use custom theme</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboTheme">
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>comboLocale</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PrefsPaneAppearance</receiver>
+   <slot>onComboLanguageValueChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>12</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>43</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonRefresh</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneAppearance</receiver>
+   <slot>onRefreshLanguageList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>10</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>439</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonTranslationFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneAppearance</receiver>
+   <slot>onOpenTranslationFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>191</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>437</x>
+     <y>53</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboTheme</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PrefsPaneAppearance</receiver>
+   <slot>onComboThemeValueChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>419</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseCustomTheme</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneAppearance</receiver>
+   <slot>onCheckUseCustomTheme(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onComboLanguageValueChanged(int)</slot>
+  <slot>onRefreshLanguageList()</slot>
+  <slot>onOpenTranslationFolder()</slot>
+  <slot>onComboThemeValueChanged(int)</slot>
+  <slot>onCheckUseCustomTheme(bool)</slot>
+ </slots>
+</ui>

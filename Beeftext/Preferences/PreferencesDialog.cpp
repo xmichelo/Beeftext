@@ -43,17 +43,13 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
      prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
-   fillThemeComboBox(*ui_.comboTheme);
    this->updateCheckStatusTimer_.setSingleShot(true);
    connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
    ui_.labelUpdateCheckStatus->setText(QString());
    ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(),
       PreferencesManager::maxDelayBetweenKeystrokesMs());
-//   ui_.comboCaseSensitivity->setSizeAdjustPolicy(QComboBox::AdjustToContentsOnFirstShow);
    fillMatchingModeCombo(*ui_.comboMatchingMode, false);
    fillCaseSensitivityCombo(*ui_.comboCaseSensitivity, false);
-  // ui_.comboCaseSensitivity->setSizeAdjustPolicy(QComboBox::AdjustToContents);
-   I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
 
    this->load();
    if (isInPortableMode())
@@ -76,6 +72,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PreferencesDialog::updateGui);
 
    ui_.tabPreferences->setCurrentIndex(0);
+   this->setFixedSize(QDialog::sizeHint());
    this->updateGui();
 }
 
@@ -112,13 +109,7 @@ void PreferencesDialog::load() const
    selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
 
    ui_.paneEmojis->load();
-
-   blocker = QSignalBlocker(ui_.comboLocale);
-   this->onRefreshLanguageList();
-   blocker = QSignalBlocker(ui_.checkUseCustomTheme);
-   ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
-   blocker = QSignalBlocker(ui_.comboTheme);
-   selectThemeInCombo(prefs_.theme(), *ui_.comboTheme);
+   ui_.paneAppearance->load();
    blocker = QSignalBlocker(ui_.spinDelayBetweenKeystrokes);
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
@@ -189,10 +180,6 @@ void PreferencesDialog::changeEvent(QEvent* event)
       SpShortcut const shortcut = prefs_.comboTriggerShortcut();
       ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
 
-      QSignalBlocker blocker(ui_.comboTheme);
-      fillThemeComboBox(*ui_.comboTheme);
-      selectThemeInCombo(prefs_.theme(), *ui_.comboTheme);
-
       fillMatchingModeCombo(*ui_.comboMatchingMode, false);
       selectMatchingModeInCombo(*ui_.comboMatchingMode, prefs_.defaultMatchingMode(), true);
 
@@ -215,11 +202,6 @@ void PreferencesDialog::updateGui() const
    for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
 
-   //widgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, ui_.editEmojiLeftDelimiter,
-   //   ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter, ui_.checkShowEmojiInPickerWindow };
-   //for (QWidget* const widget: widgets)
-   //   widget->setEnabled(ui_.checkEnableEmoji->isChecked());
-   
    widgets = { ui_.labelPickerWindowShortcut, ui_.editPickerWindowShortcut, ui_.buttonChangePickerWindowShortcut,
       ui_.buttonResetPickerWindowShortcut };
    for (QWidget* const widget: widgets)
@@ -246,7 +228,6 @@ void PreferencesDialog::updateGui() const
    ui_.editCustomPowerShellPath->setEnabled(customPowershell);
    ui_.buttonChangeCustomPowershellVersion->setEnabled(customPowershell);
 
-   ui_.comboTheme->setEnabled(prefs_.useCustomTheme());
 }
 
 
@@ -491,34 +472,6 @@ void PreferencesDialog::onResetComboPickerShortcut() const
 
 
 //**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onComboLanguageValueChanged(int) const
-{
-   prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked?
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckUseCustomTheme(bool checked) const
-{
-   prefs_.setUseCustomTheme(checked);
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onComboThemeValueChanged(int) const
-{
-   prefs_.setTheme(selectedThemeInCombo(*ui_.comboTheme));
-}
-
-
-//**********************************************************************************************************************
 /// \param[in] value The new value.
 //**********************************************************************************************************************
 void PreferencesDialog::onSpinDelayBetweenKeystrokesChanged(int value) const
@@ -724,32 +677,6 @@ void PreferencesDialog::onCheckWriteDebugLogFile(bool checked) const
       log.enableLoggingToFile(globals::logFilePath());
    else
       log.disableLoggingToFile();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onOpenTranslationFolder()
-{
-   QString const path = globals::userTranslationRootFolderPath();
-   if (QDir(path).exists())
-      QDesktopServices::openUrl(QUrl::fromLocalFile(path));
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onRefreshLanguageList() const
-{
-   I18nManager& i18NManager = I18nManager::instance();
-   QLocale const currentLocale = I18nManager::locale();
-   i18NManager.refreshSupportedLocalesList();
-   i18NManager.fillLocaleCombo(*ui_.comboLocale);
-   QLocale const validatedLocale = i18NManager.validateLocale(currentLocale);
-   I18nManager::selectLocaleInCombo(validatedLocale, *ui_.comboLocale);
-   i18NManager.setLocale(validatedLocale);
 }
 
 

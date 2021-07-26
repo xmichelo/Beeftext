@@ -196,6 +196,9 @@
     <ClCompile Include="Preferences\Panes\PrefsPaneEmojis.cpp">
       <Filter>Preferences\Panes</Filter>
     </ClCompile>
+    <ClCompile Include="Preferences\Panes\PrefsPaneAppearance.cpp">
+      <Filter>Preferences\Panes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -444,6 +447,9 @@
     <QtMoc Include="Preferences\Panes\PrefsPane.h">
       <Filter>Preferences\Panes</Filter>
     </QtMoc>
+    <QtMoc Include="Preferences\Panes\PrefsPaneAppearance.h">
+      <Filter>Preferences\Panes</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboEditor.ui">
@@ -462,6 +468,9 @@
       <Filter>Dialogs</Filter>
     </QtUic>
     <QtUic Include="Preferences\Panes\PrefsPaneEmojis.ui">
+      <Filter>Preferences\Panes</Filter>
+    </QtUic>
+    <QtUic Include="Preferences\Panes\PrefsPaneAppearance.ui">
       <Filter>Preferences\Panes</Filter>
     </QtUic>
   </ItemGroup>

@@ -306,6 +306,7 @@
     <ClCompile Include="Picker\PickerSortFilterProxyModel.cpp" />
     <ClCompile Include="Picker\PickerWindow.cpp" />
     <ClCompile Include="Picker\PickerWindowMoverResizer.cpp" />
+    <ClCompile Include="Preferences\Panes\PrefsPaneAppearance.cpp" />
     <ClCompile Include="Preferences\Panes\PrefsPaneEmojis.cpp" />
     <ClCompile Include="Preferences\PreferencesDialog.cpp" />
     <ClCompile Include="Preferences\PreferencesManager.cpp" />
@@ -342,6 +343,7 @@
     <QtMoc Include="Preferences\PreferencesManager.h" />
     <QtMoc Include="Preferences\Panes\PrefsPaneEmojis.h" />
     <QtMoc Include="Preferences\Panes\PrefsPane.h" />
+    <QtMoc Include="Preferences\Panes\PrefsPaneAppearance.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />
     <QtMoc Include="Combo\ComboEditor.h">
@@ -478,6 +480,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Picker\PickerWindow.ui" />
+    <QtUic Include="Preferences\Panes\PrefsPaneAppearance.ui" />
     <QtUic Include="Preferences\Panes\PrefsPaneEmojis.ui" />
     <QtUic Include="Preferences\PreferencesDialog.ui" />
     <QtUic Include="Update\UpdateDialog.ui">

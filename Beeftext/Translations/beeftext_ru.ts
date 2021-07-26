@@ -159,6 +159,10 @@ Do you want to continue anyway?</source>
         <source>Case sensitivity</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Description&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ComboEditor</name>
@@ -908,6 +912,13 @@ Do you want to continue anyway?</source>
     </message>
 </context>
 <context>
+    <name>PickerItemDelegate</name>
+    <message>
+        <source>Emojis</source>
+        <translation type="unfinished">Эмодзи</translation>
+    </message>
+</context>
+<context>
     <name>PreferencesDialog</name>
     <message>
         <source>ms</source>
@@ -951,11 +962,11 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Combo picker</source>
-        <translation>Средство выбора шаблонов</translation>
+        <translation type="vanished">Средство выбора шаблонов</translation>
     </message>
     <message>
         <source>Open Folder</source>
-        <translation>Открыть папку</translation>
+        <translation type="vanished">Открыть папку</translation>
     </message>
     <message>
         <source>Combos</source>
@@ -979,7 +990,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>&amp;Excluded Applications</source>
-        <translation>&amp;Исключенные приложения</translation>
+        <translation type="vanished">&amp;Исключенные приложения</translation>
     </message>
     <message>
         <source>Manual, using the shortcut</source>
@@ -1003,11 +1014,11 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Language</source>
-        <translation>Язык</translation>
+        <translation type="vanished">Язык</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Обновить</translation>
+        <translation type="vanished">Обновить</translation>
     </message>
     <message>
         <source>&amp;Restore</source>
@@ -1015,11 +1026,11 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Left delimiter</source>
-        <translation>Левый разделитель</translation>
+        <translation type="vanished">Левый разделитель</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Use custom sound</source>
@@ -1027,7 +1038,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Use custom theme</source>
-        <translation>Использовать пользовательскую тему</translation>
+        <translation type="vanished">Использовать пользовательскую тему</translation>
     </message>
     <message>
         <source>Cha&amp;nge</source>
@@ -1035,7 +1046,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>User-provided translations</source>
-        <translation>Пользовательские переводы</translation>
+        <translation type="vanished">Пользовательские переводы</translation>
     </message>
     <message>
         <source>Delay between simulated keystrokes</source>
@@ -1059,7 +1070,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Enable emoji shortcodes</source>
-        <translation>Включить шорткоды эмодзи</translation>
+        <translation type="vanished">Включить шорткоды эмодзи</translation>
     </message>
     <message>
         <source>Automatic</source>
@@ -1095,7 +1106,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Enable combo picker</source>
-        <translation>Включить средство выбора шаблонов</translation>
+        <translation type="vanished">Включить средство выбора шаблонов</translation>
     </message>
     <message>
         <source>Restore a backup.</source>
@@ -1103,7 +1114,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Right delimiter</source>
-        <translation>Правый разделитель</translation>
+        <translation type="vanished">Правый разделитель</translation>
     </message>
     <message>
         <source>Shortcut</source>
@@ -1239,6 +1250,64 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Default case sensitivity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Picker window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable picker window</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PrefsPaneAppearance</name>
+    <message>
+        <source>Language</source>
+        <translation type="unfinished">Язык</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Обновить</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>User-provided translations</source>
+        <translation type="unfinished">Пользовательские переводы</translation>
+    </message>
+    <message>
+        <source>Open Folder</source>
+        <translation type="unfinished">Открыть папку</translation>
+    </message>
+    <message>
+        <source>Use custom theme</source>
+        <translation type="unfinished">Использовать пользовательскую тему</translation>
+    </message>
+</context>
+<context>
+    <name>PrefsPaneEmojis</name>
+    <message>
+        <source>Enable emoji shortcodes</source>
+        <translation type="unfinished">Включить шорткоды эмодзи</translation>
+    </message>
+    <message>
+        <source>&amp;Excluded Applications</source>
+        <translation type="unfinished">&amp;Исключенные приложения</translation>
+    </message>
+    <message>
+        <source>Left delimiter</source>
+        <translation type="unfinished">Левый разделитель</translation>
+    </message>
+    <message>
+        <source>Right delimiter</source>
+        <translation type="unfinished">Правый разделитель</translation>
+    </message>
+    <message>
+        <source>Show emojis in picker window</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
