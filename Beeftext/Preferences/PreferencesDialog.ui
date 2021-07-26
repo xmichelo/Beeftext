@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="tabPreferences">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabBehavior">
       <attribute name="title">
@@ -382,7 +382,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupComboPicker">
+        <widget class="QGroupBox" name="groupPickerWindow">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -390,27 +390,27 @@
           </size>
          </property>
          <property name="title">
-          <string>Combo picker</string>
+          <string>Picker window</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QCheckBox" name="checkEnableComboPicker">
             <property name="text">
-             <string>Enable combo picker</string>
+             <string>Enable picker window</string>
             </property>
            </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_9">
             <item>
-             <widget class="QLabel" name="labelComboPickerShortcut">
+             <widget class="QLabel" name="labelPickerWindowShortcut">
               <property name="text">
                <string>Shortcut</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="editComboPickerShortcut">
+             <widget class="QLineEdit" name="editPickerWindowShortcut">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -438,14 +438,14 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="buttonChangeComboPickerShortcut">
+             <widget class="QPushButton" name="buttonChangePickerWindowShortcut">
               <property name="text">
                <string>C&amp;hange</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="buttonResetComboPickerShortcut">
+             <widget class="QPushButton" name="buttonResetPickerWindowShortcut">
               <property name="text">
                <string>De&amp;fault</string>
               </property>
@@ -1129,9 +1129,9 @@
   <tabstop>buttonResetComboTriggerShortcut</tabstop>
   <tabstop>comboMatchingMode</tabstop>
   <tabstop>checkEnableComboPicker</tabstop>
-  <tabstop>editComboPickerShortcut</tabstop>
-  <tabstop>buttonChangeComboPickerShortcut</tabstop>
-  <tabstop>buttonResetComboPickerShortcut</tabstop>
+  <tabstop>editPickerWindowShortcut</tabstop>
+  <tabstop>buttonChangePickerWindowShortcut</tabstop>
+  <tabstop>buttonResetPickerWindowShortcut</tabstop>
   <tabstop>checkEnableEmoji</tabstop>
   <tabstop>buttonEmojiExcludedApps</tabstop>
   <tabstop>editEmojiLeftDelimiter</tabstop>
@@ -1376,7 +1376,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonChangeComboPickerShortcut</sender>
+   <sender>buttonChangePickerWindowShortcut</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
    <slot>onChangeComboPickerShortcut()</slot>
@@ -1392,7 +1392,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonResetComboPickerShortcut</sender>
+   <sender>buttonResetPickerWindowShortcut</sender>
    <signal>clicked()</signal>
    <receiver>PreferencesDialog</receiver>
    <slot>onResetComboPickerShortcut()</slot>

@@ -108,7 +108,7 @@ void PreferencesDialog::loadPreferences() const
    blocker = QSignalBlocker(ui_.checkEnableComboPicker);
    ui_.checkEnableComboPicker->setChecked(prefs_.comboPickerEnabled());
    shortcut = prefs_.comboPickerShortcut();
-   ui_.editComboPickerShortcut->setText(shortcut ? shortcut->toString() : "");
+   ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
    selectMatchingModeInCombo(*ui_.comboMatchingMode, prefs_.defaultMatchingMode(), true);
    selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
    blocker = QSignalBlocker(ui_.checkEnableEmoji);
@@ -226,8 +226,8 @@ void PreferencesDialog::updateGui() const
    for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.checkEnableEmoji->isChecked());
    
-   widgets = { ui_.labelComboPickerShortcut, ui_.editComboPickerShortcut, ui_.buttonChangeComboPickerShortcut,
-      ui_.buttonResetComboPickerShortcut };
+   widgets = { ui_.labelPickerWindowShortcut, ui_.editPickerWindowShortcut, ui_.buttonChangePickerWindowShortcut,
+      ui_.buttonResetPickerWindowShortcut };
    for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.checkEnableComboPicker->isChecked());
 
@@ -481,7 +481,7 @@ void PreferencesDialog::onChangeComboPickerShortcut() const
    if (!runShortcutDialog(shortcut))
       return;
    prefs_.setComboPickerShortcut(shortcut);
-   ui_.editComboPickerShortcut->setText(shortcut ? shortcut->toString() : "");
+   ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
 }
 
 
@@ -492,7 +492,7 @@ void PreferencesDialog::onResetComboPickerShortcut() const
 {
    SpShortcut const shortcut = PreferencesManager::defaultComboPickerShortcut();
    prefs_.setComboPickerShortcut(shortcut);
-   ui_.editComboPickerShortcut->setText(shortcut ? shortcut->toString() : "");
+   ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
 }
 
 
