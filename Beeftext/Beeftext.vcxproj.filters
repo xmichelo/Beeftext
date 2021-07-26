@@ -51,6 +51,9 @@
     <Filter Include="Dialogs">
       <UniqueIdentifier>{dbfe8783-cc29-4a54-921b-bf1a7672c90a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Preferences\Panes">
+      <UniqueIdentifier>{e9397032-1075-4e09-8cf7-e3bb862c68c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -189,6 +192,9 @@
     </ClCompile>
     <ClCompile Include="Dialogs\VariableInputDialog.cpp">
       <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Preferences\Panes\PrefsPaneEmojis.cpp">
+      <Filter>Preferences\Panes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -432,6 +438,9 @@
     <QtMoc Include="Dialogs\VariableInputDialog.h">
       <Filter>Dialogs</Filter>
     </QtMoc>
+    <QtMoc Include="Preferences\Panes\PrefsPaneEmojis.h">
+      <Filter>Preferences\Panes</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboEditor.ui">
@@ -448,6 +457,9 @@
     </QtUic>
     <QtUic Include="Dialogs\ShortcutDialog.ui">
       <Filter>Dialogs</Filter>
+    </QtUic>
+    <QtUic Include="Preferences\Panes\PrefsPaneEmojis.ui">
+      <Filter>Preferences\Panes</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

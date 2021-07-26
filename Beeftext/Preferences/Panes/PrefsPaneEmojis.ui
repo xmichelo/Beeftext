@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefsPaneEmojis</class>
+ <widget class="QFrame" name="PrefsPaneEmojis">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>683</width>
+    <height>84</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="layout1">
+     <item>
+      <widget class="QCheckBox" name="checkEnableEmoji">
+       <property name="text">
+        <string>Enable emoji shortcodes</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonEmojiExcludedApps">
+       <property name="text">
+        <string>&amp;Excluded Applications</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer1">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="grid1" columnstretch="0,0,0,0,0,0">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelEmojiLeftDelimiter">
+       <property name="text">
+        <string>Left delimiter</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <spacer name="spacer2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="editEmojiLeftDelimiter">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="5">
+      <spacer name="spacer3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="4">
+      <widget class="QLineEdit" name="editEmojiRightDelimiter">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="labelEmojiRightDelimiter">
+       <property name="text">
+        <string>Right delimiter</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="layout2">
+     <item>
+      <widget class="QCheckBox" name="checkShowEmojiInPickerWindow">
+       <property name="text">
+        <string>Show emojis in picker window</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacer4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>checkEnableEmoji</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneEmojis</receiver>
+   <slot>onCheckEnableEmojiShortcodes(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>35</x>
+     <y>17</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>672</x>
+     <y>1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonEmojiExcludedApps</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneEmojis</receiver>
+   <slot>onEditEmojiExcludedApplications()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>12</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editEmojiLeftDelimiter</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PrefsPaneEmojis</receiver>
+   <slot>onEmojiLeftDelimiterChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editEmojiRightDelimiter</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>PrefsPaneEmojis</receiver>
+   <slot>onEmojiRightDelimiterChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkShowEmojiInPickerWindow</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneEmojis</receiver>
+   <slot>onCheckShowEmojisInPickerWindow(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onCheckEnableEmojiShortcodes(bool)</slot>
+  <slot>onEditEmojiExcludedApplications()</slot>
+  <slot>onEmojiLeftDelimiterChanged(QString)</slot>
+  <slot>onEmojiRightDelimiterChanged(QString)</slot>
+  <slot>onCheckShowEmojisInPickerWindow(bool)</slot>
+ </slots>
+</ui>

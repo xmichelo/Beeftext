@@ -29,7 +29,7 @@ public: // member functions
    ~PreferencesDialog() override = default; ///< Destructor
    PreferencesDialog& operator=(PreferencesDialog const&) = delete; ///< Disabled assignment operator
    PreferencesDialog& operator=(PreferencesDialog&&) = delete; ///< Disabled move assignment operator
-   void loadPreferences() const; ///< Load the preferences
+   void load() const; ///< Load the preferences
 
 private: // member functions
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
@@ -58,11 +58,11 @@ private slots:
    void onCheckEnableComboPicker(bool checked) const; ///< Slot for the 'Enable combo picker' checkbox.
    void onChangeComboPickerShortcut() const; ///< Slot for the combo picker 'Change' button.
    void onResetComboPickerShortcut() const; ///< Slot for the combo picker 'Reset' button.
-   void onCheckEnableEmojiShortcodes(bool checked) const; ///< Slot for the 'Enable emoji shortcodes' checkbox.
-   void onEditEmojiExcludedApplications(); ///< Slot for the 'Edit emoji excluded applications' action
-   void onEmojiLeftDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji left delimiter.
-   void onEmojiRightDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji right delimiter.
-   void onCheckShowEmojisInPickerWindow(bool checked) const; ///< Slot for the 'Show emojis in picker window' checkbox.
+   //void onCheckEnableEmojiShortcodes(bool checked) const; ///< Slot for the 'Enable emoji shortcodes' checkbox.
+   //void onEditEmojiExcludedApplications(); ///< Slot for the 'Edit emoji excluded applications' action
+   //void onEmojiLeftDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji left delimiter.
+   //void onEmojiRightDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji right delimiter.
+   //void onCheckShowEmojisInPickerWindow(bool checked) const; ///< Slot for the 'Show emojis in picker window' checkbox.
    void onComboLanguageValueChanged(int index) const; ///< Slot for the change of the value in the language combo.
    void onCheckUseCustomTheme(bool checked) const; ///< Slot for the 'Use custom theme' checkbox.
    void onComboThemeValueChanged(int) const; ///< slot for the change of the 'Theme' combo.

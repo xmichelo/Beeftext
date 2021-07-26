@@ -18,7 +18,6 @@
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
 #include "Update/UpdateManager.h"
-#include "Emoji/EmojiManager.h"
 #include "SensitiveApplicationManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
@@ -56,7 +55,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
   // ui_.comboCaseSensitivity->setSizeAdjustPolicy(QComboBox::AdjustToContents);
    I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
 
-   this->loadPreferences();
+   this->load();
    if (isInPortableMode())
    {
       QWidgetList widgets = {ui_.checkAutoStart, ui_.frameComboListFolder};
@@ -84,7 +83,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesDialog::loadPreferences() const
+void PreferencesDialog::load() const
 {
    // ReSharper disable CppEntityAssignedButNoRead
    // ReSharper disable CppAssignedValueIsNeverUsed
@@ -111,14 +110,9 @@ void PreferencesDialog::loadPreferences() const
    ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
    selectMatchingModeInCombo(*ui_.comboMatchingMode, prefs_.defaultMatchingMode(), true);
    selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
-   blocker = QSignalBlocker(ui_.checkEnableEmoji);
-   ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
-   blocker = QSignalBlocker(ui_.editEmojiLeftDelimiter);
-   ui_.editEmojiLeftDelimiter->setText(prefs_.emojiLeftDelimiter());
-   blocker = QSignalBlocker(ui_.editEmojiRightDelimiter);
-   ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
-   blocker = QSignalBlocker(ui_.checkShowEmojiInPickerWindow);
-   ui_.checkShowEmojiInPickerWindow->setChecked(prefs_.showEmojisInPickerWindow());
+
+   ui_.paneEmojis->load();
+
    blocker = QSignalBlocker(ui_.comboLocale);
    this->onRefreshLanguageList();
    blocker = QSignalBlocker(ui_.checkUseCustomTheme);
@@ -221,10 +215,10 @@ void PreferencesDialog::updateGui() const
    for (QWidget* const widget: widgets)
       widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
 
-   widgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, ui_.editEmojiLeftDelimiter,
-      ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter, ui_.checkShowEmojiInPickerWindow };
-   for (QWidget* const widget: widgets)
-      widget->setEnabled(ui_.checkEnableEmoji->isChecked());
+   //widgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, ui_.editEmojiLeftDelimiter,
+   //   ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter, ui_.checkShowEmojiInPickerWindow };
+   //for (QWidget* const widget: widgets)
+   //   widget->setEnabled(ui_.checkEnableEmoji->isChecked());
    
    widgets = { ui_.labelPickerWindowShortcut, ui_.editPickerWindowShortcut, ui_.buttonChangePickerWindowShortcut,
       ui_.buttonResetPickerWindowShortcut };
@@ -497,57 +491,6 @@ void PreferencesDialog::onResetComboPickerShortcut() const
 
 
 //**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked?
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckEnableEmojiShortcodes(bool checked) const
-{
-   prefs_.setEmojiShortcodeEnabled(checked);
-   EmojiManager& emojis = EmojiManager::instance();
-   if (checked)
-      emojis.loadEmojis();
-   else
-      emojis.unloadEmojis();
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onEditEmojiExcludedApplications()
-{
-   EmojiManager::instance().runDialog(this);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onEmojiLeftDelimiterChanged(QString const&) const
-{
-   prefs_.setEmojiLeftDelimiter(ui_.editEmojiLeftDelimiter->text());
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onEmojiRightDelimiterChanged(QString const&) const
-{
-   prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckShowEmojisInPickerWindow(bool checked) const
-{
-   prefs_.setShowEmojisInPickerWindow(checked);
-}
-
-
-//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 void PreferencesDialog::onComboLanguageValueChanged(int) const
@@ -688,7 +631,7 @@ void PreferencesDialog::onResetToDefaultValues()
 
    previousComboListPath_ = prefs_.comboListFolderPath();
    prefs_.reset();
-   this->loadPreferences();
+   this->load();
    this->updateGui();
 }
 
@@ -894,5 +837,5 @@ void PreferencesDialog::onImport()
       return;
    if (!prefs_.load(path))
       QMessageBox::critical(this, tr("Error"), tr("An error occurred while importing the preferences."));
-   this->loadPreferences();
+   this->load();
 }
