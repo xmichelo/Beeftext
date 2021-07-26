@@ -129,7 +129,7 @@
       <ForceInclude>
       </ForceInclude>
       <PrependInclude>stdafx.h</PrependInclude>
-      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)</QtMocDir>
+      <QtMocDir>.\_build\GeneratedFiles\$(ConfigurationName)</QtMocDir>
       <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
     <QtRcc>
@@ -137,12 +137,12 @@
       <Compression>default</Compression>
       <NoCompression>true</NoCompression>
       <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
-      <QtRccDir>.\GeneratedFiles</QtRccDir>
+      <QtRccDir>.\_build\GeneratedFiles</QtRccDir>
       <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
     </QtRcc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicDir>.\_build\GeneratedFiles</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
   </ItemDefinitionGroup>
@@ -186,7 +186,7 @@
       <ForceInclude>
       </ForceInclude>
       <PrependInclude>stdafx.h</PrependInclude>
-      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)</QtMocDir>
+      <QtMocDir>.\_build\GeneratedFiles\$(ConfigurationName)</QtMocDir>
       <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
     <QtRcc>
@@ -194,12 +194,12 @@
       <Compression>default</Compression>
       <NoCompression>true</NoCompression>
       <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
-      <QtRccDir>.\GeneratedFiles</QtRccDir>
+      <QtRccDir>.\_build\GeneratedFiles</QtRccDir>
       <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
     </QtRcc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicDir>.\_build\GeneratedFiles</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
   </ItemDefinitionGroup>
@@ -243,7 +243,7 @@
       <ForceInclude>
       </ForceInclude>
       <PrependInclude>stdafx.h</PrependInclude>
-      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)</QtMocDir>
+      <QtMocDir>.\_build\GeneratedFiles\$(ConfigurationName)</QtMocDir>
       <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
     <QtRcc>
@@ -251,12 +251,12 @@
       <Compression>default</Compression>
       <NoCompression>true</NoCompression>
       <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
-      <QtRccDir>.\GeneratedFiles</QtRccDir>
+      <QtRccDir>.\_build\GeneratedFiles</QtRccDir>
       <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
     </QtRcc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicDir>.\_build\GeneratedFiles</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
   </ItemDefinitionGroup>
