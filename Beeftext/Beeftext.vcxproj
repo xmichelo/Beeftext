@@ -341,6 +341,7 @@
     <QtMoc Include="Preferences\PreferencesDialog.h" />
     <QtMoc Include="Preferences\PreferencesManager.h" />
     <QtMoc Include="Preferences\Panes\PrefsPaneEmojis.h" />
+    <QtMoc Include="Preferences\Panes\PrefsPane.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />
     <QtMoc Include="Combo\ComboEditor.h">

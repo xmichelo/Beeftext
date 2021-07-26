@@ -441,6 +441,9 @@
     <QtMoc Include="Preferences\Panes\PrefsPaneEmojis.h">
       <Filter>Preferences\Panes</Filter>
     </QtMoc>
+    <QtMoc Include="Preferences\Panes\PrefsPane.h">
+      <Filter>Preferences\Panes</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboEditor.ui">

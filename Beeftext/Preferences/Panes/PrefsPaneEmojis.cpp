@@ -16,7 +16,7 @@
 /// \param[in] parent the parent widget
 //**********************************************************************************************************************
 PrefsPaneEmojis::PrefsPaneEmojis(QWidget* parent)
-   : QFrame(parent)
+   : PrefsPane(parent)
    , prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);

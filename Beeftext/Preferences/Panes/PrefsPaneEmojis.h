@@ -12,13 +12,14 @@
 
 
 #include "ui_PrefsPaneEmojis.h"
+#include "PrefsPane.h"
 #include "Preferences/PreferencesManager.h"
 
 
 //**********************************************************************************************************************
 /// \brief The preference pane for emojis.
 //**********************************************************************************************************************
-class PrefsPaneEmojis: public QFrame
+class PrefsPaneEmojis: public PrefsPane
 {
    Q_OBJECT
 public: // member functions
@@ -28,7 +29,7 @@ public: // member functions
    ~PrefsPaneEmojis() override = default; ///< Destructor.
    PrefsPaneEmojis& operator=(PrefsPaneEmojis const&) = delete; ///< Disabled assignment operator.
    PrefsPaneEmojis& operator=(PrefsPaneEmojis&&) = delete; ///< Disabled move assignment operator.
-   void load() const; ///< Load the content of the pane.
+   void load() const override; ///< Load the content of the pane.
 
 private slots:
    void updateGui() const; ///< update the GUI.
