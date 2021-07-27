@@ -306,6 +306,7 @@
     <ClCompile Include="Picker\PickerSortFilterProxyModel.cpp" />
     <ClCompile Include="Picker\PickerWindow.cpp" />
     <ClCompile Include="Picker\PickerWindowMoverResizer.cpp" />
+    <ClCompile Include="Preferences\Panes\PrefsPaneAdvanced.cpp" />
     <ClCompile Include="Preferences\Panes\PrefsPaneAppearance.cpp" />
     <ClCompile Include="Preferences\Panes\PrefsPaneBehavior.cpp" />
     <ClCompile Include="Preferences\Panes\PrefsPaneCombos.cpp" />
@@ -348,6 +349,7 @@
     <QtMoc Include="Preferences\Panes\PrefsPaneAppearance.h" />
     <QtMoc Include="Preferences\Panes\PrefsPaneCombos.h" />
     <QtMoc Include="Preferences\Panes\PrefsPaneBehavior.h" />
+    <QtMoc Include="Preferences\Panes\PrefsPaneAdvanced.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />
     <QtMoc Include="Combo\ComboEditor.h">
@@ -484,6 +486,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Picker\PickerWindow.ui" />
+    <QtUic Include="Preferences\Panes\PrefsPaneAdvanced.ui" />
     <QtUic Include="Preferences\Panes\PrefsPaneAppearance.ui" />
     <QtUic Include="Preferences\Panes\PrefsPaneBehavior.ui" />
     <QtUic Include="Preferences\Panes\PrefsPaneCombos.ui" />

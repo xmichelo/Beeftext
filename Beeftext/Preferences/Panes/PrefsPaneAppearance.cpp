@@ -37,6 +37,7 @@ void PrefsPaneAppearance::load() const
    ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
    blocker = QSignalBlocker(ui_.comboTheme);
    selectThemeInCombo(prefs_.theme(), *ui_.comboTheme);
+   this->updateGui();
 }
 
 

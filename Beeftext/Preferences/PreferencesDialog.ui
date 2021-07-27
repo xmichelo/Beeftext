@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>873</height>
+    <height>174</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -22,12 +22,6 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTabWidget" name="tabPreferences">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>100</height>
-      </size>
-     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -179,44 +173,13 @@
       <attribute name="title">
        <string>Advanced</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_8">
-         <item>
-          <widget class="QLabel" name="labelDelayBetweenKeystrokes">
-           <property name="text">
-            <string>Delay between simulated keystrokes</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="spinDelayBetweenKeystrokes">
-           <property name="suffix">
-            <string>ms</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>0</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QFrame" name="frameComboListFolder">
+        <widget class="PrefsPaneAdvanced" name="paneAdvanced">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>0</height>
+           <height>50</height>
           </size>
          </property>
          <property name="frameShape">
@@ -225,197 +188,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="labelComboListFolder">
-            <property name="text">
-             <string>Combo list folder</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="editComboListFolder">
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="buttonChangeComboListFolder">
-            <property name="text">
-             <string>&amp;Change</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="buttonOpenComboListFolder">
-            <property name="text">
-             <string>O&amp;pen</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="buttonResetComboListFolder">
-            <property name="text">
-             <string>D&amp;efault</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="checkWriteDebugLogFile">
-         <property name="text">
-          <string>Write debug events in a log file</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="checkUseLegacyCopyPaste">
-         <property name="text">
-          <string>Use legacy copy/paste</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="checkUseShiftInsertForPasting">
-         <property name="text">
-          <string>Use Shift+Insert for pasting</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_18">
-         <item>
-          <widget class="QCheckBox" name="checkUseCustomPowershellVersion">
-           <property name="text">
-            <string>Use custom PowerShell version</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="editCustomPowerShellPath">
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonChangeCustomPowershellVersion">
-           <property name="text">
-            <string>&amp;Change</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupboxAutoBackup">
-         <property name="title">
-          <string>Automatic backup</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_14">
-            <item>
-             <widget class="QCheckBox" name="checkAutoBackup">
-              <property name="text">
-               <string>Automatically backup combo list files</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="buttonRestoreBackup">
-              <property name="toolTip">
-               <string>Restore a backup.</string>
-              </property>
-              <property name="text">
-               <string>&amp;Restore</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>0</width>
-                <height>13</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_15">
-            <item>
-             <widget class="QCheckBox" name="checkUseCustomBackupLocation">
-              <property name="text">
-               <string>Use custom backup location</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="editCustomBackupLocation">
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="buttonChangeCustomBackupLocation">
-              <property name="text">
-               <string>&amp;Change</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="QPushButton" name="buttonSensitiveApplications">
-           <property name="text">
-            <string>Sensitive Applications</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_7">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>0</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
        </item>
        <item>
         <spacer name="verticalSpacer_5">
@@ -543,25 +316,14 @@
    <header>Preferences/Panes/PrefsPaneBehavior.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>PrefsPaneAdvanced</class>
+   <extends>QFrame</extends>
+   <header>Preferences/Panes/PrefsPaneAdvanced.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>spinDelayBetweenKeystrokes</tabstop>
-  <tabstop>editComboListFolder</tabstop>
-  <tabstop>buttonChangeComboListFolder</tabstop>
-  <tabstop>buttonOpenComboListFolder</tabstop>
-  <tabstop>buttonResetComboListFolder</tabstop>
-  <tabstop>checkWriteDebugLogFile</tabstop>
-  <tabstop>checkUseLegacyCopyPaste</tabstop>
-  <tabstop>checkUseShiftInsertForPasting</tabstop>
-  <tabstop>checkUseCustomPowershellVersion</tabstop>
-  <tabstop>editCustomPowerShellPath</tabstop>
-  <tabstop>buttonChangeCustomPowershellVersion</tabstop>
-  <tabstop>checkAutoBackup</tabstop>
-  <tabstop>buttonRestoreBackup</tabstop>
-  <tabstop>checkUseCustomBackupLocation</tabstop>
-  <tabstop>editCustomBackupLocation</tabstop>
-  <tabstop>buttonChangeCustomBackupLocation</tabstop>
-  <tabstop>buttonSensitiveApplications</tabstop>
   <tabstop>buttonExport</tabstop>
   <tabstop>buttonImport</tabstop>
   <tabstop>buttonDefaults</tabstop>
@@ -579,27 +341,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>689</x>
-     <y>862</y>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
      <y>264</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonChangeComboListFolder</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onChangeComboListFolder()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>450</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
     </hint>
    </hints>
   </connection>
@@ -611,39 +357,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>246</x>
-     <y>862</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonResetComboListFolder</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onResetComboListFolder()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>612</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>255</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonRestoreBackup</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onRestoreBackup()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>282</x>
-     <y>242</y>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -659,90 +373,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>341</x>
-     <y>862</y>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>246</x>
-     <y>288</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonSensitiveApplications</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onEditSensitiveApplications()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>94</x>
-     <y>316</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>358</x>
-     <y>270</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonOpenComboListFolder</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onOpenComboListFolder()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>531</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>356</x>
-     <y>288</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>spinDelayBetweenKeystrokes</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>250</x>
-     <y>44</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>420</x>
-     <y>0</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkAutoBackup</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckAutoBackup(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>54</x>
-     <y>244</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>672</x>
-     <y>0</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkWriteDebugLogFile</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckWriteDebugLogFile(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>101</x>
-     <y>105</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>295</x>
      <y>288</y>
     </hint>
    </hints>
@@ -755,7 +389,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>84</x>
-     <y>862</y>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>48</x>
@@ -771,107 +405,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>165</x>
-     <y>862</y>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
      <y>246</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkUseCustomBackupLocation</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckUseCustomBackupLocation(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>46</x>
-     <y>276</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>5</x>
-     <y>75</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonChangeCustomBackupLocation</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onChangeCustomBackupLocation()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>607</x>
-     <y>274</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>699</x>
-     <y>178</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkUseLegacyCopyPaste</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckUseLegacyCopyPaste()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>43</x>
-     <y>131</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>7</x>
-     <y>115</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonChangeCustomPowershellVersion</sender>
-   <signal>clicked()</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onChangeCustomPowershellVersion()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>623</x>
-     <y>184</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>697</x>
-     <y>125</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkUseCustomPowershellVersion</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>43</x>
-     <y>186</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>7</x>
-     <y>169</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkUseShiftInsertForPasting</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PreferencesDialog</receiver>
-   <slot>onCheckUseShiftInsertForPasting()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>101</x>
-     <y>157</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>349</x>
-     <y>200</y>
     </hint>
    </hints>
   </connection>
