@@ -34,7 +34,6 @@ public: // member functions
 private: // member functions
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
    bool promptForAndRemoveAutoBackups(); ///< Ask the user if automatic backups should be deleted and if so, performs the operation
-   void changeEvent(QEvent *event) override; ///< Change event handler
    bool checkAndReportInconsistencies(); ///< Check that the values for the dialog are consistant
 
 private slots:
@@ -45,19 +44,9 @@ private slots:
    void onCheckUseCustomSound(bool checked) const; ///< Slot for the 'Use custom sound' checkbox.
    void onChangeCustomSound() const; ///< Slot for the 'Change custom sound' button.
    void onPlaySoundButton() const; ///< Slot for the 'Play' button for custom sound.
-   void onRadioAutomaticComboTrigger(bool checked) const; ///< Slot for the 'Automatic combo trigger' button.
-   void onCheckComboTriggersOnSpace(bool checked) const; ///< Slot for the 'Combo triggers on space' check box.
-   void onCheckKeepFinalSpace(bool checked) const; ///< Slot for the 'Keep final space character' check box.
    void onCheckEnableAppEnableDisableShortcut(bool checked) const; ///< Slot for the 'Enable app enable/disable shortcut' check box.
    void onChangeAppEnableDisableShortcut() const; ///< Slot for the button Change of the app enable/disable shortcut.
    void onResetAppEnableDisableShortcut() const; ///< Slot for the button Default of the app enable/disable shortcut.
-   void onChangeComboTriggerShortcut() const; ///< Slot for the 'Change shortcut' action
-   void onResetComboTriggerShortcut() const; ///< Slot for the 'Reset combo trigger shortcut'
-   void onChangeDefaultMatchingMode() const; ///< Slot for the 'Default matching mode' combo value change.
-   void onChangeDefaultCaseSensitivity() const; ///< Slot for the 'Default case sensitivity' combo value change.
-   void onCheckEnableComboPicker(bool checked) const; ///< Slot for the 'Enable combo picker' checkbox.
-   void onChangeComboPickerShortcut() const; ///< Slot for the combo picker 'Change' button.
-   void onResetComboPickerShortcut() const; ///< Slot for the combo picker 'Reset' button.
    void onSpinDelayBetweenKeystrokesChanged(int value) const; ///< Slot for the 'Delay between keystrokes' spin value change.
    void onChangeComboListFolder(); ///< Slot for the 'Change combo list folder' action
    void onResetComboListFolder(); ///< Slot for the 'Reset combo list folder' action

@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefsPaneCombos</class>
+ <widget class="QFrame" name="PrefsPaneCombos">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>561</width>
+    <height>276</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Combo triggering</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <layout class="QHBoxLayout" name="layout1">
+        <item>
+         <widget class="QRadioButton" name="radioComboTriggerAuto">
+          <property name="text">
+           <string>Automatic</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkComboTriggersOnSpace">
+          <property name="text">
+           <string>Trigger only after spacebar is pressed</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkKeepFinalSpaceCharacter">
+          <property name="text">
+           <string>Keep the final space character</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacer1">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layout2">
+        <item>
+         <widget class="QRadioButton" name="radioComboTriggerManual">
+          <property name="text">
+           <string>Manual, using the shortcut</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="editComboTriggerShortcut">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>50</number>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonChangeComboTriggerShortcut">
+          <property name="text">
+           <string>C&amp;hange</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonResetComboTriggerShortcut">
+          <property name="text">
+           <string>De&amp;fault</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacer2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBoxDefaultBehavior">
+     <property name="title">
+      <string>Default behavior</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelMatchingMode">
+        <property name="text">
+         <string>Default matching mode</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboMatchingMode">
+        <property name="sizeAdjustPolicy">
+         <enum>QComboBox::AdjustToContents</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelCaseSensitivity">
+        <property name="text">
+         <string>Default case sensitivity</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="comboCaseSensitivity">
+        <property name="sizeAdjustPolicy">
+         <enum>QComboBox::AdjustToContents</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" rowspan="2">
+       <spacer name="spacer3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupPickerWindow">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Picker window</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <widget class="QCheckBox" name="checkEnablePickerWindow">
+        <property name="text">
+         <string>Enable picker window</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layout3">
+        <item>
+         <widget class="QLabel" name="labelPickerWindowShortcut">
+          <property name="text">
+           <string>Shortcut</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="editPickerWindowShortcut">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>50</number>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonChangePickerWindowShortcut">
+          <property name="text">
+           <string>C&amp;hange</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonResetPickerWindowShortcut">
+          <property name="text">
+           <string>De&amp;fault</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacer4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>radioComboTriggerAuto</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onRadioAutomaticComboTrigger(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>50</x>
+     <y>36</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>280</x>
+     <y>44</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkComboTriggersOnSpace</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onCheckComboTriggersOnSpace(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>192</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>555</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkKeepFinalSpaceCharacter</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onCheckKeepFinalSpace(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>436</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>486</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeComboTriggerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onChangeComboTriggerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>457</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetComboTriggerShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onResetComboTriggerShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>518</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboMatchingMode</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onChangeDefaultMatchingMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>266</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboCaseSensitivity</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onChangeDefaultCaseSensitivity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>155</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkEnablePickerWindow</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onCheckEnablePickerWindow(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>280</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>280</x>
+     <y>137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangePickerWindowShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onChangePickerWindowShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>330</x>
+     <y>255</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>563</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonResetPickerWindowShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneCombos</receiver>
+   <slot>onResetPickerWindowShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>257</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>564</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onRadioAutomaticComboTrigger(bool)</slot>
+  <slot>onCheckComboTriggersOnSpace(bool)</slot>
+  <slot>onCheckKeepFinalSpace(bool)</slot>
+  <slot>onChangeComboTriggerShortcut()</slot>
+  <slot>onResetComboTriggerShortcut()</slot>
+  <slot>onChangeDefaultMatchingMode()</slot>
+  <slot>onChangeDefaultCaseSensitivity()</slot>
+  <slot>onCheckEnablePickerWindow(bool)</slot>
+  <slot>onChangePickerWindowShortcut()</slot>
+  <slot>onResetPickerWindowShortcut()</slot>
+ </slots>
+</ui>

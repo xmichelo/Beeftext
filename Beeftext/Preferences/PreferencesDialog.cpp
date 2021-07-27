@@ -11,8 +11,6 @@
 #include "PreferencesDialog.h"
 #include "I18nManager.h"
 #include "Dialogs/ShortcutDialog.h"
-#include "Combo/CaseSensitivity.h"
-#include "Combo/MatchingMode.h"
 #include "Combo/ComboManager.h"
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
@@ -47,8 +45,6 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    ui_.labelUpdateCheckStatus->setText(QString());
    ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(),
       PreferencesManager::maxDelayBetweenKeystrokesMs());
-   fillMatchingModeCombo(*ui_.comboMatchingMode, false);
-   fillCaseSensitivityCombo(*ui_.comboCaseSensitivity, false);
 
    this->load();
    if (isInPortableMode())
@@ -71,7 +67,9 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
    connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PreferencesDialog::updateGui);
 
    ui_.tabPreferences->setCurrentIndex(0);
-   this->setFixedSize(QDialog::sizeHint());
+   QSize const size = QDialog::sizeHint();
+   this->setMinimumSize(size);
+   this->resize(size);
    this->updateGui();
 }
 
@@ -88,27 +86,17 @@ void PreferencesDialog::load() const
    blocker = QSignalBlocker(ui_.checkAutoStart);
    ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
    blocker = QSignalBlocker(ui_.checkPlaySoundOnCombo);
-   SpShortcut shortcut = prefs_.appEnableDisableShortcut();
+   SpShortcut const shortcut = prefs_.appEnableDisableShortcut();
    blocker = QSignalBlocker(ui_.CheckAppEnableDisable);
    ui_.CheckAppEnableDisable->setChecked(prefs_.enableAppEnableDisableShortcut());
    ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : "");
    ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
-   blocker = QSignalBlocker(ui_.radioComboTriggerAuto);
-   if (prefs_.useAutomaticSubstitution())
-      ui_.radioComboTriggerAuto->setChecked(true);
-   else
-      ui_.radioComboTriggerManual->setChecked(true);
-   shortcut = prefs_.comboTriggerShortcut();
-   ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
-   blocker = QSignalBlocker(ui_.checkEnableComboPicker);
-   ui_.checkEnableComboPicker->setChecked(prefs_.comboPickerEnabled());
-   shortcut = prefs_.comboPickerShortcut();
-   ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
-   selectMatchingModeInCombo(*ui_.comboMatchingMode, prefs_.defaultMatchingMode(), true);
-   selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
 
-   ui_.paneEmojis->load();
-   ui_.paneAppearance->load();
+
+   QList<PrefsPane*> panes = { ui_.paneCombos, ui_.paneEmojis, ui_.paneAppearance };
+   for (PrefsPane* pane: panes)
+      pane->load();
+
    blocker = QSignalBlocker(ui_.spinDelayBetweenKeystrokes);
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
@@ -125,10 +113,6 @@ void PreferencesDialog::load() const
    ui_.checkUseLegacyCopyPaste->setChecked(prefs_.useLegacyCopyPaste());
    blocker = QSignalBlocker(ui_.checkUseShiftInsertForPasting);
    ui_.checkUseShiftInsertForPasting->setChecked(prefs_.useShiftInsertForPasting());
-   blocker = QSignalBlocker(ui_.checkComboTriggersOnSpace);
-   ui_.checkComboTriggersOnSpace->setChecked(prefs_.comboTriggersOnSpace());
-   blocker = QSignalBlocker(ui_.checkKeepFinalSpaceCharacter);
-   ui_.checkKeepFinalSpaceCharacter->setChecked(prefs_.keepFinalSpaceCharacter());
    blocker = QSignalBlocker(ui_.checkUseCustomPowershellVersion);
    ui_.checkUseCustomPowershellVersion->setChecked(prefs_.useCustomPowershellVersion());
    blocker = QSignalBlocker(ui_.editCustomPowerShellPath);
@@ -169,48 +153,15 @@ bool PreferencesDialog::promptForAndRemoveAutoBackups()
 
 
 //**********************************************************************************************************************
-/// \param[in] event The event
-//**********************************************************************************************************************
-void PreferencesDialog::changeEvent(QEvent* event)
-{
-   if (QEvent::LanguageChange == event->type())
-   {
-      ui_.retranslateUi(this);
-      SpShortcut const shortcut = prefs_.comboTriggerShortcut();
-      ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
-
-      fillMatchingModeCombo(*ui_.comboMatchingMode, false);
-      selectMatchingModeInCombo(*ui_.comboMatchingMode, prefs_.defaultMatchingMode(), true);
-
-      fillCaseSensitivityCombo(*ui_.comboCaseSensitivity, false);
-      selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
-   }
-   QDialog::changeEvent(event);
-}
-
-
-//**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
 void PreferencesDialog::updateGui() const
 {
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
-
-   QWidgetList widgets = { ui_.editComboTriggerShortcut, ui_.buttonChangeComboTriggerShortcut, 
-      ui_.buttonResetComboTriggerShortcut };
-   for (QWidget* const widget: widgets)
-      widget->setEnabled(ui_.radioComboTriggerManual->isChecked());
-
-   widgets = { ui_.labelPickerWindowShortcut, ui_.editPickerWindowShortcut, ui_.buttonChangePickerWindowShortcut,
-      ui_.buttonResetPickerWindowShortcut };
-   for (QWidget* const widget: widgets)
-      widget->setEnabled(ui_.checkEnableComboPicker->isChecked());
-
    ui_.frameCustomSound->setEnabled(ui_.checkPlaySoundOnCombo->isChecked());
-
    ui_.frameAppEnableDisableShortcut->setEnabled(ui_.CheckAppEnableDisable->isChecked());
 
-   widgets = { ui_.editCustomBackupLocation, ui_.buttonChangeCustomBackupLocation };
+   QWidgetList widgets = { ui_.editCustomBackupLocation, ui_.buttonChangeCustomBackupLocation };
    for (QWidget* widget: widgets)
       widget->setEnabled(prefs_.useCustomBackupLocation());
 
@@ -218,10 +169,6 @@ void PreferencesDialog::updateGui() const
    widgets = { ui_.editCustomSound, ui_.buttonChangeCustomSound, ui_.buttonPlay };
    for (QWidget* const widget: widgets)
       widget->setEnabled(useCustomSound);
-
-   bool const comboTriggerAuto = ui_.radioComboTriggerAuto->isChecked();
-   ui_.checkComboTriggersOnSpace->setEnabled(comboTriggerAuto);
-   ui_.checkKeepFinalSpaceCharacter->setEnabled(comboTriggerAuto && ui_.checkComboTriggersOnSpace->isChecked());
 
    bool const customPowershell = ui_.checkUseCustomPowershellVersion->isChecked();
    ui_.editCustomPowerShellPath->setEnabled(customPowershell);
@@ -316,56 +263,12 @@ void PreferencesDialog::onPlaySoundButton() const
 
 
 //**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked
-//**********************************************************************************************************************
-void PreferencesDialog::onRadioAutomaticComboTrigger(bool checked) const
-{
-   prefs_.setUseAutomaticSubstitution(checked);
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the check box checked.
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckComboTriggersOnSpace(bool checked) const
-{
-   prefs_.setComboTriggersOnSpace(checked);
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the check box checked.
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckKeepFinalSpace(bool checked) const
-{
-   prefs_.setKeepFinalSpaceCharacter(checked);
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
 /// \param[in] checked Is the check box checked?
 //**********************************************************************************************************************
 void PreferencesDialog::onCheckEnableAppEnableDisableShortcut(bool checked) const
 {
    prefs_.setEnableAppEnableDisableShortcut(checked);
    this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] shortcut The shortcut.
-/// \return true if and only if the user accepted the dialog
-//**********************************************************************************************************************
-bool runShortcutDialog(SpShortcut& shortcut)
-{
-   ShortcutDialog dlg(shortcut);
-   if (QDialog::Accepted != dlg.exec())
-      return false;
-   shortcut = dlg.shortcut();
-   return true;
 }
 
 
@@ -392,82 +295,6 @@ void PreferencesDialog::onResetAppEnableDisableShortcut() const
    ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : ""); 
 }
 
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeComboTriggerShortcut() const
-{
-   SpShortcut shortcut = prefs_.comboTriggerShortcut();
-   if (!runShortcutDialog(shortcut))
-      return;
-   prefs_.setComboTriggerShortcut(shortcut);
-   ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");   
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onResetComboTriggerShortcut() const
-{
-   SpShortcut const shortcut = PreferencesManager::defaultComboTriggerShortcut();
-   prefs_.setComboTriggerShortcut(shortcut);
-   ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");   
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeDefaultMatchingMode() const
-{
-   prefs_.setDefaultMatchingMode(selectedMatchingModeInCombo(*ui_.comboMatchingMode));
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeDefaultCaseSensitivity() const
-{
-   qDebug() << QString("%1()").arg(__FUNCTION__);
-   prefs_.setDefaultCaseSensitivity(selectedCaseSensitivityInCombo(*ui_.comboCaseSensitivity));
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckEnableComboPicker(bool checked) const
-{
-   prefs_.setComboPickerEnabled(checked);
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeComboPickerShortcut() const
-{
-   SpShortcut shortcut = prefs_.comboPickerShortcut();
-   if (!runShortcutDialog(shortcut))
-      return;
-   prefs_.setComboPickerShortcut(shortcut);
-   ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onResetComboPickerShortcut() const
-{
-   SpShortcut const shortcut = PreferencesManager::defaultComboPickerShortcut();
-   prefs_.setComboPickerShortcut(shortcut);
-   ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
-}
 
 
 //**********************************************************************************************************************

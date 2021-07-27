@@ -10,6 +10,9 @@
 #define BEEFTEXT_UTILS_H
 
 
+#include "Shortcut.h"
+
+
 //**********************************************************************************************************************
 /// \brief Enumeration for the source that triggered a combo.
 //**********************************************************************************************************************
@@ -35,5 +38,6 @@ QMimeData* mimeDataFromText(QString const& text); ///< Create a MIME data instan
 QMimeData* mimeDataFromHtml(QString const& html);  ///< Create a MIME data instance for HTML content.
 bool warnAndConvertHtmlCombos(); ///< Warn the user about discontinued rich text combo support and convert them to plain text.
 QString colorToHex(QColor const& color, bool includeAlpha); ///< Get a hex representation of a color.
+bool runShortcutDialog(SpShortcut& shortcut); ///< Runs a dialog allowing the user to select a shortcut.
 
 #endif // #ifndef BEEFTEXT_UTILS_H

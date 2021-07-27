@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "BeeftextUtils.h"
 #include "Combo/ComboManager.h"
+#include "Dialogs/ShortcutDialog.h"
 #include "SensitiveApplicationManager.h"
 #include "InputManager.h"
 #include "Preferences/PreferencesManager.h"
@@ -382,4 +383,18 @@ QString colorToHex(QColor const& color, bool includeAlpha)
    if (includeAlpha)
       result += QString("%1").arg(color.alpha(), 2, 16, zero);
    return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shortcut The shortcut.
+/// \return true if and only if the user accepted the dialog
+//**********************************************************************************************************************
+bool runShortcutDialog(SpShortcut& shortcut)
+{
+   ShortcutDialog dlg(shortcut);
+   if (QDialog::Accepted != dlg.exec())
+      return false;
+   shortcut = dlg.shortcut();
+   return true;
 }
