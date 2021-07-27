@@ -9,12 +9,9 @@
 
 #include "stdafx.h"
 #include "PreferencesDialog.h"
-#include "I18nManager.h"
-#include "Dialogs/ShortcutDialog.h"
 #include "Combo/ComboManager.h"
 #include "Backup/BackupManager.h"
 #include "Backup/BackupRestoreDialog.h"
-#include "Update/UpdateManager.h"
 #include "SensitiveApplicationManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
@@ -25,7 +22,6 @@
 namespace {
 
 
-qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the update check status label is cleared
 QString const kExportFileName = "BeeftextPrefs.json"; ///< The default file name for export/import of preferences.
 
 
@@ -40,28 +36,14 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
      prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
-   this->updateCheckStatusTimer_.setSingleShot(true);
-   connect(&updateCheckStatusTimer_, &QTimer::timeout, [&]() { ui_.labelUpdateCheckStatus->setText(QString()); });
-   ui_.labelUpdateCheckStatus->setText(QString());
    ui_.spinDelayBetweenKeystrokes->setRange(PreferencesManager::minDelayBetweenKeystrokesMs(),
       PreferencesManager::maxDelayBetweenKeystrokesMs());
+   panes_ = { ui_.paneBehavior, ui_.paneCombos, ui_.paneEmojis, ui_.paneAppearance };
 
    this->load();
-   if (isInPortableMode())
-   {
-      QWidgetList widgets = {ui_.checkAutoStart, ui_.frameComboListFolder};
-      for (QWidget* widget: widgets)
-         widget->setVisible(false);
-   }
 
-   // signal mappings for the 'Check now' button
-   UpdateManager& updateManager = UpdateManager::instance();
-   connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);
-   connect(&updateManager, &UpdateManager::startedUpdateCheck, this, &PreferencesDialog::onUpdateCheckStarted);
-   connect(&updateManager, &UpdateManager::finishedUpdateCheck, this, &PreferencesDialog::onUpdateCheckFinished);
-   connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PreferencesDialog::onUpdateIsAvailable);
-   connect(&updateManager, &UpdateManager::noUpdateIsAvailable, this, &PreferencesDialog::onNoUpdateIsAvailable);
-   connect(&updateManager, &UpdateManager::updateCheckFailed, this, &PreferencesDialog::onUpdateCheckFailed);
+   if (isInPortableMode())
+      ui_.frameComboListFolder->setVisible(false);
 
    // We update the GUI when the combo list is saved to proper enable/disable the 'Restore Backup' button
    connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PreferencesDialog::updateGui);
@@ -81,22 +63,10 @@ void PreferencesDialog::load() const
 {
    // ReSharper disable CppEntityAssignedButNoRead
    // ReSharper disable CppAssignedValueIsNeverUsed
-   QSignalBlocker blocker(ui_.checkAutoCheckForUpdates);
-   ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
-   blocker = QSignalBlocker(ui_.checkAutoStart);
-   ui_.checkAutoStart->setChecked(prefs_.autoStartAtLogin());
-   blocker = QSignalBlocker(ui_.checkPlaySoundOnCombo);
-   SpShortcut const shortcut = prefs_.appEnableDisableShortcut();
-   blocker = QSignalBlocker(ui_.CheckAppEnableDisable);
-   ui_.CheckAppEnableDisable->setChecked(prefs_.enableAppEnableDisableShortcut());
-   ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : "");
-   ui_.checkPlaySoundOnCombo->setChecked(prefs_.playSoundOnCombo());
-
-
-   QList<PrefsPane*> panes = { ui_.paneCombos, ui_.paneEmojis, ui_.paneAppearance };
-   for (PrefsPane* pane: panes)
+   for (PrefsPane* pane: panes_)
       pane->load();
 
+   QSignalBlocker blocker(nullptr);
    blocker = QSignalBlocker(ui_.spinDelayBetweenKeystrokes);
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
    ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
@@ -106,9 +76,6 @@ void PreferencesDialog::load() const
    ui_.editCustomBackupLocation->setText(QDir::toNativeSeparators(prefs_.customBackupLocation()));
    blocker = QSignalBlocker(ui_.checkWriteDebugLogFile);
    ui_.checkWriteDebugLogFile->setChecked(prefs_.writeDebugLogFile());
-   blocker = QSignalBlocker(ui_.checkUseCustomSound);
-   ui_.checkUseCustomSound->setChecked(prefs_.useCustomSound());
-   ui_.editCustomSound->setText(QDir::toNativeSeparators(prefs_.customSoundPath()));
    blocker = QSignalBlocker(ui_.checkUseLegacyCopyPaste);
    ui_.checkUseLegacyCopyPaste->setChecked(prefs_.useLegacyCopyPaste());
    blocker = QSignalBlocker(ui_.checkUseShiftInsertForPasting);
@@ -120,17 +87,6 @@ void PreferencesDialog::load() const
    this->updateGui();
    // ReSharper restore CppAssignedValueIsNeverUsed
    // ReSharper restore CppEntityAssignedButNoRead
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] status The status message
-//**********************************************************************************************************************
-void PreferencesDialog::setUpdateCheckStatus(QString const& status)
-{
-   updateCheckStatusTimer_.stop();
-   ui_.labelUpdateCheckStatus->setText(status);
-   updateCheckStatusTimer_.start(kUpdateCheckStatusLabelTimeoutMs);
 }
 
 
@@ -158,17 +114,10 @@ bool PreferencesDialog::promptForAndRemoveAutoBackups()
 void PreferencesDialog::updateGui() const
 {
    ui_.buttonRestoreBackup->setEnabled(BackupManager::instance().backupFileCount());
-   ui_.frameCustomSound->setEnabled(ui_.checkPlaySoundOnCombo->isChecked());
-   ui_.frameAppEnableDisableShortcut->setEnabled(ui_.CheckAppEnableDisable->isChecked());
 
    QWidgetList widgets = { ui_.editCustomBackupLocation, ui_.buttonChangeCustomBackupLocation };
    for (QWidget* widget: widgets)
       widget->setEnabled(prefs_.useCustomBackupLocation());
-
-   bool const useCustomSound = ui_.checkUseCustomSound->isChecked();
-   widgets = { ui_.editCustomSound, ui_.buttonChangeCustomSound, ui_.buttonPlay };
-   for (QWidget* const widget: widgets)
-      widget->setEnabled(useCustomSound);
 
    bool const customPowershell = ui_.checkUseCustomPowershellVersion->isChecked();
    ui_.editCustomPowerShellPath->setEnabled(customPowershell);
@@ -180,121 +129,13 @@ void PreferencesDialog::updateGui() const
 //**********************************************************************************************************************
 /// \return true if and only if the settings are consistant
 //**********************************************************************************************************************
-bool PreferencesDialog::checkAndReportInconsistencies()
+bool PreferencesDialog::validateInput()
 {
-   if (ui_.checkPlaySoundOnCombo->isChecked() && ui_.checkUseCustomSound->isChecked())
-   {
-      QFileInfo const fi(ui_.editCustomSound->text());
-      if ((!fi.exists()) || (!fi.isFile()) || (!fi.isReadable()))
-      {
-         QMessageBox::critical(this, tr("Error"), tr("The path of the custom sound file is invalid."));
+   for (PrefsPane* pane: panes_)
+      if (!pane->validateInput())
          return false;
-      }
-   }
    return true;
 }
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckAutoCheckForUpdates(bool checked) const
-{
-   prefs_.setAutoCheckForUpdates(checked);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckAutoStart(bool checked) const
-{
-   if (!isInPortableMode())
-      prefs_.setAutoStartAtLogin(checked);
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the radio button checked
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckPlaySoundOnCombo(bool checked) const
-{
-   prefs_.setPlaySoundOnCombo(checked);
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the check box checked?
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckUseCustomSound(bool checked) const
-{
-   prefs_.setUseCustomSound(checked);
-   ComboManager::instance().loadSoundFromPreferences();
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeCustomSound() const
-{
-   QString const oldPath = prefs_.customSoundPath();
-   QString const path = QFileDialog::getOpenFileName(nullptr, QObject::tr("Select custom sound file"),   
-      oldPath.isEmpty() ? QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) : oldPath,
-      tr("WAV files (*.wav);;All files (*.*)"));
-   if (path.isEmpty())
-      return;
-   ui_.editCustomSound->setText(QDir::toNativeSeparators(path));
-   prefs_.setCustomSoundPath(path);
-   ComboManager::instance().loadSoundFromPreferences();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onPlaySoundButton() const
-{
-   if (QFileInfo(prefs_.customSoundPath()).exists())
-      ComboManager::instance().playSound();
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] checked Is the check box checked?
-//**********************************************************************************************************************
-void PreferencesDialog::onCheckEnableAppEnableDisableShortcut(bool checked) const
-{
-   prefs_.setEnableAppEnableDisableShortcut(checked);
-   this->updateGui();
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onChangeAppEnableDisableShortcut() const
-{
-   SpShortcut shortcut = prefs_.appEnableDisableShortcut();
-   if (!runShortcutDialog(shortcut))
-      return;
-   prefs_.setAppEnableDisableShortcut(shortcut);
-   ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : ""); 
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesDialog::onResetAppEnableDisableShortcut() const
-{
-   SpShortcut const shortcut = PreferencesManager::defaultAppEnableDisableShortcut();
-   prefs_.setAppEnableDisableShortcut(shortcut);
-   ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : ""); 
-}
-
 
 
 //**********************************************************************************************************************
@@ -431,57 +272,9 @@ void PreferencesDialog::onResetWarnings()
 //**********************************************************************************************************************
 void PreferencesDialog::onClose()
 {
-   if (this->checkAndReportInconsistencies())
+   if (this->validateInput())
       this->close();
 }
-
-
-//**********************************************************************************************************************
-/// \param[in] latestVersionInfo The latest version information
-//**********************************************************************************************************************
-void PreferencesDialog::onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo)
-{
-   this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2.%3 is available.").arg(constants::kApplicationName)
-      .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor())
-      : tr("A new version is available."));
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onNoUpdateIsAvailable()
-{
-   this->setUpdateCheckStatus(tr("The software is up to date."));
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onUpdateCheckStarted() const
-{
-   ui_.buttonCheckNow->setEnabled(false);
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onUpdateCheckFinished() const
-{
-   ui_.buttonCheckNow->setEnabled(true);
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void PreferencesDialog::onUpdateCheckFailed()
-{
-   this->setUpdateCheckStatus(tr("Update check failed."));
-}
-
 
 //**********************************************************************************************************************
 //

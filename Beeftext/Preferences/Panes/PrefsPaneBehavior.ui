@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefsPaneBehavior</class>
+ <widget class="QFrame" name="PrefsPaneBehavior">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>708</width>
+    <height>170</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="layout2" stretch="0,0,1">
+     <item>
+      <widget class="QCheckBox" name="checkAutoCheckForUpdates">
+       <property name="text">
+        <string>Automatically check for &amp;updates</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonCheckNow">
+       <property name="text">
+        <string>&amp;Check Now</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelUpdateCheckStatus">
+       <property name="text">
+        <string notr="true">#Update Check Status#</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkAutoStart">
+     <property name="text">
+      <string>&amp;Automatically start Beeftext at login</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkPlaySoundOnCombo">
+     <property name="text">
+      <string>&amp;Play sound on combo</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkUseCustomSound">
+     <property name="text">
+      <string>Use custom sound</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frameCustomSound">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="editCustomSound">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonChangeCustomSound">
+        <property name="text">
+         <string>Cha&amp;nge</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonPlay">
+        <property name="text">
+         <string>&amp;Play</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="layout3" stretch="0,0">
+     <item>
+      <widget class="QCheckBox" name="checkAppEnableDisable">
+       <property name="text">
+        <string>Use shortcut to enable/disable Beeftext</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frameAppEnableDisableShortcut">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLineEdit" name="editAppEnableDisableShortcut">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>50</number>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonChangeAppEnableDisableShortcut">
+          <property name="text">
+           <string>&amp;Change</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonDefaultAppEnableDisableShortcut">
+          <property name="text">
+           <string>&amp;Default</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>checkAutoCheckForUpdates</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onCheckAutoCheckForUpdates(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>144</x>
+     <y>18</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>161</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkAutoStart</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onCheckAutoStart(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>183</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>214</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkPlaySoundOnCombo</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onCheckPlaySoundOnCombo(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>108</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>369</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkUseCustomSound</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onCheckUseCustomSound(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>54</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>474</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeCustomSound</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onChangeCustomSound()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>582</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>707</x>
+     <y>101</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonPlay</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onPlaySoundButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>669</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>707</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkAppEnableDisable</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>162</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>223</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonChangeAppEnableDisableShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onChangeAppEnableDisableShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>600</x>
+     <y>154</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonDefaultAppEnableDisableShortcut</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefsPaneBehavior</receiver>
+   <slot>onResetAppEnableDisableShortcut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>651</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>684</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onCheckAutoCheckForUpdates(bool)</slot>
+  <slot>onCheckAutoStart(bool)</slot>
+  <slot>onCheckPlaySoundOnCombo(bool)</slot>
+  <slot>onCheckUseCustomSound(bool)</slot>
+  <slot>onChangeCustomSound()</slot>
+  <slot>onPlaySoundButton()</slot>
+  <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
+  <slot>onChangeAppEnableDisableShortcut()</slot>
+  <slot>onResetAppEnableDisableShortcut()</slot>
+ </slots>
+</ui>

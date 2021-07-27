@@ -25,6 +25,7 @@ public: // member functions
    PrefsPane& operator=(PrefsPane const&) = delete; ///< Disabled assignment operator.
    PrefsPane& operator=(PrefsPane&&) = delete; ///< Disabled move assignment operator.
    virtual void load() const = 0; ///< load the preferences.
+   virtual bool validateInput() { return true; } ///< Validate the user input
 };
 
 

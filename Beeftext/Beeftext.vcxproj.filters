@@ -202,6 +202,9 @@
     <ClCompile Include="Preferences\Panes\PrefsPaneCombos.cpp">
       <Filter>Preferences\Panes</Filter>
     </ClCompile>
+    <ClCompile Include="Preferences\Panes\PrefsPaneBehavior.cpp">
+      <Filter>Preferences\Panes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -456,6 +459,9 @@
     <QtMoc Include="Preferences\Panes\PrefsPaneCombos.h">
       <Filter>Generated Files</Filter>
     </QtMoc>
+    <QtMoc Include="Preferences\Panes\PrefsPaneBehavior.h">
+      <Filter>Generated Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Combo\ComboEditor.ui">
@@ -480,6 +486,9 @@
       <Filter>Preferences\Panes</Filter>
     </QtUic>
     <QtUic Include="Preferences\Panes\PrefsPaneCombos.ui">
+      <Filter>Preferences\Panes</Filter>
+    </QtUic>
+    <QtUic Include="Preferences\Panes\PrefsPaneBehavior.ui">
       <Filter>Preferences\Panes</Filter>
     </QtUic>
   </ItemGroup>

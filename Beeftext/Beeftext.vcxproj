@@ -307,6 +307,7 @@
     <ClCompile Include="Picker\PickerWindow.cpp" />
     <ClCompile Include="Picker\PickerWindowMoverResizer.cpp" />
     <ClCompile Include="Preferences\Panes\PrefsPaneAppearance.cpp" />
+    <ClCompile Include="Preferences\Panes\PrefsPaneBehavior.cpp" />
     <ClCompile Include="Preferences\Panes\PrefsPaneCombos.cpp" />
     <ClCompile Include="Preferences\Panes\PrefsPaneEmojis.cpp" />
     <ClCompile Include="Preferences\PreferencesDialog.cpp" />
@@ -346,6 +347,7 @@
     <QtMoc Include="Preferences\Panes\PrefsPane.h" />
     <QtMoc Include="Preferences\Panes\PrefsPaneAppearance.h" />
     <QtMoc Include="Preferences\Panes\PrefsPaneCombos.h" />
+    <QtMoc Include="Preferences\Panes\PrefsPaneBehavior.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />
     <QtMoc Include="Combo\ComboEditor.h">
@@ -483,6 +485,7 @@
   <ItemGroup>
     <QtUic Include="Picker\PickerWindow.ui" />
     <QtUic Include="Preferences\Panes\PrefsPaneAppearance.ui" />
+    <QtUic Include="Preferences\Panes\PrefsPaneBehavior.ui" />
     <QtUic Include="Preferences\Panes\PrefsPaneCombos.ui" />
     <QtUic Include="Preferences\Panes\PrefsPaneEmojis.ui" />
     <QtUic Include="Preferences\PreferencesDialog.ui" />
