@@ -75,12 +75,14 @@ void PrefPaneBehavior::load() const
 //**********************************************************************************************************************
 void PrefPaneBehavior::updateGui() const
 {
-      ui_.frameCustomSound->setEnabled(ui_.checkPlaySoundOnCombo->isChecked());
-      bool const useCustomSound = ui_.checkUseCustomSound->isChecked();
-      QWidgetList widgets = { ui_.editCustomSound, ui_.buttonChangeCustomSound, ui_.buttonPlay };
-      for (QWidget* const widget: widgets)
-         widget->setEnabled(useCustomSound);
-      ui_.frameAppEnableDisableShortcut->setEnabled(ui_.checkAppEnableDisable->isChecked());
+   bool const playSound = ui_.checkPlaySoundOnCombo->isChecked();
+   ui_.checkUseCustomSound->setEnabled(playSound);
+   ui_.frameCustomSound->setEnabled(playSound);
+   bool const useCustomSound = ui_.checkUseCustomSound->isChecked();
+   QWidgetList widgets = { ui_.editCustomSound, ui_.buttonChangeCustomSound, ui_.buttonPlay };
+   for (QWidget* const widget: widgets)
+      widget->setEnabled(useCustomSound);
+   ui_.frameAppEnableDisableShortcut->setEnabled(ui_.checkAppEnableDisable->isChecked());
 }
 
 
@@ -156,6 +158,7 @@ void PrefPaneBehavior::onCheckAutoStart(bool checked) const
 void PrefPaneBehavior::onCheckPlaySoundOnCombo(bool checked) const
 {
    prefs_.setPlaySoundOnCombo(checked);
+   ComboManager::instance().loadSoundFromPreferences();
    this->updateGui();
 }
 
