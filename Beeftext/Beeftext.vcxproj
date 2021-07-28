@@ -306,11 +306,11 @@
     <ClCompile Include="Picker\PickerSortFilterProxyModel.cpp" />
     <ClCompile Include="Picker\PickerWindow.cpp" />
     <ClCompile Include="Picker\PickerWindowMoverResizer.cpp" />
-    <ClCompile Include="Preferences\Panes\PrefsPaneAdvanced.cpp" />
-    <ClCompile Include="Preferences\Panes\PrefsPaneAppearance.cpp" />
-    <ClCompile Include="Preferences\Panes\PrefsPaneBehavior.cpp" />
-    <ClCompile Include="Preferences\Panes\PrefsPaneCombos.cpp" />
-    <ClCompile Include="Preferences\Panes\PrefsPaneEmojis.cpp" />
+    <ClCompile Include="Preferences\Panes\PrefPaneAdvanced.cpp" />
+    <ClCompile Include="Preferences\Panes\PrefPaneAppearance.cpp" />
+    <ClCompile Include="Preferences\Panes\PrefPaneBehavior.cpp" />
+    <ClCompile Include="Preferences\Panes\PrefPaneCombos.cpp" />
+    <ClCompile Include="Preferences\Panes\PrefPaneEmojis.cpp" />
     <ClCompile Include="Preferences\PreferencesDialog.cpp" />
     <ClCompile Include="Preferences\PreferencesManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
@@ -344,12 +344,12 @@
     <ClInclude Include="Picker\PickerWindowMoverResizer.h" />
     <QtMoc Include="Preferences\PreferencesDialog.h" />
     <QtMoc Include="Preferences\PreferencesManager.h" />
-    <QtMoc Include="Preferences\Panes\PrefsPaneEmojis.h" />
-    <QtMoc Include="Preferences\Panes\PrefsPane.h" />
-    <QtMoc Include="Preferences\Panes\PrefsPaneAppearance.h" />
-    <QtMoc Include="Preferences\Panes\PrefsPaneCombos.h" />
-    <QtMoc Include="Preferences\Panes\PrefsPaneBehavior.h" />
-    <QtMoc Include="Preferences\Panes\PrefsPaneAdvanced.h" />
+    <QtMoc Include="Preferences\Panes\PrefPaneEmojis.h" />
+    <QtMoc Include="Preferences\Panes\PrefPane.h" />
+    <QtMoc Include="Preferences\Panes\PrefPaneAppearance.h" />
+    <QtMoc Include="Preferences\Panes\PrefPaneCombos.h" />
+    <QtMoc Include="Preferences\Panes\PrefPaneBehavior.h" />
+    <QtMoc Include="Preferences\Panes\PrefPaneAdvanced.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />
     <QtMoc Include="Combo\ComboEditor.h">
@@ -486,11 +486,11 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Picker\PickerWindow.ui" />
-    <QtUic Include="Preferences\Panes\PrefsPaneAdvanced.ui" />
-    <QtUic Include="Preferences\Panes\PrefsPaneAppearance.ui" />
-    <QtUic Include="Preferences\Panes\PrefsPaneBehavior.ui" />
-    <QtUic Include="Preferences\Panes\PrefsPaneCombos.ui" />
-    <QtUic Include="Preferences\Panes\PrefsPaneEmojis.ui" />
+    <QtUic Include="Preferences\Panes\PrefPaneAdvanced.ui" />
+    <QtUic Include="Preferences\Panes\PrefPaneAppearance.ui" />
+    <QtUic Include="Preferences\Panes\PrefPaneBehavior.ui" />
+    <QtUic Include="Preferences\Panes\PrefPaneCombos.ui" />
+    <QtUic Include="Preferences\Panes\PrefPaneEmojis.ui" />
     <QtUic Include="Preferences\PreferencesDialog.ui" />
     <QtUic Include="Update\UpdateDialog.ui">
     </QtUic>

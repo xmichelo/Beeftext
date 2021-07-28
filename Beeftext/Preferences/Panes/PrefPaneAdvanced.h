@@ -11,24 +11,24 @@
 #define BEEFTEXT_PREFS_PANE_ADVANCED_H
 
 
-#include "PrefsPane.h"
-#include "ui_PrefsPaneAdvanced.h"
+#include "PrefPane.h"
+#include "ui_PrefPaneAdvanced.h"
 #include "Preferences/PreferencesManager.h"
 
 
 //**********************************************************************************************************************
 /// \brief The advanced preference pane.
 //**********************************************************************************************************************
-class PrefsPaneAdvanced: public PrefsPane
+class PrefPaneAdvanced: public PrefPane
 {
    Q_OBJECT
 public: // member functions
-   explicit PrefsPaneAdvanced(QWidget* parent = nullptr); ///< Default constructor.
-   PrefsPaneAdvanced(PrefsPaneAdvanced const&) = delete; ///< Disabled copy-constructor.
-   PrefsPaneAdvanced(PrefsPaneAdvanced&&) = delete; ///< Disabled assignment copy-constructor.
-   ~PrefsPaneAdvanced() override = default; ///< Destructor.
-   PrefsPaneAdvanced& operator=(PrefsPaneAdvanced const&) = delete; ///< Disabled assignment operator.
-   PrefsPaneAdvanced& operator=(PrefsPaneAdvanced&&) = delete; ///< Disabled move assignment operator.
+   explicit PrefPaneAdvanced(QWidget* parent = nullptr); ///< Default constructor.
+   PrefPaneAdvanced(PrefPaneAdvanced const&) = delete; ///< Disabled copy-constructor.
+   PrefPaneAdvanced(PrefPaneAdvanced&&) = delete; ///< Disabled assignment copy-constructor.
+   ~PrefPaneAdvanced() override = default; ///< Destructor.
+   PrefPaneAdvanced& operator=(PrefPaneAdvanced const&) = delete; ///< Disabled assignment operator.
+   PrefPaneAdvanced& operator=(PrefPaneAdvanced&&) = delete; ///< Disabled move assignment operator.
    void load() const override;
 
 private slots:
@@ -52,7 +52,7 @@ private: // member functions
    bool promptForAndRemoveAutoBackups(); ///< Ask the user if automatic backups should be deleted and if so, performs the operation
 
 private: // data members
-   Ui::PrefsPaneAdvanced ui_ {}; ///< The GUI of the pane.
+   Ui::PrefPaneAdvanced ui_ {}; ///< The GUI of the pane.
    PreferencesManager& prefs_; ///< The preferences manager.
 };
 

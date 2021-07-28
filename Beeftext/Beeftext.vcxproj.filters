@@ -193,19 +193,19 @@
     <ClCompile Include="Dialogs\VariableInputDialog.cpp">
       <Filter>Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="Preferences\Panes\PrefsPaneEmojis.cpp">
+    <ClCompile Include="Preferences\Panes\PrefPaneEmojis.cpp">
       <Filter>Preferences\Panes</Filter>
     </ClCompile>
-    <ClCompile Include="Preferences\Panes\PrefsPaneAppearance.cpp">
+    <ClCompile Include="Preferences\Panes\PrefPaneAppearance.cpp">
       <Filter>Preferences\Panes</Filter>
     </ClCompile>
-    <ClCompile Include="Preferences\Panes\PrefsPaneCombos.cpp">
+    <ClCompile Include="Preferences\Panes\PrefPaneCombos.cpp">
       <Filter>Preferences\Panes</Filter>
     </ClCompile>
-    <ClCompile Include="Preferences\Panes\PrefsPaneBehavior.cpp">
+    <ClCompile Include="Preferences\Panes\PrefPaneBehavior.cpp">
       <Filter>Preferences\Panes</Filter>
     </ClCompile>
-    <ClCompile Include="Preferences\Panes\PrefsPaneAdvanced.cpp">
+    <ClCompile Include="Preferences\Panes\PrefPaneAdvanced.cpp">
       <Filter>Preferences\Panes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -450,22 +450,22 @@
     <QtMoc Include="Dialogs\VariableInputDialog.h">
       <Filter>Dialogs</Filter>
     </QtMoc>
-    <QtMoc Include="Preferences\Panes\PrefsPaneEmojis.h">
+    <QtMoc Include="Preferences\Panes\PrefPaneEmojis.h">
       <Filter>Preferences\Panes</Filter>
     </QtMoc>
-    <QtMoc Include="Preferences\Panes\PrefsPane.h">
+    <QtMoc Include="Preferences\Panes\PrefPane.h">
       <Filter>Preferences\Panes</Filter>
     </QtMoc>
-    <QtMoc Include="Preferences\Panes\PrefsPaneAppearance.h">
+    <QtMoc Include="Preferences\Panes\PrefPaneAppearance.h">
       <Filter>Preferences\Panes</Filter>
     </QtMoc>
-    <QtMoc Include="Preferences\Panes\PrefsPaneCombos.h">
-      <Filter>Generated Files</Filter>
+    <QtMoc Include="Preferences\Panes\PrefPaneAdvanced.h">
+      <Filter>Preferences\Panes</Filter>
     </QtMoc>
-    <QtMoc Include="Preferences\Panes\PrefsPaneBehavior.h">
-      <Filter>Generated Files</Filter>
+    <QtMoc Include="Preferences\Panes\PrefPaneBehavior.h">
+      <Filter>Preferences\Panes</Filter>
     </QtMoc>
-    <QtMoc Include="Preferences\Panes\PrefsPaneAdvanced.h">
+    <QtMoc Include="Preferences\Panes\PrefPaneCombos.h">
       <Filter>Preferences\Panes</Filter>
     </QtMoc>
   </ItemGroup>
@@ -485,19 +485,19 @@
     <QtUic Include="Dialogs\ShortcutDialog.ui">
       <Filter>Dialogs</Filter>
     </QtUic>
-    <QtUic Include="Preferences\Panes\PrefsPaneEmojis.ui">
+    <QtUic Include="Preferences\Panes\PrefPaneEmojis.ui">
       <Filter>Preferences\Panes</Filter>
     </QtUic>
-    <QtUic Include="Preferences\Panes\PrefsPaneAppearance.ui">
+    <QtUic Include="Preferences\Panes\PrefPaneAppearance.ui">
       <Filter>Preferences\Panes</Filter>
     </QtUic>
-    <QtUic Include="Preferences\Panes\PrefsPaneCombos.ui">
+    <QtUic Include="Preferences\Panes\PrefPaneCombos.ui">
       <Filter>Preferences\Panes</Filter>
     </QtUic>
-    <QtUic Include="Preferences\Panes\PrefsPaneBehavior.ui">
+    <QtUic Include="Preferences\Panes\PrefPaneBehavior.ui">
       <Filter>Preferences\Panes</Filter>
     </QtUic>
-    <QtUic Include="Preferences\Panes\PrefsPaneAdvanced.ui">
+    <QtUic Include="Preferences\Panes\PrefPaneAdvanced.ui">
       <Filter>Preferences\Panes</Filter>
     </QtUic>
   </ItemGroup>

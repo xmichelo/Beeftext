@@ -11,24 +11,24 @@
 #define BEEFTEXT_PREFS_PANE_APPEARANCE_H
 
 
-#include "PrefsPane.h"
-#include "ui_PrefsPaneAppearance.h"
+#include "PrefPane.h"
+#include "ui_PrefPaneAppearance.h"
 #include "Preferences/PreferencesManager.h"
 
 
 //**********************************************************************************************************************
 /// \brief The appearance preferences pane.
 //**********************************************************************************************************************
-class PrefsPaneAppearance: public PrefsPane
+class PrefPaneAppearance: public PrefPane
 {
    Q_OBJECT
 public: // member functions
-   explicit PrefsPaneAppearance(QWidget* parent = nullptr); ///< Default constructor.
-   PrefsPaneAppearance(PrefsPaneAppearance const&) = delete; ///< Disabled copy-constructor.
-   PrefsPaneAppearance(PrefsPaneAppearance&&) = delete; ///< Disabled assignment copy-constructor.
-   ~PrefsPaneAppearance() override = default; ///< Destructor.
-   PrefsPaneAppearance& operator=(PrefsPaneAppearance const&) = delete; ///< Disabled assignment operator.
-   PrefsPaneAppearance& operator=(PrefsPaneAppearance&&) = delete; ///< Disabled move assignment operator.
+   explicit PrefPaneAppearance(QWidget* parent = nullptr); ///< Default constructor.
+   PrefPaneAppearance(PrefPaneAppearance const&) = delete; ///< Disabled copy-constructor.
+   PrefPaneAppearance(PrefPaneAppearance&&) = delete; ///< Disabled assignment copy-constructor.
+   ~PrefPaneAppearance() override = default; ///< Destructor.
+   PrefPaneAppearance& operator=(PrefPaneAppearance const&) = delete; ///< Disabled assignment operator.
+   PrefPaneAppearance& operator=(PrefPaneAppearance&&) = delete; ///< Disabled move assignment operator.
    void load() const override; ///< Load the content of the preference pane.
 
 private slots:
@@ -43,7 +43,7 @@ private: // member functions
    void changeEvent(QEvent* event) override; ///< Change event handler
 
 private: // data members
-   Ui::PrefsPaneAppearance ui_ {}; ///< The GUI for the pane.
+   Ui::PrefPaneAppearance ui_ {}; ///< The GUI for the pane.
    PreferencesManager& prefs_; ///< The preferences manager.
 };
 

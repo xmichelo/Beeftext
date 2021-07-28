@@ -8,7 +8,7 @@
 
 
 #include "stdafx.h"
-#include "PrefsPaneAdvanced.h"
+#include "PrefPaneAdvanced.h"
 #include "Combo/ComboManager.h"
 #include "SensitiveApplicationManager.h"
 #include "Backup/BackupRestoreDialog.h"
@@ -20,8 +20,8 @@
 //**********************************************************************************************************************
 ///\ param[in] parent The parent widget of the pane.
 //**********************************************************************************************************************
-PrefsPaneAdvanced::PrefsPaneAdvanced(QWidget* parent)
-   : PrefsPane(parent)
+PrefPaneAdvanced::PrefPaneAdvanced(QWidget* parent)
+   : PrefPane(parent)
    , prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
@@ -31,14 +31,14 @@ PrefsPaneAdvanced::PrefsPaneAdvanced(QWidget* parent)
       ui_.frameComboListFolder->setVisible(false);
 
    // We update the GUI when the combo list is saved to proper enable/disable the 'Restore Backup' button
-   connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PrefsPaneAdvanced::updateGui);
+   connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PrefPaneAdvanced::updateGui);
 }
 
 
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::load() const
+void PrefPaneAdvanced::load() const
 {
    QSignalBlocker blocker(ui_.spinDelayBetweenKeystrokes);
    ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
@@ -65,7 +65,7 @@ void PrefsPaneAdvanced::load() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::updateGui() const
+void PrefPaneAdvanced::updateGui() const
 {
    bool const customPowershell = ui_.checkUseCustomPowershellVersion->isChecked();
    ui_.editCustomPowerShellPath->setEnabled(customPowershell);
@@ -80,7 +80,7 @@ void PrefsPaneAdvanced::updateGui() const
 //**********************************************************************************************************************
 /// \param[in] value The new value.
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onSpinDelayBetweenKeystrokesChanged(int value) const
+void PrefPaneAdvanced::onSpinDelayBetweenKeystrokesChanged(int value) const
 {
    prefs_.setDelayBetweenKeystrokesMs(value);
 }
@@ -89,7 +89,7 @@ void PrefsPaneAdvanced::onSpinDelayBetweenKeystrokesChanged(int value) const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onChangeComboListFolder()
+void PrefPaneAdvanced::onChangeComboListFolder()
 {
    QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), prefs_.comboListFolderPath());
    if (path.trimmed().isEmpty())
@@ -106,7 +106,7 @@ void PrefsPaneAdvanced::onChangeComboListFolder()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onResetComboListFolder()
+void PrefPaneAdvanced::onResetComboListFolder()
 {
    if (QMessageBox::Yes != QMessageBox::question(this, tr("Reset Folder"), tr("Reset the combo list folder?")))
       return;
@@ -125,7 +125,7 @@ void PrefsPaneAdvanced::onResetComboListFolder()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onOpenComboListFolder() const
+void PrefPaneAdvanced::onOpenComboListFolder() const
 {
    QString const path = QDir::fromNativeSeparators(ui_.editComboListFolder->text());
    if (QDir(path).exists())
@@ -136,7 +136,7 @@ void PrefsPaneAdvanced::onOpenComboListFolder() const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked?
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onCheckWriteDebugLogFile(bool checked) const
+void PrefPaneAdvanced::onCheckWriteDebugLogFile(bool checked) const
 {
    prefs_.setWriteDebugLogFile(checked);
    xmilib::DebugLog& log = globals::debugLog();
@@ -150,7 +150,7 @@ void PrefsPaneAdvanced::onCheckWriteDebugLogFile(bool checked) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked?
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onCheckUseLegacyCopyPaste(bool checked) const
+void PrefPaneAdvanced::onCheckUseLegacyCopyPaste(bool checked) const
 {
    prefs_.setUseLegacyCopyPaste(checked);
 }
@@ -159,7 +159,7 @@ void PrefsPaneAdvanced::onCheckUseLegacyCopyPaste(bool checked) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked?
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onCheckUseShiftInsertForPasting(bool checked) const
+void PrefPaneAdvanced::onCheckUseShiftInsertForPasting(bool checked) const
 {
    prefs_.setUseShiftInsertForPasting(checked);
 }
@@ -168,7 +168,7 @@ void PrefsPaneAdvanced::onCheckUseShiftInsertForPasting(bool checked) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked.
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onCheckUseCustomPowerShellVersion(bool checked)
+void PrefPaneAdvanced::onCheckUseCustomPowerShellVersion(bool checked)
 {
    if (checked)
    {
@@ -192,7 +192,7 @@ void PrefsPaneAdvanced::onCheckUseCustomPowerShellVersion(bool checked)
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onChangeCustomPowershellVersion()
+void PrefPaneAdvanced::onChangeCustomPowershellVersion()
 {
    QString const path = QFileDialog::getOpenFileName(this, tr("Select PowerShell executable"), QString(),
       tr("Executable files (*.exe);;All files (*.*)"));
@@ -207,7 +207,7 @@ void PrefsPaneAdvanced::onChangeCustomPowershellVersion()
 //**********************************************************************************************************************
 /// \param[in] value Is the radio button checked?
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onCheckAutoBackup(bool value)
+void PrefPaneAdvanced::onCheckAutoBackup(bool value)
 {
    if (!value)
    {
@@ -225,7 +225,7 @@ void PrefsPaneAdvanced::onCheckAutoBackup(bool value)
 //**********************************************************************************************************************
 /// \param[in] value The check state of the box.
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onCheckUseCustomBackupLocation(bool value) const
+void PrefPaneAdvanced::onCheckUseCustomBackupLocation(bool value) const
 {
    prefs_.setUseCustomBackupLocation(value);
    this->updateGui();
@@ -235,7 +235,7 @@ void PrefsPaneAdvanced::onCheckUseCustomBackupLocation(bool value) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onChangeCustomBackupLocation()
+void PrefPaneAdvanced::onChangeCustomBackupLocation()
 {
    QString const path = QFileDialog::getExistingDirectory(this, tr("Custom backup location"),
       prefs_.customBackupLocation());
@@ -250,7 +250,7 @@ void PrefsPaneAdvanced::onChangeCustomBackupLocation()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onRestoreBackup()
+void PrefPaneAdvanced::onRestoreBackup()
 {
    BackupRestoreDialog::run(this);
 }
@@ -259,7 +259,7 @@ void PrefsPaneAdvanced::onRestoreBackup()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAdvanced::onEditSensitiveApplications()
+void PrefPaneAdvanced::onEditSensitiveApplications()
 {
    SensitiveApplicationManager::instance().runDialog(this);
 }
@@ -269,7 +269,7 @@ void PrefsPaneAdvanced::onEditSensitiveApplications()
 /// \return true if the used picked Yes or No
 /// \return false if the user selected Cancel
 //**********************************************************************************************************************
-bool PrefsPaneAdvanced::promptForAndRemoveAutoBackups()
+bool PrefPaneAdvanced::promptForAndRemoveAutoBackups()
 {
    BackupManager& backupManager = BackupManager::instance();
    qint32 const reply = QMessageBox::question(this, tr("Delete Backup Files?"), tr("Do you want to delete all the "

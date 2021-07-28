@@ -11,25 +11,25 @@
 #define BEEFTEXT_PREFS_PANE_BEHAVIOR_H
 
 
-#include "PrefsPane.h"
+#include "PrefPane.h"
 #include "Preferences/PreferencesManager.h"
 #include "Update/UpdateManager.h"
-#include "ui_PrefsPaneBehavior.h"
+#include "ui_PrefPaneBehavior.h"
 
 
 //**********************************************************************************************************************
 /// \brief Behavior preferences pane.
 //**********************************************************************************************************************
-class PrefsPaneBehavior: public PrefsPane
+class PrefPaneBehavior: public PrefPane
 {
    Q_OBJECT
 public: // member functions
-   explicit PrefsPaneBehavior(QWidget* parent = nullptr); ///< Default constructor.
-   PrefsPaneBehavior(PrefsPaneBehavior const&) = delete; ///< Disabled copy-constructor.
-   PrefsPaneBehavior(PrefsPaneBehavior&&) = delete; ///< Disabled assignment copy-constructor.
-   ~PrefsPaneBehavior() override = default; ///< Destructor.
-   PrefsPaneBehavior& operator=(PrefsPaneBehavior const&) = delete; ///< Disabled assignment operator.
-   PrefsPaneBehavior& operator=(PrefsPaneBehavior&&) = delete; ///< Disabled move assignment operator.
+   explicit PrefPaneBehavior(QWidget* parent = nullptr); ///< Default constructor.
+   PrefPaneBehavior(PrefPaneBehavior const&) = delete; ///< Disabled copy-constructor.
+   PrefPaneBehavior(PrefPaneBehavior&&) = delete; ///< Disabled assignment copy-constructor.
+   ~PrefPaneBehavior() override = default; ///< Destructor.
+   PrefPaneBehavior& operator=(PrefPaneBehavior const&) = delete; ///< Disabled assignment operator.
+   PrefPaneBehavior& operator=(PrefPaneBehavior&&) = delete; ///< Disabled move assignment operator.
    void load() const override; ///< Load the content of the pane.
 
 private slots:
@@ -54,7 +54,7 @@ private: // member functions
    bool validateInput() override; ///< Validate the user input.
 
 private: // data members
-   Ui::PrefsPaneBehavior ui_ {}; ///< The GUI for the pane.
+   Ui::PrefPaneBehavior ui_ {}; ///< The GUI for the pane.
    PreferencesManager& prefs_; ///< The preferences manager.
    QTimer updateCheckStatusTimer_; ///< The timer for clearing the update check status label
 

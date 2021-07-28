@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PrefsPaneAppearance</class>
- <widget class="QFrame" name="PrefsPaneAppearance">
+ <class>PrefPaneAppearance</class>
+ <widget class="QFrame" name="PrefPaneAppearance">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -151,7 +151,7 @@
   <connection>
    <sender>comboLocale</sender>
    <signal>currentIndexChanged(int)</signal>
-   <receiver>PrefsPaneAppearance</receiver>
+   <receiver>PrefPaneAppearance</receiver>
    <slot>onComboLanguageValueChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -167,7 +167,7 @@
   <connection>
    <sender>buttonRefresh</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAppearance</receiver>
+   <receiver>PrefPaneAppearance</receiver>
    <slot>onRefreshLanguageList()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -183,7 +183,7 @@
   <connection>
    <sender>buttonTranslationFolder</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAppearance</receiver>
+   <receiver>PrefPaneAppearance</receiver>
    <slot>onOpenTranslationFolder()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -199,7 +199,7 @@
   <connection>
    <sender>comboTheme</sender>
    <signal>currentIndexChanged(int)</signal>
-   <receiver>PrefsPaneAppearance</receiver>
+   <receiver>PrefPaneAppearance</receiver>
    <slot>onComboThemeValueChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -215,7 +215,7 @@
   <connection>
    <sender>checkUseCustomTheme</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneAppearance</receiver>
+   <receiver>PrefPaneAppearance</receiver>
    <slot>onCheckUseCustomTheme(bool)</slot>
    <hints>
     <hint type="sourcelabel">

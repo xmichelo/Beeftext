@@ -45,7 +45,7 @@ private: // data members
    Ui::PreferencesDialog ui_ {}; ///< The GUI for the dialog
    PreferencesManager& prefs_; ///< The preferences manager
    QString previousComboListPath_; ///< The previous path of the combo list
-   QList<PrefsPane*> panes_; ///< The preference panes
+   QList<PrefPane*> panes_; ///< The preference panes
 };
 
 

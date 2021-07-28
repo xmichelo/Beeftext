@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PrefsPaneBehavior</class>
- <widget class="QFrame" name="PrefsPaneBehavior">
+ <class>PrefPaneBehavior</class>
+ <widget class="QFrame" name="PrefPaneBehavior">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -201,7 +201,7 @@
   <connection>
    <sender>checkAutoCheckForUpdates</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onCheckAutoCheckForUpdates(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -217,7 +217,7 @@
   <connection>
    <sender>checkAutoStart</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onCheckAutoStart(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -233,7 +233,7 @@
   <connection>
    <sender>checkPlaySoundOnCombo</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onCheckPlaySoundOnCombo(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -249,7 +249,7 @@
   <connection>
    <sender>checkUseCustomSound</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onCheckUseCustomSound(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -265,7 +265,7 @@
   <connection>
    <sender>buttonChangeCustomSound</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onChangeCustomSound()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -281,7 +281,7 @@
   <connection>
    <sender>buttonPlay</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onPlaySoundButton()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -297,7 +297,7 @@
   <connection>
    <sender>checkAppEnableDisable</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onCheckEnableAppEnableDisableShortcut(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -313,7 +313,7 @@
   <connection>
    <sender>buttonChangeAppEnableDisableShortcut</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onChangeAppEnableDisableShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -329,7 +329,7 @@
   <connection>
    <sender>buttonDefaultAppEnableDisableShortcut</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneBehavior</receiver>
+   <receiver>PrefPaneBehavior</receiver>
    <slot>onResetAppEnableDisableShortcut()</slot>
    <hints>
     <hint type="sourcelabel">

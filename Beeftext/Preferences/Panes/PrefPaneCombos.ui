@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PrefsPaneCombos</class>
- <widget class="QFrame" name="PrefsPaneCombos">
+ <class>PrefPaneCombos</class>
+ <widget class="QFrame" name="PrefPaneCombos">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -290,7 +290,7 @@
   <connection>
    <sender>radioComboTriggerAuto</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onRadioAutomaticComboTrigger(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -306,7 +306,7 @@
   <connection>
    <sender>checkComboTriggersOnSpace</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onCheckComboTriggersOnSpace(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -322,7 +322,7 @@
   <connection>
    <sender>checkKeepFinalSpaceCharacter</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onCheckKeepFinalSpace(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -338,7 +338,7 @@
   <connection>
    <sender>buttonChangeComboTriggerShortcut</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onChangeComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -354,7 +354,7 @@
   <connection>
    <sender>buttonResetComboTriggerShortcut</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onResetComboTriggerShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -370,7 +370,7 @@
   <connection>
    <sender>comboMatchingMode</sender>
    <signal>currentIndexChanged(int)</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onChangeDefaultMatchingMode()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -386,7 +386,7 @@
   <connection>
    <sender>comboCaseSensitivity</sender>
    <signal>currentIndexChanged(int)</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onChangeDefaultCaseSensitivity()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -402,7 +402,7 @@
   <connection>
    <sender>checkEnablePickerWindow</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onCheckEnablePickerWindow(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -418,7 +418,7 @@
   <connection>
    <sender>buttonChangePickerWindowShortcut</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onChangePickerWindowShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -434,7 +434,7 @@
   <connection>
    <sender>buttonResetPickerWindowShortcut</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneCombos</receiver>
+   <receiver>PrefPaneCombos</receiver>
    <slot>onResetPickerWindowShortcut()</slot>
    <hints>
     <hint type="sourcelabel">

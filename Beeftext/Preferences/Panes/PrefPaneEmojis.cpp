@@ -8,15 +8,15 @@
 
 
 #include "stdafx.h"
-#include "PrefsPaneEmojis.h"
+#include "PrefPaneEmojis.h"
 #include "Emoji/EmojiManager.h"
 
 
 //**********************************************************************************************************************
 /// \param[in] parent the parent widget
 //**********************************************************************************************************************
-PrefsPaneEmojis::PrefsPaneEmojis(QWidget* parent)
-   : PrefsPane(parent)
+PrefPaneEmojis::PrefPaneEmojis(QWidget* parent)
+   : PrefPane(parent)
    , prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
@@ -26,7 +26,7 @@ PrefsPaneEmojis::PrefsPaneEmojis(QWidget* parent)
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneEmojis::load() const
+void PrefPaneEmojis::load() const
 {
    QSignalBlocker blocker(ui_.checkEnableEmoji);
    ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
@@ -43,7 +43,7 @@ void PrefsPaneEmojis::load() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneEmojis::updateGui() const
+void PrefPaneEmojis::updateGui() const
 {
    QWidgetList widgets = { ui_.buttonEmojiExcludedApps, ui_.labelEmojiLeftDelimiter, ui_.editEmojiLeftDelimiter,
    ui_.labelEmojiRightDelimiter, ui_.editEmojiRightDelimiter, ui_.checkShowEmojiInPickerWindow };
@@ -55,7 +55,7 @@ void PrefsPaneEmojis::updateGui() const
 //**********************************************************************************************************************
 /// \param[in] checked The state of the check box.
 //**********************************************************************************************************************
-void PrefsPaneEmojis::onCheckEnableEmojiShortcodes(bool checked) const
+void PrefPaneEmojis::onCheckEnableEmojiShortcodes(bool checked) const
 {
    prefs_.setEmojiShortcodeEnabled(checked);
    EmojiManager& emojis = EmojiManager::instance();
@@ -70,7 +70,7 @@ void PrefsPaneEmojis::onCheckEnableEmojiShortcodes(bool checked) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneEmojis::onEditEmojiExcludedApplications()
+void PrefPaneEmojis::onEditEmojiExcludedApplications()
 {
    EmojiManager::instance().runDialog(this);
 }
@@ -79,7 +79,7 @@ void PrefsPaneEmojis::onEditEmojiExcludedApplications()
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneEmojis::onEmojiLeftDelimiterChanged(QString const&) const
+void PrefPaneEmojis::onEmojiLeftDelimiterChanged(QString const&) const
 {
    prefs_.setEmojiLeftDelimiter(ui_.editEmojiLeftDelimiter->text());
 }
@@ -88,7 +88,7 @@ void PrefsPaneEmojis::onEmojiLeftDelimiterChanged(QString const&) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneEmojis::onEmojiRightDelimiterChanged(QString const&) const
+void PrefPaneEmojis::onEmojiRightDelimiterChanged(QString const&) const
 {
    prefs_.setEmojiRightDelimiter(ui_.editEmojiRightDelimiter->text());
 }
@@ -97,7 +97,7 @@ void PrefsPaneEmojis::onEmojiRightDelimiterChanged(QString const&) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked.
 //**********************************************************************************************************************
-void PrefsPaneEmojis::onCheckShowEmojisInPickerWindow(bool checked) const
+void PrefPaneEmojis::onCheckShowEmojisInPickerWindow(bool checked) const
 {
    prefs_.setShowEmojisInPickerWindow(checked);
 }

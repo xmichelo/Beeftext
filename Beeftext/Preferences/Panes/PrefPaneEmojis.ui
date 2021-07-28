@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PrefsPaneEmojis</class>
- <widget class="QFrame" name="PrefsPaneEmojis">
+ <class>PrefPaneEmojis</class>
+ <widget class="QFrame" name="PrefPaneEmojis">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -155,7 +155,7 @@
   <connection>
    <sender>checkEnableEmoji</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneEmojis</receiver>
+   <receiver>PrefPaneEmojis</receiver>
    <slot>onCheckEnableEmojiShortcodes(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -171,7 +171,7 @@
   <connection>
    <sender>buttonEmojiExcludedApps</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneEmojis</receiver>
+   <receiver>PrefPaneEmojis</receiver>
    <slot>onEditEmojiExcludedApplications()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -187,7 +187,7 @@
   <connection>
    <sender>editEmojiLeftDelimiter</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>PrefsPaneEmojis</receiver>
+   <receiver>PrefPaneEmojis</receiver>
    <slot>onEmojiLeftDelimiterChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -203,7 +203,7 @@
   <connection>
    <sender>editEmojiRightDelimiter</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>PrefsPaneEmojis</receiver>
+   <receiver>PrefPaneEmojis</receiver>
    <slot>onEmojiRightDelimiterChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -219,7 +219,7 @@
   <connection>
    <sender>checkShowEmojiInPickerWindow</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneEmojis</receiver>
+   <receiver>PrefPaneEmojis</receiver>
    <slot>onCheckShowEmojisInPickerWindow(bool)</slot>
    <hints>
     <hint type="sourcelabel">

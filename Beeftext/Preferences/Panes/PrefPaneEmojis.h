@@ -11,24 +11,24 @@
 #define BEEFTEXT_PREFS_PANE_EMOJIS_H
 
 
-#include "ui_PrefsPaneEmojis.h"
-#include "PrefsPane.h"
+#include "ui_PrefPaneEmojis.h"
+#include "PrefPane.h"
 #include "Preferences/PreferencesManager.h"
 
 
 //**********************************************************************************************************************
 /// \brief The preference pane for emojis.
 //**********************************************************************************************************************
-class PrefsPaneEmojis: public PrefsPane
+class PrefPaneEmojis: public PrefPane
 {
    Q_OBJECT
 public: // member functions
-   explicit PrefsPaneEmojis(QWidget* parent = nullptr); ///< Default constructor.
-   PrefsPaneEmojis(PrefsPaneEmojis const&) = delete; ///< Disabled copy-constructor.
-   PrefsPaneEmojis(PrefsPaneEmojis&&) = delete; ///< Disabled assignment copy-constructor.
-   ~PrefsPaneEmojis() override = default; ///< Destructor.
-   PrefsPaneEmojis& operator=(PrefsPaneEmojis const&) = delete; ///< Disabled assignment operator.
-   PrefsPaneEmojis& operator=(PrefsPaneEmojis&&) = delete; ///< Disabled move assignment operator.
+   explicit PrefPaneEmojis(QWidget* parent = nullptr); ///< Default constructor.
+   PrefPaneEmojis(PrefPaneEmojis const&) = delete; ///< Disabled copy-constructor.
+   PrefPaneEmojis(PrefPaneEmojis&&) = delete; ///< Disabled assignment copy-constructor.
+   ~PrefPaneEmojis() override = default; ///< Destructor.
+   PrefPaneEmojis& operator=(PrefPaneEmojis const&) = delete; ///< Disabled assignment operator.
+   PrefPaneEmojis& operator=(PrefPaneEmojis&&) = delete; ///< Disabled move assignment operator.
    void load() const override; ///< Load the content of the pane.
 
 private slots:
@@ -40,7 +40,7 @@ private slots:
    void onCheckShowEmojisInPickerWindow(bool checked) const; ///< Slot for the 'Show emojis in picker window' checkbox.
 
 private: // data members
-   Ui::PrefsPaneEmojis ui_ {}; ///< The GUI for the pane.
+   Ui::PrefPaneEmojis ui_ {}; ///< The GUI for the pane.
    PreferencesManager& prefs_; ///< The preferences manager.
 };
 

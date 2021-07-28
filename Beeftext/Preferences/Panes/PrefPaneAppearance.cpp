@@ -8,7 +8,7 @@
 
 
 #include "stdafx.h"
-#include "PrefsPaneAppearance.h"
+#include "PrefPaneAppearance.h"
 #include "I18nManager.h"
 #include "BeeftextGlobals.h"
 
@@ -16,8 +16,8 @@
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the frame.
 //**********************************************************************************************************************
-PrefsPaneAppearance::PrefsPaneAppearance(QWidget* parent)
-   : PrefsPane(parent)
+PrefPaneAppearance::PrefPaneAppearance(QWidget* parent)
+   : PrefPane(parent)
    , prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
@@ -29,7 +29,7 @@ PrefsPaneAppearance::PrefsPaneAppearance(QWidget* parent)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneAppearance::load() const
+void PrefPaneAppearance::load() const
 {
    QSignalBlocker blocker = QSignalBlocker(ui_.comboLocale);
    this->onRefreshLanguageList();
@@ -44,7 +44,7 @@ void PrefsPaneAppearance::load() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAppearance::onRefreshLanguageList() const
+void PrefPaneAppearance::onRefreshLanguageList() const
 {
    I18nManager& i18NManager = I18nManager::instance();
    QLocale const currentLocale = I18nManager::locale();
@@ -59,7 +59,7 @@ void PrefsPaneAppearance::onRefreshLanguageList() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneAppearance::onComboLanguageValueChanged(int) const
+void PrefPaneAppearance::onComboLanguageValueChanged(int) const
 {
    prefs_.setLocale(I18nManager::instance().getSelectedLocaleInCombo(*ui_.comboLocale));
 }
@@ -68,7 +68,7 @@ void PrefsPaneAppearance::onComboLanguageValueChanged(int) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAppearance::onOpenTranslationFolder()
+void PrefPaneAppearance::onOpenTranslationFolder()
 {
    QString const path = globals::userTranslationRootFolderPath();
    if (QDir(path).exists())
@@ -79,7 +79,7 @@ void PrefsPaneAppearance::onOpenTranslationFolder()
 //**********************************************************************************************************************
 /// \param[in] checked Is the radio button checked?
 //**********************************************************************************************************************
-void PrefsPaneAppearance::onCheckUseCustomTheme(bool checked) const
+void PrefPaneAppearance::onCheckUseCustomTheme(bool checked) const
 {
    prefs_.setUseCustomTheme(checked);
    this->updateGui();
@@ -89,7 +89,7 @@ void PrefsPaneAppearance::onCheckUseCustomTheme(bool checked) const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneAppearance::onComboThemeValueChanged(int) const
+void PrefPaneAppearance::onComboThemeValueChanged(int) const
 {
    prefs_.setTheme(selectedThemeInCombo(*ui_.comboTheme));
 }
@@ -98,7 +98,7 @@ void PrefsPaneAppearance::onComboThemeValueChanged(int) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneAppearance::updateGui() const
+void PrefPaneAppearance::updateGui() const
 {
    ui_.comboTheme->setEnabled(prefs_.useCustomTheme());
 }
@@ -107,7 +107,7 @@ void PrefsPaneAppearance::updateGui() const
 //**********************************************************************************************************************
 /// \param[in] event The event.
 //**********************************************************************************************************************
-void PrefsPaneAppearance::changeEvent(QEvent* event)
+void PrefPaneAppearance::changeEvent(QEvent* event)
 {
    if (QEvent::LanguageChange == event->type())
    {
@@ -116,5 +116,5 @@ void PrefsPaneAppearance::changeEvent(QEvent* event)
       fillThemeComboBox(*ui_.comboTheme);
       selectThemeInCombo(prefs_.theme(), *ui_.comboTheme);
    }
-   PrefsPane::changeEvent(event);
+   PrefPane::changeEvent(event);
 }

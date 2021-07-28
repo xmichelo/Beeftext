@@ -8,15 +8,15 @@
 
 
 #include "stdafx.h"
-#include "PrefsPaneCombos.h"
+#include "PrefPaneCombos.h"
 #include "BeeftextUtils.h"
 
 
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the pane.
 //**********************************************************************************************************************
-PrefsPaneCombos::PrefsPaneCombos(QWidget* parent)
-   : PrefsPane(parent)
+PrefPaneCombos::PrefPaneCombos(QWidget* parent)
+   : PrefPane(parent)
    , prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
@@ -28,7 +28,7 @@ PrefsPaneCombos::PrefsPaneCombos(QWidget* parent)
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneCombos::load() const
+void PrefPaneCombos::load() const
 {
    if (prefs_.useAutomaticSubstitution())
    {
@@ -60,7 +60,7 @@ void PrefsPaneCombos::load() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneCombos::updateGui() const
+void PrefPaneCombos::updateGui() const
 {
    bool const comboTriggerAuto = ui_.radioComboTriggerAuto->isChecked();
    ui_.checkComboTriggersOnSpace->setEnabled(comboTriggerAuto);
@@ -81,7 +81,7 @@ void PrefsPaneCombos::updateGui() const
 //**********************************************************************************************************************
 /// \param[in] checked Is the radio button checked
 //**********************************************************************************************************************
-void PrefsPaneCombos::onRadioAutomaticComboTrigger(bool checked) const
+void PrefPaneCombos::onRadioAutomaticComboTrigger(bool checked) const
 {
    prefs_.setUseAutomaticSubstitution(checked);
    this->updateGui();
@@ -91,7 +91,7 @@ void PrefsPaneCombos::onRadioAutomaticComboTrigger(bool checked) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked.
 //**********************************************************************************************************************
-void PrefsPaneCombos::onCheckComboTriggersOnSpace(bool checked) const
+void PrefPaneCombos::onCheckComboTriggersOnSpace(bool checked) const
 {
    prefs_.setComboTriggersOnSpace(checked);
    this->updateGui();
@@ -101,7 +101,7 @@ void PrefsPaneCombos::onCheckComboTriggersOnSpace(bool checked) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked.
 //**********************************************************************************************************************
-void PrefsPaneCombos::onCheckKeepFinalSpace(bool checked) const
+void PrefPaneCombos::onCheckKeepFinalSpace(bool checked) const
 {
    prefs_.setKeepFinalSpaceCharacter(checked);
    this->updateGui();
@@ -111,7 +111,7 @@ void PrefsPaneCombos::onCheckKeepFinalSpace(bool checked) const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneCombos::onChangeComboTriggerShortcut() const
+void PrefPaneCombos::onChangeComboTriggerShortcut() const
 {
    SpShortcut shortcut = prefs_.comboTriggerShortcut();
    if (!runShortcutDialog(shortcut))
@@ -124,7 +124,7 @@ void PrefsPaneCombos::onChangeComboTriggerShortcut() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneCombos::onResetComboTriggerShortcut() const
+void PrefPaneCombos::onResetComboTriggerShortcut() const
 {
    SpShortcut const shortcut = PreferencesManager::defaultComboTriggerShortcut();
    prefs_.setComboTriggerShortcut(shortcut);
@@ -135,7 +135,7 @@ void PrefsPaneCombos::onResetComboTriggerShortcut() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneCombos::onChangeDefaultMatchingMode() const
+void PrefPaneCombos::onChangeDefaultMatchingMode() const
 {
    prefs_.setDefaultMatchingMode(selectedMatchingModeInCombo(*ui_.comboMatchingMode));
 }
@@ -144,7 +144,7 @@ void PrefsPaneCombos::onChangeDefaultMatchingMode() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneCombos::onChangeDefaultCaseSensitivity() const
+void PrefPaneCombos::onChangeDefaultCaseSensitivity() const
 {
    qDebug() << QString("%1()").arg(__FUNCTION__);
    prefs_.setDefaultCaseSensitivity(selectedCaseSensitivityInCombo(*ui_.comboCaseSensitivity));
@@ -154,7 +154,7 @@ void PrefsPaneCombos::onChangeDefaultCaseSensitivity() const
 //**********************************************************************************************************************
 /// \param[in] checked Is the radio button checked
 //**********************************************************************************************************************
-void PrefsPaneCombos::onCheckEnablePickerWindow(bool checked) const
+void PrefPaneCombos::onCheckEnablePickerWindow(bool checked) const
 {
    prefs_.setComboPickerEnabled(checked);
    this->updateGui();
@@ -164,7 +164,7 @@ void PrefsPaneCombos::onCheckEnablePickerWindow(bool checked) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneCombos::onChangePickerWindowShortcut() const
+void PrefPaneCombos::onChangePickerWindowShortcut() const
 {
    SpShortcut shortcut = prefs_.comboPickerShortcut();
    if (!runShortcutDialog(shortcut))
@@ -177,7 +177,7 @@ void PrefsPaneCombos::onChangePickerWindowShortcut() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneCombos::onResetPickerWindowShortcut() const
+void PrefPaneCombos::onResetPickerWindowShortcut() const
 {
    SpShortcut const shortcut = PreferencesManager::defaultComboPickerShortcut();
    prefs_.setComboPickerShortcut(shortcut);
@@ -188,7 +188,7 @@ void PrefsPaneCombos::onResetPickerWindowShortcut() const
 //**********************************************************************************************************************
 /// \param[in] event The event
 //**********************************************************************************************************************
-void PrefsPaneCombos::changeEvent(QEvent* event)
+void PrefPaneCombos::changeEvent(QEvent* event)
 {
    if (QEvent::LanguageChange == event->type())
    {
@@ -202,7 +202,7 @@ void PrefsPaneCombos::changeEvent(QEvent* event)
       fillCaseSensitivityCombo(*ui_.comboCaseSensitivity, false);
       selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
    }
-   PrefsPane::changeEvent(event);
+   PrefPane::changeEvent(event);
 }
 
 

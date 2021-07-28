@@ -11,24 +11,24 @@
 #define BEEFTEXT_PREFS_PANE_COMBOS_H
 
 
-#include "PrefsPane.h"
-#include "ui_PrefsPaneCombos.h"
+#include "PrefPane.h"
+#include "ui_PrefPaneCombos.h"
 #include "Preferences/PreferencesManager.h"
 
 
 //**********************************************************************************************************************
 /// \brief Combos preference pane.
 //**********************************************************************************************************************
-class PrefsPaneCombos: public PrefsPane
+class PrefPaneCombos: public PrefPane
 {
    Q_OBJECT
 public: // member functions
-   explicit PrefsPaneCombos(QWidget* parent = nullptr); ///< Default constructor.
-   PrefsPaneCombos(PrefsPaneCombos const&) = delete; ///< Disabled copy-constructor.
-   PrefsPaneCombos(PrefsPaneCombos&&) = delete; ///< Disabled assignment copy-constructor.
-   ~PrefsPaneCombos() override = default; ///< Destructor.
-   PrefsPaneCombos& operator=(PrefsPaneCombos const&) = delete; ///< Disabled assignment operator.
-   PrefsPaneCombos& operator=(PrefsPaneCombos&&) = delete; ///< Disabled move assignment operator.
+   explicit PrefPaneCombos(QWidget* parent = nullptr); ///< Default constructor.
+   PrefPaneCombos(PrefPaneCombos const&) = delete; ///< Disabled copy-constructor.
+   PrefPaneCombos(PrefPaneCombos&&) = delete; ///< Disabled assignment copy-constructor.
+   ~PrefPaneCombos() override = default; ///< Destructor.
+   PrefPaneCombos& operator=(PrefPaneCombos const&) = delete; ///< Disabled assignment operator.
+   PrefPaneCombos& operator=(PrefPaneCombos&&) = delete; ///< Disabled move assignment operator.
    void load() const override; ///< Load the content of the pane
 
 private slots:
@@ -48,7 +48,7 @@ private: // member functions
    void changeEvent(QEvent*) override; ///< Change event handler
 
 private: // data members
-   Ui::PrefsPaneCombos ui_; ///< The GUI for the pane.
+   Ui::PrefPaneCombos ui_; ///< The GUI for the pane.
    PreferencesManager& prefs_; ///< The preferences.
 };
 

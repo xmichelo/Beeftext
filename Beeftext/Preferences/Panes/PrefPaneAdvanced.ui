@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PrefsPaneAdvanced</class>
- <widget class="QFrame" name="PrefsPaneAdvanced">
+ <class>PrefPaneAdvanced</class>
+ <widget class="QFrame" name="PrefPaneAdvanced">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -270,7 +270,7 @@
   <connection>
    <sender>spinDelayBetweenKeystrokes</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onSpinDelayBetweenKeystrokesChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -286,7 +286,7 @@
   <connection>
    <sender>buttonChangeComboListFolder</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onChangeComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -302,7 +302,7 @@
   <connection>
    <sender>buttonOpenComboListFolder</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onOpenComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -318,7 +318,7 @@
   <connection>
    <sender>buttonResetComboListFolder</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onResetComboListFolder()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -334,7 +334,7 @@
   <connection>
    <sender>checkWriteDebugLogFile</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onCheckWriteDebugLogFile(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -350,7 +350,7 @@
   <connection>
    <sender>checkUseLegacyCopyPaste</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onCheckUseLegacyCopyPaste(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -366,7 +366,7 @@
   <connection>
    <sender>checkUseShiftInsertForPasting</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onCheckUseShiftInsertForPasting(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -382,7 +382,7 @@
   <connection>
    <sender>checkUseCustomPowershellVersion</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onCheckUseCustomPowerShellVersion(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -398,7 +398,7 @@
   <connection>
    <sender>buttonChangeCustomPowershellVersion</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onChangeCustomPowershellVersion()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -414,7 +414,7 @@
   <connection>
    <sender>checkAutoBackup</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onCheckAutoBackup(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -430,7 +430,7 @@
   <connection>
    <sender>buttonRestoreBackup</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onRestoreBackup()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -446,7 +446,7 @@
   <connection>
    <sender>checkUseCustomBackupLocation</sender>
    <signal>toggled(bool)</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onCheckUseCustomBackupLocation(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -462,7 +462,7 @@
   <connection>
    <sender>buttonChangeCustomBackupLocation</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onChangeCustomBackupLocation()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -478,7 +478,7 @@
   <connection>
    <sender>buttonSensitiveApplications</sender>
    <signal>clicked()</signal>
-   <receiver>PrefsPaneAdvanced</receiver>
+   <receiver>PrefPaneAdvanced</receiver>
    <slot>onEditSensitiveApplications()</slot>
    <hints>
     <hint type="sourcelabel">

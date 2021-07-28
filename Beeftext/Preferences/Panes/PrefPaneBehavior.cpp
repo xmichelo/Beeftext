@@ -8,7 +8,7 @@
 
 
 #include "stdafx.h"
-#include "PrefsPaneBehavior.h"
+#include "PrefPaneBehavior.h"
 #include "Combo/ComboManager.h"
 #include "BeeftextConstants.h"
 #include "BeeftextUtils.h"
@@ -26,8 +26,8 @@ qint32 kUpdateCheckStatusLabelTimeoutMs = 3000; ///< The delay after which the u
 //**********************************************************************************************************************
 /// \param[in] parent The parent widget of the pane.
 //**********************************************************************************************************************
-PrefsPaneBehavior::PrefsPaneBehavior(QWidget* parent)
-   : PrefsPane(parent)
+PrefPaneBehavior::PrefPaneBehavior(QWidget* parent)
+   : PrefPane(parent)
    , prefs_(PreferencesManager::instance())
 {
    ui_.setupUi(this);
@@ -40,18 +40,18 @@ PrefsPaneBehavior::PrefsPaneBehavior(QWidget* parent)
    // signal mappings for the 'Check now' button
    UpdateManager& updateManager = UpdateManager::instance();
    connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);
-   connect(&updateManager, &UpdateManager::startedUpdateCheck, this, &PrefsPaneBehavior::onUpdateCheckStarted);
-   connect(&updateManager, &UpdateManager::finishedUpdateCheck, this, &PrefsPaneBehavior::onUpdateCheckFinished);
-   connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PrefsPaneBehavior::onUpdateIsAvailable);
-   connect(&updateManager, &UpdateManager::noUpdateIsAvailable, this, &PrefsPaneBehavior::onNoUpdateIsAvailable);
-   connect(&updateManager, &UpdateManager::updateCheckFailed, this, &PrefsPaneBehavior::onUpdateCheckFailed);
+   connect(&updateManager, &UpdateManager::startedUpdateCheck, this, &PrefPaneBehavior::onUpdateCheckStarted);
+   connect(&updateManager, &UpdateManager::finishedUpdateCheck, this, &PrefPaneBehavior::onUpdateCheckFinished);
+   connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PrefPaneBehavior::onUpdateIsAvailable);
+   connect(&updateManager, &UpdateManager::noUpdateIsAvailable, this, &PrefPaneBehavior::onNoUpdateIsAvailable);
+   connect(&updateManager, &UpdateManager::updateCheckFailed, this, &PrefPaneBehavior::onUpdateCheckFailed);
 }
 
 
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneBehavior::load() const
+void PrefPaneBehavior::load() const
 {
    QSignalBlocker blocker(ui_.checkAutoCheckForUpdates);
    ui_.checkAutoCheckForUpdates->setChecked(prefs_.autoCheckForUpdates());
@@ -73,7 +73,7 @@ void PrefsPaneBehavior::load() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneBehavior::updateGui() const
+void PrefPaneBehavior::updateGui() const
 {
       ui_.frameCustomSound->setEnabled(ui_.checkPlaySoundOnCombo->isChecked());
       bool const useCustomSound = ui_.checkUseCustomSound->isChecked();
@@ -87,7 +87,7 @@ void PrefsPaneBehavior::updateGui() const
 //**********************************************************************************************************************
 /// \param[in] latestVersionInfo The latest version information
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo)
+void PrefPaneBehavior::onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo)
 {
    this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2.%3 is available.").arg(constants::kApplicationName)
       .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor())
@@ -98,7 +98,7 @@ void PrefsPaneBehavior::onUpdateIsAvailable(SpLatestVersionInfo const& latestVer
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onNoUpdateIsAvailable()
+void PrefPaneBehavior::onNoUpdateIsAvailable()
 {
    this->setUpdateCheckStatus(tr("The software is up to date."));
 }
@@ -107,7 +107,7 @@ void PrefsPaneBehavior::onNoUpdateIsAvailable()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onUpdateCheckStarted() const
+void PrefPaneBehavior::onUpdateCheckStarted() const
 {
    ui_.buttonCheckNow->setEnabled(false);
 }
@@ -116,7 +116,7 @@ void PrefsPaneBehavior::onUpdateCheckStarted() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onUpdateCheckFinished() const
+void PrefPaneBehavior::onUpdateCheckFinished() const
 {
    ui_.buttonCheckNow->setEnabled(true);
 }
@@ -125,7 +125,7 @@ void PrefsPaneBehavior::onUpdateCheckFinished() const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onUpdateCheckFailed()
+void PrefPaneBehavior::onUpdateCheckFailed()
 {
    this->setUpdateCheckStatus(tr("Update check failed."));
 }
@@ -134,7 +134,7 @@ void PrefsPaneBehavior::onUpdateCheckFailed()
 //**********************************************************************************************************************
 /// \param[in] checked Is the radio button checked
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onCheckAutoCheckForUpdates(bool checked) const
+void PrefPaneBehavior::onCheckAutoCheckForUpdates(bool checked) const
 {
    prefs_.setAutoCheckForUpdates(checked);
 }
@@ -143,7 +143,7 @@ void PrefsPaneBehavior::onCheckAutoCheckForUpdates(bool checked) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the radio button checked
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onCheckAutoStart(bool checked) const
+void PrefPaneBehavior::onCheckAutoStart(bool checked) const
 {
    if (!isInPortableMode())
       prefs_.setAutoStartAtLogin(checked);
@@ -153,7 +153,7 @@ void PrefsPaneBehavior::onCheckAutoStart(bool checked) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the radio button checked
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onCheckPlaySoundOnCombo(bool checked) const
+void PrefPaneBehavior::onCheckPlaySoundOnCombo(bool checked) const
 {
    prefs_.setPlaySoundOnCombo(checked);
    this->updateGui();
@@ -163,7 +163,7 @@ void PrefsPaneBehavior::onCheckPlaySoundOnCombo(bool checked) const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked?
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onCheckUseCustomSound(bool checked) const
+void PrefPaneBehavior::onCheckUseCustomSound(bool checked) const
 {
    prefs_.setUseCustomSound(checked);
    ComboManager::instance().loadSoundFromPreferences();
@@ -174,7 +174,7 @@ void PrefsPaneBehavior::onCheckUseCustomSound(bool checked) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onChangeCustomSound() const
+void PrefPaneBehavior::onChangeCustomSound() const
 {
    QString const oldPath = prefs_.customSoundPath();
    QString const path = QFileDialog::getOpenFileName(nullptr, QObject::tr("Select custom sound file"),
@@ -191,7 +191,7 @@ void PrefsPaneBehavior::onChangeCustomSound() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onPlaySoundButton() const
+void PrefPaneBehavior::onPlaySoundButton() const
 {
    if (QFileInfo(prefs_.customSoundPath()).exists())
       ComboManager::instance().playSound();
@@ -202,7 +202,7 @@ void PrefsPaneBehavior::onPlaySoundButton() const
 //**********************************************************************************************************************
 /// \param[in] checked Is the check box checked?
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onCheckEnableAppEnableDisableShortcut(bool checked) const
+void PrefPaneBehavior::onCheckEnableAppEnableDisableShortcut(bool checked) const
 {
    prefs_.setEnableAppEnableDisableShortcut(checked);
    this->updateGui();
@@ -212,7 +212,7 @@ void PrefsPaneBehavior::onCheckEnableAppEnableDisableShortcut(bool checked) cons
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onChangeAppEnableDisableShortcut() const
+void PrefPaneBehavior::onChangeAppEnableDisableShortcut() const
 {
    SpShortcut shortcut = prefs_.appEnableDisableShortcut();
    if (!runShortcutDialog(shortcut))
@@ -225,7 +225,7 @@ void PrefsPaneBehavior::onChangeAppEnableDisableShortcut() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefsPaneBehavior::onResetAppEnableDisableShortcut() const
+void PrefPaneBehavior::onResetAppEnableDisableShortcut() const
 {
    SpShortcut const shortcut = PreferencesManager::defaultAppEnableDisableShortcut();
    prefs_.setAppEnableDisableShortcut(shortcut);
@@ -236,7 +236,7 @@ void PrefsPaneBehavior::onResetAppEnableDisableShortcut() const
 //**********************************************************************************************************************
 /// \param[in] status The status message
 //**********************************************************************************************************************
-void PrefsPaneBehavior::setUpdateCheckStatus(QString const& status)
+void PrefPaneBehavior::setUpdateCheckStatus(QString const& status)
 {
    updateCheckStatusTimer_.stop();
    ui_.labelUpdateCheckStatus->setText(status);
@@ -247,7 +247,7 @@ void PrefsPaneBehavior::setUpdateCheckStatus(QString const& status)
 //**********************************************************************************************************************
 /// \return true if and only if the input is validated.
 //**********************************************************************************************************************
-bool PrefsPaneBehavior::validateInput()
+bool PrefPaneBehavior::validateInput()
 {
    if (ui_.checkPlaySoundOnCombo->isChecked() && ui_.checkUseCustomSound->isChecked())
    {

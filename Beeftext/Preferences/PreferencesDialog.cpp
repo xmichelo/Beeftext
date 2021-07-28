@@ -44,7 +44,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
 //**********************************************************************************************************************
 void PreferencesDialog::load() const
 {
-   for (PrefsPane* pane: panes_)
+   for (PrefPane* pane: panes_)
       pane->load();
 }
 
@@ -54,7 +54,7 @@ void PreferencesDialog::load() const
 //**********************************************************************************************************************
 bool PreferencesDialog::validateInput()
 {
-   for (PrefsPane* pane: panes_)
+   for (PrefPane* pane: panes_)
       if (!pane->validateInput())
          return false;
    return true;
