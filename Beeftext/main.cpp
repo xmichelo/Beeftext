@@ -18,7 +18,6 @@
 #include "Preferences/PreferencesManager.h"
 #include "Combo/ComboManager.h"
 #include "LastUse/ComboLastUseFile.h"
-#include "LastUse/EmojiLastUseFile.h"
 #include <XMiLib/SingleInstanceApp.h>
 #include <XMiLib/SystemUtils.h>
 #include <XMiLib/Exception.h>

@@ -80,7 +80,7 @@ void loadEmojiLastUseDateTimes(EmojiList& emojiList)
          parseDateTimeObject(emojiList, value.toObject());
       }
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       globals::debugLog().addError(e.qwhat());
    }
@@ -118,7 +118,7 @@ void saveEmojiLastUseDateTimes(EmojiList const& emojiList)
       if (data.size() != file.write(data))
          throw Exception("An error occurred while writing the emoji last use date/time file.");
    }
-   catch (xmilib::Exception const& e)
+   catch (Exception const& e)
    {
       globals::debugLog().addError(e.qwhat());
    }

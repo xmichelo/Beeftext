@@ -13,7 +13,6 @@
 
 #include "ui_PreferencesDialog.h"
 #include "PreferencesManager.h"
-#include "LatestVersionInfo.h"
 
 
 //**********************************************************************************************************************

@@ -15,7 +15,6 @@
 #include "PickerModel.h"
 #include "PickerWindowMoverResizer.h"
 #include "PickerSortFilterProxyModel.h"
-#include "Combo/Combo.h"
 
 
 void showComboPickerWindow(); ///< Show the combo picker window.
