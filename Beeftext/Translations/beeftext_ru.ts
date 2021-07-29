@@ -919,222 +919,70 @@ Do you want to continue anyway?</source>
     </message>
 </context>
 <context>
-    <name>PreferencesDialog</name>
+    <name>PrefPaneAdvanced</name>
+    <message>
+        <source>Delay between simulated keystrokes</source>
+        <translation type="unfinished">Задержка между симуляцией нажатий</translation>
+    </message>
     <message>
         <source>ms</source>
-        <translation>мс</translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation>&amp;Воспроизвести</translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation>&amp;Открыть</translation>
-    </message>
-    <message>
-        <source>Automatic backup</source>
-        <translation>Автоматическое резервное копирование</translation>
-    </message>
-    <message>
-        <source>Reset the preferences to their default values.</source>
-        <translation>Сброс настроек к значениям по умолчанию.</translation>
-    </message>
-    <message>
-        <source>Reset &amp;Warnings</source>
-        <translation>&amp;Сбросить предупреждения</translation>
-    </message>
-    <message>
-        <source>&amp;Play sound on combo</source>
-        <translation>&amp;Воспроизводить звук для шаблона</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation>&amp;Закрыть</translation>
-    </message>
-    <message>
-        <source>Use shortcut to enable/disable Beeftext</source>
-        <translation>Использовать ярлык для включения/выключения Beeftext</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation>&amp;Автозапуск Beeftext при входе в систему</translation>
-    </message>
-    <message>
-        <source>Combo picker</source>
-        <translation type="vanished">Средство выбора шаблонов</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">Открыть папку</translation>
-    </message>
-    <message>
-        <source>Combos</source>
-        <translation>Шаблоны</translation>
-    </message>
-    <message>
-        <source>Emojis</source>
-        <translation>Эмодзи</translation>
-    </message>
-    <message>
-        <source>Combo triggering</source>
-        <translation>Запуск шаблонов</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation>&amp;Изменить</translation>
-    </message>
-    <message>
-        <source>Sensitive Applications</source>
-        <translation>Затрагиваемые приложения</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="vanished">&amp;Исключенные приложения</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation>Вручную (горячие клавиши)</translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation>Записывать события отладки в файл журнала</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translation>&amp;По умолчанию</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation>Автоматическое резервное копирование файлов со списком шаблонов</translation>
+        <translation type="unfinished">мс</translation>
     </message>
     <message>
         <source>Combo list folder</source>
-        <translation>Папка со списком шаблонов</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation type="vanished">Язык</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Обновить</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation>&amp;Восстановить</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="vanished">Левый разделитель</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation>Использовать пользовательский звук</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Использовать пользовательскую тему</translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation>&amp;Изменить</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="vanished">Пользовательские переводы</translation>
-    </message>
-    <message>
-        <source>Delay between simulated keystrokes</source>
-        <translation>Задержка между симуляцией нажатий</translation>
+        <translation type="unfinished">Папка со списком шаблонов</translation>
     </message>
     <message>
         <source>&amp;Change</source>
-        <translation>&amp;Изменить</translation>
+        <translation type="unfinished">&amp;Изменить</translation>
     </message>
     <message>
-        <source>&amp;Default</source>
-        <translation>&amp;По умолчанию</translation>
-    </message>
-    <message>
-        <source>&amp;Export</source>
-        <translation>&amp;Экспорт</translation>
-    </message>
-    <message>
-        <source>&amp;Import</source>
-        <translation>&amp;Импорт</translation>
-    </message>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="vanished">Включить шорткоды эмодзи</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation>Автоматически</translation>
-    </message>
-    <message>
-        <source>Appearance</source>
-        <translation>Вид</translation>
-    </message>
-    <message>
-        <source>Use custom backup location</source>
-        <translation>Использовать пользовательское расположение резервной копии</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation>&amp;Проверить сейчас</translation>
-    </message>
-    <message>
-        <source>Advanced</source>
-        <translation>Дополнительно</translation>
-    </message>
-    <message>
-        <source>Behavior</source>
-        <translation>Поведение</translation>
+        <source>O&amp;pen</source>
+        <translation type="unfinished">&amp;Открыть</translation>
     </message>
     <message>
         <source>D&amp;efault</source>
-        <translation>&amp;По умолчанию</translation>
+        <translation type="unfinished">&amp;По умолчанию</translation>
     </message>
     <message>
-        <source>Preferences</source>
-        <translation>Настройки</translation>
+        <source>Write debug events in a log file</source>
+        <translation type="unfinished">Записывать события отладки в файл журнала</translation>
     </message>
     <message>
-        <source>Enable combo picker</source>
-        <translation type="vanished">Включить средство выбора шаблонов</translation>
+        <source>Use legacy copy/paste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Shift+Insert for pasting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom PowerShell version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic backup</source>
+        <translation type="unfinished">Автоматическое резервное копирование</translation>
+    </message>
+    <message>
+        <source>Automatically backup combo list files</source>
+        <translation type="unfinished">Автоматическое резервное копирование файлов со списком шаблонов</translation>
     </message>
     <message>
         <source>Restore a backup.</source>
-        <translation>Восстановление резервной копии.</translation>
+        <translation type="unfinished">Восстановление резервной копии.</translation>
     </message>
     <message>
-        <source>Right delimiter</source>
-        <translation type="vanished">Правый разделитель</translation>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;Восстановить</translation>
     </message>
     <message>
-        <source>Shortcut</source>
-        <translation>Ярлык</translation>
+        <source>Use custom backup location</source>
+        <translation type="unfinished">Использовать пользовательское расположение резервной копии</translation>
     </message>
     <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation>&amp;Автоматическая проверка обновлений</translation>
-    </message>
-    <message>
-        <source>Delete Backup Files?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do you want to delete all the backup files?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>WAV files (*.wav);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <source>Sensitive Applications</source>
+        <translation type="unfinished">Затрагиваемые приложения</translation>
     </message>
     <message>
         <source>Select folder</source>
@@ -1157,75 +1005,7 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Custom backup location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset Preferences</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset the preferences to their default values?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reset Warnings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reset all warnings?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 v%2.%3 is available.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A new version is available.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The software is up to date.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update check failed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Export Preferences</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>An error occurred while exporting the preferences.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Import Preferences</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>An error occurred while importing the preferences.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Trigger only after spacebar is pressed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use legacy copy/paste</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The path of the custom sound file is invalid.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Keep the final space character</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use custom PowerShell version</source>
+        <source>The location of the combo list folder could not be reset.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1237,32 +1017,20 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Default matching mode</source>
+        <source>Custom backup location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use Shift+Insert for pasting</source>
+        <source>Delete Backup Files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Default behavior</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Default case sensitivity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Picker window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable picker window</source>
+        <source>Do you want to delete all the backup files?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>PrefsPaneAppearance</name>
+    <name>PrefPaneAppearance</name>
     <message>
         <source>Language</source>
         <translation type="unfinished">Язык</translation>
@@ -1289,7 +1057,133 @@ Do you want to continue anyway?</source>
     </message>
 </context>
 <context>
-    <name>PrefsPaneEmojis</name>
+    <name>PrefPaneBehavior</name>
+    <message>
+        <source>Automatically check for &amp;updates</source>
+        <translation type="unfinished">&amp;Автоматическая проверка обновлений</translation>
+    </message>
+    <message>
+        <source>&amp;Check Now</source>
+        <translation type="unfinished">&amp;Проверить сейчас</translation>
+    </message>
+    <message>
+        <source>&amp;Automatically start Beeftext at login</source>
+        <translation type="unfinished">&amp;Автозапуск Beeftext при входе в систему</translation>
+    </message>
+    <message>
+        <source>&amp;Play sound on combo</source>
+        <translation type="unfinished">&amp;Воспроизводить звук для шаблона</translation>
+    </message>
+    <message>
+        <source>Use custom sound</source>
+        <translation type="unfinished">Использовать пользовательский звук</translation>
+    </message>
+    <message>
+        <source>Cha&amp;nge</source>
+        <translation type="unfinished">&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>&amp;Play</source>
+        <translation type="unfinished">&amp;Воспроизвести</translation>
+    </message>
+    <message>
+        <source>Use shortcut to enable/disable Beeftext</source>
+        <translation type="unfinished">Использовать ярлык для включения/выключения Beeftext</translation>
+    </message>
+    <message>
+        <source>&amp;Change</source>
+        <translation type="unfinished">&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>&amp;Default</source>
+        <translation type="unfinished">&amp;По умолчанию</translation>
+    </message>
+    <message>
+        <source>%1 v%2.%3 is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A new version is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The software is up to date.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update check failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WAV files (*.wav);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Ошибка</translation>
+    </message>
+    <message>
+        <source>The path of the custom sound file is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PrefPaneCombos</name>
+    <message>
+        <source>Combo triggering</source>
+        <translation type="unfinished">Запуск шаблонов</translation>
+    </message>
+    <message>
+        <source>Automatic</source>
+        <translation type="unfinished">Автоматически</translation>
+    </message>
+    <message>
+        <source>Trigger only after spacebar is pressed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keep the final space character</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manual, using the shortcut</source>
+        <translation type="unfinished">Вручную (горячие клавиши)</translation>
+    </message>
+    <message>
+        <source>C&amp;hange</source>
+        <translation type="unfinished">&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>De&amp;fault</source>
+        <translation type="unfinished">&amp;По умолчанию</translation>
+    </message>
+    <message>
+        <source>Default behavior</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default matching mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default case sensitivity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Picker window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable picker window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shortcut</source>
+        <translation type="unfinished">Ярлык</translation>
+    </message>
+</context>
+<context>
+    <name>PrefPaneEmojis</name>
     <message>
         <source>Enable emoji shortcodes</source>
         <translation type="unfinished">Включить шорткоды эмодзи</translation>
@@ -1309,6 +1203,295 @@ Do you want to continue anyway?</source>
     <message>
         <source>Show emojis in picker window</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PreferencesDialog</name>
+    <message>
+        <source>ms</source>
+        <translation type="vanished">мс</translation>
+    </message>
+    <message>
+        <source>&amp;Play</source>
+        <translation type="vanished">&amp;Воспроизвести</translation>
+    </message>
+    <message>
+        <source>O&amp;pen</source>
+        <translation type="vanished">&amp;Открыть</translation>
+    </message>
+    <message>
+        <source>Automatic backup</source>
+        <translation type="vanished">Автоматическое резервное копирование</translation>
+    </message>
+    <message>
+        <source>Reset the preferences to their default values.</source>
+        <translation>Сброс настроек к значениям по умолчанию.</translation>
+    </message>
+    <message>
+        <source>Reset &amp;Warnings</source>
+        <translation>&amp;Сбросить предупреждения</translation>
+    </message>
+    <message>
+        <source>&amp;Play sound on combo</source>
+        <translation type="vanished">&amp;Воспроизводить звук для шаблона</translation>
+    </message>
+    <message>
+        <source>&amp;Close</source>
+        <translation>&amp;Закрыть</translation>
+    </message>
+    <message>
+        <source>Use shortcut to enable/disable Beeftext</source>
+        <translation type="vanished">Использовать ярлык для включения/выключения Beeftext</translation>
+    </message>
+    <message>
+        <source>&amp;Automatically start Beeftext at login</source>
+        <translation type="vanished">&amp;Автозапуск Beeftext при входе в систему</translation>
+    </message>
+    <message>
+        <source>Combo picker</source>
+        <translation type="vanished">Средство выбора шаблонов</translation>
+    </message>
+    <message>
+        <source>Open Folder</source>
+        <translation type="vanished">Открыть папку</translation>
+    </message>
+    <message>
+        <source>Combos</source>
+        <translation>Шаблоны</translation>
+    </message>
+    <message>
+        <source>Emojis</source>
+        <translation>Эмодзи</translation>
+    </message>
+    <message>
+        <source>Combo triggering</source>
+        <translation type="vanished">Запуск шаблонов</translation>
+    </message>
+    <message>
+        <source>C&amp;hange</source>
+        <translation type="vanished">&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>Sensitive Applications</source>
+        <translation type="vanished">Затрагиваемые приложения</translation>
+    </message>
+    <message>
+        <source>&amp;Excluded Applications</source>
+        <translation type="vanished">&amp;Исключенные приложения</translation>
+    </message>
+    <message>
+        <source>Manual, using the shortcut</source>
+        <translation type="vanished">Вручную (горячие клавиши)</translation>
+    </message>
+    <message>
+        <source>Write debug events in a log file</source>
+        <translation type="vanished">Записывать события отладки в файл журнала</translation>
+    </message>
+    <message>
+        <source>De&amp;fault</source>
+        <translation type="vanished">&amp;По умолчанию</translation>
+    </message>
+    <message>
+        <source>Automatically backup combo list files</source>
+        <translation type="vanished">Автоматическое резервное копирование файлов со списком шаблонов</translation>
+    </message>
+    <message>
+        <source>Combo list folder</source>
+        <translation type="vanished">Папка со списком шаблонов</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="vanished">Язык</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="vanished">Обновить</translation>
+    </message>
+    <message>
+        <source>&amp;Restore</source>
+        <translation type="vanished">&amp;Восстановить</translation>
+    </message>
+    <message>
+        <source>Left delimiter</source>
+        <translation type="vanished">Левый разделитель</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Use custom sound</source>
+        <translation type="vanished">Использовать пользовательский звук</translation>
+    </message>
+    <message>
+        <source>Use custom theme</source>
+        <translation type="vanished">Использовать пользовательскую тему</translation>
+    </message>
+    <message>
+        <source>Cha&amp;nge</source>
+        <translation type="vanished">&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>User-provided translations</source>
+        <translation type="vanished">Пользовательские переводы</translation>
+    </message>
+    <message>
+        <source>Delay between simulated keystrokes</source>
+        <translation type="vanished">Задержка между симуляцией нажатий</translation>
+    </message>
+    <message>
+        <source>&amp;Change</source>
+        <translation type="vanished">&amp;Изменить</translation>
+    </message>
+    <message>
+        <source>&amp;Default</source>
+        <translation>&amp;По умолчанию</translation>
+    </message>
+    <message>
+        <source>&amp;Export</source>
+        <translation>&amp;Экспорт</translation>
+    </message>
+    <message>
+        <source>&amp;Import</source>
+        <translation>&amp;Импорт</translation>
+    </message>
+    <message>
+        <source>Enable emoji shortcodes</source>
+        <translation type="vanished">Включить шорткоды эмодзи</translation>
+    </message>
+    <message>
+        <source>Automatic</source>
+        <translation type="vanished">Автоматически</translation>
+    </message>
+    <message>
+        <source>Appearance</source>
+        <translation>Вид</translation>
+    </message>
+    <message>
+        <source>Use custom backup location</source>
+        <translation type="vanished">Использовать пользовательское расположение резервной копии</translation>
+    </message>
+    <message>
+        <source>&amp;Check Now</source>
+        <translation type="vanished">&amp;Проверить сейчас</translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation>Дополнительно</translation>
+    </message>
+    <message>
+        <source>Behavior</source>
+        <translation>Поведение</translation>
+    </message>
+    <message>
+        <source>D&amp;efault</source>
+        <translation type="vanished">&amp;По умолчанию</translation>
+    </message>
+    <message>
+        <source>Preferences</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>Enable combo picker</source>
+        <translation type="vanished">Включить средство выбора шаблонов</translation>
+    </message>
+    <message>
+        <source>Restore a backup.</source>
+        <translation type="vanished">Восстановление резервной копии.</translation>
+    </message>
+    <message>
+        <source>Right delimiter</source>
+        <translation type="vanished">Правый разделитель</translation>
+    </message>
+    <message>
+        <source>Shortcut</source>
+        <translation type="vanished">Ярлык</translation>
+    </message>
+    <message>
+        <source>Automatically check for &amp;updates</source>
+        <translation type="vanished">&amp;Автоматическая проверка обновлений</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Ошибка</translation>
+    </message>
+    <message>
+        <source>Reset Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset the preferences to their default values?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Warnings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset all warnings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error occurred while exporting the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error occurred while importing the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PrefsPaneAppearance</name>
+    <message>
+        <source>Language</source>
+        <translation type="obsolete">Язык</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="obsolete">Обновить</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>User-provided translations</source>
+        <translation type="obsolete">Пользовательские переводы</translation>
+    </message>
+    <message>
+        <source>Open Folder</source>
+        <translation type="obsolete">Открыть папку</translation>
+    </message>
+    <message>
+        <source>Use custom theme</source>
+        <translation type="obsolete">Использовать пользовательскую тему</translation>
+    </message>
+</context>
+<context>
+    <name>PrefsPaneEmojis</name>
+    <message>
+        <source>Enable emoji shortcodes</source>
+        <translation type="obsolete">Включить шорткоды эмодзи</translation>
+    </message>
+    <message>
+        <source>&amp;Excluded Applications</source>
+        <translation type="obsolete">&amp;Исключенные приложения</translation>
+    </message>
+    <message>
+        <source>Left delimiter</source>
+        <translation type="obsolete">Левый разделитель</translation>
+    </message>
+    <message>
+        <source>Right delimiter</source>
+        <translation type="obsolete">Правый разделитель</translation>
     </message>
 </context>
 <context>
