@@ -59,7 +59,7 @@ void loadEmojiLastUseDateTimes(EmojiList& emojiList)
    try
    {
       QString const invalidFileStr = "The emoji last use file is invalid.";
-      QFile file = QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(kEmojiLastUseFileName);
+      QFile file = QDir(globals::appDataDir()).absoluteFilePath(kEmojiLastUseFileName);
       if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
          throw Exception("Could not save the emoji last use date/time file.");
       QJsonParseError jsonError {};
@@ -110,7 +110,7 @@ void saveEmojiLastUseDateTimes(EmojiList const& emojiList)
       }
       rootObject.insert(kPropDateTimes, dateTimes);
 
-      QFile file = QDir(PreferencesManager::instance().comboListFolderPath()).absoluteFilePath(kEmojiLastUseFileName);
+      QFile file = QDir(globals::appDataDir()).absoluteFilePath(kEmojiLastUseFileName);
       if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
          throw Exception("Could not save the emoji last use date/time file.");
 
