@@ -315,6 +315,9 @@
     <ClCompile Include="Preferences\PreferencesManager.cpp" />
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="Shortcut.cpp" />
+    <ClCompile Include="Snippet\DelaySnippetFragment.cpp" />
+    <ClCompile Include="Snippet\SnippetFragment.cpp" />
+    <ClCompile Include="Snippet\TextSnippetFragment.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">Create</PrecompiledHeader>
@@ -350,6 +353,9 @@
     <QtMoc Include="Preferences\Panes\PrefPaneCombos.h" />
     <QtMoc Include="Preferences\Panes\PrefPaneBehavior.h" />
     <QtMoc Include="Preferences\Panes\PrefPaneAdvanced.h" />
+    <ClInclude Include="Snippet\DelaySnippetFragment.h" />
+    <ClInclude Include="Snippet\SnippetFragment.h" />
+    <ClInclude Include="Snippet\TextSnippetFragment.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="WaveSound.h" />
     <QtMoc Include="Combo\ComboEditor.h">

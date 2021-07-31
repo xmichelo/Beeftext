@@ -54,6 +54,9 @@
     <Filter Include="Preferences\Panes">
       <UniqueIdentifier>{e9397032-1075-4e09-8cf7-e3bb862c68c7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Snippet">
+      <UniqueIdentifier>{443b388f-c32a-4358-bae0-62a516901c78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -208,6 +211,15 @@
     <ClCompile Include="Preferences\Panes\PrefPaneAdvanced.cpp">
       <Filter>Preferences\Panes</Filter>
     </ClCompile>
+    <ClCompile Include="Snippet\SnippetFragment.cpp">
+      <Filter>Snippet</Filter>
+    </ClCompile>
+    <ClCompile Include="Snippet\TextSnippetFragment.cpp">
+      <Filter>Snippet</Filter>
+    </ClCompile>
+    <ClCompile Include="Snippet\DelaySnippetFragment.cpp">
+      <Filter>Snippet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -298,6 +310,15 @@
     </ClInclude>
     <ClInclude Include="LastUse\EmojiLastUseFile.h">
       <Filter>LastUse</Filter>
+    </ClInclude>
+    <ClInclude Include="Snippet\SnippetFragment.h">
+      <Filter>Snippet</Filter>
+    </ClInclude>
+    <ClInclude Include="Snippet\TextSnippetFragment.h">
+      <Filter>Snippet</Filter>
+    </ClInclude>
+    <ClInclude Include="Snippet\DelaySnippetFragment.h">
+      <Filter>Snippet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
