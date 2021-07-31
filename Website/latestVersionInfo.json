@@ -1,8 +1,8 @@
 {
-   "versionMajor": 9,
-   "versionMinor": 1,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v9.1/Beeftext-9.1-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v9.1",
-   "sha256Sum": "96c8e3712df1bdcf4cee9d8ca37f59962aae65879a73a666251f72f936e38348",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v9.1 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><ul><li>The combo picker window is now resizable (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/359\">#359</a>).</li><li>The search box in main window now occupies all available space (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/382\">#382</a>).</li><li>The group name of items is now displayed in the combo picker window (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/383\">#383</a>).</li><li>Added an option to use Shift-Insert for pasting snippets (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/375\">#375</a>).</li><li>Fixed handling of some special characters in the combo picker (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/380\">#380</a>).</li><li>Fixed multi word search in the main window (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/381\">#381</a>).</li><li>Theme name is now properly translated (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/385\">#385</a>).</li></ul></body></html>"
+   "versionMajor": 10,
+   "versionMinor": 0,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v10.0/Beeftext-10.0-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v10.0",
+   "sha256Sum": "09F15690887B3A1FCDD2E581F7FD812FC332BD2A4D899C4C1B86BED7698978C9",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v9.1 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><ul><li>Emojis are now supported in the combo picker (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/389\">#389</a>).</li><li>Implemented keyword case sensitivity option (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/386\">#386</a>).</li><li>Added a description field for combos (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/388\">#388</a>).</li><li>Fixed a bug in sound preferences (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/391\">#391</a>).</li></ul></body></html>"
 }
