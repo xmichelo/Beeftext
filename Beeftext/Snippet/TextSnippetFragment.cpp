@@ -37,3 +37,12 @@ void TextSnippetFragment::render() const
 {
    /// \todo Implement
 }
+
+
+//**********************************************************************************************************************
+/// \return a string describing the snippet fragment.
+//**********************************************************************************************************************
+QString TextSnippetFragment::toString() const
+{
+   return "Text fragment: " + text_;
+}

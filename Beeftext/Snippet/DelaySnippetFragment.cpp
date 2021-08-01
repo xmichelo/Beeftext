@@ -37,3 +37,12 @@ void DelaySnippetFragment::render() const
 {
    QThread::msleep(delayMs_);
 }
+
+
+//**********************************************************************************************************************
+/// \return a string describing the snippet fragment.
+//**********************************************************************************************************************
+QString DelaySnippetFragment::toString() const
+{
+   return QString("Delay fragment: %1ms").arg(delayMs_);
+}

@@ -21,7 +21,7 @@ public: // data types
    {
       Text = 0, ///< Text fragment.
       Delay  = 1, ///< Delay fragment.
-      Count  = 3, ///< The number of fragment types
+      Count  = 2, ///< The number of fragment types
    }; ///< Enumeration for the type of fragment
 public: // member functions
    SnippetFragment() = default; ///< Default constructor.
@@ -31,8 +31,16 @@ public: // member functions
    SnippetFragment& operator=(SnippetFragment const&) = delete; ///< Disabled assignment operator.
    SnippetFragment& operator=(SnippetFragment&&) = delete; ///< Disabled move assignment operator.
    virtual EType type() const = 00; ///< The type of fragment.
-   virtual void render() const = 00; ///< Render the snippet fragment
+   virtual void render() const = 00; ///< Render the snippet fragment.
+   virtual QString toString() const = 00; ///< Return a string describing the snippet fragment.
 };
+
+
+typedef std::shared_ptr<SnippetFragment> SpSnippetFragment; ///< Type definition for shared pointer to snippet fragment.
+typedef QList<SpSnippetFragment> ListSpSnippetFragment; ///< Type definition for vector of SpSnippetFragment.
+
+
+ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str); ///< Split a string snippet fragments
 
 
 #endif // #ifndef BEEFEXT_SNIPPET_FRAGMENT_H

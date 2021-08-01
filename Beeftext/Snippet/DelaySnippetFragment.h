@@ -28,6 +28,7 @@ public: // member functions
    DelaySnippetFragment& operator=(DelaySnippetFragment&&) = delete; ///< Disabled move assignment operator.
    EType type() const override; ///< Return the type of snippet fragment.
    void render() const override; ///< Render the snippet fragment.
+   QString toString() const override; ///< Return a string describing the snippet fragment.
 
 private: // data members
    qint32 delayMs_; ///< The delay in milliseconds.

@@ -12,6 +12,7 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "BeeftextUtils.h"
+#include "Snippet/SnippetFragment.h"
 #include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -389,6 +390,10 @@ bool Combo::performSubstitution()
    bool cancelled = false;
    QMap<QString, QString> knownInputVariables;
    QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
+   ListSpSnippetFragment fragments = splitStringIntoSnippetFragments(newText);
+   for (SpSnippetFragment const& fragment: fragments)
+      if (fragment)
+         qDebug() << fragment->toString();
    if (!cancelled)
    {
       performTextSubstitution(qint32(keyword_.size()), newText, cursorLeftShift, ETriggerSource::Keyword);
