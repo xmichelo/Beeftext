@@ -13,6 +13,8 @@
 #include "ComboManager.h"
 #include "BeeftextUtils.h"
 #include "Snippet/SnippetFragment.h"
+#include "Snippet/DelaySnippetFragment.h"
+#include "Snippet/TextSnippetFragment.h"
 #include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
@@ -383,23 +385,56 @@ bool Combo::matchesForInput(QString const& input) const
 //**********************************************************************************************************************
 /// \return true if the substitution was actually performed (it could a been cancelled, for instance by the user
 /// dismissing a variable input dialog.
-//*********************************************************************************************************************
+//**********************************************************************************************************************
 bool Combo::performSubstitution()
 {
-   qint32 cursorLeftShift = -1;
+   qint32 cursorLShift = -1;
    bool cancelled = false;
    QMap<QString, QString> knownInputVariables;
-   QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
-   ListSpSnippetFragment fragments = splitStringIntoSnippetFragments(newText);
-   for (SpSnippetFragment const& fragment: fragments)
-      if (fragment)
-         qDebug() << fragment->toString();
-   if (!cancelled)
-   {
-      performTextSubstitution(qint32(keyword_.size()), newText, cursorLeftShift, ETriggerSource::Keyword);
-      lastUseDateTime_ = QDateTime::currentDateTime();
-   }
-   return !cancelled;
+   QSet<QString> const forbiddenSubcombos;
+   QString const& newText = this->evaluatedSnippet(cancelled, forbiddenSubcombos, knownInputVariables, &cursorLShift);
+   if (cancelled)
+      return false;
+
+   //ListSpSnippetFragment fragments = splitStringIntoSnippetFragments(newText);
+   //for (SpSnippetFragment const& fragment: fragments)
+   //{
+   //   if (!fragment)
+   //      continue;
+   //   qDebug() << fragment->toString();
+   //   SnippetFragment::EType const type = fragment->type();
+   //   switch (type)
+   //   {
+   //   case SnippetFragment::EType::Text:
+   //   {
+   //      TextSnippetFragment* textFrag = dynamic_cast<TextSnippetFragment*>(fragment.get());
+   //      if (!textFrag)
+   //      {
+   //         globals::debugLog().addError("Could not cast delay snippet fragment");
+   //         break;
+   //      }
+   //      break;
+   //   }
+   //   case SnippetFragment::EType::Delay:
+   //   {
+   //      DelaySnippetFragment* delayFrag = dynamic_cast<DelaySnippetFragment*>(fragment.get());
+   //      if (!delayFrag)
+   //      {
+   //         globals::debugLog().addError("Could not cast delay snippet fragment");
+   //         break;
+   //      }
+   //      break;
+   //   }
+   //   default:
+   //      globals::debugLog().addError(QString("Unknown Snippet fragment type with id: %1").arg(qint32(type)));
+   //      break;
+   //   }
+   //}
+
+
+   performTextSubstitution(qint32(keyword_.size()), newText, cursorLShift, ETriggerSource::Keyword);
+   lastUseDateTime_ = QDateTime::currentDateTime();
+   return true;
 }
 
 
@@ -554,6 +589,8 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
    }   
 }
 
+
+/// \todo get rid of the function below
 
 //**********************************************************************************************************************
 /// \param[out] outCancelled Did the user cancel user input

@@ -33,7 +33,7 @@ SnippetFragment::EType DelaySnippetFragment::type() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void DelaySnippetFragment::render() const
+void DelaySnippetFragment::wait() const
 {
    QThread::msleep(delayMs_);
 }

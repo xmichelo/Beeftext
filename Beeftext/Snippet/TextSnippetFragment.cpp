@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "TextSnippetFragment.h"
+#include "BeeftextUtils.h"
 
 
 //**********************************************************************************************************************
@@ -33,7 +34,7 @@ SnippetFragment::EType TextSnippetFragment::type() const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void TextSnippetFragment::render() const
+void TextSnippetFragment::insertText() const
 {
    /// \todo Implement
 }

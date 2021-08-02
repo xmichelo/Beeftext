@@ -11,6 +11,9 @@
 #define BEEFEXT_SNIPPET_FRAGMENT_H
 
 
+#include "BeeftextUtils.h"
+
+
 //**********************************************************************************************************************
 /// \brief Snippet fragment class.
 //**********************************************************************************************************************
@@ -23,15 +26,15 @@ public: // data types
       Delay  = 1, ///< Delay fragment.
       Count  = 2, ///< The number of fragment types
    }; ///< Enumeration for the type of fragment
+
 public: // member functions
-   SnippetFragment() = default; ///< Default constructor.
+   SnippetFragment() {}; ///< Default constructor.
    SnippetFragment(SnippetFragment const&) = delete; ///< Disabled copy-constructor.
    SnippetFragment(SnippetFragment&&) = delete; ///< Disabled assignment copy-constructor.
    virtual ~SnippetFragment() = default; ///< Destructor.
    SnippetFragment& operator=(SnippetFragment const&) = delete; ///< Disabled assignment operator.
    SnippetFragment& operator=(SnippetFragment&&) = delete; ///< Disabled move assignment operator.
    virtual EType type() const = 00; ///< The type of fragment.
-   virtual void render() const = 00; ///< Render the snippet fragment.
    virtual QString toString() const = 00; ///< Return a string describing the snippet fragment.
 };
 

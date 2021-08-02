@@ -27,7 +27,7 @@ public: // member functions
    TextSnippetFragment& operator=(TextSnippetFragment const&) = delete; ///< Disabled assignment operator.
    TextSnippetFragment& operator=(TextSnippetFragment&&) = delete; ///< Disabled move assignment operator.
    EType type() const override; ///< Return the type of snippet fragment.
-   void render() const override; ///< Render the snippet fragment.
+   void insertText() const; ///< Render the snippet fragment.
    QString toString() const override; ///< Return a string describing the snippet fragment.
 
 private:
