@@ -38,6 +38,7 @@ public: // member functions
    ~InputManager() override; ///< Default destructor
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
    InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
+   bool setKeyboardHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
 
 signals:
    void comboBreakerTyped(); ///< Signal for combo breaking events
@@ -57,7 +58,6 @@ private: // member functions
    bool isKeyboardHookEnable() const; ///< Is the keyboard hook enabled
    void enableKeyboardHook(); ///< Enable the keyboard hook
    void disableKeyboardHook(); ///< Disable the keyboard hook
-   bool setKeyboardHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
    bool isMouseHookEnabled() const; ///< Is the mouse hook enabled
    void enableMouseHook(); ///< Enable the mouse hook
    void disableMouseHook(); ///< Disable the mouse hook
@@ -66,10 +66,6 @@ private: // member functions
 private: // static member functions
    static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The keyboard event callback
    static LRESULT CALLBACK mouseProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The mouse event callback
-
-
-   friend void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos,
-      ETriggerSource source);
 
 private: // data members
    HHOOK keyboardHook_ { nullptr }; ///< The handle to the keyboard hook used to be notified of keyboard events

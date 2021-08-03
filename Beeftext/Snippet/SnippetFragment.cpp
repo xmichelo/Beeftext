@@ -11,11 +11,14 @@
 #include "SnippetFragment.h"
 #include "TextSnippetFragment.h"
 #include "DelaySnippetFragment.h"
+#include "InputManager.h"
+#include <XMiLib/Exception.h>
 
 
 namespace {
-   QString const kStrDelayRegEx(R"(#{delay:(\d+)})");
+   QString const kStrDelayRegEx(R"()");
 }
+
 
 //**********************************************************************************************************************
 /// \param[in] str The string to split.
@@ -25,8 +28,7 @@ ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str)
 {
    ListSpSnippetFragment result;
    QString s(str);
-   QRegularExpression const rx(QString(R"(^(.*)%1(.*)$)").arg(kStrDelayRegEx), 
-      QRegularExpression::InvertedGreedinessOption);
+   QRegularExpression const rx(R"(^(.*)#{delay:(\d+)}(.*)$)", QRegularExpression::InvertedGreedinessOption);
    QRegularExpressionMatch match;
    while ((match = rx.match(s)).hasMatch())
    {
@@ -44,3 +46,18 @@ ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str)
       result.append(std::make_shared<TextSnippetFragment>(s));
    return result;
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] fragments The list of snippet fragments.
+///
+/// \note this function does not disable the keyboard hook before operating.
+//**********************************************************************************************************************
+void renderSnippetFragmentList(ListSpSnippetFragment const& fragments)
+{
+   for (SpSnippetFragment const& fragment: fragments)
+      if (fragment)
+         fragment->render();
+}
+
+

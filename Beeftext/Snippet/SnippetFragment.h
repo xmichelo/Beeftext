@@ -11,9 +11,6 @@
 #define BEEFEXT_SNIPPET_FRAGMENT_H
 
 
-#include "BeeftextUtils.h"
-
-
 //**********************************************************************************************************************
 /// \brief Snippet fragment class.
 //**********************************************************************************************************************
@@ -28,14 +25,15 @@ public: // data types
    }; ///< Enumeration for the type of fragment
 
 public: // member functions
-   SnippetFragment() {}; ///< Default constructor.
+   SnippetFragment() {} ///< Default constructor.
    SnippetFragment(SnippetFragment const&) = delete; ///< Disabled copy-constructor.
    SnippetFragment(SnippetFragment&&) = delete; ///< Disabled assignment copy-constructor.
    virtual ~SnippetFragment() = default; ///< Destructor.
    SnippetFragment& operator=(SnippetFragment const&) = delete; ///< Disabled assignment operator.
    SnippetFragment& operator=(SnippetFragment&&) = delete; ///< Disabled move assignment operator.
-   virtual EType type() const = 00; ///< The type of fragment.
-   virtual QString toString() const = 00; ///< Return a string describing the snippet fragment.
+   virtual EType type() const = 0; ///< The type of fragment.
+   virtual QString toString() const = 0; ///< Return a string describing the snippet fragment.
+   virtual void render() const = 0; ///< Render the snippet fragment.
 };
 
 
@@ -43,7 +41,8 @@ typedef std::shared_ptr<SnippetFragment> SpSnippetFragment; ///< Type definition
 typedef QList<SpSnippetFragment> ListSpSnippetFragment; ///< Type definition for vector of SpSnippetFragment.
 
 
-ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str); ///< Split a string snippet fragments
+ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str); ///< Split a string snippet fragments.
+void renderSnippetFragmentList(ListSpSnippetFragment const& fragments); ///< Render a list of snippet fragments.
 
 
 #endif // #ifndef BEEFEXT_SNIPPET_FRAGMENT_H

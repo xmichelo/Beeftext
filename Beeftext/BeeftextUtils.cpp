@@ -182,6 +182,8 @@ QString htmlToPlainText(QString const& snippet)
 //**********************************************************************************************************************
 /// \brief erase characters by
 ///
+/// \note This function does not disable the keyboard hook before operating.
+///
 /// \param[in] count The number of characters to erase.
 //**********************************************************************************************************************
 void eraseChars(qint32 count)
@@ -194,6 +196,8 @@ void eraseChars(qint32 count)
 
 //**********************************************************************************************************************
 /// \brief Insert text by pasting it.
+///
+/// \note This function does not disable the keyboard hook before operating.
 ///
 /// \param[in] text The text.
 //**********************************************************************************************************************
@@ -225,6 +229,8 @@ void insertTextByPasting(QString const& text)
 //**********************************************************************************************************************
 /// \brief Insert text by pasting it.
 ///
+/// \note This function does not disable the keyboard hook before operating.
+///
 /// \param[in] text The text.
 //**********************************************************************************************************************
 void insertTextByTyping(QString const& text)
@@ -255,6 +261,8 @@ void insertTextByTyping(QString const& text)
 
 //**********************************************************************************************************************
 /// \brief Insert text
+///
+/// \note This function does not disable the keyboard hook before operating.
 ///
 /// \param[in] text The text
 //**********************************************************************************************************************
@@ -291,8 +299,7 @@ void moveCursorLeft(qint32 count)
 /// \param[in] source The source that triggered the combo
 /// repositionning.
 //**********************************************************************************************************************
-void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos,
-   ETriggerSource source)
+void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos, ETriggerSource source)
 {
    InputManager& inputManager = InputManager::instance();
    PreferencesManager const& prefs = PreferencesManager::instance();

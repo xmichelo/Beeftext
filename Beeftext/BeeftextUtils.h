@@ -29,8 +29,9 @@ bool usePortableAppsFolderLayout(); ///< Test if the application is using the Po
 bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the foreground application
 QString getActiveExecutableFileName(); ///< Return the name of the active application's executable file
 QString htmlToPlainText(QString const& snippet); ///< Return the plain text for a snippet.
-void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos,
-   ETriggerSource source); ///< Substitute the last characters with the specified text
+void eraseChars(qint32 count); ///< Erase characters by generating backspace characters.
+void insertText(QString const& text); ///< Insert the text given text.
+void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos, ETriggerSource source); ///< Substitute the last characters with the specified text
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage = QString()); ///< Report an error to the user
 bool isAppRunningOnWindows10OrHigher(); ///< Return true if and only if the application is running on windows 10 or higher
 qint32 printableCharacterCount(QString const& str); ///< Return the (estimated) number of printable characters in a string

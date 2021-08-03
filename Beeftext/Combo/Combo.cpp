@@ -12,12 +12,13 @@
 #include "ComboVariable.h"
 #include "ComboManager.h"
 #include "BeeftextUtils.h"
+#include "InputManager.h"
 #include "Snippet/SnippetFragment.h"
-#include "Snippet/DelaySnippetFragment.h"
 #include "Snippet/TextSnippetFragment.h"
 #include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
+#include "XMiLib/Exception.h"
 #include <utility>
 
 
@@ -25,6 +26,8 @@ using namespace xmilib;
 
 
 namespace {
+
+
 QString const kPropUuid = "uuid"; ///< The JSon property name for the UUID
 QString const kPropName = "name"; ///< The JSON property name for the name
 QString const kPropComboText = "comboText"; ///< The JSON property for the "combo text", deprecated in combo list file format v2, replaced by "keyword"
@@ -41,6 +44,7 @@ QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property
 QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
 QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
 QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
+
 
 } // anonymous namespace
 
@@ -383,10 +387,11 @@ bool Combo::matchesForInput(QString const& input) const
 
 
 //**********************************************************************************************************************
+/// \param[in] triggeredByPicker Was the substitution triggered by the picker window
 /// \return true if the substitution was actually performed (it could a been cancelled, for instance by the user
 /// dismissing a variable input dialog.
 //**********************************************************************************************************************
-bool Combo::performSubstitution()
+bool Combo::performSubstitution(bool triggeredByPicker)
 {
    qint32 cursorLShift = -1;
    bool cancelled = false;
@@ -396,64 +401,39 @@ bool Combo::performSubstitution()
    if (cancelled)
       return false;
 
-   //ListSpSnippetFragment fragments = splitStringIntoSnippetFragments(newText);
-   //for (SpSnippetFragment const& fragment: fragments)
-   //{
-   //   if (!fragment)
-   //      continue;
-   //   qDebug() << fragment->toString();
-   //   SnippetFragment::EType const type = fragment->type();
-   //   switch (type)
-   //   {
-   //   case SnippetFragment::EType::Text:
-   //   {
-   //      TextSnippetFragment* textFrag = dynamic_cast<TextSnippetFragment*>(fragment.get());
-   //      if (!textFrag)
-   //      {
-   //         globals::debugLog().addError("Could not cast delay snippet fragment");
-   //         break;
-   //      }
-   //      break;
-   //   }
-   //   case SnippetFragment::EType::Delay:
-   //   {
-   //      DelaySnippetFragment* delayFrag = dynamic_cast<DelaySnippetFragment*>(fragment.get());
-   //      if (!delayFrag)
-   //      {
-   //         globals::debugLog().addError("Could not cast delay snippet fragment");
-   //         break;
-   //      }
-   //      break;
-   //   }
-   //   default:
-   //      globals::debugLog().addError(QString("Unknown Snippet fragment type with id: %1").arg(qint32(type)));
-   //      break;
-   //   }
-   //}
+   InputManager& inputManager = InputManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   bool const wasKeyboardHookEnabled = inputManager.setKeyboardHookEnabled(false);
+   // we disable the hook to prevent endless recursive substitution
 
+   try
+   {
+      // we erase the combo
+      bool const triggersOnSpace = prefs.useAutomaticSubstitution() && prefs.comboTriggersOnSpace();
+      
+      if (!triggeredByPicker)
+         eraseChars(qMax<qint32>(qint32(keyword_.size()) + (triggersOnSpace ? 1 : 0), 0));
 
-   performTextSubstitution(qint32(keyword_.size()), newText, cursorLShift, ETriggerSource::Keyword);
+      // we split the snippets into fragments and render them
+      ListSpSnippetFragment fragments = splitStringIntoSnippetFragments(newText);
+      if ((!triggeredByPicker) && (triggersOnSpace && prefs.keepFinalSpaceCharacter()))
+         fragments.push_back(std::make_shared<TextSnippetFragment>(QString(" ")));
+      renderSnippetFragmentList(fragments);
+
+      // position the cursor if needed by typing the right amount of left key strokes
+      /// \todo restore this
+      //if (cursorPos >= 0)
+      //   moveCursorLeft(qMax<qint32>(0, printableCharacterCount(text) - cursorPos));
+   }
+   catch (Exception const&)
+   {
+      inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
+      throw;
+   }
+   inputManager.setKeyboardHookEnabled(wasKeyboardHookEnabled);
+
    lastUseDateTime_ = QDateTime::currentDateTime();
    return true;
-}
-
-
-//**********************************************************************************************************************
-/// \return true if the the snippet was actually inserted(it could a been cancelled, for instance by the user
-/// dismissing a variable input dialog.
-//**********************************************************************************************************************
-bool Combo::insertSnippet(ETriggerSource source)
-{
-   qint32 cursorLeftShift = -1;
-   bool cancelled = false;
-   QMap<QString, QString> knownInputVariables;
-   QString const& newText = this->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, &cursorLeftShift);
-   if (!cancelled)
-   {
-      performTextSubstitution(0, newText, cursorLeftShift, source);
-      lastUseDateTime_ = QDateTime::currentDateTime();
-   }
-   return !cancelled;
 }
 
 
@@ -564,14 +544,10 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
    outCancelled = false;
    QString remainingText = snippet_;
    QString result;
-   // The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \.
-   // Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents
-   // inside the #{}.
-   QRegularExpression const regexp(R"(#\{((.*?)(?<!\\))\})");
 
    while (true)
    {
-      QRegularExpressionMatch match = regexp.match(remainingText);
+      QRegularExpressionMatch match = constants::kVariableRegExp.match(remainingText);
       if (!match.hasMatch())
          return result += remainingText;
 

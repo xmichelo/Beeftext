@@ -239,7 +239,7 @@ bool ComboManager::checkAndPerformComboSubstitution()
 
    SpCombo const combo = result[result.size() > 1 ? static_cast<quint32>(rng_.get()) % result.size() : 0];
    if ((!isBeeftextTheForegroundApplication()) &&
-      (combo->performSubstitution() && PreferencesManager::instance().playSoundOnCombo()) && sound_)
+      (combo->performSubstitution(false) && PreferencesManager::instance().playSoundOnCombo()) && sound_)
       sound_->play(); // in Beeftext windows, substitution is disabled
    this->onComboBreakerTyped();
    return true;

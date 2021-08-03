@@ -225,7 +225,7 @@ void PickerWindow::triggerSelectedItem()
    SpEmoji const emoji = (isCombo ? nullptr : index.data(constants::PointerRole).value<SpEmoji>());
    std::chrono::milliseconds const delay(200);
    if (combo)
-      QTimer::singleShot(delay, [combo]() { combo->insertSnippet(ETriggerSource::ComboPicker); });
+      QTimer::singleShot(delay, [combo]() { combo->performSubstitution(true); });
    else
       QTimer::singleShot(delay, [emoji]() { 
          if ((!isBeeftextTheForegroundApplication()) && 
