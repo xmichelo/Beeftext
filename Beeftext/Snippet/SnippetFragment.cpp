@@ -11,12 +11,40 @@
 #include "SnippetFragment.h"
 #include "TextSnippetFragment.h"
 #include "DelaySnippetFragment.h"
-#include "InputManager.h"
-#include <XMiLib/Exception.h>
+#include "KeySnippetFragment.h"
 
 
 namespace {
-   QString const kStrDelayRegEx(R"()");
+
+
+qint32 constexpr kDelayBetweenFragmentsMs = 100; ///< THe delay between fragments in milliseconds
+
+
+}
+
+
+//**********************************************************************************************************************
+/// \brief split a string into snippet fragment at the #{key:} variable.
+/// \param[in] str The string.
+/// \return the text split into fragments
+//**********************************************************************************************************************
+ListSpSnippetFragment splitForKeyVariable(QString const& str)
+{
+   ListSpSnippetFragment result;
+   QString s(str);
+   QRegularExpression const rx(R"(^(.*)#{key:(\w+)}(.*)$)", QRegularExpression::InvertedGreedinessOption);
+   QRegularExpressionMatch match;
+   while ((match = rx.match(s)).hasMatch())
+   {
+      QString const before = match.captured(1);
+      if (!before.isEmpty())
+         result.append(std::make_shared<TextSnippetFragment>(before));
+      result.append(std::make_shared<KeySnippetFragment>(match.captured(2)));
+      s = match.captured(3);
+   }
+   if (!s.isEmpty())
+      result.append(std::make_shared<TextSnippetFragment>(s));
+   return result;
 }
 
 
@@ -34,7 +62,7 @@ ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str)
    {
       QString const before = match.captured(1);
       if (!before.isEmpty())
-         result.append(std::make_shared<TextSnippetFragment>(before));
+         result.append(splitForKeyVariable(before));
       bool ok = false;
       qint32 const delay = match.captured(2).toInt(&ok);
       if (ok && (delay > 0))
@@ -43,7 +71,7 @@ ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str)
       s = match.captured(3);
    }
    if (!s.isEmpty())
-      result.append(std::make_shared<TextSnippetFragment>(s));
+      result.append(splitForKeyVariable(s));
    return result;
 }
 
@@ -55,9 +83,19 @@ ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str)
 //**********************************************************************************************************************
 void renderSnippetFragmentList(ListSpSnippetFragment const& fragments)
 {
-   for (SpSnippetFragment const& fragment: fragments)
-      if (fragment)
-         fragment->render();
+   qDebug() << "--- START ---";
+   qsizetype const count = fragments.size();
+   for (qsizetype i = 0; i < fragments.size(); ++i)
+   {
+      SpSnippetFragment const fragment = fragments[i];
+      if (!fragment)
+         continue;
+      fragment->render();
+      qDebug() << fragment->toString();
+      if (i != count - 1)
+         QThread::msleep(kDelayBetweenFragmentsMs);
+   }
+   qDebug() << "---  END  ---";
 }
 
 

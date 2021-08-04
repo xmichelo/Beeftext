@@ -220,6 +220,9 @@
     <ClCompile Include="Snippet\DelaySnippetFragment.cpp">
       <Filter>Snippet</Filter>
     </ClCompile>
+    <ClCompile Include="Snippet\KeySnippetFragment.cpp">
+      <Filter>Snippet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -318,6 +321,9 @@
       <Filter>Snippet</Filter>
     </ClInclude>
     <ClInclude Include="Snippet\DelaySnippetFragment.h">
+      <Filter>Snippet</Filter>
+    </ClInclude>
+    <ClInclude Include="Snippet\KeySnippetFragment.h">
       <Filter>Snippet</Filter>
     </ClInclude>
   </ItemGroup>

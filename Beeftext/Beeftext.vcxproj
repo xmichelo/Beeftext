@@ -316,6 +316,7 @@
     <ClCompile Include="SensitiveApplicationManager.cpp" />
     <ClCompile Include="Shortcut.cpp" />
     <ClCompile Include="Snippet\DelaySnippetFragment.cpp" />
+    <ClCompile Include="Snippet\KeySnippetFragment.cpp" />
     <ClCompile Include="Snippet\SnippetFragment.cpp" />
     <ClCompile Include="Snippet\TextSnippetFragment.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -354,6 +355,7 @@
     <QtMoc Include="Preferences\Panes\PrefPaneBehavior.h" />
     <QtMoc Include="Preferences\Panes\PrefPaneAdvanced.h" />
     <ClInclude Include="Snippet\DelaySnippetFragment.h" />
+    <ClInclude Include="Snippet\KeySnippetFragment.h" />
     <ClInclude Include="Snippet\SnippetFragment.h" />
     <ClInclude Include="Snippet\TextSnippetFragment.h" />
     <ClInclude Include="Theme.h" />
