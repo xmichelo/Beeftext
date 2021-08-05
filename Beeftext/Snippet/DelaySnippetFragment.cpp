@@ -31,8 +31,6 @@ SnippetFragment::EType DelaySnippetFragment::type() const
 
 
 //**********************************************************************************************************************
-
-
 /// \return a string describing the snippet fragment.
 //**********************************************************************************************************************
 QString DelaySnippetFragment::toString() const

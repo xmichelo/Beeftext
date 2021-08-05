@@ -32,6 +32,8 @@ QString backupFileDialogFilter() { return QObject::tr("Beeftext backup files (*.
 Qt::DateFormat const kJsonExportDateFormat = Qt::ISODateWithMs;
 QChar const kEmojiDelimiter = '|';
 QRegularExpression const kVariableRegExp(R"(#\{((.*?)(?<!\\))\})");
+QString const kKeyVariableRegExpStr(R"(#{key:(\w+)})");
+QString const kDelayVariableRegExpStr(R"(#{delay:(\d+)})");
 
 
 } // namespace constants

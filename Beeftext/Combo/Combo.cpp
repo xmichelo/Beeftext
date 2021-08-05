@@ -44,6 +44,7 @@ QString const kPropCreationDateTime = "creationDateTime"; ///< The JSON property
 QString const kPropLastModified = "lastModified"; ///< The JSON property name for the modification date/time, deprecated in combo list file format v3, replaced by "modificationDateTime"
 QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
 QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
+QString const kCursorVariable = "#{cursor}"; ///< The cursor position variable.
 
 
 } // anonymous namespace
@@ -387,19 +388,38 @@ bool Combo::matchesForInput(QString const& input) const
 
 
 //**********************************************************************************************************************
+/// \brief compute the number of time the cursor must be shifted to the left to reach the position of the cursor
+/// variable.
+//**********************************************************************************************************************
+qint32 computeCursorLeftShift(QString const& str)
+{
+   QString s = str;
+   s.remove(QRegularExpression(QString(R"((%1)|(%2))").arg(constants::kDelayVariableRegExpStr)
+      .arg(constants::kKeyVariableRegExpStr)));
+   qsizetype const index = s.lastIndexOf(kCursorVariable);
+   if (index < 0)
+      return -1;
+   return printableCharacterCount(s.right(s.length() - (index + kCursorVariable.length())));
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] triggeredByPicker Was the substitution triggered by the picker window
 /// \return true if the substitution was actually performed (it could a been cancelled, for instance by the user
 /// dismissing a variable input dialog.
 //**********************************************************************************************************************
 bool Combo::performSubstitution(bool triggeredByPicker)
 {
-   qint32 cursorLShift = -1;
    bool cancelled = false;
    QMap<QString, QString> knownInputVariables;
    QSet<QString> const forbiddenSubcombos;
-   QString const& newText = this->evaluatedSnippet(cancelled, forbiddenSubcombos, knownInputVariables, &cursorLShift);
+   QString newText = this->evaluatedSnippet(cancelled, forbiddenSubcombos, knownInputVariables);
    if (cancelled)
       return false;
+
+   qint32 const cursorLShift = computeCursorLeftShift(newText);
+   if (cursorLShift >= 0)
+      newText = newText.remove(kCursorVariable, Qt::CaseInsensitive);
 
    InputManager& inputManager = InputManager::instance();
    PreferencesManager const& prefs = PreferencesManager::instance();
@@ -421,9 +441,8 @@ bool Combo::performSubstitution(bool triggeredByPicker)
       renderSnippetFragmentList(fragments);
 
       // position the cursor if needed by typing the right amount of left key strokes
-      /// \todo restore this
-      //if (cursorPos >= 0)
-      //   moveCursorLeft(qMax<qint32>(0, printableCharacterCount(text) - cursorPos));
+      if (cursorLShift > 0)
+         moveCursorLeft(cursorLShift);
    }
    catch (Exception const&)
    {
@@ -579,23 +598,24 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
 QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbiddenSubCombos, 
    QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const
 {
-   QString result = evaluatedSnippet(outCancelled, forbiddenSubCombos, knownInputVariables);
-   if (outCancelled)
-      return QString();
-
-   QString const cursorVariable = "#{cursor}";
-   if (!outCursorPos)
-      return result.remove(cursorVariable);
-
-   qint32 const index = qint32(result.lastIndexOf(cursorVariable));
-   if (index < 0)
-   {
+   /// \todo get rid of this function.
+   if (outCursorPos)
       *outCursorPos = -1;
-      return result;
-   }
+   return evaluatedSnippet(outCancelled, forbiddenSubCombos, knownInputVariables);
 
-   qint32 const lShift = qint32(result.length()) - (index + qint32(cursorVariable.length()));
-   result.remove(cursorVariable);
-   *outCursorPos = qint32(result.length()) - lShift;
-   return result;
+   //QString const cursorVariable = "#{cursor}";
+   //if (!outCursorPos)
+   //   return result.remove(cursorVariable);
+
+   //qint32 const index = qint32(result.lastIndexOf(cursorVariable));
+   //if (index < 0)
+   //{
+   //   *outCursorPos = -1;
+   //   return result;
+   //}
+
+   //qint32 const lShift = qint32(result.length()) - (index + qint32(cursorVariable.length()));
+   //result.remove(cursorVariable);
+   //*outCursorPos = qint32(result.length()) - lShift;
+   //return result;
 }

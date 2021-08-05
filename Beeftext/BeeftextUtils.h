@@ -31,6 +31,7 @@ QString getActiveExecutableFileName(); ///< Return the name of the active applic
 QString htmlToPlainText(QString const& snippet); ///< Return the plain text for a snippet.
 void eraseChars(qint32 count); ///< Erase characters by generating backspace characters.
 void insertText(QString const& text); ///< Insert the text given text.
+void moveCursorLeft(qint32 count); ///< Move the cursor the the left by the specified number of characters.
 void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos, ETriggerSource source); ///< Substitute the last characters with the specified text
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage = QString()); ///< Report an error to the user
 bool isAppRunningOnWindows10OrHigher(); ///< Return true if and only if the application is running on windows 10 or higher
@@ -40,5 +41,6 @@ QMimeData* mimeDataFromHtml(QString const& html);  ///< Create a MIME data insta
 bool warnAndConvertHtmlCombos(); ///< Warn the user about discontinued rich text combo support and convert them to plain text.
 QString colorToHex(QColor const& color, bool includeAlpha); ///< Get a hex representation of a color.
 bool runShortcutDialog(SpShortcut& shortcut); ///< Runs a dialog allowing the user to select a shortcut.
+
 
 #endif // #ifndef BEEFTEXT_UTILS_H

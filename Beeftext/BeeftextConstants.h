@@ -34,7 +34,8 @@ QString backupFileDialogFilter(); ///< The file format filter for the backup and
 extern Qt::DateFormat const kJsonExportDateFormat; ///< The date/time export format used for JSon docs
 extern QChar const kEmojiDelimiter; ///< The delimiter for emojis
 extern QRegularExpression const kVariableRegExp; ///< The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \. Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents inside the #{}.
-
+extern QString const kKeyVariableRegExpStr; ///< A regular expression matching the #{key: variable}.
+extern QString const kDelayVariableRegExpStr; ///< A regular expression matching the #{delay: variable}.
 
 enum EITemType
 {

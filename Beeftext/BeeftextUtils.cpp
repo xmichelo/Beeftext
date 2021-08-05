@@ -260,8 +260,6 @@ void insertTextByTyping(QString const& text)
 
 
 //**********************************************************************************************************************
-/// \brief Insert text
-///
 /// \note This function does not disable the keyboard hook before operating.
 ///
 /// \param[in] text The text
@@ -277,7 +275,7 @@ void insertText(QString const& text)
 
 
 //**********************************************************************************************************************
-/// \brief Move the cursor to the left
+/// \note This function does not disable the keyboard hook before operating.
 ///
 /// \param[in] count The number of characters to move by
 //**********************************************************************************************************************

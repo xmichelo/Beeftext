@@ -12,6 +12,7 @@
 #include "TextSnippetFragment.h"
 #include "DelaySnippetFragment.h"
 #include "KeySnippetFragment.h"
+#include "BeeftextConstants.h"
 
 
 namespace {
@@ -32,18 +33,19 @@ ListSpSnippetFragment splitForKeyVariable(QString const& str)
 {
    ListSpSnippetFragment result;
    QString s(str);
-   QRegularExpression const rx(R"(^(.*)#{key:(\w+)}(.*)$)", QRegularExpression::InvertedGreedinessOption);
+   QRegularExpression const rx(QString(R"((.*)%1(.*))").arg(constants::kKeyVariableRegExpStr), 
+      QRegularExpression::DotMatchesEverythingOption);
    QRegularExpressionMatch match;
    while ((match = rx.match(s)).hasMatch())
    {
-      QString const before = match.captured(1);
-      if (!before.isEmpty())
-         result.append(std::make_shared<TextSnippetFragment>(before));
-      result.append(std::make_shared<KeySnippetFragment>(match.captured(2)));
-      s = match.captured(3);
+      QString const after = match.captured(3);
+      if (!after.isEmpty())
+         result.prepend(std::make_shared<TextSnippetFragment>(after));
+      result.prepend(std::make_shared<KeySnippetFragment>(match.captured(2)));
+      s = match.captured(1);
    }
    if (!s.isEmpty())
-      result.append(std::make_shared<TextSnippetFragment>(s));
+      result.prepend(std::make_shared<TextSnippetFragment>(s));
    return result;
 }
 
@@ -56,22 +58,23 @@ ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str)
 {
    ListSpSnippetFragment result;
    QString s(str);
-   QRegularExpression const rx(R"(^(.*)#{delay:(\d+)}(.*)$)", QRegularExpression::InvertedGreedinessOption);
+   QRegularExpression const rx(QString(R"((.*)%1(.*))").arg(constants::kDelayVariableRegExpStr), 
+      QRegularExpression::DotMatchesEverythingOption);
    QRegularExpressionMatch match;
    while ((match = rx.match(s)).hasMatch())
    {
-      QString const before = match.captured(1);
-      if (!before.isEmpty())
-         result.append(splitForKeyVariable(before));
+      QString const after = match.captured(3);
+      if (!after.isEmpty())
+         result = splitForKeyVariable(after) + result;
       bool ok = false;
       qint32 const delay = match.captured(2).toInt(&ok);
       if (ok && (delay > 0))
-         result.append(std::make_shared<DelaySnippetFragment>(delay));
+         result.prepend(std::make_shared<DelaySnippetFragment>(delay));
 
-      s = match.captured(3);
+      s = match.captured(1);
    }
    if (!s.isEmpty())
-      result.append(splitForKeyVariable(s));
+      result = splitForKeyVariable(s) + result;
    return result;
 }
 
