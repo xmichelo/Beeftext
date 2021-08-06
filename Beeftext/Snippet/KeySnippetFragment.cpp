@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "KeySnippetFragment.h"
+#include "Preferences/PreferencesManager.h"
 #include <XMiLib/SystemUtils.h>
 
 
@@ -59,10 +60,12 @@ quint16 identifyKey(QString const& keyStr)
 
 //**********************************************************************************************************************
 /// \param[in] key The key as text.
+/// \param[in] repeatCount The number of time the key should be repeated.
 //**********************************************************************************************************************
-KeySnippetFragment::KeySnippetFragment(QString const& key)
+KeySnippetFragment::KeySnippetFragment(QString const& key, qint32 repeatCount)
    : SnippetFragment()
    , key_(identifyKey(key))
+   , repeatCount_(repeatCount)
 {
 }
 
@@ -81,7 +84,7 @@ SnippetFragment::EType KeySnippetFragment::type() const
 //**********************************************************************************************************************
 QString KeySnippetFragment::toString() const
 {
-   return QString("Key fragment: 0x%1 (%2)").arg(key_, 2, 16, QChar('0')).arg(key_);
+   return QString("Key fragment: key: 0x%1(%2) - Repeats: %3").arg(key_, 2, 16, QChar('0')).arg(key_).arg(repeatCount_);
 }
 
 
@@ -90,5 +93,11 @@ QString KeySnippetFragment::toString() const
 //**********************************************************************************************************************
 void KeySnippetFragment::render() const
 {
-   xmilib::synthesizeKeyDownAndUp(key_);
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   for (qint32 i = 0; i < repeatCount_; ++i)
+   {
+      xmilib::synthesizeKeyDownAndUp(key_);
+      if (i != repeatCount_ - 1)
+         QThread::msleep(prefs.delayBetweenKeystrokesMs());
+   }
 }

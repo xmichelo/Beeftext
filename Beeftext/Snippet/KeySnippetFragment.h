@@ -20,7 +20,7 @@
 class KeySnippetFragment: public SnippetFragment
 {
 public: // member functions
-   explicit KeySnippetFragment(QString const& key); ///< Default constructor.
+   KeySnippetFragment(QString const& key, qint32 repeatCount); ///< Default constructor.
    KeySnippetFragment(KeySnippetFragment const&) = delete; ///< Disabled copy-constructor.
    KeySnippetFragment(KeySnippetFragment&&) = delete; ///< Disabled assignment copy-constructor.
    ~KeySnippetFragment() override = default; ///< Destructor.
@@ -32,6 +32,7 @@ public: // member functions
 
 private: // data members
    quint16 key_ { 0 }; ///< The key.
+   qint32 repeatCount_ { 1 }; ///< The repeat count for the key.
 };
 
 

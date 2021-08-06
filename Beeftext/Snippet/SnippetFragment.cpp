@@ -38,10 +38,16 @@ ListSpSnippetFragment splitForKeyVariable(QString const& str)
    QRegularExpressionMatch match;
    while ((match = rx.match(s)).hasMatch())
    {
-      QString const after = match.captured(3);
+      QString const after = match.captured(4);
       if (!after.isEmpty())
          result.prepend(std::make_shared<TextSnippetFragment>(after));
-      result.prepend(std::make_shared<KeySnippetFragment>(match.captured(2)));
+      bool ok = true;
+      QString const repeatStr = match.captured(3);
+      qint32 repeatCount = 1;
+      if (!repeatStr.isEmpty())
+         repeatCount = repeatStr.toInt(&ok);
+      if (ok)
+         result.prepend(std::make_shared<KeySnippetFragment>(match.captured(2), repeatCount));
       s = match.captured(1);
    }
    if (!s.isEmpty())
