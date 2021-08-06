@@ -79,6 +79,12 @@ QMenu* ComboEditor::createComboVariableMenu()
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{dateTime:}", true); });
    dtMenu->addAction(action);
    menu->addMenu(dtMenu);
+   action = new QAction(tr("&Key"), this);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{key:}", true); });
+   menu->addAction(action);
+   action = new QAction(tr("&Delay"), this);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{delay:}", true); });
+   menu->addAction(action);
 
    action = new QAction(tr("C&ursor Position"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{cursor}", false); });

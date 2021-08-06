@@ -28,6 +28,8 @@ quint16 identifyKey(QString const& keyStr)
    if (key == "space") return VK_SPACE;
    if (key == "tab") return VK_TAB;
    if ((key == "return") || (key == "enter")) return VK_RETURN;
+   if (key == "insert") return VK_HOME;
+   if (key == "delete") return VK_DELETE;
    if (key == "home") return VK_HOME;
    if (key == "end") return VK_END;
    if (key == "pageup") return VK_PRIOR;
@@ -48,6 +50,10 @@ quint16 identifyKey(QString const& keyStr)
    if (key == "mediastop") return VK_MEDIA_STOP;
    if (key == "mediaplaypause") return VK_MEDIA_PLAY_PAUSE;
    if (key == "mediaselect") return VK_LAUNCH_MEDIA_SELECT;
+   if (key == "windows") return VK_LWIN;
+   if (key == "control") return VK_CONTROL;
+   if (key == "alt") return VK_LMENU;
+   if (key == "shift") return VK_SHIFT;
    for (quint16 i = 1; i <= 24; ++i)
       if (key == QString("f%1").arg(i))
          return VK_F1 + i - 1;
