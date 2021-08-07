@@ -281,9 +281,19 @@ QString evaluatePowershellVariable(QString const& variable)
 {
    try
    {
-      QString const path = variable.right(variable.size() - kPowershellVariable.size());
+      QRegularExpression const rx(QString(R"(^%1(.+?)(?>:(\d+))?$)").arg(kPowershellVariable));
+      QRegularExpressionMatch const match = rx.match(variable);
+      if (!match.hasMatch())
+         throw xmilib::Exception("An unexpected error occurred while parsing a powershell variable.");
+      QString const path = match.captured(1);
       if (!QFileInfo(path).exists())
          throw xmilib::Exception(QString("the file `%1` does not exist.").arg(path));
+
+      QString const timeoutStr = match.captured(2);
+      bool ok = true;
+      qint32 const timeout = timeoutStr.isEmpty() ? 10000 : timeoutStr.toInt(&ok);
+      if (!ok)
+         throw xmilib::Exception("An unexpected error occurred while parsing the delay of a PowerShell variable.");
 
       PreferencesManager const& prefs = PreferencesManager::instance();
       QString exePath = "powershell.exe";
@@ -300,7 +310,7 @@ QString evaluatePowershellVariable(QString const& variable)
 
       QProcess p;
       p.start(exePath, { "-NonInteractive", "-ExecutionPolicy", "Unrestricted", "-File", path });
-      if (!p.waitForFinished(10000)) ///< we timeout after 10 seconds
+      if (!p.waitForFinished(timeout < 1 ? -1 : timeout)) 
          throw xmilib::Exception(QString("the script `%1` timed out.").arg(path));
 
       qint32 const returnCode = p.exitCode();
