@@ -1727,6 +1727,8 @@
 			padding-left: 0.25em;
 		}
 
+	li.banner-link { text-align: right; padding-top:20px; }
+
 /* Box */
 
 	.box {
@@ -1849,11 +1851,11 @@
 	#main-wrapper {
 		background: #fff;
 		box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05);
-		padding: 5em 0 5em 0;
+		padding: 2em 0 2em 0;
 	}
 
 	#footer-wrapper {
-		padding: 6em 0 8em 0;
+		padding: 2em 0 2em 0;
 		background-color: #eaeaea;
 	}
 
@@ -1991,7 +1993,7 @@
 
 	#banner {
 		position: relative;
-		padding: 4.5em;
+		padding: 2em;
 	}
 
 		#banner h2 {
@@ -2046,7 +2048,7 @@
 
 	#copyright {
 		/*color: #aaa;*/
-		padding: 4em 0 0 0;
+		padding: 2em 0 0 0;
 		text-align: center;
 	}
 
