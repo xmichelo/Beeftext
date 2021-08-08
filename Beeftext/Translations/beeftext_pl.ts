@@ -28,16 +28,19 @@
     <name>BackupRestoreDialog</name>
     <message>
         <location filename="../Backup/BackupRestoreDialog.ui" line="22"/>
+        <location filename="../GeneratedFiles/ui_BackupRestoreDialog.h" line="95"/>
         <source>Backup</source>
         <translation>Utwórz kopię zapasową</translation>
     </message>
     <message>
         <location filename="../Backup/BackupRestoreDialog.ui" line="66"/>
+        <location filename="../GeneratedFiles/ui_BackupRestoreDialog.h" line="96"/>
         <source>&amp;Restore</source>
         <translation>&amp;Przywróć kopię zapasową</translation>
     </message>
     <message>
         <location filename="../Backup/BackupRestoreDialog.ui" line="73"/>
+        <location filename="../GeneratedFiles/ui_BackupRestoreDialog.h" line="97"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Anuluj</translation>
     </message>
@@ -56,11 +59,13 @@
     <name>ComboDialog</name>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="108"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="188"/>
         <source>&amp;New</source>
         <translation>&amp;Nowy</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="128"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="189"/>
         <source>Matching</source>
         <translation>Dopasowany</translation>
     </message>
@@ -76,22 +81,26 @@
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="32"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="191"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translatorcomment>Wygenerować tabelę wyrażeń i sprawdzić czytelność oraz poprawność</translatorcomment>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Grupa&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="79"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="192"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="22"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="193"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="89"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="190"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translatorcomment>Wygenerować tabelę wyrażeń i sprawdzić czytelność oraz poprawność</translatorcomment>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Nazwa&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -108,17 +117,20 @@
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="173"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="194"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translatorcomment>Wygenerować tabelę wyrażeń i sprawdzić czytelność oraz poprawność</translatorcomment>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Pola wymagane&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="193"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="195"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="203"/>
+        <location filename="../GeneratedFiles/ui_ComboDialog.h" line="196"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Anuluj</translation>
     </message>
@@ -242,58 +254,68 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation>&amp;Niestandardowa Data &amp;&amp; Czas</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="83"/>
+        <location filename="../Combo/ComboEditor.cpp" line="82"/>
+        <source>&amp;Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="85"/>
+        <source>&amp;Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="89"/>
         <source>C&amp;ursor Position</source>
         <translation>P&amp;ozycja Kursora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="87"/>
-        <location filename="../Combo/ComboEditor.cpp" line="88"/>
+        <location filename="../Combo/ComboEditor.cpp" line="93"/>
+        <location filename="../Combo/ComboEditor.cpp" line="94"/>
         <source>Co&amp;mbo</source>
         <translation>Wy&amp;rażenie</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="91"/>
+        <location filename="../Combo/ComboEditor.cpp" line="97"/>
         <source>Combo (&amp;uppercase)</source>
         <translation>Wyrażenie (&amp;duże litery)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="94"/>
+        <location filename="../Combo/ComboEditor.cpp" line="100"/>
         <source>Combo (lo&amp;wercase)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="158"/>
+        <location filename="../Combo/ComboEditor.cpp" line="164"/>
         <source>Select PowerShell script file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="159"/>
+        <location filename="../Combo/ComboEditor.cpp" line="165"/>
         <source>PowerShell script files (*.ps1);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="98"/>
+        <location filename="../Combo/ComboEditor.cpp" line="104"/>
         <source>Combo (&amp;trimmed)</source>
         <translation>Wyrażenie (&amp;zredukowane)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="103"/>
+        <location filename="../Combo/ComboEditor.cpp" line="109"/>
         <source>En&amp;vironment Variable</source>
         <translation>Zm&amp;ienna Środowiskowa</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="106"/>
+        <location filename="../Combo/ComboEditor.cpp" line="112"/>
         <source>&amp;PowerShell Script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="109"/>
+        <location filename="../Combo/ComboEditor.cpp" line="115"/>
         <source>User &amp;Input</source>
         <translation>Dane &amp;Wejściowe Użytkownika</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="114"/>
+        <location filename="../Combo/ComboEditor.cpp" line="120"/>
         <source>&amp;About Variables</source>
         <translation>&amp;O Zmiennych</translation>
     </message>
@@ -302,122 +324,146 @@ Czy mimo to chcesz kontynuować?</translation>
     <name>ComboImportDialog</name>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="32"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="221"/>
         <source>File</source>
         <translation>Plik</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="45"/>
         <location filename="../Combo/ComboImportDialog.ui" line="225"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="217"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="222"/>
         <source>&amp;Browse</source>
         <translation>&amp;Przeglądaj</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="52"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="223"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="65"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="224"/>
         <source>Import options</source>
         <translation>Zaimportuj opcje</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="71"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="225"/>
         <source>Import into group</source>
         <translation>Zaimportuj w grupy</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="190"/>
         <location filename="../Combo/ComboImportDialog.ui" line="212"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="211"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="226"/>
         <source>Import</source>
         <translation>Importuj</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="200"/>
         <location filename="../Combo/ComboImportDialog.ui" line="217"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="213"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="227"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Anuluj</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="209"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="209"/>
         <source>&amp;Import</source>
         <translation>&amp;Importuj</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="220"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="215"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="228"/>
+        <location filename="../GeneratedFiles/ui_ComboImportDialog.h" line="219"/>
         <source>Browse</source>
         <translation>Przeglądaj</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="137"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="138"/>
         <source>Skip %1 conflicting combos.</source>
         <translation>Pomiń %1 skonfliktowane wyrażenia.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="138"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="139"/>
         <source>Skip 1 conflicting combo.</source>
         <translation>Pomiń 1 wykluczające się wyrażenie.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="139"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="140"/>
         <source>Overwrite %1 conflicting combos.</source>
         <translation>Nadpisz %1 wykluczające się wyrażenia.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="141"/>
         <source>Overwrite 1 conflicting combo.</source>
         <translation>Nadpisz 1 wykluczające się wyrażenie.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="143"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="144"/>
         <source>Overwrite %1 older conflicting combos.</source>
         <translation>Nadpisz %1 poprzednie wykluczające się wyrażenia.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="144"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="145"/>
         <source>Overwrite 1 older conflicting combo.</source>
         <translation>Nadpisz 1 poprzednie wykluczające się wyrażenie.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="156"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="164"/>
         <source>%1 combos will be imported.</source>
         <translation>%1 wyrażeń zostanie zaimportowanych.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="157"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="165"/>
         <source>1 combo will be imported.</source>
         <translation>1 wyrażenie zostanie zaimportowane.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="185"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="193"/>
         <source>Please select a valid group.</source>
         <translation>Proszę wybrać poprawną grupę.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="228"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="233"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="236"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="241"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="290"/>
         <source>Error</source>
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="233"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="241"/>
         <source>%1 combo(s) could not be imported.</source>
         <translation>%1 wyrażenie(a) nie mogło(y) zostać zaimportowane.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="248"/>
         <source>&amp;Error</source>
         <translation>&amp;Błąd</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="260"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="268"/>
         <source>Select Combo File</source>
         <translation>Wybierz Plik Wyrażeń</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="294"/>
+        <source>The file is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="297"/>
+        <source>The file does not contain importable data.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -473,53 +519,64 @@ Czy mimo to chcesz kontynuować?</translation>
     <name>ComboTableWidget</name>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="34"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="224"/>
         <source>Combos</source>
         <translation>Wyrażenia</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="47"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="225"/>
         <source>Search (Ctrl+F)</source>
         <translation>Szukaj (Ctrl+F)</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="129"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="149"/>
         <source>&amp;New</source>
         <translation>&amp;Nowe</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="132"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="150"/>
         <source>Add Combo</source>
         <translation>Dodaj Wyrażenie</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="135"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="420"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="152"/>
         <source>New Combo</source>
         <translation>Nowe Wyrażenie</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="138"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="155"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="143"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="157"/>
         <source>&amp;Delete</source>
         <translation>&amp;Usuń</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="146"/>
         <location filename="../Combo/ComboTableWidget.ui" line="149"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="158"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="160"/>
         <source>Delete Combo</source>
         <translation>Usuń Wyrażenie</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="152"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="163"/>
         <source>Del</source>
         <translation>Del</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="157"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="165"/>
         <source>&amp;Edit</source>
         <translation>&amp;Edytuj</translation>
     </message>
@@ -527,16 +584,20 @@ Czy mimo to chcesz kontynuować?</translation>
         <location filename="../Combo/ComboTableWidget.ui" line="160"/>
         <location filename="../Combo/ComboTableWidget.ui" line="163"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="513"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="166"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="168"/>
         <source>Edit Combo</source>
         <translation>Edytuj wyrażenie</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="166"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="171"/>
         <source>Return</source>
         <translation>Powrót</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="171"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="173"/>
         <source>&amp;Duplicate</source>
         <translation>&amp;Zduplikuj</translation>
     </message>
@@ -544,107 +605,129 @@ Czy mimo to chcesz kontynuować?</translation>
         <location filename="../Combo/ComboTableWidget.ui" line="174"/>
         <location filename="../Combo/ComboTableWidget.ui" line="177"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="456"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="174"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="176"/>
         <source>Duplicate Combo</source>
         <translation>Zduplikuj Wyrażenie</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="180"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="179"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="185"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="181"/>
         <source>Select &amp;All</source>
         <translation>Zaznacz &amp;Wszystko</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="188"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="183"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="193"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="185"/>
         <source>&amp;Deselect All</source>
         <translation>&amp;Odznacz Wszystko</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="196"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="187"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="201"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="189"/>
         <source>&amp;Enable</source>
         <translation>&amp;Aktywuj</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="204"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="191"/>
         <source>Enable Combo</source>
         <translation>Aktywuj wyrażenie</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="207"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="194"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="212"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="196"/>
         <source>&amp;Export</source>
         <translation>&amp;Eksportuj</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="215"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="198"/>
         <source>Export Selected Combos</source>
         <translation>Eksportuj Wybrane Wyrażenia</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="218"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="201"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="223"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="203"/>
         <source>I&amp;mport</source>
         <translation>I&amp;mportuj</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="226"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="205"/>
         <source>Import Combos</source>
         <translation>Zainportuj Wyrażenia</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="229"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="208"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="234"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="210"/>
         <source>Export A&amp;ll</source>
         <translation>Eksportuj W&amp;szystko</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="237"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="631"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="633"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="212"/>
         <source>Export All Combos</source>
         <translation>Eksportuj Wszystkie Wyrażenia</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="240"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="215"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="245"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="217"/>
         <source>&amp;Copy Snippet</source>
         <translation>&amp;Kopiuj Zefiniowany Tekst</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="248"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="219"/>
         <source>Copy Snippet</source>
         <translation>Kopiuj Zdefiniowany Tekst</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="251"/>
+        <location filename="../GeneratedFiles/ui_ComboTableWidget.h" line="222"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
@@ -686,10 +769,10 @@ Czy mimo to chcesz kontynuować?</translation>
         <location filename="../Combo/ComboTableWidget.cpp" line="468"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="494"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="518"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="578"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="609"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="620"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="643"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="580"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="611"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="645"/>
         <source>Error</source>
         <translation>Błąd</translation>
     </message>
@@ -754,18 +837,18 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation>Usunąć Wyrażenie?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="593"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="595"/>
         <source>Export Combos</source>
         <translation>Eksportuj Wyrażenia</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="609"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="611"/>
         <source>Nothing to export.</source>
         <translation>Brak danych do wyeksportowania.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="620"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="643"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="645"/>
         <source>Could not save the combo list file.</source>
         <translation>Nie można zapisać pliku z listą wyrażeń.</translation>
     </message>
@@ -774,27 +857,33 @@ Czy mimo to chcesz kontynuować?</translation>
     <name>GroupDialog</name>
     <message>
         <location filename="../Group/GroupDialog.ui" line="22"/>
+        <location filename="../GeneratedFiles/ui_GroupDialog.h" line="127"/>
         <source>Description</source>
         <translation>Opis</translation>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="42"/>
+        <location filename="../GeneratedFiles/ui_GroupDialog.h" line="128"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Nazwa&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="69"/>
+        <location filename="../GeneratedFiles/ui_GroupDialog.h" line="129"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Wymagane pola&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="89"/>
         <location filename="../Group/GroupDialog.ui" line="108"/>
+        <location filename="../GeneratedFiles/ui_GroupDialog.h" line="126"/>
+        <location filename="../GeneratedFiles/ui_GroupDialog.h" line="130"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="99"/>
+        <location filename="../GeneratedFiles/ui_GroupDialog.h" line="131"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Anuluj</translation>
     </message>
@@ -811,51 +900,61 @@ Czy mimo to chcesz kontynuować?</translation>
     <name>GroupListWidget</name>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="37"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="121"/>
         <source>Groups</source>
         <translation>Grupy</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="84"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="100"/>
         <source>&amp;New</source>
         <translation>&amp;Nowa</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="87"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="102"/>
         <source>New</source>
         <translation>Nowa</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="90"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="105"/>
         <source>Ctrl+Shift+N</source>
         <translation>Ctrl+Shift+N</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="95"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="107"/>
         <source>&amp;Delete</source>
         <translation>&amp;Usuń</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="98"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="109"/>
         <source>Delete</source>
         <translation>Usuń</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="101"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="112"/>
         <source>Shift+Del</source>
         <translation>Shift+Del</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="106"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="114"/>
         <source>&amp;Edit</source>
         <translation>&amp;Edytuj</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="109"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="116"/>
         <source>Shift+Return</source>
         <translation>Shift+Enter</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="123"/>
+        <location filename="../GeneratedFiles/ui_GroupListWidget.h" line="119"/>
         <source>Ctrl+Shift+E</source>
         <translation type="unfinished"></translation>
     </message>
@@ -932,147 +1031,176 @@ Czy mimo to chcesz kontynuować?</translation>
     <name>MainWindow</name>
     <message>
         <location filename="../MainWindow.ui" line="44"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="201"/>
         <source>&amp;File</source>
         <translation>&amp;Plik</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="54"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="202"/>
         <source>&amp;Help</source>
         <translation>&amp;Pomoc</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="65"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="203"/>
         <source>&amp;Advanced</source>
         <translation>&amp;Zaawansowane</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="80"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="145"/>
         <source>E&amp;xit Beeftext</source>
         <translation>Z&amp;akończ Beeftext</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="86"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="147"/>
         <source>Exit Beeftext</source>
         <translation>Zakoń Beeftext</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="89"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="150"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="94"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="152"/>
         <source>&amp;Beeftext Wiki</source>
         <translation>&amp;Odwiedź Beeftext Wiki</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="97"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="154"/>
         <source>Shift+F1</source>
         <translation>Shift+F1</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="102"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="156"/>
         <source>&amp;About Beeftext</source>
         <translation>&amp;O programie Beeftext</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="105"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="158"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="121"/>
         <location filename="../MainWindow.cpp" line="163"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="160"/>
         <source>Preferences</source>
         <translation>Preferencje</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="124"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="162"/>
         <source>Ctrl+,</source>
         <translation>Ctrl+,</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="129"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="164"/>
         <source>Open &amp;Log File</source>
         <translation>Otwórz &amp;Dziennik Zdarzeń</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="132"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="166"/>
         <source>Open the log file</source>
         <translation>Otwórz dziennik zdarzeń</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="135"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="169"/>
         <source>Ctrl+Shift+L</source>
         <translation>Ctrl+Shift+L</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="140"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="171"/>
         <source>&amp;Getting Started</source>
         <translation>&amp;Zacznij tutaj</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="143"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="173"/>
         <source>Getting Started</source>
         <translation>Zacznij tutaj</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="146"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="176"/>
         <source>Ctrl+F1</source>
         <translation>Ctrl+F1</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="151"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="178"/>
         <source>&amp;Release Notes</source>
         <translation>Informacje o &amp;wydaniu</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="154"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="180"/>
         <source>Ctrl+Shift+F1</source>
         <translation>Ctrl+Shift+F1</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="159"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="182"/>
         <source>&amp;Backup</source>
         <translation>&amp;Wykonaj kopię zapasową</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="162"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="184"/>
         <source>Backup the combo list.</source>
         <translation>Utwórz kopię zapasową listy wyrażeń.</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="167"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="186"/>
         <source>&amp;Restore</source>
         <translation>&amp;Przywróć kopię zapasową</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="170"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="188"/>
         <source>Restore the combo list from a backup.</source>
         <translation>Przywróć listę wyrażeń z kopii zapasowej.</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="175"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="190"/>
         <source>Report &amp;Bug</source>
         <translation>Zgłoś &amp;Błąd</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="178"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="192"/>
         <source>Ctrl+Alt+F1</source>
         <translation>Ctrl+Alt+F1</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="183"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="194"/>
         <source>&amp;Generate Cheat Sheet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="186"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="196"/>
         <source>Generate a cheat sheet that can be imported into a spreadsheet application, formatted and printed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="189"/>
+        <location filename="../GeneratedFiles/ui_MainWindow.h" line="199"/>
         <source>Ctrl+Alt+Shift+C</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1923,7 +2051,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="286"/>
+        <location filename="../BeeftextUtils.cpp" line="340"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
         <location filename="../I18nManager.cpp" line="278"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
@@ -1931,17 +2059,17 @@ p, li { white-space: pre-wrap; }
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="363"/>
+        <location filename="../BeeftextUtils.cpp" line="417"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="366"/>
+        <location filename="../BeeftextUtils.cpp" line="420"/>
         <source>&amp;Convert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="367"/>
+        <location filename="../BeeftextUtils.cpp" line="421"/>
         <source>E&amp;xit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2152,28 +2280,34 @@ Control, Alt lub Windows.</translation>
     <name>UpdateDialog</name>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="14"/>
+        <location filename="../GeneratedFiles/ui_UpdateDialog.h" line="124"/>
         <source>Software update</source>
         <translation>Aktualizacja oprogramowania</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="27"/>
+        <location filename="../GeneratedFiles/ui_UpdateDialog.h" line="127"/>
         <source>%1 v%2.%3 is available!</source>
         <translation>%1 v%2.%3 jest dostępna!</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="37"/>
+        <location filename="../GeneratedFiles/ui_UpdateDialog.h" line="128"/>
         <source>Release Notes:</source>
         <translation>Informacje o wydaniu:</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="89"/>
         <location filename="../Update/UpdateDialog.ui" line="109"/>
+        <location filename="../GeneratedFiles/ui_UpdateDialog.h" line="126"/>
+        <location filename="../GeneratedFiles/ui_UpdateDialog.h" line="129"/>
         <source>&amp;Skip</source>
         <translation>&amp;Pomiń</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="98"/>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
+        <location filename="../GeneratedFiles/ui_UpdateDialog.h" line="125"/>
         <source>&amp;Install</source>
         <translation>&amp;Instaluj</translation>
     </message>
