@@ -53,6 +53,7 @@ private slots:
 
 private: // data members
    Ui::ComboImportDialog ui_; ///< The GUI for the dialog
+   QString currentError_; ///< The current error message being displayed.
    ComboList importableCombos_; ///< The list of combos that can be imported as is
    ComboList conflictingNewerCombos_; ///< The list of conflicting combos with a newer modification date than the current one
    ComboList conflictingOlderCombos_; ///< The list of conflicting combos with an older modification date than the current one

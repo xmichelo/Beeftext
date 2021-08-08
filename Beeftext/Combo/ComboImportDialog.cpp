@@ -26,12 +26,12 @@ using namespace xmilib;
 /// \param[out] outResult The loaded combos
 ///
 //**********************************************************************************************************************
-void loadCombosFromCsvFile(QString const& filePath, ComboList& outResult)
+bool loadCombosFromCsvFile(QString const& filePath, ComboList& outResult)
 {
    outResult.clear();
    QVector<QStringList> csvData;
    if (!loadCsvFile(filePath, csvData))
-      return;
+      return false;
    for (QStringList const& row: csvData)
    {
       if (row.size() != 3)
@@ -44,6 +44,7 @@ void loadCombosFromCsvFile(QString const& filePath, ComboList& outResult)
       if (combo->isValid())
          outResult.push_back(combo);
    }
+   return true;
 }
 
 
@@ -147,6 +148,13 @@ void ComboImportDialog::updateGui() const
          QSignalBlocker b1(ui_.radioImportNewer), b2(ui_.radioSkipConflicts);
          ui_.radioSkipConflicts->setChecked(true);
       }
+   }
+
+   if (!currentError_.isEmpty())
+   {
+      ui_.labelImportCount->setText(currentError_);
+      ui_.labelImportCount->setVisible(true);
+      return;
    }
 
    qint32 const importCount = this->computeTotalImportCount();
@@ -256,7 +264,7 @@ void ComboImportDialog::onActionCancel()
 //**********************************************************************************************************************
 void ComboImportDialog::onActionBrowse()
 {
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), prefs.lastComboImportExportPath(),
       ::constants::jsonCsvFileDialogFilter());
    if (path.isEmpty())
@@ -271,6 +279,7 @@ void ComboImportDialog::onActionBrowse()
 //**********************************************************************************************************************
 void ComboImportDialog::onEditPathTextChanged(QString const& text)
 {
+   currentError_ = QString();
    importableCombos_.clear();
    conflictingOlderCombos_.clear();
    conflictingNewerCombos_.clear();
@@ -278,10 +287,15 @@ void ComboImportDialog::onEditPathTextChanged(QString const& text)
    ComboList candidateList;
    ComboList& comboList = ComboManager::instance().comboListRef();
    QString const path = QDir::fromNativeSeparators(text);
+   QString const errorTitle = tr("Error");
    if (!candidateList.load(path)) // not a JSON file, let's try CSV
    {
-      loadCombosFromCsvFile(path, candidateList);
-      if (candidateList.isEmpty())
+      if (!loadCombosFromCsvFile(path, candidateList))
+         currentError_ = tr("The file is invalid.");
+      else
+         if (candidateList.isEmpty())
+            currentError_ = tr("The file does not contain importable data.");
+      if (!currentError_.isEmpty())
       {
          this->updateGui();
          return;
