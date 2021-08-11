@@ -18,8 +18,8 @@
 
 
 namespace {
-   qint64 const kLaunchCheckDelayMs = 1000; ///< Delay for check for update at launch in milliseconds
-   qint64 const kUpdateCheckIntervalMs = 1000 * 60 * 60 * 24; ///< The interval for checking for updates in milliseconds
+   qint64 constexpr kLaunchCheckDelayMs = 1000; ///< Delay for check for update at launch in milliseconds
+   qint64 constexpr kUpdateCheckIntervalMs = 1000 * 60 * 60 * 24; ///< The interval for checking for updates in milliseconds
 }
 
 
@@ -38,7 +38,7 @@ UpdateManager& UpdateManager::instance()
 //**********************************************************************************************************************
 UpdateManager::UpdateManager()
 {
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    timer_.setSingleShot(true);
    connect(&timer_, &QTimer::timeout, this, &UpdateManager::checkForUpdate);
    connect(&prefs, &PreferencesManager::autoCheckForUpdatesChanged, this, &UpdateManager::onAutoCheckForUpdateChanged);

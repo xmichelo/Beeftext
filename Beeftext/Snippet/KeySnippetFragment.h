@@ -7,11 +7,11 @@
 /// Licensed under the MIT License. See LICENSE file in the project root for full license information. 
 
 
-#include "SnippetFragment.h"
-
-
 #ifndef BEEFTEXT_KEY_SNIPPET_FRAGMENT_H
 #define BEEFTEXT_KEY_SNIPPET_FRAGMENT_H
+
+
+#include "SnippetFragment.h"
 
 
 //**********************************************************************************************************************

@@ -14,7 +14,7 @@
 
 
 namespace {
-   qint32 const kSizeAreaLength = 20; ///< The length of the size square in pixels.
+   qint32 constexpr kSizeAreaLength = 20; ///< The length of the size square in pixels.
 }
 
 

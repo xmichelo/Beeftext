@@ -21,9 +21,9 @@
 namespace {
 
 
-qint32 const kMinNameColumnDefaultWidth = 200; ///< The maximum default width in pixels of the name column
-qint32 const kMaxNameColumnDefaultWidth = 500; ///< The maximum default width in pixels of the name column
-qint32 const kMaxSnippetColumnWDefaultWith = 600; ///< The maximum default width in pixels of the snippet column
+qint32 constexpr kMinNameColumnDefaultWidth = 200; ///< The maximum default width in pixels of the name column
+qint32 constexpr kMaxNameColumnDefaultWidth = 500; ///< The maximum default width in pixels of the name column
+qint32 constexpr kMaxSnippetColumnWDefaultWith = 600; ///< The maximum default width in pixels of the snippet column
 char const* kPropMoveToMenu("moveMenu"); ///< The matching menu property
 
 QString moveMenuTitle() { return QObject::tr("Move To", "Move entry in the Combo context menu"); }
@@ -267,7 +267,7 @@ SpCombo ComboTableWidget::getSelectedCombo() const
 QList<qint32> ComboTableWidget::getSelectedComboIndexes() const
 {
    QList<qint32> result;
-   ComboList& comboList = ComboManager::instance().comboListRef();
+   ComboList const& comboList = ComboManager::instance().comboListRef();
    QModelIndexList selectedRows = ui_.tableComboList->selectionModel()->selectedRows();
    for (QModelIndex const& modelIndex: selectedRows)
    {
@@ -414,12 +414,12 @@ void ComboTableWidget::onActionNewCombo()
 {
    try
    {
-      SpCombo combo = Combo::create();
+      SpCombo const combo = Combo::create();
       combo->setGroup(groupListWidget_->selectedOrFirstGroup());
 
       if (!ComboDialog::run(combo, tr("New Combo")))
          return;
-      ComboManager& comboManager = ComboManager::instance();
+      ComboManager const& comboManager = ComboManager::instance();
       ComboList& comboList = ComboManager::instance().comboListRef();
       if (!comboList.append(combo))
          throw xmilib::Exception(tr("The combo could not be added to the list."));
@@ -452,7 +452,7 @@ void ComboTableWidget::onActionDuplicateCombo()
       Q_ASSERT((index >= 0) && (index < comboList.size()));
       if ((index < 0) || (index >= comboList.size()))
          throw xmilib::Exception(tr("The combo could not be duplicated: invalid index."));
-      SpCombo combo = Combo::duplicate(*comboList[index]);
+      SpCombo const combo = Combo::duplicate(*comboList[index]);
       if (!ComboDialog::run(combo, tr("Duplicate Combo")))
          return;
       if (!comboList.append(combo))
@@ -487,7 +487,7 @@ void ComboTableWidget::onActionDeleteCombo()
    ComboManager& comboManager = ComboManager::instance();
    QList<qint32> indexes = this->getSelectedComboIndexes();
    std::sort(indexes.begin(), indexes.end(), [](qint32 first, qint32 second) -> bool { return first > second; });
-   for (qint32 index: indexes)
+   for (qint32 const index: indexes)
       comboManager.comboListRef().erase(index);
    QString errorMessage;
    if (!comboManager.saveComboListToFile(&errorMessage))
@@ -509,7 +509,7 @@ void ComboTableWidget::onActionEditCombo()
    ComboList& comboList = comboManager.comboListRef();
    qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
-   SpCombo combo = comboList[index];
+   SpCombo const combo = comboList[index];
    if (!ComboDialog::run(combo, tr("Edit Combo")))
       return;
    comboList.markComboAsEdited(index);
@@ -572,7 +572,7 @@ void ComboTableWidget::onActionEnableDisableCombo()
    ComboList& comboList = comboManager.comboListRef();
    qint32 const index = selectedIndex[0];
    Q_ASSERT((index >= 0) && (index < comboList.size()));
-   SpCombo combo = comboList[index];
+   SpCombo const combo = comboList[index];
    combo->setEnabled(!combo->isEnabled());
    comboList.markComboAsEdited(index);
    QString errorMessage;
@@ -591,9 +591,9 @@ void ComboTableWidget::onActionExportCombo()
    if (indexes.empty())
       return;
 
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getSaveFileName(this, tr("Export Combos"), prefs.lastComboImportExportPath(),
-      constants::jsonCsvFileDialogFilter());
+      globals::jsonCsvFileDialogFilter());
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);
@@ -629,9 +629,9 @@ void ComboTableWidget::onActionExportCombo()
 //**********************************************************************************************************************
 void ComboTableWidget::onActionExportAllCombos()
 {
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getSaveFileName(this, tr("Export All Combos"), prefs.lastComboImportExportPath(),
-      constants::jsonCsvFileDialogFilter());
+      globals::jsonCsvFileDialogFilter());
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);

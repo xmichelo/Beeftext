@@ -56,7 +56,7 @@ ComboList const& ComboManager::comboListRef() const
 ComboManager::ComboManager()
 {
    // We used queued connections to minimize the time spent in the keyboard hook
-   InputManager& inputManager = InputManager::instance();
+   InputManager const& inputManager = InputManager::instance();
    connect(&inputManager, &InputManager::comboBreakerTyped, this, &ComboManager::onComboBreakerTyped,
       Qt::QueuedConnection);
    connect(&inputManager, &InputManager::characterTyped, this, &ComboManager::onCharacterTyped,
@@ -134,7 +134,7 @@ bool ComboManager::loadComboListFromFile(QString* outErrorMsg)
 //**********************************************************************************************************************
 bool ComboManager::saveComboListToFile(QString* outErrorMsg) const
 {
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    QString const filePath = QDir(prefs.comboListFolderPath()).absoluteFilePath(ComboList::defaultFileName);
    if (prefs.autoBackup())
       BackupManager::instance().archive(filePath);
@@ -166,7 +166,7 @@ bool ComboManager::restoreBackup(QString const& backupFilePath)
 //**********************************************************************************************************************
 void ComboManager::loadSoundFromPreferences()
 {
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    QString const customSoundPath = prefs.customSoundPath();
    bool useCustomSound = prefs.useCustomSound();
    if (!prefs.playSoundOnCombo())
@@ -253,7 +253,7 @@ bool ComboManager::checkAndPerformComboSubstitution()
 bool ComboManager::checkAndPerformEmojiSubstitution()
 {
    QString currentText = currentText_;
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    if (!prefs.emojiShortcodesEnabled())
       return false;
    QString const leftDelimiter = prefs.emojiLeftDelimiter();
@@ -271,8 +271,8 @@ bool ComboManager::checkAndPerformEmojiSubstitution()
 
    // finally we isolate the keyword and perform the substitution, if any
    QString const keyword = currentText.right(currentText.size() - (index + leftDelimiter.size()));
-   EmojiManager& emojisManager = EmojiManager::instance();
-   SpEmoji emoji = emojisManager.find(keyword);
+   EmojiManager const& emojisManager = EmojiManager::instance();
+   SpEmoji const emoji = emojisManager.find(keyword);
    if (!emoji)
       return false;
    bool result = false;

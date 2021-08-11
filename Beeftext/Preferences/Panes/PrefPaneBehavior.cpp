@@ -38,7 +38,7 @@ PrefPaneBehavior::PrefPaneBehavior(QWidget* parent)
       ui_.checkAutoStart->setVisible(false);
 
    // signal mappings for the 'Check now' button
-   UpdateManager& updateManager = UpdateManager::instance();
+   UpdateManager const& updateManager = UpdateManager::instance();
    connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);
    connect(&updateManager, &UpdateManager::startedUpdateCheck, this, &PrefPaneBehavior::onUpdateCheckStarted);
    connect(&updateManager, &UpdateManager::finishedUpdateCheck, this, &PrefPaneBehavior::onUpdateCheckFinished);

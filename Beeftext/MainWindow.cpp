@@ -17,6 +17,7 @@
 #include "Group/GroupListWidget.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
 #include "InputManager.h"
 #include <XMiLib/Exception.h>
 
@@ -32,7 +33,7 @@ MainWindow::MainWindow()
    this->setupSystemTrayIcon();
    this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), groupsMenu_);
    this->menuBar()->insertMenu(ui_.menu_Advanced->menuAction(), combosMenu_);
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    this->restoreWindowGeometry();
    ui_.actionOpenLogFile->setEnabled(prefs.writeDebugLogFile());
    connect(&InputManager::instance(), &InputManager::appEnableDisableShortcutTriggered,
@@ -110,7 +111,7 @@ void MainWindow::closeEvent(QCloseEvent*)
 {
    // note that we save the geometry every time we close the window, not the app, simply because otherwise we would
    // have to do it in the destructor, where the state of the window may be uncertain.
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    prefs.setMainWindowGeometry(this->saveGeometry());
    QSplitter const* splitter = ui_.frameCombos->splitter();
    if (splitter)
@@ -215,7 +216,7 @@ void MainWindow::showWindow()
 //**********************************************************************************************************************
 void MainWindow::restoreWindowGeometry()
 {
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    QByteArray array = prefs.mainWindowGeometry();
    if (!array.isEmpty())
       this->restoreGeometry(array);
@@ -274,7 +275,7 @@ void MainWindow::onActionExit()
 //**********************************************************************************************************************
 void MainWindow::onActionEnableDisableBeeftext()
 {
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    bool const enabled = prefs.beeftextEnabled();
    prefs.setBeeftextEnabled(!enabled);
    this->setupSystemTrayIcon();
@@ -335,7 +336,7 @@ void MainWindow::onActionBackup()
       folder = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
    QString const path = QFileDialog::getSaveFileName(this, tr("Backup"), 
       QDir(folder).absoluteFilePath(QString("Beeftext.%1").arg(constants::backupFileExtension)), 
-      constants::backupFileDialogFilter());
+      globals::backupFileDialogFilter());
    if (path.isEmpty())
       return;
    QString errMsg;
@@ -353,7 +354,7 @@ void MainWindow::onActionRestore()
    if (!QFileInfo(folder).isDir())
       folder = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
    QString const path = QFileDialog::getOpenFileName(this, tr("Restore"), 
-      QDir(folder).absolutePath(), constants::backupFileDialogFilter());
+      QDir(folder).absolutePath(), globals::backupFileDialogFilter());
    if (path.isEmpty())
       return;
    this->restoreBackup(path);
@@ -369,7 +370,7 @@ void MainWindow::onActionGenerateCheatSheet()
    if (!QFileInfo(folder).isDir())
       folder = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
    QString const path = QFileDialog::getSaveFileName(this, tr("Generate Cheat Sheet"),
-      QDir(folder).absoluteFilePath("BeeftextCheatSheet.csv"), constants::csvFileDialogFilter());
+      QDir(folder).absoluteFilePath("BeeftextCheatSheet.csv"), globals::csvFileDialogFilter());
    if (path.isEmpty())
       return;
    QString errMsg;

@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "EmojiLastUseFile.h"
-#include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include <XMiLib/Exception.h>
@@ -26,14 +25,14 @@ QString const kPropFileFormatVersion = "fileFormatVersion"; ///< The property na
 QString const kPropDateTimes = "dateTimes"; ///< The property name for the dates/times.
 QString const kPropShortcode = "shortcode"; ///< The property name for shortcodes.
 QString const kPropDateTime = "dateTime"; ///< The property name for date/time.
-qint32 const kFileFormatVersion = 1; ///< The file format version.
+qint32 constexpr kFileFormatVersion = 1; ///< The file format version.
 
 
 //**********************************************************************************************************************
 /// \param[in] emojiList The emoji list.
 /// \param[in] object The JSON object.
 //**********************************************************************************************************************
-void parseDateTimeObject(EmojiList& emojiList, QJsonObject const& object)
+void parseDateTimeObject(EmojiList const& emojiList, QJsonObject const& object)
 {
    QString const shortcode = object[kPropShortcode].toString(QString());
    if (shortcode.isEmpty())
@@ -54,7 +53,7 @@ void parseDateTimeObject(EmojiList& emojiList, QJsonObject const& object)
 //**********************************************************************************************************************
 /// \param[in,out] emojiList The emoji list.
 //**********************************************************************************************************************
-void loadEmojiLastUseDateTimes(EmojiList& emojiList)
+void loadEmojiLastUseDateTimes(EmojiList const& emojiList)
 {
    try
    {

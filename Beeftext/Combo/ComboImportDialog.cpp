@@ -13,12 +13,10 @@
 #include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
+#include "BeeftextUtils.h"
 #include <XMiLib/File/CsvIO.h>
 #include <XMiLib/Exception.h>
 #include <XMiLib/XMiLibConstants.h>
-
-
-using namespace xmilib;
 
 
 //**********************************************************************************************************************
@@ -30,7 +28,7 @@ bool loadCombosFromCsvFile(QString const& filePath, ComboList& outResult)
 {
    outResult.clear();
    QVector<QStringList> csvData;
-   if (!loadCsvFile(filePath, csvData))
+   if (!xmilib::loadCsvFile(filePath, csvData))
       return false;
    for (QStringList const& row: csvData)
    {
@@ -59,7 +57,7 @@ ComboImportDialog::ComboImportDialog(QString const& filePath, SpGroup const& gro
 {
    ui_.setupUi(this);
    ui_.labelSupportedFormats->setText(ui_.labelSupportedFormats->text()
-      .arg(colorToHex(globals::blueBeeftextColor(), false)));
+      .arg(colorToHex(constants::blueBeeftextColor, false)));
    GroupList& groupList = ComboManager::instance().groupListRef();
    groupList.ensureNotEmpty();
    ui_.comboGroup->setContent(groupList);
@@ -190,7 +188,7 @@ void ComboImportDialog::performFinalImport(qint32& outFailureCount)
    qint32 failureCount = 0;
    SpGroup const group = ui_.comboGroup->currentGroup();
    if (!group)
-      throw Exception(tr("Please select a valid group."));
+      throw xmilib::Exception(tr("Please select a valid group."));
    for (SpCombo const& combo : importableCombos_)
    {
       combo->setGroup(group);
@@ -243,7 +241,7 @@ void ComboImportDialog::onActionImport()
 
       this->accept();
    }
-   catch (Exception const& e)
+   catch (xmilib::Exception const& e)
    {
       QMessageBox::critical(this, tr("&Error"), e.qwhat());
    }
@@ -266,7 +264,7 @@ void ComboImportDialog::onActionBrowse()
 {
    PreferencesManager const& prefs = PreferencesManager::instance();
    QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), prefs.lastComboImportExportPath(),
-      ::constants::jsonCsvFileDialogFilter());
+      globals::jsonCsvFileDialogFilter());
    if (path.isEmpty())
       return;
    prefs.setLastComboImportExportPath(path);

@@ -20,7 +20,7 @@
 class TextSnippetFragment: public SnippetFragment
 {
 public: // member functions
-   TextSnippetFragment(QString const& text); ///< Default constructor.
+   explicit TextSnippetFragment(QString const& text); ///< Default constructor.
    TextSnippetFragment(TextSnippetFragment const&) = delete; ///< Disabled copy-constructor.
    TextSnippetFragment(TextSnippetFragment&&) = delete; ///< Disabled assignment copy-constructor.
    ~TextSnippetFragment() override = default; ///< Destructor.

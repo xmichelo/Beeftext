@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "PreferencesDialog.h"
-#include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
 #include <XMiLib/XMiLibConstants.h>
 
 
@@ -44,7 +44,7 @@ PreferencesDialog::PreferencesDialog(QWidget* parent)
 //**********************************************************************************************************************
 void PreferencesDialog::load() const
 {
-   for (PrefPane* pane: panes_)
+   for (PrefPane const* pane: panes_)
       pane->load();
 }
 
@@ -103,7 +103,7 @@ void PreferencesDialog::onExport()
 {
    QString const path = QFileDialog::getSaveFileName(this, tr("Export Preferences"), 
       QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath(kExportFileName), 
-      constants::jsonFileDialogFilter());
+      globals::jsonFileDialogFilter());
    if (path.isEmpty())
       return;
    if (!prefs_.save(path))
@@ -118,7 +118,7 @@ void PreferencesDialog::onImport()
 {
    QString const path = QFileDialog::getOpenFileName(this, tr("Import Preferences"),
       QDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).absoluteFilePath(kExportFileName),
-      constants::jsonFileDialogFilter());
+      globals::jsonFileDialogFilter());
    if (path.isEmpty())
       return;
    if (!prefs_.load(path))

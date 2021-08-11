@@ -14,7 +14,6 @@
 #include "Group/GroupList.h"
 #include "MatchingMode.h"
 #include "CaseSensitivity.h"
-#include "BeeftextUtils.h"
 #include <memory>
 #include <vector>
  

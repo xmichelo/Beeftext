@@ -82,40 +82,40 @@ QString const kKeyUseShiftInsertForPasting= "UseShiftInsertForPasting"; ///< The
 
 SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
-bool const kDefaultAutoBackup = true; ///< The default value for the 'Auto backup' preference
-bool const kDefaultAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
-bool const kDefaultAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
-bool const kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
-bool const kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
+bool constexpr kDefaultAutoBackup = true; ///< The default value for the 'Auto backup' preference
+bool constexpr kDefaultAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
+bool constexpr kDefaultAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
+bool constexpr kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
+bool constexpr kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
 SpShortcut const kDefaultComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
    | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
 EMatchingMode kDefaultDefaultMatchingMode = EMatchingMode::Strict; ///< The default value for the 'Default matching mode preference'.
 ECaseSensitivity kDefaultDefaultCaseSensitivity = ECaseSensitivity::CaseSensitive; ///< The default value for the 'Default case sensitivity' preference.
-qint32 const kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
+qint32 constexpr kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
 QString const kDefaultEmojiLeftDelimiter = "|"; ///< The default left delimiter for emojis
 QString const kDefaultEmojiRightDelimiter = "|"; ///< The default left delimiter for emojis
-bool const kDefaultEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
-bool const kDefaultShowEmojisInPickerWindow = false; ///< The default value for the 'Show emojis in picker window' preference.
-bool const kDefaultEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
+bool constexpr kDefaultEmojiShortcodesEnabled = false; ///< The default value for the 'Emoji shortcodes enabled' preference.
+bool constexpr kDefaultShowEmojisInPickerWindow = false; ///< The default value for the 'Show emojis in picker window' preference.
+bool constexpr kDefaultEnableAppEnableDisableShortcut = false; ///< The default value for the 'enable app enable/disable shortcut' preference.
 QString const kDefaultLastComboImportExportPath = QDir(QStandardPaths::writableLocation(
    QStandardPaths::DesktopLocation)).absoluteFilePath("Combos.json");///< The default value for the 'Last combo import/export path' preference
-qint32 const kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
-qint32 const kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
-bool const kDefaultPlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
-bool const kDefaultUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
-bool const kDefaultUseCustomBackupLocation = false; ///< The default value for the 'Use custom backup location' preference.
-bool const kDefaultUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
-bool const kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
-bool const kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
-bool const kDefaultWarnAboutEmptyComboKeyword = true; ///< The default value for the 'Warn about empty combo keyword' preference
-bool const kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
-bool const kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
-bool const kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
-bool const kDefaultComboTriggersOnSpace = false; ///< The default value for the 'Combo triggers on space' preference.
-bool const kDefaultKeepFinalSpaceCharacter = false; ///< The default value for the 'Combo triggers on space' preference.
-bool const kDefaultUseCustomPowershellVersion = false; ///< The default value for the 'Use custom PowerShell version' preference.
-ETheme const kDefaultTheme = ETheme::Light; ///< The default value for the theme preference.
-bool const kDefaultUseShiftInsertForPasting = false; ///< The default value for the 'Use Shift+Insert for pasting' preference.
+qint32 constexpr kMinValueDelayBetweenKeystrokesMs = 0; ///< The default valur for the 'Delay between keystrokes' preference.
+qint32 constexpr kMaxValueDelayBetweenKeystrokesMs = 500; ///< The default valur for the 'Delay between keystrokes' preference.
+bool constexpr kDefaultPlaySoundOnCombo = true; ///< The default value for the 'Play sound on combo' preference
+bool constexpr kDefaultUseAutomaticSubstitution = true; ///< The default value for the 'Use automatic substitution' preference
+bool constexpr kDefaultUseCustomBackupLocation = false; ///< The default value for the 'Use custom backup location' preference.
+bool constexpr kDefaultUseCustomSound = false; ///< The default value for the 'Use custom sound' preference.
+bool constexpr kDefaultUseCustomTheme = true; ///< The default value for the 'Use custom theme' preference
+bool constexpr kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
+bool constexpr kDefaultWarnAboutEmptyComboKeyword = true; ///< The default value for the 'Warn about empty combo keyword' preference
+bool constexpr kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
+bool constexpr kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
+bool constexpr kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
+bool constexpr kDefaultComboTriggersOnSpace = false; ///< The default value for the 'Combo triggers on space' preference.
+bool constexpr kDefaultKeepFinalSpaceCharacter = false; ///< The default value for the 'Combo triggers on space' preference.
+bool constexpr kDefaultUseCustomPowershellVersion = false; ///< The default value for the 'Use custom PowerShell version' preference.
+ETheme constexpr kDefaultTheme = ETheme::Light; ///< The default value for the theme preference.
+bool constexpr kDefaultUseShiftInsertForPasting = false; ///< The default value for the 'Use Shift+Insert for pasting' preference.
 
 }
 
@@ -181,7 +181,7 @@ T readSettings(QSettings& settings, QString const& key, T const& defaultValue)
 {
    if (!settings.contains(key))
       return defaultValue;
-   QVariant v = settings.value(key, QVariant::fromValue<T>(defaultValue));
+   QVariant const v = settings.value(key, QVariant::fromValue<T>(defaultValue));
    return v.canConvert<T>() ? qvariant_cast<T>(v) : defaultValue;
 }
 

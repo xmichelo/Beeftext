@@ -271,7 +271,7 @@ void PrefPaneAdvanced::onEditSensitiveApplications()
 //**********************************************************************************************************************
 bool PrefPaneAdvanced::promptForAndRemoveAutoBackups()
 {
-   BackupManager& backupManager = BackupManager::instance();
+   BackupManager const& backupManager = BackupManager::instance();
    qint32 const reply = QMessageBox::question(this, tr("Delete Backup Files?"), tr("Do you want to delete all the "
       "backup files?"), QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel),
       QMessageBox::No);

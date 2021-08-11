@@ -28,7 +28,7 @@ QString const kPropFileFormatVersion = "fileFormatVersion"; ///< The property na
 QString const kPropDateTimes = "dateTimes"; ///< The property name for the date/time.
 QString const kPropUuid = "uuid"; ///< The property name for uuid.
 QString const kPropDateTime = "dateTime"; ///< The property name for date/time.
-qint32 const kFileFormatVersion = 1; ///< The file format version.
+qint32 constexpr kFileFormatVersion = 1; ///< The file format version.
 
 
 //**********************************************************************************************************************

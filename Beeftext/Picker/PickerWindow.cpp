@@ -13,6 +13,7 @@
 #include "Emoji/EmojiManager.h"
 #include "Combo/ComboManager.h"
 #include "Preferences/PreferencesManager.h"
+#include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 
 
@@ -223,7 +224,7 @@ void PickerWindow::triggerSelectedItem()
    bool const isCombo = (constants::Combo == index.data(constants::TypeRole).value<constants::EITemType>());
    SpCombo const combo = (isCombo ? index.data(constants::PointerRole).value<SpCombo>() : nullptr);
    SpEmoji const emoji = (isCombo ? nullptr : index.data(constants::PointerRole).value<SpEmoji>());
-   std::chrono::milliseconds const delay(200);
+   std::chrono::milliseconds constexpr delay(200);
    if (combo)
       QTimer::singleShot(delay, [combo]() { combo->performSubstitution(true); });
    else

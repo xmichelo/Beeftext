@@ -66,7 +66,7 @@ void I18nManager::refreshSupportedLocalesList()
    supportedLocales_ = { { QLocale::English, QString() } }; ///< English is always supported, as no translation is required
 
    // There are two places for translation: The first contains the app provided translations
-   QDir::Filters const dirFilter = QDir::Dirs | QDir::NoDotAndDotDot | QDir::Readable;
+   QDir::Filters constexpr dirFilter = QDir::Dirs | QDir::NoDotAndDotDot | QDir::Readable;
    QDir const transRootDir(globals::translationRootFolderPath());
    QFileInfoList transDirs = transRootDir.entryInfoList( dirFilter, QDir::Name);
    

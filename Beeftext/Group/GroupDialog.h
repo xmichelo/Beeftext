@@ -22,10 +22,10 @@ class GroupDialog: public QDialog
 {
    Q_OBJECT
 public: // static functions
-   static bool run(SpGroup& group, QString const& title, QWidget* parent = nullptr); ///< Run the dialog
+   static bool run(SpGroup const& group, QString const& title, QWidget* parent = nullptr); ///< Run the dialog
 
 public: // member functions
-   GroupDialog(SpGroup& group, QString const& title, QWidget* parent = nullptr); ///< Default constructor
+   GroupDialog(SpGroup const& group, QString const& title, QWidget* parent = nullptr); ///< Default constructor
    GroupDialog(GroupDialog const&) = delete; ///< Disabled copy-constructor
    GroupDialog(GroupDialog&&) = delete; ///< Disabled assignment copy-constructor
    ~GroupDialog() override = default; ///< Destructor

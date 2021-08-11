@@ -21,7 +21,7 @@ using namespace xmilib;
 
 namespace {
 
-qint32 const kTextBufferSize = 10;
+qint32 constexpr kTextBufferSize = 10;
 ///< The size of the buffer that will receive the text resulting from the processing of the key stroke
 
 
@@ -113,7 +113,7 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
    if ((WM_KEYDOWN == wParam) || (WM_SYSKEYDOWN == wParam))
    {
       KeyStroke keyStroke = { 0, 0, { 0 } };
-      KBDLLHOOKSTRUCT* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
+      KBDLLHOOKSTRUCT const* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);  // NOLINT(performance-no-int-to-ptr)
 
       // we ignore shift / caps lock key events
       if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
@@ -127,7 +127,7 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
          VK_SHIFT, VK_LSHIFT, VK_RSHIFT, VK_CONTROL, VK_LCONTROL,
          VK_RCONTROL, VK_MENU, VK_LMENU, VK_RMENU, VK_RWIN, VK_LWIN, VK_CAPITAL
       };
-      for (quint32 key: keyList)
+      for (quint32 const key: keyList)
          keyStroke.keyboardState[key] = static_cast<quint8>(GetKeyState(static_cast<quint16>(key)));
 
       // our event handler will return false if we want to 'intercept' the keystroke and not pass it to the next hook,

@@ -11,7 +11,6 @@
 #include "AboutDialog.h"
 #include "BeeftextConstants.h"
 #include "BeeftextUtils.h"
-#include "BeeftextGlobals.h"
 #include <XMiLib/XMiLibConstants.h>
 
 
@@ -32,7 +31,7 @@ AboutDialog::AboutDialog(QWidget* parent)
 //**********************************************************************************************************************
 void AboutDialog::completeText() const
 {
-   QColor const color = globals::blueBeeftextColor();
+   QColor const color = constants::blueBeeftextColor;
    ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor)
       .arg(isInPortableMode() ? tr("Portable Edition") : "").arg(QString(__DATE__).right(4))
       .arg(colorToHex(color, false)));

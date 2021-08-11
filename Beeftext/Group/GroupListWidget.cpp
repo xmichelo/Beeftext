@@ -250,7 +250,7 @@ void GroupListWidget::onActionNewGroup()
 {
    try
    {
-      SpGroup group = Group::create(QString());
+      SpGroup const group = Group::create(QString());
       if (!GroupDialog::run(group, tr("New Group")))
          return;
       ComboManager& comboManager = ComboManager::instance();
@@ -281,7 +281,7 @@ void GroupListWidget::onActionEditGroup()
       qint32 const index = this->selectedGroupIndex();
       if ((index < 0) || (index >= groups.size()))
          return;
-      SpGroup group = groups[index];
+      SpGroup const group = groups[index];
       if (!GroupDialog::run(group, tr("Edit Group")))
          return;
       QString errorMessage;

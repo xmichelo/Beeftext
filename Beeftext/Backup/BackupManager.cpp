@@ -15,7 +15,7 @@ using namespace xmilib;
 
 namespace {
    QRegularExpression const kBackupFileRegExp(R"(^\d{8}_\d{9}_backup\.json$)");
-   qint32 const kMaxBackupFileCount = 50;
+   qint32 constexpr kMaxBackupFileCount = 50;
 }
 
 

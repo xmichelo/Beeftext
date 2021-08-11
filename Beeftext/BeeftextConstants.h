@@ -17,25 +17,25 @@ Q_DECLARE_SMART_POINTER_METATYPE(std::shared_ptr)
 namespace constants {
 
 
+qint32 constexpr kVersionMajor = 10; ///< The major version number of the application
+qint32 constexpr kVersionMinor = 0; ///< The minor version number of the application
+QChar constexpr kEmojiDelimiter = '|'; ///< The delimiter for emojis
+QColor constexpr blueBeeftextColor(0x25, 0x8c, 0xc0); ///< Return the blue color used for the GUI.
+Qt::DateFormat constexpr kJsonExportDateFormat = Qt::ISODateWithMs; ///< The date/time export format used for JSon docs
+
 extern QString const kApplicationName; ///< The application name
 extern QString const kOrganizationName; ///< The organization name
-extern qint32 const kVersionMajor; ///< The major version number of the application
-extern qint32 const kVersionMinor; ///< The minor version number of the application
 extern QString const kBeeftextWikiHomeUrl; ///< The URL of the Beeftext wiki
 extern QString const kGettingStartedUrl; ///< The URL of the Getting started page
 extern QString const kBeeftextWikiVariablesUrl; ///< The URL of the page about variables in the Beeftext wiki
 extern QString const kBeeftextReleasesPagesUrl; ///< The URL of the page for the project releases on GitHub
 extern QString const kBeeftextIssueTrackerUrl; ///< The URL of the page for the issue tracker on GitHub.
-QString jsonFileDialogFilter(); ///< The Open/Save file dialog filter
-QString jsonCsvFileDialogFilter(); ///< The file format filter for the import file picker dialog.
-QString csvFileDialogFilter(); ///< The file format filter for CSV files.
 extern QString const backupFileExtension; ///< The extension for backup files.
-QString backupFileDialogFilter(); ///< The file format filter for the backup and restore file picker dialogs.
-extern Qt::DateFormat const kJsonExportDateFormat; ///< The date/time export format used for JSon docs
-extern QChar const kEmojiDelimiter; ///< The delimiter for emojis
-extern QRegularExpression const kVariableRegExp; ///< The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \. Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents inside the #{}.
 extern QString const kKeyVariableRegExpStr; ///< A regular expression matching the #{key: variable}.
 extern QString const kDelayVariableRegExpStr; ///< A regular expression matching the #{delay: variable}.
+extern QRegularExpression const kVariableRegExp; ///< The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \. Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents inside the #{}.
+
+
 
 enum EITemType
 {

@@ -11,9 +11,6 @@
 #define BEEFTEXT_INPUT_MANAGER_H
 
 
-#include "BeeftextUtils.h"
-
-
 //**********************************************************************************************************************
 /// \brief An input manager capture input by keyboard and mouse and process the events 
 //**********************************************************************************************************************

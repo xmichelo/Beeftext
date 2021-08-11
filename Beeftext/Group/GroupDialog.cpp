@@ -18,7 +18,7 @@
 /// \param[in] title The title for the dialog
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-bool GroupDialog::run(SpGroup& group, QString const& title, QWidget* parent)
+bool GroupDialog::run(SpGroup const& group, QString const& title, QWidget* parent)
 {
    return Accepted == GroupDialog(group, title, parent).exec();
 }
@@ -29,7 +29,7 @@ bool GroupDialog::run(SpGroup& group, QString const& title, QWidget* parent)
 /// \param[in] title The title for the dialog
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-GroupDialog::GroupDialog(SpGroup& group, QString const& title, QWidget* parent)
+GroupDialog::GroupDialog(SpGroup const& group, QString const& title, QWidget* parent)
    : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
      ui_(),
      group_(group)

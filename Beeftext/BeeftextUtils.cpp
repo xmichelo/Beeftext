@@ -69,7 +69,7 @@ bool isInPortableModeInternal()
 QList<quint16> backupAndReleaseModifierKeys()
 {
    QList<quint16> result;
-   for (quint16 key: modifierKeys)
+   for (quint16 const key: modifierKeys)
       if (GetKeyState(key) < 0)
       {
          result.append(key);
@@ -86,7 +86,7 @@ QList<quint16> backupAndReleaseModifierKeys()
 //**********************************************************************************************************************
 void restoreModifierKeys(QList<quint16> const& keys)
 {
-   for (quint16 key: keys)
+   for (quint16 const key: keys)
       synthesizeKeyDown(key);
 }
 
@@ -368,7 +368,7 @@ qint32 printableCharacterCount(QString const& str)
    // Now we assume that if you use the Zero Width Joiner (U+200D), it is resolved properly
    // We also account for compound emojis made with the skin color tones (Fitzpatrick type)
    qint32 result = qint32(ucs4.size());
-   for (quint32 c: ucs4)
+   for (quint32 const c: ucs4)
    {
       if (c == 0x200d) // zero width joiner
          result -= 2;
@@ -431,7 +431,7 @@ bool warnAndConvertHtmlCombos()
 //**********************************************************************************************************************
 QString colorToHex(QColor const& color, bool includeAlpha)
 {
-   QChar const zero('0');
+   QChar constexpr zero('0');
    QString result = QString("%1%2%3").arg(color.red(), 2, 16, zero).arg(color.green(), 2, 16, zero)
       .arg(color.blue(), 2, 16, zero);
    if (includeAlpha)

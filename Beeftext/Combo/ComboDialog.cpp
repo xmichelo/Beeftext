@@ -70,7 +70,7 @@ bool showEmptyKeywordConfirmationDialog(QWidget* parent = nullptr)
 /// \param[in] parent The parent widget of the dialog
 /// \return true if and only if the user validated the dialog
 //**********************************************************************************************************************
-bool ComboDialog::run(SpCombo& combo, QString const& title, QWidget* parent)
+bool ComboDialog::run(SpCombo const& combo, QString const& title, QWidget* parent)
 {
    return Accepted == ComboDialog(combo, title, parent).exec();
 }
@@ -192,7 +192,7 @@ void ComboDialog::onActionOk()
 //**********************************************************************************************************************
 void ComboDialog::onActionNewGroup()
 {
-   SpGroup group = std::make_shared<Group>(QString());
+   SpGroup const group = std::make_shared<Group>(QString());
    if ((!GroupDialog::run(group, tr("New Group"), this)) || !group)
       return;
    ComboManager::instance().comboListRef().groupListRef().append(group);

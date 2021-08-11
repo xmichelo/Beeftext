@@ -20,7 +20,7 @@ QString getKeyName(qint32 scanCode); ///< Get the display name for a key
 //**********************************************************************************************************************
 QString getKeyName(qint32 scanCode)
 {
-   qint32 const bufferSize = 32;
+   qint32 constexpr bufferSize = 32;
    wchar_t buffer[bufferSize];
    if (!GetKeyNameText(scanCode << 16, buffer, bufferSize - 1))
       return QString();

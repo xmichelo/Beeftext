@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
+#include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
 #include "SensitiveApplicationManager.h"
@@ -32,6 +33,11 @@ void ensureMainWindowHasAHandle(MainWindow& mainWindow); ///< Ensure that the ma
 void removeFileMarkedForDeletion(); ///< Remove the software update file that may have been marker for deletion
 
 
+//**********************************************************************************************************************
+/// \brief play a sound file.
+///
+/// \param[in] path The path of the sound file.
+//**********************************************************************************************************************
 void playSound(QString const& path)
 {
    QFile file(path);
@@ -58,7 +64,7 @@ int main(int argc, char *argv[])
       QApplication app(argc, argv);
 
       // check for an existing instance of the application
-      SingleInstanceApplication singleInstanceApp("BeeftextSingleInstanceIdentifier");
+      SingleInstanceApplication const singleInstanceApp("BeeftextSingleInstanceIdentifier");
       if (!singleInstanceApp.isFirstInstance())
       {
          // SingleInstance app detected that another instance is running and 'put a flag in memory to indicate
@@ -74,7 +80,7 @@ int main(int argc, char *argv[])
       QGuiApplication::setApplicationName(constants::kApplicationName);
 
       ensureAppDataDirsExist();
-      PreferencesManager& prefs = PreferencesManager::instance();
+      PreferencesManager const& prefs = PreferencesManager::instance();
       if (prefs.writeDebugLogFile())
          debugLog.enableLoggingToFile(globals::logFilePath());
       debugLog.setMaxEntryCount(1);
@@ -179,7 +185,7 @@ void ensureMainWindowHasAHandle(MainWindow& mainWindow)
 //**********************************************************************************************************************
 void removeFileMarkedForDeletion()
 {
-   PreferencesManager& prefs = PreferencesManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
    DebugLog& debugLog = globals::debugLog();
    QString const path = prefs.fileMarkedForDeletionOnStartup();
    if (path.isEmpty())

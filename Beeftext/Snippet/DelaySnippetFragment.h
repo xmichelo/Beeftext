@@ -20,7 +20,7 @@
 class DelaySnippetFragment: public SnippetFragment
 {
 public: // member functions
-   DelaySnippetFragment(qint32 delayMs); ///< Default constructor.
+   explicit DelaySnippetFragment(qint32 delayMs); ///< Default constructor.
    DelaySnippetFragment(DelaySnippetFragment const&) = delete; ///< Disabled copy-constructor.
    DelaySnippetFragment(DelaySnippetFragment&&) = delete; ///< Disabled assignment copy-constructor.
    ~DelaySnippetFragment() override = default; ///< Destructor.

@@ -149,7 +149,7 @@ void ComboEditor::insertTextInSnippetEdit(QString const& text, bool move1CharLef
 //**********************************************************************************************************************
 void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
 {
-   QScopedPointer<QMenu, QScopedPointerDeleteLater> menu(ui_.snippetEdit->createStandardContextMenu(pos));
+   QScopedPointer<QMenu, QScopedPointerDeleteLater> const menu(ui_.snippetEdit->createStandardContextMenu(pos));
    menu->addSeparator();
    menu->addMenu(this->createComboVariableMenu());         
    menu->exec(ui_.snippetEdit->viewport()->mapToGlobal(pos));

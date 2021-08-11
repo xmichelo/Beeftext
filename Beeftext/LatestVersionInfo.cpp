@@ -12,7 +12,7 @@
 
 
 namespace {
-   qint32 const kHashLength = 32; /// The length in bytes of the checksum
+   qint32 constexpr kHashLength = 32; /// The length in bytes of the checksum
    QString const kPropVersionMajor = "versionMajor"; ///< The JSON property name for the major version number
    QString const kPropVersionMinor = "versionMinor"; ///< The JSON property name for the minor version number
    QString const kPropDownloadUrl = "downloadUrl"; ///< The JSON property name for the download URL

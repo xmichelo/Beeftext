@@ -22,7 +22,7 @@ class ComboDialog: public QDialog
 {
    Q_OBJECT
 public:
-   static bool run(SpCombo& combo, QString const& title = QString(), QWidget* parent = nullptr);
+   static bool run(SpCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr);
 
 public: // member functions
    explicit ComboDialog(SpCombo const& combo, QString const& title = QString(), QWidget* parent = nullptr); ///< Default constructor
