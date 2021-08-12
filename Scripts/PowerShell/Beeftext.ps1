@@ -43,7 +43,7 @@ function copyVcppDlls([String]$dstPath)
 #***********************************************************************************************************************
 function getBeeftextVersion
 {
-   $srcFile = absolutePath $solutionDir "Beeftext\BeeftextConstants.cpp"
+   $srcFile = absolutePath $solutionDir "Beeftext\BeeftextConstants.h"
    $regexMinor = 'kVersionMinor\s*=\s*(\d+)\s*;' 
    $regexMajor = 'kVersionMajor\s*=\s*(\d+)\s*;' 
    $major = Select-String -Path $srcFile -Pattern $regexMajor | ForEach-Object {$_.Matches} | 
