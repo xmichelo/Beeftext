@@ -57,7 +57,7 @@ Name  "${APP_FANCY_NAME} v${VERSION_MAJOR}.${VERSION_MINOR}"
 OutFile "${OUTPUT_DIR}\${APP_NAME}-${VERSION_MAJOR}.${VERSION_MINOR}-Installer.exe"
 SetCompressor lzma # better result than default zlib, but slower
 RequestExecutionLevel none
-InstallDir "$PROGRAMFILES32\${APP_FANCY_NAME}"
+InstallDir "$PROGRAMFILES64\${APP_FANCY_NAME}"
 
 
 #define the sequence of pages for the installer
