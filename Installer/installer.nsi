@@ -89,6 +89,7 @@ InstallDir "$PROGRAMFILES64\${APP_FANCY_NAME}"
 ###################################
 Function .onInit
   !insertmacro MUI_LANGDLL_DISPLAY
+  Call determineInstallDir
   Call checkAlreadyInstalled
 FunctionEnd
 
@@ -105,12 +106,24 @@ no:
 	 Abort
 yes:
      IfSilent +3
-	 ExecWait '"$INSTDIR\${UNINSTALLER_FILE_NAME}" _?=$INSTDIR' # the _?=$INSTDIR means that the uninstaller will not copy itself but run from the installer folder, forcing ExecWait to actually wait for the uninstaller to finish.
-	 Goto clean
-	 ExecWait '"$INSTDIR\${UNINSTALLER_FILE_NAME}" /S _?=$INSTDIR' # the _?=$INSTDIR means that the uninstaller will not copy itself but run from the installer folder, forcing ExecWait to actually wait for the uninstaller to finish.
+		 ExecWait '"$INSTDIR\${UNINSTALLER_FILE_NAME}" _?=$INSTDIR' # the _?=$INSTDIR means that the uninstaller will not copy itself but run from the installer folder, forcing ExecWait to actually wait for the uninstaller to finish.
+		 Goto clean
+		 ExecWait '"$INSTDIR\${UNINSTALLER_FILE_NAME}" /S _?=$INSTDIR' # the _?=$INSTDIR means that the uninstaller will not copy itself but run from the installer folder, forcing ExecWait to actually wait for the uninstaller to finish.
 clean:
   ${Endif}
   Pop $0
+FunctionEnd
+
+
+###################################
+# Installer initialization function
+###################################
+Function determineInstallDir
+    ReadRegStr $INSTDIR HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" "InstallDir"
+    ${If} $INSTDIR == ""
+    StrCpy $INSTDIR "$PROGRAMFILES64\${APP_FANCY_NAME}"
+    ${Endif}
+    DetailPrint $INSTDIR
 FunctionEnd
 
 
@@ -179,6 +192,7 @@ file "${EXE_SRC_DIR}..\..\..\..\Submodules\emojilib\emojis.json"
 
 # Add registry key for application path
 WriteRegStr HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" "AppExePath" "$INSTDIR\${APP_NAME}.exe"
+WriteRegStr HKCU "Software\${COMPANY}\${APP_FANCY_NAME}" "InstallDir" "$INSTDIR"
 
 # Create uninstall
 WriteUninstaller "${UNINSTALLER_FILE_NAME}"
