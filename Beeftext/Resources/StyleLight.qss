@@ -63,6 +63,10 @@ QLineEdit:read-only {
    background-color: #dddddd;
 }
 
+QLineEdit[text=""] {
+   color:#cccccc ; /* Color for the placeholder text */
+}
+
 /*****************************
 * QComboBox
 *****************************/

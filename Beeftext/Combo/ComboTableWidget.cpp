@@ -662,6 +662,7 @@ void ComboTableWidget::onActionImportCombos()
 //**********************************************************************************************************************
 void ComboTableWidget::onSearchFilterChanged(QString const& text)
 {
+   this->style()->polish(ui_.editSearch);
    proxyModel_.setFilterFixedString(text.trimmed());
 }
 

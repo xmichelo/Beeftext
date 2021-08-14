@@ -57,6 +57,11 @@ QLineEdit, QPlainTextEdit, QTextEdit {
 }
 
 
+QLineEdit[text=""] {
+   color:#888888 ; /* Color for the placeholder text */
+}
+
+
 QAbstractScrollArea {
 background-color: #555555;
 }
