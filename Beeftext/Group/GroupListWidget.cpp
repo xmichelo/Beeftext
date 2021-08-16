@@ -35,9 +35,11 @@ GroupListWidget::GroupListWidget(QWidget* parent)
    connect(selectionModel, &QItemSelectionModel::selectionChanged, this, &GroupListWidget::onSelectionChanged);
    connect(&groups, &GroupList::groupMoved, this, &GroupListWidget::onGroupMoved);
    connect(&ComboManager::instance(), &ComboManager::backupWasRestored, this, &GroupListWidget::onBackupRestored);
+   connect(new QShortcut(QKeySequence("Ctrl+Shift+A"), this), &QShortcut::activated, this, 
+      &GroupListWidget::selectAllCombosEntry);
 
    this->updateGui();
-   QTimer::singleShot(0, [&]() { ui_.listGroup->setCurrentIndex(groups.index(0)); });
+   QTimer::singleShot(0, [&]() { this->selectAllCombosEntry(); });
    // delayed to be sure the signal/slot mechanism work
 }
 
@@ -87,15 +89,6 @@ void GroupListWidget::selectGroup(SpGroup const& group) const
          return;
       }
    }
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
-void GroupListWidget::selectAllCombosEntry() const
-{
-   ui_.listGroup->setCurrentIndex(ComboManager::instance().comboListRef().groupListRef().index(0));
 }
 
 
@@ -266,6 +259,15 @@ void GroupListWidget::onActionNewGroup()
    {
       QMessageBox::critical(this, tr("Error"), e.qwhat());
    }
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void GroupListWidget::selectAllCombosEntry() const
+{
+   ui_.listGroup->setCurrentIndex(ComboManager::instance().comboListRef().groupListRef().index(0));
 }
 
 
