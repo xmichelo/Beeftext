@@ -154,6 +154,7 @@ bool PickerWindow::eventFilter(QObject* watched, QEvent* event)
 //**********************************************************************************************************************
 void PickerWindow::onSearchTextChanged(QString const& text)
 {
+   this->style()->polish(ui_.editSearch);
    proxyModel_.setFilterFixedString(text.trimmed());
    if (proxyModel_.rowCount() > 0)
       this->selectItemAtIndex(0);

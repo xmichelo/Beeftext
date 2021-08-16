@@ -85,7 +85,7 @@
            <bool>false</bool>
           </property>
           <property name="placeholderText">
-           <string/>
+           <string>Search</string>
           </property>
          </widget>
         </item>
@@ -107,7 +107,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../../Beeftext.qrc">:/MainWindow/Resources/BeeftextLogo128.png</pixmap>
+           <pixmap resource="../Beeftext.qrc">:/MainWindow/Resources/BeeftextLogo128.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -125,6 +125,7 @@
   </layout>
  </widget>
  <resources>
+  <include location="../Beeftext.qrc"/>
   <include location="../../Beeftext.qrc"/>
  </resources>
  <connections>
