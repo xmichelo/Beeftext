@@ -17,7 +17,7 @@ Q_DECLARE_SMART_POINTER_METATYPE(std::shared_ptr)
 namespace constants {
 
 
-qint32 constexpr kVersionMajor = 10; ///< The major version number of the application
+qint32 constexpr kVersionMajor = 11; ///< The major version number of the application
 qint32 constexpr kVersionMinor = 0; ///< The minor version number of the application
 QChar constexpr kEmojiDelimiter = '|'; ///< The delimiter for emojis
 QColor constexpr blueBeeftextColor(0x25, 0x8c, 0xc0); ///< Return the blue color used for the GUI.
@@ -34,7 +34,6 @@ extern QString const backupFileExtension; ///< The extension for backup files.
 extern QString const kKeyVariableRegExpStr; ///< A regular expression matching the #{key: variable}.
 extern QString const kDelayVariableRegExpStr; ///< A regular expression matching the #{delay: variable}.
 extern QRegularExpression const kVariableRegExp; ///< The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \. Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents inside the #{}.
-
 
 
 enum EITemType
