@@ -935,6 +935,13 @@ Do you want to continue anyway?</source>
     </message>
 </context>
 <context>
+    <name>PickerWindow</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PrefPaneAdvanced</name>
     <message>
         <source>Delay between simulated keystrokes</source>
