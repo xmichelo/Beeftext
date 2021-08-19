@@ -496,169 +496,169 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>Suchen (Strg+F)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="129"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="132"/>
         <source>&amp;New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="132"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="135"/>
         <source>Add Combo</source>
         <translation>Kombo hinzufügen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="135"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="138"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="420"/>
         <source>New Combo</source>
         <translation>Neue Kombo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="138"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="141"/>
         <source>Ctrl+N</source>
         <translation>Strg+N</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="143"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="146"/>
         <source>&amp;Delete</source>
         <translation>&amp;Löschen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="146"/>
         <location filename="../Combo/ComboTableWidget.ui" line="149"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="152"/>
         <source>Delete Combo</source>
         <translation>Kombo löschen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="152"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="155"/>
         <source>Del</source>
         <translation>Entf</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="157"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="160"/>
         <source>&amp;Edit</source>
         <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="160"/>
         <location filename="../Combo/ComboTableWidget.ui" line="163"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="166"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="513"/>
         <source>Edit Combo</source>
         <translation>Kombo bearbeiten</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="166"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="169"/>
         <source>Return</source>
         <translation>Return</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="171"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="174"/>
         <source>&amp;Duplicate</source>
         <translation>&amp;Duplizieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="174"/>
         <location filename="../Combo/ComboTableWidget.ui" line="177"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="180"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="456"/>
         <source>Duplicate Combo</source>
         <translation>Doppelte Kombo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="180"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="183"/>
         <source>Ctrl+U</source>
         <translation>Strg+U</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="185"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="188"/>
         <source>Select &amp;All</source>
         <translation>Alle &amp;auswählen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="188"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="191"/>
         <source>Ctrl+A</source>
         <translation>Strg+A</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="193"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="196"/>
         <source>&amp;Deselect All</source>
         <translation>&amp;Alle abwählen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="196"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="199"/>
         <source>Ctrl+D</source>
         <translation>Strg+D</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="201"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="204"/>
         <source>&amp;Enable</source>
         <translation>Aktivi&amp;eren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="204"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="207"/>
         <source>Enable Combo</source>
         <translation>Kombo aktivieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="207"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="210"/>
         <source>Ctrl+E</source>
         <translation>Strg+E</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="212"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="215"/>
         <source>&amp;Export</source>
         <translation>&amp;Exportieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="215"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="218"/>
         <source>Export Selected Combos</source>
         <translation>Ausgewählte Kombos exportieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="218"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="221"/>
         <source>Ctrl+O</source>
         <translation>Strg+O</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="223"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="226"/>
         <source>I&amp;mport</source>
         <translation>I&amp;mportieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="226"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="229"/>
         <source>Import Combos</source>
         <translation>Kombos Importieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="229"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="232"/>
         <source>Ctrl+I</source>
         <translation>Strg+I</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="234"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="237"/>
         <source>Export A&amp;ll</source>
         <translation>A&amp;lle exportieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="237"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="240"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="633"/>
         <source>Export All Combos</source>
         <translation>Alle Kombos exportieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="240"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="243"/>
         <source>Ctrl+Shift+O</source>
         <translation>Strg+Umsch+O</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="245"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="248"/>
         <source>&amp;Copy Snippet</source>
         <translation>&amp;Textschnipsel Kopieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="248"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="251"/>
         <source>Copy Snippet</source>
         <translation>Textschnipsel kopieren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="251"/>
+        <location filename="../Combo/ComboTableWidget.ui" line="254"/>
         <source>Ctrl+C</source>
         <translation>Strg+C</translation>
     </message>
