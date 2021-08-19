@@ -87,6 +87,9 @@
           <property name="placeholderText">
            <string>Search</string>
           </property>
+          <property name="hasPlaceholderText" stdset="0">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -126,7 +129,7 @@
  </widget>
  <resources>
   <include location="../Beeftext.qrc"/>
-  <include location="../../Beeftext.qrc"/>
+  <include location="../Beeftext.qrc"/>
  </resources>
  <connections>
   <connection>

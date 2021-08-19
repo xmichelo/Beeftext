@@ -57,7 +57,7 @@ QLineEdit, QPlainTextEdit, QTextEdit {
 }
 
 
-QLineEdit[text=""] {
+QLineEdit[text=""][hasPlaceholderText="true"] {
    color:#888888 ; /* Color for the placeholder text */
 }
 
