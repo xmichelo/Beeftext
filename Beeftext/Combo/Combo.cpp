@@ -380,6 +380,8 @@ bool Combo::isUsable() const
 //**********************************************************************************************************************
 bool Combo::matchesForInput(QString const& input) const
 {
+   if (keyword_.isEmpty())
+      return false;
    Qt::CaseSensitivity const cs = (this->caseSensitivity(true) == ECaseSensitivity::CaseInsensitive)
       ? Qt::CaseInsensitive : Qt::CaseSensitive;
    return (this->matchingMode(true) == EMatchingMode::Loose) ? input.endsWith(keyword_, cs) :

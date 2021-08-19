@@ -63,7 +63,7 @@ QLineEdit:read-only {
    background-color: #dddddd;
 }
 
-QLineEdit[text=""][hasPlaceholderText="true"] {
+QLineEdit#editSearch[text=""] {
    color:#cccccc ; /* Color for the placeholder text */
 }
 
