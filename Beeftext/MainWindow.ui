@@ -36,7 +36,7 @@
      <x>0</x>
      <y>0</y>
      <width>664</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -156,10 +156,10 @@
   </action>
   <action name="actionBackup">
    <property name="text">
-    <string>&amp;Backup</string>
+    <string>&amp;Back Up</string>
    </property>
    <property name="toolTip">
-    <string>Backup the combo list.</string>
+    <string>Back up the combo list.</string>
    </property>
   </action>
   <action name="actionRestore">

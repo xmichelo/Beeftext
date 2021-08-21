@@ -1056,13 +1056,21 @@ Vuoi continuare comunque?</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="159"/>
-        <source>&amp;Backup</source>
-        <translation>&amp;Copia di sicurezza</translation>
+        <source>&amp;Back Up</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="162"/>
+        <source>Back up the combo list.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Backup</source>
+        <translation type="vanished">&amp;Copia di sicurezza</translation>
+    </message>
+    <message>
         <source>Backup the combo list.</source>
-        <translation>Copia lista scorciatoie.</translation>
+        <translation type="vanished">Copia lista scorciatoie.</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="167"/>
@@ -1257,8 +1265,12 @@ Vuoi continuare comunque?</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
+        <source>Automatically back up combo list files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Automatically backup combo list files</source>
-        <translation type="unfinished">Esegui automaticamente copia di sicurezza delle scorciatoie</translation>
+        <translation type="obsolete">Esegui automaticamente copia di sicurezza delle scorciatoie</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
@@ -1959,8 +1971,12 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
+        <source>The emoji-excluded applications file could not be saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>The emoji excluded applications file could not be saved.</source>
-        <translation>Non è possibile salvare il file delle applicazioni escluse dalle emoji.</translation>
+        <translation type="vanished">Non è possibile salvare il file delle applicazioni escluse dalle emoji.</translation>
     </message>
     <message>
         <location filename="../I18nManager.cpp" line="217"/>
@@ -1994,9 +2010,13 @@ Vuoi leggere il breve tutorial &apos;Iniziamo&apos;?</translation>
         <translation>Si è verificata un&apos;eccezione non gestita.</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utilizzare questa finestra di dialogo per elencare le applicazioni sensibili che non funzionano correttamente con Beeftext perché non supportano il copia e incolla standard usando Ctrl + V.&lt;/p&gt;&lt;p&gt;Elencare le applicazioni utilizzando il nome del processo (es., notepad.exe). I caratteri jolly sono ammessi.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utilizzare questa finestra di dialogo per elencare le applicazioni sensibili che non funzionano correttamente con Beeftext perché non supportano il copia e incolla standard usando Ctrl + V.&lt;/p&gt;&lt;p&gt;Elencare le applicazioni utilizzando il nome del processo (es., notepad.exe). I caratteri jolly sono ammessi.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SensitiveApplicationManager.cpp" line="106"/>
@@ -2075,12 +2095,12 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
     </message>
     <message>
         <location filename="../Combo/CaseSensitivity.cpp" line="40"/>
-        <source>Case sensitive</source>
+        <source>Case-sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/CaseSensitivity.cpp" line="41"/>
-        <source>Case insensitive</source>
+        <source>Case-insensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2118,24 +2138,28 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
 <context>
     <name>ShortcutDialog</name>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="26"/>
         <source>Type the new shortcut</source>
-        <translation>Inserire la nuova scorciatoia</translation>
+        <translation type="vanished">Inserire la nuova scorciatoia</translation>
     </message>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="36"/>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="25"/>
+        <source>Type the new shortcut.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="35"/>
         <source>The shortcut must contain at least one of the following modifier keys:
 Control, Alt or Windows.</source>
         <translation>La scorciatoia deve contenere almeno uno dei seguenti tasti modificatori: 
 Control, Alt o Windows.</translation>
     </message>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="149"/>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="148"/>
         <source>&amp;OK</source>
         <translation>&amp;INVIA</translation>
     </message>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="159"/>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="158"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancella</translation>
     </message>

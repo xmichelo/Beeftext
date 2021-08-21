@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>416</width>
-    <height>154</height>
+    <height>166</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,12 +18,11 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
      <property name="text">
-      <string>Type the new shortcut</string>
+      <string>Type the new shortcut.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

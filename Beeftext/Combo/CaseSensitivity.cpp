@@ -37,8 +37,8 @@ QString caseSensitivityToString(ECaseSensitivity sensitivity, bool resolveDefaul
             PreferencesManager::instance().defaultCaseSensitivity(), false).toLower());
       return result;
    }
-   case ECaseSensitivity::CaseSensitive: return QObject::tr("Case sensitive");
-   case ECaseSensitivity::CaseInsensitive: return QObject::tr("Case insensitive");
+   case ECaseSensitivity::CaseSensitive: return QObject::tr("Case-sensitive");
+   case ECaseSensitivity::CaseInsensitive: return QObject::tr("Case-insensitive");
    default:
       Q_ASSERT(false);
       globals::debugLog().addWarning(QString("Unknown matching mode with value %1").arg(

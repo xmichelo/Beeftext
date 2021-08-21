@@ -179,7 +179,7 @@
         <item>
          <widget class="QCheckBox" name="checkAutoBackup">
           <property name="text">
-           <string>Automatically backup combo list files</string>
+           <string>Automatically back up combo list files</string>
           </property>
          </widget>
         </item>

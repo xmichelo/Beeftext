@@ -14,8 +14,8 @@
 enum class ECaseSensitivity
 {
    Default = 0, ///< The default case sensitivity.
-   CaseSensitive = 1, ///< Case sensitive.
-   CaseInsensitive = 2, ///< Case insensisitive.
+   CaseSensitive = 1, ///< Case-sensitive.
+   CaseInsensitive = 2, ///< Case-insensitive.
    Count = 3 ///< The number of items in the enumeration.
 };
 

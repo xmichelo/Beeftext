@@ -1003,12 +1003,12 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="159"/>
-        <source>&amp;Backup</source>
+        <source>&amp;Back Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="162"/>
-        <source>Backup the combo list.</source>
+        <source>Back up the combo list.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1204,7 +1204,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
-        <source>Automatically backup combo list files</source>
+        <source>Automatically back up combo list files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1697,7 +1697,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <source>The emoji excluded applications file could not be saved.</source>
+        <source>The emoji-excluded applications file could not be saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1735,7 +1735,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     </message>
     <message>
         <location filename="../SensitiveApplicationManager.cpp" line="97"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1808,12 +1808,12 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     </message>
     <message>
         <location filename="../Combo/CaseSensitivity.cpp" line="40"/>
-        <source>Case sensitive</source>
+        <source>Case-sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/CaseSensitivity.cpp" line="41"/>
-        <source>Case insensitive</source>
+        <source>Case-insensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1851,23 +1851,23 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 <context>
     <name>ShortcutDialog</name>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="26"/>
-        <source>Type the new shortcut</source>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="25"/>
+        <source>Type the new shortcut.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="36"/>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="35"/>
         <source>The shortcut must contain at least one of the following modifier keys:
 Control, Alt or Windows.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="149"/>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="148"/>
         <source>&amp;OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="159"/>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="158"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"></translation>
     </message>

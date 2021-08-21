@@ -832,7 +832,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Backup the combo list.</source>
-        <translation>Создать резервную копию списка шаблонов.</translation>
+        <translation type="vanished">Создать резервную копию списка шаблонов.</translation>
     </message>
     <message>
         <source> - PAUSED</source>
@@ -864,7 +864,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>&amp;Backup</source>
-        <translation>&amp;Резервная копия</translation>
+        <translation type="vanished">&amp;Резервная копия</translation>
     </message>
     <message>
         <source>Ctrl+F1</source>
@@ -925,6 +925,14 @@ Do you want to continue anyway?</source>
     <message>
         <source>New Group</source>
         <translation type="unfinished">Новая группа</translation>
+    </message>
+    <message>
+        <source>&amp;Back Up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Back up the combo list.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -989,7 +997,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Automatically backup combo list files</source>
-        <translation type="unfinished">Автоматическое резервное копирование файлов со списком шаблонов</translation>
+        <translation type="obsolete">Автоматическое резервное копирование файлов со списком шаблонов</translation>
     </message>
     <message>
         <source>Restore a backup.</source>
@@ -1049,6 +1057,10 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Do you want to delete all the backup files?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically back up combo list files</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1581,7 +1593,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог для вывода списка чувствительных приложений, некорректно работающих с Beeftext, так как они не поддерживают стандартные копирование-вставку через Ctrl+V.&lt;/p&gt;&lt;p&gt;Список приложений использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог для вывода списка чувствительных приложений, некорректно работающих с Beeftext, так как они не поддерживают стандартные копирование-вставку через Ctrl+V.&lt;/p&gt;&lt;p&gt;Список приложений использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Cannot load translation:
@@ -1622,7 +1634,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     </message>
     <message>
         <source>The emoji excluded applications file could not be saved.</source>
-        <translation>Не удалось сохранить файл эмодзи исключенных приложений.</translation>
+        <translation type="vanished">Не удалось сохранить файл эмодзи исключенных приложений.</translation>
     </message>
     <message>
         <source>Move To</source>
@@ -1694,11 +1706,19 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Case sensitive</source>
+        <source>Case-sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Case insensitive</source>
+        <source>Case-insensitive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The emoji-excluded applications file could not be saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1710,7 +1730,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Type the new shortcut</source>
-        <translation>Введите новую комбинацию</translation>
+        <translation type="vanished">Введите новую комбинацию</translation>
     </message>
     <message>
         <source>The shortcut must contain at least one of the following modifier keys:
@@ -1721,6 +1741,10 @@ Control, Alt или Windows.</translation>
     <message>
         <source>&amp;Cancel</source>
         <translation>&amp;Отмена</translation>
+    </message>
+    <message>
+        <source>Type the new shortcut.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

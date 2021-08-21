@@ -175,7 +175,7 @@ bool EmojiManager::runDialog(QWidget* parent)
    excludedApps_ = dlg.stringList();
    bool const result = saveExcludedApplicationToFile(excludedApps_);
    if (!result)
-      QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("The emoji excluded applications file could "
+      QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("The emoji-excluded applications file could "
          "not be saved."));
    return result;
 }
