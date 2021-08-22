@@ -215,7 +215,7 @@
      <item>
       <widget class="QPushButton" name="buttonExport">
        <property name="toolTip">
-        <string>Reset the preferences to their default values.</string>
+        <string>Export the preferences.</string>
        </property>
        <property name="text">
         <string>&amp;Export</string>
@@ -228,7 +228,7 @@
      <item>
       <widget class="QPushButton" name="buttonImport">
        <property name="toolTip">
-        <string>Reset the preferences to their default values.</string>
+        <string>Import the preferences.</string>
        </property>
        <property name="text">
         <string>&amp;Import</string>
@@ -254,7 +254,7 @@
      <item>
       <widget class="QPushButton" name="buttonResetWarnings">
        <property name="toolTip">
-        <string>Reset the preferences to their default values.</string>
+        <string>Reset the warning dialog settings.</string>
        </property>
        <property name="text">
         <string>Reset &amp;Warnings</string>

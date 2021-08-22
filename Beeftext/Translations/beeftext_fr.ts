@@ -1796,10 +1796,7 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Écrire les évènements de débogage dans un fichier journal</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.ui" line="218"/>
-        <location filename="../Preferences/PreferencesDialog.ui" line="231"/>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
-        <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Réinitialiser les préférences à leurs valeurs par défaut.</translation>
     </message>
@@ -1814,9 +1811,24 @@ Voulez-vous tout de même continuer?</translation>
         <translation>&amp;Exporter</translation>
     </message>
     <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="218"/>
+        <source>Export the preferences.</source>
+        <translation>Exporter les préferences.</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="231"/>
+        <source>Import the preferences.</source>
+        <translation>Importer les préferences.</translation>
+    </message>
+    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="234"/>
         <source>&amp;Import</source>
         <translation>&amp;Importer</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
+        <source>Reset the warning dialog settings.</source>
+        <translation>Réinitialiser les dialogues d&apos;avertissement.</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="260"/>

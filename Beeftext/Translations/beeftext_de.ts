@@ -1761,10 +1761,7 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation type="vanished">Sensible Anwendungen</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.ui" line="218"/>
-        <location filename="../Preferences/PreferencesDialog.ui" line="231"/>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
-        <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Einstellungen auf die Standardwerte zurücksetzen.</translation>
     </message>
@@ -1774,9 +1771,24 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>&amp;Exportieren</translation>
     </message>
     <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="218"/>
+        <source>Export the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="231"/>
+        <source>Import the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="234"/>
         <source>&amp;Import</source>
         <translation>&amp;Importieren</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
+        <source>Reset the warning dialog settings.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="260"/>

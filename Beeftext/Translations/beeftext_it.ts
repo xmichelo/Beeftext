@@ -1769,10 +1769,7 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <translation type="vanished">Applicazioni sensibili</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.ui" line="218"/>
-        <location filename="../Preferences/PreferencesDialog.ui" line="231"/>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
-        <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Ripristina impostazioni predefinite.</translation>
     </message>
@@ -1782,9 +1779,24 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <translation>&amp;Esporta</translation>
     </message>
     <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="218"/>
+        <source>Export the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="231"/>
+        <source>Import the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="234"/>
         <source>&amp;Import</source>
         <translation>&amp;Importa</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
+        <source>Reset the warning dialog settings.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="260"/>

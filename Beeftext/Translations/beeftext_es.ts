@@ -1542,9 +1542,16 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="218"/>
+        <source>Export the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="231"/>
+        <source>Import the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
-        <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
         <source>Reset the preferences to their default values.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1556,6 +1563,11 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="234"/>
         <source>&amp;Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
+        <source>Reset the warning dialog settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

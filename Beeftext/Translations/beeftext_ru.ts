@@ -1482,6 +1482,18 @@ Do you want to continue anyway?</source>
         <source>An error occurred while importing the preferences.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Export the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset the warning dialog settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PrefsPaneAppearance</name>
