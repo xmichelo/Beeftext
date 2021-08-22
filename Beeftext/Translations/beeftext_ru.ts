@@ -335,7 +335,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>%1 combo(s) could not be imported.</source>
-        <translation>%1 шаблонов не удалось импортировать.</translation>
+        <translation type="vanished">%1 шаблонов не удалось импортировать.</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -347,6 +347,14 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>The file does not contain importable data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 combos could not be imported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A combo could not be imported.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

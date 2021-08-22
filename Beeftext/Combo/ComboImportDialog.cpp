@@ -236,7 +236,8 @@ void ComboImportDialog::onActionImport()
       if (failureCount)
       {
          globals::debugLog().addError(QString("%1 supposedly possible combo import failed").arg(failureCount));
-         QMessageBox::critical(this, tr("Error"), tr("%1 combo(s) could not be imported.").arg(failureCount));
+         QMessageBox::critical(this, tr("Error"), (failureCount > 1) ? 
+            tr("%1 combos could not be imported.").arg(failureCount) : tr("A combo could not be imported."));
       }
 
       this->accept();

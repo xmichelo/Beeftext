@@ -361,14 +361,13 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Bladeren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="239"/>
         <source>%1 combo(s) could not be imported.</source>
-        <translation>%1 combo(&apos;s) kan/kunnen niet worden geïmporteerd.</translation>
+        <translation type="vanished">%1 combo(&apos;s) kan/kunnen niet worden geïmporteerd.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="234"/>
         <location filename="../Combo/ComboImportDialog.cpp" line="239"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="288"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="289"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
@@ -418,22 +417,32 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Selecteer een geldige groep.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="246"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
+        <source>%1 combos could not be imported.</source>
+        <translation>%1 combo&apos;s kunnen niet worden geïmporteerd.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
+        <source>A combo could not be imported.</source>
+        <translation>Een combo kan niet worden geïmporteerd.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="247"/>
         <source>&amp;Error</source>
         <translation>&amp;Fout</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="266"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="267"/>
         <source>Select Combo File</source>
         <translation>Combobestand selecteren</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="292"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="293"/>
         <source>The file is invalid.</source>
         <translation>Het bestand is ongeldig.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="295"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="296"/>
         <source>The file does not contain importable data.</source>
         <translation>Het bestand bevat geen importeerbare gegevens.</translation>
     </message>

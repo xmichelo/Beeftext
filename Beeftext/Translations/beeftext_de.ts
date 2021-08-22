@@ -404,32 +404,41 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="234"/>
         <location filename="../Combo/ComboImportDialog.cpp" line="239"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="288"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="289"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="239"/>
-        <source>%1 combo(s) could not be imported.</source>
-        <translation>%1 Kombo(s) konnte(n) nicht importiert werden.</translation>
+        <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
+        <source>%1 combos could not be imported.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="246"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
+        <source>A combo could not be imported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 combo(s) could not be imported.</source>
+        <translation type="vanished">%1 Kombo(s) konnte(n) nicht importiert werden.</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboImportDialog.cpp" line="247"/>
         <source>&amp;Error</source>
         <translation>&amp;Error</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="266"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="267"/>
         <source>Select Combo File</source>
         <translation>Wähle die Kombo-Datei</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="292"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="293"/>
         <source>The file is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="295"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="296"/>
         <source>The file does not contain importable data.</source>
         <translation type="unfinished"></translation>
     </message>
