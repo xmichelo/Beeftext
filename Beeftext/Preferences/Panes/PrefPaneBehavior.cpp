@@ -237,6 +237,17 @@ void PrefPaneBehavior::onResetAppEnableDisableShortcut() const
 
 
 //**********************************************************************************************************************
+/// \param[in] event The event.
+//**********************************************************************************************************************
+void PrefPaneBehavior::changeEvent(QEvent* event)
+{
+   if (QEvent::LanguageChange == event->type())
+      ui_.retranslateUi(this);
+   PrefPane::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] status The status message
 //**********************************************************************************************************************
 void PrefPaneBehavior::setUpdateCheckStatus(QString const& status)

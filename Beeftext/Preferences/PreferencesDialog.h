@@ -39,6 +39,7 @@ private slots:
 
 private: // member functions
    bool validateInput(); ///< Check that the values for the dialog are consistant
+   void changeEvent(QEvent*) override; ///< Change event handler.
 
 private: // data members
    Ui::PreferencesDialog ui_ {}; ///< The GUI for the dialog

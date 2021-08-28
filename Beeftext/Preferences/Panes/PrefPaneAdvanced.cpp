@@ -266,6 +266,17 @@ void PrefPaneAdvanced::onEditSensitiveApplications()
 
 
 //**********************************************************************************************************************
+/// \param[in] event The event.
+//**********************************************************************************************************************
+void PrefPaneAdvanced::changeEvent(QEvent* event)
+{
+   if (QEvent::LanguageChange == event->type())
+      ui_.retranslateUi(this);
+   PrefPane::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
 /// \return true if the used picked Yes or No
 /// \return false if the user selected Cancel
 //**********************************************************************************************************************

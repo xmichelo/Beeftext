@@ -39,6 +39,9 @@ private slots:
    void onEmojiRightDelimiterChanged(QString const& value) const; ///< Slot for the change of the value for the emoji right delimiter.
    void onCheckShowEmojisInPickerWindow(bool checked) const; ///< Slot for the 'Show emojis in picker window' checkbox.
 
+private: // member functions
+   void changeEvent(QEvent* event) override; ///< Change event handler.
+
 private: // data members
    Ui::PrefPaneEmojis ui_ {}; ///< The GUI for the pane.
    PreferencesManager& prefs_; ///< The preferences manager.

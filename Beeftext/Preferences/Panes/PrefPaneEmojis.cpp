@@ -101,3 +101,14 @@ void PrefPaneEmojis::onCheckShowEmojisInPickerWindow(bool checked) const
 {
    prefs_.setShowEmojisInPickerWindow(checked);
 }
+
+
+//**********************************************************************************************************************
+/// \param[in] event The event.
+//**********************************************************************************************************************
+void PrefPaneEmojis::changeEvent(QEvent* event)
+{
+   if (QEvent::LanguageChange == event->type())
+      ui_.retranslateUi(this);
+   PrefPane::changeEvent(event);
+}

@@ -50,6 +50,7 @@ private slots:
    void onResetAppEnableDisableShortcut() const; ///< Slot for the button Default of the app enable/disable shortcut.
 
 private: // member functions
+   void changeEvent(QEvent* event) override; ///< Change event handler.
    void setUpdateCheckStatus(QString const& status); ///< Set the update check status label message (this is cleared after a few seconds)
    bool validateInput() override; ///< Validate the user input.
 

@@ -47,8 +47,9 @@ private slots:
    void onChangeCustomBackupLocation(); ///< Slot for the 'Change' button of the custom backup location.
    void onRestoreBackup(); ///< Slot for the 'Restore backup' action
    void onEditSensitiveApplications(); ///< Slot for the 'Edit sensitive applications' action
-
+   
 private: // member functions
+   void changeEvent(QEvent* event) override; ///< Change event handler.
    bool promptForAndRemoveAutoBackups(); ///< Ask the user if automatic backups should be deleted and if so, performs the operation
 
 private: // data members
