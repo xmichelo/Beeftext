@@ -1343,12 +1343,12 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>Aangepaste back-uplocatie</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="275"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Delete Backup Files?</source>
         <translation>Back-upbestanden verwijderen?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="275"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>Wilt u alle back-upbestanden verwijderen?</translation>
     </message>
@@ -1464,12 +1464,12 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>WAV-bestanden (*.wav);;Alle bestanden (*.*)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="260"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="271"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="260"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="271"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation>Het pad naar het aangepaste geluidsbestand is ongeldig.</translation>
     </message>
@@ -1782,48 +1782,48 @@ Weet u zeker dat u wilt doorgaan?</translation>
         <translation>&amp;Sluiten</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="110"/>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="125"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="69"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
         <source>Reset Preferences</source>
         <translation>Voorkeuren terugzetten naar standaardwaarden</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="69"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Weer u zeker dat u de voorkeuren naar hun standaardwaarden wilt terugzetten?</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="84"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="95"/>
         <source>Reset Warnings</source>
         <translation>Waarschuwingen opheffen</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="84"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="95"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation>Weer u zeker dat u alle waarschuwingen wilt opheffen?</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="104"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="115"/>
         <source>Export Preferences</source>
         <translation>Voorkeuren exporteren</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="110"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation>Er is een fout opgetreden bij het exporteren van de voorkeuren.</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="119"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="130"/>
         <source>Import Preferences</source>
         <translation>Voorkeuren importeren</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="125"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>Er is een fout opgetreden bij het importeren van de voorkeuren.</translation>
     </message>

@@ -1348,12 +1348,12 @@ Vuoi continuare comunque?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="275"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Delete Backup Files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="275"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Do you want to delete all the backup files?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1469,12 +1469,12 @@ Vuoi continuare comunque?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="260"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="271"/>
         <source>Error</source>
         <translation type="unfinished">Errore</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="260"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="271"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1818,48 +1818,48 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <translation>&amp;Chiudi</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="110"/>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="125"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
         <translation type="unfinished">Errore</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="69"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
         <source>Reset Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="69"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="84"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="95"/>
         <source>Reset Warnings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="84"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="95"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="104"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="115"/>
         <source>Export Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="110"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="119"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="130"/>
         <source>Import Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="125"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>An error occurred while importing the preferences.</source>
         <translation type="unfinished"></translation>
     </message>

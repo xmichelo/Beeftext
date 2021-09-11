@@ -536,6 +536,9 @@
       <Project>{c2c2e08c-d1ff-4496-8d42-8dfb24aeee66}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="Translations\beeftext_zh.ts" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />

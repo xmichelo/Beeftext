@@ -1343,12 +1343,12 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Emplacement des sauvegardes</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="275"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Delete Backup Files?</source>
         <translation>Effacer les Sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="275"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
     </message>
@@ -1464,12 +1464,12 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Fichiers WAV (*.wav);;Tous les fichiers (*.*)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="260"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="271"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="260"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="271"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation>Le chemin d&apos;accès du fichier son personnalisé est invalide.</translation>
     </message>
@@ -1866,8 +1866,8 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Choisissez le dosser</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="110"/>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="125"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -1892,22 +1892,22 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Emplacement des sauvegardes</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="69"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
         <source>Reset Preferences</source>
         <translation>Réinitialiser les Préferences</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="69"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les préférences à leurs valeurs par défaut?</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="84"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="95"/>
         <source>Reset Warnings</source>
         <translation>Réinitialiser les Avertissements</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="84"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="95"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser les avertissements à leurs valeurs par défaut?</translation>
     </message>
@@ -1936,22 +1936,22 @@ Voulez-vous tout de même continuer?</translation>
         <translation type="vanished">Fichiers exécutables (*.exe);;Tous les fichiers (*.*)</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="104"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="115"/>
         <source>Export Preferences</source>
         <translation>Exporter les Préférences</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="110"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation>Une erreur est survenue lors de l&apos;export des préférences.</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="119"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="130"/>
         <source>Import Preferences</source>
         <translation>Import des préférences</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="125"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>Une erreur est survenue lors de l&apos;import des préférences.</translation>
     </message>

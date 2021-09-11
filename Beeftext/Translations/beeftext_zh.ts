@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es_ES">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -55,13 +55,8 @@
 <context>
     <name>ComboDialog</name>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="108"/>
-        <source>&amp;New</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboDialog.ui" line="128"/>
-        <source>Matching</source>
+        <location filename="../Combo/ComboDialog.ui" line="22"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -70,18 +65,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="79"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboDialog.ui" line="22"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboDialog.ui" line="89"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../Combo/ComboDialog.ui" line="42"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Description&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -90,8 +75,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="42"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Description&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../Combo/ComboDialog.ui" line="79"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="89"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="108"/>
+        <source>&amp;New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.ui" line="128"/>
+        <source>Matching</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -250,16 +250,6 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="164"/>
-        <source>Select PowerShell script file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboEditor.cpp" line="165"/>
-        <source>PowerShell script files (*.ps1);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboEditor.cpp" line="104"/>
         <source>Combo (&amp;trimmed)</source>
         <translation type="unfinished"></translation>
@@ -282,6 +272,16 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Combo/ComboEditor.cpp" line="120"/>
         <source>&amp;About Variables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="164"/>
+        <source>Select PowerShell script file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboEditor.cpp" line="165"/>
+        <source>PowerShell script files (*.ps1);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -427,6 +427,11 @@ Do you want to continue anyway?</source>
     <name>ComboList</name>
     <message>
         <location filename="../Combo/ComboList.cpp" line="595"/>
+        <source>Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboList.cpp" line="595"/>
         <location filename="../Combo/ComboList.cpp" line="729"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
@@ -441,11 +446,6 @@ Do you want to continue anyway?</source>
         <location filename="../Combo/ComboList.cpp" line="595"/>
         <location filename="../Combo/ComboList.cpp" line="731"/>
         <source>Snippet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboList.cpp" line="595"/>
-        <source>Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -657,18 +657,6 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="434"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="468"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="494"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="518"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="580"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="611"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="645"/>
-        <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="363"/>
         <source>Ena&amp;ble</source>
         <translation type="unfinished"></translation>
@@ -701,6 +689,18 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="425"/>
         <source>The combo could not be added to the list.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="434"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="468"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="494"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="518"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="580"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="611"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="645"/>
+        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1521,11 +1521,6 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.ui" line="247"/>
-        <source>&amp;Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="66"/>
         <source>Combos</source>
         <translation type="unfinished"></translation>
@@ -1551,8 +1546,18 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="221"/>
+        <source>&amp;Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="231"/>
         <source>Import the preferences.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="234"/>
+        <source>&amp;Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1561,13 +1566,8 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.ui" line="221"/>
-        <source>&amp;Export</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Preferences/PreferencesDialog.ui" line="234"/>
-        <source>&amp;Import</source>
+        <location filename="../Preferences/PreferencesDialog.ui" line="247"/>
+        <source>&amp;Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1583,12 +1583,6 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="283"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
-        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1618,6 +1612,12 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1635,6 +1635,11 @@ Do you want to continue anyway?</source>
 <context>
     <name>QObject</name>
     <message>
+        <location filename="../BeeftextGlobals.cpp" line="143"/>
+        <source>Beeftext backup files (*.%1);;All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../BeeftextGlobals.cpp" line="152"/>
         <source>JSON files (*.json);;All files (*.*)</source>
         <translation type="unfinished"></translation>
@@ -1647,11 +1652,6 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../BeeftextGlobals.cpp" line="171"/>
         <source>CSV files (*.csv);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../BeeftextGlobals.cpp" line="143"/>
-        <source>Beeftext backup files (*.%1);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1691,6 +1691,60 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../Combo/CaseSensitivity.cpp" line="34"/>
+        <location filename="../Combo/MatchingMode.cpp" line="34"/>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/CaseSensitivity.cpp" line="40"/>
+        <source>Case-sensitive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/CaseSensitivity.cpp" line="41"/>
+        <source>Case-insensitive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/CaseSensitivity.cpp" line="46"/>
+        <location filename="../Combo/MatchingMode.cpp" line="45"/>
+        <source>&lt;Unknown&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="32"/>
+        <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="37"/>
+        <location filename="../Combo/ComboDialog.cpp" line="56"/>
+        <source>Do not show this warning again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="52"/>
+        <source>You have not defined a keyword. Are you sure you want to continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="29"/>
+        <source>Move To</source>
+        <comment>Move entry in the Combo context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/MatchingMode.cpp" line="40"/>
+        <source>Strict</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/MatchingMode.cpp" line="41"/>
+        <source>Loose</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Emoji/EmojiManager.cpp" line="161"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list applications in which emoji substitution should be disabled.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -1715,6 +1769,16 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
         <source>The emoji-excluded applications file could not be saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupList.cpp" line="19"/>
+        <source>Default Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupList.cpp" line="20"/>
+        <source>The default group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1783,70 +1847,6 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
     <message>
         <location filename="../Shortcut.cpp" line="88"/>
         <source>Win</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboDialog.cpp" line="32"/>
-        <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboDialog.cpp" line="37"/>
-        <location filename="../Combo/ComboDialog.cpp" line="56"/>
-        <source>Do not show this warning again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboDialog.cpp" line="52"/>
-        <source>You have not defined a keyword. Are you sure you want to continue?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="29"/>
-        <source>Move To</source>
-        <comment>Move entry in the Combo context menu</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Group/GroupList.cpp" line="19"/>
-        <source>Default Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Group/GroupList.cpp" line="20"/>
-        <source>The default group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/CaseSensitivity.cpp" line="34"/>
-        <location filename="../Combo/MatchingMode.cpp" line="34"/>
-        <source>Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/CaseSensitivity.cpp" line="40"/>
-        <source>Case-sensitive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/CaseSensitivity.cpp" line="41"/>
-        <source>Case-insensitive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/MatchingMode.cpp" line="40"/>
-        <source>Strict</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/MatchingMode.cpp" line="41"/>
-        <source>Loose</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Combo/CaseSensitivity.cpp" line="46"/>
-        <location filename="../Combo/MatchingMode.cpp" line="45"/>
-        <source>&lt;Unknown&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

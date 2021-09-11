@@ -1339,12 +1339,12 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation type="unfinished">Benutzerdefinierter Sicherungsort</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="275"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Delete Backup Files?</source>
         <translation type="unfinished">Sicherungsdateien löschen?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="275"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Do you want to delete all the backup files?</source>
         <translation type="unfinished">Wollen Sie alle Sicherungsdateien löschen?</translation>
     </message>
@@ -1460,12 +1460,12 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation type="unfinished">WAV-Dateien (*.wav);;Alle Dateien (*.*)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="260"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="271"/>
         <source>Error</source>
         <translation type="unfinished">Fehler</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="260"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="271"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation type="unfinished">Der angegebene Pfad zur benutzerdefinierten Sound-Datei ist ungültig.</translation>
     </message>
@@ -1826,8 +1826,8 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation type="vanished">Ordner auswählen</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="110"/>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="125"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
@@ -1844,22 +1844,22 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation type="vanished">Benutzerdefinierter Sicherungsort</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="69"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
         <source>Reset Preferences</source>
         <translation>Einstellungen zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="69"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>Sind Sie sicher, dass Sie alle Einstellungen auf ihren Standardwert zurücksetzen wollen?</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="84"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="95"/>
         <source>Reset Warnings</source>
         <translation>Warnungen zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="84"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="95"/>
         <source>Are you sure you want to reset all warnings?</source>
         <translation>Sind Sie sicher, dass Sie alle Warnungen zurücksetzen wollen?</translation>
     </message>
@@ -1880,22 +1880,22 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation type="vanished">Aktualisierungsprüfung fehlgeschlagen.</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="104"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="115"/>
         <source>Export Preferences</source>
         <translation>Einstellungen exportieren</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="110"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation>Ein Fehler ist während des Exportierens der Einstellungen aufgetreten.</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="119"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="130"/>
         <source>Import Preferences</source>
         <translation>Einstellungen importieren</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="125"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>Ein Fehler ist während des Importierens der Einstellungen aufgetreten.</translation>
     </message>

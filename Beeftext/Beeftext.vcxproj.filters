@@ -528,4 +528,9 @@
       <Filter>Preferences\Panes</Filter>
     </QtUic>
   </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="Translations\beeftext_zh.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
+  </ItemGroup>
 </Project>
