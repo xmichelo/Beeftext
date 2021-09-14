@@ -144,8 +144,8 @@ bool ComboDialog::checkAndReportInvalidCombo()
    if (newKeyword.isEmpty()) // We do not check for conflicts if the user validated an empty keyword.
       return true;
    qint32 const conflictCount = qint32(std::count_if(comboList.begin(), comboList.end(), [&](SpCombo const& existing) 
-      -> bool  { return (existing != combo_) && (existing->keyword().startsWith(newKeyword) || 
-      newKeyword.startsWith(existing->keyword())); }));
+      -> bool  { return (existing != combo_) && ((!existing->keyword().isEmpty()) && 
+         (existing->keyword().startsWith(newKeyword) || newKeyword.startsWith(existing->keyword()))); }));
    if (!conflictCount)
       return true;
    QString const singleConflictStr = tr("An existing combo is creating a conflict with this combo.");
