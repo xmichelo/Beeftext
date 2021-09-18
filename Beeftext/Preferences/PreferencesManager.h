@@ -32,6 +32,8 @@ public: // member functions
 	~PreferencesManager() override = default; ///< Default destructor
 	PreferencesManager& operator=(PreferencesManager const&) = delete; ///< Disabled assignment operator
 	PreferencesManager& operator=(PreferencesManager&&) = delete; ///< Disabled move assignment operator
+   QSettings& settings(); ///< Returns a reference the settings for the application.
+   QSettings const& settings() const; ///< Returns a constant reference the settings for the application.
    void init() const; ///< Initialize the preferences manager.
    void reset(); ///< Reset the preferences to their default values
    bool save(QString const& path) const; ///< Save the preference to a JSON file.
@@ -39,7 +41,6 @@ public: // member functions
    void toJsonDocument(QJsonDocument& outDoc) const; ///< Copy the preferences to a JSON document.
    void fromJsonDocument(QJsonDocument const& doc) const; ///< Load the preferences from a JSON document.
    void resetWarnings() const; ///< Reset the warnings
-   QString getInstalledApplicationPath() const; ///< Retrieve the path of the installed application
    void setAlreadyLaunched() const; ///< Set the value for the 'First Launch' preference to false
    bool alreadyLaunched() const; ///< Test whether this is the first time the application is launched
    void setFileMarkedForDeletionOnStartup(QString const& path) const; ///< Get the path of the file marked for deletion on startup
@@ -140,11 +141,7 @@ signals:
 
 private: // member functions
    PreferencesManager(); ///< Default constructor
-   void applyAutoStartPreference() const; ///< Apply the preference for the auto-start
    void applyLocalePreference() const; ///< Apply the preference for the locale
-   bool registerApplicationForAutoStart() const; ///< Register the application to be automatically started at login
-   static void unregisterApplicationFromAutoStart(); ///< Unregister the application to be automatically started at login
-
    template <typename T> T readSettings(QString const& key, T const& defaultValue = T()) const; ///< Read a value of a given type read from the settings
    
 private: // data members

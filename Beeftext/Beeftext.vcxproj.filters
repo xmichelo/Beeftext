@@ -223,6 +223,7 @@
     <ClCompile Include="Snippet\KeySnippetFragment.cpp">
       <Filter>Snippet</Filter>
     </ClCompile>
+    <ClCompile Include="AutoStart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -326,6 +327,7 @@
     <ClInclude Include="Snippet\KeySnippetFragment.h">
       <Filter>Snippet</Filter>
     </ClInclude>
+    <ClInclude Include="AutoStart.h" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">

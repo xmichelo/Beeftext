@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "MainWindow.h"
+#include "AutoStart.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
@@ -85,6 +86,7 @@ int main(int argc, char *argv[])
          debugLog.enableLoggingToFile(globals::logFilePath());
       debugLog.setMaxEntryCount(1);
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
+      applyAutostartParameters();
       removeFileMarkedForDeletion();
 
       // if necessary warn about deprecated rich text support and offer an exit option.

@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "PreferencesManager.h"
+#include "AutoStart.h"
 #include "Theme.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
@@ -30,10 +31,8 @@ QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for
 QString const kKeyAppEnableShortcutKeyCode = "AppEnableDisableShortcutKeyCode"; ///< The setting key for the app enable/disable shortcut key code.
 QString const kKeyAppEnableShortcutModifiers = "AppEnableDisableShortcutModifiers"; ///< The setting key for the app enable/disable shortcut modifiers.
 QString const kKeyAppEnableShortcutScanCode = "AppEnableDisableShortcutScanCode"; ///< The setting key for the app enable/disable shortcut scan code.
-QString const kKeyAppExePath = "AppExePath"; ///< The settings key for the application executable path
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
 QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
-QString const kKeyAutoStart = R"(HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run)"; ///< The registry key for autostart
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
@@ -363,6 +362,26 @@ PreferencesManager::PreferencesManager()
 
 
 //**********************************************************************************************************************
+/// \return A reference to the settings object of the manager
+//**********************************************************************************************************************
+QSettings& PreferencesManager::settings()
+{
+   Q_ASSERT(settings_);
+   return *settings_;
+}
+
+
+//**********************************************************************************************************************
+/// \return A constant reference to the settings object of the manager
+//**********************************************************************************************************************
+QSettings const& PreferencesManager::settings() const
+{
+   Q_ASSERT(settings_);
+   return *settings_;
+}
+
+
+//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 void PreferencesManager::init() const
@@ -370,7 +389,6 @@ void PreferencesManager::init() const
    cache_->init();
    applyThemePreferences(this->useCustomTheme(), this->theme());
    this->applyLocalePreference();
-   this->applyAutoStartPreference();
 }
 
 
@@ -655,17 +673,6 @@ void PreferencesManager::resetWarnings() const
 
 
 //**********************************************************************************************************************
-/// The value for this preference is set by the NSIS installer. 
-//**********************************************************************************************************************
-QString PreferencesManager::getInstalledApplicationPath() const
-{
-   if (!settings_->contains(kKeyAppExePath))
-      return QString();
-   return QDir::fromNativeSeparators(this->readSettings<QString>(kKeyAppExePath));
-}
-
-
-//**********************************************************************************************************************
 /// Set the settings value indicating that the application has been launched in the past
 //**********************************************************************************************************************
 void PreferencesManager::setAlreadyLaunched() const
@@ -801,7 +808,7 @@ void PreferencesManager::setAutoStartAtLogin(bool value) const
    if (this->autoStartAtLogin() != value)
    {
       settings_->setValue(kKeyAutoStartAtLogin, value);
-      this->applyAutoStartPreference();
+      applyAutostartParameters();
    }
 }
 
@@ -1409,57 +1416,9 @@ void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut) cons
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PreferencesManager::applyAutoStartPreference() const
-{
-   if (isInPortableMode())
-      return;
-   if (this->autoStartAtLogin())
-   {
-      if (!registerApplicationForAutoStart())
-         globals::debugLog().addWarning("Could not register the application for automatic startup on login.");
-   }
-   else
-      unregisterApplicationFromAutoStart();
-}
-
-
-//**********************************************************************************************************************
-// 
-//**********************************************************************************************************************
 void PreferencesManager::applyLocalePreference() const
 {
    I18nManager::instance().setLocale(this->locale());
-}
-
-
-//**********************************************************************************************************************
-/// To register the application for auto start at login, we use a registry key that contains the path of the installed
-/// application. This key is written by the NSIS installer script. As a consequence, if the application has not be
-/// installed using the installer (for example on a development system), this function will fail
-///
-/// \return true if the operation was successful
-//**********************************************************************************************************************
-bool PreferencesManager::registerApplicationForAutoStart() const
-{
-   if (isInPortableMode())
-      return false;
-   QString const installedPath = this->getInstalledApplicationPath();
-   if (installedPath.isEmpty() || (!QFileInfo(installedPath).exists()))
-      return false;
-
-   QSettings(kKeyAutoStart, QSettings::NativeFormat).setValue(constants::kApplicationName,
-      QDir::toNativeSeparators(installedPath));
-   return true;
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void PreferencesManager::unregisterApplicationFromAutoStart()
-{
-   if (!isInPortableMode())
-      QSettings(kKeyAutoStart, QSettings::NativeFormat).remove(constants::kApplicationName);
 }
 
 
