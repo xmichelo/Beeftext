@@ -23,10 +23,9 @@ QString const kBeeftextReleasesPagesUrl = "https://github.com/xmichelo/Beeftext/
 QString const kBeeftextIssueTrackerUrl = "https://github.com/xmichelo/Beeftext/issues";
 QString const backupFileExtension = "btbackup";
 QString const kKeyVariableRegExpStr(R"(#{key:(\w+)(?>:(\d+))?})");
+QString const kShortcutVariableRegExpStr(R"(#{shortcut:(.+)})");
 QString const kDelayVariableRegExpStr(R"(#{delay:(\d+)})");
 QRegularExpression const kVariableRegExp(R"(#\{((.*?)(?<!\\))\})");
-
-
 
 
 } // namespace constants

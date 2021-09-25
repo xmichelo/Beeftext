@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "SnippetFragment.h"
 #include "TextSnippetFragment.h"
+#include "ShortcutSnippetFragment.h"
 #include "DelaySnippetFragment.h"
 #include "KeySnippetFragment.h"
 #include "BeeftextConstants.h"
@@ -57,6 +58,45 @@ ListSpSnippetFragment splitForKeyVariable(QString const& str)
 
 
 //**********************************************************************************************************************
+/// \brief split a string into snippet fragment at the #{shortcut:} variable.
+/// \param[in] str The string.
+/// \return the text split into fragments
+//**********************************************************************************************************************
+ListSpSnippetFragment splitForShortcutVariable(QString const& str)
+{
+   ListSpSnippetFragment result;
+   QString s(str);
+   QRegularExpression const rx(QString(R"((.*)%1(.*))").arg(constants::kShortcutVariableRegExpStr),
+      QRegularExpression::DotMatchesEverythingOption);
+   QRegularExpressionMatch match;
+   while ((match = rx.match(s)).hasMatch())
+   {
+      QString const after = match.captured(3);
+      if (!after.isEmpty())
+         result = splitForKeyVariable(after) + result;
+
+      QKeySequence const seq = QKeySequence::fromString(match.captured(2));
+      qint32 const count = seq.count();
+      QString debugStr = QString("key sequence (size: %1): ").arg(seq.count());
+      for (qint32 i = 0; i < count; ++i)
+      {
+         debugStr += QString::number(i, 10);
+         if (i != count - 1)
+            debugStr += " + ";
+      }
+      qDebug() << debugStr;
+      if (!seq.isEmpty())
+         result.prepend(std::make_shared<ShortcutSnippetFragment>(
+            std::make_shared<Shortcut>(Qt::NoModifier, VK_ESCAPE, 0)));
+      s = match.captured(1);
+   }
+   if (!s.isEmpty())
+      result = splitForKeyVariable(s) + result;
+   return result;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] str The string to split.
 /// \return the list of fragments
 //**********************************************************************************************************************
@@ -71,16 +111,15 @@ ListSpSnippetFragment splitStringIntoSnippetFragments(QString const& str)
    {
       QString const after = match.captured(3);
       if (!after.isEmpty())
-         result = splitForKeyVariable(after) + result;
+         result = splitForShortcutVariable(after) + result;
       bool ok = false;
       qint32 const delay = match.captured(2).toInt(&ok);
       if (ok && (delay > 0))
          result.prepend(std::make_shared<DelaySnippetFragment>(delay));
-
       s = match.captured(1);
    }
    if (!s.isEmpty())
-      result = splitForKeyVariable(s) + result;
+      result = splitForShortcutVariable(s) + result;
    return result;
 }
 

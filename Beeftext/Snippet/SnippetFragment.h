@@ -22,7 +22,8 @@ public: // data types
       Text = 0, ///< Text fragment.
       Delay  = 1, ///< Delay fragment.
       Key = 2, ///< Key fragment.
-      Count  = 3, ///< The number of fragment types
+      Shortcut = 3, ///< Shortcut fragment
+      Count  = 4, ///< The number of fragment types
    }; ///< Enumeration for the type of fragment
 
 public: // member functions
