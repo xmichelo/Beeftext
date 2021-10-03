@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ShortcutDialog.h"
+#include "InputManager.h"
 #include "Preferences/PreferencesManager.h"
 #include <XMiLib/XMiLibConstants.h>
 
@@ -23,7 +24,21 @@ ShortcutDialog::ShortcutDialog(SpShortcut const& shortcut, QWidget* parent)
      shortcut_(shortcut ? shortcut : PreferencesManager::defaultComboTriggerShortcut())
 {
    ui_.setupUi(this);
+   this->resize(QDialog::sizeHint());
    this->updateGui();
+   InputManager& inputManager = InputManager::instance();
+   shortcutsWereEnabled_ = inputManager.isShortcutProcessingEnabled();
+   inputManager.setShortcutsProcessingEnabled(false);
+   connect(&InputManager::instance(), &InputManager::shortcutPressed, this, &ShortcutDialog::onShortcutPressed);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+ShortcutDialog::~ShortcutDialog()
+{
+   InputManager::instance().setShortcutsProcessingEnabled(shortcutsWereEnabled_);
 }
 
 
@@ -37,14 +52,11 @@ SpShortcut ShortcutDialog::shortcut() const
 
 
 //**********************************************************************************************************************
-// 
+/// \param[in] shortcut The shortcut
 //**********************************************************************************************************************
-void ShortcutDialog::keyPressEvent(QKeyEvent* event)
+void ShortcutDialog::onShortcutPressed(SpShortcut const& shortcut)
 {
-   event->ignore(); // we intercept all key events
-   SpShortcut const shortcut = std::make_shared<Shortcut>(event->modifiers(), event->nativeVirtualKey(),
-      event->nativeScanCode());
-   if (!shortcut->isValid())
+   if ((!shortcut) || (!shortcut->isValid()))
       return;
    shortcut_ = shortcut;
    this->updateGui();

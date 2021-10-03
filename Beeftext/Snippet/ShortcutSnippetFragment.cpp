@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ShortcutSnippetFragment.h"
+#include "BeeftextUtils.h"
 
 
 //**********************************************************************************************************************
@@ -43,5 +44,6 @@ QString ShortcutSnippetFragment::toString() const
 //**********************************************************************************************************************
 void ShortcutSnippetFragment::render() const
 {
-   Beep(440, 10);
+   if (shortcut_)
+      renderShortcut(shortcut_);
 }

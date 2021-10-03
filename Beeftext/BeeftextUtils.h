@@ -31,6 +31,7 @@ QString getActiveExecutableFileName(); ///< Return the name of the active applic
 QString htmlToPlainText(QString const& snippet); ///< Return the plain text for a snippet.
 void eraseChars(qint32 count); ///< Erase characters by generating backspace characters.
 void insertText(QString const& text); ///< Insert the text given text.
+void renderShortcut(SpShortcut const& shortcut); ///< Synthesize the given shortcut.
 void moveCursorLeft(qint32 count); ///< Move the cursor the the left by the specified number of characters.
 void performTextSubstitution(qint32 charCount, QString const& newText, qint32 cursorPos, ETriggerSource source); ///< Substitute the last characters with the specified text
 void reportError(QWidget* parent, QString const& logMessage, QString const& userMessage = QString()); ///< Report an error to the user

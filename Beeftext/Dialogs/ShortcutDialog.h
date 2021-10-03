@@ -25,18 +25,21 @@ public: // member functions
    explicit ShortcutDialog(SpShortcut const& shortcut, QWidget* parent = nullptr); ///< Default constructor
 	ShortcutDialog(ShortcutDialog const&) = delete; ///< Disabled copy constructor
 	ShortcutDialog(ShortcutDialog&&) = delete; ///< Disabled move constructor
-	~ShortcutDialog() override = default; ///< Default destructor
+	~ShortcutDialog() override; ///< Default destructor
 	ShortcutDialog& operator=(ShortcutDialog const&) = delete; ///< Disabled assignment operator
 	ShortcutDialog& operator=(ShortcutDialog&&) = delete; ///< Disabled move assignment operator
    SpShortcut shortcut() const; ///< Get the shortcut
 
+private slots:
+   void onShortcutPressed(SpShortcut const& shortcut); ///< Slot for the pressing of a shortcut.
+
 private: // member functions
-   void keyPressEvent(QKeyEvent *event) override; ///< Handle for key press events
    void updateGui() const; ///< Update the state of the GUI
 
 private: // data members
    Ui::ShortcutDialog ui_; ///< The GUI for the dialog
    SpShortcut shortcut_; ///< The shortcut
+   bool shortcutsWereEnabled_ { true }; ///< Were shortcuts enabled before the dialog was shown?
 };
 
 

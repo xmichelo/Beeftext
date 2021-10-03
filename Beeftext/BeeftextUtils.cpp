@@ -13,6 +13,7 @@
 #include "Dialogs/ShortcutDialog.h"
 #include "SensitiveApplicationManager.h"
 #include "InputManager.h"
+#include "KeyboardMapper.h"
 #include "Preferences/PreferencesManager.h"
 #include "BeeftextGlobals.h"
 #include "Clipboard/ClipboardManagerDefault.h"
@@ -271,6 +272,46 @@ void insertText(QString const& text)
       insertTextByPasting(text);
    else
       insertTextByTyping(text);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shortcut The shortcut.
+//**********************************************************************************************************************
+void renderShortcut(SpShortcut const& shortcut)
+{
+   if (!shortcut)
+   {
+      globals::debugLog().addWarning("Tried to render a null shortcut.");
+      return;
+   }
+   if (!shortcut->isValid())
+   {
+      globals::debugLog().addWarning("Tried to render a null shortcut.");
+      return;
+   }
+   QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
+   Qt::KeyboardModifiers const mods = shortcut->keyboardModifiers();
+   if (mods & Qt::ControlModifier)
+      synthesizeKeyDown(VK_CONTROL);
+   if (mods & Qt::AltModifier)
+      synthesizeKeyDown(VK_MENU);
+   if (mods & Qt::MetaModifier)
+      synthesizeKeyDown(VK_LWIN);
+   if (mods & Qt::ShiftModifier)
+      synthesizeKeyDown(VK_SHIFT);
+
+   synthesizeKeyDownAndUp(qint16(KeyboardMapper::instance().qtKeyToVirtualKeyCode(shortcut->key())));
+
+   if (mods & Qt::ControlModifier)
+      synthesizeKeyUp(VK_CONTROL);
+   if (mods & Qt::AltModifier)
+      synthesizeKeyUp(VK_MENU);
+   if (mods & Qt::MetaModifier)
+      synthesizeKeyUp(VK_LWIN);
+   if (mods & Qt::ShiftModifier)
+      synthesizeKeyUp(VK_SHIFT);
+   restoreModifierKeys(pressedModifiers);
 }
 
 

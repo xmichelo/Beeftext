@@ -75,19 +75,9 @@ ListSpSnippetFragment splitForShortcutVariable(QString const& str)
       if (!after.isEmpty())
          result = splitForKeyVariable(after) + result;
 
-      QKeySequence const seq = QKeySequence::fromString(match.captured(2));
-      qint32 const count = seq.count();
-      QString debugStr = QString("key sequence (size: %1): ").arg(seq.count());
-      for (qint32 i = 0; i < count; ++i)
-      {
-         debugStr += QString::number(i, 10);
-         if (i != count - 1)
-            debugStr += " + ";
-      }
-      qDebug() << debugStr;
-      if (!seq.isEmpty())
-         result.prepend(std::make_shared<ShortcutSnippetFragment>(
-            std::make_shared<Shortcut>(Qt::NoModifier, VK_ESCAPE, 0)));
+      SpShortcut const shortcut = Shortcut::fromString(match.captured(2));
+      if (shortcut)
+         result.prepend(std::make_shared<ShortcutSnippetFragment>(shortcut));
       s = match.captured(1);
    }
    if (!s.isEmpty())

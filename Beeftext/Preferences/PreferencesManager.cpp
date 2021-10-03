@@ -28,21 +28,24 @@ namespace {
 
 
 QString const kKeyAlreadyLaunched = "AlreadyLaunched"; ///< The settings key for the "Already launched" indicator
-QString const kKeyAppEnableShortcutKeyCode = "AppEnableDisableShortcutKeyCode"; ///< The setting key for the app enable/disable shortcut key code.
-QString const kKeyAppEnableShortcutModifiers = "AppEnableDisableShortcutModifiers"; ///< The setting key for the app enable/disable shortcut modifiers.
-QString const kKeyAppEnableShortcutScanCode = "AppEnableDisableShortcutScanCode"; ///< The setting key for the app enable/disable shortcut scan code.
+QString const kKeyAppEnableShortcut = "AppEnableDisableShortcut"; ///< The setting key for the app enable/disable shortcut modifiers.
+QString const kKeyAppEnableShortcutKeyCodeDeprecated = "AppEnableDisableShortcutKeyCode"; ///< The setting key for the app enable/disable shortcut key code.
+QString const kKeyAppEnableShortcutModifiersDeprecated = "AppEnableDisableShortcutModifiers"; ///< The setting key for the app enable/disable shortcut modifiers.
+QString const kKeyAppEnableShortcutScanCodeDeprecated = "AppEnableDisableShortcutScanCode"; ///< The setting key for the app enable/disable shortcut scan code.
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
 QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
 QString const kKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
-QString const kKeyComboPickerShortcutModifiers = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
-QString const kKeyComboPickerShortcutKeyCode = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
-QString const kKeyComboPickerShortcutScanCode = "ComboPickerShortcutScanCode"; ///< The setting key for the combo picker shortcut scan code
-QString const kKeyComboTriggerShortcutModifiers = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
-QString const kKeyComboTriggerShortcutKeyCode = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
-QString const kKeyComboTriggerShortcutScanCode = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
+QString const kKeyComboPickerShortcut = "ComboPickerShortcut"; ///< The setting key for the combo picker shortcut.
+QString const kKeyComboPickerShortcutModifiersDeprecated = "ComboPickerShortcutModifiers"; ///< The setting key for the combo picker shortcut modifiers
+QString const kKeyComboPickerShortcutKeyCodeDeprecated = "ComboPickerShortcutKeyCode"; ///< The setting key for the combo picker shortcut key code
+QString const kKeyComboPickerShortcutScanCodeDeprecated = "ComboPickerShortcutScanCode"; ///< The setting key for the combo picker shortcut scan code
+QString const kKeyComboTriggerShortcut = "ComboTriggerShortcut"; ///< The setting key for the combo trigger shortcut.
+QString const kKeyComboTriggerShortcutModifiersDeprecated = "ComboTriggerShortcutModifiers"; ///< The setting key for the combo trigger shortcut modifiers
+QString const kKeyComboTriggerShortcutKeyCodeDeprecated = "ComboTriggerShortcutKeyCode"; ///< The setting key for the combo trigger shortcut key code
+QString const kKeyComboTriggerShortcutScanCodeDeprecated = "ComboTriggerShortcutScanCode"; ///< The setting key for the combo trigger shortcut scan code
 QString const kKeyDefaultMatchingMode = "DefaultMatchingMode"; ///< The setting key for the default matching mode.
 QString const kKeyDefaultCaseSensitivity = "DefaultCaseSensitivity"; ///< The setting key for the 'Default case sensitivity' preference.
 QString const kKeyCustomBackupLocation = "CustomBackupLocation"; ///< The settings key for the 'Custom backup location' preference.
@@ -79,15 +82,15 @@ QString const kKeyComboPickerWindowGeometry = "ComboPickerWindowGeometry"; ///< 
 QString const kKeyUseShiftInsertForPasting= "UseShiftInsertForPasting"; ///< The settings key for the 'Use Shift+Insert for pasting' preference
 
 
-SpShortcut const kDefaultAppEnableDisableShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
-   | Qt::ControlModifier,'V', 0x2f); ///< The default value for the 'combo trigger shortcut' preference
+SpShortcut const kDefaultAppEnableDisableShortcut = Shortcut::fromModifiersAndKey(Qt::AltModifier | Qt::ShiftModifier
+   | Qt::ControlModifier,Qt::Key('V')); ///< The default value for the 'combo trigger shortcut' preference
 bool constexpr kDefaultAutoBackup = true; ///< The default value for the 'Auto backup' preference
 bool constexpr kDefaultAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
 bool constexpr kDefaultAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
 bool constexpr kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
 bool constexpr kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
-SpShortcut const kDefaultComboTriggerShortcut = std::make_shared<Shortcut>(Qt::AltModifier | Qt::ShiftModifier
-   | Qt::ControlModifier, 'B', 0x30); ///< The default value for the 'combo trigger shortcut' preference
+SpShortcut const kDefaultComboTriggerShortcut = Shortcut::fromModifiersAndKey(Qt::AltModifier | Qt::ShiftModifier
+   | Qt::ControlModifier, Qt::Key('B')); ///< The default value for the 'combo trigger shortcut' preference
 EMatchingMode kDefaultDefaultMatchingMode = EMatchingMode::Strict; ///< The default value for the 'Default matching mode preference'.
 ECaseSensitivity kDefaultDefaultCaseSensitivity = ECaseSensitivity::CaseSensitive; ///< The default value for the 'Default case sensitivity' preference.
 qint32 constexpr kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
@@ -206,7 +209,7 @@ T PreferencesManager::readSettings(QString const& key, T const& defaultValue) co
 /// \param[in] scanCodeRegKey The registry key for the shortcut's scan code.
 /// \return The shortcut, or a null pointer if not found
 //**********************************************************************************************************************
-SpShortcut readShortcutFromPreferences(QSettings& settings, QString const& modRegKey, QString const& vKeyRegKey,
+SpShortcut readShortcutFromPreferencesDeprecated(QSettings& settings, QString const& modRegKey, QString const& vKeyRegKey,
    QString const& scanCodeRegKey)
 {
    int const intMods = readSettings<qint32>(settings, modRegKey, 0);
@@ -214,8 +217,22 @@ SpShortcut readShortcutFromPreferences(QSettings& settings, QString const& modRe
    quint32 const scanCode = readSettings<quint32>(settings, scanCodeRegKey, 0);
    if ((!intMods) || (!vKey) || (!scanCode))
       return nullptr;
-   SpShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), vKey, scanCode);
+   SpShortcut const result = std::make_shared<Shortcut>(Qt::KeyboardModifiers(intMods), Qt::Key(vKey));
    return result->isValid() ? result : nullptr;
+}
+
+//**********************************************************************************************************************
+/// \param[in] settings The settings.
+/// \param[in] key The key.
+/// \return The shortcut read from the preferences.
+/// \return A null pointer if the shortcut could not be found
+//**********************************************************************************************************************
+SpShortcut readShortcutFromPreferences(QSettings const& settings, QString const& key)
+{
+   if (!settings.contains(key))
+      return nullptr;
+   QVariant const var = settings.value(key);
+   return (var.isNull() || !var.canConvert<qint32>()) ? nullptr : Shortcut::fromCombined(var.value<qint32>());
 }
 
 
@@ -257,9 +274,20 @@ void PreferencesManager::Cache::init()
 //**********************************************************************************************************************
 void PreferencesManager::Cache::cacheComboTriggerShortcut()
 {
-   SpShortcut const shortcut = readShortcutFromPreferences(settings_, kKeyComboTriggerShortcutModifiers,
-      kKeyComboTriggerShortcutKeyCode, kKeyComboTriggerShortcutScanCode);
-   comboTriggerShortcut = shortcut ? shortcut : kDefaultComboTriggerShortcut;
+   comboTriggerShortcut = readShortcutFromPreferences(settings_, kKeyComboTriggerShortcut);
+   if (comboTriggerShortcut)
+      return;
+   comboTriggerShortcut = readShortcutFromPreferencesDeprecated(settings_, kKeyComboTriggerShortcutModifiersDeprecated,
+      kKeyComboTriggerShortcutKeyCodeDeprecated, kKeyComboTriggerShortcutScanCodeDeprecated);
+   if (comboTriggerShortcut)
+   {
+      settings_.setValue(kKeyComboTriggerShortcut, comboTriggerShortcut->toCombined());
+      settings_.remove(kKeyComboTriggerShortcutModifiersDeprecated);
+      settings_.remove(kKeyComboTriggerShortcutKeyCodeDeprecated);
+      settings_.remove(kKeyComboTriggerShortcutScanCodeDeprecated);
+      return;
+   }
+   comboTriggerShortcut = kDefaultComboTriggerShortcut;
 }
 
 
@@ -268,9 +296,20 @@ void PreferencesManager::Cache::cacheComboTriggerShortcut()
 //**********************************************************************************************************************
 void PreferencesManager::Cache::cacheComboPickerShortcut()
 {
-   SpShortcut const shortcut = readShortcutFromPreferences(settings_, kKeyComboPickerShortcutModifiers,
-      kKeyComboPickerShortcutKeyCode, kKeyComboPickerShortcutScanCode);
-   comboPickerShortcut = shortcut ? shortcut : defaultComboPickerShortcut();
+   comboPickerShortcut = readShortcutFromPreferences(settings_, kKeyComboPickerShortcut);
+   if (comboPickerShortcut)
+      return;
+   comboPickerShortcut = readShortcutFromPreferencesDeprecated(settings_, kKeyComboPickerShortcutModifiersDeprecated,
+      kKeyComboPickerShortcutKeyCodeDeprecated, kKeyComboPickerShortcutScanCodeDeprecated);
+   if (comboPickerShortcut)
+   {
+      settings_.setValue(kKeyComboPickerShortcut, comboPickerShortcut->toCombined());
+      settings_.remove(kKeyComboPickerShortcutModifiersDeprecated);
+      settings_.remove(kKeyComboPickerShortcutKeyCodeDeprecated);
+      settings_.remove(kKeyComboPickerShortcutScanCodeDeprecated);
+      return;
+   }
+   comboPickerShortcut = defaultComboPickerShortcut();
 }
 
 
@@ -279,9 +318,23 @@ void PreferencesManager::Cache::cacheComboPickerShortcut()
 //**********************************************************************************************************************
 void PreferencesManager::Cache::cacheAppEnableDisableShortcut()
 {
-   SpShortcut const shortcut = readShortcutFromPreferences(settings_, kKeyAppEnableShortcutModifiers,
-      kKeyAppEnableShortcutKeyCode, kKeyAppEnableShortcutScanCode);
-   appEnableDisableShortcut = shortcut ? shortcut : defaultAppEnableDisableShortcut();
+   appEnableDisableShortcut = readShortcutFromPreferences(settings_, kKeyAppEnableShortcut);
+   if (appEnableDisableShortcut)
+      return;
+   // Does the shortcut exists in deprecated form?
+   appEnableDisableShortcut = readShortcutFromPreferencesDeprecated(settings_, 
+      kKeyAppEnableShortcutModifiersDeprecated, kKeyAppEnableShortcutKeyCodeDeprecated, 
+      kKeyAppEnableShortcutScanCodeDeprecated);
+   // if so we upgrade to the new form and remove the deprecated version
+   if (appEnableDisableShortcut)
+   {
+      settings_.setValue(kKeyAppEnableShortcut, appEnableDisableShortcut->toCombined());
+      settings_.remove(kKeyAppEnableShortcutModifiersDeprecated);
+      settings_.remove(kKeyAppEnableShortcutKeyCodeDeprecated);
+      settings_.remove(kKeyAppEnableShortcutScanCodeDeprecated);
+      return;
+   }
+   appEnableDisableShortcut = kDefaultAppEnableDisableShortcut;
 }
 
 
@@ -537,9 +590,9 @@ template <typename T> T byteArrayToVariant(QByteArray const& data)
 void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
 {
    QJsonObject object;
-   object[kKeyAppEnableShortcutKeyCode] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutKeyCode, 0));
-   object[kKeyAppEnableShortcutModifiers] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutModifiers, 0));
-   object[kKeyAppEnableShortcutScanCode] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutScanCode, 0));
+   object[kKeyAppEnableShortcutKeyCodeDeprecated] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutKeyCodeDeprecated, 0));
+   object[kKeyAppEnableShortcutModifiersDeprecated] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutModifiersDeprecated, 0));
+   object[kKeyAppEnableShortcutScanCodeDeprecated] = qint32(this->readSettings<quint32>(kKeyAppEnableShortcutScanCodeDeprecated, 0));
    object[kKeyAutoBackup] = this->readSettings<bool>(kKeyAutoBackup, kDefaultAutoBackup);
    object[kKeyAutoCheckForUpdates] = this->readSettings<bool>(kKeyAutoCheckForUpdates, kDefaultAutoCheckForUpdates);
    object[kKeyAutoStartAtLogin] = this->readSettings<bool>(kKeyAutoStartAtLogin, kDefaultAutoStartAtLogin);
@@ -547,14 +600,14 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
    object[kKeyComboListFolderPath] = this->readSettings<QString>(kKeyComboListFolderPath, 
       defaultComboListFolderPath());
    object[kKeyComboPickerEnabled] = this->readSettings<bool>(kKeyComboPickerEnabled, kDefaultComboPickerEnabled);
-   object[kKeyComboPickerShortcutKeyCode] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutKeyCode, 0));
-   object[kKeyComboPickerShortcutModifiers] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutModifiers, 0));
-   object[kKeyComboPickerShortcutScanCode] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutScanCode, 0));
-   object[kKeyComboTriggerShortcutKeyCode] = qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCode, 0));
-   object[kKeyComboTriggerShortcutModifiers] = 
-      qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutModifiers, 0));
-   object[kKeyComboTriggerShortcutScanCode] = 
-      qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutScanCode, 0));
+   object[kKeyComboPickerShortcutKeyCodeDeprecated] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutKeyCodeDeprecated, 0));
+   object[kKeyComboPickerShortcutModifiersDeprecated] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutModifiersDeprecated, 0));
+   object[kKeyComboPickerShortcutScanCodeDeprecated] = qint32(this->readSettings<quint32>(kKeyComboPickerShortcutScanCodeDeprecated, 0));
+   object[kKeyComboTriggerShortcutKeyCodeDeprecated] = qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutKeyCodeDeprecated, 0));
+   object[kKeyComboTriggerShortcutModifiersDeprecated] = 
+      qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutModifiersDeprecated, 0));
+   object[kKeyComboTriggerShortcutScanCodeDeprecated] = 
+      qint32(this->readSettings<quint32>(kKeyComboTriggerShortcutScanCodeDeprecated, 0));
    object[kKeyDefaultMatchingMode] = qint32(this->readSettings<qint32>(kKeyDefaultMatchingMode,
       static_cast<qint32>(kDefaultDefaultMatchingMode)));
    object[kKeyDefaultCaseSensitivity] = this->readSettings<qint32>(kKeyDefaultCaseSensitivity, 
@@ -610,22 +663,22 @@ void PreferencesManager::toJsonDocument(QJsonDocument& outDoc) const
 void PreferencesManager::fromJsonDocument(QJsonDocument const& doc) const
 {
    QJsonObject const object = doc.object();
-   settings_->setValue(kKeyAppEnableShortcutKeyCode, objectValue<quint32>(object, kKeyAppEnableShortcutKeyCode));
-   settings_->setValue(kKeyAppEnableShortcutModifiers, objectValue<quint32>(object, kKeyAppEnableShortcutModifiers));
-   settings_->setValue(kKeyAppEnableShortcutScanCode, objectValue<quint32>(object, kKeyAppEnableShortcutScanCode));
+   settings_->setValue(kKeyAppEnableShortcutKeyCodeDeprecated, objectValue<quint32>(object, kKeyAppEnableShortcutKeyCodeDeprecated));
+   settings_->setValue(kKeyAppEnableShortcutModifiersDeprecated, objectValue<quint32>(object, kKeyAppEnableShortcutModifiersDeprecated));
+   settings_->setValue(kKeyAppEnableShortcutScanCodeDeprecated, objectValue<quint32>(object, kKeyAppEnableShortcutScanCodeDeprecated));
    settings_->setValue(kKeyAutoBackup, objectValue<bool>(object, kKeyAutoBackup));
    settings_->setValue(kKeyAutoCheckForUpdates, objectValue<bool>(object, kKeyAutoCheckForUpdates));
    settings_->setValue(kKeyAutoStartAtLogin, objectValue<bool>(object, kKeyAutoStartAtLogin));
    settings_->setValue(kKeyBeeftextEnabled, objectValue<bool>(object, kKeyBeeftextEnabled));
    this->setComboListFolderPath(objectValue<QString>(object, kKeyComboListFolderPath));
    settings_->setValue(kKeyComboPickerEnabled, objectValue<bool>(object, kKeyComboPickerEnabled));
-   settings_->setValue(kKeyComboPickerShortcutKeyCode, objectValue<quint32>(object, kKeyComboPickerShortcutKeyCode));
-   settings_->setValue(kKeyComboPickerShortcutModifiers, objectValue<quint32>(object, kKeyComboPickerShortcutModifiers));
-   settings_->setValue(kKeyComboPickerShortcutScanCode, objectValue<quint32>(object, kKeyComboPickerShortcutScanCode));
-   settings_->setValue(kKeyComboTriggerShortcutKeyCode, objectValue<quint32>(object, kKeyComboTriggerShortcutKeyCode));
-   settings_->setValue(kKeyComboTriggerShortcutModifiers, objectValue<quint32>(object, 
-      kKeyComboTriggerShortcutModifiers));
-   settings_->setValue(kKeyComboTriggerShortcutScanCode, objectValue<quint32>(object, kKeyComboTriggerShortcutScanCode));
+   settings_->setValue(kKeyComboPickerShortcutKeyCodeDeprecated, objectValue<quint32>(object, kKeyComboPickerShortcutKeyCodeDeprecated));
+   settings_->setValue(kKeyComboPickerShortcutModifiersDeprecated, objectValue<quint32>(object, kKeyComboPickerShortcutModifiersDeprecated));
+   settings_->setValue(kKeyComboPickerShortcutScanCodeDeprecated, objectValue<quint32>(object, kKeyComboPickerShortcutScanCodeDeprecated));
+   settings_->setValue(kKeyComboTriggerShortcutKeyCodeDeprecated, objectValue<quint32>(object, kKeyComboTriggerShortcutKeyCodeDeprecated));
+   settings_->setValue(kKeyComboTriggerShortcutModifiersDeprecated, objectValue<quint32>(object, 
+      kKeyComboTriggerShortcutModifiersDeprecated));
+   settings_->setValue(kKeyComboTriggerShortcutScanCodeDeprecated, objectValue<quint32>(object, kKeyComboTriggerShortcutScanCodeDeprecated));
    settings_->setValue(kKeyDefaultMatchingMode, objectValue<qint32>(object, kKeyDefaultMatchingMode));
    settings_->setValue(kKeyDefaultCaseSensitivity, objectValue<qint32>(object, kKeyDefaultCaseSensitivity));
    settings_->setValue(kKeyCustomSoundPath, objectValue<QString>(object, kKeyCustomSoundPath));
@@ -1067,9 +1120,7 @@ void PreferencesManager::setComboTriggerShortcut(SpShortcut const& shortcut) con
       currentShortcut = kDefaultComboTriggerShortcut;
    if (*newShortcut != *currentShortcut)
    {
-      settings_->setValue(kKeyComboTriggerShortcutModifiers, int(shortcut->nativeModifiers()));
-      settings_->setValue(kKeyComboTriggerShortcutKeyCode, shortcut->nativeVirtualKey());
-      settings_->setValue(kKeyComboTriggerShortcutScanCode, shortcut->nativeScanCode());
+      settings_->setValue(kKeyComboTriggerShortcut, newShortcut->toCombined());
       cache_->comboTriggerShortcut = newShortcut;
    }
 }
@@ -1096,8 +1147,8 @@ SpShortcut PreferencesManager::defaultComboPickerShortcut()
    QString const pType = QSysInfo::productType();
    QString const pVersion = QSysInfo::productVersion();
    if ((0 == pType.compare("windows", Qt::CaseInsensitive)) && (pVersion.startsWith('7'))) // Windows 7
-      return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ControlModifier, 'B', 48);
-   return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ShiftModifier, 13 /*Enter*/, 28);
+      return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ControlModifier, Qt::Key('B'));
+   return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ShiftModifier, Qt::Key_Enter);
 }
 
 
@@ -1405,9 +1456,7 @@ void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut) cons
       currentShortcut = defaultComboPickerShortcut();
    if (*newShortcut != *currentShortcut)
    {
-      settings_->setValue(kKeyComboPickerShortcutModifiers, int(shortcut->nativeModifiers()));
-      settings_->setValue(kKeyComboPickerShortcutKeyCode, shortcut->nativeVirtualKey());
-      settings_->setValue(kKeyComboPickerShortcutScanCode, shortcut->nativeScanCode());
+      settings_->setValue(kKeyComboPickerShortcut, newShortcut->toCombined());
       cache_->comboPickerShortcut = newShortcut;
    }
 }
@@ -1452,9 +1501,7 @@ void PreferencesManager::setAppEnableDisableShortcut(SpShortcut const& shortcut)
       currentShortcut = kDefaultAppEnableDisableShortcut;
    if (*newShortcut != *currentShortcut)
    {
-      settings_->setValue(kKeyAppEnableShortcutModifiers, int(shortcut->nativeModifiers()));
-      settings_->setValue(kKeyAppEnableShortcutKeyCode, shortcut->nativeVirtualKey());
-      settings_->setValue(kKeyAppEnableShortcutScanCode, shortcut->nativeScanCode());
+      settings_->setValue(kKeyAppEnableShortcut, shortcut->toCombined());
       cache_->appEnableDisableShortcut = newShortcut;
    }
 }

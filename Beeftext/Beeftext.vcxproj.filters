@@ -227,6 +227,7 @@
     <ClCompile Include="Snippet\ShortcutSnippetFragment.cpp">
       <Filter>Snippet</Filter>
     </ClCompile>
+    <ClCompile Include="KeyboardMapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
@@ -334,6 +335,7 @@
     <ClInclude Include="Snippet\ShortcutSnippetFragment.h">
       <Filter>Snippet</Filter>
     </ClInclude>
+    <ClInclude Include="KeyboardMapper.h" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Beeftext.qrc">

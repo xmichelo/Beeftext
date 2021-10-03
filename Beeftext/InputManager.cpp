@@ -13,6 +13,7 @@
 #include "MainWindow.h"
 #include "BeeftextUtils.h"
 #include "Picker/PickerWindow.h"
+#include "KeyboardMapper.h"
 #include <XMiLib/Exception.h>
 
 
@@ -54,14 +55,14 @@ bool doesKeystrokeMatchShortcut(InputManager::KeyStroke const& keyStroke, SpShor
 {
    if (!shortcut)
       return false;
-   if (keyStroke.virtualKey != shortcut->nativeVirtualKey())
+   if (keyStroke.virtualKey != shortcut->key())
       return false;
-   Qt::KeyboardModifiers const modifiers = shortcut->nativeModifiers();
+   Qt::KeyboardModifiers const modifiers = shortcut->keyboardModifiers();
    quint8 const* ks = keyStroke.keyboardState;
    return bool((ks[VK_LCONTROL] & 0x80) || (ks[VK_RCONTROL] & 0x80)) == modifiers.testFlag(Qt::ControlModifier)
       && bool((ks[VK_LMENU] & 0x80) || (ks[VK_RMENU] & 0x80)) == modifiers.testFlag(Qt::AltModifier)
       && bool((ks[VK_LWIN] & 0x80) || (ks[VK_RWIN] & 0x80)) == modifiers.testFlag(Qt::MetaModifier)
-      && bool((ks[VK_LSHIFT] & 0x80) || (ks[VK_RSHIFT] & 0x80)) == modifiers.testFlag(Qt::ShiftModifier);   
+      && bool((ks[VK_LSHIFT] & 0x80) || (ks[VK_RSHIFT] & 0x80)) == modifiers.testFlag(Qt::ShiftModifier);
 }
 
 
@@ -98,6 +99,48 @@ bool isAppEnableDisableShortcut(InputManager::KeyStroke const& keyStroke)
 }
 
 
+//**********************************************************************************************************************
+/// \param[in] vkCode The virtual key code.
+/// \return true if the key is currently pressed.
+//**********************************************************************************************************************
+bool isKeyPressed(quint16 vkCode)
+{
+   return GetKeyState(vkCode) & 0x80;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] keyEvent The Windows-specific key event.
+/// \return A null shortcut if the event is produce by a modifier key
+/// \return The shortcut.
+//**********************************************************************************************************************
+SpShortcut shortcutFromWindowsKeyEvent(KBDLLHOOKSTRUCT const* keyEvent)
+{
+   if (!keyEvent)
+      return nullptr;
+   Qt::KeyboardModifiers mods = Qt::NoModifier;
+   if (isKeyPressed(VK_SHIFT) || isKeyPressed(VK_LSHIFT) || isKeyPressed(VK_RSHIFT))
+      mods |= Qt::ShiftModifier;
+   if (isKeyPressed(VK_CONTROL) || isKeyPressed(VK_LCONTROL) || isKeyPressed(VK_RCONTROL))
+      mods |= Qt::ControlModifier;
+   if (isKeyPressed(VK_MENU) || isKeyPressed(VK_LMENU) || isKeyPressed(VK_RMENU))
+      mods |= Qt::AltModifier;
+   if (isKeyPressed(VK_RWIN) || isKeyPressed(VK_LWIN))
+      mods |= Qt::MetaModifier;
+   if (!((mods & Qt::ControlModifier) || (mods & Qt::AltModifier) || (mods & Qt::MetaModifier)))
+      return nullptr;
+
+   Qt::Key const key = KeyboardMapper::instance().virtualKeyCodeToQtKey(keyEvent->vkCode);
+   if (key == Qt::Key_unknown)
+      return nullptr;
+   QList<Qt::Key> const modKeys = { Qt::Key_Shift, Qt::Key_Control, Qt::Key_Meta, Qt::Key_Alt, Qt::Key_CapsLock };
+   for (Qt::Key const modKey: modKeys)
+      if (key == modKey)
+         return nullptr;
+   return Shortcut::fromModifiersAndKey(mods, key);
+}
+
+
 }
 
 
@@ -110,31 +153,34 @@ bool isAppEnableDisableShortcut(InputManager::KeyStroke const& keyStroke)
 //**********************************************************************************************************************
 LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam)
 {
-   if ((WM_KEYDOWN == wParam) || (WM_SYSKEYDOWN == wParam))
-   {
-      KeyStroke keyStroke = { 0, 0, { 0 } };
-      KBDLLHOOKSTRUCT const* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);  // NOLINT(performance-no-int-to-ptr)
+   if ((WM_KEYDOWN != wParam) && (WM_SYSKEYDOWN != wParam))
+      return CallNextHookEx(nullptr, nCode, wParam, lParam);
+   KeyStroke keyStroke = { 0, 0, { 0 } };
+   KBDLLHOOKSTRUCT const* keyEvent = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam); // NOLINT(performance-no-int-to-ptr)
+   if (!keyEvent)
+      return CallNextHookEx(nullptr, nCode, wParam, lParam);
+   SpShortcut const shortcut = shortcutFromWindowsKeyEvent(keyEvent);
+   if (shortcut)
+      emit InputManager::instance().shortcutPressed(shortcut);
+   // we ignore shift / caps lock key events
+   if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
+      return CallNextHookEx(nullptr, nCode, wParam, lParam);
+   keyStroke.virtualKey = keyEvent->vkCode;
+   keyStroke.scanCode = keyEvent->scanCode;
+   // GetKeyboardState() do not properly report state for modifier keys if the key event in a window other that one
+   // from the current process, so we need to manually fetch the valid states manually using GetKeyState()
+   // We do not actually need the state of the other key, so we do not event bother calling GetKeyboardState()
+   QList<quint32> keyList = {
+      VK_SHIFT, VK_LSHIFT, VK_RSHIFT, VK_CONTROL, VK_LCONTROL,
+      VK_RCONTROL, VK_MENU, VK_LMENU, VK_RMENU, VK_RWIN, VK_LWIN, VK_CAPITAL
+   };
+   for (quint32 const key: keyList)
+      keyStroke.keyboardState[key] = static_cast<quint8>(GetKeyState(static_cast<quint16>(key)));
 
-      // we ignore shift / caps lock key events
-      if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
-         return CallNextHookEx(nullptr, nCode, wParam, lParam);
-      keyStroke.virtualKey = keyEvent->vkCode;
-      keyStroke.scanCode = keyEvent->scanCode;
-      // GetKeyboardState() do not properly report state for modifier keys if the key event in a window other that one
-      // from the current process, so we need to manually fetch the valid states manually using GetKeyState()
-      // We do not actually need the state of the other key, so we do not event bother calling GetKeyboardState()
-      QList<quint32> keyList = {
-         VK_SHIFT, VK_LSHIFT, VK_RSHIFT, VK_CONTROL, VK_LCONTROL,
-         VK_RCONTROL, VK_MENU, VK_LMENU, VK_RMENU, VK_RWIN, VK_LWIN, VK_CAPITAL
-      };
-      for (quint32 const key: keyList)
-         keyStroke.keyboardState[key] = static_cast<quint8>(GetKeyState(static_cast<quint16>(key)));
-
-      // our event handler will return false if we want to 'intercept' the keystroke and not pass it to the next hook,
-      // but the MSDN documentation says we MUST do it if nCode < 0
-      if ((!instance().onKeyboardEvent(keyStroke)) && (nCode >= 0))
-         return 0;
-   }
+   // our event handler will return false if we want to 'intercept' the keystroke and not pass it to the next hook,
+   // but the MSDN documentation says we MUST do it if nCode < 0
+   if ((!instance().onKeyboardEvent(keyStroke)) && (nCode >= 0))
+      return 0;
    return CallNextHookEx(nullptr, nCode, wParam, lParam);
 }
 
@@ -173,8 +219,8 @@ InputManager& InputManager::instance()
 ///
 //**********************************************************************************************************************
 InputManager::InputManager()
-   : QObject(nullptr)
-   , useLegacyKeyProcessing_(!isAppRunningOnWindows10OrHigher())
+   : QObject(nullptr),
+     useLegacyKeyProcessing_(!isAppRunningOnWindows10OrHigher())
 {
    this->enableKeyboardHook();
 #ifdef NDEBUG
@@ -202,7 +248,7 @@ InputManager::~InputManager()
 bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
    PreferencesManager const& prefs = PreferencesManager::instance();
-   if (prefs.enableAppEnableDisableShortcut() && isAppEnableDisableShortcut(keyStroke))
+   if (prefs.enableAppEnableDisableShortcut() && isAppEnableDisableShortcut(keyStroke) && isShortcutProcessingEnabled_)
    {
       emit appEnableDisableShortcutTriggered();
       return false;
@@ -211,23 +257,28 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
    if (!prefs.beeftextEnabled())
       return true;
 
-   if ((!prefs.useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
+   if (isShortcutProcessingEnabled_)
    {
-      emit substitutionShortcutTriggered();
-      return false;
-   }
+      if ((!prefs.useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
+      {
+         emit substitutionShortcutTriggered();
+         return false;
+      }
 
-   if (prefs.comboPickerEnabled() && isComboPickerShortcut(keyStroke))
-   {
-      showComboPickerWindow();
-      return false;
+      if (prefs.comboPickerEnabled() && isComboPickerShortcut(keyStroke))
+      {
+         showComboPickerWindow();
+         return false;
+      }
    }
 
    // on some layout (e.g. US International, direction key + alt lead to garbage char if ToUnicode is pressed, so
    // we bypass normal processing for those keys(note this is different for the dead key issue described in
    // processKey().
-   QList<quint32> const breakers = { VK_UP, VK_RIGHT, VK_DOWN, VK_LEFT, VK_PRIOR, VK_NEXT, VK_HOME, VK_END, VK_INSERT, 
-      VK_DELETE };
+   QList<quint32> const breakers = {
+      VK_UP, VK_RIGHT, VK_DOWN, VK_LEFT, VK_PRIOR, VK_NEXT, VK_HOME, VK_END, VK_INSERT,
+      VK_DELETE
+   };
    if (breakers.contains(keyStroke.virtualKey))
    {
       emit comboBreakerTyped();
@@ -254,9 +305,9 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
       if (c.isSpace())
       {
          if (prefs.comboTriggersOnSpace() && prefs.useAutomaticSubstitution())
-            emit characterTyped(c);
+         emit characterTyped(c);
          else
-            emit comboBreakerTyped();
+         emit comboBreakerTyped();
          continue;
       }
       emit characterTyped(c);
@@ -292,7 +343,7 @@ QString InputManager::processKeyModern(KeyStroke const& keyStroke)
       ? ToUnicodeEx(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, kTextBufferSize
          , 1 << 2, hkl) : ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer
          , kTextBufferSize, 1 << 2);
-   return size > 0 ? QString::fromWCharArray(textBuffer, size): QString();
+   return size > 0 ? QString::fromWCharArray(textBuffer, size) : QString();
 }
 
 
@@ -310,7 +361,7 @@ QString InputManager::processKeyLegacy(KeyStroke const& keyStroke, bool& outIsDe
    WCHAR textBuffer[kTextBufferSize] = { 0 };
    outIsDeadKey = false;
    // for some unkown reasons, in this legacy code ToUnicodeEx cause failures with dead keys in some locales.
-   qint32 const size = ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer, 
+   qint32 const size = ToUnicode(keyStroke.virtualKey, keyStroke.scanCode, keyStroke.keyboardState, textBuffer,
       kTextBufferSize, 0);
 
    if (-1 == size)
@@ -400,6 +451,24 @@ bool InputManager::setKeyboardHookEnabled(bool enabled)
    else
       this->disableKeyboardHook();
    return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] enabled Should shortcut processing be enabled.
+//**********************************************************************************************************************
+void InputManager::setShortcutsProcessingEnabled(bool enabled)
+{
+   isShortcutProcessingEnabled_ = enabled;
+}
+
+
+//**********************************************************************************************************************
+/// \return true if and only if shortcut processing is enabled.
+//**********************************************************************************************************************
+bool InputManager::isShortcutProcessingEnabled() const
+{
+   return isShortcutProcessingEnabled_;
 }
 
 

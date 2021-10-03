@@ -11,6 +11,9 @@
 #define BEEFTEXT_INPUT_MANAGER_H
 
 
+#include "Shortcut.h"
+
+
 //**********************************************************************************************************************
 /// \brief An input manager capture input by keyboard and mouse and process the events 
 //**********************************************************************************************************************
@@ -36,8 +39,11 @@ public: // member functions
    InputManager& operator=(InputManager const&) = delete; ///< Disabled assignment operator
    InputManager& operator=(InputManager&&) = delete; ///< Disabled move assignment operator
    bool setKeyboardHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
+   void setShortcutsProcessingEnabled(bool enabled); ///< Enable disable shortcuts.
+   bool isShortcutProcessingEnabled() const; ///< Check whether shortcut processing is enabled.
 
 signals:
+   void shortcutPressed(SpShortcut const shortcut); ///< shortcut for the typing of a key combination.
    void comboBreakerTyped(); ///< Signal for combo breaking events
    void characterTyped(QChar c); ///< Signal for character typed
    void backspaceTyped(); ///< Signal for backspace typed
@@ -48,7 +54,7 @@ signals:
 private: // member functions
    InputManager(); ///< Default constructor
    bool onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event
-   QString processKey(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
+   QString processKey(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a ky stroke and return the generated characters 
    static QString processKeyModern(KeyStroke const& keyStroke); ///< Process a key stroke and return the generated characters 
    QString processKeyLegacy(KeyStroke const& keyStroke, bool& outIsDeadKey); ///< Process a key stroke and return the generated characters 
    void onMouseClickEvent(int, WPARAM, LPARAM); ///< Process a mouse click event
@@ -58,7 +64,7 @@ private: // member functions
    bool isMouseHookEnabled() const; ///< Is the mouse hook enabled
    void enableMouseHook(); ///< Enable the mouse hook
    void disableMouseHook(); ///< Disable the mouse hook
-   bool setMouseHookEnabled(bool enabled); ///< Enable or disable the keyboard hook
+   bool setMouseHookEnabled(bool enabled); ///< Enable or disable the keyboard hook.
 
 private: // static member functions
    static LRESULT CALLBACK keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam); ///< The keyboard event callback
@@ -69,6 +75,7 @@ private: // data members
    HHOOK mouseHook_ { nullptr }; ///< The handle to the mouse hook used to be notified of mouse event
    KeyStroke deadKey_ = { 0, 0, { 0 } }; ///< The currently active dead key
    bool useLegacyKeyProcessing_ { false }; ///< Should we use the legacy key processing code
+   bool isShortcutProcessingEnabled_ { true }; ///< Is shortcut processing enabled?
 };
 
 

@@ -296,6 +296,7 @@
     <ClCompile Include="Group\GroupListWidget.cpp" />
     <ClCompile Include="I18nManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="KeyboardMapper.cpp" />
     <ClCompile Include="LastUse\ComboLastUseFile.cpp" />
     <ClCompile Include="LastUse\EmojiLastUseFile.cpp" />
     <ClCompile Include="LatestVersionInfo.cpp" />
@@ -344,6 +345,7 @@
     <ClInclude Include="Emoji\EmojiManager.h" />
     <QtMoc Include="Picker\PickerItemDelegate.h" />
     <QtMoc Include="Picker\PickerModel.h" />
+    <ClInclude Include="KeyboardMapper.h" />
     <ClInclude Include="LastUse\ComboLastUseFile.h" />
     <ClInclude Include="LastUse\EmojiLastUseFile.h" />
     <ClInclude Include="Picker\PickerSortFilterProxyModel.h" />

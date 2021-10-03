@@ -11,45 +11,33 @@
 #include "Shortcut.h"
 
 
-QString getKeyName(qint32 scanCode); ///< Get the display name for a key
-
-
 //**********************************************************************************************************************
-/// \param[in] scanCode The scan code for the key
-/// \return The name of the key
+/// \param[in] modifiers The modifiers for the shortcut.
+/// \param[in] key The key.
 //**********************************************************************************************************************
-QString getKeyName(qint32 scanCode)
+Shortcut::Shortcut(Qt::KeyboardModifiers const& modifiers, Qt::Key const& key)
+   :  keyCombination_(modifiers, key)
+   //, nativeScanCode_(nativeScanCode)
 {
-   qint32 constexpr bufferSize = 32;
-   wchar_t buffer[bufferSize];
-   if (!GetKeyNameText(scanCode << 16, buffer, bufferSize - 1))
-      return QString();
-   QString const raw = QString::fromWCharArray(buffer);
-   QStringList words = raw.split(QRegularExpression("\\s"), Qt::SkipEmptyParts);
-   for (QString& wrd : words)
-   {
-      wrd = wrd.toLower();
-      if (wrd.size() > 0)
-         wrd[0] = wrd[0].toUpper();
-   }
-   return words.join(' ');
+
 }
 
 
 //**********************************************************************************************************************
-/// \note Having the virtual scan code is not an absolute necessity, however, retrieving the display name of a key
-/// with the exact scan code gives more result than retrieving it after getting the scan code using MapVirtualKey.
-/// 
-/// \param[in] modifiers The modifiers for the shortcut
-/// \param[in] nativeVirtualKey The native virtual key code
-/// \param[in] nativeScanCode The native scan code of the key
+/// \param[in] keyCombination The key combination.
 //**********************************************************************************************************************
-Shortcut::Shortcut(Qt::KeyboardModifiers const& modifiers, quint32 nativeVirtualKey, quint32 nativeScanCode)
-   : modifiers_(modifiers)
-   , nativeVirtualKey_(nativeVirtualKey)
-   , nativeScanCode_(nativeScanCode)
+Shortcut::Shortcut(QKeyCombination const& keyCombination)
+   : keyCombination_(keyCombination)
 {
+}
 
+
+//**********************************************************************************************************************
+/// \param combined An integer containing the shortcut
+//**********************************************************************************************************************
+Shortcut::Shortcut(qint32 combined)
+{
+   keyCombination_ = QKeyCombination::fromCombined(combined);
 }
 
 
@@ -58,8 +46,7 @@ Shortcut::Shortcut(Qt::KeyboardModifiers const& modifiers, quint32 nativeVirtual
 //**********************************************************************************************************************
 bool Shortcut::operator==(Shortcut const& other) const
 {
-   return (modifiers_ == other.modifiers_) && (nativeScanCode_ == other.nativeScanCode_)
-      && (nativeVirtualKey_ == other.nativeVirtualKey_);
+   return other.keyCombination_ == this->keyCombination_;
 }
 
 
@@ -77,16 +64,16 @@ bool Shortcut::operator!=(Shortcut const& other) const
 //**********************************************************************************************************************
 QString Shortcut::toString() const
 {
-   QString result;
-   if (modifiers_ & Qt::ControlModifier)
-      result = QObject::tr("Ctrl") + "+";
-   if (modifiers_ & Qt::AltModifier)
-      result += QObject::tr("Alt") + "+";
-   if (modifiers_ & Qt::ShiftModifier)
-      result += QObject::tr("Shift") + "+";
-   if (modifiers_ & Qt::MetaModifier)
-      result += QObject::tr("Win") + "+";
-   return result + getKeyName(static_cast<qint32>(nativeScanCode_));
+   return QKeySequence(keyCombination_).toString(QKeySequence::NativeText).replace("Meta", "Win", Qt::CaseSensitive);
+}
+
+
+//**********************************************************************************************************************
+/// \return The key combination for the shortcut.
+//**********************************************************************************************************************
+QKeyCombination Shortcut::keyCombination() const
+{
+   return keyCombination_;
 }
 
 
@@ -95,39 +82,85 @@ QString Shortcut::toString() const
 //**********************************************************************************************************************
 bool Shortcut::isValid() const
 {
-   QList<quint32> const forbiddenKeys = { 0, VK_CONTROL, VK_MENU, VK_SHIFT, VK_LWIN, VK_RWIN, VK_APPS };
-   if (forbiddenKeys.contains(nativeVirtualKey_))
-      return false;
-   if (!modifiers_.testFlag(Qt::ControlModifier) && !modifiers_.testFlag(Qt::AltModifier)
-      && !modifiers_.testFlag(Qt::MetaModifier))
-      return false; // The controls needs at least one Control, Alt of Windows modifier
-   return true;
-   }  
+   Qt::KeyboardModifiers const mods = keyCombination_.keyboardModifiers();
+   Qt::Key const key = keyCombination_.key();
+   return (mods.testFlag(Qt::ControlModifier) || mods.testFlag(Qt::AltModifier) || mods.testFlag(Qt::MetaModifier)) &&
+      (key != 0) && (key != Qt::Key_unknown);
+}  
 
 
 //**********************************************************************************************************************
 /// \return the modifiers field for the shortcut
 //**********************************************************************************************************************
-Qt::KeyboardModifiers Shortcut::nativeModifiers() const
+Qt::KeyboardModifiers Shortcut::keyboardModifiers() const
 {
-   return modifiers_; 
+   return keyCombination_.keyboardModifiers(); 
 }
 
 
 //**********************************************************************************************************************
-/// \return The native virtual key code of the shortcut
+/// \return the main key for the shortcut
 //**********************************************************************************************************************
-quint32 Shortcut::nativeVirtualKey() const
+Qt::Key Shortcut::key() const
 {
-   return nativeVirtualKey_;
+   return keyCombination_.key();
 }
 
 
 //**********************************************************************************************************************
-/// \return The native scan code of the shortcut
+/// \return The shortcut packed into a single integer
 //**********************************************************************************************************************
-quint32 Shortcut::nativeScanCode() const
+qint32 Shortcut::toCombined() const
 {
-   return nativeScanCode_;
+   return keyCombination_.toCombined();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] modifiers The modifiers.
+/// \param[in] key The key
+/// \return a shortcut corresponding to the modifiers and key.
+/// \return A null pointer if the shortcut allocation failed.
+//**********************************************************************************************************************
+SpShortcut Shortcut::fromModifiersAndKey(Qt::KeyboardModifiers modifiers, Qt::Key key)
+{
+   return fromKeyCombination(QKeyCombination(modifiers, key));
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] str The string containing the shortcut.
+/// \return A shortcut corresponding to the string.
+/// \return A null pointer if the string is not a valid shortcut.
+//**********************************************************************************************************************
+SpShortcut Shortcut::fromString(QString const& str)
+{
+   QKeySequence const seq = QKeySequence::fromString(str, QKeySequence::NativeText);
+   if (seq.count() < 1)
+      return nullptr;
+   QKeyCombination const key(seq[0]);
+   return std::make_shared<Shortcut>(key.keyboardModifiers(), key.key());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] keyCombination The key combination.
+/// \return The shortcut representing the keyCombination.
+/// \return A null pointer if an error occured
+//**********************************************************************************************************************
+SpShortcut Shortcut::fromKeyCombination(QKeyCombination const& keyCombination)
+{
+   return std::make_shared<Shortcut>(keyCombination);
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] combined A integer containing the packed key combination.
+/// \return The shortcut represented in the combined integer.
+/// \return A null pointer if an error occured
+//**********************************************************************************************************************
+SpShortcut Shortcut::fromCombined(qint32 combined)
+{
+   return std::make_shared<Shortcut>(combined);
 }
 
