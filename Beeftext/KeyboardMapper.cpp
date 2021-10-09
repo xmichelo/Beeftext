@@ -34,7 +34,7 @@ QList<quint32> const kBaseKeyTable = {
    Qt::Key_unknown, //  10   0x0A   -- reserved --
    Qt::Key_unknown, //  11   0x0B   -- reserved --
    Qt::Key_Clear, //  12   0x0C   VK_CLEAR            | Clear key
-   Qt::Key_Return, //  13   0x0D   VK_RETURN           | Enter key
+   Qt::Key_Enter, //  13   0x0D   VK_RETURN           | Enter key
    Qt::Key_unknown, //  14   0x0E   -- unassigned --
    Qt::Key_unknown, //  15   0x0F   -- unassigned --
    Qt::Key_Shift, //  16   0x10   VK_SHIFT            | Shift key

@@ -116,7 +116,7 @@ qint32 Shortcut::toCombined() const
 }
 
 
-//**********************************************************************************************************************
+
 /// \param[in] modifiers The modifiers.
 /// \param[in] key The key
 /// \return a shortcut corresponding to the modifiers and key.
@@ -163,4 +163,3 @@ SpShortcut Shortcut::fromCombined(qint32 combined)
 {
    return std::make_shared<Shortcut>(combined);
 }
-

@@ -161,7 +161,6 @@ int EmojiList::columnCount(const QModelIndex&) const
 QVariant EmojiList::data(const QModelIndex& index, int role) const
 {
    qint32 const row = index.row();
-//   qDebug() << QString("Data for role %1 of emoji at index %2").arg(role).arg(index.row());
    if ((row < 0) || (row >= qint32(list_.size())))
       return QVariant();
    SpEmoji const emoji = list_[row];

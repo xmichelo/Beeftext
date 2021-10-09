@@ -51,6 +51,9 @@ signals:
    void comboMenuShortcutTriggered(); ///< Signal emitted when the combo menu shortcut is triggered.
    void appEnableDisableShortcutTriggered(); ///< Signal emitted when the app enable/disable shortcut has been triggered.
 
+private slots:
+   void onShortcut(SpShortcut const& shortcut); ///< Slot for shortcuts
+
 private: // member functions
    InputManager(); ///< Default constructor
    bool onKeyboardEvent(KeyStroke const& keyStroke); ///< The callback function called at every key event

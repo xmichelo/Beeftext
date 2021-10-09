@@ -45,35 +45,14 @@ bool getForegroundWindowInputLocale(HKL& outHkl)
 
 
 //**********************************************************************************************************************
-/// \brief Check whether a keystroke match a shortcut.
-/// 
-/// \param[in] keyStroke The keystroke.
-/// \param[in] shortcut The shortcut.
-/// \return true if and only if the keystroke match the shortcut.
-//**********************************************************************************************************************
-bool doesKeystrokeMatchShortcut(InputManager::KeyStroke const& keyStroke, SpShortcut const& shortcut)
-{
-   if (!shortcut)
-      return false;
-   if (keyStroke.virtualKey != shortcut->key())
-      return false;
-   Qt::KeyboardModifiers const modifiers = shortcut->keyboardModifiers();
-   quint8 const* ks = keyStroke.keyboardState;
-   return bool((ks[VK_LCONTROL] & 0x80) || (ks[VK_RCONTROL] & 0x80)) == modifiers.testFlag(Qt::ControlModifier)
-      && bool((ks[VK_LMENU] & 0x80) || (ks[VK_RMENU] & 0x80)) == modifiers.testFlag(Qt::AltModifier)
-      && bool((ks[VK_LWIN] & 0x80) || (ks[VK_RWIN] & 0x80)) == modifiers.testFlag(Qt::MetaModifier)
-      && bool((ks[VK_LSHIFT] & 0x80) || (ks[VK_RSHIFT] & 0x80)) == modifiers.testFlag(Qt::ShiftModifier);
-}
-
-
-//**********************************************************************************************************************
 /// \brief Check if a keystroke is the manual substitution shortcut.
 ///
 /// \return true if and only if keystroke correspond to the shortcut.
 //**********************************************************************************************************************
-bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke)
+bool isComboTriggerShortcut(SpShortcut const& shortcut)
 {
-   return doesKeystrokeMatchShortcut(keyStroke, PreferencesManager::instance().comboTriggerShortcut());
+   SpShortcut const comboTriggerShortcut = PreferencesManager::instance().comboTriggerShortcut();
+   return shortcut && comboTriggerShortcut && (*shortcut == *comboTriggerShortcut);
 }
 
 
@@ -82,20 +61,22 @@ bool isComboTriggerShortcut(InputManager::KeyStroke const& keyStroke)
 ///
 /// \return true if and only if keystroke correspond to the shortcut.
 //**********************************************************************************************************************
-bool isComboPickerShortcut(InputManager::KeyStroke const& keyStroke)
+bool isComboPickerShortcut(SpShortcut const& shortcut)
 {
-   return doesKeystrokeMatchShortcut(keyStroke, PreferencesManager::instance().comboPickerShortcut());
+   SpShortcut const comboPickerShortcut = PreferencesManager::instance().comboPickerShortcut();
+   return shortcut && comboPickerShortcut && (*shortcut == *comboPickerShortcut);
 }
 
 
 //**********************************************************************************************************************
-/// \brief Check if a keystroke is the shortcut for the app enable/disable shortcut.
+/// \brief Check if a shortcut is the enable/disable shortcut.
 ///
 /// \return true if and only if keystroke correspond to the shortcut
 //**********************************************************************************************************************
-bool isAppEnableDisableShortcut(InputManager::KeyStroke const& keyStroke)
+bool isAppEnableDisableShortcut(SpShortcut const& shortcut)
 {
-   return doesKeystrokeMatchShortcut(keyStroke, PreferencesManager::instance().appEnableDisableShortcut());
+   SpShortcut const appEnableDisableShortcut = PreferencesManager::instance().appEnableDisableShortcut();
+   return shortcut && appEnableDisableShortcut && (*shortcut == *appEnableDisableShortcut);
 }
 
 
@@ -160,7 +141,7 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
    if (!keyEvent)
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
    SpShortcut const shortcut = shortcutFromWindowsKeyEvent(keyEvent);
-   if (shortcut)
+   if (shortcut && shortcut->isValid())
       emit InputManager::instance().shortcutPressed(shortcut);
    // we ignore shift / caps lock key events
    if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
@@ -216,6 +197,37 @@ InputManager& InputManager::instance()
 
 
 //**********************************************************************************************************************
+/// \
+//**********************************************************************************************************************
+void InputManager::onShortcut(SpShortcut const& shortcut)
+{
+   if ((!shortcut) || (!isShortcutProcessingEnabled_))
+      return;
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   if (prefs.enableAppEnableDisableShortcut() && isAppEnableDisableShortcut(shortcut))
+   {
+      emit appEnableDisableShortcutTriggered();
+      return;
+   }
+
+   if (!prefs.beeftextEnabled())
+      return;
+
+   if ((!prefs.useAutomaticSubstitution()) && isComboTriggerShortcut(shortcut))
+   {
+      emit substitutionShortcutTriggered();
+      return;
+   }
+
+   if (prefs.comboPickerEnabled() && isComboPickerShortcut(shortcut))
+   {
+      showComboPickerWindow();
+      return;
+   }
+}
+
+
+//**********************************************************************************************************************
 ///
 //**********************************************************************************************************************
 InputManager::InputManager()
@@ -223,6 +235,7 @@ InputManager::InputManager()
      useLegacyKeyProcessing_(!isAppRunningOnWindows10OrHigher())
 {
    this->enableKeyboardHook();
+   connect(this, &InputManager::shortcutPressed, this, &InputManager::onShortcut);
 #ifdef NDEBUG
    // to avoid being locked with all input unresponsive when in debug (because one forgot that breakpoints should be
    // avoided, for instance), we only enable the low level mouse hook in release configuration
@@ -247,31 +260,6 @@ InputManager::~InputManager()
 //**********************************************************************************************************************
 bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
 {
-   PreferencesManager const& prefs = PreferencesManager::instance();
-   if (prefs.enableAppEnableDisableShortcut() && isAppEnableDisableShortcut(keyStroke) && isShortcutProcessingEnabled_)
-   {
-      emit appEnableDisableShortcutTriggered();
-      return false;
-   }
-
-   if (!prefs.beeftextEnabled())
-      return true;
-
-   if (isShortcutProcessingEnabled_)
-   {
-      if ((!prefs.useAutomaticSubstitution()) && isComboTriggerShortcut(keyStroke))
-      {
-         emit substitutionShortcutTriggered();
-         return false;
-      }
-
-      if (prefs.comboPickerEnabled() && isComboPickerShortcut(keyStroke))
-      {
-         showComboPickerWindow();
-         return false;
-      }
-   }
-
    // on some layout (e.g. US International, direction key + alt lead to garbage char if ToUnicode is pressed, so
    // we bypass normal processing for those keys(note this is different for the dead key issue described in
    // processKey().
@@ -290,6 +278,7 @@ bool InputManager::onKeyboardEvent(KeyStroke const& keyStroke)
    if (text.isEmpty())
       return true;
 
+   PreferencesManager const& prefs = PreferencesManager::instance();
    for (QChar c: text)
    {
       if (QChar('\b') == c)

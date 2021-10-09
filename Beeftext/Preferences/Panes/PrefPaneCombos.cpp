@@ -146,7 +146,6 @@ void PrefPaneCombos::onChangeDefaultMatchingMode() const
 //**********************************************************************************************************************
 void PrefPaneCombos::onChangeDefaultCaseSensitivity() const
 {
-   qDebug() << QString("%1()").arg(__FUNCTION__);
    prefs_.setDefaultCaseSensitivity(selectedCaseSensitivityInCombo(*ui_.comboCaseSensitivity));
 }
 
