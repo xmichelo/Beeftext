@@ -41,9 +41,16 @@ void applyAutostartParameters()
    {
       log.addInfo("Auto-start is enabled.");
       QString const& installedAppPath = QFileInfo(installedApplicationPath()).absoluteFilePath();
-      if (installedAppPath.isEmpty() || !QFileInfo(installedAppPath).exists())
+      if (installedAppPath.isEmpty())
       {
-         log.addError("Beeftext is not properly installed. The application cannot be registered for auto-start.");
+         log.addError("Beeftext is not properly installed (installedAppPath is empty). The application cannot be "
+            "registered for auto-start.");
+         return;
+      }
+      if (!QFileInfo(installedAppPath).exists())
+      {
+         log.addError(QString("Beeftext is not properly installed (installedAppPath points to a non-existing "
+            "file '%1'). The application cannot be registered for auto-start.").arg(installedAppPath));
          return;
       }
 

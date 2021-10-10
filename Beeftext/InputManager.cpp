@@ -142,7 +142,10 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
    SpShortcut const shortcut = shortcutFromWindowsKeyEvent(keyEvent);
    if (shortcut && shortcut->isValid())
+   {
       emit InputManager::instance().shortcutPressed(shortcut);
+      return CallNextHookEx(nullptr, nCode, wParam, lParam);
+   }
    // we ignore shift / caps lock key events
    if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
