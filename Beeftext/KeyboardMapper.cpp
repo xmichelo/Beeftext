@@ -308,7 +308,7 @@ Qt::Key KeyboardMapper::virtualKeyCodeToQtKey(quint32 vkCode)
 
 
 //**********************************************************************************************************************
-/// \param[in] the Qt key.
+/// \param[in] key The Qt key.
 /// \return The virtual key code corresponding to the key or 0 if no virtual key code matches the Qt key.
 //**********************************************************************************************************************
 quint32 KeyboardMapper::qtKeyToVirtualKeyCode(Qt::Key const& key)

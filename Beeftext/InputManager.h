@@ -43,7 +43,7 @@ public: // member functions
    bool isShortcutProcessingEnabled() const; ///< Check whether shortcut processing is enabled.
 
 signals:
-   void shortcutPressed(SpShortcut const shortcut); ///< shortcut for the typing of a key combination.
+   void shortcutPressed(SpShortcut const& shortcut); ///< shortcut for the typing of a key combination.
    void comboBreakerTyped(); ///< Signal for combo breaking events
    void characterTyped(QChar c); ///< Signal for character typed
    void backspaceTyped(); ///< Signal for backspace typed
