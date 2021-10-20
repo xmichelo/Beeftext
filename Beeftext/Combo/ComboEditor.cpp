@@ -82,6 +82,9 @@ QMenu* ComboEditor::createComboVariableMenu()
    action = new QAction(tr("&Key"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{key:}", true); });
    menu->addAction(action);
+   action = new QAction(tr("&Shortcut"), this);
+   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{shortcut:}", true); });
+   menu->addAction(action);
    action = new QAction(tr("&Delay"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{delay:}", true); });
    menu->addAction(action);
