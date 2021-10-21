@@ -21,6 +21,8 @@
 class ShortcutDialog: public QDialog
 {
    Q_OBJECT
+public: // static member functions
+   static SpShortcut run(QWidget* parent = nullptr); ///< Run the shortcut dialog.
 public: // member functions
    explicit ShortcutDialog(SpShortcut const& shortcut, QWidget* parent = nullptr); ///< Default constructor
 	ShortcutDialog(ShortcutDialog const&) = delete; ///< Disabled copy constructor

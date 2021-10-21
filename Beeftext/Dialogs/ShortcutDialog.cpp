@@ -15,6 +15,18 @@
 
 
 //**********************************************************************************************************************
+/// \param[in] parent The parent widget of the dialog
+/// \return The shortcut typed by the user.
+/// \return A null pointer if the user cancelled the dialog.
+//**********************************************************************************************************************
+SpShortcut ShortcutDialog::run(QWidget* parent)
+{
+   ShortcutDialog dlg(nullptr);
+   return (QDialog::Accepted == dlg.exec()) ? dlg.shortcut() : nullptr;
+}
+
+
+//**********************************************************************************************************************
 /// \param[in] shortcut The shortcut
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************

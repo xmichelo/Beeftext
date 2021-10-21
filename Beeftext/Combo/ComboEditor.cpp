@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "ComboEditor.h"
+#include "Dialogs/ShortcutDialog.h"
 #include "BeeftextConstants.h"
 
 
@@ -83,7 +84,7 @@ QMenu* ComboEditor::createComboVariableMenu()
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{key:}", true); });
    menu->addAction(action);
    action = new QAction(tr("&Shortcut"), this);
-   connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{shortcut:}", true); });
+   connect(action, &QAction::triggered, this, &ComboEditor::insertShortcutVariable);
    menu->addAction(action);
    action = new QAction(tr("&Delay"), this);
    connect(action, &QAction::triggered, [this]() { this->insertTextInSnippetEdit("#{delay:}", true); });
@@ -168,6 +169,17 @@ void ComboEditor::insertPowershellVariable()
       tr("PowerShell script files (*.ps1);;All files (*.*)"));
    if (!path.isEmpty())
       this->insertTextInSnippetEdit(QString("#{powershell:%1}").arg(path));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void ComboEditor::insertShortcutVariable()
+{
+   SpShortcut const shortcut = ShortcutDialog::run(this);
+   if (shortcut)
+      this->insertTextInSnippetEdit(QString("#{shortcut:%1}").arg(shortcut->toString()));
 }
 
 
