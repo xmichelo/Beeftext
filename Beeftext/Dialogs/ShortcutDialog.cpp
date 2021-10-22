@@ -21,8 +21,25 @@
 //**********************************************************************************************************************
 SpShortcut ShortcutDialog::run(QWidget* parent)
 {
-   ShortcutDialog dlg(nullptr);
+   ShortcutDialog dlg(nullptr, parent);
    return (QDialog::Accepted == dlg.exec()) ? dlg.shortcut() : nullptr;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in,out] inOutShortcut On function entry this value holds the shortcut to be displayed by default in the
+/// dialog. On exit this variable contains the shortcut select by the user if he accepted the dialog. If the dialog
+/// was cancelled, this content of this variable on exit is undetermined.
+/// \param[in] parent The parent widget of the dialog.
+/// \return true if and only if the user accepted the dialog.
+//**********************************************************************************************************************
+bool ShortcutDialog::run(SpShortcut& inOutShortcut, QWidget* parent)
+{
+   ShortcutDialog dlg(inOutShortcut, parent);
+   if (QDialog::Accepted != dlg.exec())
+      return false;
+   inOutShortcut = dlg.shortcut();
+   return true;
 }
 
 
@@ -31,9 +48,9 @@ SpShortcut ShortcutDialog::run(QWidget* parent)
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
 ShortcutDialog::ShortcutDialog(SpShortcut const& shortcut, QWidget* parent)
-   : QDialog(parent, xmilib::constants::kDefaultDialogFlags),
-     ui_(),
-     shortcut_(shortcut ? shortcut : PreferencesManager::defaultComboTriggerShortcut())
+   : QDialog(parent, xmilib::constants::kDefaultDialogFlags)
+   , ui_()
+   , shortcut_(shortcut)
 {
    ui_.setupUi(this);
    this->resize(QDialog::sizeHint());

@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "PrefPaneCombos.h"
+#include "Dialogs/ShortcutDialog.h"
 #include "BeeftextUtils.h"
 
 
@@ -111,10 +112,10 @@ void PrefPaneCombos::onCheckKeepFinalSpace(bool checked) const
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void PrefPaneCombos::onChangeComboTriggerShortcut() const
+void PrefPaneCombos::onChangeComboTriggerShortcut()
 {
    SpShortcut shortcut = prefs_.comboTriggerShortcut();
-   if (!runShortcutDialog(shortcut))
+   if (!ShortcutDialog::run(shortcut, this))
       return;
    prefs_.setComboTriggerShortcut(shortcut);
    ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
@@ -163,10 +164,10 @@ void PrefPaneCombos::onCheckEnablePickerWindow(bool checked) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefPaneCombos::onChangePickerWindowShortcut() const
+void PrefPaneCombos::onChangePickerWindowShortcut()
 {
    SpShortcut shortcut = prefs_.comboPickerShortcut();
-   if (!runShortcutDialog(shortcut))
+   if (!ShortcutDialog::run(shortcut, this))
       return;
    prefs_.setComboPickerShortcut(shortcut);
    ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");

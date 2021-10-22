@@ -36,12 +36,12 @@ private slots:
    void onRadioAutomaticComboTrigger(bool checked) const; ///< Slot for the 'Automatic combo trigger' button.
    void onCheckComboTriggersOnSpace(bool checked) const; ///< Slot for the 'Combo triggers on space' check box.
    void onCheckKeepFinalSpace(bool checked) const; ///< Slot for the 'Keep final space character' check box.
-   void onChangeComboTriggerShortcut() const; ///< Slot for the 'Change shortcut' action
+   void onChangeComboTriggerShortcut(); ///< Slot for the 'Change shortcut' action
    void onResetComboTriggerShortcut() const; ///< Slot for the 'Reset combo trigger shortcut'
    void onChangeDefaultMatchingMode() const; ///< Slot for the 'Default matching mode' combo value change.
    void onChangeDefaultCaseSensitivity() const; ///< Slot for the 'Default case sensitivity' combo value change.
    void onCheckEnablePickerWindow(bool checked) const; ///< Slot for the 'Enable combo picker' checkbox.
-   void onChangePickerWindowShortcut() const; ///< Slot for the combo picker 'Change' button.
+   void onChangePickerWindowShortcut(); ///< Slot for the combo picker 'Change' button.
    void onResetPickerWindowShortcut() const; ///< Slot for the combo picker 'Reset' button.
 
 private: // member functions

@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "PrefPaneBehavior.h"
 #include "Combo/ComboManager.h"
+#include "Dialogs/ShortcutDialog.h"
 #include "BeeftextConstants.h"
 #include "BeeftextUtils.h"
 
@@ -215,10 +216,10 @@ void PrefPaneBehavior::onCheckEnableAppEnableDisableShortcut(bool checked) const
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefPaneBehavior::onChangeAppEnableDisableShortcut() const
+void PrefPaneBehavior::onChangeAppEnableDisableShortcut()
 {
    SpShortcut shortcut = prefs_.appEnableDisableShortcut();
-   if (!runShortcutDialog(shortcut))
+   if (!ShortcutDialog::run(shortcut, this))
       return;
    prefs_.setAppEnableDisableShortcut(shortcut);
    ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : "");
