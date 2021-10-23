@@ -13,6 +13,7 @@
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
 #include "Preferences/PreferencesManager.h"
+#include <XMiLib/Exception.h>
 
 
 namespace {
@@ -88,13 +89,30 @@ void applyAutostartParameters()
 //**********************************************************************************************************************
 QString installedApplicationPath()
 {
+   QFileInfo const exeInfo = QFileInfo(QCoreApplication::applicationFilePath());
+   QString const exePath = exeInfo.canonicalFilePath();
    QVariant const v = PreferencesManager::instance().settings().value(kKeyAppExePath).toString();
-   return v.canConvert<QString>() ? QDir::fromNativeSeparators(v.toString()) : QString();
+   try
+   {
+      if (!v.canConvert<QString>())
+         throw xmilib::Exception("The path of the installed application is not available in the registry. ");
+      QFileInfo const regExeInfo = QFileInfo(v.toString());
+      if (!regExeInfo.exists())
+         throw xmilib::Exception("The path of the installed application in the registry point to a non existing "
+            "file. ");
+      return regExeInfo.canonicalFilePath();
+   }
+   catch (xmilib::Exception const& e)
+   {
+      globals::debugLog().addWarning(QString("%1 The current executable path will be considered to be the installed "
+         "application path : %2").arg(e.qwhat()).arg(QDir::toNativeSeparators(exePath)));
+      return exePath;
+   }
 }
 
 
 //**********************************************************************************************************************
-/// \
+/// \param[out] outPath The path of the application registered for autostart.
 //**********************************************************************************************************************
 bool registeredApplicationForAutostart(QString& outPath)
 {
