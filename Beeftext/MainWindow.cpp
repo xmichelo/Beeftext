@@ -48,6 +48,9 @@ MainWindow::MainWindow()
       { QDesktopServices::openUrl(QUrl(constants::kBeeftextIssueTrackerUrl)); });
    connect(&InputManager::instance(), &InputManager::comboMenuShortcutTriggered, this, &MainWindow::onShowComboMenu);
    connect(&prefs, &PreferencesManager::writeDebugLogFileChanged, this, &MainWindow::onWriteDebugLogFileChanged);
+#ifdef NDEBUG
+   ui_.menu_Advanced->removeAction(ui_.actionShowLogWindow);
+#endif
 }
 
 
@@ -323,6 +326,17 @@ void MainWindow::onActionShowPreferencesDialog()
 void MainWindow::onActionOpenLogFile()
 {
    openLogFile();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void MainWindow::onActionShowLogWindow()
+{
+   xmilib::DebugLogWindow& logWindow = globals::debugLogWindow();
+   logWindow.setStyleSheet(QString());
+   logWindow.show();
 }
 
 

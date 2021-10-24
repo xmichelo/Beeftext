@@ -60,6 +60,7 @@ private slots:
    static void onActionShowAboutDialog(); ///< Slot for the 'Show About dialog' action
    void onActionShowPreferencesDialog(); ///< Slot for the 'Show Preferences dialog' action
    static void onActionOpenLogFile(); ///< Slot for the 'Open Log File' action
+   static void onActionShowLogWindow(); ///< Slot for the 'Show Log Window action.
    void onActionBackup(); ///< Slot for the 'Backup' action.
    void onActionRestore(); ///< Slot for the 'Restore' action.
    void onActionGenerateCheatSheet(); ///< Slot for the 'Generate Cheat Sheet' action.

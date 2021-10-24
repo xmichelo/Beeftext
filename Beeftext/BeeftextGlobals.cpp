@@ -12,6 +12,22 @@
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "Preferences/PreferencesManager.h"
+#include <XMiLib/Exception.h>
+
+namespace {
+
+
+//**********************************************************************************************************************
+/// \return A reference to the shared pointer to the application debug log
+//**********************************************************************************************************************
+xmilib::SpDebugLog& debugLogSharedPointer()
+{
+   static xmilib::SpDebugLog log = std::make_shared<xmilib::DebugLog>();
+   return log;
+}
+
+
+}
 
 
 namespace globals {
@@ -22,10 +38,22 @@ namespace globals {
 //**********************************************************************************************************************
 xmilib::DebugLog& debugLog()
 {
-   static xmilib::DebugLog log;
-   return log;
+   xmilib::SpDebugLog const& log = debugLogSharedPointer();
+   Q_ASSERT(log);
+   if (!log)
+      throw xmilib::Exception("The debug log could not be instanciated.");
+   return *log.get();
 }
 
+
+//**********************************************************************************************************************
+/// \return An reference to the debug log window.
+//**********************************************************************************************************************
+xmilib::DebugLogWindow& debugLogWindow()
+{
+   static xmilib::DebugLogWindow window(debugLogSharedPointer());
+   return window;
+}
 
 //**********************************************************************************************************************
 /// \return The location of the local storage folder for the application

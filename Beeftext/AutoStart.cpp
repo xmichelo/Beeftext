@@ -59,7 +59,7 @@ void applyAutostartParameters()
       {
          if (installedAppPath == registeredAppPath)
          {
-            log.addInfo(QString("Beefetxt is already properly registered in system for auto-start. Path is '%1'.")
+            log.addInfo(QString("Beeftext is already properly registered in system for auto-start. Path is '%1'.")
                .arg(QDir::toNativeSeparators(registeredAppPath)));
             return;
          }

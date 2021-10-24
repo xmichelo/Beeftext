@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>664</width>
-    <height>476</height>
+    <width>716</width>
+    <height>481</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -35,7 +35,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>664</width>
+     <width>716</width>
      <height>22</height>
     </rect>
    </property>
@@ -64,12 +64,14 @@
     <property name="title">
      <string>&amp;Advanced</string>
     </property>
+    <addaction name="actionShowLogWindow"/>
     <addaction name="actionOpenLogFile"/>
     <addaction name="separator"/>
     <addaction name="actionBackup"/>
     <addaction name="actionRestore"/>
     <addaction name="separator"/>
     <addaction name="actionGenerateCheatSheet"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu_Advanced"/>
@@ -187,6 +189,22 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+Shift+C</string>
+   </property>
+  </action>
+  <action name="action_Show_Log_Window">
+   <property name="text">
+    <string>Show Log &amp;Window</string>
+   </property>
+  </action>
+  <action name="actionShowLogWindow">
+   <property name="text">
+    <string>Show Log &amp;Window</string>
+   </property>
+   <property name="toolTip">
+    <string>Show the log window</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Shift+L</string>
    </property>
   </action>
  </widget>
@@ -331,6 +349,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionShowLogWindow</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowLogWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>240</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onActionExit()</slot>
@@ -342,5 +376,6 @@
   <slot>onActionBackup()</slot>
   <slot>onActionRestore()</slot>
   <slot>onActionGenerateCheatSheet()</slot>
+  <slot>onActionShowLogWindow()</slot>
  </slots>
 </ui>

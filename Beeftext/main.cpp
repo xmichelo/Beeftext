@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
       PreferencesManager const& prefs = PreferencesManager::instance();
       if (prefs.writeDebugLogFile())
          debugLog.enableLoggingToFile(globals::logFilePath());
-      debugLog.setMaxEntryCount(1);
+      debugLog.setMaxEntryCount(10000);
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
       applyAutostartParameters();
       removeFileMarkedForDeletion();
