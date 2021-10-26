@@ -169,6 +169,9 @@ void MainWindow::setupSystemTrayIcon()
    menu->addAction(action);
 #ifndef NDEBUG
    menu->addSeparator();
+   QAction* actionShowLogWindow = new QAction(tr("Show Log Window"), this);
+   connect(actionShowLogWindow, &QAction::triggered, this, &MainWindow::onActionShowLogWindow);
+   menu->addAction(actionShowLogWindow);
    QAction* actionShowLog = new QAction(tr("Open Log File"), this);
    connect(actionShowLog, &QAction::triggered, []() { openLogFile(); });
    menu->addAction(actionShowLog);
