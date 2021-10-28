@@ -17,8 +17,8 @@ Q_DECLARE_SMART_POINTER_METATYPE(std::shared_ptr)
 namespace constants {
 
 
-qint32 constexpr kVersionMajor = 11; ///< The major version number of the application
-qint32 constexpr kVersionMinor = 1; ///< The minor version number of the application
+qint32 constexpr kVersionMajor = 12; ///< The major version number of the application
+qint32 constexpr kVersionMinor = 0; ///< The minor version number of the application
 QChar constexpr kEmojiDelimiter = '|'; ///< The delimiter for emojis
 QColor constexpr blueBeeftextColor(0x25, 0x8c, 0xc0); ///< Return the blue color used for the GUI.
 Qt::DateFormat constexpr kJsonExportDateFormat = Qt::ISODateWithMs; ///< The date/time export format used for JSon docs
