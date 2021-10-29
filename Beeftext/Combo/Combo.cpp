@@ -418,6 +418,12 @@ bool Combo::performSubstitution(bool triggeredByPicker)
    QString newText = this->evaluatedSnippet(cancelled, forbiddenSubcombos, knownInputVariables);
    if (cancelled)
       return false;
+   if (!knownInputVariables.isEmpty())
+   {
+      // we displayed the input variable dialog at least once. Some slow/heavy application (Electron-based stuff like
+      // Slack & al. for instance) will need some time to properly regain focus.
+      qApp->thread()->msleep(300);
+   }
 
    qint32 const cursorLShift = computeCursorLeftShift(newText);
    if (cursorLShift >= 0)
@@ -604,20 +610,4 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
    if (outCursorPos)
       *outCursorPos = -1;
    return evaluatedSnippet(outCancelled, forbiddenSubCombos, knownInputVariables);
-
-   //QString const cursorVariable = "#{cursor}";
-   //if (!outCursorPos)
-   //   return result.remove(cursorVariable);
-
-   //qint32 const index = qint32(result.lastIndexOf(cursorVariable));
-   //if (index < 0)
-   //{
-   //   *outCursorPos = -1;
-   //   return result;
-   //}
-
-   //qint32 const lShift = qint32(result.length()) - (index + qint32(cursorVariable.length()));
-   //result.remove(cursorVariable);
-   //*outCursorPos = qint32(result.length()) - lShift;
-   //return result;
 }
