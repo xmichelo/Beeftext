@@ -1,3 +1,12 @@
+.vs/
+_build/
+_temp/
+_doc/
+GeneratedFiles/
+build/
+ipch/
+temp/
+CMakeFiles/
 *.suo
 *.vcxproj.user
 *.bak
@@ -7,13 +16,6 @@
 *.aps
 *.tmp
 *.pro.user
-.vs/
-_build/
-_temp/
-_doc/
-GeneratedFiles/
-build/
-ipch/
 cmake-*
 *.sdf
 *.opensdf
@@ -29,4 +31,4 @@ workspace.xml
 tasks.xml
 *.DotSettings.user
 qtvars*
-temp/
+CMakeCache.txt

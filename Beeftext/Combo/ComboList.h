@@ -35,7 +35,7 @@ public: // type definitions
 
 public: // static data members
    static QString const defaultFileName; ///< The default name for combo list files
-   static qint32 const fileFormatVersionNumber; ///< The version number for the combo list file format
+   static qint32 constexpr fileFormatVersionNumber = 10; ///< The version number for the combo list file format
 
 public: // friends
    friend void swap(ComboList& first, ComboList& second) noexcept; ///< Swap two combo lists

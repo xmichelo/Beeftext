@@ -217,7 +217,7 @@
   <customwidget>
    <class>ComboEditor</class>
    <extends>QWidget</extends>
-   <header>ComboEditor.h</header>
+   <header>Combo/ComboEditor.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

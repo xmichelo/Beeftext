@@ -17,12 +17,18 @@
 #include "Combo/CaseSensitivity.h"
 
 
+
+
+
+
+
 //**********************************************************************************************************************
 /// \brief Preferences manager class
 //**********************************************************************************************************************
 class PreferencesManager: public QObject
 {
    Q_OBJECT
+
 public: // static member functions
    static PreferencesManager& instance(); ///< Return the only allowed instance of the class
 
@@ -145,7 +151,48 @@ private: // member functions
    template <typename T> T readSettings(QString const& key, T const& defaultValue = T()) const; ///< Read a value of a given type read from the settings
    
 private: // data members
-   class Cache; ///< Forward declaration of cache class
+   class Cache
+   {
+   public: // member functions
+      explicit Cache(QSettings& settings) : settings_(settings) {} ///< Default constructor.
+      Cache(Cache const&) = delete; ///< Disabled copy-constructor.
+      Cache(Cache&&) = delete; ///< Disabled assignment copy-constructor.
+      ~Cache() = default; ///< Destructor.
+      Cache& operator=(Cache const&) = delete; ///< Disabled assignment operator.
+      Cache& operator=(Cache&&) = delete; ///< Disabled move assignment operator.
+      void init(); ///< Initialize the cache.
+
+   public: // data members
+      bool useAutomaticSubstitution { true }; ///< Cached value for the 'use automatic substitution' preference value
+      bool comboTriggersOnSpace { false }; ///< Cached vaue for the 'combo trigger on space' preference.
+      bool keepFinalSpaceCharacter { false }; ///< Cached vaue for the 'keep final space character' preference.
+      SpShortcut comboTriggerShortcut; ///< Cached value for the 'combo trigger shortcut' preference
+      bool comboPickerEnabled { true }; ///< Cached value for the 'Combo picker enabled' preference.
+      SpShortcut comboPickerShortcut; ///< Cached value for the 'combo picker shortcut' preference
+      EMatchingMode defaultMatchingMode { EMatchingMode::Strict }; ///< Cached value for the 'Default matching mode' preference.
+      ECaseSensitivity defaultCaseSensitivity { ECaseSensitivity::CaseSensitive }; ///< Cached valur for the 'Default case sensitivity' preference.
+      bool enableAppEnableDisableShortcut { true }; ///< Cached value for the 'app enable/disable shortcut' preference.
+      SpShortcut appEnableDisableShortcut; ///< Cached value for the 'app enable/disable shortcut' preference.
+      bool emojiShortcodesEnabled { false }; ///< Cached value for the 'emoji shortcodes enabled' preference
+      QString emojiLeftDelimiter; ///< Cached value for the 'emoji left delimiter' preference.
+      QString emojiRightDelimiter; ///< Cached value for the 'emoji right delimiter' preference.
+      bool showEmojisInPickerWindow { false }; ///< Cached value for the 'Show emojis in picker window' preference.
+      bool beeftextEnabled { true }; ///< Cached value for the 'Beeftext enabled' preference.
+      bool useCustomTheme { true }; ///< Cached value for the 'Use custom theme' preference.
+      ETheme theme { ETheme::Light }; ///< Cached value for the 'Theme' preference.
+      bool useShiftInsertForPasting { false }; ///< Cached value for use 'Use Shift+Insert for pasting' preference.
+
+   private: // member functions
+      void cacheComboTriggerShortcut(); ///< Read the combo trigger shortcut and cache it for faster access
+      void cacheComboPickerShortcut(); ///< Read the combo picker shortcut and cache it for faster access
+      void cacheAppEnableDisableShortcut(); ///< Read the app enable/disable shortcut and cache it for faster access.
+      void cacheThemePrefs(); ///< Read the theme and cache it for faster access.
+      EMatchingMode readDefaultMatchingModeFromPreferences() const; ///< Get the value for the 'Default matching mode' preference.
+      ECaseSensitivity readDefaultCaseSensitivityFromPreferences() const; ///< Get the value for the 'Default case sensitivity' preference.
+
+   private: // data members
+      QSettings& settings_; ///< The settings
+   }; ///< A cache for fast access to critical preferences.
    std::unique_ptr<QSettings> settings_ { nullptr }; ///< The Qt settings instance.
    std::unique_ptr<Cache> cache_ { nullptr }; ///< The cache (implemented as pimpl).
 };
