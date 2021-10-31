@@ -32,7 +32,7 @@ QString const kPortableModeBeaconFileName = "Portable.bin"; ///< The name of the
 QString const kPortableAppsModeBeaconFileName = "PortableApps.bin"; ///< The name of the 'beacon file used to detect if the app is in PortableApps mode
 QList<quint16> const modifierKeys = {  VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LSHIFT, VK_RSHIFT, VK_LWIN,
    VK_RWIN }; ///< The modifier keys
-QChar const kObjectReplacementChar(0xfffc); ///< The unicode object replacement character.
+QChar constexpr kObjectReplacementChar(0xfffc); ///< The unicode object replacement character.
 
 
 

@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "PrefPaneCombos.h"
 #include "Dialogs/ShortcutDialog.h"
-#include "BeeftextUtils.h"
 
 
 //**********************************************************************************************************************

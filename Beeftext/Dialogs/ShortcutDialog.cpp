@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "ShortcutDialog.h"
 #include "InputManager.h"
-#include "Preferences/PreferencesManager.h"
 #include <XMiLib/XMiLibConstants.h>
 
 
@@ -22,7 +21,7 @@
 SpShortcut ShortcutDialog::run(QWidget* parent)
 {
    ShortcutDialog dlg(nullptr, parent);
-   return (QDialog::Accepted == dlg.exec()) ? dlg.shortcut() : nullptr;
+   return (Accepted == dlg.exec()) ? dlg.shortcut() : nullptr;
 }
 
 
@@ -36,7 +35,7 @@ SpShortcut ShortcutDialog::run(QWidget* parent)
 bool ShortcutDialog::run(SpShortcut& inOutShortcut, QWidget* parent)
 {
    ShortcutDialog dlg(inOutShortcut, parent);
-   if (QDialog::Accepted != dlg.exec())
+   if (Accepted != dlg.exec())
       return false;
    inOutShortcut = dlg.shortcut();
    return true;
