@@ -8,14 +8,15 @@
 
 
 #include "stdafx.h"
-#include "../Group/GroupDialog.h"
 #include "ComboDialog.h"
 #include "ComboManager.h"
 #include "MatchingMode.h"
 #include "CaseSensitivity.h"
+#include "BeeftextUtils.h"
+#include "Group/GroupDialog.h"
+#include "Preferences/PreferencesManager.h"
 #include <XMiLib/Exception.h>
 #include <XMiLib/XMiLibConstants.h>
-#include "Preferences/PreferencesManager.h"
 
 
 namespace {
@@ -136,9 +137,9 @@ bool ComboDialog::checkAndReportInvalidCombo()
    if ((!newKeyword.isEmpty()) && (comboList.end() != std::find_if(comboList.begin(), 
       comboList.end(), [&](SpCombo const& existing) -> bool      
       { return (existing != combo_) && (existing->keyword() == newKeyword);})))
-      return 0 == QMessageBox::information(this, tr("Duplicate keyword"), tr("This keyword is already in use. \n\n"
+      return questionDialog(this, tr("Duplicate keyword"), tr("This keyword is already in use. \n\n"
          "You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos "
-         "randomly."), tr("&Continue"), tr("C&ancel"), QString());
+         "randomly."), tr("&Continue"), tr("C&ancel"));
 
    // we check for conflicts that would make some combo 'unreachable'
    if (newKeyword.isEmpty()) // We do not check for conflicts if the user validated an empty keyword.

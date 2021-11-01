@@ -41,6 +41,7 @@ QMimeData* mimeDataFromText(QString const& text); ///< Create a MIME data instan
 QMimeData* mimeDataFromHtml(QString const& html);  ///< Create a MIME data instance for HTML content.
 bool warnAndConvertHtmlCombos(); ///< Warn the user about discontinued rich text combo support and convert them to plain text.
 QString colorToHex(QColor const& color, bool includeAlpha); ///< Get a hex representation of a color.
-
+bool questionDialog(QWidget *parent, QString const& title, QString const& text,
+   QString const& yesText, QString const& noText); ///< Display a message box asking a question.
 
 #endif // #ifndef BEEFTEXT_UTILS_H

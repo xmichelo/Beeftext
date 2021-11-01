@@ -479,3 +479,23 @@ QString colorToHex(QColor const& color, bool includeAlpha)
       result += QString("%1").arg(color.alpha(), 2, 16, zero);
    return result;
 }
+
+//**********************************************************************************************************************
+/// \param[in] parent The parent widget of the dialog.
+/// \param[in] title The title for the dialog.
+/// \param[in] text The text to display.
+/// \param[in] yesText The text to display in the 'yes' button.
+/// \param[in] noText The text to display in the 'no' button.
+/// \return true if and only if the user replied 'yes'.
+//**********************************************************************************************************************
+bool questionDialog(QWidget *parent, QString const& title, QString const& text,
+                    QString const& yesText, QString const& noText)
+{
+   QMessageBox msgBox(parent);
+   msgBox.setWindowTitle(title);
+   msgBox.setText(text);
+   QPushButton* yesButton = msgBox.addButton(yesText, QMessageBox::AcceptRole);
+   QPushButton* noButton = msgBox.addButton(noText, QMessageBox::RejectRole);
+   msgBox.exec();
+   return msgBox.clickedButton() == yesButton;
+}

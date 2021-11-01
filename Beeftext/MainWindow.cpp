@@ -242,8 +242,8 @@ void MainWindow::restoreBackup(QString const& path)
    try
    {
       if ((ComboManager::instance().comboListRef().rowCount(QModelIndex()) > 0)
-         && (0 != QMessageBox::question(this, tr("Restore"), tr("If you restore a backup, all your current combos will "
-            "be deleted and replaced by the content of the backup file."), tr("Restore"), tr("Cancel"), QString(), 1)))
+         && (!questionDialog(this, tr("Restore"), tr("If you restore a backup, all your current combos will "
+            "be deleted and replaced by the content of the backup file."), tr("Restore"), tr("Cancel"))))
          return;
       if (!ComboManager::instance().restoreBackup(path))
          throw xmilib::Exception("Could not restore backup file.");
