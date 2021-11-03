@@ -33,7 +33,7 @@ function copySslDlls([String]$dstPath)
 #***********************************************************************************************************************
 function copyVcppDlls([String]$dstPath)
 {
-   $vcDlls = "msvcp140.dll", "msvcp140_1.dll", "vcruntime140.dll", "vcruntime140_1.dll", "msvcr100.dll"
+   $vcDlls = "msvcp140.dll", "msvcp140_1.dll", "msvcp140_2.dll", "vcruntime140.dll", "vcruntime140_1.dll", "msvcr100.dll"
    foreach ($dll in $vcDlls) { Copy-Item -Path (absolutePath $vcDllDir $dll) -Destination $dstPath }
 }
 
