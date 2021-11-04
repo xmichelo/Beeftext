@@ -1,8 +1,8 @@
 {
-   "versionMajor": 11,
-   "versionMinor": 1,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v11.1/Beeftext-11.1-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v11.1",
-   "sha256Sum": "046BE534DCC56A0EBA9C407A58F04B5A0DDC2290F0A353B298DC0F96199DEDDA",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v9.1 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><ul><li>Fixed color of text in single-line edits (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/404\">#404</a>).</li><li>Fixed a bug where combo with empty keyword would always trigger (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/405\">#405</a>).</li><li>Fixed tooltip messages in the preference dialog (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/408\">#408</a>).</li><li>Fixed an issue with plural form in a translatable sentence (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/407\">#407</a>).</li></ul></body></html>"
+   "versionMajor": 12,
+   "versionMinor": 0,
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v12.0/Beeftext-12.0-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v12.0",
+   "sha256Sum": "85B114A16F50DBC55D940535206269FCEF307A68BECEA4465D7DCBB97692525F",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v9.1 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><ul><li>Added #{shortcut:} variable (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/421\">#421</a>).</li><li>Refactored auto-start on login code (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/416\">#416</a>).</li><li>Fixed issue where some translations would not be applied until application restart (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/412\">#412</a>).</li><li>Fixed issue where combos with empty keyword would conflict with any other combo (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/417\">#417</a>).</li><li>Added debug log window to debug builds (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/420\">#420</a>).</li></ul></body></html>"
 }
