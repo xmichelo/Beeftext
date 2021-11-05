@@ -437,14 +437,6 @@
     </QtMoc>
     <ClInclude Include="Combo\ComboKeywordValidator.h" />
     <ClInclude Include="Combo\ComboVariable.h" />
-    <ClInclude Include="GeneratedFiles\ui_BackupRestoreDialog.h" />
-    <ClInclude Include="GeneratedFiles\ui_ComboDialog.h" />
-    <ClInclude Include="GeneratedFiles\ui_ComboFrame.h" />
-    <ClInclude Include="GeneratedFiles\ui_ComboImportDialog.h" />
-    <ClInclude Include="GeneratedFiles\ui_ComboTableWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_GroupDialog.h" />
-    <ClInclude Include="GeneratedFiles\ui_GroupListWidget.h" />
-    <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
     <QtMoc Include="MainWindow.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
@@ -455,7 +447,6 @@
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h;../../%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
-    <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h" />
     <ClInclude Include="Group\Group.h" />
     <QtMoc Include="Group\GroupList.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../Group/%(Filename)%(Extension)</ForceInclude>

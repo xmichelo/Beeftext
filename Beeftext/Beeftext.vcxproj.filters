@@ -11,11 +11,6 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Generated Files">
-      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
-      <Extensions>moc;h;cpp</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
-    </Filter>
     <Filter Include="Combo">
       <UniqueIdentifier>{ff7ca901-94f9-4a2f-95e9-cd3694d1306b}</UniqueIdentifier>
     </Filter>
@@ -230,48 +225,21 @@
     <ClCompile Include="KeyboardMapper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="BeeftextConstants.h" />
     <ClInclude Include="BeeftextGlobals.h" />
-    <ClInclude Include="GeneratedFiles\ui_ComboDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="BeeftextUtils.h" />
-    <ClInclude Include="GeneratedFiles\ui_UpdateDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="I18nManager.h" />
     <ClInclude Include="Shortcut.h" />
     <ClInclude Include="Combo\ComboVariable.h">
       <Filter>Combo</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_ComboImportDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_ComboFrame.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_ComboTableWidget.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="Group\Group.h">
       <Filter>Group</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_GroupDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_GroupListWidget.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="MimeDataUtils.h" />
     <ClInclude Include="Backup\BackupManager.h">
       <Filter>Backup</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_BackupRestoreDialog.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Combo\ComboKeywordValidator.h">
       <Filter>Combo</Filter>
