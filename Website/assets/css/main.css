@@ -1994,6 +1994,7 @@
 	#banner {
 		position: relative;
 		padding: 2em;
+		margin-top: 1em;
 	}
 
 		#banner h2 {
@@ -2529,7 +2530,7 @@
 			#banner-wrapper {
 				padding: 0 15px 0 15px;
 			}
-
+`
 			#features-wrapper {
 				padding: 0 15px 40px 15px;
 			}
