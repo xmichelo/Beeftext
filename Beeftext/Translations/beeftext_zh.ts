@@ -250,7 +250,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Combo/ComboEditor.cpp" line="86"/>
         <source>&amp;Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>捷徑(&amp;S)</translation>
     </message>
     <message>
         <location filename="../Combo/ComboEditor.cpp" line="89"/>
@@ -325,7 +325,7 @@ Do you want to continue anyway?</source>
         <location filename="../Combo/ComboImportDialog.ui" line="45"/>
         <location filename="../Combo/ComboImportDialog.ui" line="225"/>
         <source>&amp;Browse</source>
-        <translation>瀏覽&amp;B</translation>
+        <translation>瀏覽(&amp;B)</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="52"/>
@@ -1084,17 +1084,17 @@ Do you want to continue anyway?</source>
         <location filename="../MainWindow.ui" line="196"/>
         <location filename="../MainWindow.ui" line="201"/>
         <source>Show Log &amp;Window</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示Log視窗(&amp;W)</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="204"/>
         <source>Show the log window</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示Log視窗</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="207"/>
         <source>Ctrl+Alt+Shift+L</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+Shift+L</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="132"/>
@@ -1135,7 +1135,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../MainWindow.cpp" line="172"/>
         <source>Show Log Window</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示Log視窗</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="175"/>
