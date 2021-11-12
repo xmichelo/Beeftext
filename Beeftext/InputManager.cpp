@@ -146,6 +146,9 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
       emit instance().shortcutPressed(shortcut);
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
    }
+   if (!PreferencesManager::instance().beeftextEnabled())
+      return CallNextHookEx(nullptr, nCode, wParam, lParam);
+
    // we ignore shift / caps lock key events
    if ((keyEvent->vkCode == VK_LSHIFT) || (keyEvent->vkCode == VK_RSHIFT) || (keyEvent->vkCode == VK_CAPITAL))
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
