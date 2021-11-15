@@ -19,7 +19,6 @@
      <property name="font">
       <font>
        <pointsize>11</pointsize>
-       <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
@@ -84,9 +83,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="buttonSkip">
+      <widget class="QPushButton" name="buttonNotNow">
        <property name="text">
-        <string>&amp;Skip</string>
+        <string>&amp;Not Now</string>
        </property>
       </widget>
      </item>
@@ -104,21 +103,21 @@
     <string notr="true">Install</string>
    </property>
   </action>
-  <action name="actionSkip">
+  <action name="actionNotNow">
    <property name="text">
-    <string>&amp;Skip</string>
+    <string>&amp;Not Now</string>
    </property>
    <property name="iconText">
     <string notr="true">Skip</string>
    </property>
    <property name="toolTip">
-    <string notr="true">Skip</string>
+    <string>Not now</string>
    </property>
   </action>
  </widget>
  <tabstops>
   <tabstop>buttonInstall</tabstop>
-  <tabstop>buttonSkip</tabstop>
+  <tabstop>buttonNotNow</tabstop>
   <tabstop>editReleaseNotes</tabstop>
  </tabstops>
  <resources/>
@@ -140,10 +139,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionSkip</sender>
+   <sender>actionNotNow</sender>
    <signal>triggered()</signal>
    <receiver>UpdateDialog</receiver>
-   <slot>onActionSkip()</slot>
+   <slot>onActionNotNow()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -172,9 +171,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonSkip</sender>
+   <sender>buttonNotNow</sender>
    <signal>clicked()</signal>
-   <receiver>actionSkip</receiver>
+   <receiver>actionNotNow</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -190,6 +189,6 @@
  </connections>
  <slots>
   <slot>onActionInstall()</slot>
-  <slot>onActionSkip()</slot>
+  <slot>onActionNotNow()</slot>
  </slots>
 </ui>

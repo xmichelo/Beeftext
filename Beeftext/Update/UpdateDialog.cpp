@@ -72,7 +72,7 @@ void UpdateDialog::startDownload()
    ui_.progressBar->setEnabled(true);
    ui_.progressBar->setRange(0, 100);
    ui_.progressBar->setValue(0);
-   ui_.buttonSkip->setText(tr("&Cancel"));
+   ui_.buttonNotNow->setText(tr("&Cancel"));
    ui_.buttonInstall->setEnabled(false);
    hashCalculator_.reset();
    downloadErrorOccurred_ = false;
@@ -110,7 +110,7 @@ void UpdateDialog::onActionInstall()
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void UpdateDialog::onActionSkip()
+void UpdateDialog::onActionNotNow()
 {
    if (reply_)
       reply_->abort();
