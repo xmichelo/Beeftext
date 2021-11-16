@@ -1955,23 +1955,32 @@ Ctrl, Alt, 或Win鍵.</translation>
         <translation>軟體更新</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="27"/>
+        <location filename="../Update/UpdateDialog.ui" line="26"/>
         <source>%1 v%2.%3 is available!</source>
         <translation>有%1v%2.%3版可以更新了!</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="37"/>
+        <location filename="../Update/UpdateDialog.ui" line="36"/>
         <source>Release Notes:</source>
         <translation>發行簡介:</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="89"/>
-        <location filename="../Update/UpdateDialog.ui" line="109"/>
-        <source>&amp;Skip</source>
-        <translation>跳過&amp;S</translation>
+        <location filename="../Update/UpdateDialog.ui" line="88"/>
+        <location filename="../Update/UpdateDialog.ui" line="108"/>
+        <source>&amp;Not Now</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="98"/>
+        <location filename="../Update/UpdateDialog.ui" line="114"/>
+        <source>Not now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Skip</source>
+        <translation type="vanished">跳過&amp;S</translation>
+    </message>
+    <message>
+        <location filename="../Update/UpdateDialog.ui" line="97"/>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
         <source>&amp;Install</source>
         <translation>安裝(&amp;I)</translation>
