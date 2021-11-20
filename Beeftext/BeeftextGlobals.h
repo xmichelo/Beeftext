@@ -19,6 +19,7 @@ namespace globals {
 
 xmilib::DebugLog& debugLog(); ///< Returns a reference to the debug log
 xmilib::DebugLogWindow& debugLogWindow(); ///< Returns a reference to the debug log window.
+QString buildInfo(); ///< Returns a string containing information about the current build.
 QString appDataDir(); ///< Returns the location of the local storage folder for the application
 QString translationRootFolderPath(); ///< Returns the location of the root folder for application provided translations.
 QString userTranslationRootFolderPath(); ///< Returns the location of the root folder of the user provided translations.
