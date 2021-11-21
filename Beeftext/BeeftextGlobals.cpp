@@ -14,6 +14,7 @@
 #include "Preferences/PreferencesManager.h"
 #include <XMiLib/Exception.h>
 
+
 namespace {
 
 
@@ -68,6 +69,18 @@ bool wasAppBuiltWithVisualStudio()
 #endif
 }
 
+//**********************************************************************************************************************
+/// \return true if and only if the application was built with GCC
+//**********************************************************************************************************************
+bool wasAppBuiltWithGcc()
+{
+#ifdef __GNUC__
+   return true;
+#else
+   return false;
+#endif
+}
+
 
 //**********************************************************************************************************************
 // \return the Visual studio version used to compile the application.
@@ -75,6 +88,7 @@ bool wasAppBuiltWithVisualStudio()
 //**********************************************************************************************************************
 QString getVisualStudioVersion()
 {
+#ifdef _MSC_VER
    if (!wasAppBuiltWithVisualStudio())
       return QString();
    QString const vsStr = "Visual Studio";
@@ -103,28 +117,38 @@ QString getVisualStudioVersion()
    if constexpr (_MSC_VER >= 1200)
       return vsStr.arg(" 6.0");
    return vsStr;
+#else
+   return QString();
+#endif// #ifdef _MSC_VER
 }
 
+
+//**********************************************************************************************************************
+/// \return The version number of GCC this
+//**********************************************************************************************************************
+QString getGccVersion()
+{
+#ifdef __GNUC__
+   return QString("GCC v%1.%2").arg(__GNUC__).arg(__GNUC_MINOR__);
+#else
+   return QString();
+#endif
+}
 
 //**********************************************************************************************************************
 /// \return The build architecture
 //**********************************************************************************************************************
-QString getBuildArchictecture()
+QString getBuildArchitecture()
 {
-   QString const unknownArch = "Unknown architecture";
-   if (wasAppBuiltWithVisualStudio())
-   {
-      #ifdef _M_AMD64
-         return "x64";
-      #endif 
-      #ifdef _M_IX86
-         return "x86"
-      #endif
-      return unknownArch;  // NOLINT(clang-diagnostic-unreachable-code-return)
-   }
-
-   return unknownArch;
+#if defined(_M_AMD64) || defined(__x86_64__)
+   return "64bit";
+#elif defined(_M_IX86) || defined(__i386__)
+   return "32bit";
+#else
+   return "Unknown architecture";  // NOLINT(clang-diagnostic-unreachable-code-return)
+#endif
 }
+
 
 //**********************************************************************************************************************
 /// \return the compiler (or IDE) version used to build the application
@@ -133,23 +157,33 @@ QString getBuildCompilerVersion()
 {
    if (wasAppBuiltWithVisualStudio())
       return getVisualStudioVersion();
+   if (wasAppBuiltWithGcc())
+      return getGccVersion();
    return QString();
 }
 
 
 //**********************************************************************************************************************
-/// \return A string containing build information.
+/// \return The build configuration for the application (Debug or Release).
 //**********************************************************************************************************************
-QString buildInfo()
+QString getBuildConfiguration()
 {
-   return QString("%1 - %2 (%3) - Qt v%4")
-      .arg(getBuildCompilerVersion())
-      .arg(QLibraryInfo::isDebugBuild() ? "Debug" : "Release")
-      .arg(getBuildArchictecture())
-      .arg(QLibraryInfo::version().toString());
+#ifdef NDEBUG
+   return "Release";
+#else
+   return "Debug";
+#endif
 }
 
-
+//**********************************************************************************************************************
+/// \return A string containing build information.
+//**********************************************************************************************************************
+QString getBuildInfo()
+{
+   return QString("%1 - %2 (%3) - Qt v%4")
+      .arg(getBuildCompilerVersion(), getBuildConfiguration(), getBuildArchitecture(),
+           QLibraryInfo::version().toString());
+}
 
 
 //**********************************************************************************************************************

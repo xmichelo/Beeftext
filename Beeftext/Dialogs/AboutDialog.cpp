@@ -36,7 +36,7 @@ void AboutDialog::completeText() const
    ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor)
       .arg(isInPortableMode() ? tr("Portable Edition") : "").arg(QString(__DATE__).right(4))
       .arg(colorToHex(color, false)));
-   ui_.labelBuildInfo->setText(globals::buildInfo());
+   ui_.labelBuildInfo->setText(globals::getBuildInfo());
 }
 
 
