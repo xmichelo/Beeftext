@@ -10,6 +10,7 @@ if (NOT DEFINED ENV{QTDIR})
 endif()
 
 set(CMAKE_PREFIX_PATH  ${CMAKE_PREFIX_PATH} $ENV{QTDIR})
+set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG")
 
 find_package(Qt6Core)
 find_package(Qt6Gui)

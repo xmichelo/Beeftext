@@ -14,6 +14,7 @@
 #include "Preferences/PreferencesManager.h"
 #include <XMiLib/Exception.h>
 
+
 namespace {
 
 
@@ -54,6 +55,136 @@ xmilib::DebugLogWindow& debugLogWindow()
    static xmilib::DebugLogWindow window(debugLogSharedPointer());
    return window;
 }
+
+
+//**********************************************************************************************************************
+/// \return true iff the application was compiled with Visual Studio.
+//**********************************************************************************************************************
+bool wasAppBuiltWithVisualStudio()
+{
+#ifdef _MSC_VER
+   return true;
+#else
+   return false;
+#endif
+}
+
+//**********************************************************************************************************************
+/// \return true if and only if the application was built with GCC
+//**********************************************************************************************************************
+bool wasAppBuiltWithGcc()
+{
+#ifdef __GNUC__
+   return true;
+#else
+   return false;
+#endif
+}
+
+
+//**********************************************************************************************************************
+// \return the Visual studio version used to compile the application.
+// \return a null string if the application was not compiled using Visual Studio.
+//**********************************************************************************************************************
+QString getVisualStudioVersion()
+{
+#ifdef _MSC_VER
+   if (!wasAppBuiltWithVisualStudio())
+      return QString();
+   QString const vsStr = "Visual Studio";
+   if constexpr (_MSC_VER >= 1930)
+      return vsStr + " 2022";
+   if constexpr (_MSC_VER >= 1920)
+      return vsStr + " 2019";
+   if constexpr (_MSC_VER >= 1910)
+      return vsStr + " 2017";
+   if constexpr (_MSC_VER >= 1900)
+      return vsStr.arg(" 2015");
+   if constexpr (_MSC_VER >= 1800)
+      return vsStr.arg(" 2013");
+   if constexpr (_MSC_VER >= 1700)
+      return vsStr.arg(" 2012");
+   if constexpr (_MSC_VER >= 1600)
+      return vsStr.arg(" 2010");
+   if constexpr (_MSC_VER >= 1500)
+      return vsStr.arg(" 2008");
+   if constexpr (_MSC_VER >= 1400)
+      return vsStr.arg(" 2005");
+   if constexpr (_MSC_VER >= 1310)
+      return vsStr.arg(" .NET 2003");
+   if constexpr (_MSC_VER >= 1300)
+      return vsStr.arg(" .NET 2002");
+   if constexpr (_MSC_VER >= 1200)
+      return vsStr.arg(" 6.0");
+   return vsStr;
+#else
+   return QString();
+#endif// #ifdef _MSC_VER
+}
+
+
+//**********************************************************************************************************************
+/// \return The version number of GCC this
+//**********************************************************************************************************************
+QString getGccVersion()
+{
+#ifdef __GNUC__
+   return QString("GCC v%1.%2").arg(__GNUC__).arg(__GNUC_MINOR__);
+#else
+   return QString();
+#endif
+}
+
+//**********************************************************************************************************************
+/// \return The build architecture
+//**********************************************************************************************************************
+QString getBuildArchitecture()
+{
+#if defined(_M_AMD64) || defined(__x86_64__)
+   return "64bit";
+#elif defined(_M_IX86) || defined(__i386__)
+   return "32bit";
+#else
+   return "Unknown architecture";  // NOLINT(clang-diagnostic-unreachable-code-return)
+#endif
+}
+
+
+//**********************************************************************************************************************
+/// \return the compiler (or IDE) version used to build the application
+//**********************************************************************************************************************
+QString getBuildCompilerVersion()
+{
+   if (wasAppBuiltWithVisualStudio())
+      return getVisualStudioVersion();
+   if (wasAppBuiltWithGcc())
+      return getGccVersion();
+   return QString();
+}
+
+
+//**********************************************************************************************************************
+/// \return The build configuration for the application (Debug or Release).
+//**********************************************************************************************************************
+QString getBuildConfiguration()
+{
+#ifdef NDEBUG
+   return "Release";
+#else
+   return "Debug";
+#endif
+}
+
+//**********************************************************************************************************************
+/// \return A string containing build information.
+//**********************************************************************************************************************
+QString getBuildInfo()
+{
+   return QString("%1 - %2 (%3) - Qt v%4")
+      .arg(getBuildCompilerVersion(), getBuildConfiguration(), getBuildArchitecture(),
+           QLibraryInfo::version().toString());
+}
+
 
 //**********************************************************************************************************************
 /// \return The location of the local storage folder for the application

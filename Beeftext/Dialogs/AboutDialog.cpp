@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "AboutDialog.h"
 #include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
 #include <XMiLib/XMiLibConstants.h>
 
@@ -35,6 +36,7 @@ void AboutDialog::completeText() const
    ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor)
       .arg(isInPortableMode() ? tr("Portable Edition") : "").arg(QString(__DATE__).right(4))
       .arg(colorToHex(color, false)));
+   ui_.labelBuildInfo->setText(globals::getBuildInfo());
 }
 
 
