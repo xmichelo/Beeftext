@@ -86,6 +86,7 @@ int main(int argc, char *argv[])
          debugLog.enableLoggingToFile(globals::logFilePath());
       debugLog.setMaxEntryCount(10000);
       debugLog.addInfo(QString("%1 started.").arg(constants::kApplicationName));
+      debugLog.addInfo(QString("Build info: %1").arg(globals::getBuildInfo()));
       applyAutostartParameters();
       removeFileMarkedForDeletion();
 

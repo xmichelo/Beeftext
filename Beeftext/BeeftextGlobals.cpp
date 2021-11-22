@@ -94,6 +94,7 @@ QString getVisualStudioVersion()
    QString const vsStr = "Visual Studio";
    if constexpr (_MSC_VER >= 1930)
       return vsStr + " 2022";
+   // ReSharper disable once CppUnreachableCode
    if constexpr (_MSC_VER >= 1920)
       return vsStr + " 2019";
    if constexpr (_MSC_VER >= 1910)
