@@ -22,7 +22,7 @@
 !define OUTPUT_DIR _build
 !define RESOURCES_DIR "Resources"
 !define VC_DLL_DIR "..\Vendor\VCRuntime"
-!define VS_DEVENV_PATH "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.com"
+!define VS_DEVENV_PATH "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.com"
 !define LICENSE_FILE_NAME "LICENSE"
 !define LICENSE_FILE_PATH "..\${LICENSE_FILE_NAME}"
 !define WEBSITE "https://beeftext.org"
