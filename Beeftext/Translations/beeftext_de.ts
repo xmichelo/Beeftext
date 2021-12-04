@@ -9,17 +9,17 @@
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../Dialogs/AboutDialog.ui" line="33"/>
+        <location filename="../Dialogs/AboutDialog.ui" line="112"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Dialogs/AboutDialog.ui" line="128"/>
+        <location filename="../Dialogs/AboutDialog.ui" line="103"/>
         <source>&amp;Close</source>
         <translation>&amp;Schliessen</translation>
     </message>
     <message>
-        <location filename="../Dialogs/AboutDialog.cpp" line="36"/>
+        <location filename="../Dialogs/AboutDialog.cpp" line="37"/>
         <source>Portable Edition</source>
         <translation>Portable Edition</translation>
     </message>
@@ -1975,22 +1975,22 @@ Möchten Sie dennoch fortsetzen?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../BeeftextGlobals.cpp" line="180"/>
+        <location filename="../BeeftextGlobals.cpp" line="312"/>
         <source>JSON files (*.json);;All files (*.*)</source>
         <translation>JSON Dateien (*.json);;Alle Dateien (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextGlobals.cpp" line="189"/>
+        <location filename="../BeeftextGlobals.cpp" line="321"/>
         <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
         <translation>JSON &amp; CSV Dateien (*.json *.csv);;JSON Dateien (*.json);;CSV Dateien (*.csv);;Alle Dateien (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextGlobals.cpp" line="199"/>
+        <location filename="../BeeftextGlobals.cpp" line="331"/>
         <source>CSV files (*.csv);;All files (*.*)</source>
         <translation>CSV-Dateien (*.csv);;Alle Dateien (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextGlobals.cpp" line="171"/>
+        <location filename="../BeeftextGlobals.cpp" line="303"/>
         <source>Beeftext backup files (*.%1);;All files (*.*)</source>
         <translation>Beeftext Sicherungsdateien (*.%1);;Alle Dateien (*.*)</translation>
     </message>
@@ -2074,12 +2074,12 @@ p, li { white-space: pre-wrap; }
 %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="114"/>
+        <location filename="../main.cpp" line="115"/>
         <source>Getting Started</source>
         <translation>Erste Schritte</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="114"/>
+        <location filename="../main.cpp" line="115"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -2088,7 +2088,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 Möchten Sie ein kurzes &apos;Erste Schritte&apos;-Tutorial lesen?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="140"/>
+        <location filename="../main.cpp" line="141"/>
         <source>An unhandled exception occurred.</source>
         <translation>Eine unbehandelte Ausnahme ist aufgetreten.</translation>
     </message>
