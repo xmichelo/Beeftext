@@ -593,21 +593,13 @@ QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbidd
 }
 
 
-/// \todo get rid of the function below
-
 //**********************************************************************************************************************
 /// \param[out] outCancelled Did the user cancel user input
-/// \param[in] outCursorPos The final position of the cursor, relative to the beginning of the snippet
-/// \param[in] forbiddenSubCombos The text of the combos that are not allowed to be substituted using #{combo:}, to 
-/// avoid endless recursion
-/// \param[in,out] knownInputVariables The list of know input variables.
 /// \return The snippet text once it has been evaluated
 //**********************************************************************************************************************
-QString Combo::evaluatedSnippet(bool& outCancelled, QSet<QString> const& forbiddenSubCombos, 
-   QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const
+QString Combo::evaluatedSnippet(bool& outCancelled) const
 {
-   /// \todo get rid of this function.
-   if (outCursorPos)
-      *outCursorPos = -1;
+   QSet<QString> const forbiddenSubCombos;
+   QMap<QString, QString> knownInputVariables;
    return evaluatedSnippet(outCancelled, forbiddenSubCombos, knownInputVariables);
 }

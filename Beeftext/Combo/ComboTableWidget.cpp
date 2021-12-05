@@ -532,8 +532,7 @@ void ComboTableWidget::onActionCopySnippet() const
    if (!combo)
       return;
    bool cancelled = false;
-   QMap<QString, QString> knownInputVariables;
-   QString text = combo->evaluatedSnippet(cancelled, QSet<QString>(), knownInputVariables, nullptr);
+   QString text = combo->evaluatedSnippet(cancelled);
    if (cancelled)
       return;
    text.remove(constants::kVariableRegExp); ///< Remove all remaining variables (#{cursor},  #{delay:},... )

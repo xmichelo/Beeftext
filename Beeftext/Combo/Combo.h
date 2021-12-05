@@ -59,6 +59,7 @@ public: // member functions
    QDateTime lastUseDateTime() const; ///< Retrieve the last use date/time of the combo.
    SpGroup group() const; ///< Get the combo group the combo belongs to
    void setGroup(SpGroup const& group); ///< Set the group this combo belongs to
+   QString evaluatedSnippet(bool& outCancelled) const; ///< Retrieve the the snippet after having evaluated it, but leave the #{cursor} variable in place.
    QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 
       QMap<QString, QString>& knownInputVariables) const; ///< Retrieve the the snippet after having evaluated it, but leave the #{cursor} variable in place.
    QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 

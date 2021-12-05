@@ -12,9 +12,11 @@
 #include "PickerItemDelegate.h"
 #include "Emoji/EmojiManager.h"
 #include "Combo/ComboManager.h"
+#include "Clipboard/ClipboardManager.h"
 #include "Preferences/PreferencesManager.h"
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
+#include "BeeftextGlobals.h"
 
 
 //**********************************************************************************************************************
@@ -64,6 +66,8 @@ PickerWindow::PickerWindow()
    proxyModel_.sort(0, Qt::DescendingOrder);
    qApp->installEventFilter(this);
    this->restoreGeometry(PreferencesManager::instance().comboPickerWindowGeometry());
+   ui_.listViewResults->setContextMenuPolicy(Qt::CustomContextMenu);
+   connect(ui_.listViewResults, &QListView::customContextMenuRequested, this, &PickerWindow::onResultListRightClicked);
 }
 
 
@@ -85,7 +89,10 @@ void PickerWindow::keyPressEvent(QKeyEvent* event)
       break;
    case Qt::Key_Enter:
    case Qt::Key_Return:
-      this->triggerSelectedItem();
+      if (event->modifiers().testFlag(Qt::ControlModifier))
+         copySelectedItemToClipboard();
+      else
+         this->triggerSelectedItem();
       break;
    default:
       QWidget::keyPressEvent(event);
@@ -213,6 +220,7 @@ void PickerWindow::selectItemAtIndex(qint32 index) const
 }
 
 
+
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
@@ -237,4 +245,75 @@ void PickerWindow::triggerSelectedItem()
             emoji->setlastUseDateTime(QDateTime::currentDateTime());
          }
       });
+}
+
+
+//**********************************************************************************************************************
+/// \note This function may require user input using a dialog
+///
+/// \param[in] index the index of the selected item.
+/// \return The text for the item
+/// \return a null string if the text could not be retrieved
+//**********************************************************************************************************************
+QString PickerWindow::textForItemAtIndex(QModelIndex const& index)
+{
+   if (!index.isValid())
+      return QString();
+
+   bool const isCombo = (constants::Combo == index.data(constants::TypeRole).value<constants::EITemType>());
+   SpCombo const combo = (isCombo ? index.data(constants::PointerRole).value<SpCombo>() : nullptr);
+
+   QString str;
+   if (isCombo)
+   {
+      if (!combo)
+      {
+         globals::debugLog().addError("Picker window could not retrieve selected combo.");
+         return QString();
+      }
+      bool cancelled = false;
+      QString const text = combo->evaluatedSnippet(cancelled);
+      return cancelled ? QString() : text;
+   }
+
+   SpEmoji const emoji = (isCombo ? nullptr : index.data(constants::PointerRole).value<SpEmoji>());
+   if (!emoji)
+   {
+      globals::debugLog().addError("Picker window could not retrieve the selected emoji.");
+      return QString();
+   }
+   emoji->setlastUseDateTime(QDateTime::currentDateTime());
+   return emoji->value();
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] index The index of the item.
+//**********************************************************************************************************************
+void PickerWindow::copyItemAtIndexToClipboardAndClose(QModelIndex const& index)
+{
+   QString const text = this->textForItemAtIndex(index);
+   if (text.isNull())
+      return;
+   this->close();
+   ClipboardManager::instance().setText(text);
+}
+
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PickerWindow::copySelectedItemToClipboard()
+{
+   this->copyItemAtIndexToClipboardAndClose(ui_.listViewResults->currentIndex());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] p The location of the cursor.
+//**********************************************************************************************************************
+void PickerWindow::onResultListRightClicked(QPoint const& p)
+{
+   this->copyItemAtIndexToClipboardAndClose(ui_.listViewResults->indexAt(p));
 }

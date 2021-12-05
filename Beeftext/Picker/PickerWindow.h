@@ -52,6 +52,10 @@ private: // member functions
    qint32 selectedItemIndex() const; ///< Retrieve the index of the selected combo.
    void selectItemAtIndex(qint32 index) const; ///< Select the combo at a given index
    void triggerSelectedItem(); ///< Trigger the selected combo.
+   static QString textForItemAtIndex(QModelIndex const& index); ///< Retrieve the text for the model at index.
+   void copyItemAtIndexToClipboardAndClose(QModelIndex const& index); ///< Copy the text for the item at the given index into the clipboard and close the window
+   void copySelectedItemToClipboard(); ///< Close the window and copy the selected item to the clipbard.
+   void onResultListRightClicked(QPoint const& p); ///< Callback for the right click
 
 private: // data member
    Ui::PickerWindow ui_ = {}; ///< The GUI for the window.
