@@ -62,8 +62,6 @@ public: // member functions
    QString evaluatedSnippet(bool& outCancelled) const; ///< Retrieve the the snippet after having evaluated it, but leave the #{cursor} variable in place.
    QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 
       QMap<QString, QString>& knownInputVariables) const; ///< Retrieve the the snippet after having evaluated it, but leave the #{cursor} variable in place.
-   QString evaluatedSnippet(bool& outCancelled, const QSet<QString>& forbiddenSubCombos, 
-      QMap<QString, QString>& knownInputVariables, qint32* outCursorPos) const; ///< Retrieve the the snippet after having evaluated it
    void setEnabled(bool enabled); ///< Set the combo as enabled or not
    bool isEnabled() const; ///< Check whether the combo is enabled
    bool isUsable() const; ///< Check if the combo is usable, i.e. if it is enabled and member of a group that is enabled.
