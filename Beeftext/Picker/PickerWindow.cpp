@@ -45,7 +45,8 @@ void showComboPickerWindow()
       window.move(QPoint(rect.left() + ((rect.width() - window.width()) / 2),
          rect.top() + ((rect.height() - window.height()) / 2)));
    window.show();
-   window.activateWindow();
+   SetForegroundWindow(reinterpret_cast<HWND>(window.winId()));  // NOLINT(performance-no-int-to-ptr)
+   qApp->setActiveWindow(&window);
    window.raise();
 }
 
@@ -59,6 +60,7 @@ PickerWindow::PickerWindow()
 {
    ui_.setupUi(this);
    this->setWindowFlag(Qt::FramelessWindowHint, true);
+   this->setWindowFlag(Qt::Tool, true);
    this->setAttribute(Qt::WA_TranslucentBackground, true);
    ui_.listViewResults->setModel(&proxyModel_);
    ui_.listViewResults->setItemDelegate(new PickerItemDelegate(ui_.listViewResults));
