@@ -20,15 +20,66 @@
 
 
 //**********************************************************************************************************************
-/// \return A rect indicating the position and size of the foreground window.
+/// \brief Return the screen currently containing the cursor
+///
+/// \return The screen containing the cursor. If it could not be determined, the primary screen is returned
+//**********************************************************************************************************************
+QScreen* screenContainingCursor()
+{
+   QPoint const pos = QCursor::pos();
+   for (QScreen* screen: qApp->screens())
+      if (screen  && screen->geometry().contains(pos))
+         return screen;
+   return qApp->primaryScreen();
+}
+
+
+//**********************************************************************************************************************
+/// \brief return the rectangle for a window.
+///
+/// \param[in] hwnd The window handle.
+/// \return The handle for the window.
+//**********************************************************************************************************************
+QRect rectForHwnd(HWND hwnd)
+{
+   RECT r;
+   return GetWindowRect(hwnd, &r) ? QRect(QPoint(r.left, r.top), QPoint(r.right, r.bottom)) : QRect();
+}
+
+
+//**********************************************************************************************************************
+/// \brief Check whether a given window handle is the desktop.
+/// \param[in] hwnd The handle of the window to test
+/// \return true if the handle is the desktop handle
+//**********************************************************************************************************************
+bool isDesktop(HWND hwnd)
+{
+   // Logic taken from https://stackoverflow.com/questions/8364758/get-handle-to-desktop-shell-window
+   WCHAR array[256];
+   if (0 == GetClassName(hwnd, array, 256))
+      return false;
+   QString const className = QString::fromWCharArray(array);
+   qDebug() << QString("Class name: %1").arg(className);
+   return (className.compare("Progman", Qt::CaseInsensitive) == 0) || 
+      (className.compare("WorkerW", Qt::CaseInsensitive) == 0);
+}
+
+
+//**********************************************************************************************************************
+/// \brief Retrieve the rectangle for the current window.
+/// 
+/// \return A rect indicating the position and size of the foreground window. if no windows is on the foreground,
+/// the available area of the desktop for monitor the mouse in on is returned.
 //**********************************************************************************************************************
 QRect foregroundWindowRect()
 {
    HWND const hwnd = GetForegroundWindow();
-   RECT r;
-   if ((!hwnd) || (!GetWindowRect(hwnd, &r)))
-      return QRect();
-   return QRect(QPoint(r.left, r.top), QPoint(r.right, r.bottom));
+   if (isDesktop(hwnd)) // Desktop is active, we return the geometry of the monitor containing the mouse cursor
+   {
+      QScreen* const screen = screenContainingCursor();
+      return screen ? screen->availableGeometry() : QRect();
+   }
+   return rectForHwnd(hwnd);
 }
 
 
