@@ -11,6 +11,7 @@
 #include "PreferencesManager.h"
 #include "AutoStart.h"
 #include "Theme.h"
+#include "Picker/PickerWindow.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
 #include "Clipboard/ClipboardManager.h"
@@ -18,6 +19,7 @@
 #include "BeeftextUtils.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextConstants.h"
+#include <XMiLib/GlobalShortcut/GlobalShortcutManager.h>
 #include <XMiLib/Exception.h>
 
 
@@ -395,6 +397,7 @@ void PreferencesManager::init() const
    cache_->init();
    applyThemePreferences(this->useCustomTheme(), this->theme());
    this->applyLocalePreference();
+   this->applyComboPickerPreferences();
 }
 
 
@@ -437,6 +440,7 @@ void PreferencesManager::reset()
       this->setAutoStartAtLogin(kDefaultAutoStartAtLogin);
       this->setComboListFolderPath(globals::appDataDir());
    }
+   this->applyComboPickerPreferences();
 }
 
 
@@ -1333,6 +1337,27 @@ qint32 PreferencesManager::maxDelayBetweenKeystrokesMs()
 
 
 //**********************************************************************************************************************
+/// \return true if the preference was successfully applied
+//**********************************************************************************************************************
+bool PreferencesManager::applyComboPickerPreferences() const
+{
+   GlobalShortcutManager& scManager = GlobalShortcutManager::instance();
+   scManager.reset();
+   if (!this->comboPickerEnabled())
+      return true;
+
+   SpShortcut shortcut = this->comboPickerShortcut();
+   if (!shortcut)
+      shortcut = defaultComboPickerShortcut();
+   GlobalShortcut const* sc = scManager.create(MOD_CONTROL | MOD_SHIFT | MOD_ALT, VK_RETURN);
+   if (!sc)
+      return false;
+   connect(sc, &GlobalShortcut::triggered, []() { showComboPickerWindow(); });
+   return true;
+}
+
+
+//**********************************************************************************************************************
 /// \return the value for the preference.
 //**********************************************************************************************************************
 bool PreferencesManager::comboPickerEnabled() const
@@ -1348,6 +1373,7 @@ void PreferencesManager::setComboPickerEnabled(bool value) const
 {
    cache_->comboPickerEnabled = value;
    settings_->setValue(kKeyComboPickerEnabled, value);
+   this->applyComboPickerPreferences();
 }
 
 
@@ -1412,6 +1438,7 @@ void PreferencesManager::setComboPickerShortcut(SpShortcut const& shortcut) cons
       settings_->setValue(kKeyComboPickerShortcut, newShortcut->toCombined());
       cache_->comboPickerShortcut = newShortcut;
    }
+   this->applyComboPickerPreferences();
 }
 
 

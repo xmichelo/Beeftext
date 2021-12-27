@@ -17,7 +17,6 @@
 //**********************************************************************************************************************
 Shortcut::Shortcut(Qt::KeyboardModifiers const& modifiers, Qt::Key const& key)
    :  keyCombination_(modifiers, key)
-   //, nativeScanCode_(nativeScanCode)
 {
 
 }

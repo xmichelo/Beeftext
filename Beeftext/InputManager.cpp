@@ -222,12 +222,6 @@ void InputManager::onShortcut(SpShortcut const& shortcut)
       emit substitutionShortcutTriggered();
       return;
    }
-
-   if (prefs.comboPickerEnabled() && isComboPickerShortcut(shortcut))
-   {
-      showComboPickerWindow();
-      return;
-   }
 }
 
 

@@ -59,7 +59,6 @@ bool isDesktop(HWND hwnd)
    if (0 == GetClassName(hwnd, array, 256))
       return false;
    QString const className = QString::fromWCharArray(array);
-   qDebug() << QString("Class name: %1").arg(className);
    return (className.compare("Progman", Qt::CaseInsensitive) == 0) || 
       (className.compare("WorkerW", Qt::CaseInsensitive) == 0);
 }
@@ -111,8 +110,8 @@ PickerWindow::PickerWindow()
 {
    ui_.setupUi(this);
    this->setWindowFlag(Qt::FramelessWindowHint, true);
-   this->setWindowFlag(Qt::Tool, true);
    this->setAttribute(Qt::WA_TranslucentBackground, true);
+   this->setAttribute(Qt::WA_AlwaysStackOnTop);
    ui_.listViewResults->setModel(&proxyModel_);
    ui_.listViewResults->setItemDelegate(new PickerItemDelegate(ui_.listViewResults));
    proxyModel_.setSourceModel(&model_);
