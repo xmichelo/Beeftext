@@ -187,6 +187,10 @@ setOutPath $INSTDIR\styles
 file "$%QT6DIR%\plugins\styles\qwindowsvistastyle.dll"
 setOutPath $INSTDIR\imageformats
 file "$%QT6DIR%\plugins\imageformats\qico.dll"
+setOutPath $INSTDIR\tls
+file "$%QT6DIR%\plugins\tls\qcertonlybackend.dll"
+file "$%QT6DIR%\plugins\tls\qopensslbackend.dll"
+file "$%QT6DIR%\plugins\tls\qschannelbackend.dll"
 setOutPath $INSTDIR\translations\fr
 file "${EXE_SRC_DIR}\translations\fr\beeftext_fr.qm"
 file "${EXE_SRC_DIR}\translations\fr\qtbase_fr.qm"
