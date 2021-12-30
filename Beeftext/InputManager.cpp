@@ -142,10 +142,8 @@ LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARA
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
    SpShortcut const shortcut = shortcutFromWindowsKeyEvent(keyEvent);
    if (shortcut && shortcut->isValid())
-   {
-      emit instance().shortcutPressed(shortcut);
-      return CallNextHookEx(nullptr, nCode, wParam, lParam);
-   }
+      emit instance().shortcutPressed(shortcut); // note that we do not return here, as some combination (e.g. Ctrl+Alt+5 or AltGr+5) may actually lead to some text
+
    if (!PreferencesManager::instance().beeftextEnabled())
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
 
