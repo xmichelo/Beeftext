@@ -11,6 +11,7 @@
 #include "PreferencesManager.h"
 #include "AutoStart.h"
 #include "Theme.h"
+#include "KeyboardMapper.h"
 #include "Picker/PickerWindow.h"
 #include "I18nManager.h"
 #include "Combo/ComboManager.h"
@@ -397,7 +398,6 @@ void PreferencesManager::init() const
    cache_->init();
    applyThemePreferences(this->useCustomTheme(), this->theme());
    this->applyLocalePreference();
-   this->applyComboPickerPreferences();
 }
 
 
@@ -1095,17 +1095,11 @@ SpShortcut PreferencesManager::comboPickerShortcut() const
 //**********************************************************************************************************************
 /// \brief Return the default combo picker shortcut.
 /// 
-/// The shortcut is different on Windows 7 because Win+Shift is reserver for language switching on this platform.
-/// 
 /// \return The default combo picker shortcut.
 //**********************************************************************************************************************
 SpShortcut PreferencesManager::defaultComboPickerShortcut()
 {
-   QString const pType = QSysInfo::productType();
-   QString const pVersion = QSysInfo::productVersion();
-   if ((0 == pType.compare("windows", Qt::CaseInsensitive)) && (pVersion.startsWith('7'))) // Windows 7
-      return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ControlModifier, Qt::Key('B'));
-   return std::make_shared<Shortcut>(Qt::MetaModifier | Qt::ShiftModifier, Qt::Key_Enter);
+   return std::make_shared<Shortcut>(Qt::ControlModifier | Qt::AltModifier | Qt::ShiftModifier, Qt::Key_Enter);
 }
 
 
@@ -1349,7 +1343,9 @@ bool PreferencesManager::applyComboPickerPreferences() const
    SpShortcut shortcut = this->comboPickerShortcut();
    if (!shortcut)
       shortcut = defaultComboPickerShortcut();
-   GlobalShortcut const* sc = scManager.create(MOD_CONTROL | MOD_SHIFT | MOD_ALT, VK_RETURN);
+   KeyboardMapper& mapper = KeyboardMapper::instance();
+   GlobalShortcut const* sc = scManager.create(mapper.qtModifiersToNativeModifiers(shortcut->keyboardModifiers()),
+      mapper.qtKeyToVirtualKeyCode(shortcut->key()));
    if (!sc)
       return false;
    connect(sc, &GlobalShortcut::triggered, []() { showComboPickerWindow(); });

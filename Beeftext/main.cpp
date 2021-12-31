@@ -32,6 +32,7 @@ void ensureDirExists(QString const& path); ///< Make sure a folder exists.
 void ensureAppDataDirsExist(); ///< Make sure the application data folder exists
 void ensureMainWindowHasAHandle(MainWindow& mainWindow); ///< Ensure that the main window has a Win32 handle
 void removeFileMarkedForDeletion(); ///< Remove the software update file that may have been marker for deletion
+void setupPickerWindowShortcut(); ///< Setup the combo picker shortcut
 
 
 //**********************************************************************************************************************
@@ -119,6 +120,7 @@ int main(int argc, char *argv[])
       QObject::connect(&singleInstanceApp, &SingleInstanceApplication::anotherInstanceWasLaunched,
          &window, &MainWindow::onAnotherAppInstanceLaunch);
       prefs.setAlreadyLaunched();
+      setupPickerWindowShortcut();
       qint32 const returnCode = QApplication::exec();
       saveComboLastUseDateTimes(comboManager.comboListRef());
       debugLog.addInfo(QString("Application exited with return code %1").arg(returnCode));
@@ -207,4 +209,37 @@ void removeFileMarkedForDeletion()
    else
       debugLog.addWarning(QString("The following file was marked for deletion but could not be removed: %1")
          .arg(nativePath));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void setupPickerWindowShortcut()
+{
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   if (!prefs.comboPickerEnabled())
+      return;
+
+   SpShortcut shortcut = prefs.comboPickerShortcut();
+   if (!shortcut)
+      return;
+
+   DebugLog& debugLog = globals::debugLog();
+   if (shortcut->keyboardModifiers().testFlag(Qt::MetaModifier))
+   {
+      shortcut = PreferencesManager::defaultComboPickerShortcut();
+      prefs.setComboPickerShortcut(shortcut);
+      debugLog.addWarning("Thecombo picker shortcut contained the Windows key. It has been reset to the default value.");
+      QMessageBox::information(nullptr, QObject::tr("Error"), QObject::tr("Starting with Beeftext v13.0, the combo picker"
+         " shortcut cannot contain the Windows key.The shortcut is now %1.").arg(shortcut->toString()));
+   }
+   if (prefs.applyComboPickerPreferences())
+      return;
+
+   prefs.setComboPickerEnabled(false);
+   debugLog.addError(QString("The shortcut for the combo picker windows (%1) could not be registered. "
+      "The combo picker has been turned off.").arg(shortcut ? shortcut->toString() : "<unknown>"));
+   QMessageBox::critical(nullptr, QObject::tr("Error"), QObject::tr("The shortcut for the combo picker window "
+      "could not be registered. The combo picker has been turned off."));
 }

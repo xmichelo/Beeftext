@@ -318,6 +318,44 @@ quint32 KeyboardMapper::qtKeyToVirtualKeyCode(Qt::Key const& key)
 
 
 //**********************************************************************************************************************
+/// \param[in] modifiers The native modifiers bitfield.
+/// \return The Qt modifier bitfield
+//**********************************************************************************************************************
+Qt::KeyboardModifiers KeyboardMapper::nativeModifiersToQtModifiers(quint32 modifiers)
+{
+   Qt::KeyboardModifiers result;
+   if (modifiers & MOD_CONTROL)
+      result.setFlag(Qt::ControlModifier);
+   if (modifiers & MOD_ALT)
+      result.setFlag(Qt::AltModifier);
+   if (modifiers & MOD_WIN)
+      result.setFlag(Qt::MetaModifier);
+   if (modifiers & MOD_SHIFT)
+      result.setFlag(Qt::ShiftModifier);
+   return result;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] modifiers The Qt modifiers bitfield.
+/// \return The native modifiers bitfield.
+//**********************************************************************************************************************
+quint32 KeyboardMapper::qtModifiersToNativeModifiers(Qt::KeyboardModifiers const& modifiers)
+{
+   quint32 result = 0;
+   if (modifiers.testFlag(Qt::ControlModifier))
+      result |= MOD_CONTROL;
+   if (modifiers.testFlag(Qt::AltModifier))
+      result |= MOD_ALT;
+   if (modifiers.testFlag(Qt::MetaModifier))
+      result |= MOD_WIN;
+   if (modifiers.testFlag(Qt::ShiftModifier))
+      result |= MOD_SHIFT;
+   return result;
+}
+
+
+//**********************************************************************************************************************
 //
 //**********************************************************************************************************************
 KeyboardMapper::KeyboardMapper()
