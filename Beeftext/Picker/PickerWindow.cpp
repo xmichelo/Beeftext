@@ -17,6 +17,32 @@
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
+#include "KeyboardMapper.h"
+#include <XMiLib/GlobalShortcut/GlobalShortcutManager.h>
+
+
+//**********************************************************************************************************************
+/// \return true if the preference was successfully applied
+//**********************************************************************************************************************
+bool applyComboPickerPreferences()
+{
+   xmilib::GlobalShortcutManager& scManager = xmilib::GlobalShortcutManager::instance();
+   PreferencesManager const& prefs = PreferencesManager::instance();
+   scManager.reset();
+   if (!prefs.comboPickerEnabled())
+      return true;
+
+   SpShortcut shortcut = prefs.comboPickerShortcut();
+   if (!shortcut)
+      shortcut = prefs.defaultComboPickerShortcut();
+   KeyboardMapper& mapper = KeyboardMapper::instance();
+   xmilib::GlobalShortcut const* sc = scManager.create(mapper.qtModifiersToNativeModifiers(shortcut->keyboardModifiers()),
+      mapper.qtKeyToVirtualKeyCode(shortcut->key()));
+   if (!sc)
+      return false;
+   QObject::connect(sc, &xmilib::GlobalShortcut::triggered, []() { showComboPickerWindow(); });
+   return true;
+}
 
 
 //**********************************************************************************************************************

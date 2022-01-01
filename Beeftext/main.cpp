@@ -18,6 +18,7 @@
 #include "Update/UpdateManager.h"
 #include "I18nManager.h"
 #include "Preferences/PreferencesManager.h"
+#include "Picker/PickerWindow.h"
 #include "Combo/ComboManager.h"
 #include "LastUse/ComboLastUseFile.h"
 #include <XMiLib/SingleInstanceApp.h>
@@ -234,7 +235,7 @@ void setupPickerWindowShortcut()
       QMessageBox::information(nullptr, QObject::tr("Error"), QObject::tr("Starting with Beeftext v13.0, the combo picker"
          " shortcut cannot contain the Windows key.The shortcut is now %1.").arg(shortcut->toString()));
    }
-   if (prefs.applyComboPickerPreferences())
+   if (applyComboPickerPreferences())
       return;
 
    prefs.setComboPickerEnabled(false);

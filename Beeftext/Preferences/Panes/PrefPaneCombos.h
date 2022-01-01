@@ -40,12 +40,13 @@ private slots:
    void onResetComboTriggerShortcut() const; ///< Slot for the 'Reset combo trigger shortcut'
    void onChangeDefaultMatchingMode() const; ///< Slot for the 'Default matching mode' combo value change.
    void onChangeDefaultCaseSensitivity() const; ///< Slot for the 'Default case sensitivity' combo value change.
-   void onCheckEnablePickerWindow(bool checked) const; ///< Slot for the 'Enable combo picker' checkbox.
+   void onCheckEnablePickerWindow(bool checked); ///< Slot for the 'Enable combo picker' checkbox.
    void onChangePickerWindowShortcut(); ///< Slot for the combo picker 'Change' button.
-   void onResetPickerWindowShortcut() const; ///< Slot for the combo picker 'Reset' button.
+   void onResetPickerWindowShortcut(); ///< Slot for the combo picker 'Reset' button.
 
 private: // member functions
    void changeEvent(QEvent*) override; ///< Change event handler
+   void applyComboPickerShortcut(); ///< Try to apply combo picker shortcut.
 
 private: // data members
    Ui::PrefPaneCombos ui_; ///< The GUI for the pane.

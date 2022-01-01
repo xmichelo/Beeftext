@@ -18,6 +18,7 @@
 
 
 void showComboPickerWindow(); ///< Show the combo picker window.
+bool applyComboPickerPreferences(); ///< Apply the combo picker preferences
 
 
 //**********************************************************************************************************************

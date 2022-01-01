@@ -9,7 +9,9 @@
 
 #include "stdafx.h"
 #include "PrefPaneCombos.h"
+#include "Picker/PickerWindow.h"
 #include "Dialogs/ShortcutDialog.h"
+#include <XMiLib/GlobalShortcut/GlobalShortcutManager.h>
 
 
 //**********************************************************************************************************************
@@ -153,11 +155,21 @@ void PrefPaneCombos::onChangeDefaultCaseSensitivity() const
 //**********************************************************************************************************************
 /// \param[in] checked Is the radio button checked
 //**********************************************************************************************************************
-void PrefPaneCombos::onCheckEnablePickerWindow(bool checked) const
+void PrefPaneCombos::onCheckEnablePickerWindow(bool checked)
 {
    prefs_.setComboPickerEnabled(checked);
+   if (!checked)
+   {
+      xmilib::GlobalShortcutManager::instance().reset();
+      this->updateGui();
+      return;
+   }
+   if (!applyComboPickerPreferences())
+      this->onChangePickerWindowShortcut();
    this->updateGui();
 }
+
+
 
 
 //**********************************************************************************************************************
@@ -166,21 +178,22 @@ void PrefPaneCombos::onCheckEnablePickerWindow(bool checked) const
 void PrefPaneCombos::onChangePickerWindowShortcut()
 {
    SpShortcut shortcut = prefs_.comboPickerShortcut();
-   if (!ShortcutDialog::run(shortcut, this))
-      return;
-   prefs_.setComboPickerShortcut(shortcut);
+   if (ShortcutDialog::run(shortcut, this))
+      prefs_.setComboPickerShortcut(shortcut);
    ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
+   this->applyComboPickerShortcut();
 }
 
 
 //**********************************************************************************************************************
 //
 //**********************************************************************************************************************
-void PrefPaneCombos::onResetPickerWindowShortcut() const
+void PrefPaneCombos::onResetPickerWindowShortcut()
 {
    SpShortcut const shortcut = PreferencesManager::defaultComboPickerShortcut();
    prefs_.setComboPickerShortcut(shortcut);
    ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
+   this->applyComboPickerShortcut();
 }
 
 
@@ -202,6 +215,23 @@ void PrefPaneCombos::changeEvent(QEvent* event)
       selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, prefs_.defaultCaseSensitivity(), true);
    }
    PrefPane::changeEvent(event);
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PrefPaneCombos::applyComboPickerShortcut()
+{
+   if (applyComboPickerPreferences())
+   {
+      this->updateGui();
+      return;
+   }
+   QMessageBox::critical(this, tr("Error"), tr("The shortcut could not be registered. Combo picker will be disabled"));
+   QSignalBlocker blocker(ui_.checkEnablePickerWindow);
+   ui_.checkEnablePickerWindow->setChecked(false);
+   this->updateGui();   
 }
 
 

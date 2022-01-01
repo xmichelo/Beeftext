@@ -114,7 +114,6 @@ public: // member functions
    void  setDelayBetweenKeystrokesMs(qint32 value) const; ///< Set the 'delay between keystrokes'
    static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay beetween keystrokes' preference.
    static qint32 maxDelayBetweenKeystrokesMs(); ///< Get the maximum value for the 'delay beetween keystrokes' preference.
-   bool applyComboPickerPreferences() const; ///< Apply the combo picker preferences.
    bool comboPickerEnabled() const; ///< Get the value for the 'Combo picker enabled'  preference.
    void setComboPickerEnabled(bool value) const; ///< Set the value for the 'Combo picker enabled'  preference.
    void setComboPickerShortcut(SpShortcut const& shortcut) const; ///< Set the combo picker shortcut.
