@@ -262,3 +262,11 @@ QProgressBar {
    border-radius: 10px;
 }
 
+
+/*****************************
+* ShortcutDialog
+*****************************/
+#ShortcutDialog #labelError {
+    color: #258fc0;
+    font-weight: bold;
+}

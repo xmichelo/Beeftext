@@ -219,7 +219,7 @@ void PrefPaneBehavior::onCheckEnableAppEnableDisableShortcut(bool checked) const
 void PrefPaneBehavior::onChangeAppEnableDisableShortcut()
 {
    SpShortcut shortcut = prefs_.appEnableDisableShortcut();
-   if (!ShortcutDialog::run(shortcut, this))
+   if (!ShortcutDialog::run(this, shortcut, false))
       return;
    prefs_.setAppEnableDisableShortcut(shortcut);
    ui_.editAppEnableDisableShortcut->setText(shortcut ? shortcut->toString() : "");

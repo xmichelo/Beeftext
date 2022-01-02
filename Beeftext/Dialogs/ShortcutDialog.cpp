@@ -18,9 +18,9 @@
 /// \return The shortcut typed by the user.
 /// \return A null pointer if the user cancelled the dialog.
 //**********************************************************************************************************************
-SpShortcut ShortcutDialog::run(QWidget* parent)
+SpShortcut ShortcutDialog::run(QWidget* parent, bool forGlobalRegistering)
 {
-   ShortcutDialog dlg(nullptr, parent);
+   ShortcutDialog dlg(parent, nullptr, forGlobalRegistering);
    return (Accepted == dlg.exec()) ? dlg.shortcut() : nullptr;
 }
 
@@ -32,9 +32,9 @@ SpShortcut ShortcutDialog::run(QWidget* parent)
 /// \param[in] parent The parent widget of the dialog.
 /// \return true if and only if the user accepted the dialog.
 //**********************************************************************************************************************
-bool ShortcutDialog::run(SpShortcut& inOutShortcut, QWidget* parent)
+bool ShortcutDialog::run(QWidget* parent, SpShortcut& inOutShortcut, bool forGlobalRegistering)
 {
-   ShortcutDialog dlg(inOutShortcut, parent);
+   ShortcutDialog dlg(parent, inOutShortcut, forGlobalRegistering);
    if (Accepted != dlg.exec())
       return false;
    inOutShortcut = dlg.shortcut();
@@ -46,12 +46,14 @@ bool ShortcutDialog::run(SpShortcut& inOutShortcut, QWidget* parent)
 /// \param[in] shortcut The shortcut
 /// \param[in] parent The parent widget of the dialog
 //**********************************************************************************************************************
-ShortcutDialog::ShortcutDialog(SpShortcut const& shortcut, QWidget* parent)
+ShortcutDialog::ShortcutDialog(QWidget* parent, SpShortcut const& shortcut, bool forGlobalRegistering)
    : QDialog(parent, xmilib::constants::kDefaultDialogFlags)
    , ui_()
    , shortcut_(shortcut)
+   , forGlobalRegistering_(forGlobalRegistering)
 {
    ui_.setupUi(this);
+   ui_.labelError->setText(QString());
    this->resize(QDialog::sizeHint());
    this->updateGui();
    InputManager& inputManager = InputManager::instance();
@@ -84,7 +86,7 @@ SpShortcut ShortcutDialog::shortcut() const
 //**********************************************************************************************************************
 void ShortcutDialog::onShortcutPressed(SpShortcut const& shortcut)
 {
-   if ((!shortcut) || (!shortcut->isValid()))
+   if (!this->validateShortcut(shortcut))
       return;
    shortcut_ = shortcut;
    this->updateGui();
@@ -98,4 +100,23 @@ void ShortcutDialog::updateGui() const
 {
    ui_.editShortcut->setText(shortcut_ ? shortcut_->toString() : "");
    ui_.buttonOK->setEnabled(shortcut_.get());
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] shortcut The shortcut.
+/// \return true if and only if the shortcut is valid.
+//**********************************************************************************************************************
+bool ShortcutDialog::validateShortcut(SpShortcut const& shortcut) const
+{
+   ui_.labelError->setText(QString());
+   if ((!shortcut) || (!shortcut->isValid()))
+      return false;
+   if (!forGlobalRegistering_)
+      return true;
+   bool const useWinKey = shortcut->keyboardModifiers().testFlag(Qt::MetaModifier);
+   if (useWinKey)
+      ui_.labelError->setText(tr("This shortcut cannot use the Windows key."));
+   this->updateGui();
+   return !useWinKey;
 }

@@ -116,7 +116,7 @@ void PrefPaneCombos::onCheckKeepFinalSpace(bool checked) const
 void PrefPaneCombos::onChangeComboTriggerShortcut()
 {
    SpShortcut shortcut = prefs_.comboTriggerShortcut();
-   if (!ShortcutDialog::run(shortcut, this))
+   if (!ShortcutDialog::run(this, shortcut, false))
       return;
    prefs_.setComboTriggerShortcut(shortcut);
    ui_.editComboTriggerShortcut->setText(shortcut ? shortcut->toString() : "");
@@ -178,7 +178,8 @@ void PrefPaneCombos::onCheckEnablePickerWindow(bool checked)
 void PrefPaneCombos::onChangePickerWindowShortcut()
 {
    SpShortcut shortcut = prefs_.comboPickerShortcut();
-   if (ShortcutDialog::run(shortcut, this))
+   xmilib::GlobalShortcutManager::instance().reset(); // Disable the shortcut
+   if (ShortcutDialog::run(this, shortcut, true))
       prefs_.setComboPickerShortcut(shortcut);
    ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
    this->applyComboPickerShortcut();

@@ -177,7 +177,7 @@ void ComboEditor::insertPowershellVariable()
 //**********************************************************************************************************************
 void ComboEditor::insertShortcutVariable()
 {
-   SpShortcut const shortcut = ShortcutDialog::run(this);
+   SpShortcut const shortcut = ShortcutDialog::run(this, false);
    if (shortcut)
       this->insertTextInSnippetEdit(QString("#{shortcut:%1}").arg(shortcut->toString()));
 }

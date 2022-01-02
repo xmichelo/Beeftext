@@ -22,11 +22,10 @@ class ShortcutDialog: public QDialog
 {
    Q_OBJECT
 public: // static member functions
-   static SpShortcut run(QWidget* parent); ///< Run the shortcut dialog.
-   static bool run(SpShortcut& inOutShortcut, QWidget* parent); ///< Run the shortcut dialog with a default value
+   static SpShortcut run(QWidget* parent, bool forGlobalRegistering); ///< Run the shortcut dialog.
+   static bool run(QWidget* parent, SpShortcut& inOutShortcut, bool forGlobalRegistering); ///< Run the shortcut dialog with a default value
 
 public: // member functions
-   explicit ShortcutDialog(SpShortcut const& shortcut, QWidget* parent = nullptr); ///< Default constructor
 	ShortcutDialog(ShortcutDialog const&) = delete; ///< Disabled copy constructor
 	ShortcutDialog(ShortcutDialog&&) = delete; ///< Disabled move constructor
 	~ShortcutDialog() override; ///< Default destructor
@@ -34,15 +33,18 @@ public: // member functions
 	ShortcutDialog& operator=(ShortcutDialog&&) = delete; ///< Disabled move assignment operator
    SpShortcut shortcut() const; ///< Get the shortcut
 
+private: // member functions
+   explicit ShortcutDialog(QWidget* parent, SpShortcut const& shortcut, bool forGlobalRegistering); ///< Default constructor
+   void updateGui() const; ///< Update the state of the GUI.
+   bool validateShortcut(SpShortcut const& shortcut) const; ///< Validate the shortcut.
+
 private slots:
    void onShortcutPressed(SpShortcut const& shortcut); ///< Slot for the pressing of a shortcut.
-
-private: // member functions
-   void updateGui() const; ///< Update the state of the GUI
 
 private: // data members
    Ui::ShortcutDialog ui_; ///< The GUI for the dialog
    SpShortcut shortcut_; ///< The shortcut
+   bool forGlobalRegistering_ { false }; ///< Must the shortcut be acceptable for global registering.
    bool shortcutsWereEnabled_ { true }; ///< Were shortcuts enabled before the dialog was shown?
 };
 
