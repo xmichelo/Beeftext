@@ -204,6 +204,9 @@
       <QtUicDir>.\_build\GeneratedFiles</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
+    <QtTranslation>
+      <UpdateAdditionalOptions>$(QtLUpdateOptions) -noobsolete</UpdateAdditionalOptions>
+    </QtTranslation>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -510,13 +513,13 @@
     <None Include="Resources\StyleCommon.qss" />
     <None Include="Resources\StyleDark.qss" />
     <None Include="Resources\StyleLight.qss" />
-    <None Include="Translations\beeftext_de.ts" />
-    <None Include="Translations\beeftext_es.ts" />
-    <None Include="Translations\beeftext_it.ts" />
-    <None Include="Translations\beeftext_nl.ts" />
-    <None Include="Translations\beeftext_pl.ts" />
-    <None Include="Translations\beeftext_pt.ts" />
-    <None Include="Translations\beeftext_ru.ts" />
+    <None Include="Translations\beeftext_de_DE.ts" />
+    <None Include="Translations\beeftext_es_ES.ts" />
+    <None Include="Translations\beeftext_it_IT.ts" />
+    <None Include="Translations\beeftext_nl_NL.ts" />
+    <None Include="Translations\beeftext_pl_PL.ts" />
+    <None Include="Translations\beeftext_pt_PT.ts" />
+    <None Include="Translations\beeftext_ru_RU.ts" />
     <QtUic Include="Combo\ComboImportDialog.ui">
     </QtUic>
     <QtUic Include="Combo\ComboFrame.ui">
@@ -529,7 +532,7 @@
     </QtUic>
     <QtUic Include="Backup\BackupRestoreDialog.ui">
     </QtUic>
-    <None Include="Translations\beeftext_fr.ts" />
+    <None Include="Translations\beeftext_fr_FR.ts" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\BeeftextIcon.ico" />
@@ -540,7 +543,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <QtTranslation Include="Translations\beeftext_zh.ts" />
+    <QtTranslation Include="Translations\beeftext_zh_TW.ts" />
+    <QtTranslation Include="Translations\beeftext_zh_CN.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

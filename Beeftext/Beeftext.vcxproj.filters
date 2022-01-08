@@ -382,28 +382,28 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Translations\beeftext_fr.ts">
+    <None Include="Translations\beeftext_fr_FR.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Translations\beeftext_ru.ts">
+    <None Include="Translations\beeftext_ru_RU.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Translations\beeftext_nl.ts">
+    <None Include="Translations\beeftext_nl_NL.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Translations\beeftext_it.ts">
+    <None Include="Translations\beeftext_it_IT.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Translations\beeftext_de.ts">
+    <None Include="Translations\beeftext_de_DE.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Translations\beeftext_pl.ts">
+    <None Include="Translations\beeftext_pl_PL.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Translations\beeftext_pt.ts">
+    <None Include="Translations\beeftext_pt_PT.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Translations\beeftext_es.ts">
+    <None Include="Translations\beeftext_es_ES.ts">
       <Filter>Translation Files</Filter>
     </None>
     <None Include="Resources\StyleCommon.qss">
@@ -507,7 +507,10 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtTranslation Include="Translations\beeftext_zh.ts">
+    <QtTranslation Include="Translations\beeftext_zh_TW.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
+    <QtTranslation Include="Translations\beeftext_zh_CN.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>
   </ItemGroup>

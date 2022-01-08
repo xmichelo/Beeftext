@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it_IT">
+<TS version="2.1" language="es_ES">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../Dialogs/AboutDialog.ui" line="14"/>
         <source>About</source>
-        <translation>Informazioni</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Dialogs/AboutDialog.ui" line="112"/>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../Dialogs/AboutDialog.ui" line="103"/>
         <source>&amp;Close</source>
-        <translation>&amp;Chiudi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Dialogs/AboutDialog.cpp" line="37"/>
         <source>Portable Edition</source>
-        <translation>Versione Portabile</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -29,27 +29,27 @@
     <message>
         <location filename="../Backup/BackupRestoreDialog.ui" line="22"/>
         <source>Backup</source>
-        <translation>Copia di sicurezza</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Backup/BackupRestoreDialog.ui" line="66"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Ripristina</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Backup/BackupRestoreDialog.ui" line="73"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Backup/BackupRestoreDialog.cpp" line="61"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Backup/BackupRestoreDialog.cpp" line="61"/>
         <source>The backup could not be restored.</source>
-        <translation>La copia di sicurezza non può essere ripristinata.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -57,25 +57,17 @@
     <message>
         <location filename="../Combo/ComboDialog.ui" line="108"/>
         <source>&amp;New</source>
-        <translation>&amp;Nuovo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="128"/>
         <source>Matching</source>
-        <translation>Corrispondenza</translation>
-    </message>
-    <message>
-        <source>Strict</source>
-        <translation type="vanished">Esatta</translation>
-    </message>
-    <message>
-        <source>Loose</source>
-        <translation type="vanished">Vicina</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Gruppo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="79"/>
@@ -90,7 +82,7 @@
     <message>
         <location filename="../Combo/ComboDialog.ui" line="89"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Nome&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="67"/>
@@ -105,80 +97,76 @@
     <message>
         <location filename="../Combo/ComboDialog.ui" line="173"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Campi richiesti&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="193"/>
         <source>&amp;OK</source>
-        <translatorcomment>or you can use  “invia”  (send)
-</translatorcomment>
-        <translation>&amp;INVIA</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="203"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="117"/>
         <location filename="../Combo/ComboDialog.cpp" line="123"/>
         <location filename="../Combo/ComboDialog.cpp" line="130"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="117"/>
         <source>The snippet text is empty.</source>
-        <translation>L&apos;anteprima è vuota.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="123"/>
         <source>The keyword is invalid.</source>
-        <translation>Scorciatoia non valida.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="130"/>
         <source>The group is invalid.</source>
-        <translation>Gruppo non valido.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="140"/>
         <source>Duplicate keyword</source>
-        <translation>Scorciatoia duplicata</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="140"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
-        <translation>Questa scorciatoia è già in uso. 
-
-Puoi avere diverse combinazioni con la stessa scorciatoia, Beeftext ne sceglierà una a caso tra quelle corrispondenti.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>&amp;Continue</source>
-        <translation>&amp;Continua</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>C&amp;ancel</source>
-        <translation>C&amp;ancella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="152"/>
         <source>An existing combo is creating a conflict with this combo.</source>
-        <translation>Questa scorciatoia è in conflitto con una già esistente.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="153"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
-        <translation>%1 scorciatoie esistenti sono in conflitto con questa scorciatoia.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="155"/>
         <source>Conflict</source>
-        <translation>Conflitto</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="155"/>
@@ -188,17 +176,9 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
-
-Do you want to continue anymay?</source>
-        <translation type="vanished">%1 Se utilizzi la sostituzione automatica i conflitti renderanno impossibile eseguire alcune scorciatoie.
-
-Vuoi continuare comunque?</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.cpp" line="197"/>
         <source>New Group</source>
-        <translation>Nuovo Gruppo</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -315,13 +295,13 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="32"/>
         <source>File</source>
-        <translation>File</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="45"/>
         <location filename="../Combo/ComboImportDialog.ui" line="225"/>
         <source>&amp;Browse</source>
-        <translation>&amp;Sfoglia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="52"/>
@@ -331,91 +311,91 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="65"/>
         <source>Import options</source>
-        <translation>Importa opzioni</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="71"/>
         <source>Import into group</source>
-        <translation>Importa nel gruppo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="190"/>
         <location filename="../Combo/ComboImportDialog.ui" line="212"/>
         <source>Import</source>
-        <translation>Importa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="200"/>
         <location filename="../Combo/ComboImportDialog.ui" line="217"/>
         <source>&amp;Cancel</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="209"/>
         <source>&amp;Import</source>
-        <translation>&amp;Importa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="220"/>
         <source>Cancel</source>
-        <translation>&amp;Cancella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="228"/>
         <source>Browse</source>
-        <translation>Sfoglia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="136"/>
         <source>Skip %1 conflicting combos.</source>
-        <translation>Salta %1 scorciatoie in conflitto.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="137"/>
         <source>Skip 1 conflicting combo.</source>
-        <translation>Salta 1 scorciatoia in conflitto.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="138"/>
         <source>Overwrite %1 conflicting combos.</source>
-        <translation>Sovrascrivi %1 scorciatoie in conflitto.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="139"/>
         <source>Overwrite 1 conflicting combo.</source>
-        <translation>Sovrascrivi 1 scorciatoia in conflitto.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="142"/>
         <source>Overwrite %1 older conflicting combos.</source>
-        <translation>Sovrascrivi  %1.vecchie scorciatoie in conflitto.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="143"/>
         <source>Overwrite 1 older conflicting combo.</source>
-        <translation>Sovrascrivi 1 vecchia scorciatoia in conflitto.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="162"/>
         <source>%1 combos will be imported.</source>
-        <translation>%1 scorciatoie saranno importate.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="163"/>
         <source>1 combo will be imported.</source>
-        <translation>1 scorciatoia verrà importata.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="191"/>
         <source>Please select a valid group.</source>
-        <translation>Selezionare un gruppo valido.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="234"/>
         <location filename="../Combo/ComboImportDialog.cpp" line="239"/>
         <location filename="../Combo/ComboImportDialog.cpp" line="289"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
@@ -428,19 +408,14 @@ Vuoi continuare comunque?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 combo(s) could not be imported.</source>
-        <translation type="vanished">impossibile importare %1 scorciatoia(e).</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="247"/>
         <source>&amp;Error</source>
-        <translation>&amp;Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="267"/>
         <source>Select Combo File</source>
-        <translatorcomment>The passage is not clear, do you mean the file with the combo? In this case the translation is: &quot;Seleziona il file con la scorciatoia.&quot;</translatorcomment>
-        <translation>Seleziona il file scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="293"/>
@@ -459,19 +434,19 @@ Vuoi continuare comunque?</translation>
         <location filename="../Combo/ComboList.cpp" line="594"/>
         <location filename="../Combo/ComboList.cpp" line="728"/>
         <source>Name</source>
-        <translation>Nome</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboList.cpp" line="594"/>
         <location filename="../Combo/ComboList.cpp" line="729"/>
         <source>Keyword</source>
-        <translation>Scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboList.cpp" line="594"/>
         <location filename="../Combo/ComboList.cpp" line="730"/>
         <source>Snippet</source>
-        <translation>Anteprima</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboList.cpp" line="594"/>
@@ -481,17 +456,17 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Combo/ComboList.cpp" line="731"/>
         <source>Created</source>
-        <translation>Creazione</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboList.cpp" line="732"/>
         <source>Modified</source>
-        <translation>Modifica</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboList.cpp" line="733"/>
         <source>Last Used</source>
-        <translation>Ultimo utilizzo</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -499,7 +474,7 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Combo/ComboManager.cpp" line="74"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -507,235 +482,206 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="34"/>
         <source>Combos</source>
-        <translation>Scorciatoie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="47"/>
         <source>Search (Ctrl+F)</source>
-        <translation>Cerca (Ctrl+F)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="132"/>
         <source>&amp;New</source>
-        <translation>&amp;Nuova</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="135"/>
         <source>Add Combo</source>
-        <translation>Aggiungi scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="138"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="420"/>
         <source>New Combo</source>
-        <translation>Nuova scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="141"/>
         <source>Ctrl+N</source>
-        <translation>Ctrl+N</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="146"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Cance</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="149"/>
         <location filename="../Combo/ComboTableWidget.ui" line="152"/>
         <source>Delete Combo</source>
-        <translation>Cancella scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="155"/>
         <source>Del</source>
-        <translation>Canc</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="160"/>
         <source>&amp;Edit</source>
-        <translation>&amp;Edita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="163"/>
         <location filename="../Combo/ComboTableWidget.ui" line="166"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="513"/>
         <source>Edit Combo</source>
-        <translation>Edita Scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="169"/>
         <source>Return</source>
-        <translation>Invio</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="174"/>
         <source>&amp;Duplicate</source>
-        <translation>&amp;Duplica</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="177"/>
         <location filename="../Combo/ComboTableWidget.ui" line="180"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="456"/>
         <source>Duplicate Combo</source>
-        <translation>Scorciatoia duplicata</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="183"/>
         <source>Ctrl+U</source>
-        <translation>Ctrl+U</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="188"/>
         <source>Select &amp;All</source>
-        <translation>Seleziona &amp;tutto</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="191"/>
         <source>Ctrl+A</source>
-        <translation>Ctrl+A</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="196"/>
         <source>&amp;Deselect All</source>
-        <translation>&amp;Deseleziona tutto</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="199"/>
         <source>Ctrl+D</source>
-        <translation>Ctrl+D</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="204"/>
         <source>&amp;Enable</source>
-        <translation>&amp;Abilita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="207"/>
         <source>Enable Combo</source>
-        <translation>Abilita Scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="210"/>
         <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="215"/>
         <source>&amp;Export</source>
-        <translation>&amp;Esporta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="218"/>
         <source>Export Selected Combos</source>
-        <translatorcomment>This is the alternative extended translation: Esporta scorciatoia selezionata.</translatorcomment>
-        <translation>Esporta la selezione</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="221"/>
         <source>Ctrl+O</source>
-        <translation>Ctrl+O</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="226"/>
         <source>I&amp;mport</source>
-        <translation>I&amp;mporta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="229"/>
         <source>Import Combos</source>
-        <translation>Importa Scorciatoie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="232"/>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="237"/>
         <source>Export A&amp;ll</source>
-        <translation>Esporta t&amp;utto</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="240"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="633"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="632"/>
         <source>Export All Combos</source>
-        <translation>Esporta tutte le scorciatoie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="243"/>
         <source>Ctrl+Shift+O</source>
-        <translation>Ctrl+Shift+O</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="248"/>
         <source>&amp;Copy Snippet</source>
-        <translation>&amp;Copia anteprima</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="251"/>
         <source>Copy Snippet</source>
-        <translation>Copia anteprima</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="254"/>
         <source>Ctrl+C</source>
-        <translation>Ctrl+C</translation>
-    </message>
-    <message>
-        <source>&amp;Strict</source>
-        <translation type="vanished">&amp;Esatta</translation>
-    </message>
-    <message>
-        <source>Use strict matching.</source>
-        <translation type="vanished">Usa corrispondenza esatta.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="vanished">Ctrl+Shift+S</translation>
-    </message>
-    <message>
-        <source>&amp;Loose</source>
-        <translation type="vanished">&amp;Vicina</translation>
-    </message>
-    <message>
-        <source>Use loose matching.</source>
-        <translation type="vanished">Usa corrispondenza vicina.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+L</source>
-        <translation type="vanished">Ctrl+Shift+L</translation>
-    </message>
-    <message>
-        <source>Matching Mode</source>
-        <translation type="vanished">Tipo corrispondenza</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="109"/>
         <source>&amp;Combos</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="434"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="468"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="494"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="518"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="580"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="611"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="645"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="579"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="610"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="621"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="644"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="363"/>
         <source>Ena&amp;ble</source>
-        <translation>Abi&amp;lita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="364"/>
         <source>Enable combo</source>
-        <translation>Abilita scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="365"/>
@@ -745,12 +691,12 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="369"/>
         <source>Disa&amp;ble</source>
-        <translation>Disa&amp;bilita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="370"/>
         <source>Disable combo</source>
-        <translation>Disabilita scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="371"/>
@@ -760,50 +706,48 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="425"/>
         <source>The combo could not be added to the list.</source>
-        <translatorcomment>Alternative translation: Impossibile aggiungere la scorciatoia.</translatorcomment>
-        <translation>Impossibile aggiungere la scorciatoia all&apos;elenco.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="454"/>
         <source>The combo could not be duplicated: invalid index.</source>
-        <translation>La scorciatoia non può essere duplicata: indice non valido.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="459"/>
         <source>The duplicated combo could not added to the list.</source>
-        <translatorcomment>Alternative translation: Impossibile aggiungere la scorciatoia duplicata.</translatorcomment>
-        <translation>Impossibile aggiungere la scorciatoia duplicata all&apos;elenco.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="481"/>
         <source>Are you sure you want to delete the selected combos?</source>
-        <translation>Sei sicuro di volere cancellare le scorciatoie selezionate?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="482"/>
         <source>Are you sure you want to delete the selected combo?</source>
-        <translation>Sei sicuro di volere cancellare la scorciatoia selezionata?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="483"/>
         <source>Delete Combo?</source>
-        <translation>Cancellare la scorciatoia?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="595"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="594"/>
         <source>Export Combos</source>
-        <translation>Esporta le scorciatoie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="611"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="610"/>
         <source>Nothing to export.</source>
-        <translation>Nulla da esportare.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="645"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="621"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="644"/>
         <source>Could not save the combo list file.</source>
-        <translation>Impossibile salvare l&apos;elenco delle scorciatoie.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -811,28 +755,28 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Group/GroupDialog.ui" line="22"/>
         <source>Description</source>
-        <translation>Descrizione</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="42"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt; Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;●&lt;/span&gt;Nome&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="69"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Campi richiesti&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="89"/>
         <location filename="../Group/GroupDialog.ui" line="108"/>
         <source>&amp;OK</source>
-        <translation>&amp;INVIA</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="99"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancella</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -840,7 +784,7 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Group/GroupList.cpp" line="484"/>
         <source>&lt;All combos&gt;</source>
-        <translation>&lt;Tutte le scorciatoie&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -848,47 +792,47 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="37"/>
         <source>Groups</source>
-        <translation>Gruppi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="84"/>
         <source>&amp;New</source>
-        <translation>&amp;Nuovo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="87"/>
         <source>New</source>
-        <translation>Nuovo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="90"/>
         <source>Ctrl+Shift+N</source>
-        <translation>Ctrl+Shift+N</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="95"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Cancella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="98"/>
         <source>Delete</source>
-        <translation>Cancella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="101"/>
         <source>Shift+Del</source>
-        <translation>Shift+Del</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="106"/>
         <source>&amp;Edit</source>
-        <translation>&amp;Edita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="109"/>
         <source>Shift+Return</source>
-        <translation>Shift+Invia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.ui" line="123"/>
@@ -898,7 +842,7 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="118"/>
         <source>&amp;Groups</source>
-        <translation>&amp;Gruppi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="233"/>
@@ -908,7 +852,7 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="233"/>
         <source>&amp;Enable</source>
-        <translation type="unfinished">&amp;Abilita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="234"/>
@@ -933,13 +877,12 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="247"/>
         <source>New Group</source>
-        <translation>Nuovo gruppo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="252"/>
         <source>The group could not be added to the list.</source>
-        <translatorcomment>Alternative translation: &quot;Impossibile aggiungere il gruppo.&quot;</translatorcomment>
-        <translation>Impossibile aggiungere il gruppo all&apos;elenco.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="260"/>
@@ -947,22 +890,22 @@ Vuoi continuare comunque?</translation>
         <location filename="../Group/GroupListWidget.cpp" line="326"/>
         <location filename="../Group/GroupListWidget.cpp" line="353"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="287"/>
         <source>Edit Group</source>
-        <translation>Edita il  gruppo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="308"/>
         <source>Delete Group?</source>
-        <translation>Cancellare il gruppo?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="308"/>
         <source>Are you sure you want to delete the selected group and all its combos?</source>
-        <translation>Sei sicuro di volere cancellare il gruppo selezionato e tutte le sue scorciatoie?</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -970,103 +913,103 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../MainWindow.ui" line="44"/>
         <source>&amp;File</source>
-        <translation>&amp;File</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="54"/>
         <source>&amp;Help</source>
-        <translation>&amp;Aiuto</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="65"/>
         <source>&amp;Advanced</source>
-        <translation>&amp;Avanzate</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="82"/>
         <source>E&amp;xit Beeftext</source>
-        <translation>C&amp;hiudi Beeftext</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="88"/>
         <source>Exit Beeftext</source>
-        <translation>Chiudi Beeftext</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="91"/>
         <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="96"/>
         <source>&amp;Beeftext Wiki</source>
-        <translation>&amp;Beeftext Wiki</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="99"/>
         <source>Shift+F1</source>
-        <translation>Shift+F1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="104"/>
         <source>&amp;About Beeftext</source>
-        <translation>&amp;Informazioni su Beeftext</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="107"/>
         <source>F1</source>
-        <translation>F1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="123"/>
         <location filename="../MainWindow.cpp" line="167"/>
         <source>Preferences</source>
-        <translation>Preferenze</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="126"/>
         <source>Ctrl+,</source>
-        <translation>Ctrl+,</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="131"/>
         <source>Open &amp;Log File</source>
-        <translation>Apri il &amp;Log File</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="134"/>
         <source>Open the log file</source>
-        <translation>Apri il Log File</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="137"/>
         <source>Ctrl+Shift+L</source>
-        <translation>Ctrl+Shift+L</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="142"/>
         <source>&amp;Getting Started</source>
-        <translation>&amp;Iniziamo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="145"/>
         <source>Getting Started</source>
-        <translation>Iniziamo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="148"/>
         <source>Ctrl+F1</source>
-        <translation>Ctrl+F1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="153"/>
         <source>&amp;Release Notes</source>
-        <translation>&amp;Note di versione</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="156"/>
         <source>Ctrl+Shift+F1</source>
-        <translation>Ctrl+Shift+F1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="161"/>
@@ -1079,38 +1022,14 @@ Vuoi continuare comunque?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="196"/>
-        <location filename="../MainWindow.ui" line="201"/>
-        <source>Show Log &amp;Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="204"/>
-        <source>Show the log window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="207"/>
-        <source>Ctrl+Alt+Shift+L</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Backup</source>
-        <translation type="vanished">&amp;Copia di sicurezza</translation>
-    </message>
-    <message>
-        <source>Backup the combo list.</source>
-        <translation type="vanished">Copia lista scorciatoie.</translation>
-    </message>
-    <message>
         <location filename="../MainWindow.ui" line="169"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Ripristina</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="172"/>
         <source>Restore the combo list from a backup.</source>
-        <translation>Ripristina lista delle scorciatoie dalla copia di sicurezza.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="177"/>
@@ -1138,25 +1057,41 @@ Vuoi continuare comunque?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../MainWindow.ui" line="196"/>
+        <location filename="../MainWindow.ui" line="201"/>
+        <source>Show Log &amp;Window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="204"/>
+        <source>Show the log window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="207"/>
+        <source>Ctrl+Alt+Shift+L</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../MainWindow.cpp" line="132"/>
         <source> - PAUSED</source>
-        <translation> - PAUSA</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="135"/>
         <source> - Portable Edition</source>
-        <translation> - Versione Portatile</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="147"/>
         <location filename="../MainWindow.cpp" line="297"/>
         <source>Open Beeftext</source>
-        <translation>Apri Beeftext</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="152"/>
         <source>New Combo</source>
-        <translation type="unfinished">Nuova scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="156"/>
@@ -1166,12 +1101,12 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../MainWindow.cpp" line="162"/>
         <source>&amp;Pause Beeftext</source>
-        <translation>&amp;Sospendi Beeftext</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="162"/>
         <source>&amp;Resume Beeftext</source>
-        <translation>&amp;Riprendi Beeftext</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="172"/>
@@ -1181,41 +1116,41 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../MainWindow.cpp" line="175"/>
         <source>Open Log File</source>
-        <translation>Apri Log file</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="178"/>
         <source>Show Stylesheet Editor</source>
-        <translation>Mostra l&apos;editore dei fogli di stile</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="245"/>
         <location filename="../MainWindow.cpp" line="246"/>
         <location filename="../MainWindow.cpp" line="373"/>
         <source>Restore</source>
-        <translation>Ripristina</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="245"/>
         <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
-        <translation>Ripristinando la copia di sicurezza tutte le scorciatoie correnti saranno cancellate e sostituite da quelle della copia di sicurezza.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="246"/>
         <source>Cancel</source>
-        <translation>Cancella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="253"/>
         <location filename="../MainWindow.cpp" line="361"/>
         <location filename="../MainWindow.cpp" line="395"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="354"/>
         <source>Backup</source>
-        <translation>Copia di sicurezza</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="389"/>
@@ -1228,7 +1163,7 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Picker/PickerItemDelegate.cpp" line="104"/>
         <source>Emojis</source>
-        <translation type="unfinished">Emoji</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1244,39 +1179,39 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="34"/>
         <source>Delay between simulated keystrokes</source>
-        <translation type="unfinished">Ritardo tra sequenze di tasti</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="41"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="90"/>
         <source>Combo list folder</source>
-        <translation type="unfinished">Cartella elenco scorciatoie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="104"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="165"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="230"/>
         <source>&amp;Change</source>
-        <translation type="unfinished">&amp;Cambia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="111"/>
         <source>O&amp;pen</source>
-        <translation type="unfinished">A&amp;pri</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="118"/>
         <source>D&amp;efault</source>
-        <translation type="unfinished">P&amp;redefinita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="128"/>
         <source>Write debug events in a log file</source>
-        <translation type="unfinished">Scrivi eventi di debug in un log file</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="135"/>
@@ -1296,7 +1231,7 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="174"/>
         <source>Automatic backup</source>
-        <translation type="unfinished">Copia di sicurezza automatica</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
@@ -1304,28 +1239,24 @@ Vuoi continuare comunque?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="obsolete">Esegui automaticamente copia di sicurezza delle scorciatoie</translation>
-    </message>
-    <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
         <source>Restore a backup.</source>
-        <translation type="unfinished">Ripristina una copia di sicurezza.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="192"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished">&amp;Ripristina</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="216"/>
         <source>Use custom backup location</source>
-        <translation type="unfinished">Usa località utente per copia di sicurezza</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="244"/>
         <source>Sensitive Applications</source>
-        <translation type="unfinished">Applicazioni sensibili</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="94"/>
@@ -1336,7 +1267,7 @@ Vuoi continuare comunque?</translation>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
@@ -1389,32 +1320,32 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="34"/>
         <source>Language</source>
-        <translation type="unfinished">Lingua</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="53"/>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="60"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Traduzioni-fornite-dagli-utenti&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Altre lingue&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="87"/>
         <source>User-provided translations</source>
-        <translation type="unfinished">Traduzioni fornite dagli utenti</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="94"/>
         <source>Open Folder</source>
-        <translation type="unfinished">Apri cartella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="121"/>
         <source>Use custom theme</source>
-        <translation type="unfinished">Usa tema utente</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1422,52 +1353,52 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="34"/>
         <source>Automatically check for &amp;updates</source>
-        <translation type="unfinished">Cerca automaticamente gli  &amp;aggiornamenti</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="41"/>
         <source>&amp;Check Now</source>
-        <translation type="unfinished">&amp;Controlla adesso</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="57"/>
         <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="unfinished">&amp;Avvia automaticamente Beeftext all&apos;avvio</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="64"/>
         <source>&amp;Play sound on combo</source>
-        <translation type="unfinished">&amp;Attiva suono scorciatoia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="73"/>
         <source>Use custom sound</source>
-        <translation type="unfinished">Utilizza suono utente</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="114"/>
         <source>Cha&amp;nge</source>
-        <translation type="unfinished">C&amp;ambia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="121"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Riproduci</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="135"/>
         <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="unfinished">Usa scorciatoia per riprendere/sospendere Beeftex</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="185"/>
         <source>&amp;Change</source>
-        <translation type="unfinished">&amp;Cambia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="192"/>
         <source>&amp;Default</source>
-        <translation type="unfinished">&amp;Predefinite</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
@@ -1497,7 +1428,7 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
@@ -1510,12 +1441,12 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="32"/>
         <source>Combo triggering</source>
-        <translation type="unfinished">Attivazione scorciatoie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="40"/>
         <source>Automatic</source>
-        <translation type="unfinished">Automatica</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="47"/>
@@ -1530,19 +1461,19 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="78"/>
         <source>Manual, using the shortcut</source>
-        <translation type="unfinished">Manuale, attraverso combinazione</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="119"/>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="257"/>
         <source>C&amp;hange</source>
-        <translation type="unfinished">C&amp;ambia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="126"/>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="264"/>
         <source>De&amp;fault</source>
-        <translation type="unfinished">Pre&amp;definita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="151"/>
@@ -1572,7 +1503,17 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="222"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Combinazione</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
+        <source>The shortcut could not be registered. Combo picker will be disabled</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1580,22 +1521,22 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="34"/>
         <source>Enable emoji shortcodes</source>
-        <translation type="unfinished">Abilita scorciatoie emoji</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="41"/>
         <source>&amp;Excluded Applications</source>
-        <translation type="unfinished">Applicazioni &amp;escluse</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="65"/>
         <source>Left delimiter</source>
-        <translation type="unfinished">Delimitatore sinistro</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="121"/>
         <source>Right delimiter</source>
-        <translation type="unfinished">Delimitatore destro</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="132"/>
@@ -1608,210 +1549,37 @@ Vuoi continuare comunque?</translation>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="20"/>
         <source>Preferences</source>
-        <translation>Preferenze</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="30"/>
         <source>Behavior</source>
-        <translation>Comportamento</translation>
-    </message>
-    <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation type="vanished">Cerca automaticamente gli  &amp;aggiornamenti</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation type="vanished">&amp;Controlla adesso</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="vanished">&amp;Avvia automaticamente Beeftext all&apos;avvio</translation>
-    </message>
-    <message>
-        <source>&amp;Play sound on combo</source>
-        <translation type="vanished">&amp;Attiva suono scorciatoia</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation type="vanished">Utilizza suono utente</translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation type="vanished">C&amp;ambia</translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation type="vanished">&amp;Riproduci</translation>
-    </message>
-    <message>
-        <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="vanished">Usa scorciatoia per riprendere/sospendere Beeftex</translation>
-    </message>
-    <message>
-        <source>&amp;Change</source>
-        <translation type="vanished">&amp;Cambia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="247"/>
         <source>&amp;Default</source>
-        <translatorcomment>The translation provided is relative to the word &quot;setting&quot; (sing. fem.).
-To be precise I should know if the name it refers to is masculine or feminine, singular or plural: masculine: singular &quot;o&quot; plural &quot;i&quot; ; feminine: singular &quot;a&quot; singular &quot;e&quot;.</translatorcomment>
-        <translation>&amp;Predefinite</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="66"/>
         <source>Combos</source>
-        <translation>Scorciatoie</translation>
-    </message>
-    <message>
-        <source>Combo triggering</source>
-        <translation type="vanished">Attivazione scorciatoie</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="vanished">Automatica</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation type="vanished">Manuale, attraverso combinazione</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation type="vanished">C&amp;ambia</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translatorcomment>The translation provided is relative to the word &quot;setting&quot; (sing. fem.).
-To be precise I should know if the name it refers to is masculine or feminine, singular or plural: masculine: singular &quot;o&quot; plural &quot;i&quot; ; feminine: singular &quot;a&quot; singular &quot;e&quot;.</translatorcomment>
-        <translation type="vanished">Pre&amp;definita</translation>
-    </message>
-    <message>
-        <source>Combo picker</source>
-        <translation type="vanished">Selettore scorciatoia</translation>
-    </message>
-    <message>
-        <source>Enable combo picker</source>
-        <translation type="vanished">Abilita selettore scorciatoia</translation>
-    </message>
-    <message>
-        <source>Shortcut</source>
-        <translation type="vanished">Combinazione</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="102"/>
         <source>Emojis</source>
-        <translation>Emoji</translation>
-    </message>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="vanished">Abilita scorciatoie emoji</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="vanished">Applicazioni &amp;escluse</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="vanished">Delimitatore sinistro</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="vanished">Delimitatore destro</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="138"/>
         <source>Appearance</source>
-        <translation>Aspetto</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation type="vanished">Lingua</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Ricarica</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Traduzioni-fornite-dagli-utenti&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Altre lingue&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="vanished">Traduzioni fornite dagli utenti</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">Apri cartella</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Usa tema utente</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="174"/>
         <source>Advanced</source>
-        <translatorcomment>referred to the word &quot;settings&quot; (fem. sing.)</translatorcomment>
-        <translation>Avanzate</translation>
-    </message>
-    <message>
-        <source>Delay between simulated keystrokes</source>
-        <translation type="vanished">Ritardo tra sequenze di tasti</translation>
-    </message>
-    <message>
-        <source>ms</source>
-        <translation type="vanished">ms</translation>
-    </message>
-    <message>
-        <source>Combo list folder</source>
-        <translation type="vanished">Cartella elenco scorciatoie</translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation type="vanished">A&amp;pri</translation>
-    </message>
-    <message>
-        <source>D&amp;efault</source>
-        <translatorcomment>The translation provided is relative to the word &quot;setting&quot; (sing. fem.).
-To be precise I should know if the name it refers to is masculine or feminine, singular or plural: masculine: singular &quot;o&quot; plural &quot;i&quot; ; feminine: singular &quot;a&quot; singular &quot;e&quot;.</translatorcomment>
-        <translation type="vanished">P&amp;redefinita</translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation type="vanished">Scrivi eventi di debug in un log file</translation>
-    </message>
-    <message>
-        <source>Automatic backup</source>
-        <translation type="vanished">Copia di sicurezza automatica</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="vanished">Esegui automaticamente copia di sicurezza delle scorciatoie</translation>
-    </message>
-    <message>
-        <source>Restore a backup.</source>
-        <translation type="vanished">Ripristina una copia di sicurezza.</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation type="vanished">&amp;Ripristina</translation>
-    </message>
-    <message>
-        <source>Use custom backup location</source>
-        <translation type="vanished">Usa località utente per copia di sicurezza</translation>
-    </message>
-    <message>
-        <source>Sensitive Applications</source>
-        <translation type="vanished">Applicazioni sensibili</translation>
-    </message>
-    <message>
-        <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
-        <source>Reset the preferences to their default values.</source>
-        <translation>Ripristina impostazioni predefinite.</translation>
-    </message>
-    <message>
-        <location filename="../Preferences/PreferencesDialog.ui" line="221"/>
-        <source>&amp;Export</source>
-        <translation>&amp;Esporta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="218"/>
@@ -1824,9 +1592,19 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
+        <source>Reset the preferences to their default values.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/PreferencesDialog.ui" line="221"/>
+        <source>&amp;Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="234"/>
         <source>&amp;Import</source>
-        <translation>&amp;Importa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="257"/>
@@ -1836,18 +1614,18 @@ To be precise I should know if the name it refers to is masculine or feminine, s
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="260"/>
         <source>Reset &amp;Warnings</source>
-        <translation>Ripristino e &amp;Avvisi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="283"/>
         <source>&amp;Close</source>
-        <translation>&amp;Chiudi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
@@ -1891,62 +1669,16 @@ To be precise I should know if the name it refers to is masculine or feminine, s
     </message>
 </context>
 <context>
-    <name>PrefsPaneAppearance</name>
-    <message>
-        <source>Language</source>
-        <translation type="obsolete">Lingua</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Ricarica</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Traduzioni-fornite-dagli-utenti&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Altre lingue&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="obsolete">Traduzioni fornite dagli utenti</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="obsolete">Apri cartella</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="obsolete">Usa tema utente</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneEmojis</name>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="obsolete">Abilita scorciatoie emoji</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="obsolete">Applicazioni &amp;escluse</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="obsolete">Delimitatore sinistro</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="obsolete">Delimitatore destro</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
     <message>
         <location filename="../BeeftextGlobals.cpp" line="312"/>
         <source>JSON files (*.json);;All files (*.*)</source>
-        <translation>JSON file (*.json);;Tutti i file (*.*)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../BeeftextGlobals.cpp" line="321"/>
         <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
-        <translation>JSON &amp; CSV files (*.json *.csv);;JSON file (*.json);;CSV file (*.csv);;Tutti i file (*.*)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../BeeftextGlobals.cpp" line="331"/>
@@ -1956,7 +1688,7 @@ To be precise I should know if the name it refers to is masculine or feminine, s
     <message>
         <location filename="../BeeftextGlobals.cpp" line="303"/>
         <source>Beeftext backup files (*.%1);;All files (*.*)</source>
-        <translation>Beeftext copia di sicurezza (*.%1);;Tutti i file (*.*)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../BeeftextUtils.cpp" line="40"/>
@@ -1974,10 +1706,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../BeeftextUtils.cpp" line="381"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="278"/>
+        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../main.cpp" line="235"/>
+        <location filename="../main.cpp" line="244"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../BeeftextUtils.cpp" line="458"/>
@@ -1997,24 +1731,24 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="161"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list applications in which emoji substitution should be disabled.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utilizzare questa finestra di dialogo per elencare le applicazioni in cui la sostituzione delle emoji deve essere disabilitata.&lt;/p&gt;&lt;p&gt;Elencare le applicazioni utilizzando il nome del processo (es., notepad.exe). I caratteri jolly sono ammessi.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="164"/>
         <location filename="../SensitiveApplicationManager.cpp" line="102"/>
         <source>&amp;Reset</source>
-        <translation>&amp;Azzera</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="167"/>
         <location filename="../SensitiveApplicationManager.cpp" line="105"/>
         <source>Reset List</source>
-        <translation>Azzera elenco</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="168"/>
         <source>Are you sure you want to reset the list of excluded applications?</source>
-        <translation>Sei sicuro di volere azzerare l&apos;elenco delle applicazioni escluse?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
@@ -2022,43 +1756,47 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The emoji excluded applications file could not be saved.</source>
-        <translation type="vanished">Non è possibile salvare il file delle applicazioni escluse dalle emoji.</translation>
-    </message>
-    <message>
-        <location filename="../I18nManager.cpp" line="217"/>
+        <location filename="../I18nManager.cpp" line="218"/>
         <source> - Portable Edition</source>
-        <translation> - Versione portabile</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="278"/>
+        <location filename="../I18nManager.cpp" line="279"/>
         <source>Cannot load translation:
 %1</source>
-        <translation>Impossibile caricare la traduzione: 
-%1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="115"/>
+        <location filename="../main.cpp" line="117"/>
         <source>Getting Started</source>
-        <translation>Iniziamo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="115"/>
+        <location filename="../main.cpp" line="117"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
-        <translation>Nuovo di Beeftext?
-
-Vuoi leggere il breve tutorial &apos;Iniziamo&apos;?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="141"/>
+        <location filename="../main.cpp" line="144"/>
         <source>An unhandled exception occurred.</source>
-        <translation>Si è verificata un&apos;eccezione non gestita.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utilizzare questa finestra di dialogo per elencare le applicazioni sensibili che non funzionano correttamente con Beeftext perché non supportano il copia e incolla standard usando Ctrl + V.&lt;/p&gt;&lt;p&gt;Elencare le applicazioni utilizzando il nome del processo (es., notepad.exe). I caratteri jolly sono ammessi.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <location filename="../main.cpp" line="235"/>
+        <source>Starting with Beeftext v13.0, the combo picker shortcut cannot contain the Windows key.The shortcut is now %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="244"/>
+        <source>The shortcut for the combo picker window could not be registered. The combo picker has been turned off.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="184"/>
+        <source>Select custom sound file</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SensitiveApplicationManager.cpp" line="97"/>
@@ -2068,41 +1806,23 @@ Vuoi leggere il breve tutorial &apos;Iniziamo&apos;?</translation>
     <message>
         <location filename="../SensitiveApplicationManager.cpp" line="106"/>
         <source>Are you sure you want to reset the list of sensitive applications?</source>
-        <translation>Sei sicuro di volere azzerare l&apos;elenco delle applicazioni sensibili?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
         <source>The sensitive application file could not be saved.</source>
-        <translatorcomment>In the original &quot;application&quot; and &quot;sensitive&quot; are singular.
-it&apos;s correct? I translated in the plural.</translatorcomment>
-        <translation>Il file delle applicazioni sensibili non può essere salvato.</translation>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation type="vanished">Ctrl</translation>
-    </message>
-    <message>
-        <source>Alt</source>
-        <translation type="vanished">Alt</translation>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation type="vanished">Shift</translation>
-    </message>
-    <message>
-        <source>Win</source>
-        <translation type="vanished">Win</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="33"/>
         <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
-        <translation>La scorciatoia è molto breve. Sei sicuro di volere usare &apos;%1&apos;?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="38"/>
         <location filename="../Combo/ComboDialog.cpp" line="57"/>
         <source>Do not show this warning again.</source>
-        <translation>Non mostrare più questo avviso.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="53"/>
@@ -2113,21 +1833,16 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
         <location filename="../Combo/ComboTableWidget.cpp" line="29"/>
         <source>Move To</source>
         <comment>Move entry in the Combo context menu</comment>
-        <translation>Sposta in</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupList.cpp" line="19"/>
         <source>Default Group</source>
-        <translation>Gruppo predefinito</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Group/GroupList.cpp" line="20"/>
         <source>The default group.</source>
-        <translation>Il gruppo predefinito.</translation>
-    </message>
-    <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="184"/>
-        <source>Select custom sound file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2149,12 +1864,12 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
     <message>
         <location filename="../Combo/MatchingMode.cpp" line="40"/>
         <source>Strict</source>
-        <translation type="unfinished">Esatta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/MatchingMode.cpp" line="41"/>
         <source>Loose</source>
-        <translation type="unfinished">Vicina</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Combo/CaseSensitivity.cpp" line="46"/>
@@ -2181,10 +1896,6 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
 <context>
     <name>ShortcutDialog</name>
     <message>
-        <source>Type the new shortcut</source>
-        <translation type="vanished">Inserire la nuova scorciatoia</translation>
-    </message>
-    <message>
         <location filename="../Dialogs/ShortcutDialog.ui" line="25"/>
         <source>Type the new shortcut.</source>
         <translation type="unfinished"></translation>
@@ -2193,18 +1904,22 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
         <location filename="../Dialogs/ShortcutDialog.ui" line="35"/>
         <source>The shortcut must contain at least one of the following modifier keys:
 Control, Alt or Windows.</source>
-        <translation>La scorciatoia deve contenere almeno uno dei seguenti tasti modificatori: 
-Control, Alt o Windows.</translation>
-    </message>
-    <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="148"/>
-        <source>&amp;OK</source>
-        <translation>&amp;INVIA</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Dialogs/ShortcutDialog.ui" line="158"/>
+        <source>&amp;OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="168"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancella</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Dialogs/ShortcutDialog.cpp" line="119"/>
+        <source>This shortcut cannot use the Windows key.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2212,17 +1927,17 @@ Control, Alt o Windows.</translation>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="14"/>
         <source>Software update</source>
-        <translation>Aggiornamento software</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="26"/>
         <source>%1 v%2.%3 is available!</source>
-        <translation>%1 v%2.%3 è disponibile!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="36"/>
         <source>Release Notes:</source>
-        <translation>Note di rilascio:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="88"/>
@@ -2236,41 +1951,37 @@ Control, Alt o Windows.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Skip</source>
-        <translation type="vanished">&amp;Salta</translation>
-    </message>
-    <message>
         <location filename="../Update/UpdateDialog.ui" line="97"/>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
         <source>&amp;Install</source>
-        <translation>&amp;Installa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
         <source>&amp;Download Page</source>
-        <translation>&amp;Pagina di download</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="75"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancella</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="133"/>
         <location filename="../Update/UpdateDialog.cpp" line="166"/>
         <source>Error</source>
-        <translation>Errore</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="133"/>
         <source>The update cannot be installed: the checksum does not match.</source>
-        <translation>L&apos;aggiornamento non può essere installato: il checksum non corrisponde.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="166"/>
         <source>An error occurred while downloading the software update:
 %1</source>
-        <translation>Si è verificato un errore durante lo scarico dell&apos;aggiornamento: %1</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -191,10 +191,10 @@ setOutPath $INSTDIR\tls
 file "$%QT6DIR%\plugins\tls\qcertonlybackend.dll"
 file "$%QT6DIR%\plugins\tls\qopensslbackend.dll"
 file "$%QT6DIR%\plugins\tls\qschannelbackend.dll"
-setOutPath $INSTDIR\translations\fr
-file "${EXE_SRC_DIR}\translations\fr\beeftext_fr.qm"
-file "${EXE_SRC_DIR}\translations\fr\qtbase_fr.qm"
-file "${EXE_SRC_DIR}\translations\fr\xmilib_fr.qm"
+setOutPath $INSTDIR\translations\fr_FR
+file "${EXE_SRC_DIR}\translations\fr_FR\beeftext_fr_FR.qm"
+file "${EXE_SRC_DIR}\translations\fr_FR\qtbase_fr_FR.qm"
+file "${EXE_SRC_DIR}\translations\fr_FR\xmilib_fr_FR.qm"
 setOutPath $INSTDIR\emojis
 file "${EXE_SRC_DIR}..\..\..\..\Submodules\emojilib\emojis.json"
 

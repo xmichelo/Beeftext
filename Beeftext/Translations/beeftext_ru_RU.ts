@@ -521,10 +521,10 @@ Do you want to continue anyway?</source>
         <location filename="../Combo/ComboTableWidget.cpp" line="468"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="494"/>
         <location filename="../Combo/ComboTableWidget.cpp" line="518"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="580"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="611"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="645"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="579"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="610"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="621"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="644"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
@@ -671,7 +671,7 @@ Do you want to continue anyway?</source>
         <translation>Шаблон не может быть добавлен в список.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="595"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="594"/>
         <source>Export Combos</source>
         <translation>Экспорт шаблонов</translation>
     </message>
@@ -750,13 +750,13 @@ Do you want to continue anyway?</source>
         <translation>Отключить шаблон</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="645"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="621"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="644"/>
         <source>Could not save the combo list file.</source>
         <translation>Не удалось сохранить файл списка шаблонов.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="611"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="610"/>
         <source>Nothing to export.</source>
         <translation>Нечего экспортировать.</translation>
     </message>
@@ -775,7 +775,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="240"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="633"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="632"/>
         <source>Export All Combos</source>
         <translation>Экспортировать все шаблоны</translation>
     </message>
@@ -1567,6 +1567,16 @@ Do you want to continue anyway?</source>
         <source>Shortcut</source>
         <translation type="unfinished">Ярлык</translation>
     </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
+        <source>Error</source>
+        <translation type="unfinished">Ошибка</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
+        <source>The shortcut could not be registered. Combo picker will be disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PrefPaneEmojis</name>
@@ -1939,7 +1949,9 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../BeeftextUtils.cpp" line="381"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="278"/>
+        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../main.cpp" line="235"/>
+        <location filename="../main.cpp" line="244"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
         <source>Error</source>
         <translation>Ошибка</translation>
@@ -1949,9 +1961,19 @@ Do you want to continue anyway?</source>
         <translation type="vanished">Shift</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="115"/>
+        <location filename="../main.cpp" line="117"/>
         <source>Getting Started</source>
         <translation>Начало работы</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="235"/>
+        <source>Starting with Beeftext v13.0, the combo picker shortcut cannot contain the Windows key.The shortcut is now %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="244"/>
+        <source>The shortcut for the combo picker window could not be registered. The combo picker has been turned off.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../BeeftextGlobals.cpp" line="303"/>
@@ -1959,7 +1981,7 @@ Do you want to continue anyway?</source>
         <translation>Файлы резервных копий Beeftext (*.%1);;Все файлы (*.*)</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="141"/>
+        <location filename="../main.cpp" line="144"/>
         <source>An unhandled exception occurred.</source>
         <translation>Возникло необработанное исключение.</translation>
     </message>
@@ -1970,12 +1992,12 @@ Do you want to continue anyway?</source>
         <translation>&amp;Сброс</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="217"/>
+        <location filename="../I18nManager.cpp" line="218"/>
         <source> - Portable Edition</source>
         <translation> - Портативная версия</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="115"/>
+        <location filename="../main.cpp" line="117"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -2003,7 +2025,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог для вывода списка чувствительных приложений, некорректно работающих с Beeftext, так как они не поддерживают стандартные копирование-вставку через Ctrl+V.&lt;/p&gt;&lt;p&gt;Список приложений использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="278"/>
+        <location filename="../I18nManager.cpp" line="279"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Невозможно загрузить перевод: %1</translation>
@@ -2164,7 +2186,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ShortcutDialog</name>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="148"/>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="158"/>
         <source>&amp;OK</source>
         <translation>&amp;ОК</translation>
     </message>
@@ -2180,13 +2202,18 @@ Control, Alt or Windows.</source>
 Control, Alt или Windows.</translation>
     </message>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.ui" line="158"/>
+        <location filename="../Dialogs/ShortcutDialog.ui" line="168"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Отмена</translation>
     </message>
     <message>
         <location filename="../Dialogs/ShortcutDialog.ui" line="25"/>
         <source>Type the new shortcut.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Dialogs/ShortcutDialog.cpp" line="119"/>
+        <source>This shortcut cannot use the Windows key.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
