@@ -65,14 +65,6 @@
         <translation>Corrispondenza</translation>
     </message>
     <message>
-        <source>Strict</source>
-        <translation type="vanished">Esatta</translation>
-    </message>
-    <message>
-        <source>Loose</source>
-        <translation type="vanished">Vicina</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Gruppo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -186,14 +178,6 @@ Puoi avere diverse combinazioni con la stessa scorciatoia, Beeftext ne sceglier�
 
 Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
-
-Do you want to continue anymay?</source>
-        <translation type="vanished">%1 Se utilizzi la sostituzione automatica i conflitti renderanno impossibile eseguire alcune scorciatoie.
-
-Vuoi continuare comunque?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="197"/>
@@ -426,10 +410,6 @@ Vuoi continuare comunque?</translation>
         <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
         <source>A combo could not be imported.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 combo(s) could not be imported.</source>
-        <translation type="vanished">impossibile importare %1 scorciatoia(e).</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="247"/>
@@ -681,34 +661,6 @@ Vuoi continuare comunque?</translation>
         <location filename="../Combo/ComboTableWidget.ui" line="254"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
-    </message>
-    <message>
-        <source>&amp;Strict</source>
-        <translation type="vanished">&amp;Esatta</translation>
-    </message>
-    <message>
-        <source>Use strict matching.</source>
-        <translation type="vanished">Usa corrispondenza esatta.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="vanished">Ctrl+Shift+S</translation>
-    </message>
-    <message>
-        <source>&amp;Loose</source>
-        <translation type="vanished">&amp;Vicina</translation>
-    </message>
-    <message>
-        <source>Use loose matching.</source>
-        <translation type="vanished">Usa corrispondenza vicina.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+L</source>
-        <translation type="vanished">Ctrl+Shift+L</translation>
-    </message>
-    <message>
-        <source>Matching Mode</source>
-        <translation type="vanished">Tipo corrispondenza</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="109"/>
@@ -1095,14 +1047,6 @@ Vuoi continuare comunque?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Backup</source>
-        <translation type="vanished">&amp;Copia di sicurezza</translation>
-    </message>
-    <message>
-        <source>Backup the combo list.</source>
-        <translation type="vanished">Copia lista scorciatoie.</translation>
-    </message>
-    <message>
         <location filename="../MainWindow.ui" line="169"/>
         <source>&amp;Restore</source>
         <translation>&amp;Ripristina</translation>
@@ -1302,10 +1246,6 @@ Vuoi continuare comunque?</translation>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
         <source>Automatically back up combo list files</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="obsolete">Esegui automaticamente copia di sicurezza delle scorciatoie</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
@@ -1626,42 +1566,6 @@ Vuoi continuare comunque?</translation>
         <translation>Comportamento</translation>
     </message>
     <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation type="vanished">Cerca automaticamente gli  &amp;aggiornamenti</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation type="vanished">&amp;Controlla adesso</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="vanished">&amp;Avvia automaticamente Beeftext all&apos;avvio</translation>
-    </message>
-    <message>
-        <source>&amp;Play sound on combo</source>
-        <translation type="vanished">&amp;Attiva suono scorciatoia</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation type="vanished">Utilizza suono utente</translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation type="vanished">C&amp;ambia</translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation type="vanished">&amp;Riproduci</translation>
-    </message>
-    <message>
-        <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="vanished">Usa scorciatoia per riprendere/sospendere Beeftex</translation>
-    </message>
-    <message>
-        <source>&amp;Change</source>
-        <translation type="vanished">&amp;Cambia</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="247"/>
         <source>&amp;Default</source>
         <translatorcomment>The translation provided is relative to the word &quot;setting&quot; (sing. fem.).
@@ -1674,59 +1578,9 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <translation>Scorciatoie</translation>
     </message>
     <message>
-        <source>Combo triggering</source>
-        <translation type="vanished">Attivazione scorciatoie</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="vanished">Automatica</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation type="vanished">Manuale, attraverso combinazione</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation type="vanished">C&amp;ambia</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translatorcomment>The translation provided is relative to the word &quot;setting&quot; (sing. fem.).
-To be precise I should know if the name it refers to is masculine or feminine, singular or plural: masculine: singular &quot;o&quot; plural &quot;i&quot; ; feminine: singular &quot;a&quot; singular &quot;e&quot;.</translatorcomment>
-        <translation type="vanished">Pre&amp;definita</translation>
-    </message>
-    <message>
-        <source>Combo picker</source>
-        <translation type="vanished">Selettore scorciatoia</translation>
-    </message>
-    <message>
-        <source>Enable combo picker</source>
-        <translation type="vanished">Abilita selettore scorciatoia</translation>
-    </message>
-    <message>
-        <source>Shortcut</source>
-        <translation type="vanished">Combinazione</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="102"/>
         <source>Emojis</source>
         <translation>Emoji</translation>
-    </message>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="vanished">Abilita scorciatoie emoji</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="vanished">Applicazioni &amp;escluse</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="vanished">Delimitatore sinistro</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="vanished">Delimitatore destro</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="138"/>
@@ -1734,84 +1588,10 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <translation>Aspetto</translation>
     </message>
     <message>
-        <source>Language</source>
-        <translation type="vanished">Lingua</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Ricarica</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Traduzioni-fornite-dagli-utenti&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Altre lingue&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="vanished">Traduzioni fornite dagli utenti</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">Apri cartella</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Usa tema utente</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="174"/>
         <source>Advanced</source>
         <translatorcomment>referred to the word &quot;settings&quot; (fem. sing.)</translatorcomment>
         <translation>Avanzate</translation>
-    </message>
-    <message>
-        <source>Delay between simulated keystrokes</source>
-        <translation type="vanished">Ritardo tra sequenze di tasti</translation>
-    </message>
-    <message>
-        <source>ms</source>
-        <translation type="vanished">ms</translation>
-    </message>
-    <message>
-        <source>Combo list folder</source>
-        <translation type="vanished">Cartella elenco scorciatoie</translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation type="vanished">A&amp;pri</translation>
-    </message>
-    <message>
-        <source>D&amp;efault</source>
-        <translatorcomment>The translation provided is relative to the word &quot;setting&quot; (sing. fem.).
-To be precise I should know if the name it refers to is masculine or feminine, singular or plural: masculine: singular &quot;o&quot; plural &quot;i&quot; ; feminine: singular &quot;a&quot; singular &quot;e&quot;.</translatorcomment>
-        <translation type="vanished">P&amp;redefinita</translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation type="vanished">Scrivi eventi di debug in un log file</translation>
-    </message>
-    <message>
-        <source>Automatic backup</source>
-        <translation type="vanished">Copia di sicurezza automatica</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="vanished">Esegui automaticamente copia di sicurezza delle scorciatoie</translation>
-    </message>
-    <message>
-        <source>Restore a backup.</source>
-        <translation type="vanished">Ripristina una copia di sicurezza.</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation type="vanished">&amp;Ripristina</translation>
-    </message>
-    <message>
-        <source>Use custom backup location</source>
-        <translation type="vanished">Usa località utente per copia di sicurezza</translation>
-    </message>
-    <message>
-        <source>Sensitive Applications</source>
-        <translation type="vanished">Applicazioni sensibili</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
@@ -1901,52 +1681,6 @@ To be precise I should know if the name it refers to is masculine or feminine, s
     </message>
 </context>
 <context>
-    <name>PrefsPaneAppearance</name>
-    <message>
-        <source>Language</source>
-        <translation type="obsolete">Lingua</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Ricarica</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Traduzioni-fornite-dagli-utenti&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Altre lingue&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="obsolete">Traduzioni fornite dagli utenti</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="obsolete">Apri cartella</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="obsolete">Usa tema utente</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneEmojis</name>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="obsolete">Abilita scorciatoie emoji</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="obsolete">Applicazioni &amp;escluse</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="obsolete">Delimitatore sinistro</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="obsolete">Delimitatore destro</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
     <message>
         <location filename="../BeeftextGlobals.cpp" line="312"/>
@@ -1984,7 +1718,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../BeeftextUtils.cpp" line="381"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
@@ -2034,16 +1768,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The emoji excluded applications file could not be saved.</source>
-        <translation type="vanished">Non è possibile salvare il file delle applicazioni escluse dalle emoji.</translation>
-    </message>
-    <message>
-        <location filename="../I18nManager.cpp" line="218"/>
+        <location filename="../I18nManager.cpp" line="265"/>
         <source> - Portable Edition</source>
         <translation> - Versione portabile</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Impossibile caricare la traduzione: 
@@ -2079,10 +1809,6 @@ Vuoi leggere il breve tutorial &apos;Iniziamo&apos;?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utilizzare questa finestra di dialogo per elencare le applicazioni sensibili che non funzionano correttamente con Beeftext perché non supportano il copia e incolla standard usando Ctrl + V.&lt;/p&gt;&lt;p&gt;Elencare le applicazioni utilizzando il nome del processo (es., notepad.exe). I caratteri jolly sono ammessi.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../SensitiveApplicationManager.cpp" line="97"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -2098,22 +1824,6 @@ Vuoi leggere il breve tutorial &apos;Iniziamo&apos;?</translation>
         <translatorcomment>In the original &quot;application&quot; and &quot;sensitive&quot; are singular.
 it&apos;s correct? I translated in the plural.</translatorcomment>
         <translation>Il file delle applicazioni sensibili non può essere salvato.</translation>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation type="vanished">Ctrl</translation>
-    </message>
-    <message>
-        <source>Alt</source>
-        <translation type="vanished">Alt</translation>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation type="vanished">Shift</translation>
-    </message>
-    <message>
-        <source>Win</source>
-        <translation type="vanished">Win</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="33"/>
@@ -2203,10 +1913,6 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
 <context>
     <name>ShortcutDialog</name>
     <message>
-        <source>Type the new shortcut</source>
-        <translation type="vanished">Inserire la nuova scorciatoia</translation>
-    </message>
-    <message>
         <location filename="../Dialogs/ShortcutDialog.ui" line="25"/>
         <source>Type the new shortcut.</source>
         <translation type="unfinished"></translation>
@@ -2261,10 +1967,6 @@ Control, Alt o Windows.</translation>
         <location filename="../Update/UpdateDialog.ui" line="114"/>
         <source>Not now</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Skip</source>
-        <translation type="vanished">&amp;Salta</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="97"/>

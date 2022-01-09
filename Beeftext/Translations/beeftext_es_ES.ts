@@ -1706,7 +1706,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../BeeftextUtils.cpp" line="381"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
@@ -1756,12 +1756,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="218"/>
+        <location filename="../I18nManager.cpp" line="265"/>
         <source> - Portable Edition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <source>Cannot load translation:
 %1</source>
         <translation type="unfinished"></translation>

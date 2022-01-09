@@ -72,10 +72,6 @@
         <translation>Ошибка</translation>
     </message>
     <message>
-        <source>Loose</source>
-        <translation type="vanished">Свободно</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.ui" line="173"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Обязательные поля&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -94,10 +90,6 @@
         <location filename="../Combo/ComboDialog.cpp" line="117"/>
         <source>The snippet text is empty.</source>
         <translation>Текст фразы пуст.</translation>
-    </message>
-    <message>
-        <source>Strict</source>
-        <translation type="vanished">Строго</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="142"/>
@@ -157,14 +149,6 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
         <location filename="../Combo/ComboDialog.cpp" line="140"/>
         <source>Duplicate keyword</source>
         <translation>Дублировать ярлык</translation>
-    </message>
-    <message>
-        <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
-
-Do you want to continue anymay?</source>
-        <translation type="vanished">%1 Если вы используете автозамещение, конфликты делают невозможным запуск некоторых шаблонов.
-
-Вы хотите продолжить?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="152"/>
@@ -421,10 +405,6 @@ Do you want to continue anyway?</source>
         <translation>Перезаписать %1 старых конфликтующих шаблонов.</translation>
     </message>
     <message>
-        <source>%1 combo(s) could not be imported.</source>
-        <translation type="vanished">%1 шаблонов не удалось импортировать.</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboImportDialog.ui" line="52"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Import-and-export#importing-combos&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;Supported file formats&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -541,10 +521,6 @@ Do you want to continue anyway?</source>
         <translation>&amp;Отключить</translation>
     </message>
     <message>
-        <source>Use loose matching.</source>
-        <translation type="vanished">Использовать свободное соответствие.</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.ui" line="218"/>
         <source>Export Selected Combos</source>
         <translation>Экспорт выбранных шаблонов</translation>
@@ -563,10 +539,6 @@ Do you want to continue anyway?</source>
         <location filename="../Combo/ComboTableWidget.ui" line="47"/>
         <source>Search (Ctrl+F)</source>
         <translation>Поиск (Ctrl+F)</translation>
-    </message>
-    <message>
-        <source>&amp;Loose</source>
-        <translation type="vanished">&amp;Свободно</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="207"/>
@@ -657,10 +629,6 @@ Do you want to continue anyway?</source>
         <translation>Изменить шаблон</translation>
     </message>
     <message>
-        <source>Matching Mode</source>
-        <translation type="vanished">Режим соответствия</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.ui" line="174"/>
         <source>&amp;Duplicate</source>
         <translation>&amp;Дублировать</translation>
@@ -727,10 +695,6 @@ Do you want to continue anyway?</source>
         <translation>Продублированный шаблон не может быть добавлен в список.</translation>
     </message>
     <message>
-        <source>&amp;Strict</source>
-        <translation type="vanished">&amp;Строго</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.ui" line="226"/>
         <source>I&amp;mport</source>
         <translation>&amp;Импорт</translation>
@@ -739,10 +703,6 @@ Do you want to continue anyway?</source>
         <location filename="../Combo/ComboTableWidget.cpp" line="363"/>
         <source>Ena&amp;ble</source>
         <translation>&amp;Включить</translation>
-    </message>
-    <message>
-        <source>Use strict matching.</source>
-        <translation type="vanished">Использовать строгое соответствие.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="370"/>
@@ -761,17 +721,9 @@ Do you want to continue anyway?</source>
         <translation>Нечего экспортировать.</translation>
     </message>
     <message>
-        <source>Ctrl+Shift+L</source>
-        <translation type="vanished">Ctrl+Shift+L</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.ui" line="243"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="vanished">Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.ui" line="240"/>
@@ -1068,10 +1020,6 @@ Do you want to continue anyway?</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>Backup the combo list.</source>
-        <translation type="vanished">Создать резервную копию списка шаблонов.</translation>
-    </message>
-    <message>
         <location filename="../MainWindow.cpp" line="132"/>
         <source> - PAUSED</source>
         <translation> - ПРИОСТАНОВЛЕНО</translation>
@@ -1107,10 +1055,6 @@ Do you want to continue anyway?</source>
         <location filename="../MainWindow.cpp" line="373"/>
         <source>Restore</source>
         <translation>Восстановить</translation>
-    </message>
-    <message>
-        <source>&amp;Backup</source>
-        <translation type="vanished">&amp;Резервная копия</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="148"/>
@@ -1290,10 +1234,6 @@ Do you want to continue anyway?</source>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="174"/>
         <source>Automatic backup</source>
         <translation type="unfinished">Автоматическое резервное копирование</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="obsolete">Автоматическое резервное копирование файлов со списком шаблонов</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
@@ -1609,22 +1549,6 @@ Do you want to continue anyway?</source>
 <context>
     <name>PreferencesDialog</name>
     <message>
-        <source>ms</source>
-        <translation type="vanished">мс</translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation type="vanished">&amp;Воспроизвести</translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation type="vanished">&amp;Открыть</translation>
-    </message>
-    <message>
-        <source>Automatic backup</source>
-        <translation type="vanished">Автоматическое резервное копирование</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
         <source>Reset the preferences to their default values.</source>
         <translation>Сброс настроек к значениям по умолчанию.</translation>
@@ -1635,29 +1559,9 @@ Do you want to continue anyway?</source>
         <translation>&amp;Сбросить предупреждения</translation>
     </message>
     <message>
-        <source>&amp;Play sound on combo</source>
-        <translation type="vanished">&amp;Воспроизводить звук для шаблона</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="283"/>
         <source>&amp;Close</source>
         <translation>&amp;Закрыть</translation>
-    </message>
-    <message>
-        <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="vanished">Использовать ярлык для включения/выключения Beeftext</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="vanished">&amp;Автозапуск Beeftext при входе в систему</translation>
-    </message>
-    <message>
-        <source>Combo picker</source>
-        <translation type="vanished">Средство выбора шаблонов</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">Открыть папку</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="66"/>
@@ -1668,86 +1572,6 @@ Do you want to continue anyway?</source>
         <location filename="../Preferences/PreferencesDialog.ui" line="102"/>
         <source>Emojis</source>
         <translation>Эмодзи</translation>
-    </message>
-    <message>
-        <source>Combo triggering</source>
-        <translation type="vanished">Запуск шаблонов</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation type="vanished">&amp;Изменить</translation>
-    </message>
-    <message>
-        <source>Sensitive Applications</source>
-        <translation type="vanished">Затрагиваемые приложения</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="vanished">&amp;Исключенные приложения</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation type="vanished">Вручную (горячие клавиши)</translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation type="vanished">Записывать события отладки в файл журнала</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translation type="vanished">&amp;По умолчанию</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="vanished">Автоматическое резервное копирование файлов со списком шаблонов</translation>
-    </message>
-    <message>
-        <source>Combo list folder</source>
-        <translation type="vanished">Папка со списком шаблонов</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation type="vanished">Язык</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Обновить</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation type="vanished">&amp;Восстановить</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="vanished">Левый разделитель</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation type="vanished">Использовать пользовательский звук</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Использовать пользовательскую тему</translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation type="vanished">&amp;Изменить</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="vanished">Пользовательские переводы</translation>
-    </message>
-    <message>
-        <source>Delay between simulated keystrokes</source>
-        <translation type="vanished">Задержка между симуляцией нажатий</translation>
-    </message>
-    <message>
-        <source>&amp;Change</source>
-        <translation type="vanished">&amp;Изменить</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="247"/>
@@ -1765,25 +1589,9 @@ Do you want to continue anyway?</source>
         <translation>&amp;Импорт</translation>
     </message>
     <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="vanished">Включить шорткоды эмодзи</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="vanished">Автоматически</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="138"/>
         <source>Appearance</source>
         <translation>Вид</translation>
-    </message>
-    <message>
-        <source>Use custom backup location</source>
-        <translation type="vanished">Использовать пользовательское расположение резервной копии</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation type="vanished">&amp;Проверить сейчас</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="174"/>
@@ -1796,33 +1604,9 @@ Do you want to continue anyway?</source>
         <translation>Поведение</translation>
     </message>
     <message>
-        <source>D&amp;efault</source>
-        <translation type="vanished">&amp;По умолчанию</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="20"/>
         <source>Preferences</source>
         <translation>Настройки</translation>
-    </message>
-    <message>
-        <source>Enable combo picker</source>
-        <translation type="vanished">Включить средство выбора шаблонов</translation>
-    </message>
-    <message>
-        <source>Restore a backup.</source>
-        <translation type="vanished">Восстановление резервной копии.</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="vanished">Правый разделитель</translation>
-    </message>
-    <message>
-        <source>Shortcut</source>
-        <translation type="vanished">Ярлык</translation>
-    </message>
-    <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation type="vanished">&amp;Автоматическая проверка обновлений</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
@@ -1887,78 +1671,16 @@ Do you want to continue anyway?</source>
     </message>
 </context>
 <context>
-    <name>PrefsPaneAppearance</name>
-    <message>
-        <source>Language</source>
-        <translation type="obsolete">Язык</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Обновить</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Другие языки&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="obsolete">Пользовательские переводы</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="obsolete">Открыть папку</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="obsolete">Использовать пользовательскую тему</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneEmojis</name>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="obsolete">Включить шорткоды эмодзи</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="obsolete">&amp;Исключенные приложения</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="obsolete">Левый разделитель</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="obsolete">Правый разделитель</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
-    <message>
-        <source>Alt</source>
-        <translation type="vanished">Alt</translation>
-    </message>
-    <message>
-        <source>Win</source>
-        <translation type="vanished">Win</translation>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation type="vanished">Ctrl</translation>
-    </message>
     <message>
         <location filename="../BeeftextUtils.cpp" line="381"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
         <source>Error</source>
         <translation>Ошибка</translation>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation type="vanished">Shift</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="117"/>
@@ -1992,7 +1714,7 @@ Do you want to continue anyway?</source>
         <translation>&amp;Сброс</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="218"/>
+        <location filename="../I18nManager.cpp" line="265"/>
         <source> - Portable Edition</source>
         <translation> - Портативная версия</translation>
     </message>
@@ -2021,11 +1743,7 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог, для вывода списка приложений, в которых замещение эмодзи нужно отключить.&lt;/p&gt;&lt;p&gt;Список приложений, использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Используйте этот диалог для вывода списка чувствительных приложений, некорректно работающих с Beeftext, так как они не поддерживают стандартные копирование-вставку через Ctrl+V.&lt;/p&gt;&lt;p&gt;Список приложений использующих имя процесса (например, notepad.exe). Подстановочные знаки принимаются.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Невозможно загрузить перевод: %1</translation>
@@ -2071,10 +1789,6 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <location filename="../Group/GroupList.cpp" line="19"/>
         <source>Default Group</source>
         <translation>Группа по умолчанию</translation>
-    </message>
-    <message>
-        <source>The emoji excluded applications file could not be saved.</source>
-        <translation type="vanished">Не удалось сохранить файл эмодзи исключенных приложений.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="29"/>
@@ -2191,10 +1905,6 @@ p, li { white-space: pre-wrap; }
         <translation>&amp;ОК</translation>
     </message>
     <message>
-        <source>Type the new shortcut</source>
-        <translation type="vanished">Введите новую комбинацию</translation>
-    </message>
-    <message>
         <location filename="../Dialogs/ShortcutDialog.ui" line="35"/>
         <source>The shortcut must contain at least one of the following modifier keys:
 Control, Alt or Windows.</source>
@@ -2219,10 +1929,6 @@ Control, Alt или Windows.</translation>
 </context>
 <context>
     <name>UpdateDialog</name>
-    <message>
-        <source>&amp;Skip</source>
-        <translation type="vanished">&amp;Пропустить</translation>
-    </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="133"/>
         <location filename="../Update/UpdateDialog.cpp" line="166"/>

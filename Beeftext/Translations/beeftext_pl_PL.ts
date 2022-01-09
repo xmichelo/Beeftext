@@ -65,16 +65,6 @@
         <translation>Dopasowany</translation>
     </message>
     <message>
-        <source>Strict</source>
-        <translatorcomment>Należy sprawdzić kontekst w programie</translatorcomment>
-        <translation type="vanished">Ścisły</translation>
-    </message>
-    <message>
-        <source>Loose</source>
-        <translatorcomment>Należy sprawdzić kontekst w programie</translatorcomment>
-        <translation type="vanished">Swobodny</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translatorcomment>Wygenerować tabelę wyrażeń i sprawdzić czytelność oraz poprawność</translatorcomment>
@@ -189,14 +179,6 @@ Możesz posiadać wiele wyrażeń zapisanych z tym samym skrótem, natomiast Bee
 
 Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
-
-Do you want to continue anymay?</source>
-        <translation type="vanished">%1 Jeżeli używasz automatycznej podmiany, konflikty mogą uniemożliwić uruchomienie pewnych wyrażeń.
-
-Czy mimo to chcesz kontynuować?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="197"/>
@@ -429,10 +411,6 @@ Czy mimo to chcesz kontynuować?</translation>
         <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
         <source>A combo could not be imported.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 combo(s) could not be imported.</source>
-        <translation type="vanished">%1 wyrażenie(a) nie mogło(y) zostać zaimportowane.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="247"/>
@@ -682,34 +660,6 @@ Czy mimo to chcesz kontynuować?</translation>
         <location filename="../Combo/ComboTableWidget.ui" line="254"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
-    </message>
-    <message>
-        <source>&amp;Strict</source>
-        <translation type="vanished">&amp;Ścisły</translation>
-    </message>
-    <message>
-        <source>Use strict matching.</source>
-        <translation type="vanished">Użyj ścisłego dopasowania.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="vanished">Ctrl+Shift+S</translation>
-    </message>
-    <message>
-        <source>&amp;Loose</source>
-        <translation type="vanished">&amp;Swobodne</translation>
-    </message>
-    <message>
-        <source>Use loose matching.</source>
-        <translation type="vanished">Użyj sobodnego dopasowania.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+L</source>
-        <translation type="vanished">Ctrl+Shift+L</translation>
-    </message>
-    <message>
-        <source>Matching Mode</source>
-        <translation type="vanished">Tryb Dopasowania</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="109"/>
@@ -1093,14 +1043,6 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Backup</source>
-        <translation type="vanished">&amp;Wykonaj kopię zapasową</translation>
-    </message>
-    <message>
-        <source>Backup the combo list.</source>
-        <translation type="vanished">Utwórz kopię zapasową listy wyrażeń.</translation>
-    </message>
-    <message>
         <location filename="../MainWindow.ui" line="169"/>
         <source>&amp;Restore</source>
         <translation>&amp;Przywróć kopię zapasową</translation>
@@ -1300,10 +1242,6 @@ Czy mimo to chcesz kontynuować?</translation>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
         <source>Automatically back up combo list files</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="obsolete">Automatycznie zapisuj kopię zapasową wyrażeń</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
@@ -1624,42 +1562,6 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation>Zachowanie</translation>
     </message>
     <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation type="vanished">Automatyczne wyszukiwanie &amp;aktualizacji</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation type="vanished">&amp;Sprawdź Teraz</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="vanished">&amp;Automatycznie uruchom Beeftext po zalogowaniu</translation>
-    </message>
-    <message>
-        <source>&amp;Play sound on combo</source>
-        <translation type="vanished">&amp;Odtwórz dźwięk podczas wstawiania wyrażenia</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation type="vanished">Używaj spersonalizowanego dźwięku</translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation type="vanished">Zmi&amp;eń</translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation type="vanished">&amp;Odtwórz</translation>
-    </message>
-    <message>
-        <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="vanished">Używaj skrótu klawiszowego do aktywowania/dezaktywowania Beeftext</translation>
-    </message>
-    <message>
-        <source>&amp;Change</source>
-        <translation type="vanished">&amp;Zmień</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="247"/>
         <source>&amp;Default</source>
         <translation>&amp;Domyślne</translation>
@@ -1670,57 +1572,9 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation>Wyrażenia</translation>
     </message>
     <message>
-        <source>Combo triggering</source>
-        <translation type="vanished">Wyzwalacz wyrażeń</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="vanished">Automatycznie wstawiaj wyrażenia</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation type="vanished">Ręcznie, za pomocą skrótu klawiczowego</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation type="vanished">Z&amp;mień</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translation type="vanished">Do&amp;myślne</translation>
-    </message>
-    <message>
-        <source>Combo picker</source>
-        <translation type="vanished">Lista wyrażeń</translation>
-    </message>
-    <message>
-        <source>Enable combo picker</source>
-        <translation type="vanished">Aktywuj okienko z listą wyrażeń</translation>
-    </message>
-    <message>
-        <source>Shortcut</source>
-        <translation type="vanished">Skrót klawiszowy</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="102"/>
         <source>Emojis</source>
         <translation>Emotikony</translation>
-    </message>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="vanished">Aktywuj emotikony</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="vanished">&amp;Wykluczone Aplikacje</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="vanished">Lewy ogranicznik</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="vanished">Prawy ogranicznik</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="138"/>
@@ -1728,81 +1582,9 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation>Wygląd</translation>
     </message>
     <message>
-        <source>Language</source>
-        <translation type="vanished">Język</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Odśwież</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Inne języki&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="vanished">Tłumaczenia dostarczone przez użytkowników</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">Otwórz Folder</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Użyj spersonalizowanego motywu</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="174"/>
         <source>Advanced</source>
         <translation>Zaawansowane</translation>
-    </message>
-    <message>
-        <source>Delay between simulated keystrokes</source>
-        <translation type="vanished">Opóźnienie pomiędzy smulowanymi wciśnięciami klawiszy</translation>
-    </message>
-    <message>
-        <source>ms</source>
-        <translation type="vanished">ms</translation>
-    </message>
-    <message>
-        <source>Combo list folder</source>
-        <translation type="vanished">Folder listy wyrażeń</translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation type="vanished">O&amp;twórz</translation>
-    </message>
-    <message>
-        <source>D&amp;efault</source>
-        <translation type="vanished">Ustawienia D&amp;omyślne</translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation type="vanished">Zapisuj zdarzenia debugowania w pliku dziennika zdarzeń</translation>
-    </message>
-    <message>
-        <source>Automatic backup</source>
-        <translation type="vanished">Automatycznie twórz kopię zapasową</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="vanished">Automatycznie zapisuj kopię zapasową wyrażeń</translation>
-    </message>
-    <message>
-        <source>Restore a backup.</source>
-        <translation type="vanished">Przywróć kopię zapasową.</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation type="vanished">&amp;Przywróć</translation>
-    </message>
-    <message>
-        <source>Use custom backup location</source>
-        <translation type="vanished">Używaj spersonalizowanej ścieżki kopii zapasowej</translation>
-    </message>
-    <message>
-        <source>Sensitive Applications</source>
-        <translation type="vanished">Newralgiczne Aplikacje</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
@@ -1845,42 +1627,10 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation>&amp;Zamknij</translation>
     </message>
     <message>
-        <source>Delete Backup Files?</source>
-        <translation type="vanished">Czy Usunąć Kopie Zapasowe?</translation>
-    </message>
-    <message>
-        <source>Do you want to delete all the backup files?</source>
-        <translation type="vanished">Czy na pewno chcesz usunąć wszystkie kopie zapasowe?</translation>
-    </message>
-    <message>
-        <source>WAV files (*.wav);;All files (*.*)</source>
-        <translation type="vanished">Pliki WAV (*.wav);;Wszystkie pliki (*.*)</translation>
-    </message>
-    <message>
-        <source>Select folder</source>
-        <translation type="vanished">Wybierz folder</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
         <translation>Błąd</translation>
-    </message>
-    <message>
-        <source>The location of the combo list folder could not be changed.</source>
-        <translation type="vanished">Lokalizacja folderu listy wyrażeń nie może zostać zmieniona.</translation>
-    </message>
-    <message>
-        <source>Reset Folder</source>
-        <translation type="vanished">Resetuj Folder</translation>
-    </message>
-    <message>
-        <source>Reset the combo list folder?</source>
-        <translation type="vanished">Czy zresetować folder z listą wyrażeń?</translation>
-    </message>
-    <message>
-        <source>Custom backup location</source>
-        <translation type="vanished">Własna ścieżka kopii zapasowej</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
@@ -1903,22 +1653,6 @@ Czy mimo to chcesz kontynuować?</translation>
         <translation>Czy na pewno chcesz zresetować wszystkie ostrzeżenia?</translation>
     </message>
     <message>
-        <source>%1 v%2.%3 is available.</source>
-        <translation type="vanished">%1 v %2. %3 jest dostępna.</translation>
-    </message>
-    <message>
-        <source>A new version is available.</source>
-        <translation type="vanished">Nowa wersja jest dostępna.</translation>
-    </message>
-    <message>
-        <source>The software is up to date.</source>
-        <translation type="vanished">Oprogramowanie jest aktualne.</translation>
-    </message>
-    <message>
-        <source>Update check failed.</source>
-        <translation type="vanished">Sprdzenie aktualizacji się nie powiodło.</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="115"/>
         <source>Export Preferences</source>
         <translation>Eksportuj Preferencje</translation>
@@ -1937,52 +1671,6 @@ Czy mimo to chcesz kontynuować?</translation>
         <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>Podczas importu preferencji nastąpił błąd.</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneAppearance</name>
-    <message>
-        <source>Language</source>
-        <translation type="obsolete">Język</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Odśwież</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Inne języki&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="obsolete">Tłumaczenia dostarczone przez użytkowników</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="obsolete">Otwórz Folder</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="obsolete">Użyj spersonalizowanego motywu</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneEmojis</name>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="obsolete">Aktywuj emotikony</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="obsolete">&amp;Wykluczone Aplikacje</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="obsolete">Lewy ogranicznik</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="obsolete">Prawy ogranicznik</translation>
     </message>
 </context>
 <context>
@@ -2023,7 +1711,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../BeeftextUtils.cpp" line="381"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
@@ -2073,16 +1761,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The emoji excluded applications file could not be saved.</source>
-        <translation type="vanished">Plik aplikacji z wykluczeniem dotyczącym emotikon nie mógł zostać zapisany.</translation>
-    </message>
-    <message>
-        <location filename="../I18nManager.cpp" line="218"/>
+        <location filename="../I18nManager.cpp" line="265"/>
         <source> - Portable Edition</source>
         <translation> - Edycja Przenośna</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Nie można wczytać tłumaczenia:
@@ -2117,10 +1801,6 @@ Czy chcesz przeczytać zwięzły poradnik dla nowych użytkowników?</translatio
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Użyj tego okna dialogowego do podania aplikacji nie współpracujących z Beeftext z powodu braku obsługi standardu kopiuj-wklej przy użyciu Ctrl+C Ctrl+V.&lt;/p&gt;&lt;p&gt;Wyświetl aplikacje podając ich nazwę procesu (np. notepad.exe). Wieloznaczniki (ang. wildcards) mogą zostać użyte.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../SensitiveApplicationManager.cpp" line="97"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -2134,22 +1814,6 @@ Czy chcesz przeczytać zwięzły poradnik dla nowych użytkowników?</translatio
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
         <source>The sensitive application file could not be saved.</source>
         <translation>Lista newralgicznych aplikacji nie mogła zostać zapisana.</translation>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation type="vanished">Ctrl</translation>
-    </message>
-    <message>
-        <source>Alt</source>
-        <translation type="vanished">Alt</translation>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation type="vanished">Shift</translation>
-    </message>
-    <message>
-        <source>Win</source>
-        <translation type="vanished">Win</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="33"/>
@@ -2240,10 +1904,6 @@ Czy chcesz przeczytać zwięzły poradnik dla nowych użytkowników?</translatio
 <context>
     <name>ShortcutDialog</name>
     <message>
-        <source>Type the new shortcut</source>
-        <translation type="vanished">Podaj nowy skrót</translation>
-    </message>
-    <message>
         <location filename="../Dialogs/ShortcutDialog.ui" line="25"/>
         <source>Type the new shortcut.</source>
         <translation type="unfinished"></translation>
@@ -2298,10 +1958,6 @@ Control, Alt lub Windows.</translation>
         <location filename="../Update/UpdateDialog.ui" line="114"/>
         <source>Not now</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Skip</source>
-        <translation type="vanished">&amp;Pomiń</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="97"/>

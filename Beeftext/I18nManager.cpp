@@ -24,10 +24,57 @@ QString kStrTranslationFileMissing = "Could not load the following Qt translatio
 }
 
 
-void removeTranslator(std::unique_ptr<QTranslator>& translator); ///< Remove a translator, free it and set the pointer that was pointing to it to zero
+//**********************************************************************************************************************
+/// \brief Migrate the translation files to the new layout.
+///
+/// Starting with Beeftext 13, the layout of the translation files has been changed, adding the country code to
+/// the language name in order to be able to support multiple variant of the same language. For example, the
+/// translation file location at 'de/beeftext_de.qm' should now be 'de_DE/beeftext_de_DE.qm'
+//**********************************************************************************************************************
+void migrateTranslationFilesToNewLayout()
+{
+   QDir const transDir(globals::userTranslationRootFolderPath());
+   if (!transDir.exists())
+      return;
+
+   QList<QPair<QString, QString>> const mappings = {
+      { "de", "de_DE" },
+      { "de_DE/beeftext_de.qm", "de_DE/beeftext_de_DE.qm" },
+      { "de_DE/qtbase_de.pm",   "de_DE/qtbase_de_DE.qm" },
+      { "de_DE/xmilib_de.qm",   "de_DE/xmilib_de_DE.qm" },
+      { "it", "it_IT" },
+      { "it_IT/beeftext_it.qm", "it_IT/beeftext_it_IT.qm" },
+      { "it_IT/qtbase_it.pm",   "it_IT/qtbase_it_IT.qm" },
+      { "it_IT/xmilib_it.qm",   "it_IT/xmilib_it_IT.qm" },
+      { "nl", "nl_NL" },
+      { "nl_NL/beeftext_nl.qm", "nl_NL/beeftext_nl_NL.qm" },
+      { "nl_NL/qtbase_nl.pm",   "nl_NL/qtbase_nl_NL.qm" },
+      { "nl_NL/xmilib_nl.qm",   "nl_NL/xmilib_nl_NL.qm" },
+      { "pl", "pl_PL" },
+      { "pl_PL/beeftext_pl.qm", "nl_NL/beeftext_pl_PL.qm" },
+      { "pl_PL/qtbase_pl.pm",   "nl_NL/qtbase_pl_PL.qm" },
+      { "pl_PL/xmilib_pl.qm",   "nl_NL/xmilib_pl_PL.qm" },
+      { "pt", "pt_PT" },
+      { "pt_PT/beeftext_pt.qm", "pt_PT/beeftext_pt_PT.qm" },
+      { "pt_PT/qt_pt.pm",       "pt_PT/qtbase_pt_PT.qm" },
+      { "pt_PT/xmilib_pt.qm",   "pt_PT/xmilib_pt_PT.qm" },
+      { "ru", "ru_RU" },
+      { "ru_RU/beeftext_ru.qm", "ru_RU/beeftext_ru_RU.qm" },
+      { "ru_RU/qtbase_ru.pm",   "ru_RU/qtbase_ru_RU.qm" },
+      { "ru_RU/xmilib_ru.qm",   "ru_RU/xmilib_ru_RU.qm" },
+      { "zh", "zh_TW" },
+      { "zh_TW/beeftext_zh.qm", "zh_TW/beeftext_zh_TW.qm" },
+      { "zh_TW/qtbase_zh.pm",   "zh_TW/qtbase_zh_TW.qm" },
+      { "zh_TW/xmilib_zh.qm",   "zh_TW/xmilib_zh_TW.qm" },
+   };
+
+   for (auto const& [src, dst]: mappings)
+      QFile::rename(transDir.absoluteFilePath(src), transDir.absoluteFilePath(dst));
+}
 
 
 //**********************************************************************************************************************
+/// \brief Remove a translator, free it and set the pointer that was pointing to it to zero.
 /// \param[in] translator A pointer to the translator to remove
 //**********************************************************************************************************************
 void removeTranslator(std::unique_ptr<QTranslator>& translator)
@@ -54,6 +101,7 @@ I18nManager& I18nManager::instance()
 //**********************************************************************************************************************
 I18nManager::I18nManager()
 {
+   migrateTranslationFilesToNewLayout();
    this->refreshSupportedLocalesList();
 }
 
@@ -110,7 +158,6 @@ bool I18nManager::isValidTranslationSubfolder(LocaleInfo const& localeInfo)
    if (!dir.exists())
       return false;
    QString const localName = localeInfo.locale.name();
-   qDebug() << QString("Locale: %1").arg(localName);
    QStringList const files = { QString("beeftext_%1.qm").arg(localName), QString("xmilib_%1.qm").arg(localName) }; ///< qtbase_%1.ts is optional.
    for (QString const& file: files)
    {

@@ -14,10 +14,6 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Ce logiciel est publié sous la &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;licence MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; selon les termes de la licence &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; selon les termes des &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;licences OpenSSL and SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://beeftext.org&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;@beeftext&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;This software is released under the terms of the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;MIT License&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext uses the &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; library under the terms of the &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL and SSLeay licenses&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Icons made by &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; from &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Beeftext v%1.%2&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;%3&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Copyright (c) 2017-%4&lt;br/&gt;&lt;a href=&quot;https://x-mi.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Xavier Michelon&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://beeftext.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://beeftext.org&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Github: &lt;a href=&quot;https://github.com/xmichelo/Beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;https://github.com/xmichelo/Beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href=&quot;https://twitter.com/beeftext&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;@beeftext&lt;/span&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Ce logiciel est publié sous la &lt;a href=&quot;https://en.wikipedia.org/wiki/MIT_License&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;licence MIT&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt; selon les termes de la licence &lt;a href=&quot;https://www.gnu.org/licenses/lgpl-3.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;GNU Lesser General Public License v3&lt;/span&gt;&lt;/a&gt;. &lt;br/&gt;Beeftext utilise la bibliothèque &lt;a href=&quot;https://www.openssl.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;OpenSSL&lt;/span&gt;&lt;/a&gt; selon les termes des &lt;a href=&quot;https://www.openssl.org/source/license.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;licences OpenSSL and SSLeay&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Les Icones sont faites par &lt;a href=&quot;https://www.flaticon.com/authors/pixel-perfect&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;Pixel perfect&lt;/span&gt;&lt;/a&gt; de &lt;a href=&quot;http://www.flaticon.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#%5;&quot;&gt;www.flaticon.com&lt;/span&gt;&lt;/a&gt;.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../Dialogs/AboutDialog.ui" line="103"/>
         <source>&amp;Close</source>
         <translation>&amp;Fermer</translation>
@@ -77,14 +73,6 @@
         <location filename="../Combo/ComboDialog.ui" line="128"/>
         <source>Matching</source>
         <translation>Mode de déclenchement</translation>
-    </message>
-    <message>
-        <source>Strict</source>
-        <translation type="vanished">Strict</translation>
-    </message>
-    <message>
-        <source>Loose</source>
-        <translation type="vanished">Laxiste</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.ui" line="79"/>
@@ -188,14 +176,6 @@ Il est possible d&apos;utiliser le même mot-clé pour plusieurs combos. Beeftex
 
 Do you want to continue anyway?</source>
         <translation>%1 Si vous utilisez la complétion automatique, les conflits rendront certains combos impossibles à déclencher.
-
-Voulez-vous tout de même continuer?</translation>
-    </message>
-    <message>
-        <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
-
-Do you want to continue anymay?</source>
-        <translation type="vanished">%1 Si vous utlisez la substitution automatique, ces conflits rendent certains combos impossible a déclancher.
 
 Voulez-vous tout de même continuer?</translation>
     </message>
@@ -368,10 +348,6 @@ Voulez-vous tout de même continuer?</translation>
         <location filename="../Combo/ComboImportDialog.ui" line="228"/>
         <source>Browse</source>
         <translation>Parcourir</translation>
-    </message>
-    <message>
-        <source>%1 combo(s) could not be imported.</source>
-        <translation type="vanished">%1 combo(s) n&apos;ont pu être importés.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="234"/>
@@ -695,33 +671,9 @@ Voulez-vous tout de même continuer?</translation>
         <translation></translation>
     </message>
     <message>
-        <source>Use strict matching.</source>
-        <translation type="vanished">Utiliser le déclenchement strict.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="vanished">Ctrl+Maj+S</translation>
-    </message>
-    <message>
-        <source>&amp;Loose</source>
-        <translation type="vanished">&amp;Permissif</translation>
-    </message>
-    <message>
-        <source>Use loose matching.</source>
-        <translation type="vanished">Utiliser le déclenchement permissif.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+L</source>
-        <translation type="vanished">Ctrl+Maj+L</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="109"/>
         <source>&amp;Combos</source>
         <translation>&amp;Combos</translation>
-    </message>
-    <message>
-        <source>Matching Mode</source>
-        <translation type="vanished">Mode de Déclenchement</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="369"/>
@@ -1084,14 +1036,6 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Ctrl+Alt+Maj+L</translation>
     </message>
     <message>
-        <source>&amp;Backup</source>
-        <translation type="vanished">&amp;Sauvegarder</translation>
-    </message>
-    <message>
-        <source>Backup the combo list.</source>
-        <translation type="vanished">Effectuer un copie de sauvegarde de la liste de combos.</translation>
-    </message>
-    <message>
         <location filename="../MainWindow.ui" line="169"/>
         <source>&amp;Restore</source>
         <translation>&amp;Restaurer</translation>
@@ -1297,10 +1241,6 @@ Voulez-vous tout de même continuer?</translation>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
         <source>Automatically back up combo list files</source>
         <translation></translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="vanished">Faire des copies de sauvegarde automatique de la liste des combos</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
@@ -1621,105 +1561,9 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Comportement</translation>
     </message>
     <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation type="vanished">Vérifier automatiquement les &amp;mises à jour</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation type="vanished">&amp;Vérifier Maintenant</translation>
-    </message>
-    <message>
-        <source>&amp;Play sound on combo</source>
-        <translation type="vanished">&amp;Emettre un son pendant les combos</translation>
-    </message>
-    <message>
-        <source>Default behavior</source>
-        <translation type="vanished">Comportement par défaut</translation>
-    </message>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="vanished">Activer les shortcodes emojis</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="vanished">Applications &amp;Exclues</translation>
-    </message>
-    <message>
-        <source>Combo triggering</source>
-        <translation type="vanished">Déclenchement des combos</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="vanished">&amp;Démarrer Beeftext automatiquement à la connexion</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation type="vanished">Utiliser un son personnalisé</translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation type="vanished">Cha&amp;nger</translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation type="vanished">&amp;Tester</translation>
-    </message>
-    <message>
-        <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="vanished">Utiliiser un raccourci pour activer/désactiver Beeftext</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="66"/>
         <source>Combos</source>
         <translation>Combos</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="vanished">Automatique</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation type="vanished">Manuel, avec le raccourci</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation type="vanished">C&amp;hanger</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translation type="vanished">Par Dé&amp;faut</translation>
-    </message>
-    <message>
-        <source>Trigger only after spacebar is pressed</source>
-        <translation type="vanished">Déclencher uniquement après un espace</translation>
-    </message>
-    <message>
-        <source>Keep the final space character</source>
-        <translation type="vanished">Garder le caracter espace final</translation>
-    </message>
-    <message>
-        <source>Matching mode</source>
-        <translation type="vanished">Mode de déclenchement</translation>
-    </message>
-    <message>
-        <source>Default matching mode</source>
-        <translation type="vanished">Mode de déclenchement par défaut</translation>
-    </message>
-    <message>
-        <source>Default case sensitivity</source>
-        <translation type="vanished">Sensibilité à la casse par défaut</translation>
-    </message>
-    <message>
-        <source>Combo picker</source>
-        <translation type="vanished">Sélecteur de combos</translation>
-    </message>
-    <message>
-        <source>Enable combo picker</source>
-        <translation type="vanished">Activer le sélecteur de combos</translation>
-    </message>
-    <message>
-        <source>Shortcut</source>
-        <translation type="vanished">Raccourci</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="102"/>
@@ -1727,118 +1571,14 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Emojis</translation>
     </message>
     <message>
-        <source>Left delimiter</source>
-        <translation type="vanished">Délimiteur gauche</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="vanished">Délimiteur droit</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="138"/>
         <source>Appearance</source>
         <translation>Apparence</translation>
     </message>
     <message>
-        <source>Language</source>
-        <translation type="vanished">Langue</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Rafraîchir</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Autres langues&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="vanished">Traductions communautaires</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">Ouvrir le dossier</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Utiliser un thème personnalisé</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="174"/>
         <source>Advanced</source>
         <translation>Avancé</translation>
-    </message>
-    <message>
-        <source>Use legacy copy/paste</source>
-        <translation type="vanished">Utiliser le copier/coller alternatif</translation>
-    </message>
-    <message>
-        <source>Use Shift+Insert for pasting</source>
-        <translation type="vanished">Utiliser Maj+Insert pour coller</translation>
-    </message>
-    <message>
-        <source>Use custom PowerShell version</source>
-        <translation type="vanished">Utiliser une version alternative de PowerShell</translation>
-    </message>
-    <message>
-        <source>Automatic backup</source>
-        <translation type="vanished">Sauvegarde automatique</translation>
-    </message>
-    <message>
-        <source>Use custom backup location</source>
-        <translation type="vanished">Dossier de sauvegarde personnalisé</translation>
-    </message>
-    <message>
-        <source>Sensitive Applications</source>
-        <translation type="vanished">Applications Sensibles</translation>
-    </message>
-    <message>
-        <source>Delay between simulated keystrokes</source>
-        <translation type="vanished">Délai entre les frappes de touches simulées</translation>
-    </message>
-    <message>
-        <source>ms</source>
-        <translation type="vanished">ms</translation>
-    </message>
-    <message>
-        <source>Combo list folder</source>
-        <translation type="vanished">Dossier de la liste des combos</translation>
-    </message>
-    <message>
-        <source>&amp;Change</source>
-        <translation type="vanished">&amp;Modifier</translation>
-    </message>
-    <message>
-        <source>Picker window</source>
-        <translation type="vanished">Fenêtre de saisie</translation>
-    </message>
-    <message>
-        <source>Enable picker window</source>
-        <translation type="vanished">Activer la fenêtre de saisie</translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation type="vanished">O&amp;uvrir</translation>
-    </message>
-    <message>
-        <source>D&amp;efault</source>
-        <translation type="vanished">Par D&amp;éfaut</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="vanished">Faire des copies de sauvegarde automatique de la liste des combos</translation>
-    </message>
-    <message>
-        <source>Restore a backup.</source>
-        <translation type="vanished">Restaurer une sauvegarde.</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation type="vanished">&amp;Restaurer</translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation type="vanished">Écrire les évènements de débogage dans un fichier journal</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
@@ -1886,46 +1626,10 @@ Voulez-vous tout de même continuer?</translation>
         <translation>&amp;Fermer</translation>
     </message>
     <message>
-        <source>Delete Backup Files?</source>
-        <translation type="vanished">Effacer les Sauvegardes?</translation>
-    </message>
-    <message>
-        <source>Do you want to delete all the backup files?</source>
-        <translation type="vanished">Voulez-vous effacer toutes les sauvegardes?</translation>
-    </message>
-    <message>
-        <source>WAV files (*.wav);;All files (*.*)</source>
-        <translation type="vanished">Fichiers WAV (*.wav);;Tous les fichiers (*.*)</translation>
-    </message>
-    <message>
-        <source>Select folder</source>
-        <translation type="vanished">Choisissez le dosser</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
         <translation>Erreur</translation>
-    </message>
-    <message>
-        <source>The path of the custom sound file is invalid.</source>
-        <translation type="vanished">Le chemin d&apos;accès du fichier son personnalisé est invalide.</translation>
-    </message>
-    <message>
-        <source>The location of the combo list folder could not be changed.</source>
-        <translation type="vanished">Impossible de changer l&apos;emplacement du fichier de combos.</translation>
-    </message>
-    <message>
-        <source>Reset Folder</source>
-        <translation type="vanished">Réinitialiser le Dossier</translation>
-    </message>
-    <message>
-        <source>Reset the combo list folder?</source>
-        <translation type="vanished">Êtes-vous certain de vouloir réinitialiser l&apos;emplacement du fichier de combos?</translation>
-    </message>
-    <message>
-        <source>Custom backup location</source>
-        <translation type="vanished">Emplacement des sauvegardes</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
@@ -1948,30 +1652,6 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Êtes-vous sûr de vouloir réinitialiser les avertissements à leurs valeurs par défaut?</translation>
     </message>
     <message>
-        <source>%1 v%2.%3 is available.</source>
-        <translation type="vanished">%1 v%2.%3 est disponible.</translation>
-    </message>
-    <message>
-        <source>A new version is available.</source>
-        <translation type="vanished">Une nouvelle version est disponible.</translation>
-    </message>
-    <message>
-        <source>The software is up to date.</source>
-        <translation type="vanished">Le logiciel est à jour.</translation>
-    </message>
-    <message>
-        <source>Update check failed.</source>
-        <translation type="vanished">Impossible de vérifier les mises à jour.</translation>
-    </message>
-    <message>
-        <source>Select PowerShell executable</source>
-        <translation type="vanished">Sélectionner l&apos;executable PowerShell</translation>
-    </message>
-    <message>
-        <source>Executable files (*.exe);;All files (*.*)</source>
-        <translation type="vanished">Fichiers exécutables (*.exe);;Tous les fichiers (*.*)</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="115"/>
         <source>Export Preferences</source>
         <translation>Exporter les Préférences</translation>
@@ -1990,60 +1670,6 @@ Voulez-vous tout de même continuer?</translation>
         <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>Une erreur est survenue lors de l&apos;import des préférences.</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneAppearance</name>
-    <message>
-        <source>Frame</source>
-        <translation type="vanished">Frame</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation type="vanished">Langue</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Rafraîchir</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Autres langues&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="vanished">Traductions communautaires</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">Ouvrir le dossier</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Utiliser un thème personnalisé</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneEmojis</name>
-    <message>
-        <source>Frame</source>
-        <translation type="vanished">Frame</translation>
-    </message>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="vanished">Activer les shortcodes emojis</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="vanished">Applications &amp;Exclues</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="vanished">Délimiteur gauche</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="vanished">Délimiteur droit</translation>
     </message>
 </context>
 <context>
@@ -2096,7 +1722,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../BeeftextUtils.cpp" line="381"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
@@ -2119,13 +1745,13 @@ p, li { white-space: pre-wrap; }
         <translation>&amp;Quitter</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Impossible de charger le fichier de traduction: %1</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="218"/>
+        <location filename="../I18nManager.cpp" line="265"/>
         <source> - Portable Edition</source>
         <translation> - Edition Portable</translation>
     </message>
@@ -2133,10 +1759,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../main.cpp" line="144"/>
         <source>An unhandled exception occurred.</source>
         <translation>Une exception non interceptée est survenue.</translation>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation type="vanished">Maj</translation>
     </message>
     <message>
         <location filename="../BeeftextGlobals.cpp" line="312"/>
@@ -2218,14 +1840,6 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <source>The emoji excluded applications file could not be saved.</source>
-        <translation type="vanished">Le fichier d&apos;applications exclues n&apos;a pas pu être sauvé.</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Listez içi les applications qui ne supportent pas le copier-coller standard par Ctrl+V et ne fonctionnent donc pas correctement avec Beeftext.&lt;/p&gt;&lt;p&gt;Utilisez le nom des processus de chaque application (par exemple: notepad.exe). Les wildcards sont acceptées.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../SensitiveApplicationManager.cpp" line="97"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Listez içi les applications qui ne supportent pas le copier-coller standard par Ctrl+V et ne fonctionnent donc pas correctement avec Beeftext.&lt;/p&gt;&lt;p&gt;Utilisez le nom des processus de chaque application (par exemple: notepad.exe). Les wildcards sont acceptées.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -2262,14 +1876,6 @@ p, li { white-space: pre-wrap; }
         <translation>Insensible à la casse</translation>
     </message>
     <message>
-        <source>Case sensitive</source>
-        <translation type="vanished">Sensible à la casse</translation>
-    </message>
-    <message>
-        <source>Case insensitive</source>
-        <translation type="vanished">Insensible à la casse</translation>
-    </message>
-    <message>
         <location filename="../Combo/MatchingMode.cpp" line="40"/>
         <source>Strict</source>
         <translation>Strict</translation>
@@ -2303,10 +1909,6 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>ShortcutDialog</name>
-    <message>
-        <source>Type the new shortcut</source>
-        <translation type="vanished">Saisir le nouveau raccourci</translation>
-    </message>
     <message>
         <location filename="../Dialogs/ShortcutDialog.ui" line="25"/>
         <source>Type the new shortcut.</source>
@@ -2368,10 +1970,6 @@ Control, Alt ou Windows.</translation>
         <location filename="../Update/UpdateDialog.ui" line="114"/>
         <source>Not now</source>
         <translation>Pas maintenant</translation>
-    </message>
-    <message>
-        <source>&amp;Skip</source>
-        <translation type="vanished">&amp;Ignorer</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>

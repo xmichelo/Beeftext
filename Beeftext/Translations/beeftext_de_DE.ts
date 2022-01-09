@@ -65,14 +65,6 @@
         <translation>Auslösung</translation>
     </message>
     <message>
-        <source>Strict</source>
-        <translation type="vanished">streng</translation>
-    </message>
-    <message>
-        <source>Loose</source>
-        <translation type="vanished">locker</translation>
-    </message>
-    <message>
         <location filename="../Combo/ComboDialog.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Gruppe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -182,14 +174,6 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
 
 Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
-
-Do you want to continue anymay?</source>
-        <translation type="vanished">%1 Wenn Sie die automatische Ersetzung verwenden, machen Konflikte das Auslösen einiger Kombos unmöglich.
-
-Möchten Sie dennoch fortsetzen?</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="197"/>
@@ -422,10 +406,6 @@ Möchten Sie dennoch fortsetzen?</translation>
         <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
         <source>A combo could not be imported.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 combo(s) could not be imported.</source>
-        <translation type="vanished">%1 Kombo(s) konnte(n) nicht importiert werden.</translation>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.cpp" line="247"/>
@@ -675,34 +655,6 @@ Möchten Sie dennoch fortsetzen?</translation>
         <location filename="../Combo/ComboTableWidget.ui" line="254"/>
         <source>Ctrl+C</source>
         <translation>Strg+C</translation>
-    </message>
-    <message>
-        <source>&amp;Strict</source>
-        <translation type="vanished">&amp;Streng</translation>
-    </message>
-    <message>
-        <source>Use strict matching.</source>
-        <translation type="vanished">Benutze strenge Auslösung.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="vanished">Strg+Umsch+S</translation>
-    </message>
-    <message>
-        <source>&amp;Loose</source>
-        <translation type="vanished">&amp;Locker</translation>
-    </message>
-    <message>
-        <source>Use loose matching.</source>
-        <translation type="vanished">Verwende lockere Auslösung.</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+L</source>
-        <translation type="vanished">Strg+Umsch+L</translation>
-    </message>
-    <message>
-        <source>Matching Mode</source>
-        <translation type="vanished">Auslösungs Modus</translation>
     </message>
     <message>
         <location filename="../Combo/ComboTableWidget.cpp" line="109"/>
@@ -1086,14 +1038,6 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Backup</source>
-        <translation type="vanished">&amp;Sicherung</translation>
-    </message>
-    <message>
-        <source>Backup the combo list.</source>
-        <translation type="vanished">Sicherung der Kombo Liste.</translation>
-    </message>
-    <message>
         <location filename="../MainWindow.ui" line="169"/>
         <source>&amp;Restore</source>
         <translation>&amp;Wiederherstellen</translation>
@@ -1235,44 +1179,44 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="34"/>
         <source>Delay between simulated keystrokes</source>
-        <translation type="unfinished">Verzögerung zwischen simulierten Tastenanschlägen</translation>
+        <translation>Verzögerung zwischen simulierten Tastenanschlägen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="41"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="90"/>
         <source>Combo list folder</source>
-        <translation type="unfinished">Kombolisten Verzeichnis</translation>
+        <translation>Kombolisten Verzeichnis</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="104"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="165"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="230"/>
         <source>&amp;Change</source>
-        <translation type="unfinished">&amp;Ändern</translation>
+        <translation>&amp;Ändern</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="111"/>
         <source>O&amp;pen</source>
-        <translation type="unfinished">Ö&amp;ffnen</translation>
+        <translation>Ö&amp;ffnen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="118"/>
         <source>D&amp;efault</source>
-        <translation type="unfinished">&amp;Standard</translation>
+        <translation>&amp;Standard</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="128"/>
         <source>Write debug events in a log file</source>
-        <translation type="unfinished">Fehlerereignisse in eine Protokolldatei sichern</translation>
+        <translation>Fehlerereignisse in eine Protokolldatei sichern</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="135"/>
         <source>Use legacy copy/paste</source>
-        <translation type="unfinished">Verwende alte Kopieren-/Einfügen-Methode (Legacy)</translation>
+        <translation>Verwende alte Kopieren-/Einfügen-Methode (Legacy)</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="142"/>
@@ -1282,12 +1226,12 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="151"/>
         <source>Use custom PowerShell version</source>
-        <translation type="unfinished">Verwende benutzerdefinierte PowerShell-Version</translation>
+        <translation>Verwende benutzerdefinierte PowerShell-Version</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="174"/>
         <source>Automatic backup</source>
-        <translation type="unfinished">Automatische Sicherung</translation>
+        <translation>Automatische Sicherung</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
@@ -1295,39 +1239,35 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="obsolete">Automatische Sicherung der Kombolistendatei</translation>
-    </message>
-    <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
         <source>Restore a backup.</source>
-        <translation type="unfinished">Eine Sicherung Wiederherstellen.</translation>
+        <translation>Eine Sicherung Wiederherstellen.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="192"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished">&amp;Wiederherstellen</translation>
+        <translation>&amp;Wiederherstellen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="216"/>
         <source>Use custom backup location</source>
-        <translation type="unfinished">Benutzerdefiniertes Sicherungsverzeichnis</translation>
+        <translation>Benutzerdefiniertes Sicherungsverzeichnis</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="244"/>
         <source>Sensitive Applications</source>
-        <translation type="unfinished">Sensible Anwendungen</translation>
+        <translation>Sensible Anwendungen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="94"/>
         <source>Select folder</source>
-        <translation type="unfinished">Ordner auswählen</translation>
+        <translation>Ordner auswählen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
         <source>Error</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
@@ -1337,7 +1277,7 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
         <source>Reset Folder</source>
-        <translation type="unfinished">Ordner zurücksetzen</translation>
+        <translation>Ordner zurücksetzen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
@@ -1362,17 +1302,17 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="240"/>
         <source>Custom backup location</source>
-        <translation type="unfinished">Benutzerdefinierter Sicherungsort</translation>
+        <translation>Benutzerdefinierter Sicherungsort</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Delete Backup Files?</source>
-        <translation type="unfinished">Sicherungsdateien löschen?</translation>
+        <translation>Sicherungsdateien löschen?</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Do you want to delete all the backup files?</source>
-        <translation type="unfinished">Wollen Sie alle Sicherungsdateien löschen?</translation>
+        <translation>Wollen Sie alle Sicherungsdateien löschen?</translation>
     </message>
 </context>
 <context>
@@ -1380,32 +1320,32 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="34"/>
         <source>Language</source>
-        <translation type="unfinished">Sprache</translation>
+        <translation>Sprache</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="53"/>
         <source>Refresh</source>
-        <translation type="unfinished">Aktualisieren</translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="60"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;weitere Sprachen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;weitere Sprachen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="87"/>
         <source>User-provided translations</source>
-        <translation type="unfinished">Benutzerdefinierte Übersetzungen</translation>
+        <translation>Benutzerdefinierte Übersetzungen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="94"/>
         <source>Open Folder</source>
-        <translation type="unfinished">Ordner öffnen</translation>
+        <translation>Ordner öffnen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="121"/>
         <source>Use custom theme</source>
-        <translation type="unfinished">Benutzerdefiniertes Thema benutzen</translation>
+        <translation>Benutzerdefiniertes Thema benutzen</translation>
     </message>
 </context>
 <context>
@@ -1413,87 +1353,87 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="34"/>
         <source>Automatically check for &amp;updates</source>
-        <translation type="unfinished">Automatische überprüfung auf &amp;Updates</translation>
+        <translation>Automatische überprüfung auf &amp;Updates</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="41"/>
         <source>&amp;Check Now</source>
-        <translation type="unfinished">&amp;Jetzt überprüfen</translation>
+        <translation>&amp;Jetzt überprüfen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="57"/>
         <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="unfinished">&amp;Automatischer Start von Beeftext beim Anmelden</translation>
+        <translation>&amp;Automatischer Start von Beeftext beim Anmelden</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="64"/>
         <source>&amp;Play sound on combo</source>
-        <translation type="unfinished">&amp;Ton mit Kombo ausgeben</translation>
+        <translation>&amp;Ton mit Kombo ausgeben</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="73"/>
         <source>Use custom sound</source>
-        <translation type="unfinished">Benutzerdefinierter Sound</translation>
+        <translation>Benutzerdefinierter Sound</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="114"/>
         <source>Cha&amp;nge</source>
-        <translation type="unfinished">Ä&amp;ndern</translation>
+        <translation>Ä&amp;ndern</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="121"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Wiedergeben</translation>
+        <translation>&amp;Wiedergeben</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="135"/>
         <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="unfinished">Tastenkombination zum aktivieren/deaktivieren von Beeftext</translation>
+        <translation>Tastenkombination zum aktivieren/deaktivieren von Beeftext</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="185"/>
         <source>&amp;Change</source>
-        <translation type="unfinished">&amp;Ändern</translation>
+        <translation>&amp;Ändern</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="192"/>
         <source>&amp;Default</source>
-        <translation type="unfinished">&amp;Standard</translation>
+        <translation>&amp;Standard</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
         <source>%1 v%2.%3 is available.</source>
-        <translation type="unfinished">%1 v%2.%3 ist verfügbar.</translation>
+        <translation>%1 v%2.%3 ist verfügbar.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="97"/>
         <source>A new version is available.</source>
-        <translation type="unfinished">Eine neue Version ist verfügbar.</translation>
+        <translation>Eine neue Version ist verfügbar.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="106"/>
         <source>The software is up to date.</source>
-        <translation type="unfinished">Die Software ist auf dem aktuellsten Stand.</translation>
+        <translation>Die Software ist auf dem aktuellsten Stand.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="133"/>
         <source>Update check failed.</source>
-        <translation type="unfinished">Aktualisierungsprüfung fehlgeschlagen.</translation>
+        <translation>Aktualisierungsprüfung fehlgeschlagen.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="186"/>
         <source>WAV files (*.wav);;All files (*.*)</source>
-        <translation type="unfinished">WAV-Dateien (*.wav);;Alle Dateien (*.*)</translation>
+        <translation>WAV-Dateien (*.wav);;Alle Dateien (*.*)</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
         <source>Error</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
         <source>The path of the custom sound file is invalid.</source>
-        <translation type="unfinished">Der angegebene Pfad zur benutzerdefinierten Sound-Datei ist ungültig.</translation>
+        <translation>Der angegebene Pfad zur benutzerdefinierten Sound-Datei ist ungültig.</translation>
     </message>
 </context>
 <context>
@@ -1501,12 +1441,12 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="32"/>
         <source>Combo triggering</source>
-        <translation type="unfinished">Kombo Auslösung</translation>
+        <translation>Kombo Auslösung</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="40"/>
         <source>Automatic</source>
-        <translation type="unfinished">Automatisch</translation>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="47"/>
@@ -1521,19 +1461,19 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="78"/>
         <source>Manual, using the shortcut</source>
-        <translation type="unfinished">Manuell, benutze folgende Tastenkombination</translation>
+        <translation>Manuell, benutze folgende Tastenkombination</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="119"/>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="257"/>
         <source>C&amp;hange</source>
-        <translation type="unfinished">&amp;Ändern</translation>
+        <translation>&amp;Ändern</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="126"/>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="264"/>
         <source>De&amp;fault</source>
-        <translation type="unfinished">&amp;Standard</translation>
+        <translation>&amp;Standard</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="151"/>
@@ -1563,12 +1503,12 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="222"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Tastenkombination</translation>
+        <translation>Tastenkombination</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
         <source>Error</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
@@ -1581,22 +1521,22 @@ Möchten Sie dennoch fortsetzen?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="34"/>
         <source>Enable emoji shortcodes</source>
-        <translation type="unfinished">Aktivere Emoji Kurzcodes</translation>
+        <translation>Aktivere Emoji Kurzcodes</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="41"/>
         <source>&amp;Excluded Applications</source>
-        <translation type="unfinished">&amp;Ausgeschlossene Anwendungen</translation>
+        <translation>&amp;Ausgeschlossene Anwendungen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="65"/>
         <source>Left delimiter</source>
-        <translation type="unfinished">Linkes Begrenzungszeichen</translation>
+        <translation>Linkes Begrenzungszeichen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="121"/>
         <source>Right delimiter</source>
-        <translation type="unfinished">Rechtes Begrenzungszeichen</translation>
+        <translation>Rechtes Begrenzungszeichen</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="132"/>
@@ -1617,42 +1557,6 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>Verhalten</translation>
     </message>
     <message>
-        <source>Automatically check for &amp;updates</source>
-        <translation type="vanished">Automatische überprüfung auf &amp;Updates</translation>
-    </message>
-    <message>
-        <source>&amp;Check Now</source>
-        <translation type="vanished">&amp;Jetzt überprüfen</translation>
-    </message>
-    <message>
-        <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="vanished">&amp;Automatischer Start von Beeftext beim Anmelden</translation>
-    </message>
-    <message>
-        <source>&amp;Play sound on combo</source>
-        <translation type="vanished">&amp;Ton mit Kombo ausgeben</translation>
-    </message>
-    <message>
-        <source>Use custom sound</source>
-        <translation type="vanished">Benutzerdefinierter Sound</translation>
-    </message>
-    <message>
-        <source>Cha&amp;nge</source>
-        <translation type="vanished">Ä&amp;ndern</translation>
-    </message>
-    <message>
-        <source>&amp;Play</source>
-        <translation type="vanished">&amp;Wiedergeben</translation>
-    </message>
-    <message>
-        <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="vanished">Tastenkombination zum aktivieren/deaktivieren von Beeftext</translation>
-    </message>
-    <message>
-        <source>&amp;Change</source>
-        <translation type="vanished">&amp;Ändern</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="247"/>
         <source>&amp;Default</source>
         <translation>&amp;Standard</translation>
@@ -1663,57 +1567,9 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>Kombos</translation>
     </message>
     <message>
-        <source>Combo triggering</source>
-        <translation type="vanished">Kombo Auslösung</translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="vanished">Automatisch</translation>
-    </message>
-    <message>
-        <source>Manual, using the shortcut</source>
-        <translation type="vanished">Manuell, benutze folgende Tastenkombination</translation>
-    </message>
-    <message>
-        <source>C&amp;hange</source>
-        <translation type="vanished">&amp;Ändern</translation>
-    </message>
-    <message>
-        <source>De&amp;fault</source>
-        <translation type="vanished">&amp;Standard</translation>
-    </message>
-    <message>
-        <source>Combo picker</source>
-        <translation type="vanished">Kombo Picker</translation>
-    </message>
-    <message>
-        <source>Enable combo picker</source>
-        <translation type="vanished">Kombo Picker aktivieren</translation>
-    </message>
-    <message>
-        <source>Shortcut</source>
-        <translation type="vanished">Tastenkombination</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="102"/>
         <source>Emojis</source>
         <translation>Emojis</translation>
-    </message>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="vanished">Aktivere Emoji Kurzcodes</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="vanished">&amp;Ausgeschlossene Anwendungen</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="vanished">Linkes Begrenzungszeichen</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="vanished">Rechtes Begrenzungszeichen</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="138"/>
@@ -1721,89 +1577,9 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>Darstellung</translation>
     </message>
     <message>
-        <source>Language</source>
-        <translation type="vanished">Sprache</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Aktualisieren</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;weitere Sprachen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="vanished">Benutzerdefinierte Übersetzungen</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="vanished">Ordner öffnen</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="vanished">Benutzerdefiniertes Thema benutzen</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="174"/>
         <source>Advanced</source>
         <translation>Erweitert</translation>
-    </message>
-    <message>
-        <source>Delay between simulated keystrokes</source>
-        <translation type="vanished">Verzögerung zwischen simulierten Tastenanschlägen</translation>
-    </message>
-    <message>
-        <source>ms</source>
-        <translation type="vanished">ms</translation>
-    </message>
-    <message>
-        <source>Combo list folder</source>
-        <translation type="vanished">Kombolisten Verzeichnis</translation>
-    </message>
-    <message>
-        <source>O&amp;pen</source>
-        <translation type="vanished">Ö&amp;ffnen</translation>
-    </message>
-    <message>
-        <source>D&amp;efault</source>
-        <translation type="vanished">&amp;Standard</translation>
-    </message>
-    <message>
-        <source>Write debug events in a log file</source>
-        <translation type="vanished">Fehlerereignisse in eine Protokolldatei sichern</translation>
-    </message>
-    <message>
-        <source>Use legacy copy/paste</source>
-        <translation type="vanished">Verwende alte Kopieren-/Einfügen-Methode (Legacy)</translation>
-    </message>
-    <message>
-        <source>Use custom PowerShell version</source>
-        <translation type="vanished">Verwende benutzerdefinierte PowerShell-Version</translation>
-    </message>
-    <message>
-        <source>Automatic backup</source>
-        <translation type="vanished">Automatische Sicherung</translation>
-    </message>
-    <message>
-        <source>Automatically backup combo list files</source>
-        <translation type="vanished">Automatische Sicherung der Kombolistendatei</translation>
-    </message>
-    <message>
-        <source>Restore a backup.</source>
-        <translation type="vanished">Eine Sicherung Wiederherstellen.</translation>
-    </message>
-    <message>
-        <source>&amp;Restore</source>
-        <translation type="vanished">&amp;Wiederherstellen</translation>
-    </message>
-    <message>
-        <source>Use custom backup location</source>
-        <translation type="vanished">Benutzerdefiniertes Sicherungsverzeichnis</translation>
-    </message>
-    <message>
-        <source>Sensitive Applications</source>
-        <translation type="vanished">Sensible Anwendungen</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.ui" line="244"/>
@@ -1846,38 +1622,10 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>&amp;Schliessen</translation>
     </message>
     <message>
-        <source>Delete Backup Files?</source>
-        <translation type="vanished">Sicherungsdateien löschen?</translation>
-    </message>
-    <message>
-        <source>Do you want to delete all the backup files?</source>
-        <translation type="vanished">Wollen Sie alle Sicherungsdateien löschen?</translation>
-    </message>
-    <message>
-        <source>WAV files (*.wav);;All files (*.*)</source>
-        <translation type="vanished">WAV-Dateien (*.wav);;Alle Dateien (*.*)</translation>
-    </message>
-    <message>
-        <source>Select folder</source>
-        <translation type="vanished">Ordner auswählen</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
         <translation>Fehler</translation>
-    </message>
-    <message>
-        <source>The path of the custom sound file is invalid.</source>
-        <translation type="vanished">Der angegebene Pfad zur benutzerdefinierten Sound-Datei ist ungültig.</translation>
-    </message>
-    <message>
-        <source>Reset Folder</source>
-        <translation type="vanished">Ordner zurücksetzen</translation>
-    </message>
-    <message>
-        <source>Custom backup location</source>
-        <translation type="vanished">Benutzerdefinierter Sicherungsort</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
@@ -1900,22 +1648,6 @@ Möchten Sie dennoch fortsetzen?</translation>
         <translation>Sind Sie sicher, dass Sie alle Warnungen zurücksetzen wollen?</translation>
     </message>
     <message>
-        <source>%1 v%2.%3 is available.</source>
-        <translation type="vanished">%1 v%2.%3 ist verfügbar.</translation>
-    </message>
-    <message>
-        <source>A new version is available.</source>
-        <translation type="vanished">Eine neue Version ist verfügbar.</translation>
-    </message>
-    <message>
-        <source>The software is up to date.</source>
-        <translation type="vanished">Die Software ist auf dem aktuellsten Stand.</translation>
-    </message>
-    <message>
-        <source>Update check failed.</source>
-        <translation type="vanished">Aktualisierungsprüfung fehlgeschlagen.</translation>
-    </message>
-    <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="115"/>
         <source>Export Preferences</source>
         <translation>Einstellungen exportieren</translation>
@@ -1934,52 +1666,6 @@ Möchten Sie dennoch fortsetzen?</translation>
         <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>Ein Fehler ist während des Importierens der Einstellungen aufgetreten.</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneAppearance</name>
-    <message>
-        <source>Language</source>
-        <translation type="obsolete">Sprache</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Aktualisieren</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;weitere Sprachen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>User-provided translations</source>
-        <translation type="obsolete">Benutzerdefinierte Übersetzungen</translation>
-    </message>
-    <message>
-        <source>Open Folder</source>
-        <translation type="obsolete">Ordner öffnen</translation>
-    </message>
-    <message>
-        <source>Use custom theme</source>
-        <translation type="obsolete">Benutzerdefiniertes Thema benutzen</translation>
-    </message>
-</context>
-<context>
-    <name>PrefsPaneEmojis</name>
-    <message>
-        <source>Enable emoji shortcodes</source>
-        <translation type="obsolete">Aktivere Emoji Kurzcodes</translation>
-    </message>
-    <message>
-        <source>&amp;Excluded Applications</source>
-        <translation type="obsolete">&amp;Ausgeschlossene Anwendungen</translation>
-    </message>
-    <message>
-        <source>Left delimiter</source>
-        <translation type="obsolete">Linkes Begrenzungszeichen</translation>
-    </message>
-    <message>
-        <source>Right delimiter</source>
-        <translation type="obsolete">Rechtes Begrenzungszeichen</translation>
     </message>
 </context>
 <context>
@@ -2020,7 +1706,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../BeeftextUtils.cpp" line="381"/>
         <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
@@ -2070,16 +1756,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The emoji excluded applications file could not be saved.</source>
-        <translation type="vanished">Die Liste der für Emojis ausgeschlossenen Anwendungen konnte nicht gespeichert werden.</translation>
-    </message>
-    <message>
-        <location filename="../I18nManager.cpp" line="218"/>
+        <location filename="../I18nManager.cpp" line="265"/>
         <source> - Portable Edition</source>
         <translation> - Portable Edition</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="279"/>
+        <location filename="../I18nManager.cpp" line="326"/>
         <source>Cannot load translation:
 %1</source>
         <translation>Kann die Übersetzung nicht laden:
@@ -2115,10 +1797,6 @@ Möchten Sie ein kurzes &apos;Erste Schritte&apos;-Tutorial lesen?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that does not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verwenden Sie dieses Dialogfeld, um sensible Anwendungen aufzulisten, die mit Beeftext nicht korrekt funktionieren, weil sie das standardmäßige Kopieren und Einfügen mit Strg+V nicht unterstützen.&lt;/p&gt;&lt;p&gt;Listen Sie Anwendungen mit ihrem Prozessnamen auf (z.B. notepad.exe). Platzhalter werden akzeptiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../SensitiveApplicationManager.cpp" line="97"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -2132,22 +1810,6 @@ Möchten Sie ein kurzes &apos;Erste Schritte&apos;-Tutorial lesen?</translation>
         <location filename="../SensitiveApplicationManager.cpp" line="116"/>
         <source>The sensitive application file could not be saved.</source>
         <translation>Die Liste der sensiblen Anwendungen konnte nicht gespeichert werden.</translation>
-    </message>
-    <message>
-        <source>Ctrl</source>
-        <translation type="vanished">Strg</translation>
-    </message>
-    <message>
-        <source>Alt</source>
-        <translation type="vanished">Alt</translation>
-    </message>
-    <message>
-        <source>Shift</source>
-        <translation type="vanished">Umsch</translation>
-    </message>
-    <message>
-        <source>Win</source>
-        <translation type="vanished">Win</translation>
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="33"/>
@@ -2237,10 +1899,6 @@ Möchten Sie ein kurzes &apos;Erste Schritte&apos;-Tutorial lesen?</translation>
 <context>
     <name>ShortcutDialog</name>
     <message>
-        <source>Type the new shortcut</source>
-        <translation type="vanished">Neue Tastenkombination eingeben</translation>
-    </message>
-    <message>
         <location filename="../Dialogs/ShortcutDialog.ui" line="25"/>
         <source>Type the new shortcut.</source>
         <translation type="unfinished"></translation>
@@ -2295,10 +1953,6 @@ Strg, Alt oder Win.</translation>
         <location filename="../Update/UpdateDialog.ui" line="114"/>
         <source>Not now</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Skip</source>
-        <translation type="vanished">&amp;Überspringen</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="97"/>

@@ -146,6 +146,7 @@
       <QtUicDir>.\_build\GeneratedFiles</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
+    <QtTranslation />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">
     <ClCompile>
@@ -205,7 +206,7 @@
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtTranslation>
-      <UpdateAdditionalOptions>$(QtLUpdateOptions) -noobsolete</UpdateAdditionalOptions>
+      <UpdateAdditionalOptions>$(QtLUpdateOptions)</UpdateAdditionalOptions>
     </QtTranslation>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -265,6 +266,7 @@
       <QtUicDir>.\_build\GeneratedFiles</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
+    <QtTranslation />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AutoStart.cpp" />
