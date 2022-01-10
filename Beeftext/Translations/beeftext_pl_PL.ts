@@ -1251,7 +1251,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="192"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Przywróć kopię zapasową</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="216"/>

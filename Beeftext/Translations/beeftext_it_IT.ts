@@ -860,7 +860,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="233"/>
         <source>&amp;Enable</source>
-        <translation type="unfinished">&amp;Abilita</translation>
+        <translation>&amp;Abilita</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="234"/>
@@ -1100,7 +1100,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../MainWindow.cpp" line="152"/>
         <source>New Combo</source>
-        <translation type="unfinished">Nuova scorciatoia</translation>
+        <translation>Nuova scorciatoia</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="156"/>
@@ -1172,7 +1172,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Picker/PickerItemDelegate.cpp" line="104"/>
         <source>Emojis</source>
-        <translation type="unfinished">Emoji</translation>
+        <translation>Emoji</translation>
     </message>
 </context>
 <context>
@@ -1188,39 +1188,39 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="34"/>
         <source>Delay between simulated keystrokes</source>
-        <translation type="unfinished">Ritardo tra sequenze di tasti</translation>
+        <translation>Ritardo tra sequenze di tasti</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="41"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="90"/>
         <source>Combo list folder</source>
-        <translation type="unfinished">Cartella elenco scorciatoie</translation>
+        <translation>Cartella elenco scorciatoie</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="104"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="165"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="230"/>
         <source>&amp;Change</source>
-        <translation type="unfinished">&amp;Cambia</translation>
+        <translation>&amp;Cambia</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="111"/>
         <source>O&amp;pen</source>
-        <translation type="unfinished">A&amp;pri</translation>
+        <translation>A&amp;pri</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="118"/>
         <source>D&amp;efault</source>
-        <translation type="unfinished">P&amp;redefinita</translation>
+        <translation>P&amp;redefinita</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="128"/>
         <source>Write debug events in a log file</source>
-        <translation type="unfinished">Scrivi eventi di debug in un log file</translation>
+        <translation>Scrivi eventi di debug in un log file</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="135"/>
@@ -1240,7 +1240,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="174"/>
         <source>Automatic backup</source>
-        <translation type="unfinished">Copia di sicurezza automatica</translation>
+        <translation>Copia di sicurezza automatica</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
@@ -1250,22 +1250,22 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
         <source>Restore a backup.</source>
-        <translation type="unfinished">Ripristina una copia di sicurezza.</translation>
+        <translation>Ripristina una copia di sicurezza.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="192"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished">&amp;Ripristina</translation>
+        <translation>&amp;Ripristina</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="216"/>
         <source>Use custom backup location</source>
-        <translation type="unfinished">Usa località utente per copia di sicurezza</translation>
+        <translation>Usa località utente per copia di sicurezza</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="244"/>
         <source>Sensitive Applications</source>
-        <translation type="unfinished">Applicazioni sensibili</translation>
+        <translation>Applicazioni sensibili</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="94"/>
@@ -1276,7 +1276,7 @@ Do you want to continue anyway?</source>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
@@ -1329,32 +1329,32 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="34"/>
         <source>Language</source>
-        <translation type="unfinished">Lingua</translation>
+        <translation>Lingua</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="53"/>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="60"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Traduzioni-fornite-dagli-utenti&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Altre lingue&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Traduzioni-fornite-dagli-utenti&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Altre lingue&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="87"/>
         <source>User-provided translations</source>
-        <translation type="unfinished">Traduzioni fornite dagli utenti</translation>
+        <translation>Traduzioni fornite dagli utenti</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="94"/>
         <source>Open Folder</source>
-        <translation type="unfinished">Apri cartella</translation>
+        <translation>Apri cartella</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="121"/>
         <source>Use custom theme</source>
-        <translation type="unfinished">Usa tema utente</translation>
+        <translation>Usa tema utente</translation>
     </message>
 </context>
 <context>
@@ -1362,52 +1362,52 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="34"/>
         <source>Automatically check for &amp;updates</source>
-        <translation type="unfinished">Cerca automaticamente gli  &amp;aggiornamenti</translation>
+        <translation>Cerca automaticamente gli  &amp;aggiornamenti</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="41"/>
         <source>&amp;Check Now</source>
-        <translation type="unfinished">&amp;Controlla adesso</translation>
+        <translation>&amp;Controlla adesso</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="57"/>
         <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="unfinished">&amp;Avvia automaticamente Beeftext all&apos;avvio</translation>
+        <translation>&amp;Avvia automaticamente Beeftext all&apos;avvio</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="64"/>
         <source>&amp;Play sound on combo</source>
-        <translation type="unfinished">&amp;Attiva suono scorciatoia</translation>
+        <translation>&amp;Attiva suono scorciatoia</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="73"/>
         <source>Use custom sound</source>
-        <translation type="unfinished">Utilizza suono utente</translation>
+        <translation>Utilizza suono utente</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="114"/>
         <source>Cha&amp;nge</source>
-        <translation type="unfinished">C&amp;ambia</translation>
+        <translation>C&amp;ambia</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="121"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Riproduci</translation>
+        <translation>&amp;Riproduci</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="135"/>
         <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="unfinished">Usa scorciatoia per riprendere/sospendere Beeftex</translation>
+        <translation>Usa scorciatoia per riprendere/sospendere Beeftex</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="185"/>
         <source>&amp;Change</source>
-        <translation type="unfinished">&amp;Cambia</translation>
+        <translation>&amp;Cambia</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="192"/>
         <source>&amp;Default</source>
-        <translation type="unfinished">&amp;Predefinite</translation>
+        <translation>&amp;Predefinite</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
@@ -1437,7 +1437,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
@@ -1450,12 +1450,12 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="32"/>
         <source>Combo triggering</source>
-        <translation type="unfinished">Attivazione scorciatoie</translation>
+        <translation>Attivazione scorciatoie</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="40"/>
         <source>Automatic</source>
-        <translation type="unfinished">Automatica</translation>
+        <translation>Automatica</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="47"/>
@@ -1470,19 +1470,19 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="78"/>
         <source>Manual, using the shortcut</source>
-        <translation type="unfinished">Manuale, attraverso combinazione</translation>
+        <translation>Manuale, attraverso combinazione</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="119"/>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="257"/>
         <source>C&amp;hange</source>
-        <translation type="unfinished">C&amp;ambia</translation>
+        <translation>C&amp;ambia</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="126"/>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="264"/>
         <source>De&amp;fault</source>
-        <translation type="unfinished">Pre&amp;definita</translation>
+        <translation>Pre&amp;definita</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="151"/>
@@ -1512,12 +1512,12 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="222"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Combinazione</translation>
+        <translation>Combinazione</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
@@ -1530,22 +1530,22 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="34"/>
         <source>Enable emoji shortcodes</source>
-        <translation type="unfinished">Abilita scorciatoie emoji</translation>
+        <translation>Abilita scorciatoie emoji</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="41"/>
         <source>&amp;Excluded Applications</source>
-        <translation type="unfinished">Applicazioni &amp;escluse</translation>
+        <translation>Applicazioni &amp;escluse</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="65"/>
         <source>Left delimiter</source>
-        <translation type="unfinished">Delimitatore sinistro</translation>
+        <translation>Delimitatore sinistro</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="121"/>
         <source>Right delimiter</source>
-        <translation type="unfinished">Delimitatore destro</translation>
+        <translation>Delimitatore destro</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="132"/>
@@ -1637,7 +1637,7 @@ To be precise I should know if the name it refers to is masculine or feminine, s
         <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
         <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
@@ -1881,12 +1881,12 @@ it&apos;s correct? I translated in the plural.</translatorcomment>
     <message>
         <location filename="../Combo/MatchingMode.cpp" line="40"/>
         <source>Strict</source>
-        <translation type="unfinished">Esatta</translation>
+        <translation>Esatta</translation>
     </message>
     <message>
         <location filename="../Combo/MatchingMode.cpp" line="41"/>
         <source>Loose</source>
-        <translation type="unfinished">Vicina</translation>
+        <translation>Vicina</translation>
     </message>
     <message>
         <location filename="../Combo/CaseSensitivity.cpp" line="46"/>
