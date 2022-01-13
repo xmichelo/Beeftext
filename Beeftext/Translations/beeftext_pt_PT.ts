@@ -854,7 +854,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="233"/>
         <source>&amp;Enable</source>
-        <translation type="unfinished">P&amp;ermitir</translation>
+        <translation>P&amp;ermitir</translation>
     </message>
     <message>
         <location filename="../Group/GroupListWidget.cpp" line="234"/>
@@ -1168,7 +1168,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Picker/PickerItemDelegate.cpp" line="104"/>
         <source>Emojis</source>
-        <translation type="unfinished">Emojis</translation>
+        <translation>Emojis</translation>
     </message>
 </context>
 <context>
@@ -1184,39 +1184,39 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="34"/>
         <source>Delay between simulated keystrokes</source>
-        <translation type="unfinished">Atraso entre caracteres simulados</translation>
+        <translation>Atraso entre caracteres simulados</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="41"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="90"/>
         <source>Combo list folder</source>
-        <translation type="unfinished">Pasta da lista de combos</translation>
+        <translation>Pasta da lista de combos</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="104"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="165"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="230"/>
         <source>&amp;Change</source>
-        <translation type="unfinished">&amp;Trocar</translation>
+        <translation>&amp;Trocar</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="111"/>
         <source>O&amp;pen</source>
-        <translation type="unfinished">A&amp;brir</translation>
+        <translation>A&amp;brir</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="118"/>
         <source>D&amp;efault</source>
-        <translation type="unfinished">&amp;Padrão</translation>
+        <translation>&amp;Padrão</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="128"/>
         <source>Write debug events in a log file</source>
-        <translation type="unfinished">Escrever eventos de erro em arquivo de log</translation>
+        <translation>Escrever eventos de erro em arquivo de log</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="135"/>
@@ -1236,7 +1236,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="174"/>
         <source>Automatic backup</source>
-        <translation type="unfinished">Backup automático</translation>
+        <translation>Backup automático</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
@@ -1246,48 +1246,48 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
         <source>Restore a backup.</source>
-        <translation type="unfinished">Restaurar um backup.</translation>
+        <translation>Restaurar um backup.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="192"/>
         <source>&amp;Restore</source>
-        <translation type="unfinished">&amp;Restaurar</translation>
+        <translation>&amp;Restaurar</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="216"/>
         <source>Use custom backup location</source>
-        <translation type="unfinished">Usar localização customizada de backup</translation>
+        <translation>Usar localização customizada de backup</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="244"/>
         <source>Sensitive Applications</source>
-        <translation type="unfinished">Aplicações Sensíveis</translation>
+        <translation>Aplicações Sensíveis</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="94"/>
         <source>Select folder</source>
-        <translation type="unfinished">Selecionar pasta</translation>
+        <translation>Selecionar pasta</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
         <source>The location of the combo list folder could not be changed.</source>
-        <translation type="unfinished">A localização da pasta da lista de combos não pode ser alterada.</translation>
+        <translation>A localização da pasta da lista de combos não pode ser alterada.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
         <source>Reset Folder</source>
-        <translation type="unfinished">Resetar Pasta</translation>
+        <translation>Resetar Pasta</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
         <source>Reset the combo list folder?</source>
-        <translation type="unfinished">Resetar pasta da lista de combos?</translation>
+        <translation>Resetar pasta da lista de combos?</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
@@ -1307,17 +1307,17 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="240"/>
         <source>Custom backup location</source>
-        <translation type="unfinished">Localização de backup personalizada</translation>
+        <translation>Localização de backup personalizada</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Delete Backup Files?</source>
-        <translation type="unfinished">Deletar arquivos de cópia de segurança?</translation>
+        <translation>Deletar arquivos de cópia de segurança?</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
         <source>Do you want to delete all the backup files?</source>
-        <translation type="unfinished">Você deseja deletar todos os arquivos de segurança?</translation>
+        <translation>Você deseja deletar todos os arquivos de segurança?</translation>
     </message>
 </context>
 <context>
@@ -1325,32 +1325,32 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="34"/>
         <source>Language</source>
-        <translation type="unfinished">Idioma</translation>
+        <translation>Idioma</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="53"/>
         <source>Refresh</source>
-        <translation type="unfinished">Atualizar</translation>
+        <translation>Atualizar</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="60"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Other languages&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Outros idiomas&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/User-provided-translations&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#258fc0;&quot;&gt;Outros idiomas&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="87"/>
         <source>User-provided translations</source>
-        <translation type="unfinished">Traduções providas por usuários</translation>
+        <translation>Traduções providas por usuários</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="94"/>
         <source>Open Folder</source>
-        <translation type="unfinished">Abir Pasta</translation>
+        <translation>Abir Pasta</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAppearance.ui" line="121"/>
         <source>Use custom theme</source>
-        <translation type="unfinished">Usar tema customizado</translation>
+        <translation>Usar tema customizado</translation>
     </message>
 </context>
 <context>
@@ -1358,82 +1358,82 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="34"/>
         <source>Automatically check for &amp;updates</source>
-        <translation type="unfinished">Verificar por at&amp;ualizações automaticamente</translation>
+        <translation>Verificar por at&amp;ualizações automaticamente</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="41"/>
         <source>&amp;Check Now</source>
-        <translation type="unfinished">&amp;Checar Agora</translation>
+        <translation>&amp;Checar Agora</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="57"/>
         <source>&amp;Automatically start Beeftext at login</source>
-        <translation type="unfinished">&amp;Automaticamente iniciar Beeftext ao iniciar sessão</translation>
+        <translation>&amp;Automaticamente iniciar Beeftext ao iniciar sessão</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="64"/>
         <source>&amp;Play sound on combo</source>
-        <translation type="unfinished">Re&amp;produzir som com combo</translation>
+        <translation>Re&amp;produzir som com combo</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="73"/>
         <source>Use custom sound</source>
-        <translation type="unfinished">Usar som customizado</translation>
+        <translation>Usar som customizado</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="114"/>
         <source>Cha&amp;nge</source>
-        <translation type="unfinished">&amp;Trocar</translation>
+        <translation>&amp;Trocar</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="121"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">Re&amp;produzir</translation>
+        <translation>Re&amp;produzir</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="135"/>
         <source>Use shortcut to enable/disable Beeftext</source>
-        <translation type="unfinished">Usar atalho para habilitar/desativar o Beeftext</translation>
+        <translation>Usar atalho para habilitar/desativar o Beeftext</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="185"/>
         <source>&amp;Change</source>
-        <translation type="unfinished">&amp;Trocar</translation>
+        <translation>&amp;Trocar</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.ui" line="192"/>
         <source>&amp;Default</source>
-        <translation type="unfinished">&amp;Padrão</translation>
+        <translation>&amp;Padrão</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
         <source>%1 v%2.%3 is available.</source>
-        <translation type="unfinished">%1 v%2.%3 está disponível.</translation>
+        <translation>%1 v%2.%3 está disponível.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="97"/>
         <source>A new version is available.</source>
-        <translation type="unfinished">Uma nova versão está disponível.</translation>
+        <translation>Uma nova versão está disponível.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="106"/>
         <source>The software is up to date.</source>
-        <translation type="unfinished">O programa está atualizado.</translation>
+        <translation>O programa está atualizado.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="133"/>
         <source>Update check failed.</source>
-        <translation type="unfinished">Falha da verificação da atualização.</translation>
+        <translation>Falha da verificação da atualização.</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="186"/>
         <source>WAV files (*.wav);;All files (*.*)</source>
-        <translation type="unfinished">Arquivos WAV (*.wav);; Todos os arquivos (*.*)</translation>
+        <translation>Arquivos WAV (*.wav);; Todos os arquivos (*.*)</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
@@ -1446,12 +1446,12 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="32"/>
         <source>Combo triggering</source>
-        <translation type="unfinished">Gatilho para o combo</translation>
+        <translation>Gatilho para o combo</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="40"/>
         <source>Automatic</source>
-        <translation type="unfinished">Automático</translation>
+        <translation>Automático</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="47"/>
@@ -1466,19 +1466,19 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="78"/>
         <source>Manual, using the shortcut</source>
-        <translation type="unfinished">Manual, utilizando o atalho</translation>
+        <translation>Manual, utilizando o atalho</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="119"/>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="257"/>
         <source>C&amp;hange</source>
-        <translation type="unfinished">&amp;Trocar</translation>
+        <translation>&amp;Trocar</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="126"/>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="264"/>
         <source>De&amp;fault</source>
-        <translation type="unfinished">&amp;Padrão</translation>
+        <translation>&amp;Padrão</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="151"/>
@@ -1508,12 +1508,12 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.ui" line="222"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Atalhos</translation>
+        <translation>Atalhos</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
@@ -1526,22 +1526,22 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="34"/>
         <source>Enable emoji shortcodes</source>
-        <translation type="unfinished">Habilitar atalhos para emojis</translation>
+        <translation>Habilitar atalhos para emojis</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="41"/>
         <source>&amp;Excluded Applications</source>
-        <translation type="unfinished">&amp;Excluir Aplicações</translation>
+        <translation>&amp;Excluir Aplicações</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="65"/>
         <source>Left delimiter</source>
-        <translation type="unfinished">Delimitador esquerdo</translation>
+        <translation>Delimitador esquerdo</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="121"/>
         <source>Right delimiter</source>
-        <translation type="unfinished">Delimitador direito</translation>
+        <translation>Delimitador direito</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneEmojis.ui" line="132"/>
@@ -1872,12 +1872,12 @@ Você gostaria de ler o curto tutorial de &apos;Primeiros Passos&apos;?</transla
     <message>
         <location filename="../Combo/MatchingMode.cpp" line="40"/>
         <source>Strict</source>
-        <translation type="unfinished">Exata</translation>
+        <translation>Exata</translation>
     </message>
     <message>
         <location filename="../Combo/MatchingMode.cpp" line="41"/>
         <source>Loose</source>
-        <translation type="unfinished">Aproximada</translation>
+        <translation>Aproximada</translation>
     </message>
     <message>
         <location filename="../Combo/CaseSensitivity.cpp" line="46"/>
