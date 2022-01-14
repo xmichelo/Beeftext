@@ -13,6 +13,7 @@
 #include "MatchingMode.h"
 #include "CaseSensitivity.h"
 #include "BeeftextUtils.h"
+#include "BeeftextConstants.h"
 #include "Group/GroupDialog.h"
 #include "Preferences/PreferencesManager.h"
 #include <XMiLib/Exception.h>
@@ -21,6 +22,16 @@
 
 namespace {
 
+//**********************************************************************************************************************
+/// \return The text for the variable label
+//**********************************************************************************************************************
+QString variablesLabel()
+{
+   return QObject::tr(R"(
+      <html><head/><body><p><a href="https://github.com/xmichelo/Beeftext/wiki/Variables">
+      <span style=" text-decoration: underline; color:#%1;">
+      About variables</span></a></p></body></html>)").arg(colorToHex(constants::blueBeeftextColor, false));
+}
 
 //**********************************************************************************************************************
 /// \param[in] keyword The keyword.
@@ -102,6 +113,7 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.editKeyword->setValidator(&validator_);
    ui_.comboEditor->plainTextEdit()->setPlainText(combo->snippet());
    ui_.editDescription->setPlainText(combo->description());
+   ui_.labelVariables->setText(variablesLabel());
    this->updateGui();
    connect(ui_.comboEditor->plainTextEdit(), &QPlainTextEdit::textChanged, this, &ComboDialog::updateGui);
 }
