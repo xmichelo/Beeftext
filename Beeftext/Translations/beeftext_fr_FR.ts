@@ -95,49 +95,49 @@
         <translation>Sensibilité à la casse</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="173"/>
+        <location filename="../Combo/ComboDialog.ui" line="196"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Champs requis&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="193"/>
+        <location filename="../Combo/ComboDialog.ui" line="203"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="203"/>
+        <location filename="../Combo/ComboDialog.ui" line="213"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="117"/>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
-        <location filename="../Combo/ComboDialog.cpp" line="130"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="135"/>
+        <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="117"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
         <source>The snippet text is empty.</source>
         <translation>Le snippet est vide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
+        <location filename="../Combo/ComboDialog.cpp" line="135"/>
         <source>The keyword is invalid.</source>
         <translation>Le mot-clé est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="130"/>
+        <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>The group is invalid.</source>
         <translation>Le groupe est invalide.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboDialog.cpp" line="152"/>
         <source>Duplicate keyword</source>
         <translation>Mot-clé déjà utilisé</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboDialog.cpp" line="152"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
@@ -146,32 +146,32 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
 Il est possible d&apos;utiliser le même mot-clé pour plusieurs combos. Beeftext choisira au hazard parmi toutes les possibilités.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="154"/>
         <source>&amp;Continue</source>
         <translation>&amp;Continuer</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="154"/>
         <source>C&amp;ancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="152"/>
+        <location filename="../Combo/ComboDialog.cpp" line="164"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Un combo existant cause un conflit avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="153"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translation>%1 combos existants créent des conflits avec ce combo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="155"/>
+        <location filename="../Combo/ComboDialog.cpp" line="167"/>
         <source>Conflict</source>
         <translation>Conflit</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="155"/>
+        <location filename="../Combo/ComboDialog.cpp" line="167"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anyway?</source>
@@ -180,7 +180,7 @@ Do you want to continue anyway?</source>
 Voulez-vous tout de même continuer?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="197"/>
+        <location filename="../Combo/ComboDialog.cpp" line="209"/>
         <source>New Group</source>
         <translation>Nouveau Groupe</translation>
     </message>
@@ -1512,12 +1512,12 @@ Voulez-vous tout de même continuer?</translation>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
         <source>Error</source>
-        <translation type="unfinished">Erreur</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
         <source>The shortcut could not be registered. Combo picker will be disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Le raccourci n&apos;a pas pu être enregistré. Le sélecteur de combo a été désactivé</translation>
     </message>
 </context>
 <context>
@@ -1691,12 +1691,12 @@ Voulez vous consulter le guide de démarrage (en anglais)?</translation>
     <message>
         <location filename="../main.cpp" line="235"/>
         <source>Starting with Beeftext v13.0, the combo picker shortcut cannot contain the Windows key.The shortcut is now %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Depuis Beeftext v13.0, le raccourci du sélecteur de combo ne peut plus utiliser la touche Windows. Le raccourci est désormais %1.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="244"/>
         <source>The shortcut for the combo picker window could not be registered. The combo picker has been turned off.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le raccourci pour le sélecteur de combo n&apos;a pas pu être enregistré. Le sélecteur de combo a été désactivé.</translation>
     </message>
     <message>
         <location filename="../BeeftextUtils.cpp" line="40"/>
@@ -1797,18 +1797,29 @@ p, li { white-space: pre-wrap; }
         <translation>Déplacer Dans</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="33"/>
+        <location filename="../Combo/ComboDialog.cpp" line="30"/>
+        <source>
+      &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Variables&quot;&gt;
+      &lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;
+      About variables&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>
+      &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Variables&quot;&gt;
+      &lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;
+      À propos des variables&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="44"/>
         <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
         <translation>Le mot-clé est très court. Êtes-vous sûr de vouloir utliser le mot-clé &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="38"/>
-        <location filename="../Combo/ComboDialog.cpp" line="57"/>
+        <location filename="../Combo/ComboDialog.cpp" line="49"/>
+        <location filename="../Combo/ComboDialog.cpp" line="68"/>
         <source>Do not show this warning again.</source>
         <translation>Ne plus afficher cet avertissement.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="53"/>
+        <location filename="../Combo/ComboDialog.cpp" line="64"/>
         <source>You have not defined a keyword. Are you sure you want to continue?</source>
         <translation>Vous n&apos;avez pas défini de mot-clé. Êtes-vous sûr de vouloir continuer?</translation>
     </message>
@@ -1934,7 +1945,7 @@ Control, Alt ou Windows.</translation>
     <message>
         <location filename="../Dialogs/ShortcutDialog.cpp" line="119"/>
         <source>This shortcut cannot use the Windows key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce raccourci ne peut pas utiliser la touche Windows.</translation>
     </message>
 </context>
 <context>

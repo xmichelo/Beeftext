@@ -19,7 +19,7 @@
 
 namespace {
    qint64 constexpr kLaunchCheckDelayMs = 1000; ///< Delay for check for update at launch in milliseconds
-   qint64 constexpr kUpdateCheckIntervalMs = 1000 * 60 * 60 * 24; ///< The interval for checking for updates in milliseconds
+   qint64 constexpr kUpdateCheckIntervalMs = 1000LL * 60 * 60 * 24; ///< The interval for checking for updates in milliseconds
 }
 
 

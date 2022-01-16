@@ -104,56 +104,56 @@
         <translation>配對</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="173"/>
+        <location filename="../Combo/ComboDialog.ui" line="196"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;需填欄位&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="193"/>
+        <location filename="../Combo/ComboDialog.ui" line="203"/>
         <source>&amp;OK</source>
         <translatorcomment>&amp;OK</translatorcomment>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="203"/>
+        <location filename="../Combo/ComboDialog.ui" line="213"/>
         <source>&amp;Cancel</source>
         <translatorcomment>取消&amp;C</translatorcomment>
         <translation>取消(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="117"/>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
-        <location filename="../Combo/ComboDialog.cpp" line="130"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="135"/>
+        <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>Error</source>
         <translatorcomment>錯誤</translatorcomment>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="117"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
         <source>The snippet text is empty.</source>
         <translatorcomment>文字片段是空白的</translatorcomment>
         <translation>文字片段是空白的.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
+        <location filename="../Combo/ComboDialog.cpp" line="135"/>
         <source>The keyword is invalid.</source>
         <translatorcomment>無效的關鍵字</translatorcomment>
         <translation>無效的關鍵字.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="130"/>
+        <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>The group is invalid.</source>
         <translatorcomment>無效的群組</translatorcomment>
         <translation>無效的群組.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboDialog.cpp" line="152"/>
         <source>Duplicate keyword</source>
         <translatorcomment>複製關鍵字</translatorcomment>
         <translation>複製關鍵字</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboDialog.cpp" line="152"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
@@ -162,36 +162,36 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
 你可以同時使用多個相同的關鍵字，我們會隨機挑選相符的文字片段來使用。</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="154"/>
         <source>&amp;Continue</source>
         <translatorcomment>繼續&amp;C</translatorcomment>
         <translation>繼續(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="154"/>
         <source>C&amp;ancel</source>
         <translatorcomment>取消&amp;a</translatorcomment>
         <translation>取消(&amp;a)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="152"/>
+        <location filename="../Combo/ComboDialog.cpp" line="164"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translatorcomment>這個組合與一個現有的組合衝突</translatorcomment>
         <translation>這個組合與一個現有的組合衝突.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="153"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translatorcomment>%1個組合與一個現有的組合衝突</translatorcomment>
         <translation>%1個組合與一個現有的組合衝突.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="155"/>
+        <location filename="../Combo/ComboDialog.cpp" line="167"/>
         <source>Conflict</source>
         <translation>衝突</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="155"/>
+        <location filename="../Combo/ComboDialog.cpp" line="167"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anyway?</source>
@@ -199,7 +199,7 @@ Do you want to continue anyway?</source>
 這樣你確定要繼續嗎？</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="197"/>
+        <location filename="../Combo/ComboDialog.cpp" line="209"/>
         <source>New Group</source>
         <translatorcomment>新的群組</translatorcomment>
         <translation>新的群組</translation>
@@ -1783,18 +1783,26 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;Unknown&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="33"/>
+        <location filename="../Combo/ComboDialog.cpp" line="30"/>
+        <source>
+      &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Variables&quot;&gt;
+      &lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;
+      About variables&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="44"/>
         <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
         <translation>關鍵字有點太短了。你確定要用這個關鍵字嗎:%1?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="38"/>
-        <location filename="../Combo/ComboDialog.cpp" line="57"/>
+        <location filename="../Combo/ComboDialog.cpp" line="49"/>
+        <location filename="../Combo/ComboDialog.cpp" line="68"/>
         <source>Do not show this warning again.</source>
         <translation>不要再顯示這個警告.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="53"/>
+        <location filename="../Combo/ComboDialog.cpp" line="64"/>
         <source>You have not defined a keyword. Are you sure you want to continue?</source>
         <translation>你還沒定義關鍵字。你確定要繼續嗎?</translation>
     </message>

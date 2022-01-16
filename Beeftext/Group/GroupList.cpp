@@ -363,7 +363,7 @@ bool GroupList::ensureNotEmpty()
 /// \param[in] parent The parent widget of the menu
 /// \return A menu containing the list of groups
 //**********************************************************************************************************************
-QMenu* GroupList::createMenu(QString const& title, std::set<SpGroup> const& disabledGroups, QWidget* parent)
+QMenu* GroupList::createMenu(QString const& title, std::set<SpGroup> const& disabledGroups, QWidget* parent) const
 {
    QMenu* menu = new QMenu(title, parent);
    this->fillMenu(menu, disabledGroups);
@@ -375,7 +375,7 @@ QMenu* GroupList::createMenu(QString const& title, std::set<SpGroup> const& disa
 /// \param[in] menu The menu
 /// \param[in] disabledGroups The list of groups that should be disabled
 //**********************************************************************************************************************
-void GroupList::fillMenu(QMenu* menu, std::set<SpGroup> const& disabledGroups)
+void GroupList::fillMenu(QMenu* menu, std::set<SpGroup> const& disabledGroups) const
 {
    menu->clear();
    for (SpGroup const& group : groups_)

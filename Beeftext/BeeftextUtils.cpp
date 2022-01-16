@@ -495,7 +495,6 @@ bool questionDialog(QWidget *parent, QString const& title, QString const& text,
    msgBox.setWindowTitle(title);
    msgBox.setText(text);
    QPushButton* yesButton = msgBox.addButton(yesText, QMessageBox::AcceptRole);
-   QPushButton* noButton = msgBox.addButton(noText, QMessageBox::RejectRole);
-   msgBox.exec();
+   msgBox.addButton(noText, QMessageBox::RejectRole);
    return msgBox.clickedButton() == yesButton;
 }

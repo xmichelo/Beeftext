@@ -12,7 +12,6 @@
 #include "Preferences/PreferencesManager.h"
 #include "MainWindow.h"
 #include "BeeftextUtils.h"
-#include "Picker/PickerWindow.h"
 #include "KeyboardMapper.h"
 #include <XMiLib/Exception.h>
 
@@ -53,18 +52,6 @@ bool isComboTriggerShortcut(SpShortcut const& shortcut)
 {
    SpShortcut const comboTriggerShortcut = PreferencesManager::instance().comboTriggerShortcut();
    return shortcut && comboTriggerShortcut && (*shortcut == *comboTriggerShortcut);
-}
-
-
-//**********************************************************************************************************************
-/// \brief Check if a keystroke is the shortcut for the combo picker window.
-///
-/// \return true if and only if keystroke correspond to the shortcut.
-//**********************************************************************************************************************
-bool isComboPickerShortcut(SpShortcut const& shortcut)
-{
-   SpShortcut const comboPickerShortcut = PreferencesManager::instance().comboPickerShortcut();
-   return shortcut && comboPickerShortcut && (*shortcut == *comboPickerShortcut);
 }
 
 

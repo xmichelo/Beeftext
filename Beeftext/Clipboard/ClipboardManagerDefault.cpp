@@ -165,7 +165,7 @@ HANDLE putUtf16InGlobalMemory(QString const& text)
       return nullptr;
    quint16 const* const data = text.utf16();
    quint32 const size = 2 * (static_cast<quint32>(text.length()) + 1);
-   HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, 2 * (static_cast<quint32>(text.length()) + 1));
+   HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, 2 * (static_cast<quint32>(text.length()) + 1));  // NOLINT(bugprone-implicit-widening-of-multiplication-result)
    if (!handle)
       return nullptr;
    ScopedGlobalMemoryLock const memLock(handle);

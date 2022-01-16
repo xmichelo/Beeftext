@@ -95,88 +95,88 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="173"/>
+        <location filename="../Combo/ComboDialog.ui" line="196"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Required fields&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Pflichtfelder&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="193"/>
+        <location filename="../Combo/ComboDialog.ui" line="203"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="203"/>
+        <location filename="../Combo/ComboDialog.ui" line="213"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Abbrechen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="117"/>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
-        <location filename="../Combo/ComboDialog.cpp" line="130"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
+        <location filename="../Combo/ComboDialog.cpp" line="135"/>
+        <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="117"/>
+        <location filename="../Combo/ComboDialog.cpp" line="129"/>
         <source>The snippet text is empty.</source>
         <translation>Das Feld Textschnipsel ist leer.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="123"/>
+        <location filename="../Combo/ComboDialog.cpp" line="135"/>
         <source>The keyword is invalid.</source>
         <translation>Das Schlüsselwort ist ungültig.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="130"/>
+        <location filename="../Combo/ComboDialog.cpp" line="142"/>
         <source>The group is invalid.</source>
         <translation>Die Gruppe ist ungültig.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboDialog.cpp" line="152"/>
         <source>Duplicate keyword</source>
         <translation>Doppeltes Schlüsselwort</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="140"/>
+        <location filename="../Combo/ComboDialog.cpp" line="152"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
         <translation>Dieses Schlüsselwort wurde bereits verwendet.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="154"/>
         <source>&amp;Continue</source>
         <translation>&amp;Weiter</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="154"/>
         <source>C&amp;ancel</source>
         <translation>&amp;Abbrechen</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="152"/>
+        <location filename="../Combo/ComboDialog.cpp" line="164"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translation>Eine bestehende Kombo verursacht einen Konflikt mit dieser Kombo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="153"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translation>%1 bestehende Kombos verursachen einen Konflikt mit dieser Kombo.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="155"/>
+        <location filename="../Combo/ComboDialog.cpp" line="167"/>
         <source>Conflict</source>
         <translation>Konflikt</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="155"/>
+        <location filename="../Combo/ComboDialog.cpp" line="167"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="197"/>
+        <location filename="../Combo/ComboDialog.cpp" line="209"/>
         <source>New Group</source>
         <translation>Neue Gruppe</translation>
     </message>
@@ -1812,18 +1812,26 @@ Möchten Sie ein kurzes &apos;Erste Schritte&apos;-Tutorial lesen?</translation>
         <translation>Die Liste der sensiblen Anwendungen konnte nicht gespeichert werden.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="33"/>
+        <location filename="../Combo/ComboDialog.cpp" line="30"/>
+        <source>
+      &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Variables&quot;&gt;
+      &lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;
+      About variables&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboDialog.cpp" line="44"/>
         <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
         <translation>Das Schlüsselwort ist sehr kurz. Bist du dir sicher das du das Schlüsselwort &apos;%1&apos; verwenden möchtest?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="38"/>
-        <location filename="../Combo/ComboDialog.cpp" line="57"/>
+        <location filename="../Combo/ComboDialog.cpp" line="49"/>
+        <location filename="../Combo/ComboDialog.cpp" line="68"/>
         <source>Do not show this warning again.</source>
         <translation>Zeige diese Warnung nicht wieder.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="53"/>
+        <location filename="../Combo/ComboDialog.cpp" line="64"/>
         <source>You have not defined a keyword. Are you sure you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
