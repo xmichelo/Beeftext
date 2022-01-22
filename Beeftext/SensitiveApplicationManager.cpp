@@ -17,10 +17,6 @@ using namespace xmilib;
 namespace {
 
 
-QStringList kBuiltInApps = { "mintty.exe", "putty.exe", "powershell.exe", "kitty.exe",
-"kitty_portable.exe", "ConEmu*.exe" }; ///< The built-in slist executables name that support only pasting using the Shift+Insert shortcut. Wildcards are supported
-
-
 //**********************************************************************************************************************
 /// \brief Save the list of sensitive applications.
 ///
@@ -82,8 +78,7 @@ bool SensitiveApplicationManager::isSensitiveApplication(QString const& appExeNa
       return QRegularExpression(QRegularExpression::wildcardToRegularExpression(str), 
          QRegularExpression::CaseInsensitiveOption).match(appExeName).hasMatch();
    };
-   return (kBuiltInApps.end() != std::find_if(kBuiltInApps.begin(), kBuiltInApps.end(), predicate)) ||
-      (sensitiveApps_.end() != std::find_if(sensitiveApps_.begin(), sensitiveApps_.end(), predicate));
+   return sensitiveApps_.end() != std::find_if(sensitiveApps_.begin(), sensitiveApps_.end(), predicate);
 }
 
 
