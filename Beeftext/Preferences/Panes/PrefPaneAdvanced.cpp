@@ -94,12 +94,45 @@ void PrefPaneAdvanced::onChangeComboListFolder()
    QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), prefs_.comboListFolderPath());
    if (path.trimmed().isEmpty())
       return;
-   if (!prefs_.setComboListFolderPath(path))
+
+   QString const errorTitle = tr("Error");
+   QString const errorMsg = tr("The location of the combo list folder could not be changed.");
+   if (!QDir(path).exists(ComboList::defaultFileName))
    {
-      QMessageBox::critical(this, tr("Error"), tr("The location of the combo list folder could not be changed."));
+      if (!prefs_.setComboListFolderPath(path, true))
+      {
+         QMessageBox::critical(this, errorTitle, errorMsg);
+         return;
+      }
+      ui_.editComboListFolder->setText(QDir::toNativeSeparators(path));
       return;
    }
-   ui_.editComboListFolder->setText(QDir::toNativeSeparators(path));
+
+   switch (threeOptionsDialog(this, QMessageBox::Warning, tr("Overwrite"), tr("The selected folder "
+      "already contains a combo list file do you want to overwrite this list or to replace the current combo list "
+      "With the content of this file?"), tr("Overwrite file"), tr("Replace Current List"), tr("Cancel"), 0, 2))
+   {
+   case 0:
+      if (!prefs_.setComboListFolderPath(path, true))
+      {
+         QMessageBox::critical(this, errorTitle, errorMsg);
+         return;
+      }
+      break;
+   case 1:
+   {
+      QString errStr;
+      if ((!ComboManager::instance().loadComboListFromFile(&errStr)) || (!prefs_.setComboListFolderPath(path, false)))
+      {
+         QMessageBox::critical(this, errorTitle, tr("The combo list could not be loaded"));
+         return;
+      }
+      break;
+   }
+   case 2:
+   default:
+      return;
+   }
 }
 
 
@@ -112,7 +145,7 @@ void PrefPaneAdvanced::onResetComboListFolder()
       return;
    //previousComboListPath_ = prefs_.comboListFolderPath();
    QString const path = PreferencesManager::defaultComboListFolderPath();
-   if (!prefs_.setComboListFolderPath(path))
+   if (!prefs_.setComboListFolderPath(path, true))
    {
       QMessageBox::critical(this, tr("Error"), tr("The location of the combo list folder could not be reset."));
       return;

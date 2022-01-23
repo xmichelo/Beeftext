@@ -43,5 +43,7 @@ bool warnAndConvertHtmlCombos(); ///< Warn the user about discontinued rich text
 QString colorToHex(QColor const& color, bool includeAlpha); ///< Get a hex representation of a color.
 bool questionDialog(QWidget *parent, QString const& title, QString const& text,
    QString const& yesText, QString const& noText); ///< Display a message box asking a question.
+qint32 threeOptionsDialog(QWidget* parent, QMessageBox::Icon const& icon, QString const& title, QString const& text,
+   QString const& option1, QString const& option2, QString const& option3, qint32 acceptButtonIndex, qint32 rejectButtonIndex); /// Display a dialog with 3 options
 
 #endif // #ifndef BEEFTEXT_UTILS_H

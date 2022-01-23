@@ -496,5 +496,31 @@ bool questionDialog(QWidget *parent, QString const& title, QString const& text,
    msgBox.setText(text);
    QPushButton* yesButton = msgBox.addButton(yesText, QMessageBox::AcceptRole);
    msgBox.addButton(noText, QMessageBox::RejectRole);
+   msgBox.exec();
    return msgBox.clickedButton() == yesButton;
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+qint32 threeOptionsDialog(QWidget* parent, QMessageBox::Icon const& icon, QString const& title, QString const& text,
+   QString const& option1, QString const& option2, QString const& option3, qint32 acceptButtonIndex, 
+   qint32 rejectButtonIndex)
+{
+   QMessageBox msgBox(parent);
+   msgBox.setWindowTitle(title);
+   msgBox.setIcon(icon);
+   msgBox.setText(text);
+   QList<QPushButton*>buttons = {
+      msgBox.addButton(option1, acceptButtonIndex == 0 ? QMessageBox::AcceptRole : 
+         (rejectButtonIndex == 0 ? QMessageBox::RejectRole : QMessageBox::NoRole)),
+      msgBox.addButton(option2, acceptButtonIndex == 1 ? QMessageBox::AcceptRole : 
+         (rejectButtonIndex == 1 ? QMessageBox::RejectRole : QMessageBox::NoRole)),
+      msgBox.addButton(option3, acceptButtonIndex == 2 ? QMessageBox::AcceptRole : 
+         (rejectButtonIndex == 2 ? QMessageBox::RejectRole : QMessageBox::NoRole)),
+   };
+   msgBox.exec();
+   QAbstractButton* clickedButton = msgBox.clickedButton();
+   return buttons[2] == clickedButton ? 2 : (buttons[1] == clickedButton ? 1 : 0);
 }
