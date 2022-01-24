@@ -436,7 +436,7 @@ void PreferencesManager::reset()
    if (!isInPortableMode())
    {
       this->setAutoStartAtLogin(kDefaultAutoStartAtLogin);
-      this->setComboListFolderPath(globals::appDataDir(), true);
+      this->setComboListFolderPath(globals::appDataDir());
    }
    applyComboPickerPreferences();
 }
@@ -625,7 +625,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const& doc) const
    settings_->setValue(kKeyAutoCheckForUpdates, objectValue<bool>(object, kKeyAutoCheckForUpdates));
    settings_->setValue(kKeyAutoStartAtLogin, objectValue<bool>(object, kKeyAutoStartAtLogin));
    settings_->setValue(kKeyBeeftextEnabled, objectValue<bool>(object, kKeyBeeftextEnabled));
-   this->setComboListFolderPath(objectValue<QString>(object, kKeyComboListFolderPath), true);
+   this->setComboListFolderPath(objectValue<QString>(object, kKeyComboListFolderPath));
    settings_->setValue(kKeyComboPickerEnabled, objectValue<bool>(object, kKeyComboPickerEnabled));
    settings_->setValue(kKeyComboPickerShortcutKeyCodeDeprecated, objectValue<quint32>(object, kKeyComboPickerShortcutKeyCodeDeprecated));
    settings_->setValue(kKeyComboPickerShortcutModifiersDeprecated, objectValue<quint32>(object, kKeyComboPickerShortcutModifiersDeprecated));
@@ -1027,7 +1027,7 @@ bool PreferencesManager::warnAboutEmptyComboKeywords() const
 /// \param[in] path The path.
 /// \return true if and only if the operation was successful.
 //**********************************************************************************************************************
-bool PreferencesManager::setComboListFolderPath(QString const& path, bool writeCurrentList) const
+bool PreferencesManager::setComboListFolderPath(QString const& path) const
 {
    if (isInPortableMode())
    {
@@ -1037,7 +1037,7 @@ bool PreferencesManager::setComboListFolderPath(QString const& path, bool writeC
    }
    QString const previousPath = QDir::fromNativeSeparators(comboListFolderPath());
    settings_->setValue(kKeyComboListFolderPath, path);
-   if (writeCurrentList && !ComboManager::instance().saveComboListToFile())
+   if (!ComboManager::instance().saveComboListToFile())
    {
       settings_->setValue(kKeyComboListFolderPath, previousPath);
       return false;

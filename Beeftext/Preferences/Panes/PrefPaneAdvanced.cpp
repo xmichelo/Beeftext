@@ -15,6 +15,7 @@
 #include "Backup/BackupManager.h"
 #include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
+#include <XMiLib/Exception.h>
 
 
 //**********************************************************************************************************************
@@ -91,47 +92,46 @@ void PrefPaneAdvanced::onSpinDelayBetweenKeystrokesChanged(int value) const
 //**********************************************************************************************************************
 void PrefPaneAdvanced::onChangeComboListFolder()
 {
-   QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), prefs_.comboListFolderPath());
-   if (path.trimmed().isEmpty())
-      return;
-
    QString const errorTitle = tr("Error");
    QString const errorMsg = tr("The location of the combo list folder could not be changed.");
-   if (!QDir(path).exists(ComboList::defaultFileName))
+   QFile oldFile = QDir(prefs_.comboListFolderPath()).absoluteFilePath(ComboList::defaultFileName);
+   try
    {
-      if (!prefs_.setComboListFolderPath(path, true))
+      QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), prefs_.comboListFolderPath());
+      if (path.trimmed().isEmpty())
+         return;
+      QDir const dir(path);
+      if (!dir.exists(ComboList::defaultFileName))
       {
-         QMessageBox::critical(this, errorTitle, errorMsg);
+         if (!prefs_.setComboListFolderPath(path))
+            throw xmilib::Exception(errorMsg);
+         ui_.editComboListFolder->setText(QDir::toNativeSeparators(path));
+         oldFile.remove();
          return;
       }
-      ui_.editComboListFolder->setText(QDir::toNativeSeparators(path));
-      return;
-   }
 
-   switch (threeOptionsDialog(this, QMessageBox::Warning, tr("Overwrite"), tr("The selected folder "
-      "already contains a combo list file do you want to overwrite this list or to replace the current combo list "
-      "With the content of this file?"), tr("Overwrite file"), tr("Replace Current List"), tr("Cancel"), 0, 2))
-   {
-   case 0:
-      if (!prefs_.setComboListFolderPath(path, true))
+      switch (threeOptionsDialog(this, QMessageBox::Warning, tr("Overwrite"), tr("The selected folder "
+         "already contains a combo list file do you want to overwrite this list or to replace the current combo list "
+         "With the content of this file?"), tr("Overwrite file"), tr("Replace Current List"), tr("Cancel"), 0, 2))
       {
-         QMessageBox::critical(this, errorTitle, errorMsg);
+      case 1: // replace current combos
+         if (!ComboManager::instance().restoreBackup(dir.absoluteFilePath(ComboList::defaultFileName)))
+            throw xmilib::Exception(errorMsg);
+         [[fallthrough]];
+      case 0: // overwrite file
+         if (!prefs_.setComboListFolderPath(path))
+            throw xmilib::Exception(errorMsg);
+         ui_.editComboListFolder->setText(QDir::toNativeSeparators(path));
+         oldFile.remove();
+         break;
+      case 2:
+      default:
          return;
       }
-      break;
-   case 1:
-   {
-      QString errStr;
-      if ((!ComboManager::instance().loadComboListFromFile(&errStr)) || (!prefs_.setComboListFolderPath(path, false)))
-      {
-         QMessageBox::critical(this, errorTitle, tr("The combo list could not be loaded"));
-         return;
-      }
-      break;
    }
-   case 2:
-   default:
-      return;
+   catch (xmilib::Exception const& e)
+   {
+      QMessageBox::critical(this, errorTitle, e.qwhat());
    }
 }
 
@@ -145,7 +145,7 @@ void PrefPaneAdvanced::onResetComboListFolder()
       return;
    //previousComboListPath_ = prefs_.comboListFolderPath();
    QString const path = PreferencesManager::defaultComboListFolderPath();
-   if (!prefs_.setComboListFolderPath(path, true))
+   if (!prefs_.setComboListFolderPath(path))
    {
       QMessageBox::critical(this, tr("Error"), tr("The location of the combo list folder could not be reset."));
       return;

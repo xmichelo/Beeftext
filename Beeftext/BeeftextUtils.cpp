@@ -502,10 +502,19 @@ bool questionDialog(QWidget *parent, QString const& title, QString const& text,
 
 
 //**********************************************************************************************************************
-// 
+/// \param[in] parent The parent widget of the dialog.
+/// \param[in] icon The icon.
+/// \param[in] title The title of the dialog.
+/// \param[in] text The description text for the dialog.
+/// \param[in] button0Text The text for button 0.
+/// \param[in] button1Text The text for button 1.
+/// \param[in] button2Text The text for button 2.
+/// \param[in] acceptButtonIndex The index of the button with the 'Accept' role.
+/// \param[in] rejectButtonIndex The index of the button with the 'Reject' role.
+/// \return The index of the buttons selected by the user.
 //**********************************************************************************************************************
 qint32 threeOptionsDialog(QWidget* parent, QMessageBox::Icon const& icon, QString const& title, QString const& text,
-   QString const& option1, QString const& option2, QString const& option3, qint32 acceptButtonIndex, 
+   QString const& button0Text, QString const& button1Text, QString const& button2Text, qint32 acceptButtonIndex, 
    qint32 rejectButtonIndex)
 {
    QMessageBox msgBox(parent);
@@ -513,11 +522,11 @@ qint32 threeOptionsDialog(QWidget* parent, QMessageBox::Icon const& icon, QStrin
    msgBox.setIcon(icon);
    msgBox.setText(text);
    QList<QPushButton*>buttons = {
-      msgBox.addButton(option1, acceptButtonIndex == 0 ? QMessageBox::AcceptRole : 
+      msgBox.addButton(button0Text, acceptButtonIndex == 0 ? QMessageBox::AcceptRole : 
          (rejectButtonIndex == 0 ? QMessageBox::RejectRole : QMessageBox::NoRole)),
-      msgBox.addButton(option2, acceptButtonIndex == 1 ? QMessageBox::AcceptRole : 
+      msgBox.addButton(button1Text, acceptButtonIndex == 1 ? QMessageBox::AcceptRole : 
          (rejectButtonIndex == 1 ? QMessageBox::RejectRole : QMessageBox::NoRole)),
-      msgBox.addButton(option3, acceptButtonIndex == 2 ? QMessageBox::AcceptRole : 
+      msgBox.addButton(button2Text, acceptButtonIndex == 2 ? QMessageBox::AcceptRole : 
          (rejectButtonIndex == 2 ? QMessageBox::RejectRole : QMessageBox::NoRole)),
    };
    msgBox.exec();
