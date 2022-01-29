@@ -32,6 +32,7 @@ public: // member functions
 private slots:
    void onActionInstall(); ///< Callback for the 'Install' action
    void onActionNotNow(); ///< Callback for the 'Not now' action
+   void onActionSkip(); ///< Callback for the 'Skip' action.
    void onDownloadFinished(); ///< Slot for the finishing of the download operation
    void onDownloadError(QNetworkReply::NetworkError error); ///< Slot 
    void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) const; ///< Slot for download progress reports

@@ -73,7 +73,8 @@ void UpdateDialog::startDownload()
    ui_.progressBar->setRange(0, 100);
    ui_.progressBar->setValue(0);
    ui_.buttonNotNow->setText(tr("&Cancel"));
-   ui_.buttonInstall->setEnabled(false);
+   ui_.buttonInstall->setVisible(false);
+   ui_.buttonSkip->setVisible(false);
    hashCalculator_.reset();
    downloadErrorOccurred_ = false;
 }
@@ -116,6 +117,16 @@ void UpdateDialog::onActionNotNow()
       reply_->abort();
    else
       this->reject();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void UpdateDialog::onActionSkip()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   this->reject();
 }
 
 
