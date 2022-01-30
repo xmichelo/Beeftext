@@ -30,9 +30,10 @@ public: // member functions
 	UpdateDialog& operator=(UpdateDialog&&) = delete; ///< Disabled move assignment operator
 	
 private slots:
-   void onActionInstall(); ///< Callback for the 'Install' action
-   void onActionNotNow(); ///< Callback for the 'Not now' action
-   void onActionSkip(); ///< Callback for the 'Skip' action.
+   void onInstall(); ///< Callback for the 'Install' action
+   void onNotNow(); ///< Callback for the 'Not now' action
+   void onSkipThisVersion(); ///< Callback for the 'Skip' action.
+   void onCancel(); ///< Callback for the 'Cancel' action.
    void onDownloadFinished(); ///< Slot for the finishing of the download operation
    void onDownloadError(QNetworkReply::NetworkError error); ///< Slot 
    void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) const; ///< Slot for download progress reports
