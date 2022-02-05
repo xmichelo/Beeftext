@@ -116,8 +116,8 @@ void UpdateManager::onWorkerUpdateIsAvailable(SpLatestVersionInfo const& latestV
 {
    if (!latestVersionInfo)
       throw xmilib::Exception(QString("%1(): latestVersionInfo parameter is null.").arg(__FUNCTION__));
-   globals::debugLog().addInfo(QString("%1 v%2.%3 is available for download.").arg(constants::kApplicationName)
-      .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor()));
+   globals::debugLog().addInfo(QString("%1 v%2 is available for download.").arg(constants::kApplicationName)
+      .arg(latestVersionInfo->versionNumber().toString()));
    emit updateIsAvailable(latestVersionInfo);
    UpdateDialog(latestVersionInfo).exec();
 }

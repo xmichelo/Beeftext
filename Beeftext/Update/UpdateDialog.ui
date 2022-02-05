@@ -23,7 +23,7 @@
       </font>
      </property>
      <property name="text">
-      <string>%1 v%2.%3 is available!</string>
+      <string>%1 v%2 is available!</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

@@ -12,9 +12,7 @@
 
 
 #include <memory>
-
-
-class LatestVersionInfo;
+#include <XMiLib/VersionNumber/VersionNumber.h>
 
 
 //**********************************************************************************************************************
@@ -31,10 +29,8 @@ public: // member functions
    LatestVersionInfo& operator=(LatestVersionInfo const&) = delete; ///< Disabled assignment operator
 	LatestVersionInfo& operator=(LatestVersionInfo&&) = delete; ///< Disabled move assignment operator
    bool isValid() const; ///< Check whether the instance is valid
-   qint32 versionMajor() const; ///< Get the major version number
-   void setVersionMajor(qint32 versionMajor); ///< Get he major version number
-   qint32 versionMinor() const; ///< Get the minor version number
-   void setVersionMinor(qint32 versionMinor); ///< Get he minor version number
+   xmilib::VersionNumber versionNumber() const; ///< Get the version number.
+   void setVersionNumber(xmilib::VersionNumber const& versionNumber); ///< Set the version number.
    QString downloadUrl() const; ///< Get the download URL
    void setDownloadUrl(QString const& downloadUrl); ///< Set the download URL
    QString releaseUrl() const; ///< Get the release URL
@@ -48,8 +44,7 @@ private: // member functions
    void parseFromJsonObject(QJsonObject const& object); ///< Parse the latest version info from a JSON object
 
 private: // data members
-   qint32 versionMajor_; ///< The major version number
-   qint32 versionMinor_; ///< The minor version number
+   xmilib::VersionNumber versionNumber_; ///< The version number.
    QString downloadUrl_; ///< The download url of the installer file
    QString releaseUrl_; ///< The URL of the release page on GitHub
    QByteArray sha256Hash_; ///< The SHA256 hash for the installer 

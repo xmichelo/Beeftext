@@ -51,12 +51,12 @@ void UpdateCheckWorker::performUpdateCheck()
    try
    {
       xmilib::DebugLog& log = globals::debugLog();
-      log.addInfo(QString("Update check started. Installed version is Beeftext %1.%2.")
-         .arg(constants::kVersionMajor).arg(constants::kVersionMinor));
+      log.addInfo(QString("Update check started. Installed version is Beeftext %1.")
+         .arg(constants::kVersionNumber.toString()));
       QByteArray const jsonData = this->downloadLatestVersionInformation();
       SpLatestVersionInfo const latestVersionInfo = this->parseJsonData(jsonData);
-      log.addInfo(QString("Downloaded latest version information. Latest version is Beeftext %1.%2.")
-         .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor()));
+      log.addInfo(QString("Downloaded latest version information. Latest version is Beeftext %1.")
+         .arg(latestVersionInfo->versionNumber().toString()));
       if (isNewVersionAvailable(latestVersionInfo))
       {
          log.addInfo("A new version is available.");
@@ -127,10 +127,7 @@ bool UpdateCheckWorker::isNewVersionAvailable(SpLatestVersionInfo const& latestV
    if (!latestVersionInfo)
       throw xmilib::Exception("Could not check for new version: the retrieved latest version information is "
          "null.");
-   qint32 const major = latestVersionInfo->versionMajor();
-   qint32 const minor = latestVersionInfo->versionMinor();
-   return (major > constants::kVersionMajor)
-      || ((major == constants::kVersionMajor) && (minor > constants::kVersionMinor));
+   return latestVersionInfo->versionNumber() > constants::kVersionNumber;
 }
 
 

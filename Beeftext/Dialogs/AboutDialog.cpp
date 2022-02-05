@@ -33,7 +33,7 @@ AboutDialog::AboutDialog(QWidget* parent)
 void AboutDialog::completeText() const
 {
    QColor const color = constants::blueBeeftextColor;
-   ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionMajor).arg(constants::kVersionMinor)
+   ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionNumber.major()).arg(constants::kVersionNumber.minor())
       .arg(isInPortableMode() ? tr("Portable Edition") : "").arg(QString(__DATE__).right(4))
       .arg(colorToHex(color, false)));
    ui_.labelBuildInfo->setText(globals::getBuildInfo());

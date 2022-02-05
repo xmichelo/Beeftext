@@ -92,8 +92,8 @@ void PrefPaneBehavior::updateGui() const
 //**********************************************************************************************************************
 void PrefPaneBehavior::onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo)
 {
-   this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2.%3 is available.").arg(constants::kApplicationName)
-      .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor())
+   this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2 is available.").arg(constants::kApplicationName)
+      .arg(latestVersionInfo->versionNumber().toString())
       : tr("A new version is available."));
 }
 
