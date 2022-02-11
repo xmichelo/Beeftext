@@ -106,7 +106,10 @@ void UpdateDialog::onInstall()
       this->accept();
    }
    else
+   {
+      PreferencesManager::instance().removeSkipVersionNumber();
       this->startDownload();
+   }
 }
 
 
@@ -115,6 +118,7 @@ void UpdateDialog::onInstall()
 //**********************************************************************************************************************
 void UpdateDialog::onNotNow()
 {
+   PreferencesManager::instance().removeSkipVersionNumber();
    this->reject();
 }
 
@@ -125,6 +129,7 @@ void UpdateDialog::onNotNow()
 void UpdateDialog::onSkipThisVersion()
 {
    qDebug() << QString("%1()").arg(__FUNCTION__);
+   PreferencesManager::instance().setSkipVersionNumber(latestVersionInfo_->versionNumber());
    this->reject();
 }
 

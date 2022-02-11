@@ -48,7 +48,8 @@ LatestVersionInfo::LatestVersionInfo(QJsonObject const& object)
 //**********************************************************************************************************************
 bool LatestVersionInfo::isValid() const
 {
-   return (!downloadUrl_.isEmpty()) && (!releaseNotes_.isEmpty()) && (sha256Hash_.size() == kHashLength);
+   return versionNumber_.isValid() && (!downloadUrl_.isEmpty()) && (!releaseNotes_.isEmpty()) && 
+      (sha256Hash_.size() == kHashLength);
 }
 
 

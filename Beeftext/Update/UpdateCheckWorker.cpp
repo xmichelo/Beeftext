@@ -26,8 +26,9 @@ namespace {
 //**********************************************************************************************************************
 /// \param[in] parent The parent object of the instance
 //**********************************************************************************************************************
-UpdateCheckWorker::UpdateCheckWorker(QObject* parent)
+UpdateCheckWorker::UpdateCheckWorker(QObject* parent, xmilib::VersionNumber const& skipVersionNumber)
    : QObject(parent)
+   , skipVersionNumber_(skipVersionNumber)
 {
 
 }
@@ -44,7 +45,7 @@ void UpdateCheckWorker::run()
 
 
 //**********************************************************************************************************************
-// 
+///
 //**********************************************************************************************************************
 void UpdateCheckWorker::performUpdateCheck()
 {
@@ -57,14 +58,18 @@ void UpdateCheckWorker::performUpdateCheck()
       SpLatestVersionInfo const latestVersionInfo = this->parseJsonData(jsonData);
       log.addInfo(QString("Downloaded latest version information. Latest version is Beeftext %1.")
          .arg(latestVersionInfo->versionNumber().toString()));
-      if (isNewVersionAvailable(latestVersionInfo))
+      bool skipped = false;
+      if (isNewVersionAvailable(latestVersionInfo, &skipped))
       {
          log.addInfo("A new version is available.");
          emit updateIsAvailable(latestVersionInfo);
       }
       else
       {
-         log.addInfo("No new version is available.");
+         if (skipped)
+            log.addInfo("A new version was available, but the user had previously decided to skip it.");
+         else
+            log.addInfo("No new version is available.");
          emit noUpdateIsAvailable();
       }
       log.addInfo("Update check ended.");
@@ -120,13 +125,27 @@ SpLatestVersionInfo UpdateCheckWorker::parseJsonData(QString const& jsonData) co
 
 
 //**********************************************************************************************************************
-/// \param[in] latestVersionInfo The latest version information
+/// \param[in] latestVersionInfo The latest version information.
+/// \param[out] outSkipped If not null, and the function returns false, on exit the value pointed will be true
+/// if the update was skipped by the user.
+/// \return true if and only if an update is available.
 //**********************************************************************************************************************
-bool UpdateCheckWorker::isNewVersionAvailable(SpLatestVersionInfo const& latestVersionInfo)
+bool UpdateCheckWorker::isNewVersionAvailable(SpLatestVersionInfo const& latestVersionInfo, bool* outSkipped) const
 {
+   if (outSkipped)
+      *outSkipped = false;
    if (!latestVersionInfo)
       throw xmilib::Exception("Could not check for new version: the retrieved latest version information is "
          "null.");
+   if (skipVersionNumber_.isValid() && latestVersionInfo->versionNumber().isValid() 
+      && (skipVersionNumber_ == latestVersionInfo->versionNumber()))
+   {
+      if (outSkipped)
+         *outSkipped = true;
+      return false;
+      
+   }
+   
    return latestVersionInfo->versionNumber() > constants::kVersionNumber;
 }
 

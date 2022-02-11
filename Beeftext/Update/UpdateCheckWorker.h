@@ -12,6 +12,7 @@
 
 
 #include "LatestVersionInfo.h"
+#include <XMiLib/VersionNumber/VersionNumber.h>
 
 
 //**********************************************************************************************************************
@@ -21,7 +22,7 @@ class UpdateCheckWorker: public QObject
 {
    Q_OBJECT
 public: // member functions
-   explicit UpdateCheckWorker(QObject* parent = nullptr); ///< Default constructor
+   explicit UpdateCheckWorker(QObject* parent, xmilib::VersionNumber const& skipVersionNumber); ///< Default constructor
 	UpdateCheckWorker(UpdateCheckWorker const&) = delete; ///< Disabled copy constructor
 	UpdateCheckWorker(UpdateCheckWorker&&) = delete; ///< Disabled move constructor
 	~UpdateCheckWorker() override = default; ///< Default destructor
@@ -41,7 +42,10 @@ private: // member functions
    void performUpdateCheck(); ///< perform the update check
    QByteArray downloadLatestVersionInformation() const; ///< Download the latest version information from the Beeftext website
    SpLatestVersionInfo parseJsonData(QString const& jsonData) const; ///< Parse the JSon data
-   static bool isNewVersionAvailable(SpLatestVersionInfo const& latestVersionInfo); ///< Check if the installed version of the application is outdated
+   bool isNewVersionAvailable(SpLatestVersionInfo const& latestVersionInfo, bool* outSkipped) const; ///< Check if the installed version of the application is outdated
+
+private: // data members
+   xmilib::VersionNumber skipVersionNumber_; ///< The version number if any (can be null)
 };
 
 

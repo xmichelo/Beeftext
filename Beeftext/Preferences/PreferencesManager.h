@@ -15,11 +15,7 @@
 #include "Theme.h"
 #include "Combo/MatchingMode.h"
 #include "Combo/CaseSensitivity.h"
-
-
-
-
-
+#include <XMiLib/VersionNumber/VersionNumber.h>
 
 
 //**********************************************************************************************************************
@@ -140,6 +136,9 @@ public: // member functions
    QByteArray comboPickerWindowGeometry() const; ///< Get the geometry of the combo picker.
    void setUseShiftInsertForPasting(bool value) const; ///< Get the value for the 'Shift+Insert for pasting' preference
    bool useShiftInsertForPasting() const; ///< Get the value for the 'Shift+Insert for pasting' preference
+   void setSkipVersionNumber(xmilib::VersionNumber const& versionNumber) const; /// Set the value for the 'Skip version number'preference.
+   xmilib::VersionNumber getSkipVersionNumber() const; /// Get the value for the 'Skip version number'preference.
+   void removeSkipVersionNumber() const; ///< Remove the value for the 'Skip version number' preference.
 
 signals:
    void autoCheckForUpdatesChanged(bool value); ///< Signal emitted when the 'Auto check for updates' preference value changed

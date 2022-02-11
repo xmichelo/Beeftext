@@ -81,6 +81,7 @@ QString const kKeyCustomPowershellPath = "CustomPowershellPath"; ///< The settin
 QString const kKeyTheme = "Theme"; ///< The setting key for the 'Theme' preference.
 QString const kKeyComboPickerWindowGeometry = "ComboPickerWindowGeometry"; ///< The settings key for the combo picker geometry.
 QString const kKeyUseShiftInsertForPasting= "UseShiftInsertForPasting"; ///< The settings key for the 'Use Shift+Insert for pasting' preference
+QString const kKeySkipVersionNumber = "SkipVersionNumber"; ///< The settings key for the 'skip version number' preference.
 
 
 SpShortcut const kDefaultAppEnableDisableShortcut = Shortcut::fromModifiersAndKey(Qt::AltModifier | Qt::ShiftModifier
@@ -1624,6 +1625,33 @@ void PreferencesManager::setUseShiftInsertForPasting(bool value) const
 bool PreferencesManager::useShiftInsertForPasting() const
 {
    return cache_->useShiftInsertForPasting;
+}
+
+
+//**********************************************************************************************************************
+/// \param[in] versionNumber The version number.
+//**********************************************************************************************************************
+void PreferencesManager::setSkipVersionNumber(xmilib::VersionNumber const& versionNumber) const
+{
+   settings_->setValue(kKeySkipVersionNumber, versionNumber.toString());
+}
+
+
+//**********************************************************************************************************************
+/// \return The value for the 'Skip version number' preference.
+//**********************************************************************************************************************
+xmilib::VersionNumber PreferencesManager::getSkipVersionNumber() const
+{
+   return xmilib::VersionNumber::fromString(readSettings<QString>(kKeySkipVersionNumber, QString()));
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void PreferencesManager::removeSkipVersionNumber() const
+{
+   settings_->remove(kKeySkipVersionNumber);
 }
 
 
