@@ -26,8 +26,7 @@ namespace {
 // 
 //**********************************************************************************************************************
 LatestVersionInfo::LatestVersionInfo()
-   : versionMajor_(-1)
-   , versionMinor_(-1)
+   : versionNumber_(0, 0)
 {
 }
 
@@ -49,44 +48,26 @@ LatestVersionInfo::LatestVersionInfo(QJsonObject const& object)
 //**********************************************************************************************************************
 bool LatestVersionInfo::isValid() const
 {
-   return (versionMajor_ >= 0) && (versionMinor_ >= 0) && (!downloadUrl_.isEmpty()) && (!releaseNotes_.isEmpty()) 
-      && (sha256Hash_.size() == kHashLength);
+   return versionNumber_.isValid() && (!downloadUrl_.isEmpty()) && (!releaseNotes_.isEmpty()) && 
+      (sha256Hash_.size() == kHashLength);
 }
 
 
 //**********************************************************************************************************************
-/// \return The major version number
+/// \return The version number.
 //**********************************************************************************************************************
-qint32 LatestVersionInfo::versionMajor() const
+xmilib::VersionNumber LatestVersionInfo::versionNumber() const
 {
-   return versionMajor_;
+   return versionNumber_;
 }
 
 
 //**********************************************************************************************************************
-/// \param[in] versionMajor The major version number
+/// \param[in] versionNumber The version number.
 //**********************************************************************************************************************
-void LatestVersionInfo::setVersionMajor(qint32 versionMajor)
+void LatestVersionInfo::setVersionNumber(xmilib::VersionNumber const& versionNumber)
 {
-   versionMajor_ = versionMajor;
-}
-
-
-//**********************************************************************************************************************
-/// \return The minor version number
-//**********************************************************************************************************************
-qint32 LatestVersionInfo::versionMinor() const
-{
-   return versionMinor_;
-}
-
-
-//**********************************************************************************************************************
-/// \param[in] versionMinor The minor version number
-//**********************************************************************************************************************
-void LatestVersionInfo::setVersionMinor(qint32 versionMinor)
-{
-   versionMinor_ = versionMinor;
+   versionNumber_ = versionNumber;
 }
 
 
@@ -169,8 +150,8 @@ void LatestVersionInfo::setReleaseNotes(QString const& releaseNotes)
 //**********************************************************************************************************************
 void LatestVersionInfo::parseFromJsonObject(QJsonObject const& object)
 {
-   versionMajor_ = object[kPropVersionMajor].toInt(-1);
-   versionMinor_ = object[kPropVersionMinor].toInt(-1);
+   versionNumber_ = xmilib::VersionNumber(quint32(object[kPropVersionMajor].toInt(0)), 
+      quint32(object[kPropVersionMinor].toInt(0)));
    downloadUrl_ = object[kPropDownloadUrl].toString();
    releaseUrl_ = object[kPropReleaseUrl].toString();
    sha256Hash_ = QByteArray::fromHex(object[kPropSha256Sum].toString().toLocal8Bit());

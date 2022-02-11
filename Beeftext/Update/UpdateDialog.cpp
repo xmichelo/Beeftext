@@ -41,10 +41,11 @@ UpdateDialog::UpdateDialog(SpLatestVersionInfo latestVersionInfo, QWidget* paren
    if (latestVersionInfo_)
    {
       ui_.labelHeader->setText(ui_.labelHeader->text().arg(::constants::kApplicationName)
-         .arg(latestVersionInfo_->versionMajor()).arg(latestVersionInfo_->versionMinor()));
+         .arg(latestVersionInfo_->versionNumber().toString()));
       ui_.editReleaseNotes->setHtml(latestVersionInfo_->releaseNotes());
    }
    ui_.buttonInstall->setText(portableMode ? tr("&Download Page") : tr("&Install"));
+   ui_.buttonCancel->setVisible(false);
 
    // If you're AFK for days, we want to ensure we display only one notification windows, for the latest release, so:
    connect(&UpdateManager::instance(), &UpdateManager::updateIsAvailable, this, &UpdateDialog::reject);
@@ -72,8 +73,10 @@ void UpdateDialog::startDownload()
    ui_.progressBar->setEnabled(true);
    ui_.progressBar->setRange(0, 100);
    ui_.progressBar->setValue(0);
-   ui_.buttonNotNow->setText(tr("&Cancel"));
-   ui_.buttonInstall->setEnabled(false);
+   ui_.buttonInstall->setVisible(false);
+   ui_.buttonSkipThisVersion->setVisible(false);
+   ui_.buttonNotNow->setVisible(false);
+   ui_.buttonCancel->setVisible(true);
    hashCalculator_.reset();
    downloadErrorOccurred_ = false;
 }
@@ -95,7 +98,7 @@ void UpdateDialog::processDownloadedData(QByteArray const& data)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void UpdateDialog::onActionInstall()
+void UpdateDialog::onInstall()
 {
    if (isInPortableMode())
    {
@@ -103,14 +106,38 @@ void UpdateDialog::onActionInstall()
       this->accept();
    }
    else
+   {
+      PreferencesManager::instance().removeSkipVersionNumber();
       this->startDownload();
+   }
 }
 
 
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void UpdateDialog::onActionNotNow()
+void UpdateDialog::onNotNow()
+{
+   PreferencesManager::instance().removeSkipVersionNumber();
+   this->reject();
+}
+
+
+//**********************************************************************************************************************
+//
+//*********************************eg*************************************************************************************
+void UpdateDialog::onSkipThisVersion()
+{
+   qDebug() << QString("%1()").arg(__FUNCTION__);
+   PreferencesManager::instance().setSkipVersionNumber(latestVersionInfo_->versionNumber());
+   this->reject();
+}
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+void UpdateDialog::onCancel()
 {
    if (reply_)
       reply_->abort();
@@ -158,14 +185,16 @@ void UpdateDialog::onDownloadError(QNetworkReply::NetworkError error)
    if (!reply_)
       throw Exception("Internal casting error during download error callback.");
    downloadErrorOccurred_ = true;
-   if (error != QNetworkReply::OperationCanceledError)
+   if (QNetworkReply::OperationCanceledError == error)
    {
-      QString const errorMsg = reply_->errorString();
-      globals::debugLog().addError(QString("A network error occurred while downloading software update: %1")
-         .arg(errorMsg));
-      QMessageBox::critical(this, tr("Error"), tr("An error occurred while downloading the software update:\n%1")
-         .arg(errorMsg));
+      globals::debugLog().addInfo("Software update download was cancelled");
+      return;
    }
+   QString const errorMsg = reply_->errorString();
+   globals::debugLog().addError(QString("A network error occurred while downloading software update: %1")
+      .arg(errorMsg));
+   QMessageBox::critical(this, tr("Error"), tr("An error occurred while downloading the software update:\n%1")
+      .arg(errorMsg));
 }
 
 

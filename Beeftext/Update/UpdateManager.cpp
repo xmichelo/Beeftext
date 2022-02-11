@@ -40,19 +40,29 @@ UpdateManager::UpdateManager()
 {
    PreferencesManager const& prefs = PreferencesManager::instance();
    timer_.setSingleShot(true);
-   connect(&timer_, &QTimer::timeout, this, &UpdateManager::checkForUpdate);
+   connect(&timer_, &QTimer::timeout, this, &UpdateManager::checkForUpdateWitchSkipCheck);
    connect(&prefs, &PreferencesManager::autoCheckForUpdatesChanged, this, &UpdateManager::onAutoCheckForUpdateChanged);
    this->onAutoCheckForUpdateChanged(prefs.autoCheckForUpdates());
 }
 
 
 //**********************************************************************************************************************
-// 
+//
 //**********************************************************************************************************************
-void UpdateManager::checkForUpdate()
+void UpdateManager::checkForUpdateWitchSkipCheck()
 {
    timer_.stop();
-   startUpdateCheckWorker();
+   startUpdateCheckWorker(true);
+}
+
+
+//**********************************************************************************************************************
+// 
+//**********************************************************************************************************************
+void UpdateManager::checkForUpdateWithoutSkipCheck()
+{
+   timer_.stop();
+   startUpdateCheckWorker(false);
 }
 
 
@@ -75,11 +85,12 @@ void UpdateManager::onAutoCheckForUpdateChanged(bool enabled)
 //**********************************************************************************************************************
 // 
 //**********************************************************************************************************************
-void UpdateManager::startUpdateCheckWorker()
+void UpdateManager::startUpdateCheckWorker(bool verifySkippedVersion)
 {
    emit startedUpdateCheck();
    QThread *thread = new QThread;
-   UpdateCheckWorker* worker = new UpdateCheckWorker;
+   UpdateCheckWorker* worker = new UpdateCheckWorker(nullptr, verifySkippedVersion ? 
+      PreferencesManager::instance().getSkipVersionNumber() : xmilib::VersionNumber());
    worker->moveToThread(thread);
    connect(thread, &QThread::started, worker, &UpdateCheckWorker::run);
    connect(worker, &UpdateCheckWorker::finished, this, &UpdateManager::onWorkerFinished);
@@ -116,8 +127,8 @@ void UpdateManager::onWorkerUpdateIsAvailable(SpLatestVersionInfo const& latestV
 {
    if (!latestVersionInfo)
       throw xmilib::Exception(QString("%1(): latestVersionInfo parameter is null.").arg(__FUNCTION__));
-   globals::debugLog().addInfo(QString("%1 v%2.%3 is available for download.").arg(constants::kApplicationName)
-      .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor()));
+   globals::debugLog().addInfo(QString("%1 v%2 is available for download.").arg(constants::kApplicationName)
+      .arg(latestVersionInfo->versionNumber().toString()));
    emit updateIsAvailable(latestVersionInfo);
    UpdateDialog(latestVersionInfo).exec();
 }

@@ -36,12 +36,13 @@ signals:
    void updateCheckFailed(); ///< Signal for failures of update check
 
 public slots:
-   void checkForUpdate(); ///< Force a check for update
+   void checkForUpdateWitchSkipCheck(); ///< Perform an update check, and ignore it if version is marked as skip
+   void checkForUpdateWithoutSkipCheck(); ///< Perform an update check, but do not check if the version is marked as skip.
    void onAutoCheckForUpdateChanged(bool enabled); ///< Signal for the changing of the 'Auto check for update
 
 private: // member functions
    UpdateManager(); ///< Default constructor
-   void startUpdateCheckWorker(); ///< Start the update worker
+   void startUpdateCheckWorker(bool verifySkippedVersion); ///< Start the update worker
 
 private slots:
    void onWorkerFinished(); ///< Slot for the finishing of the worker

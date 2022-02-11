@@ -40,7 +40,7 @@ PrefPaneBehavior::PrefPaneBehavior(QWidget* parent)
 
    // signal mappings for the 'Check now' button
    UpdateManager const& updateManager = UpdateManager::instance();
-   connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdate);
+   connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdateWithoutSkipCheck);
    connect(&updateManager, &UpdateManager::startedUpdateCheck, this, &PrefPaneBehavior::onUpdateCheckStarted);
    connect(&updateManager, &UpdateManager::finishedUpdateCheck, this, &PrefPaneBehavior::onUpdateCheckFinished);
    connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PrefPaneBehavior::onUpdateIsAvailable);
@@ -92,8 +92,8 @@ void PrefPaneBehavior::updateGui() const
 //**********************************************************************************************************************
 void PrefPaneBehavior::onUpdateIsAvailable(SpLatestVersionInfo const& latestVersionInfo)
 {
-   this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2.%3 is available.").arg(constants::kApplicationName)
-      .arg(latestVersionInfo->versionMajor()).arg(latestVersionInfo->versionMinor())
+   this->setUpdateCheckStatus(latestVersionInfo ? tr("%1 v%2 is available.").arg(constants::kApplicationName)
+      .arg(latestVersionInfo->versionNumber().toString())
       : tr("A new version is available."));
 }
 

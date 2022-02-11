@@ -23,7 +23,7 @@
       </font>
      </property>
      <property name="text">
-      <string>%1 v%2.%3 is available!</string>
+      <string>%1 v%2 is available!</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -78,7 +78,7 @@
      <item>
       <widget class="QPushButton" name="buttonInstall">
        <property name="text">
-        <string notr="true">#&amp;Install#</string>
+        <string notr="true">#Install/Download</string>
        </property>
       </widget>
      </item>
@@ -89,31 +89,23 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="buttonSkipThisVersion">
+       <property name="text">
+        <string>&amp;Skip This Version</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonCancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
-  <action name="actionInstall">
-   <property name="text">
-    <string>&amp;Install</string>
-   </property>
-   <property name="iconText">
-    <string notr="true">Install</string>
-   </property>
-   <property name="toolTip">
-    <string notr="true">Install</string>
-   </property>
-  </action>
-  <action name="actionNotNow">
-   <property name="text">
-    <string>&amp;Not Now</string>
-   </property>
-   <property name="iconText">
-    <string notr="true">Skip</string>
-   </property>
-   <property name="toolTip">
-    <string>Not now</string>
-   </property>
-  </action>
  </widget>
  <tabstops>
   <tabstop>buttonInstall</tabstop>
@@ -123,72 +115,74 @@
  <resources/>
  <connections>
   <connection>
-   <sender>actionInstall</sender>
-   <signal>triggered()</signal>
-   <receiver>UpdateDialog</receiver>
-   <slot>onActionInstall()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>319</x>
-     <y>239</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionNotNow</sender>
-   <signal>triggered()</signal>
-   <receiver>UpdateDialog</receiver>
-   <slot>onActionNotNow()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>319</x>
-     <y>239</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>buttonInstall</sender>
    <signal>clicked()</signal>
-   <receiver>actionInstall</receiver>
-   <slot>trigger()</slot>
+   <receiver>UpdateDialog</receiver>
+   <slot>onInstall()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>511</x>
-     <y>458</y>
+     <x>222</x>
+     <y>411</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
+     <x>273</x>
+     <y>216</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>buttonNotNow</sender>
    <signal>clicked()</signal>
-   <receiver>actionNotNow</receiver>
-   <slot>trigger()</slot>
+   <receiver>UpdateDialog</receiver>
+   <slot>onNotNow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>592</x>
-     <y>458</y>
+     <x>318</x>
+     <y>411</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
+     <x>273</x>
+     <y>216</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>UpdateDialog</receiver>
+   <slot>onCancel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>500</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>216</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonSkipThisVersion</sender>
+   <signal>clicked()</signal>
+   <receiver>UpdateDialog</receiver>
+   <slot>onSkipThisVersion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>409</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>216</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
-  <slot>onActionInstall()</slot>
-  <slot>onActionNotNow()</slot>
+  <slot>onInstall()</slot>
+  <slot>onNotNow()</slot>
+  <slot>onSkipThisVersion()</slot>
+  <slot>onCancel()</slot>
  </slots>
 </ui>

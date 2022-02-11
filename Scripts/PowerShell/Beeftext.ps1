@@ -43,13 +43,9 @@ function copyVcppDlls([String]$dstPath)
 #***********************************************************************************************************************
 function getBeeftextVersion
 {
-   $srcFile = absolutePath $solutionDir "Beeftext\BeeftextConstants.h"
-   $regexMinor = 'kVersionMinor\s*=\s*(\d+)\s*;' 
-   $regexMajor = 'kVersionMajor\s*=\s*(\d+)\s*;' 
-   $major = Select-String -Path $srcFile -Pattern $regexMajor | ForEach-Object {$_.Matches} | 
-      ForEach-Object { $_.Groups[1].Value }
-   $minor = Select-String -Path $srcFile -Pattern $regexMinor | ForEach-Object {$_.Matches} |
-       ForEach-Object { $_.Groups[1].Value }
+   $srcFile = absolutePath $solutionDir "Beeftext\BeeftextConstants.cpp"
+   $major, $minor = Select-String -Path $srcFile -Pattern 'kVersionNumber\((\d+)\s*,\s*(\d+)\);' | ForEach-Object {$_.Matches} | 
+      ForEach-Object { $_.Groups[1].Value, $_.Groups[2].Value }
    if ([string]::IsNullOrEmpty($major) -Or [string]::IsNullOrEmpty($minor)) 
    {  
       Write-Error "Could not parse version number"
