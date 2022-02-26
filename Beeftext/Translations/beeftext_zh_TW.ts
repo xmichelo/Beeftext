@@ -1283,58 +1283,83 @@ Do you want to continue anyway?</source>
         <translation>敏感軟體</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="94"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="100"/>
         <source>Select folder</source>
         <translation>選擇資料夾</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="95"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="150"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="96"/>
         <source>The location of the combo list folder could not be changed.</source>
         <translation>無法變更組合清單資料夾的路徑.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="113"/>
+        <source>Overwrite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="113"/>
+        <source>The selected folder already contains a combo list file do you want to overwrite this list or to replace the current combo list With the content of this file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Overwrite file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Replace Current List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="144"/>
         <source>Reset Folder</source>
         <translation>重設資料夾</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="144"/>
         <source>Reset the combo list folder?</source>
         <translation>重設組合清單資料夾?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="150"/>
         <source>The location of the combo list folder could not be reset.</source>
         <translation>無法重設組合清單資料夾的路徑.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="197"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="230"/>
         <source>Select PowerShell executable</source>
         <translation>選擇PowerShell執行檔</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="198"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="231"/>
         <source>Executable files (*.exe);;All files (*.*)</source>
         <translation>執行檔 (*.exe);;所有檔案 (*.*)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="240"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="273"/>
         <source>Custom backup location</source>
         <translation>自定的備份路徑</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="319"/>
         <source>Delete Backup Files?</source>
         <translation>刪除備份檔?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="319"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>你確定要刪除所有備份嗎?</translation>
     </message>
@@ -1425,9 +1450,13 @@ Do you want to continue anyway?</source>
         <translation>預設值(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
         <source>%1 v%2.%3 is available.</source>
-        <translation>有%1v%2.%3版可以更新.</translation>
+        <translation type="vanished">有%1v%2.%3版可以更新.</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
+        <source>%1 v%2 is available.</source>
+        <translation type="unfinished">有%1v%2.%3版可以更新. {1 ?} {2 ?}</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="97"/>
@@ -1741,7 +1770,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="116"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
@@ -1829,13 +1858,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="164"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="102"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
         <source>&amp;Reset</source>
         <translation>重置(&amp;R)</translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="167"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="105"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="100"/>
         <source>Reset List</source>
         <translation>重置清單</translation>
     </message>
@@ -1905,18 +1934,18 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>選擇自定音效檔</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="92"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translatorcomment>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用這個對話窗來列舉有那些軟體要關閉顏文字功能.&lt;/p&gt;&lt;p&gt;列舉的名稱需使用他們的程式名稱(如: notepad.exe). 可以使用萬用字元.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translatorcomment>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用這個對話窗來列舉有那些軟體是敏感軟體。有些軟體因為無法支援標準的Ctrl+V貼上方式，所以會導致BeefText無法正確運作.&lt;/p&gt;&lt;p&gt;列舉的名稱需使用他們的程式名稱(如: notepad.exe).可以使用萬用字元.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="106"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="101"/>
         <source>Are you sure you want to reset the list of sensitive applications?</source>
         <translation>你確定要重置敏感軟體清單嗎?</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="116"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
         <source>The sensitive application file could not be saved.</source>
         <translation>無法儲存敏感軟體清單檔.</translation>
     </message>
@@ -1974,9 +2003,13 @@ Ctrl, Alt, 或Win鍵.</translation>
         <translation>軟體更新</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="26"/>
         <source>%1 v%2.%3 is available!</source>
-        <translation>有%1v%2.%3版可以更新了!</translation>
+        <translation type="vanished">有%1v%2.%3版可以更新了!</translation>
+    </message>
+    <message>
+        <location filename="../Update/UpdateDialog.ui" line="26"/>
+        <source>%1 v%2 is available!</source>
+        <translation type="unfinished">有%1v%2.%3版可以更新了! {1 ?} {2 ?}</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="36"/>
@@ -1985,17 +2018,15 @@ Ctrl, Alt, 或Win鍵.</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="88"/>
-        <location filename="../Update/UpdateDialog.ui" line="108"/>
         <source>&amp;Not Now</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="114"/>
-        <source>Not now</source>
+        <location filename="../Update/UpdateDialog.ui" line="95"/>
+        <source>&amp;Skip This Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="97"/>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
         <source>&amp;Install</source>
         <translation>安裝(&amp;I)</translation>
@@ -2006,23 +2037,23 @@ Ctrl, Alt, 或Win鍵.</translation>
         <translation>到下載頁面(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="75"/>
+        <location filename="../Update/UpdateDialog.ui" line="102"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="133"/>
-        <location filename="../Update/UpdateDialog.cpp" line="166"/>
+        <location filename="../Update/UpdateDialog.cpp" line="160"/>
+        <location filename="../Update/UpdateDialog.cpp" line="196"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="133"/>
+        <location filename="../Update/UpdateDialog.cpp" line="160"/>
         <source>The update cannot be installed: the checksum does not match.</source>
         <translation>無法安裝這個更新: Checksum檢查碼不吻合.</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="166"/>
+        <location filename="../Update/UpdateDialog.cpp" line="196"/>
         <source>An error occurred while downloading the software update:
 %1</source>
         <translation>在下載軟體更新時發生錯誤:

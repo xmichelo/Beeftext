@@ -1267,58 +1267,83 @@ Do you want to continue anyway?</source>
         <translation>敏感软件</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="94"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="100"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="95"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="150"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="96"/>
         <source>The location of the combo list folder could not be changed.</source>
         <translation>组合列表的文件夹位置无法被修改。</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="113"/>
+        <source>Overwrite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="113"/>
+        <source>The selected folder already contains a combo list file do you want to overwrite this list or to replace the current combo list With the content of this file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Overwrite file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Replace Current List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="144"/>
         <source>Reset Folder</source>
         <translation>重置文件夹</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="144"/>
         <source>Reset the combo list folder?</source>
         <translation>重置组合文件列表的文件夹？</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="150"/>
         <source>The location of the combo list folder could not be reset.</source>
         <translation>组合列表文件夹位置无法被重置。</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="197"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="230"/>
         <source>Select PowerShell executable</source>
         <translation>选择PowerShell可执行文件</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="198"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="231"/>
         <source>Executable files (*.exe);;All files (*.*)</source>
         <translation>可执行文件（*exe）;;所有文件（*。*）</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="240"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="273"/>
         <source>Custom backup location</source>
         <translation>自定义备份位置</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="319"/>
         <source>Delete Backup Files?</source>
         <translation>删除备份文件？</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="319"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>你确定要删除所有备份文件吗？</translation>
     </message>
@@ -1410,10 +1435,14 @@ Do you want to continue anyway?</source>
         <translation>默认（&amp;D）</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
         <source>%1 v%2.%3 is available.</source>
         <translatorcomment>“版本已发布” means &quot;version is available&quot;. </translatorcomment>
-        <translation>%1 v%2.%3版本已发布。</translation>
+        <translation type="vanished">%1 v%2.%3版本已发布。</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
+        <source>%1 v%2 is available.</source>
+        <translation type="unfinished">%1 v%2.%3版本已发布。 {1 ?} {2 ?}</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="97"/>
@@ -1726,7 +1755,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="116"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -1814,13 +1843,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="164"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="102"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
         <source>&amp;Reset</source>
         <translation>重置（&amp;R）</translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="167"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="105"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="100"/>
         <source>Reset List</source>
         <translation>重置列表</translation>
     </message>
@@ -1890,17 +1919,17 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>选择自定义提示音文件</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="92"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请用这个对话框列出那些无法与Beeftext正常工作的敏感软件，这些软件不支持通过标准的Ctrl+V进行复制。&lt;/p&gt;&lt;p&gt;请通过软件的进程名称列出它们，比如“notepad.exe”，在此可以使用通配符（*）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="106"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="101"/>
         <source>Are you sure you want to reset the list of sensitive applications?</source>
         <translation>你确定要重置敏感软件列表吗？</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="116"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
         <source>The sensitive application file could not be saved.</source>
         <translation>敏感软件列表文件无法被保存。</translation>
     </message>
@@ -1958,9 +1987,13 @@ Ctrl，Alt，或Win键。</translation>
         <translation>软件更新</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="26"/>
         <source>%1 v%2.%3 is available!</source>
-        <translation>%1 v%2.%3版本已发布！</translation>
+        <translation type="vanished">%1 v%2.%3版本已发布！</translation>
+    </message>
+    <message>
+        <location filename="../Update/UpdateDialog.ui" line="26"/>
+        <source>%1 v%2 is available!</source>
+        <translation type="unfinished">%1 v%2.%3版本已发布！ {1 ?} {2 ?}</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="36"/>
@@ -1969,18 +2002,20 @@ Ctrl，Alt，或Win键。</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="88"/>
-        <location filename="../Update/UpdateDialog.ui" line="108"/>
         <source>&amp;Not Now</source>
         <translation>下次一定（&amp;N）</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="114"/>
-        <source>Not now</source>
-        <translatorcomment>I made a joke here. &quot;下次一定&quot; means &quot;I will next time&quot;. It&apos;s a inside joke on Bilibili.com (kind of like Chinese YouTube). Most non-Bilibili Chinese users will understand what it means, and for people who know this joke, they would probably have a good laugh.</translatorcomment>
-        <translation>下次一定</translation>
+        <location filename="../Update/UpdateDialog.ui" line="95"/>
+        <source>&amp;Skip This Version</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="97"/>
+        <source>Not now</source>
+        <translatorcomment>I made a joke here. &quot;下次一定&quot; means &quot;I will next time&quot;. It&apos;s a inside joke on Bilibili.com (kind of like Chinese YouTube). Most non-Bilibili Chinese users will understand what it means, and for people who know this joke, they would probably have a good laugh.</translatorcomment>
+        <translation type="vanished">下次一定</translation>
+    </message>
+    <message>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
         <source>&amp;Install</source>
         <translation>安装（&amp;I）</translation>
@@ -1991,23 +2026,23 @@ Ctrl，Alt，或Win键。</translation>
         <translation>下载页面（&amp;D）</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="75"/>
+        <location filename="../Update/UpdateDialog.ui" line="102"/>
         <source>&amp;Cancel</source>
         <translation>取消（&amp;C）</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="133"/>
-        <location filename="../Update/UpdateDialog.cpp" line="166"/>
+        <location filename="../Update/UpdateDialog.cpp" line="160"/>
+        <location filename="../Update/UpdateDialog.cpp" line="196"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="133"/>
+        <location filename="../Update/UpdateDialog.cpp" line="160"/>
         <source>The update cannot be installed: the checksum does not match.</source>
         <translation>升级安装失败：校验和不匹配。</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="166"/>
+        <location filename="../Update/UpdateDialog.cpp" line="196"/>
         <source>An error occurred while downloading the software update:
 %1</source>
         <translation>下载升级软件出错：%1</translation>

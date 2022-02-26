@@ -1263,58 +1263,83 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Applications Sensibles</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="94"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="100"/>
         <source>Select folder</source>
         <translation>Choisissez le dosser</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="95"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="150"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="99"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="96"/>
         <source>The location of the combo list folder could not be changed.</source>
         <translation>Impossible de changer l&apos;emplacement du fichier de combos.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="113"/>
+        <source>Overwrite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="113"/>
+        <source>The selected folder already contains a combo list file do you want to overwrite this list or to replace the current combo list With the content of this file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Overwrite file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Replace Current List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="144"/>
         <source>Reset Folder</source>
         <translation>Réinitialiser le Dossier</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="144"/>
         <source>Reset the combo list folder?</source>
         <translation>Êtes-vous certain de vouloir réinitialiser l&apos;emplacement du fichier de combos?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="117"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="150"/>
         <source>The location of the combo list folder could not be reset.</source>
         <translation>Le chemin vers le dossier contenant la liste des combos n&apos;a pas pu être réinitialisé.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="197"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="230"/>
         <source>Select PowerShell executable</source>
         <translation>Sélectionner l&apos;executable PowerShell</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="198"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="231"/>
         <source>Executable files (*.exe);;All files (*.*)</source>
         <translation>Fichiers exécutables (*.exe);;Tous les fichiers (*.*)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="240"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="273"/>
         <source>Custom backup location</source>
         <translation>Emplacement des sauvegardes</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="319"/>
         <source>Delete Backup Files?</source>
         <translation>Effacer les Sauvegardes?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="286"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="319"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>Voulez-vous effacer toutes les sauvegardes?</translation>
     </message>
@@ -1405,9 +1430,13 @@ Voulez-vous tout de même continuer?</translation>
         <translation>Par &amp;Défaut</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
         <source>%1 v%2.%3 is available.</source>
-        <translation>%1 v%2.%3 est disponible.</translation>
+        <translation type="vanished">%1 v%2.%3 est disponible.</translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
+        <source>%1 v%2 is available.</source>
+        <translation type="unfinished">%1 v%2.%3 est disponible. {1 ?} {2 ?}</translation>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="97"/>
@@ -1725,7 +1754,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="116"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -1830,13 +1859,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="164"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="102"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
         <source>&amp;Reset</source>
         <translation>&amp;Réinitialiser</translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="167"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="105"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="100"/>
         <source>Reset List</source>
         <translation>Réinitialiser la Liste</translation>
     </message>
@@ -1851,17 +1880,17 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="92"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Listez içi les applications qui ne supportent pas le copier-coller standard par Ctrl+V et ne fonctionnent donc pas correctement avec Beeftext.&lt;/p&gt;&lt;p&gt;Utilisez le nom des processus de chaque application (par exemple: notepad.exe). Les wildcards sont acceptées.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="106"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="101"/>
         <source>Are you sure you want to reset the list of sensitive applications?</source>
         <translation>Êtes-vous sûr de vouloir réinitialiser la liste d&apos;applications sensibles?</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="116"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
         <source>The sensitive application file could not be saved.</source>
         <translation>Le fichier d&apos;applications sensibles n&apos;a pas pu être sauvé.</translation>
     </message>
@@ -1956,9 +1985,13 @@ Control, Alt ou Windows.</translation>
         <translation>Mise à Jour</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="26"/>
         <source>%1 v%2.%3 is available!</source>
-        <translation>%1 v%2.%3 est disponible!</translation>
+        <translation type="vanished">%1 v%2.%3 est disponible!</translation>
+    </message>
+    <message>
+        <location filename="../Update/UpdateDialog.ui" line="26"/>
+        <source>%1 v%2 is available!</source>
+        <translation type="unfinished">%1 v%2.%3 est disponible! {1 ?} {2 ?}</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="36"/>
@@ -1967,20 +2000,22 @@ Control, Alt ou Windows.</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.ui" line="88"/>
-        <location filename="../Update/UpdateDialog.ui" line="108"/>
         <source>&amp;Not Now</source>
         <translation>&amp;Pas Maintenant</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="97"/>
+        <location filename="../Update/UpdateDialog.ui" line="95"/>
+        <source>&amp;Skip This Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
         <source>&amp;Install</source>
         <translation>&amp;Installer</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.ui" line="114"/>
         <source>Not now</source>
-        <translation>Pas maintenant</translation>
+        <translation type="vanished">Pas maintenant</translation>
     </message>
     <message>
         <location filename="../Update/UpdateDialog.cpp" line="47"/>
@@ -1988,23 +2023,23 @@ Control, Alt ou Windows.</translation>
         <translation>Page de &amp;Téléchargement</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="75"/>
+        <location filename="../Update/UpdateDialog.ui" line="102"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="133"/>
-        <location filename="../Update/UpdateDialog.cpp" line="166"/>
+        <location filename="../Update/UpdateDialog.cpp" line="160"/>
+        <location filename="../Update/UpdateDialog.cpp" line="196"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="133"/>
+        <location filename="../Update/UpdateDialog.cpp" line="160"/>
         <source>The update cannot be installed: the checksum does not match.</source>
         <translation>La mise à jour ne peut pas être installée: la somme de contrôle est incorrecte.</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="166"/>
+        <location filename="../Update/UpdateDialog.cpp" line="196"/>
         <source>An error occurred while downloading the software update:
 %1</source>
         <translation>Une erreur est survenue pendant le téléchargement de la mise à jour:
