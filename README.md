@@ -43,8 +43,8 @@ Developer documentation can be extracted using the [Doxygen] documentation tool.
 In order to build Beeftext from sources you will need:
 
 - The [Beeftext] source code. The git repository includes the [XMiLib] library as a submodule.
-- [Visual Studio 2019]. The Community Edition is available for free.
-- The [Qt] framework. Beeftext is generally built using the latest version of the library. Beeftext uses the 32bit version compiled for the most recent version of Visual Studio.
+- [Visual Studio 2022]. The Community Edition is available for free.
+- The [Qt] framework. Beeftext is generally built using the latest version of the library. Beeftext uses the 64-bit version compiled for the most recent version of Visual Studio.
 - The [Qt Visual Studio Tools]. This add-on can be installed from the `Extensions and Updates` tool built into Visual Studio.
 - If you plan to generate the installer for Beeftext, you will also need [NSIS].
 
@@ -62,7 +62,7 @@ Detailed build instructions are not available at the moment.
 [OpenSSL and SSLeay licenses]:https://www.openssl.org/source/license.html
 [Doxygen]: http://www.stack.nl/~dimitri/doxygen/
 [Beeftext]: https://github.com/xmichelo/Beeftext
-[Visual Studio 2019]: https://www.visualstudio.com/vs/community/
-[Qt Visual Studio Tools]: https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123
+[Visual Studio 2022]: https://www.visualstudio.com/vs/community/
+[Qt Visual Studio Tools]: https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022
 [XMiLib]: https://github.com/xmichelo/XMiLib
 [NSIS]: http://nsis.sourceforge.net/Main_Page
