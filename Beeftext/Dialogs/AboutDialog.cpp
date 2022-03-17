@@ -32,10 +32,11 @@ AboutDialog::AboutDialog(QWidget* parent)
 //**********************************************************************************************************************
 void AboutDialog::completeText() const
 {
-   QColor const color = constants::blueBeeftextColor;
+   QString const hexColor = colorToHex(constants::blueBeeftextColor, false);
    ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionNumber.major()).arg(constants::kVersionNumber.minor())
       .arg(isInPortableMode() ? tr("Portable Edition") : "").arg(QString(__DATE__).right(4))
-      .arg(colorToHex(color, false)));
+      .arg(hexColor));
+   ui_.labelTranslators->setText(ui_.labelTranslators->text().arg(hexColor));
    ui_.labelBuildInfo->setText(globals::getBuildInfo());
 }
 
