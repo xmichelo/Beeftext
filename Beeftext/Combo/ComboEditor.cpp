@@ -17,20 +17,12 @@
 /// \param[in] parent The parent widget of the editor.
 //**********************************************************************************************************************
 ComboEditor::ComboEditor(QWidget* parent)
-   : QWidget(parent)
+   : QPlainTextEdit(parent)
 {
-   ui_.setupUi(this);
-   connect(ui_.snippetEdit, &QPlainTextEdit::customContextMenuRequested, this, 
+   this->setTabChangesFocus(true);
+   this->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
+   connect(this, &QPlainTextEdit::customContextMenuRequested, this, 
       &ComboEditor::onEditorContextMenuRequested);
-}
-
-
-//**********************************************************************************************************************
-/// \return The snippet edit widget
-//**********************************************************************************************************************
-QPlainTextEdit* ComboEditor::plainTextEdit() const
-{
-   return ui_.snippetEdit;
 }
 
 
@@ -41,17 +33,8 @@ QString ComboEditor::plainText() const
 {
    // rawtext() preserve non breaking space that are removed by toPlainText(), but replaces spaces with the
    // unicode paragraph separator (U+2029) so we replace them with '\n'.
-   return ui_.snippetEdit->document()->toRawText().replace(QString::fromUtf8(QByteArray("\xe2\x80\xa9")),
+   return this->document()->toRawText().replace(QString::fromUtf8(QByteArray("\xe2\x80\xa9")),
       QString("\n"), Qt::CaseInsensitive);
-}
-
-
-//**********************************************************************************************************************
-//
-//**********************************************************************************************************************
-void ComboEditor::setPlainText(QString const& text) const
-{
-   ui_.snippetEdit->setPlainText(text);
 }
 
 
@@ -132,16 +115,16 @@ QMenu* ComboEditor::createComboVariableMenu()
 /// \param[in] text The text to insert
 /// \param[in] move1CharLeft Should the cursor be moved by one character to the left after insertion
 //**********************************************************************************************************************
-void ComboEditor::insertTextInSnippetEdit(QString const& text, bool move1CharLeft) const
+void ComboEditor::insertTextInSnippetEdit(QString const& text, bool move1CharLeft)
 {
-   QTextCursor cursor = ui_.snippetEdit->textCursor();
+   QTextCursor cursor = this->textCursor();
    cursor.beginEditBlock();
    cursor.insertText(text);
    if (move1CharLeft)
    {
       cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
       cursor.endEditBlock();
-      ui_.snippetEdit->setTextCursor(cursor); ///< Required for the cursor position change to take effect
+      this->setTextCursor(cursor); ///< Required for the cursor position change to take effect
    }
    else
       cursor.endEditBlock();
@@ -153,10 +136,10 @@ void ComboEditor::insertTextInSnippetEdit(QString const& text, bool move1CharLef
 //**********************************************************************************************************************
 void ComboEditor::onEditorContextMenuRequested(QPoint const& pos)
 {
-   QScopedPointer<QMenu, QScopedPointerDeleteLater> const menu(ui_.snippetEdit->createStandardContextMenu(pos));
+   QScopedPointer<QMenu, QScopedPointerDeleteLater> const menu(this->createStandardContextMenu(pos));
    menu->addSeparator();
    menu->addMenu(this->createComboVariableMenu());         
-   menu->exec(ui_.snippetEdit->viewport()->mapToGlobal(pos));
+   menu->exec(this->viewport()->mapToGlobal(pos));
 }
 
 

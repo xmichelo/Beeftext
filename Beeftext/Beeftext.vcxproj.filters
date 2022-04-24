@@ -472,9 +472,6 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="Combo\ComboEditor.ui">
-      <Filter>Combo</Filter>
-    </QtUic>
     <QtUic Include="Picker\PickerWindow.ui">
       <Filter>Picker</Filter>
     </QtUic>
