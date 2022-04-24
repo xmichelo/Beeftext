@@ -516,7 +516,6 @@
     <None Include="Resources\StyleDark.qss" />
     <None Include="Resources\StyleLight.qss" />
     <None Include="Translations\beeftext_de_DE.ts" />
-    <None Include="Translations\beeftext_es_ES.ts" />
     <None Include="Translations\beeftext_it_IT.ts" />
     <None Include="Translations\beeftext_nl_NL.ts" />
     <None Include="Translations\beeftext_pl_PL.ts" />
@@ -545,6 +544,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <QtTranslation Include="Translations\beeftext_es_ES.ts" />
     <QtTranslation Include="Translations\beeftext_zh_TW.ts" />
     <QtTranslation Include="Translations\beeftext_zh_CN.ts" />
   </ItemGroup>

@@ -403,9 +403,6 @@
     <None Include="Translations\beeftext_pt_PT.ts">
       <Filter>Translation Files</Filter>
     </None>
-    <None Include="Translations\beeftext_es_ES.ts">
-      <Filter>Translation Files</Filter>
-    </None>
     <None Include="Resources\StyleCommon.qss">
       <Filter>Resource Files</Filter>
     </None>
@@ -511,6 +508,9 @@
       <Filter>Translation Files</Filter>
     </QtTranslation>
     <QtTranslation Include="Translations\beeftext_zh_CN.ts">
+      <Filter>Translation Files</Filter>
+    </QtTranslation>
+    <QtTranslation Include="Translations\beeftext_es_ES.ts">
       <Filter>Translation Files</Filter>
     </QtTranslation>
   </ItemGroup>
