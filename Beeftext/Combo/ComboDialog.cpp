@@ -111,11 +111,11 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    selectCaseSensitivityInCombo(*ui_.comboCaseSensitivity, combo->caseSensitivity(false), true);
    ui_.editKeyword->setText(combo->keyword());
    ui_.editKeyword->setValidator(&validator_);
-   ui_.comboEditor->plainTextEdit()->setPlainText(combo->snippet());
+   ui_.comboEditor->setPlainText(combo->snippet());
    ui_.editDescription->setPlainText(combo->description());
    ui_.labelVariables->setText(variablesLabel());
    this->updateGui();
-   connect(ui_.comboEditor->plainTextEdit(), &QPlainTextEdit::textChanged, this, &ComboDialog::updateGui);
+   connect(ui_.comboEditor, &ComboEditor::textChanged, this, &ComboDialog::updateGui);
 }
 
 
@@ -169,6 +169,7 @@ bool ComboDialog::checkAndReportInvalidCombo()
       .arg(conflictCount > 1 ? multipleConflictStr : singleConflictStr), QMessageBox::Yes | QMessageBox::No, 
       QMessageBox::No);
 }
+
 
 //**********************************************************************************************************************
 // 
