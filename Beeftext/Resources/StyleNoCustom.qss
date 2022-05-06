@@ -1,0 +1,24 @@
+/* This file contains the only style applied when custom theme is disabled */
+
+/*****************************
+* ComboPickerWindow
+*****************************/
+#frameTopLevel {
+   border: 1px solid #ccc;
+   background-color: #ffffff;
+}
+
+
+#editSearch {
+   border: 1px solid #ccc;
+}
+
+#labelLogo {
+   background-color: transparent;
+}
+
+#listViewResults
+{
+   border: 1px solid #ccc;
+   text: #fff;
+}

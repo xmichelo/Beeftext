@@ -412,6 +412,9 @@
     <None Include="Resources\StyleLight.qss">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\StyleNoCustom.qss">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\BeeftextIcon.ico">
