@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
 
-project(Beeftext)
+project(Beeftext VERSION 14.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -88,7 +88,6 @@ add_executable(Beeftext
    Combo/ComboDialog.ui
    Combo/ComboEditor.cpp
    Combo/ComboEditor.h
-   Combo/ComboEditor.ui
    Combo/ComboFrame.cpp
    Combo/ComboFrame.h
    Combo/ComboFrame.ui
@@ -195,7 +194,7 @@ add_executable(Beeftext
 
 add_dependencies(Beeftext translations)
 
-target_precompile_headers(Beeftext PUBLIC stdafx.h)
+#target_precompile_headers(Beeftext PUBLIC stdafx.h)
 target_link_libraries(Beeftext Qt6::Core)
 target_link_libraries(Beeftext Qt6::Gui)
 target_link_libraries(Beeftext Qt6::Widgets)
