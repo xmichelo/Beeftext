@@ -711,7 +711,7 @@ void ComboTableWidget::onComboChangedGroup()
 //**********************************************************************************************************************
 void ComboTableWidget::onContextMenuAboutToShow() const
 {
-   QMenu* menu = dynamic_cast<QMenu*>(this->sender());
+   QMenu const* menu = dynamic_cast<QMenu*>(this->sender());
    if (!menu)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve context menu.").arg(__FUNCTION__));
    QMenu* moveToMenu = qvariant_cast<QMenu*>(menu->property(kPropMoveToMenu));
@@ -742,7 +742,7 @@ void ComboTableWidget::onMoveToGroupMenuAboutToShow() const
 //**********************************************************************************************************************
 /// \param[in] action The action
 //**********************************************************************************************************************
-void ComboTableWidget::onMoveToGroupMenuTriggered(QAction* action)
+void ComboTableWidget::onMoveToGroupMenuTriggered(QAction const* action)
 {
    if (!action)
       return;

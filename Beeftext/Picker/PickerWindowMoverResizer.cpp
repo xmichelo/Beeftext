@@ -59,7 +59,7 @@ void PickerWindowMoverResizer::processMouseMoveEvent()
 //**********************************************************************************************************************
 /// \param[in] event The event.
 //**********************************************************************************************************************
-void PickerWindowMoverResizer::processMousePressEvent(QMouseEvent* event)
+void PickerWindowMoverResizer::processMousePressEvent(QMouseEvent const* event)
 {
    if ((!event) || (Qt::LeftButton != event->button()))
       return;
@@ -71,7 +71,7 @@ void PickerWindowMoverResizer::processMousePressEvent(QMouseEvent* event)
 //**********************************************************************************************************************
 /// \param[in] event The event.
 //**********************************************************************************************************************
-void PickerWindowMoverResizer::processMouseReleaseEvent(QMouseEvent* event)
+void PickerWindowMoverResizer::processMouseReleaseEvent(QMouseEvent const* event)
 {
    if ((!event) || (event->button() != Qt::LeftButton))
       return;

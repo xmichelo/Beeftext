@@ -29,7 +29,7 @@ GroupListWidget::GroupListWidget(QWidget* parent)
    ui_.listGroup->viewport()->installEventFilter(this);
    this->setupContextMenu();
    this->setupGroupsMenu();
-   QItemSelectionModel* selectionModel = ui_.listGroup->selectionModel();
+   QItemSelectionModel const* selectionModel = ui_.listGroup->selectionModel();
    if (!selectionModel)
       throw xmilib::Exception("The group list selection model is null");
    connect(selectionModel, &QItemSelectionModel::selectionChanged, this, &GroupListWidget::onSelectionChanged);
@@ -172,7 +172,7 @@ void GroupListWidget::changeEvent(QEvent* event)
 //**********************************************************************************************************************
 qint32 GroupListWidget::selectedGroupIndex() const
 {
-   QItemSelectionModel* model = ui_.listGroup->selectionModel();
+   QItemSelectionModel const* model = ui_.listGroup->selectionModel();
    if (!model)
       return -1;
    QModelIndexList const selectedIndexes = model->selectedIndexes();
@@ -195,7 +195,7 @@ bool GroupListWidget::eventFilter(QObject* object, QEvent* event)
       return false;
    if (event->type() == QEvent::DragEnter)
    {
-      QDropEvent* dropEvent = dynamic_cast<QDropEvent*>(event);
+      QDropEvent const* dropEvent = dynamic_cast<QDropEvent*>(event);
       if (dropEvent)
       {
          QMimeData const* mimeData = dropEvent->mimeData();
@@ -206,10 +206,10 @@ bool GroupListWidget::eventFilter(QObject* object, QEvent* event)
 
    if (event->type() != QEvent::MouseButtonDblClick)
       return QObject::eventFilter(object, event);
-   QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
+   QMouseEvent const* mouseEvent = dynamic_cast<QMouseEvent*>(event);
    if (!mouseEvent)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve mouse event.").arg(__FUNCTION__));
-   QItemSelectionModel* selectionModel = ui_.listGroup->selectionModel();
+   QItemSelectionModel const* selectionModel = ui_.listGroup->selectionModel();
    if (!selectionModel)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve selection model.").arg(__FUNCTION__));
    QPoint const mousePos = mouseEvent->pos();
@@ -400,7 +400,7 @@ void GroupListWidget::onContextMenuRequested() const
 //**********************************************************************************************************************
 void GroupListWidget::onMenuAboutToShow() const
 {
-   QMenu* menu = dynamic_cast<QMenu*>(this->sender());
+   QMenu const* menu = dynamic_cast<QMenu*>(this->sender());
    if (!menu)
       throw xmilib::Exception(QString("Internal error: %1(): could not retrieve context menu.").arg(__FUNCTION__));
    this->updateActionsAvailabilityAndNames();

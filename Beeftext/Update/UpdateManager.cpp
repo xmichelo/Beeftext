@@ -106,7 +106,7 @@ void UpdateManager::startUpdateCheckWorker(bool verifySkippedVersion)
 //**********************************************************************************************************************
 void UpdateManager::onWorkerFinished()
 {
-   UpdateCheckWorker *worker = dynamic_cast<UpdateCheckWorker*>(this->sender());
+   UpdateCheckWorker const*worker = dynamic_cast<UpdateCheckWorker*>(this->sender());
    if (!worker)
       throw xmilib::Exception("An Internal error occurred while checking for updates.");
    QThread *thread = worker->thread();

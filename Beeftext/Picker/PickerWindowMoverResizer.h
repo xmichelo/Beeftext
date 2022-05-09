@@ -37,8 +37,8 @@ public: // member functions
    PickerWindowMoverResizer& operator=(PickerWindowMoverResizer const&) = delete; ///< Disabled assignment operator.
    PickerWindowMoverResizer& operator=(PickerWindowMoverResizer&&) = delete; ///< Disabled move assignment operator.
    void processMouseMoveEvent();
-   void processMousePressEvent(QMouseEvent* event);
-   void processMouseReleaseEvent(QMouseEvent* event);
+   void processMousePressEvent(QMouseEvent const* event);
+   void processMouseReleaseEvent(QMouseEvent const* event);
 
 private: // member functions
    EMode resizingModeForCurrentMousePosition() const; ///< Check whether the mouse is over the resize area.

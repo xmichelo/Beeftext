@@ -1631,7 +1631,7 @@ bool PreferencesManager::useShiftInsertForPasting() const
 //**********************************************************************************************************************
 /// \param[in] versionNumber The version number.
 //**********************************************************************************************************************
-void PreferencesManager::setSkipVersionNumber(xmilib::VersionNumber const& versionNumber) const
+void PreferencesManager::setSkipVersionNumber(VersionNumber const& versionNumber) const
 {
    settings_->setValue(kKeySkipVersionNumber, versionNumber.toString());
 }
@@ -1640,9 +1640,9 @@ void PreferencesManager::setSkipVersionNumber(xmilib::VersionNumber const& versi
 //**********************************************************************************************************************
 /// \return The value for the 'Skip version number' preference.
 //**********************************************************************************************************************
-xmilib::VersionNumber PreferencesManager::getSkipVersionNumber() const
+VersionNumber PreferencesManager::getSkipVersionNumber() const
 {
-   return xmilib::VersionNumber::fromString(readSettings<QString>(kKeySkipVersionNumber, QString()));
+   return VersionNumber::fromString(readSettings<QString>(kKeySkipVersionNumber, QString()));
 }
 
 

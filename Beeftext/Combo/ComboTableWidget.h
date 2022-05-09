@@ -80,7 +80,7 @@ private slots:
    void onComboChangedGroup(); ///< Slot for when some combos groups have been changed
    void onContextMenuAboutToShow() const; ///< Slot called when a context menu is about to be shown
    void onMoveToGroupMenuAboutToShow() const; ///< Slot called when a combo menu is about to show
-   void onMoveToGroupMenuTriggered(QAction* action); ///< slot for the triggering of a action in the 'move' menu
+   void onMoveToGroupMenuTriggered(QAction const* action); ///< slot for the triggering of a action in the 'move' menu
 
 private: // data members
    Ui::ComboTableWidget ui_; ///< The GUI for the frame

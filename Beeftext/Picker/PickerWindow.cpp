@@ -101,7 +101,7 @@ QRect foregroundWindowRect()
    HWND const hwnd = GetForegroundWindow();
    if (isDesktop(hwnd)) // Desktop is active, we return the geometry of the monitor containing the mouse cursor
    {
-      QScreen* const screen = screenContainingCursor();
+      QScreen const* const screen = screenContainingCursor();
       return screen ? screen->availableGeometry() : QRect();
    }
    return rectForHwnd(hwnd);
