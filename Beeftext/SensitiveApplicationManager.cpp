@@ -17,6 +17,9 @@ using namespace xmilib;
 namespace {
 
 
+QStringList kDefaultList = { "mintty.exe", "putty.exe", "powershell.exe", "kitty*.exe", "ConEmu*.exe" }; ///< The default list of sensitive applications
+
+
 //**********************************************************************************************************************
 /// \brief Save the list of sensitive applications.
 ///
@@ -121,7 +124,7 @@ SensitiveApplicationManager::SensitiveApplicationManager()
 {
    if (!loadSensitiveApplicationsFromFile(sensitiveApps_))
    {
-      sensitiveApps_.clear();
+      sensitiveApps_ = kDefaultList;
       saveSensitiveApplicationsFile(sensitiveApps_);
    }
 }
