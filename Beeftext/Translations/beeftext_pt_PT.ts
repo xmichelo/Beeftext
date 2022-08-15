@@ -183,7 +183,7 @@ Do you want to continue anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="209"/>
+        <location filename="../Combo/ComboDialog.cpp" line="210"/>
         <source>New Group</source>
         <translation>Novo grupo</translation>
     </message>
@@ -191,108 +191,108 @@ Do you want to continue anyway?</source>
 <context>
     <name>ComboEditor</name>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="63"/>
+        <location filename="../Combo/ComboEditor.cpp" line="46"/>
         <source>&amp;Insert Variable</source>
         <translation>&amp;Inserir Variável</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="65"/>
+        <location filename="../Combo/ComboEditor.cpp" line="48"/>
         <source>Clip&amp;board Content</source>
         <translation>Á&amp;rea de Transferência</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="69"/>
+        <location filename="../Combo/ComboEditor.cpp" line="52"/>
         <source>&amp;Date/Time</source>
         <translation>&amp;Data/Hora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="70"/>
+        <location filename="../Combo/ComboEditor.cpp" line="53"/>
         <source>D&amp;ate</source>
         <translation>D&amp;ata</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="73"/>
+        <location filename="../Combo/ComboEditor.cpp" line="56"/>
         <source>&amp;Time</source>
         <translation>&amp;Hora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="76"/>
+        <location filename="../Combo/ComboEditor.cpp" line="59"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation>Data &amp;e&amp;&amp; Hora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="79"/>
+        <location filename="../Combo/ComboEditor.cpp" line="62"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation>&amp;Customizar Data e &amp;&amp; Hora</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="83"/>
+        <location filename="../Combo/ComboEditor.cpp" line="66"/>
         <source>&amp;Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="86"/>
+        <location filename="../Combo/ComboEditor.cpp" line="69"/>
         <source>&amp;Shortcut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="89"/>
+        <location filename="../Combo/ComboEditor.cpp" line="72"/>
         <source>&amp;Delay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="93"/>
+        <location filename="../Combo/ComboEditor.cpp" line="76"/>
         <source>C&amp;ursor Position</source>
         <translation>Posição do C&amp;ursor</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="97"/>
-        <location filename="../Combo/ComboEditor.cpp" line="98"/>
+        <location filename="../Combo/ComboEditor.cpp" line="80"/>
+        <location filename="../Combo/ComboEditor.cpp" line="81"/>
         <source>Co&amp;mbo</source>
         <translation>Co&amp;mbo</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="101"/>
+        <location filename="../Combo/ComboEditor.cpp" line="84"/>
         <source>Combo (&amp;uppercase)</source>
         <translation>Combo (&amp;maiúsc&amp;ula)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="104"/>
+        <location filename="../Combo/ComboEditor.cpp" line="87"/>
         <source>Combo (lo&amp;wercase)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="168"/>
+        <location filename="../Combo/ComboEditor.cpp" line="151"/>
         <source>Select PowerShell script file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="169"/>
+        <location filename="../Combo/ComboEditor.cpp" line="152"/>
         <source>PowerShell script files (*.ps1);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="108"/>
+        <location filename="../Combo/ComboEditor.cpp" line="91"/>
         <source>Combo (&amp;trimmed)</source>
         <translation>Combo (Forma&amp;tada)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="113"/>
+        <location filename="../Combo/ComboEditor.cpp" line="96"/>
         <source>En&amp;vironment Variable</source>
         <translation>&amp;Variável de Ambiente</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="116"/>
+        <location filename="../Combo/ComboEditor.cpp" line="99"/>
         <source>&amp;PowerShell Script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="119"/>
+        <location filename="../Combo/ComboEditor.cpp" line="102"/>
         <source>User &amp;Input</source>
         <translation>&amp;Inserção do Usuário</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="124"/>
+        <location filename="../Combo/ComboEditor.cpp" line="107"/>
         <source>&amp;About Variables</source>
         <translation>Sobre V&amp;ariáveis</translation>
     </message>
@@ -1748,7 +1748,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="114"/>
         <source>Error</source>
         <translation>Erro</translation>
     </message>
@@ -1774,13 +1774,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="164"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="100"/>
         <source>&amp;Reset</source>
         <translation>&amp;Reiniciar</translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="167"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="100"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="103"/>
         <source>Reset List</source>
         <translation>Reiniciar Listas</translation>
     </message>
@@ -1836,17 +1836,17 @@ Você gostaria de ler o curto tutorial de &apos;Primeiros Passos&apos;?</transla
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="92"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="95"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="101"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="104"/>
         <source>Are you sure you want to reset the list of sensitive applications?</source>
         <translation>Você tem certeza sobre reiniciar a lista de aplicações sensíveis?</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="114"/>
         <source>The sensitive application file could not be saved.</source>
         <translation>O arquivo de aplicações sensíveis não pode ser salvo.</translation>
     </message>
@@ -1928,17 +1928,17 @@ Você gostaria de ler o curto tutorial de &apos;Primeiros Passos&apos;?</transla
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Theme.cpp" line="24"/>
+        <location filename="../Theme.cpp" line="26"/>
         <source>light</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Theme.cpp" line="25"/>
+        <location filename="../Theme.cpp" line="27"/>
         <source>dark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Theme.cpp" line="26"/>
+        <location filename="../Theme.cpp" line="28"/>
         <source>unknown</source>
         <translation type="unfinished"></translation>
     </message>

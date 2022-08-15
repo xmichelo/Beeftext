@@ -186,7 +186,7 @@ Do you want to continue anyway?</source>
 不管他继续吗？</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="209"/>
+        <location filename="../Combo/ComboDialog.cpp" line="210"/>
         <source>New Group</source>
         <translation>新建分组</translation>
     </message>
@@ -194,108 +194,108 @@ Do you want to continue anyway?</source>
 <context>
     <name>ComboEditor</name>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="63"/>
+        <location filename="../Combo/ComboEditor.cpp" line="46"/>
         <source>&amp;Insert Variable</source>
         <translation>插入变量（&amp;I）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="65"/>
+        <location filename="../Combo/ComboEditor.cpp" line="48"/>
         <source>Clip&amp;board Content</source>
         <translation>获取剪切板内容（&amp;b）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="69"/>
+        <location filename="../Combo/ComboEditor.cpp" line="52"/>
         <source>&amp;Date/Time</source>
         <translation>日期/时间（&amp;D）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="70"/>
+        <location filename="../Combo/ComboEditor.cpp" line="53"/>
         <source>D&amp;ate</source>
         <translation>日期（&amp;a）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="73"/>
+        <location filename="../Combo/ComboEditor.cpp" line="56"/>
         <source>&amp;Time</source>
         <translation>时间（&amp;T）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="76"/>
+        <location filename="../Combo/ComboEditor.cpp" line="59"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation>日期与时间（&amp;e）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="79"/>
+        <location filename="../Combo/ComboEditor.cpp" line="62"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation>日期与时间（自定义）（&amp;C）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="83"/>
+        <location filename="../Combo/ComboEditor.cpp" line="66"/>
         <source>&amp;Key</source>
         <translation>特殊按键（&amp;K）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="86"/>
+        <location filename="../Combo/ComboEditor.cpp" line="69"/>
         <source>&amp;Shortcut</source>
         <translation>快捷键组合（&amp;S）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="89"/>
+        <location filename="../Combo/ComboEditor.cpp" line="72"/>
         <source>&amp;Delay</source>
         <translation>延后（毫秒）（&amp;D）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="93"/>
+        <location filename="../Combo/ComboEditor.cpp" line="76"/>
         <source>C&amp;ursor Position</source>
         <translation>光标位置（&amp;u）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="97"/>
-        <location filename="../Combo/ComboEditor.cpp" line="98"/>
+        <location filename="../Combo/ComboEditor.cpp" line="80"/>
+        <location filename="../Combo/ComboEditor.cpp" line="81"/>
         <source>Co&amp;mbo</source>
         <translation>调用组合（&amp;m）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="101"/>
+        <location filename="../Combo/ComboEditor.cpp" line="84"/>
         <source>Combo (&amp;uppercase)</source>
         <translation>组合（改大写）（&amp;u）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="104"/>
+        <location filename="../Combo/ComboEditor.cpp" line="87"/>
         <source>Combo (lo&amp;wercase)</source>
         <translation>组合（改小写）（&amp;w）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="108"/>
+        <location filename="../Combo/ComboEditor.cpp" line="91"/>
         <source>Combo (&amp;trimmed)</source>
         <translation>组合（去前后空格）（&amp;t）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="113"/>
+        <location filename="../Combo/ComboEditor.cpp" line="96"/>
         <source>En&amp;vironment Variable</source>
         <translation>获取环境变量（&amp;v）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="116"/>
+        <location filename="../Combo/ComboEditor.cpp" line="99"/>
         <source>&amp;PowerShell Script</source>
         <translation>PowerShell脚本（&amp;P）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="119"/>
+        <location filename="../Combo/ComboEditor.cpp" line="102"/>
         <source>User &amp;Input</source>
         <translation>用户输入弹窗（&amp;I）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="124"/>
+        <location filename="../Combo/ComboEditor.cpp" line="107"/>
         <source>&amp;About Variables</source>
         <translation>变量说明（&amp;A）</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="168"/>
+        <location filename="../Combo/ComboEditor.cpp" line="151"/>
         <source>Select PowerShell script file</source>
         <translation>选择PowerShell脚本文件</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="169"/>
+        <location filename="../Combo/ComboEditor.cpp" line="152"/>
         <source>PowerShell script files (*.ps1);;All files (*.*)</source>
         <translation>PowerShell脚本文件（*.ps1）;;所有文件（*.*）</translation>
     </message>
@@ -1760,7 +1760,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../I18nManager.cpp" line="326"/>
         <location filename="../main.cpp" line="235"/>
         <location filename="../main.cpp" line="244"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="114"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -1848,13 +1848,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="164"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="97"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="100"/>
         <source>&amp;Reset</source>
         <translation>重置（&amp;R）</translation>
     </message>
     <message>
         <location filename="../Emoji/EmojiManager.cpp" line="167"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="100"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="103"/>
         <source>Reset List</source>
         <translation>重置列表</translation>
     </message>
@@ -1924,32 +1924,32 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>选择自定义提示音文件</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="92"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="95"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请用这个对话框列出那些无法与Beeftext正常工作的敏感软件，这些软件不支持通过标准的Ctrl+V进行复制。&lt;/p&gt;&lt;p&gt;请通过软件的进程名称列出它们，比如“notepad.exe”，在此可以使用通配符（*）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="101"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="104"/>
         <source>Are you sure you want to reset the list of sensitive applications?</source>
         <translation>你确定要重置敏感软件列表吗？</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="111"/>
+        <location filename="../SensitiveApplicationManager.cpp" line="114"/>
         <source>The sensitive application file could not be saved.</source>
         <translation>敏感软件列表文件无法被保存。</translation>
     </message>
     <message>
-        <location filename="../Theme.cpp" line="24"/>
+        <location filename="../Theme.cpp" line="26"/>
         <source>light</source>
         <translation>明亮</translation>
     </message>
     <message>
-        <location filename="../Theme.cpp" line="25"/>
+        <location filename="../Theme.cpp" line="27"/>
         <source>dark</source>
         <translation>黑暗</translation>
     </message>
     <message>
-        <location filename="../Theme.cpp" line="26"/>
+        <location filename="../Theme.cpp" line="28"/>
         <source>unknown</source>
         <translation>未知</translation>
     </message>
