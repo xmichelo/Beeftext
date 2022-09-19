@@ -5,11 +5,11 @@ project(Beeftext VERSION 14.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-if (NOT DEFINED ENV{QTDIR})
-   message(FATAL_ERROR "QTDIR needs to be defined and point to the root of your Qt folder. (e.g. /Users/MyName/Qt/5.10.1/clang_64).")
+if (NOT DEFINED ENV{QT6DIR})
+   message(FATAL_ERROR "QT6DIR needs to be defined and point to the root of your Qt folder. (e.g. /Users/MyName/Qt/5.10.1/clang_64).")
 endif()
 
-set(CMAKE_PREFIX_PATH  ${CMAKE_PREFIX_PATH} $ENV{QTDIR})
+set(CMAKE_PREFIX_PATH  ${CMAKE_PREFIX_PATH} $ENV{QT6DIR})
 set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG")
 
 find_package(Qt6Core)
