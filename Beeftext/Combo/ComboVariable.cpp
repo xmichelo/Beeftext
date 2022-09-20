@@ -164,13 +164,15 @@ QString evaluateDateTimeVariable(QString const& variable)
       return QString();
    QDateTime const dateTime = match.captured(1).isEmpty() ? QDateTime::currentDateTime() :
       shiftedDateTime(match.captured(2));
-   QString const formatStr = match.captured(4);
+   QString formatStr = match.captured(4);
    if (formatStr.isEmpty())
       return QLocale::system().toString(dateTime);
-   QString result = QLocale::system().toString(dateTime, formatStr);
+
    qint32 const weekNumber = dateTime.date().weekNumber(); // we add support of ww and w for week number in format string.
-   result.replace("ww", QString("%1").arg(weekNumber, 2, 10, QChar('0')));
-   return result.replace("w", QString::number(weekNumber));
+   formatStr = formatStr.replace("ww", QString("%1").arg(weekNumber, 2, 10, QChar('0')));
+   formatStr = formatStr.replace("w", QString::number(weekNumber));
+
+   return QLocale::system().toString(dateTime, formatStr);
 }
 
 
