@@ -2,14 +2,19 @@ cmake_minimum_required(VERSION 3.16)
 
 project(Beeftext VERSION 14.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-if (NOT DEFINED ENV{QT6DIR})
-   message(FATAL_ERROR "QT6DIR needs to be defined and point to the root of your Qt folder. (e.g. /Users/MyName/Qt/5.10.1/clang_64).")
+find_program(QMAKE_EXE "qmake")
+if (NOT QMAKE_EXE)
+    message(FATAL_ERROR "Could not locate qmake executable, make sur you have Qt 6 installed in that qmake is in your PATH environment variable.")
 endif()
+message(STATUS "Found qmake at ${QMAKE_EXE}")
+execute_process(COMMAND "${QMAKE_EXE}" -query QT_INSTALL_PREFIX OUTPUT_VARIABLE QT_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+message(STATUS "Qt dir is ${QT_DIR}")
 
-set(CMAKE_PREFIX_PATH  ${CMAKE_PREFIX_PATH} $ENV{QT6DIR})
+
+set(CMAKE_PREFIX_PATH  ${QT_DIR} ${CMAKE_PREFIX_PATH})
 set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG")
 
 find_package(Qt6Core)
