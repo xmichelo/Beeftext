@@ -323,7 +323,7 @@
     <ClCompile Include="Preferences\Panes\PrefPaneEmojis.cpp" />
     <ClCompile Include="Preferences\PreferencesDialog.cpp" />
     <ClCompile Include="Preferences\PreferencesManager.cpp" />
-    <ClCompile Include="SensitiveApplicationManager.cpp" />
+    <ClCompile Include="ProcessListManager.cpp" />
     <ClCompile Include="Shortcut.cpp" />
     <ClCompile Include="Snippet\DelaySnippetFragment.cpp" />
     <ClCompile Include="Snippet\KeySnippetFragment.cpp" />
@@ -379,7 +379,7 @@
     <ClInclude Include="Clipboard\ClipboardManagerDefault.h" />
     <ClInclude Include="Clipboard\ClipboardManager.h" />
     <ClInclude Include="Clipboard\ClipboardManagerLegacy.h" />
-    <ClInclude Include="SensitiveApplicationManager.h" />
+    <ClInclude Include="ProcessListManager.h" />
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='DebugRemote|x64'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>

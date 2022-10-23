@@ -124,7 +124,7 @@
     <ClCompile Include="Update\UpdateCheckWorker.cpp">
       <Filter>Update</Filter>
     </ClCompile>
-    <ClCompile Include="SensitiveApplicationManager.cpp" />
+    <ClCompile Include="ProcessListManager.cpp" />
     <ClCompile Include="Combo\ComboEditor.cpp">
       <Filter>Combo</Filter>
     </ClCompile>
@@ -245,7 +245,7 @@
       <Filter>Combo</Filter>
     </ClInclude>
     <ClInclude Include="LatestVersionInfo.h" />
-    <ClInclude Include="SensitiveApplicationManager.h" />
+    <ClInclude Include="ProcessListManager.h" />
     <ClInclude Include="Clipboard\ClipboardManagerDefault.h">
       <Filter>Clipboard</Filter>
     </ClInclude>

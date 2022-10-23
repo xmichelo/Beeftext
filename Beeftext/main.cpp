@@ -13,7 +13,6 @@
 #include "BeeftextUtils.h"
 #include "BeeftextConstants.h"
 #include "BeeftextGlobals.h"
-#include "SensitiveApplicationManager.h"
 #include "Emoji/EmojiManager.h"
 #include "Update/UpdateManager.h"
 #include "I18nManager.h"
@@ -102,7 +101,6 @@ int main(int argc, char *argv[])
 
       ComboManager& comboManager = ComboManager::instance(); // we make sure the combo manager singleton is instanciated
       (void)UpdateManager::instance(); // we make sure the update manager singleton is instanciated
-      (void)SensitiveApplicationManager::instance(); ///< We load the sensitive application files
       EmojiManager& emojiManager = EmojiManager::instance();
       if (prefs.emojiShortcodesEnabled())
          emojiManager.loadEmojis();

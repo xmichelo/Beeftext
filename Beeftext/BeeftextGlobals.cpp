@@ -15,6 +15,9 @@
 #include <XMiLib/Exception.h>
 
 
+namespace globals {
+
+
 namespace {
 
 
@@ -28,10 +31,17 @@ xmilib::SpDebugLog& debugLogSharedPointer()
 }
 
 
+
+//**********************************************************************************************************************
+/// \return The path of the JSON file containing the list of sensitive applications
+//**********************************************************************************************************************
+QString sensitiveApplicationsFilePath()
+{
+   return QDir(appDataDir()).absoluteFilePath("sensitiveApps.json");
 }
 
 
-namespace globals {
+} // anonymous namespace
 
 
 //**********************************************************************************************************************
@@ -54,6 +64,28 @@ xmilib::DebugLogWindow& debugLogWindow()
 {
    static xmilib::DebugLogWindow window(debugLogSharedPointer());
    return window;
+}
+
+
+//**********************************************************************************************************************
+// \return A reference to the list of sensitive applications.
+//**********************************************************************************************************************
+ProcessListManager& sensitiveApplications()
+{
+   static std::unique_ptr<ProcessListManager> manager;
+   if (manager)
+      return *manager;
+
+   manager = std::make_unique<ProcessListManager>(QObject::tr(R"(<html><head/><body><p>Use this dialog 
+      to list sensitive applications that do not work correctly with Beeftext because they do not support standard 
+      copy-paste using Ctrl+V.</p><p>List applications using their process name (e.g, notepad.exe). Wildcards 
+      are accepted.</p></body></html>)"));
+   QString const path = sensitiveApplicationsFilePath();
+   manager->setFilePath(path);
+   if (!manager->load())
+      manager->addProcesses({ "mintty.exe", "putty.exe", "powershell.exe", "kitty*.exe", "ConEmu*.exe" });
+
+   return *manager;
 }
 
 
@@ -264,15 +296,6 @@ QString portableModeDataFolderPath()
 QString portableModeSettingsFilePath()
 {
    return QDir(portableModeDataFolderPath()).absoluteFilePath("Settings.ini");
-}
-
-
-//**********************************************************************************************************************
-/// \return The path of the JSON file containing the list of sensitive applications
-//**********************************************************************************************************************
-QString sensitiveApplicationsFilePath()
-{
-   return QDir(appDataDir()).absoluteFilePath("sensitiveApps.json");
 }
 
 

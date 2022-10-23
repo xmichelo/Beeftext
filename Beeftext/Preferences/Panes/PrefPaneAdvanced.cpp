@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "PrefPaneAdvanced.h"
 #include "Combo/ComboManager.h"
-#include "SensitiveApplicationManager.h"
+#include "ProcessListManager.h"
 #include "Backup/BackupRestoreDialog.h"
 #include "Backup/BackupManager.h"
 #include "BeeftextGlobals.h"
@@ -33,6 +33,7 @@ PrefPaneAdvanced::PrefPaneAdvanced(QWidget* parent)
 
    // We update the GUI when the combo list is saved to proper enable/disable the 'Restore Backup' button
    connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PrefPaneAdvanced::updateGui);
+   connect(ui_.buttonExcludedApplications, &QPushButton::clicked, this, &PrefPaneAdvanced::onEditExcludedApplications);
 }
 
 
@@ -294,7 +295,16 @@ void PrefPaneAdvanced::onRestoreBackup()
 //**********************************************************************************************************************
 void PrefPaneAdvanced::onEditSensitiveApplications()
 {
-   SensitiveApplicationManager::instance().runDialog(this);
+   globals::sensitiveApplications().runDialog(this);
+}
+
+
+//**********************************************************************************************************************
+///
+//**********************************************************************************************************************
+void PrefPaneAdvanced::onEditExcludedApplications()
+{
+   qDebug() << "Excluded applications";
 }
 
 

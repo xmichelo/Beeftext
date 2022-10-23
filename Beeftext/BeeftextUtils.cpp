@@ -11,7 +11,7 @@
 #include "BeeftextUtils.h"
 #include "Combo/ComboManager.h"
 #include "Dialogs/ShortcutDialog.h"
-#include "SensitiveApplicationManager.h"
+#include "ProcessListManager.h"
 #include "InputManager.h"
 #include "KeyboardMapper.h"
 #include "Preferences/PreferencesManager.h"
@@ -268,7 +268,7 @@ void insertTextByTyping(QString const& text)
 void insertText(QString const& text)
 {
    QList<quint16> pressedModifiers;
-   if (!SensitiveApplicationManager::instance().isSensitiveApplication(getActiveExecutableFileName()))
+   if (!globals::sensitiveApplications().filter(getActiveExecutableFileName()))
       insertTextByPasting(text);
    else
       insertTextByTyping(text);

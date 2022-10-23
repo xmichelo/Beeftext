@@ -324,7 +324,7 @@ bool GroupList::readFromJsonArray(QJsonArray const& array, qint32 formatVersion,
    try
    {
       this->clear();
-      for (QJsonValueRef const value : array)
+      for (QJsonValueConstRef const value : array)
       {
          if (!value.isObject())
             throw xmilib::Exception("The group list is invalid.");

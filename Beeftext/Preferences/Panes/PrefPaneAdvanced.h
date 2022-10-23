@@ -47,6 +47,7 @@ private slots:
    void onChangeCustomBackupLocation(); ///< Slot for the 'Change' button of the custom backup location.
    void onRestoreBackup(); ///< Slot for the 'Restore backup' action
    void onEditSensitiveApplications(); ///< Slot for the 'Edit sensitive applications' action
+   void onEditExcludedApplications(); ///< Slot for the 'Edit sensitive applications' action
    
 private: // member functions
    void changeEvent(QEvent* event) override; ///< Change event handler.
