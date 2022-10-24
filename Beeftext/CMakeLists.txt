@@ -63,8 +63,8 @@ add_executable(Beeftext
    MainWindow.h
    MimeDataUtils.cpp
    MimeDataUtils.h
-   SensitiveApplicationManager.cpp
-   SensitiveApplicationManager.h
+   ProcessListManager.cpp
+   ProcessListManager.h
    Shortcut.cpp
    Shortcut.h
    stdafx.cpp
@@ -199,7 +199,7 @@ add_executable(Beeftext
 
 add_dependencies(Beeftext translations)
 
-#target_precompile_headers(Beeftext PUBLIC stdafx.h)
+target_precompile_headers(Beeftext PRIVATE stdafx.h)
 target_link_libraries(Beeftext Qt6::Core)
 target_link_libraries(Beeftext Qt6::Gui)
 target_link_libraries(Beeftext Qt6::Widgets)

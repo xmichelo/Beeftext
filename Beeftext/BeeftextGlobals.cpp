@@ -41,6 +41,15 @@ QString sensitiveApplicationsFilePath()
 }
 
 
+//**********************************************************************************************************************
+/// \return The path of the JSON file containing the list of excluded applications
+//**********************************************************************************************************************
+QString excludedApplicationsFilePath()
+{
+   return QDir(appDataDir()).absoluteFilePath("excludedApps.json");
+}
+
+
 } // anonymous namespace
 
 
@@ -80,11 +89,29 @@ ProcessListManager& sensitiveApplications()
       to list sensitive applications that do not work correctly with Beeftext because they do not support standard 
       copy-paste using Ctrl+V.</p><p>List applications using their process name (e.g, notepad.exe). Wildcards 
       are accepted.</p></body></html>)"));
-   QString const path = sensitiveApplicationsFilePath();
-   manager->setFilePath(path);
+   manager->setFilePath(sensitiveApplicationsFilePath());
    if (!manager->load())
       manager->addProcesses({ "mintty.exe", "putty.exe", "powershell.exe", "kitty*.exe", "ConEmu*.exe" });
 
+   return *manager;
+}
+
+
+//**********************************************************************************************************************
+// \return A reference to the list of excluded applications.
+//**********************************************************************************************************************
+ProcessListManager& excludedApplications()
+{
+   static std::unique_ptr<ProcessListManager> manager;
+   if (manager)
+      return *manager;
+
+   manager = std::make_unique<ProcessListManager>(QObject::tr(R"(<html><head/><body><p>Use this dialog 
+      to list excluded applications. Beeftext will not perform substitution in these applications.</p>
+      <p>List applications using their process name (e.g, notepad.exe). Wildcards 
+      are accepted.</p></body></html>)"));
+   manager->setFilePath(excludedApplicationsFilePath());
+   manager->load();
    return *manager;
 }
 

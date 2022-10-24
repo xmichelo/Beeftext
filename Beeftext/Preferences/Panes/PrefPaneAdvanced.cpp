@@ -300,11 +300,11 @@ void PrefPaneAdvanced::onEditSensitiveApplications()
 
 
 //**********************************************************************************************************************
-///
+//
 //**********************************************************************************************************************
 void PrefPaneAdvanced::onEditExcludedApplications()
 {
-   qDebug() << "Excluded applications";
+   globals::excludedApplications().runDialog(this);
 }
 
 

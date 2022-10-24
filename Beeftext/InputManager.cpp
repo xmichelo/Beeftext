@@ -10,10 +10,13 @@
 #include "stdafx.h"
 #include "InputManager.h"
 #include "Preferences/PreferencesManager.h"
+#include "ProcessListManager.h"
 #include "MainWindow.h"
+#include "BeeftextGlobals.h"
 #include "BeeftextUtils.h"
 #include "KeyboardMapper.h"
 #include <XMiLib/Exception.h>
+
 
 
 using namespace xmilib;
@@ -121,6 +124,10 @@ SpShortcut shortcutFromWindowsKeyEvent(KBDLLHOOKSTRUCT const* keyEvent)
 //**********************************************************************************************************************
 LRESULT CALLBACK InputManager::keyboardProcedure(int nCode, WPARAM wParam, LPARAM lParam)
 {
+   static ProcessListManager const& processListManager = globals::excludedApplications();
+   if (processListManager.filter(getActiveExecutableFileName()))
+      return CallNextHookEx(nullptr, nCode, wParam, lParam); // The active app is listed as excluded
+
    if ((WM_KEYDOWN != wParam) && (WM_SYSKEYDOWN != wParam))
       return CallNextHookEx(nullptr, nCode, wParam, lParam);
    KeyStroke keyStroke = { 0, 0, { 0 } };
