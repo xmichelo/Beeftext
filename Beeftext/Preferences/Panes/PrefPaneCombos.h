@@ -49,7 +49,7 @@ private: // member functions
    void applyComboPickerShortcut(); ///< Try to apply combo picker shortcut.
 
 private: // data members
-   Ui::PrefPaneCombos ui_; ///< The GUI for the pane.
+   Ui::PrefPaneCombos ui_ {}; ///< The GUI for the pane.
    PreferencesManager& prefs_; ///< The preferences.
 };
 

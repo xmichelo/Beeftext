@@ -35,7 +35,6 @@ void ProcessListManager::setFilePath(QString const& filePath)
 //**********************************************************************************************************************
 /// If the file does not exist, an empty string list is returned.
 ///
-/// \param[out] outApps The loaded process list.
 /// \return true if and only if the file was loaded or there was no file.
 //**********************************************************************************************************************
 bool ProcessListManager::load()

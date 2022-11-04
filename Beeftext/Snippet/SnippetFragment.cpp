@@ -125,7 +125,7 @@ void renderSnippetFragmentList(ListSpSnippetFragment const& fragments)
    qsizetype const count = fragments.size();
    for (qsizetype i = 0; i < fragments.size(); ++i)
    {
-      SpSnippetFragment const fragment = fragments[i];
+      SpSnippetFragment const& fragment = fragments[i];
       if (!fragment)
          continue;
       fragment->render();

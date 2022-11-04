@@ -27,7 +27,7 @@ public: // data types
    }; ///< Enumeration for the type of fragment
 
 public: // member functions
-   SnippetFragment() {} ///< Default constructor.
+   SnippetFragment() = default; ///< Default constructor.
    SnippetFragment(SnippetFragment const&) = delete; ///< Disabled copy-constructor.
    SnippetFragment(SnippetFragment&&) = delete; ///< Disabled assignment copy-constructor.
    virtual ~SnippetFragment() = default; ///< Destructor.
