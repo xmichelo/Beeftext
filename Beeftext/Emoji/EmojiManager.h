@@ -12,6 +12,7 @@
 
 
 #include "EmojiList.h"
+#include "ProcessListManager.h"
 
 
 //**********************************************************************************************************************
@@ -33,7 +34,6 @@ public: // member functions
    EmojiManager& operator=(EmojiManager&&) = delete; ///< Disabled move assignment operator
    bool isExcludedApplication(QString const& appExeName) const; ///< Check whether the application is excluded from emoji substitution.
    bool runDialog(QWidget* parent = nullptr); ///< Run the sensitive application dialog
-   QString emojiListtoString() const; ///< Return a string containing all the emojis
    EmojiList const& emojiListRef() const; ///< Return a constant reference the list of emojis.
 
 private: // member functions
@@ -42,7 +42,7 @@ private: // member functions
 
 private: // data members
    EmojiList emojis_; ///< The list of emojis
-   QStringList excludedApps_; ///< The list of applications where emoji should not be substituted
+   ProcessListManager excludedApps_; ///< The list of applications for which emoji  should be disabled.
 };
 
 
