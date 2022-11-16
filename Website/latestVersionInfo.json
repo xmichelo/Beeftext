@@ -1,8 +1,8 @@
 {
-   "versionMajor": 14,
+   "versionMajor": 15,
    "versionMinor": 0,
-   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v14.0/Beeftext-14.0-Installer.exe",
-   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v14.0",
-   "sha256Sum": "CEFD82354E42415739A0B5F4375DC628251C5262FFC4DD9B3B166A3FFB294775",
-   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v9.1 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><ul><li>Added a 'Skip This Version' button in the software update dialog (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/437\">#437</a>).</li><li>Removed the default list of sensitive applications (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/466\">#466</a>).</li><li>A replacement choice is now offered when moving the combo list file (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/467\">#467</a>).</li><li>Added a thank-you message for translators in the About dialog (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/483\">#483</a>).</li><li>Fixed the background of the picker window when custom theme is off (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/492\">#492</a>).</li><li>Fixed the tab order in the combo dialog (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/57\">#57</a>).</li><li>Restored the ability to re-use keywords (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/482\">#482</a>).</li></ul></body></html>"
+   "downloadUrl": "https://github.com/xmichelo/Beeftext/releases/download/v15.0/Beeftext-15.0-Installer.exe",
+   "releaseUrl": "https://github.com/xmichelo/Beeftext/releases/tag/v15.0",
+   "sha256Sum": "505A09B1922934840EB2CE56F30AB1B1766B554D72A012E451EF5F4348A4D4EA",
+   "releaseNotes": "<!DOCTYPE html><html lang=\"en\"><head><title>Beeftext v9.1 Release Notes</title><style>body{font-size:13px;}ul{-qt-list-indent: 0; margin-left: 15px}li{margin-bottom: 8px;}a{text-decoration: none; color: #258fc0; font-weight: 600;}</style></head><ul><li>Added list of excluded applications where Beeftext will not perform substitution (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/429\">#429</a>).</li><li>Restored the default list of sensitive applications (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/494\">#494</a>).</li><li>Fixed week number substitution in dateTime variable (issue <a href=\"https://github.com/xmichelo/Beeftext/issues/514\">#514</a>).</li></ul></body></html>"
 }
