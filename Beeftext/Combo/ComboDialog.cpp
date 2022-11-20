@@ -73,7 +73,7 @@ bool showEmptyKeywordConfirmationDialog(QWidget* parent = nullptr)
 }
 
 
-}
+} // Anonymous namespace
 
 
 //**********************************************************************************************************************
@@ -116,6 +116,7 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.labelVariables->setText(variablesLabel());
    this->updateGui();
    connect(ui_.comboEditor, &ComboEditor::textChanged, this, &ComboDialog::updateGui);
+   connect(new QShortcut(QKeySequence("Ctrl+Return"), this), &QShortcut::activated, this, &ComboDialog::onActionOk);
 }
 
 
