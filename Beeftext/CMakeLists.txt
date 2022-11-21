@@ -22,7 +22,6 @@ find_package(Qt6Gui)
 find_package(Qt6Widgets)
 find_package(Qt6Network)
 
-include_directories("../..")
 include_directories("../Submodules/XMiLib")
 
 set(CMAKE_AUTOUIC ON)
