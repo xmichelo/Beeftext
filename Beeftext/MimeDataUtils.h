@@ -15,10 +15,10 @@ extern QString const kUuuidListMimeType; ///< The mime type for a serialized uui
 extern QString const kGroupIndexMimeType; ///< The mime type for a serialized group index
 
 
-QMimeData* uuidListToMimeData(QList<QUuid> const& uuids); ///< Create a QMimeData instance() of a specific MIME type containing list of UUID
-QList<QUuid> mimeDataToUuidList(QMimeData const& mimeData); ///< Parse a UUID list from a piece of MIME data 
-QMimeData* groupIndexToMimeData(qint32 index); ///< Create a QMimeData instance() of a specific MIME type containing a group index
-qint32 mimeDataToGroupIndex(QMimeData const& mimeData); ///< Parse a group index from a MIME data of time
+QMimeData *uuidListToMimeData(QList<QUuid> const &uuids); ///< Create a QMimeData instance() of a specific MIME type containing list of UUID
+QList<QUuid> mimeDataToUuidList(QMimeData const &mimeData); ///< Parse a UUID list from a piece of MIME data
+QMimeData *groupIndexToMimeData(qint32 index); ///< Create a QMimeData instance() of a specific MIME type containing a group index
+qint32 mimeDataToGroupIndex(QMimeData const &mimeData); ///< Parse a group index from a MIME data of time
 
 
 

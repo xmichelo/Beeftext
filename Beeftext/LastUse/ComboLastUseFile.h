@@ -14,8 +14,8 @@
 #include "Combo/ComboList.h"
 
 
-void loadComboLastUseDateTimes(ComboList& comboList); ///< Load the last date/times from file.
-void saveComboLastUseDateTimes(ComboList const& comboList); ///< Save the last date/times to file.
+void loadComboLastUseDateTimes(ComboList &comboList); ///< Load the last date/times from file.
+void saveComboLastUseDateTimes(ComboList const &comboList); ///< Save the last date/times to file.
 
 
 #endif // #ifndef BEEFTEXT_LAST_USE_FILE_H

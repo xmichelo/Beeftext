@@ -15,42 +15,38 @@
 #include <XMiLib/XMiLibConstants.h>
 
 
-//**********************************************************************************************************************
+//****************************************************************************************************************************************************
 /// \param[in] parent The parent widget of the dialog
-//**********************************************************************************************************************
-AboutDialog::AboutDialog(QWidget* parent)
-   : QDialog(parent, xmilib::constants::kDefaultDialogFlags)
-   , ui_()
-{
-   ui_.setupUi(this);
-   this->completeText();
+//****************************************************************************************************************************************************
+AboutDialog::AboutDialog(QWidget *parent)
+    : QDialog(parent, xmilib::constants::kDefaultDialogFlags)
+    , ui_() {
+    ui_.setupUi(this);
+    this->completeText();
 }
 
 
-//**********************************************************************************************************************
+//****************************************************************************************************************************************************
 // 
-//**********************************************************************************************************************
-void AboutDialog::completeText() const
-{
-   QString const hexColor = colorToHex(constants::blueBeeftextColor, false);
-   ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionNumber.major()).arg(constants::kVersionNumber.minor())
-      .arg(isInPortableMode() ? tr("Portable Edition") : "").arg(QString(__DATE__).right(4))
-      .arg(hexColor));
-   ui_.labelTranslators->setText(ui_.labelTranslators->text().arg(hexColor));
-   ui_.labelBuildInfo->setText(globals::getBuildInfo());
+//****************************************************************************************************************************************************
+void AboutDialog::completeText() const {
+    QString const hexColor = colorToHex(constants::blueBeeftextColor, false);
+    ui_.labelText->setText(ui_.labelText->text().arg(constants::kVersionNumber.major()).arg(constants::kVersionNumber.minor())
+        .arg(isInPortableMode() ? tr("Portable Edition") : "").arg(QString(__DATE__).right(4))
+        .arg(hexColor));
+    ui_.labelTranslators->setText(ui_.labelTranslators->text().arg(hexColor));
+    ui_.labelBuildInfo->setText(globals::getBuildInfo());
 }
 
 
-//**********************************************************************************************************************
+//****************************************************************************************************************************************************
 /// \param[in] event The event
-//**********************************************************************************************************************
-void AboutDialog::changeEvent(QEvent *event)
-{
-   if (QEvent::LanguageChange == event->type())
-   {
-      ui_.retranslateUi(this);
-      this->completeText();
-   }
-   QDialog::changeEvent(event);
+//****************************************************************************************************************************************************
+void AboutDialog::changeEvent(QEvent *event) {
+    if (QEvent::LanguageChange == event->type()) {
+        ui_.retranslateUi(this);
+        this->completeText();
+    }
+    QDialog::changeEvent(event);
 }
 

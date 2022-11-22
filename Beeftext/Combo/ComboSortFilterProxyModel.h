@@ -16,26 +16,25 @@
 #include "Group/Group.h"
 
 
-//**********************************************************************************************************************
+//****************************************************************************************************************************************************
 /// \brief A sort and filter proxy model class for combos
-//**********************************************************************************************************************
-class ComboSortFilterProxyModel: public QSortFilterProxyModel
-{
-   Q_OBJECT
+//****************************************************************************************************************************************************
+class ComboSortFilterProxyModel : public QSortFilterProxyModel {
+Q_OBJECT
 public: // member functions
-   explicit ComboSortFilterProxyModel(QObject* parent = nullptr); ///< Default constructor
-   ComboSortFilterProxyModel(ComboSortFilterProxyModel const&) = delete; ///< Disabled copy constructor
-   ComboSortFilterProxyModel(ComboSortFilterProxyModel&&) = delete; ///< Disabled move constructor
-   ~ComboSortFilterProxyModel() override = default; ///< Default destructor
-   ComboSortFilterProxyModel& operator=(ComboSortFilterProxyModel const&) = delete; ///< Disabled assignment operator
-   ComboSortFilterProxyModel& operator=(ComboSortFilterProxyModel&&) = delete; ///< Disabled move assignment operator
-   void setGroup(SpGroup const& group); ///< Set the group to display
-       
+    explicit ComboSortFilterProxyModel(QObject *parent = nullptr); ///< Default constructor
+    ComboSortFilterProxyModel(ComboSortFilterProxyModel const &) = delete; ///< Disabled copy constructor
+    ComboSortFilterProxyModel(ComboSortFilterProxyModel &&) = delete; ///< Disabled move constructor
+    ~ComboSortFilterProxyModel() override = default; ///< Default destructor
+    ComboSortFilterProxyModel &operator=(ComboSortFilterProxyModel const &) = delete; ///< Disabled assignment operator
+    ComboSortFilterProxyModel &operator=(ComboSortFilterProxyModel &&) = delete; ///< Disabled move assignment operator
+    void setGroup(SpGroup const &group); ///< Set the group to display
+
 protected: // member functions
-   bool filterAcceptsRow(int sourceRow, QModelIndex const&) const override; ///< Check if a row should be included or discarded
-   bool lessThan(const QModelIndex& sourceLeft, const QModelIndex& sourceRight) const override; ///< Return true if and only if sourceLeft is inferior to sourceRight
+    bool filterAcceptsRow(int sourceRow, QModelIndex const &) const override; ///< Check if a row should be included or discarded
+    bool lessThan(const QModelIndex &sourceLeft, const QModelIndex &sourceRight) const override; ///< Return true if and only if sourceLeft is inferior to sourceRight
 private: // data members
-   SpGroup group_; ///< The group to display
+    SpGroup group_; ///< The group to display
 };
 
 

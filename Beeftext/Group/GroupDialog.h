@@ -15,34 +15,33 @@
 #include "Group.h"
 
 
-//**********************************************************************************************************************
+//****************************************************************************************************************************************************
 /// \brief Combo groups dialog class
-//**********************************************************************************************************************
-class GroupDialog: public QDialog
-{
-   Q_OBJECT
+//****************************************************************************************************************************************************
+class GroupDialog : public QDialog {
+Q_OBJECT
 public: // static functions
-   static bool run(SpGroup const& group, QString const& title, QWidget* parent = nullptr); ///< Run the dialog
+    static bool run(SpGroup const &group, QString const &title, QWidget *parent = nullptr); ///< Run the dialog
 
 public: // member functions
-   GroupDialog(SpGroup const& group, QString const& title, QWidget* parent = nullptr); ///< Default constructor
-   GroupDialog(GroupDialog const&) = delete; ///< Disabled copy-constructor
-   GroupDialog(GroupDialog&&) = delete; ///< Disabled assignment copy-constructor
-   ~GroupDialog() override = default; ///< Destructor
-   GroupDialog& operator=(GroupDialog const&) = delete; ///< Disabled assignment operator
-   GroupDialog& operator=(GroupDialog&&) = delete; ///< Disabled move assignment operator
+    GroupDialog(SpGroup const &group, QString const &title, QWidget *parent = nullptr); ///< Default constructor
+    GroupDialog(GroupDialog const &) = delete; ///< Disabled copy-constructor
+    GroupDialog(GroupDialog &&) = delete; ///< Disabled assignment copy-constructor
+    ~GroupDialog() override = default; ///< Destructor
+    GroupDialog &operator=(GroupDialog const &) = delete; ///< Disabled assignment operator
+    GroupDialog &operator=(GroupDialog &&) = delete; ///< Disabled move assignment operator
 
 private slots:
-   void onActionOk(); ///< Slot for the OK action
-   void onNameChanged() const; ///< Slot for the changing of the name
+    void onActionOk(); ///< Slot for the OK action
+    void onNameChanged() const; ///< Slot for the changing of the name
 
 private:  // member functions
-   bool isInputValid() const; ///< Check whether the user input is valid
-   void updateGui() const; ///< Update the GUI state
+    bool isInputValid() const; ///< Check whether the user input is valid
+    void updateGui() const; ///< Update the GUI state
 
 private: // data members
-   Ui::GroupDialog ui_; ///< The GUI for the dialog
-   SpGroup group_; ///< The group
+    Ui::GroupDialog ui_; ///< The GUI for the dialog
+    SpGroup group_; ///< The group
 };
 
 

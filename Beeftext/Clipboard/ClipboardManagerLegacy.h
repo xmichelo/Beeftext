@@ -13,42 +13,42 @@
 
 #include "ClipboardManager.h"
 
-//**********************************************************************************************************************
+
+//****************************************************************************************************************************************************
 /// \brief Legacy clipboard manager class. This exists because it seems that for a couple of users the default
 /// clipboard manager crashes.
-//**********************************************************************************************************************
-class ClipboardManagerLegacy: public ClipboardManager
-{
+//****************************************************************************************************************************************************
+class ClipboardManagerLegacy : public ClipboardManager {
 public: // member functions
-   ClipboardManagerLegacy(); ///< Default constructor.
-   ClipboardManagerLegacy(ClipboardManagerLegacy const&) = delete; ///< Disabled copy-constructor.
-   ClipboardManagerLegacy(ClipboardManagerLegacy&&) = delete; ///< Disabled assignment copy-constructor.
-   ~ClipboardManagerLegacy() override = default; ///< Destructor.
-   ClipboardManagerLegacy& operator=(ClipboardManagerLegacy const&) = delete; ///< Disabled assignment operator.
-   ClipboardManagerLegacy& operator=(ClipboardManagerLegacy&&) = delete; ///< Disabled move assignment operator.
-   EType type() const override; ///< Return the type of clipboard manager of the instance.
-   void backupClipboard() override; ///< backup the clipboard.
-   void restoreClipboard() override; ///< Restore the clipboard and delete the current backup
-   bool hasBackup() const override; ///< Test if the clipboard is empty.
-   QString text() override; ///< Return the current text value of the clipboard.
-   bool setText(QString const& text) override; ///< Put text into the clipboard.
-   QString html() override; ///< Return the current HTML value of the clipboard.
-   bool setHtml(QString const& html) override; ///< Set the current HTML value of the clipboard.
+    ClipboardManagerLegacy(); ///< Default constructor.
+    ClipboardManagerLegacy(ClipboardManagerLegacy const &) = delete; ///< Disabled copy-constructor.
+    ClipboardManagerLegacy(ClipboardManagerLegacy &&) = delete; ///< Disabled assignment copy-constructor.
+    ~ClipboardManagerLegacy() override = default; ///< Destructor.
+    ClipboardManagerLegacy &operator=(ClipboardManagerLegacy const &) = delete; ///< Disabled assignment operator.
+    ClipboardManagerLegacy &operator=(ClipboardManagerLegacy &&) = delete; ///< Disabled move assignment operator.
+    EType type() const override; ///< Return the type of clipboard manager of the instance.
+    void backupClipboard() override; ///< backup the clipboard.
+    void restoreClipboard() override; ///< Restore the clipboard and delete the current backup
+    bool hasBackup() const override; ///< Test if the clipboard is empty.
+    QString text() override; ///< Return the current text value of the clipboard.
+    bool setText(QString const &text) override; ///< Put text into the clipboard.
+    QString html() override; ///< Return the current HTML value of the clipboard.
+    bool setHtml(QString const &html) override; ///< Set the current HTML value of the clipboard.
 
 private: // member functions
-   QMimeData* mimeDataFromBackup() const; ///< Create a MIME data instance from the current backup
+    QMimeData *mimeDataFromBackup() const; ///< Create a MIME data instance from the current backup
 
 private: // data structures
-   struct Backup {
-      QVariant imageData; ///< The image data
-      QVariant colorData; ///< The color data
-      QList<QUrl> urls; ///< The urls
-      QString html; ///< The HTML text
-      QString text; ///< The plain text
-   }; ///< A structure containing clipboard backup data
+    struct Backup {
+        QVariant imageData; ///< The image data
+        QVariant colorData; ///< The color data
+        QList<QUrl> urls; ///< The urls
+        QString html; ///< The HTML text
+        QString text; ///< The plain text
+    }; ///< A structure containing clipboard backup data
 
 private: // data members
-   std::unique_ptr<Backup> backup_; ///< The backup
+    std::unique_ptr<Backup> backup_; ///< The backup
 };
 
 

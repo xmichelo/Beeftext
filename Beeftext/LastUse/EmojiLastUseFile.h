@@ -14,8 +14,8 @@
 #include "Emoji/EmojiList.h"
 
 
-void loadEmojiLastUseDateTimes(EmojiList const& emojiList); ///< Load the emoji last date/times from file.
-void saveEmojiLastUseDateTimes(EmojiList const& emojiList); ///< Save the emoji last date/times to file.
+void loadEmojiLastUseDateTimes(EmojiList const &emojiList); ///< Load the emoji last date/times from file.
+void saveEmojiLastUseDateTimes(EmojiList const &emojiList); ///< Save the emoji last date/times to file.
 
 
 

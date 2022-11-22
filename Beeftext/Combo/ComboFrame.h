@@ -14,25 +14,24 @@
 #include "ui_ComboFrame.h"
 
 
-//**********************************************************************************************************************
+//****************************************************************************************************************************************************
 /// \brief Combo frame class
-//**********************************************************************************************************************
-class ComboFrame: public QFrame
-{
-   Q_OBJECT
+//****************************************************************************************************************************************************
+class ComboFrame : public QFrame {
+Q_OBJECT
 public: // member functions
-   explicit ComboFrame(QWidget* parent = nullptr); ///< Default constructor
-   ComboFrame(ComboFrame const&) = delete; ///< Disabled copy-constructor
-   ComboFrame(ComboFrame&&) = delete; ///< Disabled assignment copy-constructor
-   ~ComboFrame() override = default; ///< Destructor
-   ComboFrame& operator=(ComboFrame const&) = delete; ///< Disabled assignment operator
-   ComboFrame& operator=(ComboFrame&&) = delete; ///< Disabled move assignment operator
-   GroupListWidget* groupListWidget() const; ///< Return the combo group list widget
-   ComboTableWidget* comboTableWidget() const; ///< Return the combo table widget
-   QSplitter* splitter() const; ///< Return a pointer to the splitter widget of the frame;
+    explicit ComboFrame(QWidget *parent = nullptr); ///< Default constructor
+    ComboFrame(ComboFrame const &) = delete; ///< Disabled copy-constructor
+    ComboFrame(ComboFrame &&) = delete; ///< Disabled assignment copy-constructor
+    ~ComboFrame() override = default; ///< Destructor
+    ComboFrame &operator=(ComboFrame const &) = delete; ///< Disabled assignment operator
+    ComboFrame &operator=(ComboFrame &&) = delete; ///< Disabled move assignment operator
+    GroupListWidget *groupListWidget() const; ///< Return the combo group list widget
+    ComboTableWidget *comboTableWidget() const; ///< Return the combo table widget
+    QSplitter *splitter() const; ///< Return a pointer to the splitter widget of the frame;
 
 private: // data members
-   Ui::ComboFrame ui_; ///< The GUI for the frame
+    Ui::ComboFrame ui_; ///< The GUI for the frame
 };
 
 

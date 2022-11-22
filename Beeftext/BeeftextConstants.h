@@ -20,7 +20,7 @@ Q_DECLARE_SMART_POINTER_METATYPE(std::shared_ptr)
 namespace constants {
 
 
-extern xmilib::VersionNumber const kVersionNumber ; ///< The version number of the application.
+extern xmilib::VersionNumber const kVersionNumber; ///< The version number of the application.
 
 QChar constexpr kEmojiDelimiter = '|'; ///< The delimiter for emojis
 QColor constexpr blueBeeftextColor(0x25, 0x8c, 0xc0); ///< Return the blue color used for the GUI.
@@ -40,16 +40,15 @@ extern QString const kDelayVariableRegExpStr; ///< A regular expression matching
 extern QRegularExpression const kVariableRegExp; ///< The following regular expression detects the first variable #{}, ensuring the closing } is not preceded by a \. Lazy (a.k.a. non-greedy) operators are used to match the first variable with the smallest possible contents inside the #{}.
 
 
-enum EITemType
-{
-   Combo = 0, ///< The combo item type.
-   Emoji = 1, ///< The emoji item type.
+enum EITemType {
+    Combo = 0, ///< The combo item type.
+    Emoji = 1, ///< The emoji item type.
 }; ///< An enumeration for item type.
 
 
 enum {
-      TypeRole = Qt::UserRole, ///< The role for the type of item (combo or emoji).
-      PointerRole, /// The role for the pointer to the item.
+    TypeRole = Qt::UserRole, ///< The role for the type of item (combo or emoji).
+    PointerRole, /// The role for the pointer to the item.
 }; ///< Anonymous enumeration for Beeftext customs model roles
 
 

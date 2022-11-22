@@ -8,8 +8,8 @@
 #define BEEFTEXT_COMBO_VARIABLE_H
 
 
-QString evaluateVariable(QString const& variable, QSet<QString> const& forbiddenSubCombos, 
-   QMap<QString, QString>& knownInputVariables, bool& outCancelled); ///< Compute the value of a variable.
+QString evaluateVariable(QString const &variable, QSet<QString> const &forbiddenSubCombos,
+    QMap<QString, QString> &knownInputVariables, bool &outCancelled); ///< Compute the value of a variable.
 
 
 #endif // #ifndef BEEFTEXT_COMBO_VARIABLE_H
