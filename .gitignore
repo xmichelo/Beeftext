@@ -32,3 +32,4 @@ tasks.xml
 *.DotSettings.user
 qtvars*
 CMakeCache.txt
+.idea/
