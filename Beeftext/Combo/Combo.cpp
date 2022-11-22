@@ -45,12 +45,29 @@ QString const kPropLastModified = "lastModified"; ///< The JSON property name fo
 QString const kPropModificationDateTime = "modificationDateTime"; ///< The JSON property name for the modification date/time, introduced in the combo list file format v3, replacing "lastModified"
 QString const kPropEnabled = "enabled"; ///< The JSON property name for the enabled/disabled state
 QString const kCursorVariable = "#{cursor}"; ///< The cursor position variable.
+qint32 const kPlaceholderMaxLength = 50; ///< The maximum length of the placeholder name.
+QString const kPlaceholderElision =  "..."; ///< The elision text for placeholder (used if placeholder name is too long.
 
 
 } // anonymous namespace
 
 
 QString const kPropUseHtml = "useHtml";
+
+
+//****************************************************************************************************************************************************
+/// \param[in] keyword The keyword.
+/// \param[in] snippet The snippet.
+/// \Return the placeholder name for a combo with the given keyword and snippet.
+//****************************************************************************************************************************************************
+QString Combo::placeholderName(QString const &keyword, QString const &snippet)
+{
+    QString result = keyword.isEmpty() ? snippet : QString("[%1]: %2").arg(keyword, snippet);
+    if (result.length() <= kPlaceholderMaxLength)
+        return result;
+
+    return result.left(kPlaceholderMaxLength - kPlaceholderElision.length()) + kPlaceholderElision;
+}
 
 
 //**********************************************************************************************************************
@@ -120,7 +137,7 @@ Combo::Combo(QJsonObject const& object, qint32 formatVersion, GroupList const& g
          matchingMode_ = static_cast<EMatchingMode>(qBound<qint32>(0, object[kPropMatchingMode].toInt(
          qint32(EMatchingMode::Strict)), static_cast<qint32>(EMatchingMode::Count) - 1));
 
-   // because we parse a older format version, we update the modification date, as the combo manager will save 
+   // because we parse an older format version, we update the modification date, as the combo manager will save
    // the file to update it to the latest format
    if (formatVersion < ComboList::fileFormatVersionNumber)
       this->touch();
@@ -152,6 +169,24 @@ QUuid Combo::uuid() const
 QString Combo::name() const
 {
    return name_;
+}
+
+
+//****************************************************************************************************************************************************
+/// \return The placeholder name.
+//****************************************************************************************************************************************************
+QString Combo::placeholderName() const
+{
+    return Combo::placeholderName(keyword_, snippet_);
+}
+
+
+//****************************************************************************************************************************************************
+/// If the name is empty,
+//****************************************************************************************************************************************************
+QString Combo::displayName() const
+{
+    return name_.isEmpty() ? this->placeholderName() : name_;
 }
 
 
@@ -396,8 +431,7 @@ bool Combo::matchesForInput(QString const& input) const
 qint32 computeCursorLeftShift(QString const& str)
 {
    QString s = str;
-   s.remove(QRegularExpression(QString(R"((%1)|(%2))").arg(constants::kDelayVariableRegExpStr)
-      .arg(constants::kKeyVariableRegExpStr)));
+   s.remove(QRegularExpression(QString(R"((%1)|(%2))").arg(constants::kDelayVariableRegExpStr, constants::kKeyVariableRegExpStr)));
    qsizetype const index = s.lastIndexOf(kCursorVariable);
    if (index < 0)
       return -1;
@@ -448,7 +482,7 @@ bool Combo::performSubstitution(bool triggeredByPicker)
          fragments.push_back(std::make_shared<TextSnippetFragment>(QString(" ")));
       renderSnippetFragmentList(fragments);
 
-      // position the cursor if needed by typing the right amount of left key strokes
+      // Position the cursor if needed by typing the right amount of left keystrokes.
       if (cursorLShift > 0)
          moveCursorLeft(cursorLShift);
    }

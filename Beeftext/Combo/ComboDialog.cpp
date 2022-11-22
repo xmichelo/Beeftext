@@ -115,7 +115,12 @@ ComboDialog::ComboDialog(SpCombo const& combo, QString const& title, QWidget* pa
    ui_.editDescription->setPlainText(combo->description());
    ui_.labelVariables->setText(variablesLabel());
    this->updateGui();
+   connect(ui_.editKeyword, &QLineEdit::textChanged, this, &ComboDialog::updateGui);
    connect(ui_.comboEditor, &ComboEditor::textChanged, this, &ComboDialog::updateGui);
+   connect(ui_.comboGroup, &GroupComboBox::currentIndexChanged, this, &ComboDialog::updateGui);
+   connect(ui_.buttonOk, &QPushButton::clicked, this, &ComboDialog::onActionOk);
+   connect(ui_.buttonCancel, &QPushButton::clicked, this, &ComboDialog::reject);
+   connect(ui_.buttonNewGroup, &QPushButton::clicked, this, &ComboDialog::onActionNewGroup);
    connect(new QShortcut(QKeySequence("Ctrl+Return"), this), &QShortcut::activated, this, &ComboDialog::onActionOk);
 }
 
@@ -225,4 +230,5 @@ void ComboDialog::updateGui() const
    bool const canAccept = (QValidator::Acceptable == validator_.validate(keyword)) &&
       (!ui_.comboEditor->plainText().isEmpty()) && ui_.comboGroup->currentGroup();
    ui_.buttonOk->setEnabled(canAccept);
+   ui_.editName->setPlaceholderText(Combo::placeholderName(ui_.editKeyword->text(), ui_.comboEditor->plainText()));
 }

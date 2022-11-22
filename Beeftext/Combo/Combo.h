@@ -30,6 +30,9 @@ typedef std::vector<SpCombo> VecSpCombo; ///< Type definition for vector of SpCo
 //**********************************************************************************************************************
 class Combo
 {
+public: // static member functions
+    static QString placeholderName(QString const &keyword, QString const &snippet);
+
 public: // member functions
    Combo(QString name, QString keyword, QString snippet, QString description, EMatchingMode matchingMode, 
       ECaseSensitivity caseSensitivity, bool enabled); ///< Default constructor
@@ -42,6 +45,8 @@ public: // member functions
    bool isValid() const; ///< Is the combo valid
    QUuid uuid() const; ///< Get the UUID of the combo
    QString name() const; ///< Get the name of the combo
+   QString placeholderName() const; ///< Return a placeholder name built using the keyword and snippet.
+   QString displayName() const; ///< Get the display name of the combo. If name is empty, a placeholder name is returned
    void setName(QString const& name); ///< Set the name of the combo
 	QString keyword() const; ///< retrieve the keyword
    void setKeyword(QString const& keyword); ///< Set the keyword

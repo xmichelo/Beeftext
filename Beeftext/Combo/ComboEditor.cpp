@@ -21,7 +21,7 @@ ComboEditor::ComboEditor(QWidget* parent)
 {
    this->setTabChangesFocus(true);
    this->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
-   connect(this, &QPlainTextEdit::customContextMenuRequested, this, 
+   connect(this, &QPlainTextEdit::customContextMenuRequested, this,
       &ComboEditor::onEditorContextMenuRequested);
 }
 
@@ -31,7 +31,7 @@ ComboEditor::ComboEditor(QWidget* parent)
 //**********************************************************************************************************************
 QString ComboEditor::plainText() const
 {
-   // rawtext() preserve non breaking space that are removed by toPlainText(), but replaces spaces with the
+   // rawtext() preserve non-breaking space that are removed by toPlainText(), but replaces spaces with the
    // unicode paragraph separator (U+2029) so we replace them with '\n'.
    return this->document()->toRawText().replace(QString::fromUtf8(QByteArray("\xe2\x80\xa9")),
       QString("\n"), Qt::CaseInsensitive);

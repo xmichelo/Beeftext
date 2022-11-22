@@ -681,7 +681,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
    {
       switch (index.column())
       {
-      case 0: return combo->name();
+      case 0: return combo->displayName();
       case 1: return combo->keyword();
       case 2: return combo->snippet();
       case 3: return combo->creationDateTime().toString(dtShortFormat);
@@ -694,7 +694,7 @@ QVariant ComboList::data(QModelIndex const& index, int role) const
    {
       switch (index.column())
       {
-      case 0: return combo->name();
+      case 0: return combo->displayName();
       case 1: return combo->keyword();
       case 2: return combo->snippet();
       case 3: return combo->creationDateTime().toString(dtLongFormat);
