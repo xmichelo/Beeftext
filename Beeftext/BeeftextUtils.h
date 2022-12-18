@@ -29,6 +29,7 @@ bool isBeeftextTheForegroundApplication(); ///< Check whether Beeftext is the fo
 QString getActiveExecutableFileName(); ///< Return the name of the active application's executable file
 QString htmlToPlainText(QString const &snippet); ///< Return the plain text for a snippet.
 void eraseChars(qint32 count); ///< Erase characters by generating backspace characters.
+QString ensureStringHasCRLFLineEndings(QString const &str); ///< Return a copy of str with CR/LF line endings.
 void insertText(QString const &text); ///< Insert the text given text.
 void renderShortcut(SpShortcut const &shortcut); ///< Synthesize the given shortcut.
 void moveCursorLeft(qint32 count); ///< Move the cursor the the left by the specified number of characters.

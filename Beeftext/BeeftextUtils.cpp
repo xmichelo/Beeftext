@@ -194,7 +194,12 @@ void insertTextByPasting(QString const &text) {
     // we use the clipboard to and copy/paste the snippet
     ClipboardManager &clipboardManager = ClipboardManager::instance();
     clipboardManager.backupClipboard();
-    clipboardManager.setText(text);
+#ifdef Q_OS_WINDOWS
+    QString txt = ensureStringHasCRLFLineEndings(text);
+#else
+    QString txt = text;
+#endif
+    clipboardManager.setText(txt);
     QList<quint16> const pressedModifiers = backupAndReleaseModifierKeys(); ///< We artificially depress the current modifier keys
     if (PreferencesManager::instance().useShiftInsertForPasting()) {
         synthesizeKeyDown(VK_LSHIFT);
@@ -237,6 +242,25 @@ void insertTextByTyping(QString const &text) {
         }
     }
 
+}
+
+
+//****************************************************************************************************************************************************
+/// \param[in] str The string.
+/// \return A copy of the string with CR/LF line endings.
+//****************************************************************************************************************************************************
+QString ensureStringHasCRLFLineEndings(QString const &str) {
+    QString result;
+    QChar const cr('\r');
+    QChar const lf('\n');
+    QChar prev(0);
+    for (QChar c: str) {
+        if ((c == lf) && (prev != cr))
+            result += cr;
+        prev = c;
+        result += c;
+    }
+    return result;
 }
 
 
