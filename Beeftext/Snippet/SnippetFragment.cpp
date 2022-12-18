@@ -111,18 +111,15 @@ ListSpSnippetFragment splitStringIntoSnippetFragments(QString const &str) {
 /// \note this function does not disable the keyboard hook before operating.
 //****************************************************************************************************************************************************
 void renderSnippetFragmentList(ListSpSnippetFragment const &fragments) {
-    qDebug() << "--- START ---";
     qsizetype const count = fragments.size();
     for (qsizetype i = 0; i < fragments.size(); ++i) {
         SpSnippetFragment const &fragment = fragments[i];
         if (!fragment)
             continue;
         fragment->render();
-        qDebug() << fragment->toString();
         if (i != count - 1)
             QThread::msleep(kDelayBetweenFragmentsMs);
     }
-    qDebug() << "---  END  ---";
 }
 
 

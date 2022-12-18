@@ -31,11 +31,15 @@ void ProcessListManager::setFilePath(QString const &filePath) {
 
 
 //****************************************************************************************************************************************************
-/// If the file does not exist, an empty string list is returned.
+/// If the file does not exist, the list is considered empty.
 ///
 /// \return true if and only if the file was loaded or there was no file.
 //****************************************************************************************************************************************************
 bool ProcessListManager::load() {
+    processList_.clear();
+    if (!QFile(filePath_).exists())
+        return true;
+
     QString errorMsg;
     bool const result = loadStringListFromJsonFile(filePath_, processList_, &errorMsg);
     if (!result) {
