@@ -52,6 +52,11 @@ void ClipboardManagerDefault::backupClipboard() {
     quint32 format = 0;
 
     while ((format = EnumClipboardFormats(format))) {
+        if (format == CF_BITMAP) {
+            /// \todo Find a workaround for bitmaps. Currently crashes on Win 11 because https://devblogs.microsoft.com/oldnewthing/20071026-00/?p=24683
+            continue;
+        }
+
         SpClipBoardFormatData const cbData = std::make_shared<ClipBoardFormatData>();
         cbData->format = format;
         HANDLE const handle = GetClipboardData(format);
