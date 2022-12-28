@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "ClipboardManagerDefault.h"
 #include "BeeftextUtils.h"
+#include "BeeftextGlobals.h"
 #include <XMiLib/Scoped/ScopedClipboardAccess.h>
 #include <XMiLib/Scoped/ScopedGlobalMemoryLock.h>
 #include <XMiLib/Exception.h>
@@ -21,9 +22,14 @@ using namespace xmilib;
 namespace {
 
 
+QList<quint32> const kIgnoredClipboardFormats { CF_ENHMETAFILE }; ///< File formats that we ignore when backing up the clipboard.
 QString const kHtmlFormatName = "HTML Format"; ///< The name of the format used for HTML clipboard content. This a a Microsoft convention, do no change it
-QString const kRegExpHtmlFormatField = R"(^\s*%1:(-?[\d]+)\s*$)"; ///The regular expression for the 
-} // namespace 
+QString const kRegExpHtmlFormatField = R"(^\s*%1:(-?[\d]+)\s*$)"; ///The regular expression for the HTML format field.
+
+
+} // namespace
+
+
 
 
 //****************************************************************************************************************************************************
@@ -47,34 +53,45 @@ ClipboardManager::EType ClipboardManagerDefault::type() const {
 // 
 //****************************************************************************************************************************************************
 void ClipboardManagerDefault::backupClipboard() {
-    backup_.clear();
-    ScopedClipboardAccess const sca(nullptr);
-    quint32 format = 0;
+    try {
+        backup_.clear();
+        this->freeBitmapBackup();
 
-    while ((format = EnumClipboardFormats(format))) {
-        if (format == CF_BITMAP) {
-            /// \todo Find a workaround for bitmaps. Currently crashes on Win 11 because https://devblogs.microsoft.com/oldnewthing/20071026-00/?p=24683
-            continue;
+        ScopedClipboardAccess const sca(nullptr);
+        quint32 format = 0;
+
+        while ((format = EnumClipboardFormats(format))) {
+            if (kIgnoredClipboardFormats.contains(format))
+                continue;
+            
+            SpClipBoardFormatData const cbData = std::make_shared<ClipBoardFormatData>();
+            cbData->format = format;
+            HANDLE const handle = GetClipboardData(format);
+            if (!handle)
+                continue;
+
+            if (format == CF_BITMAP) { // Bitmaps require a special treatment (crashes on Windows 11). See https://devblogs.microsoft.com/oldnewthing/20071026-00/?p=24683
+                setBitmapBackup(handle);
+                continue;
+            }
+
+            ScopedGlobalMemoryLock memLock(handle);
+            quint32 const *const data = static_cast<quint32 const *>(memLock.pointer());
+            if (!data)
+                continue;
+
+
+            SIZE_T const size = GlobalSize(handle);
+            if (!size)
+                continue;
+
+            cbData->data = QByteArray(qsizetype(size), 0);
+            memcpy(cbData->data.data(), data, size_t(size));
+
+            backup_.push_back(cbData);
         }
-
-        SpClipBoardFormatData const cbData = std::make_shared<ClipBoardFormatData>();
-        cbData->format = format;
-        HANDLE const handle = GetClipboardData(format);
-        if (!handle)
-            continue;
-        ScopedGlobalMemoryLock memLock(handle);
-        quint32 const *const data = static_cast<quint32 const *>(memLock.pointer());
-        if (!data)
-            continue;
-
-        SIZE_T const size = GlobalSize(handle);
-        if (!size)
-            continue;
-
-        cbData->data = QByteArray(qsizetype(size), 0);
-        memcpy(cbData->data.data(), data, size_t(size));
-
-        backup_.push_back(cbData);
+    } catch (Exception const &e) {
+        globals::debugLog().addError(QString("%1: %2").arg(__FUNCTION__, e.qwhat()));
     }
 }
 
@@ -83,37 +100,48 @@ void ClipboardManagerDefault::backupClipboard() {
 //
 //****************************************************************************************************************************************************
 void ClipboardManagerDefault::restoreClipboard() {
-    if (!this->hasBackup())
-        return;
+    try {
+        if (!this->hasBackup())
+            return;
 
-    ScopedClipboardAccess const sca(nullptr);
-    if (!sca.isOpen())
-        return;
+        ScopedClipboardAccess const sca(nullptr);
+        if (!sca.isOpen())
+            return;
 
-    EmptyClipboard();
-    for (SpClipBoardFormatData const &cbData: backup_) {
-        if ((!cbData) || (!cbData->data.size()))
-            continue;
-        quint32 const size = static_cast<quint32>(cbData->data.size());
-        HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, size);
-        if (!handle)
-            continue;
-        try {
-            ScopedGlobalMemoryLock memLock(handle);
-            quint32 *const data = static_cast<quint32 *>(memLock.pointer());
-            if (!data)
-                throw Exception();
-            memcpy(data, cbData->data.data(), size);
-            if (!SetClipboardData(cbData->format, handle))
-                throw Exception();
+        EmptyClipboard();
+        for (SpClipBoardFormatData const &cbData: backup_) {
+            if ((!cbData) || (!cbData->data.size()))
+                continue;
+            quint32 const size = static_cast<quint32>(cbData->data.size());
+            HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, size);
+            if (!handle)
+                throw Exception(QString("Could allocate global memory for format %1.").arg(cbData->format));
+            try {
+                ScopedGlobalMemoryLock memLock(handle);
+                quint32 *const data = static_cast<quint32 *>(memLock.pointer());
+                if (!data)
+                    throw Exception(QString("Could not lock allocated global memory for format %1.").arg(cbData->format));
+                memcpy(data, cbData->data.data(), size);
+                if (!SetClipboardData(cbData->format, handle))
+                    throw Exception(QString("Could not restore clipboard data for format %1.").arg(cbData->format));
+            }
+            catch (Exception const &) {
+                ScopedGlobalMemoryLock const memLock(handle);
+                GlobalFree(handle);
+            }
         }
-        catch (Exception const &) {
-            ScopedGlobalMemoryLock const memLock(handle);
-            GlobalFree(handle);
+
+        backup_.clear();
+
+        if (bitmapBackup_) {
+            if (!SetClipboardData(CF_BITMAP, bitmapBackup_))
+                throw Exception("Could not set set bitmap data.");
+            bitmapBackup_ = nullptr; // bitmap is now owned by the clipboard.
         }
+
+    } catch (Exception const &e) {
+        globals::debugLog().addError(QString("%1: %2").arg(__FUNCTION__, e.qwhat()));
     }
-
-    backup_.clear();
 }
 
 
@@ -121,7 +149,7 @@ void ClipboardManagerDefault::restoreClipboard() {
 /// \return true if and only if the clipboard manager contains a clipboard backup
 //****************************************************************************************************************************************************
 bool ClipboardManagerDefault::hasBackup() const {
-    return !backup_.empty();
+    return (!backup_.empty()) || bitmapBackup_;
 }
 
 
@@ -135,8 +163,8 @@ QString ClipboardManagerDefault::text() {
     HANDLE const handle = GetClipboardData(CF_UNICODETEXT);
     if (!handle)
         return QString();
-    ScopedGlobalMemoryLock const memlock(handle);
-    quint32 const *const data = static_cast<quint32 const *>(memlock.pointer());
+    ScopedGlobalMemoryLock const memLock(handle);
+    quint32 const *const data = static_cast<quint32 const *>(memLock.pointer());
     if (!data)
         return QString();
     SIZE_T const size = GlobalSize(handle);
@@ -171,32 +199,6 @@ HANDLE putUtf16InGlobalMemory(QString const &text) {
     memcpy(pointer, data, size);
     pointer[size - 1] = 0;
     pointer[size - 2] = 0; // for safety
-    return handle;
-}
-
-
-//****************************************************************************************************************************************************
-/// \brief Allocate space in global memory and put the given text in UTF-8 format in it.
-///
-/// \param[in] text The text
-/// \return A handle to the global memory containing the text in UTF-8 format.
-/// \return A null handle if an error occurred
-//****************************************************************************************************************************************************
-HANDLE putUtf8InGlobalMemory(QString const &text) {
-    if (text.isEmpty())
-        return nullptr;
-    QByteArray const data = text.toUtf8() + char(0);
-    quint32 const size = static_cast<quint32>(data.size());
-    HANDLE const handle = GlobalAlloc(GMEM_MOVEABLE, size);
-    if (!handle)
-        return nullptr;
-    ScopedGlobalMemoryLock const memLock(handle);
-    quint8 *const pointer = static_cast<quint8 *>(memLock.pointer());
-    if (!pointer) {
-        GlobalFree(handle);
-        return nullptr;
-    }
-    memcpy(pointer, data, size);
     return handle;
 }
 
@@ -241,8 +243,7 @@ qint32 numberFieldFromHtmlClipboardData(QString const &clipboardData, QString co
     if (!match.hasMatch())
         return -1;
     bool ok = false;
-    qint32 result = 0;
-    result = match.captured(1).toInt(&ok);
+    qint32 result = match.captured(1).toInt(&ok);
     return ok ? result : -1;
 }
 
@@ -276,8 +277,8 @@ QString ClipboardManagerDefault::html() {
     HANDLE const handle = GetClipboardData(htmlFormat);
     if (!handle)
         return QString();
-    ScopedGlobalMemoryLock const memlock(handle);
-    quint32 const *const data = static_cast<quint32 const *>(memlock.pointer());
+    ScopedGlobalMemoryLock const memLock(handle);
+    quint32 const *const data = static_cast<quint32 const *>(memLock.pointer());
     if (!data)
         return QString();
     SIZE_T const size = GlobalSize(handle);
@@ -296,6 +297,31 @@ QString ClipboardManagerDefault::html() {
 //****************************************************************************************************************************************************
 bool ClipboardManagerDefault::setHtml(QString const &html) {
     // Later, this function should use the lower level clipboard API for HTML, which is not really easy at the moment.
-    QApplication::clipboard()->setMimeData(mimeDataFromHtml(html)); // Ownership of data is transfered to the clipboard
+    QApplication::clipboard()->setMimeData(mimeDataFromHtml(html)); // Ownership of data is transferred to the clipboard
     return true;
 }
+
+
+//****************************************************************************************************************************************************
+/// \param[in] bitmap The bitmap.
+//****************************************************************************************************************************************************
+void ClipboardManagerDefault::setBitmapBackup(HANDLE bitmap) {
+    this->freeBitmapBackup();
+    if (!CopyImage(bitmap, IMAGE_BITMAP, 0, 0, LR_DEFAULTSIZE))
+        throw Exception("Could not copy bitmap from clipboard");
+}
+
+
+//****************************************************************************************************************************************************
+//
+//****************************************************************************************************************************************************
+void ClipboardManagerDefault::freeBitmapBackup() {
+    if (!bitmapBackup_)
+        return;
+
+    if (!DeleteObject(bitmapBackup_))
+        throw Exception("Could not delete clipboard bitmap backup");
+    bitmapBackup_ = nullptr;
+}
+
+

@@ -34,6 +34,10 @@ public: // member functions
     QString html() override; ///< Return the current HTML value of the clipboard.
     bool setHtml(QString const &html) override; ///< Set the current HTML value of the clipboard.
 
+private: // member functions
+    void setBitmapBackup(HANDLE bitmap); ///< Backup a bitmap.
+    void freeBitmapBackup(); ///< Free a bitmap backup.
+
 private: // data structures
     struct ClipBoardFormatData {
         quint32 format { 0 }; ///< The format.
@@ -45,6 +49,7 @@ private: // data structures
 
 private: // data members
     VecSpClipBoardFormatData backup_; ///< The clipboard backup.
+    HBITMAP bitmapBackup_ { nullptr }; ///< The backup of the bitmap object in the clipboard.
 };
 
 
