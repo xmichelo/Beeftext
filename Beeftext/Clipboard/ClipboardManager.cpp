@@ -40,3 +40,12 @@ void ClipboardManager::setClipboardManagerType(EType type) {
     else
         clipboardManagerPtr = std::make_unique<ClipboardManagerLegacy>();
 }
+
+
+//**********************************************************************************************************************
+//
+//**********************************************************************************************************************
+ClipboardManager::ClipboardManager()
+   : QObject()
+{
+}

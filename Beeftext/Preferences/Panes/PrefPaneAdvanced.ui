@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>705</width>
-    <height>298</height>
+    <width>701</width>
+    <height>324</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -133,6 +133,13 @@
     <widget class="QCheckBox" name="checkUseLegacyCopyPaste">
      <property name="text">
       <string>Use legacy copy/paste</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkRestoreClipboardAfterSubstitution">
+     <property name="text">
+      <string>Restore clipboard after combo substitution</string>
      </property>
     </widget>
    </item>

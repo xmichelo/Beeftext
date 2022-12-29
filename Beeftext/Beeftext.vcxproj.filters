@@ -246,15 +246,6 @@
     </ClInclude>
     <ClInclude Include="LatestVersionInfo.h" />
     <ClInclude Include="ProcessListManager.h" />
-    <ClInclude Include="Clipboard\ClipboardManagerDefault.h">
-      <Filter>Clipboard</Filter>
-    </ClInclude>
-    <ClInclude Include="Clipboard\ClipboardManager.h">
-      <Filter>Clipboard</Filter>
-    </ClInclude>
-    <ClInclude Include="Clipboard\ClipboardManagerLegacy.h">
-      <Filter>Clipboard</Filter>
-    </ClInclude>
     <ClInclude Include="Theme.h" />
     <ClInclude Include="Combo\MatchingMode.h">
       <Filter>Combo</Filter>
@@ -472,6 +463,15 @@
     </QtMoc>
     <QtMoc Include="Preferences\Panes\PrefPaneCombos.h">
       <Filter>Preferences\Panes</Filter>
+    </QtMoc>
+    <QtMoc Include="Clipboard\ClipboardManagerDefault.h">
+      <Filter>Clipboard</Filter>
+    </QtMoc>
+    <QtMoc Include="Clipboard\ClipboardManager.h">
+      <Filter>Clipboard</Filter>
+    </QtMoc>
+    <QtMoc Include="Clipboard\ClipboardManagerLegacy.h">
+      <Filter>Clipboard</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

@@ -123,6 +123,8 @@ public: // member functions
     bool beeftextEnabled() const; ///< Set if beeftext is enabled.
     void setUseLegacyCopyPaste(bool value) const; ///< Set he value for the 'Use legacy copy/paste' preference.
     bool useLegacyCopyPaste() const; ///< Get the value for the 'Use legacy copy/paste' preference.
+    bool restoreClipboardAfterSubstitution() const; ///< Get the value for the 'Restore clipboard after substitution' preference.
+    void setRestoreClipboardAfterSubstitution(bool value); ///< Set the value for the 'Restore clipboard after substitution' preference.
     void setAlreadyConvertedRichTextCombos(bool value) const; ///< Set the value for the 'Already converted rich text combos' preference.
     bool alreadyConvertedRichTextCombos() const; ///< Get the value for the 'Already converted rich text combos' preference.
     void setUseCustomPowershellVersion(bool value) const; ///< Set the value for the 'Use custom PowerShell version'.

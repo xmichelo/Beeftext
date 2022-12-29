@@ -193,7 +193,9 @@ void eraseChars(qint32 count) {
 void insertTextByPasting(QString const &text) {
     // we use the clipboard to and copy/paste the snippet
     ClipboardManager &clipboardManager = ClipboardManager::instance();
-    clipboardManager.backupClipboard();
+    bool const restoreClipboard = PreferencesManager::instance().restoreClipboardAfterSubstitution();
+    if (restoreClipboard)
+        clipboardManager.backupClipboard();
 #ifdef Q_OS_WINDOWS
     QString txt = ensureStringHasCRLFLineEndings(text);
 #else
@@ -211,8 +213,9 @@ void insertTextByPasting(QString const &text) {
         synthesizeKeyUp(VK_LCONTROL);
     }
     restoreModifierKeys(pressedModifiers);
-    QTimer::singleShot(1000, []() { ClipboardManager::instance().restoreClipboard(); });
-    ///< We need to delay clipboard restoration to avoid unexpected behaviours
+
+    // We need to delay clipboard restoration to avoid unexpected behaviours.
+    QTimer::singleShot(1000, &clipboardManager, restoreClipboard ? &ClipboardManager::restoreClipboard : &ClipboardManager::clearClipboard);
 }
 
 

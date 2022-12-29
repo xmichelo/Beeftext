@@ -19,6 +19,7 @@
 /// clipboard manager crashes.
 //****************************************************************************************************************************************************
 class ClipboardManagerLegacy : public ClipboardManager {
+    Q_OBJECT
 public: // member functions
     ClipboardManagerLegacy(); ///< Default constructor.
     ClipboardManagerLegacy(ClipboardManagerLegacy const &) = delete; ///< Disabled copy-constructor.
@@ -27,13 +28,16 @@ public: // member functions
     ClipboardManagerLegacy &operator=(ClipboardManagerLegacy const &) = delete; ///< Disabled assignment operator.
     ClipboardManagerLegacy &operator=(ClipboardManagerLegacy &&) = delete; ///< Disabled move assignment operator.
     EType type() const override; ///< Return the type of clipboard manager of the instance.
-    void backupClipboard() override; ///< backup the clipboard.
-    void restoreClipboard() override; ///< Restore the clipboard and delete the current backup
     bool hasBackup() const override; ///< Test if the clipboard is empty.
     QString text() override; ///< Return the current text value of the clipboard.
     bool setText(QString const &text) override; ///< Put text into the clipboard.
     QString html() override; ///< Return the current HTML value of the clipboard.
     bool setHtml(QString const &html) override; ///< Set the current HTML value of the clipboard.
+
+public slots:
+    void backupClipboard() override; ///< backup the clipboard.
+    void restoreClipboard() override; ///< Restore the clipboard and delete the current backup
+    void clearClipboard() override; ///< Clear the clipboard.
 
 private: // member functions
     QMimeData *mimeDataFromBackup() const; ///< Create a MIME data instance from the current backup

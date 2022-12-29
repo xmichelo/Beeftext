@@ -376,9 +376,9 @@
     <ClInclude Include="WaveSound.h" />
     <QtMoc Include="Combo\ComboEditor.h">
     </QtMoc>
-    <ClInclude Include="Clipboard\ClipboardManagerDefault.h" />
-    <ClInclude Include="Clipboard\ClipboardManager.h" />
-    <ClInclude Include="Clipboard\ClipboardManagerLegacy.h" />
+    <QtMoc Include="Clipboard\ClipboardManagerDefault.h" />
+    <QtMoc Include="Clipboard\ClipboardManager.h" />
+    <QtMoc Include="Clipboard\ClipboardManagerLegacy.h" />
     <ClInclude Include="ProcessListManager.h" />
     <QtMoc Include="Update\UpdateCheckWorker.h">
       <ForceInclude Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h;../../Update/%(Filename)%(Extension)</ForceInclude>

@@ -38,6 +38,7 @@ private slots:
     void onOpenComboListFolder() const; ///< Slot for the 'Open' button of the combo list folder.
     void onCheckWriteDebugLogFile(bool checked) const; ///< Slot the for 'Write debug log file' checkbox
     void onCheckUseLegacyCopyPaste(bool checked) const; ///< Slot for the 'Use legacy copy/paste'.
+    void onCheckRestoreClipboardAfterSubstitution(bool checked) const; ///< Slot for the 'Restore clipboard after substitution' check box.
     void onCheckUseShiftInsertForPasting(bool checked) const; ///< Slot for the 'Use Shift+Insert for pasting' checkbox.
     void onCheckUseCustomPowerShellVersion(bool checked); ///< Slot for the 'Use custom PowerShell version' check box.
     void onChangeCustomPowershellVersion(); ///< Slot for the 'Change' button of the custom PowerShell version.

@@ -29,9 +29,10 @@ PrefPaneAdvanced::PrefPaneAdvanced(QWidget *parent)
     if (isInPortableMode())
         ui_.frameComboListFolder->setVisible(false);
 
-    // We update the GUI when the combo list is saved to proper enable/disable the 'Restore Backup' button
+    // We update the GUI when the combo list is saved to properly enable/disable the 'Restore Backup' button
     connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PrefPaneAdvanced::updateGui);
     connect(ui_.buttonExcludedApplications, &QPushButton::clicked, this, &PrefPaneAdvanced::onEditExcludedApplications);
+    connect(ui_.checkRestoreClipboardAfterSubstitution, &QCheckBox::toggled, this, &PrefPaneAdvanced::onCheckRestoreClipboardAfterSubstitution);
 }
 
 
@@ -46,6 +47,8 @@ void PrefPaneAdvanced::load() const {
     ui_.checkWriteDebugLogFile->setChecked(prefs_.writeDebugLogFile());
     blocker = QSignalBlocker(ui_.checkUseLegacyCopyPaste);
     ui_.checkUseLegacyCopyPaste->setChecked(prefs_.useLegacyCopyPaste());
+    blocker = QSignalBlocker(ui_.checkRestoreClipboardAfterSubstitution);
+    ui_.checkRestoreClipboardAfterSubstitution->setChecked(prefs_.restoreClipboardAfterSubstitution());
     blocker = QSignalBlocker(ui_.checkUseShiftInsertForPasting);
     ui_.checkUseShiftInsertForPasting->setChecked(prefs_.useShiftInsertForPasting());
     blocker = QSignalBlocker(ui_.checkUseCustomPowershellVersion);
@@ -172,6 +175,14 @@ void PrefPaneAdvanced::onCheckWriteDebugLogFile(bool checked) const {
 //****************************************************************************************************************************************************
 void PrefPaneAdvanced::onCheckUseLegacyCopyPaste(bool checked) const {
     prefs_.setUseLegacyCopyPaste(checked);
+}
+
+
+//****************************************************************************************************************************************************
+/// \param[in] checked The value for the 'Restore clipboard after substitution' check box.
+//****************************************************************************************************************************************************
+void PrefPaneAdvanced::onCheckRestoreClipboardAfterSubstitution(bool checked) const {
+    prefs_.setRestoreClipboardAfterSubstitution(checked);
 }
 
 

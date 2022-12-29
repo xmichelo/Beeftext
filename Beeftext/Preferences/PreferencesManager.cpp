@@ -73,6 +73,7 @@ QString const kKeyWarnAboutEmptyComboKeyword = "WarnAboutEmptyComboKeyword"; ///
 QString const kKeyWriteDebugLogFile = "WriteDebugLogFile"; ///< The setting key for the 'Write debug log file' preference.
 QString const kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = "RichTextDeprecationWarningHasAlreadyBeenDisplayed"; ///< The setting key for teh 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 QString const kKeyUseLegacyCopyPaste = "UseLegacyCopyPaste"; ///< The setting key for the 'Use legacy copy/paste' preference.
+QString const kKeyRestoreClipboardAfterSubstitution = "RestoreClipboardAfterSubstitution"; ///< The settings key for the 'Restore clipboard after substitution' preference.
 QString const kKeyComboTriggersOnSpace = "ComboTriggersOnSpace"; ///< The setting key for the 'Combo triggers on space' preference.
 QString const kKeyKeepFinalSpaceCharacter = "KeepFinalSpaceCharacter"; ///< The setting key for the 'Keep final space character' preference.
 QString const kKeyAlreadyConvertedRichTextCombos = "AlreadyConvertedRichTextCombos"; ///< The setting key for the 'Already converted rich text combos' preference.
@@ -115,6 +116,7 @@ bool constexpr kDefaultWarnAboutEmptyComboKeyword = true; ///< The default value
 bool constexpr kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
 bool constexpr kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 bool constexpr kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
+bool constexpr kDefaultRestoreClipboardAfterSubstitution = true; ///< The default value for the 'Restore clipboard after substitution' preference.
 bool constexpr kDefaultComboTriggersOnSpace = false; ///< The default value for the 'Combo triggers on space' preference.
 bool constexpr kDefaultKeepFinalSpaceCharacter = false; ///< The default value for the 'Combo triggers on space' preference.
 bool constexpr kDefaultUseCustomPowershellVersion = false; ///< The default value for the 'Use custom PowerShell version' preference.
@@ -399,6 +401,7 @@ void PreferencesManager::reset() {
     this->setWriteDebugLogFile(kDefaultWriteDebugLogFile);
     this->resetWarnings();
     this->setUseLegacyCopyPaste(kDefaultUseLegacyCopyPaste);
+    this->setRestoreClipboardAfterSubstitution(kDefaultRestoreClipboardAfterSubstitution);
     this->setUseShiftInsertForPasting(kDefaultUseShiftInsertForPasting);
     if (!isInPortableMode()) {
         this->setAutoStartAtLogin(kDefaultAutoStartAtLogin);
@@ -549,6 +552,8 @@ void PreferencesManager::toJsonDocument(QJsonDocument &outDoc) const {
     object[kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed] = this->readSettings<bool>(
         kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
     object[kKeyUseLegacyCopyPaste] = this->readSettings<bool>(kKeyUseLegacyCopyPaste, kDefaultUseLegacyCopyPaste);
+    object[kKeyRestoreClipboardAfterSubstitution] = this->readSettings(kKeyRestoreClipboardAfterSubstitution,
+        kDefaultRestoreClipboardAfterSubstitution);
     object[kKeyUseShiftInsertForPasting] = this->readSettings<bool>(kKeyUseShiftInsertForPasting, kDefaultUseShiftInsertForPasting);
     outDoc = QJsonDocument(object);
 }
@@ -601,6 +606,7 @@ void PreferencesManager::fromJsonDocument(QJsonDocument const &doc) const {
     settings_->setValue(kKeyWriteDebugLogFile, objectValue<bool>(object, kKeyWriteDebugLogFile));
     settings_->setValue(kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, objectValue<bool>(object, kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed));
     this->setUseLegacyCopyPaste(objectValue<bool>(object, kKeyUseLegacyCopyPaste));
+    settings_->setValue(kKeyRestoreClipboardAfterSubstitution, objectValue<bool>(object, kKeyRestoreClipboardAfterSubstitution));
     this->setUseShiftInsertForPasting(objectValue<bool>(object, kKeyUseShiftInsertForPasting));
     this->init();
 }
@@ -1355,6 +1361,22 @@ void PreferencesManager::setUseLegacyCopyPaste(bool value) const {
 //****************************************************************************************************************************************************
 bool PreferencesManager::useLegacyCopyPaste() const {
     return readSettings<bool>(kKeyUseLegacyCopyPaste, kDefaultUseLegacyCopyPaste);
+}
+
+
+//****************************************************************************************************************************************************
+// \param[in] value The value for the 'Restore clipboard after substitution' preference.
+//****************************************************************************************************************************************************
+void PreferencesManager::setRestoreClipboardAfterSubstitution(bool value) {
+    settings_->setValue(kKeyRestoreClipboardAfterSubstitution, value);
+}
+
+
+//****************************************************************************************************************************************************
+// return The value for the 'Restore clipboard after substitution' preference.
+//****************************************************************************************************************************************************
+bool PreferencesManager::restoreClipboardAfterSubstitution() const {
+    return readSettings<bool>(kKeyRestoreClipboardAfterSubstitution, kDefaultRestoreClipboardAfterSubstitution);
 }
 
 
