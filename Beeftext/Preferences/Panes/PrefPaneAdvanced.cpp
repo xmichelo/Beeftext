@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "PrefPaneAdvanced.h"
 #include "Combo/ComboManager.h"
-#include "ProcessListManager.h"
 #include "Backup/BackupRestoreDialog.h"
 #include "Backup/BackupManager.h"
 #include "BeeftextGlobals.h"
@@ -31,8 +30,24 @@ PrefPaneAdvanced::PrefPaneAdvanced(QWidget *parent)
 
     // We update the GUI when the combo list is saved to properly enable/disable the 'Restore Backup' button
     connect(&ComboManager::instance(), &ComboManager::comboListWasSaved, this, &PrefPaneAdvanced::updateGui);
+
+    connect(ui_.buttonChangeComboListFolder, &QPushButton::clicked, this, &PrefPaneAdvanced::onChangeComboListFolder);
+    connect(ui_.buttonChangeCustomBackupLocation, &QPushButton::clicked, this, &PrefPaneAdvanced::onChangeCustomBackupLocation);
+    connect(ui_.buttonChangeCustomPowershellVersion, &QPushButton::clicked, this, &PrefPaneAdvanced::onChangeCustomPowershellVersion);
+    connect(ui_.buttonChangeComboListFolder, &QPushButton::clicked, this, &PrefPaneAdvanced::onChangeComboListFolder);
     connect(ui_.buttonExcludedApplications, &QPushButton::clicked, this, &PrefPaneAdvanced::onEditExcludedApplications);
+    connect(ui_.buttonOpenComboListFolder, &QPushButton::clicked, this, &PrefPaneAdvanced::onOpenComboListFolder);
+    connect(ui_.buttonResetComboListFolder, &QPushButton::clicked, this, &PrefPaneAdvanced::onResetComboListFolder);
+    connect(ui_.buttonRestoreBackup, &QPushButton::clicked, this, &PrefPaneAdvanced::onRestoreBackup);
+    connect(ui_.buttonSensitiveApplications, &QPushButton::clicked, this, &PrefPaneAdvanced::onEditSensitiveApplications);
+    connect(ui_.checkAutoBackup, &QCheckBox::toggled, this, &PrefPaneAdvanced::onCheckAutoBackup);
     connect(ui_.checkRestoreClipboardAfterSubstitution, &QCheckBox::toggled, this, &PrefPaneAdvanced::onCheckRestoreClipboardAfterSubstitution);
+    connect(ui_.checkUseCustomBackupLocation, &QCheckBox::toggled, this, &PrefPaneAdvanced::onCheckUseCustomBackupLocation);
+    connect(ui_.checkUseCustomPowershellVersion, &QCheckBox::toggled, this, &PrefPaneAdvanced::onCheckUseCustomPowerShellVersion);
+    connect(ui_.checkUseLegacyCopyPaste, &QCheckBox::toggled, this, &PrefPaneAdvanced::onCheckUseLegacyCopyPaste);
+    connect(ui_.checkUseShiftInsertForPasting, &QCheckBox::toggled, this, &PrefPaneAdvanced::onCheckUseShiftInsertForPasting);
+    connect(ui_.checkWriteDebugLogFile, &QCheckBox::toggled, this, &PrefPaneAdvanced::onCheckWriteDebugLogFile);
+    connect(ui_.spinDelayBetweenKeystrokes, &QSpinBox::valueChanged, this, &PrefPaneAdvanced::onSpinDelayBetweenKeystrokesChanged);
 }
 
 
@@ -40,6 +55,8 @@ PrefPaneAdvanced::PrefPaneAdvanced(QWidget *parent)
 //
 //****************************************************************************************************************************************************
 void PrefPaneAdvanced::load() const {
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "UnusedValue"
     QSignalBlocker blocker(ui_.spinDelayBetweenKeystrokes);
     ui_.spinDelayBetweenKeystrokes->setValue(prefs_.delayBetweenKeystrokesMs());
     ui_.editComboListFolder->setText(QDir::toNativeSeparators(prefs_.comboListFolderPath()));
@@ -59,6 +76,7 @@ void PrefPaneAdvanced::load() const {
     blocker = QSignalBlocker(ui_.checkUseCustomBackupLocation);
     ui_.checkUseCustomBackupLocation->setChecked(prefs_.useCustomBackupLocation());
     ui_.editCustomBackupLocation->setText(QDir::toNativeSeparators(prefs_.customBackupLocation()));
+#pragma clang diagnostic pop
 
     this->updateGui();
 }

@@ -36,7 +36,7 @@ QString const kKeyAppEnableShortcutScanCodeDeprecated = "AppEnableDisableShortcu
 QString const kKeyAutoBackup = "AutoBackup"; ///< The setting key for the 'Auto backup' preference
 QString const kKeyAutoCheckForUpdates = "AutoCheckForUpdate"; ///< The settings key for the 'Autostart at login' preference
 QString const kKeyAutoStartAtLogin = "AutoStartAtLogin"; ///< The settings key for the 'Autostart at login' preference
-QString const kKeyBeeftextEnabled = "BeefextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
+QString const kKeyBeeftextEnabled = "BeeftextEnabled"; ///< The setting key for the 'Beeftext enabled' preference.
 QString const kKeyComboListFolderPath = "ComboListFolderPath"; ///< The setting key for the combo list folder path
 QString const kKeyComboPickerEnabled = "ComboPickerEnabled"; ///< The setting key for the 'Combo picker enabled' preference.
 QString const kKeyComboPickerShortcut = "ComboPickerShortcut"; ///< The setting key for the combo picker shortcut.
@@ -51,7 +51,7 @@ QString const kKeyDefaultMatchingMode = "DefaultMatchingMode"; ///< The setting 
 QString const kKeyDefaultCaseSensitivity = "DefaultCaseSensitivity"; ///< The setting key for the 'Default case sensitivity' preference.
 QString const kKeyCustomBackupLocation = "CustomBackupLocation"; ///< The settings key for the 'Custom backup location' preference.
 QString const kKeyCustomSoundPath = "CustomSoundPath"; ///< The settings key for the 'Custom sound path' preference.
-QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes'preferences value
+QString const kKeyDelayBetweenKeystrokes = "DelayBetweenKeystrokes"; ///< The setting key for the 'Delay between keystrokes' preferences value
 QString const kKeyEmojiLeftDelimiter = "EmojiLeftDelimiter"; ///< The setting key for the emoji left delimiter.
 QString const kKeyEmojiRightDelimiter = "EmojiRightDelimiter"; ///< The setting key for the emoji right delimiter.
 QString const kKeyEmojiShortcodesEnabled = "EmojiShortcodesEnabled"; ///< The setting key for the 'Emoji shortcodes enabled'
@@ -86,14 +86,14 @@ QString const kKeySkipVersionNumber = "SkipVersionNumber"; ///< The settings key
 
 
 SpShortcut const kDefaultAppEnableDisableShortcut = Shortcut::fromModifiersAndKey(Qt::AltModifier | Qt::ShiftModifier
-                                                                                  | Qt::ControlModifier, Qt::Key('V')); ///< The default value for the 'combo trigger shortcut' preference
+    | Qt::ControlModifier, Qt::Key('V')); ///< The default value for the 'combo trigger shortcut' preference
 bool constexpr kDefaultAutoBackup = true; ///< The default value for the 'Auto backup' preference
 bool constexpr kDefaultAutoCheckForUpdates = true; ///< The default value for the 'Auto check for update preference
 bool constexpr kDefaultAutoStartAtLogin = false; ///< The default value for the 'Autostart at login' preference
 bool constexpr kDefaultBeeftextEnabled = true; ///< The default value for the 'Beeftext is enabled' preference.
 bool constexpr kDefaultComboPickerEnabled = true; ///< The default value for the 'Combo picker enabled' preference.
 SpShortcut const kDefaultComboTriggerShortcut = Shortcut::fromModifiersAndKey(Qt::AltModifier | Qt::ShiftModifier
-                                                                              | Qt::ControlModifier, Qt::Key('B')); ///< The default value for the 'combo trigger shortcut' preference
+    | Qt::ControlModifier, Qt::Key('B')); ///< The default value for the 'combo trigger shortcut' preference
 EMatchingMode kDefaultDefaultMatchingMode = EMatchingMode::Strict; ///< The default value for the 'Default matching mode preference'.
 ECaseSensitivity kDefaultDefaultCaseSensitivity = ECaseSensitivity::CaseSensitive; ///< The default value for the 'Default case sensitivity' preference.
 qint32 constexpr kDefaultDelayBetweenKeystrokesMs = 12; ///< The default valur for the 'Delay between keystrokes' preference.
@@ -114,7 +114,7 @@ bool constexpr kDefaultUseCustomTheme = true; ///< The default value for the 'Us
 bool constexpr kDefaultWarnAboutShortComboKeyword = true; ///< The default value for the 'Warn about short combo keyword' preference
 bool constexpr kDefaultWarnAboutEmptyComboKeyword = true; ///< The default value for the 'Warn about empty combo keyword' preference
 bool constexpr kDefaultWriteDebugLogFile = true; ///< The default value for the 'Write debug log file' preference
-bool constexpr kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
+bool constexpr kDefaultKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed = false; ///< The default value for the 'Rich Text Deprecation Warning Has Already Been Displayed' preference.
 bool constexpr kDefaultUseLegacyCopyPaste = false; ///< The default value for the 'Use legacy copy/paste' preference.
 bool constexpr kDefaultRestoreClipboardAfterSubstitution = true; ///< The default value for the 'Restore clipboard after substitution' preference.
 bool constexpr kDefaultComboTriggersOnSpace = false; ///< The default value for the 'Combo triggers on space' preference.
@@ -280,7 +280,7 @@ void PreferencesManager::Cache::cacheAppEnableDisableShortcut() {
 void PreferencesManager::Cache::cacheThemePrefs() {
     qint32 const intValue = ::readSettings<qint32>(settings_, kKeyTheme, static_cast<qint32>(kDefaultTheme));
     theme = ((intValue < 0) || (intValue >= static_cast<qint32>(ETheme::Count))) ? kDefaultTheme
-                                                                                 : static_cast<ETheme>(intValue);
+        : static_cast<ETheme>(intValue);
 
     useCustomTheme = ::readSettings<bool>(settings_, kKeyUseCustomTheme, kDefaultUseCustomTheme);
 }
@@ -334,8 +334,8 @@ PreferencesManager &PreferencesManager::instance() {
 PreferencesManager::PreferencesManager() {
     // portable edition use a different storage method for preferences
     settings_ = isInPortableMode()
-                ? std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat)
-                : std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
+        ? std::make_unique<QSettings>(globals::portableModeSettingsFilePath(), QSettings::IniFormat)
+        : std::make_unique<QSettings>(constants::kOrganizationName, constants::kApplicationName);
     cache_ = std::make_unique<Cache>(*settings_);
     this->init();
 }
@@ -345,15 +345,6 @@ PreferencesManager::PreferencesManager() {
 /// \return A reference to the settings object of the manager
 //****************************************************************************************************************************************************
 QSettings &PreferencesManager::settings() {
-    Q_ASSERT(settings_);
-    return *settings_;
-}
-
-
-//****************************************************************************************************************************************************
-/// \return A constant reference to the settings object of the manager
-//****************************************************************************************************************************************************
-QSettings const &PreferencesManager::settings() const {
     Q_ASSERT(settings_);
     return *settings_;
 }
@@ -474,7 +465,7 @@ T objectValue(QJsonObject const &object, QString const &key) {
 
 //****************************************************************************************************************************************************
 /// \param[in] v The QVariant.
-/// \return a serilizable array containing a QVariant.
+/// \return A serializable array containing a QVariant.
 //****************************************************************************************************************************************************
 QByteArray variantToByteArray(QVariant const &v) {
     QByteArray data;
@@ -550,10 +541,9 @@ void PreferencesManager::toJsonDocument(QJsonDocument &outDoc) const {
     object[kKeyWarnAboutShortComboKeyword] = this->readSettings<bool>(kKeyWarnAboutShortComboKeyword, kDefaultWarnAboutShortComboKeyword);
     object[kKeyWriteDebugLogFile] = this->readSettings<bool>(kKeyWriteDebugLogFile, kDefaultWriteDebugLogFile);
     object[kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed] = this->readSettings<bool>(
-        kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, kDefaultkKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
+        kKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed, kDefaultKeyRichTextDeprecationWarningHasAlreadyBeenDisplayed);
     object[kKeyUseLegacyCopyPaste] = this->readSettings<bool>(kKeyUseLegacyCopyPaste, kDefaultUseLegacyCopyPaste);
-    object[kKeyRestoreClipboardAfterSubstitution] = this->readSettings(kKeyRestoreClipboardAfterSubstitution,
-        kDefaultRestoreClipboardAfterSubstitution);
+    object[kKeyRestoreClipboardAfterSubstitution] = this->readSettings(kKeyRestoreClipboardAfterSubstitution, kDefaultRestoreClipboardAfterSubstitution);
     object[kKeyUseShiftInsertForPasting] = this->readSettings<bool>(kKeyUseShiftInsertForPasting, kDefaultUseShiftInsertForPasting);
     outDoc = QJsonDocument(object);
 }
@@ -931,8 +921,7 @@ bool PreferencesManager::warnAboutEmptyComboKeywords() const {
 //****************************************************************************************************************************************************
 bool PreferencesManager::setComboListFolderPath(QString const &path) const {
     if (isInPortableMode()) {
-        globals::debugLog().addWarning("Trying to the set the 'combo list folder path' preference while running "
-                                       "in portable mode");
+        globals::debugLog().addWarning("Trying to the set the 'combo list folder path' preference while running in portable mode");
         return false;
     }
     QString const previousPath = QDir::fromNativeSeparators(comboListFolderPath());
@@ -950,7 +939,7 @@ bool PreferencesManager::setComboListFolderPath(QString const &path) const {
 //****************************************************************************************************************************************************
 QString PreferencesManager::comboListFolderPath() const {
     return isInPortableMode() ? globals::portableModeDataFolderPath() :
-           this->readSettings<QString>(kKeyComboListFolderPath, defaultComboListFolderPath());
+        this->readSettings<QString>(kKeyComboListFolderPath, defaultComboListFolderPath());
 }
 
 
@@ -1352,7 +1341,7 @@ bool PreferencesManager::beeftextEnabled() const {
 void PreferencesManager::setUseLegacyCopyPaste(bool value) const {
     settings_->setValue(kKeyUseLegacyCopyPaste, value);
     ClipboardManager::setClipboardManagerType(value ? ClipboardManager::EType::Legacy :
-                                              ClipboardManager::EType::Default);
+        ClipboardManager::EType::Default);
 }
 
 

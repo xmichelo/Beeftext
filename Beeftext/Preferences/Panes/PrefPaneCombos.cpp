@@ -23,6 +23,17 @@ PrefPaneCombos::PrefPaneCombos(QWidget *parent)
     ui_.setupUi(this);
     fillMatchingModeCombo(*ui_.comboMatchingMode, false);
     fillCaseSensitivityCombo(*ui_.comboCaseSensitivity, false);
+
+    connect(ui_.buttonChangeComboTriggerShortcut, &QPushButton::clicked, this, &PrefPaneCombos::onChangeComboTriggerShortcut);
+    connect(ui_.buttonChangePickerWindowShortcut, &QPushButton::clicked, this, &PrefPaneCombos::onChangePickerWindowShortcut);
+    connect(ui_.buttonResetComboTriggerShortcut, &QPushButton::clicked, this, &PrefPaneCombos::onResetComboTriggerShortcut);
+    connect(ui_.buttonResetPickerWindowShortcut, &QPushButton::clicked, this, &PrefPaneCombos::onResetPickerWindowShortcut);
+    connect(ui_.checkComboTriggersOnSpace, &QCheckBox::toggled, this, &PrefPaneCombos::onCheckComboTriggersOnSpace);
+    connect(ui_.checkEnablePickerWindow, &QCheckBox::toggled, this, &PrefPaneCombos::onCheckEnablePickerWindow);
+    connect(ui_.checkKeepFinalSpaceCharacter, &QCheckBox::toggled, this, &PrefPaneCombos::onCheckKeepFinalSpace);
+    connect(ui_.comboCaseSensitivity, &QComboBox::currentIndexChanged, this, &PrefPaneCombos::onChangeDefaultCaseSensitivity);
+    connect(ui_.comboMatchingMode, &QComboBox::currentIndexChanged, this, &PrefPaneCombos::onChangeDefaultMatchingMode);
+    connect(ui_.radioComboTriggerAuto, &QRadioButton::toggled, this, &PrefPaneCombos::onRadioAutomaticComboTrigger);
 }
 
 
@@ -30,6 +41,8 @@ PrefPaneCombos::PrefPaneCombos(QWidget *parent)
 //
 //****************************************************************************************************************************************************
 void PrefPaneCombos::load() const {
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "UnusedValue"
     if (prefs_.useAutomaticSubstitution()) {
         QSignalBlocker blocker(ui_.radioComboTriggerAuto);
         ui_.radioComboTriggerAuto->setChecked(true);
@@ -49,6 +62,7 @@ void PrefPaneCombos::load() const {
     ui_.checkEnablePickerWindow->setChecked(prefs_.comboPickerEnabled());
     shortcut = prefs_.comboPickerShortcut();
     ui_.editPickerWindowShortcut->setText(shortcut ? shortcut->toString() : "");
+#pragma clang diagnostic pop
 
     this->updateGui();
 }

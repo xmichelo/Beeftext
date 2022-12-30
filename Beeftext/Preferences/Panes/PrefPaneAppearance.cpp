@@ -20,6 +20,13 @@ PrefPaneAppearance::PrefPaneAppearance(QWidget *parent)
     : PrefPane(parent)
     , prefs_(PreferencesManager::instance()) {
     ui_.setupUi(this);
+
+    connect(ui_.buttonRefresh, &QPushButton::clicked, this, &PrefPaneAppearance::onRefreshLanguageList);
+    connect(ui_.buttonTranslationFolder, &QPushButton::clicked, this, &PrefPaneAppearance::onOpenTranslationFolder);
+    connect(ui_.checkUseCustomTheme, &QPushButton::toggled, this, &PrefPaneAppearance::onCheckUseCustomTheme);
+    connect(ui_.comboLocale, &QComboBox::currentIndexChanged, this, &PrefPaneAppearance::onComboLanguageValueChanged);
+    connect(ui_.comboTheme, &QComboBox::currentIndexChanged, this, &PrefPaneAppearance::onComboThemeValueChanged);
+
     I18nManager::instance().fillLocaleCombo(*ui_.comboLocale);
     fillThemeComboBox(*ui_.comboTheme);
 }
@@ -29,12 +36,16 @@ PrefPaneAppearance::PrefPaneAppearance(QWidget *parent)
 // 
 //****************************************************************************************************************************************************
 void PrefPaneAppearance::load() const {
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "UnusedValue"
     QSignalBlocker blocker = QSignalBlocker(ui_.comboLocale);
     this->onRefreshLanguageList();
     blocker = QSignalBlocker(ui_.checkUseCustomTheme);
     ui_.checkUseCustomTheme->setChecked(prefs_.useCustomTheme());
     blocker = QSignalBlocker(ui_.comboTheme);
     selectThemeInCombo(prefs_.theme(), *ui_.comboTheme);
+#pragma clang diagnostic pop
+
     this->updateGui();
 }
 

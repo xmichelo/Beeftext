@@ -19,6 +19,12 @@ PrefPaneEmojis::PrefPaneEmojis(QWidget *parent)
     : PrefPane(parent)
     , prefs_(PreferencesManager::instance()) {
     ui_.setupUi(this);
+
+    connect(ui_.buttonEmojiExcludedApps, &QPushButton::clicked, this, &PrefPaneEmojis::onEditEmojiExcludedApplications);
+    connect(ui_.checkEnableEmoji, &QCheckBox::toggled, this, &PrefPaneEmojis::onCheckEnableEmojiShortcodes);
+    connect(ui_.checkShowEmojiInPickerWindow, &QCheckBox::toggled, this, &PrefPaneEmojis::onCheckShowEmojisInPickerWindow);
+    connect(ui_.editEmojiLeftDelimiter, &QLineEdit::textChanged, this, &PrefPaneEmojis::onEmojiLeftDelimiterChanged);
+    connect(ui_.editEmojiRightDelimiter, &QLineEdit::textChanged, this, &PrefPaneEmojis::onEmojiRightDelimiterChanged);
 }
 
 
@@ -26,6 +32,8 @@ PrefPaneEmojis::PrefPaneEmojis(QWidget *parent)
 //
 //****************************************************************************************************************************************************
 void PrefPaneEmojis::load() const {
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "UnusedValue"
     QSignalBlocker blocker(ui_.checkEnableEmoji);
     ui_.checkEnableEmoji->setChecked(prefs_.emojiShortcodesEnabled());
     blocker = QSignalBlocker(ui_.editEmojiLeftDelimiter);
@@ -34,6 +42,8 @@ void PrefPaneEmojis::load() const {
     ui_.editEmojiRightDelimiter->setText(prefs_.emojiRightDelimiter());
     blocker = QSignalBlocker(ui_.checkShowEmojiInPickerWindow);
     ui_.checkShowEmojiInPickerWindow->setChecked(prefs_.showEmojisInPickerWindow());
+#pragma clang diagnostic pop
+
     this->updateGui();
 }
 

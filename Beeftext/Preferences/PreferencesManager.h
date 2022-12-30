@@ -34,7 +34,6 @@ public: // member functions
     PreferencesManager &operator=(PreferencesManager const &) = delete; ///< Disabled assignment operator
     PreferencesManager &operator=(PreferencesManager &&) = delete; ///< Disabled move assignment operator
     QSettings &settings(); ///< Returns a reference the settings for the application.
-    QSettings const &settings() const; ///< Returns a constant reference the settings for the application.
     void init() const; ///< Initialize the preferences manager.
     void reset(); ///< Reset the preferences to their default values
     bool save(QString const &path) const; ///< Save the preference to a JSON file.
@@ -107,8 +106,8 @@ public: // member functions
     bool showEmojisInPickerWindow() const; ///< Get the value for the 'Show Emojis in picker window.
     qint32 delayBetweenKeystrokesMs() const; ///< Get the 'delay between keystrokes' when not using the clipboard for combo substitution
     void setDelayBetweenKeystrokesMs(qint32 value) const; ///< Set the 'delay between keystrokes'
-    static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay beetween keystrokes' preference.
-    static qint32 maxDelayBetweenKeystrokesMs(); ///< Get the maximum value for the 'delay beetween keystrokes' preference.
+    static qint32 minDelayBetweenKeystrokesMs(); ///< Get the minimum value for the 'delay between keystrokes' preference.
+    static qint32 maxDelayBetweenKeystrokesMs(); ///< Get the maximum value for the 'delay between keystrokes' preference.
     bool comboPickerEnabled() const; ///< Get the value for the 'Combo picker enabled'  preference.
     void setComboPickerEnabled(bool value) const; ///< Set the value for the 'Combo picker enabled'  preference.
     void setComboPickerShortcut(SpShortcut const &shortcut) const; ///< Set the combo picker shortcut.
@@ -137,8 +136,8 @@ public: // member functions
     QByteArray comboPickerWindowGeometry() const; ///< Get the geometry of the combo picker.
     void setUseShiftInsertForPasting(bool value) const; ///< Get the value for the 'Shift+Insert for pasting' preference
     bool useShiftInsertForPasting() const; ///< Get the value for the 'Shift+Insert for pasting' preference
-    void setSkipVersionNumber(xmilib::VersionNumber const &versionNumber) const; /// Set the value for the 'Skip version number'preference.
-    xmilib::VersionNumber getSkipVersionNumber() const; /// Get the value for the 'Skip version number'preference.
+    void setSkipVersionNumber(xmilib::VersionNumber const &versionNumber) const; /// Set the value for the 'Skip version number' preference.
+    xmilib::VersionNumber getSkipVersionNumber() const; /// Get the value for the 'Skip version number' preference.
     void removeSkipVersionNumber() const; ///< Remove the value for the 'Skip version number' preference.
 
 signals:
@@ -165,8 +164,8 @@ private: // data members
 
     public: // data members
         bool useAutomaticSubstitution { true }; ///< Cached value for the 'use automatic substitution' preference value
-        bool comboTriggersOnSpace { false }; ///< Cached vaue for the 'combo trigger on space' preference.
-        bool keepFinalSpaceCharacter { false }; ///< Cached vaue for the 'keep final space character' preference.
+        bool comboTriggersOnSpace { false }; ///< Cached value for the 'combo trigger on space' preference.
+        bool keepFinalSpaceCharacter { false }; ///< Cached value for the 'keep final space character' preference.
         SpShortcut comboTriggerShortcut; ///< Cached value for the 'combo trigger shortcut' preference
         bool comboPickerEnabled { true }; ///< Cached value for the 'Combo picker enabled' preference.
         SpShortcut comboPickerShortcut; ///< Cached value for the 'combo picker shortcut' preference

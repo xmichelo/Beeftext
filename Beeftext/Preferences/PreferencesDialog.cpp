@@ -28,6 +28,13 @@ QString const kExportFileName = "BeeftextPrefs.json"; ///< The default file name
 PreferencesDialog::PreferencesDialog(QWidget *parent)
     : QDialog(parent, xmilib::constants::kDefaultDialogFlags), prefs_(PreferencesManager::instance()) {
     ui_.setupUi(this);
+
+    connect(ui_.buttonResetWarnings, &QPushButton::clicked, this, &PreferencesDialog::onResetWarnings);
+    connect(ui_.buttonImport, &QPushButton::clicked, this, &PreferencesDialog::onImport);
+    connect(ui_.buttonExport, &QPushButton::clicked, this, &PreferencesDialog::onExport);
+    connect(ui_.buttonDefaults, &QPushButton::clicked, this, &PreferencesDialog::onResetToDefaultValues);
+    connect(ui_.buttonClose, &QPushButton::clicked, this, &PreferencesDialog::onClose);
+
     panes_ = { ui_.paneBehavior, ui_.paneCombos, ui_.paneEmojis, ui_.paneAppearance, ui_.paneAdvanced };
     this->load();
     ui_.tabPreferences->setCurrentIndex(0);
@@ -47,7 +54,7 @@ void PreferencesDialog::load() const {
 
 
 //****************************************************************************************************************************************************
-/// \return true if and only if the settings are consistant
+/// \return true if and only if the settings are consistent.
 //****************************************************************************************************************************************************
 bool PreferencesDialog::validateInput() {
     for (PrefPane *pane: panes_)

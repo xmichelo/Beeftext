@@ -23,6 +23,7 @@ find_package(Qt6Widgets)
 find_package(Qt6Network)
 
 include_directories("../Submodules/XMiLib")
+include_directories("${CMAKE_CURRENT_BINARY_DIR}") # This causes signals declaration not to be reported as unimplemented, because autogen files are in a subfolder of the build dir.
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC_MOC_OPTIONS "-bstdafx.h")
@@ -30,6 +31,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(POWERSHELL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../Scripts/Powershell)
 
+add_compile_options(/wd4068) # disable warning related to unknown #pragma directives. they are used to provide hint to CLion's clangd code analysis, but VS compiler does not know them.
 add_definitions(-DUNICODE -D_UNICODE)
 
 file(TO_NATIVE_PATH "${POWERSHELL_DIR}/CompileTranslationFiles.ps1" TRANS_SRC_DIR)

@@ -39,7 +39,21 @@ PrefPaneBehavior::PrefPaneBehavior(QWidget *parent)
 
     // signal mappings for the 'Check now' button
     UpdateManager const &updateManager = UpdateManager::instance();
+
+    connect(ui_.buttonChangeAppEnableDisableShortcut, &QPushButton::clicked, this, &PrefPaneBehavior::onChangeAppEnableDisableShortcut);
+    connect(ui_.buttonChangeCustomSound, &QPushButton::clicked, this, &PrefPaneBehavior::onChangeCustomSound);
     connect(ui_.buttonCheckNow, &QPushButton::clicked, &updateManager, &UpdateManager::checkForUpdateWithoutSkipCheck);
+    connect(ui_.buttonDefaultAppEnableDisableShortcut, &QPushButton::clicked, this, &PrefPaneBehavior::onResetAppEnableDisableShortcut);
+    connect(ui_.buttonPlay, &QPushButton::clicked, this, &PrefPaneBehavior::onPlaySoundButton);
+    connect(ui_.checkAppEnableDisable, &QCheckBox::toggled, this, &PrefPaneBehavior::onCheckEnableAppEnableDisableShortcut);
+    connect(ui_.checkAutoCheckForUpdates, &QCheckBox::toggled, this, &PrefPaneBehavior::onCheckAutoCheckForUpdates);
+    connect(ui_.checkAutoStart, &QCheckBox::toggled, this, &PrefPaneBehavior::onCheckAutoStart);
+    connect(ui_.checkPlaySoundOnCombo, &QCheckBox::toggled, this, &PrefPaneBehavior::onCheckPlaySoundOnCombo);
+    connect(ui_.checkUseCustomSound, &QCheckBox::toggled, this, &PrefPaneBehavior::onCheckUseCustomSound);
+
+
+
+
     connect(&updateManager, &UpdateManager::startedUpdateCheck, this, &PrefPaneBehavior::onUpdateCheckStarted);
     connect(&updateManager, &UpdateManager::finishedUpdateCheck, this, &PrefPaneBehavior::onUpdateCheckFinished);
     connect(&updateManager, &UpdateManager::updateIsAvailable, this, &PrefPaneBehavior::onUpdateIsAvailable);
