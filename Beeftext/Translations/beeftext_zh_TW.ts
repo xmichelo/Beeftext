@@ -26,7 +26,7 @@
         <translation>關閉(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Dialogs/AboutDialog.cpp" line="37"/>
+        <location filename="../Dialogs/AboutDialog.cpp" line="36"/>
         <source>Portable Edition</source>
         <translatorcomment>免安裝版</translatorcomment>
         <translation>免安裝版</translation>
@@ -53,13 +53,13 @@
         <translation>取消(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Backup/BackupRestoreDialog.cpp" line="61"/>
+        <location filename="../Backup/BackupRestoreDialog.cpp" line="59"/>
         <source>Error</source>
         <translatorcomment>錯誤</translatorcomment>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Backup/BackupRestoreDialog.cpp" line="61"/>
+        <location filename="../Backup/BackupRestoreDialog.cpp" line="59"/>
         <source>The backup could not be restored.</source>
         <translatorcomment>備份檔無法被復原.</translatorcomment>
         <translation>備份檔無法被復原.</translation>
@@ -68,43 +68,43 @@
 <context>
     <name>ComboDialog</name>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="22"/>
+        <location filename="../Combo/ComboDialog.ui" line="137"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Snippet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;文字片段&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="32"/>
+        <location filename="../Combo/ComboDialog.ui" line="66"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;Group&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#258fc0; vertical-align:super;&quot;&gt;● &lt;/span&gt;群組&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="42"/>
+        <location filename="../Combo/ComboDialog.ui" line="56"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Description&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;描述&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="67"/>
+        <location filename="../Combo/ComboDialog.ui" line="30"/>
         <source>Case sensitivity</source>
         <translation>區分大小寫</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="79"/>
+        <location filename="../Combo/ComboDialog.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Keyword&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;關鍵字&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="89"/>
+        <location filename="../Combo/ComboDialog.ui" line="42"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;名稱&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="108"/>
+        <location filename="../Combo/ComboDialog.ui" line="88"/>
         <source>&amp;New</source>
         <translatorcomment>開新檔&amp;N</translatorcomment>
         <translation>開新檔(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.ui" line="128"/>
+        <location filename="../Combo/ComboDialog.ui" line="108"/>
         <source>Matching</source>
         <translation>配對</translation>
     </message>
@@ -127,8 +127,8 @@
     </message>
     <message>
         <location filename="../Combo/ComboDialog.cpp" line="129"/>
-        <location filename="../Combo/ComboDialog.cpp" line="135"/>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="134"/>
+        <location filename="../Combo/ComboDialog.cpp" line="140"/>
         <source>Error</source>
         <translatorcomment>錯誤</translatorcomment>
         <translation>錯誤</translation>
@@ -140,25 +140,25 @@
         <translation>文字片段是空白的.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="135"/>
+        <location filename="../Combo/ComboDialog.cpp" line="134"/>
         <source>The keyword is invalid.</source>
         <translatorcomment>無效的關鍵字</translatorcomment>
         <translation>無效的關鍵字.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboDialog.cpp" line="140"/>
         <source>The group is invalid.</source>
         <translatorcomment>無效的群組</translatorcomment>
         <translation>無效的群組.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="152"/>
+        <location filename="../Combo/ComboDialog.cpp" line="148"/>
         <source>Duplicate keyword</source>
         <translatorcomment>複製關鍵字</translatorcomment>
         <translation>複製關鍵字</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="152"/>
+        <location filename="../Combo/ComboDialog.cpp" line="148"/>
         <source>This keyword is already in use. 
 
 You can have multiple combos with the same keyword, Beeftext will pick one of the matching combos randomly.</source>
@@ -167,36 +167,36 @@ You can have multiple combos with the same keyword, Beeftext will pick one of th
 你可以同時使用多個相同的關鍵字，我們會隨機挑選相符的文字片段來使用。</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="154"/>
+        <location filename="../Combo/ComboDialog.cpp" line="150"/>
         <source>&amp;Continue</source>
         <translatorcomment>繼續&amp;C</translatorcomment>
         <translation>繼續(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="154"/>
+        <location filename="../Combo/ComboDialog.cpp" line="150"/>
         <source>C&amp;ancel</source>
         <translatorcomment>取消&amp;a</translatorcomment>
         <translation>取消(&amp;a)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="164"/>
+        <location filename="../Combo/ComboDialog.cpp" line="162"/>
         <source>An existing combo is creating a conflict with this combo.</source>
         <translatorcomment>這個組合與一個現有的組合衝突</translatorcomment>
         <translation>這個組合與一個現有的組合衝突.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="165"/>
+        <location filename="../Combo/ComboDialog.cpp" line="163"/>
         <source>%1 existing combos are creating conflicts with this combo.</source>
         <translatorcomment>%1個組合與一個現有的組合衝突</translatorcomment>
         <translation>%1個組合與一個現有的組合衝突.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="167"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
         <source>Conflict</source>
         <translation>衝突</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="167"/>
+        <location filename="../Combo/ComboDialog.cpp" line="165"/>
         <source>%1 If you use automatic substitution, conflicts make some combos impossible to trigger.
 
 Do you want to continue anyway?</source>
@@ -204,7 +204,7 @@ Do you want to continue anyway?</source>
 這樣你確定要繼續嗎？</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="210"/>
+        <location filename="../Combo/ComboDialog.cpp" line="202"/>
         <source>New Group</source>
         <translatorcomment>新的群組</translatorcomment>
         <translation>新的群組</translation>
@@ -213,108 +213,108 @@ Do you want to continue anyway?</source>
 <context>
     <name>ComboEditor</name>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="46"/>
+        <location filename="../Combo/ComboEditor.cpp" line="41"/>
         <source>&amp;Insert Variable</source>
         <translation>插入變數(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="48"/>
+        <location filename="../Combo/ComboEditor.cpp" line="43"/>
         <source>Clip&amp;board Content</source>
         <translation>剪貼簿內容&amp;b</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="52"/>
+        <location filename="../Combo/ComboEditor.cpp" line="47"/>
         <source>&amp;Date/Time</source>
         <translation>日期/時間(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="53"/>
+        <location filename="../Combo/ComboEditor.cpp" line="48"/>
         <source>D&amp;ate</source>
         <translation>日期(&amp;a)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="56"/>
+        <location filename="../Combo/ComboEditor.cpp" line="51"/>
         <source>&amp;Time</source>
         <translation>時間(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="59"/>
+        <location filename="../Combo/ComboEditor.cpp" line="54"/>
         <source>Dat&amp;e &amp;&amp; Time</source>
         <translation>日期與時間(&amp;e)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="62"/>
+        <location filename="../Combo/ComboEditor.cpp" line="57"/>
         <source>&amp;Custom Date &amp;&amp; Time</source>
         <translation>自定日期與時間(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="66"/>
+        <location filename="../Combo/ComboEditor.cpp" line="61"/>
         <source>&amp;Key</source>
         <translation>&amp;Key</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="69"/>
+        <location filename="../Combo/ComboEditor.cpp" line="64"/>
         <source>&amp;Shortcut</source>
         <translation>捷徑(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="72"/>
+        <location filename="../Combo/ComboEditor.cpp" line="67"/>
         <source>&amp;Delay</source>
         <translation>延遲(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="76"/>
+        <location filename="../Combo/ComboEditor.cpp" line="71"/>
         <source>C&amp;ursor Position</source>
         <translation>游標位置(&amp;u)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="80"/>
-        <location filename="../Combo/ComboEditor.cpp" line="81"/>
+        <location filename="../Combo/ComboEditor.cpp" line="75"/>
+        <location filename="../Combo/ComboEditor.cpp" line="76"/>
         <source>Co&amp;mbo</source>
         <translation>組合(&amp;m)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="84"/>
+        <location filename="../Combo/ComboEditor.cpp" line="79"/>
         <source>Combo (&amp;uppercase)</source>
         <translation>組合(大寫&amp;u)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="87"/>
+        <location filename="../Combo/ComboEditor.cpp" line="82"/>
         <source>Combo (lo&amp;wercase)</source>
         <translation>組合(小寫&amp;w)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="91"/>
+        <location filename="../Combo/ComboEditor.cpp" line="86"/>
         <source>Combo (&amp;trimmed)</source>
         <translation>組合(剪除&amp;t)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="96"/>
+        <location filename="../Combo/ComboEditor.cpp" line="91"/>
         <source>En&amp;vironment Variable</source>
         <translation>環境變數(&amp;v)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="99"/>
+        <location filename="../Combo/ComboEditor.cpp" line="94"/>
         <source>&amp;PowerShell Script</source>
         <translation>&amp;PowerShell Script</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="102"/>
+        <location filename="../Combo/ComboEditor.cpp" line="97"/>
         <source>User &amp;Input</source>
         <translation>使用者輸入(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="107"/>
+        <location filename="../Combo/ComboEditor.cpp" line="102"/>
         <source>&amp;About Variables</source>
         <translation>關於變數(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="151"/>
+        <location filename="../Combo/ComboEditor.cpp" line="141"/>
         <source>Select PowerShell script file</source>
         <translation>選擇PowerShell程式檔</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboEditor.cpp" line="152"/>
+        <location filename="../Combo/ComboEditor.cpp" line="141"/>
         <source>PowerShell script files (*.ps1);;All files (*.*)</source>
         <translation>PowerShell script檔 (*.ps1);;所有檔案 (*.*)</translation>
     </message>
@@ -328,7 +328,6 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../Combo/ComboImportDialog.ui" line="45"/>
-        <location filename="../Combo/ComboImportDialog.ui" line="225"/>
         <source>&amp;Browse</source>
         <translation>瀏覽(&amp;B)</translation>
     </message>
@@ -348,111 +347,106 @@ Do you want to continue anyway?</source>
         <translation>匯入到群組</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="190"/>
-        <location filename="../Combo/ComboImportDialog.ui" line="212"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="188"/>
         <source>Import</source>
         <translation>匯入</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="200"/>
-        <location filename="../Combo/ComboImportDialog.ui" line="217"/>
+        <location filename="../Combo/ComboImportDialog.ui" line="198"/>
         <source>&amp;Cancel</source>
         <translation>取消&amp;C</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="209"/>
         <source>&amp;Import</source>
-        <translation>匯入&amp;I</translation>
+        <translation type="vanished">匯入&amp;I</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="220"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="vanished">取消</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.ui" line="228"/>
         <source>Browse</source>
-        <translation>瀏覽</translation>
+        <translation type="vanished">瀏覽</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="136"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="132"/>
         <source>Skip %1 conflicting combos.</source>
         <translation>略過%1個衝突的組合.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="137"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="133"/>
         <source>Skip 1 conflicting combo.</source>
         <translation>略過1個衝突的組合.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="138"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="134"/>
         <source>Overwrite %1 conflicting combos.</source>
         <translation>覆寫過%1個衝突的組合.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="139"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="135"/>
         <source>Overwrite 1 conflicting combo.</source>
         <translation>覆寫過1個衝突的組合.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="142"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="138"/>
         <source>Overwrite %1 older conflicting combos.</source>
         <translation>衝突的組合中,覆寫了%1個較舊的的組合.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="143"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="139"/>
         <source>Overwrite 1 older conflicting combo.</source>
         <translation>衝突的組合中,覆寫了1個較舊的的組合.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="162"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="156"/>
         <source>%1 combos will be imported.</source>
         <translation>將匯入%1個組合.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="163"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="157"/>
         <source>1 combo will be imported.</source>
         <translation>將匯入1個組合.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="191"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="183"/>
         <source>Please select a valid group.</source>
         <translation>請選擇一個有效的群組.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="234"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="239"/>
-        <location filename="../Combo/ComboImportDialog.cpp" line="289"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="220"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="224"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="269"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="225"/>
         <source>%1 combos could not be imported.</source>
         <translation>有%1個組合無法匯入.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="240"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="225"/>
         <source>A combo could not be imported.</source>
         <translation>有1個組合無法匯入.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="247"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="231"/>
         <source>&amp;Error</source>
         <translation>錯誤&amp;E</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="267"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="249"/>
         <source>Select Combo File</source>
         <translation>選擇組合檔</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="293"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="273"/>
         <source>The file is invalid.</source>
         <translation>無效的檔案.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboImportDialog.cpp" line="296"/>
+        <location filename="../Combo/ComboImportDialog.cpp" line="275"/>
         <source>The file does not contain importable data.</source>
         <translation>這個檔案內沒有可以匯入的資料.</translation>
     </message>
@@ -460,40 +454,40 @@ Do you want to continue anyway?</source>
 <context>
     <name>ComboList</name>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="594"/>
+        <location filename="../Combo/ComboList.cpp" line="534"/>
         <source>Group</source>
         <translation>群組</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="594"/>
-        <location filename="../Combo/ComboList.cpp" line="728"/>
+        <location filename="../Combo/ComboList.cpp" line="534"/>
+        <location filename="../Combo/ComboList.cpp" line="671"/>
         <source>Name</source>
         <translation>名稱</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="594"/>
-        <location filename="../Combo/ComboList.cpp" line="729"/>
+        <location filename="../Combo/ComboList.cpp" line="534"/>
+        <location filename="../Combo/ComboList.cpp" line="673"/>
         <source>Keyword</source>
         <translation>關鍵字</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="594"/>
-        <location filename="../Combo/ComboList.cpp" line="730"/>
+        <location filename="../Combo/ComboList.cpp" line="534"/>
+        <location filename="../Combo/ComboList.cpp" line="675"/>
         <source>Snippet</source>
         <translation>文字段落</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="731"/>
+        <location filename="../Combo/ComboList.cpp" line="677"/>
         <source>Created</source>
         <translation>創建日期</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="732"/>
+        <location filename="../Combo/ComboList.cpp" line="679"/>
         <source>Modified</source>
         <translation>修改日期</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboList.cpp" line="733"/>
+        <location filename="../Combo/ComboList.cpp" line="681"/>
         <source>Last Used</source>
         <translation>最後使用日期</translation>
     </message>
@@ -501,7 +495,7 @@ Do you want to continue anyway?</source>
 <context>
     <name>ComboManager</name>
     <message>
-        <location filename="../Combo/ComboManager.cpp" line="74"/>
+        <location filename="../Combo/ComboManager.cpp" line="66"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
@@ -519,262 +513,272 @@ Do you want to continue anyway?</source>
         <translation>搜尋 (Ctrl+F)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="132"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="71"/>
         <source>&amp;New</source>
         <translation>開新檔(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="135"/>
         <source>Add Combo</source>
-        <translation>增加組合</translation>
+        <translation type="vanished">增加組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="138"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="420"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="71"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="417"/>
         <source>New Combo</source>
         <translation>新的組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="141"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="71"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="146"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="66"/>
         <source>&amp;Delete</source>
         <translation>刪除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="149"/>
-        <location filename="../Combo/ComboTableWidget.ui" line="152"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="66"/>
         <source>Delete Combo</source>
         <translation>刪除組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="155"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="66"/>
         <source>Del</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="160"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="69"/>
         <source>&amp;Edit</source>
         <translation>編輯(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="163"/>
-        <location filename="../Combo/ComboTableWidget.ui" line="166"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="513"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="69"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="503"/>
         <source>Edit Combo</source>
         <translation>編輯組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="169"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="69"/>
         <source>Return</source>
         <translation>Return</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="174"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="68"/>
         <source>&amp;Duplicate</source>
         <translation>複製(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="177"/>
-        <location filename="../Combo/ComboTableWidget.ui" line="180"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="456"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="68"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="450"/>
         <source>Duplicate Combo</source>
         <translation>複製組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="183"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="68"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="188"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="72"/>
         <source>Select &amp;All</source>
         <translation>選擇全部(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="191"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="72"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="196"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="67"/>
         <source>&amp;Deselect All</source>
         <translation>取消全選(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="199"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="67"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="204"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="70"/>
         <source>&amp;Enable</source>
         <translation>啟用(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="207"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="70"/>
         <source>Enable Combo</source>
         <translation>啟用組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="210"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="70"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="215"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="74"/>
         <source>&amp;Export</source>
         <translation>匯出(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="218"/>
         <source>Export Selected Combos</source>
-        <translation>匯出選擇的組合</translation>
+        <translation type="vanished">匯出選擇的組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="221"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="74"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="226"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="75"/>
         <source>I&amp;mport</source>
         <translation>匯入(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="229"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="75"/>
         <source>Import Combos</source>
         <translation>匯入組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="232"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="75"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="237"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="73"/>
         <source>Export A&amp;ll</source>
         <translation>全部匯出(&amp;l)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="240"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="632"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="73"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="612"/>
         <source>Export All Combos</source>
         <translation>匯出所有組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="243"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="73"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="248"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="65"/>
         <source>&amp;Copy Snippet</source>
         <translation>複製文字段落(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="251"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="65"/>
         <source>Copy Snippet</source>
         <translation>複製文字段落</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.ui" line="254"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="65"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="109"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="67"/>
+        <source>Deselect All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="72"/>
+        <source>Select All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="74"/>
+        <source>Export Selected Combo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Combo/ComboTableWidget.cpp" line="139"/>
         <source>&amp;Combos</source>
         <translation>組合(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="363"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="366"/>
         <source>Ena&amp;ble</source>
         <translation>啟用(&amp;b)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="364"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="367"/>
         <source>Enable combo</source>
         <translation>啟用組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="365"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="368"/>
         <source>Enable the combo</source>
         <translation>啟用組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="369"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="371"/>
         <source>Disa&amp;ble</source>
         <translation>停用(&amp;B)</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="370"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="372"/>
         <source>Disable combo</source>
         <translation>停用組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="371"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="373"/>
         <source>Disable the combo</source>
         <translation>關閉組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="425"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="422"/>
         <source>The combo could not be added to the list.</source>
         <translation>無法將此組合加到清單中.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="434"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="468"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="494"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="518"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="579"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="610"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="621"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="644"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="430"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="461"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="485"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="508"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="565"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="592"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="602"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="454"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="448"/>
         <source>The combo could not be duplicated: invalid index.</source>
         <translation>無法複製此組合:無效的index.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="459"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="453"/>
         <source>The duplicated combo could not added to the list.</source>
         <translation>無法將此組合複製到清單中.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="481"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="473"/>
         <source>Are you sure you want to delete the selected combos?</source>
         <translation>你確定要刪除所選擇的組合?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="482"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="474"/>
         <source>Are you sure you want to delete the selected combo?</source>
         <translation>你確定要刪除所選擇的組合?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="483"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="475"/>
         <source>Delete Combo?</source>
         <translation>刪除組合?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="594"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="579"/>
         <source>Export Combos</source>
         <translation>匯出組合</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="610"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="592"/>
         <source>Nothing to export.</source>
         <translation>沒有東西匯出.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboTableWidget.cpp" line="621"/>
-        <location filename="../Combo/ComboTableWidget.cpp" line="644"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="602"/>
+        <location filename="../Combo/ComboTableWidget.cpp" line="622"/>
         <source>Could not save the combo list file.</source>
         <translation>無法儲存組合清單檔.</translation>
     </message>
@@ -798,7 +802,6 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../Group/GroupDialog.ui" line="89"/>
-        <location filename="../Group/GroupDialog.ui" line="108"/>
         <source>&amp;OK</source>
         <translation>OK(&amp;O)</translation>
     </message>
@@ -811,7 +814,7 @@ Do you want to continue anyway?</source>
 <context>
     <name>GroupList</name>
     <message>
-        <location filename="../Group/GroupList.cpp" line="484"/>
+        <location filename="../Group/GroupList.cpp" line="435"/>
         <source>&lt;All combos&gt;</source>
         <translation>&lt;所有的組合&gt;</translation>
     </message>
@@ -824,115 +827,120 @@ Do you want to continue anyway?</source>
         <translation>群組</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="84"/>
+        <location filename="../Group/GroupListWidget.cpp" line="64"/>
         <source>&amp;New</source>
         <translation>開新檔(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="87"/>
         <source>New</source>
-        <translation>開新檔</translation>
+        <translation type="vanished">開新檔</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="90"/>
+        <location filename="../Group/GroupListWidget.cpp" line="64"/>
         <source>Ctrl+Shift+N</source>
         <translation>Ctrl+Shift+N</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="95"/>
+        <location filename="../Group/GroupListWidget.cpp" line="65"/>
         <source>&amp;Delete</source>
         <translation>刪除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="98"/>
         <source>Delete</source>
-        <translation>刪除</translation>
+        <translation type="vanished">刪除</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="101"/>
+        <location filename="../Group/GroupListWidget.cpp" line="65"/>
         <source>Shift+Del</source>
         <translation>Shift+Del</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="106"/>
+        <location filename="../Group/GroupListWidget.cpp" line="65"/>
+        <source>Delete Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Group/GroupListWidget.cpp" line="66"/>
         <source>&amp;Edit</source>
         <translation>編輯(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="109"/>
+        <location filename="../Group/GroupListWidget.cpp" line="66"/>
         <source>Shift+Return</source>
         <translation>Shift+Return</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.ui" line="123"/>
+        <location filename="../Group/GroupListWidget.cpp" line="67"/>
         <source>Ctrl+Shift+E</source>
         <translation>Ctrl+Shift+E</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="118"/>
+        <location filename="../Group/GroupListWidget.cpp" line="142"/>
         <source>&amp;Groups</source>
         <translation>群組(&amp;G)</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="233"/>
+        <location filename="../Group/GroupListWidget.cpp" line="247"/>
         <source>&amp;Disable</source>
         <translation>關閉(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="233"/>
+        <location filename="../Group/GroupListWidget.cpp" line="247"/>
         <source>&amp;Enable</source>
         <translation>啟用(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="234"/>
+        <location filename="../Group/GroupListWidget.cpp" line="248"/>
         <source>Enable</source>
         <translation>啟用</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="234"/>
+        <location filename="../Group/GroupListWidget.cpp" line="248"/>
         <source>Disable</source>
         <translation>關閉</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="235"/>
+        <location filename="../Group/GroupListWidget.cpp" line="249"/>
         <source>Enable the group</source>
         <translation>啟用群組</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="235"/>
+        <location filename="../Group/GroupListWidget.cpp" line="249"/>
         <source>Disable the group</source>
         <translation>關閉群組</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="247"/>
+        <location filename="../Group/GroupListWidget.cpp" line="64"/>
+        <location filename="../Group/GroupListWidget.cpp" line="259"/>
         <source>New Group</source>
         <translation>新群組</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="252"/>
+        <location filename="../Group/GroupListWidget.cpp" line="264"/>
         <source>The group could not be added to the list.</source>
         <translation>這個群組無法被加入清單中.</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="260"/>
-        <location filename="../Group/GroupListWidget.cpp" line="296"/>
-        <location filename="../Group/GroupListWidget.cpp" line="326"/>
-        <location filename="../Group/GroupListWidget.cpp" line="353"/>
+        <location filename="../Group/GroupListWidget.cpp" line="271"/>
+        <location filename="../Group/GroupListWidget.cpp" line="303"/>
+        <location filename="../Group/GroupListWidget.cpp" line="330"/>
+        <location filename="../Group/GroupListWidget.cpp" line="354"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="287"/>
+        <location filename="../Group/GroupListWidget.cpp" line="66"/>
+        <location filename="../Group/GroupListWidget.cpp" line="295"/>
         <source>Edit Group</source>
         <translation>編輯群組</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="308"/>
+        <location filename="../Group/GroupListWidget.cpp" line="313"/>
         <source>Delete Group?</source>
         <translation>刪除群組?</translation>
     </message>
     <message>
-        <location filename="../Group/GroupListWidget.cpp" line="308"/>
+        <location filename="../Group/GroupListWidget.cpp" line="313"/>
         <source>Are you sure you want to delete the selected group and all its combos?</source>
         <translation>你確定要刪除選擇的群組及其所有的組合?</translation>
     </message>
@@ -991,7 +999,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="123"/>
-        <location filename="../MainWindow.cpp" line="167"/>
+        <location filename="../MainWindow.cpp" line="155"/>
         <source>Preferences</source>
         <translation>喜好設定</translation>
     </message>
@@ -1102,87 +1110,87 @@ Do you want to continue anyway?</source>
         <translation>Ctrl+Alt+Shift+L</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="132"/>
+        <location filename="../MainWindow.cpp" line="120"/>
         <source> - PAUSED</source>
         <translation> - 暫停</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="135"/>
+        <location filename="../MainWindow.cpp" line="123"/>
         <source> - Portable Edition</source>
         <translation> - 免安裝版</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="147"/>
-        <location filename="../MainWindow.cpp" line="297"/>
+        <location filename="../MainWindow.cpp" line="135"/>
+        <location filename="../MainWindow.cpp" line="274"/>
         <source>Open Beeftext</source>
         <translation>開啟BeefText</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="152"/>
+        <location filename="../MainWindow.cpp" line="140"/>
         <source>New Combo</source>
         <translation>新的組合</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="156"/>
+        <location filename="../MainWindow.cpp" line="144"/>
         <source>New Group</source>
         <translation>新的群組</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="162"/>
+        <location filename="../MainWindow.cpp" line="150"/>
         <source>&amp;Pause Beeftext</source>
         <translation>暫停BeefText(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="162"/>
+        <location filename="../MainWindow.cpp" line="150"/>
         <source>&amp;Resume Beeftext</source>
         <translation>繼續BeefText(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="172"/>
+        <location filename="../MainWindow.cpp" line="160"/>
         <source>Show Log Window</source>
         <translation>顯示Log視窗</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="175"/>
+        <location filename="../MainWindow.cpp" line="163"/>
         <source>Open Log File</source>
         <translation>開啟Log檔</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="178"/>
+        <location filename="../MainWindow.cpp" line="166"/>
         <source>Show Stylesheet Editor</source>
         <translation>顯示樣式表編輯器</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="245"/>
-        <location filename="../MainWindow.cpp" line="246"/>
-        <location filename="../MainWindow.cpp" line="373"/>
+        <location filename="../MainWindow.cpp" line="227"/>
+        <location filename="../MainWindow.cpp" line="228"/>
+        <location filename="../MainWindow.cpp" line="342"/>
         <source>Restore</source>
         <translation>復原</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="245"/>
+        <location filename="../MainWindow.cpp" line="227"/>
         <source>If you restore a backup, all your current combos will be deleted and replaced by the content of the backup file.</source>
         <translation>如果你要復原備份,你所有現有的組合都會被刪除,由備份檔中的內容取代.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="246"/>
+        <location filename="../MainWindow.cpp" line="228"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="253"/>
+        <location filename="../MainWindow.cpp" line="234"/>
+        <location filename="../MainWindow.cpp" line="331"/>
         <location filename="../MainWindow.cpp" line="361"/>
-        <location filename="../MainWindow.cpp" line="395"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="354"/>
+        <location filename="../MainWindow.cpp" line="326"/>
         <source>Backup</source>
         <translation>備份</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="389"/>
+        <location filename="../MainWindow.cpp" line="356"/>
         <source>Generate Cheat Sheet</source>
         <translation>產生快捷鍵列表</translation>
     </message>
@@ -1190,7 +1198,7 @@ Do you want to continue anyway?</source>
 <context>
     <name>PickerItemDelegate</name>
     <message>
-        <location filename="../Picker/PickerItemDelegate.cpp" line="104"/>
+        <location filename="../Picker/PickerItemDelegate.cpp" line="101"/>
         <source>Emojis</source>
         <translation>顏文字</translation>
     </message>
@@ -1222,8 +1230,8 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="104"/>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="165"/>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="230"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="172"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="237"/>
         <source>&amp;Change</source>
         <translation>修改(&amp;C)</translation>
     </message>
@@ -1249,122 +1257,132 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="142"/>
+        <source>Restore clipboard after combo substitution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="149"/>
         <source>Use Shift+Insert for pasting</source>
         <translation>使用Shift+Ins來貼上</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="151"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="158"/>
         <source>Use custom PowerShell version</source>
         <translation>使用自定的PowerShell版本</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="174"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="181"/>
         <source>Automatic backup</source>
         <translation>自動備份</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="182"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
         <source>Automatically back up combo list files</source>
         <translation>自動備份組合檔</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="189"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="196"/>
         <source>Restore a backup.</source>
         <translation>由備份檔復原.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="192"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="199"/>
         <source>&amp;Restore</source>
         <translation>復原(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="216"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="223"/>
         <source>Use custom backup location</source>
         <translation>使用自定的備份路徑</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="244"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="251"/>
         <source>Sensitive Applications</source>
         <translation>敏感軟體</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="100"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.ui" line="258"/>
+        <source>E&amp;xcluded Applications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
         <source>Select folder</source>
         <translation>選擇資料夾</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="95"/>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="150"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="111"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="160"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="96"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="112"/>
         <source>The location of the combo list folder could not be changed.</source>
         <translation>無法變更組合清單資料夾的路徑.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="113"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="127"/>
         <source>Overwrite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="113"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="127"/>
         <source>The selected folder already contains a combo list file do you want to overwrite this list or to replace the current combo list With the content of this file?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="129"/>
         <source>Overwrite file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="129"/>
         <source>Replace Current List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="115"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="129"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="144"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="155"/>
         <source>Reset Folder</source>
         <translation>重設資料夾</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="144"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="155"/>
         <source>Reset the combo list folder?</source>
         <translation>重設組合清單資料夾?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="150"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="160"/>
         <source>The location of the combo list folder could not be reset.</source>
         <translation>無法重設組合清單資料夾的路徑.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="230"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="239"/>
         <source>Select PowerShell executable</source>
         <translation>選擇PowerShell執行檔</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="231"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="239"/>
         <source>Executable files (*.exe);;All files (*.*)</source>
         <translation>執行檔 (*.exe);;所有檔案 (*.*)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="273"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="277"/>
         <source>Custom backup location</source>
         <translation>自定的備份路徑</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="319"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="326"/>
         <source>Delete Backup Files?</source>
         <translation>刪除備份檔?</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="319"/>
+        <location filename="../Preferences/Panes/PrefPaneAdvanced.cpp" line="326"/>
         <source>Do you want to delete all the backup files?</source>
         <translation>你確定要刪除所有備份嗎?</translation>
     </message>
@@ -1459,37 +1477,37 @@ Do you want to continue anyway?</source>
         <translation type="vanished">有%1v%2.%3版可以更新.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="95"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="105"/>
         <source>%1 v%2 is available.</source>
         <translation type="unfinished">有%1v%2.%3版可以更新. {1 ?} {2 ?}</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="97"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="107"/>
         <source>A new version is available.</source>
         <translation>有新版本可以更新.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="106"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="115"/>
         <source>The software is up to date.</source>
         <translation>軟體目前是最新版.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="133"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="139"/>
         <source>Update check failed.</source>
         <translation>無法確認是否有更新檔.</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="186"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="185"/>
         <source>WAV files (*.wav);;All files (*.*)</source>
         <translation>WAV檔 (*.wav);;所有檔案 (*.*)</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="261"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="272"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="261"/>
         <source>The path of the custom sound file is invalid.</source>
         <translation>自定音效檔的路徑無效.</translation>
     </message>
@@ -1564,12 +1582,12 @@ Do you want to continue anyway?</source>
         <translation>捷徑</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
+        <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="223"/>
         <source>Error</source>
         <translation type="unfinished">錯誤</translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="232"/>
+        <location filename="../Preferences/Panes/PrefPaneCombos.cpp" line="223"/>
         <source>The shortcut could not be registered. Combo picker will be disabled</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1680,12 +1698,12 @@ Do you want to continue anyway?</source>
         <translation>關閉(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="81"/>
         <source>Reset Preferences</source>
         <translation>重設喜好設定</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="80"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="81"/>
         <source>Are you sure you want to reset the preferences to their default values?</source>
         <translation>你確定要重設喜好設定為原廠值嗎?</translation>
     </message>
@@ -1700,28 +1718,28 @@ Do you want to continue anyway?</source>
         <translation>你確定要重設所有警告嗎?</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="115"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="114"/>
         <source>Export Preferences</source>
         <translation>匯出喜好設定</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="118"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="130"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="121"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="118"/>
         <source>An error occurred while exporting the preferences.</source>
         <translation>在匯出喜好設定時發生錯誤.</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="130"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="126"/>
         <source>Import Preferences</source>
         <translation>匯入喜好設定</translation>
     </message>
     <message>
-        <location filename="../Preferences/PreferencesDialog.cpp" line="136"/>
+        <location filename="../Preferences/PreferencesDialog.cpp" line="130"/>
         <source>An error occurred while importing the preferences.</source>
         <translation>在匯入喜好設定時發生錯誤.</translation>
     </message>
@@ -1729,22 +1747,38 @@ Do you want to continue anyway?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../BeeftextGlobals.cpp" line="303"/>
+        <location filename="../BeeftextGlobals.cpp" line="81"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog
+      to list sensitive applications that do not work correctly with Beeftext because they do not support standard 
+      copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards 
+      are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../BeeftextGlobals.cpp" line="101"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog
+      to list excluded applications. Beeftext will not perform substitution in these applications.&lt;/p&gt;
+      &lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards 
+      are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../BeeftextGlobals.cpp" line="330"/>
         <source>Beeftext backup files (*.%1);;All files (*.*)</source>
         <translation>Beeftext backup檔 (*.%1);;所有檔案 (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextGlobals.cpp" line="312"/>
+        <location filename="../BeeftextGlobals.cpp" line="338"/>
         <source>JSON files (*.json);;All files (*.*)</source>
         <translation>JSON檔 (*.json);;所有檔案 (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextGlobals.cpp" line="321"/>
+        <location filename="../BeeftextGlobals.cpp" line="346"/>
         <source>JSON &amp; CSV files (*.json *.csv);;JSON files (*.json);;CSV files (*.csv);;All files (*.*)</source>
         <translation>JSON &amp; CSV檔 (*.json *.csv);;JSON檔 (*.json);;CSV檔 (*.csv);;所有檔案 (*.*)</translation>
     </message>
     <message>
-        <location filename="../BeeftextGlobals.cpp" line="331"/>
+        <location filename="../BeeftextGlobals.cpp" line="355"/>
         <source>CSV files (*.csv);;All files (*.*)</source>
         <translation>CSV檔 (*.csv);;所有檔案 (*.*)</translation>
     </message>
@@ -1770,54 +1804,53 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="381"/>
-        <location filename="../Emoji/EmojiManager.cpp" line="178"/>
-        <location filename="../I18nManager.cpp" line="326"/>
-        <location filename="../main.cpp" line="235"/>
-        <location filename="../main.cpp" line="244"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="114"/>
+        <location filename="../BeeftextUtils.cpp" line="379"/>
+        <location filename="../I18nManager.cpp" line="298"/>
+        <location filename="../main.cpp" line="218"/>
+        <location filename="../main.cpp" line="227"/>
+        <location filename="../ProcessListManager.cpp" line="96"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="458"/>
+        <location filename="../BeeftextUtils.cpp" line="450"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="461"/>
+        <location filename="../BeeftextUtils.cpp" line="453"/>
         <source>&amp;Convert</source>
         <translation>轉換(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../BeeftextUtils.cpp" line="462"/>
+        <location filename="../BeeftextUtils.cpp" line="454"/>
         <source>E&amp;xit</source>
         <translation>離開(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../Combo/CaseSensitivity.cpp" line="34"/>
-        <location filename="../Combo/MatchingMode.cpp" line="34"/>
+        <location filename="../Combo/CaseSensitivity.cpp" line="31"/>
+        <location filename="../Combo/MatchingMode.cpp" line="31"/>
         <source>Default</source>
         <translation>預設</translation>
     </message>
     <message>
-        <location filename="../Combo/CaseSensitivity.cpp" line="40"/>
+        <location filename="../Combo/CaseSensitivity.cpp" line="38"/>
         <source>Case-sensitive</source>
         <translation>區分大小寫</translation>
     </message>
     <message>
-        <location filename="../Combo/CaseSensitivity.cpp" line="41"/>
+        <location filename="../Combo/CaseSensitivity.cpp" line="40"/>
         <source>Case-insensitive</source>
         <translation>不區分大小寫</translation>
     </message>
     <message>
-        <location filename="../Combo/CaseSensitivity.cpp" line="46"/>
-        <location filename="../Combo/MatchingMode.cpp" line="45"/>
+        <location filename="../Combo/CaseSensitivity.cpp" line="45"/>
+        <location filename="../Combo/MatchingMode.cpp" line="44"/>
         <source>&lt;Unknown&gt;</source>
         <translation>&lt;Unknown&gt;</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="30"/>
+        <location filename="../Combo/ComboDialog.cpp" line="29"/>
         <source>
       &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/xmichelo/Beeftext/wiki/Variables&quot;&gt;
       &lt;span style=&quot; text-decoration: underline; color:#%1;&quot;&gt;
@@ -1825,18 +1858,18 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="44"/>
+        <location filename="../Combo/ComboDialog.cpp" line="43"/>
         <source>The keyword is very short. Are you sure you want to use the keyword &apos;%1&apos;?</source>
         <translation>關鍵字有點太短了。你確定要用這個關鍵字嗎:%1?</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="49"/>
-        <location filename="../Combo/ComboDialog.cpp" line="68"/>
+        <location filename="../Combo/ComboDialog.cpp" line="48"/>
+        <location filename="../Combo/ComboDialog.cpp" line="66"/>
         <source>Do not show this warning again.</source>
         <translation>不要再顯示這個警告.</translation>
     </message>
     <message>
-        <location filename="../Combo/ComboDialog.cpp" line="64"/>
+        <location filename="../Combo/ComboDialog.cpp" line="62"/>
         <source>You have not defined a keyword. Are you sure you want to continue?</source>
         <translation>你還沒定義關鍵字。你確定要繼續嗎?</translation>
     </message>
@@ -1847,41 +1880,47 @@ p, li { white-space: pre-wrap; }
         <translation>移動到</translation>
     </message>
     <message>
-        <location filename="../Combo/MatchingMode.cpp" line="40"/>
+        <location filename="../Combo/MatchingMode.cpp" line="38"/>
         <source>Strict</source>
         <translation>嚴格</translation>
     </message>
     <message>
-        <location filename="../Combo/MatchingMode.cpp" line="41"/>
+        <location filename="../Combo/MatchingMode.cpp" line="40"/>
         <source>Loose</source>
         <translation>寬鬆</translation>
     </message>
     <message>
-        <location filename="../Emoji/EmojiManager.cpp" line="161"/>
+        <location filename="../Emoji/EmojiManager.cpp" line="121"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list applications in which emoji substitution should be disabled.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用這個對話窗來列舉有那些軟體要關閉顏文字功能.&lt;/p&gt;&lt;p&gt;列舉的名稱需使用他們的程式名稱(如: notepad.exe). 可以使用萬用字元.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../Emoji/EmojiManager.cpp" line="164"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="100"/>
+        <location filename="../ProcessListManager.cpp" line="85"/>
         <source>&amp;Reset</source>
         <translation>重置(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../Emoji/EmojiManager.cpp" line="167"/>
-        <location filename="../SensitiveApplicationManager.cpp" line="103"/>
+        <location filename="../ProcessListManager.cpp" line="87"/>
         <source>Reset List</source>
         <translation>重置清單</translation>
     </message>
     <message>
-        <location filename="../Emoji/EmojiManager.cpp" line="168"/>
-        <source>Are you sure you want to reset the list of excluded applications?</source>
-        <translation>你確定要重置軟體排除清單嗎?</translation>
+        <location filename="../ProcessListManager.cpp" line="87"/>
+        <source>Are you sure you want to reset the list ?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Emoji/EmojiManager.cpp" line="178"/>
+        <location filename="../ProcessListManager.cpp" line="96"/>
+        <source>The file could not be saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset the list of excluded applications?</source>
+        <translation type="vanished">你確定要重置軟體排除清單嗎?</translation>
+    </message>
+    <message>
         <source>The emoji-excluded applications file could not be saved.</source>
-        <translation>無法儲存顏文字排除清單檔.</translation>
+        <translation type="vanished">無法儲存顏文字排除清單檔.</translation>
     </message>
     <message>
         <location filename="../Group/GroupList.cpp" line="19"/>
@@ -1894,24 +1933,24 @@ p, li { white-space: pre-wrap; }
         <translation>預設群組.</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="265"/>
+        <location filename="../I18nManager.cpp" line="243"/>
         <source> - Portable Edition</source>
         <translation> - 免安裝版</translation>
     </message>
     <message>
-        <location filename="../I18nManager.cpp" line="326"/>
+        <location filename="../I18nManager.cpp" line="298"/>
         <source>Cannot load translation:
 %1</source>
         <translation>無法讀取翻譯:
 %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="117"/>
+        <location filename="../main.cpp" line="110"/>
         <source>Getting Started</source>
         <translation>新手教學</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="117"/>
+        <location filename="../main.cpp" line="110"/>
         <source>New to Beeftext?
 
 Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
@@ -1919,40 +1958,37 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
 要不要先看看我們的簡短教學?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="144"/>
+        <location filename="../main.cpp" line="133"/>
         <source>An unhandled exception occurred.</source>
         <translation>發生一個無法預期的錯誤.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="235"/>
+        <location filename="../main.cpp" line="218"/>
         <source>Starting with Beeftext v13.0, the combo picker shortcut cannot contain the Windows key.The shortcut is now %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="244"/>
+        <location filename="../main.cpp" line="227"/>
         <source>The shortcut for the combo picker window could not be registered. The combo picker has been turned off.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="184"/>
+        <location filename="../Preferences/Panes/PrefPaneBehavior.cpp" line="185"/>
         <source>Select custom sound file</source>
         <translation>選擇自定音效檔</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="95"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this dialog to list sensitive applications that do not work correctly with Beeftext because they do not support standard copy-paste using Ctrl+V.&lt;/p&gt;&lt;p&gt;List applications using their process name (e.g, notepad.exe). Wildcards are accepted.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translatorcomment>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用這個對話窗來列舉有那些軟體要關閉顏文字功能.&lt;/p&gt;&lt;p&gt;列舉的名稱需使用他們的程式名稱(如: notepad.exe). 可以使用萬用字元.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translatorcomment>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用這個對話窗來列舉有那些軟體是敏感軟體。有些軟體因為無法支援標準的Ctrl+V貼上方式，所以會導致BeefText無法正確運作.&lt;/p&gt;&lt;p&gt;列舉的名稱需使用他們的程式名稱(如: notepad.exe).可以使用萬用字元.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用這個對話窗來列舉有那些軟體是敏感軟體。有些軟體因為無法支援標準的Ctrl+V貼上方式，所以會導致BeefText無法正確運作.&lt;/p&gt;&lt;p&gt;列舉的名稱需使用他們的程式名稱(如: notepad.exe).可以使用萬用字元.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="104"/>
         <source>Are you sure you want to reset the list of sensitive applications?</source>
-        <translation>你確定要重置敏感軟體清單嗎?</translation>
+        <translation type="vanished">你確定要重置敏感軟體清單嗎?</translation>
     </message>
     <message>
-        <location filename="../SensitiveApplicationManager.cpp" line="114"/>
         <source>The sensitive application file could not be saved.</source>
-        <translation>無法儲存敏感軟體清單檔.</translation>
+        <translation type="vanished">無法儲存敏感軟體清單檔.</translation>
     </message>
     <message>
         <location filename="../Theme.cpp" line="26"/>
@@ -1960,12 +1996,12 @@ Do you want to read a short &apos;Getting Started&apos; tutorial?</source>
         <translation>清亮</translation>
     </message>
     <message>
-        <location filename="../Theme.cpp" line="27"/>
+        <location filename="../Theme.cpp" line="28"/>
         <source>dark</source>
         <translation>沉穩</translation>
     </message>
     <message>
-        <location filename="../Theme.cpp" line="28"/>
+        <location filename="../Theme.cpp" line="31"/>
         <source>unknown</source>
         <translation>未知</translation>
     </message>
@@ -1995,7 +2031,7 @@ Ctrl, Alt, 或Win鍵.</translation>
         <translation>取消(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Dialogs/ShortcutDialog.cpp" line="119"/>
+        <location filename="../Dialogs/ShortcutDialog.cpp" line="113"/>
         <source>This shortcut cannot use the Windows key.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2032,12 +2068,12 @@ Ctrl, Alt, 或Win鍵.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="47"/>
+        <location filename="../Update/UpdateDialog.cpp" line="40"/>
         <source>&amp;Install</source>
         <translation>安裝(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="47"/>
+        <location filename="../Update/UpdateDialog.cpp" line="40"/>
         <source>&amp;Download Page</source>
         <translation>到下載頁面(&amp;D)</translation>
     </message>
@@ -2047,18 +2083,18 @@ Ctrl, Alt, 或Win鍵.</translation>
         <translation>取消(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="160"/>
-        <location filename="../Update/UpdateDialog.cpp" line="196"/>
+        <location filename="../Update/UpdateDialog.cpp" line="146"/>
+        <location filename="../Update/UpdateDialog.cpp" line="178"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="160"/>
+        <location filename="../Update/UpdateDialog.cpp" line="146"/>
         <source>The update cannot be installed: the checksum does not match.</source>
         <translation>無法安裝這個更新: Checksum檢查碼不吻合.</translation>
     </message>
     <message>
-        <location filename="../Update/UpdateDialog.cpp" line="196"/>
+        <location filename="../Update/UpdateDialog.cpp" line="178"/>
         <source>An error occurred while downloading the software update:
 %1</source>
         <translation>在下載軟體更新時發生錯誤:
