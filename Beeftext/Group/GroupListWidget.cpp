@@ -15,6 +15,21 @@
 #include <XMiLib/Exception.h>
 
 
+namespace {
+
+
+struct ActionMapping {
+    QAction **action { nullptr };
+    QString text;
+    QString tooltip;
+    QString shortcut;
+    void (GroupListWidget::*slot)() { nullptr };
+}; ///< Structure for action mapping.
+
+
+}
+
+
 //****************************************************************************************************************************************************
 /// \param[in] parent The parent of the widget
 //****************************************************************************************************************************************************
@@ -24,6 +39,7 @@ GroupListWidget::GroupListWidget(QWidget *parent)
     GroupList &groups = ComboManager::instance().comboListRef().groupListRef();
     ui_.listGroup->setModel(&groups);
     ui_.listGroup->viewport()->installEventFilter(this);
+    this->setupActions();
     this->setupContextMenu();
     this->setupGroupsMenu();
     QItemSelectionModel const *selectionModel = ui_.listGroup->selectionModel();
@@ -33,10 +49,31 @@ GroupListWidget::GroupListWidget(QWidget *parent)
     connect(&groups, &GroupList::groupMoved, this, &GroupListWidget::onGroupMoved);
     connect(&ComboManager::instance(), &ComboManager::backupWasRestored, this, &GroupListWidget::onBackupRestored);
     connect(new QShortcut(QKeySequence("Ctrl+Shift+A"), this), &QShortcut::activated, this, &GroupListWidget::selectAllCombosEntry);
+    connect(ui_.listGroup, &QListView::doubleClicked, this, &GroupListWidget::onActionEditGroup);
 
     this->updateGui();
-    QTimer::singleShot(0, [&]() { this->selectAllCombosEntry(); });
-    // delayed to be sure the signal/slot mechanism work
+    QTimer::singleShot(0, [&]() { this->selectAllCombosEntry(); }); // delayed to be sure the signal/slot mechanism work
+}
+
+
+//****************************************************************************************************************************************************
+//
+//****************************************************************************************************************************************************
+void GroupListWidget::setupActions() {
+    QList<ActionMapping> const mappings = {
+        { &actionNewGroup_,           tr("&New"),    tr("New Group"),    tr("Ctrl+Shift+N"), &GroupListWidget::onActionNewGroup },
+        { &actionDeleteGroup_,        tr("&Delete"), tr("Delete Group"), tr("Shift+Del"),    &GroupListWidget::onActionDeleteGroup },
+        { &actionEditGroup_,          tr("&Edit"),   tr("Edit Group"),   tr("Shift+Return"), &GroupListWidget::onActionEditGroup },
+        { &actionEnableDisableGroup_, QString(),     QString(),          tr("Ctrl+Shift+E"), &GroupListWidget::onActionEnableDisableGroup },
+    };
+
+    for (ActionMapping const &mapping: mappings) {
+        QAction *action = new QAction(mapping.text, this);
+        action->setToolTip(mapping.tooltip);
+        action->setShortcut(mapping.shortcut);
+        *mapping.action = action;
+        connect(action, &QAction::triggered, this, mapping.slot);
+    }
 }
 
 
@@ -87,20 +124,19 @@ void GroupListWidget::selectGroup(SpGroup const &group) const {
 //****************************************************************************************************************************************************
 QMenu *GroupListWidget::menu(QWidget *parent) const {
     QMenu *menu = new QMenu(menuTitle(), parent);
-    menu->addAction(ui_.actionNewGroup);
-    menu->addAction(ui_.actionEditGroup);
+    menu->addAction(actionNewGroup_);
+    menu->addAction(actionEditGroup_);
     menu->addSeparator();
-    menu->addAction(ui_.actionDeleteGroup);
-    menu->addAction(ui_.actionDeleteGroup);
+    menu->addAction(actionDeleteGroup_);
     menu->addSeparator();
-    menu->addAction(ui_.actionEnableDisableGroup);
+    menu->addAction(actionEnableDisableGroup_);
     connect(menu, &QMenu::aboutToShow, this, &GroupListWidget::onMenuAboutToShow);
     return menu;
 }
 
 
 //****************************************************************************************************************************************************
-/// \return The localized titl the the menu
+/// \return The localized title of the menu.
 //****************************************************************************************************************************************************
 QString GroupListWidget::menuTitle() {
     return tr("&Groups");
@@ -114,9 +150,9 @@ void GroupListWidget::updateGui() const {
     qint32 const groupCount = ComboManager::instance().groupListRef().size();
     qint32 const index = this->selectedGroupIndex();
     bool const validIndex = (index >= 0) && (index < groupCount);
-    ui_.actionDeleteGroup->setEnabled(validIndex && (groupCount > 1));
-    ui_.actionEditGroup->setEnabled(validIndex);
-    ui_.actionEnableDisableGroup->setEnabled(validIndex);
+    actionDeleteGroup_->setEnabled(validIndex && (groupCount > 1));
+    actionEditGroup_->setEnabled(validIndex);
+    actionEnableDisableGroup_->setEnabled(validIndex);
 }
 
 
@@ -180,7 +216,7 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event) {
         if (dropEvent) {
             QMimeData const *mimeData = dropEvent->mimeData();
             ComboManager::instance().groupListRef().setDropType(mimeData && mimeData->hasFormat(kUuuidListMimeType) ?
-                                                                GroupList::ComboDrop : GroupList::GroupDrop);
+                GroupList::ComboDrop : GroupList::GroupDrop);
         }
     }
 
@@ -208,9 +244,9 @@ bool GroupListWidget::eventFilter(QObject *object, QEvent *event) {
 void GroupListWidget::updateActionsAvailabilityAndNames() const {
     SpGroup const group = this->selectedGroup();
     bool const enabled = (group && group->enabled());
-    ui_.actionEnableDisableGroup->setText(enabled ? tr("&Disable") : tr("&Enable"));
-    ui_.actionEnableDisableGroup->setIconText(enabled ? tr("Enable") : tr("Disable"));
-    ui_.actionEnableDisableGroup->setToolTip(enabled ? tr("Enable the group") : tr("Disable the group"));
+    actionEnableDisableGroup_->setText(enabled ? tr("&Disable") : tr("&Enable"));
+    actionEnableDisableGroup_->setIconText(enabled ? tr("Enable") : tr("Disable"));
+    actionEnableDisableGroup_->setToolTip(enabled ? tr("Enable the group") : tr("Disable the group"));
 }
 
 
@@ -286,7 +322,7 @@ void GroupListWidget::onActionDeleteGroup() {
         groups.erase(index);
         if (!comboManager.saveComboListToFile())
             throw xmilib::Exception("Could not save combo list.");
-        // we force the emission of a selectedGroupChange event, because the system will no do it in that case
+        // we force the emission of a selectedGroupChange event, because the system will not do it in that case
         this->onSelectionChanged(QItemSelection(), QItemSelection());
         this->updateGui();
     }
@@ -374,3 +410,5 @@ void GroupListWidget::onMenuAboutToShow() const {
 void GroupListWidget::onBackupRestored() const {
     this->selectAllCombosEntry();
 }
+
+

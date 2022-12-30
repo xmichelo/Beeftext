@@ -174,38 +174,5 @@ Control, Alt or Windows.</string>
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonCancel</sender>
-   <signal>clicked()</signal>
-   <receiver>ShortcutDialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>416</x>
-     <y>163</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>231</x>
-     <y>92</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonOK</sender>
-   <signal>clicked()</signal>
-   <receiver>ShortcutDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>335</x>
-     <y>163</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>231</x>
-     <y>92</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

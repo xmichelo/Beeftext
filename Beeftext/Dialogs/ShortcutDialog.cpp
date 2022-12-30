@@ -57,6 +57,8 @@ ShortcutDialog::ShortcutDialog(QWidget *parent, SpShortcut const &shortcut, bool
     shortcutsWereEnabled_ = inputManager.isShortcutProcessingEnabled();
     inputManager.setShortcutsProcessingEnabled(false);
     connect(&InputManager::instance(), &InputManager::shortcutPressed, this, &ShortcutDialog::onShortcutPressed);
+    connect(ui_.buttonCancel, &QPushButton::clicked, this, &ShortcutDialog::reject);
+    connect(ui_.buttonOK, &QPushButton::clicked, this, &ShortcutDialog::accept);
 }
 
 

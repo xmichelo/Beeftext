@@ -195,22 +195,5 @@
   <include location="../Beeftext.qrc"/>
   <include location="../Beeftext.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>buttonClose</sender>
-   <signal>clicked()</signal>
-   <receiver>AboutDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>514</x>
-     <y>429</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>280</x>
-     <y>225</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

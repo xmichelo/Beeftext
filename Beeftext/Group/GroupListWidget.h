@@ -21,7 +21,7 @@
 class GroupListWidget : public QWidget {
 Q_OBJECT
 public: // member functions
-    explicit GroupListWidget(QWidget *parent = nullptr); ///< Default constructor
+    [[maybe_unused]] explicit GroupListWidget(QWidget *parent = nullptr); ///< Default constructor
     GroupListWidget(GroupListWidget const &) = delete; ///< Disabled copy-constructor
     GroupListWidget(GroupListWidget &&) = delete; ///< Disabled assignment copy-constructor
     ~GroupListWidget() override = default; ///< Destructor
@@ -41,6 +41,7 @@ signals:
     void selectedGroupChanged(SpGroup const &group); /// Signal emitted when the selected group changes
 
 private: // member functions
+    void setupActions(); ///< Setup the actions.
     void updateGui() const; ///< update the GUI state
     void setupGroupsMenu(); ///< Setup the 'groups' menu
     void setupContextMenu(); ///< Setup the context menu
@@ -61,6 +62,10 @@ private slots:
 
 private: // data members
     Ui::GroupListWidget ui_; ///< The GUI for the dialog
+    QAction* actionNewGroup_ { nullptr }; ///< The 'New Group' action.
+    QAction* actionDeleteGroup_ { nullptr }; ///< The 'Delete Group' action.
+    QAction* actionEditGroup_ { nullptr }; ///< The 'Edit Group' action.
+    QAction* actionEnableDisableGroup_ { nullptr }; ///< The 'Enable/Disable Group' action.
     QMenu *contextMenu_; ///< The context menu for the list view
 };
 

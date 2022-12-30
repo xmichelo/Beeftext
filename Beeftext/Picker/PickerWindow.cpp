@@ -136,7 +136,10 @@ PickerWindow::PickerWindow()
     qApp->installEventFilter(this);
     this->restoreGeometry(PreferencesManager::instance().comboPickerWindowGeometry());
     ui_.listViewResults->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    connect(ui_.editSearch, &QLineEdit::textChanged, this, &PickerWindow::onSearchTextChanged);
     connect(ui_.listViewResults, &QListView::customContextMenuRequested, this, &PickerWindow::onResultListRightClicked);
+    connect(ui_.listViewResults, &QListView::clicked, this, &PickerWindow::onItemClicked);
 }
 
 
@@ -326,7 +329,7 @@ QString PickerWindow::textForItemAtIndex(QModelIndex const &index) {
         return cancelled ? QString() : text;
     }
 
-    SpEmoji const emoji = (isCombo ? nullptr : index.data(constants::PointerRole).value<SpEmoji>());
+    SpEmoji const emoji = index.data(constants::PointerRole).value<SpEmoji>();
     if (!emoji) {
         globals::debugLog().addError("Picker window could not retrieve the selected emoji.");
         return QString();

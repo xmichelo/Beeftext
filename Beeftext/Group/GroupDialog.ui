@@ -103,85 +103,11 @@
     </layout>
    </item>
   </layout>
-  <action name="actionOk">
-   <property name="text">
-    <string>&amp;OK</string>
-   </property>
-  </action>
  </widget>
  <tabstops>
   <tabstop>buttonOk</tabstop>
   <tabstop>buttonCancel</tabstop>
  </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>actionOk</sender>
-   <signal>triggered()</signal>
-   <receiver>GroupDialog</receiver>
-   <slot>onActionOk()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>173</x>
-     <y>138</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonOk</sender>
-   <signal>clicked()</signal>
-   <receiver>actionOk</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>219</x>
-     <y>256</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonCancel</sender>
-   <signal>clicked()</signal>
-   <receiver>GroupDialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>251</x>
-     <y>251</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>149</x>
-     <y>136</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>editName</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>GroupDialog</receiver>
-   <slot>onNameChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>180</x>
-     <y>19</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>149</x>
-     <y>136</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
- <slots>
-  <slot>onActionOk()</slot>
-  <slot>onNameChanged()</slot>
- </slots>
+ <connections/>
 </ui>

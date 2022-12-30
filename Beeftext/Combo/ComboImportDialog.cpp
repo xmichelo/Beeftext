@@ -51,6 +51,15 @@ bool loadCombosFromCsvFile(QString const &filePath, ComboList &outResult) {
 ComboImportDialog::ComboImportDialog(QString const &filePath, SpGroup const &group, QWidget *parent)
     : QDialog(parent, xmilib::constants::kDefaultDialogFlags), ui_() {
     ui_.setupUi(this);
+
+    connect(ui_.buttonBrowse, &QPushButton::clicked, this, &ComboImportDialog::onBrowse);
+    connect(ui_.buttonCancel, &QPushButton::clicked, this, &ComboImportDialog::onCancel);
+    connect(ui_.buttonImport, &QPushButton::clicked, this, &ComboImportDialog::onImport);
+    connect(ui_.editPath, &QLineEdit::textChanged, this, &ComboImportDialog::onEditPathTextChanged);
+    connect(ui_.radioImportNewer, &QRadioButton::toggled, this, &ComboImportDialog::onConflictRadioToggled);
+    connect(ui_.radioOverwrite, &QRadioButton::toggled, this, &ComboImportDialog::onConflictRadioToggled);
+    connect(ui_.radioSkipConflicts, &QRadioButton::toggled, this, &ComboImportDialog::onConflictRadioToggled);
+
     ui_.labelSupportedFormats->setText(ui_.labelSupportedFormats->text()
         .arg(colorToHex(constants::blueBeeftextColor, false)));
     GroupList &groupList = ComboManager::instance().groupListRef();
@@ -198,7 +207,7 @@ void ComboImportDialog::performFinalImport(qint32 &outFailureCount) {
 //****************************************************************************************************************************************************
 //
 //****************************************************************************************************************************************************
-void ComboImportDialog::onActionImport() {
+void ComboImportDialog::onImport() {
     try {
         if (!this->computeTotalImportCount())
             return;
@@ -227,7 +236,7 @@ void ComboImportDialog::onActionImport() {
 //****************************************************************************************************************************************************
 //
 //****************************************************************************************************************************************************
-void ComboImportDialog::onActionCancel() {
+void ComboImportDialog::onCancel() {
     this->reject();
 }
 
@@ -235,7 +244,7 @@ void ComboImportDialog::onActionCancel() {
 //****************************************************************************************************************************************************
 // 
 //****************************************************************************************************************************************************
-void ComboImportDialog::onActionBrowse() {
+void ComboImportDialog::onBrowse() {
     PreferencesManager const &prefs = PreferencesManager::instance();
     QString const path = QFileDialog::getOpenFileName(this, tr("Select Combo File"), prefs.lastComboImportExportPath(), globals::jsonCsvFileDialogFilter());
     if (path.isEmpty())

@@ -46,6 +46,7 @@ protected: // member functions
     bool eventFilter(QObject *object, QEvent *event) override; ///< Event filter to override the default behavior of double-click in the table view
 
 private: // member functions
+    void setupActions(); ///< Setup the actions.
     void setupTable(); ///< Setup the combo table
     void setupKeyboardShortcuts(); ///< Setup the keyboard shortcuts
     void setupCombosMenu(); ///< Setup the 'Combos' menu
@@ -66,9 +67,9 @@ private slots:
     void onActionDuplicateCombo(); ///< Slot for the 'Duplicate Combo' action
     void onActionDeleteCombo(); ///< Slot for the 'Delete Combo' action
     void onActionEditCombo(); ///< Slot for the 'Edit Combo' action
-    void onActionCopySnippet() const; ///< Slot for the 'Copy Snippet' action
-    void onActionSelectAll() const; ///< Slot for the 'Select All' action
-    void onActionDeselectAll() const; ///< Slot for the 'Deselect All' action
+    void onActionCopySnippet(); ///< Slot for the 'Copy Snippet' action
+    void onActionSelectAll(); ///< Slot for the 'Select All' action
+    void onActionDeselectAll(); ///< Slot for the 'Deselect All' action
     void onActionEnableDisableCombo(); ///< Slot for the 'Enable/Disable' action
     void onActionExportCombo(); ///< Slot for the 'Export Combo' action
     void onActionExportAllCombos(); ///< Slot for the 'Export All Combos' action
@@ -83,6 +84,18 @@ private slots:
 
 private: // data members
     Ui::ComboTableWidget ui_; ///< The GUI for the frame
+    QAction *actionCopySnippet_ { nullptr }; ///< The 'Copy Snippet' action.
+    QAction *actionDeleteCombo_ { nullptr }; ///< The 'Delete Combo' action.
+    QAction *actionDeselectAll_ { nullptr }; ///< The 'Deselect All' action.
+    QAction *actionDuplicateCombo_ { nullptr }; ///< The 'Duplicate Combo' action.
+    QAction *actionEditCombo_ { nullptr }; ///< The 'Edit Combo' action.
+    QAction *actionEnableDisableCombo_ { nullptr }; ///< The 'Enable/Disable Combo' action.
+    QAction *actionNewCombo_ { nullptr }; ///< The 'New Combo' action.
+    QAction *actionSelectAll_ { nullptr }; ///< The 'Select All' action.
+    QAction *actionExportAllCombos_ { nullptr }; ///< The 'Export All Combos' action.
+    QAction *actionExportCombo_ { nullptr }; ///< The 'Export Combo' action.
+    QAction *actionImportCombos_ { nullptr }; ///< The 'Import Combo' action.
+
     ComboSortFilterProxyModel proxyModel_; ///< The proxy model for sorting/filtering the combo table
     QMenu *contextMenu_; ///< The context menu for the combo table
     GroupListWidget *groupListWidget_; ///< The group list widget associated with this combo table

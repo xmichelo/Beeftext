@@ -31,6 +31,10 @@ bool BackupRestoreDialog::run(QWidget *parent) {
 BackupRestoreDialog::BackupRestoreDialog(QWidget *parent)
     : QDialog(parent, xmilib::constants::kDefaultDialogFlags), ui_() {
     ui_.setupUi(this);
+
+    connect(ui_.buttonRestore, &QPushButton::clicked, this, &BackupRestoreDialog::onButtonRestore);
+    connect(ui_.buttonCancel, &QPushButton::clicked, this, &BackupRestoreDialog::reject);
+
     this->fillCombo();
 }
 

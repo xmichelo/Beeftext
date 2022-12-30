@@ -33,6 +33,11 @@ GroupDialog::GroupDialog(SpGroup const &group, QString const &title, QWidget *pa
     if (!group_)
         throw xmilib::Exception("%1(): combo is null.");
     ui_.setupUi(this);
+
+    connect(ui_.buttonOk, &QPushButton::clicked, this, &GroupDialog::onOK);
+    connect(ui_.buttonCancel, &QPushButton::clicked, this, &GroupDialog::reject);
+    connect(ui_.editName, &QLineEdit::textChanged, this, &GroupDialog::onNameChanged);
+
     ui_.editName->setText(group->name());
     ui_.editDescription->setPlainText(group->description());
     this->setWindowTitle(title);
@@ -43,7 +48,7 @@ GroupDialog::GroupDialog(SpGroup const &group, QString const &title, QWidget *pa
 //****************************************************************************************************************************************************
 // 
 //****************************************************************************************************************************************************
-void GroupDialog::onActionOk() {
+void GroupDialog::onOK() {
     if (!this->isInputValid())
         return;
     group_->setName(ui_.editName->text());
@@ -72,7 +77,5 @@ bool GroupDialog::isInputValid() const {
 // 
 //****************************************************************************************************************************************************
 void GroupDialog::updateGui() const {
-    bool const valid = this->isInputValid();
-    ui_.actionOk->setEnabled(valid);
-    ui_.buttonOk->setEnabled(valid);
+    ui_.buttonOk->setEnabled(this->isInputValid());
 }

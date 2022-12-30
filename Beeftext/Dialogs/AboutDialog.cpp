@@ -22,6 +22,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     : QDialog(parent, xmilib::constants::kDefaultDialogFlags)
     , ui_() {
     ui_.setupUi(this);
+    connect(ui_.buttonClose, &QPushButton::clicked, this, &AboutDialog::accept);
     this->completeText();
 }
 
@@ -49,4 +50,3 @@ void AboutDialog::changeEvent(QEvent *event) {
     }
     QDialog::changeEvent(event);
 }
-

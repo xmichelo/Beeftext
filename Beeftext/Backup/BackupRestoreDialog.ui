@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>182</width>
-    <height>78</height>
+    <height>80</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -79,41 +79,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonCancel</sender>
-   <signal>clicked()</signal>
-   <receiver>BackupRestoreDialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>238</x>
-     <y>56</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>142</x>
-     <y>38</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonRestore</sender>
-   <signal>clicked()</signal>
-   <receiver>BackupRestoreDialog</receiver>
-   <slot>onButtonRestore()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>157</x>
-     <y>56</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>142</x>
-     <y>38</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
- <slots>
-  <slot>onButtonRestore()</slot>
- </slots>
+ <connections/>
 </ui>

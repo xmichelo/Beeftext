@@ -32,7 +32,7 @@ public: // member functions
     GroupDialog &operator=(GroupDialog &&) = delete; ///< Disabled move assignment operator
 
 private slots:
-    void onActionOk(); ///< Slot for the OK action
+    void onOK(); ///< Slot for the OK action
     void onNameChanged() const; ///< Slot for the changing of the name
 
 private:  // member functions

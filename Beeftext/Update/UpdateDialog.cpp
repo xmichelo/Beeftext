@@ -40,8 +40,11 @@ UpdateDialog::UpdateDialog(SpLatestVersionInfo latestVersionInfo, QWidget *paren
     ui_.buttonInstall->setText(portableMode ? tr("&Download Page") : tr("&Install"));
     ui_.buttonCancel->setVisible(false);
 
-    // If you're AFK for days, we want to ensure we display only one notification windows, for the latest release, so:
-    connect(&UpdateManager::instance(), &UpdateManager::updateIsAvailable, this, &UpdateDialog::reject);
+    connect(ui_.buttonCancel, &QPushButton::clicked, this, &UpdateDialog::onCancel);
+    connect(ui_.buttonInstall, &QPushButton::clicked, this, &UpdateDialog::onInstall);
+    connect(ui_.buttonNotNow, &QPushButton::clicked, this, &UpdateDialog::onNotNow);
+    connect(ui_.buttonSkipThisVersion, &QPushButton::clicked, this, &UpdateDialog::onSkipThisVersion);
+    connect(&UpdateManager::instance(), &UpdateManager::updateIsAvailable, this, &UpdateDialog::reject); // If you're AFK for days, we want to ensure we display only one notification windows, for the latest release
 }
 
 

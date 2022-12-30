@@ -28,6 +28,14 @@ char const *kPropMoveToMenu("moveMenu"); ///< The matching menu property
 
 QString moveMenuTitle() { return QObject::tr("Move To", "Move entry in the Combo context menu"); }
 
+struct ActionMapping {
+    QAction **action { nullptr };
+    QString text;
+    QString tooltip;
+    QString shortcut;
+    void (ComboTableWidget::*slot)() { nullptr };
+}; ///< Structure for action mapping.
+
 
 }
 
@@ -38,11 +46,42 @@ QString moveMenuTitle() { return QObject::tr("Move To", "Move entry in the Combo
 ComboTableWidget::ComboTableWidget(QWidget *parent)
     : QWidget(parent), ui_(), contextMenu_(nullptr), groupListWidget_(nullptr) {
     ui_.setupUi(this);
+    this->setupActions();
+    connect(ui_.editSearch, &QLineEdit::textChanged, this, &ComboTableWidget::onSearchFilterChanged);
     this->setupTable();
     this->setupKeyboardShortcuts();
     this->setupCombosMenu();
     this->setupContextMenu();
     this->updateGui();
+}
+
+
+//****************************************************************************************************************************************************
+//
+//****************************************************************************************************************************************************
+void ComboTableWidget::setupActions() {
+
+    QList<::ActionMapping> const actionMappings = {
+        { &actionCopySnippet_, tr("&Copy Snippet"), tr("Copy Snippet"), tr("Ctrl+C"), &ComboTableWidget::onActionCopySnippet  },
+        { &actionDeleteCombo_, tr("&Delete"), tr("Delete Combo"), tr("Del"), &ComboTableWidget::onActionDeleteCombo  },
+        { &actionDeselectAll_, tr("&Deselect All"), tr("Deselect All"), tr("Ctrl+D"), &ComboTableWidget::onActionDeselectAll },
+        { &actionDuplicateCombo_, tr("&Duplicate"), tr("Duplicate Combo"), tr("Ctrl+U"), &ComboTableWidget::onActionDuplicateCombo },
+        { &actionEditCombo_, tr("&Edit"), tr("Edit Combo"), tr("Return"), &ComboTableWidget::onActionEditCombo },
+        { &actionEnableDisableCombo_, tr("&Enable"), tr("Enable Combo"), tr("Ctrl+E"), &ComboTableWidget::onActionEnableDisableCombo },
+        { &actionNewCombo_, tr("&New"), tr("New Combo"), tr("Ctrl+N"), &ComboTableWidget::onActionNewCombo },
+        { &actionSelectAll_, tr("Select &All"), tr("Select All"), tr("Ctrl+A"), &ComboTableWidget::onActionSelectAll },
+        { &actionExportAllCombos_, tr("Export A&ll"), tr("Export All Combos"), tr("Ctrl+Shift+O"), &ComboTableWidget::onActionExportAllCombos },
+        { &actionExportCombo_, tr("&Export"), tr("Export Selected Combo"), tr("Ctrl+O"), &ComboTableWidget::onActionExportCombo },
+        { &actionImportCombos_, tr("I&mport"), tr("Import Combos"), tr("Ctrl+I"), &ComboTableWidget::onActionImportCombos },
+    };
+
+    for (ActionMapping const& mapping: actionMappings) {
+        QAction *action = new QAction(mapping.text, this);
+        action->setToolTip(mapping.tooltip);
+        action->setShortcut(mapping.shortcut);
+        *mapping.action = action;
+        connect(action, &QAction::triggered, this, mapping.slot);
+    }
 }
 
 
@@ -68,23 +107,23 @@ void ComboTableWidget::runComboImportDialog(QString const &filePath) {
 //****************************************************************************************************************************************************
 QMenu *ComboTableWidget::menu(QWidget *parent) const {
     QMenu *menu = new QMenu(menuTitle(), parent);
-    menu->addAction(ui_.actionNewCombo);
-    menu->addAction(ui_.actionEditCombo);
-    menu->addAction(ui_.actionDuplicateCombo);
-    menu->addAction(ui_.actionDeleteCombo);
+    menu->addAction(actionNewCombo_);
+    menu->addAction(actionEditCombo_);
+    menu->addAction(actionDuplicateCombo_);
+    menu->addAction(actionDeleteCombo_);
     QMenu *moveToMenu = ComboManager::instance().groupListRef().createMenu(moveMenuTitle(), std::set<SpGroup>(), menu);
     menu->addMenu(moveToMenu);
     menu->addSeparator();
-    menu->addAction(ui_.actionCopySnippet);
+    menu->addAction(actionCopySnippet_);
     menu->addSeparator();
-    menu->addAction(ui_.actionEnableDisableCombo);
+    menu->addAction(actionEnableDisableCombo_);
     menu->addSeparator();
-    menu->addAction(ui_.actionSelectAll);
-    menu->addAction(ui_.actionDeselectAll);
+    menu->addAction(actionSelectAll_);
+    menu->addAction(actionDeselectAll_);
     menu->addSeparator();
-    menu->addAction(ui_.actionImportCombos);
-    menu->addAction(ui_.actionExportCombo);
-    menu->addAction(ui_.actionExportAllCombos);
+    menu->addAction(actionImportCombos_);
+    menu->addAction(actionExportCombo_);
+    menu->addAction(actionExportAllCombos_);
     menu->setProperty(kPropMoveToMenu, QVariant::fromValue(moveToMenu));
     connect(menu, &QMenu::aboutToShow, this, &ComboTableWidget::onContextMenuAboutToShow);
     connect(moveToMenu, &QMenu::triggered, this, &ComboTableWidget::onMoveToGroupMenuTriggered);
@@ -317,13 +356,13 @@ void ComboTableWidget::updateGui() const {
     bool const listIsEmpty = (ComboManager::instance().comboListRef().size() == 0);
     bool const hasOneSelected = (1 == selectedCount);
     bool const hasOneOrMoreSelected = (selectedCount > 0);
-    ui_.actionDuplicateCombo->setEnabled(hasOneSelected);
-    ui_.actionDeleteCombo->setEnabled(hasOneOrMoreSelected);
-    ui_.actionEditCombo->setEnabled(hasOneSelected);
-    ui_.actionCopySnippet->setEnabled(hasOneSelected);
-    ui_.actionEnableDisableCombo->setEnabled(hasOneSelected);
-    ui_.actionExportCombo->setEnabled(hasOneOrMoreSelected);
-    ui_.actionExportAllCombos->setEnabled(!listIsEmpty);
+    actionDuplicateCombo_->setEnabled(hasOneSelected);
+    actionDeleteCombo_->setEnabled(hasOneOrMoreSelected);
+    actionEditCombo_->setEnabled(hasOneSelected);
+    actionCopySnippet_->setEnabled(hasOneSelected);
+    actionEnableDisableCombo_->setEnabled(hasOneSelected);
+    actionExportCombo_->setEnabled(hasOneOrMoreSelected);
+    actionExportAllCombos_->setEnabled(!listIsEmpty);
     QString enableDisableText = tr("Ena&ble");
     QString enableDisableToolTip = tr("Enable combo");
     QString enableDisableIconText = tr("Enable the combo");
@@ -333,9 +372,9 @@ void ComboTableWidget::updateGui() const {
         enableDisableToolTip = tr("Disable combo");
         enableDisableIconText = tr("Disable the combo");
     }
-    ui_.actionEnableDisableCombo->setText(enableDisableText);
-    ui_.actionEnableDisableCombo->setToolTip(enableDisableToolTip);
-    ui_.actionEnableDisableCombo->setIconText(enableDisableIconText);
+    actionEnableDisableCombo_->setText(enableDisableText);
+    actionEnableDisableCombo_->setToolTip(enableDisableToolTip);
+    actionEnableDisableCombo_->setIconText(enableDisableIconText);
 }
 
 
@@ -432,7 +471,7 @@ void ComboTableWidget::onActionDeleteCombo() {
     if (count < 1)
         return;
     QString const question = count > 1 ? tr("Are you sure you want to delete the selected combos?")
-                                       : tr("Are you sure you want to delete the selected combo?");
+        : tr("Are you sure you want to delete the selected combo?");
     if (QMessageBox::Yes != QMessageBox::question(nullptr, tr("Delete Combo?"), question, QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
         return;
 
@@ -477,7 +516,7 @@ void ComboTableWidget::onActionEditCombo() {
 //****************************************************************************************************************************************************
 // 
 //****************************************************************************************************************************************************
-void ComboTableWidget::onActionCopySnippet() const {
+void ComboTableWidget::onActionCopySnippet() {
     SpCombo const combo = this->getSelectedCombo();
     if (!combo)
         return;
@@ -493,7 +532,7 @@ void ComboTableWidget::onActionCopySnippet() const {
 //****************************************************************************************************************************************************
 // 
 //****************************************************************************************************************************************************
-void ComboTableWidget::onActionSelectAll() const {
+void ComboTableWidget::onActionSelectAll() {
     ui_.tableComboList->selectAll();
 }
 
@@ -501,7 +540,7 @@ void ComboTableWidget::onActionSelectAll() const {
 //****************************************************************************************************************************************************
 // 
 //****************************************************************************************************************************************************
-void ComboTableWidget::onActionDeselectAll() const {
+void ComboTableWidget::onActionDeselectAll() {
     ui_.tableComboList->clearSelection();
 }
 
@@ -557,7 +596,7 @@ void ComboTableWidget::onActionExportCombo() {
     // if file extension is .csv we save as CSV, otherwise we export in JSON format
     QString errorMsg;
     bool const result = (0 == QFileInfo(path).suffix().compare("csv", Qt::CaseInsensitive)) ?
-                        exportList.exportToCsvFile(path, &errorMsg) : exportList.save(path, false, &errorMsg);
+        exportList.exportToCsvFile(path, &errorMsg) : exportList.save(path, false, &errorMsg);
     if (!result) {
         globals::debugLog().addError(errorMsg);
         QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
@@ -577,7 +616,7 @@ void ComboTableWidget::onActionExportAllCombos() {
     QString errMsg;
     ComboList const &comboList = ComboManager::instance().comboListRef();
     bool const result = (0 == QFileInfo(path).suffix().compare("csv", Qt::CaseInsensitive)) ?
-                        comboList.exportToCsvFile(path, &errMsg) : comboList.save(path, false, &errMsg);
+        comboList.exportToCsvFile(path, &errMsg) : comboList.save(path, false, &errMsg);
     if (!result) {
         globals::debugLog().addError(errMsg);
         QMessageBox::critical(this, tr("Error"), tr("Could not save the combo list file."));
