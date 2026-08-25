@@ -2,7 +2,7 @@
 
 ![Abbrevio](https://raw.githubusercontent.com/wiki/xmichelo/Abbrevio/assets/images/Screenshot.png)
 
-Abbrevio is a text snippet management tool for Windows, inspired by [TextExpander].
+Abbrevio is a text snippet management tool for Windows, inspired by [BeefText].
 
 > [!important]  
 > Abbrevio is now in maintenance mode. No new feature will be added, but fixes for major issues will be provided.
