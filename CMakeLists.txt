@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(Beeftext)
+project(Abbrevio)
 
 add_subdirectory(Submodules/XMiLib/XMiLib)
-add_subdirectory(Beeftext)
+add_subdirectory(Abbrevio)

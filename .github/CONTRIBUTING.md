@@ -1,10 +1,10 @@
-# Contributing to Beeftext
+# Contributing to Abbrevio
 
 ## Reporting a bug
 
-- **Make sure you have the latest version of the application**. You can use the automatic update system built-into the application or check the [Beeftext releases page](https://github.com/xmichelo/Beeftext/releases).
+- **Make sure you have the latest version of the application**. You can use the automatic update system built-into the application or check the [Abbrevio releases page](https://github.com/xmichelo/Abbrevio/releases).
 
-- **Make sure the issue has not yet been reported** in the [issue tracker](https://github.com/xmichelo/Beeftext/issues).
+- **Make sure the issue has not yet been reported** in the [issue tracker](https://github.com/xmichelo/Abbrevio/issues).
 
 - **Submit your issue**. Please follow the following rules:
   - Use English.
@@ -21,8 +21,8 @@
 
 ## Adding new feature, and modifying the application behavior
 
-If you plan to add a feature or make a major modification to the behavior of Beeftext, please submit a **feature request** issue in the issue tracker, indicating that you are voluteering for implementation, and wait for approval by the developer before creating a pull request. 
+If you plan to add a feature or make a major modification to the behavior of Abbrevio, please submit a **feature request** issue in the issue tracker, indicating that you are voluteering for implementation, and wait for approval by the developer before creating a pull request. 
 
-Failure to comply to this rule will likely result in the closing of the pull request. Note that Beeftext uses an open source license that allows you to publish your own change in a fork, provided you comply with the [program's license](LICENSE).
+Failure to comply to this rule will likely result in the closing of the pull request. Note that Abbrevio uses an open source license that allows you to publish your own change in a fork, provided you comply with the [program's license](LICENSE).
 
 

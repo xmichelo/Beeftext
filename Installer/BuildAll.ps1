@@ -1,4 +1,4 @@
-﻿# This script builds both the installer-based and Portable Edition of Beeftext
+﻿# This script builds both the installer-based and Portable Edition of Abbrevio
 #
 # Author: Xavier Michelon
 #
@@ -19,7 +19,7 @@ $portableEditionScriptPath = (Join-Path $PSScriptRoot "PortableEdition\BuildPort
 #***********************************************************************************************************************
 function compileNsisInstaller
 {
-    "Generating Beeftext installer"
+    "Generating Abbrevio installer"
     $buildLog = Invoke-Expression "& `"$nsisPath`" `"$installerPath`""
     if (0 -ne $LASTEXITCODE)
     {

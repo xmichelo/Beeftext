@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/MainWindow">
+        <file>Resources/StyleDark.qss</file>
+        <file>Resources/StyleLight.qss</file>
+        <file>Resources/ArrowUp.png</file>
+        <file>Resources/StyleCommon.qss</file>
+        <file>Resources/AbbrevioLogo128.png</file>
+        <file>Resources/AbbrevioIcon.ico</file>
+        <file>Resources/Notification.wav</file>
+        <file>Resources/ArrowDown.png</file>
+        <file>Resources/AbbrevioIconGrayscale.ico</file>
+        <file>Resources/StyleNoCustom.qss</file>
+    </qresource>
+</RCC>

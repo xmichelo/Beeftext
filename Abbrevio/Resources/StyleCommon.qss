@@ -1,0 +1,272 @@
+* {
+outline: none; /* Disable the focus dotted rectangle nearly everywhere */
+}
+
+
+
+/*****************************
+* QWidget
+*****************************/
+QWidget {
+   font-family: "Segoe UI";
+   font-size: 10pt;
+   font-weight: 500;
+}
+
+
+/*****************************
+* QPushButton
+*****************************/
+QPushButton {
+   min-width: 70px;
+   padding: 3px 5px 4px 5px;
+   border-radius: 3px;
+   border: none;
+   font-weight: 600;
+}
+
+QPushButton::menu-indicator {
+   width: 0px;
+   height: 0px;
+   padding: 0px;
+   margin: 0px;
+}
+
+/*****************************
+* All Edits
+*****************************/	
+
+QPlainTextEdit {
+   font-family: Consolas;
+   font-weight: normal;
+}
+
+
+QLineEdit, QPlaintTextEdit {
+   border-radius: 3px;
+   padding: 2px;
+}
+
+
+/*****************************
+* QComboBox
+*****************************/
+QComboBox {
+   padding: 3px 5px 3px 5px;
+   border-radius: 3px;
+}
+
+QComboBox::drop-down {
+   width: 24px;
+   border-radius: 3px;
+}
+
+QFontComboBox { font-family: inherit; }
+
+/*****************************
+* QSpinBox
+*****************************/
+
+QSpinBox {
+   padding: 3px 5px 3px 5px;
+  border-radius: 3px;
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+   width: 19px;
+   padding:0;
+   border-radius: 3px;
+}
+
+QSpinBox::up-button {
+  padding-top: 1px;
+  margin-bottom:-1px;
+}
+
+
+
+/*****************************
+* QTableView
+*****************************/
+QHeaderView:section { 
+   padding: 5px;
+   font-weight: bold;
+}
+
+QTableView::item {
+   padding-right: 10px;
+}
+
+/*****************************
+* QListView
+*****************************/
+QListView::item {
+   padding-right: 10px;
+   padding: 3px 5px 3px 5px;
+}
+
+/*****************************
+* QScrollbar
+*****************************/
+
+QScrollBar {
+   margin: 0;
+}
+
+QScrollBar:vertical {
+   width: 13px; 
+}
+
+QScrollBar:horizontal {
+   height: 13px;  
+}
+
+
+QScrollBar::handle {
+   border-radius: 4px;
+   margin: 1px;
+}
+
+
+QScrollBar::add-line:vertical {
+   height: 0px;
+   subcontrol-position: bottom;
+   subcontrol-origin: margin;
+ }
+
+QScrollBar::sub-line:vertical {
+   height: 0px;
+   subcontrol-position: top;
+   subcontrol-origin: margin;
+}
+
+QScrollBar::add-page, QScrollBar::sub-page {
+   background: transparent;
+}
+
+QScrollBar::add-line:horizontal {
+   width: 0px;
+   subcontrol-position: left;
+   subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+   width: 0px;
+   subcontrol-position: right;
+   subcontrol-origin: margin;
+}
+
+/*****************************
+* QGroupbox
+*****************************/
+QGroupBox {
+   margin-top: 10px; 
+   font-weight: 600;
+   padding: 6px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left; 
+    padding: 0px 3px;
+    left: 10px
+}
+
+/*****************************
+* QTabWidget
+*****************************/
+QTabWidget::tab-bar {
+  subcontrol-position: top left;
+
+}
+
+QTabBar::tab {
+  min-width: 100px;
+  padding: 5px;
+  margin-top: 3px;
+  margin-bottom: -1px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-weight: 600;
+}
+
+QTabBar::tab:selected {
+   background-color: #fff;
+   margin: 0px -1px -1px -1px;
+}
+
+QTabBar::tab:selected:first {
+   margin-left: 0;
+}
+
+QTabBar::tab:selected:last {
+   margin-right: 0;
+}
+
+QTabBar::tab:!selected:!first {
+  margin-left: -1px
+}
+
+/*****************************
+* Menu
+*****************************/
+QMenuBar {
+   font-weight: 600;
+}
+
+QMenu::item {
+   padding: 4px 20px 4px 10px;
+}
+
+QMenu::item:disabled:selected {
+   background: none;
+}
+
+QMenu::item:default {
+   font-weight: 600;
+}
+
+QMenu::right-arrow {
+   width: 6px;
+   height: 6px;
+   top: 2px;
+   right: 2px;
+}
+
+QMenu::left-arrow {
+   width: 6px;
+   height: 6px;
+   top: 2px;
+   left: 2px;
+}
+
+QMenu::separator {
+   height: 1px;
+   margin: 5px 2px 5px 2px;
+
+}
+
+
+/*****************************
+* QProgressBar
+*****************************/
+QProgressBar {
+   text-align: center;
+}
+
+
+/*****************************
+* QProgressBar
+*****************************/
+#frameTopLevel {
+   border-radius: 10px;
+}
+
+
+/*****************************
+* ShortcutDialog
+*****************************/
+#ShortcutDialog #labelError {
+    color: #258fc0;
+    font-weight: bold;
+}

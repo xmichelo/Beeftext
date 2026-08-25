@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>716</width>
+    <height>481</height>
+   </rect>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="ComboFrame" name="frameCombos">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>716</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionEnableDisableAbbrevio"/>
+    <addaction name="separator"/>
+    <addaction name="actionShowPreferencesDialog"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionGettingStarted"/>
+    <addaction name="actionVisitAbbrevioWiki"/>
+    <addaction name="actionShowReleaseNotes"/>
+    <addaction name="actionReportBug"/>
+    <addaction name="separator"/>
+    <addaction name="actionShowAboutDialog"/>
+   </widget>
+   <widget class="QMenu" name="menu_Advanced">
+    <property name="title">
+     <string>&amp;Advanced</string>
+    </property>
+    <addaction name="actionShowLogWindow"/>
+    <addaction name="actionOpenLogFile"/>
+    <addaction name="separator"/>
+    <addaction name="actionBackup"/>
+    <addaction name="actionRestore"/>
+    <addaction name="separator"/>
+    <addaction name="actionGenerateCheatSheet"/>
+    <addaction name="separator"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menu_Advanced"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <action name="actionExit">
+   <property name="text">
+    <string>E&amp;xit Abbrevio</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Exit &lt;insertAppNameHere&gt;</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit Abbrevio</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionVisitAbbrevioWiki">
+   <property name="text">
+    <string>&amp;Abbrevio Wiki</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+F1</string>
+   </property>
+  </action>
+  <action name="actionShowAboutDialog">
+   <property name="text">
+    <string>&amp;About Abbrevio</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="actionEnableDisableAbbrevio">
+   <property name="text">
+    <string notr="true">#EnableDisableAbbrevio#</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">#EnableDisableAbbrevio#</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">#EnableDisableAbbrevio#</string>
+   </property>
+  </action>
+  <action name="actionShowPreferencesDialog">
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+,</string>
+   </property>
+  </action>
+  <action name="actionOpenLogFile">
+   <property name="text">
+    <string>Open &amp;Log File</string>
+   </property>
+   <property name="toolTip">
+    <string>Open the log file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+L</string>
+   </property>
+  </action>
+  <action name="actionGettingStarted">
+   <property name="text">
+    <string>&amp;Getting Started</string>
+   </property>
+   <property name="toolTip">
+    <string>Getting Started</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F1</string>
+   </property>
+  </action>
+  <action name="actionShowReleaseNotes">
+   <property name="text">
+    <string>&amp;Release Notes</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F1</string>
+   </property>
+  </action>
+  <action name="actionBackup">
+   <property name="text">
+    <string>&amp;Back Up</string>
+   </property>
+   <property name="toolTip">
+    <string>Back up the combo list.</string>
+   </property>
+  </action>
+  <action name="actionRestore">
+   <property name="text">
+    <string>&amp;Restore</string>
+   </property>
+   <property name="toolTip">
+    <string>Restore the combo list from a backup.</string>
+   </property>
+  </action>
+  <action name="actionReportBug">
+   <property name="text">
+    <string>Report &amp;Bug</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+F1</string>
+   </property>
+  </action>
+  <action name="actionGenerateCheatSheet">
+   <property name="text">
+    <string>&amp;Generate Cheat Sheet</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate a cheat sheet that can be imported into a spreadsheet application, formatted and printed.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Shift+C</string>
+   </property>
+  </action>
+  <action name="action_Show_Log_Window">
+   <property name="text">
+    <string>Show Log &amp;Window</string>
+   </property>
+  </action>
+  <action name="actionShowLogWindow">
+   <property name="text">
+    <string>Show Log &amp;Window</string>
+   </property>
+   <property name="toolTip">
+    <string>Show the log window</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Shift+L</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ComboFrame</class>
+   <extends>QFrame</extends>
+   <header>Combo/ComboFrame.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="Abbrevio.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionExit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEnableDisableAbbrevio</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionEnableDisableAbbrevio()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowAboutDialog</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowAboutDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowPreferencesDialog</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowPreferencesDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpenLogFile</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionOpenLogFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionBackup</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionBackup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRestore</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionRestore()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionGenerateCheatSheet</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionGenerateCheatSheet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowLogWindow</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionShowLogWindow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>240</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onActionExit()</slot>
+  <slot>onActionShowMainWindow()</slot>
+  <slot>onActionEnableDisableAbbrevio()</slot>
+  <slot>onActionShowAboutDialog()</slot>
+  <slot>onActionShowPreferencesDialog()</slot>
+  <slot>onActionOpenLogFile()</slot>
+  <slot>onActionBackup()</slot>
+  <slot>onActionRestore()</slot>
+  <slot>onActionGenerateCheatSheet()</slot>
+  <slot>onActionShowLogWindow()</slot>
+ </slots>
+</ui>

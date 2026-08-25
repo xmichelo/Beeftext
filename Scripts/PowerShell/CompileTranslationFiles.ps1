@@ -9,7 +9,7 @@
 param([String]$dstDir)
 
 $ErrorActionPreference = "Stop"
-. (Join-Path $PSScriptRoot "Beeftext.ps1")
+. (Join-Path $PSScriptRoot "Abbrevio.ps1")
 
 "Performing requirement checks"
 $qtDir = checkQtInstallation
@@ -23,8 +23,8 @@ New-Item -ItemType Directory -Force -Path $frDir | Out-Null
 "Compiling XMiLib French translation file"
 compileTranslationFiles (absolutePath $solutionDir "Submodules\XMiLib\XMiLib\Translations\xmilib_fr_FR.ts") $frDir
 
-"Compiling Beeftext French translation file"
-compileTranslationFiles (absolutePath $solutionDir "Beeftext\Translations\beeftext_fr_FR.ts") $frDir
+"Compiling Abbrevio French translation file"
+compileTranslationFiles (absolutePath $solutionDir "Abbrevio\Translations\abbrevio_fr_FR.ts") $frDir
 
 "Copying Qt French translation"
 Copy-Item -Path (absolutePath $qtDir "translations\qtbase_fr.qm") -Destination (absolutePath $frDir "qtbase_fr_FR.qm")

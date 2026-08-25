@@ -1,55 +1,55 @@
-# Beeftext
+# Abbrevio
 
-![Beeftext](https://raw.githubusercontent.com/wiki/xmichelo/Beeftext/assets/images/Screenshot.png)
+![Abbrevio](https://raw.githubusercontent.com/wiki/xmichelo/Abbrevio/assets/images/Screenshot.png)
 
-Beeftext is a text snippet management tool for Windows, inspired by [TextExpander].
+Abbrevio is a text snippet management tool for Windows, inspired by [TextExpander].
 
 > [!important]  
-> Beeftext is now in maintenance mode. No new feature will be added, but fixes for major issues will be provided.
+> Abbrevio is now in maintenance mode. No new feature will be added, but fixes for major issues will be provided.
 
 TextExpander is a great program, packed with features. To keep the company profitable, 
 [Smile] had to switch to a subscription-based model in 2016. And for people who only need the
 basic features of TextExpander, the monthly price is way too high.
 
-Beeftext aims to be the best possible alternative to TextExpander. Beeftext is an open-source project 
+Abbrevio aims to be the best possible alternative to TextExpander. Abbrevio is an open-source project 
 written in C++ using the [Qt] framework.
 
 ## Contributors
 
 The project is developed and managed by [Xavier Michelon]. The project is not looking for contributors and all pull requests will be rejected.
 
-Contributors for translations are listed in the [dedicated wiki page](https://github.com/xmichelo/Beeftext/wiki/User-provided-translations).
+Contributors for translations are listed in the [dedicated wiki page](https://github.com/xmichelo/Abbrevio/wiki/User-provided-translations).
 
-The [beeftext.org] website uses a template provided by [HTML5 UP].
+The [abbrevio.org] website uses a template provided by [HTML5 UP].
 
 ## License
 
 This project is licensed under the [MIT License].
 
-Beeftext uses the [Qt] framework under the [GNU Lesser General Public License v3].
+Abbrevio uses the [Qt] framework under the [GNU Lesser General Public License v3].
 
-Beeftext uses the [OpenSSL] library under [OpenSSL and SSLeay licenses].
+Abbrevio uses the [OpenSSL] library under [OpenSSL and SSLeay licenses].
 
-Beeftext uses the [emojilib](https://github.com/muan/emojilib) library under the [MIT License].
+Abbrevio uses the [emojilib](https://github.com/muan/emojilib) library under the [MIT License].
 
 ## Documentation
 ### End User
 
-The end user documentation is available as a [wiki](https://github.com/xmichelo/Beeftext/wiki) on the GitHub project page.
+The end user documentation is available as a [wiki](https://github.com/xmichelo/Abbrevio/wiki) on the GitHub project page.
 
 ### Developer
 
 Developer documentation can be extracted using the [Doxygen] documentation tool.
 
-## Building Beeftext
+## Building Abbrevio
 
-In order to build Beeftext from sources you will need:
+In order to build Abbrevio from sources you will need:
 
-- The [Beeftext] source code. The git repository includes the [XMiLib] library as a submodule.
+- The [Abbrevio] source code. The git repository includes the [XMiLib] library as a submodule.
 - [Visual Studio 2022]. The Community Edition is available for free.
-- The [Qt] framework. Beeftext is generally built using the latest version of the library. Beeftext uses the 64-bit version compiled for the most recent version of Visual Studio.
+- The [Qt] framework. Abbrevio is generally built using the latest version of the library. Abbrevio uses the 64-bit version compiled for the most recent version of Visual Studio.
 - The [Qt Visual Studio Tools]. This add-on can be installed from the `Extensions and Updates` tool built into Visual Studio.
-- If you plan to generate the installer for Beeftext, you will also need [NSIS].
+- If you plan to generate the installer for Abbrevio, you will also need [NSIS].
 
 Detailed build instructions are not available at the moment.
 
@@ -57,14 +57,14 @@ Detailed build instructions are not available at the moment.
 [Smile]: https://smilesoftware.com/
 [Qt]: https://www.qt.io/developers/
 [Xavier Michelon]: https://michelon.ch
-[beeftext.org]: https://beeftext.org
+[abbrevio.org]: https://abbrevio.org
 [HTML5 UP]: https://html5up.net/
 [MIT License]: https://opensource.org/licenses/MIT
 [GNU Lesser General Public License v3]: https://www.gnu.org/licenses/lgpl-3.0.txt
 [OpenSSL]: https://www.openssl.org
 [OpenSSL and SSLeay licenses]:https://www.openssl.org/source/license.html
 [Doxygen]: http://www.stack.nl/~dimitri/doxygen/
-[Beeftext]: https://github.com/xmichelo/Beeftext
+[Abbrevio]: https://github.com/xmichelo/Abbrevio
 [Visual Studio 2022]: https://www.visualstudio.com/vs/community/
 [Qt Visual Studio Tools]: https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022
 [XMiLib]: https://github.com/xmichelo/XMiLib

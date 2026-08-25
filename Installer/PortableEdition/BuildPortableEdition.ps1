@@ -1,4 +1,4 @@
-﻿# This script builds the portable edition of Beeftext
+﻿# This script builds the portable edition of Abbrevio
 #
 # Author: Xavier Michelon
 #
@@ -6,18 +6,18 @@
 # Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 
 $ErrorActionPreference = "Stop"
-. (Join-Path $PSScriptRoot "..\..\Scripts\PowerShell\Beeftext.ps1")
+. (Join-Path $PSScriptRoot "..\..\Scripts\PowerShell\Abbrevio.ps1")
 
 #***********************************************************************************************************************
 # Variable definitions
 #***********************************************************************************************************************
-$major, $minor = getBeeftextVersion
+$major, $minor = getAbbrevioVersion
 $buildFolder = absolutePath $solutionDir "Installer\_build"
-$dstDir = absolutePath $buildFolder "BeeftextPortableEdition"
-$dstZipFilePath = (absolutePath $buildFolder "Beeftext-$major.$minor-PortableEdition.zip")
-$solutionPath = absolutePath $solutionDir "Beeftext.sln"
+$dstDir = absolutePath $buildFolder "AbbrevioPortableEdition"
+$dstZipFilePath = (absolutePath $buildFolder "Abbrevio-$major.$minor-PortableEdition.zip")
+$solutionPath = absolutePath $solutionDir "Abbrevio.sln"
 $exeDir = absolutePath $solutionDir "_build\x64\Release"
-$exePath = absolutePath $exeDir "Beeftext.exe"
+$exePath = absolutePath $exeDir "Abbrevio.exe"
 $srcTransDir = absolutePath $exeDir "translations"
 $dstTransDir = absolutePath $dstDir "translations"
 $emojiDir = absolutePath $dstDir "emojis"
@@ -27,13 +27,13 @@ $beaconFileName = "Portable.bin"
 #***********************************************************************************************************************
 # The actual script
 #***********************************************************************************************************************
-function buildBeeftextPortableEdition
+function buildAbbrevioPortableEdition
 {
     "Cleaning old build files"
     if (Test-Path -PathType Container $dstDir) { Remove-Item -Path $dstDir -Recurse -Force }
     if (Test-Path -PathType Leaf $dstZipFilePath) { Remove-Item -Path $dstZipFilePath -Force }
 
-    "Compiling Beeftext"
+    "Compiling Abbrevio"
     compileVisualStudioSolution $solutionPath
 
     "Creating destination folder"
@@ -73,4 +73,4 @@ function buildBeeftextPortableEdition
     Remove-Item -Path $dstDir -Recurse -Force
 }
 
-buildBeeftextPortableEdition
+buildAbbrevioPortableEdition

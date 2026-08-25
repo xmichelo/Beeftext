@@ -1,0 +1,292 @@
+/*****************************
+* QWidget
+*****************************/
+QWidget {
+    color: #cccccc;
+    background-color: #373737;
+}
+
+
+QWidget:disabled {
+    color: #555555;
+}
+
+
+/*****************************
+* QPushButton
+*****************************/
+QPushButton {
+   background-color: #258fc0;
+   color: #eeeeee;
+}
+
+QPushButton:hover {
+   background-color: #2e9fd1;   
+}
+
+QPushButton:pressed {
+   background-color: #3cb3e7;
+}
+
+QPushButton:disabled {
+   background-color: #cccccc;
+   color: #888888;
+}
+
+QPushButton:focus {
+   background-color: #006897;
+}  
+
+QPushButton:focus:hover {
+   background-color: #2a79a9;
+} 
+
+QPushButton:focus:pressed {
+   background-color: #3783b4;
+} 
+
+/*****************************
+* All Edits
+*****************************/   
+QLineEdit, QPlainTextEdit, QTextEdit {
+   background-color: #606060;
+   border: none;
+   selection-color: #eeeeee;
+   selection-background-color: #258fc0; 
+   min-height: 18px;
+}
+
+
+QLineEdit#editSearch[text=""] {
+   color:#888888 ; /* Color for the placeholder text */
+}
+
+
+QAbstractScrollArea {
+background-color: #555555;
+}
+
+/*****************************
+* QComboBox
+*****************************/
+QComboBox {
+   background-color: #606060;
+   border: none;
+}
+
+QComboBox::drop-down {
+   background-color: #555555;
+   border: none;
+} 
+
+QComboBox QAbstractItemView {
+   border: none;
+   background-color: #606060;
+   selection-color: #eeeeee;
+   selection-background-color: #258fc0;
+}
+
+QComboBox::down-arrow {
+   image: url(:/MainWindow/Resources/ArrowDown.png);
+}
+
+
+/*****************************
+* QSpinBox
+*****************************/
+
+QSpinBox {
+ background-color: #606060;
+ border: none;
+ selection-color: #eeeeee;
+ selection-background-color: #258fc0;
+ min-height: 30px;
+}
+
+QSpinBox::down-arrow {
+image: url(:/MainWindow/Resources/ArrowDown.png);
+}
+
+QSpinBox::up-arrow {
+image: url(:/MainWindow/Resources/ArrowUp.png);
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+   background-color: #555555;
+   border: none;
+}
+
+QSpinBox::up-button {
+  border-bottom: 1px solid #606060;
+}
+
+/*****************************
+* QTableView
+*****************************/
+QTableView {
+   border: none;
+   background-color: #212121;
+
+}
+QHeaderView:section { 
+   background: #606060; 
+   border: none;
+}
+
+QHeaderView:section:!last {
+   border-right: 1px solid #212121;
+}
+
+QTableView::item {
+   border: 0px; /* required in order for the padding to work. Don't ask why */
+   /* note:  color property is set in the table view's code */
+}
+
+QTableView::item:selected {
+   background-color: #258fc0;
+   color: #eeeeee;
+}
+
+QTableView::item:selected {
+   background-color: #258fc0;
+   color: #eeeeee;
+}
+
+
+/*****************************
+* QListView
+*****************************/
+QListView {
+   background-color: #212121;
+   border: none;
+}
+
+
+QListView::item {
+   border: 0px; /* required in order for the padding to work. Don't ask why */
+   /* note:  color property is set in the list view's code */
+}
+
+QListView::item:selected {
+   background-color: #258fc0;
+   color: #eeeeee;
+}
+
+/*****************************
+* QScrollbar
+*****************************/
+
+QScrollBar {
+   border: none;
+   background: #606060;
+}
+
+QScrollBar::handle {
+   background-color: #c6c6c6;
+}
+
+/*****************************
+* QGroupbox
+*****************************/
+QGroupBox {
+   background-color: transparent;
+   border: 1px solid #ccc;
+   border-radius: 3px;
+}
+
+QGroupBox::title {
+    background-color: #373737;
+}
+
+/*****************************
+* QTabWidget
+*****************************/
+QTabWidget:pane {
+   border: 1px solid #c6c6c6;
+} 
+
+QTabBar::tab {
+  border: 1px solid #c6c6c6;
+}
+
+QTabBar::tab:selected {
+   background-color: #606060;
+}
+
+/*****************************
+* Menu
+*****************************/
+QMenuBar {
+   border:none;
+   background-color: #606060;
+}
+
+QMenuBar::item:selected {
+   border: none;
+   background-color: #258fc0;
+   color: #eeeeee;
+}
+
+QMenu {
+   border: 1px solid #606060;
+}
+
+
+QMenu::item:default {
+   font-weight: 800;
+}
+
+QMenu::item:selected {
+   border: none;
+   background-color: #258fc0;
+   color: #eeeeee;
+}
+
+QMenu::item:disabled {
+   color: #555555;
+}
+
+QMenu::item:disabled:selected {
+   background: none;
+}
+
+QMenu::separator {
+   background: #606060;
+
+}
+
+/*****************************
+* QProgressBar
+*****************************/
+QProgressBar {
+   border: 1px solid #cccccc;
+   color: #cccccc;
+   background-color: #dddddd;   
+}
+
+QProgressBar::chunk {
+  background-color: #258fc0;
+}
+
+/*****************************
+* ComboPickerWindow
+*****************************/
+#frameTopLevel {
+   border: none;
+   background-color: #373737;
+}
+
+
+#editSearch {
+   border: none;
+}
+
+#labelLogo {
+   background-color: transparent;
+}
+
+#listViewResults
+{
+   border: none;
+   text: #000000;
+}

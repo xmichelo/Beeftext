@@ -1,9 +1,9 @@
-# This files contains the NSIS script for building the installer for the Beeftext application
+# This files contains the NSIS script for building the installer for the Abbrevio application
 # Xavier Michelon
 # 2017-11-12
 
 # This installer relies on the following NSIS plugins (copies of the plugins are in the Resources\NsisPlugins subfolder)
-# - ShellExecAsUser ( https://nsis.sourceforge.io/ShellExecAsUser_plug-in ): Runs Beeftext as standard user at the end of the installer
+# - ShellExecAsUser ( https://nsis.sourceforge.io/ShellExecAsUser_plug-in ): Runs Abbrevio as standard user at the end of the installer
 # - NsProcess (https://nsis.sourceforge.io/NsProcess_plugin): Find and kill running instances of the application
 
 
@@ -14,8 +14,8 @@
 !include WinMessages.nsh # windows messages (used for finding and killing running instance)
 
 #global defines ( basically compile time constants)
-!define APP_FANCY_NAME "Beeftext"
-!define APP_NAME "Beeftext"
+!define APP_FANCY_NAME "Abbrevio"
+!define APP_NAME "Abbrevio"
 !define EXE_SRC_DIR ..\_build\x64\Release
 !define UNINSTALLER_FILE_NAME Uninstall.exe
 !define REGISTRY_UNINSTALLER_FOLDER Software\Microsoft\Windows\CurrentVersion\Uninstall
@@ -25,9 +25,9 @@
 !define VS_DEVENV_PATH "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.com"
 !define LICENSE_FILE_NAME "LICENSE"
 !define LICENSE_FILE_PATH "..\${LICENSE_FILE_NAME}"
-!define WEBSITE "https://beeftext.org"
+!define WEBSITE "https://abbrevio.org"
 !define AUTHOR "Xavier Michelon"
-!define COMPANY "beeftext.org"
+!define COMPANY "abbrevio.org"
 !define VERSION_MAJOR 16
 !define VERSION_MINOR 0
 !define APP_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}"
@@ -44,7 +44,7 @@
 !define MUI_HEADERIMAGE_UNBITMAP ${TOP_IMAGE_PATH}
 #!define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_FINISHPAGE_RUN
-!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchBeeftext"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchAbbrevio"
 #!define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Build the solution file and stop if the result is not 0
@@ -146,9 +146,9 @@ FunctionEnd
 
 
 #########################################################################
-# Launch Beeftext at the end of the installer, as the standard user
+# Launch Abbrevio at the end of the installer, as the standard user
 #########################################################################
-Function LaunchBeeftext
+Function LaunchAbbrevio
 ShellExecAsUser::ShellExecAsUser "open" '"$INSTDIR\${APP_NAME}.exe"'
 FunctionEnd
 
@@ -192,7 +192,7 @@ file "$%QTDIR%\plugins\tls\qcertonlybackend.dll"
 file "$%QTDIR%\plugins\tls\qopensslbackend.dll"
 file "$%QTDIR%\plugins\tls\qschannelbackend.dll"
 setOutPath $INSTDIR\translations\fr_FR
-file "${EXE_SRC_DIR}\translations\fr_FR\beeftext_fr_FR.qm"
+file "${EXE_SRC_DIR}\translations\fr_FR\abbrevio_fr_FR.qm"
 file "${EXE_SRC_DIR}\translations\fr_FR\qtbase_fr_FR.qm"
 file "${EXE_SRC_DIR}\translations\fr_FR\xmilib_fr_FR.qm"
 setOutPath $INSTDIR\emojis
