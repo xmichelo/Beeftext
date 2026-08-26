@@ -309,6 +309,7 @@ ECaseSensitivity PreferencesManager::Cache::readDefaultCaseSensitivityFromPrefer
     switch (sensitivity) {
     case ECaseSensitivity::CaseSensitive:
     case ECaseSensitivity::CaseInsensitive:
+    case ECaseSensitivity::CaseInsensitiveMatchCase:
         return sensitivity;
     case ECaseSensitivity::Count:
     case ECaseSensitivity::Default:

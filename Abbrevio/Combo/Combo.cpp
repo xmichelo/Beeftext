@@ -377,8 +377,9 @@ bool Combo::isUsable() const {
 bool Combo::matchesForInput(QString const &input) const {
     if (keyword_.isEmpty())
         return false;
-    Qt::CaseSensitivity const cs = (this->caseSensitivity(true) == ECaseSensitivity::CaseInsensitive)
-                                   ? Qt::CaseInsensitive : Qt::CaseSensitive;
+    ECaseSensitivity const sensitivity = this->caseSensitivity(true);
+    Qt::CaseSensitivity const cs = (sensitivity == ECaseSensitivity::CaseSensitive)
+                                   ? Qt::CaseSensitive : Qt::CaseInsensitive;
     return (this->matchingMode(true) == EMatchingMode::Loose) ? input.endsWith(keyword_, cs) :
            (input.compare(keyword_, cs) == 0);
 }
@@ -391,7 +392,9 @@ bool Combo::matchesForInput(QString const &input) const {
 qint32 computeCursorLeftShift(QString const &str) {
     QString s = str;
     s.remove(QRegularExpression(QString(R"((%1)|(%2))").arg(constants::kDelayVariableRegExpStr, constants::kKeyVariableRegExpStr)));
-    qsizetype const index = s.lastIndexOf(kCursorVariable);
+    // the search is case-insensitive because the "match case" case sensitivity mode may have upper-cased the whole
+    // evaluated snippet, including the cursor marker.
+    qsizetype const index = s.lastIndexOf(kCursorVariable, -1, Qt::CaseInsensitive);
     if (index < 0)
         return -1;
     return printableCharacterCount(s.right(s.length() - (index + kCursorVariable.length())));
@@ -400,16 +403,23 @@ qint32 computeCursorLeftShift(QString const &str) {
 
 //****************************************************************************************************************************************************
 /// \param[in] triggeredByPicker Was the substitution triggered by the picker window
+/// \param[in] typedKeyword The exact text typed by the user that triggered the match (with its original case). Used
+/// only when the combo's case sensitivity is ECaseSensitivity::CaseInsensitiveMatchCase, to reshape the case of the
+/// expanded snippet to match how the keyword was typed. Leave empty (e.g. for picker-triggered substitutions, where
+/// there is no "typed" keyword) to expand the snippet verbatim.
 /// \return true if the substitution was actually performed (it could a been cancelled, for instance by the user
 /// dismissing a variable input dialog.
 //****************************************************************************************************************************************************
-bool Combo::performSubstitution(bool triggeredByPicker) {
+bool Combo::performSubstitution(bool triggeredByPicker, QString const &typedKeyword) {
     bool cancelled = false;
     QMap<QString, QString> knownInputVariables;
     QSet<QString> const forbiddenSubcombos;
     QString newText = this->evaluatedSnippet(cancelled, forbiddenSubcombos, knownInputVariables);
     if (cancelled)
         return false;
+
+    if ((this->caseSensitivity(true) == ECaseSensitivity::CaseInsensitiveMatchCase) && (!typedKeyword.isEmpty()))
+        newText = applyCaseStyle(newText, detectTypedCaseStyle(typedKeyword));
     if (!knownInputVariables.isEmpty()) {
         // we displayed the input variable dialog at least once. Some slow/heavy application (Electron-based stuff like
         // Slack & al. for instance) will need some time to properly regain focus.

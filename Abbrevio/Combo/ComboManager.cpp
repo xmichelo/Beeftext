@@ -215,8 +215,9 @@ bool ComboManager::checkAndPerformComboSubstitution() {
     }
 
     SpCombo const combo = result[result.size() > 1 ? static_cast<quint32>(rng_.get()) % result.size() : 0];
+    QString const typedKeyword = currentText_.right(combo->keyword().length());
     if ((!isAbbrevioTheForegroundApplication()) &&
-        (combo->performSubstitution(false) && PreferencesManager::instance().playSoundOnCombo()) && sound_)
+        (combo->performSubstitution(false, typedKeyword) && PreferencesManager::instance().playSoundOnCombo()) && sound_)
         sound_->play(); // in Abbrevio windows, substitution is disabled
     this->onComboBreakerTyped();
     return true;

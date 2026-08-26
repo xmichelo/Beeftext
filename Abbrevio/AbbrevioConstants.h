@@ -12,6 +12,7 @@
 
 
 #include <XMiLib/VersionNumber/VersionNumber.h>
+#include <memory>
 
 
 Q_DECLARE_SMART_POINTER_METATYPE(std::shared_ptr)

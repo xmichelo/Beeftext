@@ -70,7 +70,7 @@ public: // member functions
     bool isEnabled() const; ///< Check whether the combo is enabled
     bool isUsable() const; ///< Check if the combo is usable, i.e. if it is enabled and member of a group that is enabled.
     bool matchesForInput(QString const &input) const; ///< Check if the combo is a match for the given input
-    bool performSubstitution(bool triggeredByPicker); ///< Perform the combo substitution
+    bool performSubstitution(bool triggeredByPicker, QString const &typedKeyword = QString()); ///< Perform the combo substitution
     QJsonObject toJsonObject(bool includeGroup) const; ///< Serialize the combo in a JSon object
     void changeUuid(); ///< Get a new Uuid for the combo
 

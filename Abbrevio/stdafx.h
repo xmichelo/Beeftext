@@ -16,5 +16,12 @@
 #include <QtGui>
 #include <QtCore>
 
+#ifdef Q_OS_WIN
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <Windows.h>
+#endif
+
 
 #endif // ABBREVIO_STDAFX_H

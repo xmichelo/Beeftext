@@ -110,7 +110,7 @@ void PrefPaneAdvanced::onSpinDelayBetweenKeystrokesChanged(int value) const {
 void PrefPaneAdvanced::onChangeComboListFolder() {
     QString const errorTitle = tr("Error");
     QString const errorMsg = tr("The location of the combo list folder could not be changed.");
-    QFile oldFile = QDir(prefs_.comboListFolderPath()).absoluteFilePath(ComboList::defaultFileName);
+    QFile oldFile(QDir(prefs_.comboListFolderPath()).absoluteFilePath(ComboList::defaultFileName));
     try {
         QString const path = QFileDialog::getExistingDirectory(this, tr("Select folder"), prefs_.comboListFolderPath());
         if (path.trimmed().isEmpty())

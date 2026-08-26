@@ -38,6 +38,8 @@ QString caseSensitivityToString(ECaseSensitivity sensitivity, bool resolveDefaul
         return QObject::tr("Case-sensitive");
     case ECaseSensitivity::CaseInsensitive:
         return QObject::tr("Case-insensitive");
+    case ECaseSensitivity::CaseInsensitiveMatchCase:
+        return QObject::tr("Case-insensitive, match case");
     default:
         Q_ASSERT(false);
         globals::debugLog().addWarning(QString("Unknown matching mode with value %1").arg(
@@ -137,4 +139,64 @@ ECaseSensitivity intToCaseSensitivity(qint32 value, bool *outOk) {
     if (outOk)
         *outOk = ok;
     return ok ? static_cast<ECaseSensitivity>(value) : ECaseSensitivity::CaseSensitive;
+}
+
+
+//****************************************************************************************************************************************************
+/// \param[in] typedText The text as it was typed by the user (typically the keyword of a combo).
+/// \return The detected case style. If the text is empty, contains no letters, or its case pattern does not match
+/// one of the recognized styles (e.g. "hWor"), ETypedCaseStyle::Verbatim is returned.
+//****************************************************************************************************************************************************
+ETypedCaseStyle detectTypedCaseStyle(QString const &typedText) {
+    if (typedText.isEmpty())
+        return ETypedCaseStyle::Verbatim;
+
+    bool hasCasedChar = false;
+    bool allUpper = true;
+    for (QChar const &c: typedText) {
+        if (c.isLower()) {
+            allUpper = false;
+            hasCasedChar = true;
+        } else if (c.isUpper())
+            hasCasedChar = true;
+    }
+    if (!hasCasedChar)
+        return ETypedCaseStyle::Verbatim; // the keyword contains no letters (e.g. purely numeric or symbols).
+    if (allUpper)
+        return ETypedCaseStyle::AllUpper;
+
+    if (typedText.at(0).isUpper()) {
+        bool restHasUpper = false;
+        for (qsizetype i = 1; i < typedText.length(); ++i)
+            if (typedText.at(i).isUpper()) {
+                restHasUpper = true;
+                break;
+            }
+        if (!restHasUpper)
+            return ETypedCaseStyle::FirstUpper;
+    }
+    return ETypedCaseStyle::Verbatim;
+}
+
+
+//****************************************************************************************************************************************************
+/// \param[in] text The text to transform.
+/// \param[in] style The case style to apply.
+/// \return The transformed text.
+//****************************************************************************************************************************************************
+QString applyCaseStyle(QString const &text, ETypedCaseStyle style) {
+    switch (style) {
+    case ETypedCaseStyle::AllUpper:
+        return text.toUpper();
+    case ETypedCaseStyle::FirstUpper: {
+        if (text.isEmpty())
+            return text;
+        QString result = text;
+        result[0] = result[0].toUpper();
+        return result;
+    }
+    case ETypedCaseStyle::Verbatim:
+    default:
+        return text;
+    }
 }
