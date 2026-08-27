@@ -24,6 +24,7 @@ function compileNsisInstaller
     if (0 -ne $LASTEXITCODE)
     {
        $buildLog # dump the build log
+	   pause
        Write-Error "Generation of the installer failed"
     }
 }

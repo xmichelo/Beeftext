@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Abbrevio "a" logo — editable source.
+
+  Structure:
+    - #letterform : the lowercase "a" mark. Outline traced from the Scoutie Sans
+      typeface (https://fonts.google.com/specimen/Scoutie+Sans, by Tyler Finck),
+      filled with the brand red gradient.
+    - #sparkles   : the decorative sparkle accents. Delete or hide this group
+      to get the "plain" variant used everywhere the mark is shown small
+      (app icon, taskbar/tray, favicon, installer graphics) — at those sizes
+      the sparkles are too small to read and were omitted from the baked
+      assets for that reason. Keep them for anything shown larger (roughly
+      400px+), such as a website hero image or splash screen.
+
+  Colors are sampled from the CanScribe ribbon logo for palette continuity:
+    bright highlight #ED4B58, mid #AE2C31 / #C23540, shadow #501818 / #3F1212.
+-->
+
+<svg
+   width="680"
+   height="680"
+   viewBox="0 0 680 680"
+   version="1.1"
+   id="svg10"
+   sodipodi:docname="AbbrevioLogoA.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.1867647"
+     inkscape:cx="340"
+     inkscape:cy="340"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1072"
+     inkscape:window-y="504"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10" />
+  <title
+     id="title1">Abbrevio &quot;a&quot; logo</title>
+  <defs
+     id="defs3">
+    <linearGradient
+       id="linearGradient10"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#00cba4;stop-opacity:1;"
+         offset="0.56782335"
+         id="stop10" />
+      <stop
+         style="stop-color:#009c84;stop-opacity:0;"
+         offset="1"
+         id="stop11" />
+    </linearGradient>
+    <linearGradient
+       id="letterformGradient"
+       x1="0"
+       y1="0"
+       x2="0.7"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#ED4B58"
+         id="stop1" />
+      <stop
+         offset="0.45"
+         stop-color="#AE2C31"
+         id="stop2" />
+      <stop
+         offset="1"
+         stop-color="#501818"
+         id="stop3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10"
+       id="linearGradient11"
+       x1="161.21477"
+       y1="291.12079"
+       x2="602.28522"
+       y2="337.47919"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <!-- The letterform. A single path (outer contour + counter, nonzero fill
+       rule) traced from the Scoutie Sans "a" glyph and scaled to this canvas. -->
+  <g
+     id="letterform"
+     style="fill:url(#linearGradient11)">
+    <path
+       fill="url(#letterformGradient)"
+       d="       M 299.4,538.6 Q 240.2,538.6 200.1,503.5 Q 160.0,468.4 160.0,407.5       Q 160.0,346.6 206.8,310.5 Q 253.7,274.4 330.5,274.4       Q 383.9,274.4 413.3,273.1 Q 442.7,271.9 450.6,265.1       L 450.6,254.2 Q 450.6,226.1 440.8,201.9 Q 430.9,177.8 410.5,163.1       Q 390.2,148.4 357.8,148.4 Q 325.9,148.4 304.5,160.6       Q 283.1,172.7 270.2,192.9 Q 257.4,213.1 250.7,237.4       L 181.4,212.6 Q 191.5,180.7 213.6,152.8 Q 235.6,124.9 271.5,107.4       Q 307.4,90.0 358.2,90.0 Q 411.6,90.0 449.4,111.6       Q 487.2,133.3 507.3,170.6 Q 527.5,208.0 527.5,254.6       L 527.5,430.6 Q 527.5,457.5 535.1,467.4 Q 542.6,477.2 554.4,477.2       Q 562.4,477.2 571.2,475.3 Q 580.0,473.5 590.5,468.4       L 603.5,524.7 Q 588.4,530.6 571.0,534.4 Q 553.5,538.1 536.3,538.1       Q 518.3,538.1 499.4,531.6 Q 480.5,525.1 467.2,505.0       Q 454.0,484.8 452.7,443.6 L 452.3,443.6       Q 436.8,483.1 398.4,510.8 Q 359.9,538.6 299.4,538.6 Z       M 318.8,481.4 Q 349.8,481.4 374.4,469.1 Q 399.0,456.7 416.2,436.5       Q 433.4,416.3 442.4,392.4 Q 451.5,368.5 451.5,344.9       L 451.5,316.8 Q 444.8,323.1 417.5,324.1 Q 390.2,325.2 343.1,325.2       Q 294.0,325.2 266.1,346.2 Q 238.1,367.2 238.1,403.7       Q 238.1,440.3 261.9,460.9 Q 285.6,481.4 318.8,481.4 Z"
+       id="path3"
+       style="fill:url(#linearGradient11)" />
+  </g>
+  <!-- Decorative sparkles. Each is a soft 4-point star built from two
+       symmetric cubic-bezier "pinches". Safe to delete this whole group. -->
+  <g
+     id="sparkles"
+     style="fill:#ffe300;fill-opacity:1">
+    <g
+       fill="#6B6B6B"
+       id="g6"
+       style="fill:#ffe300;fill-opacity:1">
+      <path
+         d="M100,140 C104,130 106,128 116,124 C106,120 104,118 100,108 C96,118 94,120 84,124 C94,128 96,130 100,140 Z"
+         id="path4"
+         style="fill:#ffe300;fill-opacity:1" />
+      <path
+         d="M110,560 C113,553 115,551 122,548 C115,545 113,543 110,536 C107,543 105,545 98,548 C105,551 107,553 110,560 Z"
+         opacity="0.85"
+         id="path5"
+         style="fill:#ffe300;fill-opacity:1" />
+      <path
+         d="M380,50 C382,45 383,44 388,42 C383,40 382,39 380,34 C378,39 377,40 372,42 C377,44 378,45 380,50 Z"
+         opacity="0.8"
+         fill="#9A9A9A"
+         id="path6"
+         style="fill:#ffe300;fill-opacity:1" />
+    </g>
+    <g
+       fill="#9A9A9A"
+       id="g7"
+       style="fill:#ffe300;fill-opacity:1">
+      <path
+         d="M630,110 C634,100 636,98 646,94 C636,90 634,88 630,78 C626,88 624,90 614,94 C624,98 626,100 630,110 Z"
+         id="path7"
+         style="fill:#ffe300;fill-opacity:1" />
+    </g>
+    <g
+       fill="#D0D0D0"
+       id="g10"
+       style="fill:#ffe300;fill-opacity:1">
+      <path
+         d="M615,480 C617,475 618,474 623,472 C618,470 617,469 615,464 C613,469 612,470 607,472 C612,474 613,475 615,480 Z"
+         opacity="0.75"
+         id="path8"
+         style="fill:#ffe300;fill-opacity:1" />
+      <path
+         d="M630,300 C631,297 632,296 635,295 C632,294 631,293 630,290 C629,293 628,294 625,295 C628,296 629,297 630,300 Z"
+         opacity="0.6"
+         id="path9"
+         style="fill:#ffe300;fill-opacity:1" />
+      <path
+         d="M580,560 C581,557 582,556 585,555 C582,554 581,553 580,550 C579,553 578,554 575,555 C578,556 579,557 580,560 Z"
+         opacity="0.55"
+         id="path10"
+         style="fill:#ffe300;fill-opacity:1" />
+    </g>
+  </g>
+</svg>

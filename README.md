@@ -1,6 +1,6 @@
 # Abbrevio
 
-![Abbrevio](https://raw.githubusercontent.com/wiki/xmichelo/Abbrevio/assets/images/Screenshot.png)
+![Abbrevio](https://raw.githubusercontent.com/wiki/CanScribe/Abbrevio/assets/images/Screenshot.png)
 
 Abbrevio is a text snippet management tool for Windows, inspired by [BeefText].
 
@@ -18,7 +18,7 @@ written in C++ using the [Qt] framework.
 
 The project is developed and managed by [Xavier Michelon]. The project is not looking for contributors and all pull requests will be rejected.
 
-Contributors for translations are listed in the [dedicated wiki page](https://github.com/xmichelo/Abbrevio/wiki/User-provided-translations).
+Contributors for translations are listed in the [dedicated wiki page](https://github.com/CanScribe/Abbrevio/wiki/User-provided-translations).
 
 The [abbrevio.org] website uses a template provided by [HTML5 UP].
 
@@ -35,7 +35,7 @@ Abbrevio uses the [emojilib](https://github.com/muan/emojilib) library under the
 ## Documentation
 ### End User
 
-The end user documentation is available as a [wiki](https://github.com/xmichelo/Abbrevio/wiki) on the GitHub project page.
+The end user documentation is available as a [wiki](https://github.com/CanScribe/Abbrevio/wiki) on the GitHub project page.
 
 ### Developer
 
@@ -64,7 +64,7 @@ Detailed build instructions are not available at the moment.
 [OpenSSL]: https://www.openssl.org
 [OpenSSL and SSLeay licenses]:https://www.openssl.org/source/license.html
 [Doxygen]: http://www.stack.nl/~dimitri/doxygen/
-[Abbrevio]: https://github.com/xmichelo/Abbrevio
+[Abbrevio]: https://github.com/CanScribe/Abbrevio
 [Visual Studio 2022]: https://www.visualstudio.com/vs/community/
 [Qt Visual Studio Tools]: https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022
 [XMiLib]: https://github.com/xmichelo/XMiLib

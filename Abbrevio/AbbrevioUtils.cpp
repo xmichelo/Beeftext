@@ -44,7 +44,7 @@ p, li { white-space: pre-wrap; }
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Your combo list contains rich text combos. Abbrevio does not support rich text anymore.</p>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- Click on the 'Convert' button to convert your rich text combos to plain text.</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- Click on the 'Exit' button to quit the application. If you want to keep using rich text combos, you can re-install <a href="https://github.com/xmichelo/Abbrevio/releases/tag/v7.2"><span style=" text-decoration: underline; color:#0000ff;">Abbrevio v7.2</span></a>.</p></body></html>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- Click on the 'Exit' button to quit the application. If you want to keep using rich text combos, you can re-install <a href="https://github.com/CanScribe/Abbrevio/releases/tag/v7.2"><span style=" text-decoration: underline; color:#0000ff;">Abbrevio v7.2</span></a>.</p></body></html>
 )");
 }
 

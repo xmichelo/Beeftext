@@ -27,7 +27,7 @@ namespace {
 //****************************************************************************************************************************************************
 QString variablesLabel() {
     return QObject::tr(R"(
-      <html><head/><body><p><a href="https://github.com/xmichelo/Abbrevio/wiki/Variables">
+      <html><head/><body><p><a href="https://github.com/CanScribe/Abbrevio/wiki/Variables">
       <span style=" text-decoration: underline; color:#%1;">
       About variables</span></a></p></body></html>)").arg(colorToHex(constants::blueAbbrevioColor, false));
 }

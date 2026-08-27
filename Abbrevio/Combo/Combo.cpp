@@ -442,10 +442,19 @@ bool Combo::performSubstitution(bool triggeredByPicker, QString const &typedKeyw
         if (!triggeredByPicker)
             eraseChars(qMax<qint32>(qint32(keyword_.size()) + (triggersOnSpace ? 1 : 0), 0));
 
+        // If the trailing space must be kept, append it to the snippet text itself rather than rendering it as a
+        // separate fragment afterward. A separate fragment means a second, independent clipboard-set-then-paste
+        // cycle a mere kDelayBetweenFragmentsMs later (see insertTextByPasting()); if the target application hasn't
+        // finished reading the clipboard for the first paste by the time the second one overwrites it, the first
+        // paste can end up picking up the second fragment's content instead, visibly replacing the snippet with
+        // just the space character. Appending to the string keeps the space part of the same paste operation as
+        // the snippet's own trailing text in the common case (a snippet that doesn't end with a #{key:}/#{shortcut:}
+        // variable), which avoids the race entirely.
+        if ((!triggeredByPicker) && (triggersOnSpace && prefs.keepFinalSpaceCharacter()))
+            newText += " ";
+
         // we split the snippets into fragments and render them
         ListSpSnippetFragment fragments = splitStringIntoSnippetFragments(newText);
-        if ((!triggeredByPicker) && (triggersOnSpace && prefs.keepFinalSpaceCharacter()))
-            fragments.push_back(std::make_shared<TextSnippetFragment>(QString(" ")));
         renderSnippetFragmentList(fragments);
 
         // Position the cursor if needed by typing the right amount of left keystrokes.

@@ -13,6 +13,10 @@
 !include "FileFunc.nsh" # file functions (used for GetSize)
 !include WinMessages.nsh # windows messages (used for finding and killing running instance)
 
+# Use the bundled copy of the ShellExecAsUser plugin instead of relying on it being installed system-wide in the NSIS
+# Plugins folder (writing there requires admin rights and isn't guaranteed on every build machine).
+!addplugindir "Resources\NsisPlugins\x86-unicode"
+
 #global defines ( basically compile time constants)
 !define APP_FANCY_NAME "Abbrevio"
 !define APP_NAME "Abbrevio"
@@ -34,6 +38,14 @@
 !define LEFT_IMAGE_PATH "${RESOURCES_DIR}\installerLeftImage.bmp"
 !define TOP_IMAGE_PATH "${RESOURCES_DIR}\installerTopImage.bmp"
 !define APP_DATA_REGISTRY_KEY "Software\${COMPANY}\${APP_NAME}"
+
+# Automatically determine the Qt installation directory via qmake (must be on PATH) at compile time, so that building
+# the installer does not require the QTDIR environment variable to be set beforehand on the build machine.
+!tempfile QTDIR_TMP
+!system 'qmake -query QT_INSTALL_PREFIX > "${QTDIR_TMP}"' = 0
+!define /file QTDIR "${QTDIR_TMP}"
+!delfile "${QTDIR_TMP}"
+!undef QTDIR_TMP
 
 # Settings for the Modern UI 2 NSIS plugin
 !define MUI_WELCOMEFINISHPAGE_BITMAP ${LEFT_IMAGE_PATH}
@@ -169,12 +181,12 @@ setOutPath $INSTDIR
 # copy file
 file "${EXE_SRC_DIR}\${APP_NAME}.exe"
 file "..\README.md"
-file "$%QTDIR%\..\..\Tools\OpenSSL\Win_x64\bin\libcrypto-1_1-x64.dll"
-file "$%QTDIR%\..\..\Tools\OpenSSL\Win_x64\bin\libssl-1_1-x64.dll"
-file "$%QTDIR%\bin\Qt6Core.dll"
-file "$%QTDIR%\bin\Qt6Gui.dll"
-file "$%QTDIR%\bin\Qt6Widgets.dll"
-file "$%QTDIR%\bin\Qt6Network.dll"
+file "C:\Program Files\OpenSSL-Win64\bin\libcrypto-4-x64.dll"
+file "C:\Program Files\OpenSSL-Win64\bin\libssl-4-x64.dll"
+file "${QTDIR}\bin\Qt6Core.dll"
+file "${QTDIR}\bin\Qt6Gui.dll"
+file "${QTDIR}\bin\Qt6Widgets.dll"
+file "${QTDIR}\bin\Qt6Network.dll"
 file "${VC_DLL_DIR}\msvcp140.dll"
 file "${VC_DLL_DIR}\msvcp140_1.dll"
 file "${VC_DLL_DIR}\msvcp140_2.dll"
@@ -182,15 +194,15 @@ file "${VC_DLL_DIR}\vcruntime140.dll"
 file "${VC_DLL_DIR}\vcruntime140_1.dll"
 file "${VC_DLL_DIR}\msvcr100.dll"
 setOutPath $INSTDIR\platforms
-file "$%QTDIR%\plugins\platforms\qwindows.dll"
+file "${QTDIR}\plugins\platforms\qwindows.dll"
 setOutPath $INSTDIR\styles
-file "$%QTDIR%\plugins\styles\qwindowsvistastyle.dll"
+file "${QTDIR}\plugins\styles\qmodernwindowsstyle.dll"
 setOutPath $INSTDIR\imageformats
-file "$%QTDIR%\plugins\imageformats\qico.dll"
+file "${QTDIR}\plugins\imageformats\qico.dll"
 setOutPath $INSTDIR\tls
-file "$%QTDIR%\plugins\tls\qcertonlybackend.dll"
-file "$%QTDIR%\plugins\tls\qopensslbackend.dll"
-file "$%QTDIR%\plugins\tls\qschannelbackend.dll"
+file "${QTDIR}\plugins\tls\qcertonlybackend.dll"
+file "${QTDIR}\plugins\tls\qopensslbackend.dll"
+file "${QTDIR}\plugins\tls\qschannelbackend.dll"
 setOutPath $INSTDIR\translations\fr_FR
 file "${EXE_SRC_DIR}\translations\fr_FR\abbrevio_fr_FR.qm"
 file "${EXE_SRC_DIR}\translations\fr_FR\qtbase_fr_FR.qm"

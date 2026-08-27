@@ -2,9 +2,9 @@
 
 ## Reporting a bug
 
-- **Make sure you have the latest version of the application**. You can use the automatic update system built-into the application or check the [Abbrevio releases page](https://github.com/xmichelo/Abbrevio/releases).
+- **Make sure you have the latest version of the application**. You can use the automatic update system built-into the application or check the [Abbrevio releases page](https://github.com/CanScribe/Abbrevio/releases).
 
-- **Make sure the issue has not yet been reported** in the [issue tracker](https://github.com/xmichelo/Abbrevio/issues).
+- **Make sure the issue has not yet been reported** in the [issue tracker](https://github.com/CanScribe/Abbrevio/issues).
 
 - **Submit your issue**. Please follow the following rules:
   - Use English.

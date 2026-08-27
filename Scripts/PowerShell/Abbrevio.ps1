@@ -11,7 +11,7 @@
 #***********************************************************************************************************************
 # useful variable declarations
 #***********************************************************************************************************************
-$openSslBinDir = "C:\Qt\Tools\OpenSSL\Win_x64\bin"
+$openSslBinDir = "C:\Program Files\OpenSSL-Win64\bin"
 $solutionDir = absolutePath $PSScriptRoot "..\.."
 $vcDllDir = absolutePath $solutionDir "Vendor\VCRuntime\"
 $nsisInstallerPath = absolutePath $solutionDir "Installer\installer.nsi"
@@ -23,7 +23,7 @@ $rcFilePath = absolutePath $solutionDir "Abbrevio\Abbrevio.rc"
 #***********************************************************************************************************************
 function copySslDlls([String]$dstPath)
 {
-    foreach ($dll in "libcrypto-1_1-x64.dll", "libssl-1_1-x64.dll") 
+    foreach ($dll in "libcrypto-4-x64.dll", "libssl-4-x64.dll")
     { Copy-Item -Path (absolutePath $openSslBinDir $dll) -Destination $dstPath }
 }
 
